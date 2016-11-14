@@ -1,0 +1,72 @@
+# WP Interface
+# 'Un-comment' pages or widgets to remove them from the WP backend interface.
+
+pages: [
+  'edit-comments.php'
+  'post_type': [
+    'acf-field-group'
+  ]
+  # Example: Hide by role
+  #roles:
+  #  editor: [
+  #    'tools.php'
+  #    'themes.php'
+  #    'plugins.php'
+  #  ]
+]
+
+widgets: [
+  'dashboard': [
+    'dashboard_quick_press'
+    'dashboard_right_now'
+    'icl_dashboard_widget'
+  ]
+]
+
+adminBar: [
+  'wp-logo'
+  'comments'
+  'updates'
+]
+
+
+# Reference
+  # Pages
+    #'edit-comments.php'                               # Comments
+    #'edit.php'                                        # Posts
+    #'index.php'                                       # Dashboard
+    #'jetpack'                                         # Jetpack plugin
+    #'options-general.php'                             # Settings
+    #'plugins.php'                                     # Plugins
+    #'post_type': [
+      #  'acf-field-group'                             # ACF
+      #  'page'                                        # Pages
+    #]
+    #'sitepress-multilingual-cms/menu/languages.php'   # WPML
+    #'themes.php'                                      # Appearance
+    #'tools.php'                                       # Tools
+    #'upload.php'                                      # Media
+    #'users.php'                                       # Users
+    #'wpcf7'                                           # Contact Form 7
+
+  # Widgets
+    #'dashboard': [
+      #'dashboard_activity'                            # Activity (e.g. 'Recently Published')
+      #'dashboard_incoming_links'                      # Incoming Links
+      #'dashboard_plugins'                             # Plugins
+      #'dashboard_primary'                             # Primary Area
+      #'dashboard_quick_press'                         # Quick Post
+      #'dashboard_recent_comments'                     # Recent Comments
+      #'dashboard_recent_drafts'                       # Recent Drafts
+      #'dashboard_right_now'                           # At a Glance
+      #'dashboard_secondary'                           # Secondary Area
+      #'icl_dashboard_widget'                          # WPML
+    # ]
+
+  # AdminBar
+    # 'comments'                                       # Pending Comments
+    # 'new-content'                                    # Add new post dropdown
+    # 'query-monitor'                                  # Plugin: Debug Bar - Query Monitor
+    # 'site-name'                                      # Site name with 'visit site' dropdown
+    # 'updates'                                        # Plugin / WP Updates
+    # 'wp-logo'                                        # 'About WP' logo/menu
