@@ -4,7 +4,7 @@ namespace WPStarterTheme;
 $libIncludes = [
   'lib/Config.php',
   'lib/Helpers.php',
-  'lib/DataFilter.php',
+  'lib/DataFilters.php',
   'lib/Hooks.php',
   'lib/Init.php'
 ];

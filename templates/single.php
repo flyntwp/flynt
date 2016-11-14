@@ -1,3 +1,3 @@
 <?php
-global $template;
-var_dump($template);
+
+WPStarter\echoHtmlFromConfigFile('single.json');

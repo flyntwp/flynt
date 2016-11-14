@@ -1,6 +1,6 @@
 <?php
 
-WPStarter\echoHtmlFromConfigFile('page.json');
+WPStarter\echoHtmlFromConfigFile('default.json');
 
 // render the index.php of your simple module
 // WPStarter\echoHtmlFromConfig([

@@ -1,0 +1,38 @@
+{
+  "name": "Layout",
+  "dataFilter": "WPStarterTheme/DataFilters/WpBase",
+  "areas": {
+    "mainHeader": [
+      {
+        "name": "MainNavigation",
+        "dataFilter": "WPStarterTheme/DataFilters/MainNavigation"
+      }
+    ],
+    "mainTemplate": [
+      {
+        "name": "Template",
+        "dataFilter": "WPStarterTheme/DataFilters/MainQuery",
+        "areas": {
+          "postModules": [
+            {
+              "name": "Wysiwyg"
+            },
+            {
+              "name": "PostTeasers",
+              "dataFilter": "WPStarterTheme/DataFilters/Posts",
+              "customData": {
+                "postsPerPage": "3"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "mainFooter": [
+      {
+        "name": "FooterNavigation",
+        "dataFilter": "WPStarterTheme/DataFilters/FooterNavigation"
+      }
+    ]
+  }
+}

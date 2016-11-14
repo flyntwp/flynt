@@ -9,7 +9,8 @@ define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
 $helperIncludes = [
   // 'CustomPostTypeLoader.php',
   // 'WPAdminConfig.php',
-  'AcfFieldGroupComposer.php'
+  'AcfFieldGroupComposer.php',
+  'StringHelpers.php'
 ];
 
 array_walk($helperIncludes, function ($file) {
