@@ -2,8 +2,6 @@
 
 namespace WPStarterTheme\DataFilters;
 
-define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
+use WPStarterTheme\Core;
 
-use WPStarterTheme;
-
-WPStarterTheme\loadFiles('lib/DataFilters/');
+Core::loadFiles('lib/DataFilters/');

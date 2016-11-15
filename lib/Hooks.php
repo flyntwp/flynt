@@ -2,9 +2,6 @@
 
 namespace WPStarterTheme\Hooks;
 
-define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
+use WPStarterTheme\Core;
 
-use WPStarterTheme;
-
-// Register all helper files for this Project here which are in the Helpers directory.
-WPStarterTheme\loadFiles('lib/Hooks/');
+Core::loadFiles('lib/Hooks/');
