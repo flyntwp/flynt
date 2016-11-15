@@ -1,8 +1,6 @@
 <?php
 
-namespace WPStarterTheme\Helpers\CustomPostTypeLoader;
-
-define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
+namespace WPStarterTheme\Helpers;
 
 use WPStarterTheme\Config;
 

@@ -1,5 +1,3 @@
 <?php
 
-namespace WPStarterTheme\Helpers\AcfFieldGroupComposer;
-
-define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
+namespace WPStarterTheme\Helpers;

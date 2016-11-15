@@ -1,16 +1,35 @@
 <?php
 namespace WPStarterTheme;
 
-$libIncludes = [
-  'lib/Config.php',
-  'lib/Helpers.php',
-  'lib/DataFilters.php',
-  'lib/Hooks.php',
-  'lib/Init.php'
-];
+use RecursiveDirectoryIterator;
 
-array_walk($libIncludes, function ($file) {
-  if (!locate_template($file, true, true)) {
-    trigger_error(sprintf(__('Error locating %s for inclusion', 'wp-starter-boilerplate'), $file), E_USER_ERROR);
+function loadFiles($dir = '', $files = []) {
+  if(count($files) === 0) {
+    $directory = \get_template_directory() . DIRECTORY_SEPARATOR . $dir;
+    $Directory = new RecursiveDirectoryIterator($directory, RecursiveDirectoryIterator::SKIP_DOTS);
+    foreach($Directory as $name => $file){
+      if($file->isFile() && $file->getExtension() === 'php') {
+        $filePath = $file->getPathname();
+        require_once $filePath;
+      }
+    }
+  } else {
+    array_walk($files, function ($file) use ($dir) {
+      $filePath = $dir . $file;
+      if (!locate_template($filePath, true, true)) {
+        trigger_error(sprintf(__('Error locating %s for inclusion', 'wp-starter-boilerplate'), $filePath), E_USER_ERROR);
+      }
+    });
   }
-});
+}
+
+loadFiles(
+  'lib/',
+  [
+    'Config.php',
+    'Helpers.php',
+    'Hooks.php',
+    'DataFilters.php',
+    'Init.php'
+  ]
+);

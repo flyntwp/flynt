@@ -1,4 +1,7 @@
 <?php
+
+use WPStarterTheme\Helpers\Utils;
+
 add_filter('WPStarterTheme/DataFilters/WpBase', function ($data) {
   $output = array(
     'lang' => get_bloginfo('language'),
@@ -6,7 +9,9 @@ add_filter('WPStarterTheme/DataFilters/WpBase', function ($data) {
     'feedHref' => esc_url(get_feed_link()),
     'bodyClass' => join(' ', get_body_class()),
     'appleTouchIcon180x180Path' => get_template_directory_uri() . '/apple-touch-icon-180x180.png',
-    'faviconPath' => get_template_directory_uri() . '/favicon.png'
+    'faviconPath' => get_template_directory_uri() . '/favicon.png',
+    'wpFooter' => Utils::OutputBufferContents('wp_footer'),
+    'wpHead' => Utils::OutputBufferContents('wp_head')
   );
 
   if(is_rtl()){

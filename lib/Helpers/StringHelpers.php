@@ -1,7 +1,9 @@
 <?php
 
-namespace WPStarterTheme\Helpers\StringHelpers;
+namespace WPStarterTheme\Helpers;
 
-function camelCaseToKebap($className) {
-  return strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $className));
+class StringHelpers {
+  public static function camelCaseToKebap($className) {
+    return strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $className));
+  }
 }
