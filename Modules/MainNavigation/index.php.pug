@@ -1,2 +1,8 @@
 div(class=$data('baseClasses'))
-  nav!=$data('navigation')
+  nav
+    div
+      ul(id='menu-main' class="menu")
+        for item in $data('menuItems')
+          li(class=item.css_classes)
+            a(href=item.href title=item.title target=item.target)
+              = item.text

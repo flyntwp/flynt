@@ -9,3 +9,8 @@ add_action('after_setup_theme', function () {
   add_image_size('image-sm', 1024);
   add_image_size('image-xs', 768);
 });
+
+register_nav_menus(array(
+    'main_navigation' => __('Main Navigation', 'wpstarter'),
+    'footer_navigation' => __('Footer Navigation', 'wpstarter')
+  ));

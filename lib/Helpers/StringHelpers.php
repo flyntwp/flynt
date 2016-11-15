@@ -11,4 +11,9 @@ class StringHelpers {
     if(isset($str))
       return wp_trim_words(wp_strip_all_tags($str), $length, '...');
   }
+
+  public static function strstartswith($haystack, $needle) {
+    if (!$needle) return false;
+    return strpos($haystack, $needle) === 0;
+  }
 }

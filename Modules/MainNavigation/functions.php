@@ -1,5 +1,7 @@
 <?php
+use WPStarterTheme\Helpers\Navigation;
+
 add_filter('WPStarterTheme/DataFilters/MainNavigation', function($data) {
-  $data['navigation'] = wp_nav_menu(["echo" => false]);
+  $data['menuItems'] = Navigation::getMenuLinks('main_navigation');
   return $data;
 });
