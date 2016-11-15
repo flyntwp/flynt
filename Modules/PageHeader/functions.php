@@ -1,6 +1,6 @@
 <?php
 
-add_filter('WPStarterTheme/DataFilters/PageHeader', function($data, $parentData) {
+add_filter('WPStarter/modifyModuleData?name=PageHeader', function($data, $parentData) {
   if(isset($parentData['currentQueriedObject'])) {
     $currentObject = $parentData['currentQueriedObject'];
     $data['title'] = $currentObject->post_title;

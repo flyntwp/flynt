@@ -1,5 +1,5 @@
 <?php
 
-add_filter('WPStarterTheme/DataFilters/PostList', function($data) {
+add_filter('WPStarter/modifyModuleData?name=PostList', function($data) {
   return $data;
 });

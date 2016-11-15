@@ -2,7 +2,7 @@
 
 use WPStarterTheme\Helpers;
 
-add_filter('WPStarterTheme/DataFilters/Posts', function($data, $parentData, $postsPerPage, $contentType) {
+add_filter('WPStarterTheme/DataFilters/Posts', function($data, $postsPerPage, $contentType) {
   $posts = [
     [
       'title' => 'Post 1',
@@ -43,8 +43,7 @@ add_filter('WPStarterTheme/DataFilters/Posts', function($data, $parentData, $pos
   }
 
   return [
-    'parentData' => $parentData,
     'title' => 'Teaser',
     'posts' => $posts
   ];
-}, 10, 4);
+}, 10, 3);

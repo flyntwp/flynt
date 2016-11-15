@@ -1,5 +1,5 @@
 <?php
 
-add_filter('WPStarterTheme/DataFilters/FooterNavigation', function($data) {
+add_filter('WPStarter/modifyModuleData?name=FooterNavigation', function($data) {
   return $data;
 });
