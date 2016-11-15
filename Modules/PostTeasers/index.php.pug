@@ -1,2 +1,7 @@
 div(class=$data('baseClasses'))
-  
+  h2=$data('title')
+  ul
+    for post in $data('posts')
+      li=post.title
+        p=post.content
+        img(src=post.image)

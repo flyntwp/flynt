@@ -24,8 +24,8 @@
               "name": "PostTeasers",
               "dataFilter": "WPStarterTheme/DataFilters/Posts",
               "dataFilterArgs": {
-                "postsPerPage": "3",
-                "contentType": "short"
+                "postsPerPage": "5",
+                "contentType": "long"
               }
             },
             {
@@ -42,7 +42,7 @@
     "mainFooter": [
       {
         "name": "FooterNavigation",
-        "dataFilter": "WPStarterTheme/DataFilters/FooterNavigation"
+        "dataFilter": "WPStarterTheme/FooterNavigation"
       }
     ]
   }

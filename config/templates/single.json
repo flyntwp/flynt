@@ -10,7 +10,7 @@
     ],
     "mainTemplate": [
       {
-        "name": "Template",
+        "name": "SingleTemplate",
         "dataFilter": "WPStarterTheme/DataFilters/MainQuery",
         "areas": {
           "postModules": [
@@ -20,8 +20,9 @@
             {
               "name": "PostTeasers",
               "dataFilter": "WPStarterTheme/DataFilters/Posts",
-              "customData": {
-                "postsPerPage": "3"
+              "dataFilterArgs": {
+                "postsPerPage": "5",
+                "contentType": "long"
               }
             }
           ]
