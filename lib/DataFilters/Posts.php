@@ -1,49 +1,34 @@
 <?php
 
+namespace WPStarterTheme\DataFilters;
+
 use WPStarterTheme\Helpers;
+use WPStarterTheme\Helpers\Log;
 
-add_filter('WPStarterTheme/DataFilters/Posts', function($data, $postsPerPage, $contentType) {
-  $posts = [
-    [
-      'title' => 'Post 1',
-      'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      'image' => 'http://crossfitbentonville.com/wp-content/uploads/2014/09/Rest-Day-Cat-400x150.jpg'
-    ],
-    [
-      'title' => 'Post 2',
-      'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      'image' => 'http://i.imgur.com/4xl2zEI.png'
-    ],
-    [
-      'title' => 'Post 3',
-      'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      'image' => 'http://orig11.deviantart.net/0914/f/2012/047/b/7/cat_signature_by_korakina-d4px6vs.jpg'
-    ],
-    [
-      'title' => 'Post 4',
-      'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      'image' => 'http://2.bp.blogspot.com/_GSBoGQa_9BE/SS37pYD1yVI/AAAAAAAAChY/bdTXWXnz31I/s400/tummy.jpg'
-    ],
-    [
-      'title' => 'Post 5',
-      'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-      'image' => 'http://lazypenguins.com/wp-content/uploads/wordpress-popular-posts/2717-featured-400x150.jpg'
-    ]
-  ];
+add_filter('WPStarterTheme/DataFilters/Posts', ['WPStarterTheme\DataFilters\Posts', 'getPosts'], 10, 3);
 
-  if($contentType === "short") {
-    $posts = array_map(function($data) {
-      $data['content'] = Helpers\StringHelpers::trimStrip($data['content']);
-      return $data;
-    }, $posts);
+class Posts {
+
+  public static function getPosts($data, $postsPerPage, $contentType) {
+    $posts = get_posts([
+      'posts_per_page'   => $postsPerPage,
+    ]);
+    $posts = array_map('self::reformartPost', $posts, array_fill(0, count($posts), $contentType));
+    return [
+      'posts' => $posts
+    ];
   }
 
-  if(count($posts) > $postsPerPage) {
-    $posts = array_slice($posts, 0, $postsPerPage);
+  protected static function reformartPost($post, $contentType) {
+    $post->id = $post->ID;
+    $post->title = $post->post_title;
+    $post->url = get_permalink($post->id);
+    $post->image = get_the_post_thumbnail_url($post->id);
+    if($contentType === "short") {
+      $post->content = Helpers\StringHelpers::trimStrip($post->post_content);
+    } else {
+      $post->content = $post->post_content;
+    }
+    return $post;
   }
-
-  return [
-    'title' => 'Teaser',
-    'posts' => $posts
-  ];
-}, 10, 3);
+}
