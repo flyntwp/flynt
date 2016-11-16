@@ -1,3 +1,3 @@
 <?php
 
-WPStarter\echoHtmlFromConfigFile('page.json');
+WPStarter\echoHtmlFromConfigFile('default.json');

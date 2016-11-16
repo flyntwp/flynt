@@ -1,5 +1,9 @@
 <?php
-add_filter('WPStarter/modifyModuleData?name=PostTeasers', function($data, $parentData) {
-    $data['title'] = 'Teaser';
-    return $data;
-}, 10, 2);
+
+add_filter('WPStarter/modifyModuleData?name=PostTeasers', function($data) {
+  $data['posts'] = apply_filters('WPStarterTheme/DataFilters/Posts', [], [
+    'postsPerPage' => 5,
+    'contentType' => 'long'
+  ]);
+  return $data;
+});
