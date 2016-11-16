@@ -13,13 +13,13 @@ class Posts {
     $posts = get_posts([
       'posts_per_page'   => $postsPerPage,
     ]);
-    $posts = array_map('self::reformartPost', $posts, array_fill(0, count($posts), $contentType));
+    $posts = array_map('self::reformatPost', $posts, array_fill(0, count($posts), $contentType));
     return [
       'posts' => $posts
     ];
   }
 
-  protected static function reformartPost($post, $contentType) {
+  protected static function reformatPost($post, $contentType) {
     $post->id = $post->ID;
     $post->title = $post->post_title;
     $post->url = get_permalink($post->id);
