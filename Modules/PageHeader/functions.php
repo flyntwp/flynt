@@ -4,7 +4,6 @@ add_filter('WPStarter/modifyModuleData?name=PageHeader', function($data, $parent
   if(isset($parentData['currentQueriedObject'])) {
     $currentObject = $parentData['currentQueriedObject'];
     $data['title'] = $currentObject->post_title;
-    $data['content'] = $currentObject->post_content;
     $data['image'] = get_the_post_thumbnail($currentObject->ID);
   }
   return $data;
