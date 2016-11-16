@@ -13,17 +13,15 @@
         "name": "SingleTemplate",
         "dataFilter": "WPStarterTheme/DataFilters/MainQuery",
         "areas": {
+          "postHeader": [
+            {
+              "name": "PageHeader",
+              "dataFilter": "WPStarterTheme/DataFilters/PageHeader"
+            }
+          ],
           "postModules": [
             {
               "name": "Wysiwyg"
-            },
-            {
-              "name": "PostTeasers",
-              "dataFilter": "WPStarterTheme/DataFilters/Posts",
-              "dataFilterArgs": {
-                "postsPerPage": "5",
-                "contentType": "long"
-              }
             }
           ]
         }
