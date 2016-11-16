@@ -21,8 +21,6 @@ config.webpack.entry = globby.sync('{Modules,assets}/**/script.js').reduce(funct
   return output;
 }, {})
 
-console.log(config)
-
 gulp.task('build', function (cb) {
   runSequence(
     'clean',
