@@ -4,4 +4,4 @@
  *
  */
 
- WPStarter\echoHtmlFromConfigFile('content-page.json');
+WPStarter\echoHtmlFromConfigFile('content-page.json');
