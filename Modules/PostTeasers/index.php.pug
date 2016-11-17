@@ -3,8 +3,8 @@ div(class=$data('baseClasses'))
   ul
     for post in $data('posts')
       li
-        a(href=post.url)=post.title
-        p=post.content
-        if(post.image)
-          a(href=post.url)
-            img(src=post.image)
+        a(href=$data($post, 'url'))= $data($post, 'title')
+        p= $data($post, 'content')
+        if $data($post, 'image')
+          a(href= $data($post, 'url'))
+            img(src= $data($post, 'image'))

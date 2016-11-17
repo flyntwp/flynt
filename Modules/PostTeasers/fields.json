@@ -1,7 +1,7 @@
 {
   "layout": {
-    "name": "pageHeader",
-    "label": "Page Header",
+    "name": "postTeasers",
+    "label": "Post Teasers",
     "sub_fields": [
       {
         "name": "title",
