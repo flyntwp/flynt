@@ -35,8 +35,11 @@ class MainQuery {
 
   public static function getSingle($data) {
     $queryResult = self::getQuery($data);
-    $post = $queryResult['posts'][0];
-    return array_merge($data, empty($post) ? [] : $post);
+    $post = [];
+    if(isset($queryResult['posts'][0])) {
+      $post = $queryResult['posts'][0];
+    }
+    return array_merge($data, $post);
   }
 
   protected static function addAdditionalDefaultData($posts) {
