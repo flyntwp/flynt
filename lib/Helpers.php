@@ -4,4 +4,4 @@ namespace WPStarterTheme\Helpers;
 
 use WPStarterTheme\Core;
 
-Core::loadFiles('lib/Helpers/');
+Core::loadPhpFiles('lib/Helpers/');

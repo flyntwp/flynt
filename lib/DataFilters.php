@@ -4,4 +4,4 @@ namespace WPStarterTheme\DataFilters;
 
 use WPStarterTheme\Core;
 
-Core::loadFiles('lib/DataFilters/');
+Core::loadPhpFiles('lib/DataFilters/');
