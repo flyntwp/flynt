@@ -13,10 +13,7 @@ class Posts {
     $posts = get_posts([
       'posts_per_page'   => $postsPerPage,
     ]);
-    $posts = array_map('self::reformatPost', $posts, array_fill(0, count($posts), $contentType));
-    return [
-      'posts' => $posts
-    ];
+    return array_map('self::reformatPost', $posts, array_fill(0, count($posts), $contentType));
   }
 
   protected static function reformatPost($post, $contentType) {

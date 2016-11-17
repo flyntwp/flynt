@@ -11,21 +11,13 @@
     "mainTemplate": [
       {
         "name": "Template",
-        "dataFilter": "WPStarterTheme/DataFilters/MainQuery",
+        "dataFilter": "WPStarterTheme/DataFilters/MainQuery/Single",
         "areas": {
-          "pageHeader": [
-            {
-              "name": "PageHeader",
-              "dataFilter": "WPStarterTheme/DataFilters/PageHeader"
-            }
-          ],
           "pageModules": [
             {
-              "name": "PostTeasers",
-              "dataFilter": "WPStarterTheme/DataFilters/Posts",
-              "dataFilterArgs": {
-                "postsPerPage": "3",
-                "contentType": "short"
+              "name": "FlexibleContent",
+              "customData": {
+                "fieldGroup": "pageModules"
               }
             }
           ]

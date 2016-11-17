@@ -1,0 +1,25 @@
+{
+  "name": "pageModules",
+  "title": "Page Modules",
+  "fields": [
+    {
+      "name": "pageModules",
+      "label": "Page Modules",
+      "type": "flexible_content",
+      "layouts": [
+        "WPStarterTheme/Modules/PageHeader/Layout",
+        "WPStarterTheme/Modules/PostTeasers/Layout",
+        "WPStarterTheme/Modules/PostList/Layout"
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "page"
+      }
+    ]
+  ]
+}

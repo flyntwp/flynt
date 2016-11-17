@@ -1,0 +1,13 @@
+{
+  "layout": {
+    "name": "postList",
+    "label": "Post List",
+    "sub_fields": [
+      {
+        "name": "title",
+        "label": "Title",
+        "type": "text"
+      }
+    ]
+  }
+}

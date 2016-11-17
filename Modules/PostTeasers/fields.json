@@ -1,0 +1,13 @@
+{
+  "layout": {
+    "name": "postTeasers",
+    "label": "Post Teasers",
+    "sub_fields": [
+      {
+        "name": "title",
+        "label": "Title",
+        "type": "text"
+      }
+    ]
+  }
+}

@@ -10,6 +10,7 @@ add_filter('WPStarterTheme/DataFilters/WpBase', function ($data) {
     'bodyClass' => join(' ', get_body_class()),
     'appleTouchIcon180x180Path' => get_template_directory_uri() . '/apple-touch-icon-180x180.png',
     'faviconPath' => get_template_directory_uri() . '/favicon.png',
+    // TODO Do this in the template
     'wpFooter' => Utils::OutputBufferContents('wp_footer'),
     'wpHead' => Utils::OutputBufferContents('wp_head')
   );
