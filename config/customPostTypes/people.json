@@ -1,0 +1,15 @@
+{
+  "name": "people",
+  "label": "People",
+  "singular_label": "People",
+  "description": "",
+  "public": false,
+  "show_ui": true,
+  "show_in_nav_menus": false,
+  "show_in_rest": false,
+  "labels": {
+    "menu_name": "People",
+    "all_items": "All people",
+    "add_new": "Add new person"
+  }
+}

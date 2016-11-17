@@ -5,9 +5,15 @@ namespace WPStarterTheme\Helpers;
 use WPStarterTheme\Config;
 
 class CustomPostTypeLoader {
-  public static function getConfigs() {
+  public static function getConfigFiles() {
     $customPostTypesPath = Config\CONFIG_PATH . 'customPostTypes/';
+    return $customPostTypesPath;
+  }
+
+  public static function buildPostTypesConfig() {
+    $customPostTypesPath = self::getConfigFiles();
     $postTypesConfig = [];
+
     if(file_exists($customPostTypesPath)) {
       foreach(scandir($customPostTypesPath) as $postTypePath) {
         if(strpos($postTypePath, '.json')) {
@@ -21,14 +27,18 @@ class CustomPostTypeLoader {
   }
 
   public static function registerCustomPostTypes() {
-    $postTypesConfig = self::getConfigs();
+    $postTypesConfig = self::buildPostTypesConfig();
     if(empty($postTypesConfig)) return;
+
     $postTypesConfig = array_map(function ($postType) {
-      $postType['labels'] = array_map(function ($label) {
-        return __($label);
-      }, $postType['labels']);
+      if(isset($postType['labels'])) {
+        $postType['labels'] = array_map(function ($label) {
+          return __($label);
+        }, $postType['labels']);
+      }
       return $postType;
     }, $postTypesConfig);
+
     foreach($postTypesConfig as $config) {
       $name = $config['name'];
       unset($config['name']);
