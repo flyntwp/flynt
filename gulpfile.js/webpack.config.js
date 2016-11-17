@@ -6,9 +6,9 @@ module.exports = function(config) {
       path: './dist',
       filename: '[name]/script.js',
       publicPath: '/',
-      library: '[name]',
-      libraryTarget: 'amd',
-      umdNamedDefine: true,
+      // library: '[name]',
+      // libraryTarget: 'amd',
+      // umdNamedDefine: true,
     },
     module: {
       loaders: [
@@ -18,7 +18,9 @@ module.exports = function(config) {
           loader: 'babel-loader',
           query: {
             // plugins: ['transform-es2015-modules-amd'],
-            presets: ['es2015']
+            presets: [
+              ['es2015', {loose: true}]
+            ]
           }
         }
       ]

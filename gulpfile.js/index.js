@@ -4,7 +4,8 @@ const gulp = require('gulp'),
     webpackConfig = require('./webpack.config.js'),
     globby = require('globby')
     del = require('del')
-    runSequence = require('run-sequence');
+    runSequence = require('run-sequence')
+    watch = require('gulp-watch');
 
 const config = {
   copy: [
@@ -24,7 +25,8 @@ config.webpack.entry = globby.sync('{Modules,assets}/**/script.js').reduce(funct
 gulp.task('build', function (cb) {
   runSequence(
     'clean',
-    ['copy', 'webpack:build']
+    ['copy', 'webpack:build'],
+    cb
   )
 });
 
@@ -44,6 +46,40 @@ gulp.task('webpack:build', function (callback) {
         callback();
     });
 });
+
+gulp.task('webpack:watch', function (callback) {
+  var initialCompile = false
+  webpack(webpackConfig(config.webpack)).watch(null, function (err, stats) {
+    if (err)
+      throw new gutil.PluginError('webpack:build', err)
+    gutil.log('[webpack:build] Completed\n' + stats.toString({
+      assets: true,
+      chunks: false,
+      chunkModules: false,
+      colors: true,
+      hash: false,
+      timings: false,
+      version: false
+    }))
+    if(!initialCompile) {
+      initialCompile = true
+      callback()
+    }
+  });
+});
+
+gulp.task('default', function (cb) {
+  runSequence(
+    'clean',
+    ['copy', 'webpack:watch'],
+    ['watch'],
+    cb
+  )
+});
+
+gulp.task('watch', function(cb) {
+  watch(config.copy, function () { gulp.start('copy') })
+})
 
 gulp.task('clean', function () {
   return del([

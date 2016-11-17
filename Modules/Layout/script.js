@@ -1,11 +1,25 @@
-import test from './foo'
+class MainLayoutElement extends HTMLHtmlElement {
+  // the self argument might be provided or not
+  // in both cases, the mandatory `super()` call
+  // will return the right context/instance to use
+  // and eventually return
+  constructor(self) {
+    self = super(self);
+    // self.addEventListener('click', console.log)
+    // important in case you create instances procedurally:
+    // var me = new MyElement()
+    console.log('construct')
+    return self
+  }
 
-function foo (bar = 'baz') {
-  return bar
+  connectedCallback () {
+    this.addEventListener('click', console.log)
+    console.log('connected', this)
+  }
+
+  fire () {
+    console.log('fire')
+  }
 }
-
-console.log(foo(test), 'exec')
-
-export default {
-  foo: 'bar'
-}
+console.log('FOO')
+customElements.define('main-layout', MainLayoutElement, {extends: 'html'})

@@ -6,6 +6,15 @@ use WPStarterTheme\Core;
 
 require_once __DIR__ . '/lib/Core.php';
 
+add_filter('WPStarter/modulePath', function($modulePath, $moduleName) {
+  return get_template_directory() . '/dist/Modules/' . $moduleName;
+}, 10, 2);
+
+add_action('wp_enqueue_scripts', function() {
+    // var_dump(get_template_directory_uri() . "/dist/Modules/{$moduleName}/script.js");die();
+  wp_enqueue_script("assets/scripts", get_template_directory_uri() . "/dist/assets/scripts/script.js", null, null, true);
+}, 100);
+
 // This needs to happen first.
 // Reason:  In case the theme was just activated and the plugin is not active,
 //          we still need to run the after_switch_theme action, which is
