@@ -4,6 +4,11 @@ namespace WPStarterTheme\Init;
 
 use WPStarterTheme\Helpers\Utils;
 use WPStarterTheme\Helpers\ACFFieldGroupComposer;
+use WPStarterTheme\Helpers\CustomPostTypeRegister;
+use WPStarterTheme\Config;
+
+// register all custom post types
+CustomPostTypeRegister::fromDirectory(Config\CUSTOM_POST_TYPE_PATH);
 
 // initialize ACF field groups
 ACFFieldGroupComposer::init();

@@ -19,7 +19,7 @@ $pluginActive = Core::checkPlugin();
 
 if ($pluginActive) {
 
-  Core::loadFiles(
+  Core::loadPhpFiles(
     'lib/',
     [
       'Config.php',
