@@ -1,6 +1,6 @@
 <?php
 
-add_filter('WPStarter/modifyModuleData?name=PageHeader', function($data, $parentData) {
+add_filter('WPStarter/modifyModuleData?name=PageHeader', function ($data, $parentData) {
   if (!empty($parentData['post_thumbnail']) && array_key_exists('url', $parentData['post_thumbnail'])) {
     $data['image'] = $parentData['post_thumbnail']['url'];
   }

@@ -5,83 +5,100 @@ namespace WPStarterTheme\Helpers;
 use WPStarterTheme\Helpers\StringHelpers;
 
 class Navigation {
-  public static function getMenuLinks($menu_name) {
-    if (($locations = get_nav_menu_locations()) && isset($locations[$menu_name])) {
-      $menu = wp_get_nav_menu_object($locations[$menu_name]);
-      $menu_items = wp_get_nav_menu_items($menu->term_id, array('orderby' => 'menu_order'));
-      self::setActiveStates($menu_items);
-      $menu_links = self::formatMenuItems($menu_items);
-      $menu_links = self::convertToTree($menu_links);
+  public static function getMenuLinks($menuName) {
+    if (($locations = get_nav_menu_locations()) && isset($locations[$menuName])) {
+      $menu = wp_get_nav_menu_object($locations[$menuName]);
+      // @codingStandardsIgnoreLine
+      $menuItems = wp_get_nav_menu_items($menu->term_id, array('orderby' => 'menu_order'));
+      self::setActiveStates($menuItems);
+      $menuLinks = self::formatMenuItems($menuItems);
+      $menuLinks = self::convertToTree($menuLinks);
 
-      return $menu_links;
+      return $menuLinks;
     }
   }
 
-  private static function setActiveStates(&$menu_items) {
-    if ($current_object = get_queried_object()) {
-      $current_id = isset($current_object->ID) ? $current_object->ID : $current_object->term_id;
+  private static function setActiveStates(&$menuItems) {
+    if ($currentObject = get_queried_object()) {
+      // @codingStandardsIgnoreLine
+      $currentId = isset($currentObject->ID) ? $currentObject->ID : $currentObject->term_id;
 
-      foreach ($menu_items as &$menu_item) {
-        if ($menu_item->object == 'custom') {
-          $current_url = strtok($_SERVER["REQUEST_URI"],'?');
-          if (StringHelpers::strstartswith($current_url, $menu_item->url)) {
-            array_push($menu_item->classes, 'active');
+      foreach ($menuItems as &$menuItem) {
+        if ($menuItem->object == 'custom') {
+          $currentUrl = strtok($_SERVER["REQUEST_URI"], '?');
+
+          if (StringHelpers::strstartswith($currentUrl, $menuItem->url)) {
+            array_push($menuItem->classes, 'active');
           }
         } else {
-          $isSameType = isset($current_object->post_type) ? ($menu_item->object == $current_object->post_type) : ($menu_item->object == $current_object->taxonomy);
-
-          if ($menu_item->object_id == $current_id && $isSameType) {
-            array_push($menu_item->classes, 'active');
-            self::setParentActiveStates($menu_items, $menu_item->menu_item_parent);
+          // @codingStandardsIgnoreStart
+          if (isset($currentObject->post_type)) {
+            $isSameType = $menuItem->object == $currentObject->post_type;
+          } else {
+            $isSameType = $menuItem->object == $currentObject->taxonomy;
           }
+          // @codingStandardsIgnoreEnd
+
+          // @codingStandardsIgnoreStart
+          if ($menuItem->object_id == $currentId && $isSameType) {
+            array_push($menuItem->classes, 'active');
+            self::setParentActiveStates($menuItems, $menuItem->menu_item_parent);
+          }
+          // @codingStandardsIgnoreEnd
         }
       }
     }
   }
 
-  private static function setParentActiveStates(&$menu_items, $active_menu_item_parent_id) {
-    foreach ($menu_items as &$menu_item) {
-      if ($menu_item->ID == $active_menu_item_parent_id) {
-        array_push($menu_item->classes, 'active');
-        self::setParentActiveStates($menu_items, $menu_item->menu_item_parent);
+  private static function setParentActiveStates(&$menuItems, $activeMenuItemParentId) {
+    foreach ($menuItems as &$menuItem) {
+      if ($menuItem->ID == $activeMenuItemParentId) {
+        array_push($menuItem->classes, 'active');
+        // @codingStandardsIgnoreLine
+        self::setParentActiveStates($menuItems, $menuItem->menu_item_parent);
       }
     }
   }
 
-  private static function formatMenuItems($menu_items) {
-    $menu_links = array();
+  private static function formatMenuItems($menuItems) {
+    $menuLinks = array();
 
-    foreach ($menu_items as $menu_item) {
-      $current_url = $_SERVER['REQUEST_URI'];
-      $body_class = get_body_class();
-      $id = $menu_item->ID;
-      $title = $menu_item->title;
-      $url = $menu_item->url;
-      $target = $menu_item->target;
-      $current_page_class = '';
-      $menu_url = parse_url($menu_item->url);
+    foreach ($menuItems as $menuItem) {
+      $currentUrl = $_SERVER['REQUEST_URI'];
+      $id = $menuItem->ID;
+      $title = $menuItem->title;
+      $url = $menuItem->url;
+      $target = $menuItem->target;
+      $currentPageClass = '';
+      $menuUrl = parse_url($menuItem->url);
 
-      $css_classes_array = $menu_item->classes;
-      $css_classes_array[] = $current_page_class;
-      $css_classes = join(' ', $css_classes_array);
+      $cssClassesArray = $menuItem->classes;
+      $cssClassesArray[] = $currentPageClass;
+      $cssClasses = join(' ', $cssClassesArray);
 
-      $menu_links[$id] = array(
+      $menuLinks[$id] = array(
         'id' => $id,
         'title' => $title,
         'href' => $url,
         'text' => $title,
         'target' => $target,
-        'current_page_class' => $current_page_class,
-        'menu_url' => $menu_url,
-        'css_classes' => $css_classes,
-        'menu_item_parent' => $menu_item->menu_item_parent
+        'current_page_class' => $currentPageClass,
+        'menu_url' => $menuUrl,
+        'css_classes' => $cssClasses,
+        // @codingStandardsIgnoreLine
+        'menu_item_parent' => $menuItem->menu_item_parent
       );
     }
 
-    return $menu_links;
+    return $menuLinks;
   }
 
-  private static function convertToTree(array $flat, $idField = 'id', $parentIdField = 'menu_item_parent', $childNodesField = 'links') {
+  private static function convertToTree(
+    array $flat,
+    $idField = 'id',
+    $parentIdField = 'menu_item_parent',
+    $childNodesField = 'links'
+  ) {
     $indexed = array();
 
     // first pass - get the array indexed by the primary id

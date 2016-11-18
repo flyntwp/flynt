@@ -12,8 +12,10 @@ class MainQuery {
   protected static $bleechAcfFieldsQueried = false;
 
   public static function getQuery($data) {
+    // @codingStandardsIgnoreStart
     global $wp_query;
     $query = $wp_query;
+    // @codingStandardsIgnoreEnd
 
     $posts = $query->posts;
 
@@ -24,8 +26,10 @@ class MainQuery {
     $output = array(
       'posts' => $posts,
       'meta' => array(
+        // @codingStandardsIgnoreStart
         'max_num_pages' => $query->max_num_pages,
         'current_page'  => max(1, $query->query_vars['paged'])
+        // @codingStandardsIgnoreEnd
       )
     );
     wp_reset_query();
@@ -36,7 +40,7 @@ class MainQuery {
   public static function getSingle($data) {
     $queryResult = self::getQuery($data);
     $post = [];
-    if(isset($queryResult['posts'][0])) {
+    if (isset($queryResult['posts'][0])) {
       $post = $queryResult['posts'][0];
     }
     return array_merge($data, $post);
@@ -45,7 +49,7 @@ class MainQuery {
   protected static function addAdditionalDefaultData($posts) {
     self::cachePostImages($posts);
 
-    $posts = array_map(function($post) {
+    $posts = array_map(function ($post) {
       $post['post_thumbnail'] = self::addPostThumbnail($post);
       $post['post_category'] = self::addPostCategory($post);
       $post['post_tags'] = self::addPostTags($post);
@@ -65,7 +69,7 @@ class MainQuery {
 
   protected static function getDataFromAcf($id = null) {
     // for caching
-    if(!self::$bleechAcfFieldsQueried) {
+    if (!self::$bleechAcfFieldsQueried) {
       self::$bleechAcfFieldsQueried = true;
       $query = new WP_Query( array(
         'post_type' => array('acf-field-group', 'acf-field'),
@@ -83,11 +87,11 @@ class MainQuery {
 
   protected static function cachePostImages($posts) {
     $ids = array();
-    if(is_array($posts)) {
-      foreach($posts as &$post) {
-        $post_id = $post['ID'];
-        if(has_post_thumbnail($post_id)) {
-          $ids[] = (int) get_post_thumbnail_id( $post_id );
+    if (is_array($posts)) {
+      foreach ($posts as &$post) {
+        $postId = $post['ID'];
+        if (has_post_thumbnail($postId)) {
+          $ids[] = (int) get_post_thumbnail_id($postId);
         }
       }
       new \WP_Query( array(
@@ -114,8 +118,8 @@ class MainQuery {
 
   protected static function addPostCategory($post) {
     $categories = get_the_category($post['ID']);
-    if(is_array($categories)) {
-      return array_map(function($category) {
+    if (is_array($categories)) {
+      return array_map(function ($category) {
         $category = (array) $category;
         $category['link'] = get_category_link($category['term_id']);
         return $category;
@@ -127,8 +131,8 @@ class MainQuery {
 
   protected static function addPostTags($post) {
     $tags = get_the_tags($post['ID']);
-    if(is_array($tags) && !empty($tags)) {
-      return array_map(function($tag) {
+    if (is_array($tags) && !empty($tags)) {
+      return array_map(function ($tag) {
         $tag = (array) $tag;
         $tag['link'] = get_tag_link($tag['term_id']);
         return $tag;
@@ -142,13 +146,13 @@ class MainQuery {
     return utf8_encode(strftime($args['fmt'], strtotime($post[$args['key']])));
   }
 
-  protected static function getPictureElementPostThumbnail($post_id) {
-    if(has_post_thumbnail($post_id)) {
-      $post_thumbnail_id = get_post_thumbnail_id( $post_id );
+  protected static function getPictureElementPostThumbnail($postId) {
+    if (has_post_thumbnail($postId)) {
+      $postThumbnailId = get_post_thumbnail_id($postId);
       if (class_exists('acf') && function_exists('acf_get_attachment')) {
-        return acf_get_attachment($post_thumbnail_id);
+        return acf_get_attachment($postThumbnailId);
       }
-      return wp_get_attachment_image($post_thumbnail_id);
+      return wp_get_attachment_image($postThumbnailId);
     } else {
       return array();
     }
