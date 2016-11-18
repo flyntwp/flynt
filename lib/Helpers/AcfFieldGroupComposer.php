@@ -5,6 +5,7 @@ namespace WPStarterTheme\Helpers;
 use RecursiveDirectoryIterator;
 use ACFComposer\ACFComposer;
 use WPStarterTheme\Helpers\Utils;
+use WPStarterTheme\Core;
 
 class ACFFieldGroupComposer {
   const FILTER_NAMESPACE = 'WPStarterTheme/Modules';
@@ -14,8 +15,17 @@ class ACFFieldGroupComposer {
 
   public static function init() {
     if (class_exists('acf')) {
-      add_action('WPStarter/registerModule', ['WPStarterTheme\Helpers\ACFFieldGroupComposer', 'addFieldFilters'], 11, 2);
-      add_action('acf/init', ['WPStarterTheme\Helpers\ACFFieldGroupComposer', 'loadFieldGroups']);
+      add_action(
+        'WPStarter/registerModule',
+        ['WPStarterTheme\Helpers\ACFFieldGroupComposer', 'addFieldFilters'],
+        11,
+        2
+      );
+
+      add_action(
+        'acf/init',
+        ['WPStarterTheme\Helpers\ACFFieldGroupComposer', 'loadFieldGroups']
+      );
     }
   }
 
@@ -31,14 +41,11 @@ class ACFFieldGroupComposer {
       return;
     }
 
-    $Directory = new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS);
-    foreach ($Directory as $name => $file){
-      if ($file->isFile() && $file->getExtension() === 'json') {
-        $filePath = $file->getPathname();
-        $config = json_decode(file_get_contents($filePath), true);
-        ACFComposer::registerFieldGroup($config);
-      }
-    }
+    Core::iterateDirectory($dir, function ($file) {
+      $filePath = $file->getPathname();
+      $config = json_decode(file_get_contents($filePath), true);
+      ACFComposer::registerFieldGroup($config);
+    }, 'json');
 
     self::$fieldGroupsLoaded = true;
   }
@@ -53,18 +60,18 @@ class ACFFieldGroupComposer {
     $moduleName = ucfirst($moduleName);
 
     // add filters
-    foreach($fields as $groupKey => $groupValue) {
+    foreach ($fields as $groupKey => $groupValue) {
       $groupKey = ucfirst($groupKey);
       $filterName = self::FILTER_NAMESPACE . "/{$moduleName}/{$groupKey}";
 
-      add_filter($filterName, function($config) use ($groupValue) {
+      add_filter($filterName, function ($config) use ($groupValue) {
         return $groupValue;
       });
       if (Utils::isAssoc($groupValue) && array_key_exists('sub_fields', $groupValue)) {
         $filterName .= '/SubFields';
         $subFields = $groupValue['sub_fields'];
 
-        add_filter($filterName, function($subFieldsconfig) use ($subFields) {
+        add_filter($filterName, function ($subFieldsconfig) use ($subFields) {
           return $subFields;
         });
         self::addFilterForSubFields($filterName, $subFields);
@@ -75,7 +82,7 @@ class ACFFieldGroupComposer {
   }
 
   protected static function addFilterForSubFields($parentFilterName, $subFields) {
-    foreach($subFields as $subField) {
+    foreach ($subFields as $subField) {
       if (!array_key_exists('name', $subField)) {
         trigger_error('[ACF] Name is missing in Sub Field while adding Filter: ' . $parentFilterName, E_USER_WARNING);
         continue;
@@ -83,7 +90,7 @@ class ACFFieldGroupComposer {
       $subFieldName = ucfirst($subField['name']);
       $subFilterName = $parentFilterName . "/{$subFieldName}";
 
-      add_filter($subFilterName, function($subFieldConfig) use ($subField) {
+      add_filter($subFilterName, function ($subFieldConfig) use ($subField) {
         return $subField;
       });
     }
