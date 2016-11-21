@@ -13,7 +13,8 @@ const gulp = require('gulp'),
     changed = require('gulp-changed'),
     rev = require('gulp-rev'),
     revNapkin = require('gulp-rev-napkin'),
-    revReplace = require('gulp-rev-replace')
+    revReplace = require('gulp-rev-replace'),
+    sourcemaps = require('gulp-sourcemaps')
 
 const config = {
   copy: [
@@ -116,12 +117,14 @@ gulp.task('watch', ['webpack:watch', 'browserSync'], function (cb) {
 gulp.task('stylus', function() {
   return gulp.src(config.stylus)
   .pipe(changed(config.dest))
+  .pipe(sourcemaps.init())
   .pipe(stylus({
     use: [
       rupture()
     ],
     import: [path.resolve(__dirname, '../node_modules/jeet/styl/index.styl')]
   }))
+  .pipe(sourcemaps.write({sourceRoot: '/app/themes/wp-starter-theme/'}))
   .pipe(gulp.dest(config.dest))
   .pipe(browserSync.stream())
 })
@@ -160,6 +163,7 @@ gulp.task('rev', function(cb) {
   cb)
 })
 
+// 1) Add md5 hashes to assets referenced by CSS and JS files
 gulp.task('revAssets', function() {
   // Ignore files that may reference assets. We'll rev them next.
   return gulp.src(config.rev.assetSrc)
@@ -170,7 +174,16 @@ gulp.task('revAssets', function() {
   .pipe(gulp.dest(''))
 })
 
-// 4) Rev and compress CSS and JS files (this is done after assets, so that if a
+// 2) Update asset references with reved filenames in compiled css + js
+gulp.task('revUpdateReferences', function(){
+  var manifest = gulp.src(path.join(config.dest, "rev-manifest.json"))
+
+  return gulp.src(path.join(config.dest,'/**/**.{css,js}'))
+  .pipe(revReplace({manifest: manifest}))
+  .pipe(gulp.dest(config.dest))
+})
+
+// 3) Rev and compress CSS and JS files (this is done after assets, so that if a
 //    referenced asset hash changes, the parent hash will change as well
 gulp.task('revRevvedFiles', function(){
   return gulp.src(config.rev.srcRevved)
@@ -183,7 +196,7 @@ gulp.task('revRevvedFiles', function(){
   .pipe(gulp.dest(''))
 })
 
-// 5) Update asset references in HTML
+// 4) Update asset references in HTML
 gulp.task('revStaticFiles', function(){
   var manifest = gulp.src(path.join(config.dest, "/rev-manifest.json"))
   return gulp.src(config.rev.srcStatic)
@@ -192,13 +205,4 @@ gulp.task('revStaticFiles', function(){
     replaceInExtensions: config.rev.staticFileExtensions
   }))
   .pipe(gulp.dest(path.join(config.dest)))
-})
-
-// 2) Update asset references with reved filenames in compiled css + js
-gulp.task('revUpdateReferences', function(){
-  var manifest = gulp.src(path.join(config.dest, "rev-manifest.json"))
-
-  return gulp.src(path.join(config.dest,'/**/**.{css,js}'))
-  .pipe(revReplace({manifest: manifest}))
-  .pipe(gulp.dest(config.dest))
 })

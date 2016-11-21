@@ -19,16 +19,17 @@ module.exports = function(config) {
     ],
   }
   const output = {
+    debug: !config.production,
     name: 'browser',
     output: {
       path: './dist',
       filename: '[name]/script.js',
-      publicPath: '/',
+      publicPath: 'http://localhost:3000/'
       // library: '[name]',
       // libraryTarget: 'amd',
       // umdNamedDefine: true,
     },
-    devtool: config.production ? 'source-map' : 'eval-source-map',
+    devtool: config.production ? 'source-map' : 'inline-source-map',
     module: {
       loaders: [
         {
