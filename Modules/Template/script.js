@@ -1,4 +1,4 @@
-Mixin = window.mixwith.Mixin
+const Mixin = window.mixwith.Mixin
 
 const jQueryElementHelper = Mixin((Superclass) => class extends Superclass {
   constructor (_) {
@@ -48,7 +48,7 @@ const ElementHelper = Mixin((Superclass) => class extends Superclass {
   }
 })
 
-mix = window.mixwith.mix
+const mix = window.mixwith.mix
 
 class MainTemplate extends mix(HTMLDivElement).with(jQueryElementHelper, ElementHelper) {
   init () {
@@ -85,3 +85,8 @@ class MainTemplate extends mix(HTMLDivElement).with(jQueryElementHelper, Element
   }
 }
 customElements.define('main-template', MainTemplate, {extends: 'div'})
+
+
+
+// WEBPACK FOOTER //
+// ./Modules/Template/script.js
