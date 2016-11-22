@@ -43,5 +43,11 @@ module.exports = {
     './{Modules,assets}/**/style.styl'
   ],
   webpack: {
+  },
+  lint: {
+    stylus: './{Modules,assets}/**/*.styl',
+    js: [
+      './{Modules,assets,gulpfile.js}/**/*.js',
+    ],
   }
 }

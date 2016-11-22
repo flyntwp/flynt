@@ -85,8 +85,3 @@ class MainTemplate extends mix(HTMLDivElement).with(jQueryElementHelper, Element
   }
 }
 customElements.define('main-template', MainTemplate, {extends: 'div'})
-
-
-
-// WEBPACK FOOTER //
-// ./Modules/Template/script.js
