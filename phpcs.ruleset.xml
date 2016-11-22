@@ -19,6 +19,8 @@
     </properties>
   </rule>
 
+  <rule ref="Generic.NamingConventions.CamelCapsFunctionName" />
+
   <rule ref="Zend">
     <exclude name="Generic.Functions.OpeningFunctionBraceBsdAllman" />
     <exclude name="PEAR.Classes.ClassDeclaration" />

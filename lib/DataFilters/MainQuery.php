@@ -12,10 +12,7 @@ class MainQuery {
   protected static $bleechAcfFieldsQueried = false;
 
   public static function getQuery($data) {
-    // @codingStandardsIgnoreStart
-    global $wp_query;
-    $query = $wp_query;
-    // @codingStandardsIgnoreEnd
+    $query = $GLOBALS['wp_query'];
 
     $posts = $query->posts;
 
@@ -94,7 +91,7 @@ class MainQuery {
           $ids[] = (int) get_post_thumbnail_id($postId);
         }
       }
-      new \WP_Query( array(
+      new WP_Query( array(
         'post_type' => 'attachment',
         'posts_per_page' => -1,
         'post_status' => 'any',
