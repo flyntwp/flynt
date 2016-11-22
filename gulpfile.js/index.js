@@ -18,8 +18,8 @@ const config = require('./config')
 const webpackConfig = require('./webpack.config')
 const tasks = requireDir('./tasks', { recurse: true })
 
-function resolveTasks(tasks) {
-  for (task in tasks) {
+function resolveTasks (tasks) {
+  for (const task in tasks) {
     const fn = tasks[task]
     if (typeof fn !== 'function') {
       resolveTasks(fn)

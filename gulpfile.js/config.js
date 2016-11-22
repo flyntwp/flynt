@@ -18,7 +18,7 @@ module.exports = {
     src: dest + '/**/*.*',
     srcRevved: [
       dest + '/**/*.{js,css}',
-      '!' + dest + '/style.css',
+      '!' + dest + '/style.css'
     ],
     srcStatic: dest + '/**/*.{html,php,pug}',
     assetSrc: [
@@ -47,7 +47,7 @@ module.exports = {
   lint: {
     stylus: './{Modules,assets}/**/*.styl',
     js: [
-      './{Modules,assets,gulpfile.js}/**/*.js',
-    ],
+      './{Modules,assets,gulpfile.js}/**/*.js'
+    ]
   }
 }

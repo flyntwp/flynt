@@ -1,10 +1,10 @@
-class MainLayoutElement extends HTMLHtmlElement {
+class MainLayoutElement extends window.HTMLHtmlElement {
   // the self argument might be provided or not
   // in both cases, the mandatory `super()` call
   // will return the right context/instance to use
   // and eventually return
-  constructor(self) {
-    self = super(self);
+  constructor (self) {
+    self = super(self)
     // self.addEventListener('click', console.log)
     // important in case you create instances procedurally:
     // var me = new MyElement()
@@ -31,8 +31,9 @@ class MainLayoutElement extends HTMLHtmlElement {
   _attachListeners () {
     this.addEventListener('click', console.log)
     this.addEventListener('click', (e) => {
-      if (Array.prototype.indexOf.call(this.querySelectorAll('a'), e.target))
+      if (Array.prototype.indexOf.call(this.querySelectorAll('a'), e.target)) {
         this.logAnchor(e)
+      }
     })
     this.$.on('click', console.log)
     this.$.on('click', 'a', this.logAnchor.bind(this))
@@ -50,8 +51,9 @@ class MainLayoutElement extends HTMLHtmlElement {
   getChildElement (name, noCache = false) {
     this._elementsCache = this._elementsCache || {}
     if (this._elements && this._elements[name]) {
-      selector = this._elements[name]
-      cachedEl = this._elementsCache[name]
+      const selector = this._elements[name]
+      const cachedEl = this._elementsCache[name]
+      let el
       if (noCache || !cachedEl) {
         el = this.$$(selector)
         if (!noCache) {
@@ -67,7 +69,7 @@ class MainLayoutElement extends HTMLHtmlElement {
   logAnchor (e) {
     e.preventDefault()
     console.log(this.boo, e.currentTarget)
-    console.log(e);
+    console.log(e)
   }
 
   fire () {
@@ -75,4 +77,4 @@ class MainLayoutElement extends HTMLHtmlElement {
   }
 }
 console.log('main-layouts')
-customElements.define('main-layout', MainLayoutElement, {extends: 'html'})
+window.customElements.define('main-layout', MainLayoutElement, {extends: 'html'})

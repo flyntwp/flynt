@@ -1,7 +1,7 @@
 const gulp = require('gulp')
 const runSequence = require('run-sequence')
 
-module.exports = function(config) {
+module.exports = function (config) {
   gulp.task('default', function (cb) {
     global.watchMode = true
     runSequence(
@@ -10,5 +10,5 @@ module.exports = function(config) {
       ['watch'],
       cb
     )
-  });
+  })
 }

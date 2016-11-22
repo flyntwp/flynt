@@ -6,8 +6,8 @@ const rupture = require('rupture')
 const sourcemaps = require('gulp-sourcemaps')
 const stylus = require('gulp-stylus')
 
-module.exports = function(config) {
-  gulp.task('stylus', function() {
+module.exports = function (config) {
+  gulp.task('stylus', function () {
     return gulp.src(config.stylus)
     .pipe(changed(config.dest))
     .pipe(sourcemaps.init())

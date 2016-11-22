@@ -37,20 +37,19 @@ const ElementHelper = Mixin((Superclass) => class extends Superclass {
         this.$.on(event, callback.bind(this))
       }
     })
-
   }
 
   _resolveElements (elements) {
     Object.keys(elements).forEach((element) => {
       this[`$${element}`] = this.$$(elements[element])
-      console.log(element, elements[element]);
+      console.log(element, elements[element])
     })
   }
 })
 
 const mix = window.mixwith.mix
 
-class MainTemplate extends mix(HTMLDivElement).with(jQueryElementHelper, ElementHelper) {
+class MainTemplate extends mix(window.HTMLDivElement).with(jQueryElementHelper, ElementHelper) {
   init () {
     this.elements = {
       modules: '.modules',
@@ -84,4 +83,5 @@ class MainTemplate extends mix(HTMLDivElement).with(jQueryElementHelper, Element
     console.log('h2 click')
   }
 }
-customElements.define('main-template', MainTemplate, {extends: 'div'})
+
+window.customElements.define('main-template', MainTemplate, {extends: 'div'})

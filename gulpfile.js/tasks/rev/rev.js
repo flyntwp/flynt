@@ -1,8 +1,8 @@
 const gulp = require('gulp')
 const runSequence = require('run-sequence')
 
-module.exports = function(config) {
-  gulp.task('rev', function(cb) {
+module.exports = function (config) {
+  gulp.task('rev', function (cb) {
     return runSequence(
       // 1) Add md5 hashes to assets referenced by CSS and JS files
       'revAssets',

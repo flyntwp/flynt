@@ -1,7 +1,7 @@
 const gulp = require('gulp')
 const runSequence = require('run-sequence')
 
-module.exports = function(config) {
+module.exports = function (config) {
   gulp.task('build', function (cb) {
     runSequence(
       'clean',
@@ -9,5 +9,5 @@ module.exports = function(config) {
       'rev',
       cb
     )
-  });
+  })
 }

@@ -3,10 +3,10 @@ const path = require('path')
 const rev = require('gulp-rev')
 const revNapkin = require('gulp-rev-napkin')
 
-module.exports = function(config) {
+module.exports = function (config) {
   // 3) Rev and compress CSS and JS files (this is done after assets, so that if a
   //    referenced asset hash changes, the parent hash will change as well
-  gulp.task('revRevvedFiles', function(){
+  gulp.task('revRevvedFiles', function () {
     return gulp.src(config.rev.srcRevved)
     .pipe(rev({
       replaceInExtensions: config.rev.revvedFileExtensions

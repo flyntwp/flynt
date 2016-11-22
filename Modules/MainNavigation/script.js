@@ -1,4 +1,4 @@
-class MainNavigation extends HTMLDivElement {
+class MainNavigation extends window.HTMLDivElement {
   connectedCallback () {
     console.log('MainNavigation connected')
   }
@@ -8,4 +8,4 @@ class MainNavigation extends HTMLDivElement {
   }
 }
 
-customElements.define('main-navigation', MainNavigation, {extends: 'div'})
+window.customElements.define('main-navigation', MainNavigation, {extends: 'div'})

@@ -1,8 +1,8 @@
 const webpack = require('webpack')
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+// const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 const rupture = require('rupture')
 
-module.exports = function(config) {
+module.exports = function (config) {
   const babelQuery = {
     // plugins: ['transform-es2015-modules-amd'],
     presets: [
@@ -11,12 +11,12 @@ module.exports = function(config) {
     plugins: [
       'transform-class-properties',
       [
-        "babel-plugin-transform-builtin-extend", {
-          globals: ["Error", "Array", "Object"],
+        'babel-plugin-transform-builtin-extend', {
+          globals: ['Error', 'Array', 'Object'],
           approximate: true
         }
       ]
-    ],
+    ]
   }
   const output = {
     debug: !config.production,
@@ -45,7 +45,7 @@ module.exports = function(config) {
     },
     resolveLoader: {
       alias: {
-        'with-babel': `babel-loader?${JSON.stringify(babelQuery)}`,
+        'with-babel': `babel-loader?${JSON.stringify(babelQuery)}`
       }
     },
     stylus: {
@@ -53,7 +53,7 @@ module.exports = function(config) {
         rupture()
       ],
       import: ['~jeet/styl/index.styl']
-    },
+    }
     // plugins: [
     //   new BrowserSyncPlugin({
     //     // browse to http://localhost:3000/ during development,

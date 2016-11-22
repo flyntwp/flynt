@@ -2,9 +2,8 @@ const gulp = require('gulp')
 const changedInPlace = require('gulp-changed-in-place')
 const stylint = require('gulp-stylint')
 const standard = require('gulp-standard')
-const gutil = require('gulp-util')
 
-module.exports = function(config) {
+module.exports = function (config) {
   gulp.task('lint', ['lint:stylus', 'lint:js'])
 
   gulp.task('lint:stylus', function () {
