@@ -1,5 +1,5 @@
 const gulp = require('gulp')
-const changed = require('gulp-changed')
+const changedInPlace = require('gulp-changed-in-place')
 const stylint = require('gulp-stylint')
 const standard = require('gulp-standard')
 const gutil = require('gulp-util')
@@ -8,19 +8,29 @@ module.exports = function(config) {
   gulp.task('lint', ['lint:stylus', 'lint:js'])
 
   gulp.task('lint:stylus', function () {
-    return gulp.src(config.lint.stylus)
+    const task = gulp.src(config.lint.stylus)
+    .pipe(changedInPlace({firstPass: true}))
     .pipe(stylint())
     .pipe(stylint.reporter())
-    .pipe(stylint.reporter('fail', { failOnWarning: true }))
+    if (global.watchMode) {
+      return task
+    } else {
+      return task
+      .pipe(stylint.reporter('fail', { failOnWarning: true }))
+    }
   })
 
   gulp.task('lint:js', function () {
+    let opts = {}
+    if (!global.watchMode) {
+      opts = {
+        breakOnError: true,
+        breakOnWarning: true
+      }
+    }
     return gulp.src(config.lint.js)
+    .pipe(changedInPlace({firstPass: true}))
     .pipe(standard())
-    .pipe(standard.reporter('default', {
-      breakOnError: true,
-      breakOnWarning: true,
-      // quiet: true
-    }))
+    .pipe(standard.reporter('default', opts))
   })
 }
