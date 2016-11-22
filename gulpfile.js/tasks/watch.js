@@ -9,5 +9,6 @@ module.exports = function (config) {
     watch(config.php, function () { }).on('change', browserSync.reload)
     watch(config.lint.stylus, function () { gulp.start('lint:stylus') })
     watch(config.lint.js, function () { gulp.start('lint:js') })
+    watch(config.lint.php, function () { gulp.start('lint:php') })
   })
 }

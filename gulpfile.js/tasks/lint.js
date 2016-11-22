@@ -2,9 +2,10 @@ const gulp = require('gulp')
 const changedInPlace = require('gulp-changed-in-place')
 const stylint = require('gulp-stylint')
 const standard = require('gulp-standard')
+const phpcs = require('gulp-phpcs')
 
 module.exports = function (config) {
-  gulp.task('lint', ['lint:stylus', 'lint:js'])
+  gulp.task('lint', ['lint:stylus', 'lint:js', 'lint:php'])
 
   gulp.task('lint:stylus', function () {
     const task = gulp.src(config.lint.stylus)
@@ -31,5 +32,20 @@ module.exports = function (config) {
     .pipe(changedInPlace({firstPass: true}))
     .pipe(standard())
     .pipe(standard.reporter('default', opts))
+  })
+
+  gulp.task('lint:php', function () {
+    const task = gulp.src(config.lint.php)
+    .pipe(changedInPlace({firstPass: true}))
+    .pipe(phpcs({
+      standard: 'phpcs.ruleset.xml'
+    }))
+    .pipe(phpcs.reporter('log'))
+    if (global.watchMode) {
+      return task
+    } else {
+      return task
+      .pipe(phpcs.reporter('fail', {failOnFirst: false}))
+    }
   })
 }

@@ -9,7 +9,7 @@ use RecursiveDirectoryIterator;
 class Utils {
   protected static $assetManifest;
 
-  public static function OutputBufferContents($funcName, $args = null) {
+  public static function outputBufferContents($funcName, $args = null) {
     ob_start();
     if (isset($args)) {
       $funcName($args);

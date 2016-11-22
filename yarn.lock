@@ -2233,6 +2233,16 @@ gulp-changed@^1.3.2:
     gulp-util "^3.0.0"
     through2 "^2.0.0"
 
+gulp-phpcs@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/gulp-phpcs/-/gulp-phpcs-1.3.0.tgz#27da90722c0b763bc269712a63c1f1abd64266f1"
+  dependencies:
+    chalk "^1.1.1"
+    gulp-util "^3.0.7"
+    pluralize "^1.2.1"
+    through2 "^2.0.0"
+    which "^1.2.7"
+
 gulp-rev-napkin@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/gulp-rev-napkin/-/gulp-rev-napkin-0.1.0.tgz#e2f885e75fe72b7f04df218da9249202a62bb81b"
@@ -5350,7 +5360,7 @@ which-module@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/which-module/-/which-module-1.0.0.tgz#bba63ca861948994ff307736089e3b96026c2a4f"
 
-which@^1.2.10:
+which@^1.2.10, which@^1.2.7:
   version "1.2.12"
   resolved "https://registry.yarnpkg.com/which/-/which-1.2.12.tgz#de67b5e450269f194909ef23ece4ebe416fa1192"
   dependencies:

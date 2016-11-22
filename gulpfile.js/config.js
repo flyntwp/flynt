@@ -48,6 +48,11 @@ module.exports = {
     stylus: './{Modules,assets}/**/*.styl',
     js: [
       './{Modules,assets,gulpfile.js}/**/*.js'
+    ],
+    php: [
+      './**/*.php',
+      '!./dist/**/*.php',
+      '!./node_modules/**/*.php'
     ]
   }
 }
