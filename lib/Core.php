@@ -48,7 +48,7 @@ class Core {
 
     $output = [];
 
-    foreach($directoryIterator as $name => $file){
+    foreach ($directoryIterator as $name => $file) {
       if (!is_null($fileExtension)) {
         $filecheck = $file->isFile() && $file->getExtension() === $fileExtension;
       } else {
@@ -70,7 +70,7 @@ class Core {
 
     if (count($files) === 0) {
       $dir = get_template_directory() . '/' . $dir;
-      self::iterateDirectory($dir, function($file) {
+      self::iterateDirectory($dir, function ($file) {
         $filePath = $file->getPathname();
         require_once $filePath;
       }, $fileExtension);

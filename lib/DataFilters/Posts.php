@@ -2,7 +2,7 @@
 
 namespace WPStarterTheme\DataFilters;
 
-use WPStarterTheme\Helpers;
+use WPStarterTheme\Helpers\StringHelpers;
 use WPStarterTheme\Helpers\Log;
 
 add_filter('WPStarterTheme/DataFilters/Posts', ['WPStarterTheme\DataFilters\Posts', 'getPosts'], 10, 3);
@@ -18,14 +18,16 @@ class Posts {
 
   protected static function reformatPost($post, $contentType) {
     $post->id = $post->ID;
+    // @codingStandardsIgnoreStart
     $post->title = $post->post_title;
     $post->url = get_permalink($post->id);
     $post->image = get_the_post_thumbnail_url($post->id);
-    if($contentType === "short") {
-      $post->content = Helpers\StringHelpers::trimStrip($post->post_content);
+    if ($contentType === "short") {
+      $post->content = StringHelpers::trimStrip($post->post_content);
     } else {
       $post->content = $post->post_content;
     }
+    // @codingStandardsIgnoreEnd
     return $post;
   }
 }

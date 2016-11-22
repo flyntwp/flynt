@@ -11,6 +11,6 @@ add_action('after_setup_theme', function () {
 });
 
 register_nav_menus(array(
-    'main_navigation' => __('Main Navigation', 'wpstarter'),
-    'footer_navigation' => __('Footer Navigation', 'wpstarter')
-  ));
+  'main_navigation' => __('Main Navigation', 'wpstarter'),
+  'footer_navigation' => __('Footer Navigation', 'wpstarter')
+));

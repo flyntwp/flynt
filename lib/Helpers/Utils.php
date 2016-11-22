@@ -7,12 +7,12 @@ use WPStarter\Defaults;
 use RecursiveDirectoryIterator;
 
 class Utils {
-  public static function OutputBufferContents($func_name, $args = null) {
+  public static function OutputBufferContents($funcName, $args = null) {
     ob_start();
     if (isset($args)) {
-      $func_name($args);
+      $funcName($args);
     } else {
-      $func_name();
+      $funcName();
     }
     $output = ob_get_contents();
     ob_get_clean();
@@ -21,8 +21,11 @@ class Utils {
 
   public static function registerAllModules() {
     $directory = Defaults::getModulesDirectory();
-    $Directory = new RecursiveDirectoryIterator($directory, RecursiveDirectoryIterator::SKIP_DOTS);
-    foreach($Directory as $name => $file){
+
+    // TODO use new Core functionality after adding the feature for dirs
+    $directoryIterator = new RecursiveDirectoryIterator($directory, RecursiveDirectoryIterator::SKIP_DOTS);
+
+    foreach ($directoryIterator as $name => $file) {
       if ($file->isDir()) {
         registerModule($file->getFilename());
       }
@@ -40,7 +43,7 @@ class Utils {
 
   // only converts first dimension of object
   public static function objectToArray($obj) {
-    return array_map(function($val) {
+    return array_map(function ($val) {
       return (array) $val;
     }, $obj);
   }

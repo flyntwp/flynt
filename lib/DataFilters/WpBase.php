@@ -15,7 +15,7 @@ add_filter('WPStarterTheme/DataFilters/WpBase', function ($data) {
     'wpHead' => Utils::OutputBufferContents('wp_head')
   );
 
-  if(is_rtl()){
+  if (is_rtl()) {
     $output['dir'] = 'rtl';
   } else {
     $output['dir'] = 'ltr';

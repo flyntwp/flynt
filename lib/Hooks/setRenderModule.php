@@ -7,7 +7,7 @@ use WPStarter;
 
 // Render Module
 $pug = new Pug();
-add_filter('WPStarter/renderModule', function($output, $moduleName, $moduleData, $areaHtml) use ($pug) {
+add_filter('WPStarter/renderModule', function ($output, $moduleName, $moduleData, $areaHtml) use ($pug) {
   // get index file
   $moduleManager = WPStarter\ModuleManager::getInstance();
   $filePath = $moduleManager->getModuleFilePath($moduleName, 'index.php.pug');

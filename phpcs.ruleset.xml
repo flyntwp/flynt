@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<ruleset name="WPStarter Theme PHP Coding Standards">
+  <description>Coding Standards for WPStarter Theme</description>
+
+  <exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*.js</exclude-pattern>
+
+  <rule ref="PEAR.WhiteSpace.ScopeIndent">
+    <properties>
+      <property name="indent" value="2"/>
+    </properties>
+  </rule>
+
+  <rule ref="PEAR.Functions.FunctionCallSignature">
+    <exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket" />
+    <exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine" />
+     <properties>
+      <property name="indent" value="2" />
+    </properties>
+  </rule>
+
+  <rule ref="Generic.NamingConventions.CamelCapsFunctionName" />
+
+  <rule ref="Zend">
+    <exclude name="Generic.Functions.OpeningFunctionBraceBsdAllman" />
+    <exclude name="PEAR.Classes.ClassDeclaration" />
+    <exclude name="Zend.NamingConventions.ValidVariableName.PrivateNoUnderscore" />
+    <exclude name="Generic.PHP.DisallowShortOpenTag" />
+  </rule>
+
+  <rule ref="Generic.Files.LineLength">
+    <properties>
+     <property name="lineLimit" value="120"/>
+     <property name="absoluteLineLimit" value="120"/>
+    </properties>
+  </rule>
+
+  <rule ref="Generic.Functions.OpeningFunctionBraceKernighanRitchie" />
+  <rule ref="Generic.Classes.OpeningBraceSameLine" />
+  <rule ref="Squiz.Functions.MultiLineFunctionDeclaration">
+    <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine" />
+    <properties>
+      <property name="indent" value="2" />
+    </properties>
+  </rule>
+</ruleset>
