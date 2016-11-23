@@ -1,5 +1,5 @@
 doctype html
-html(class="no-js #{$data('bodyClass')} #{$data('baseClasses')}" lang=$data('lang') dir=$data('dir'))
+html(class="no-js #{$data('bodyClass')} #{$data('baseClasses')}" lang=$data('lang') dir=$data('dir') is='main-layout')
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible' content='IE=edge')
@@ -7,7 +7,21 @@ html(class="no-js #{$data('bodyClass')} #{$data('baseClasses')}" lang=$data('lan
     link(href=$data('faviconPath') rel='shortcut icon' type='image/png')
     link(rel='alternate' type='application/rss+xml' title=$data('feedName') href=$data('feedHref'))
     link(rel='apple-touch-icon' href=$data('appleTouchIcon180x180Path'))
-    != $data('wpHead')
+    :javascript
+      (function() {
+          if (!(Object.setPrototypeOf || {}.__proto__)) {
+              var nativeGetPrototypeOf = Object.getPrototypeOf;
+
+              Object.getPrototypeOf = function(object) {
+                  if (object.__proto__) {
+                      return object.__proto__;
+                  } else {
+                      return nativeGetPrototypeOf.call(Object, object);
+                  }
+              }
+          }
+      })();
+    != wp_head()
     <!--[if lt IE 9]>script(src='js/polyfill/html5-shiv.js')<![endif]-->
   body
     .page-wrapper(role='document')
@@ -28,4 +42,4 @@ html(class="no-js #{$data('bodyClass')} #{$data('baseClasses')}" lang=$data('lan
     script.
       window.jQuery || document.write('<script src="js/vendor/jquery-3.1.0.min.js"><\/script>')
     <!--<![endif]-->
-    != $data('wpFooter')
+    != wp_footer()

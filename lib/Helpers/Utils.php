@@ -7,7 +7,9 @@ use WPStarter\Defaults;
 use RecursiveDirectoryIterator;
 
 class Utils {
-  public static function OutputBufferContents($funcName, $args = null) {
+  protected static $assetManifest;
+
+  public static function outputBufferContents($funcName, $args = null) {
     ob_start();
     if (isset($args)) {
       $funcName($args);
@@ -46,5 +48,43 @@ class Utils {
     return array_map(function ($val) {
       return (array) $val;
     }, $obj);
+  }
+
+  public static function requireAssetUrl($asset) {
+    $distPath = get_template_directory() . '/dist';
+    $distUrl = get_template_directory_uri() . '/dist';
+    if (!isset(self::$assetManifest)) {
+      $manifestPath = $distPath . '/rev-manifest.json';
+      if (is_file($manifestPath)) {
+        self::$assetManifest = json_decode(file_get_contents($manifestPath), true);
+      } else {
+        self::$assetManifest = [];
+      }
+    }
+    if (array_key_exists($asset, self::$assetManifest)) {
+      $assetSuffix = self::$assetManifest[$asset];
+    } else {
+      $assetSuffix = $asset;
+    }
+    return $distUrl . '/' . $assetSuffix;
+  }
+
+  public static function requireAssetPath($asset) {
+    $distPath = get_template_directory() . '/dist';
+    $distUrl = get_template_directory_uri() . '/dist';
+    if (!isset(self::$assetManifest)) {
+      $manifestPath = $distPath . '/rev-manifest.json';
+      if (is_file($manifestPath)) {
+        self::$assetManifest = json_decode(file_get_contents($manifestPath), true);
+      } else {
+        self::$assetManifest = [];
+      }
+    }
+    if (array_key_exists($asset, self::$assetManifest)) {
+      $assetSuffix = self::$assetManifest[$asset];
+    } else {
+      $assetSuffix = $asset;
+    }
+    return $distPath . '/' . $assetSuffix;
   }
 }

@@ -3,8 +3,27 @@
 namespace WPStarterTheme;
 
 use WPStarterTheme\Core;
+use WPStarterTheme\Helpers\Utils;
 
 require_once __DIR__ . '/lib/Core.php';
+
+add_filter('WPStarter/modulePath', function ($modulePath, $moduleName) {
+  return get_template_directory() . '/dist/Modules/' . $moduleName;
+}, 10, 2);
+
+add_action('wp_enqueue_scripts', function () {
+  wp_register_script('console-polyfill', Utils::requireAssetUrl('vendor/console.js'), [], null, true);
+  wp_register_script('slick-carousel', Utils::requireAssetUrl('vendor/slick.js'), [], null, true);
+  wp_register_script('babel-polyfill', Utils::requireAssetUrl('vendor/babel-polyfill.js'), [], null, true);
+
+  wp_enqueue_script(
+    'assets/scripts',
+    Utils::requireAssetUrl('assets/scripts/script.js'),
+    ['console-polyfill', 'babel-polyfill', 'slick-carousel'],
+    null,
+    true
+  );
+}, 100);
 
 // This needs to happen first.
 // Reason:  In case the theme was just activated and the plugin is not active,
