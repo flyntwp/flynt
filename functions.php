@@ -12,16 +12,14 @@ add_filter('WPStarter/modulePath', function ($modulePath, $moduleName) {
 }, 10, 2);
 
 add_action('wp_enqueue_scripts', function () {
-    // var_dump(get_template_directory_uri() . "/dist/Modules/{$moduleName}/script.js");die();
   wp_register_script('console-polyfill', Utils::requireAssetUrl('vendor/console.js'), [], null, true);
-  wp_register_script('mixwith', Utils::requireAssetUrl('vendor/mixwith.js'), [], null, true);
   wp_register_script('slick-carousel', Utils::requireAssetUrl('vendor/slick.js'), [], null, true);
   wp_register_script('babel-polyfill', Utils::requireAssetUrl('vendor/babel-polyfill.js'), [], null, true);
 
   wp_enqueue_script(
     'assets/scripts',
     Utils::requireAssetUrl('assets/scripts/script.js'),
-    ['console-polyfill', 'babel-polyfill', 'mixwith', 'slick-carousel'],
+    ['console-polyfill', 'babel-polyfill', 'slick-carousel'],
     null,
     true
   );
