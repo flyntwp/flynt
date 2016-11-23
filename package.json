@@ -15,13 +15,10 @@
     "babel-polyfill": "^6.16.0",
     "babel-preset-es2015": "^6.18.0",
     "browser-sync": "^2.18.1",
-    "browser-sync-webpack-plugin": "^1.1.3",
     "console-polyfill": "^0.2.3",
-    "css-loader": "^0.26.0",
     "del": "^2.2.2",
     "document-register-element": "^1.3.0",
     "file-loader": "^0.9.0",
-    "glob": "^7.1.1",
     "globby": "^6.1.0",
     "gulp": "^3.9.1",
     "gulp-changed": "^1.3.2",
@@ -37,27 +34,21 @@
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.10",
     "jeet": "^7.0.0",
-    "mixwith": "^0.1.1",
-    "pug": "^2.0.0-beta6",
-    "pug-loader": "^2.3.0",
     "require-dir": "^0.3.1",
     "run-sequence": "^1.2.2",
     "rupture": "^0.6.2",
     "slick-carousel": "^1.6.0",
     "standard": "^8.5.0",
-    "style-loader": "^0.13.1",
     "stylint": "^1.5.7",
     "stylint-stylish": "^1.4.0",
     "stylus": "^0.54.5",
-    "stylus-loader": "^2.3.1",
-    "url-loader": "^0.5.7",
     "webpack": "^1.13.3"
   },
   "standard": {
     "globals": [
-      "$",
-      "Modernizr"
+      "$"
     ],
     "parser": "babel-eslint"
-  }
+  },
+  "dependencies": {}
 }

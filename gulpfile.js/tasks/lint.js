@@ -37,9 +37,7 @@ module.exports = function (config) {
   gulp.task('lint:php', function () {
     const task = gulp.src(config.lint.php)
     .pipe(changedInPlace({firstPass: true}))
-    .pipe(phpcs({
-      standard: 'phpcs.ruleset.xml'
-    }))
+    .pipe(phpcs(config.lint.phpcs))
     .pipe(phpcs.reporter('log'))
     if (global.watchMode) {
       return task

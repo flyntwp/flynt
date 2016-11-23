@@ -53,6 +53,9 @@ module.exports = {
       './**/*.php',
       '!./dist/**/*.php',
       '!./node_modules/**/*.php'
-    ]
+    ],
+    phpcs: {
+      standard: 'phpcs.ruleset.xml'
+    }
   }
 }

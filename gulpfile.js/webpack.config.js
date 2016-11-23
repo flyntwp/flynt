@@ -1,10 +1,8 @@
 const webpack = require('webpack')
-// const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 const rupture = require('rupture')
 
 module.exports = function (config) {
   const babelQuery = {
-    // plugins: ['transform-es2015-modules-amd'],
     presets: [
       ['es2015', {loose: true}]
     ],
@@ -25,9 +23,6 @@ module.exports = function (config) {
       path: './dist',
       filename: '[name]/script.js',
       publicPath: 'http://localhost:3000/'
-      // library: '[name]',
-      // libraryTarget: 'amd',
-      // umdNamedDefine: true,
     },
     devtool: config.production ? 'source-map' : 'inline-source-map',
     module: {
@@ -37,9 +32,6 @@ module.exports = function (config) {
           exclude: /(node_modules|bower_components)/,
           loader: 'babel-loader',
           query: babelQuery
-        // }, {
-        //   test: /\.styl$/,
-        //   loader: 'style-loader!css-loader!stylus-loader'
         }
       ]
     },
@@ -54,24 +46,6 @@ module.exports = function (config) {
       ],
       import: ['~jeet/styl/index.styl']
     }
-    // plugins: [
-    //   new BrowserSyncPlugin({
-    //     // browse to http://localhost:3000/ during development,
-    //     // ./public directory is being served
-    //     proxy: 'wp-starter-boilerplate.dev',
-    //     open: false,
-    //     ghostMode: false,
-    //   })
-    // ]
-    // externals: [
-    //   function(context, request, callback) {
-    //     // Every module prefixed with "global-" becomes external
-    //     // "global-abc" -> abc
-    //     // if(/^global-/.test(request))
-    //     //   return callback(null, "var " + request.substr(7));
-    //     callback();
-    //   },
-    // ]
   }
   if (config.production) {
     output.plugins = output.plugins || []

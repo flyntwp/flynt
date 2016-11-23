@@ -15,8 +15,6 @@ module.exports = function (config) {
       use: [
         rupture()
       ],
-      // TODO put this into config?
-      // TODO also, check if node dependencies have been installed when running gulp?
       import: [path.resolve(__dirname, '../../node_modules/jeet/styl/index.styl')]
     }))
     .pipe(sourcemaps.write(config.sourcemaps))
