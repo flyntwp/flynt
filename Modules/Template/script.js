@@ -27,4 +27,4 @@ class MainTemplate extends HTMLDivElement {
   }
 }
 
-customElements.define('template', MainTemplate, {extends: 'div'})
+customElements.define('main-template', MainTemplate, {extends: 'div'})
