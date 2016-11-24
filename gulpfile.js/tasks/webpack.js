@@ -27,10 +27,6 @@ const webpackTask = function (callback) {
 }
 
 module.exports = function (webpackConfig, config) {
-  config.webpack.entry = {
-    'assets/scripts': './assets/scripts/script.js'
-  }
-
   gulp.task('webpack:build', function (callback) {
     config.webpack.production = true
     webpack(webpackConfig(config.webpack), webpackTask(callback))

@@ -22,38 +22,55 @@ class Module {
   }
 
   public static function enqueueAssets($moduleName, array $dependencies = []) {
+    $dependencyDefaults = [
+      'dependencies' => [],
+      'version' => null,
+      'inFooter' => true,
+      'media' => 'all'
+    ];
+
     // register dependencies
     foreach ($dependencies as $dependency) {
-      // TODO add some validation
-      // TODO consider also using version and in_footer (scripts) / media (styles)
+      // TODO add cdn functionality
       // TODO add a warning if the same script is loaded several times (with different names) in multiple modules
+      $dependency = array_merge($dependencyDefaults, $dependency);
+
+      if (!array_key_exists('name', $dependency)) {
+        trigger_error('Cannot load dependency: Name not provided!', E_USER_WARNING);
+        continue;
+      }
+
+      if (!array_key_exists('path', $dependency)) {
+        trigger_error('Cannot load dependency: Path not provided!', E_USER_WARNING);
+        continue;
+      }
+
       if ($dependency['type'] === 'script') {
         wp_register_script(
           $dependency['name'],
           Utils::requireAssetUrl($dependency['path']),
           $dependency['dependencies'],
-          null, // version
-          true // in_footer
+          $dependency['version'],
+          $dependency['inFooter']
         );
       } elseif ($dependency['type'] === 'style') {
         wp_register_style(
           $dependency['name'],
           Utils::requireAssetUrl($dependency['path']),
           $dependency['dependencies'],
-          null, // version
-          'all' // media
+          $dependency['version'],
+          $dependency['media']
         );
       }
     }
 
-    // TODO move default dependency into some config
     // collect script dependencies
     $scriptDeps = array_reduce($dependencies, function ($list, $dependency) {
       if ($dependency['type'] === 'script') {
         array_push($list, $dependency['name']);
       }
       return $list;
-    }, ['jquery']); // jquery as a default dependency
+    }, ['Modules/scripts']); // jquery as a default dependency
 
     // Enqueue Module Scripts if they exist
     $scriptAbsPath = Utils::requireAssetPath("Modules/{$moduleName}/script.js");

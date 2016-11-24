@@ -1,5 +1,3 @@
-import './vendor'
-
 function addModuleScriptsToWebpackEntries (moduleName) { // eslint-disable-line no-unused-vars
   /*
     INFO: Cannot use resolveLoader in webpack config for this,
@@ -7,7 +5,5 @@ function addModuleScriptsToWebpackEntries (moduleName) { // eslint-disable-line 
 
     https://github.com/webpack/enhanced-resolve/pull/22
   */
-  require(`../../gulpfile.js/webpack/entryLoader.js?name=[name]/script.js!../../Modules/${moduleName}/script.js`)
+  require(`../gulpfile.js/webpack/entryLoader.js?name=[name]/script.js!./${moduleName}/script.js`)
 }
-
-import 'document-register-element'

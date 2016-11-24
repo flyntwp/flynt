@@ -45,6 +45,9 @@ module.exports = {
     './{Modules,assets}/**/style.styl'
   ],
   webpack: {
+    entry: {
+      'Modules': './Modules/script.js'
+    }
   },
   lint: {
     stylus: './{Modules,assets}/**/*.styl',
