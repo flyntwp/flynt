@@ -2,7 +2,7 @@
 
 namespace WPStarterTheme\Init;
 
-use WPStarterTheme\Helpers\Utils;
+use WPStarterTheme\Helpers\Module;
 use WPStarterTheme\Helpers\ACFFieldGroupComposer;
 use WPStarterTheme\Helpers\CustomPostTypeRegister;
 use WPStarterTheme\Config;
@@ -14,4 +14,4 @@ CustomPostTypeRegister::fromDirectory(Config\CUSTOM_POST_TYPE_PATH);
 ACFFieldGroupComposer::init();
 
 // register all modules in 'Modules' folder
-Utils::registerAllModules();
+Module::registerAll();
