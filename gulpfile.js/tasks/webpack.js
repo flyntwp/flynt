@@ -1,5 +1,3 @@
-require('../webpack/entryLoader')
-
 const browserSync = require('browser-sync')
 const gulp = require('gulp')
 const gutil = require('gulp-util')
