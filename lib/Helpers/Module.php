@@ -3,6 +3,7 @@
 namespace WPStarterTheme\Helpers;
 
 use RecursiveDirectoryIterator;
+use WPStarter;
 use WPStarter\Defaults;
 use WPStarterTheme\Helpers\Utils;
 
@@ -25,6 +26,7 @@ class Module {
     foreach ($dependencies as $dependency) {
       // TODO add some validation
       // TODO consider also using version and in_footer (scripts) / media (styles)
+      // TODO add a warning if the same script is loaded several times (with different names) in multiple modules
       if ($dependency['type'] === 'script') {
         wp_register_script(
           $dependency['name'],
