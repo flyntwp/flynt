@@ -1,10 +1,13 @@
 import './vendor'
 
-// import installCE from 'document-register-element/pony'
-// // by default, the second argument is 'auto'
-// // but it could be also 'force'
-// // which ignores feature detection and force
-// // the polyfill version of CustomElements
-// installCE(global, 'force');
+function addModuleScriptsToWebpackEntries (moduleName) { // eslint-disable-line no-unused-vars
+  /*
+    INFO: Cannot use resolveLoader in webpack config for this,
+    because of a bug that's been fixed only for webpack 2.
+
+    https://github.com/webpack/enhanced-resolve/pull/22
+  */
+  require(`../../gulpfile.js/webpack/entryLoader.js?name=[name]/script.js!../../Modules/${moduleName}/script.js`)
+}
 
 import 'document-register-element'

@@ -1,10 +1,12 @@
 const dest = './dist'
+const host = 'wp-starter-boilerplate.dev'
 
+// TODO add deploy task
 module.exports = {
   browserSync: {
     ghostMode: false,
     open: false,
-    proxy: 'wp-starter-boilerplate.dev'
+    proxy: host
   },
   copy: [
     './{Modules,assets}/**/*',

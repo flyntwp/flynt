@@ -1,5 +1,6 @@
+require('../webpack/entryLoader')
+
 const browserSync = require('browser-sync')
-const globby = require('globby')
 const gulp = require('gulp')
 const gutil = require('gulp-util')
 const webpack = require('webpack')
@@ -28,10 +29,9 @@ const webpackTask = function (callback) {
 }
 
 module.exports = function (webpackConfig, config) {
-  config.webpack.entry = globby.sync('{Modules,assets}/**/script.js').reduce(function (output, entryPath) {
-    output[entryPath.replace('/script.js', '')] = './' + entryPath
-    return output
-  }, {})
+  config.webpack.entry = {
+    'assets/scripts': './assets/scripts/script.js'
+  }
 
   gulp.task('webpack:build', function (callback) {
     config.webpack.production = true
