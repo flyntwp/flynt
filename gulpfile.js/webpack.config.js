@@ -45,7 +45,12 @@ module.exports = function (config) {
         rupture()
       ],
       import: ['~jeet/styl/index.styl']
-    }
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        $: 'jQuery'
+      })
+    ]
   }
   if (config.production) {
     output.plugins = output.plugins || []

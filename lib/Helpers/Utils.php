@@ -2,10 +2,6 @@
 
 namespace WPStarterTheme\Helpers;
 
-use function WPStarter\registerModule;
-use WPStarter\Defaults;
-use RecursiveDirectoryIterator;
-
 class Utils {
   protected static $assetManifest;
 
@@ -19,19 +15,6 @@ class Utils {
     $output = ob_get_contents();
     ob_get_clean();
     return $output;
-  }
-
-  public static function registerAllModules() {
-    $directory = Defaults::getModulesDirectory();
-
-    // TODO use new Core functionality after adding the feature for dirs
-    $directoryIterator = new RecursiveDirectoryIterator($directory, RecursiveDirectoryIterator::SKIP_DOTS);
-
-    foreach ($directoryIterator as $name => $file) {
-      if ($file->isDir()) {
-        registerModule($file->getFilename());
-      }
-    }
   }
 
   public static function isAssoc(array $array) {

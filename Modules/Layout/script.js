@@ -1,3 +1,7 @@
+import 'file-loader?name=vendor/console.js!console-polyfill'
+import 'file-loader?name=vendor/babel-polyfill.js!babel-polyfill/dist/polyfill'
+import 'file-loader?name=vendor/document-register-element.js!document-register-element/build/document-register-element'
+
 class MainLayoutElement extends window.HTMLHtmlElement {
   // the self argument might be provided or not
   // in both cases, the mandatory `super()` call
@@ -76,5 +80,4 @@ class MainLayoutElement extends window.HTMLHtmlElement {
     console.log('fire')
   }
 }
-console.log('main-layouts')
 window.customElements.define('main-layout', MainLayoutElement, {extends: 'html'})

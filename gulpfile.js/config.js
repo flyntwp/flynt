@@ -1,10 +1,12 @@
 const dest = './dist'
+const host = 'wp-starter-boilerplate.dev'
 
+// TODO add deploy task
 module.exports = {
   browserSync: {
     ghostMode: false,
     open: false,
-    proxy: 'wp-starter-boilerplate.dev'
+    proxy: host
   },
   copy: [
     './{Modules,assets}/**/*',
@@ -43,6 +45,9 @@ module.exports = {
     './{Modules,assets}/**/style.styl'
   ],
   webpack: {
+    entry: {
+      'Modules': './Modules/script.js'
+    }
   },
   lint: {
     stylus: './{Modules,assets}/**/*.styl',
