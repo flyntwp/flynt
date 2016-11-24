@@ -1,7 +1,6 @@
 <?php
 namespace WPStarterTheme\Modules\Layout;
 
-use WPStarterTheme\Helpers;
 use WPStarterTheme\Helpers\Module;
 
 add_action('wp_enqueue_scripts', function () {
