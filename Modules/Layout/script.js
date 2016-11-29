@@ -71,7 +71,7 @@ class MainLayoutElement extends window.HTMLHtmlElement {
   }
 
   logAnchor (e) {
-    e.preventDefault()
+    // e.preventDefault()
     console.log(this.boo, e.currentTarget)
     console.log(e)
   }
