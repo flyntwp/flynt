@@ -4,15 +4,13 @@ namespace WPStarterTheme\Helpers;
 
 use RecursiveDirectoryIterator;
 use WPStarter;
-use WPStarter\Defaults;
+use WPStarterTheme\Config;
 use WPStarterTheme\Helpers\Utils;
 
 class Module {
   public static function registerAll() {
-    $directory = Defaults::getModulesDirectory();
-
     // TODO use new Core functionality after adding the feature for dirs
-    $directoryIterator = new RecursiveDirectoryIterator($directory, RecursiveDirectoryIterator::SKIP_DOTS);
+    $directoryIterator = new RecursiveDirectoryIterator(Config\MODULE_PATH, RecursiveDirectoryIterator::SKIP_DOTS);
 
     foreach ($directoryIterator as $name => $file) {
       if ($file->isDir()) {
