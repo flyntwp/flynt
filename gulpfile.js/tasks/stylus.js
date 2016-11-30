@@ -15,7 +15,10 @@ module.exports = function (config) {
       use: [
         rupture()
       ],
-      import: [path.resolve(__dirname, '../../node_modules/jeet/styl/index.styl')]
+      import: [
+        path.resolve(__dirname, '../../Modules/_variables.styl'),
+        path.resolve(__dirname, '../../node_modules/jeet/styl/index.styl')
+      ]
     }))
     .pipe(sourcemaps.write(config.sourcemaps))
     .pipe(gulp.dest(config.dest))
