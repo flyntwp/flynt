@@ -1,8 +1,32 @@
-[is='wps-sliderCols']
+// $backgroundColor = fetch($global-color-brand, #00ff00)
+
+$color = #fff
+$backgroundColor = $global-color-brand is defined ? $global-color-brand : #00ff00
+$gutterWidth = $global-layout-gutterWidth is defined ? $global-layout-gutterWidth : 15px
+$maxWidth = $global-layout-maxWidth is defined ? $global-layout-maxWidth : 1140px
+rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px 800px 1200px
+
+[is='wps-slider-cols']
+  center($maxWidth, $gutterWidth)
+
   *,
   *:before,
   *:after
     box-sizing: border-box
 
-  h1
-    color: green
+  img
+    display: block
+    max-width: 100%
+
+  .slide
+    &-item
+      column(1/4)
+
+      +below('s')
+        stack()
+        margin-bottom: $gutterWidth
+
+    &-content
+      color: $color
+      background-color: $backgroundColor
+      padding: 20px

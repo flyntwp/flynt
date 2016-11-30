@@ -9,6 +9,16 @@ add_action('wp_enqueue_scripts', function () {
       'name' => 'normalize',
       'path' => 'vendor/normalize.css',
       'type' => 'style'
+    ],
+    [
+      'name' => 'slick-carousel',
+      'path' => 'vendor/slick.js',
+      'type' => 'script'
+    ],
+    [
+      'name' => 'slick-carousel',
+      'path' => 'vendor/slick.css',
+      'type' => 'style'
     ]
   ]);
 });

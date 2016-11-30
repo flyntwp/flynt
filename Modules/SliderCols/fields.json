@@ -1,17 +1,33 @@
 {
   "layout": {
-    "name": "SliderCols",
+    "name": "sliderCols",
     "label": "Slider Cols",
     "sub_fields": [
       {
-        "name": "title",
-        "label": "Title",
-        "type": "text"
-      },
-      {
         "name": "items",
         "label": "Items",
-        "type": "repeater"
+        "type": "repeater",
+        "button_label": "Add Item",
+        "min": 1,
+        "max": 4,
+        "sub_fields": [
+          {
+            "name": "image",
+            "label": "Image",
+            "type": "image",
+            "mime_types": "jpg,jpeg",
+            "required": 1
+          },
+          {
+            "name": "contentHtml",
+            "label": "Content",
+            "type": "wysiwyg",
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "required": 1
+          }
+        ]
       }
     ]
   }

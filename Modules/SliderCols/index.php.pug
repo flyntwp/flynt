@@ -1,2 +1,8 @@
-div(class=$data('baseClasses') is='wps-SliderCols')
-  h1 Hello friend.
+div(class=$data('baseClasses') is='wps-slider-cols')
+  .slider-row
+    for item in $data('items')
+      .slide-item
+        .slide-image
+          img(src='http://placehold.it/1000x1000')
+        .slide-content
+          != $data($item, 'contentHtml')
