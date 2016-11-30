@@ -116,7 +116,7 @@ class Navigation {
     foreach ($indexed as $id => $row) {
       $indexed[$row[$parentIdField]][$childNodesField][$id] =& $indexed[$id];
     }
-    if(isset($indexed[0]))
+    if (isset($indexed[0]))
       return $indexed[0][$childNodesField];
 
     return $indexed;
