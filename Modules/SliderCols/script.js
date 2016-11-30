@@ -12,7 +12,7 @@ class SliderCols extends window.HTMLDivElement {
     // self.addEventListener('click', console.log)
     // important in case you create instances procedurally:
     // var me = new MyElement()
-    console.log('construct...')
+    console.log('slider...')
     self.$ = $(self)
     return self
   }
@@ -22,7 +22,7 @@ class SliderCols extends window.HTMLDivElement {
   }
 
   connectedCallback () {
-    console.log('connected')
+    console.log('cols!')
   }
 }
 

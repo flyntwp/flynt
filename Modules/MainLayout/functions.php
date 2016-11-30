@@ -1,10 +1,10 @@
 <?php
-namespace WPStarterTheme\Modules\Layout;
+namespace WPStarterTheme\Modules\MainLayout;
 
 use WPStarterTheme\Helpers\Module;
 
 add_action('wp_enqueue_scripts', function () {
-  Module::enqueueAssets('Layout', [
+  Module::enqueueAssets('MainLayout', [
     [
       'name' => 'console-polyfill',
       'type' => 'script',
