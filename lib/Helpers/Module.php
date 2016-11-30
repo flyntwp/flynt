@@ -83,14 +83,16 @@ class Module {
 
     // collect style dependencies
     $styleDeps = [];
-    if ($moduleName !== 'Layout') {
-      $styleDeps = array_reduce($dependencies, function ($list, $dependency) {
-        if ($dependency['type'] === 'style') {
-          array_push($list, $dependency['name']);
-        }
-        return $list;
-      }, ['WPStarterTheme/Modules/Layout']);
-    }
+    $styleDeps = array_reduce($dependencies, function ($list, $dependency) {
+      if ($dependency['type'] === 'style') {
+        array_push($list, $dependency['name']);
+      }
+      return $list;
+    }, []);
+    // if ($moduleName !== 'Layout') {
+    //   array_unshift($styleDeps, 'WPStarterTheme/Modules/Layout');
+    // }
+
 
     // Enqueue Module Styles if they exist
     $styleAbsPath = Utils::requireAssetPath("Modules/{$moduleName}/style.css");

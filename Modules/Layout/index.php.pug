@@ -7,20 +7,6 @@ html(class="no-js #{$data('bodyClass')} #{$data('baseClasses')}" lang=$data('lan
     link(href=$data('faviconPath') rel='shortcut icon' type='image/png')
     link(rel='alternate' type='application/rss+xml' title=$data('feedName') href=$data('feedHref'))
     link(rel='apple-touch-icon' href=$data('appleTouchIcon180x180Path'))
-    :javascript
-      (function() {
-          if (!(Object.setPrototypeOf || {}.__proto__)) {
-              var nativeGetPrototypeOf = Object.getPrototypeOf;
-
-              Object.getPrototypeOf = function(object) {
-                  if (object.__proto__) {
-                      return object.__proto__;
-                  } else {
-                      return nativeGetPrototypeOf.call(Object, object);
-                  }
-              }
-          }
-      })();
     != wp_head()
     <!--[if lt IE 9]>script(src='js/polyfill/html5-shiv.js')<![endif]-->
   body

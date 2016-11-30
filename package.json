@@ -33,6 +33,7 @@
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.10",
     "jeet": "^7.0.0",
+    "normalize.css": "^5.0.0",
     "require-dir": "^0.3.1",
     "run-sequence": "^1.2.2",
     "rupture": "^0.6.2",

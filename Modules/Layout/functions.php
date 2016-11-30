@@ -19,6 +19,11 @@ add_action('wp_enqueue_scripts', function () {
       'name' => 'document-register-element',
       'type' => 'script',
       'path' => 'vendor/document-register-element.js'
+    ],
+    [
+      'name' => 'normalize',
+      'path' => 'vendor/normalize.css', // uses automatically: Utils::requireAssetUrl(path)
+      'type' => 'style' // or style
     ]
   ]);
 });

@@ -1,0 +1,18 @@
+{
+  "layout": {
+    "name": "SliderCols",
+    "label": "Slider Cols",
+    "sub_fields": [
+      {
+        "name": "title",
+        "label": "Title",
+        "type": "text"
+      },
+      {
+        "name": "items",
+        "label": "Items",
+        "type": "repeater"
+      }
+    ]
+  }
+}

@@ -9,7 +9,8 @@
       "layouts": [
         "WPStarterTheme/Modules/PageHeader/Layout",
         "WPStarterTheme/Modules/PostTeasers/Layout",
-        "WPStarterTheme/Modules/PostList/Layout"
+        "WPStarterTheme/Modules/PostList/Layout",
+        "WPStarterTheme/Modules/SliderCols/Layout"
       ]
     }
   ],
