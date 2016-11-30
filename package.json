@@ -42,11 +42,15 @@
     "stylint": "^1.5.7",
     "stylint-stylish": "^1.4.0",
     "stylus": "^0.54.5",
-    "webpack": "^1.13.3"
+    "webpack": "^1.13.3",
+    "jquery": "^1.12.4"
   },
   "standard": {
     "globals": [
-      "$"
+      "$",
+      "jQuery",
+      "window.jQuery"
+
     ],
     "parser": "babel-eslint"
   },

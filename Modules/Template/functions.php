@@ -2,6 +2,6 @@
 
 use WPStarterTheme\Helpers\Module;
 
-add_action('wp_enqueue_scripts', function () {
-  Module::enqueueAssets('Template');
-});
+// add_action('wp_enqueue_scripts', function () {
+//   Module::enqueueAssets('Template');
+// });

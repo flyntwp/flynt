@@ -26,4 +26,4 @@ class MainLayoutElement extends window.HTMLHtmlElement {
   }
 
 }
-window.customElements.define('main-layout', MainLayoutElement, {extends: 'html'})
+window.customElements.define('wps-main-layout', MainLayoutElement, {extends: 'html'})

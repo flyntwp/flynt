@@ -29,8 +29,18 @@ add_filter('WPStarter/renderModule', function ($output, $moduleName, $moduleData
     return WPStarter\Helpers::extractNestedDataFromArray($args);
   };
 
+  $wpHead = function () {
+    wp_head();
+  };
+
+  $wpFooter = function () {
+    wp_footer();
+  };
+
   return $pug->render($filePath, [
     'data' => $data,
+    'wpHead' => $wpHead,
+    'wpFooter' => $wpFooter,
     'area' => $area
   ]);
 }, 10, 4);

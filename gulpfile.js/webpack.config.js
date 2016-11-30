@@ -35,6 +35,11 @@ module.exports = function (config) {
         }
       ]
     },
+    resolve: {
+      alias: {
+        '$': 'jquery/dist/jquery'
+      }
+    },
     resolveLoader: {
       alias: {
         'with-babel': `babel-loader?${JSON.stringify(babelQuery)}`
@@ -47,9 +52,12 @@ module.exports = function (config) {
       import: ['~jeet/styl/index.styl']
     },
     plugins: [
-      new webpack.ProvidePlugin({
-        $: 'jQuery'
-      })
+      // new webpack.ProvidePlugin({
+      //   // $: 'jQuery'
+      //   $: 'jquery',
+      //   jQuery: 'jquery',
+      //   'window.jQuery': 'jquery'
+      // })
     ]
   }
   if (config.production) {

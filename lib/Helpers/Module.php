@@ -68,7 +68,7 @@ class Module {
         array_push($list, $dependency['name']);
       }
       return $list;
-    }, ['Modules/scripts']); // jquery as a default dependency
+    }, ['jquery']); // jquery as a default dependency
 
     // Enqueue Module Scripts if they exist
     $scriptAbsPath = Utils::requireAssetPath("Modules/{$moduleName}/script.js");
@@ -77,7 +77,8 @@ class Module {
         "WPStarterTheme/Modules/{$moduleName}",
         Utils::requireAssetUrl("Modules/{$moduleName}/script.js"),
         $scriptDeps,
-        null
+        null,
+        true
       );
     }
 

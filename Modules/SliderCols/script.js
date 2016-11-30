@@ -6,24 +6,30 @@ function importSlickFonts (fontName) { // eslint-disable-line no-unused-vars
   require(`file-loader?name=vendor/slick/[name].[ext]!slick-carousel/slick/fonts/${fontName}`)
 }
 
-class SliderCols extends window.HTMLDivElement {
-  constructor (self) {
-    self = super(self)
-    // self.addEventListener('click', console.log)
-    // important in case you create instances procedurally:
-    // var me = new MyElement()
-    console.log('slider...')
-    self.$ = $(self)
-    return self
-  }
+$(window).on('load', function () {
+  $('.slider-row').slick()
+})
 
-  $$ (selector) {
-    return $(selector, this)
-  }
-
-  connectedCallback () {
-    console.log('cols!')
-  }
-}
-
-window.customElements.define('wps-slider-cols', SliderCols, {extends: 'div'})
+// class SliderCols extends window.HTMLDivElement {
+//   constructor (self) {
+//     self = super(self)
+//     self.$ = $(self)
+//     this.resolveElements()
+//     return self
+//   }
+//
+//   resolveElements () {
+//     this.$slider = window.jQuery('.slider-row', this)
+//   }
+//
+//   connectedCallback () {
+//     this.$slider.slick()
+//     // $(window).on('load', () => {
+//     //   console.log(window.jQuery.fn.slick)
+//     //   console.log(this.$slider)
+//     //
+//     // })
+//   }
+// }
+//
+// window.customElements.define('wps-slider-cols', SliderCols, {extends: 'div'})
