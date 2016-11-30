@@ -10,13 +10,7 @@ html(class="no-js #{$data('bodyClass')} #{$data('baseClasses')}" lang=$data('lan
     != wp_head()
     <!--[if lt IE 9]>script(src='js/polyfill/html5-shiv.js')<![endif]-->
   body
-    .page-wrapper(role='document')
-      .main-header
-        != $area('mainHeader')
-      main.main-content(role='main')
-        != $area('mainTemplate')
-      .main-footer
-        != $area('mainFooter')
+    != $area('mainTemplate')
     <!--[if lt IE 9]>
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
     script.
@@ -29,3 +23,4 @@ html(class="no-js #{$data('bodyClass')} #{$data('baseClasses')}" lang=$data('lan
       window.jQuery || document.write('<script src="js/vendor/jquery-3.1.0.min.js"><\/script>')
     <!--<![endif]-->
     != wp_footer()
+    != $area('additionalFooter')

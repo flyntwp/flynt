@@ -22,8 +22,8 @@ add_action('wp_enqueue_scripts', function () {
     ],
     [
       'name' => 'normalize',
-      'path' => 'vendor/normalize.css', // uses automatically: Utils::requireAssetUrl(path)
-      'type' => 'style' // or style
+      'path' => 'vendor/normalize.css',
+      'type' => 'style'
     ]
   ]);
 });
