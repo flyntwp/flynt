@@ -1,5 +1,5 @@
 {
-  "name": "Layout",
+  "name": "MainLayout",
   "dataFilter": "WPStarterTheme/DataFilters/WpBase",
   "areas": {
     "mainHeader": [
