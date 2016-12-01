@@ -5,14 +5,14 @@ $maxWidth = $global-layout-maxWidth is defined ? $global-layout-maxWidth : 1140p
 rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px 800px 1200px
 
 [is='wps-slider-cols']
-  center($maxWidth, $gutterWidth)
-
   *,
   *:before,
   *:after
     box-sizing: border-box
 
   .slider
+    center($maxWidth, $gutterWidth)
+
     &-row
       clearfix()
       margin: 30px 0

@@ -13,9 +13,9 @@ class SliderCols extends window.HTMLDivElement {
   constructor (self) {
     self = super(self)
     self.$ = $(self)
-    this.resolveElements()
     this.sliderInitialised = false
     this.isMobile = false
+    this.resolveElements()
     return self
   }
 
@@ -24,6 +24,7 @@ class SliderCols extends window.HTMLDivElement {
   }
 
   connectedCallback () {
+    this.setupSlider()
     $(window).on('resize', $.debounce(300, this.setupSlider))
   }
 
