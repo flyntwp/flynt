@@ -21,6 +21,11 @@ add_action('wp_enqueue_scripts', function () {
       'path' => 'vendor/document-register-element.js'
     ],
     [
+      'name' => 'picturefill',
+      'path' => 'vendor/picturefill.js',
+      'type' => 'script'
+    ],
+    [
       'name' => 'normalize',
       'path' => 'vendor/normalize.css',
       'type' => 'style'

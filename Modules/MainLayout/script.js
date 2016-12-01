@@ -1,6 +1,7 @@
 import 'file-loader?name=vendor/console.js!console-polyfill'
 import 'file-loader?name=vendor/babel-polyfill.js!babel-polyfill/dist/polyfill'
 import 'file-loader?name=vendor/document-register-element.js!document-register-element/build/document-register-element'
+import 'file-loader?name=vendor/picturefill.js!picturefill'
 import 'file-loader?name=vendor/normalize.css!normalize.css/normalize.css'
 
 class MainLayoutElement extends window.HTMLHtmlElement {
