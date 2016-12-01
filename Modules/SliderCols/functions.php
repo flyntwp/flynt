@@ -30,6 +30,11 @@ add_action('wp_enqueue_scripts', function () {
       'name' => 'slick-carousel',
       'path' => 'vendor/slick.css',
       'type' => 'style'
+    ],
+    [
+      'name' => 'jquery-throttle-debounce',
+      'path' => 'vendor/jquery-throttle-debounce.js',
+      'type' => 'script'
     ]
   ]);
 });

@@ -38,7 +38,11 @@ module.exports = function (config) {
     resolve: {
       alias: {
         '$': 'jquery/dist/jquery'
-      }
+      },
+      modulesDirectories: [
+        'node_modules',
+        'bower_components'
+      ]
     },
     resolveLoader: {
       alias: {
@@ -52,12 +56,9 @@ module.exports = function (config) {
       import: ['~jeet/styl/index.styl']
     },
     plugins: [
-      // new webpack.ProvidePlugin({
-      //   // $: 'jQuery'
-      //   $: 'jquery',
-      //   jQuery: 'jquery',
-      //   'window.jQuery': 'jquery'
-      // })
+      new webpack.ResolverPlugin(
+        new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('.bower.json', ['main'])
+      )
     ]
   }
   if (config.production) {
