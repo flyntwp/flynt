@@ -68,7 +68,7 @@ class Module {
         array_push($list, $dependency['name']);
       }
       return $list;
-    }, ['jquery']); // jquery as a default dependency
+    }, ['Modules/scripts']); // jquery as a default dependency
 
     // Enqueue Module Scripts if they exist
     $scriptAbsPath = Utils::requireAssetPath("Modules/{$moduleName}/script.js");

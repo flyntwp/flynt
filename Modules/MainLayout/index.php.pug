@@ -7,9 +7,8 @@ html(class="no-js #{$data('bodyClass')} #{$data('baseClasses')}" lang=$data('lan
     link(href=$data('faviconPath') rel='shortcut icon' type='image/png')
     link(rel='alternate' type='application/rss+xml' title=$data('feedName') href=$data('feedHref'))
     link(rel='apple-touch-icon' href=$data('appleTouchIcon180x180Path'))
-    //- script(src='http://code.jquery.com/jquery-1.12.4.min.js' type='text/javascript')
-    != $wpHead()
+    != $callUserFunc('wp_head')
   body
     != $area('mainTemplate')
-    != $wpFooter()
+    != $callUserFunc('wp_footer')
     != $area('additionalFooter')

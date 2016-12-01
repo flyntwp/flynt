@@ -29,18 +29,14 @@ add_filter('WPStarter/renderModule', function ($output, $moduleName, $moduleData
     return WPStarter\Helpers::extractNestedDataFromArray($args);
   };
 
-  $wpHead = function () {
-    wp_head();
-  };
-
-  $wpFooter = function () {
-    wp_footer();
+  $callUserFunc = function ($funcName) {
+    // TODO add check if funcName is function
+    call_user_func($funcName);
   };
 
   return $pug->render($filePath, [
     'data' => $data,
-    'wpHead' => $wpHead,
-    'wpFooter' => $wpFooter,
+    'callUserFunc' => $callUserFunc,
     'area' => $area
   ]);
 }, 10, 4);

@@ -1,8 +1,14 @@
 div(class=$data('baseClasses') is='wps-slider-cols')
+  .slider-header
+    h2 This is a Demo Module
+    p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   .slider-row
     for item in $data('items')
-      .slide-item
-        .slide-image
-          img(src='http://placehold.it/1000x1000')
-        .slide-content
+      .slider-item
+        .slider-image
+          img.slider-image(src=$data($item, 'imageUrl'))
+        .slider-content
           != $data($item, 'contentHtml')
+  h3 Example Static Asset
+  .image-hero
+    img.slider-image(src=$data('exampleImgSrc'))

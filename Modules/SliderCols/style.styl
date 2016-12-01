@@ -1,4 +1,4 @@
-$color = #fff
+$slideColor = #fff
 $backgroundColor = $global-color-brand is defined ? $global-color-brand : #00ff00
 $gutterWidth = $global-layout-gutterWidth is defined ? $global-layout-gutterWidth : 15px
 $maxWidth = $global-layout-maxWidth is defined ? $global-layout-maxWidth : 1140px
@@ -12,19 +12,23 @@ rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px
   *:after
     box-sizing: border-box
 
-  img
-    display: block
-    max-width: 100%
+  .slider
+    &-row
+      clearfix()
+      margin: 30px 0
 
-  .slide
     &-item
-      column(1/4)
+      margin-bottom: $gutterWidth
 
-      +below('s')
-        stack()
-        margin-bottom: $gutterWidth
+      +above('m')
+        column(1/4)
+        margin-bottom: 0
+
+    &-image
+      display: block
+      max-width: 100%
 
     &-content
-      color: $color
+      color: $slideColor
       background-color: $backgroundColor
       padding: 20px

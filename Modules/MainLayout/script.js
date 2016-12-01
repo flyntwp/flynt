@@ -13,7 +13,6 @@ class MainLayoutElement extends window.HTMLHtmlElement {
     // self.addEventListener('click', console.log)
     // important in case you create instances procedurally:
     // var me = new MyElement()
-    console.log('construct')
     self.$ = $(self)
     return self
   }
