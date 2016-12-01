@@ -1,0 +1,17 @@
+picture
+  <!--[if IE 9]><video style="display: none;"><![endif]-->
+  each size in sizes
+    source(srcset="#{size['default']}, #{size.retina} 2x" media=size.query)
+  <!--[if IE 9]></video><![endif]-->
+
+  <!--[if lt IE 9]>
+  img(src="#{ltIE9}")
+  <![endif]-->
+
+  <!--[if IE 9]>
+  img
+  <![endif]-->
+
+  <!--[if !IE]><!-->
+  img
+  <!-- <![endif]-->
