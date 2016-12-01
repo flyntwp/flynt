@@ -5,9 +5,13 @@ namespace WPStarterTheme\Helpers;
 use WPStarterTheme\Helpers\StringHelpers;
 
 class Navigation {
-  public static function getMenuLinks($menuName) {
-    if (($locations = get_nav_menu_locations()) && isset($locations[$menuName])) {
-      $menu = wp_get_nav_menu_object($locations[$menuName]);
+  public static function getMenuLinks($locationName) {
+    if (($locations = get_nav_menu_locations()) && isset($locations[$locationName])) {
+      $menu = wp_get_nav_menu_object($locations[$locationName]);
+      if (!$menu) {
+        trigger_error('You did not assign any menu to the location: ' . $locationName, E_USER_WARNING);
+        return [];
+      }
       // @codingStandardsIgnoreLine
       $menuItems = wp_get_nav_menu_items($menu->term_id, array('orderby' => 'menu_order'));
       self::setActiveStates($menuItems);
@@ -99,6 +103,7 @@ class Navigation {
     $parentIdField = 'menu_item_parent',
     $childNodesField = 'links'
   ) {
+
     $indexed = array();
 
     // first pass - get the array indexed by the primary id
@@ -111,8 +116,10 @@ class Navigation {
     foreach ($indexed as $id => $row) {
       $indexed[$row[$parentIdField]][$childNodesField][$id] =& $indexed[$id];
     }
+    if (isset($indexed[0]))
+      return $indexed[0][$childNodesField];
 
-    return $indexed[0][$childNodesField];
+    return $indexed;
   }
 
 }
