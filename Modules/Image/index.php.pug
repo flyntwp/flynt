@@ -1,6 +1,8 @@
+include ../MainLayout/PugMixins/picture.php.pug
+//- you need to create a php variable
+//- because you can´t pass the $data() function directly to a pug mixin
+- $image = $data('image')
+
 div(class=$data('baseClasses') is="wps-image")
   .imageHero
-    picture.imageHero-container
-      source(srcset="http://placehold.it/768x768, http://placehold.it/1536x1536 2x" media="screen and (max-width: 768px)")
-      source(srcset="http://placehold.it/800x500, http://placehold.it/1600x1000 2x" media="screen and (max-width: 1400px)")
-      img.imageHero-image(src="http://placehold.it/1400x500")
+    +picture($image, 'imageHero')(data-object-fit='cover' data-object-fit-position='50% 50%')
