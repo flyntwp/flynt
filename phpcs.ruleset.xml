@@ -2,6 +2,7 @@
 <ruleset name="WPStarter Theme PHP Coding Standards">
   <description>Coding Standards for WPStarter Theme</description>
 
+  <exclude-pattern>*/bower_components/*</exclude-pattern>
   <exclude-pattern>*/node_modules/*</exclude-pattern>
 	<exclude-pattern>*.js</exclude-pattern>
 

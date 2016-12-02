@@ -1,10 +1,10 @@
 <?php
-namespace WPStarterTheme\Modules\Layout;
+namespace WPStarterTheme\Modules\MainLayout;
 
 use WPStarterTheme\Helpers\Module;
 
 add_action('wp_enqueue_scripts', function () {
-  Module::enqueueAssets('Layout', [
+  Module::enqueueAssets('MainLayout', [
     [
       'name' => 'console-polyfill',
       'type' => 'script',
@@ -19,6 +19,16 @@ add_action('wp_enqueue_scripts', function () {
       'name' => 'document-register-element',
       'type' => 'script',
       'path' => 'vendor/document-register-element.js'
+    ],
+    [
+      'name' => 'picturefill',
+      'path' => 'vendor/picturefill.js',
+      'type' => 'script'
+    ],
+    [
+      'name' => 'normalize',
+      'path' => 'vendor/normalize.css',
+      'type' => 'style'
     ]
   ]);
 });

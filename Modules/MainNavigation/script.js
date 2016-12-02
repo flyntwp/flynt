@@ -8,4 +8,4 @@ class MainNavigation extends window.HTMLDivElement {
   }
 }
 
-window.customElements.define('main-navigation', MainNavigation, {extends: 'div'})
+window.customElements.define('wps-main-navigation', MainNavigation, {extends: 'div'})

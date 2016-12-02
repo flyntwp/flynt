@@ -1,7 +1,6 @@
 const dest = './dist'
 const host = 'wp-starter-boilerplate.dev'
 
-// TODO add deploy task
 module.exports = {
   browserSync: {
     ghostMode: false,
@@ -57,7 +56,8 @@ module.exports = {
     php: [
       './**/*.php',
       '!./dist/**/*.php',
-      '!./node_modules/**/*.php'
+      '!./node_modules/**/*.php',
+      '!./bower_components/**/*.php'
     ],
     phpcs: {
       standard: 'phpcs.ruleset.xml'

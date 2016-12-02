@@ -33,6 +33,8 @@
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.10",
     "jeet": "^7.0.0",
+    "jquery": "^1.12.4",
+    "normalize.css": "^5.0.0",
     "require-dir": "^0.3.1",
     "run-sequence": "^1.2.2",
     "rupture": "^0.6.2",
@@ -41,13 +43,14 @@
     "stylint": "^1.5.7",
     "stylint-stylish": "^1.4.0",
     "stylus": "^0.54.5",
-    "webpack": "^1.13.3"
+    "webpack": "^1.13.3",
+    "picturefill": "^3.0.2"
   },
   "standard": {
     "globals": [
-      "$"
+      "$",
+      "jQuery"
     ],
     "parser": "babel-eslint"
-  },
-  "dependencies": {}
+  }
 }

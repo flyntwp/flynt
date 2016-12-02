@@ -35,6 +35,12 @@ module.exports = function (config) {
         }
       ]
     },
+    resolve: {
+      modulesDirectories: [
+        'node_modules',
+        'bower_components'
+      ]
+    },
     resolveLoader: {
       alias: {
         'with-babel': `babel-loader?${JSON.stringify(babelQuery)}`
@@ -47,9 +53,9 @@ module.exports = function (config) {
       import: ['~jeet/styl/index.styl']
     },
     plugins: [
-      new webpack.ProvidePlugin({
-        $: 'jQuery'
-      })
+      new webpack.ResolverPlugin(
+        new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('.bower.json', ['main'])
+      )
     ]
   }
   if (config.production) {
