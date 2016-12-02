@@ -11,9 +11,19 @@ $slideTitleVerticalPosition = 'top' // Defines if the title should be on top/bot
 $slideDotsOverlay = true // Should the navigation dots overlay the media?
 $slideDotsOffset = 15px // Offset of the dots to the edges of the slider
 $slideDotsVerticalPosition = 'top' // Defines if the dots should be on top/bottom of slider 'top' | 'bottom'
-$slideDotsSpacing = 2px // Spacing between dots
-$slideDotsSize = 12px // Size of a Dot
-$slideDotColor = #fff // Color of the Dot
+$slideDotsSpacing = 2px // Spacing between dot
+$slideDotsSize = 12px // Size of a dot
+$slideDotColor = #fff // Color of the dot
+
+$arrowSize = 2em // Size of the arrows
+$arrowColor = #fff // Color of the arrows
+
+@font-face
+  font-family: 'slick'
+  font-weight: normal
+  font-style: normal
+  src: url('../../vendor/slick/slick.eot')
+  src: url('../../vendor/slick/slick.eot?#iefix') format('embedded-opentype'), url('../../vendor/slick/slick.woff') format('woff'), url('../../vendor/slick/slick.ttf') format('truetype'), url('../../vendor/slick/slick.svg#slick') format('svg')
 
 [is='wps-media-slider']
   *,
@@ -65,8 +75,15 @@ $slideDotColor = #fff // Color of the Dot
 
     &-prevButton,
     &-nextButton
+      background: transparent
+      border: none
+      color: $arrowColor
+      cursor: pointer
+      font-family: 'slick'
+      font-size: $arrowSize
       margin: auto
       opacity: 1
+      outline: 0
       position: absolute
       top: 50%
       transform: translateY(-100%)
