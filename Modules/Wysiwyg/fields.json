@@ -1,0 +1,42 @@
+{
+  "options": [
+    {
+      "name": "defaultTheme",
+      "label": "Default Theme",
+      "type": "select",
+      "choices": {
+        "default": "Default",
+        "narrow": "Narrow"
+      },
+      "default_value": {
+        "default": "Default"
+      }
+    }
+  ],
+  "layout": {
+    "name": "wysiwyg",
+    "label": "Wysiwyg",
+    "sub_fields": [
+      {
+        "name": "contentHTML",
+        "label": "Content",
+        "type": "wysiwyg",
+        "media_upload": 0,
+        "required": 1
+      },
+      {
+        "name": "theme",
+        "label": "Theme",
+        "type": "select",
+        "choices": {
+          "": "---",
+          "default": "Default",
+          "narrow": "Narrow"
+        },
+        "default_value": {
+          "": "---"
+        }
+      }
+    ]
+  }
+}
