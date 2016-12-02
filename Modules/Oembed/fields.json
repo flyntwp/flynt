@@ -4,7 +4,8 @@
       "name": "defaultPosterImage",
       "label": "Default Poster Image",
       "type": "image",
-      "mime_types": "jpg,jpeg"
+      "mime_types": "jpg,jpeg",
+      "instructions": "Image-Format: JPG"
     }
   ],
   "layout": {
@@ -15,7 +16,8 @@
         "name": "posterImage",
         "label": "Poster Image",
         "type": "image",
-        "mime_types": "jpg,jpeg"
+        "mime_types": "jpg,jpeg",
+        "instructions": "Image-Format: JPG"
       },
       {
         "label": "Oembed",
