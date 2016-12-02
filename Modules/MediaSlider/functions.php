@@ -5,12 +5,6 @@ use WPStarterTheme\Helpers\Utils;
 use WPStarterTheme\Helpers\Module;
 
 add_filter('WPStarter/modifyModuleData?name=MediaSlider', function ($data) {
-  // $data['exampleImgSrc'] = Utils::requireAssetUrl('Modules/MediaSlider/assets/example.jpg');
-
-  // $data['items'] = array_map(function ($item) {
-  //   $item['imageUrl'] = $item['image']['url'];
-  //   return $item;
-  // }, $data['items']);
   $data['mediaSlides'] = [
     [
       'mediaType' => 'image',

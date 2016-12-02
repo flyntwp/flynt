@@ -8,6 +8,8 @@ function importSlickFonts (fontName) { // eslint-disable-line no-unused-vars
   require(`file-loader?name=vendor/slick/[name].[ext]!slick-carousel/slick/fonts/${fontName}`)
 }
 
+import slickConfiguration from './slider-configuration.js'
+
 class MediaSlider extends window.HTMLDivElement {
   constructor (self) {
     self = super(self)
@@ -24,21 +26,10 @@ class MediaSlider extends window.HTMLDivElement {
 
   connectedCallback () {
     this.setupSlider()
-    $(window).on('resize', $.debounce(300, this.setupSlider))
   }
 
   setupSlider = () => {
-    this.$mediaSlides.slick()
-    // if ($(window).width() < 800) {
-    //   this.isMobile = true
-    //
-    // } else {
-    //   this.isMobile = false
-    //   if (this.sliderInitialised) {
-    //     this.sliderInitialised = false
-    //     this.$mediaSlides.slick('unslick')
-    //   }
-    // }
+    this.$mediaSlides.slick(slickConfiguration)
   }
 }
 

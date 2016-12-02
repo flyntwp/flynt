@@ -1,8 +1,108 @@
+$maxWidth = $global-layout-maxWidth is defined ? $global-layout-maxWidth : 1140px
+rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px 800px 1200px
+
+$containerMaxWidth = 1440px // Width for the container if not using a container
+$useContainer = true // Use a container or a fluid wrapper
+
+$slideTitleOverlay = false // Should the title overlay the media?
+$slideTitleOffset = 15px // Offset of the title to the edges of the slider
+$slideTitleVerticalPosition = 'top' // Defines if the title should be on top/bottom of slider 'top' | 'bottom'
+
+$slideDotsOverlay = false // Should the navigation dots overlay the media?
+$slideDotsOffset = 15px // Offset of the dots to the edges of the slider
+$slideDotsVerticalPosition = 'top' // Defines if the dots should be on top/bottom of slider 'top' | 'bottom'
+$slideDotsSpacing = 2px // Spacing between dots
+$slideDotsSize = 10px // Size of a Dot
+
 [is='wps-media-slider']
   *,
   *:before,
   *:after
     box-sizing: border-box
 
-  .media-slider
-    // styling
+  .mediaSlider
+    position: relative
+
+    if $useContainer
+      center($maxWidth)
+    else
+      center($containerMaxWidth)
+      padding-left: 0
+      padding-right: 0
+
+    &-slides
+      list-style: none
+      margin: 0
+      padding: 0
+
+    &-slide
+      outline: 0
+      position: relative
+
+    &-image
+      height: auto
+      max-width: 100%
+
+    &-slideTitleWrapper
+      text-align: center
+      width: 100%
+
+      if $slideTitleOverlay
+        left: 0
+        position: absolute
+        z-index: 2
+
+        if $slideTitleVerticalPosition is 'top'
+          top: $slideTitleOffset
+        else
+          bottom: $slideTitleOffset
+
+    &-slideTitle
+      background: #fff
+      display: inline-block
+      padding: 10px
+
+    &-prevButton,
+    &-nextButton
+      margin: auto
+      opacity: 1
+      position: absolute
+      top: 50%
+      transform: translateY(-100%)
+      transition: all .25s
+      visibility: visible
+      z-index: 2
+
+      &.slick-disabled
+        opacity: 0
+        visibility: hidden
+
+    &-prevButton
+      left: 15px
+
+    &-nextButton
+      right: 15px
+
+    .slick-dots
+      list-style: none
+      margin: 0
+      padding: 0
+      text-align: center
+      width: 100%
+
+      if $slideDotsOverlay
+        position: absolute
+        left: 0
+
+        if $slideDotsVerticalPosition is 'top'
+          top: $slideDotsOffset
+        else
+          bottom: $slideDotsOffset
+
+    .slick-dots > li
+      display: inline-block
+      margin: 0 $slideDotsSpacing
+      opacity: .75
+
+    .slick-dots > li.slick-active
+      opacity: 1
