@@ -11,7 +11,8 @@
         "WPStarterTheme/Modules/PostTeasers/Layout",
         "WPStarterTheme/Modules/PostList/Layout",
         "WPStarterTheme/Modules/SliderCols/Layout",
-        "WPStarterTheme/Modules/ImageHero/Layout"
+        "WPStarterTheme/Modules/ImageHero/Layout",
+        "WPStarterTheme/Modules/MediaSlider/Layout"
       ]
     }
   ],
