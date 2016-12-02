@@ -5,7 +5,7 @@ module.exports = function (config) {
   gulp.task('build', function (cb) {
     runSequence(
       'clean',
-      ['copy', 'webpack:build'],
+      ['copy', 'webpack:build', 'stylus', 'lint'],
       'rev',
       cb
     )

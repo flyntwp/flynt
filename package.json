@@ -5,6 +5,10 @@
   "repository": "git@github.com:bleech/wp-starter-theme.git",
   "author": "Dominik Tränklein <dominik@bleech.de>",
   "license": "MIT",
+  "scripts": {
+    "start": "gulp",
+    "build": "NODE_ENV=production gulp build"
+  },
   "devDependencies": {
     "babel-core": "^6.18.2",
     "babel-eslint": "^7.1.1",
@@ -22,6 +26,7 @@
     "gulp": "^3.9.1",
     "gulp-changed": "^1.3.2",
     "gulp-changed-in-place": "^2.0.3",
+    "gulp-if": "^2.0.2",
     "gulp-phpcs": "^1.3.0",
     "gulp-rev": "^7.1.2",
     "gulp-rev-napkin": "^0.1.0",
@@ -35,6 +40,7 @@
     "jeet": "^7.0.0",
     "jquery": "^1.12.4",
     "normalize.css": "^5.0.0",
+    "picturefill": "^3.0.2",
     "require-dir": "^0.3.1",
     "run-sequence": "^1.2.2",
     "rupture": "^0.6.2",
@@ -43,8 +49,7 @@
     "stylint": "^1.5.7",
     "stylint-stylish": "^1.4.0",
     "stylus": "^0.54.5",
-    "webpack": "^1.13.3",
-    "picturefill": "^3.0.2"
+    "webpack": "^1.13.3"
   },
   "standard": {
     "globals": [
