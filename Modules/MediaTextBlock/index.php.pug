@@ -1,0 +1,8 @@
+p=$data('mediaPosition')
+p=$data('mediaType')
+if($data('mediaType') == "image")
+  img(src=$data('image', 'sizes', 'medium'))
+else
+  img(src=$data('posterImage', 'sizes', 'medium'))
+  p!=$data('oembed')
+p!=$data('contentHTML')
