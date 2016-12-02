@@ -8,7 +8,7 @@ function importSlickFonts (fontName) { // eslint-disable-line no-unused-vars
   require(`file-loader?name=vendor/slick/[name].[ext]!slick-carousel/slick/fonts/${fontName}`)
 }
 
-import slickConfiguration from './slider-configuration.js'
+import slickConfiguration from './sliderConfiguration.js'
 
 class MediaSlider extends window.HTMLDivElement {
   constructor (self) {

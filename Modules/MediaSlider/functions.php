@@ -2,39 +2,21 @@
 namespace WPStarterTheme\Modules\MediaSlider;
 
 use WPStarterTheme\Helpers\Utils;
+use WPStarterTheme\Helpers\Log;
 use WPStarterTheme\Helpers\Module;
 
 add_filter('WPStarter/modifyModuleData?name=MediaSlider', function ($data) {
-  $data['mediaSlides'] = [
-    [
-      'mediaType' => 'image',
-      'image' => [
-        'url' => 'http://placehold.it/1500x500'
-      ],
-      'titleText' => '1 Hello World'
-    ],
-    [
-      'mediaType' => 'image',
-      'image' => [
-        'url' => 'http://placehold.it/1500x500'
-      ],
-      'titleText' => '2 Hello World this is a bit longer'
-    ],
-    [
-      'mediaType' => 'image',
-      'image' => [
-        'url' => 'http://placehold.it/1500x500'
-      ],
-      'titleText' => '3 Lorem ipsum dolor sit amet'
-    ],
-    [
-      'mediaType' => 'image',
-      'image' => [
-        'url' => 'http://placehold.it/1500x500'
-      ],
-      'titleText' => '4 Hello World'
+  $imageConfig = [
+    'default' => 'large',
+    'sizes' => [
+      'thumbnail' => '(max-width: 767px)'
     ]
   ];
+
+  $data['mediaSlides'] = array_map(function ($item) use ($imageConfig) {
+    $item['image']['imageConfig'] = $imageConfig;
+    return $item;
+  }, $data['mediaSlides']);
 
   return $data;
 });

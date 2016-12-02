@@ -46,9 +46,7 @@
               "image": "Image",
               "oembed": "Video"
             },
-            "default_value": {
-              "image": "Image"
-            },
+            "default_value": "image",
             "allow_null": 0,
             "multiple": 0,
             "ui": 1,
@@ -67,14 +65,32 @@
             "max_height": 0,
             "min_size": 0,
             "max_size": 0,
-            "mime_types": "jpg,jpeg"
+            "mime_types": "jpg,jpeg",
+            "conditional_logic": [
+              [
+                {
+                  "fieldPath": "mediaType",
+                  "operator": "==",
+                  "value": "image"
+                }
+              ]
+            ]
           },
           {
             "label": "Oembed",
             "name": "oembed",
             "type": "oembed",
             "width": 100,
-            "height": 100
+            "height": 100,
+            "conditional_logic": [
+              [
+                {
+                  "fieldPath": "mediaType",
+                  "operator": "==",
+                  "value": "oembed"
+                }
+              ]
+            ]
           },
           {
             "name": "titleText",
