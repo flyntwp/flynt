@@ -1,0 +1,17 @@
+{
+  "layout": {
+    "name": "image",
+    "label": "Image",
+    "sub_fields": [
+      {
+        "label": "Image",
+        "name": "image",
+        "type": "image",
+        "instructions": "Recommended Size: Min-Width 1440px; Min-Height: 720px; Image-Format: JPG",
+        "min_width": 1440,
+        "min_height": 720,
+        "mime_types": "jpg,jpeg"
+      }
+    ]
+  }
+}
