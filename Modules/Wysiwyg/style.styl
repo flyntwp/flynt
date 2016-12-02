@@ -1,0 +1,15 @@
+$gutterWidth = $global-layout-gutterWidth is defined ? $global-layout-gutterWidth : 15px
+$maxWidth = $global-layout-maxWidth is defined ? $global-layout-maxWidth : 1140px
+rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px 800px 1200px
+
+[is='wps-wysiwyg']
+  *,
+  *:before,
+  *:after
+    box-sizing: border-box
+
+  .wysiwyg
+    center($maxWidth, $gutterWidth)
+
+    &.narrow
+      center(($maxWidth * .7), $gutterWidth)

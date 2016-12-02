@@ -1,3 +1,4 @@
 div(class=$data('baseClasses') is='wps-wysiwyg')
-  p!= $data('contentHTML')
-  p=$data('theme')
+  .wysiwyg(class=$data('theme'))
+    .wysiwyg-content-html
+      != $data('contentHTML')

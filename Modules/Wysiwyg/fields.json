@@ -5,11 +5,11 @@
       "label": "Default Theme",
       "type": "select",
       "choices": {
-        "default": "Default",
+        "": "---",
         "narrow": "Narrow"
       },
       "default_value": {
-        "default": "Default"
+        "": "---"
       }
     }
   ],
@@ -30,7 +30,6 @@
         "type": "select",
         "choices": {
           "": "---",
-          "default": "Default",
           "narrow": "Narrow"
         },
         "default_value": {
