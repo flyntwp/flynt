@@ -20,8 +20,8 @@ If you want to use fixed height for this module, enable the option in the styles
 
 
 ### Normal Image (Adaptive Height)
-```
-jade+picture($image, 'imageHero')
+```jade
++picture($image, 'imageHero')
 ```
 
 ### Fixed Image (Fixed Height)
