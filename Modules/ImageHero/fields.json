@@ -1,7 +1,7 @@
 {
   "layout": {
-    "name": "image",
-    "label": "Image",
+    "name": "imageHero",
+    "label": "Image Hero",
     "sub_fields": [
       {
         "label": "Image",

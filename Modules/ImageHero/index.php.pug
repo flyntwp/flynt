@@ -3,6 +3,6 @@ include ../MainLayout/PugMixins/picture.php.pug
 //- because you can´t pass the $data() function directly to a pug mixin
 - $image = $data('image')
 
-div(class=$data('baseClasses') is="wps-image")
+div(class=$data('baseClasses') is="wps-image-hero")
   .imageHero
     +picture($image, 'imageHero')

@@ -1,4 +1,4 @@
-Title: Image
+Title: Image Hero
 
 ----
 
