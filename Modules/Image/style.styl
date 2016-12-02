@@ -1,10 +1,11 @@
 $maxWidth = $global-layout-maxWidth is defined ? $global-layout-maxWidth : 1140px
 rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px 800px 1200px
 
-$useContainer = true
-$useFixedHeight = true
+$containerMaxWidth = 1440px
 $fixedHeightDesktop = 600px
 $fixedHeightMobile = 300px
+$useContainer = false
+$useFixedHeight = true
 
 [is='wps-image']
   *,
@@ -15,8 +16,13 @@ $fixedHeightMobile = 300px
   .imageHero
     if $useContainer
       center($maxWidth)
+    else
+      center($containerMaxWidth)
+      padding-left: 0
+      padding-right: 0
 
     &-container
+      display: block
       width: 100%
 
       if $fixedHeight
