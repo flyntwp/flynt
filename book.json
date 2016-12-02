@@ -1,0 +1,7 @@
+{
+  "root": "./docs",
+  "structure": {
+    "summary": "table-of-contents.md",
+    "readme": "introduction.md"
+  }
+}
