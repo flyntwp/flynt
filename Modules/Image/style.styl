@@ -1,11 +1,12 @@
 $maxWidth = $global-layout-maxWidth is defined ? $global-layout-maxWidth : 1140px
 rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px 800px 1200px
 
-$containerMaxWidth = 1440px
-$fixedHeightDesktop = 600px
-$fixedHeightMobile = 300px
-$useContainer = false
-$useFixedHeight = true
+$containerMaxWidth = 1440px       // Width for the container if not using a container
+$useContainer = false             // Use a container or a fluid wrapper
+
+$useFixedHeight = true            // Use a fixed height
+$fixedHeightDesktop = 600px       // Fixed Height for Desktop Resolutions
+$fixedHeightMobile = 300px        // Fixed Height for Mobile Resolutions
 
 [is='wps-image']
   *,
