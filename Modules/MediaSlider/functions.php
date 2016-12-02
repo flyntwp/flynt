@@ -11,6 +11,37 @@ add_filter('WPStarter/modifyModuleData?name=MediaSlider', function ($data) {
   //   $item['imageUrl'] = $item['image']['url'];
   //   return $item;
   // }, $data['items']);
+  $data['mediaSlides'] = [
+    [
+      'mediaType' => 'image',
+      'image' => [
+        'url' => 'http://placehold.it/1500x500'
+      ],
+      'titleText' => '1 Hello World'
+    ],
+    [
+      'mediaType' => 'image',
+      'image' => [
+        'url' => 'http://placehold.it/1500x500'
+      ],
+      'titleText' => '2 Hello World this is a bit longer'
+    ],
+    [
+      'mediaType' => 'image',
+      'image' => [
+        'url' => 'http://placehold.it/1500x500'
+      ],
+      'titleText' => '3 Lorem ipsum dolor sit amet'
+    ],
+    [
+      'mediaType' => 'image',
+      'image' => [
+        'url' => 'http://placehold.it/1500x500'
+      ],
+      'titleText' => '4 Hello World'
+    ]
+  ];
+
   return $data;
 });
 
@@ -30,11 +61,6 @@ add_action('wp_enqueue_scripts', function () {
       'name' => 'slick-carousel',
       'path' => 'vendor/slick.css',
       'type' => 'style'
-    ],
-    [
-      'name' => 'jquery-throttle-debounce',
-      'path' => 'vendor/jquery-throttle-debounce.js',
-      'type' => 'script'
     ]
   ]);
 });

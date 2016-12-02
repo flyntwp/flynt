@@ -3,13 +3,12 @@ import 'file-loader?name=vendor/normalize.css!normalize.css/normalize.css'
 // Webpack looks for dist file in package "main".
 import 'file-loader?name=vendor/slick.js!slick-carousel'
 import 'file-loader?name=vendor/slick.css!slick-carousel/slick/slick.css'
-import 'file-loader?name=vendor/jquery-throttle-debounce.js!jquery-throttle-debounce/jquery.ba-throttle-debounce'
 
 function importSlickFonts (fontName) { // eslint-disable-line no-unused-vars
   require(`file-loader?name=vendor/slick/[name].[ext]!slick-carousel/slick/fonts/${fontName}`)
 }
 
-class SliderCols extends window.HTMLDivElement {
+class MediaSlider extends window.HTMLDivElement {
   constructor (self) {
     self = super(self)
     self.$ = $(self)
@@ -20,7 +19,7 @@ class SliderCols extends window.HTMLDivElement {
   }
 
   resolveElements () {
-    this.$slider = $('.slider-row', this)
+    this.$mediaSlides = $('.mediaSlider-slides', this)
   }
 
   connectedCallback () {
@@ -29,20 +28,18 @@ class SliderCols extends window.HTMLDivElement {
   }
 
   setupSlider = () => {
+    this.$mediaSlides.slick()
     // if ($(window).width() < 800) {
     //   this.isMobile = true
-    //   if (!this.sliderInitialised) {
-    //     this.sliderInitialised = true
-    //     this.$slider.slick()
-    //   }
+    //
     // } else {
     //   this.isMobile = false
     //   if (this.sliderInitialised) {
     //     this.sliderInitialised = false
-    //     this.$slider.slick('unslick')
+    //     this.$mediaSlides.slick('unslick')
     //   }
     // }
   }
 }
 
-window.customElements.define('wps-slider-cols', SliderCols, {extends: 'div'})
+window.customElements.define('wps-media-slider', MediaSlider, {extends: 'div'})

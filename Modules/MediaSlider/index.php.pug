@@ -1,2 +1,10 @@
 div(class=$data('baseClasses') is='wps-media-slider')
-  .media-slider
+  .mediaSlider
+    ul.mediaSlider-slides
+      for mediaSlide in $data('mediaSlides')
+        li.mediaSlider-slide
+          if $mediaSlide['mediaType'] === 'image'
+            img.mediaSlider-slideImage(src=$mediaSlide['image']['url'])
+          else
+            //- oembed
+          .mediaSlider-slideTitle= $mediaSlide['titleText']
