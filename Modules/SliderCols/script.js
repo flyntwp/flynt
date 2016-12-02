@@ -13,9 +13,9 @@ class SliderCols extends window.HTMLDivElement {
   constructor (self) {
     self = super(self)
     self.$ = $(self)
-    this.sliderInitialised = false
-    this.isMobile = false
-    this.resolveElements()
+    self.sliderInitialised = false
+    self.isMobile = false
+    self.resolveElements()
     return self
   }
 

@@ -4,11 +4,11 @@ namespace WPStarterTheme\Modules\SliderCols;
 use WPStarterTheme\Helpers\Utils;
 use WPStarterTheme\Helpers\Module;
 
-add_filter('WPStarter/modifyModuleData?name=SliderCols', function($data) {
+add_filter('WPStarter/modifyModuleData?name=SliderCols', function ($data) {
   $data['exampleImgSrc'] = Utils::requireAssetUrl('Modules/SliderCols/assets/example.jpg');
 
-  $data['items'] = array_map(function($item) {
-    $item['imageUrl'] = $item['image']['sizes']['image-lg'];
+  $data['items'] = array_map(function ($item) {
+    $item['imageUrl'] = $item['image']['url'];
     return $item;
   }, $data['items']);
   return $data;
