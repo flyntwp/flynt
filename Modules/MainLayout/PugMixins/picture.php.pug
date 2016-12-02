@@ -10,8 +10,8 @@ mixin picture($image, $moduleName)
     img(class=$imageClass src=$image['sizes'][$image['imageConfig']['default']])&attributes(attributes)
     <![endif]-->
     <!--[if IE 9]>
-    img(class=$imageClass)&attributes(attributes)
+    img(class=$imageClass src=$image['sizes'][$image['imageConfig']['default']])&attributes(attributes)
     <![endif]-->
     <!--[if !IE]><!-->
-    img(class=$imageClass)&attributes(attributes)
+    img(class=$imageClass src=$image['sizes'][$image['imageConfig']['default']])&attributes(attributes)
     <!-- <![endif]-->

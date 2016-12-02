@@ -5,8 +5,8 @@ use WPStarterTheme\Helpers\Utils;
 use WPStarterTheme\Helpers\Module;
 use WPStarterTheme\Helpers\Log;
 
-add_image_size('wps-Image-lg', 1140, 700);
-add_image_size('wps-Image-sm', 768, 500);
+add_image_size('wpsImageLg', 1140, 700, true);
+add_image_size('wpsImageSm', 768, 500, true);
 
 add_filter('WPStarter/modifyModuleData?name=Image', function ($data) {
   Module::enqueueAssets('Image', [
@@ -18,11 +18,9 @@ add_filter('WPStarter/modifyModuleData?name=Image', function ($data) {
   ]);
 
   $imageConfig = [
-    'default' => 'medium',
+    'default' => 'wpsImageLg',
     'sizes' => [
-      'thumbnail' => '(max-width: 767px)',
-      'medium' => '(max-width: 1023px)',
-      'large' => '(max-width: 1199px)'
+      'wpsImageSm' => '(max-width: 767px)'
     ]
   ];
 
