@@ -1,0 +1,28 @@
+{
+  "options": [
+    {
+      "name": "defaultPosterImage",
+      "label": "Default Poster Image",
+      "type": "image",
+      "mime_types": "jpg,jpeg"
+    }
+  ],
+  "layout": {
+    "name": "oembed",
+    "label": "Oembed",
+    "sub_fields": [
+      {
+        "name": "posterImage",
+        "label": "Poster Image",
+        "type": "image",
+        "mime_types": "jpg,jpeg"
+      },
+      {
+        "label": "Oembed",
+        "name": "oembed",
+        "type": "oembed",
+        "required": 1
+      }
+    ]
+  }
+}
