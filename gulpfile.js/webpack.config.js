@@ -36,9 +36,6 @@ module.exports = function (config) {
       ]
     },
     resolve: {
-      alias: {
-        '$': 'jquery/dist/jquery'
-      },
       modulesDirectories: [
         'node_modules',
         'bower_components'

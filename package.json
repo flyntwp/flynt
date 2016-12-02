@@ -48,7 +48,8 @@
   },
   "standard": {
     "globals": [
-      "$"
+      "$",
+      "jQuery"
     ],
     "parser": "babel-eslint"
   }
