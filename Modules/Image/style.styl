@@ -1,0 +1,36 @@
+$maxWidth = $global-layout-maxWidth is defined ? $global-layout-maxWidth : 1140px
+rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px 800px 1200px
+
+$useContainer = true
+$useFixedHeight = true
+$fixedHeightDesktop = 600px
+$fixedHeightMobile = 300px
+
+[is='wps-image']
+  *,
+  *:before,
+  *:after
+    box-sizing: border-box
+
+  .imageHero
+    if $useContainer
+      center($maxWidth)
+
+    &-container
+      width: 100%
+
+      if $fixedHeight
+        height: $fixedHeightDesktop
+
+        +below(2)
+          height: $fixedHeightMobile
+
+    &-image
+      if $useFixedHeight
+        display: block
+        height: 100%
+        object-fit: cover
+        width: 100%
+      else
+        height: auto
+        max-width: 100%
