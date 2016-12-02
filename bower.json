@@ -17,6 +17,7 @@
     "tests"
   ],
   "dependencies": {
-    "jquery-throttle-debounce": "*"
+    "jquery-throttle-debounce": "*",
+    "objectFitPolyfill": "~2.0.1"
   }
 }
