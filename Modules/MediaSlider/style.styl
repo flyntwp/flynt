@@ -1,8 +1,13 @@
 $maxWidth = lookup('$global-layout-maxWidth') || 1140px
-rupture.scale = lookup('$global-layout-scale') || 0 400px 800px 1200px
+// Note: When passing multiple values capsule them with paranthesis
+rupture.scale = lookup('$global-layout-scale') || (0 400px 800px 1200px)
 
 $containerMaxWidth = 1440px // Width for the container if not using a container
 $useContainer = true // Use a container or a fluid wrapper
+
+$useFixedHeight = true // Use a fixed height
+$fixedHeightDesktop = 500px // Fixed Height for Desktop Resolutions
+$fixedHeightMobile = 300px // Fixed Height for Mobile Resolutions
 
 $slideTitleOverlay = false // Should the title overlay the media?
 $slideTitleOffset = 15px // Offset of the title to the edges of the slider
@@ -50,10 +55,6 @@ $arrowColor = #fff // Color of the arrows
       outline: 0
       position: relative
 
-    &-image
-      height: auto
-      max-width: 100%
-
     &-slideTitleWrapper
       text-align: center
       width: 100%
@@ -72,6 +73,27 @@ $arrowColor = #fff // Color of the arrows
       background: #fff
       display: inline-block
       padding: 10px
+
+    &-imageContainer
+      display: block
+      width: 100%
+
+      if $useFixedHeight
+        height: $fixedHeightDesktop
+
+        +below(2)
+          height: $fixedHeightMobile
+
+    &-imageElement
+      display: block
+
+      if $useFixedHeight
+        height: 100%
+        object-fit: cover
+        width: 100%
+      else
+        height: auto
+        max-width: 100%
 
     &-prevButton,
     &-nextButton

@@ -1,6 +1,6 @@
 mixin picture($image, $moduleName)
-  - $pictureContainerClass = $moduleName . '-container'
-  - $imageClass = $moduleName . '-image'
+  - $pictureContainerClass = $moduleName . '-imageContainer'
+  - $imageClass = $moduleName . '-imageElement'
   picture(class=$pictureContainerClass)
     <!--[if IE 9]><video style="display: none;"><![endif]-->
     each imageMedia, imageSize in $image['imageConfig']['sizes']
