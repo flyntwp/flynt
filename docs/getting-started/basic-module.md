@@ -108,6 +108,6 @@ div(is='flynt-main-template')
 
 Voilá! Check out the front-end of your site and admire your template in all its glory. In the next section we will tackle making this content dynamic - adding user-editable content fields and manipulating this data before passing it to the view.
 
-**[Go to Section 2](dynamic-module.md)**
+**[Go to Section Two](dynamic-module.md)**
 
 <!-- Stop looking at the source and go build some modules! ;-) -->
