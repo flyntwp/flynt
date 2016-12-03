@@ -33,7 +33,8 @@ class MediaSlider extends window.HTMLDivElement {
   }
 
   setupSlider = () => {
-    if (this.$slides.length < 1) {
+    console.log(this.$slides.length)
+    if (this.$slides.length > 1) {
       this.$mediaSlides.slick(slickConfiguration)
     }
   }
