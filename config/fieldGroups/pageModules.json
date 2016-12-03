@@ -9,13 +9,12 @@
       "button_label": "Add Module",
       "layouts": [
         "WPStarterTheme/Modules/ImageHero/Layout",
-        "WPStarterTheme/Modules/ImageHero/Layout",
         "WPStarterTheme/Modules/MediaSlider/Layout",
         "WPStarterTheme/Modules/MediaTextBlock/Layout",
+        "WPStarterTheme/Modules/Oembed/Layout",
         "WPStarterTheme/Modules/PageHeader/Layout",
         "WPStarterTheme/Modules/PostList/Layout",
         "WPStarterTheme/Modules/PostTeasers/Layout",
-        "WPStarterTheme/Modules/SliderCols/Layout",
         "WPStarterTheme/Modules/SliderCols/Layout",
         "WPStarterTheme/Modules/TeaserGrid/Layout",
         "WPStarterTheme/Modules/Wysiwyg/Layout"
