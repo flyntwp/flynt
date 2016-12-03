@@ -1,0 +1,18 @@
+include ../MainLayout/PugMixins/picture.php.pug
+
+div(is='wps-teaser-grid')
+  ul.teaserGrid
+    each teaser, index in $data('teaserItems')
+      if $teaser['linkType'] == 'externalLink'
+        - $image = $teaser['image']
+        li
+          a(href=$teaser['pageUrl'] title=$teaser['titleText'] target=$teaser['linkTarget'])
+            h3= $teaser['titleText']
+            +picture($image, 'teaserGrid')
+      if $teaser['linkType'] == 'internalLink'
+        - $post = $teaser['post']
+        - $image =  $post['post_thumbnail']
+        li
+          a(href=$post['post_url'] title= $post['post_title'] target=$teaser['linkTarget'])
+            h3= $teaser['post']['post_title']
+            +picture($image, 'teaserGrid')

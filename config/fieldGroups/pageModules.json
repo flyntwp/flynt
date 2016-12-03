@@ -6,13 +6,15 @@
       "name": "pageModules",
       "label": "Page Modules",
       "type": "flexible_content",
+      "button_label": "Add Module",
       "layouts": [
-        "WPStarterTheme/Modules/PageHeader/Layout",
-        "WPStarterTheme/Modules/PostTeasers/Layout",
-        "WPStarterTheme/Modules/PostList/Layout",
-        "WPStarterTheme/Modules/SliderCols/Layout",
         "WPStarterTheme/Modules/ImageHero/Layout",
-        "WPStarterTheme/Modules/MediaSlider/Layout"
+        "WPStarterTheme/Modules/MediaSlider/Layout",
+        "WPStarterTheme/Modules/PageHeader/Layout",
+        "WPStarterTheme/Modules/PostList/Layout",
+        "WPStarterTheme/Modules/PostTeasers/Layout",
+        "WPStarterTheme/Modules/SliderCols/Layout",
+        "WPStarterTheme/Modules/TeaserGrid/Layout"
       ]
     }
   ],
