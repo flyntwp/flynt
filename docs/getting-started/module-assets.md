@@ -1,12 +1,12 @@
-# 4. Adding Assets to a Module; Styles, Scripts, and Images
+# 5. Adding Assets to a Module; Styles, Scripts, and Images
 
 This tutorial covers:
-- [Adding Styles](#adding-styles)
-- [Adding Scripts](#adding-scripts)
-- [Adding and Registering Dependencies](#adding-and-registering-dependencies)
-- [Adding Static Assets](#adding-static-assets)
+- [5.1 Adding Styles](#51-adding-styles)
+- [5.2 Adding Scripts](#52-adding-scripts)
+- [5.3 Adding and Registering Dependencies](#53-adding-and-registering-dependencies)
+- [5.4 Adding Static Assets](#54-adding-static-assets)
 
-## Adding Styles
+## 5.1 Adding Styles
 Create a `style.styl` file in the ImageSlider module directory.
 
 ```
@@ -48,7 +48,7 @@ Open `ImageSlider/style.styl` and add the following styles.
 
 Refresh your page and admire the beauty of your module.
 
-## Adding Scripts
+## 5.2 Adding Scripts
 Create a `script.js` file in the ImageSlider module directory.
 
 ```
@@ -61,7 +61,7 @@ Create a `script.js` file in the ImageSlider module directory.
     | - script.js
 ```
 
-## Adding and Registering Dependencies
+## 5.3 Adding and Registering Dependencies
 Install and save the dependency using yarn.
 ```
 yarn add slick-carousel --D
@@ -96,7 +96,7 @@ add_action('wp_enqueue_scripts', function () {
 
 <!-- ### Custom Elements...? -->
 
-## Adding Static Assets
+## 5.4 Adding Static Assets
 Create an `Asset` directory in the ImageSlider module directory. Then, download and add `example.jpg` ([available here](/add-link)) to the new `Asset` directory.
 
 ```

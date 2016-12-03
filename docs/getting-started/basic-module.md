@@ -42,7 +42,7 @@ The source of this function can be found in the core Flynt Plugin. [You can read
 }
 ```
 
-For a detailed look at how these templates work, [you can read more here](). For now, it is only important to know that an area is a location within a module where it is possible to add other modules.
+For a detailed look at how these templates work, [you can read more here](/add-link). For now, it is only important to know that an area is a location within a module where it is possible to add other modules.
 
 ## 1.2 Creating your Module
 All modules are located in the `Modules` directory. Create a new folder in this directory with the name `ImageSlider`).
@@ -106,7 +106,13 @@ div(is='flynt-main-template')
       | Made with love by Flynt.
 ```
 
-Voilá! Check out the front-end of your site and admire your template in all its glory. In the next section we will tackle making this content dynamic - adding user-editable content fields and manipulating this data before passing it to the view.
+Voilá! Check out the front-end of your site and admire your template in all its glory.
+
+---
+
+## Next Steps
+
+In the next section we will tackle making this content dynamic - adding user-editable content fields and manipulating this data before passing it to the view.
 
 **[Go to Section Two](dynamic-module.md)**
 

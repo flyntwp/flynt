@@ -150,6 +150,10 @@ div(is='flynt-image-slider')
           img(src=$data(image, 'url'))
 ```
 
+---
+
+## Next Steps
+
 We now have a simple module that takes data from our fields and outputs them on the front-end!
 
 But what if we want do pull other data in our module? The next section explores passing additional data to our module using DataFilters.
