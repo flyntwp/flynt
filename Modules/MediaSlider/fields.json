@@ -59,12 +59,13 @@
             "return_format": "array",
             "preview_size": "thumbnail",
             "library": "all",
-            "min_width": 0,
+            "min_width": 1440,
+            "min_height": 720,
             "max_width": 0,
-            "min_height": 0,
             "max_height": 0,
             "min_size": 0,
             "max_size": 0,
+            "instructions": "Recommended Size: Min-Width 1440px; Min-Height: 720px; Image-Format: JPG",
             "mime_types": "jpg,jpeg"
           },
           {

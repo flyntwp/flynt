@@ -24,6 +24,7 @@ class MediaSlider extends window.HTMLDivElement {
     this.$mediaSlides = $('.mediaSlider-slides', this)
     this.$posterImage = $('.mediaSlider-oembedPosterImage', this)
     this.$oembedVideo = $('.mediaSlider-oembedVideo iframe', this)
+    this.$slides = $('.mediaSlider-slide', this)
   }
 
   connectedCallback () {
@@ -32,7 +33,9 @@ class MediaSlider extends window.HTMLDivElement {
   }
 
   setupSlider = () => {
-    this.$mediaSlides.slick(slickConfiguration)
+    if (this.$slides.length < 1) {
+      this.$mediaSlides.slick(slickConfiguration)
+    }
   }
 
   startVideo = () => {
