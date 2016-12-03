@@ -1,13 +1,13 @@
 # 1. Creating a Basic Module
 
 This tutorial covers:
-- [Configuring Page Templates](#page-templates-and-layout)
-- [Creating your Module](#creating-your-module)
-- [Rendering Your Module](#rendering-your-module)
+- [1.1 Configuring Page Templates](#11-configuring-page-templates)
+- [1.2 Creating your Module](#12-creating-your-module)
+- [1.3 Rendering Your Module](#13-rendering-your-module)
 
-Before you begin this tutorial, make sure you first follow the [setup instructions](../setup.md) and have your local environment up and running.
+**Before you begin this tutorial, make sure you first follow the [setup instructions](../setup.md) and have your local environment up and running.**
 
-## Configuring Page Templates
+## 1.1 Configuring Page Templates
 Before we get started with creating our module, it is important to first understand how page templates are configured.
 
 All template files in Flynt can be found under the theme root, in the `templates` directory. You can learn more about how Flynt handles page templates [here](../theme-development/page-templates.md).
@@ -44,7 +44,7 @@ The source of this function can be found in the core Flynt Plugin. [You can read
 
 For a detailed look at how these templates work, [you can read more here](). For now, it is only important to know that an area is a location within a module where it is possible to add other modules.
 
-## Creating your Module
+## 1.2 Creating your Module
 All modules are located in the `Modules` directory. Create a new folder in this directory with the name `ImageSlider`).
 
 Flynt uses [Pug PHP](https://github.com/pug-php) for templating. To add a template for your module, create an `index.php.pug` file within your new module folder. Your folder structure should now be:
@@ -66,7 +66,7 @@ div(is='flynt-image-slider')
 
 Done! Next we need to render our module to the page.
 
-## Rendering Your Module
+## 1.3 Rendering Your Module
 
 First we will create a new area for our Image Slider module. Open `config/templates/default.json` and add the new `pageModules` area as in the code below:
 

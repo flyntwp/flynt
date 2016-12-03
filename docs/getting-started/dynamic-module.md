@@ -1,31 +1,27 @@
 # 2. Adding ACF Fields and Manipulating Data
 
 This tutorial covers:
-- [Adding ACF Fields](#adding-fields)
-- [Adding a Field Group](#adding-a-field-group)
-- [Displaying Content with `$data()`](#displaying-content-with-data)
-- [Adding a DataFilter](#adding-a-datafilter)
-- [Modifying Data in `functions.php`](#modifying-data-in-functionsphp)
+- [2.1 Adding ACF Fields](#21-adding-fields)
+- [2.2 Adding a Field Group](#22-adding-a-field-group)
+- [2.3 Displaying Content with `$data()`](#23-displaying-content-with-data)
+- [2.4 Understanding the Flynt Data Flow](#24-understanding-the-flynt-data-flow)
+- [2.5 Taking our Module Further](#25-taking-our-module-further)
 
-**A requirement of this tutorial is using the Wordpress Plugin Advanced Custom Fields (ACF). Please make sure this is installed and enabled before continuing.**
+**A requirement of this tutorial is using the Wordpress Plugin [Advanced Custom Fields (ACF)](https://www.advancedcustomfields.com/). Please make sure this is installed and enabled before continuing.**
 
-## Adding ACF Fields
+## 2.1 Adding ACF Fields
 To get started, we will add a text field for our title. Create a `ImageSlider/fields.json` file and add the code below to it:
 
 ```json
 {
-  "layout": {
-    "name": "imageSlider",
-    "label": "Image Slider",
-    "sub_fields": [
-      {
-        "name": "title",
-        "label": "Title",
-        "type": "text",
-        "required": 1
-      }
-    ]
-  }
+  "fields": [
+    {
+      "name": "title",
+      "label": "Title",
+      "type": "text",
+      "required": 1
+    }
+  ]
 }
 ```
 
@@ -47,7 +43,7 @@ This functionality is driven by the Advanced Custom Fields (ACF) Wordpress plugi
 
 Before we can use these fields to add content, we first need to let Flynt know in which situations these fields should be available to the editor in the backend.
 
-## Adding a Field Group
+## 2.2 Adding a Field Group
 
 All field group configuration files can be found in the `config/fieldGroups` directory. For this tutorial we will modify the default `pageModules` configuration. Open `config/fieldGroups/pageModules.json` and replace the contents with the following:
 
@@ -56,7 +52,7 @@ All field group configuration files can be found in the `config/fieldGroups` dir
   "name": "pageModules",
   "title": "Page Modules",
   "fields": [
-    "Flynt/Modules/ImageSlider/Fields/Content"
+    "Flynt/Modules/ImageSlider/Fields"
   ],
   "location": [
     [
@@ -80,7 +76,7 @@ That's it! Navigate to the backend of your Wordpress installation and create a n
 
 Add "Our Image Gallery" into the title text field and press the "Update" button in the top right to save this content to the page. Next, we'll move on to displaying this content on the front-end.
 
-## Displaying Content with `$data()`
+## 2.3 Displaying Content with `$data()`
 Open up the `Modules/ImageSlider/index.php.pug` we made in the previous section.
 
 We can now display the title using the `$data()` function. This function takes the name of your field as a parameter and returns the value.
@@ -91,7 +87,7 @@ div(is='flynt-image-slider')
     h1.slider-title= $data('title')
 ```
 
-## Understanding the Flynt Data Flow
+## 2.4 Understanding the Flynt Data Flow
 
 At this point it is important to understand how this data is passed to the view "Behind the scenes". In actual fact, the data function uses the data passed to the template referenced by its keys. This can be understood much easier with the flowchart below:
 
@@ -117,30 +113,26 @@ At this point it is important to understand how this data is passed to the view 
 
 To dig into this more, read through the full flowchart in the [Flynt Plugin documentation](/add-link).
 
-### Taking our Module Further
+## 2.5 Taking our Module Further
 Since we are making an image slider, let's also add a gallery field to our module, again using the `field.json` file:
 
 ```json
 {
-  "layout": {
-    "name": "imageSlider",
-    "label": "Image Slider",
-    "sub_fields": [
-      {
-        "name": "title",
-        "label": "Title",
-        "type": "text",
-        "required": 1
-      },
-      {
-        "name": "images",
-        "label": "Images",
-        "type": "gallery",
-        "mime_types": "jpg, jpeg",
-        "required": 1
-      },
-    ]
-  }
+  "fields": [
+    {
+      "name": "title",
+      "label": "Title",
+      "type": "text",
+      "required": 1
+    },
+    {
+      "name": "images",
+      "label": "Images",
+      "type": "gallery",
+      "mime_types": "jpg, jpeg",
+      "required": 1
+    },
+  ]
 }
 ```
 
