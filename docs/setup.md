@@ -11,7 +11,7 @@ yarn
 ## Compile & Watch for Changes
 To build the theme files and setup the local server run:
 ```
-yarn run flynt
+yarn start
 ```
 
 We use [Browsersync](https://www.browsersync.io/) to watch our PHP, JS, and Stylus files, and compile and inject the changes.

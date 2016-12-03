@@ -1,4 +1,4 @@
-# 3. Adding Assets to a Module; Styles, Scripts, and Images
+# 4. Adding Assets to a Module; Styles, Scripts, and Images
 
 This tutorial covers:
 - [Adding Styles](#adding-styles)
@@ -97,7 +97,7 @@ add_action('wp_enqueue_scripts', function () {
 <!-- ### Custom Elements...? -->
 
 ## Adding Static Assets
-Create an `Asset` directory in the ImageSlider module directory. Then, download and add `example.jpg` ([available here](#)) to the new `Asset` directory.
+Create an `Asset` directory in the ImageSlider module directory. Then, download and add `example.jpg` ([available here](/add-link)) to the new `Asset` directory.
 
 ```
 - flynt-theme

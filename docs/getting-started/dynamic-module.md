@@ -15,7 +15,7 @@ To get started, we will add a text field for our title. Create a `ImageSlider/fi
 ```json
 {
   "layout": {
-    "name": "ImageSlider",
+    "name": "imageSlider",
     "label": "Image Slider",
     "sub_fields": [
       {
@@ -39,18 +39,91 @@ The folder structure will now resemble the following:
     | - index.php.pug
 ```
 
-That's it! Navigate to the backend of your Wordpress installation and create a new page. At the bottom, you'll now see a new section for your Image Slider module, with a field inside labeled "Title".
-
-**Add a screenshot here.**
+That's all we need to do to register a new field.
 
 This functionality is driven by the Advanced Custom Fields (ACF) Wordpress plugin, and there are many other field types available. Flynt supports all of the field types provided by ACF, as well as all of the default field options as provided by the plugin. To see the full list of available fields and their available options, check out the [official ACF documentation here](https://www.advancedcustomfields.com/resources/#field-types).
 
+<!-- - Extra: Add fields quicker using our acf-field-snippets. For atom + sublime text. Coming soon?! -->
+
+Before we can use these fields to add content, we first need to let Flynt know in which situations these fields should be available to the editor in the backend.
+
+## Adding a Field Group
+
+All field group configuration files can be found in the `config/fieldGroups` directory. For this tutorial we will modify the default `pageModules` configuration. Open `config/fieldGroups/pageModules.json` and replace the contents with the following:
+
+```json
+{
+  "name": "pageModules",
+  "title": "Page Modules",
+  "fields": [
+    "Flynt/Modules/ImageSlider/Fields/Content"
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "page"
+      }
+    ]
+  ]
+}
+```
+
+Here we are setting the location where the field group should be displayed to the "Page" post type.
+
+As with the field settings, we are writing our location rules using the configuration options provided by Advanced Custom Fields. To read more about this, check out the [official ACF documentation on location rules](https://www.advancedcustomfields.com/resources/custom-location-rules/).
+
+That's it! Navigate to the backend of your Wordpress installation and create a new page. At the bottom, you'll now see a new section for your Image Slider module with a field labeled "Title" inside.
+
+**Add a screenshot here.**
+
+Add "Our Image Gallery" into the title text field and press the "Update" button in the top right to save this content to the page. Next, we'll move on to displaying this content on the front-end.
+
+## Displaying Content with `$data()`
+Open up the `Modules/ImageSlider/index.php.pug` we made in the previous section.
+
+We can now display the title using the `$data()` function. This function takes the name of your field as a parameter and returns the value.
+
+```jade
+div(is='flynt-image-slider')
+  .slider
+    h1.slider-title= $data('title')
+```
+
+## Understanding the Flynt Data Flow
+
+At this point it is important to understand how this data is passed to the view "Behind the scenes". In actual fact, the data function uses the data passed to the template referenced by its keys. This can be understood much easier with the flowchart below:
+
+```
+ Insert the goods here ;)
+
+[ template configuration ]
+
+[ ParentData? ]
+
+[ InitialModuleConfig? ]
+
+[ DataFilters + DataFilterArgs ]
+
+[ CustomData ]
+
+[ modifyModuleData filter ]
+
+[ pass data to template ]
+
+[ rendered html ]
+```
+
+To dig into this more, read through the full flowchart in the [Flynt Plugin documentation](/add-link).
+
+### Taking our Module Further
 Since we are making an image slider, let's also add a gallery field to our module, again using the `field.json` file:
 
 ```json
 {
   "layout": {
-    "name": "ImageSlider",
+    "name": "imageSlider",
     "label": "Image Slider",
     "sub_fields": [
       {
@@ -71,35 +144,22 @@ Since we are making an image slider, let's also add a gallery field to our modul
 }
 ```
 
-Again, open up your new page in the backend, and you will now see our new gallery field, with the label "Images". Next, we need some sample content. Add "Our Image Gallery" into the title text field, and then two images into the image gallery. For ease, we have prepared some sample images that you can [download here](#). (Source: [Unsplash](https://unsplash.com).)
+Open up your page in the backend and you will now see our new gallery field, with the label "Images". Add some sample images to the field and save your page. For ease, we have prepared some images that you can [download here](/add-link). (Source: [Unsplash](https://unsplash.com).)
 
-Press the "Update" button to save the content to the page. Next, we will move on to displaying this content on the front-end.
+In `Modules/ImageSlider/index.php.pug`, we can now loop over our images, again using the `$data` function to output our data.
 
-<!-- - Extra: Add fields quicker using our acf-field-snippets. For atom + sublime text. Coming soon?! -->
-
-## Adding a Field Group
-
-## Displaying Content with `$data()`
-
-
-## Adding a DataFilter
-In `config/templates/default.json`:
-```php
-{
-  "name": "ImageSlider",
-  "dataFilter": "Flynt/DataFilters/ImageSliderFilter"
-}
+```jade
+div(is='flynt-image-slider')
+  .slider
+    h1.slider-title= $data('title')
+    .slider-items
+      for image in $data('images')
+        .slider-item
+          img(src=$data(image, 'url'))
 ```
 
-In `ImageSlider/functions.php`:
-```php
-add_filter('Flynt/DataFilters/ImageSliderFilter', function($data) {
-  $data['foo'] = 'bar';
-  return $data;
-});
-```
+We now have a simple module that takes data from our fields and outputs them on the front-end!
 
-- link to advanced: custom data.
-- link to advanced: adding arguments to the data filter?
+But what if we want do pull other data in our module? The next section explores passing additional data to our module using DataFilters.
 
-## Modifying Data in `functions.php`
+**[Go to Section Three](datafilters.md)**

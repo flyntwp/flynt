@@ -19,7 +19,7 @@ For this tutorial we will be using the default `template/page.php` template. Thi
 Flynt\echoHtmlFromConfigFile('default.json');
 ```
 
-The source of this function can be found in the core Flynt Plugin. [You can read more about it in the plugin documentation](#). For now, you should know that our template config is actually loaded from `config/templates/default.json`. Here we store our default page layout:
+The source of this function can be found in the core Flynt Plugin. [You can read more about it in the plugin documentation](/add-link). For now, you should know that our template config is actually loaded from `config/templates/default.json`. Here we store our default page layout:
 
 ```json
 {
@@ -106,6 +106,8 @@ div(is='flynt-main-template')
       | Made with love by Flynt.
 ```
 
-Voilá! Check out the front-end of your site and admire your "Hello World" Image Slider in all its glory. In the next section we will tackle making this content dynamic; adding user-editable content fields and manipulating this data before passing it to the view. [Go to Section 2](dynamic-module.md)
+Voilá! Check out the front-end of your site and admire your template in all its glory. In the next section we will tackle making this content dynamic - adding user-editable content fields and manipulating this data before passing it to the view.
+
+**[Go to Section 2](dynamic-module.md)**
 
 <!-- Stop looking at the source and go build some modules! ;-) -->
