@@ -9,7 +9,7 @@ class Oembed extends window.HTMLDivElement {
   }
 
   resolveElements () {
-    this.$posterImage = $('.oembed-poster-image', this)
+    this.$posterImage = $('.oembed-posterImage', this)
     this.$video = $('.oembed-video', this)
     this.$iframe = $('iframe', this)
   }

@@ -5,8 +5,8 @@ include ../MainLayout/PugMixins/picture.php.pug
 
 div(class=$data('baseClasses') is="wps-oembed")
   .oembed
-    .oembed-video-container
-      .oembed-poster-image
+    .oembed-videoContainer
+      .oembed-posterImage
         +picture($image, 'oembed')
       .oembed-video
         !=$data('oembed')
