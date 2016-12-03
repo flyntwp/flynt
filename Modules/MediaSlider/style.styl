@@ -24,10 +24,8 @@ $slideDotColor = #fff // Color of the dot
 $arrowSize = 2em // Size of the arrows
 $arrowColor = #fff // Color of the arrows
 
-$trasitionTime = .3s // Transition timing for animations
-$transitionEasing = ease // Transition Easing
-$buttonColor = $global-color-play-button is defined ? $global-color-play-button : #f00 // Play Button Color
-$triangleColor = $global-color-triangle is defined ? $global-color-triangle : #fff // Play Button Triangle Color
+$playTriangleColor = #fff // Color of the play triangle
+$playButtonColor = rgba(0, 0, 0, .5) // Color of the play bubble
 
 @font-face
   font-family: 'slick'
@@ -129,12 +127,12 @@ $triangleColor = $global-color-triangle is defined ? $global-color-triangle : #f
         left: 50%
         position: absolute
         top: 50%
-        transition: transform $trasitionTime $transitionEasing
+        transition: transform .2s ease
       }
 
       &::before
         {$pseudoElements}
-        background-color: $buttonColor
+        background-color: $playButtonColor
         border-radius: 50px
         content: ''
         height: 100px
@@ -149,7 +147,7 @@ $triangleColor = $global-color-triangle is defined ? $global-color-triangle : #f
       &::after
         {$pseudoElements}
         border-bottom: 20px solid transparent
-        border-left: 40px solid $triangleColor
+        border-left: 40px solid $playTriangleColor
         border-top: 20px solid transparent
         content: ''
         height: 0
@@ -158,9 +156,13 @@ $triangleColor = $global-color-triangle is defined ? $global-color-triangle : #f
 
         +below('s')
           border-bottom: 12px solid transparent
-          border-left: 20px solid $triangleColor
+          border-left: 20px solid $playTriangleColor
           border-top: 12px solid transparent
           margin: -10px 0 0 -8px
+
+      &:before,
+      &:after
+        z-index: 100
 
       &:hover::before,
       &:hover::after
