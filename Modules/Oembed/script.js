@@ -1,5 +1,3 @@
-import 'file-loader?name=vendor/jquery.fitvids.js!fitvids/jquery.fitvids.js'
-
 class Oembed extends window.HTMLDivElement {
   constructor (self) {
     self = super(self)
@@ -15,7 +13,6 @@ class Oembed extends window.HTMLDivElement {
   }
 
   connectedCallback () {
-    this.$.fitVids()
     this.$posterImage.on('click', (e) => {
       this.startVideo()
     })

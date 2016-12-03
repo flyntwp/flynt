@@ -77,7 +77,17 @@ rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px
         visibility: hidden
 
     &-video
+      height: 0
+      padding-bottom: percentage(9 / 16)
       visibility: hidden
 
       &.isActive
         visibility: visible
+
+      iframe
+        display: block
+        height: 100%
+        left: 0
+        position: absolute
+        top: 0
+        width: 100%
