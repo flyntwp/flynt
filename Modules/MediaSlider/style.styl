@@ -1,4 +1,5 @@
 $maxWidth = lookup('$global-layout-maxWidth') || 1140px
+$gutterWidth = lookup('$global-layout-gutterWidth') || 15px
 // Note: When passing multiple values capsule them with paranthesis
 rupture.scale = lookup('$global-layout-scale') || (0 400px 800px 1200px)
 
@@ -40,7 +41,7 @@ $arrowColor = #fff // Color of the arrows
     position: relative
 
     if $useContainer
-      center($maxWidth)
+      center($maxWidth, $gutterWidth)
     else
       center($containerMaxWidth)
       padding-left: 0
