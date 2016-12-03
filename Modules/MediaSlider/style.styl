@@ -24,6 +24,11 @@ $slideDotColor = #fff // Color of the dot
 $arrowSize = 2em // Size of the arrows
 $arrowColor = #fff // Color of the arrows
 
+$trasitionTime = .3s // Transition timing for animations
+$transitionEasing = ease // Transition Easing
+$buttonColor = $global-color-play-button is defined ? $global-color-play-button : #f00 // Play Button Color
+$triangleColor = $global-color-triangle is defined ? $global-color-triangle : #fff // Play Button Triangle Color
+
 @font-face
   font-family: 'slick'
   font-weight: normal
@@ -46,6 +51,8 @@ $arrowColor = #fff // Color of the arrows
       center($containerMaxWidth)
       padding-left: 0
       padding-right: 0
+
+    @import "./sliderStyling"
 
     &-slides
       list-style: none
@@ -96,65 +103,78 @@ $arrowColor = #fff // Color of the arrows
         height: auto
         max-width: 100%
 
-    &-prevButton,
-    &-nextButton
-      background: transparent
-      border: 0
-      color: $arrowColor
-      cursor: pointer
-      font-family: 'slick'
-      font-size: $arrowSize
-      margin: auto
-      opacity: 1
-      outline: 0
+    &-oembedVideo
+      height: 0
+      padding-bottom: percentage(9 / 16)
+
+    &-oembedVideo iframe
+      display: block
+      height: 100%
+      left: 0
       position: absolute
-      top: 50%
-      transform: translateY(-100%)
-      transition: all .25s
-      visibility: visible
-      z-index: 2
-
-      &.slick-disabled
-        opacity: 0
-        visibility: hidden
-
-    &-prevButton
-      left: 15px
-
-    &-nextButton
-      right: 15px
-
-    .slick-dots
-      list-style: none
-      margin: 0
-      padding: 0
-      text-align: center
+      top: 0
       width: 100%
 
-      if $slideDotsOverlay
-        position: absolute
-        left: 0
-
-        if $slideDotsVerticalPosition is 'top'
-          top: $slideDotsOffset
-        else
-          bottom: $slideDotsOffset
-
-    .slick-dots > li
-      display: inline-block
-      margin: 0 $slideDotsSpacing
-
-    .slick-dots > li button
-      background: transparent
-      border-radius: 50%
-      border: 2px solid $slideDotColor
-      color: transparent
+    &-oembedPosterImage
       cursor: pointer
-      display: block
-      height: $slideDotsSize
-      outline: 0
-      padding: 0
-      width: $slideDotsSize
+      height: 100%
+      left: 0
+      overflow: hidden
+      position: absolute
+      top: 0
+      width: 100%
+      z-index: 2
 
-    .slick-dots > li.slick-active button
-      background: $slideDotColor
+      $pseudoElements = {
+        left: 50%
+        position: absolute
+        top: 50%
+        transition: transform $trasitionTime $transitionEasing
+      }
+
+      &::before
+        {$pseudoElements}
+        background-color: $buttonColor
+        border-radius: 50px
+        content: ''
+        height: 100px
+        margin: -50px 0 0 -50px
+        width: 100px
+
+        +below('s')
+          height: 60px
+          margin: -30px 0 0 -30px
+          width: 60px
+
+      &::after
+        {$pseudoElements}
+        border-bottom: 20px solid transparent
+        border-left: 40px solid $triangleColor
+        border-top: 20px solid transparent
+        content: ''
+        height: 0
+        margin: -20px 0 0 -15px
+        width: 0
+
+        +below('s')
+          border-bottom: 12px solid transparent
+          border-left: 20px solid $triangleColor
+          border-top: 12px solid transparent
+          margin: -10px 0 0 -8px
+
+      &:hover::before,
+      &:hover::after
+        transform: scale(1.1)
+
+    &-oembedPosterImage-isHidden
+      display: none
+
+    &-oembedPosterImage .mediaSlider-imageContainer
+      height: 100%
+      position: relative
+
+    &-oembedPosterImage .mediaSlider-imageElement
+      height: auto
+
+    &-oembedVideoContainer
+      position: relative

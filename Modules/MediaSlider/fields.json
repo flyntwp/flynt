@@ -65,16 +65,7 @@
             "max_height": 0,
             "min_size": 0,
             "max_size": 0,
-            "mime_types": "jpg,jpeg",
-            "conditional_logic": [
-              [
-                {
-                  "fieldPath": "mediaType",
-                  "operator": "==",
-                  "value": "image"
-                }
-              ]
-            ]
+            "mime_types": "jpg,jpeg"
           },
           {
             "label": "Oembed",

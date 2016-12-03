@@ -22,14 +22,24 @@ class MediaSlider extends window.HTMLDivElement {
 
   resolveElements () {
     this.$mediaSlides = $('.mediaSlider-slides', this)
+    this.$posterImage = $('.mediaSlider-oembedPosterImage', this)
+    this.$oembedVideo = $('.mediaSlider-oembedVideo iframe', this)
   }
 
   connectedCallback () {
     this.setupSlider()
+    this.$posterImage.on('click', this.startVideo.bind(this))
   }
 
   setupSlider = () => {
     this.$mediaSlides.slick(slickConfiguration)
+  }
+
+  startVideo = () => {
+    const iframeSrc = this.$oembedVideo.attr('src')
+
+    this.$posterImage.addClass('mediaSlider-oembedPosterImage-isHidden')
+    this.$oembedVideo.attr('src', iframeSrc + '&autoplay=true')
   }
 }
 

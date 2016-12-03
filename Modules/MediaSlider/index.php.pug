@@ -2,6 +2,7 @@ include ../MainLayout/PugMixins/picture.php.pug
 
 - $mediaSliderTitle = true //- Show a title/caption for the Media Slider - true | false
 - $mediaSliderTitlePosition = 'below' //- Should the Media Slider Title be above or below the slide? - above | below
+- $mediaSliderUsePoster = true
 
 div(is='wps-media-slider')
   .mediaSlider
@@ -11,11 +12,17 @@ div(is='wps-media-slider')
           - if $mediaSliderTitle && $mediaSliderTitlePosition == 'above'
             .mediaSlider-slideTitleWrapper
               .mediaSlider-slideTitle= $mediaSlide['titleText']
+          - $image = $mediaSlide['image']
           if $mediaSlide['mediaType'] === 'image'
-            - $image = $mediaSlide['image']
             +picture($image, 'mediaSlider')
           else
-            //- oembed
+            .mediaSlider-oembed
+              .mediaSlider-oembedVideoContainer
+                - if $mediaSliderUsePoster
+                  .mediaSlider-oembedPosterImage
+                    +picture($image, 'mediaSlider')
+                .mediaSlider-oembedVideo
+                  != $mediaSlide['oembed']
           - if $mediaSliderTitle && $mediaSliderTitlePosition == 'below'
             .mediaSlider-slideTitleWrapper
               .mediaSlider-slideTitle= $mediaSlide['titleText']
