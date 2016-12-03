@@ -33,17 +33,20 @@ class MediaSlider extends window.HTMLDivElement {
   }
 
   setupSlider = () => {
-    console.log(this.$slides.length)
     if (this.$slides.length > 1) {
       this.$mediaSlides.slick(slickConfiguration)
     }
   }
 
-  startVideo = () => {
-    const iframeSrc = this.$oembedVideo.attr('src')
-
-    this.$posterImage.addClass('mediaSlider-oembedPosterImage-isHidden')
-    this.$oembedVideo.attr('src', iframeSrc + '&autoplay=true')
+  startVideo = (e) => {
+    const $currentPosterImage = $(e.target)
+    let $iframe =
+      $(e.target)
+      .closest('.mediaSlider-oembedVideoContainer')
+      .find('iframe')
+    const iframeSrc = $iframe.data('src')
+    $iframe.attr('src', iframeSrc)
+    $currentPosterImage.addClass('mediaSlider-oembedPosterImage-isHidden')
   }
 }
 

@@ -15,14 +15,14 @@ div(is='wps-media-slider')
           - $image = $mediaSlide['image']
           if $mediaSlide['mediaType'] === 'image'
             +picture($image, 'mediaSlider')
-          else
+          if $mediaSlide['mediaType'] === 'oembed'
             .mediaSlider-oembed
               .mediaSlider-oembedVideoContainer
                 - if $mediaSliderUsePoster
                   .mediaSlider-oembedPosterImage
                     +picture($image, 'mediaSlider')
                 .mediaSlider-oembedVideo
-                  != $mediaSlide['oembed']
+                  != $mediaSlide['oembedLazyLoad']
           - if $mediaSliderTitle && $mediaSliderTitlePosition == 'below'
             .mediaSlider-slideTitleWrapper
               .mediaSlider-slideTitle= $mediaSlide['titleText']

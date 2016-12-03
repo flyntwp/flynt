@@ -19,10 +19,11 @@ class Oembed extends window.HTMLDivElement {
   }
 
   startVideo = () => {
-    const $autoplay = this.$iframe.attr('src') + '&autoplay=1'
+    // const $autoplay = this.$iframe.attr('src')
+    this.$iframe.attr('src', this.$iframe.data('src'))
     this.$posterImage.addClass('isHidden')
     this.$video.addClass('isActive')
-    this.$iframe.attr('src', $autoplay)
+    // this.$iframe.attr('src', $autoplay)
   }
 }
 

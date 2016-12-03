@@ -19,11 +19,9 @@ class MediaTextBlock extends window.HTMLDivElement {
   }
 
   startVideo = () => {
-    const $autoplay = this.$iframe.attr('src') + '&autoplay=1'
-
+    this.$video.attr('src', this.$video.data('src'))
     this.$posterImage.addClass('isHidden')
     this.$video.addClass('isActive')
-    this.$iframe.attr('src', $autoplay)
   }
 }
 

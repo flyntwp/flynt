@@ -4,6 +4,7 @@ namespace WPStarterTheme\Modules\MediaSlider;
 use WPStarterTheme\Helpers\Utils;
 use WPStarterTheme\Helpers\Log;
 use WPStarterTheme\Helpers\Module;
+use WPStarterTheme\Helpers\DomNode;
 
 add_image_size('wpsMediaSliderLg', 1140, 700, true);
 add_image_size('wpsMediaSliderSm', 768, 500, true);
@@ -18,6 +19,16 @@ add_filter('WPStarter/modifyModuleData?name=MediaSlider', function ($data) {
 
   $data['mediaSlides'] = array_map(function ($item) use ($imageConfig) {
     $item['image']['imageConfig'] = $imageConfig;
+    if($item['mediaType'] == 'oembed') {
+      $item['oembedLazyLoad'] = DomNode::setSrcDataAttribute(
+        $item['oembed'],
+        'iframe',
+        'src',
+        [
+          'autoplay' => 'true'
+        ]
+      );
+    }
     return $item;
   }, $data['mediaSlides']);
 

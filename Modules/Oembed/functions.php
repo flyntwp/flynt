@@ -1,7 +1,9 @@
 <?php
 namespace WPStarterTheme\Modules\Oembed;
 
+use WPStarterTheme\Helpers\Log;
 use WPStarterTheme\Helpers\Module;
+use WPStarterTheme\Helpers\DomNode;
 
 add_image_size('wpsOembedLg', 1140, 700, true);
 add_image_size('wpsOembedXs', 768, 500, true);
@@ -25,6 +27,15 @@ add_filter('WPStarter/modifyModuleData?name=Oembed', function ($data) {
       'wpsOembedXs' => '(max-width: 767px)'
     ]
   ];
+
+  $data['oembedLazyLoad'] = DomNode::setSrcDataAttribute(
+    $data['oembed'],
+    'iframe',
+    'src',
+    [
+      'autoplay' => 'true'
+    ]
+  );
 
   $data['posterImage']['imageConfig'] = $imageConfig;
 
