@@ -54,15 +54,15 @@ Flynt uses [Pug PHP](https://github.com/pug-php) for templating. To add a templa
     | - index.php.pug
 ```
 
-Now we need some test data. Open `MediaSlider/index.php.pug` and enter the following code:
+For now we'll need some dummy data to our view template (we'll come back to make this an interactive slider in [section 3 of this tutorial](module-assets.md)). Open `MediaSlider/index.php.pug` and enter the following code:
 
 ```jade
-.post-list
+.media-slider
   .post
     h1.post-title Hello World!
 ```
 
-Next we need to render our module to the page.
+Done! Next we need to render our module to the page.
 
 ## Rendering Your Module
 
@@ -99,8 +99,6 @@ Now that we have registered our area, we need to output it. Open the `Modules/Te
       | Made with love by Flynt.
 ```
 
-Voilá! Check out the front-end of your site and admire your "Hello World" Media Slider in all its glory.
-
-Next we will use Advanced Custom Fields to add some user-editable content fields to the Wordpress backend.
+Voilá! Check out the front-end of your site and admire your "Hello World" Media Slider in all its glory. In the next section we will tackle making this content dynamic; adding user-editable content fields and manipulating this data before passing it to the view. [Go to Section 2](dynamic-module.md)
 
 <!-- Stop looking at the source and go build some modules! ;-) -->

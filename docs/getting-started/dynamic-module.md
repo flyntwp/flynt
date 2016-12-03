@@ -1,4 +1,4 @@
-# 2. Adding dynamic content with Advanced Custom Fields (ACF)
+# 2. Adding and Manipulating Dynamic Content
 
 This tutorial covers:
 - [Adding Fields](#adding-fields)
