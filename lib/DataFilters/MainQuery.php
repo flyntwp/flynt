@@ -95,8 +95,6 @@ class MainQuery {
     if (empty($id)) {
       return null;
     }
-    // $fieldObjects = apply_filters('WPStarterTheme/DataFilter/MainQuery/ModifyAcfFieldObjectsForPost', get_field_objects($id), $id);
-    // $fields = apply_filters('WPStarterTheme/DataFilter/MainQuery/ModifyAcfFieldsForPost', get_fields($id), $id);
     $fields = get_fields($id);
     return empty($fields) ? [] : $fields;
   }
