@@ -16,18 +16,17 @@ add_filter('WPStarter/modifyModuleData?name=TeaserGrid', function ($data) {
   ];
 
   $data['teaserItems'] = array_map(function ($item) use ($imageConfig) {
-    switch ($item['linkType']) {
-      case 'internalLink':
-        $item['post'] = MainQuery::addAdditionalDefaultDataSinglePost($item['post']);
-        $item['post']['post_thumbnail']['imageConfig'] = $imageConfig;
-        break;
-      case 'externalLink':
-        $item['image']['imageConfig'] = $imageConfig;
-        break;
+
+    if ($item['linkType'] == 'internalLink') {
+      $item['post'] = MainQuery::addAdditionalDefaultDataSinglePost($item['post']);
+      $item['post']['post_thumbnail']['imageConfig'] = $imageConfig;
+    }
+
+    if ($item['linkType'] == 'externalLink') {
+      $item['image']['imageConfig'] = $imageConfig;
     }
 
     return $item;
-
   }, $data['teaserItems']);
 
   return $data;
