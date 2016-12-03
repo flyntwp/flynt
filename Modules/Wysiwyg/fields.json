@@ -8,9 +8,7 @@
         "": "---",
         "narrow": "Narrow"
       },
-      "default_value": {
-        "": "---"
-      }
+      "default_value": ""
     }
   ],
   "layout": {
@@ -32,9 +30,7 @@
           "": "---",
           "narrow": "Narrow"
         },
-        "default_value": {
-          "": "---"
-        }
+        "default_value": ""
       }
     ]
   }
