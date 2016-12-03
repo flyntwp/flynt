@@ -2,10 +2,10 @@ include ../MainLayout/PugMixins/picture.php.pug
 - $image = $data('image')
 - $posterImage = $data('posterImage')
 
-div(class=$data('baseClasses') is="wps-media-text-block")
+div(is='wps-media-text-block')
   .mediaTextBlock(class=$data('mediaPosition'))
     .mediaTextBlock-columnMedia
-      if($data('mediaType') == "mediaImage")
+      if $data('mediaType') == 'mediaImage'
         .mediaTextBlock-image
           +picture($image, 'mediaTextBlock')
       else

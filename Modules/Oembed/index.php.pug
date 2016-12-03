@@ -3,7 +3,7 @@ include ../MainLayout/PugMixins/picture.php.pug
 //- because you can´t pass the $data() function directly to a pug mixin
 - $image = $data('posterImage')
 
-div(class=$data('baseClasses') is="wps-oembed")
+div(is='wps-oembed')
   .oembed
     .oembed-videoContainer
       .oembed-posterImage
