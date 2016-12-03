@@ -1,17 +1,17 @@
 mixin picture($image, $moduleName)
-  - $pictureContainerClass = $moduleName . '-container'
-  - $imageClass = $moduleName . '-image'
+  - $pictureContainerClass = $moduleName . '-imageContainer'
+  - $imageClass = $moduleName . '-imageElement'
   picture(class=$pictureContainerClass)
     <!--[if IE 9]><video style="display: none;"><![endif]-->
     each imageMedia, imageSize in $image['imageConfig']['sizes']
       source(srcset=$image['sizes'][$imageSize] media=$imageMedia)
     <!--[if IE 9]></video><![endif]-->
     <!--[if lt IE 9]>
-    img(class=$imageClass src=$image['sizes'][$image['imageConfig']['default']])&attributes(attributes)
+    img(class=$imageClass src=$image['sizes'][$image['imageConfig']['default']] alt=$image['alt'])&attributes(attributes)
     <![endif]-->
     <!--[if IE 9]>
-    img(class=$imageClass src=$image['sizes'][$image['imageConfig']['default']])&attributes(attributes)
+    img(class=$imageClass src=$image['sizes'][$image['imageConfig']['default']] alt=$image['alt'])&attributes(attributes)
     <![endif]-->
     <!--[if !IE]><!-->
-    img(class=$imageClass src=$image['sizes'][$image['imageConfig']['default']])&attributes(attributes)
+    img(class=$imageClass src=$image['sizes'][$image['imageConfig']['default']] alt=$image['alt'])&attributes(attributes)
     <!-- <![endif]-->

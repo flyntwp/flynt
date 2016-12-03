@@ -1,4 +1,5 @@
 $maxWidth = $global-layout-maxWidth is defined ? $global-layout-maxWidth : 1140px
+$gutterWidth = lookup('$global-layout-gutterWidth') || 15px
 rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px 800px 1200px
 
 $containerMaxWidth = 1440px // Width for the container if not using a container
@@ -16,13 +17,13 @@ $fixedHeightMobile = 300px // Fixed Height for Mobile Resolutions
 
   .imageHero
     if $useContainer
-      center($maxWidth)
+      center($maxWidth, $gutterWidth)
     else
       center($containerMaxWidth)
       padding-left: 0
       padding-right: 0
 
-    &-container
+    &-imageContainer
       display: block
       width: 100%
 
@@ -32,9 +33,10 @@ $fixedHeightMobile = 300px // Fixed Height for Mobile Resolutions
         +below(2)
           height: $fixedHeightMobile
 
-    &-image
+    &-imageElement
+      display: block
+
       if $useFixedHeight
-        display: block
         height: 100%
         object-fit: cover
         width: 100%

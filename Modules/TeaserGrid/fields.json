@@ -1,0 +1,124 @@
+{
+  "options": [
+    {
+      "default_value": 4,
+      "label": "Teaser Count",
+      "name": "teaserCount",
+      "type": "number",
+      "min": 1,
+      "required": 1
+    }
+  ],
+  "layout": {
+    "name": "teaserGrid",
+    "label": "Teaser Grid",
+    "sub_fields": [
+      {
+        "label": "Teasers",
+        "name": "teaserItems",
+        "type": "repeater",
+        "collapsed": "",
+        "min": 0,
+        "max": 0,
+        "layout": "row",
+        "button_label": "Add Teaser",
+        "sub_fields": [
+          {
+            "label": "Link Type",
+            "name": "linkType",
+            "type": "select",
+            "choices": {
+              "internalLink": "Internal Link",
+              "externalLink": "External Link"
+            },
+            "default_value": "internalLink",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0
+          },
+          {
+            "label": "Post",
+            "name": "post",
+            "type": "post_object",
+            "post_type": [
+              "post"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1,
+            "conditional_logic": [
+              [
+                {
+                  "fieldPath": "linkType",
+                  "operator": "==",
+                  "value": "internalLink"
+                }
+              ]
+            ]
+          },
+          {
+            "label": "Title",
+            "name": "titleText",
+            "type": "text",
+            "conditional_logic": [
+              [
+                {
+                  "fieldPath": "linkType",
+                  "operator": "==",
+                  "value": "externalLink"
+                }
+              ]
+            ]
+          },
+          {
+            "label": "Page Url",
+            "name": "pageUrl",
+            "type": "url",
+            "conditional_logic": [
+              [
+                {
+                  "fieldPath": "linkType",
+                  "operator": "==",
+                  "value": "externalLink"
+                }
+              ]
+            ]
+          },
+          {
+            "label": "Link Target",
+            "name": "linkTarget",
+            "type": "select",
+            "choices": {
+              "": "Same window",
+              "_blank": "New window"
+            },
+            "default_value": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1
+          },
+          {
+            "label": "Image",
+            "name": "image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "mime_types": "jpg,jpeg",
+            "conditional_logic": [
+              [
+                {
+                  "fieldPath": "linkType",
+                  "operator": "==",
+                  "value": "externalLink"
+                }
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
