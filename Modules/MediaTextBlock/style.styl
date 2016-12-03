@@ -1,0 +1,113 @@
+$trasitionTime = .3s
+$transitionEasing = ease
+$buttonColor = $global-color-play-button is defined ? $global-color-play-button : #f00
+$triangleColor = $global-color-triangle is defined ? $global-color-triangle : #fff
+$gutterWidth = $global-layout-gutterWidth is defined ? $global-layout-gutterWidth : 15px
+$maxWidth = $global-layout-maxWidth is defined ? $global-layout-maxWidth : 1140px
+rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px 800px 1200px
+
+[is='wps-media-text-block']
+  *,
+  *:before,
+  *:after
+    box-sizing: border-box
+
+  img
+    height: auto
+    width: 100%
+
+  .mediaTextBlock
+    center($maxWidth, $gutterWidth)
+
+    &-columnMedia,
+    &-columnContentHtml
+      column(1/2, $gutter:2)
+
+      +below('s')
+        stack()
+
+    &.mediaRight
+      .mediaTextBlock-columnMedia
+        move(1/2)
+
+      .mediaTextBlock-columnContentHtml
+        move(-1/2)
+
+      .mediaTextBlock-columnMedia,
+      .mediaTextBlock-columnContentHtml
+        +below('s')
+          unmove()
+
+    &-oembedVideoContainer
+      position: relative
+
+    &-oembedPosterImage
+      bottom: 0
+      cursor: pointer
+      left: 0
+      position: absolute
+      right: 0
+      top: 0
+      transition: visibility $trasitionTime $transitionEasing
+      visibility: visible
+      z-index: 1
+
+      $pseudoElements = {
+        left: 50%
+        position: absolute
+        top: 50%
+        transition: transform $trasitionTime $transitionEasing
+      }
+
+      &::before
+        {$pseudoElements}
+        background-color: $buttonColor
+        border-radius: 50px
+        content: ''
+        height: 100px
+        margin: -50px 0 0 -50px
+        width: 100px
+
+        +below('s')
+          height: 60px
+          margin: -30px 0 0 -30px
+          width: 60px
+
+      &::after
+        {$pseudoElements}
+        border-bottom: 20px solid transparent
+        border-left: 40px solid $triangleColor
+        border-top: 20px solid transparent
+        content: ''
+        height: 0
+        margin: -20px 0 0 -15px
+        width: 0
+
+        +below('s')
+          border-bottom: 12px solid transparent
+          border-left: 20px solid $triangleColor
+          border-top: 12px solid transparent
+          margin: -10px 0 0 -8px
+
+      &:hover::before,
+      &:hover::after
+        transform: scale(1.1)
+
+      &.isHidden
+        visibility: hidden
+
+    &-oembedVideo
+      height: 0
+      padding-bottom: percentage(9 / 16)
+      visibility: hidden
+
+      &.isActive
+        visibility: visible
+
+      iframe
+        display: block
+        height: 100%
+        left: 0
+        position: absolute
+        top: 0
+        width: 100%

@@ -1,0 +1,102 @@
+{
+  "options": [
+    {
+      "name": "defaultPosterImage",
+      "label": "Default Poster Image",
+      "type": "image",
+      "mime_types": "jpg,jpeg",
+      "instructions": "Image-Format: JPG"
+    }
+  ],
+  "layout": {
+    "name": "mediaTextBlock",
+    "label": "Media Text Block",
+    "sub_fields": [
+      {
+        "name": "settingsTab",
+        "label": "Settings",
+        "type": "tab"
+      },
+      {
+        "name": "mediaPosition",
+        "label": "Media Position",
+        "type": "select",
+        "choices": {
+          "mediaLeft": "Left",
+          "mediaRight": "Right"
+        },
+        "default_value": ""
+      },
+      {
+        "name": "mediaType",
+        "label": "Media Type",
+        "type": "select",
+        "choices": {
+          "mediaImage": "Image",
+          "mediaVideo": "Video"
+        },
+        "default_value": ""
+      },
+      {
+        "name": "contentTab",
+        "label": "Content",
+        "type": "tab"
+      },
+      {
+        "name": "image",
+        "label": "Image",
+        "type": "image",
+        "instructions": "Image-Format: JPG",
+        "mime_types": "jpg,jpeg",
+        "required": 1,
+        "conditional_logic": [
+          [
+            {
+              "fieldPath": "mediaType",
+              "operator": "==",
+              "value": "mediaImage"
+            }
+          ]
+        ]
+      },
+      {
+        "name": "posterImage",
+        "label": "Poster Image",
+        "type": "image",
+        "instructions": "Image-Format: JPG",
+        "mime_types": "jpg,jpeg",
+        "conditional_logic": [
+          [
+            {
+              "fieldPath": "mediaType",
+              "operator": "==",
+              "value": "mediaVideo"
+            }
+          ]
+        ]
+      },
+      {
+        "label": "Oembed",
+        "name": "oembed",
+        "type": "oembed",
+        "required": 1,
+        "conditional_logic": [
+          [
+            {
+              "fieldPath": "mediaType",
+              "operator": "==",
+              "value": "mediaVideo"
+            }
+          ]
+        ]
+      },
+      {
+        "name": "contentHTML",
+        "label": "Content",
+        "type": "wysiwyg",
+        "media_upload": 0,
+        "required": 1
+      }
+    ]
+  }
+}
