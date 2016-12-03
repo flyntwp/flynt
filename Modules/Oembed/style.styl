@@ -2,6 +2,7 @@ $trasitionTime = .3s
 $transitionEasing = ease
 $buttonColor = $global-color-play-button is defined ? $global-color-play-button : #f00
 $triangleColor = $global-color-triangle is defined ? $global-color-triangle : #fff
+$gutterWidth = $global-layout-gutterWidth is defined ? $global-layout-gutterWidth : 15px
 $maxWidth = $global-layout-maxWidth is defined ? $global-layout-maxWidth : 1140px
 rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px 800px 1200px
 
@@ -16,7 +17,7 @@ rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px
     width: 100%
 
   .oembed
-    center($maxWidth)
+    center($maxWidth, $gutterWidth)
 
     &-videoContainer
       position: relative
@@ -25,6 +26,7 @@ rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px
       bottom: 0
       cursor: pointer
       left: 0
+      overflow: hidden
       position: absolute
       right: 0
       top: 0
