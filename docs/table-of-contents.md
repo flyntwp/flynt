@@ -9,3 +9,4 @@
   * [4. Tutorial Recap and Further Reading](getting-started/recap.md)
 * [Theme Development](theme-development/readme.md)
   * [Page Templates](theme-development/page-templates.md)
+* [Frequently Asked Questions (FAQ)](faq/readme.md)

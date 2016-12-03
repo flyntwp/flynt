@@ -4,5 +4,13 @@
     "summary": "table-of-contents.md",
     "readme": "introduction.md",
     "glossary": "glossary.md"
+  },
+  "plugins": ["prism", "-highlight"],
+  "pluginsConfig": {
+    "prism": {
+      "css": [
+        "prismjs/themes/prism-okaidia.css"
+      ]
+    }
   }
 }
