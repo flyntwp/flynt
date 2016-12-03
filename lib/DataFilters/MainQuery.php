@@ -64,6 +64,23 @@ class MainQuery {
     return $posts;
   }
 
+  public static function addAdditionalDefaultDataSinglePost($post) {
+    $post = json_decode(json_encode($post), true);
+    $post['post_thumbnail'] = self::addPostThumbnail($post);
+    $post['post_category'] = self::addPostCategory($post);
+    $post['post_tags'] = self::addPostTags($post);
+    $post['post_url'] = self::addPostPermalink($post);
+    $post['post_date'] = self::addPostDate($post, array(
+      'key' => 'post_date',
+      'fmt' => '%d. %B %Y'
+    ));
+    if (class_exists('acf')) {
+      $post = array_merge($post, self::getDataFromAcf($post['ID']));
+    }
+
+    return $post;
+  }
+
   protected static function getDataFromAcf($id = null) {
     // for caching
     if (!self::$bleechAcfFieldsQueried) {
@@ -78,8 +95,27 @@ class MainQuery {
     if (empty($id)) {
       return null;
     }
+    // $fieldObjects = apply_filters('WPStarterTheme/DataFilter/MainQuery/ModifyAcfFieldObjectsForPost', get_field_objects($id), $id);
+    // $fields = apply_filters('WPStarterTheme/DataFilter/MainQuery/ModifyAcfFieldsForPost', get_fields($id), $id);
     $fields = get_fields($id);
     return empty($fields) ? [] : $fields;
+  }
+
+  protected static function cacheSinglePostImages($post) {
+    $ids = array();
+    $postId = $post['ID'];
+
+    if (has_post_thumbnail($postId)) {
+      $ids[] = (int) get_post_thumbnail_id($postId);
+    }
+
+    new WP_Query( array(
+      'post_type' => 'attachment',
+      'posts_per_page' => -1,
+      'post_status' => 'any',
+      'post__in' => $ids
+    ) );
+    wp_reset_query();
   }
 
   protected static function cachePostImages($posts) {
