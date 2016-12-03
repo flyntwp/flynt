@@ -22,24 +22,20 @@
         "label": "Media Position",
         "type": "select",
         "choices": {
-          "left": "Left",
-          "right": "Right"
+          "mediaLeft": "Left",
+          "mediaRight": "Right"
         },
-        "default_value": {
-          "left": "Left"
-        }
+        "default_value": ""
       },
       {
         "name": "mediaType",
         "label": "Media Type",
         "type": "select",
         "choices": {
-          "image": "Image",
-          "video": "Video"
+          "mediaImage": "Image",
+          "mediaVideo": "Video"
         },
-        "default_value": {
-          "image": "Image"
-        }
+        "default_value": ""
       },
       {
         "name": "contentTab",
@@ -58,7 +54,7 @@
             {
               "fieldPath": "mediaType",
               "operator": "==",
-              "value": "image"
+              "value": "mediaImage"
             }
           ]
         ]
@@ -74,7 +70,7 @@
             {
               "fieldPath": "mediaType",
               "operator": "==",
-              "value": "video"
+              "value": "mediaVideo"
             }
           ]
         ]
@@ -89,7 +85,7 @@
             {
               "fieldPath": "mediaType",
               "operator": "==",
-              "value": "video"
+              "value": "mediaVideo"
             }
           ]
         ]

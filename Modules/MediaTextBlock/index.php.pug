@@ -1,8 +1,18 @@
-p=$data('mediaPosition')
-p=$data('mediaType')
-if($data('mediaType') == "image")
-  img(src=$data('image', 'sizes', 'medium'))
-else
-  img(src=$data('posterImage', 'sizes', 'medium'))
-  p!=$data('oembed')
-p!=$data('contentHTML')
+include ../MainLayout/PugMixins/picture.php.pug
+- $image = $data('image')
+- $posterImage = $data('posterImage')
+
+div(class=$data('baseClasses') is="wps-media-text-block")
+  .mediaTextBlock(class=$data('mediaPosition'))
+    .mediaTextBlock-columnMedia
+      if($data('mediaType') == "mediaImage")
+        .mediaTextBlock-image
+          +picture($image, 'mediaTextBlock')
+      else
+        .mediaTextBlock-oembedVideoContainer
+          .mediaTextBlock-oembedPosterImage
+            +picture($posterImage, 'mediaTextBlock')
+          .mediaTextBlock-oembedVideo
+            !=$data('oembed')
+    .mediaTextBlock-columnContentHtml
+      !=$data('contentHTML')
