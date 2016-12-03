@@ -44,9 +44,13 @@ class Core {
 
   public static function iterateDirectory($dir, callable $callback, $fileExtension = null) {
 
-    $directoryIterator = new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS);
-
     $output = [];
+
+    if (!is_dir($dir)) {
+      return $output;
+    }
+
+    $directoryIterator = new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS);
 
     foreach ($directoryIterator as $name => $file) {
       if (!is_null($fileExtension)) {
