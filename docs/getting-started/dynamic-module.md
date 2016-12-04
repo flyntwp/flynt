@@ -72,7 +72,7 @@ As with the field settings, we are writing our location rules using the configur
 
 That's it! Navigate to the backend of your Wordpress installation and create a new page. At the bottom, you'll now see a new section for your Image Slider module with a field labeled "Title" inside.
 
-**Add a screenshot here.**
+![Title Field Screenshot](../assets/first-module-field.png)
 
 Add "Our Image Gallery" into the title text field and press the "Update" button in the top right to save this content to the page. Next, we'll move on to displaying this content on the front-end.
 

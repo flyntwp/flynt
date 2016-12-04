@@ -18,7 +18,7 @@ This chapter will cover making a simple module from start to finish in six secti
 
 #### [4. Modifying Data with `functions.php` and `modifyModuleData`](modify-data.md)
 
-#### [5. Adding Assets to a Module; Styles, Scripts, and Images](module-assets.md)
+#### [5. Adding Assets to a Module](module-assets.md)
 * [5.1 Adding Styles](module-assets.md#51-adding-styles)
 * [5.2 Adding Scripts](module-assets.md#52-adding-scripts)
 * [5.3 Adding and Registering Dependencies](module-assets.md#53-adding-and-registering-dependencies)

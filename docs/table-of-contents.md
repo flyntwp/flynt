@@ -7,7 +7,7 @@
   * [2. Adding ACF Fields and Manipulating Data](getting-started/dynamic-module.md)
   * [3. Using DataFilters](getting-started/datafilters.md)
   * [4. Modifying Data with `functions.php` and `modifyModuleData`](getting-started/modify-data.md)
-  * [5. Adding Assets to a Module; Styles, Scripts, and Images](getting-started/module-assets.md)
+  * [5. Adding Assets to a Module](getting-started/module-assets.md)
   * [6. Tutorial Recap and Further Reading](getting-started/recap.md)
 * [Theme Development](theme-development/readme.md)
   * [Page Templates](theme-development/page-templates.md)

@@ -6,7 +6,7 @@ Our module is now functional, but looking at our existing view template, we are 
 div(is='flynt-image-slider')
   ...
   .slider-meta
-    p This gallery was last edited on: #{$data('lastEditedDate')}
+    p.slider-date This gallery was last edited on: #{$data('lastEditedDate')}
 ```
 
 The ideal would be to make this text dynamic, but still let the editor insert the `lastEditedDate` where appropriate.
@@ -49,8 +49,7 @@ Then, open `Modules/ImageSlider/functions.php` and add the code below:
 
 ```php
   <?php
-
-  use WPStarterTheme\Helpers\Module;
+  namespace WPStarterTheme\Modules\ImageSlider;
 
   add_filter('WPStarter/modifyModuleData?name=ImageSlider', function ($data) {
     $data['lastEditedText'] = str_replace('$date', $data['lastEditedDate'], $data['lastEditedText'])
@@ -69,9 +68,9 @@ div(is='flynt-image-slider')
     .slider-items
       for image in $data('images')
         .slider-item
-          img(src=$data(image, 'url'))
+          img.slider-image(src=$data(image, 'url'))
     .slider-meta
-      p= $data('lastEditedText')
+      p.slider-date= $data('lastEditedText')
 ```
 
 We're done! Our editor can now change and re-word the last edited text as they wish, adding in the last edited date wherever they need.
