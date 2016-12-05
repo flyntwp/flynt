@@ -3,8 +3,8 @@
 There are two main options when it comes to setting up the Flynt Theme:
 
 ### A. Setup with existing tools
-#### Trellis
-#### Scotchbox
+#### [Trellis](https://roots.io/trellis/)
+#### [Scotchbox](https://box.scotch.io/)
 
 ### B. Set it up yourself
 
@@ -17,8 +17,8 @@ There are two main options when it comes to setting up the Flynt Theme:
 - PHPCS (optional - if you want to test / for developing the boilerplate | theme only)
 
 ## Setting up the project (& installing plugins)
-git clone or copy the boilerplate repo
-- composer install (in boilerplate)
+1. `git clone` or copy the boilerplate repo
+2. `composer install` (in boilerplate)
   - also installs sub packages (currently submodules) theme and plugins
-- create db
-- install wordpress via UI (install.php)
+3. Create db
+4. Install wordpress via UI (install.php)
