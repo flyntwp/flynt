@@ -1,3 +1,8 @@
+.book-summary ul.summary li.active > a,
+.markdown-section a {
+  color: #558c89;
+}
+
 .markdown-section a.btn {
   display: inline-block;
   padding: 10px 20px;
