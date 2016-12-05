@@ -5,7 +5,7 @@
     "readme": "introduction.md",
     "glossary": "glossary.md"
   },
-  "plugins": ["prism", "-highlight"],
+  "plugins": ["prism", "-highlight", "word-count"],
   "pluginsConfig": {
     "prism": {
       "css": [
