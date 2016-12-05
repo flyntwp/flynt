@@ -20,7 +20,7 @@ add_filter('WPStarter/modifyModuleData?name=MediaTextBlock', function ($data) {
     $data['posterImage'] = get_field('defaultPosterImage', 'options');
   }
 
-  if($data['mediaType'] === 'mediaVideo') {
+  if ($data['mediaType'] === 'mediaVideo') {
     $data['oembedLazyLoad'] = DomNode::setSrcDataAttribute(
       $data['oembed'],
       'iframe',

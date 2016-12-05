@@ -19,7 +19,7 @@ add_filter('WPStarter/modifyModuleData?name=MediaSlider', function ($data) {
 
   $data['mediaSlides'] = array_map(function ($item) use ($imageConfig) {
     $item['image']['imageConfig'] = $imageConfig;
-    if($item['mediaType'] == 'oembed') {
+    if ($item['mediaType'] == 'oembed') {
       $item['oembedLazyLoad'] = DomNode::setSrcDataAttribute(
         $item['oembed'],
         'iframe',
