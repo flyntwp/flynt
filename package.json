@@ -38,6 +38,7 @@
     "gulp-stylus": "^2.6.0",
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.10",
+    "hasbin": "^1.2.3",
     "jeet": "^7.0.0",
     "jquery": "^1.12.4",
     "normalize.css": "^5.0.0",
