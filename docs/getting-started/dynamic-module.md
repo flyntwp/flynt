@@ -1,7 +1,7 @@
 # 2. Adding ACF Fields and Manipulating Data
 
 This tutorial covers:
-- [2.1 Adding ACF Fields](#21-adding-fields)
+- [2.1 Adding ACF Fields](#21-adding-acf-fields)
 - [2.2 Adding a Field Group](#22-adding-a-field-group)
 - [2.3 Displaying Content with `$data()`](#23-displaying-content-with-data)
 - [2.4 Understanding the Flynt Data Flow](#24-understanding-the-flynt-data-flow)
@@ -10,7 +10,7 @@ This tutorial covers:
 **A requirement of this tutorial is using the Wordpress Plugin [Advanced Custom Fields (ACF)](https://www.advancedcustomfields.com/). Please make sure this is installed and enabled before continuing.**
 
 ## 2.1 Adding ACF Fields
-To get started, we will add a text field for our title. Create a `ImageSlider/fields.json` file and add the code below to it:
+To get started, we will add a text field for our title. Create the `Modules/ImageSlider/fields.json` file and add the code below to it:
 
 ```json
 {
@@ -65,6 +65,8 @@ All field group configuration files can be found in the `config/fieldGroups` dir
   ]
 }
 ```
+
+<!-- TODO: explain the fields/modules/imageslider/fields line.  -->
 
 Here we are setting the location where the field group should be displayed to the "Page" post type.
 

@@ -7,7 +7,9 @@ This tutorial covers:
 - [5.4 Adding Static Assets](#54-adding-static-assets)
 
 ## 5.1 Adding Styles
-Each module can have a self-contained style file. To get started, create `Modules/ImageSlider/style.styl` and add the styles below:
+Each module can have a self-contained style file. By default, Flynt supports vanilla CSS files, and Stylus. In this tutorial, we will use Stylus. [You can learn how to switch the styling language here](../theme-development/switching-styling-language.md).
+
+To get started, create `Modules/ImageSlider/style.styl` and add the styles below:
 
 ```stylus
 [is='flynt-image-slider']
@@ -47,7 +49,7 @@ In summary, the `ImageSlider/functions.php` file should now look like the follow
   use WPStarterTheme\Helpers\Module;
 
   add_filter('WPStarter/modifyModuleData?name=ImageSlider', function ($data) {
-    $data['lastEditedText'] = str_replace('$date', $data['lastEditedDate'], $data['lastEditedText'])
+    $data['lastEditedText'] = str_replace('$date', $data['lastEditedDate'], $data['lastEditedText']);
     return $data;
   }, 10, 2);
 
@@ -60,6 +62,7 @@ Refresh your page and you will now see our new styles.
 
 <!-- TODO: Talk about [is=''] syntax for styling  -->
 <!-- TODO: Talk about maintainableCSS as a recommendation  -->
+<!-- TODO: Talk briefly about enqueueStyles, and link to enqueueStyles explanation in the plugin documentation.  -->
 
 ## 5.2 Adding Scripts
 Just as with our styles, scripts live at the Module level and are completely self contained. Create the `Modules/ImageSlider/script.js` file and add the following code:
@@ -91,7 +94,7 @@ This is our basic recommended Javascript Custom Element starting template. Befor
 In order to turn our images into a real slider, we'll use Yarn to add [Slick Carousel](https://www.google.de/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwiZmZ_T1NjQAhUlAZoKHUEcC04QFgggMAA&url=http%3A%2F%2Fkenwheeler.github.io%2Fslick%2F&usg=AFQjCNGx_jdVLP__MakcyBIdSRV4kKFe2Q&sig2=zh58rnGs2haFdG1tRv7UXA) to our module. In your terminal, in the theme folder, run this command:
 
 ```
-yarn add slick-carousel --D
+yarn add slick-carousel -D
 ```
 
 Now we need to import this dependency into our module. First, we will let Flynt know which scripts and styles from slick need copying into the `build/vendor` folder. Do this by adding the below code to the top of the `Modules/ImageSlider/script.js` file:
@@ -159,7 +162,66 @@ Create an `Asset` directory in the ImageSlider module directory. Then, download 
   | - ImageSlider
     | - Assets
       | - example.jpg
-    | - index.php.pug
-    | - style.styl
-    | - script.js
+```
+
+When gulp is running, any image (JPG, JPEG, PNG, GIF) or SVG file placed into this folder will be automatically copied to the corresponding folder within `dist`.
+
+In our case, `example.jpg` will be copied to `dist/Modules/ImageSlider/Assets/example.jpg`.
+
+For caching purposes, all static assets are automatically revisioned by gulp (for example, `example.jpg` → `example-d41d8cd98f.jpg`).
+
+As such, to include assets in a module, it is necessary to use the `requireAssetUrl` function. This is a utility function provided by the Flynt Core plugin. You can read more about this in the [Flynt Core plugin documentation](/add-link).
+
+To use this, open `Modules/ImageSlider/functions.php`.
+
+At the top of the file, we need to `use` our `Utils` helpers:
+
+```php
+<?php
+namespace WPStarterTheme\Modules\ImageSlider;
+
+use WPStarterTheme\Helpers\Utils;
+...
+```
+
+Then, we will set the image source by calling the `requireAssetUrl` function with our image file path:
+ and then add the asset to our module data within the `modifyModuleData` filter.
+
+```php
+ add_filter('WPStarter/modifyModuleData?name=ImageSlider', function ($data) {
+   $data['imgSrc'] = Utils::requireAssetUrl('Modules/ImageSlider/Assets/example.jpg');
+   ...
+   return $data;
+ }, 10, 2);
+```
+
+In summary, the `Modules/ImageSlider/functions.php` should now match the below code:
+
+```php
+<?php
+namespace WPStarterTheme\Modules\ImageSlider;
+
+use WPStarterTheme\Helpers\Utils;
+use WPStarterTheme\Helpers\Module;
+
+add_filter('WPStarter/modifyModuleData?name=ImageSlider', function ($data) {
+  $data['imgSrc'] = Utils::requireAssetUrl('Modules/ImageSlider/Assets/example.jpg');
+  $data['lastEditedText'] = str_replace('$date', $data['lastEditedDate'], $data['lastEditedText']);
+  return $data;
+}, 10, 2);
+
+add_action('wp_enqueue_scripts', function () {
+  Module::enqueueAssets('ImageSlider', [
+    [
+      'name' => 'slick-carousel',
+      'path' => 'vendor/slick.js',
+      'type' => 'script'
+    ],
+    [
+      'name' => 'slick-carousel',
+      'path' => 'vendor/slick.css',
+      'type' => 'style'
+    ]
+  ]);
+});
 ```
