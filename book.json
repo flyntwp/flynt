@@ -2,9 +2,9 @@
   "root": "./docs",
   "structure": {
     "summary": "table-of-contents.md",
-    "readme": "introduction.md",
     "glossary": "glossary.md"
   },
+  "gitbook": "3.1.1",
   "plugins": ["prism", "-highlight", "word-count"],
   "pluginsConfig": {
     "prism": {
