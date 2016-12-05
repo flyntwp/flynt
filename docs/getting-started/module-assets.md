@@ -225,3 +225,9 @@ add_action('wp_enqueue_scripts', function () {
   ]);
 });
 ```
+
+---
+
+## Next Steps
+
+<a href="recap.md" class="btn btn-primary">Go to Section 7</a>

@@ -1,0 +1,23 @@
+.markdown-section a.btn {
+  display: inline-block;
+  padding: 10px 20px;
+}
+
+.markdown-section a.btn-primary {
+  background-color: #558c89;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color .2s ease;
+}
+
+.markdown-section a.btn-primary:hover,
+.markdown-section a.btn-primary:focus {
+  background-color: #74afad;
+  text-decoration: none;
+}
+
+.markdown-section code[class*="language-"],
+.markdown-section pre[class*="language-"] {
+  margin: 1.5em 0;
+}

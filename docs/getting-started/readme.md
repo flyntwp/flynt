@@ -2,6 +2,7 @@
 
 This chapter will cover making a simple module from start to finish. The goal is to introduce key Flynt concepts whilst still leaving you with a usable module at the end of each part.
 
+
 #### [1. Key Terms](key-terms.md)
 
 #### [2. Creating a Basic Module](basic-module.md)

@@ -114,6 +114,4 @@ Voilá! Check out the front-end of your site and admire your template in all its
 
 In the next section we will tackle making this content dynamic - adding user-editable content fields and manipulating this data before passing it to the view.
 
-**[Go to Section Two](dynamic-module.md)**
-
-<!-- Stop looking at the source and go build some modules! ;-) -->
+<a href="dynamic-module.md" class="btn btn-primary">Go to Section 3</a>

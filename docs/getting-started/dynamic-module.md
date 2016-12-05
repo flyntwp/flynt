@@ -160,4 +160,4 @@ We now have a simple module that takes data from our fields and outputs them on 
 
 But what if we want do pull other data in our module? The next section explores passing additional data to our module using DataFilters.
 
-**[Go to Section Three](datafilters.md)**
+<a href="datafilters.md" class="btn btn-primary">Go to Section 4</a>

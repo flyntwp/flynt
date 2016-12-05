@@ -81,4 +81,4 @@ We're done! Our editor can now change and re-word the last edited text as they w
 
 We have covered the core concepts of building a dynamic content driven module. What's missing is front-end flare. To round up the series we'll dive into assets and how we require styles, scripts, and images.
 
-**[Go to Section Five](module-assets.md)**
+<a href="module-assets.md" class="btn btn-primary">Go to Section 5</a>

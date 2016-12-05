@@ -56,4 +56,4 @@ This is only a basic introduction to the power that such data filters afford. Fu
 
 We'll take our module further and improve on the above, taking advantage of the modules `functions.php` to add even more flexibility.
 
-**[Go to Section 4](/modify-data.md)**
+<a href="modify-data.md" class="btn btn-primary">Go to Section 5</a>
