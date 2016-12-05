@@ -12,6 +12,8 @@
 * [Theme Development](theme-development/readme.md)
   * [Folder Structure](theme-development/folder-structure.md)
   * [Page Templates](theme-development/page-templates.md)
+  * [Changing Styling Language](theme-development/changing-styling-language.md)
+  * [Changing Templating Language](theme-development/changing-templating-language.md)
   * [Advanced](theme-development/advanced/readme.md)
     * [Dynamic Submodules](theme-development/advanced/dynamic-submodules.md)
     * [Using Flexible Content with ACF Pro](theme-development/advanced/flexible-content.md)
@@ -20,3 +22,4 @@
     * [Custom Post Types](theme-development/advanced/custom-post-types.md)
     * [Options Pages](theme-development/advanced/options-pages.md)
 * [Frequently Asked Questions](faq/readme.md)
+* [Glossary](glossary.md)
