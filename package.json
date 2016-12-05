@@ -6,7 +6,8 @@
   "author": "Dominik Tränklein <dominik@bleech.de>",
   "license": "MIT",
   "scripts": {
-    "start": "check-node-version --package && gulp"
+    "start": "check-node-version --package && gulp",
+    "build": "check-node-version --package && NODE_ENV=production gulp build"
   },
   "devDependencies": {
     "babel-core": "^6.18.2",
