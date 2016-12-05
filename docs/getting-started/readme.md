@@ -1,6 +1,20 @@
-# Getting Started
+# 0. Overview
 
 This chapter will cover making a simple module from start to finish in six sections. The goal is to introduce key Flynt concepts whilst still leaving you with a usable module at the end of each part.
+
+## Useful Terms
+
+There are some key terms and concepts that need to be understood before continuing.
+
+### Module
+TODO: Explain the module concept briefly...
+
+### Area
+An area is a location within a module where it is possible to add other modules.
+
+---
+
+## Tutorial Overview
 
 #### [1. Creating a Basic Module](basic-module.md)
 * [1.1 Configuring Page Templates](basic-module.md#11-configuring-page-templates)

@@ -1,4 +1,4 @@
-# 5. Tutorial Recap and Further Reading
+# 6. Tutorial Recap and Further Reading
 
 
-Lorem ipsum...! :-)
+TODO: Section 6 on further reading.
