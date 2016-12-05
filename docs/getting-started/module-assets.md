@@ -1,12 +1,12 @@
-# 5. Adding Assets to a Module
+# 6. Adding Assets to a Module
 
 This tutorial covers:
-- [5.1 Adding Styles](#51-adding-styles)
-- [5.2 Adding Scripts](#52-adding-scripts)
-- [5.3 Adding and Registering Dependencies](#53-adding-and-registering-dependencies)
-- [5.4 Adding Static Assets](#54-adding-static-assets)
+- [6.1 Adding Styles](#61-adding-styles)
+- [6.2 Adding Scripts](#62-adding-scripts)
+- [6.3 Adding and Registering Dependencies](#63-adding-and-registering-dependencies)
+- [6.4 Adding Static Assets](#64-adding-static-assets)
 
-## 5.1 Adding Styles
+## 6.1 Adding Styles
 Each module can have a self-contained style file. By default, Flynt supports vanilla CSS files, and Stylus. In this tutorial, we will use Stylus. [You can learn how to switch the styling language here](../theme-development/switching-styling-language.md).
 
 To get started, create `Modules/ImageSlider/style.styl` and add the styles below:
@@ -64,7 +64,7 @@ Refresh your page and you will now see our new styles.
 <!-- TODO: Talk about maintainableCSS as a recommendation  -->
 <!-- TODO: Talk briefly about enqueueStyles, and link to enqueueStyles explanation in the plugin documentation.  -->
 
-## 5.2 Adding Scripts
+## 6.2 Adding Scripts
 Just as with our styles, scripts live at the Module level and are completely self contained. Create the `Modules/ImageSlider/script.js` file and add the following code:
 
 ```js
@@ -90,7 +90,7 @@ window.customElements.define('flynt-image-slider', SliderCols, {extends: 'div'})
 
 This is our basic recommended Javascript Custom Element starting template. Before continuing we strongly recommended reading [Google's Getting Started Primer for Web Components](https://developers.google.com/web/fundamentals/getting-started/primers/customelements). However, we will build upon this template in the coming sections.
 
-## 5.3 Adding and Registering Dependencies
+## 6.3 Adding and Registering Dependencies
 In order to turn our images into a real slider, we'll use Yarn to add [Slick Carousel](https://www.google.de/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwiZmZ_T1NjQAhUlAZoKHUEcC04QFgggMAA&url=http%3A%2F%2Fkenwheeler.github.io%2Fslick%2F&usg=AFQjCNGx_jdVLP__MakcyBIdSRV4kKFe2Q&sig2=zh58rnGs2haFdG1tRv7UXA) to our module. In your terminal, in the theme folder, run this command:
 
 ```
@@ -153,7 +153,7 @@ class ImageSlider extends window.HTMLDivElement {
 window.customElements.define('flynt-image-slider', SliderCols, {extends: 'div'})
 ```
 
-## 5.4 Adding Static Assets
+## 6.4 Adding Static Assets
 Create an `Asset` directory in the ImageSlider module directory. Then, download and add `example.jpg` ([available here](/add-link)) to the new `Asset` directory.
 
 ```

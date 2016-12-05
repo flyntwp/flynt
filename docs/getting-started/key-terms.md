@@ -1,4 +1,4 @@
-# 0. Key Terms
+# 1. Key Terms
 
 There are some key terms and concepts that need to be understood before continuing.
 
@@ -14,4 +14,4 @@ An area is a location within a module where it is possible to add other modules.
 
 Get started with your first module in section 1.
 
-**[Go to Section 1](/basic-module.md)**
+**[Go to Section 2: Creating A Basic Module](/basic-module.md)**

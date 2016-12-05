@@ -5,7 +5,7 @@
     "glossary": "glossary.md"
   },
   "gitbook": "3.1.1",
-  "plugins": ["prism", "-highlight", "word-count"],
+  "plugins": ["prism", "-highlight", "word-count", "collapsible-menu"],
   "pluginsConfig": {
     "prism": {
       "css": [
