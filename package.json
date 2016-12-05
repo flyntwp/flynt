@@ -57,5 +57,8 @@
       "jQuery"
     ],
     "parser": "babel-eslint"
+  },
+  "scripts": {
+    "flynt": "gulp"
   }
 }
