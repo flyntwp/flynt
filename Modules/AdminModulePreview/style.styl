@@ -1,3 +1,5 @@
+rupture.scale = lookup('$global-layout-scale') || (0 400px 800px 1200px)
+
 .layout-module-preview
   bottom: 5px
   background: #fff
@@ -43,3 +45,11 @@
 .flexible-content-controls
   float: right
   margin-right: 8px
+
+.module-preview-image-desktop
+  +below('s')
+    display: none
+
+.module-preview-image-mobile
+  +above('m')
+    display: none
