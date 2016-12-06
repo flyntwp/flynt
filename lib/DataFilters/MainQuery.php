@@ -3,6 +3,8 @@
 namespace WPStarterTheme\DataFilters;
 
 use WP_Query;
+use Timber\Timber;
+use Timber\Post;
 use WPStarterTheme\Helpers\Utils;
 
 add_filter('WPStarterTheme/DataFilters/MainQuery', ['WPStarterTheme\DataFilters\MainQuery', 'getQuery']);
@@ -12,35 +14,44 @@ class MainQuery {
   protected static $bleechAcfFieldsQueried = false;
 
   public static function getQuery($data) {
-    $query = $GLOBALS['wp_query'];
+    // $query = $GLOBALS['wp_query'];
+    //
+    // $posts = $query->posts;
+    //
+    // $posts = Utils::objectToArray($posts);
+    //
+    // $posts = self::addAdditionalDefaultData($posts);
+    //
+    // $output = array(
+    //   'posts' => $posts,
+    //   'meta' => array(
+    //     // @codingStandardsIgnoreStart
+    //     'max_num_pages' => $query->max_num_pages,
+    //     'current_page'  => max(1, $query->query_vars['paged'])
+    //     // @codingStandardsIgnoreEnd
+    //   )
+    // );
+    // wp_reset_query();
+    $context = Timber::get_context();
 
-    $posts = $query->posts;
-
-    $posts = Utils::objectToArray($posts);
-
-    $posts = self::addAdditionalDefaultData($posts);
-
-    $output = array(
-      'posts' => $posts,
-      'meta' => array(
-        // @codingStandardsIgnoreStart
-        'max_num_pages' => $query->max_num_pages,
-        'current_page'  => max(1, $query->query_vars['paged'])
-        // @codingStandardsIgnoreEnd
-      )
-    );
-    wp_reset_query();
-
-    return array_merge($data, $output);
+    return array_merge($context, $data);
   }
 
   public static function getSingle($data) {
-    $queryResult = self::getQuery($data);
-    $post = [];
-    if (isset($queryResult['posts'][0])) {
-      $post = $queryResult['posts'][0];
+    // $queryResult = self::getQuery($data);
+    // $post = [];
+    // if (isset($queryResult['posts'][0])) {
+    //   $post = $queryResult['posts'][0];
+    // }
+
+    $post = new Post();
+    $context = [
+      'post' => $post
+    ];
+    if (!empty($post)) {
+      $post->fields = get_fields($post->id);
     }
-    return array_merge($data, $post);
+    return array_merge($context, $data);
   }
 
   protected static function addAdditionalDefaultData($posts) {
