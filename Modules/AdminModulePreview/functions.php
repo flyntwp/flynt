@@ -3,14 +3,25 @@ namespace WPStarterTheme\Modules\AdminModulePreview;
 
 use WPStarterTheme\Helpers\Module;
 
-add_action('wp_enqueue_scripts', function () {
+define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
+
+add_action('admin_enqueue_scripts', NS . 'enqueueModuleScripts');
+add_action('wp_enqueue_scripts', NS . 'enqueueModuleScripts');
+
+// @codingStandardsIgnoreLine
+function enqueueModuleScripts() {
   Module::enqueueAssets('AdminModulePreview');
-});
+  // add data to the javascript
+  $data = [
+    'templateDirectoryUri' => get_template_directory_uri()
+  ];
+  wp_localize_script('WPStarterTheme/Modules/AdminModulePreview', 'wpData', $data);
+}
 
 if (class_exists('acf')) {
 
   if (is_admin()) {
-
+    // add image to the flexible content module name
     add_filter('acf/fields/flexible_content/layout_title', function ($title, $field, $layout, $i) {
       $modulePath = "/Modules/$layout[name]/";
       $modulePreviewDesktopPath = get_template_directory() . $modulePath . 'preview-desktop.jpg';
@@ -26,19 +37,9 @@ if (class_exists('acf')) {
       return $title;
     }, 11, 4);
 
-    add_filter('acf/get_field_label', function ($label, $field) {
-      if ($field['type'] === 'flexible_content') {
-        $label .= '<span class="flexible-content-controls">';
-        $label .= '<a class="acf-icon small -collapse collapse-all" title="collapse all"></a>';
-        $label .= '<span class="-collapsed">';
-        $label .= '<a class="acf-icon small -collapse expand-all" title="expand all"></a>';
-        $label .= '</span></span>';
-      }
-      return $label;
-    }, 10, 2);
-
   } else if (is_user_logged_in() && !is_admin()) {
 
+    // adds Module Previews button to admin bar on front-end when logged in
     add_action('admin_bar_menu', function ($wpAdminBar) {
       $title = 'Module Previews';
       $wpAdminBar->add_menu([
@@ -46,7 +47,5 @@ if (class_exists('acf')) {
         'title' => $title
       ]);
     });
-
   }
-
 }
