@@ -45,7 +45,7 @@ add_filter('WPStarter/renderModule', function ($output, $moduleName, $moduleData
   // ]);
   $addArea = function ($twig) use ($areaHtml) {
 
-    $twig->addFunction(new Twig_SimpleFunction('area', function ($areaName) use ($areaHtml){
+    $twig->addFunction(new Twig_SimpleFunction('area', function ($areaName) use ($areaHtml) {
       if (array_key_exists($areaName, $areaHtml)) {
         return $areaHtml[$areaName];
       }
