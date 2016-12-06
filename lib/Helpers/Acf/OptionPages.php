@@ -1,11 +1,11 @@
 <?php
 
-namespace WPStarterTheme\Helpers;
+namespace WPStarterTheme\Helpers\Acf;
 
 use WPStarterTheme\Helpers\StringHelpers;
 use ACFComposer;
 
-class AcfOptionPages {
+class OptionPages {
   const FILTER_NAMESPACE = 'WPStarterTheme/Modules';
   const FIELD_GROUPS_DIR = '/config/fieldGroups';
 
@@ -17,48 +17,14 @@ class AcfOptionPages {
   protected static $optionPages = [];
 
   public static function init() {
-    $acfEnabled = class_exists('acf');
-    $acfFunctionsExist = function_exists('acf_add_options_page') && function_exists('acf_add_options_sub_page');
-    $acfComposerEnabled = class_exists('ACFComposer\ACFComposer');
+    self::createOptionPages();
 
-    if ($acfEnabled && $acfFunctionsExist && $acfComposerEnabled) {
-      self::createOptionPages();
-
-      add_action(
-        'WPStarter/registerModule',
-        ['WPStarterTheme\Helpers\AcfOptionPages', 'addAllModuleOptionSubpages'],
-        12,
-        2
-      );
-    } else {
-
-      $msg = '';
-
-      // TODO refactor this functionality into Core Utility Class?
-      if (!$acfEnabled) {
-        $msg .= '<p>Advanced Custom Fields Plugin not installed or activated.'
-        . ' Make sure you <a href="'
-        . esc_url(admin_url('plugins.php')) . '">'
-        . 'install / activate the plugin.</a></p>';
-      } elseif (!$acfFunctionsExist) {
-        $msg .= '<p>Advanced Custom Fields Plugin Functions not found!'
-        . ' Please make sure you are using the latest version of ACF.</p>';
-      }
-
-      if (!$acfComposerEnabled) {
-        $msg .= '<p>ACF Composer Plugin not installed or activated.'
-        . ' Make sure you <a href="'
-        . esc_url(admin_url('plugins.php')) . '">'
-        . 'install / activate the plugin.</a></p>';
-      }
-
-      add_action('admin_notices', function () use ($msg) {
-        $msg .= '<p><i>To resolve this issue either follow the steps above'
-          . ' or remove the Helpers requiring this functionality in your theme.</i></p>';
-        echo '<div class="notice is-dismissible"><p><strong>Could not create ACF Options Pages</strong></p>'
-          . $msg . '</div>';
-      });
-    }
+    add_action(
+      'WPStarter/registerModule',
+      ['WPStarterTheme\Helpers\Acf\OptionPages', 'addAllModuleOptionSubpages'],
+      12,
+      2
+    );
   }
 
   public static function createOptionPages() {
@@ -133,5 +99,3 @@ class AcfOptionPages {
     }
   }
 }
-
-AcfOptionPages::init();
