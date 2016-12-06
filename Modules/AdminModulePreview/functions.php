@@ -37,8 +37,19 @@ if (class_exists('acf')) {
       return $title;
     }, 11, 4);
 
-  } else if (is_user_logged_in() && !is_admin()) {
+    // adds buttons to collapse/expand modules
+    add_filter('acf/get_field_label', function ($label, $field) {
+      if ($field['type'] === 'flexible_content') {
+        $label .= '<span class="flexible-content-controls">';
+        $label .= '<a class="acf-icon small -collapse collapse-all" title="collapse all"></a>';
+        $label .= '<span class="-collapsed">';
+        $label .= '<a class="acf-icon small -collapse expand-all" title="expand all"></a>';
+        $label .= '</span></span>';
+      }
+      return $label;
+    }, 10, 2);
 
+  } else if (is_user_logged_in() && !is_admin()) {
     // adds Module Previews button to admin bar on front-end when logged in
     add_action('admin_bar_menu', function ($wpAdminBar) {
       $title = 'Module Previews';
