@@ -28,6 +28,12 @@ class Core {
     $pluginActive = is_plugin_active('wp-starter-plugin/wp-starter-plugin.php');
 
     if (!$pluginActive) {
+      add_action('admin_notices', function () {
+        echo '<div class="error"><p>Flynt Core Plugin not activated. Make sure you activate the plugin in <a href="'
+          . esc_url(admin_url('plugins.php#flynt')) . '">'
+          . esc_url(admin_url('plugins.php')) . '</a></p></div>';
+      });
+
       add_filter('template_include', function () {
         $newTemplate = locate_template(array('plugin-inactive.php'));
         if ('' != $newTemplate) {
