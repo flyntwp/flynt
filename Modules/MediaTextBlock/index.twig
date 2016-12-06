@@ -1,0 +1,25 @@
+{% import './Modules/MainLayout/PugMixins/picture.twig' as picture %}
+
+<div is="wps-media-text-block">
+  <div class="mediaTextBlock {{ mediaPosition }}">
+    <div class="mediaTextBlock-columnMedia">
+      {% if mediaType == 'mediaImage' %}
+        <div class="mediaTextBlock-image">
+          {{ picture.fill(image, 'mediaTextBlock')}}
+        </div>
+      {% else %}
+        <div class="mediaTextBlock-oembedVideoContainer">
+          <div class="mediaTextBlock-oembedPosterImage">
+            {{ picture.fill(posterImage, 'mediaTextBlock')}}
+          </div>
+          <div class="mediaTextBlock-oembedVideo">
+            {{ oembedLazyLoad }}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+    <div class="mediaTextBlock-columnContentHtml">
+      {{ contentHTML }}
+    </div>
+  </div>
+</div>

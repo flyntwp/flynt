@@ -41,6 +41,5 @@ add_filter('WPStarter/modifyModuleData?name=MediaTextBlock', function ($data) {
   $data['image']['imageConfig'] = $imageConfig;
   $data['posterImage']['imageConfig'] = $imageConfig;
 
-  Log::consoleDebug($data);
   return $data;
 });

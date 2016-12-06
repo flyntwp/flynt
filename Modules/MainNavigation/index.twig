@@ -1,0 +1,15 @@
+<div is="wps-main-navigation">
+  <nav>
+    <ul class="menu">
+      {% if menuItems %}
+        {% for item in menuItems %}
+          <li class="{{ item.css_classes }}">
+            <a href="{{ item.href}}" title="{{ item.title }}" target="{{ item.target }}">
+              {{ item.text }}
+            </a>
+          </li>
+        {% endfor %}
+      {% endif %}
+    </ul>
+  </nav>
+</div>

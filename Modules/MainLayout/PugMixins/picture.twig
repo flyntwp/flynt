@@ -1,0 +1,10 @@
+{% macro fill(image, moduleName) %}
+  <picture class="{{ moduleName ~ '-imageElement'}}">
+    <!--[if IE 9]><video style="display: none;"><![endif]-->
+    {% for imageSize, imageMedia in image.imageConfig.sizes %}
+      <source srcset="{{ image.sizes[imageSize] }}" media="{{ imageMedia }}">
+    {% endfor %}
+    <!--[if IE 9]></video><![endif]-->
+    <img class="{{ moduleName ~ '-imageElement' }}" src="{{ image.sizes[image.imageConfig.default] }}" alt="{{ image.alt }}">
+  </picture>
+{% endmacro %}

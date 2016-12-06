@@ -29,5 +29,7 @@ add_filter('WPStarter/modifyModuleData?name=ImageHero', function ($data) {
 
   $data['image']['imageConfig'] = $imageConfig;
 
+  // var_dump($data);die();
+
   return $data;
 });

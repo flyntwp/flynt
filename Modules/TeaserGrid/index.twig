@@ -1,0 +1,23 @@
+{% import './Modules/MainLayout/PugMixins/picture.twig' as picture %}
+
+<div is="wps-teaser-grid">
+  <ul class="teaserGrid">
+    {% for teaser in teaserItems %}
+      {% if teaser.linkType === 'externalLink' %}
+        <li>
+          <a href="{{ teaser.pageUrl }}" title="{{ teaser.titleText }}" target="{{ teaser.linkTarget }}">
+            <h3>{{ teaser.titleText }}</h3>
+            {{ picture.fill(teaser.image, 'teaserGrid') }}
+          </a>
+        </li>
+      {% elseif teaser.linkType === 'internalLink' %}
+        <li>
+          <a href="{{ teaser.post.post_url }}" title="{{ teaser.post.post_title }}" target="{{ teaser.linkTarget }}">
+            <h3>{{ teaser.post.post_title }}</h3>
+            {{ picture.fill(teaser.post.post_thumbnail, 'teaserGrid') }}
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>

@@ -1,5 +1,6 @@
 <?php
 
+use Timber\Timber;
 use WPStarterTheme\Helpers\Utils;
 
 add_filter('WPStarterTheme/DataFilters/WpBase', function ($data) {
@@ -18,5 +19,7 @@ add_filter('WPStarterTheme/DataFilters/WpBase', function ($data) {
     $output['dir'] = 'ltr';
   }
 
-  return array_merge($data, $output);
+  $context = Timber::get_context();
+
+  return array_merge($context, $data, $output);
 });

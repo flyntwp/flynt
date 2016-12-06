@@ -1,0 +1,14 @@
+{% import './Modules/MainLayout/PugMixins/picture.twig' as picture %}
+
+<div is="wps-oembed">
+  <div class="oembed">
+    <div class="oembed-videoContainer">
+      <div class="oembed-posterImage">
+        {{ picture.fill(posterImage, 'oembed')}}
+      </div>
+      <div class="oembed-video">
+        {{ oembedLazyLoad }}
+      </div>
+    </div>
+  </div>
+</div>
