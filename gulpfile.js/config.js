@@ -60,7 +60,8 @@ module.exports = {
       '!./bower_components/**/*.php'
     ],
     phpcs: {
-      standard: 'phpcs.ruleset.xml'
+      standard: 'phpcs.ruleset.xml',
+      binaryPath: '../../../../vendor/bin/phpcs'
     }
   }
 }
