@@ -73,10 +73,12 @@ class ACFFieldGroupComposer {
     }
 
     Core::iterateDirectory($dir, function ($file) {
-      $filePath = $file->getPathname();
-      $config = json_decode(file_get_contents($filePath), true);
-      ACFComposer::registerFieldGroup($config);
-    }, 'json');
+      if ($file->getExtension() === 'json') {
+        $filePath = $file->getPathname();
+        $config = json_decode(file_get_contents($filePath), true);
+        ACFComposer::registerFieldGroup($config);
+      }
+    });
 
     self::$fieldGroupsLoaded = true;
   }
