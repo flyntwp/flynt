@@ -53,3 +53,54 @@ rupture.scale = lookup('$global-layout-scale') || (0 400px 800px 1200px)
 .module-preview-image-mobile
   +above('m')
     display: none
+
+html.admin-bar.logged-in
+  margin-bottom: 32px !important
+  margin-top: 0 !important
+
+  #wpadminbar
+    background: #000
+    bottom: 0
+    top: auto
+    z-index: 10
+
+    #adminbarsearch
+      &.adminbar-focused:before,
+      &.adminbar-focused:hover:before
+        color: #000 !important
+
+      &:hover:before
+        color: #fff !important
+
+    #wp-admin-bar-wp-logo
+      display: none
+
+    .menupop .ab-sub-wrapper
+      bottom: 100%
+
+  #wpadminbar .ab-top-menu>li.hover>.ab-item,
+  #wpadminbar.nojq .quicklinks .ab-top-menu>li>.ab-item:focus,
+  #wpadminbar:not(.mobile) .ab-top-menu>li:hover>.ab-item,
+  #wpadminbar:not(.mobile) .ab-top-menu>li>.ab-item:focus
+    background: #000
+    color: #fff
+
+    &:before,
+    .ab-icon:before,
+    .ab-label
+      color: #fff !important
+
+  #wpadminbar .menupop .ab-sub-wrapper,
+  #wpadminbar .shortlink-input
+    background: #000
+
+  #wp-admin-bar-toggleModulePreviews
+    &.active
+      background: red
+
+  @media (max-width: 600px)
+    html.admin-bar
+      margin-bottom: 46px !important
+
+    #wpadminbar
+      position: fixed
