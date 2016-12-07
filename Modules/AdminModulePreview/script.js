@@ -1,5 +1,5 @@
 /* globals wpData */
-let $ = jQuery
+import 'file-loader?name=vendor/draggabilly.js!draggabilly/dist/draggabilly.pkgd'
 
 // admin
 if ($('body.wp-admin').length) {
@@ -60,6 +60,7 @@ if ($('body.wp-admin').length) {
 } else if ($('html.logged-in ').length) {
   // front-end logged in
   let $mpc = null
+  let $activeImage = []
 
   var getModuleImages = function (output = {}) {
     $('.main-content [is]').each(function () {
@@ -80,28 +81,16 @@ if ($('body.wp-admin').length) {
   var addModulePreviews = function (module, images) {
     let $module = module
     let offset = $module.offset()
-    $.ajax({
-      url: images.desktop,
-      type: 'HEAD',
-      error: function () {},
-      success: function () {
-        let selector = `<img class='module-preview-image module-preview-image-desktop' src='${images.desktop}'>`
-        appendImage(selector, offset)
-      }
-    })
-    $.ajax({
-      url: images.mobile,
-      type: 'HEAD',
-      error: function () {},
-      success: function () {
-        let selector = `<img class='module-preview-image module-preview-image-mobile' src='${images.mobile}'>`
-        appendImage(selector, offset)
-      }
-    })
+
+    let desktopImage = `<img class='module-preview-image module-preview-image-desktop' src='${images.desktop}'>`
+    appendImage(desktopImage, offset)
+    let mobileImage = `<img class='module-preview-image module-preview-image-mobile' src='${images.mobile}'>`
+    appendImage(mobileImage, offset)
   }
 
   var appendImage = function (image, offset) {
-    return $(image)
+    let $image = $(image)
+    return $image
     .appendTo($mpc)
     .css({
       opacity: 0.7,
@@ -109,6 +98,9 @@ if ($('body.wp-admin').length) {
       zIndex: 9999,
       top: offset.top,
       left: offset.left
+    })
+    .on('error', function () {
+      $image.remove()
     })
   }
 
@@ -130,6 +122,7 @@ if ($('body.wp-admin').length) {
     } else {
       $mpc = $('<div id="module-preview-container"></div>').appendTo('body')
       getModuleImages()
+      initModulePreviewsDragEvents()
     }
     return $(window).on('keydown.moveModulePreviewImage', moveModulePreviewImage)
   }
@@ -138,10 +131,26 @@ if ($('body.wp-admin').length) {
     $mpc.hide()
     return $(window).off('keydown.moveModulePreviewImage')
   }
-}
 
-var moveModulePreviewImage = function (e) {
-  e.preventDefault()
+  var initModulePreviewsDragEvents = function () {
+    let $images = $('.module-preview-image')
+    return $images.each(function () {
+      var $draggable = $(this).draggabilly()
+      $draggable.on('dragStart', function () {
+        let maxZIndex = 0
+        $images.each(function () {
+          let zIndex = parseInt($(this).css('zIndex'), 10)
+          if (zIndex > maxZIndex) { maxZIndex = zIndex }
+        })
+        $activeImage = $(this.element)
+        return $activeImage.css('zIndex', maxZIndex + 1)
+      })
+    })
+  }
+
+  var moveModulePreviewImage = function (e) {
+    e.preventDefault()
+  }
 }
 
 let firstToUpperCase = function (str) {

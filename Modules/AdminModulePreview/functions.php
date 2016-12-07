@@ -10,7 +10,13 @@ add_action('wp_enqueue_scripts', NS . 'enqueueModuleScripts');
 
 // @codingStandardsIgnoreLine
 function enqueueModuleScripts() {
-  Module::enqueueAssets('AdminModulePreview');
+  Module::enqueueAssets('AdminModulePreview', [
+    [
+      'name' => 'draggabilly',
+      'path' => 'vendor/draggabilly.js',
+      'type' => 'script'
+    ]
+  ]);
   // add data to the javascript
   $data = [
     'templateDirectoryUri' => get_template_directory_uri()
