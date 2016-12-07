@@ -8,6 +8,14 @@ use WPStarterTheme\Config;
 use WPStarterTheme\Helpers\Utils;
 
 class Module {
+
+  const DEFAULT_OPTIONS = [
+    'dependencies' => [],
+    'version' => null,
+    'inFooter' => true,
+    'media' => 'all'
+  ];
+
   public static function registerAll() {
     // TODO use new Core functionality after adding the feature for dirs
     $directoryIterator = new RecursiveDirectoryIterator(Config\MODULE_PATH, RecursiveDirectoryIterator::SKIP_DOTS);
@@ -20,46 +28,11 @@ class Module {
   }
 
   public static function enqueueAssets($moduleName, array $dependencies = []) {
-    $dependencyDefaults = [
-      'dependencies' => [],
-      'version' => null,
-      'inFooter' => true,
-      'media' => 'all'
-    ];
 
     // register dependencies
     foreach ($dependencies as $dependency) {
-      // TODO add cdn functionality
       // TODO add a warning if the same script is loaded several times (with different names) in multiple modules
-      $dependency = array_merge($dependencyDefaults, $dependency);
-
-      if (!array_key_exists('name', $dependency)) {
-        trigger_error('Cannot load dependency: Name not provided!', E_USER_WARNING);
-        continue;
-      }
-
-      if (!array_key_exists('path', $dependency)) {
-        trigger_error('Cannot load dependency: Path not provided!', E_USER_WARNING);
-        continue;
-      }
-
-      if ($dependency['type'] === 'script') {
-        wp_register_script(
-          $dependency['name'],
-          Utils::requireAssetUrl($dependency['path']),
-          $dependency['dependencies'],
-          $dependency['version'],
-          $dependency['inFooter']
-        );
-      } elseif ($dependency['type'] === 'style') {
-        wp_register_style(
-          $dependency['name'],
-          Utils::requireAssetUrl($dependency['path']),
-          $dependency['dependencies'],
-          $dependency['version'],
-          $dependency['media']
-        );
-      }
+      self::addAsset('register', $dependency);
     }
 
     // collect script dependencies
@@ -68,18 +41,17 @@ class Module {
         array_push($list, $dependency['name']);
       }
       return $list;
-    }, ['Modules/scripts']); // jquery as a default dependency
+    }, ['jquery']); // jquery as a default dependency
 
     // Enqueue Module Scripts if they exist
     $scriptAbsPath = Utils::requireAssetPath("Modules/{$moduleName}/script.js");
     if (is_file($scriptAbsPath)) {
-      wp_enqueue_script(
-        "WPStarterTheme/Modules/{$moduleName}",
-        Utils::requireAssetUrl("Modules/{$moduleName}/script.js"),
-        $scriptDeps,
-        null,
-        true
-      );
+      self::addAsset('enqueue', [
+        'type' => 'script',
+        'name' => "WPStarterTheme/Modules/{$moduleName}",
+        'path' => "Modules/{$moduleName}/script.js",
+        'dependencies' => $scriptDeps
+      ]);
     }
 
     // collect style dependencies
@@ -93,12 +65,56 @@ class Module {
     // Enqueue Module Styles if they exist
     $styleAbsPath = Utils::requireAssetPath("Modules/{$moduleName}/style.css");
     if (is_file($styleAbsPath)) {
-      wp_enqueue_style(
-        "WPStarterTheme/Modules/{$moduleName}",
-        Utils::requireAssetUrl("Modules/{$moduleName}/style.css"),
-        $styleDeps,
-        null
-      );
+      self::addAsset('enqueue', [
+        'type' => 'style',
+        'name' => "WPStarterTheme/Modules/{$moduleName}",
+        'path' => "Modules/{$moduleName}/style.css",
+        'dependencies' => $styleDeps
+      ]);
     }
+  }
+
+  public static function addAsset($funcType, $options) {
+    if (!in_array($funcType, ['enqueue', 'register'])) {
+      trigger_error('Cannot add asset: Invalid Parameter for funcType (' . $funcType . ')', E_USER_WARNING);
+      return false;
+    }
+
+    // TODO add cdn functionality
+    $options = array_merge(self::DEFAULT_OPTIONS, $options);
+
+    if (!array_key_exists('name', $options)) {
+      trigger_error('Cannot add asset: Name not provided!', E_USER_WARNING);
+      return false;
+    }
+
+    if (!array_key_exists('path', $options)) {
+      trigger_error('Cannot add asset: Path not provided!', E_USER_WARNING);
+      return false;
+    }
+
+    $funcName = null;
+
+    if ($options['type'] === 'script') {
+      $lastVar = $options['inFooter'];
+      $funcName = "wp_{$funcType}_script";
+    } elseif ($options['type'] === 'style') {
+      $lastVar = $options['media'];
+      $funcName = "wp_{$funcType}_style";
+    }
+
+    if (function_exists($funcName)) {
+      $funcName(
+        $options['name'],
+        Utils::requireAssetUrl($options['path']),
+        $options['dependencies'],
+        $options['version'],
+        $lastVar
+      );
+
+      return true;
+    }
+
+    return false;
   }
 }
