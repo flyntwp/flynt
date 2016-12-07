@@ -1286,6 +1286,13 @@ domain-browser@^1.1.1:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-1.1.7.tgz#867aa4b093faa05f1de08c06f4d7b21fdf8698bc"
 
+draggabilly@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/draggabilly/-/draggabilly-2.1.1.tgz#3a31a1fa73e4cc71c75a4bfea9acfb2dade01722"
+  dependencies:
+    get-size "~2.0.2"
+    unidragger "~2.1.0"
+
 duplexer2@0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/duplexer2/-/duplexer2-0.0.2.tgz#c614dcf67e2fb14995a91711e5a617e8a60a31db"
@@ -1569,6 +1576,10 @@ esutils@^2.0.2:
 etag@^1.7.0, etag@~1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.7.0.tgz#03d30b5f67dd6e632d2945d30d6652731a34d5d8"
+
+ev-emitter@~1.0.1:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/ev-emitter/-/ev-emitter-1.0.3.tgz#ee5ef74b6ed28d911b32ddcbfc97867f580937bc"
 
 event-emitter@~0.3.4:
   version "0.3.4"
@@ -1869,6 +1880,10 @@ generate-object-property@^1.1.0:
 get-caller-file@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-1.0.2.tgz#f702e63127e7e231c160a80c1554acb70d5047e5"
+
+get-size@~2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/get-size/-/get-size-2.0.2.tgz#555ea98ab8732e0c021e9e23e2219adcbe398e98"
 
 get-stdin@^4.0.1:
   version "4.0.1"
@@ -4512,6 +4527,18 @@ unc-path-regex@^0.1.0:
 underscore@1.7.x:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.7.0.tgz#6bbaf0877500d36be34ecaa584e0db9fef035209"
+
+unidragger@~2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/unidragger/-/unidragger-2.1.0.tgz#e4c23f5fab8188c637e776d0b3810c7d989e5561"
+  dependencies:
+    unipointer "~2.1.0"
+
+unipointer@~2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/unipointer/-/unipointer-2.1.0.tgz#b1e9fa2986c1306d97330587ba434d285ccfe37f"
+  dependencies:
+    ev-emitter "~1.0.1"
 
 uniq@^1.0.1:
   version "1.0.1"
