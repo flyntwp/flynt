@@ -83,12 +83,12 @@ if ($('body.wp-admin').length) {
     let offset = $module.offset()
 
     let desktopImage = `<img class='module-preview-image module-preview-image-desktop' src='${images.desktop}'>`
-    appendImage(desktopImage, offset)
+    appendImage(desktopImage, offset, $module)
     let mobileImage = `<img class='module-preview-image module-preview-image-mobile' src='${images.mobile}'>`
-    appendImage(mobileImage, offset)
+    appendImage(mobileImage, offset, $module)
   }
 
-  var appendImage = function (image, offset) {
+  var appendImage = function (image, offset, $module) {
     let $image = $(image)
     return $image
     .appendTo($mpc)
@@ -99,6 +99,7 @@ if ($('body.wp-admin').length) {
       top: offset.top,
       left: offset.left
     })
+    .data('module', $module)
     .on('error', function () {
       $image.remove()
     })
@@ -163,6 +164,16 @@ if ($('body.wp-admin').length) {
         return $activeImage.css('left', imageLeft - 1)
     }
   }
+
+  let repositionModulePreviewImages = function () {
+    let $images = $('.module-preview-image')
+    return $images.each(function () {
+      let $module = $(this).data('module')
+      return $(this).css('top', $module.offset().top)
+    })
+  }
+
+  $(window).on('resize', repositionModulePreviewImages)
 }
 
 let firstToUpperCase = function (str) {
