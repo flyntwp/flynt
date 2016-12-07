@@ -93,15 +93,8 @@ class Module {
       return false;
     }
 
-    $funcName = null;
-
-    if ($options['type'] === 'script') {
-      $lastVar = $options['inFooter'];
-      $funcName = "wp_{$funcType}_script";
-    } elseif ($options['type'] === 'style') {
-      $lastVar = $options['media'];
-      $funcName = "wp_{$funcType}_style";
-    }
+    $funcName = "wp_{$funcType}_{$options['type']}";
+    $lastVar = $options['type'] === 'script' ? $options['inFooter'] : $options['media'];
 
     if (function_exists($funcName)) {
       $funcName(
