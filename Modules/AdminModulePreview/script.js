@@ -1,6 +1,6 @@
 /* globals wpData */
 import 'file-loader?name=vendor/draggabilly.js!draggabilly/dist/draggabilly.pkgd'
-
+const $ = jQuery
 // admin
 if ($('body.wp-admin').length) {
   $('body').on('mouseenter', 'a[data-layout]', function (e) {
