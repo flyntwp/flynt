@@ -1,10 +1,14 @@
 # 6. Adding Assets to a Module
 
-This tutorial covers:
-- [6.1 Adding Styles](#61-adding-styles)
-- [6.2 Adding Scripts](#62-adding-scripts)
-- [6.3 Adding and Registering Dependencies](#63-adding-and-registering-dependencies)
-- [6.4 Adding Static Assets](#64-adding-static-assets)
+<div class="alert">
+  <h3>This tutorial covers:</h3>
+  <ul>
+    <li><strong><a href="#61-adding-styles">6.1 Adding Styles</a></strong></li>
+    <li><strong><a href="#62-adding-scripts">6.2 Adding Scripts</a></strong></li>
+    <li><strong><a href="#63-adding-and-registering-dependencies">6.3 Adding and Registering Dependencies</a></strong></li>
+    <li><strong><a href="#64-adding-static-assets">6.4 Adding Static Assets</a></strong></li>
+  </ul>
+</div>
 
 ## 6.1 Adding Styles
 Each module can have a self-contained style file. By default, Flynt supports vanilla CSS files, and Stylus. In this tutorial, we will use Stylus. [You can learn how to switch the styling language here](../theme-development/switching-styling-language.md).

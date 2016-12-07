@@ -1,7 +1,11 @@
 # 4. Using DataFilters
 
-This tutorial covers:
-- [4.1 Adding a DataFilter](#41-adding-a-datafilter)
+<div class="alert">
+  <h3>This tutorial covers:</h3>
+  <ul>
+    <li><strong><a href="#41-adding-a-datafilter">4.1 Adding a DataFilter</a></strong></li>
+  </ul>
+</div>
 
 ## 4.1 Adding a DataFilter
 It's not always the case that the data we need in our module comes directly from the backend user input. Data Filters are one of the ways in which we can add and modify data before it is passed to the module. It is mainly intended for use with database or API operations. In this case we will put this to use in our Image Slider by passing the "last updated" date to our gallery.
