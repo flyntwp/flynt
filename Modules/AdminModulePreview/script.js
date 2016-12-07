@@ -142,7 +142,7 @@ if ($('body.wp-admin').length) {
           let zIndex = parseInt($(this).css('zIndex'), 10)
           if (zIndex > maxZIndex) { maxZIndex = zIndex }
         })
-        $activeImage = $(this.element)
+        $activeImage = $(this)
         return $activeImage.css('zIndex', maxZIndex + 1)
       })
     })
@@ -150,6 +150,18 @@ if ($('body.wp-admin').length) {
 
   var moveModulePreviewImage = function (e) {
     e.preventDefault()
+    let imageLeft = parseInt($activeImage.css('left'), 10)
+    let imageTop = parseInt($activeImage.css('top'), 10)
+    switch (e.which) {
+      case 38: // up
+        return $activeImage.css('top', imageTop - 1)
+      case 39: // right
+        return $activeImage.css('left', imageLeft + 1)
+      case 40: // down
+        return $activeImage.css('top', imageTop + 1)
+      case 37: // left
+        return $activeImage.css('left', imageLeft - 1)
+    }
   }
 }
 
