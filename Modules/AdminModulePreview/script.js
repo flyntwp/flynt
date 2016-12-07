@@ -3,36 +3,18 @@ import 'file-loader?name=vendor/draggabilly.js!draggabilly/dist/draggabilly.pkgd
 const $ = jQuery
 // admin
 if ($('body.wp-admin').length) {
+  // show module preview images
   $('body').on('mouseenter', 'a[data-layout]', function (e) {
     let $target = $(e.currentTarget)
     let layout = $target.data('layout')
     return showAddModulePreview(layout, $target.closest('.acf-fc-popup'))
   })
 
+  // hide preview images
   $('body').on('mouseleave', 'a[data-layout]', function (e) {
     let $target = $(e.currentTarget)
     return hideAddModulePreview($target.closest('.acf-fc-popup'))
   })
-
-  $('body')
-  .on('click', '.acf-label .collapse-all, .acf-th-flexible_content .collapse-all', e =>
-    $(e.currentTarget)
-    .closest('.acf-field')
-    .closestChild('.values')
-    .children('.layout:not(.-collapsed)')
-    .children('.acf-fc-layout-controlls')
-    .find('[data-event="collapse-layout"]')
-    .click()
-  )
-  .on('click', '.acf-label .expand-all, .acf-th-flexible_content .expand-all', e =>
-    $(e.currentTarget)
-    .closest('.acf-field')
-    .closestChild('.values')
-    .children('.layout.-collapsed')
-    .children('.acf-fc-layout-controlls')
-    .find('[data-event="collapse-layout"]')
-    .click()
-  )
 
   var showAddModulePreview = function (layout, $wrapper) {
     var moduleName = firstToUpperCase(layout)
@@ -57,10 +39,60 @@ if ($('body.wp-admin').length) {
   var hideAddModulePreview = $wrapper =>
   $wrapper.find('.add-module-preview-image-wrapper')
   .remove()
+
+  // collapse modules
+  $('body')
+  .on('click', '.acf-label .collapse-all, .acf-th-flexible_content .collapse-all', e =>
+    $(e.currentTarget)
+    .closest('.acf-field')
+    .closestChild('.values')
+    .children('.layout:not(.-collapsed)')
+    .children('.acf-fc-layout-controlls')
+    .find('[data-event="collapse-layout"]')
+    .click()
+  )
+  // expand modules
+  .on('click', '.acf-label .expand-all, .acf-th-flexible_content .expand-all', e =>
+    $(e.currentTarget)
+    .closest('.acf-field')
+    .closestChild('.values')
+    .children('.layout.-collapsed')
+    .children('.acf-fc-layout-controlls')
+    .find('[data-event="collapse-layout"]')
+    .click()
+  )
 } else if ($('html.logged-in ').length) {
   // front-end logged in
   let $mpc = null
   let $activeImage = []
+
+  $('body')
+  .on('click', '#wp-admin-bar-toggleModulePreviews', function (e) {
+    e.preventDefault()
+    let $target = $(e.currentTarget)
+    $target.toggleClass('active')
+    if ($target.hasClass('active')) {
+      return showImages()
+    } else {
+      return hideImages()
+    }
+  })
+
+  var showImages = function () {
+    if (($mpc = $('#module-preview-container')).length) {
+      $mpc.show()
+    } else {
+      $mpc = $('<div id="module-preview-container"></div>').appendTo('body')
+      getModuleImages()
+      initModulePreviewsDragEvents()
+    }
+    return $(window).on('keydown.moveModulePreviewImage', moveModulePreviewImage)
+  }
+
+  var hideImages = function () {
+    $mpc.hide()
+    return $(window).off('keydown.moveModulePreviewImage')
+  }
 
   var getModuleImages = function (output = {}) {
     $('.main-content [is]').each(function () {
@@ -103,34 +135,6 @@ if ($('body.wp-admin').length) {
     .on('error', function () {
       $image.remove()
     })
-  }
-
-  $('body')
-  .on('click', '#wp-admin-bar-toggleModulePreviews', function (e) {
-    e.preventDefault()
-    let $target = $(e.currentTarget)
-    $target.toggleClass('active')
-    if ($target.hasClass('active')) {
-      return showImages()
-    } else {
-      return hideImages()
-    }
-  })
-
-  var showImages = function () {
-    if (($mpc = $('#module-preview-container')).length) {
-      $mpc.show()
-    } else {
-      $mpc = $('<div id="module-preview-container"></div>').appendTo('body')
-      getModuleImages()
-      initModulePreviewsDragEvents()
-    }
-    return $(window).on('keydown.moveModulePreviewImage', moveModulePreviewImage)
-  }
-
-  var hideImages = function () {
-    $mpc.hide()
-    return $(window).off('keydown.moveModulePreviewImage')
   }
 
   var initModulePreviewsDragEvents = function () {
