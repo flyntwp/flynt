@@ -28,12 +28,20 @@ class Core {
     $pluginActive = is_plugin_active('wp-starter-plugin/wp-starter-plugin.php');
 
     if (!$pluginActive) {
+      add_action('admin_notices', function () {
+        echo '<div class="error"><p>Flynt Core Plugin not activated. Make sure you activate the plugin in <a href="'
+          . esc_url(admin_url('plugins.php#flynt')) . '">'
+          . esc_url(admin_url('plugins.php')) . '</a></p></div>';
+      });
+
       add_filter('template_include', function () {
         $newTemplate = locate_template(array('plugin-inactive.php'));
         if ('' != $newTemplate) {
           return $newTemplate;
         } else {
-          return 'WP Starter Plugin not activated! Please activate the plugin and reload the page.';
+          return 'Flynt Core Plugin not activated! Please <a href="'
+            . esc_url(admin_url('plugins.php'))
+            . '">activate the plugin</a> and reload the page.';
         }
       });
     }
@@ -42,7 +50,7 @@ class Core {
 
   }
 
-  public static function iterateDirectory($dir, callable $callback, $fileExtension = null) {
+  public static function iterateDirectory($dir, callable $callback) {
 
     $output = [];
 
@@ -53,31 +61,37 @@ class Core {
     $directoryIterator = new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS);
 
     foreach ($directoryIterator as $name => $file) {
-      if (!is_null($fileExtension)) {
-        $filecheck = $file->isFile() && $file->getExtension() === $fileExtension;
-      } else {
-        $filecheck = $file->isFile();
-      }
-
-      if ($filecheck) {
-        $callbackResult = call_user_func($callback, $file);
-        array_push($output, $callbackResult);
-      }
+      $callbackResult = call_user_func($callback, $file);
+      array_push($output, $callbackResult);
     }
 
     return $output;
   }
 
-  public static function loadPhpFiles($dir = '', $files = []) {
-
-    $fileExtension = 'php';
+  // recursively load all files with a specified extension
+  // optionally able to specify the files in an array to load in a certain order
+  public static function loadFilesWithExtension(string $fileExtension, $dir = '', $files = []) {
 
     if (count($files) === 0) {
+
       $dir = get_template_directory() . '/' . $dir;
-      self::iterateDirectory($dir, function ($file) {
-        $filePath = $file->getPathname();
-        require_once $filePath;
-      }, $fileExtension);
+
+      self::iterateDirectory($dir, function ($file) use ($fileExtension) {
+
+        if ($file->isDir()) {
+
+          $dirPath = str_replace(get_template_directory(), '', $file->getPathname());
+          self::loadFilesWithExtension($fileExtension, $dirPath, []);
+
+        } elseif ($file->isFile() && $file->getExtension() === $fileExtension) {
+
+          $filePath = $file->getPathname();
+          require_once $filePath;
+
+        }
+
+      });
+
     } else {
       array_walk($files, function ($file) use ($dir) {
         $filePath = $dir . $file;
@@ -90,5 +104,10 @@ class Core {
         }
       });
     }
+  }
+
+  public static function loadPhpFiles($dir = '', $files = []) {
+    $fileExtension = 'php';
+    self::loadFilesWithExtension('php', $dir, $files);
   }
 }

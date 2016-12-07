@@ -1,11 +1,11 @@
 <?php
 
-namespace WPStarterTheme\Helpers;
+namespace WPStarterTheme\Helpers\Acf;
 
 use WPStarterTheme\Helpers\StringHelpers;
 use ACFComposer;
 
-class AcfOptionPages {
+class OptionPages {
   const FILTER_NAMESPACE = 'WPStarterTheme/Modules';
   const FIELD_GROUPS_DIR = '/config/fieldGroups';
 
@@ -17,16 +17,14 @@ class AcfOptionPages {
   protected static $optionPages = [];
 
   public static function init() {
-    if (class_exists('acf') && function_exists('acf_add_options_page') && function_exists('acf_add_options_sub_page')) {
-      self::createOptionPages();
+    self::createOptionPages();
 
-      add_action(
-        'WPStarter/registerModule',
-        ['WPStarterTheme\Helpers\AcfOptionPages', 'addAllModuleOptionSubpages'],
-        12,
-        2
-      );
-    }
+    add_action(
+      'WPStarter/registerModule',
+      ['WPStarterTheme\Helpers\Acf\OptionPages', 'addAllModuleOptionSubpages'],
+      12,
+      2
+    );
   }
 
   public static function createOptionPages() {
@@ -101,5 +99,3 @@ class AcfOptionPages {
     }
   }
 }
-
-AcfOptionPages::init();

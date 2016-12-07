@@ -6,8 +6,8 @@
     <?php wp_head(); ?>
   </head>
   <body>
-    WP Starter Plugin not activated! Please
-    <a href="<?= admin_url('plugins.php') ?>">activate the plugin</a>
+    One or more required Plugins are not activated! Please
+    <a href="<?= admin_url('plugins.php') ?>">activate or install the required plugin(s)</a>
     and reload the page.
     <?php wp_footer(); ?>
   </body>

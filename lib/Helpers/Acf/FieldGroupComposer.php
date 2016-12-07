@@ -1,32 +1,30 @@
 <?php
 
-namespace WPStarterTheme\Helpers;
+namespace WPStarterTheme\Helpers\Acf;
 
 use RecursiveDirectoryIterator;
 use ACFComposer\ACFComposer;
 use WPStarterTheme\Helpers\Utils;
 use WPStarterTheme\Core;
 
-class ACFFieldGroupComposer {
+class FieldGroupComposer {
   const FILTER_NAMESPACE = 'WPStarterTheme/Modules';
   const FIELD_GROUPS_DIR = '/config/fieldGroups';
 
   protected static $fieldGroupsLoaded = false;
 
   public static function init() {
-    if (class_exists('acf')) {
-      add_action(
-        'WPStarter/registerModule',
-        ['WPStarterTheme\Helpers\ACFFieldGroupComposer', 'addFieldFilters'],
-        11,
-        2
-      );
+    add_action(
+      'WPStarter/registerModule',
+      ['WPStarterTheme\Helpers\Acf\FieldGroupComposer', 'addFieldFilters'],
+      11,
+      2
+    );
 
-      add_action(
-        'acf/init',
-        ['WPStarterTheme\Helpers\ACFFieldGroupComposer', 'loadFieldGroups']
-      );
-    }
+    add_action(
+      'acf/init',
+      ['WPStarterTheme\Helpers\Acf\FieldGroupComposer', 'loadFieldGroups']
+    );
   }
 
   public static function loadFieldGroups() {
@@ -42,10 +40,12 @@ class ACFFieldGroupComposer {
     }
 
     Core::iterateDirectory($dir, function ($file) {
-      $filePath = $file->getPathname();
-      $config = json_decode(file_get_contents($filePath), true);
-      ACFComposer::registerFieldGroup($config);
-    }, 'json');
+      if ($file->getExtension() === 'json') {
+        $filePath = $file->getPathname();
+        $config = json_decode(file_get_contents($filePath), true);
+        ACFComposer::registerFieldGroup($config);
+      }
+    });
 
     self::$fieldGroupsLoaded = true;
   }

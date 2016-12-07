@@ -9,8 +9,11 @@ class CustomPostTypeRegister {
 
   protected static function getConfigs($dir) {
     $configs = Core::iterateDirectory($dir, function ($file) {
-      return self::processFile($file);
-    }, 'json');
+      if ($file->getExtension() === 'json') {
+        return self::processFile($file);
+      }
+      return [];
+    });
 
     return array_reduce($configs, function ($output, $config) {
       return array_merge($output, $config);
