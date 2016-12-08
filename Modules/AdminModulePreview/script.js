@@ -5,25 +5,24 @@ const $ = jQuery
 if ($('body.wp-admin').length) {
   // show module preview images
   $('body').on('mouseenter', 'a[data-layout]', function (e) {
-    let $target = $(e.currentTarget)
-    let layout = $target.data('layout')
+    const $target = $(e.currentTarget)
+    const layout = $target.data('layout')
     return showAddModulePreview(layout, $target.closest('.acf-fc-popup'))
   })
 
   // hide preview images
   $('body').on('mouseleave', 'a[data-layout]', function (e) {
-    let $target = $(e.currentTarget)
+    const $target = $(e.currentTarget)
     return hideAddModulePreview($target.closest('.acf-fc-popup'))
   })
 
   var showAddModulePreview = function (layout, $wrapper) {
-    var moduleName = firstToUpperCase(layout)
-    var image
-    image = {
+    const moduleName = firstToUpperCase(layout)
+    const image = {
       desktop: wpData.templateDirectoryUri + '/Modules/' + moduleName + '/preview-desktop.jpg',
       mobile: wpData.templateDirectoryUri + '/Modules/' + moduleName + '/preview-mobile.jpg'
     }
-    let $wrapperContainer = $("<div class='add-module-preview-image-wrapper'>").appendTo($wrapper)
+    const $wrapperContainer = $("<div class='add-module-preview-image-wrapper'>").appendTo($wrapper)
     $.ajax({
       url: image.desktop
     }).done(function () {
@@ -36,9 +35,10 @@ if ($('body.wp-admin').length) {
     })
   }
 
-  var hideAddModulePreview = $wrapper =>
-  $wrapper.find('.add-module-preview-image-wrapper')
-  .remove()
+  let hideAddModulePreview = $wrapper => {
+    $wrapper.find('.add-module-preview-image-wrapper')
+    .remove()
+  }
 
   // collapse modules
   $('body')
@@ -61,7 +61,7 @@ if ($('body.wp-admin').length) {
     .find('[data-event="collapse-layout"]')
     .click()
   )
-} else if ($('html.logged-in ').length) {
+} else if ($('html.logged-in').length) {
   // front-end logged in
   let $mpc = null
   let $activeImage = []
@@ -69,7 +69,7 @@ if ($('body.wp-admin').length) {
   $('body')
   .on('click', '#wp-admin-bar-toggleModulePreviews', function (e) {
     e.preventDefault()
-    let $target = $(e.currentTarget)
+    const $target = $(e.currentTarget)
     $target.toggleClass('active')
     if ($target.hasClass('active')) {
       return showImages()
@@ -78,7 +78,7 @@ if ($('body.wp-admin').length) {
     }
   })
 
-  var showImages = function () {
+  let showImages = function () {
     if (($mpc = $('#module-preview-container')).length) {
       $mpc.show()
     } else {
@@ -89,18 +89,17 @@ if ($('body.wp-admin').length) {
     return $(window).on('keydown.moveModulePreviewImage', moveModulePreviewImage)
   }
 
-  var hideImages = function () {
+  let hideImages = function () {
     $mpc.hide()
     return $(window).off('keydown.moveModulePreviewImage')
   }
 
-  var getModuleImages = function (output = {}) {
+  let getModuleImages = function (output = {}) {
     $('.main-content [is]').each(function () {
-      var moduleString = $(this).attr('is')
-      var moduleName = $.camelCase(moduleString.substring(moduleString.indexOf('-') + 1))
+      const moduleString = $(this).attr('is')
+      let moduleName = $.camelCase(moduleString.substring(moduleString.indexOf('-') + 1))
       moduleName = firstToUpperCase(moduleName)
-      var images
-      images = {
+      const images = {
         desktop: wpData.templateDirectoryUri + '/Modules/' + moduleName + '/preview-desktop.jpg',
         mobile: wpData.templateDirectoryUri + '/Modules/' + moduleName + '/preview-mobile.jpg'
       }
@@ -110,18 +109,16 @@ if ($('body.wp-admin').length) {
     return output
   }
 
-  var addModulePreviews = function (module, images) {
-    let $module = module
-    let offset = $module.offset()
-
-    let desktopImage = `<img class='module-preview-image module-preview-image-desktop' src='${images.desktop}'>`
+  let addModulePreviews = function ($module, images) {
+    const offset = $module.offset()
+    const desktopImage = `<img class='module-preview-image module-preview-image-desktop' src='${images.desktop}'>`
     appendImage(desktopImage, offset, $module)
-    let mobileImage = `<img class='module-preview-image module-preview-image-mobile' src='${images.mobile}'>`
+    const mobileImage = `<img class='module-preview-image module-preview-image-mobile' src='${images.mobile}'>`
     appendImage(mobileImage, offset, $module)
   }
 
-  var appendImage = function (image, offset, $module) {
-    let $image = $(image)
+  let appendImage = function (image, offset, $module) {
+    const $image = $(image)
     return $image
     .appendTo($mpc)
     .css({
@@ -137,10 +134,10 @@ if ($('body.wp-admin').length) {
     })
   }
 
-  var initModulePreviewsDragEvents = function () {
-    let $images = $('.module-preview-image')
+  let initModulePreviewsDragEvents = function () {
+    const $images = $('.module-preview-image')
     return $images.each(function () {
-      var $draggable = $(this).draggabilly()
+      const $draggable = $(this).draggabilly()
       $draggable.on('dragStart', function () {
         let maxZIndex = 0
         $images.each(function () {
@@ -153,10 +150,10 @@ if ($('body.wp-admin').length) {
     })
   }
 
-  var moveModulePreviewImage = function (e) {
+  let moveModulePreviewImage = function (e) {
     e.preventDefault()
-    let imageLeft = parseInt($activeImage.css('left'), 10)
-    let imageTop = parseInt($activeImage.css('top'), 10)
+    const imageLeft = parseInt($activeImage.css('left'), 10)
+    const imageTop = parseInt($activeImage.css('top'), 10)
     switch (e.which) {
       case 38: // up
         return $activeImage.css('top', imageTop - 1)
@@ -170,9 +167,9 @@ if ($('body.wp-admin').length) {
   }
 
   let repositionModulePreviewImages = function () {
-    let $images = $('.module-preview-image')
+    const $images = $('.module-preview-image')
     return $images.each(function () {
-      let $module = $(this).data('module')
+      const $module = $(this).data('module')
       return $(this).css('top', $module.offset().top)
     })
   }
@@ -184,19 +181,17 @@ let firstToUpperCase = function (str) {
   return str.substr(0, 1).toUpperCase() + str.substr(1)
 }
 
-;(function ($) {
-  $.fn.closestChild = function (selector) {
-    let $children
-    let $results
-    $children = this.children()
-    if ($children.length === 0) {
-      return $()
-    }
-    $results = $children.filter(selector)
-    if ($results.length > 0) {
-      return $results
-    } else {
-      return $children.closestChild(selector)
-    }
+$.fn.closestChild = function (selector) {
+  let $children
+  let $results
+  $children = this.children()
+  if ($children.length === 0) {
+    return $()
   }
-})(window.jQuery)
+  $results = $children.filter(selector)
+  if ($results.length > 0) {
+    return $results
+  } else {
+    return $children.closestChild(selector)
+  }
+}
