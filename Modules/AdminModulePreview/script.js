@@ -2,6 +2,7 @@
 import 'file-loader?name=vendor/draggabilly.js!draggabilly/dist/draggabilly.pkgd'
 const $ = jQuery
 let $body = $('body')
+const ajaxCache = {}
 
 // admin
 if ($('body.wp-admin').length) {
@@ -25,16 +26,23 @@ if ($('body.wp-admin').length) {
       mobile: wpData.templateDirectoryUri + '/Modules/' + moduleName + '/preview-mobile.jpg'
     }
     const $wrapperContainer = $("<div class='add-module-preview-image-wrapper'>").appendTo($wrapper)
-    $.ajax({
-      url: image.desktop
-    }).done(function () {
-      $wrapperContainer.append(`<img class='add-module-preview-image add-module-preview-image-desktop' src='${image.desktop}'>`)
+
+    cacheImage(image.desktop)
+    ajaxCache[image.desktop].done(function () {
+      $wrapperContainer.prepend(`<img class='add-module-preview-image add-module-preview-image-desktop' src='${image.desktop}'>`)
     })
-    $.ajax({
-      url: image.mobile
-    }).done(function () {
+    cacheImage(image.mobile)
+    ajaxCache[image.mobile].done(function () {
       $wrapperContainer.append(`<img class='add-module-preview-image add-module-preview-image-mobile' src='${image.mobile}'>`)
     })
+  }
+
+  let cacheImage = function (image) {
+    if (!ajaxCache[image]) {
+      ajaxCache[image] = $.ajax({
+        url: image
+      })
+    }
   }
 
   let hideAddModulePreview = $wrapper => {
