@@ -1,17 +1,19 @@
 /* globals wpData */
 import 'file-loader?name=vendor/draggabilly.js!draggabilly/dist/draggabilly.pkgd'
 const $ = jQuery
+let $body = $('body')
+
 // admin
 if ($('body.wp-admin').length) {
   // show module preview images
-  $('body').on('mouseenter', 'a[data-layout]', function (e) {
+  $body.on('mouseenter', 'a[data-layout]', function (e) {
     const $target = $(e.currentTarget)
     const layout = $target.data('layout')
     return showAddModulePreview(layout, $target.closest('.acf-fc-popup'))
   })
 
   // hide preview images
-  $('body').on('mouseleave', 'a[data-layout]', function (e) {
+  $body.on('mouseleave', 'a[data-layout]', function (e) {
     const $target = $(e.currentTarget)
     return hideAddModulePreview($target.closest('.acf-fc-popup'))
   })
@@ -41,7 +43,7 @@ if ($('body.wp-admin').length) {
   }
 
   // collapse modules
-  $('body')
+  $body
   .on('click', '.acf-label .collapse-all, .acf-th-flexible_content .collapse-all', e =>
     $(e.currentTarget)
     .closest('.acf-field')
@@ -66,7 +68,7 @@ if ($('body.wp-admin').length) {
   let $mpc = null
   let $activeImage = []
 
-  $('body')
+  $body
   .on('click', '#wp-admin-bar-toggleModulePreviews', function (e) {
     e.preventDefault()
     const $target = $(e.currentTarget)
