@@ -3,15 +3,15 @@ There are two main options when it comes to setting up the Flynt Theme. You can 
 
 Either way, the minimum requirements are:
 
-- Node (version?)
-- Composer
-- Yarn / NPM (version?)
-- PHP (version?)
-- MySQL (version?)
-- PHPCS (optional - if you want to test / for developing the boilerplate | theme only)
+- Node (version ^6.0)
+- Composer (version ^1.2)
+- Yarn (version ^0.17) or NPM (version ^3.10)
+- PHP (version >= 5.6)
+- MySQL (version ^5.6)
+- recommended: PHPCS (version ^2.5)
 
 ## Setup with existing tools
-Using any of the below tools will take care of installing these requirements for you:
+Using one of the tools below will take care of installing these requirements for you:
 
 #### [Trellis](https://roots.io/trellis/)
 #### [Scotchbox](https://box.scotch.io/)
