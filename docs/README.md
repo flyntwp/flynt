@@ -4,7 +4,7 @@ This is the official Flynt Theme documentation, covering everything related to t
 
 ## Just getting started?
 
-If this is your first experience with Flynt, checkout the [requirements](requirements.md) and the [installation and setup instructions](setup.md), then get started with our [basic tutorial series](getting-started/readme.md).
+If this is your first experience with Flynt, check out the [requirements](requirements.md) and the [installation and setup instructions](setup.md), then get started with our [basic tutorial series](getting-started/readme.md).
 
 ## Digging deeper
 
