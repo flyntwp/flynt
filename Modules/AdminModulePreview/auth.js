@@ -15,7 +15,7 @@ $body
   }
 })
 
-let showImages = function () {
+function showImages () {
   if (($mpc = $('#module-preview-container')).length) {
     $mpc.show()
   } else {
@@ -26,12 +26,12 @@ let showImages = function () {
   return $(window).on('keydown.moveModulePreviewImage', moveModulePreviewImage)
 }
 
-let hideImages = function () {
+function hideImages () {
   $mpc.hide()
   return $(window).off('keydown.moveModulePreviewImage')
 }
 
-let getModuleImages = function (output = {}) {
+function getModuleImages (output = {}) {
   $('.main-content [is]').each(function () {
     const moduleString = $(this).attr('is')
     let moduleName = $.camelCase(moduleString.substring(moduleString.indexOf('-') + 1))
@@ -46,7 +46,7 @@ let getModuleImages = function (output = {}) {
   return output
 }
 
-let addModulePreviews = function ($module, images) {
+function addModulePreviews ($module, images) {
   const offset = $module.offset()
   const desktopImage = `<img class='module-preview-image module-preview-image-desktop' src='${images.desktop}'>`
   appendImage(desktopImage, offset, $module)
@@ -54,7 +54,7 @@ let addModulePreviews = function ($module, images) {
   appendImage(mobileImage, offset, $module)
 }
 
-let appendImage = function (image, offset, $module) {
+function appendImage (image, offset, $module) {
   const $image = $(image)
   return $image
   .appendTo($mpc)
@@ -71,7 +71,7 @@ let appendImage = function (image, offset, $module) {
   })
 }
 
-let initModulePreviewsDragEvents = function () {
+function initModulePreviewsDragEvents () {
   const $images = $('.module-preview-image')
   return $images.each(function () {
     const $draggable = $(this).draggabilly()
@@ -87,7 +87,7 @@ let initModulePreviewsDragEvents = function () {
   })
 }
 
-let moveModulePreviewImage = function (e) {
+function moveModulePreviewImage (e) {
   e.preventDefault()
   const imageLeft = parseInt($activeImage.css('left'), 10)
   const imageTop = parseInt($activeImage.css('top'), 10)
@@ -103,7 +103,7 @@ let moveModulePreviewImage = function (e) {
   }
 }
 
-let repositionModulePreviewImages = function () {
+function repositionModulePreviewImages () {
   const $images = $('.module-preview-image')
   return $images.each(function () {
     const $module = $(this).data('module')
@@ -113,6 +113,6 @@ let repositionModulePreviewImages = function () {
 
 $(window).on('resize', repositionModulePreviewImages)
 
-let firstToUpperCase = function (str) {
+function firstToUpperCase (str) {
   return str.substr(0, 1).toUpperCase() + str.substr(1)
 }

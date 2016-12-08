@@ -15,7 +15,7 @@ $body.on('mouseleave', 'a[data-layout]', function (e) {
   return hideAddModulePreview($target.closest('.acf-fc-popup'))
 })
 
-var showAddModulePreview = function (layout, $wrapper) {
+function showAddModulePreview (layout, $wrapper) {
   const moduleName = firstToUpperCase(layout)
   const image = {
     desktop: wpData.templateDirectoryUri + '/Modules/' + moduleName + '/preview-desktop.jpg',
@@ -33,7 +33,7 @@ var showAddModulePreview = function (layout, $wrapper) {
   })
 }
 
-let cacheImage = function (image) {
+function cacheImage (image) {
   if (!ajaxCache[image]) {
     ajaxCache[image] = $.ajax({
       url: image
@@ -41,7 +41,7 @@ let cacheImage = function (image) {
   }
 }
 
-let hideAddModulePreview = $wrapper => {
+function hideAddModulePreview ($wrapper) {
   $wrapper.find('.add-module-preview-image-wrapper')
   .remove()
 }
@@ -68,7 +68,7 @@ $body
   .click()
 )
 
-let firstToUpperCase = function (str) {
+function firstToUpperCase (str) {
   return str.substr(0, 1).toUpperCase() + str.substr(1)
 }
 
