@@ -29,13 +29,13 @@ To get started, create `Modules/ImageSlider/style.styl` and add the styles below
       color: #558c89
 ```
 
-Before these styles will show up, we need to first enqueue our stylesheet. Open `ImageSlider/functions.php` and add the following code below the module namespace:
+Before these styles will show up, we need to enqueue our stylesheet. Open `ImageSlider/functions.php` and add the following code below the module namespace:
 
 ```php
 use WPStarterTheme\Helpers\Module;
 ```
 
-Then, at the bottom of `ImageSlider/functions.php`, add the below code to enqueue the stylesheet:
+Then, at the bottom, add the code below to enqueue the stylesheet:
 
 ```php
 add_action('wp_enqueue_scripts', function () {
@@ -44,7 +44,7 @@ add_action('wp_enqueue_scripts', function () {
 
 ```
 
-In summary, the `ImageSlider/functions.php` file should now look like the following:
+In summary, the `ImageSlider/functions.php` file now looks like the following:
 
 ```php
   <?php
@@ -230,8 +230,10 @@ add_action('wp_enqueue_scripts', function () {
 });
 ```
 
----
+<div class="alert alert-steps">
+  <h2>Next Steps</h2>
 
-## Next Steps
+  <p>This concludes the "Getting Started" series! In the last step we'll recap what we've achieved and recommend where to go from here.</p>
 
-<a href="recap.md" class="btn btn-primary">Go to Section 7</a>
+  <p><a href="recap.md" class="btn btn-primary">Go to Section 7</a></p>
+</div>

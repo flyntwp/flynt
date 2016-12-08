@@ -1,5 +1,6 @@
 ## Advanced
 
+* [Helpers and Hooks](helpers-and-hooks.md)
 * [Dynamic Submodules](dynamic-submodules.md)
 * [Using Flexible Content with ACF Pro](flexible-content.md)
 * [Using Repeaters with ACF Pro](repeaters.md)

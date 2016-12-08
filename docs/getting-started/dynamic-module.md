@@ -1,4 +1,4 @@
-# 3. Adding ACF Fields and Manipulating Data
+# 3. Adding & Displaying ACF Fields
 
 <div class="alert alert-info">
   <strong>A requirement of this tutorial is using the Wordpress Plugin <a href="https://www.advancedcustomfields.com/">Advanced Custom Fields (ACF)</a>. Please make sure this is installed and enabled before continuing.</strong>

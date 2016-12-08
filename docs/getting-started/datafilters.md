@@ -54,10 +54,10 @@ This is only a basic introduction to the power that such data filters afford. Fu
 * [Adding Custom Data](/add-link)
 * [Adding Arguments to Data Filters](/add-link)
 
----
+<div class="alert alert-steps">
+  <h2>Next Steps</h2>
 
-## Next Steps
+  <p>We'll take our module further and improve on the above, taking advantage of the modules <code>functions.php</code> to add even more flexibility.</p>
 
-We'll take our module further and improve on the above, taking advantage of the modules `functions.php` to add even more flexibility.
-
-<a href="modify-data.md" class="btn btn-primary">Go to Section 5</a>
+  <p><a href="modify-data.md" class="btn btn-primary">Go to Section 5</a></p>
+</div>

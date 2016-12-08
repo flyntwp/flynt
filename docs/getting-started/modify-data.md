@@ -1,4 +1,13 @@
-# 4. Modifying Data with `functions.php` and `modifyModuleData`
+# 5. Modifying Module Data
+
+<div class="alert">
+  <h3>This tutorial covers:</h3>
+  <ul>
+    <li><strong><a href="#51-using-modifymoduledata-and-functionsphp">Using <code>modifyModuleData</code> and <code>functions.php</code></strong></a></li>
+  </ul>
+</div>
+
+## 5.1 Using `modifyModuleData` and `functions.php`
 
 Our module is now functional, but looking at our existing view template, we are still left with hard-coded text:
 
@@ -75,10 +84,10 @@ div(is='flynt-image-slider')
 
 We're done! Our editor can now change and re-word the last edited text as they wish, adding in the last edited date wherever they need.
 
----
+<div class="alert alert-steps">
+  <h2>Next Steps</h2>
 
-## Next Steps
+  <p>We have covered the core concepts of building a dynamic content driven module. What's missing is front-end flare. To round up the series we'll dive into assets and how we require styles, scripts, and images.</p>
 
-We have covered the core concepts of building a dynamic content driven module. What's missing is front-end flare. To round up the series we'll dive into assets and how we require styles, scripts, and images.
-
-<a href="module-assets.md" class="btn btn-primary">Go to Section 5</a>
+  <p><a href="module-assets.md" class="btn btn-primary">Go to Section 6</a></p>
+</div>
