@@ -40,6 +40,7 @@
   * [Custom Data](theme-development/advanced/custom-data.md)
   * [Custom Post Types](theme-development/advanced/custom-post-types.md)
   * [Options Pages](theme-development/advanced/options-pages.md)
+  * [Yoast SEO Content Report](theme-development/advanced/yoast-seo-content-report.md)
 
 ---
 
