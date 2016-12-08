@@ -13,4 +13,5 @@ To further your understanding of the Flynt theme, take a look through the sectio
 ## Useful Links
 * [Flynt Framework](/add-link)
 * [Flynt Core Plugin Documentation](/add-link)
-* [Flynt Boilerplate](/add-link)
+* [Flynt CLI](/add-link)
+* [Bedrock](https://roots.io/bedrock/)

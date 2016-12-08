@@ -8,7 +8,7 @@
 </div>
 
 ## 4.1 Adding a DataFilter
-It's not always the case that the data we need in our module comes directly from the backend user input. Data Filters are one of the ways in which we can add and modify data before it is passed to the module. It is mainly intended for use with database or API operations. In this case we will put this to use in our Image Slider by passing the "last updated" date to our gallery.
+It's not always the case that the data we need in our component comes directly from the backend user input. Data Filters are one of the ways in which we can add and modify data before it is passed to the component. It is mainly intended for use with database or API operations. In this case we will put this to use in our Image Slider by passing the "last updated" date to our gallery.
 
 To begin, add the following line in `config/templates/default.json`, just after the `name`:
 
@@ -19,7 +19,7 @@ To begin, add the following line in `config/templates/default.json`, just after 
 }
 ```
 
-Then create the file `lib/DataFilters/Gallery.php` and add the code below:
+Now create `lib/DataFilters/Gallery.php` and add the code below:
 
 ```php
 add_filter('Flynt/DataFilters/Gallery', function($data) {
@@ -31,33 +31,36 @@ add_filter('Flynt/DataFilters/Gallery', function($data) {
 });
 ```
 
-Here we take advantage of the standard Wordpress filter functionality. You can read more about this in the [plugin documentation](/add-link), and on the [official Wordpress documentation](https://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters).
+<p class="source-note">Here we take advantage of the standard Wordpress filter functionality. You can read more about this in the <a href="../add-link">plugin documentation</a>, and on the <a href="https://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters" target="_blank">official Wordpress documentation</a>.</p>
 
-Essentially, we are accessing our module data before it reaches the view, adding our `lastEditedDate` and returning it. Now we can use this new data in our view.
+We are accessing our component data before it reaches the view, adding our `lastEditedDate` and returning it. Now we can use this new data in our view.
 
-Open `Modules/ImageSlider/index.php.pug` and update it to match the code below:
+Open `Components/ImageSlider/index.twig` and update it to match the code below:
 
-```jade
-div(is='flynt-image-slider')
-  .slider
-    h1.slider-title= $data('title')
-    .slider-items
-      for image in $data('images')
-        .slider-item
-          img(src=$data(image, 'url'))
-    .slider-meta
-      p This gallery was last edited on: #{$data('lastEditedDate')}
+```twig
+<div is="flynt-image-slider">
+  <div class="slider">
+    <h1 class="slider-title">{{ title }}</h1>
+    <div class="slider-items">
+      {% for image in images %}
+        <div class="slider-item">
+          <img src="{{ image.url  }}" alt="{{ image.alt }}">
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="slider-meta">
+    <p>This gallery was last edited on: {{ lastEditedDate }}</p>
+  </div>
+</div>
 ```
 
-This is only a basic introduction to the power that such data filters afford. Further techniques are covered in the [Advanced section](/add-link) of the Flynt documentation:
-
-* [Adding Custom Data](/add-link)
-* [Adding Arguments to Data Filters](/add-link)
+This is only a basic introduction to the power that such data filters afford. Further techniques are covered in the [Advanced section](../advanced/readme.md) of the Flynt documentation.
 
 <div class="alert alert-steps">
   <h2>Next Steps</h2>
 
-  <p>We'll take our module further and improve on the above, taking advantage of the modules <code>functions.php</code> to add even more flexibility.</p>
+  <p>We'll take our component further and improve on the above, taking advantage of the components <code>functions.php</code> to add even more flexibility.</p>
 
   <p><a href="modify-data.md" class="btn btn-primary">Go to Section 5</a></p>
 </div>

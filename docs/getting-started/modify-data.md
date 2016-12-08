@@ -1,26 +1,28 @@
-# 5. Modifying Module Data
+# 5. Modifying Component Data
 
 <div class="alert">
   <h3>This tutorial covers:</h3>
   <ul>
-    <li><strong><a href="#51-using-modifymoduledata-and-functionsphp">Using <code>modifyModuleData</code> and <code>functions.php</code></strong></a></li>
+    <li><strong><a href="#51-using-modifycomponentdata-and-functionsphp">Using <code>modifyComponentData</code> and <code>functions.php</code></strong></a></li>
   </ul>
 </div>
 
-## 5.1 Using `modifyModuleData` and `functions.php`
+## 5.1 Using `modifyComponentData` and `functions.php`
 
-Our module is now functional, but looking at our existing view template, we are still left with hard-coded text:
+Our component is now functional, but looking at our existing view template, we are still left with hard-coded text:
 
-```jade
-div(is='flynt-image-slider')
+```twig
+<div is="flynt-image-slider">
   ...
-  .slider-meta
-    p.slider-date This gallery was last edited on: #{$data('lastEditedDate')}
+  <div class="slider-meta">
+    <p>This gallery was last edited on: {{ lastEditedDate }}</p>
+  </div>
+</div>
 ```
 
 The ideal would be to make this text dynamic, but still let the editor insert the `lastEditedDate` where appropriate.
 
-As a first step, repeating the steps explained in [Section Two](dynamic-module.md), create a new field for the ImageSlider module named "lastEditedText":
+First, lets create a new field for the Image Slider component named "lastEditedText". Update `Components/ImageSlider/fields.json` to match the below:
 
 ```json
 {
@@ -48,38 +50,50 @@ As a first step, repeating the steps explained in [Section Two](dynamic-module.m
 }
 ```
 
-To combine our text with the date, we will now need to make use of the `modifyModuleData` filter. This is the last entry point where it is possible to modify the data of a particular module. Since it is module specific, we place this filter into the `functions.php` file of a module. This file follows the [original Wordpress `functions.php` concept](https://codex.wordpress.org/Functions_File_Explained), only reorganised to match Flynt's modular structure.
+To combine our text with the date, we will now need to make use of the `modifyComponentData` filter. This is the last entry point where it is possible to modify the data of a particular component.
 
-Returning to our task - open the backend interface for your page and add the following content to the "Last Edited Text" field: "This gallery was lasted edited on: $date" and hit update. Now we'll take our last edited text and replace the "$date" string with the `lastEditedDate` data we passed through our data filter.
+Since it is component specific, we place this filter into the `functions.php` file of a component.
 
-First create `Modules/ImageSlider/functions.php`.
+<p class="source-note">This file follows the original Wordpress <code>functions.php</code> concept, only reorganised to match Flynt's modular structure. <a href="https://codex.wordpress.org/Functions_File_Explained" target="_blank">Read more here</a></p>
 
-Then, open `Modules/ImageSlider/functions.php` and add the code below:
+Returning to our task - open the backend interface for your page and add the following content to the "Last Edited Text" field and hit update:
+
+**"This gallery was lasted edited on: $date"**
+
+Now we'll take the value and replace the "$date" string with the `lastEditedDate` data we passed through our data filter.
+
+First create `Components/ImageSlider/functions.php` and add the code below:
 
 ```php
   <?php
-  namespace WPStarterTheme\Modules\ImageSlider;
+  namespace WPStarterTheme\Components\ImageSlider;
 
-  add_filter('WPStarter/modifyModuleData?name=ImageSlider', function ($data) {
+  add_filter('WPStarter/modifyComponentData?name=ImageSlider', function ($data) {
     $data['lastEditedText'] = str_replace('$date', $data['lastEditedDate'], $data['lastEditedText'])
     return $data;
   }, 10, 2);
 ```
 
-It is important to note here that it is necessary to pass the module name as a parameter to our `modifyModuleData` filter.
+It is important to note here that it is necessary to pass the component name as a parameter to our `modifyComponentData` filter.
 
-To finish up, update the view template `Modules/ImageSlider/index.php.pug` with the below:
+To finish up, update the view template `Components/ImageSlider/index.twig` with the below:
 
-```jade
-div(is='flynt-image-slider')
-  .slider
-    h1.slider-title= $data('title')
-    .slider-items
-      for image in $data('images')
-        .slider-item
-          img.slider-image(src=$data(image, 'url'))
-    .slider-meta
-      p.slider-date= $data('lastEditedText')
+```twig
+<div is="flynt-image-slider">
+  <div class="slider">
+    <h1 class="slider-title">{{ title }}</h1>
+    <div class="slider-items">
+      {% for image in images %}
+        <div class="slider-item">
+          <img src="{{ image.url  }}" alt="{{ image.alt }}">
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="slider-meta">
+    <p>{{ lastEditedText }}</p>
+  </div>
+</div>
 ```
 
 We're done! Our editor can now change and re-word the last edited text as they wish, adding in the last edited date wherever they need.
@@ -87,7 +101,7 @@ We're done! Our editor can now change and re-word the last edited text as they w
 <div class="alert alert-steps">
   <h2>Next Steps</h2>
 
-  <p>We have covered the core concepts of building a dynamic content driven module. What's missing is front-end flare. To round up the series we'll dive into assets and how we require styles, scripts, and images.</p>
+  <p>We have covered the core concepts of building a dynamic content driven component. What's missing is front-end flare. To round up the series we'll dive into assets and how we require styles, scripts, and images.</p>
 
-  <p><a href="module-assets.md" class="btn btn-primary">Go to Section 6</a></p>
+  <p><a href="component-assets.md" class="btn btn-primary">Go to Section 6</a></p>
 </div>

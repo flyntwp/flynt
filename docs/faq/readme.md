@@ -2,7 +2,7 @@
 
 ## Do I have to use Pug?
 
-No, this is just our personal recommendation. You can easily change this with the `renderModule` filter. [Learn how here](../theme-development/changing-templating-language.md).
+No, this is just our personal recommendation. You can easily change this with the `renderComponent` filter. [Learn how here](../theme-development/changing-templating-language.md).
 
 ## Do I have to use Stylus?
 
@@ -14,7 +14,7 @@ Coming soon.
 
 ## What's Rupture?
 
-Repture is a simple utility for working with media queries in stylus. It takes advantage of Stylus block mixins to provide a series of useful helpers that make using breakpoints clean and intuitive. [You can read more on their official website](http://jescalan.github.io/rupture/).
+Rupture is a simple utility for working with media queries in stylus. It takes advantage of Stylus block mixins to provide a series of useful helpers that make using breakpoints clean and intuitive. [You can read more on their official website](http://jescalan.github.io/rupture/).
 
 ## Do I have to use Custom Elements to write Javascript?
 

@@ -1,6 +1,6 @@
-# Customizing Module WYSIWYGs
+# Customizing Component WYSIWYGs
 
-In module `functions.php` file:
+In component `functions.php` file:
 
 ```php
 add_filter('acf/fields/wysiwyg/toolbars', function ($toolbars) {
@@ -12,7 +12,7 @@ add_filter('acf/fields/wysiwyg/toolbars', function ($toolbars) {
 });
 ```
 
-In module `fields.json` for the target wysiwyg:
+In component `fields.json` for the target wysiwyg:
 
 ```json
 {

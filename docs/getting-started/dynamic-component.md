@@ -9,14 +9,14 @@
   <ul>
     <li><strong><a href="#31-adding-acf-fields">3.1 Adding ACF Fields</a></strong></li>
     <li><strong><a href="#32-adding-a-field-group">3.2 Adding a Field Group</a></strong></li>
-    <li><strong><a href="#33-displaying-content-with-data">3.3 Displaying Content with <code>$data()</code></a></strong></li>
+    <li><strong><a href="#33-displaying-content-with-twig">3.3 Displaying Content with Twig</a></strong></li>
     <li><strong><a href="#34-understanding-the-flynt-data-flow">3.4 Understanding the Flynt Data Flow</a></strong></li>
-    <li><strong><a href="#35-taking-our-module-further">3.5 Taking our Module Further</a></strong></li>
+    <li><strong><a href="#35-taking-our-component-further">3.5 Taking our Component Further</a></strong></li>
   </ul>
 </div>
 
 ## 3.1 Adding ACF Fields
-To get started, we will add a simple ACF text field. Create `Modules/ImageSlider/fields.json` and add the code below to it:
+To get started, we will add a simple ACF text field. Create `Components/ImageSlider/fields.json` and add the code below to it:
 
 ```json
 {
@@ -35,9 +35,9 @@ The folder structure will now resemble the following:
 
 ```
 flynt-theme/
-├── Modules/
+├── Components/
    └── ImagesSlider/
-       └── index.php.pug
+       └── index.twig
        └── fields.json
 ```
 
@@ -53,16 +53,16 @@ Before we can use these fields to add content, we first need to let Flynt know i
 
 ## 3.2 Adding a Field Group
 
-All field group configuration files can be found in the `config/fieldGroups` directory. For this tutorial we will modify the default `pageModules` configuration.
+All field group configuration files can be found in the `config/fieldGroups` directory. For this tutorial we will modify the default `pageComponents` configuration.
 
-Open `config/fieldGroups/pageModules.json` and replace the contents with the following:
+Open `config/fieldGroups/pageComponents.json` and replace the contents with the following:
 
 ```json
 {
-  "name": "pageModules",
-  "title": "Page Modules",
+  "name": "pageComponents",
+  "title": "Page Components",
   "fields": [
-    "Flynt/Modules/ImageSlider/Fields"
+    "Flynt/Components/ImageSlider/Fields"
   ],
   "location": [
     [
@@ -76,30 +76,32 @@ Open `config/fieldGroups/pageModules.json` and replace the contents with the fol
 }
 ```
 
-<!-- TODO: explain the fields/modules/imageslider/fields line.  -->
+<!-- TODO: explain the fields/components/imageslider/fields line.  -->
 
 Here we are setting the location where the field group should be displayed to the "Page" post type.
 
 As with the field settings, we are writing our location rules using the configuration options provided by Advanced Custom Fields. To read more about this, check out the [official ACF documentation on location rules](https://www.advancedcustomfields.com/resources/custom-location-rules/).
 
-That's it! Navigate to the backend of your Wordpress installation and create a new page. At the bottom, you'll now see a new section for your Image Slider module with a field labeled "Title".
+That's it! Navigate to the backend of your Wordpress installation and create a new page. At the bottom, you'll now see a new section for your Image Slider component with a field labeled "Title".
 
-![Title Field Screenshot](../assets/first-module-field.png)
+![Title Field Screenshot](../assets/first-component-field.png)
 
 Add "Our Image Gallery" into the title text field and save the page. Next, we'll move on to displaying this content on the front-end.
 
-## 3.3 Displaying Content with `$data()`
-Open up the `Modules/ImageSlider/index.php.pug` we made in the previous section.
+## 3.3 Displaying Content with Twig
+We can now display the title in our front-end template.
 
-We can now display the title using the `$data()` function. This function takes the name of your field as a parameter and returns the value.
+Open up `Components/ImageSlider/index.twig` and update it with the following code:
 
-```jade
-div(is='flynt-image-slider')
-  .slider
-    h1.slider-title= $data('title')
+```twig
+<div is="flynt-image-slider">
+  <div class="slider">
+    <h1 class="slider-title">{{ title }}</h1>
+  </div>
+</div>
 ```
 
-<p><a href="/" class="source-note">See the source for <code>$data</code> in the Flynt Core plugin documentation.</a></p>
+That's all there is to it!
 
 ## 3.4 Understanding the Flynt Data Flow
 
@@ -107,25 +109,24 @@ At this point it is important to understand how the Flynt Core plugin is passing
 
 <pre class="language- flowchart">
   <code>
-  +------------------------------+
-  |    Template Configuration    |
-  +--------------+---------------+
-                 |
-                 |
-  +--------------v---------------+
-  |         DataFilters          |
-  +--------------+---------------+
-                 |
-                 |
-  +--------------v---------------+
-  |       modifyModuleData       |
-  +--------------+---------------+
-                 |
-       Pass $data to template
-                 |
-  +--------------v---------------+
-  |        Rendered HTML         |
-  +------------------------------+
+    +------------------------------+
+    |    Template Configuration    |
+    +--------------+---------------+
+                   |
+                   |
+    +--------------v---------------+
+    |         DataFilters          |
+    +--------------+---------------+
+                   |
+                   |
+    +--------------v---------------+
+    |      modifyComponentData     |
+    +--------------+---------------+
+                   |
+                   |
+    +--------------v---------------+
+    |        Rendered HTML         |
+    +------------------------------+
   </code>
 </pre>
 
@@ -142,7 +143,7 @@ At this point it is important to understand how the Flynt Core plugin is passing
                  |
                  |
   +--------------v---------------+
-  |    Initial Module Config     |
+  |    Initial Component Config  |
   +--------------+---------------+
                  |
                  |
@@ -157,7 +158,7 @@ At this point it is important to understand how the Flynt Core plugin is passing
                  |
                  |
   +--------------v---------------+
-  |       modifyModuleData       |
+  |       modifyComponentData    |
   +--------------+---------------+
                  |
        Pass data to template
@@ -170,8 +171,8 @@ At this point it is important to understand how the Flynt Core plugin is passing
 
 <a href="/add-link" class="source-note">To dig into this more, read through the full flowchart in the Flynt Core plugin documentation.</a>
 
-## 3.5 Taking our Module Further
-Since we are making an image slider, let's use `field.json` to add a gallery field to our module:
+## 3.5 Taking our Component Further
+Since we are making an image slider, let's use `field.json` to add a gallery field to our component:
 
 ```json
 {
@@ -197,22 +198,27 @@ Open up your page in the backend and you will now see our new gallery field, wit
 
 For ease, we have prepared some images that you can [download here](/add-link). (Source: [Unsplash](https://unsplash.com))
 
-In `Modules/ImageSlider/index.php.pug`, we can now loop over our images using the `$data` function:
+In `Components/ImageSlider/index.twig`, we can now loop through our images:
 
-```jade
-div(is='flynt-image-slider')
-  .slider
-    h1.slider-title= $data('title')
-    .slider-items
-      for image in $data('images')
-        .slider-item
-          img(src=$data(image, 'url'))
+```twig
+<div is="flynt-image-slider">
+  <div class="slider">
+    <h1 class="slider-title">{{ title }}</h1>
+    <div class="slider-items">
+      {% for image in images %}
+        <div class="slider-item">
+          <img src="{{ image.url  }}" alt="{{ image.alt }}">
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
 ```
 
 <div class="alert alert-steps">
   <h2>Next Steps</h2>
 
-  <p>We now have a simple module that takes data from our fields and outputs them on the front-end! But what if we want do pull other data in our module? The next section explores passing additional data to our module using DataFilters.</p>
+  <p>We now have a simple component that takes data from our fields and outputs them on the front-end! But what if we want do pull other data in our component? The next section explores passing additional data to our component using DataFilters.</p>
 
   <p><a href="datafilters.md" class="btn btn-primary">Go to Section 4</a></p>
 </div>

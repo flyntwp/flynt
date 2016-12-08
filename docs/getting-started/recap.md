@@ -1,12 +1,12 @@
 # 7. Recap and Further Reading
 
-You have now successfully completed your first module! In this "Getting Started" series we have walked through the key steps in making a reusable component:
+You have now successfully completed your first component! In this "Getting Started" series we have walked through the key steps in making a reusable component:
 
 ```
   ImageSlider/
   ├── ✅ Assets/
   |   ├── downloadIcon.svg
-  ├── ✅ index.php.pug
+  ├── ✅ index.twig
   ├── ✅ functions.php
   ├── ✅ fields.json
   ├── ✅ style.styl

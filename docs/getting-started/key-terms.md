@@ -2,15 +2,15 @@
 
 There are a couple of key concepts that need to be understood before getting started.
 
-## Modules
-A module is a self-contained building-block. Each module has its own scope. As such, each module is kept within its own folder which contains everything it requires; the layout, the back-end field setup, all necessary Wordpress filter and hook logic, scripting, styles, and any other relevant static assets:
+## Components
+A component is a self-contained building-block. Each component has its own scope. As such, each component is kept within its own folder which contains everything it requires; the layout, the back-end field setup, all necessary Wordpress filter and hook logic, scripting, styles, and any other relevant static assets:
 
 ```
-  MyExampleModule/
+  MyExampleComponent/
   ├── Assets/
   |   ├── exampleImage.jpg
   |   └── exampleIcon.svg
-  ├── index.php.pug
+  ├── index.twig
   ├── functions.php
   ├── fields.json
   ├── style.styl
@@ -18,17 +18,17 @@ A module is a self-contained building-block. Each module has its own scope. As s
   ├── README.md
 ```
 
-Building modules is a sustainable process, meaning every module you develop can be reused within or in another project; increasing your headstart with every new Flynt project.
+Building components is a sustainable process, meaning every component you develop can be reused within or in another project; increasing your headstart with every new Flynt project.
 
-This series of tutorials will demonstrate the process of building a module piece by piece.
+This series of tutorials will demonstrate the process of building a component piece by piece.
 
 ## Areas
-Since modules are self-contained, areas provide a way to stack our building-blocks together. An area is simply a location within a module where it is possible to add other modules.
+Since components are self-contained, areas provide a way to stack our building-blocks together. An area is simply a location within a component where it is possible to add other components.
 
 <div class="alert alert-steps">
   <h2>Next Steps</h2>
 
-  <p>That's all there is to know! We can now get started with building our first module.</p>
+  <p>That's all there is to know! We can now get started with building our first component.</p>
 
-  <p><a href="basic-module.md" class="btn btn-primary">Get started with section 2</a></p>
+  <p><a href="basic-component.md" class="btn btn-primary">Get started with section 2</a></p>
 </div>

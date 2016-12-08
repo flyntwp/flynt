@@ -10,7 +10,7 @@ Overview of theme folder structure.
   | - wordpress
 | - dist
 | - lib
-| - Modules
+| - Components
 | - templates
 | - functions.php
 | - index.php
