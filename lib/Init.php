@@ -2,10 +2,14 @@
 
 namespace WPStarterTheme\Init;
 
+use WPStarter;
 use WPStarterTheme\Helpers\Module;
 use WPStarterTheme\Helpers\Acf;
 use WPStarterTheme\Helpers\CustomPostTypeRegister;
 use WPStarterTheme\Config;
+
+// initialize plugin defaults
+WPStarter\initDefaults();
 
 // register all custom post types
 CustomPostTypeRegister::fromDirectory(Config\CUSTOM_POST_TYPE_PATH);
