@@ -32,8 +32,12 @@ add_filter('WPStarter/modifyModuleData?name=MediaSlider', function ($data) {
     return $item;
   }, $data['mediaSlides']);
 
-  $data['mediaSliderTitle'] = true; //- Show a title/caption for the Media Slider - true | false
-  $data['mediaSliderTitlePosition'] = 'below'; //- Should the Media Slider Title be above or below the slide? - above | below
+  // Show a title/caption for the Media Slider - true | false
+  $data['mediaSliderTitle'] = true;
+
+  // Should the Media Slider Title be above or below the slide? - above | below
+  $data['mediaSliderTitlePosition'] = 'below';
+
   $data['mediaSliderUsePoster'] = true;
 
   return $data;

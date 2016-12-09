@@ -2,7 +2,10 @@
 
 add_filter('WPStarter/dynamicSubmodules?name=FlexibleContent', function ($areas, $data, $parentData) {
   $fieldGroup = $data['fieldGroup'];
-  if (array_key_exists($fieldGroup, $parentData['post']->fields) && $parentData['post']->fields[$fieldGroup] !== false) {
+  if (
+    array_key_exists($fieldGroup, $parentData['post']->fields) &&
+    $parentData['post']->fields[$fieldGroup] !== false
+  ) {
     $areas['flexibleContent'] = array_map(function ($field) use ($parentData) {
       return [
         'name' => ucfirst($field['acf_fc_layout']),
