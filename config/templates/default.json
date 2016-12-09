@@ -2,12 +2,7 @@
   "name": "MainLayout",
   "dataFilter": "WPStarterTheme/DataFilters/WpBase",
   "areas": {
-    "mainHeader": [
-      {
-        "name": "MainNavigation",
-        "dataFilter": "WPStarterTheme/DataFilters/MainNavigation"
-      }
-    ],
+    "mainHeader": [],
     "mainTemplate": [
       {
         "name": "Template",
@@ -24,11 +19,6 @@
         }
       }
     ],
-    "mainFooter": [
-      {
-        "name": "FooterNavigation",
-        "dataFilter": "WPStarterTheme/DataFilters/FooterNavigation"
-      }
-    ]
+    "mainFooter": []
   }
 }

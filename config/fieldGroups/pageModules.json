@@ -12,9 +12,6 @@
         "WPStarterTheme/Modules/MediaSlider/Layout",
         "WPStarterTheme/Modules/MediaTextBlock/Layout",
         "WPStarterTheme/Modules/Oembed/Layout",
-        "WPStarterTheme/Modules/PageHeader/Layout",
-        "WPStarterTheme/Modules/PostList/Layout",
-        "WPStarterTheme/Modules/PostTeasers/Layout",
         "WPStarterTheme/Modules/TeaserGrid/Layout",
         "WPStarterTheme/Modules/Wysiwyg/Layout"
       ]
