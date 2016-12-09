@@ -32,3 +32,7 @@ add_action('wp_enqueue_scripts', function () {
     ]
   ]);
 });
+
+add_filter('WPStarter/modifyModuleData?name=MainLayout', function ($data) {
+  return $data;
+});
