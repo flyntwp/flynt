@@ -13,7 +13,7 @@ This chapter will cover making a simple component from start to finish. The goal
 #### [3. Adding & Displaying ACF Fields](dynamic-component.md)
 - **[3.1 Adding ACF Fields](dynamic-component.md#21-adding-fields)**
 - **[3.2 Adding a Field Group](dynamic-component.md#22-adding-a-field-group)**
-- **[3.3 Displaying Content with `$data()`](dynamic-component.md#23-displaying-content-with-data)**
+- **[3.3 Displaying Field Content](dynamic-component.md#23-displaying-field-content)**
 - **[3.4 Understanding the Flynt Data Flow](dynamic-component.md#24-understanding-the-flynt-data-flow)**
 - **[3.5 Taking our Component Further](dynamic-component.md#25-taking-our-component-further)**
 

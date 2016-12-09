@@ -1,7 +1,13 @@
+/*
+ * Global
+ */
 .book .book-body .page-inner section {
   font-size: 1.6rem;
 }
 
+/*
+ * Links & Buttons
+ */
 .book-summary ul.summary li.active > a,
 .markdown-section a {
   color: #50a09c;
@@ -26,11 +32,30 @@
   text-decoration: none;
 }
 
+/*
+ * Code Blocks
+ */
 .markdown-section code[class*="language-"],
 .markdown-section pre[class*="language-"] {
   margin: 1.5em 0;
 }
 
+pre.flowchart {
+  background: #efefef;
+  color: #383838;
+  padding: 0;
+  width: 100%;
+}
+
+pre.flowchart code {
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+}
+
+/*
+ * Alerts
+ */
 .alert {
   padding: 20px;
 }
@@ -70,6 +95,9 @@
   padding: 30px;
 }
 
+/**
+ * "Source Note" alert style.
+ */
 .markdown-section .source-note {
   background-color: #50a09c;
   border-bottom: 0;
@@ -102,6 +130,7 @@
   text-decoration: underline;
 }
 
+.markdown-section a.source-note:focus,
 .markdown-section a.source-note:hover {
   background-color: #63c2bd;
   cursor: pointer;
@@ -116,15 +145,6 @@
   background: #2d2d2d;
 }
 
-pre.flowchart {
-  background: #efefef;
-  color: #383838;
-  padding: 0;
-  width: 100%;
-}
-
-pre.flowchart code {
-  display: block;
-  margin: 0 auto;
-  width: 300px;
+.markdown-section .source-note--info::before {
+  background-image: url('../assets/info.svg');
 }

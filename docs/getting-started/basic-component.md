@@ -59,12 +59,12 @@ Flynt uses [Twig](http://twig.sensiolabs.org/) in conjunction with [Timber](timb
 
 ```
 flynt-theme/
-├── Components/
+└── Components/
    └── ImagesSlider/
        └── index.twig
 ```
 
-Whilst the end goal is to make this component an interactive slider, for now we'll add some dummy data to our view template. Open `ImageSlider/index.twig` and enter the following:
+Whilst the end goal is to make this component an interactive slider, for now we'll add some dummy data to our view template. Open `PostSlider/index.twig` and enter the following:
 
 ```twig
 <div is="flynt-media-slider">
@@ -78,7 +78,7 @@ Done! Next we need to render the component to the page.
 
 ## 2.3 Rendering Your Component
 
-First we will create a new area for our Image Slider component. Open `config/templates/default.json` and add a new area with the key `pageComponents`:
+First we will create a new area for our Post Slider component. Open `config/templates/default.json` and add a new area with the key `pageComponents`:
 
 ```json
 {

@@ -13,10 +13,10 @@
 ## 6.1 Adding Styles
 Each component can have a self-contained style file. By default, Flynt supports vanilla CSS files, and Stylus. In this tutorial we will use Stylus. [You can learn how to switch the styling language here](../theme-development/switching-styling-language.md).
 
-To get started, create `Components/ImageSlider/style.styl` and add the styles below:
+To get started, create `Components/PostSlider/style.styl` and add the styles below:
 
 ```stylus
-[is='flynt-image-slider']
+[is='flynt-post-slider']
   .slider
     center(1200px)
 
@@ -27,13 +27,13 @@ To get started, create `Components/ImageSlider/style.styl` and add the styles be
       display: block
       width: 100%
 
-    &-date
+    &-category
       color: #558c89
 ```
 
 Before these styles will show up, we need to enqueue our stylesheet.
 
-Open `ImageSlider/functions.php` and add the following code below the component namespace:
+Open `PostSlider/functions.php` and add the following code below the component namespace:
 
 ```php
 use WPStarterTheme\Helpers\Component;
@@ -48,7 +48,7 @@ add_action('wp_enqueue_scripts', function () {
 
 ```
 
-In summary, the `ImageSlider/functions.php` file now looks like the following:
+In summary, the `PostSlider/functions.php` file now looks like the following:
 
 ```php
   <?php
@@ -74,7 +74,7 @@ Refresh your page and you will now see our new styles. That's it! Though there a
 <!-- TODO: Talk briefly about enqueueStyles, and link to enqueueStyles explanation in the plugin documentation.  -->
 
 ## 6.2 Adding Scripts
-Just as with our styles, scripts live at the Component level and are completely self contained. Create `Components/ImageSlider/script.js` and add the following code:
+Just as with our styles, scripts live at the Component level and are completely self contained. Create `Components/PostSlider/script.js` and add the following code:
 
 ```js
 class ImageSlider extends window.HTMLDivElement {
@@ -95,7 +95,7 @@ class ImageSlider extends window.HTMLDivElement {
   }
 }
 
-window.customElements.define('flynt-image-slider', SliderCols, {extends: 'div'})
+window.customElements.define('flynt-post-slider', PostSlider, {extends: 'div'})
 ```
 This is our basic recommended Javascript Custom Element starting template.
 
@@ -115,7 +115,7 @@ Now we need to import this dependency into our component.
 
 First, we will let Flynt know which scripts and styles from slick need copying into the `build/vendor` folder.
 
-Do this by adding the below code to the top of `Components/ImageSlider/script.js`:
+Do this by adding the below code to the top of `Components/PostSlider/script.js`:
 
 ```js
 import 'file-loader?name=vendor/slick.js!slick-carousel'
@@ -124,7 +124,7 @@ import 'file-loader?name=vendor/slick.css!slick-carousel/slick/slick.css'
 
 Now that the files are copied to `dist/vendor` we need to enqueue these assets.
 
-Open `Components/ImageSlider/functions.php` and enqueue the dependencies by modifying the `enqueueAssets` function to match the below:
+Open `Components/PostSlider/functions.php` and enqueue the dependencies by modifying the `enqueueAssets` function to match the below:
 
 ```php
 add_action('wp_enqueue_scripts', function () {
@@ -143,13 +143,13 @@ add_action('wp_enqueue_scripts', function () {
 });
 ```
 
-Great! All that is left is to initialize the plugin in our component script. To finish up, open `Components/ImageSlider/script.js` and replace the contents with the following:
+Great! All that is left is to initialize the plugin in our component script. To finish up, open `Components/PostSlider/script.js` and replace the contents with the following:
 
 ```js
 import 'file-loader?name=vendor/slick.js!slick-carousel'
 import 'file-loader?name=vendor/slick.css!slick-carousel/slick/slick.css'
 
-class ImageSlider extends window.HTMLDivElement {
+class PostSlider extends window.HTMLDivElement {
   constructor (self) {
     self = super(self)
     self.$ = $(self)
@@ -170,7 +170,7 @@ class ImageSlider extends window.HTMLDivElement {
   }
 }
 
-window.customElements.define('flynt-image-slider', SliderCols, {extends: 'div'})
+window.customElements.define('flynt-post-slider', PostSlider, {extends: 'div'})
 ```
 
 ## 6.4 Adding Static Assets
@@ -188,13 +188,13 @@ To implement this, create an `Asset` directory in the ImageSlider component dire
 
 When gulp is running, any image (JPG, JPEG, PNG, GIF) or SVG file placed into this folder will be automatically copied to the corresponding folder within `dist`.
 
-In our case, `downloadIcon.svg` will be copied to `dist/Components/ImageSlider/assets/downloadIcon.svg`.
+In our case, `downloadIcon.svg` will be copied to `dist/Components/PostSlider/assets/downloadIcon.svg`.
 
 For caching purposes, all static assets are automatically revisioned by gulp (for example, `downloadIcon.svg` → `downloadIcon-d41d8cd98f.svg`).
 
 As such, to include assets in a component, it is necessary to use the `requireAssetUrl` function. This is a utility function provided by the Flynt Core plugin. You can read more about this in the [Flynt Core plugin documentation](/add-link).
 
-Open `Components/ImageSlider/functions.php`. At the top of the file, we need to `use` our `Utils` helpers:
+Open `Components/PostSlider/functions.php`. At the top of the file, we need to `use` our `Utils` helpers:
 
 ```php
 <?php
@@ -208,13 +208,13 @@ We will then add the image URL to our component data by calling the `requireAsse
 
 ```php
  add_filter('WPStarter/modifyComponentData?name=ImageSlider', function ($data) {
-   $data['downloadIconUrl'] = Utils::requireAssetUrl('Components/ImageSlider/assets/downloadIcon.svg');
+   $data['downloadIconUrl'] = Utils::requireAssetUrl('Components/PostSlider/assets/downloadIcon.svg');
    ...
    return $data;
  }, 10, 2);
 ```
 
-In summary, the `Components/ImageSlider/functions.php` should now match the below code:
+In summary, the `Components/PostSlider/functions.php` should now match the below code:
 
 ```php
 <?php
@@ -224,7 +224,7 @@ use WPStarterTheme\Helpers\Utils;
 use WPStarterTheme\Helpers\Component;
 
 add_filter('WPStarter/modifyComponentData?name=ImageSlider', function ($data) {
-  $data['downloadIconUrl'] = Utils::requireAssetUrl('Components/ImageSlider/assets/downloadIcon.svg');
+  $data['downloadIconUrl'] = Utils::requireAssetUrl('Components/PostSlider/assets/downloadIcon.svg');
   $data['lastEditedText'] = str_replace('$date', $data['lastEditedDate'], $data['lastEditedText']);
   return $data;
 }, 10, 2);
@@ -247,10 +247,10 @@ add_action('wp_enqueue_scripts', function () {
 
 We now have the icon URL available in our component data. Lets use what we learnt in the previous steps to add this icon to our template, along with some styling for the icon:
 
-In `Components/ImageSlider/index.twig`:
+In `Components/PostSlider/index.twig`:
 
 ```twig
-<div is="flynt-image-slider">
+<div is="flynt-post-slider">
   <div class="slider">
     <h1 class="slider-title">{{ title }}</h1>
     <div class="slider-items">
@@ -270,10 +270,10 @@ In `Components/ImageSlider/index.twig`:
 </div>
 ```
 
-In `Components/ImageSlider/style.styl`:
+In `Components/PostSlider/style.styl`:
 
 ```stylus
-[is='flynt-image-slider']
+[is='flynt-post-slider']
   .slider
     center(1200px)
 
@@ -284,7 +284,7 @@ In `Components/ImageSlider/style.styl`:
       display: block
       width: 100%
 
-    &-date
+    &-category
       color: #558c89
 
     &-item

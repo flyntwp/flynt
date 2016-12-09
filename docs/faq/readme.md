@@ -1,6 +1,6 @@
 # Frequently Asked Questions (FAQ)
 
-## Do I have to use Pug?
+## Do I have to use Timber and Twig?
 
 No, this is just our personal recommendation. You can easily change this with the `renderComponent` filter. [Learn how here](../theme-development/changing-templating-language.md).
 
@@ -15,6 +15,8 @@ Coming soon.
 ## What's Rupture?
 
 Rupture is a simple utility for working with media queries in stylus. It takes advantage of Stylus block mixins to provide a series of useful helpers that make using breakpoints clean and intuitive. [You can read more on their official website](http://jescalan.github.io/rupture/).
+
+Of course, as with everything else - you do not have to use this, but we strongly recommend it!
 
 ## Do I have to use Custom Elements to write Javascript?
 

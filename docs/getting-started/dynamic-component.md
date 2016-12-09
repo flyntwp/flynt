@@ -9,14 +9,18 @@
   <ul>
     <li><strong><a href="#31-adding-acf-fields">3.1 Adding ACF Fields</a></strong></li>
     <li><strong><a href="#32-adding-a-field-group">3.2 Adding a Field Group</a></strong></li>
-    <li><strong><a href="#33-displaying-content-with-twig">3.3 Displaying Content with Twig</a></strong></li>
+    <li><strong><a href="#33-displaying-field-content">3.3 Displaying Field Content</a></strong></li>
     <li><strong><a href="#34-understanding-the-flynt-data-flow">3.4 Understanding the Flynt Data Flow</a></strong></li>
     <li><strong><a href="#35-taking-our-component-further">3.5 Taking our Component Further</a></strong></li>
   </ul>
 </div>
 
 ## 3.1 Adding ACF Fields
-To get started, we will add a simple ACF text field. Create `Components/ImageSlider/fields.json` and add the code below to it:
+Advanced Custom Fields (ACF) is a Wordpress plugin to make adding custom meta fields easy and intuitive, with a straight-forward API and seamless integration into the back-end of Wordpress. With Flynt, we use ACF to add user-editable fields on a component level.
+
+To get started, we will add a single ACF text field to the `PostSlider` component.
+
+Create `Components/PostSlider/fields.json` and add the code below to it:
 
 ```json
 {
@@ -35,21 +39,29 @@ The folder structure will now resemble the following:
 
 ```
 flynt-theme/
-├── Components/
-   └── ImagesSlider/
+└── Components/
+   └── PostSlider/
        └── index.twig
        └── fields.json
 ```
 
-That's all we need to do to register a new field.
+That's all we need to do to configure a new field! But before we can use these fields to add content, we need to define in which situations these fields should be available to the editor in the backend. We will do this in the next section by adding a new "Field Group".
 
-This functionality is driven by the Advanced Custom Fields (ACF) Wordpress plugin, and there are many other field types available. Flynt supports all of the field types provided by ACF, as well as all of the default field options as provided by the plugin.
+<a href="https://github.com/bleech/wp-starter-snippets" class="source-note source-note--info">ACF offers around 20 different field types. To make the process of authoring these fields simpler, install our field.json snippets for Atom or Sublime Text.</a>
 
-To see the full list of available fields and their available options, check out the [official ACF documentation here](https://www.advancedcustomfields.com/resources/#field-types).
+<div class="alert">
+  <p>You can see the full list of available fields and their options in the <strong><a href="https://www.advancedcustomfields.com/resources/#field-types">official ACF documentation</a></strong>.</p>
 
-<!-- - Extra: Add fields quicker using our acf-field-snippets. For atom + sublime text. Coming soon?! -->
+  <p>We also have documentation on how best to use several of the ACF Pro field types with Flynt:</p>
 
-Before we can use these fields to add content, we first need to let Flynt know in which situations these fields should be available to the editor in the backend.
+  <br>
+
+  <ul>
+    <li><strong><a href="../theme-development/advanced/flexible-content.md">Using the ACF Pro "Flexible Content" Field</a></strong></li>
+    <li><strong><a href="../theme-development/advanced/repeaters.md">Using the ACF Pro "Repeater" Field</a></strong></li>
+    <li><strong><a href="../theme-development/advanced/options-pages.md">Using the ACF Pro "Options" Page</a></strong></li>
+  </ul>
+</div>
 
 ## 3.2 Adding a Field Group
 
@@ -62,7 +74,7 @@ Open `config/fieldGroups/pageComponents.json` and replace the contents with the 
   "name": "pageComponents",
   "title": "Page Components",
   "fields": [
-    "Flynt/Components/ImageSlider/Fields"
+    "Flynt/Components/PostSlider/Fields"
   ],
   "location": [
     [
@@ -76,32 +88,55 @@ Open `config/fieldGroups/pageComponents.json` and replace the contents with the 
 }
 ```
 
-<!-- TODO: explain the fields/components/imageslider/fields line.  -->
+In the "fields" array, we specifically pull in the fields from our Post Slider component. If we also had more components, we could also pull these into our Page Components group. For example:
 
-Here we are setting the location where the field group should be displayed to the "Page" post type.
+```json
+{
+  "name": "pageComponents",
+  "title": "Page Components",
+  "fields": [
+    "Flynt/Components/PostSlider/Fields"
+    "Flynt/Components/ExampleComponent/Fields",
+    "Flynt/Components/AnotherComponent/Fields",
+  ]
+}
+```
 
-As with the field settings, we are writing our location rules using the configuration options provided by Advanced Custom Fields. To read more about this, check out the [official ACF documentation on location rules](https://www.advancedcustomfields.com/resources/custom-location-rules/).
+Below this, we are also setting the location where the field group should be displayed to the "Page" post type.
 
-That's it! Navigate to the backend of your Wordpress installation and create a new page. At the bottom, you'll now see a new section for your Image Slider component with a field labeled "Title".
+```json
+"location": [
+  [
+    {
+      "param": "post_type",
+      "operator": "==",
+      "value": "page"
+    }
+  ]
+]
+```
 
-![Title Field Screenshot](../assets/first-component-field.png)
+<a class="source-note source-note--info" href="https://www.advancedcustomfields.com/resources/custom-location-rules/">
+As with the field settings, we are writing our location rules using the same configuration options as Advanced Custom Fields. We strongly recommend reading more about these rules in the official ACF documentation</a>.
 
-Add "Our Image Gallery" into the title text field and save the page. Next, we'll move on to displaying this content on the front-end.
+That's it! Navigate to the backend of Wordpress and create a new page. At the bottom, you'll now see a section for your Post Slider component with a field labeled "Title".
 
-## 3.3 Displaying Content with Twig
-We can now display the title in our front-end template.
+Add "Our Featured Posts" into the title text field and save the page. Next, we'll move on to displaying this content on the front-end.
 
-Open up `Components/ImageSlider/index.twig` and update it with the following code:
+## 3.3 Displaying Field Content
+We can now display the title in our front-end [Twig](twig.sensiolabs.org) template.
+
+Open `Components/PostSlider/index.twig` and update it with the following code:
 
 ```twig
-<div is="flynt-image-slider">
+<div is="flynt-post-slider">
   <div class="slider">
     <h1 class="slider-title">{{ title }}</h1>
   </div>
 </div>
 ```
 
-That's all there is to it!
+Since all of the fields configured in the component are automatically available in the view, this is all there is to it!
 
 ## 3.4 Understanding the Flynt Data Flow
 
@@ -109,24 +144,24 @@ At this point it is important to understand how the Flynt Core plugin is passing
 
 <pre class="language- flowchart">
   <code>
-    +------------------------------+
-    |    Template Configuration    |
-    +--------------+---------------+
-                   |
-                   |
-    +--------------v---------------+
-    |         DataFilters          |
-    +--------------+---------------+
-                   |
-                   |
-    +--------------v---------------+
-    |      modifyComponentData     |
-    +--------------+---------------+
-                   |
-                   |
-    +--------------v---------------+
-    |        Rendered HTML         |
-    +------------------------------+
+  +------------------------------+
+  |    Template Configuration    |
+  +--------------+---------------+
+                 |
+                 |
+  +--------------v---------------+
+  |         DataFilters          |
+  +--------------+---------------+
+                 |
+                 |
+  +--------------v---------------+
+  |      modifyComponentData     |
+  +--------------+---------------+
+                 |
+                 |
+  +--------------v---------------+
+  |        Rendered HTML         |
+  +------------------------------+
   </code>
 </pre>
 
@@ -172,7 +207,9 @@ At this point it is important to understand how the Flynt Core plugin is passing
 <a href="/add-link" class="source-note">To dig into this more, read through the full flowchart in the Flynt Core plugin documentation.</a>
 
 ## 3.5 Taking our Component Further
-Since we are making an image slider, let's use `field.json` to add a gallery field to our component:
+We will now create an image slider by pulling the featured image from a list of posts selected by the user.
+
+Open `Modules/PostSlider/field.json` and add a post object field to our component:
 
 ```json
 {
@@ -184,30 +221,35 @@ Since we are making an image slider, let's use `field.json` to add a gallery fie
       "required": 1
     },
     {
-      "name": "images",
-      "label": "Images",
-      "type": "gallery",
-      "mime_types": "jpg, jpeg",
+      "name": "posts",
+      "label": "Posts",
+      "type": "post_object",
+      "post_type": ["post"],
+      "return_format": "object",
+      "multiple": 1,
       "required": 1
-    },
+    }
   ]
 }
 ```
 
-Open up your page in the backend and you will now see our new gallery field, with the label "Images". Add some sample images to the field and save your page.
+To continue, create a few dummy posts and add a featured image to each one. You can grab some sample images from [Unsplash](https://unsplash.com).
 
-For ease, we have prepared some images that you can [download here](/add-link). (Source: [Unsplash](https://unsplash.com))
+Now open up your page in the backend and you will now see our new field, with the label "Posts". Select your dummy posts and save the page.
 
-In `Components/ImageSlider/index.twig`, we can now loop through our images:
+<!-- TODO: Add screenshot. -->
+
+In `Components/PostSlider/index.twig`, we can now loop through our posts and output the title and featured image for each one:
 
 ```twig
-<div is="flynt-image-slider">
+<div is="flynt-post-slider">
   <div class="slider">
     <h1 class="slider-title">{{ title }}</h1>
     <div class="slider-items">
-      {% for image in images %}
+      {% for post in posts %}
         <div class="slider-item">
-          <img src="{{ image.url  }}" alt="{{ image.alt }}">
+          <h2>{{ post.title }}</h2>
+          <img src="{{ post.thumbnail.src  }}" alt="{{ post.title }}">
         </div>
       {% endfor %}
     </div>

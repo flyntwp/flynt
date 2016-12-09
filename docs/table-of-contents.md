@@ -14,7 +14,7 @@
 * [3. Adding & Displaying ACF Fields](getting-started/dynamic-component.md)
   * [3.1 Adding ACF Fields](getting-started/dynamic-component.md#31-adding-acf-fields)
   * [3.2 Adding a Field Group](getting-started/dynamic-component.md#32-adding-a-field-group)
-  * [3.3 Displaying Content with `$data()`](getting-started/dynamic-component.md#33-displaying-content-with-data)
+  * [3.3 Displaying Field Content](getting-started/dynamic-component.md#33-displaying-field-content)
   * [3.4 Understanding the Flynt Data Flow](getting-started/dynamic-component.md#34-understanding-the-flynt-data-flow)
   * [3.5 Taking our Component Further](getting-started/dynamic-component.md#35-taking-our-component-further)
 * [4. Using DataFilters](getting-started/datafilters.md)
@@ -34,7 +34,7 @@
 * [Customizing Component WYSIWYGs](theme-development/customizing-wysiwygs.md)
 * [Advanced](theme-development/advanced/readme.md)
   * [Helpers and Hooks](theme-development/advanced/helpers-and-hooks.md)
-  * [Dynamic Subcomponents](theme-development/advanced/dynamic-subcomponents.md)
+  * [Dynamic Sub-Components](theme-development/advanced/dynamic-subcomponents.md)
   * [Using Flexible Content with ACF Pro](theme-development/advanced/flexible-content.md)
   * [Using Repeaters with ACF Pro](theme-development/advanced/repeaters.md)
   * [Custom Data](theme-development/advanced/custom-data.md)
@@ -45,4 +45,3 @@
 ---
 
 * [Frequently Asked Questions](faq/readme.md)
-* [Glossary](glossary.md)

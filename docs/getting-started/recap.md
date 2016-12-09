@@ -1,9 +1,9 @@
 # 7. Recap and Further Reading
 
-You have now successfully completed your first component! In this "Getting Started" series we have walked through the key steps in making a reusable component:
+Congratulations on building your first component! In this "Getting Started" series we have walked through the key steps in making a reusable component:
 
 ```
-  ImageSlider/
+  PostSlider/
   ├── ✅ assets/
   |   ├── downloadIcon.svg
   ├── ✅ index.twig

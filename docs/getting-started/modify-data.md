@@ -12,17 +12,17 @@
 Our component is now functional, but looking at our existing view template, we are still left with hard-coded text:
 
 ```twig
-<div is="flynt-image-slider">
-  ...
+<div is="flynt-post-slider">
+  <!-- ... code ... -->
   <div class="slider-meta">
-    <p>This gallery was last edited on: {{ lastEditedDate }}</p>
+    <p class="slider-category">This post is in the {{ primaryCategory }} category.</p>
   </div>
 </div>
 ```
 
-The ideal would be to make this text dynamic, but still let the editor insert the `lastEditedDate` where appropriate.
+The ideal would be to make this text dynamic, but still let the editor insert the `primaryCategory` where appropriate.
 
-First, lets create a new field for the Image Slider component named "lastEditedText". Update `Components/ImageSlider/fields.json` to match the below:
+First, lets create a new field for the Post Slider component named "categoryText". Update `Components/PostSlider/fields.json` to match the below:
 
 ```json
 {
@@ -34,15 +34,17 @@ First, lets create a new field for the Image Slider component named "lastEditedT
       "required": 1
     },
     {
-      "name": "images",
-      "label": "Images",
-      "type": "gallery",
-      "mime_types": "jpg, jpeg",
+      "name": "posts",
+      "label": "Posts",
+      "type": "post_object",
+      "post_type": ["post"],
+      "return_format": "object",
+      "multiple": 1,
       "required": 1
     },
     {
-      "name": "lastEditedText",
-      "label": "Last Edited Text",
+      "name": "categoryText",
+      "label": "Category Text",
       "type": "text",
       "required": 1
     },
@@ -56,42 +58,43 @@ Since it is component specific, we place this filter into the `functions.php` fi
 
 <p class="source-note">This file follows the original Wordpress <code>functions.php</code> concept, only reorganised to match Flynt's modular structure. <a href="https://codex.wordpress.org/Functions_File_Explained" target="_blank">Read more here</a></p>
 
-Returning to our task - open the backend interface for your page and add the following content to the "Last Edited Text" field and hit update:
+Returning to our task - open the backend interface for your page and add the following content to the "Category Text" field and hit update:
 
-**"This gallery was lasted edited on: $date"**
+**"This post is in the $category category"**
 
-Now we'll take the value and replace the "$date" string with the `lastEditedDate` data we passed through our data filter.
+Now we'll take the value and replace the "$category" string with the `primaryCategory` data we passed through our data filter.
 
-First create `Components/ImageSlider/functions.php` and add the code below:
+First create `Components/PostSlider/functions.php` and add the code below:
 
 ```php
   <?php
-  namespace WPStarterTheme\Components\ImageSlider;
+  namespace WPStarterTheme\Components\PostSlider;
 
-  add_filter('WPStarter/modifyComponentData?name=ImageSlider', function ($data) {
-    $data['lastEditedText'] = str_replace('$date', $data['lastEditedDate'], $data['lastEditedText'])
+  add_filter('WPStarter/modifyComponentData?name=PostSlider', function ($data) {
+    $data['categoryText'] = str_replace('$category', $data['primaryCategory'], $data['categoryText'])
     return $data;
   }, 10, 2);
 ```
 
 It is important to note here that it is necessary to pass the component name as a parameter to our `modifyComponentData` filter.
 
-To finish up, update the view template `Components/ImageSlider/index.twig` with the below:
+To finish up, update the view template `Components/PostSlider/index.twig` with the below:
 
 ```twig
-<div is="flynt-image-slider">
+<div is="flynt-post-slider">
   <div class="slider">
     <h1 class="slider-title">{{ title }}</h1>
     <div class="slider-items">
-      {% for image in images %}
+      {% for post in posts %}
         <div class="slider-item">
-          <img src="{{ image.url  }}" alt="{{ image.alt }}">
+          <h2>{{ post.title }}</h2>
+          <img src="{{ post.thumbnail.src  }}" alt="{{ post.title }}">
         </div>
       {% endfor %}
     </div>
   </div>
   <div class="slider-meta">
-    <p>{{ lastEditedText }}</p>
+    <p class="slider-category>{{ categoryText }}</p>
   </div>
 </div>
 ```
