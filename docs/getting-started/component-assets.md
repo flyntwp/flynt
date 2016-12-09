@@ -17,9 +17,9 @@ To get started, create `Components/ImageSlider/style.styl` and add the styles be
 
 ```stylus
 [is='flynt-image-slider']
-  center(1200px)
-
   .slider
+    center(1200px)
+
     &-title
       color: #74afad
 
@@ -85,6 +85,7 @@ class ImageSlider extends window.HTMLDivElement {
     return self
   }
 
+  // Scope elements we need to the module
   resolveElements () {
     this.$slider = $('.slider-items', this)
   }
@@ -96,11 +97,15 @@ class ImageSlider extends window.HTMLDivElement {
 
 window.customElements.define('flynt-image-slider', SliderCols, {extends: 'div'})
 ```
+This is our basic recommended Javascript Custom Element starting template.
 
-This is our basic recommended Javascript Custom Element starting template. Before continuing we strongly recommended reading [Google's Getting Started Primer for Web Components](https://developers.google.com/web/fundamentals/getting-started/primers/customelements). However, we will build upon this template in the coming sections.
+<p class="source-note">Before continuing we strongly recommended reading <a href="https://developers.google.com/web/fundamentals/getting-started/primers/customelements">Google's Getting Started Primer for Custom Elements</a>. However, we will build upon this template in the coming sections.</p>
+
 
 ## 6.3 Adding and Registering Dependencies
-In order to turn our images into a real slider, we'll use Yarn to add [Slick Carousel](http://kenwheeler.github.io/slick/) to our component. In your terminal, in the theme folder, run this command:
+In order to turn our images into a real slider, we'll use Yarn to add [Slick Carousel](http://kenwheeler.github.io/slick/) to our component.
+
+In your terminal, in the theme root folder, run this command to install Slick:
 
 ```
 yarn add slick-carousel -D
@@ -116,8 +121,6 @@ Do this by adding the below code to the top of `Components/ImageSlider/script.js
 import 'file-loader?name=vendor/slick.js!slick-carousel'
 import 'file-loader?name=vendor/slick.css!slick-carousel/slick/slick.css'
 ```
-
-<!-- TODO: Mention the fact that it will look for main dist file if main exists in package. -->
 
 Now that the files are copied to `dist/vendor` we need to enqueue these assets.
 
@@ -140,7 +143,7 @@ add_action('wp_enqueue_scripts', function () {
 });
 ```
 
-We have now successfully copied and enqueued Slick. All that is left is to initialize the plugin in our component script. To finish up, open `Components/ImageSlider/script.js` and replace the contents with the following:
+Great! All that is left is to initialize the plugin in our component script. To finish up, open `Components/ImageSlider/script.js` and replace the contents with the following:
 
 ```js
 import 'file-loader?name=vendor/slick.js!slick-carousel'
@@ -159,7 +162,11 @@ class ImageSlider extends window.HTMLDivElement {
   }
 
   connectedCallback () {
-    this.$slider.slick()
+    this.$slider.slick({
+      autoplay: 3000
+      arrows: false,
+      dots: true
+    })
   }
 }
 
@@ -167,7 +174,9 @@ window.customElements.define('flynt-image-slider', SliderCols, {extends: 'div'})
 ```
 
 ## 6.4 Adding Static Assets
-Create an `Asset` directory in the ImageSlider component directory. Then, download and add `downloadIcon.svg` ([available here](/add-link)) to the new `Asset` directory.
+Sometimes we need static assets, such as icons, that do not come directly from the content manager.
+
+To implement this, create an `Asset` directory in the ImageSlider component directory. Then, download and add `downloadIcon.svg` ([available here](http://iconmonstr.com/download-11/)) to the new `Asset` directory.
 
 ```
 | flynt-theme
@@ -179,30 +188,27 @@ Create an `Asset` directory in the ImageSlider component directory. Then, downlo
 
 When gulp is running, any image (JPG, JPEG, PNG, GIF) or SVG file placed into this folder will be automatically copied to the corresponding folder within `dist`.
 
-In our case, `downloadIcon.svg` will be copied to `dist/Components/ImageSlider/Assets/downloadIcon.svg`.
+In our case, `downloadIcon.svg` will be copied to `dist/Components/ImageSlider/assets/downloadIcon.svg`.
 
 For caching purposes, all static assets are automatically revisioned by gulp (for example, `downloadIcon.svg` → `downloadIcon-d41d8cd98f.svg`).
 
 As such, to include assets in a component, it is necessary to use the `requireAssetUrl` function. This is a utility function provided by the Flynt Core plugin. You can read more about this in the [Flynt Core plugin documentation](/add-link).
 
-To use this, open `Components/ImageSlider/functions.php`.
-
-At the top of the file, we need to `use` our `Utils` helpers:
+Open `Components/ImageSlider/functions.php`. At the top of the file, we need to `use` our `Utils` helpers:
 
 ```php
 <?php
 namespace WPStarterTheme\Components\ImageSlider;
 
 use WPStarterTheme\Helpers\Utils;
-...
+//...
 ```
 
-Then, we will set the image source by calling the `requireAssetUrl` function with our image file path:
- and then add the asset to our component data within the `modifyComponentData` filter.
+We will then add the image URL to our component data by calling the `requireAssetUrl` function with the path to our image:
 
 ```php
  add_filter('WPStarter/modifyComponentData?name=ImageSlider', function ($data) {
-   $data['imgSrc'] = Utils::requireAssetUrl('Components/ImageSlider/Assets/downloadIcon.svg');
+   $data['downloadIconUrl'] = Utils::requireAssetUrl('Components/ImageSlider/assets/downloadIcon.svg');
    ...
    return $data;
  }, 10, 2);
@@ -218,7 +224,7 @@ use WPStarterTheme\Helpers\Utils;
 use WPStarterTheme\Helpers\Component;
 
 add_filter('WPStarter/modifyComponentData?name=ImageSlider', function ($data) {
-  $data['imgSrc'] = Utils::requireAssetUrl('Components/ImageSlider/Assets/downloadIcon.svg');
+  $data['downloadIconUrl'] = Utils::requireAssetUrl('Components/ImageSlider/assets/downloadIcon.svg');
   $data['lastEditedText'] = str_replace('$date', $data['lastEditedDate'], $data['lastEditedText']);
   return $data;
 }, 10, 2);
@@ -237,6 +243,60 @@ add_action('wp_enqueue_scripts', function () {
     ]
   ]);
 });
+```
+
+We now have the icon URL available in our component data. Lets use what we learnt in the previous steps to add this icon to our template, along with some styling for the icon:
+
+In `Components/ImageSlider/index.twig`:
+
+```twig
+<div is="flynt-image-slider">
+  <div class="slider">
+    <h1 class="slider-title">{{ title }}</h1>
+    <div class="slider-items">
+      {% for image in images %}
+        <div class="slider-item">
+          <a class="slider-icon" href="{{ image.url }}" target="_blank">
+            <img src="{{ downloadIconUrl }}" alt="Download">
+          </a>
+          <img src="{{ image.url  }}" alt="{{ image.alt }}">
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="slider-meta">
+    <p>{{ lastEditedText }}</p>
+  </div>
+</div>
+```
+
+In `Components/ImageSlider/style.styl`:
+
+```stylus
+[is='flynt-image-slider']
+  .slider
+    center(1200px)
+
+    &-title
+      color: #74afad
+
+    &-image
+      display: block
+      width: 100%
+
+    &-date
+      color: #558c89
+
+    &-item
+      position: relative
+
+    &-icon
+      bottom: 20px
+      display: block
+      height: 30px
+      position: absolute
+      right: 20px
+      width: 30px
 ```
 
 <div class="alert alert-steps">

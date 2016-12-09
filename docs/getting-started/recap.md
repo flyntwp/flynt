@@ -4,7 +4,7 @@ You have now successfully completed your first component! In this "Getting Start
 
 ```
   ImageSlider/
-  ├── ✅ Assets/
+  ├── ✅ assets/
   |   ├── downloadIcon.svg
   ├── ✅ index.twig
   ├── ✅ functions.php

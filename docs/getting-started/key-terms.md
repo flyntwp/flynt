@@ -7,7 +7,7 @@ A component is a self-contained building-block. Each component has its own scope
 
 ```
   MyExampleComponent/
-  ├── Assets/
+  ├── assets/
   |   ├── exampleImage.jpg
   |   └── exampleIcon.svg
   ├── index.twig
