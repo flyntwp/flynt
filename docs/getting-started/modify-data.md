@@ -15,14 +15,16 @@ Our component is now functional, but looking at our existing view template, we a
 <div is="flynt-post-slider">
   <!-- ... code ... -->
   <div class="slider-meta">
-    <p class="slider-category">This post is in the {{ primaryCategory }} category.</p>
+    <p class="slider-showing">Showing {{ postsPerPage }} posts.</p>
   </div>
 </div>
 ```
 
-The ideal would be to make this text dynamic, but still let the editor insert the `primaryCategory` where appropriate.
+The ideal would be to make this text dynamic, but still let the editor insert the `postsPerPage` number where appropriate.
 
-First, lets create a new field for the Post Slider component named "categoryText". Update `Components/PostSlider/fields.json` to match the below:
+First, lets create a new field for the Post Slider component named "postsPerPageText".
+
+Update `Components/PostSlider/fields.json` to match the below:
 
 ```json
 {
@@ -43,8 +45,8 @@ First, lets create a new field for the Post Slider component named "categoryText
       "required": 1
     },
     {
-      "name": "categoryText",
-      "label": "Category Text",
+      "name": "postsPerPageText",
+      "label": "Posts Per Page Text",
       "type": "text",
       "required": 1
     },
@@ -56,22 +58,22 @@ To combine our text with the date, we will now need to make use of the `modifyCo
 
 Since it is component specific, we place this filter into the `functions.php` file of a component.
 
-<p class="source-note">This file follows the original Wordpress <code>functions.php</code> concept, only reorganised to match Flynt's modular structure. <a href="https://codex.wordpress.org/Functions_File_Explained" target="_blank">Read more here</a></p>
+<p class="source-note source-note--info">This file follows the original Wordpress <code>functions.php</code> concept, only re-organised to match Flynt's modular structure. <a href="https://codex.wordpress.org/Functions_File_Explained" target="_blank">Read more here</a></p>
 
-Returning to our task - open the backend interface for your page and add the following content to the "Category Text" field and hit update:
+Returning to our task - open the backend interface for your page and add the following content to the "Posts Per Page Text" field and hit update:
 
-**"This post is in the $category category"**
+**"Showing $postsPerPage posts."**
 
-Now we'll take the value and replace the "$category" string with the `primaryCategory` data we passed through our data filter.
+Now we'll take the value and replace the "$postsPerPage" string with the `postsPerPage` data we passed through our data filter.
 
 First create `Components/PostSlider/functions.php` and add the code below:
 
 ```php
   <?php
-  namespace WPStarterTheme\Components\PostSlider;
+  namespace Flynt\Components\PostSlider;
 
-  add_filter('WPStarter/modifyComponentData?name=PostSlider', function ($data) {
-    $data['categoryText'] = str_replace('$category', $data['primaryCategory'], $data['categoryText'])
+  add_filter('Flynt/modifyComponentData?name=PostSlider', function ($data) {
+    $data['postsPerPageText'] = str_replace('$postsPerPage', $data['postsPerPage'], $data['postsPerPageText'])
     return $data;
   }, 10, 2);
 ```
@@ -94,12 +96,12 @@ To finish up, update the view template `Components/PostSlider/index.twig` with t
     </div>
   </div>
   <div class="slider-meta">
-    <p class="slider-category>{{ categoryText }}</p>
+    <p class="slider-showing>{{ postsPerPageText }}</p>
   </div>
 </div>
 ```
 
-We're done! Our editor can now change and re-word the last edited text as they wish, adding in the last edited date wherever they need.
+We're done! Our editor can now change and re-word the text as they wish, adding in the "posts per page" data wherever they need without "hard-coding" it.
 
 <div class="alert alert-steps">
   <h2>Next Steps</h2>

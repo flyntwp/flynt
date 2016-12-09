@@ -53,14 +53,14 @@ Here we store our default page layout:
 For a detailed look at how these template configurations work, [you can read more here](../theme-development/page-templates.md).
 
 ## 2.2 Creating your Component
-All components are located in the `Components` directory. Create a new folder in this directory with the name `ImageSlider`.
+All components are located in the `Components` directory. Create a new folder in this directory with the name `PostSlider`.
 
 Flynt uses [Twig](http://twig.sensiolabs.org/) in conjunction with [Timber](timber.github.io/timber/) for view templates (and more). To add a template for your component, create `index.twig` within your component folder. Your folder structure will now be:
 
 ```
 flynt-theme/
 └── Components/
-   └── ImagesSlider/
+   └── PostSlider/
        └── index.twig
 ```
 
@@ -93,7 +93,7 @@ First we will create a new area for our Post Slider component. Open `config/temp
         "areas": {
           "pageComponents": [
             {
-              "name": "ImageSlider"
+              "name": "PostSlider"
             }
           ]
         }

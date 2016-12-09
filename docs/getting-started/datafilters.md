@@ -8,24 +8,22 @@
 </div>
 
 ## 4.1 Adding a DataFilter
-It's not always the case that the data we need in our component comes directly from the backend user input. Data Filters are one of the ways in which we can add and modify data before it is passed to the component. It is mainly intended for use with database or API operations. In this case we will put this to use in our Post Slider by passing the "last updated" date to our gallery.
+It's not always the case that the data we need in our component comes directly from the backend user input. Data Filters are one of the ways in which we can add and modify data before it is passed to the component. It is mainly intended for use with database or API operations. In this case we will put this to use in our Post Slider by passing the "posts per page" Wordpress reading setting to our view.
 
 To begin, add the following line in `config/templates/default.json`, just after the `name`:
 
 ```php
 {
   "name": "ImageSlider",
-  "dataFilter": "Flynt/DataFilters/Categories"
+  "dataFilter": "Flynt/DataFilters/Reading"
 }
 ```
 
-Now create `lib/DataFilters/Categories.php` and add the code below:
+Now create `lib/DataFilters/Reading.php` and add the code below:
 
 ```php
-add_filter('Flynt/DataFilters/Categories', function($data) {
-  global $post;
-  $categories = get_the_category($post->ID);
-  $data['primaryCategory'] = $categories[0];
+add_filter('Flynt/DataFilters/Reading', function($data) {
+  $data['postsPerPage'] = get_option('posts_per_page');
 
   return $data;
 });
@@ -33,9 +31,33 @@ add_filter('Flynt/DataFilters/Categories', function($data) {
 
 <p class="source-note">Here we take advantage of the standard Wordpress filter functionality. You can read more about this in the <a href="../add-link">plugin documentation</a>, and on the <a href="https://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters" target="_blank">official Wordpress documentation</a>.</p>
 
-We are accessing our component data before it reaches the view, adding our `primaryCategory` and returning it. Now we can use this new data in our view.
+To make the data set in this Data Filter available in our component, open `config/templates/default.json` and set the DataFilter to the `Post Slider` component:
 
-Open `Components/PostSlider/index.twig` and update it to match the code below:
+```json
+{
+  "name": "MainLayout",
+  "dataFilter": "Flynt/DataFilters/WpBase",
+  "areas": {
+    ...
+    "mainTemplate": [
+      {
+        "name": "Template",
+        "dataFilter": "Flynt/DataFilters/MainQuery/Single",
+        "areas": {
+          "pageComponents": [
+            {
+              "name": "PostSlider",
+              "dataFilter": "Flynt/DataFilters/Reading"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+```
+
+The data returned from our Reading DataFilter will now be combined with the data already in the component, making it instantly accessible in our view. To finish up, open `Components/PostSlider/index.twig` and update it to match the code below:
 
 ```twig
 <div is="flynt-post-slider">
@@ -50,7 +72,7 @@ Open `Components/PostSlider/index.twig` and update it to match the code below:
     </div>
   </div>
   <div class="slider-meta">
-    <p class="slider-category">This post is in the {{ primaryCategory }} category.</p>
+    <p class="slider-showing">Showing {{ postsPerPage }} posts.</p>
   </div>
 </div>
 ```

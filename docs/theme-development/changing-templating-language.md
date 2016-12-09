@@ -6,9 +6,9 @@ As an example, the below code demonstrates how to switch to [Timber](timber.gith
 
 ```php
 <?php
-add_filter('WPStarter/renderComponent', function($output, $componentName, $componentData, $areaHtml) {
+add_filter('Flynt/renderComponent', function($output, $componentName, $componentData, $areaHtml) {
   // Get index file.
-  $componentManager = WPStarter\ComponentManager::getInstance();
+  $componentManager = Flynt\ComponentManager::getInstance();
   $filePath = $componentManager->getComponentFilePath($componentName, 'index.twig');
 
   // Add areas to data.

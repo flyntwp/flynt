@@ -27,7 +27,7 @@ To get started, create `Components/PostSlider/style.styl` and add the styles bel
       display: block
       width: 100%
 
-    &-category
+    &-showing
       color: #558c89
 ```
 
@@ -36,7 +36,7 @@ Before these styles will show up, we need to enqueue our stylesheet.
 Open `PostSlider/functions.php` and add the following code below the component namespace:
 
 ```php
-use WPStarterTheme\Helpers\Component;
+use Flynt\Helpers\Component;
 ```
 
 Then, at the bottom, add the code below to enqueue the stylesheet:
@@ -52,11 +52,11 @@ In summary, the `PostSlider/functions.php` file now looks like the following:
 
 ```php
   <?php
-  namespace WPStarterTheme\Components\ImageSlider;
+  namespace Flynt\Components\ImageSlider;
 
-  use WPStarterTheme\Helpers\Component;
+  use Flynt\Helpers\Component;
 
-  add_filter('WPStarter/modifyComponentData?name=ImageSlider', function ($data) {
+  add_filter('Flynt/modifyComponentData?name=ImageSlider', function ($data) {
     $data['lastEditedText'] = str_replace('$date', $data['lastEditedDate'], $data['lastEditedText']);
     return $data;
   }, 10, 2);
@@ -198,16 +198,16 @@ Open `Components/PostSlider/functions.php`. At the top of the file, we need to `
 
 ```php
 <?php
-namespace WPStarterTheme\Components\ImageSlider;
+namespace Flynt\Components\ImageSlider;
 
-use WPStarterTheme\Helpers\Utils;
+use Flynt\Helpers\Utils;
 //...
 ```
 
 We will then add the image URL to our component data by calling the `requireAssetUrl` function with the path to our image:
 
 ```php
- add_filter('WPStarter/modifyComponentData?name=ImageSlider', function ($data) {
+ add_filter('Flynt/modifyComponentData?name=ImageSlider', function ($data) {
    $data['downloadIconUrl'] = Utils::requireAssetUrl('Components/PostSlider/assets/downloadIcon.svg');
    ...
    return $data;
@@ -218,12 +218,12 @@ In summary, the `Components/PostSlider/functions.php` should now match the below
 
 ```php
 <?php
-namespace WPStarterTheme\Components\ImageSlider;
+namespace Flynt\Components\ImageSlider;
 
-use WPStarterTheme\Helpers\Utils;
-use WPStarterTheme\Helpers\Component;
+use Flynt\Helpers\Utils;
+use Flynt\Helpers\Component;
 
-add_filter('WPStarter/modifyComponentData?name=ImageSlider', function ($data) {
+add_filter('Flynt/modifyComponentData?name=ImageSlider', function ($data) {
   $data['downloadIconUrl'] = Utils::requireAssetUrl('Components/PostSlider/assets/downloadIcon.svg');
   $data['lastEditedText'] = str_replace('$date', $data['lastEditedDate'], $data['lastEditedText']);
   return $data;
@@ -265,7 +265,7 @@ In `Components/PostSlider/index.twig`:
     </div>
   </div>
   <div class="slider-meta">
-    <p>{{ lastEditedText }}</p>
+    <p class="slider-showing">{{ lastEditedText }}</p>
   </div>
 </div>
 ```
@@ -284,7 +284,7 @@ In `Components/PostSlider/style.styl`:
       display: block
       width: 100%
 
-    &-category
+    &-showing
       color: #558c89
 
     &-item
