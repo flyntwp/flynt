@@ -11,19 +11,26 @@ add_filter('WPStarterTheme/DataFilters/MainQuery/Single', ['WPStarterTheme\DataF
 class MainQuery {
 
   public static function getQuery($data) {
-    $context = Timber::get_context();
+    $posts = array_map('self::addFieldsToPost', Timber::get_posts());
+    $context = [
+      'posts' => $posts
+    ];
     return array_merge($context, $data);
   }
 
   public static function getSingle($data) {
-    $post = new Post();
+    $post = self::addFieldsToPost(new Post());
     $context = [
       'post' => $post
     ];
+    return array_merge($context, $data);
+  }
+
+  protected static function addFieldsToPost($post) {
     if (!empty($post)) {
       $post->fields = get_fields($post->id);
     }
-    return array_merge($context, $data);
+    return $post;
   }
 
 }
