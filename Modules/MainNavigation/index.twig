@@ -1,0 +1,16 @@
+<nav is="wps-main-navigation">
+  <ul class="mainNavigation">
+    {% for item in menu.get_items %}
+      <li class="mainNavigation-item {{item.classes | join(' ')}}">
+        <a class="mainNavigation-link" href="{{item.link}}">{{item.title}}</a>
+          {% if item.get_children %}
+            <ul class="mainNavigation-subMenu">
+              {% for child in item.get_children %}
+                <li class="mainNavigation-subItem"><a href="{{child.link}}">{{child.title}}</a></li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
