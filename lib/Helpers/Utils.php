@@ -1,6 +1,6 @@
 <?php
 
-namespace WPStarterTheme\Helpers;
+namespace Flynt\Theme\Helpers;
 
 class Utils {
   protected static $assetManifest;

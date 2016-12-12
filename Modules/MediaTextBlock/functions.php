@@ -1,15 +1,15 @@
 <?php
-namespace WPStarterTheme\Modules\MediaTextBlock;
+namespace Flynt\Theme\Modules\MediaTextBlock;
 
-use WPStarterTheme\Helpers\Module;
-use WPStarterTheme\Helpers\Log;
-use WPStarterTheme\Helpers\DomNode;
+use Flynt\Theme\Helpers\Module;
+use Flynt\Theme\Helpers\Log;
+use Flynt\Theme\Helpers\DomNode;
 
 add_action('wp_enqueue_scripts', function () {
   Module::enqueueAssets('MediaTextBlock');
 });
 
-add_filter('WPStarter/modifyModuleData?name=MediaTextBlock', function ($data) {
+add_filter('Flynt/modifyModuleData?name=MediaTextBlock', function ($data) {
   if (empty($data['mediaType'] == 'mediaVideo' && $data['posterImage'])  ) {
     $data['posterImage'] = get_field('defaultPosterImage', 'options');
   }

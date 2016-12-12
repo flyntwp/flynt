@@ -1,29 +1,29 @@
 <?php
 
-namespace WPStarterTheme\Helpers\Acf;
+namespace Flynt\Theme\Helpers\Acf;
 
 use RecursiveDirectoryIterator;
 use ACFComposer\ACFComposer;
-use WPStarterTheme\Helpers\Utils;
-use WPStarterTheme\Core;
+use Flynt\Theme\Helpers\Utils;
+use Flynt\Theme\Core;
 
 class FieldGroupComposer {
-  const FILTER_NAMESPACE = 'WPStarterTheme/Modules';
+  const FILTER_NAMESPACE = 'Flynt/Modules';
   const FIELD_GROUPS_DIR = '/config/fieldGroups';
 
   protected static $fieldGroupsLoaded = false;
 
   public static function init() {
     add_action(
-      'WPStarter/registerModule',
-      ['WPStarterTheme\Helpers\Acf\FieldGroupComposer', 'addFieldFilters'],
+      'Flynt/registerModule',
+      ['Flynt\Theme\Helpers\Acf\FieldGroupComposer', 'addFieldFilters'],
       11,
       2
     );
 
     add_action(
       'acf/init',
-      ['WPStarterTheme\Helpers\Acf\FieldGroupComposer', 'loadFieldGroups']
+      ['Flynt\Theme\Helpers\Acf\FieldGroupComposer', 'loadFieldGroups']
     );
   }
 

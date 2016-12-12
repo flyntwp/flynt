@@ -1,10 +1,10 @@
 <?php
 
-namespace WPStarterTheme\Hooks;
+namespace Flynt\Theme\Hooks;
 
-use WPStarterTheme\Helpers;
+use Flynt\Theme\Helpers;
 
-add_filter('WPStarter/initModuleConfig', function ($config, $areaName) {
+add_filter('Flynt/initModuleConfig', function ($config, $areaName) {
   $moduleClass = Helpers\StringHelpers::camelCaseToKebap($config['name']);
   $areaClass = 'area--' . Helpers\StringHelpers::camelCaseToKebap($areaName);
   $baseClassesArray = ['modules', $areaClass, $moduleClass];

@@ -1,8 +1,8 @@
 <?php
 
-namespace WPStarterTheme\Helpers\Acf;
+namespace Flynt\Theme\Helpers\Acf;
 
-use WPStarterTheme\Helpers\AdminNoticeManager;
+use Flynt\Theme\Helpers\AdminNoticeManager;
 
 class Loader {
 
@@ -16,7 +16,7 @@ class Loader {
 
       self::initHelpers($helpers);
 
-    } elseif (class_exists('WPStarterTheme\Helpers\AdminNoticeManager')) {
+    } elseif (class_exists('Flynt\Theme\Helpers\AdminNoticeManager')) {
 
       self::showAdminNotice($requirements, $helpers);
 
@@ -32,7 +32,7 @@ class Loader {
   }
 
   protected static function initHelpers($helpers) {
-    $namespacePrefix = 'WPStarterTheme\Helpers\Acf';
+    $namespacePrefix = 'Flynt\Theme\Helpers\Acf';
     foreach ($helpers as $helperName) {
       $className = "{$namespacePrefix}\\$helperName";
       if (class_exists($className) && method_exists($className, 'init')) {

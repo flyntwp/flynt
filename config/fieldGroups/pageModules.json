@@ -8,12 +8,12 @@
       "type": "flexible_content",
       "button_label": "Add Module",
       "layouts": [
-        "WPStarterTheme/Modules/ImageHero/Layout",
-        "WPStarterTheme/Modules/MediaSlider/Layout",
-        "WPStarterTheme/Modules/MediaTextBlock/Layout",
-        "WPStarterTheme/Modules/Oembed/Layout",
-        "WPStarterTheme/Modules/TeaserGrid/Layout",
-        "WPStarterTheme/Modules/Wysiwyg/Layout"
+        "Flynt/Modules/ImageHero/Layout",
+        "Flynt/Modules/MediaSlider/Layout",
+        "Flynt/Modules/MediaTextBlock/Layout",
+        "Flynt/Modules/Oembed/Layout",
+        "Flynt/Modules/TeaserGrid/Layout",
+        "Flynt/Modules/Wysiwyg/Layout"
       ]
     }
   ],

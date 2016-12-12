@@ -1,12 +1,12 @@
 <?php
 
-namespace WPStarterTheme\Helpers\Acf;
+namespace Flynt\Theme\Helpers\Acf;
 
-use WPStarterTheme\Helpers\StringHelpers;
+use Flynt\Theme\Helpers\StringHelpers;
 use ACFComposer;
 
 class OptionPages {
-  const FILTER_NAMESPACE = 'WPStarterTheme/Modules';
+  const FILTER_NAMESPACE = 'Flynt/Modules';
   const FIELD_GROUPS_DIR = '/config/fieldGroups';
 
   const OPTION_TYPES = [
@@ -20,8 +20,8 @@ class OptionPages {
     self::createOptionPages();
 
     add_action(
-      'WPStarter/registerModule',
-      ['WPStarterTheme\Helpers\Acf\OptionPages', 'addAllModuleOptionSubpages'],
+      'Flynt/registerModule',
+      ['Flynt\Theme\Helpers\Acf\OptionPages', 'addAllModuleOptionSubpages'],
       12,
       2
     );

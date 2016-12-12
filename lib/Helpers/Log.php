@@ -1,6 +1,6 @@
 <?php
 
-namespace WPStarterTheme\Helpers;
+namespace Flynt\Theme\Helpers;
 
 class Log {
   public static function console($data) {

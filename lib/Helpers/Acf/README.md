@@ -29,9 +29,9 @@ Drag and drop your desired Helpers as well as the `Loader.php` into your Flynt T
 ```php
 <?php
 
-namespace Flynt\Init;
+namespace Flynt\Theme\Init;
 
-use WPStarterTheme\Helpers\Acf;
+use Flynt\Theme\Helpers\Acf;
 
 // initialize ACF Helpers
 Acf\Loader::init([

@@ -1,6 +1,6 @@
 <?php
 
-add_filter('WPStarter/dynamicSubmodules?name=FlexibleContent', function ($areas, $data, $parentData) {
+add_filter('Flynt/dynamicSubmodules?name=FlexibleContent', function ($areas, $data, $parentData) {
   $fieldGroup = $data['fieldGroup'];
   if (
     array_key_exists($fieldGroup, $parentData['post']->fields) &&

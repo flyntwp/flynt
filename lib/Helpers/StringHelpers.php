@@ -1,6 +1,6 @@
 <?php
 
-namespace WPStarterTheme\Helpers;
+namespace Flynt\Theme\Helpers;
 
 class StringHelpers {
   public static function camelCaseToKebap($className) {

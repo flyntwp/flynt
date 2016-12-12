@@ -1,7 +1,7 @@
 <?php
 
-namespace WPStarterTheme\Helpers;
+namespace Flynt\Theme\Helpers;
 
-use WPStarterTheme\Core;
+use Flynt\Theme\Core;
 
 Core::loadPhpFiles('lib/Helpers/');

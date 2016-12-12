@@ -1,6 +1,6 @@
 <?php
 
-namespace WPStarterTheme\Hooks;
+namespace Flynt\Theme\Hooks;
 
 add_filter('mce_buttons', function ($buttons) {
   return array(

@@ -1,15 +1,15 @@
 <?php
 
-namespace WPStarterTheme\Init;
+namespace Flynt\Theme\Init;
 
-use WPStarter;
-use WPStarterTheme\Helpers\Module;
-use WPStarterTheme\Helpers\Acf;
-use WPStarterTheme\Helpers\CustomPostTypeRegister;
-use WPStarterTheme\Config;
+use Flynt;
+use Flynt\Theme\Helpers\Module;
+use Flynt\Theme\Helpers\Acf;
+use Flynt\Theme\Helpers\CustomPostTypeRegister;
+use Flynt\Theme\Config;
 
 // initialize plugin defaults
-WPStarter\initDefaults();
+Flynt\initDefaults();
 
 // register all custom post types
 CustomPostTypeRegister::fromDirectory(Config\CUSTOM_POST_TYPE_PATH);

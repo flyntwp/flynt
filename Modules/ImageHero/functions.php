@@ -1,7 +1,7 @@
 <?php
-namespace WPStarterTheme\Modules\ImageHero;
+namespace Flynt\Theme\Modules\ImageHero;
 
-use WPStarterTheme\Helpers\Module;
+use Flynt\Theme\Helpers\Module;
 
 add_action('wp_enqueue_scripts', function () {
   Module::enqueueAssets('ImageHero', [

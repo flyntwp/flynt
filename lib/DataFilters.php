@@ -1,7 +1,7 @@
 <?php
 
-namespace WPStarterTheme\DataFilters;
+namespace Flynt\Theme\DataFilters;
 
-use WPStarterTheme\Core;
+use Flynt\Theme\Core;
 
 Core::loadPhpFiles('lib/DataFilters/');

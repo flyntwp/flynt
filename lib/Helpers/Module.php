@@ -1,11 +1,11 @@
 <?php
 
-namespace WPStarterTheme\Helpers;
+namespace Flynt\Theme\Helpers;
 
 use RecursiveDirectoryIterator;
-use WPStarter;
-use WPStarterTheme\Config;
-use WPStarterTheme\Helpers\Utils;
+use Flynt;
+use Flynt\Theme\Config;
+use Flynt\Theme\Helpers\Utils;
 
 class Module {
 
@@ -22,7 +22,7 @@ class Module {
 
     foreach ($directoryIterator as $name => $file) {
       if ($file->isDir()) {
-        WPStarter\registerModule($file->getFilename());
+        Flynt\registerModule($file->getFilename());
       }
     }
   }
@@ -48,7 +48,7 @@ class Module {
     if (is_file($scriptAbsPath)) {
       self::addAsset('enqueue', [
         'type' => 'script',
-        'name' => "WPStarterTheme/Modules/{$moduleName}",
+        'name' => "Flynt/Modules/{$moduleName}",
         'path' => "Modules/{$moduleName}/script.js",
         'dependencies' => $scriptDeps
       ]);
@@ -67,7 +67,7 @@ class Module {
     if (is_file($styleAbsPath)) {
       self::addAsset('enqueue', [
         'type' => 'style',
-        'name' => "WPStarterTheme/Modules/{$moduleName}",
+        'name' => "Flynt/Modules/{$moduleName}",
         'path' => "Modules/{$moduleName}/style.css",
         'dependencies' => $styleDeps
       ]);

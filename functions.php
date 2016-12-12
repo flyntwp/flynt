@@ -1,8 +1,8 @@
 <?php
 
-namespace WPStarterTheme;
+namespace Flynt\Theme;
 
-use WPStarterTheme\Core;
+use Flynt\Theme\Core;
 
 require_once __DIR__ . '/lib/Core.php';
 

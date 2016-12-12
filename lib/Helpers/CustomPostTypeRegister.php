@@ -1,9 +1,9 @@
 <?php
 
-namespace WPStarterTheme\Helpers;
+namespace Flynt\Theme\Helpers;
 
-use WPStarterTheme\Config;
-use WPStarterTheme\Core;
+use Flynt\Theme\Config;
+use Flynt\Theme\Core;
 
 class CustomPostTypeRegister {
 
@@ -39,7 +39,7 @@ class CustomPostTypeRegister {
   public static function fromArray($config) {
     if (isset($config['labels'])) {
       $config['labels'] = array_map(function ($label) {
-        return __($label, 'WPStarterTheme');
+        return __($label, 'Flynt');
       }, $config['labels']);
     }
 

@@ -1,16 +1,16 @@
 <?php
 
-namespace WPStarterTheme\Hooks;
+namespace Flynt\Theme\Hooks;
 
 use Timber\Timber;
 use Timber\Loader;
 use Twig_SimpleFunction;
-use WPStarter;
+use Flynt;
 
 // Render Module
-add_filter('WPStarter/renderModule', function ($output, $moduleName, $moduleData, $areaHtml) {
+add_filter('Flynt/renderModule', function ($output, $moduleName, $moduleData, $areaHtml) {
   // get index file
-  $moduleManager = WPStarter\ModuleManager::getInstance();
+  $moduleManager = Flynt\ModuleManager::getInstance();
   $filePath = $moduleManager->getModuleFilePath($moduleName, 'index.twig');
 
   if (!is_file($filePath)) {

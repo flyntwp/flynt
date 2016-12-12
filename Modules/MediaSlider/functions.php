@@ -1,15 +1,12 @@
 <?php
-namespace WPStarterTheme\Modules\MediaSlider;
+namespace Flynt\Theme\Modules\MediaSlider;
 
-use WPStarterTheme\Helpers\Utils;
-use WPStarterTheme\Helpers\Log;
-use WPStarterTheme\Helpers\Module;
-use WPStarterTheme\Helpers\DomNode;
+use Flynt\Theme\Helpers\Utils;
+use Flynt\Theme\Helpers\Log;
+use Flynt\Theme\Helpers\Module;
+use Flynt\Theme\Helpers\DomNode;
 
-add_image_size('wpsMediaSliderLg', 1140, 700, true);
-add_image_size('wpsMediaSliderSm', 768, 500, true);
-
-add_filter('WPStarter/modifyModuleData?name=MediaSlider', function ($data) {
+add_filter('Flynt/modifyModuleData?name=MediaSlider', function ($data) {
   $data['mediaSlides'] = array_map(function ($item) {
     if ($item['mediaType'] == 'oembed') {
       $item['oembedLazyLoad'] = DomNode::setSrcDataAttribute(
