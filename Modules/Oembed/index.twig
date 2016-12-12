@@ -1,10 +1,14 @@
-{% import './Modules/MainLayout/TwigMacros/picture.twig' as picture %}
-
 <div is="wps-oembed">
   <div class="oembed">
     <div class="oembed-videoContainer">
       <div class="oembed-posterImage">
-        {{ picture.fill(posterImage, 'oembed')}}
+        <img class="oembed-imageElement" srcset="
+          {{ posterImage.src | resize(400, 200) }} 400w,
+          {{ posterImage.src | resize(800, 400) }} 800w,
+          {{ posterImage.src | resize(1200, 600) }} 1200w,
+          {{ posterImage.src | resize(1600, 800) }} 1600w"
+          src="{{ posterImage.src }}"
+          sizes="100vw">
       </div>
       <div class="oembed-video">
         {{ oembedLazyLoad }}

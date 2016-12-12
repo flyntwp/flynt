@@ -10,15 +10,7 @@ add_image_size('wpsMediaSliderLg', 1140, 700, true);
 add_image_size('wpsMediaSliderSm', 768, 500, true);
 
 add_filter('WPStarter/modifyModuleData?name=MediaSlider', function ($data) {
-  $imageConfig = [
-    'default' => 'wpsMediaSliderLg',
-    'sizes' => [
-      'wpsMediaSliderSm' => '(max-width: 767px)'
-    ]
-  ];
-
-  $data['mediaSlides'] = array_map(function ($item) use ($imageConfig) {
-    $item['image']['imageConfig'] = $imageConfig;
+  $data['mediaSlides'] = array_map(function ($item) {
     if ($item['mediaType'] == 'oembed') {
       $item['oembedLazyLoad'] = DomNode::setSrcDataAttribute(
         $item['oembed'],

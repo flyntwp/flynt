@@ -1,6 +1,11 @@
-{% import './Modules/MainLayout/TwigMacros/picture.twig' as picture %}
 <div is="wps-image-hero">
   <div class="imageHero">
-    {{ picture.fill(image, 'imageHero') }}
+    <img class="imageHero-imageElement" srcset="
+      {{ image.src | resize(400, 200) }} 400w,
+      {{ image.src | resize(800, 400) }} 800w,
+      {{ image.src | resize(1200, 600) }} 1200w,
+      {{ image.src | resize(1600, 800) }} 1600w"
+      src="{{ image.src }}"
+      sizes="100vw">
   </div>
 </div>
