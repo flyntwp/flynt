@@ -10,15 +10,7 @@ add_image_size('wpsMediaSliderLg', 1140, 700, true);
 add_image_size('wpsMediaSliderSm', 768, 500, true);
 
 add_filter('WPStarter/modifyModuleData?name=MediaSlider', function ($data) {
-  $imageConfig = [
-    'default' => 'wpsMediaSliderLg',
-    'sizes' => [
-      'wpsMediaSliderSm' => '(max-width: 767px)'
-    ]
-  ];
-
-  $data['mediaSlides'] = array_map(function ($item) use ($imageConfig) {
-    $item['image']['imageConfig'] = $imageConfig;
+  $data['mediaSlides'] = array_map(function ($item) {
     if ($item['mediaType'] == 'oembed') {
       $item['oembedLazyLoad'] = DomNode::setSrcDataAttribute(
         $item['oembed'],
@@ -31,6 +23,14 @@ add_filter('WPStarter/modifyModuleData?name=MediaSlider', function ($data) {
     }
     return $item;
   }, $data['mediaSlides']);
+
+  // Show a title/caption for the Media Slider - true | false
+  $data['mediaSliderTitle'] = true;
+
+  // Should the Media Slider Title be above or below the slide? - above | below
+  $data['mediaSliderTitlePosition'] = 'below';
+
+  $data['mediaSliderUsePoster'] = true;
 
   return $data;
 });

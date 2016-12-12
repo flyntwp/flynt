@@ -5,7 +5,10 @@
     "mainHeader": [
       {
         "name": "MainNavigation",
-        "dataFilter": "WPStarterTheme/DataFilters/MainNavigation"
+        "dataFilter": "WPStarterTheme/DataFilters/Navigation",
+        "dataFilterArgs": [
+          "main_navigation"
+        ]
       }
     ],
     "mainTemplate": [
@@ -24,11 +27,6 @@
         }
       }
     ],
-    "mainFooter": [
-      {
-        "name": "FooterNavigation",
-        "dataFilter": "WPStarterTheme/DataFilters/FooterNavigation"
-      }
-    ]
+    "mainFooter": []
   }
 }

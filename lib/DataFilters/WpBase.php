@@ -1,22 +1,16 @@
 <?php
 
-use WPStarterTheme\Helpers\Utils;
+use Timber\Timber;
 
 add_filter('WPStarterTheme/DataFilters/WpBase', function ($data) {
+  $context = Timber::get_context();
+
   $output = array(
-    'lang' => get_bloginfo('language'),
-    'feedName' => get_bloginfo('name') . " " . __("Feed"),
-    'feedHref' => esc_url(get_feed_link()),
-    'bodyClass' => join(' ', get_body_class()),
     'appleTouchIcon180x180Path' => get_template_directory_uri() . '/apple-touch-icon-180x180.png',
-    'faviconPath' => get_template_directory_uri() . '/favicon.png'
+    'faviconPath' => get_template_directory_uri() . '/favicon.png',
+    'feedTitle' => $context['site']->name . ' ' . __('Feed'),
+    'dir' => is_rtl() ? 'rtl' : 'ltr'
   );
 
-  if (is_rtl()) {
-    $output['dir'] = 'rtl';
-  } else {
-    $output['dir'] = 'ltr';
-  }
-
-  return array_merge($data, $output);
+  return array_merge($context, $data, $output);
 });

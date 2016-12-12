@@ -1,0 +1,33 @@
+<div is="wps-teaser-grid">
+  <ul class="teaserGrid">
+    {% for teaser in teaserItems %}
+      {% if teaser.linkType === 'externalLink' %}
+        <li>
+          <a href="{{ teaser.pageUrl }}" title="{{ teaser.titleText }}" target="{{ teaser.linkTarget }}">
+            <h3>{{ teaser.titleText }}</h3>
+            <img class="teaserGrid-imageElement" srcset="
+              {{ teaser.image.src | resize(400, 200) }} 400w,
+              {{ teaser.image.src | resize(800, 400) }} 800w,
+              {{ teaser.image.src | resize(1200, 600) }} 1200w,
+              {{ teaser.image.src | resize(1600, 800) }} 1600w"
+              src="{{ teaser.image.src }}"
+              sizes="100vw">
+          </a>
+        </li>
+      {% elseif teaser.linkType === 'internalLink' %}
+        <li>
+          <a href="{{ teaser.post.post_url }}" title="{{ teaser.post.post_title }}" target="{{ teaser.linkTarget }}">
+            <h3>{{ teaser.post.post_title }}</h3>
+            <img class="teaserGrid-imageElement" srcset="
+              {{ teaser.post.post_thumbnail.src | resize(400, 200) }} 400w,
+              {{ teaser.post.post_thumbnail.src | resize(800, 400) }} 800w,
+              {{ teaser.post.post_thumbnail.src | resize(1200, 600) }} 1200w,
+              {{ teaser.post.post_thumbnail.src | resize(1600, 800) }} 1600w"
+              src="{{ teaser.post.post_thumbnail.src }}"
+              sizes="100vw">
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
