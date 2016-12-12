@@ -16,11 +16,11 @@
 </div>
 
 ## 3.1 Adding ACF Fields
-Advanced Custom Fields (ACF) is a Wordpress plugin to make adding custom meta fields easy and intuitive, with a straight-forward API and seamless integration into the back-end of Wordpress. With Flynt, we use ACF to add user-editable fields on a component level.
+Advanced Custom Fields (ACF) is a Wordpress plugin to make adding custom meta fields easy and intuitive, with a straight-forward API and seamless integration into the back-end of Wordpress. With Flynt, we use ACF to add user-editable fields at the component level.
 
 To get started, we will add a single ACF text field to the `PostSlider` component.
 
-Create `Components/PostSlider/fields.json` and add the code below to it:
+Create `Components/PostSlider/fields.json` and add the code below:
 
 ```json
 {
@@ -45,7 +45,11 @@ flynt-theme/
        └── fields.json
 ```
 
-That's all we need to do to configure a new field! But before we can use these fields to add content, we need to define in which situations these fields should be available to the editor in the backend. We will do this in the next section by adding a new "Field Group".
+That's all we need to do to register a new field for a component.
+
+If you are already familiar with ACF, you will notice that these field options (e.g. "required") are exactly the same as those provided [natively by ACF](https://www.advancedcustomfields.com/resources/text/). This is the case for all fields we author with Flynt's `fields.json`.
+
+Before this field will be visible in the back-end, however, we still need to define in which situations these fields should be available to the editor. We will do this in the next section by adding a new "Field Group".
 
 <a href="https://github.com/bleech/wp-starter-snippets" class="source-note source-note--info">ACF offers around 20 different field types. To make the process of authoring these fields simpler, install our field.json snippets for Atom or Sublime Text.</a>
 
@@ -95,9 +99,9 @@ In the "fields" array, we specifically pull in the fields from our Post Slider c
   "name": "pageComponents",
   "title": "Page Components",
   "fields": [
-    "Flynt/Components/PostSlider/Fields"
+    "Flynt/Components/PostSlider/Fields",
     "Flynt/Components/ExampleComponent/Fields",
-    "Flynt/Components/AnotherComponent/Fields",
+    "Flynt/Components/AnotherComponent/Fields"
   ]
 }
 ```
@@ -117,16 +121,18 @@ Below this, we are also setting the location where the field group should be dis
 ```
 
 <a class="source-note source-note--info" href="https://www.advancedcustomfields.com/resources/custom-location-rules/">
-As with the field settings, we are writing our location rules using the same configuration options as Advanced Custom Fields. We strongly recommend reading more about these rules in the official ACF documentation</a>.
+As with the field settings, we are writing our location rules using the same configuration options as Advanced Custom Fields. We strongly recommend reading more about these rules in the official ACF documentation.</a>
 
 That's it! Navigate to the backend of Wordpress and create a new page. At the bottom, you'll now see a section for your Post Slider component with a field labeled "Title".
 
-Add "Our Featured Posts" into the title text field and save the page. Next, we'll move on to displaying this content on the front-end.
+Add the text "Our Featured Posts" into the title field and save the page.
+
+Next, we'll move on to displaying this content on the front-end.
 
 ## 3.3 Displaying Field Content
 We can now display the title in our front-end [Twig](twig.sensiolabs.org) template.
 
-Open `Components/PostSlider/index.twig` and update it with the following code:
+Open `Components/PostSlider/index.twig` and update it with the following:
 
 ```twig
 <div is="flynt-post-slider">
@@ -136,7 +142,7 @@ Open `Components/PostSlider/index.twig` and update it with the following code:
 </div>
 ```
 
-Since all of the fields configured in the component are automatically available in the view, this is all there is to it!
+That's all there is to it! All of the component's fields are automatically available in the component's view.
 
 ## 3.4 Understanding the Flynt Data Flow
 
@@ -209,7 +215,7 @@ At this point it is important to understand how the Flynt Core plugin is passing
 ## 3.5 Taking our Component Further
 We will now create an image slider by pulling the featured image from a list of posts selected by the user.
 
-Open `Modules/PostSlider/field.json` and add a post object field to our component:
+Open `Modules/PostSlider/field.json` and add a post object field to the component:
 
 ```json
 {
@@ -237,8 +243,6 @@ To continue, create a few dummy posts and add a featured image to each one. You 
 
 Now open up your page in the backend and you will now see our new field, with the label "Posts". Select your dummy posts and save the page.
 
-<!-- TODO: Add screenshot. -->
-
 In `Components/PostSlider/index.twig`, we can now loop through our posts and output the title and featured image for each one:
 
 ```twig
@@ -256,6 +260,12 @@ In `Components/PostSlider/index.twig`, we can now loop through our posts and out
   </div>
 </div>
 ```
+
+Here, Timber's default Wordpress image handling provides us with our featured image data directly with the use of `post.thumbnail`. To quote the Timber documentation:
+
+> Automatically, Timber will interpret images attached to a post’s thumbnail field (“Featured Image” in the admin) and treat them as TimberImages.
+
+[If you are not familiar with Timber, we recommend reading more about this in their documentation.](http://timber.github.io/timber/#image-cookbook)
 
 <div class="alert alert-steps">
   <h2>Next Steps</h2>

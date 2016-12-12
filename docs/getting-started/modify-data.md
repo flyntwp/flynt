@@ -20,9 +20,9 @@ Our component is now functional, but looking at our existing view template, we a
 </div>
 ```
 
-The ideal would be to make this text dynamic, but still let the editor insert the `postsPerPage` number where appropriate.
+The ideal would be to make this text dynamic, but still let the editor insert the `postsPerPage` number where appropriate. Lets implement this!
 
-First, lets create a new field for the Post Slider component named "postsPerPageText".
+First, lets create a new field for the Post Slider component named `postsPerPageText`.
 
 Update `Components/PostSlider/fields.json` to match the below:
 
@@ -54,19 +54,21 @@ Update `Components/PostSlider/fields.json` to match the below:
 }
 ```
 
-To combine our text with the date, we will now need to make use of the `modifyComponentData` filter. This is the last entry point where it is possible to modify the data of a particular component.
+To combine our text with the date, we will now need to make use of the `modifyComponentData` filter.
+
+**This is the last entry point where it is possible to modify the data of a particular component.**
 
 Since it is component specific, we place this filter into the `functions.php` file of a component.
 
-<p class="source-note source-note--info">This file follows the original Wordpress <code>functions.php</code> concept, only re-organised to match Flynt's modular structure. <a href="https://codex.wordpress.org/Functions_File_Explained" target="_blank">Read more here</a></p>
+<p class="source-note source-note--info">This file follows the original Wordpress <code>functions.php</code> functionality, only re-organised to match Flynt's modular structure. <a href="https://codex.wordpress.org/Functions_File_Explained" target="_blank">Read more here</a></p>
 
-Returning to our task - open the backend interface for your page and add the following content to the "Posts Per Page Text" field and hit update:
+Open the backend interface for your page and add the following content to the "Posts Per Page Text" field and hit update:
 
 **"Showing $postsPerPage posts."**
 
-Now we'll take the value and replace the "$postsPerPage" string with the `postsPerPage` data we passed through our data filter.
+Now we'll take the value and replace the `$postsPerPage` string with the `postsPerPage` data we passed through our data filter.
 
-First create `Components/PostSlider/functions.php` and add the code below:
+First create `Components/PostSlider/functions.php` and add the below:
 
 ```php
   <?php
@@ -78,7 +80,7 @@ First create `Components/PostSlider/functions.php` and add the code below:
   }, 10, 2);
 ```
 
-It is important to note here that it is necessary to pass the component name as a parameter to our `modifyComponentData` filter.
+It is important to note here that it is necessary to append `?name=` to the filter, passing the target component name as a parameter to our `modifyComponentData` filter.
 
 To finish up, update the view template `Components/PostSlider/index.twig` with the below:
 
@@ -96,7 +98,7 @@ To finish up, update the view template `Components/PostSlider/index.twig` with t
     </div>
   </div>
   <div class="slider-meta">
-    <p class="slider-showing>{{ postsPerPageText }}</p>
+    <p class="slider-showing">{{ postsPerPageText }}</p>
   </div>
 </div>
 ```

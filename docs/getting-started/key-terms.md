@@ -30,5 +30,5 @@ Since components are self-contained, areas provide a way to stack our building-b
 
   <p>That's all there is to know! We can now get started with building our first component.</p>
 
-  <p><a href="basic-component.md" class="btn btn-primary">Get started with section 2</a></p>
+  <p><a href="basic-component.md" class="btn btn-primary">Get started</a></p>
 </div>

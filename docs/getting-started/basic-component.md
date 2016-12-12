@@ -23,7 +23,7 @@ For this tutorial we will be using the default `template/page.php` template. Thi
 Flynt\echoHtmlFromConfigFile('default.json');
 ```
 
-<p><a href="/add-link" class="source-note">The source of this function can be found here in the Flynt Core plugin.</a></p>
+<p><a href="https://github.com/bleech/wp-starter-plugin/blob/documentation/docs/api/Flynt.md#echogethtmlfromconfig" class="source-note">The source of this function can be found here in the Flynt Core plugin.</a></p>
 
 For now, it is only important to know that our template config is actually loaded from `config/templates/default.json`.
 
@@ -55,7 +55,7 @@ For a detailed look at how these template configurations work, [you can read mor
 ## 2.2 Creating your Component
 All components are located in the `Components` directory. Create a new folder in this directory with the name `PostSlider`.
 
-Flynt uses [Twig](http://twig.sensiolabs.org/) in conjunction with [Timber](timber.github.io/timber/) for view templates (and more). To add a template for your component, create `index.twig` within your component folder. Your folder structure will now be:
+Flynt uses [Twig](http://twig.sensiolabs.org/) in conjunction with [Timber](timber.github.io/timber/) for view templates. To add a template for your component, create `Components/PostSlider/index.twig`. Your folder structure will now be:
 
 ```
 flynt-theme/
@@ -64,10 +64,10 @@ flynt-theme/
        └── index.twig
 ```
 
-Whilst the end goal is to make this component an interactive slider, for now we'll add some dummy data to our view template. Open `PostSlider/index.twig` and enter the following:
+Whilst the end goal is to make this component an interactive slider, for now we'll add some dummy data to our view template. Open `Components/PostSlider/index.twig` and enter the following:
 
 ```twig
-<div is="flynt-media-slider">
+<div is="flynt-post-slider">
   <div class="slider">
     <h1 class="slider-title">Hello World!</h1>
   </div>
@@ -78,7 +78,9 @@ Done! Next we need to render the component to the page.
 
 ## 2.3 Rendering Your Component
 
-First we will create a new area for our Post Slider component. Open `config/templates/default.json` and add a new area with the key `pageComponents`:
+First we will create a new area for our Post Slider component.
+
+Open `config/templates/default.json` and add a new area with the key `pageComponents`:
 
 ```json
 {
@@ -103,7 +105,7 @@ First we will create a new area for our Post Slider component. Open `config/temp
 }
 ```
 
-Now that we have registered our area, we need to output it.
+Now that we have registered the area we need to output it.
 
 Open the `Components/Template/index.twig` and replace `the_content()` with the `pageComponents` area:
 
@@ -120,12 +122,14 @@ Open the `Components/Template/index.twig` and replace `the_content()` with the `
 </div>
 ```
 
-Voilà! We're done. Check out the front-end of your site and admire your new component.
+Voilà! We're done.
+
+Components defined within the `pageComponents` area in the `default.json` page template will now be output where the area is called. Load the front-end of your site and you will see your new component.
 
 <div class="alert alert-steps">
   <h2>Next Steps</h2>
 
-  <p>In the next section we will tackle making this content dynamic - adding user-editable content fields and manipulating this data before passing it to the view.</p>
+  <p>In the next section we will tackle making this content dynamic by adding user-editable content fields. We will then learn to manipulate this data before we pass it to the view and render it.</p>
 
   <p><a href="dynamic-component.md" class="btn btn-primary">Go to Section 3</a></p>
 </div>

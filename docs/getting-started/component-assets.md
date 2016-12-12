@@ -11,12 +11,19 @@
 </div>
 
 ## 6.1 Adding Styles
-Each component can have a self-contained style file. By default, Flynt supports vanilla CSS files, and Stylus. In this tutorial we will use Stylus. [You can learn how to switch the styling language here](../theme-development/switching-styling-language.md).
+Each component can have a self-contained style file. By default, Flynt supports vanilla CSS files, and the pre-processor [Stylus](http://stylus-lang.com/). In this tutorial we will use Stylus.
+
+**[If you do not like Stylus or vanilla CSS, you can learn how to switch the styling language here.](../theme-development/switching-styling-language.md)**
 
 To get started, create `Components/PostSlider/style.styl` and add the styles below:
 
 ```stylus
 [is='flynt-post-slider']
+  *,
+  *:before,
+  *:after
+    box-sizing: border-box
+
   .slider
     center(1200px)
 
@@ -33,7 +40,7 @@ To get started, create `Components/PostSlider/style.styl` and add the styles bel
 
 Before these styles will show up, we need to enqueue our stylesheet.
 
-Open `PostSlider/functions.php` and add the following code below the component namespace:
+Open `Components/PostSlider/functions.php` and add the following code below the component namespace:
 
 ```php
 use Flynt\Helpers\Component;
@@ -48,7 +55,9 @@ add_action('wp_enqueue_scripts', function () {
 
 ```
 
-In summary, the `PostSlider/functions.php` file now looks like the following:
+With `Component::enqueueAssets` we are telling our component to look for any style or script file within the component folder and enqueue it. [You can read more in the Flynt Core plugin documentation](/add-link).
+
+In summary, the `Components/PostSlider/functions.php` file now looks like the following:
 
 ```php
   <?php
@@ -66,18 +75,20 @@ In summary, the `PostSlider/functions.php` file now looks like the following:
   });
 ```
 
-Refresh your page and you will now see our new styles. That's it! Though there are a few more recommendations to keep in mind:
+Refresh your page and you will now see our new styles.
+
+That's it! Though there are a few more recommendations to keep in mind:
 
 - Each component is uniquely identified with the `is` attribute. We use this for both styling and scripting, as you will see below. All styles are scoped within this one over-arching identifier.
 - At the core of the Flynt philosophy is reusability and scalability. As such, we strongly recommend following [maintainableCSS](http://maintainablecss.com/); an approach to writing modular and maintainable styles.
 
-<!-- TODO: Talk briefly about enqueueStyles, and link to enqueueStyles explanation in the plugin documentation.  -->
-
 ## 6.2 Adding Scripts
-Just as with our styles, scripts live at the Component level and are completely self contained. Create `Components/PostSlider/script.js` and add the following code:
+Just as with our styles, scripts live at the Component level and are completely self contained.
+
+Create `Components/PostSlider/script.js` and add the following code:
 
 ```js
-class ImageSlider extends window.HTMLDivElement {
+class PostSlider extends window.HTMLDivElement {
   constructor (self) {
     self = super(self)
     self.$ = $(self)
@@ -97,15 +108,17 @@ class ImageSlider extends window.HTMLDivElement {
 
 window.customElements.define('flynt-post-slider', PostSlider, {extends: 'div'})
 ```
-This is our basic recommended Javascript Custom Element starting template.
+
+This is our basic recommended Javascript Custom Element starting template. It is written in ES2015, and will be compiled to ES5 using [Babel](https://babeljs.io/).
 
 <p class="source-note">Before continuing we strongly recommended reading <a href="https://developers.google.com/web/fundamentals/getting-started/primers/customelements">Google's Getting Started Primer for Custom Elements</a>. However, we will build upon this template in the coming sections.</p>
 
+If you are not comfortable with Custom Elements or ES2015, we do not force you to adopt this for your Javascript (only strongly recommend it). At a basic level, the component `script.js` file will always be copied into the matching `dist` folder. You are free to write the Javascript within it as you wish.
 
 ## 6.3 Adding and Registering Dependencies
-In order to turn our images into a real slider, we'll use Yarn to add [Slick Carousel](http://kenwheeler.github.io/slick/) to our component.
+In order to turn our images into a real slider, we'll use [Yarn](https://yarnpkg.com) to add [Slick Carousel](http://kenwheeler.github.io/slick/) to our component.
 
-In your terminal, in the theme root folder, run this command to install Slick:
+In the theme root folder, open your terminal and run this command to install Slick:
 
 ```
 yarn add slick-carousel -D
@@ -143,7 +156,9 @@ add_action('wp_enqueue_scripts', function () {
 });
 ```
 
-Great! All that is left is to initialize the plugin in our component script. To finish up, open `Components/PostSlider/script.js` and replace the contents with the following:
+Great! All that is left is modify the `connectedCallback` function to initialize the plugin.
+
+Open `Components/PostSlider/script.js` and update the contents to match the following:
 
 ```js
 import 'file-loader?name=vendor/slick.js!slick-carousel'
@@ -163,7 +178,7 @@ class PostSlider extends window.HTMLDivElement {
 
   connectedCallback () {
     this.$slider.slick({
-      autoplay: 3000
+      autoplay: 3000,
       arrows: false,
       dots: true
     })
@@ -174,9 +189,9 @@ window.customElements.define('flynt-post-slider', PostSlider, {extends: 'div'})
 ```
 
 ## 6.4 Adding Static Assets
-Sometimes we need static assets, such as icons, that do not come directly from the content manager.
+Sometimes we need static assets, such as icons, that do not come directly from the user in the back-end.
 
-To implement this, create an `Asset` directory in the ImageSlider component directory. Then, download and add `downloadIcon.svg` ([available here](http://iconmonstr.com/download-11/)) to the new `Asset` directory.
+To implement this, create an `asset` directory in the ImageSlider component directory. Then, download and add `downloadIcon.svg` ([available here](http://iconmonstr.com/download-11/)) to the new `asset` directory.
 
 ```
 | flynt-theme
@@ -254,18 +269,21 @@ In `Components/PostSlider/index.twig`:
   <div class="slider">
     <h1 class="slider-title">{{ title }}</h1>
     <div class="slider-items">
-      {% for image in images %}
+      {% for post in posts %}
         <div class="slider-item">
-          <a class="slider-icon" href="{{ image.url }}" target="_blank">
-            <img src="{{ downloadIconUrl }}" alt="Download">
-          </a>
-          <img src="{{ image.url  }}" alt="{{ image.alt }}">
+          <h2>{{ post.title }}</h2>
+          <div class="slider-image-wrapper">
+            <a class="slider-icon" href="{{ post.thumbnail.src }}" target="_blank">
+              <img src="{{ downloadIconUrl }}" alt="Download">
+            </a>
+            <img src="{{ post.thumbnail.src  }}" alt="{{ post.title }}">
+          </div>
         </div>
       {% endfor %}
     </div>
   </div>
   <div class="slider-meta">
-    <p class="slider-showing">{{ lastEditedText }}</p>
+    <p class="slider-showing">{{ postsPerPageText }}</p>
   </div>
 </div>
 ```
@@ -287,7 +305,7 @@ In `Components/PostSlider/style.styl`:
     &-showing
       color: #558c89
 
-    &-item
+    &-image-wrapper
       position: relative
 
     &-icon
@@ -298,6 +316,8 @@ In `Components/PostSlider/style.styl`:
       right: 20px
       width: 30px
 ```
+
+Refresh the front-end and you will see that we are done!
 
 <div class="alert alert-steps">
   <h2>Next Steps</h2>
