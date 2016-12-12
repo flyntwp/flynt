@@ -6,9 +6,9 @@
       {
         "name": "MainNavigation",
         "dataFilter": "WPStarterTheme/DataFilters/Navigation",
-        "dataFilterArgs": {
-          "menuSlug": "main_navigation"
-        }
+        "dataFilterArgs": [
+          "main_navigation"
+        ]
       }
     ],
     "mainTemplate": [
