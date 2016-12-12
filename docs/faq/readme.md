@@ -25,3 +25,7 @@ No, this is just our personal recommendation. You can author your Javascript how
 ## Do I have to use Advanced Custom Fields (ACF)?
 
 No, but this is very strongly recommended.
+
+<br>
+
+<a href="/add-link" class="source-note">Have questions that are not answered in our FAQ? Please let us know! Leave an issue (or pull request!) in the Flynt Theme Github repo.</a>
