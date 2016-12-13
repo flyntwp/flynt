@@ -3,7 +3,7 @@
 namespace Flynt\Init;
 
 use Flynt;
-use Flynt\Helpers\Module;
+use Flynt\Helpers\Component;
 use Flynt\Helpers\Acf;
 use Flynt\Helpers\CustomPostTypeRegister;
 use Flynt\Config;
@@ -20,5 +20,5 @@ Acf\Loader::init([
   'OptionPages'
 ]);
 
-// register all modules in 'Modules' folder
-Module::registerAll();
+// register all components in 'Components' folder
+Component::registerAll();

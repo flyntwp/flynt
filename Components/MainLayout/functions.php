@@ -1,10 +1,10 @@
 <?php
-namespace Flynt\Modules\MainLayout;
+namespace Flynt\Components\MainLayout;
 
-use Flynt\Helpers\Module;
+use Flynt\Helpers\Component;
 
 add_action('wp_enqueue_scripts', function () {
-  Module::enqueueAssets('MainLayout', [
+  Component::enqueueAssets('MainLayout', [
     [
       'name' => 'console-polyfill',
       'type' => 'script',

@@ -31,9 +31,9 @@ function runCompiler (compiler, callback) {
 
 function createCompiler (loader, request, options) {
   var compiler = getCompilation(loader).createChildCompiler('entry', options)
-  var modulePath = request.split('!').pop()
-  var moduleId = modulePath.split('Modules/').pop().replace('/script.js', '')
-  var plugin = new SingleEntryPlugin(loader.context, '!!' + request, 'Modules/' + moduleId)
+  var componentPath = request.split('!').pop()
+  var componentId = componentPath.split('Components/').pop().replace('/script.js', '')
+  var plugin = new SingleEntryPlugin(loader.context, '!!' + request, 'Components/' + componentId)
   compiler.apply(plugin)
   var subCache = 'subcache ' + __dirname + ' ' + request // eslint-disable-line no-path-concat
   compiler.plugin('compilation', function (compilation) {

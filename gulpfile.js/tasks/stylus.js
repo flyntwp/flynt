@@ -19,7 +19,7 @@ module.exports = function (config) {
         rupture()
       ],
       import: [
-        path.resolve(__dirname, '../../Modules/_variables.styl'),
+        path.resolve(__dirname, '../../Components/_variables.styl'),
         path.resolve(__dirname, '../../node_modules/jeet/styl/index.styl')
       ]
     }))

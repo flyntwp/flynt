@@ -16,11 +16,11 @@
         "name": "Template",
         "dataFilter": "Flynt/DataFilters/MainQuery/Single",
         "areas": {
-          "pageModules": [
+          "pageComponents": [
             {
               "name": "FlexibleContent",
               "customData": {
-                "fieldGroup": "pageModules"
+                "fieldGroup": "pageComponents"
               }
             }
           ]

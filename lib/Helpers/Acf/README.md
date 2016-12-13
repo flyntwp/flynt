@@ -13,16 +13,16 @@ Requirements:
 - Flynt Core
 - Flynt Helper: Utils
 
-Maps `fields.json` files in modules to field groups in `config/fieldGroups` according to the predefined filter name:
+Maps `fields.json` files in components to field groups in `config/fieldGroups` according to the predefined filter name:
 ```
-Flynt/Modules/<ModuleName>/<FieldArray>[/<OptionalFieldName>]
+Flynt/Components/<ComponentName>/<FieldArray>[/<OptionalFieldName>]
 ```
 
 ### Helper: Option Pages
 Requirements:
 - Flynt Helper: StringHelpers
 
-Converts `option` key in `fields.json` files of modules to acf option pages.
+Converts `option` key in `fields.json` files of components to acf option pages.
 
 ## Usage
 Drag and drop your desired Helpers as well as the `Loader.php` into your Flynt Theme's `lib/Helpers/Acf` directory. Then add the following code to the `lib/init.php`:

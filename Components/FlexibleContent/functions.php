@@ -1,6 +1,6 @@
 <?php
 
-add_filter('Flynt/dynamicSubmodules?name=FlexibleContent', function ($areas, $data, $parentData) {
+add_filter('Flynt/dynamicSubcomponents?name=FlexibleContent', function ($areas, $data, $parentData) {
   $fieldGroup = $data['fieldGroup'];
   if (
     array_key_exists($fieldGroup, $parentData['post']->fields) &&
@@ -10,7 +10,7 @@ add_filter('Flynt/dynamicSubmodules?name=FlexibleContent', function ($areas, $da
       return [
         'name' => ucfirst($field['acf_fc_layout']),
         'customData' => $field,
-        'parentData' => $parentData // overwrite parent data of child modules
+        'parentData' => $parentData // overwrite parent data of child components
       ];
     }, $parentData['post']->fields[$data['fieldGroup']]);
   }

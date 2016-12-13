@@ -1,12 +1,12 @@
 <?php
-namespace Flynt\Modules\MediaSlider;
+namespace Flynt\Components\MediaSlider;
 
 use Flynt\Helpers\Utils;
 use Flynt\Helpers\Log;
-use Flynt\Helpers\Module;
+use Flynt\Helpers\Component;
 use Flynt\Helpers\DomNode;
 
-add_filter('Flynt/modifyModuleData?name=MediaSlider', function ($data) {
+add_filter('Flynt/modifyComponentData?name=MediaSlider', function ($data) {
   $data['mediaSlides'] = array_map(function ($item) {
     if ($item['mediaType'] == 'oembed') {
       $item['oembedLazyLoad'] = DomNode::setSrcDataAttribute(
@@ -33,7 +33,7 @@ add_filter('Flynt/modifyModuleData?name=MediaSlider', function ($data) {
 });
 
 add_action('wp_enqueue_scripts', function () {
-  Module::enqueueAssets('MediaSlider', [
+  Component::enqueueAssets('MediaSlider', [
     [
       'name' => 'normalize',
       'path' => 'vendor/normalize.css',
