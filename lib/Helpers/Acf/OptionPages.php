@@ -1,8 +1,8 @@
 <?php
 
-namespace Flynt\Theme\Helpers\Acf;
+namespace Flynt\Helpers\Acf;
 
-use Flynt\Theme\Helpers\StringHelpers;
+use Flynt\Helpers\StringHelpers;
 use ACFComposer;
 
 class OptionPages {
@@ -21,7 +21,7 @@ class OptionPages {
 
     add_action(
       'Flynt/registerModule',
-      ['Flynt\Theme\Helpers\Acf\OptionPages', 'addAllModuleOptionSubpages'],
+      ['Flynt\Helpers\Acf\OptionPages', 'addAllModuleOptionSubpages'],
       12,
       2
     );

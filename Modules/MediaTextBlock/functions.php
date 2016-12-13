@@ -1,9 +1,9 @@
 <?php
-namespace Flynt\Theme\Modules\MediaTextBlock;
+namespace Flynt\Modules\MediaTextBlock;
 
-use Flynt\Theme\Helpers\Module;
-use Flynt\Theme\Helpers\Log;
-use Flynt\Theme\Helpers\DomNode;
+use Flynt\Helpers\Module;
+use Flynt\Helpers\Log;
+use Flynt\Helpers\DomNode;
 
 add_action('wp_enqueue_scripts', function () {
   Module::enqueueAssets('MediaTextBlock');

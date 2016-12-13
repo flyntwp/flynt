@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Theme\Hooks;
+namespace Flynt\Hooks;
 
 add_action('after_setup_theme', function () {
   register_nav_menus(array(

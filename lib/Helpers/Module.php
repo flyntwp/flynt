@@ -1,11 +1,11 @@
 <?php
 
-namespace Flynt\Theme\Helpers;
+namespace Flynt\Helpers;
 
 use RecursiveDirectoryIterator;
 use Flynt;
-use Flynt\Theme\Config;
-use Flynt\Theme\Helpers\Utils;
+use Flynt\Config;
+use Flynt\Helpers\Utils;
 
 class Module {
 

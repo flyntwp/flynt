@@ -1,8 +1,8 @@
 <?php
 
-namespace Flynt\Theme\Hooks;
+namespace Flynt\Hooks;
 
-use Flynt\Theme\Helpers\Utils;
+use Flynt\Helpers\Utils;
 
 add_action('wp_enqueue_scripts', function () {
   wp_enqueue_script(

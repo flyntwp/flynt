@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Theme\Hooks;
+namespace Flynt\Hooks;
 
 add_action('init', function () {
   remove_post_type_support('page', 'editor');

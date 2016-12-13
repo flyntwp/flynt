@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Theme\Hooks;
+namespace Flynt\Hooks;
 
 add_filter('mce_buttons', function ($buttons) {
   return array(

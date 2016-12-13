@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Theme\Hooks;
+namespace Flynt\Hooks;
 
 add_filter('Flynt/modulePath', function ($modulePath, $moduleName) {
   return get_template_directory() . '/dist/Modules/' . $moduleName;

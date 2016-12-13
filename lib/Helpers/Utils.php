@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Theme\Helpers;
+namespace Flynt\Helpers;
 
 class Utils {
   protected static $assetManifest;

@@ -1,13 +1,13 @@
 <?php
 
-namespace Flynt\Theme\DataFilters;
+namespace Flynt\DataFilters;
 
 use Timber\Timber;
 use Timber\Menu;
 
 add_filter(
   'Flynt/DataFilters/Navigation',
-  ['Flynt\Theme\DataFilters\Navigation', 'getMenu'],
+  ['Flynt\DataFilters\Navigation', 'getMenu'],
   10,
   2
 );

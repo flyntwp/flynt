@@ -1,6 +1,6 @@
 <?php
 
-namespace WPStarteTheme\Hooks;
+namespace WPStarteHooks;
 
 /**
  * Remove the WordPress version from RSS feeds

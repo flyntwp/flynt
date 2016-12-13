@@ -1,7 +1,7 @@
 <?php
 
-namespace Flynt\Theme\Hooks;
+namespace Flynt\Hooks;
 
-use Flynt\Theme\Core;
+use Flynt\Core;
 
 Core::loadPhpFiles('lib/Hooks/');

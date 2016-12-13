@@ -1,9 +1,9 @@
 <?php
 
-namespace Flynt\Theme\Helpers;
+namespace Flynt\Helpers;
 
-use Flynt\Theme\Config;
-use Flynt\Theme\Core;
+use Flynt\Config;
+use Flynt\Core;
 
 class CustomPostTypeRegister {
 

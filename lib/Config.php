@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Theme\Config;
+namespace Flynt\Config;
 
 define(__NAMESPACE__ . '\TEMPLATE_PATH', get_template_directory());
 define(__NAMESPACE__ . '\MODULE_PATH_RELATIVE', '/dist/Modules/');

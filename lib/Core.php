@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Theme;
+namespace Flynt;
 
 use RecursiveDirectoryIterator;
 

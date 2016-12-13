@@ -1,8 +1,8 @@
 <?php
 
-namespace Flynt\Theme\Hooks;
+namespace Flynt\Hooks;
 
-use Flynt\Theme\Helpers;
+use Flynt\Helpers;
 
 add_filter('Flynt/initModuleConfig', function ($config, $areaName) {
   $moduleClass = Helpers\StringHelpers::camelCaseToKebap($config['name']);

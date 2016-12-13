@@ -1,10 +1,10 @@
 <?php
 
-namespace Flynt\Theme;
-
-use Flynt\Theme\Core;
+namespace Flynt;
 
 require_once __DIR__ . '/lib/Core.php';
+
+use Flynt\Core;
 
 // This needs to happen first.
 // Reason:  In case the theme was just activated and the plugin is not active,

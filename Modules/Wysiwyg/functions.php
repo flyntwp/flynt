@@ -1,7 +1,7 @@
 <?php
-namespace Flynt\Theme\Modules\Wysiwyg;
+namespace Flynt\Modules\Wysiwyg;
 
-use Flynt\Theme\Helpers\Module;
+use Flynt\Helpers\Module;
 
 add_action('wp_enqueue_scripts', function () {
   Module::enqueueAssets('Wysiwyg');

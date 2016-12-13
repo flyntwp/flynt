@@ -1,10 +1,10 @@
 <?php
-namespace Flynt\Theme\Modules\MediaSlider;
+namespace Flynt\Modules\MediaSlider;
 
-use Flynt\Theme\Helpers\Utils;
-use Flynt\Theme\Helpers\Log;
-use Flynt\Theme\Helpers\Module;
-use Flynt\Theme\Helpers\DomNode;
+use Flynt\Helpers\Utils;
+use Flynt\Helpers\Log;
+use Flynt\Helpers\Module;
+use Flynt\Helpers\DomNode;
 
 add_filter('Flynt/modifyModuleData?name=MediaSlider', function ($data) {
   $data['mediaSlides'] = array_map(function ($item) {

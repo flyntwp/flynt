@@ -1,10 +1,10 @@
 <?php
-namespace Flynt\Theme\Modules\TeaserGrid;
+namespace Flynt\Modules\TeaserGrid;
 
-use Flynt\Theme\DataFilters\MainQuery;
-use Flynt\Theme\Helpers\Log;
-use Flynt\Theme\Helpers\Utils;
-use Flynt\Theme\Helpers\Module;
+use Flynt\DataFilters\MainQuery;
+use Flynt\Helpers\Log;
+use Flynt\Helpers\Utils;
+use Flynt\Helpers\Module;
 
 add_filter('Flynt/modifyModuleData?name=TeaserGrid', function ($data) {
   $data['teaserItems'] = array_map(function ($item) {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Flynt\Theme\Init;
+namespace Flynt\Init;
 
 use Flynt;
-use Flynt\Theme\Helpers\Module;
-use Flynt\Theme\Helpers\Acf;
-use Flynt\Theme\Helpers\CustomPostTypeRegister;
-use Flynt\Theme\Config;
+use Flynt\Helpers\Module;
+use Flynt\Helpers\Acf;
+use Flynt\Helpers\CustomPostTypeRegister;
+use Flynt\Config;
 
 // initialize plugin defaults
 Flynt\initDefaults();

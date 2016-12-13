@@ -1,7 +1,7 @@
 <?php
 
-namespace Flynt\Theme\Helpers;
+namespace Flynt\Helpers;
 
-use Flynt\Theme\Core;
+use Flynt\Core;
 
 Core::loadPhpFiles('lib/Helpers/');

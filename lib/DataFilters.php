@@ -1,7 +1,7 @@
 <?php
 
-namespace Flynt\Theme\DataFilters;
+namespace Flynt\DataFilters;
 
-use Flynt\Theme\Core;
+use Flynt\Core;
 
 Core::loadPhpFiles('lib/DataFilters/');

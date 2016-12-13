@@ -1,7 +1,7 @@
 <?php
-namespace Flynt\Theme\Modules\MainLayout;
+namespace Flynt\Modules\MainLayout;
 
-use Flynt\Theme\Helpers\Module;
+use Flynt\Helpers\Module;
 
 add_action('wp_enqueue_scripts', function () {
   Module::enqueueAssets('MainLayout', [

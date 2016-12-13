@@ -1,11 +1,11 @@
 <?php
 
-namespace Flynt\Theme\Helpers\Acf;
+namespace Flynt\Helpers\Acf;
 
 use RecursiveDirectoryIterator;
 use ACFComposer\ACFComposer;
-use Flynt\Theme\Helpers\Utils;
-use Flynt\Theme\Core;
+use Flynt\Helpers\Utils;
+use Flynt\Core;
 
 class FieldGroupComposer {
   const FILTER_NAMESPACE = 'Flynt/Modules';
@@ -16,14 +16,14 @@ class FieldGroupComposer {
   public static function init() {
     add_action(
       'Flynt/registerModule',
-      ['Flynt\Theme\Helpers\Acf\FieldGroupComposer', 'addFieldFilters'],
+      ['Flynt\Helpers\Acf\FieldGroupComposer', 'addFieldFilters'],
       11,
       2
     );
 
     add_action(
       'acf/init',
-      ['Flynt\Theme\Helpers\Acf\FieldGroupComposer', 'loadFieldGroups']
+      ['Flynt\Helpers\Acf\FieldGroupComposer', 'loadFieldGroups']
     );
   }
 
