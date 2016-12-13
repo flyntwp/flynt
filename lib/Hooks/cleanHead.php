@@ -1,6 +1,6 @@
 <?php
 
-namespace WPStarterTheme\Hooks;
+namespace Flynt\Hooks;
 
 /**
  * Clean up wp_head()

@@ -1,29 +1,29 @@
 <?php
 
-namespace WPStarterTheme\Helpers\Acf;
+namespace Flynt\Helpers\Acf;
 
 use RecursiveDirectoryIterator;
 use ACFComposer\ACFComposer;
-use WPStarterTheme\Helpers\Utils;
-use WPStarterTheme\Core;
+use Flynt\Helpers\Utils;
+use Flynt\Core;
 
 class FieldGroupComposer {
-  const FILTER_NAMESPACE = 'WPStarterTheme/Modules';
+  const FILTER_NAMESPACE = 'Flynt/Components';
   const FIELD_GROUPS_DIR = '/config/fieldGroups';
 
   protected static $fieldGroupsLoaded = false;
 
   public static function init() {
     add_action(
-      'WPStarter/registerModule',
-      ['WPStarterTheme\Helpers\Acf\FieldGroupComposer', 'addFieldFilters'],
+      'Flynt/registerComponent',
+      ['Flynt\Helpers\Acf\FieldGroupComposer', 'addFieldFilters'],
       11,
       2
     );
 
     add_action(
       'acf/init',
-      ['WPStarterTheme\Helpers\Acf\FieldGroupComposer', 'loadFieldGroups']
+      ['Flynt\Helpers\Acf\FieldGroupComposer', 'loadFieldGroups']
     );
   }
 
@@ -50,19 +50,19 @@ class FieldGroupComposer {
     self::$fieldGroupsLoaded = true;
   }
 
-  public static function addFieldFilters($modulePath, $moduleName) {
+  public static function addFieldFilters($componentPath, $componentName) {
     // load fields.json if it exists
-    $filePath = $modulePath . '/fields.json';
+    $filePath = $componentPath . '/fields.json';
     if(!is_file($filePath)) return;
     $fields = json_decode(file_get_contents($filePath), true);
 
     // make sure naming convention is kept
-    $moduleName = ucfirst($moduleName);
+    $componentName = ucfirst($componentName);
 
     // add filters
     foreach ($fields as $groupKey => $groupValue) {
       $groupKey = ucfirst($groupKey);
-      $filterName = self::FILTER_NAMESPACE . "/{$moduleName}/{$groupKey}";
+      $filterName = self::FILTER_NAMESPACE . "/{$componentName}/{$groupKey}";
 
       add_filter($filterName, function ($config) use ($groupValue) {
         return $groupValue;

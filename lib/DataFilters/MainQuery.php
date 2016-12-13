@@ -1,11 +1,11 @@
 <?php
 
-namespace WPStarterTheme\DataFilters;
+namespace Flynt\DataFilters;
 
 use Timber\Timber;
 
-add_filter('WPStarterTheme/DataFilters/MainQuery', ['WPStarterTheme\DataFilters\MainQuery', 'getQuery'], 10, 2);
-add_filter('WPStarterTheme/DataFilters/MainQuery/Single', ['WPStarterTheme\DataFilters\MainQuery', 'getSingle'], 10, 2);
+add_filter('Flynt/DataFilters/MainQuery', ['Flynt\DataFilters\MainQuery', 'getQuery'], 10, 2);
+add_filter('Flynt/DataFilters/MainQuery/Single', ['Flynt\DataFilters\MainQuery', 'getSingle'], 10, 2);
 
 class MainQuery {
 

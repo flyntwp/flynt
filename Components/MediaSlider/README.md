@@ -16,7 +16,7 @@ Text: oembed Slider with Image and oembed-Media functionality. Slides also suppo
 
 # Fixed Height
 
-If you want to use fixed height for this module, enable the option in the stylesheet and add the required data-attribute for objectfit-polyfill as an attribute for the picturefill mixin.
+If you want to use fixed height for this component, enable the option in the stylesheet and add the required data-attribute for objectfit-polyfill as an attribute for the picturefill mixin.
 
 
 ### Normal Image (Adaptive Height)

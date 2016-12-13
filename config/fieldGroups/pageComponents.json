@@ -1,0 +1,29 @@
+{
+  "name": "pageComponents",
+  "title": "Page Components",
+  "fields": [
+    {
+      "name": "pageComponents",
+      "label": "Page Components",
+      "type": "flexible_content",
+      "button_label": "Add Component",
+      "layouts": [
+        "Flynt/Components/ImageHero/Layout",
+        "Flynt/Components/MediaSlider/Layout",
+        "Flynt/Components/MediaTextBlock/Layout",
+        "Flynt/Components/Oembed/Layout",
+        "Flynt/Components/TeaserGrid/Layout",
+        "Flynt/Components/Wysiwyg/Layout"
+      ]
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "page"
+      }
+    ]
+  ]
+}

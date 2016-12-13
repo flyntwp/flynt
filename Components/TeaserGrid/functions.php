@@ -1,12 +1,12 @@
 <?php
-namespace WPStarterTheme\Modules\TeaserGrid;
+namespace Flynt\Components\TeaserGrid;
 
-use WPStarterTheme\DataFilters\MainQuery;
-use WPStarterTheme\Helpers\Log;
-use WPStarterTheme\Helpers\Utils;
-use WPStarterTheme\Helpers\Module;
+use Flynt\DataFilters\MainQuery;
+use Flynt\Helpers\Log;
+use Flynt\Helpers\Utils;
+use Flynt\Helpers\Component;
 
-add_filter('WPStarter/modifyModuleData?name=TeaserGrid', function ($data) {
+add_filter('Flynt/modifyComponentData?name=TeaserGrid', function ($data) {
   $data['teaserItems'] = array_map(function ($item) {
 
     if ($item['linkType'] == 'internalLink') {

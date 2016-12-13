@@ -1,13 +1,13 @@
 <?php
 
-namespace WPStarterTheme\Helpers;
+namespace Flynt\Helpers;
 
 use RecursiveDirectoryIterator;
-use WPStarter;
-use WPStarterTheme\Config;
-use WPStarterTheme\Helpers\Utils;
+use Flynt;
+use Flynt\Config;
+use Flynt\Helpers\Utils;
 
-class Module {
+class Component {
 
   const DEFAULT_OPTIONS = [
     'dependencies' => [],
@@ -18,20 +18,20 @@ class Module {
 
   public static function registerAll() {
     // TODO use new Core functionality after adding the feature for dirs
-    $directoryIterator = new RecursiveDirectoryIterator(Config\MODULE_PATH, RecursiveDirectoryIterator::SKIP_DOTS);
+    $directoryIterator = new RecursiveDirectoryIterator(Config\COMPONENT_PATH, RecursiveDirectoryIterator::SKIP_DOTS);
 
     foreach ($directoryIterator as $name => $file) {
       if ($file->isDir()) {
-        WPStarter\registerModule($file->getFilename());
+        Flynt\registerComponent($file->getFilename());
       }
     }
   }
 
-  public static function enqueueAssets($moduleName, array $dependencies = []) {
+  public static function enqueueAssets($componentName, array $dependencies = []) {
 
     // register dependencies
     foreach ($dependencies as $dependency) {
-      // TODO add a warning if the same script is loaded several times (with different names) in multiple modules
+      // TODO add a warning if the same script is loaded several times (with different names) in multiple components
       self::addAsset('register', $dependency);
     }
 
@@ -43,13 +43,13 @@ class Module {
       return $list;
     }, ['jquery']); // jquery as a default dependency
 
-    // Enqueue Module Scripts if they exist
-    $scriptAbsPath = Utils::requireAssetPath("Modules/{$moduleName}/script.js");
+    // Enqueue Component Scripts if they exist
+    $scriptAbsPath = Utils::requireAssetPath("Components/{$componentName}/script.js");
     if (is_file($scriptAbsPath)) {
       self::addAsset('enqueue', [
         'type' => 'script',
-        'name' => "WPStarterTheme/Modules/{$moduleName}",
-        'path' => "Modules/{$moduleName}/script.js",
+        'name' => "Flynt/Components/{$componentName}",
+        'path' => "Components/{$componentName}/script.js",
         'dependencies' => $scriptDeps
       ]);
     }
@@ -62,13 +62,13 @@ class Module {
       return $list;
     }, []);
 
-    // Enqueue Module Styles if they exist
-    $styleAbsPath = Utils::requireAssetPath("Modules/{$moduleName}/style.css");
+    // Enqueue Component Styles if they exist
+    $styleAbsPath = Utils::requireAssetPath("Components/{$componentName}/style.css");
     if (is_file($styleAbsPath)) {
       self::addAsset('enqueue', [
         'type' => 'style',
-        'name' => "WPStarterTheme/Modules/{$moduleName}",
-        'path' => "Modules/{$moduleName}/style.css",
+        'name' => "Flynt/Components/{$componentName}",
+        'path' => "Components/{$componentName}/style.css",
         'dependencies' => $styleDeps
       ]);
     }

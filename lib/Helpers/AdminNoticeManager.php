@@ -1,6 +1,6 @@
 <?php
 
-namespace WPStarterTheme\Helpers;
+namespace Flynt\Helpers;
 
 class AdminNoticeManager {
   protected static $instance = null;

@@ -1,17 +1,17 @@
 <?php
 
-namespace WPStarterTheme\Hooks;
+namespace Flynt\Hooks;
 
 use Timber\Timber;
 use Timber\Loader;
 use Twig_SimpleFunction;
-use WPStarter;
+use Flynt;
 
-// Render Module
-add_filter('WPStarter/renderModule', function ($output, $moduleName, $moduleData, $areaHtml) {
+// Render Component
+add_filter('Flynt/renderComponent', function ($output, $componentName, $componentData, $areaHtml) {
   // get index file
-  $moduleManager = WPStarter\ModuleManager::getInstance();
-  $filePath = $moduleManager->getModuleFilePath($moduleName, 'index.twig');
+  $componentManager = Flynt\ComponentManager::getInstance();
+  $filePath = $componentManager->getComponentFilePath($componentName, 'index.twig');
 
   if (!is_file($filePath)) {
     trigger_error("Template not found: {$filePath}", E_USER_WARNING);
@@ -32,7 +32,7 @@ add_filter('WPStarter/renderModule', function ($output, $moduleName, $moduleData
 
   add_filter('get_twig', $addArea);
 
-  $output = Timber::fetch($filePath, $moduleData);
+  $output = Timber::fetch($filePath, $componentData);
 
   remove_filter('get_twig', $addArea);
 

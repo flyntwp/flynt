@@ -1,5 +1,7 @@
 <?php
 
+namespace Flynt\Hooks;
+
 use Timber\Image;
 
 add_filter('acf/format_value/type=image', function ($value) {

@@ -1,10 +1,10 @@
 <?php
-namespace WPStarterTheme\Modules\ImageHero;
+namespace Flynt\Components\ImageHero;
 
-use WPStarterTheme\Helpers\Module;
+use Flynt\Helpers\Component;
 
 add_action('wp_enqueue_scripts', function () {
-  Module::enqueueAssets('ImageHero', [
+  Component::enqueueAssets('ImageHero', [
     [
       'name' => 'objectfit-polyfill',
       'path' => 'vendor/objectfit-polyfill.js',

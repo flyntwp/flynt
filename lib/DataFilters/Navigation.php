@@ -1,13 +1,13 @@
 <?php
 
-namespace WPStarterTheme\DataFilters;
+namespace Flynt\DataFilters;
 
 use Timber\Timber;
 use Timber\Menu;
 
 add_filter(
-  'WPStarterTheme/DataFilters/Navigation',
-  ['WPStarterTheme\DataFilters\Navigation', 'getMenu'],
+  'Flynt/DataFilters/Navigation',
+  ['Flynt\DataFilters\Navigation', 'getMenu'],
   10,
   2
 );

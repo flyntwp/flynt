@@ -1,15 +1,15 @@
 <?php
 
-namespace WPStarterTheme\Init;
+namespace Flynt\Init;
 
-use WPStarter;
-use WPStarterTheme\Helpers\Module;
-use WPStarterTheme\Helpers\Acf;
-use WPStarterTheme\Helpers\CustomPostTypeRegister;
-use WPStarterTheme\Config;
+use Flynt;
+use Flynt\Helpers\Component;
+use Flynt\Helpers\Acf;
+use Flynt\Helpers\CustomPostTypeRegister;
+use Flynt\Config;
 
 // initialize plugin defaults
-WPStarter\initDefaults();
+Flynt\initDefaults();
 
 // register all custom post types
 CustomPostTypeRegister::fromDirectory(Config\CUSTOM_POST_TYPE_PATH);
@@ -20,5 +20,5 @@ Acf\Loader::init([
   'OptionPages'
 ]);
 
-// register all modules in 'Modules' folder
-Module::registerAll();
+// register all components in 'Components' folder
+Component::registerAll();

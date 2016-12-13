@@ -1,6 +1,6 @@
 <?php
 
-namespace WPStarterTheme\Helpers;
+namespace Flynt\Helpers;
 
 class DomNode {
   public static function setSrcDataAttribute($nodeHtml, $elementTagName, $attributeName, $toAddGetParams) {

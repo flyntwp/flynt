@@ -8,8 +8,8 @@ module.exports = {
     proxy: host
   },
   copy: [
-    './{Modules,assets}/**/*',
-    '!./{Modules,assets}/**/*.{js,styl,sass,less}'
+    './{Components,assets}/**/*',
+    '!./{Components,assets}/**/*.{js,styl,sass,less}'
   ],
   dest: dest,
   php: [
@@ -41,17 +41,17 @@ module.exports = {
     sourceRoot: '/app/themes/wp-starter-theme/'
   },
   stylus: [
-    './{Modules,assets}/**/style.styl'
+    './{Components,assets}/**/style.styl'
   ],
   webpack: {
     entry: {
-      'Modules': './Modules/script.js'
+      'Components': './Components/script.js'
     }
   },
   lint: {
-    stylus: './{Modules,assets}/**/*.styl',
+    stylus: './{Components,assets}/**/*.styl',
     js: [
-      './{Modules,assets,gulpfile.js}/**/*.js'
+      './{Components,assets,gulpfile.js}/**/*.js'
     ],
     php: [
       './**/*.php',

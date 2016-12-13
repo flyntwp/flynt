@@ -1,3 +1,3 @@
 <?php
 
-WPStarter\echoHtmlFromConfigFile('default.json');
+Flynt\echoHtmlFromConfigFile('default.json');

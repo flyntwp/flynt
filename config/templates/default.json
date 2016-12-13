@@ -1,11 +1,11 @@
 {
   "name": "MainLayout",
-  "dataFilter": "WPStarterTheme/DataFilters/WpBase",
+  "dataFilter": "Flynt/DataFilters/WpBase",
   "areas": {
     "mainHeader": [
       {
         "name": "MainNavigation",
-        "dataFilter": "WPStarterTheme/DataFilters/Navigation",
+        "dataFilter": "Flynt/DataFilters/Navigation",
         "dataFilterArgs": [
           "main_navigation"
         ]
@@ -14,13 +14,13 @@
     "mainTemplate": [
       {
         "name": "Template",
-        "dataFilter": "WPStarterTheme/DataFilters/MainQuery/Single",
+        "dataFilter": "Flynt/DataFilters/MainQuery/Single",
         "areas": {
-          "pageModules": [
+          "pageComponents": [
             {
               "name": "FlexibleContent",
               "customData": {
-                "fieldGroup": "pageModules"
+                "fieldGroup": "pageComponents"
               }
             }
           ]

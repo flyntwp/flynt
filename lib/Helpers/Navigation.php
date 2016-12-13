@@ -1,8 +1,8 @@
 <?php
 
-namespace WPStarterTheme\Helpers;
+namespace Flynt\Helpers;
 
-use WPStarterTheme\Helpers\StringHelpers;
+use Flynt\Helpers\StringHelpers;
 
 class Navigation {
   public static function getMenuLinks($locationName) {

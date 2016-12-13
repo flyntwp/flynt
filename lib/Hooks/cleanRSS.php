@@ -1,6 +1,6 @@
 <?php
 
-namespace WPStarteTheme\Hooks;
+namespace Flynt\Hooks;
 
 /**
  * Remove the WordPress version from RSS feeds

@@ -1,7 +1,7 @@
 <?php
 
-namespace WPStarterTheme\Hooks;
+namespace Flynt\Hooks;
 
-use WPStarterTheme\Core;
+use Flynt\Core;
 
 Core::loadPhpFiles('lib/Hooks/');

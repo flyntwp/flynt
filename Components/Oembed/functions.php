@@ -1,15 +1,15 @@
 <?php
-namespace WPStarterTheme\Modules\Oembed;
+namespace Flynt\Components\Oembed;
 
-use WPStarterTheme\Helpers\Log;
-use WPStarterTheme\Helpers\Module;
-use WPStarterTheme\Helpers\DomNode;
+use Flynt\Helpers\Log;
+use Flynt\Helpers\Component;
+use Flynt\Helpers\DomNode;
 
 add_action('wp_enqueue_scripts', function () {
-  Module::enqueueAssets('Oembed');
+  Component::enqueueAssets('Oembed');
 });
 
-add_filter('WPStarter/modifyModuleData?name=Oembed', function ($data) {
+add_filter('Flynt/modifyComponentData?name=Oembed', function ($data) {
   if (empty($data['posterImage'])) {
     $data['posterImage'] = get_field('defaultPosterImage', 'options');
   }

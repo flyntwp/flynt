@@ -2,7 +2,7 @@
 
 use Timber\Timber;
 
-add_filter('WPStarterTheme/DataFilters/WpBase', function ($data) {
+add_filter('Flynt/DataFilters/WpBase', function ($data) {
   $context = Timber::get_context();
 
   $output = array(
