@@ -6,8 +6,52 @@
 }
 
 /*
+ * Header
+ */
+
+.site-header {
+  border-bottom: 1px solid rgba(0, 0, 0, .07);
+  padding: 15px;
+  width: 100%;
+}
+
+.site-header .header-logo {
+  width: 120px;
+}
+
+.site-header .header-list {
+  float: right;
+  list-style: none;
+  margin: 0;
+  top: 11px;
+  padding: 0;
+  position: relative;
+}
+
+.site-header .header-list li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.site-header .header-list li:last-child {
+  margin-right: 0;
+}
+
+.site-header .header-list a {
+  font-weight: 700;
+}
+
+.site-header .header-link-isActive {
+  background: #50a09c;
+  border-radius: 3px;
+  color: white;
+  padding: 10px;
+}
+
+/*
  * Links & Buttons
  */
+.site-header a,
 .book-summary ul.summary li.active > a,
 .markdown-section a {
   color: #50a09c;

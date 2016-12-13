@@ -1,15 +1,25 @@
 {
   "root": "./docs",
+  "title": "Flynt Theme",
   "structure": {
     "summary": "table-of-contents.md"
   },
   "gitbook": "3.1.1",
-  "plugins": ["prism", "-highlight", "word-count", "collapsible-menu", "-fontsettings"],
+  "plugins": ["prism", "-highlight", "word-count", "collapsible-menu", "custom-favicon", "components", "-fontsettings"],
   "pluginsConfig": {
     "prism": {
       "css": [
         "prismjs/themes/prism-tomorrow.css"
       ]
-    }
+    },
+    "components": {
+      "templates": [
+        {
+          "name": "header",
+          "target": "body"
+        }
+      ]
+    },
+    "favicon": "docs/assets/favicon.ico"
   }
 }
