@@ -11,7 +11,7 @@ If this is your first experience with Flynt, check out the [requirements](requir
 To further your understanding of the Flynt theme, take a look through the section on [Theme Development](theme-development/readme.md), then explore the [advanced functionality](theme-development/advanced/readme.md).
 
 ## Useful Links
-* [Flynt Framework](/add-link)
-* [Flynt Core Plugin Documentation](/add-link)
-* [Flynt CLI](/add-link)
+* [Flynt Framework](https://flyntwp.com)
+* [Flynt Core Plugin Documentation](https://plugindocs.flyntwp.com)
+* [Flynt CLI](https://clidocs.flyntwp.com)
 * [Bedrock](https://roots.io/bedrock/)

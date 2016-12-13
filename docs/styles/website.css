@@ -48,6 +48,33 @@
   padding: 10px;
 }
 
+.site-header .header-divider {
+  border-left: 1px solid #ccc;
+  padding-left: 10px;
+}
+
+.site-header .header-link-github {
+  color: #333;
+  display: inline-block;
+  position: relative;
+  padding-right: 27px;
+}
+
+.site-header .header-link-github::before {
+  background-image: url('../assets/github.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  content: '';
+  display: block;
+  height: 20px;
+  right: 0;
+  margin-top: -10px;
+  position: absolute;
+  top: 50%;
+  width: 20px;
+}
+
 /*
  * Links & Buttons
  */
