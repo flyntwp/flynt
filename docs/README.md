@@ -1,6 +1,6 @@
 # Flynt Theme Documentation
 
-Welcome! This is the official documentation for everything related to the Flynt Theme. You can find the separate Flynt Core Plugin and API documentation [here](/add-link).
+Welcome! This is the official documentation for everything related to the Flynt Theme. You can find the separate Flynt Core Plugin and API documentation [here](https://plugindocs.flyntwp.com).
 
 ## Just getting started?
 

@@ -78,6 +78,7 @@
 /*
  * Links & Buttons
  */
+#book-search-results .search-results .has-results .search-results-item a,
 .site-header a,
 .book-summary ul.summary li.active > a,
 .markdown-section a {
