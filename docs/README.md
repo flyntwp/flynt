@@ -6,7 +6,7 @@ Welcome! This is the official documentation for everything related to the Flynt 
 
 If this is your first experience with Flynt, check out the [requirements](requirements.md) and the [installation and setup instructions](setup.md), then get started with our [basic tutorial series](getting-started/readme.md).
 
-## Digging deeper
+## Diving deeper
 
 To further your understanding of the Flynt theme, take a look through the section on [Theme Development](theme-development/readme.md), then explore the [advanced functionality](theme-development/advanced/readme.md).
 
