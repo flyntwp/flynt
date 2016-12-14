@@ -125,6 +125,18 @@ pre.flowchart code {
   width: 300px;
 }
 
+/* The copy code plugin generates all styling inline... Need important to over-ride */
+.copy-code-button {
+  background: #50a09c !important;
+  border-radius: 0 !important;
+  border: 0 !important;
+  font-size: 13px !important;
+  padding: 5px 7px !important;
+  right: 10px !important;
+  top: 10px !important;
+}
+
+
 /*
  * Alerts
  */

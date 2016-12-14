@@ -5,7 +5,7 @@
     "summary": "table-of-contents.md"
   },
   "gitbook": "3.1.1",
-  "plugins": ["prism", "-highlight", "word-count", "collapsible-menu", "custom-favicon", "components", "edit-link", "-fontsettings"],
+  "plugins": ["prism", "-highlight", "copy-code-button", "word-count", "collapsible-menu", "custom-favicon", "components", "edit-link", "-fontsettings"],
   "pluginsConfig": {
     "prism": {
       "css": [
