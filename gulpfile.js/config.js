@@ -1,5 +1,5 @@
 const dest = './dist'
-const host = 'wp-starter-boilerplate.dev'
+const host = 'flynt.dev'
 
 module.exports = {
   browserSync: {
@@ -38,7 +38,7 @@ module.exports = {
     staticFileExtensions: ['.html', '.php', '.pug']
   },
   sourcemaps: {
-    sourceRoot: '/app/themes/wp-starter-theme/'
+    sourceRoot: '/app/themes/flynt-theme/'
   },
   stylus: [
     './{Components,assets}/**/style.styl'

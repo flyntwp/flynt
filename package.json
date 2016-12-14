@@ -1,9 +1,9 @@
 {
-  "name": "wp-starter-theme",
+  "name": "flynt-theme",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:bleech/wp-starter-theme.git",
-  "author": "Dominik Tränklein <dominik@bleech.de>",
+  "repository": "git@github.com:flyntwp/flynt-theme.git",
+  "author": "bleech <hello@bleech.de>",
   "license": "MIT",
   "scripts": {
     "start": "check-node-version --package && gulp",
