@@ -1,7 +1,7 @@
-$maxWidth = lookup('$global-layout-maxWidth') || 1140px
 $gutterWidth = lookup('$global-layout-gutterWidth') || 15px
+$maxWidth = lookup('$global-layout-maxWidth') || 1140px
 // Note: When passing multiple values capsule them with paranthesis
-rupture.scale = lookup('$global-layout-scale') || (0 400px 800px 1200px)
+rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px 800px 1200px
 
 $containerMaxWidth = 1440px // Width for the container if not using a container
 $useContainer = true // Use a container or a fluid wrapper
