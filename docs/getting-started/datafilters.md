@@ -1,59 +1,94 @@
 # 4. Using DataFilters
 
-This tutorial covers:
-- [4.1 Adding a DataFilter](#41-adding-a-datafilter)
+<div class="alert">
+  <h3>This tutorial covers:</h3>
+  <ul>
+    <li><strong><a href="#41-adding-a-datafilter">4.1 Adding a DataFilter</a></strong></li>
+  </ul>
+</div>
 
 ## 4.1 Adding a DataFilter
-It's not always the case that the data we need in our module comes directly from the backend user input. Data Filters are one of the ways in which we can add and modify data before it is passed to the module. It is mainly intended for use with database or API operations. In this case we will put this to use in our Image Slider by passing the "last updated" date to our gallery.
+It's not always the case that the data we need in our component comes directly from the backend user input.
+
+Data Filters are one of the ways in which we can add and modify data before it is passed to the component. **It is mainly intended for use with database or API operations.**
+
+In this case we will put this to use in our Post Slider by passing the "posts per page" Wordpress reading setting to our view.
 
 To begin, add the following line in `config/templates/default.json`, just after the `name`:
 
 ```php
 {
   "name": "ImageSlider",
-  "dataFilter": "Flynt/DataFilters/Gallery"
+  "dataFilter": "Flynt/DataFilters/Reading"
 }
 ```
 
-Then create the file `lib/DataFilters/Gallery.php` and add the code below:
+Now create `lib/DataFilters/Reading.php` and add the code below:
 
 ```php
-add_filter('Flynt/DataFilters/Gallery', function($data) {
-  global $post;
-  $post = get_post($post->ID);
-  $data['lastEditedDate'] = $post->post_modified;
+add_filter('Flynt/DataFilters/Reading', function($data) {
+  $data['postsPerPage'] = get_option('posts_per_page');
 
   return $data;
 });
 ```
 
-Here we take advantage of the standard Wordpress filter functionality. You can read more about this in the [plugin documentation](/add-link), and on the [official Wordpress documentation](https://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters).
+<p class="source-note">Here we take advantage of the standard Wordpress filter functionality. You can read more about this in the <a href="../add-link">plugin documentation</a>, and on the <a href="https://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters" target="_blank">official Wordpress documentation</a>.</p>
 
-Essentially, we are accessing our module data before it reaches the view, adding our `lastEditedDate` and returning it. Now we can use this new data in our view.
+To make the data set in this Data Filter available in our component, open `config/templates/default.json` and set the DataFilter to the `PostSlider` component:
 
-Open `Modules/ImageSlider/index.php.pug` and update it to match the code below:
-
-```jade
-div(is='flynt-image-slider')
-  .slider
-    h1.slider-title= $data('title')
-    .slider-items
-      for image in $data('images')
-        .slider-item
-          img(src=$data(image, 'url'))
-    .slider-meta
-      p This gallery was last edited on: #{$data('lastEditedDate')}
+```json
+{
+  "name": "MainLayout",
+  "dataFilter": "Flynt/DataFilters/WpBase",
+  "areas": {
+    ...
+    "mainTemplate": [
+      {
+        "name": "Template",
+        "dataFilter": "Flynt/DataFilters/MainQuery/Single",
+        "areas": {
+          "pageComponents": [
+            {
+              "name": "PostSlider",
+              "dataFilter": "Flynt/DataFilters/Reading"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
 ```
 
-This is only a basic introduction to the power that such data filters afford. Further techniques are covered in the [Advanced section](/add-link) of the Flynt documentation:
+The data returned from our `Reading` DataFilter will now be combined with the data already in the component, making it instantly accessible in our view.
 
-* [Adding Custom Data](/add-link)
-* [Adding Arguments to Data Filters](/add-link)
+To finish up, open `Components/PostSlider/index.twig` and update it to match the code below:
 
----
+```twig
+<div is="flynt-post-slider">
+  <div class="slider">
+    <h1 class="slider-title">{{ title }}</h1>
+    <div class="slider-items">
+      {% for image in images %}
+        <div class="slider-item">
+          <img src="{{ image.url  }}" alt="{{ image.alt }}">
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="slider-meta">
+    <p class="slider-showing">Showing {{ postsPerPage }} posts.</p>
+  </div>
+</div>
+```
 
-## Next Steps
+This is only a basic introduction to the power that such data filters afford. Further techniques are covered in the [Advanced section](../advanced/readme.md) of the Flynt documentation.
 
-We'll take our module further and improve on the above, taking advantage of the modules `functions.php` to add even more flexibility.
+<div class="alert alert-steps">
+  <h2>Next Steps</h2>
 
-**[Go to Section 4](/modify-data.md)**
+  <p>We'll take our component further and improve on the above, taking advantage of the components <code>functions.php</code> to add even more flexibility.</p>
+
+  <p><a href="modify-data.md" class="btn btn-primary">Go to Section 5</a></p>
+</div>

@@ -1,25 +1,25 @@
-# Customizing Module WYSIWYGs
+# Customizing Component WYSIWYGs
 
-In module `functions.php` file:
+In component `functions.php` file:
 
 ```php
 add_filter('acf/fields/wysiwyg/toolbars', function ($toolbars) {
-  $toolbars['bleech'] = [];
-  $toolbars['bleech'][1] = array(
+  $toolbars['flynt'] = [];
+  $toolbars['flynt'][1] = array(
     'undo', 'redo', 'styleselect', '|',
     'cleanup', 'removeformat', 'formatselect');
   return $toolbars;
 });
 ```
 
-In module `fields.json` for the target wysiwyg:
+In component `fields.json` for the target WYSIWYG:
 
 ```json
 {
   "name": "contentHTML",
   "label": "Content",
   "type": "wysiwyg",
-  "toolbar": "bleech",
+  "toolbar": "flynt",
   "media_upload": 0,
   "required": 1
 }

@@ -1,22 +1,54 @@
 # Changing Templating Language
 
-Whilst the theme uses [Pug PHP](https://github.com/pug-php/pug) as the default templating language, this is not strictly enforced. The templating language can easily be changed using the `renderModule` filter provided with the Flynt Core plugin.
+Whilst the theme uses [Twig](twig.sensiolabs.org) as the default template language, this is not strictly enforced.
 
-As an example, the below code demonstrates how to switch to [Timber](timber.github.io/timber) for rendering your templates. As this is for demo purposes only, we will not fully detail how to include Timber in your project (for this, check out the [Timber Documentation](http://timber.github.io/timber/#getting-started)).
+## PHP Templates
+To use plain PHP, simply create `index.php`, rather than `index.twig`.
+
+The data passed to a component is still available using the `$data` function. For example:
+
+### Twig:
+```twig
+<div is="flynt-example-module">
+  <h1>{{ title }}</h1>
+</div>
+```
+
+### PHP:
+```php
+<div is="flynt-example-module">
+  <h1><?= $data('title') ?></h1>
+</div>
+```
+
+## Other Template Engines
+To switch to another template engine, use the `renderComponent` filter provided by the Flynt Core plugin.
+
+As an example, the below code demonstrates how to switch to [Smarty](http://www.smarty.net/) for rendering your templates.
 
 ```php
 <?php
-add_filter('WPStarter/renderModule', function($output, $moduleName, $moduleData, $areaHtml) {
+add_filter('Flynt/renderComponent', function($output, $componentName, $componentData, $areaHtml) {
   // Get index file.
-  $moduleManager = WPStarter\ModuleManager::getInstance();
-  $filePath = $moduleManager->getModuleFilePath($moduleName, 'index.twig');
+  $componentManager = Flynt\ComponentManager::getInstance();
+  $filePath = $componentManager->getComponentFilePath($componentName, 'index.tpl');
 
   // Add areas to data.
-  $data = array_merge($moduleData, ['areas' => $areaHtml]);
+  $data = array_merge($componentData, ['areas' => $areaHtml]);
 
-  // Return html rendered by timber / twig.
-  return Timber::fetch($filePath, $data);
+  // Assign data.
+  $smarty = new Smarty;
+  $smarty->assign($data);
+
+  // Return html rendered by Smarty.
+  return $smarty->display($filePath);
 }, 10, 4);
 ```
 
-<!-- TODO: Add link to relevant Flynt Core plugin documentation. -->
+Your component data will now be available as usual in `index.tpl`:
+
+```smarty
+<div is="flynt-example-module">
+  <h1>{$title}</h1>
+</div>
+```
