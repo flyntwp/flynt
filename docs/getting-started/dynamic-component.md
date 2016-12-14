@@ -51,7 +51,7 @@ If you are already familiar with ACF, you will notice that these field options (
 
 Before this field will be visible in the back-end, however, we still need to define in which situations these fields should be available to the editor. We will do this in the next section by adding a new "Field Group".
 
-<a href="https://github.com/bleech/wp-starter-snippets" class="source-note source-note--info">ACF offers around 20 different field types. To make the process of authoring these fields simpler, install our field.json snippets for Atom or Sublime Text.</a>
+<a href="https://github.com/bleech/wp-starter-snippets" class="source-note source-note--info">ACF offers around 20 different field types. To make the process of authoring these fields simpler, install our fields.json snippets for Atom or Sublime Text.</a>
 
 <div class="alert">
   <p>You can see the full list of available fields and their options in the <strong><a href="https://www.advancedcustomfields.com/resources/#field-types">official ACF documentation</a></strong>.</p>
@@ -215,7 +215,7 @@ At this point it is important to understand how the Flynt Core plugin is passing
 ## 3.5 Taking our Component Further
 We will now create an image slider by pulling the featured image from a list of posts selected by the user.
 
-Open `Modules/PostSlider/field.json` and add a post object field to the component:
+Open `Modules/PostSlider/fields.json` and add a post object field to the component:
 
 ```json
 {
