@@ -3,5 +3,5 @@ node_modules
 bower_components
 _book
 npm-debug.log
-docs/styles/*.css
-docs/styles/*.css.map
+docs/styles/**/*.css
+docs/styles/**/*.map
