@@ -19,3 +19,7 @@ For example: `Advanced Custom Fields (ACF) is a plugin for Wordpress. ACF can be
 ## Avoid Contractions
 
 Do not write "it's", "they've". Write "it is", "they have".
+
+## Test All Code Snippets
+
+Please make sure all code snippets are tested and will definitely work.
