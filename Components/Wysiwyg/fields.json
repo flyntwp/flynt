@@ -6,7 +6,8 @@
       "type": "select",
       "choices": {
         "": "---",
-        "narrow": "Narrow"
+        "wysiwyg-fullwidth": "Fullwidth",
+        "wysiwyg-narrow": "Narrow"
       },
       "default_value": ""
     }
@@ -28,7 +29,8 @@
         "type": "select",
         "choices": {
           "": "---",
-          "narrow": "Narrow"
+          "wysiwyg-fullwidth": "Fullwidth",
+          "wysiwyg-narrow": "Narrow"
         },
         "default_value": ""
       }

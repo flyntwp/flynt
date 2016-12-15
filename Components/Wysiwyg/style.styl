@@ -1,5 +1,6 @@
 $gutterWidth = lookup('$global-layout-gutterWidth') || 15px
 $maxWidth = lookup('$global-layout-maxWidth') || 1140px
+$fullWidth = lookup('$global-layout-fullWidth') || 100%
 $narrowWidth = lookup('$global-layout-narrowWidth') || 650px
 rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px 800px 1200px
 
@@ -12,5 +13,8 @@ rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px
   .wysiwyg
     center($maxWidth, $gutterWidth)
 
-    &.narrow
+    &-fullwidth
+      center($fullwidthWidth, $gutterWidth)
+
+    &-narrow
       center($narrowWidth, $gutterWidth)
