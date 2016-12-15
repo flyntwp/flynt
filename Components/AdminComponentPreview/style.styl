@@ -1,6 +1,6 @@
 rupture.scale = lookup('$global-layout-scale') || (0 400px 800px 1200px)
 
-.layout-module-preview
+.layout-component-preview
   bottom: 5px
   background: #fff
   border: 1px solid #e1e1e1
@@ -22,23 +22,23 @@ rupture.scale = lookup('$global-layout-scale') || (0 400px 800px 1200px)
     position: absolute
     white-space: nowrap
 
-.add-module-preview-image-wrapper
+.add-component-preview-image-wrapper
   bottom: 0
   position: absolute
   right: 105%
 
-  .add-module-preview-image
+  .add-component-preview-image
     border: 3px solid #333739
     border-radius: 3px
     bottom: 0
     display: block
     position: absolute
 
-  .add-module-preview-image-desktop
+  .add-component-preview-image-desktop
     height: 250px
     right: 30px
 
-  .add-module-preview-image-mobile
+  .add-component-preview-image-mobile
     height: 150px
     right: 0
 
@@ -46,11 +46,11 @@ rupture.scale = lookup('$global-layout-scale') || (0 400px 800px 1200px)
   float: right
   margin-right: 8px
 
-.module-preview-image-desktop
+.component-preview-image-desktop
   +below('s')
     display: none
 
-.module-preview-image-mobile
+.component-preview-image-mobile
   +above('m')
     display: none
 
@@ -94,7 +94,7 @@ html.admin-bar
   #wpadminbar .shortlink-input
     background: #000
 
-  #wp-admin-bar-toggleModulePreviews
+  #wp-admin-bar-toggleComponentPreviews
     &.active
       background: red
 
