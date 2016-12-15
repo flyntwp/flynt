@@ -1,6 +1,6 @@
 {
   "root": "./docs",
-  "title": "Flynt Theme",
+  "title": "Flynt Documentation",
   "structure": {
     "summary": "table-of-contents.md"
   },
@@ -13,6 +13,7 @@
       ]
     },
     "components": {
+      "templatePath": "docs/templates",
       "templates": [
         {
           "name": "header",

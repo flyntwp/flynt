@@ -1,4 +1,4 @@
-# Changing Templating Language
+# Changing Template Language
 
 Whilst the theme uses [Twig](twig.sensiolabs.org) as the default template language, this is not strictly enforced.
 

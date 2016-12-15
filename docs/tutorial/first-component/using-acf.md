@@ -1,4 +1,4 @@
-# 3. Adding & Displaying ACF Fields
+# 2. Using Advanced Custom Fields (ACF)
 
 <div class="alert alert-info">
   <strong>A requirement of this tutorial is using the Wordpress Plugin <a href="https://www.advancedcustomfields.com/">Advanced Custom Fields (ACF)</a>. Please make sure this is installed and enabled before continuing.</strong>
@@ -7,18 +7,18 @@
 <div class="alert">
   <h3>This tutorial covers:</h3>
   <ul>
-    <li><strong><a href="#31-adding-acf-fields">3.1 Adding ACF Fields</a></strong></li>
-    <li><strong><a href="#32-adding-a-field-group">3.2 Adding a Field Group</a></strong></li>
-    <li><strong><a href="#33-displaying-field-content">3.3 Displaying Field Content</a></strong></li>
-    <li><strong><a href="#34-understanding-the-flynt-data-flow">3.4 Understanding the Flynt Data Flow</a></strong></li>
-    <li><strong><a href="#35-taking-our-component-further">3.5 Taking our Component Further</a></strong></li>
+    <li><strong><a href="#21-adding-acf-fields">2.1 Adding ACF Fields</a></strong></li>
+    <li><strong><a href="#22-adding-a-field-group">2.2 Adding a Field Group</a></strong></li>
+    <li><strong><a href="#23-displaying-field-content">2.3 Displaying Field Content</a></strong></li>
+    <li><strong><a href="#24-understanding-the-flynt-data-flow">2.4 Understanding the Flynt Data Flow</a></strong></li>
+    <li><strong><a href="#25-taking-our-component-further">2.5 Taking our Component Further</a></strong></li>
   </ul>
 </div>
 
-## 3.1 Adding ACF Fields
-Advanced Custom Fields (ACF) is a Wordpress plugin to make adding custom meta fields easy and intuitive, with a straight-forward API and seamless integration into the back-end of Wordpress. With Flynt, we use ACF to add user-editable fields at the component level.
+## 2.1 Adding ACF Fields
+Advanced Custom Fields (ACF) is a Wordpress plugin to make adding custom meta fields easy and intuitive, with a straight-forward API and seamless integration into the back-end of Wordpress. With Flynt, ACF is used to add user-editable fields at the component level.
 
-To get started, we will add a single ACF text field to the `PostSlider` component.
+To get started, add a single ACF text field to the `PostSlider` component.
 
 Create `Components/PostSlider/fields.json` and add the code below:
 
@@ -63,11 +63,11 @@ Before this field will be visible in the back-end, however, we still need to def
   <ul>
     <li><strong><a href="../theme-development/advanced/flexible-content.md">Using the ACF Pro "Flexible Content" Field</a></strong></li>
     <li><strong><a href="../theme-development/advanced/repeaters.md">Using the ACF Pro "Repeater" Field</a></strong></li>
-    <li><strong><a href="../theme-development/advanced/options-pages.md">Using the ACF Pro "Options" Page</a></strong></li>
+    <li><strong><a href="../theme-development/advanced/options-page.md">Using the ACF Pro "Options" Page</a></strong></li>
   </ul>
 </div>
 
-## 3.2 Adding a Field Group
+## 2.2 Adding a Field Group
 
 All field group configuration files can be found in the `config/fieldGroups` directory. For this tutorial we will modify the default `pageComponents` configuration.
 
@@ -129,7 +129,7 @@ Add the text "Our Featured Posts" into the title field and save the page.
 
 Next, we'll move on to displaying this content on the front-end.
 
-## 3.3 Displaying Field Content
+## 2.3 Displaying Field Content
 We can now display the title in our front-end [Twig](twig.sensiolabs.org) template.
 
 Open `Components/PostSlider/index.twig` and update it with the following:
@@ -144,7 +144,7 @@ Open `Components/PostSlider/index.twig` and update it with the following:
 
 That's all there is to it! All of the component's fields are automatically available in the component's view.
 
-## 3.4 Understanding the Flynt Data Flow
+## 2.4 Understanding the Flynt Data Flow
 
 At this point it is important to understand how the Flynt Core plugin is passing this data to the view. In actual fact, the data function uses the data passed to the template referenced by its keys. This can be understood much easier with the flowchart below:
 
@@ -212,7 +212,7 @@ At this point it is important to understand how the Flynt Core plugin is passing
 
 <a href="/add-link" class="source-note">To dig into this more, read through the full flowchart in the Flynt Core plugin documentation.</a>
 
-## 3.5 Taking our Component Further
+## 2.5 Taking our Component Further
 We will now create an image slider by pulling the featured image from a list of posts selected by the user.
 
 Open `Modules/PostSlider/fields.json` and add a post object field to the component:
@@ -270,7 +270,7 @@ Here, Timber's default Wordpress image handling provides us with our featured im
 <div class="alert alert-steps">
   <h2>Next Steps</h2>
 
-  <p>We now have a simple component that takes data from our fields and outputs them on the front-end! But what if we want do pull other data in our component? The next section explores passing additional data to our component using DataFilters.</p>
+  <p>We now have a simple component that takes data from our fields and outputs them on the front-end! But what if we want do pull other data in our component? The next section explores passing additional data to our component.</p>
 
-  <p><a href="datafilters.md" class="btn btn-primary">Go to Section 4</a></p>
+  <p><a href="modify-data.md" class="btn btn-primary">Learn to modify component data</a></p>
 </div>

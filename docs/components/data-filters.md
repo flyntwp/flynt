@@ -1,4 +1,6 @@
-# 4. Using DataFilters
+# Data Filters
+
+TODO: Refactor this section now it is no longer part of the tutorial.
 
 <div class="alert">
   <h3>This tutorial covers:</h3>

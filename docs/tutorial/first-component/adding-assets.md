@@ -1,19 +1,19 @@
-# 6. Adding Assets to a Component
+# 4. Adding Assets to a Component
 
 <div class="alert">
   <h3>This tutorial covers:</h3>
   <ul>
-    <li><strong><a href="#61-adding-styles">6.1 Adding Styles</a></strong></li>
-    <li><strong><a href="#62-adding-scripts">6.2 Adding Scripts</a></strong></li>
-    <li><strong><a href="#63-adding-and-registering-dependencies">6.3 Adding and Registering Dependencies</a></strong></li>
-    <li><strong><a href="#64-adding-static-assets">6.4 Adding Static Assets</a></strong></li>
+    <li><strong><a href="#41-adding-styles">4.1 Adding Styles</a></strong></li>
+    <li><strong><a href="#42-adding-scripts">4.2 Adding Scripts</a></strong></li>
+    <li><strong><a href="#43-adding-and-registering-dependencies">4.3 Adding and Registering Dependencies</a></strong></li>
+    <li><strong><a href="#44-adding-static-assets">4.4 Adding Static Assets</a></strong></li>
   </ul>
 </div>
 
-## 6.1 Adding Styles
+## 4.1 Adding Styles
 Each component can have a self-contained style file. By default, Flynt supports vanilla CSS files, and the pre-processor [Stylus](http://stylus-lang.com/). In this tutorial we will use Stylus.
 
-**[If you do not like Stylus or vanilla CSS, you can learn how to switch the styling language here.](../theme-development/switching-styling-language.md)**
+**[If you do not like Stylus or vanilla CSS, you can learn how to switch the styling language here.](../../workflow/changing-style-language.md)**
 
 To get started, create `Components/PostSlider/style.styl` and add the styles below:
 
@@ -82,7 +82,7 @@ That's it! Though there are a few more recommendations to keep in mind:
 - Each component is uniquely identified with the `is` attribute. We use this for both styling and scripting, as you will see below. All styles are scoped within this one over-arching identifier.
 - At the core of the Flynt philosophy is reusability and scalability. As such, we strongly recommend following [maintainableCSS](http://maintainablecss.com/); an approach to writing modular and maintainable styles.
 
-## 6.2 Adding Scripts
+## 4.2 Adding Scripts
 Just as with our styles, scripts live at the Component level and are completely self contained.
 
 Create `Components/PostSlider/script.js` and add the following code:
@@ -115,7 +115,7 @@ This is our basic recommended Javascript Custom Element starting template. It is
 
 If you are not comfortable with Custom Elements or ES2015, we do not force you to adopt this for your Javascript (only strongly recommend it). At a basic level, the component `script.js` file will always be copied into the matching `dist` folder. You are free to write the Javascript within it as you wish.
 
-## 6.3 Adding and Registering Dependencies
+## 4.3 Adding and Registering Dependencies
 In order to turn our images into a real slider, we'll use [Yarn](https://yarnpkg.com) to add [Slick Carousel](http://kenwheeler.github.io/slick/) to our component.
 
 In the theme root folder, open your terminal and run this command to install Slick:
@@ -188,7 +188,7 @@ class PostSlider extends window.HTMLDivElement {
 window.customElements.define('flynt-post-slider', PostSlider, {extends: 'div'})
 ```
 
-## 6.4 Adding Static Assets
+## 4.4 Adding Static Assets
 Sometimes we need static assets, such as icons, that do not come directly from the user in the back-end.
 
 To implement this, create an `asset` directory in the ImageSlider component directory. Then, download and add `downloadIcon.svg` ([available here](http://iconmonstr.com/download-11/)) to the new `asset` directory.
@@ -324,5 +324,5 @@ Refresh the front-end and you will see that we are done!
 
   <p>This concludes the "Getting Started" series! In the last step we'll recap what we've achieved and recommend where to go from here.</p>
 
-  <p><a href="recap.md" class="btn btn-primary">Go to Section 7</a></p>
+  <p><a href="next-steps.md" class="btn btn-primary">Go to Section 7</a></p>
 </div>

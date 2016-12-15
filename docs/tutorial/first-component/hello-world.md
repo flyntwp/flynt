@@ -1,4 +1,4 @@
-# 2. Creating a Basic Component
+# 1. Building Your First Component
 
 <div class="alert alert-info">
   <strong>Before you begin this tutorial, make sure you first follow the <a href="../setup.md">setup instructions</a> and have your local environment up and running.
@@ -8,14 +8,14 @@
 <div class="alert">
   <h3>This tutorial covers:</h3>
   <ul>
-    <li><strong><a href="#21-configuring-page-templates">2.1 Configuring Page Templates</a></strong></li>
-    <li><strong><a href="#22-creating-your-component">2.2 Creating your Component</a></strong></li>
-    <li><strong><a href="#23-rendering-your-component">2.3 Rendering Your Component</a></strong></li>
+    <li><strong><a href="#21-configuring-page-templates">1.1 Configuring Page Templates</a></strong></li>
+    <li><strong><a href="#22-creating-your-component">1.2 Creating your Component</a></strong></li>
+    <li><strong><a href="#23-rendering-your-component">1.3 Rendering Your Component</a></strong></li>
   </ul>
 </div>
 
-## 2.1 Configuring Page Templates
-All template files in Flynt can be found under the theme root, in the `templates` directory. You can learn more about how Flynt handles page templates [here](../theme-development/page-templates.md).
+## 1.1 Configuring Page Templates
+All template files in Flynt can be found under the theme root, in the `templates` directory. You can learn more about how Flynt handles page templates [here](../../workflow/theme-structure.md).
 
 For this tutorial we will be using the default `template/page.php` template. This file contains only one line of code:
 
@@ -50,9 +50,9 @@ Here we store our default page layout:
 }
 ```
 
-For a detailed look at how these template configurations work, [you can read more here](../theme-development/page-templates.md).
+For a detailed look at how these template configurations work, [you can read more here](../workflow/theme-structure.md).
 
-## 2.2 Creating your Component
+## 1.2 Creating your Component
 All components are located in the `Components` directory. Create a new folder in this directory with the name `PostSlider`.
 
 Flynt uses [Twig](http://twig.sensiolabs.org/) in conjunction with [Timber](timber.github.io/timber/) for view templates. To add a template for your component, create `Components/PostSlider/index.twig`. Your folder structure will now be:
@@ -76,7 +76,7 @@ Whilst the end goal is to make this component an interactive slider, for now we'
 
 Done! Next we need to render the component to the page.
 
-## 2.3 Rendering Your Component
+## 1.3 Rendering Your Component
 
 First we will create a new area for our Post Slider component.
 
@@ -131,5 +131,5 @@ Components defined within the `pageComponents` area in the `default.json` page t
 
   <p>In the next section we will tackle making this content dynamic by adding user-editable content fields. We will then learn to manipulate this data before we pass it to the view and render it.</p>
 
-  <p><a href="dynamic-component.md" class="btn btn-primary">Go to Section 3</a></p>
+  <p><a href="using-acf.md" class="btn btn-primary">Learn to add fields</a></p>
 </div>

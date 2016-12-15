@@ -1,13 +1,13 @@
-# 5. Modifying Component Data
+# 3. Modifying Component Data
 
 <div class="alert">
   <h3>This tutorial covers:</h3>
   <ul>
-    <li><strong><a href="#51-using-modifycomponentdata-and-functionsphp">Using <code>modifyComponentData</code> and <code>functions.php</code></strong></a></li>
+    <li><strong><a href="#31-using-modifycomponentdata-and-functionsphp">Using <code>modifyComponentData</code> and <code>functions.php</code></strong></a></li>
   </ul>
 </div>
 
-## 5.1 Using `modifyComponentData` and `functions.php`
+## 3.1 Using `modifyComponentData` and `functions.php`
 
 Our component is now functional, but looking at our existing view template, we are still left with hard-coded text:
 
@@ -110,5 +110,5 @@ We're done! Our editor can now change and re-word the text as they wish, adding 
 
   <p>We have covered the core concepts of building a dynamic content driven component. What's missing is front-end flare. To round up the series we'll dive into assets and how we require styles, scripts, and images.</p>
 
-  <p><a href="component-assets.md" class="btn btn-primary">Go to Section 6</a></p>
+  <p><a href="adding-assets.md" class="btn btn-primary">Learn how to add assets</a></p>
 </div>
