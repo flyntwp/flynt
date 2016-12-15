@@ -24,10 +24,10 @@
                 {% if mediaSliderUsePoster %}
                   <div class="mediaSlider-oembedPosterImage">
                     <img class="mediaSlider-imageElement" srcset="
-                      {{ mediaSlide.image.src | resize(400, 200) }} 400w,
-                      {{ mediaSlide.image.src | resize(800, 400) }} 800w,
-                      {{ mediaSlide.image.src | resize(1200, 600) }} 1200w,
-                      {{ mediaSlide.image.src | resize(1600, 800) }} 1600w"
+                      {{ mediaSlide.image.src | resize(400, 225) }} 400w,
+                      {{ mediaSlide.image.src | resize(800, 450) }} 800w,
+                      {{ mediaSlide.image.src | resize(1200, 675) }} 1200w,
+                      {{ mediaSlide.image.src | resize(1600, 900) }} 1600w"
                       src="{{ mediaSlide.image.src }}"
                       sizes="100vw">
                   </div>

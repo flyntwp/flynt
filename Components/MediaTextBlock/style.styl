@@ -1,9 +1,9 @@
 $trasitionTime = .3s
 $transitionEasing = ease
-$buttonColor = $global-color-play-button is defined ? $global-color-play-button : #f00
-$triangleColor = $global-color-triangle is defined ? $global-color-triangle : #fff
-$gutterWidth = $global-layout-gutterWidth is defined ? $global-layout-gutterWidth : 15px
-$maxWidth = $global-layout-maxWidth is defined ? $global-layout-maxWidth : 1140px
+$buttonColor = lookup('$global-color-play-button') || #f00
+$triangleColor = lookup('$global-color-triangle') || #fff
+$gutterWidth = lookup('$global-layout-gutterWidth') || 15px
+$maxWidth = lookup('$global-layout-maxWidth') || 1140px
 rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px 800px 1200px
 
 [is='wps-media-text-block']
@@ -28,10 +28,10 @@ rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px
 
     &.mediaRight
       .mediaTextBlock-columnMedia
-        move(1/2)
+        move(1/2, $gutter: 2)
 
       .mediaTextBlock-columnContentHtml
-        move(-1/2)
+        move(-1/2, $gutter: 2)
 
       .mediaTextBlock-columnMedia,
       .mediaTextBlock-columnContentHtml
@@ -94,7 +94,7 @@ rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px
       &:hover::after
         transform: scale(1.1)
 
-      &.isHidden
+      &-isHidden
         visibility: hidden
 
     &-oembedVideo
@@ -102,7 +102,7 @@ rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px
       padding-bottom: percentage(9 / 16)
       visibility: hidden
 
-      &.isActive
+      &-isActive
         visibility: visible
 
       iframe

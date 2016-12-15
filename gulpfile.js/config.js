@@ -21,10 +21,10 @@ module.exports = {
       dest + '/**/*.{js,css}',
       '!' + dest + '/style.css'
     ],
-    srcStatic: dest + '/**/*.{html,php,pug}',
+    srcStatic: dest + '/**/*.{html,php,twig}',
     assetSrc: [
       dest + '/**/*',
-      '!' + dest + '/**/*+(css|js|json|html|php|pug|pot|md|htc|swf|xap)',
+      '!' + dest + '/**/*+(css|js|json|html|php|twig|pot|md|htc|swf|xap)',
       '!' + dest + '/style.css',
       '!' + dest + '/screenshot.png',
       '!' + dest + '/favicon.ico',
@@ -35,7 +35,7 @@ module.exports = {
       '!' + dest + '/**/preview-mobile.jpg'
     ],
     revvedFileExtensions: ['.js', '.css'],
-    staticFileExtensions: ['.html', '.php', '.pug']
+    staticFileExtensions: ['.html', '.php', '.twig']
   },
   sourcemaps: {
     sourceRoot: '/app/themes/wp-starter-theme/'
