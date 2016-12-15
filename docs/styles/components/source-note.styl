@@ -1,0 +1,44 @@
+.markdown-section
+  .source-note
+    background-color: $brand-color-primary
+    border-bottom: 0
+    color: $color-white
+    display: block
+    font-size: 15px
+    font-weight: bold
+    padding: 15px 15px 15px 55px
+    position: relative
+    transition: background-color .2s ease
+
+    &::before
+      background-image: url('../assets/question-mark.svg')
+      background-position: center center
+      background-repeat: no-repeat
+      background-size: contain
+      content: ''
+      display: block
+      height: 20px
+      left: 20px
+      margin-top: -10px
+      position: absolute
+      top: 50%
+      width: 20px
+
+  .source-note a
+    color: $color-white
+    text-decoration: underline
+
+  a.source-note:focus,
+  a.source-note:hover
+    background-color: $brand-color-secondary
+    cursor: pointer
+    text-decoration: none
+
+  .source-note p:last-of-type
+    margin-bottom: 0
+
+  .source-note code
+    background: #2d2d2d
+
+  .source-note--info::before
+    background-image: url('../assets/info.svg')

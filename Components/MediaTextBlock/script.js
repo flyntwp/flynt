@@ -20,8 +20,8 @@ class MediaTextBlock extends window.HTMLDivElement {
 
   startVideo = () => {
     this.$iframe.attr('src', this.$iframe.data('src'))
-    this.$posterImage.addClass('isHidden')
-    this.$video.addClass('isActive')
+    this.$posterImage.addClass('mediaTextBlock-oembedPosterImage-isHidden')
+    this.$video.addClass('mediaTextBlock-oembedVideo-isActive')
   }
 }
 

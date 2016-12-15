@@ -20,8 +20,8 @@ class Oembed extends window.HTMLDivElement {
 
   startVideo = () => {
     this.$iframe.attr('src', this.$iframe.data('src'))
-    this.$posterImage.addClass('isHidden')
-    this.$video.addClass('isActive')
+    this.$posterImage.addClass('oembed-posterImage-isHidden')
+    this.$video.addClass('oembed-video-isActive')
   }
 }
 
