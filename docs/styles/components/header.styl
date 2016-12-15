@@ -1,0 +1,57 @@
+
+.site-header
+  border-bottom: 1px solid $gitbook-color-rule
+  padding: 15px
+  width: 100%
+
+  .header-logo
+    width: 120px
+
+  .header-list
+    float: right
+    list-style: none
+    margin: 0
+    top: 11px
+    padding: 0
+    position: relative
+
+    li
+      display: inline-block
+      margin-right: 10px
+
+      &:last-child
+        margin-right: 0
+
+    a
+      font-weight: 700
+
+  .header-link
+    &-isActive
+      background: $brand-color-primary
+      border-radius: 3px
+      color: $color-white
+      padding: 10px
+
+      &-github
+        color: $github-color-brand
+        display: inline-block
+        position: relative
+        padding-right: 27px
+
+        &::before
+          background-image: url('../assets/github.svg')
+          background-position: center center
+          background-repeat: no-repeat
+          background-size: contain
+          content: ''
+          display: block
+          height: 20px
+          right: 0
+          margin-top: -10px
+          position: absolute
+          top: 50%
+          width: 20px
+
+  .header-divider
+    border-left: 1px solid #ccc
+    padding-left: 10px
