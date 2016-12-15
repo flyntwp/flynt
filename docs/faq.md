@@ -1,17 +1,17 @@
 # Frequently Asked Questions (FAQ)
 
-# What's Timber?
+## What's Timber?
 Timber combines the simple readability of the [Twig template engine](http://twig.sensiolabs.org/), and combines it with an object oriented, consistent approach to Wordpress posts, images, terms, users and more.
 
 To find out more about Timber's functionality, we strongly recommend reading through the [official Timber documentation](https://www.upstatement.com/timber/).
 
 ## Do I have to use Timber and Twig?
 
-No, this is just our personal recommendation. You can easily change this with the `renderComponent` filter. [Learn how here](../theme-development/changing-templating-language.md).
+No, this is just our personal recommendation. You can easily change this with the `renderComponent` filter. [Learn how here](../workflow/changing-template-language.md).
 
 ## Do I have to use Stylus?
 
-No, this is just our personal recommendation. You can use plain CSS without needing to change anything, or setup your pre-processor of choice with Gulp. [Learn more here](../theme-development/changing-styling-language.md).
+No, this is just our personal recommendation. You can use plain CSS without needing to change anything, or setup your pre-processor of choice with Gulp. [Learn more here](../workflow/changing-style-language.md).
 
 ## What's Rupture?
 
