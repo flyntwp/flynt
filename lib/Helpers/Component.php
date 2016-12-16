@@ -4,7 +4,6 @@ namespace Flynt\Helpers;
 
 use RecursiveDirectoryIterator;
 use Flynt;
-use Flynt\Config;
 use Flynt\Helpers\Utils;
 
 class Component {
@@ -16,15 +15,14 @@ class Component {
     'media' => 'all'
   ];
 
-  public static function registerAll() {
-    // TODO use new Core functionality after adding the feature for dirs
-    $directoryIterator = new RecursiveDirectoryIterator(Config\COMPONENT_PATH, RecursiveDirectoryIterator::SKIP_DOTS);
+  const COMPONENT_PATH = '/dist/Components/';
 
-    foreach ($directoryIterator as $name => $file) {
-      if ($file->isDir()) {
-        Flynt\registerComponent($file->getFilename());
+  public static function registerAll() {
+    Core::iterateDirectory(get_template_directory() . self::COMPONENT_PATH, function ($dir) {
+      if ($dir->isDir()) {
+        Flynt\registerComponent($dir->getFilename());
       }
-    }
+    })
   }
 
   public static function enqueueAssets($componentName, array $dependencies = []) {
