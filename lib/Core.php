@@ -27,7 +27,7 @@ class Core {
     include_once(ABSPATH . 'wp-admin/includes/plugin.php');
     // TODO rename folder before going open source
     // (or use class_exists instead if we switch to static Flynt\Flynt class)
-    $pluginActive = is_plugin_active('wp-starter-plugin/flynt-core-plugin.php');
+    $pluginActive = class_exists('\\Flynt\\Render');
 
     if (!$pluginActive) {
       add_action('admin_notices', function () {
