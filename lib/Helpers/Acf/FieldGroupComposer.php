@@ -5,6 +5,7 @@ namespace Flynt\Helpers\Acf;
 use RecursiveDirectoryIterator;
 use ACFComposer\ACFComposer;
 use Flynt\Helpers\Utils;
+use Flynt\ComponentManager;
 use Flynt\Core;
 
 class FieldGroupComposer {
@@ -17,8 +18,7 @@ class FieldGroupComposer {
     add_action(
       'Flynt/registerComponent',
       ['Flynt\Helpers\Acf\FieldGroupComposer', 'addFieldFilters'],
-      11,
-      2
+      11
     );
 
     add_action(
@@ -50,10 +50,15 @@ class FieldGroupComposer {
     self::$fieldGroupsLoaded = true;
   }
 
-  public static function addFieldFilters($componentPath, $componentName) {
+  public static function addFieldFilters($componentName) {
     // load fields.json if it exists
-    $filePath = $componentPath . '/fields.json';
-    if(!is_file($filePath)) return;
+    $componentManager = ComponentManager::getInstance();
+    $filePath = $componentManager->getComponentFilePath($componentName, 'fields.json');
+
+    if (false === $filePath) {
+      return;
+    }
+
     $fields = json_decode(file_get_contents($filePath), true);
 
     // make sure naming convention is kept

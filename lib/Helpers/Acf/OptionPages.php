@@ -2,6 +2,7 @@
 
 namespace Flynt\Helpers\Acf;
 
+use Flynt\ComponentManager;
 use Flynt\Helpers\StringHelpers;
 use ACFComposer;
 
@@ -22,8 +23,7 @@ class OptionPages {
     add_action(
       'Flynt/registerComponent',
       ['Flynt\Helpers\Acf\OptionPages', 'addAllComponentOptionSubpages'],
-      12,
-      2
+      12
     );
   }
 
@@ -86,11 +86,17 @@ class OptionPages {
     );
   }
 
-  public static function addAllComponentOptionSubpages($componentPath, $componentName) {
+  public static function addAllComponentOptionSubpages($componentName) {
     // load fields.json if it exists
-    $filePath = $componentPath . '/fields.json';
-    if (!is_file($filePath)) return;
+    $componentManager = ComponentManager::getInstance();
+    $filePath = $componentManager->getComponentFilePath($componentName, 'fields.json');
+
+    if (false === $filePath) {
+      return;
+    }
+
     $fields = json_decode(file_get_contents($filePath), true);
+    $componentPath = $componentManager->getComponentDirPath($componentName);
 
     foreach (self::OPTION_TYPES as $index => $optionType) {
       if (array_key_exists($optionType, $fields)) {
