@@ -1,11 +1,14 @@
 <?php
 
-namespace Flynt\Helpers;
+namespace Flynt\Features\Components;
+
+require_once dirname(dirname(__DIR__)) . '/Utils/Utils.php';
+require_once dirname(dirname(__DIR__)) . '/Utils/FileLoader.php';
 
 use RecursiveDirectoryIterator;
 use Flynt;
-use Flynt\Core;
-use Flynt\Helpers\Utils;
+use Flynt\Utils\FileLoader;
+use Flynt\Utils\Utils;
 
 class Component {
 
@@ -19,7 +22,7 @@ class Component {
   const COMPONENT_PATH = '/dist/Components/';
 
   public static function registerAll() {
-    Core::iterateDirectory(get_template_directory() . self::COMPONENT_PATH, function ($dir) {
+    FileLoader::iterateDirectory(get_template_directory() . self::COMPONENT_PATH, function ($dir) {
       if ($dir->isDir()) {
         Flynt\registerComponent($dir->getFilename());
       }

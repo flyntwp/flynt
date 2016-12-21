@@ -1,8 +1,8 @@
 <?php
 
-namespace Flynt\Helpers;
+namespace Flynt\Features\Navigation;
 
-use Flynt\Helpers\StringHelpers;
+use Flynt\Utils\StringHelpers;
 
 class Navigation {
   public static function getMenuLinks($locationName) {

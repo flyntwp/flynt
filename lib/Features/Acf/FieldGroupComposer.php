@@ -1,12 +1,16 @@
 <?php
 
-namespace Flynt\Helpers\Acf;
+namespace Flynt\Features\Acf;
+
+// TODO refactor this util loading
+require_once dirname(dirname(__DIR__)) . '/Utils/Utils.php';
+require_once dirname(dirname(__DIR__)) . '/Utils/FileLoader.php';
 
 use RecursiveDirectoryIterator;
 use ACFComposer\ACFComposer;
-use Flynt\Helpers\Utils;
+use Flynt\Utils\Utils;
+use Flynt\Utils\FileLoader;
 use Flynt\ComponentManager;
-use Flynt\Core;
 
 class FieldGroupComposer {
   const FILTER_NAMESPACE = 'Flynt/Components';
@@ -17,13 +21,13 @@ class FieldGroupComposer {
   public static function init() {
     add_action(
       'Flynt/registerComponent',
-      ['Flynt\Helpers\Acf\FieldGroupComposer', 'addFieldFilters'],
+      ['Flynt\Features\Acf\FieldGroupComposer', 'addFieldFilters'],
       11
     );
 
     add_action(
       'acf/init',
-      ['Flynt\Helpers\Acf\FieldGroupComposer', 'loadFieldGroups']
+      ['Flynt\Features\Acf\FieldGroupComposer', 'loadFieldGroups']
     );
   }
 
@@ -39,7 +43,7 @@ class FieldGroupComposer {
       return;
     }
 
-    Core::iterateDirectory($dir, function ($file) {
+    FileLoader::iterateDirectory($dir, function ($file) {
       if ($file->getExtension() === 'json') {
         $filePath = $file->getPathname();
         $config = json_decode(file_get_contents($filePath), true);

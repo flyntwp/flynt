@@ -1,9 +1,9 @@
 <?php
 
-namespace Flynt\Helpers\Acf;
+namespace Flynt\Features\Acf;
 
 use Flynt\ComponentManager;
-use Flynt\Helpers\StringHelpers;
+use Flynt\Utils\StringHelpers;
 use ACFComposer;
 
 class OptionPages {
@@ -22,7 +22,7 @@ class OptionPages {
 
     add_action(
       'Flynt/registerComponent',
-      ['Flynt\Helpers\Acf\OptionPages', 'addAllComponentOptionSubpages'],
+      ['Flynt\Features\Acf\OptionPages', 'addAllComponentOptionSubpages'],
       12
     );
   }

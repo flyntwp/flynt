@@ -1,7 +1,8 @@
 <?php
 
-namespace Flynt\Helpers;
+namespace Flynt\Utils;
 
+// TODO rename this (+ split up?)
 class Utils {
   protected static $assetManifest;
 

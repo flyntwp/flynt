@@ -2,7 +2,7 @@
 namespace Flynt\Components\MainLayout;
 
 use Timber\Timber;
-use Flynt\Helpers\Component;
+use Flynt\Features\Components\Component;
 
 add_action('wp_enqueue_scripts', function () {
   Component::enqueueAssets('MainLayout', [

@@ -1,8 +1,8 @@
 <?php
 
-namespace Flynt\Helpers\Acf;
+namespace Flynt\Features\Acf;
 
-use Flynt\Helpers\AdminNoticeManager;
+use Flynt\Features\AdminNotices\AdminNoticeManager;
 
 class Loader {
 
@@ -16,7 +16,7 @@ class Loader {
 
       self::initHelpers($helpers);
 
-    } elseif (class_exists('Flynt\Helpers\AdminNoticeManager')) {
+    } elseif (class_exists('Flynt\Features\AdminNoticeManager')) {
 
       self::showAdminNotice($requirements, $helpers);
 
@@ -32,7 +32,7 @@ class Loader {
   }
 
   protected static function initHelpers($helpers) {
-    $namespacePrefix = 'Flynt\Helpers\Acf';
+    $namespacePrefix = 'Flynt\Features\Acf';
     foreach ($helpers as $helperName) {
       $className = "{$namespacePrefix}\\$helperName";
       if (class_exists($className) && method_exists($className, 'init')) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Hooks;
+namespace Flynt\Features\Templates;
 
 // Set Config Path
 add_filter('Flynt/configPath', function ($filePath, $fileName) {

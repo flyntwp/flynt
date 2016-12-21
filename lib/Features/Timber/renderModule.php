@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Hooks;
+namespace Flynt\Features\Timber;
 
 use Timber\Timber;
 use Timber\Loader;

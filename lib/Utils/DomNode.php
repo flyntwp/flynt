@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Helpers;
+namespace Flynt\Utils;
 
 class DomNode {
   public static function setSrcDataAttribute($nodeHtml, $elementTagName, $attributeName, $toAddGetParams) {

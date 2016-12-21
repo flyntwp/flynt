@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Helpers;
+namespace Flynt\Utils;
 
 class StringHelpers {
   public static function camelCaseToKebap($className) {

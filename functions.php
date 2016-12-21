@@ -15,17 +15,8 @@ Core::setTemplateDirectory();
 // Check if the plugin is installed and activated.
 // If it isn't, this function redirects the template rendering to use
 // plugin-inactive.php instead
-$pluginActive = Core::checkPlugin();
+if (Core::checkPlugin()) {
 
-if ($pluginActive) {
-
-  Core::loadPhpFiles(
-    'lib/',
-    [
-      'Helpers.php',
-      'Hooks.php',
-      'Init.php'
-    ]
-  );
+  require_once get_template_directory() . '/lib/init.php';
 
 }
