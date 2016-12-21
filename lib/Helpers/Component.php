@@ -4,6 +4,7 @@ namespace Flynt\Helpers;
 
 use RecursiveDirectoryIterator;
 use Flynt;
+use Flynt\Core;
 use Flynt\Helpers\Utils;
 
 class Component {
@@ -22,7 +23,7 @@ class Component {
       if ($dir->isDir()) {
         Flynt\registerComponent($dir->getFilename());
       }
-    })
+    });
   }
 
   public static function enqueueAssets($componentName, array $dependencies = []) {
