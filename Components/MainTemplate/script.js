@@ -27,4 +27,4 @@ class MainTemplate extends HTMLDivElement {
   }
 }
 
-customElements.define('main-template', MainTemplate, {extends: 'div'})
+customElements.define('wps-main-template', MainTemplate, {extends: 'div'})

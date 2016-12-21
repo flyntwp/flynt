@@ -2,7 +2,6 @@
 
 namespace Flynt\Helpers;
 
-use Flynt\Config;
 use Flynt\Core;
 
 class CustomPostTypeRegister {

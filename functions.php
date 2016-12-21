@@ -22,10 +22,8 @@ if ($pluginActive) {
   Core::loadPhpFiles(
     'lib/',
     [
-      'Config.php',
       'Helpers.php',
       'Hooks.php',
-      'DataFilters.php',
       'Init.php'
     ]
   );
