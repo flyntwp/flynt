@@ -1,20 +1,17 @@
 {
   "name": "MainLayout",
-  "dataFilter": "Flynt/DataFilters/WpBase",
   "areas": {
     "mainHeader": [
       {
         "name": "MainNavigation",
-        "dataFilter": "Flynt/DataFilters/Navigation",
-        "dataFilterArgs": [
-          "main_navigation"
-        ]
+        "customData": {
+          "menuSlug": "main_navigation"
+        }
       }
     ],
     "mainTemplate": [
       {
-        "name": "Template",
-        "dataFilter": "Flynt/DataFilters/MainQuery/Single",
+        "name": "MainTemplate",
         "areas": {
           "pageComponents": [
             {

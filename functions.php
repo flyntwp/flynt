@@ -24,7 +24,6 @@ if ($pluginActive) {
     [
       'Helpers.php',
       'Hooks.php',
-      'DataFilters.php',
       'Init.php'
     ]
   );
