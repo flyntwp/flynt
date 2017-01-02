@@ -2,7 +2,6 @@
 
 namespace Flynt\Features\CustomPostTypes;
 
-# TODO reorganize and rename
 require_once __DIR__ . '/CustomPostTypeRegister.php';
 
 use Flynt\Utils\Feature;

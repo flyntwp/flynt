@@ -1,4 +1,4 @@
-# ACF Helpers
+# ACF (Flynt Feature)
 
 ## Requirements
 - Advanced Custom Fields Plugin (preferably PRO)
@@ -7,6 +7,8 @@
 ## Content
 ### Loader
 Checks for required plugins and initialises the helpers.
+
+TIP: Add and activate the `AdminNotices` Feature before you activate the ACF Feature to enable a nice popup that shows you notifications in the admin panel for missing or inactive plugins.
 
 ### Helper: Field Group Composer
 Requirements:
@@ -25,19 +27,23 @@ Requirements:
 Converts `option` key in `fields.json` files of components to acf option pages.
 
 ## Usage
-Drag and drop your desired Helpers as well as the `Loader.php` into your Flynt Theme's `lib/Helpers/Acf` directory. Then add the following code to the `lib/init.php`:
+Drag and drop the ACF Folder into your Flynt Theme's `lib/Features` directory. Make sure the folder name doesn't change! Then add the following code to the after_setup_theme hook in your `lib/init.php`:
 ```php
 <?php
 
-namespace Flynt\Init;
+function initTheme() {
 
-use Flynt\Helpers\Acf;
+  ...
 
-// initialize ACF Helpers
-Acf\Loader::init([
-  'FieldGroupComposer',
-  'OptionPages'
-]);
+  add_theme_support('flynt-acf', [
+    'FieldGroupComposer',
+    'OptionPages'
+  ]);
+  
+  ...
+  
+}
+add_action('after_setup_theme', __NAMESPACE__ . '\\initTheme');
 
 ```
 
