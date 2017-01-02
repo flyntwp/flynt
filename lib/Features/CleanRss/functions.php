@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Hooks;
+namespace Flynt\Features\CleanRss;
 
 /**
  * Remove the WordPress version from RSS feeds

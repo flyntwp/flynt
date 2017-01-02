@@ -1,5 +1,10 @@
 <?php
 
-// TODO reorganize
-require_once __DIR__ . '/registerNavMenus.php';
-require_once __DIR__ . '/Navigation.php';
+namespace Flynt\Features\Navigation;
+
+add_action('after_setup_theme', function () {
+  register_nav_menus(array(
+    'main_navigation' => __('Main Navigation', 'Flynt'),
+    'footer_navigation' => __('Footer Navigation', 'Flynt')
+  ));
+});

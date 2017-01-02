@@ -37,11 +37,14 @@ function initTheme() {
   // use timber rendering
   add_theme_support('flynt-timber');
 
-  // more stuff
-  add_theme_support('flynt-clean-up');
+  // clean up some things
+  add_theme_support('flynt-clean-head');
+  add_theme_support('flynt-clean-rss');
   add_theme_support('flynt-jquery');
   add_theme_support('flynt-mime-types');
   add_theme_support('flynt-navigation');
+  add_theme_support('flynt-remove-editor');
+  add_theme_support('flynt-tiny-mce');
 
   // WP Stuff
   add_theme_support('post-thumbnails');

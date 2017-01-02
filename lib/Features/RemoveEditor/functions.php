@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Hooks;
+namespace Flynt\Features\RemoveEditor;
 
 add_action('init', function () {
   remove_post_type_support('page', 'editor');
