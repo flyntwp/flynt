@@ -2,10 +2,6 @@
 
 namespace Flynt\Features\Acf;
 
-// TODO refactor this util loading
-require_once dirname(dirname(__DIR__)) . '/Utils/Utils.php';
-require_once dirname(dirname(__DIR__)) . '/Utils/FileLoader.php';
-
 use RecursiveDirectoryIterator;
 use ACFComposer\ACFComposer;
 use Flynt\Utils\Utils;

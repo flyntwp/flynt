@@ -2,11 +2,11 @@
 
 namespace Flynt\Init;
 
-// TODO refactor this utils loading
-require_once __DIR__ . '/Utils/StringHelpers.php';
-require_once __DIR__ . '/Utils/DomNode.php';
+require_once __DIR__ . '/Utils.php';
+require_once __DIR__ . '/Feature.php';
 
 use Flynt;
+use Flynt\Feature;
 use Flynt\Utils\StringHelpers;
 
 // @codingStandardsIgnoreLine
@@ -49,16 +49,11 @@ add_action('after_setup_theme', __NAMESPACE__ . '\\initTheme');
 
 // @codingStandardsIgnoreLine
 function loadModules() {
-  // @codingStandardsIgnoreLine
-  global $_wp_theme_features;
+  global $_wp_theme_features; // @codingStandardsIgnoreLine
   foreach (glob(__DIR__ . '/Features/*', GLOB_ONLYDIR) as $dir) {
     $feature = 'flynt-' . StringHelpers::camelCaseToKebap(basename($dir));
-    // @codingStandardsIgnoreLine
-    if (isset($_wp_theme_features[$feature])) {
-      // TODO get this option passing working
-      // Options::init($feature, $_wp_theme_features[$feature]);
-      $file = $dir . '/functions.php';
-      if (is_file($file)) require_once $file;
+    if (isset($_wp_theme_features[$feature])) { // @codingStandardsIgnoreLine
+      Feature::init($feature, $dir, $_wp_theme_features[$feature]);
     }
   }
 }

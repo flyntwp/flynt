@@ -2,9 +2,6 @@
 
 namespace Flynt\Features\Components;
 
-require_once dirname(dirname(__DIR__)) . '/Utils/Utils.php';
-require_once dirname(dirname(__DIR__)) . '/Utils/FileLoader.php';
-
 use RecursiveDirectoryIterator;
 use Flynt;
 use Flynt\Utils\FileLoader;

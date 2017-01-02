@@ -2,9 +2,6 @@
 
 namespace Flynt\Features\CustomPostTypes;
 
-# TODO refactor loading of utils
-require_once dirname(dirname(__DIR__)) . '/Utils/FileLoader.php';
-
 use Flynt\Utils\FileLoader;
 
 class CustomPostTypeRegister {
