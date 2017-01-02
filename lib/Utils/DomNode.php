@@ -2,10 +2,12 @@
 
 namespace Flynt\Utils;
 
+use DOMDocument;
+
 class DomNode {
   public static function setSrcDataAttribute($nodeHtml, $elementTagName, $attributeName, $toAddGetParams) {
     $output = '';
-    $DOM = new \DOMDocument();
+    $DOM = new DOMDocument();
     $DOM->loadHTML($nodeHtml);
     $domNodes = $DOM->getElementsByTagName($elementTagName);
 
