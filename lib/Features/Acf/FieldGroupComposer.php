@@ -4,7 +4,7 @@ namespace Flynt\Features\Acf;
 
 use RecursiveDirectoryIterator;
 use ACFComposer\ACFComposer;
-use Flynt\Utils\Utils;
+use Flynt\Utils\ArrayHelpers;
 use Flynt\Utils\FileLoader;
 use Flynt\ComponentManager;
 
@@ -72,7 +72,7 @@ class FieldGroupComposer {
       add_filter($filterName, function ($config) use ($groupValue) {
         return $groupValue;
       });
-      if (Utils::isAssoc($groupValue) && array_key_exists('sub_fields', $groupValue)) {
+      if (ArrayHelpers::isAssoc($groupValue) && array_key_exists('sub_fields', $groupValue)) {
         $filterName .= '/SubFields';
         $subFields = $groupValue['sub_fields'];
 

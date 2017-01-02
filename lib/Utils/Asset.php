@@ -2,39 +2,10 @@
 
 namespace Flynt\Utils;
 
-// TODO rename this (+ split up?)
-class Utils {
+class Asset {
   protected static $assetManifest;
 
-  public static function outputBufferContents($funcName, $args = null) {
-    ob_start();
-    if (isset($args)) {
-      $funcName($args);
-    } else {
-      $funcName();
-    }
-    $output = ob_get_contents();
-    ob_get_clean();
-    return $output;
-  }
-
-  public static function isAssoc(array $array) {
-    // Keys of the array
-    $keys = array_keys($array);
-
-    // If the array keys of the keys match the keys, then the array must
-    // not be associative (e.g. the keys array looked like {0:0, 1:1...}).
-    return array_keys($keys) !== $keys;
-  }
-
-  // only converts first dimension of object
-  public static function objectToArray($obj) {
-    return array_map(function ($val) {
-      return (array) $val;
-    }, $obj);
-  }
-
-  public static function requireAssetUrl($asset) {
+  public static function requireUrl($asset) {
     $distPath = get_template_directory() . '/dist';
     $distUrl = get_template_directory_uri() . '/dist';
     if (!isset(self::$assetManifest)) {
@@ -53,7 +24,7 @@ class Utils {
     return $distUrl . '/' . $assetSuffix;
   }
 
-  public static function requireAssetPath($asset) {
+  public static function requirePath($asset) {
     $distPath = get_template_directory() . '/dist';
     $distUrl = get_template_directory_uri() . '/dist';
     if (!isset(self::$assetManifest)) {

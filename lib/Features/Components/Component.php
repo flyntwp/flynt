@@ -5,7 +5,7 @@ namespace Flynt\Features\Components;
 use RecursiveDirectoryIterator;
 use Flynt;
 use Flynt\Utils\FileLoader;
-use Flynt\Utils\Utils;
+use Flynt\Utils\Asset;
 
 class Component {
 
@@ -43,7 +43,7 @@ class Component {
     }, ['jquery']); // jquery as a default dependency
 
     // Enqueue Component Scripts if they exist
-    $scriptAbsPath = Utils::requireAssetPath("Components/{$componentName}/script.js");
+    $scriptAbsPath = Asset::requirePath("Components/{$componentName}/script.js");
     if (is_file($scriptAbsPath)) {
       self::addAsset('enqueue', [
         'type' => 'script',
@@ -62,7 +62,7 @@ class Component {
     }, []);
 
     // Enqueue Component Styles if they exist
-    $styleAbsPath = Utils::requireAssetPath("Components/{$componentName}/style.css");
+    $styleAbsPath = Asset::requirePath("Components/{$componentName}/style.css");
     if (is_file($styleAbsPath)) {
       self::addAsset('enqueue', [
         'type' => 'style',
@@ -98,7 +98,7 @@ class Component {
     if (function_exists($funcName)) {
       $funcName(
         $options['name'],
-        Utils::requireAssetUrl($options['path']),
+        Asset::requireUrl($options['path']),
         $options['dependencies'],
         $options['version'],
         $lastVar
