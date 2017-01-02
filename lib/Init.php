@@ -2,12 +2,14 @@
 
 namespace Flynt\Init;
 
-require_once __DIR__ . '/Utils.php';
-require_once __DIR__ . '/Feature.php';
+require_once __DIR__ . '/Utils/FileLoader.php';
 
 use Flynt;
-use Flynt\Feature;
+use Flynt\Utils\Feature;
+use Flynt\Utils\FileLoader;
 use Flynt\Utils\StringHelpers;
+
+FileLoader::loadPhpFiles('lib/Utils');
 
 // @codingStandardsIgnoreLine
 function initTheme() {

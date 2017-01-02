@@ -4,7 +4,7 @@ require_once __DIR__ . '/FieldGroupComposer.php';
 require_once __DIR__ . '/OptionPages.php';
 require_once __DIR__ . '/Loader.php';
 
-use Flynt\Feature;
+use Flynt\Utils\Feature;
 use Flynt\Features\Acf\Loader;
 
 $options = Feature::getOptions('flynt-acf');

@@ -1,7 +1,6 @@
 <?php
 
-// TODO check if this is the correct namespace
-namespace Flynt;
+namespace Flynt\Utils;
 
 class Feature {
   protected static $initialFile = 'functions.php';
