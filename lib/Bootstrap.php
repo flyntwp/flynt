@@ -4,7 +4,7 @@ namespace Flynt;
 
 use RecursiveDirectoryIterator;
 
-class Core {
+class Bootstrap {
 
   public static function setTemplateDirectory() {
 
