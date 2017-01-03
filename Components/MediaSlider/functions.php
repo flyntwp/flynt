@@ -3,8 +3,8 @@ namespace Flynt\Components\MediaSlider;
 
 use Flynt\Helpers\Utils;
 use Flynt\Helpers\Log;
-use Flynt\Helpers\Component;
-use Flynt\Helpers\DomNode;
+use Flynt\Features\Components\Component;
+use Flynt\Utils\DomNode;
 
 add_filter('Flynt/modifyComponentData?name=MediaSlider', function ($data) {
   $data['mediaSlides'] = array_map(function ($item) {

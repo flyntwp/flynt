@@ -2,8 +2,8 @@
 namespace Flynt\Components\Oembed;
 
 use Flynt\Helpers\Log;
-use Flynt\Helpers\Component;
-use Flynt\Helpers\DomNode;
+use Flynt\Features\Components\Component;
+use Flynt\Utils\DomNode;
 
 add_action('wp_enqueue_scripts', function () {
   Component::enqueueAssets('Oembed');
