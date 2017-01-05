@@ -12,9 +12,6 @@ module.exports = {
     '!./{Components,assets}/**/*.{js,styl,sass,less}'
   ],
   dest: dest,
-  php: [
-    './**/*.php'
-  ],
   rev: {
     src: dest + '/**/*.*',
     srcRevved: [
@@ -43,6 +40,10 @@ module.exports = {
   stylus: [
     './{Components,assets}/**/style.styl'
   ],
+  watch: {
+    stylus: './{Components,assets}/**/*.styl',
+    php: './**/*.php'
+  },
   webpack: {
     entry: {
       'Components': './Components/script.js'
