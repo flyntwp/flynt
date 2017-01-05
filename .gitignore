@@ -1,6 +1,5 @@
 /dist
 node_modules
 bower_components
-_book
 npm-debug.log
 docs/styles/**/*.css.map
