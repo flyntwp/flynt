@@ -53,7 +53,7 @@ function initTheme() {
 add_action('after_setup_theme', __NAMESPACE__ . '\\initTheme');
 
 // @codingStandardsIgnoreLine
-function loadModules() {
+function loadFeatures() {
   global $_wp_theme_features; // @codingStandardsIgnoreLine
   foreach (glob(__DIR__ . '/Features/*', GLOB_ONLYDIR) as $dir) {
     $feature = 'flynt-' . StringHelpers::camelCaseToKebap(basename($dir));
@@ -62,4 +62,4 @@ function loadModules() {
     }
   }
 }
-add_action('after_setup_theme', __NAMESPACE__ . '\\loadModules', 100);
+add_action('after_setup_theme', __NAMESPACE__ . '\\loadFeatures', 100);
