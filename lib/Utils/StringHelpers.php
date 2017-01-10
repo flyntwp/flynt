@@ -22,9 +22,4 @@ class StringHelpers {
     );
     return join($a, ' ');
   }
-
-  public static function strstartswith($haystack, $needle) {
-    if (!$needle) return false;
-    return strpos($haystack, $needle) === 0;
-  }
 }
