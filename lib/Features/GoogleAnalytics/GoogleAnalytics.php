@@ -9,7 +9,7 @@ class GoogleAnalytics {
   public function __construct($gaId = '') {
     $this->googleAnalyticsId = $gaId;
 
-    if (self::isGoogleAnalytics($this->googleAnalyticsId) && (WP_ENV !== 'production' || !current_user_can('manage_options'))) { // @codingStandardsIgnoreLine
+    if (self::isValidId($this->googleAnalyticsId) && (WP_ENV !== 'production' || !current_user_can('manage_options'))) { // @codingStandardsIgnoreLine
       add_action('wp_footer', [$this, 'addScript'], 20, 1);
     }
   }
@@ -31,7 +31,7 @@ class GoogleAnalytics {
     <?
   }
 
-  private function isGoogleAnalytics($gaId) {
+  private function isValidId($gaId) {
     return preg_match('/^ua-\d{4,9}-\d{1,4}$/i', strval($gaId));
   }
 }
