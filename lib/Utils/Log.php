@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Helpers;
+namespace Flynt\Utils;
 
 class Log {
   public static function console($data) {
