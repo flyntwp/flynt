@@ -9,8 +9,10 @@ class GoogleAnalytics {
   public function __construct($gaId = '') {
     $this->googleAnalyticsId = $gaId;
 
-    if (self::isValidId($this->googleAnalyticsId) && (WP_ENV !== 'production' || !current_user_can('manage_options'))) { // @codingStandardsIgnoreLine
+    if (!empty($this->googleAnalyticsId) && self::isValidId($this->googleAnalyticsId) && (WP_ENV !== 'production' || !current_user_can('manage_options'))) { // @codingStandardsIgnoreLine
       add_action('wp_footer', [$this, 'addScript'], 20, 1);
+    } else if ($this->googleAnalyticsId != 1) {
+      trigger_error('Wrong Google Analytics Id', E_USER_WARNING);
     }
   }
 
