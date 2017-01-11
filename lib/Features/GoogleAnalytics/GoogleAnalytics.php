@@ -1,5 +1,6 @@
 <?php
-
+// TODO: remove phpcs ignore once issue is fixed on jenkins
+// @codingStandardsIgnoreStart
 namespace Flynt\Features\GoogleAnalytics;
 
 class GoogleAnalytics {
@@ -34,3 +35,4 @@ class GoogleAnalytics {
     return preg_match('/^ua-\d{4,9}-\d{1,4}$/i', strval($gaId));
   }
 }
+// @codingStandardsIgnoreEnd
