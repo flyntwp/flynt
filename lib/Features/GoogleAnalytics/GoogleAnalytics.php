@@ -1,5 +1,6 @@
 <?php
-
+// TODO: remove phpcs ignore once issue is fixed on jenkins
+// @codingStandardsIgnoreStart
 namespace Flynt\Features\GoogleAnalytics;
 
 class GoogleAnalytics {
@@ -30,3 +31,4 @@ class GoogleAnalytics {
     <?
   }
 }
+// @codingStandardsIgnoreEnd
