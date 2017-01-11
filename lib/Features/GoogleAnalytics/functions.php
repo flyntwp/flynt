@@ -3,6 +3,7 @@
 namespace Flynt\Features\GoogleAnalytics;
 
 use Flynt\Utils\Feature;
+use Flynt\Utils\Log;
 
 require_once __DIR__ . '/GoogleAnalytics.php';
 
