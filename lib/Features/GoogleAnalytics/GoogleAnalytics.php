@@ -9,10 +9,15 @@ class GoogleAnalytics {
   public function __construct($gaId = '') {
     $this->googleAnalyticsId = $gaId;
 
-    if (!empty($this->googleAnalyticsId) && self::isValidId($this->googleAnalyticsId) && (WP_ENV !== 'production' || !current_user_can('manage_options'))) { // @codingStandardsIgnoreLine
-      add_action('wp_footer', [$this, 'addScript'], 20, 1);
+    if (self::isValidId($this->googleAnalyticsId)) { // @codingStandardsIgnoreLine
+      // cases:
+      // - if you are on production, add the action
+      // - if you are not an admin, add the action
+      if (WP_ENV !== 'production' || !current_user_can('manage_options')) {
+        add_action('wp_footer', [$this, 'addScript'], 20, 1);
+      }
     } else if ($this->googleAnalyticsId != 1) {
-      trigger_error('Wrong Google Analytics Id', E_USER_WARNING);
+      trigger_error('Invalid Google Analytics Id: ' . $this->googleAnalyticsId, E_USER_WARNING);
     }
   }
 
@@ -34,7 +39,7 @@ class GoogleAnalytics {
   }
 
   private function isValidId($gaId) {
-    return preg_match('/^ua-\d{4,9}-\d{1,4}$/i', strval($gaId));
+    return preg_match('/^ua-\d{4,10}-\d{1,4}$/i', strval($gaId));
   }
 }
 // @codingStandardsIgnoreEnd
