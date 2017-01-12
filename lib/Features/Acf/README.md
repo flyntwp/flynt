@@ -27,7 +27,7 @@ Requirements:
 Converts `option` key in `fields.json` files of components to acf option pages.
 
 ## Usage
-Drag and drop the ACF Folder into your Flynt Theme's `lib/Features` directory. Make sure the folder name doesn't change! Then add the following code to the after_setup_theme hook in your `lib/init.php`:
+Drag and drop the ACF Folder into your Flynt Theme's `lib/Features` directory. Make sure the folder name doesn't change! Then add the following code to the after_setup_theme hook in your `lib/Init.php`:
 ```php
 <?php
 

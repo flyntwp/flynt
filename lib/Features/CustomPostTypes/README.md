@@ -2,7 +2,7 @@
 
 Adds custom post type functionality to Flynt. With this feature, you can simply use configuration files (json) to add custom post types to your theme.
 
-To use this feature simply put it into your `lib/Features` folder and initialize it in the `initTheme` function of your `lib/init.php` like this:
+To use this feature simply put it into your `lib/Features` folder and initialize it in the `initTheme` function of your `lib/Init.php` like this:
 
 ```php
 <?php
