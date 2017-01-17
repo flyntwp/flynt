@@ -1,16 +1,16 @@
-<div is="wps-oembed">
-  <div class="oembed">
-    <div class="oembed-videoContainer">
-      <div class="oembed-posterImage">
-        <img class="oembed-imageElement" srcset="
+<div is='wps-oembed'>
+  <div class='oembed'>
+    <div class='oembed-videoWrapper'>
+      <div class='oembed-posterImage'>
+        <img class='oembed-imageElement' srcset='
           {{ posterImage.src | resize(400, 225) }} 400w,
           {{ posterImage.src | resize(800, 450) }} 800w,
           {{ posterImage.src | resize(1200, 675) }} 1200w,
-          {{ posterImage.src | resize(1600, 900) }} 1600w"
-          src="{{ posterImage.src }}"
-          sizes="100vw">
+          {{ posterImage.src | resize(1600, 900) }} 1600w'
+          src='{{ posterImage.src }}'
+          sizes='100vw'>
       </div>
-      <div class="oembed-video">
+      <div class='oembed-video'>
         {{ oembedLazyLoad }}
       </div>
     </div>

@@ -19,22 +19,18 @@ rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px
   .oembed
     center($maxWidth, $gutterWidth)
 
-    &-videoContainer
+    &-videoWrapper
       position: relative
 
     &-posterImage
-      bottom: 0
       cursor: pointer
-      left: 0
-      overflow: hidden
       position: absolute
-      right: 0
-      top: 0
       transition: visibility $trasitionTime $transitionEasing
       visibility: visible
       z-index: 1
 
       $pseudoElements = {
+        content: ''
         left: 50%
         position: absolute
         top: 50%
@@ -45,7 +41,6 @@ rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px
         {$pseudoElements}
         background-color: $buttonColor
         border-radius: 50px
-        content: ''
         height: 100px
         margin: -50px 0 0 -50px
         width: 100px
@@ -60,7 +55,6 @@ rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px
         border-bottom: 20px solid transparent
         border-left: 40px solid $triangleColor
         border-top: 20px solid transparent
-        content: ''
         height: 0
         margin: -20px 0 0 -15px
         width: 0
@@ -83,7 +77,7 @@ rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px
       padding-bottom: percentage(9 / 16)
       visibility: hidden
 
-      &-isActive
+      &-isVisible
         visibility: visible
 
       iframe
