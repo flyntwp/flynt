@@ -67,7 +67,7 @@ class FieldGroupComposer {
     // add filters
     foreach ($fields as $groupKey => $groupValue) {
       $groupKey = ucfirst($groupKey);
-      $filterName = self::FILTER_NAMESPACE . "/{$componentName}/{$groupKey}";
+      $filterName = self::FILTER_NAMESPACE . "/{$componentName}/Fields/{$groupKey}";
 
       add_filter($filterName, function ($config) use ($groupValue) {
         return $groupValue;
