@@ -6,4 +6,6 @@ function addComponentScriptsToWebpackEntries (componentName) { // eslint-disable
     https://github.com/webpack/enhanced-resolve/pull/22
   */
   require(`../gulpfile.js/webpack/entryLoader.js?name=[name]/script.js!./${componentName}/script.js`)
+  require(`../gulpfile.js/webpack/entryLoader.js?name=[name]!./${componentName}/admin.js`)
+  require(`../gulpfile.js/webpack/entryLoader.js?name=[name]!./${componentName}/auth.js`)
 }
