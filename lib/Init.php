@@ -58,7 +58,7 @@ add_action('after_setup_theme', __NAMESPACE__ . '\\initTheme');
 // @codingStandardsIgnoreLine
 function loadFeatures() {
   global $_wp_theme_features; // @codingStandardsIgnoreLine
-  foreach (glob(__DIR__ . '/Features/*', GLOB_ONLYDIR) as $dir) {
+  foreach (glob(get_template_directory() . '/Features/*', GLOB_ONLYDIR) as $dir) {
     $feature = 'flynt-' . StringHelpers::camelCaseToKebap(basename($dir));
     if (isset($_wp_theme_features[$feature])) { // @codingStandardsIgnoreLine
       Feature::init($feature, $dir, $_wp_theme_features[$feature]);
