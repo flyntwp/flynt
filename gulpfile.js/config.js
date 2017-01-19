@@ -8,8 +8,8 @@ module.exports = {
     proxy: host
   },
   copy: [
-    './{Components,assets}/**/*',
-    '!./{Components,assets}/**/*.{js,styl,sass,less}'
+    './{Components,Features}/**/*',
+    '!./{Components,Features}/**/*.{js,styl,sass,less}'
   ],
   dest: dest,
   rev: {
@@ -38,21 +38,22 @@ module.exports = {
     sourceRoot: '/app/themes/flynt-theme/'
   },
   stylus: [
-    './{Components,assets}/**/style.styl'
+    './{Components,Features}/**/style.styl'
   ],
   watch: {
-    stylus: './{Components,assets}/**/*.styl',
+    stylus: './{Components,Features}/**/*.styl',
     php: './**/*.php'
   },
   webpack: {
     entry: {
-      'Components': './Components/script.js'
+      'Components': './Components/script.js',
+      'Features': './Features/script.js'
     }
   },
   lint: {
-    stylus: './{Components,assets}/**/*.styl',
+    stylus: './{Components,Features}/**/*.styl',
     js: [
-      './{Components,assets,gulpfile.js}/**/*.js'
+      './{Components,Features,gulpfile.js}/**/*.js'
     ],
     php: [
       './**/*.php',
