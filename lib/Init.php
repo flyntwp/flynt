@@ -17,7 +17,10 @@ function initTheme() {
   Flynt\initDefaults();
 
   // register all custom post types
-  add_theme_support('flynt-custom-post-types', get_template_directory() . '/config/customPostTypes/', 'config.json');
+  add_theme_support('flynt-custom-post-types', [
+    'directory' => get_template_directory() . '/config/customPostTypes/',
+    // 'fileName' => 'config.json'
+  ]);
 
   // enable admin notices
   add_theme_support('flynt-admin-notices');
