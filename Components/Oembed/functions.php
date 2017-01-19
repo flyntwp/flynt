@@ -9,7 +9,7 @@ add_action('wp_enqueue_scripts', function () {
   Component::enqueueAssets('Oembed');
 });
 
-add_filter('Flynt/modifyComponentData?name=Oembed', function ($data) {
+add_filter('Flynt/addComponentData?name=Oembed', function ($data) {
   if (empty($data['posterImage'])) {
     $data['posterImage'] = get_field('defaultPosterImage', 'options');
   }

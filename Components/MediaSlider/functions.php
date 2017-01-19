@@ -6,7 +6,7 @@ use Flynt\Helpers\Log;
 use Flynt\Features\Components\Component;
 use Flynt\Utils\DomNode;
 
-add_filter('Flynt/modifyComponentData?name=MediaSlider', function ($data) {
+add_filter('Flynt/addComponentData?name=MediaSlider', function ($data) {
   $data['mediaSlides'] = array_map(function ($item) {
     if ($item['mediaType'] == 'oembed') {
       $item['oembedLazyLoad'] = DomNode::setSrcDataAttribute(

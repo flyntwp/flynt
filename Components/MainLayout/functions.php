@@ -34,7 +34,7 @@ add_action('wp_enqueue_scripts', function () {
   ]);
 });
 
-add_filter('Flynt/modifyComponentData?name=MainLayout', function ($data) {
+add_filter('Flynt/addComponentData?name=MainLayout', function ($data) {
   $context = Timber::get_context();
 
   $output = array(

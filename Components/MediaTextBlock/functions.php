@@ -9,7 +9,7 @@ add_action('wp_enqueue_scripts', function () {
   Component::enqueueAssets('MediaTextBlock');
 });
 
-add_filter('Flynt/modifyComponentData?name=MediaTextBlock', function ($data) {
+add_filter('Flynt/addComponentData?name=MediaTextBlock', function ($data) {
   if (empty($data['mediaType'] == 'mediaVideo' && $data['posterImage'])  ) {
     $data['posterImage'] = get_field('defaultPosterImage', 'options');
   }

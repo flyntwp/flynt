@@ -6,7 +6,7 @@ use Flynt\Helpers\Log;
 use Flynt\Helpers\Utils;
 use Flynt\Features\Components\Component;
 
-add_filter('Flynt/modifyComponentData?name=TeaserGrid', function ($data) {
+add_filter('Flynt/addComponentData?name=TeaserGrid', function ($data) {
   $data['teaserItems'] = array_map(function ($item) {
 
     if ($item['linkType'] == 'internalLink') {
