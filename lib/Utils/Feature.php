@@ -22,6 +22,10 @@ class Feature {
     return self::$features;
   }
 
+  public static function isActive($name) {
+    return array_key_exists($name, self::$features);
+  }
+
   public static function getOptions($feature) {
     if (isset(self::$features[$feature])) {
       return self::$features[$feature]['options'];

@@ -22,4 +22,21 @@ class StringHelpers {
     );
     return join($a, ' ');
   }
+
+  public static function kebapCaseToCamelCase($string, $capitalizeFirstCharacter = false) {
+    $str = str_replace(' ', '', ucwords(str_replace('-', ' ', $string)));
+
+    if (!$capitalizeFirstCharacter) {
+      $str[0] = strtolower($str[0]);
+    }
+
+    return $str;
+  }
+
+  public static function removePrefix($prefix, $str) {
+    if (substr($str, 0, strlen($prefix)) == $prefix) {
+      return substr($str, strlen($prefix));
+    }
+    return $str;
+  }
 }

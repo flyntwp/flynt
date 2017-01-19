@@ -7,6 +7,7 @@ use Flynt\Utils\FileLoader;
 class CustomPostTypeRegister {
 
   private static $fileName;
+  private static $registeredCustomPostTypes = [];
 
   protected static function getConfigs($dir) {
     $configs = FileLoader::iterateDirectory($dir, function ($file) {
@@ -14,7 +15,7 @@ class CustomPostTypeRegister {
         $configPath = $file->getPathname() . '/' . self::$fileName;
 
         if (is_file($configPath)) {
-          return self::getConfigFromJson($configPath);
+          return array_merge(self::getConfigFromJson($configPath), ['name' => $file->getFilename()]);
         }
       }
       return null;
@@ -49,6 +50,15 @@ class CustomPostTypeRegister {
     $name = $config['name'];
     unset($config['name']);
 
-    register_post_type($name, $config);
+    if (!is_wp_error(register_post_type($name, $config))) {
+      self::$registeredCustomPostTypes[$name] = $config;
+    }
+  }
+
+  public static function getRegistered($name) {
+    if (!array_key_exists($name, self::$registeredCustomPostTypes)) {
+      return false;
+    }
+    return self::$registeredCustomPostTypes[$name];
   }
 }

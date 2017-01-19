@@ -1,14 +1,17 @@
 <?php
 
 // TODO make global fields untranslatable
-// TODO add sub pages for CPTs and Features as well and prefix all of them
+// TODO add sub pages for Features
 
 namespace Flynt\Features\Acf;
 
-use Flynt\ComponentManager;
-use Flynt\Utils\StringHelpers;
-use Flynt\Features\Components\Component;
 use ACFComposer;
+use Flynt\ComponentManager;
+use Flynt\Features\Components\Component;
+use Flynt\Features\CustomPostTypes\CustomPostTypeRegister;
+use Flynt\Utils\Feature;
+use Flynt\Utils\FileLoader;
+use Flynt\Utils\StringHelpers;
 
 class OptionPages {
   const FILTER_NAMESPACE = 'Flynt/Components';
@@ -31,6 +34,18 @@ class OptionPages {
       'title' => 'Component',
       'name' => 'component',
       'icon' => 'dashicons-editor-table'
+    ],
+    'customPostType' => [
+      'title' => 'Custom Post Type',
+      'name' => 'customPostType',
+      'icon' => 'dashicons-palmtree',
+      // 'label' => [ 'labels', 'menu_item' ],
+      // 'showType' => false
+    ],
+    'feature' => [
+      'title' => 'Feature',
+      'name' => 'feature',
+      'icon' => 'dashicons-carrot'
     ]
   ];
 
@@ -39,12 +54,24 @@ class OptionPages {
   public static function init() {
     self::createOptionPages();
 
-    add_action(
-      'Flynt/registerComponent',
-      ['Flynt\Features\Acf\OptionPages', 'addAllComponentSubPages'],
-      12
-    );
+    // Components
+    // if (array_key_exists('component', self::OPTION_CATEGORIES)) {
+      add_action(
+        'Flynt/registerComponent',
+        ['Flynt\Features\Acf\OptionPages', 'addAllComponentSubPages'],
+        12
+      );
+    // }
 
+    // Custom Post Types
+    // if (array_key_exists('customPostType', self::OPTION_CATEGORIES)) {
+      self::addAllCustomPostTypeSubPages();
+    // }
+
+    // Features
+
+
+    // add styles for admin area
     add_action('admin_enqueue_scripts', function () {
       Component::addAsset('enqueue', [
         'type' => 'style',
@@ -78,6 +105,10 @@ class OptionPages {
     }
   }
 
+  // ============
+  // COMPONENTS
+  // ============
+
   public static function addAllComponentSubPages($componentName) {
     // load fields.json if it exists
     $componentManager = ComponentManager::getInstance();
@@ -90,6 +121,46 @@ class OptionPages {
     self::createSubPageFromConfig($filePath, 'component', $componentName);
   }
 
+  // ==================
+  // CUSTOM POST TYPES
+  // ==================
+
+  protected static function addAllCustomPostTypeSubPages() {
+    if (!Feature::isActive('flynt-custom-post-types')) {
+      // TODO add Admin Notice
+      return;
+    }
+
+    // load fields.json files
+    $dir = Feature::getOptions('flynt-custom-post-types')[0]['directory'];
+    FileLoader::iterateDirectory($dir, function ($cptDir) {
+      if ($cptDir->isDir()) {
+        $cptConfig = CustomPostTypeRegister::getRegistered($cptDir->getFilename());
+        $filePath = $cptDir->getPathname() . '/fields.json';
+
+        if (is_file($filePath)) {
+          // TODO refactor
+          $cptName = ucfirst($cptDir->getFilename());
+          // if (isset($cptConfig['label'])) {
+          //   $label = $cptConfig['label'];
+          // }
+          // if (isset($cptConfig['labels'])) {
+          //   if (isset($cptConfig['labels']['menu_name'])) {
+          //     $label = $cptConfig['labels']['menu_name'];
+          //   } else if (isset($cptConfig['labels']['singular_name'])) {
+          //     $label = $cptConfig['labels']['singular_name'];
+          //   }
+          // }
+          self::createSubPageFromConfig($filePath, 'customPostType', $cptName);
+        }
+      }
+    });
+  }
+
+  // ========
+  // GENERAL
+  // ========
+
   protected static function createSubPageFromConfig($filePath, $optionCategory, $subPageName) {
     $fields = json_decode(file_get_contents($filePath), true);
 
@@ -97,7 +168,7 @@ class OptionPages {
       if (array_key_exists($option['name'], $fields)) {
         self::addOptionSubPage(
           self::OPTION_CATEGORIES[$optionCategory],
-          $subPageName,
+          ucfirst($subPageName),
           $optionType,
           $fields[$option['name']]
         );
