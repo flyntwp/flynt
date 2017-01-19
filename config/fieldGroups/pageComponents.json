@@ -8,12 +8,12 @@
       "type": "flexible_content",
       "button_label": "Add Component",
       "layouts": [
-        "Flynt/Components/ImageHero/Layout",
-        "Flynt/Components/MediaSlider/Layout",
-        "Flynt/Components/MediaTextBlock/Layout",
-        "Flynt/Components/Oembed/Layout",
-        "Flynt/Components/TeaserGrid/Layout",
-        "Flynt/Components/Wysiwyg/Layout"
+        "Flynt/Components/ImageHero/Fields/Layout",
+        "Flynt/Components/MediaSlider/Fields/Layout",
+        "Flynt/Components/MediaTextBlock/Fields/Layout",
+        "Flynt/Components/Oembed/Fields/Layout",
+        "Flynt/Components/TeaserGrid/Fields/Layout",
+        "Flynt/Components/Wysiwyg/Fields/Layout"
       ]
     }
   ],
