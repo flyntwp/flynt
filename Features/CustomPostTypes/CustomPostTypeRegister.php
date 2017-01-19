@@ -14,7 +14,7 @@ class CustomPostTypeRegister {
         $configPath = $file->getPathname() . '/' . self::$fileName;
 
         if (is_file($configPath)) {
-          return self::processCustomPostType($configPath);
+          return self::getConfigFromJson($configPath);
         }
       }
       return null;
@@ -23,7 +23,7 @@ class CustomPostTypeRegister {
     return array_filter($configs);
   }
 
-  protected static function processCustomPostType($filePath) {
+  protected static function getConfigFromJson($filePath) {
     return json_decode(file_get_contents($filePath), true);
   }
 
