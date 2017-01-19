@@ -7,5 +7,7 @@ require_once __DIR__ . '/CustomPostTypeRegister.php';
 use Flynt\Utils\Feature;
 use Flynt\Features\CustomPostTypes\CustomPostTypeRegister;
 
-$dir = Feature::getOptions('flynt-custom-post-types')[0];
-CustomPostTypeRegister::fromDirectory($dir);
+$featureOptions = Feature::getOptions('flynt-custom-post-types');
+$dir = $featureOptions[0];
+$fileName = $featureOptions[1];
+CustomPostTypeRegister::fromDirectory($dir, $fileName);
