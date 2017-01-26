@@ -1,6 +1,8 @@
 <?php
 
-namespace Flynt\Helpers;
+namespace Flynt\Features\AdminNotices;
+
+# TODO make strings translatable
 
 class AdminNoticeManager {
   protected static $instance = null;
@@ -54,7 +56,7 @@ class AdminNoticeManager {
     }
 
     $msg .= '<p><i>To resolve this issue either follow the steps above'
-      . " or remove the Helper or Hook{$files}requiring this functionality in your theme.</i></p>";
+      . " or remove the Feature{$files}requiring this functionality in your theme.</i></p>";
     $msg = "<div class=\"{$cssClasses}\">"
       . "<p><strong>{$options['title']}</strong></p>"
       . $msg . '</div>';

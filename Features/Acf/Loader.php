@@ -6,34 +6,57 @@ use Flynt\Features\AdminNotices\AdminNoticeManager;
 
 class Loader {
 
-  public static function init($helpers = []) {
+  protected static $helpers = [];
+  protected static $requirements = [];
+  protected static $requirementsMet = false;
+
+  public static function setup($helpers) {
     if (empty($helpers)) return;
 
-    $requirements = self::checkRequirements();
+    self::$helpers = $helpers;
+    self::$requirementsMet = !in_array(false, self::checkRequirements(), true);
 
-    // are all requirements met?
-    if (!in_array(false, $requirements, true)) {
+    if (self::$requirementsMet) {
 
-      self::initHelpers($helpers);
+      self::setupHelpers();
 
-    } elseif (class_exists('Flynt\Features\AdminNoticeManager')) {
+    }
+  }
 
-      self::showAdminNotice($requirements, $helpers);
+  public static function init() {
+    if (true === self::$requirementsMet) {
+
+      self::initHelpers();
+
+    } elseif (class_exists('Flynt\Features\AdminNotices\AdminNoticeManager')) {
+
+      self::showAdminNotice();
 
     }
   }
 
   protected static function checkRequirements() {
-    return [
+    self::$requirements = [
       'acfEnabled' => class_exists('acf'),
       'acfFunctionsExist' => function_exists('acf_add_options_page') && function_exists('acf_add_options_sub_page'),
       'acfComposerEnabled' => class_exists('ACFComposer\ACFComposer'),
     ];
+    return self::$requirements;
   }
 
-  protected static function initHelpers($helpers) {
+  protected static function setupHelpers() {
     $namespacePrefix = 'Flynt\Features\Acf';
-    foreach ($helpers as $helperName) {
+    foreach (self::$helpers as $helperName) {
+      $className = "{$namespacePrefix}\\$helperName";
+      if (class_exists($className) && method_exists($className, 'setup')) {
+        $className::setup();
+      }
+    }
+  }
+
+  protected static function initHelpers() {
+    $namespacePrefix = 'Flynt\Features\Acf';
+    foreach (self::$helpers as $helperName) {
       $className = "{$namespacePrefix}\\$helperName";
       if (class_exists($className) && method_exists($className, 'init')) {
         $className::init();
@@ -41,25 +64,25 @@ class Loader {
     }
   }
 
-  protected static function showAdminNotice($requirements, $helpers) {
+  protected static function showAdminNotice() {
     $messages = [];
 
-    if (!$requirements['acfEnabled']) {
+    if (!self::$requirements['acfEnabled']) {
       $messages[] = 'Advanced Custom Fields Plugin not installed or activated. Make sure you <a href="'
         . esc_url(admin_url('plugins.php')) . '">install or activate the plugin</a>.';
-    } elseif (!$requirements['acfFunctionsExist']) {
+    } elseif (!self::$requirements['acfFunctionsExist']) {
       $messages[] = 'Advanced Custom Fields Plugin Functions not found! Please make sure you are using'
         . ' the latest version of ACF.';
     }
 
-    if (!$requirements['acfComposerEnabled']) {
+    if (!self::$requirements['acfComposerEnabled']) {
       $messages[] = 'ACF Composer Plugin not installed or activated. Make sure you <a href="'
         . esc_url(admin_url('plugins.php')) . '">install or activate the plugin</a>.';
     }
 
     $manager = AdminNoticeManager::getInstance();
     $manager->addNotice($messages, [
-      'title' => 'Could not initialize ACF Helpers (' . implode(', ', $helpers) . ')',
+      'title' => 'Could not initialize ACF Helpers (' . implode(', ', self::$helpers) . ')',
       'type' => 'warning',
       'dismissible' => true,
       'filenames' => basename(__DIR__)

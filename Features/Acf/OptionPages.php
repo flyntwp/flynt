@@ -1,12 +1,13 @@
 <?php
 
 // TODO make global fields untranslatable
-// TODO add sub pages for Features
+// TODO make order of option categories customizable (Components, CustomPostTypes, Features)
 
 namespace Flynt\Features\Acf;
 
 use ACFComposer;
 use Flynt\ComponentManager;
+use Flynt\Features\AdminNotices\AdminNoticeManager;
 use Flynt\Features\Components\Component;
 use Flynt\Features\CustomPostTypes\CustomPostTypeRegister;
 use Flynt\Utils\Feature;
@@ -51,25 +52,37 @@ class OptionPages {
 
   protected static $optionPages = [];
 
-  public static function init() {
+  public static function setup() {
     self::createOptionPages();
 
     // Components
-    // if (array_key_exists('component', self::OPTION_CATEGORIES)) {
+    if (array_key_exists('component', self::OPTION_CATEGORIES)) {
       add_action(
         'Flynt/registerComponent',
-        ['Flynt\Features\Acf\OptionPages', 'addAllComponentSubPages'],
+        ['Flynt\Features\Acf\OptionPages', 'addComponentSubPage'],
         12
       );
-    // }
+    }
 
     // Custom Post Types
-    // if (array_key_exists('customPostType', self::OPTION_CATEGORIES)) {
-      self::addAllCustomPostTypeSubPages();
-    // }
+    if (array_key_exists('customPostType', self::OPTION_CATEGORIES)) {
+      add_action(
+        'Flynt/Features/CustomPostTypes/Register',
+        ['Flynt\Features\Acf\OptionPages', 'addCustomPostTypeSubPage'],
+        10,
+        2
+      );
+    }
 
     // Features
-
+    if (array_key_exists('feature', self::OPTION_CATEGORIES)) {
+      add_action(
+        'Flynt/initFeature',
+        ['Flynt\Features\Acf\OptionPages', 'addFeatureSubPage'],
+        10,
+        3
+      );
+    }
 
     // add styles for admin area
     add_action('admin_enqueue_scripts', function () {
@@ -80,17 +93,37 @@ class OptionPages {
       ]);
     });
 
-    // add_filter('Flynt/addComponentData', function ($data, $componentName) {
-    //   // $data[] =
-    // });
-
+    // TODO do a check on wp_loaded or admin_menu hook
     // self::removeEmptyOptionPages();
+  }
+
+  public static function init() {
+
+    if (class_exists('Flynt\Features\AdminNotices\AdminNoticeManager')) {
+      // show (dismissible) Admin Notice if feature is missing
+      if (!Feature::isRegistered('flynt-custom-post-types')) {
+        $noticeManager = AdminNoticeManager::getInstance();
+        $noticeManager->addNotice(
+          [
+            'Could not add Option Pages for Custom Post Types because the "flynt-custom-post-types" feature is missing.'
+          ], [
+            'title' => 'Acf Option Pages Feature',
+            'dismissible' => true,
+            'type' => 'info'
+          ]
+        );
+      }
+
+      // TODO do the same for components
+    }
+
+
   }
 
   public static function createOptionPages() {
     foreach (self::OPTION_TYPES as $optionType => $option) {
-      $title = $option['title'];
-      $slug = ucfirst($optionType);
+      $title = _x($option['title'], 'title', 'flynt-theme');
+      $slug = _x(ucfirst($optionType), 'slug', 'flynt-theme'); // what does this even do?
 
       $generalSettings = acf_add_options_page(array(
         'page_title'  => $title,
@@ -109,7 +142,7 @@ class OptionPages {
   // COMPONENTS
   // ============
 
-  public static function addAllComponentSubPages($componentName) {
+  public static function addComponentSubPage($componentName) {
     // load fields.json if it exists
     $componentManager = ComponentManager::getInstance();
     $filePath = $componentManager->getComponentFilePath($componentName, 'fields.json');
@@ -125,36 +158,41 @@ class OptionPages {
   // CUSTOM POST TYPES
   // ==================
 
-  protected static function addAllCustomPostTypeSubPages() {
-    if (!Feature::isActive('flynt-custom-post-types')) {
-      // TODO add Admin Notice
+  public static function addCustomPostTypeSubPage($name, $customPostType) {
+    // load fields.json file
+    $filePath = $customPostType['dir'] . '/fields.json';
+
+    if (is_file($filePath)) {
+      // TODO refactor
+      // $cptName = ucfirst($cptDir->getFilename());
+      // if (isset($cptConfig['label'])) {
+      //   $label = $cptConfig['label'];
+      // }
+      // if (isset($cptConfig['labels'])) {
+      //   if (isset($cptConfig['labels']['menu_name'])) {
+      //     $label = $cptConfig['labels']['menu_name'];
+      //   } else if (isset($cptConfig['labels']['singular_name'])) {
+      //     $label = $cptConfig['labels']['singular_name'];
+      //   }
+      // }
+      self::createSubPageFromConfig($filePath, 'customPostType', ucfirst($name));
+    }
+  }
+
+  // ========
+  // FEATURES
+  // ========
+
+  public static function addFeatureSubPage($featureName, $options, $dir) {
+    $filePath = $dir . '/fields.json';
+
+    if (!is_file($filePath)) {
       return;
     }
 
-    // load fields.json files
-    $dir = Feature::getOptions('flynt-custom-post-types')[0]['directory'];
-    FileLoader::iterateDirectory($dir, function ($cptDir) {
-      if ($cptDir->isDir()) {
-        $cptConfig = CustomPostTypeRegister::getRegistered($cptDir->getFilename());
-        $filePath = $cptDir->getPathname() . '/fields.json';
+    $featureName = StringHelpers::removePrefix('flynt', StringHelpers::kebapCaseToCamelCase($featureName));
 
-        if (is_file($filePath)) {
-          // TODO refactor
-          $cptName = ucfirst($cptDir->getFilename());
-          // if (isset($cptConfig['label'])) {
-          //   $label = $cptConfig['label'];
-          // }
-          // if (isset($cptConfig['labels'])) {
-          //   if (isset($cptConfig['labels']['menu_name'])) {
-          //     $label = $cptConfig['labels']['menu_name'];
-          //   } else if (isset($cptConfig['labels']['singular_name'])) {
-          //     $label = $cptConfig['labels']['singular_name'];
-          //   }
-          // }
-          self::createSubPageFromConfig($filePath, 'customPostType', $cptName);
-        }
-      }
-    });
+    self::createSubPageFromConfig($filePath, 'feature', $featureName);
   }
 
   // ========
