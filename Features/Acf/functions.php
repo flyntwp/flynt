@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Features;
+namespace Flynt\Features\Acf;
 
 require_once __DIR__ . '/FieldGroupComposer.php';
 require_once __DIR__ . '/OptionPages.php';
@@ -9,13 +9,6 @@ require_once __DIR__ . '/Loader.php';
 use Flynt\Features\Acf\Loader;
 use Flynt\Utils\Feature;
 
-class Acf extends Feature {
+Loader::setup(Feature::getOption('flynt-acf', 0));
 
-  public function setup() {
-    Loader::setup($this->getOption(0));
-  }
-
-  public function init() {
-    Loader::init();
-  }
-}
+add_action('Flynt/afterRegisterFeatures', 'Flynt\Features\Acf\Loader::init');

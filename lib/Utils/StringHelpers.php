@@ -39,4 +39,8 @@ class StringHelpers {
     }
     return $str;
   }
+
+  public static function startsWith($search, $subject) {
+    return substr($subject, 0, strlen($search)) === $search;
+  }
 }

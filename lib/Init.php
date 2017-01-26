@@ -17,7 +17,7 @@ function initTheme() {
   Flynt\initDefaults();
 
   // register all components in 'Components' folder
-  add_theme_support('flynt-components');
+  add_theme_support('flynt-components', get_template_directory() . '/dist/Components/');
 
   // register all custom post types
   add_theme_support('flynt-custom-post-types', [
@@ -60,17 +60,25 @@ add_action('after_setup_theme', __NAMESPACE__ . '\\initTheme');
 
 // @codingStandardsIgnoreLine
 function loadFeatures() {
-  $wpThemeFeatures = $GLOBALS['_wp_theme_features'];
   $basePath = get_template_directory() . '/dist/Features';
 
-  foreach ($wpThemeFeatures as $feature => $options) {
-    $dirName = StringHelpers::removePrefix('flynt', StringHelpers::kebapCaseToCamelCase($feature));
-    $dirPath = "{$basePath}/{$dirName}";
-
-    if (is_dir($dirPath)) {
-      Feature::register($feature, $dirPath, $options);
-    }
+  if (!is_dir($basePath)) {
+    trigger_error(
+      "Failed loading Features! {$basePath} does not exist! Did you run `flynt start` yet?",
+      E_USER_WARNING
+    );
+    return;
   }
-  Feature::initAllFeatures();
+
+  // Filter out other (non-flynt) theme features
+  $flyntThemeFeatures = array_filter($GLOBALS['_wp_theme_features'], function ($feature) {
+    return StringHelpers::startsWith('flynt-', $feature);
+  }, ARRAY_FILTER_USE_KEY);
+
+  foreach ($flyntThemeFeatures as $feature => $options) {
+    Feature::register($feature, $basePath, $options);
+  }
+
+  do_action('Flynt/afterRegisterFeatures');
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\loadFeatures', 100);

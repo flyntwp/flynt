@@ -40,8 +40,8 @@ class OptionPages {
       'title' => 'Custom Post Type',
       'name' => 'customPostType',
       'icon' => 'dashicons-palmtree',
-      // 'label' => [ 'labels', 'menu_item' ],
-      // 'showType' => false
+      // 'label' => [ 'labels', 'menu_item' ], // TODO add this functionality
+      // 'showType' => false // TODO add this functionality
     ],
     'feature' => [
       'title' => 'Feature',
@@ -77,10 +77,8 @@ class OptionPages {
     // Features
     if (array_key_exists('feature', self::OPTION_CATEGORIES)) {
       add_action(
-        'Flynt/initFeature',
-        ['Flynt\Features\Acf\OptionPages', 'addFeatureSubPage'],
-        10,
-        3
+        'Flynt/afterRegisterFeatures',
+        ['Flynt\Features\Acf\OptionPages', 'addAllFeatureSubPages']
       );
     }
 
@@ -183,16 +181,22 @@ class OptionPages {
   // FEATURES
   // ========
 
-  public static function addFeatureSubPage($featureName, $options, $dir) {
-    $filePath = $dir . '/fields.json';
+  public static function addAllFeatureSubPages() {
 
-    if (!is_file($filePath)) {
-      return;
+    foreach (Feature::getFeatures() as $featureName => $feature) {
+
+      $filePath = $feature['dir'] . '/fields.json';
+
+      if (!is_file($filePath)) {
+        continue;
+      }
+
+      $featureName = StringHelpers::removePrefix('flynt', StringHelpers::kebapCaseToCamelCase($featureName));
+
+      self::createSubPageFromConfig($filePath, 'feature', $featureName);
+
     }
 
-    $featureName = StringHelpers::removePrefix('flynt', StringHelpers::kebapCaseToCamelCase($featureName));
-
-    self::createSubPageFromConfig($filePath, 'feature', $featureName);
   }
 
   // ========

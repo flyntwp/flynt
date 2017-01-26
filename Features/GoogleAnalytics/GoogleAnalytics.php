@@ -2,16 +2,13 @@
 // TODO: remove phpcs ignore once script tag issue is fixed on jenkins
 // @codingStandardsIgnoreFile
 
-namespace Flynt\Features;
+namespace Flynt\Features\GoogleAnalytics;
 
-use Flynt\Utils\Feature;
+class GoogleAnalytics {
 
-class GoogleAnalytics extends Feature {
-  public function setup() {
-    $this->googleAnalyticsId = $this->getOption(0);
-  }
+  public function __construct($id) {
+    $this->googleAnalyticsId = $id;
 
-  public function init() {
     if ($this->isValidId($this->googleAnalyticsId)) {
       // cases:
       // - if you are on production, add the action

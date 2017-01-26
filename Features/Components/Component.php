@@ -60,7 +60,7 @@ class Component {
     }
   }
 
-  # TODO put all the functionality in this file into the Asset Util
+  # TODO put all the functionality here into the Asset Util
   # TODO figure out how to structure the component dependency
   public static function addAsset($funcType, $options) {
     if (!in_array($funcType, ['enqueue', 'register'])) {

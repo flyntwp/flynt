@@ -3,78 +3,55 @@
 namespace Flynt\Utils;
 
 class Feature {
-  protected $options;
-  protected $dir;
 
+  private static $initialFile = 'functions.php';
   private static $features = [];
 
-  public function __construct($options, $dir) {
-    $this->options = $options;
-    $this->dir = $dir;
-
-    $this->setup();
+  public static function getOptions($feature) {
+    $feature = self::getFeature($feature);
+    return $feature ? $feature['options'] : null;
   }
 
-  public function setup() {
-    // to be overwritten in child
+  public static function getOption($feature, $key) {
+    $options = self::getOptions($feature);
+    return is_array($options) && array_key_exists($key, $options) ? $options[$key] : null;
   }
 
-  public function init() {
-    // to be overwritten in child
+  public static function getDir($feature) {
+    $feature = self::getFeature($feature);
+    return $feature ? $feature['dir'] : null;
   }
 
-  public function getOptions() {
-    return $this->options;
-  }
-
-  public function getOption($key) {
-    return array_key_exists($key, $this->options) ? $this->options[$key] : null;
-  }
-
-  public function getDir() {
-    return $this->dir;
-  }
-
-  public static function register($feature, $dirPath, $options = []) {
+  public static function register($feature, $basePath, $options = []) {
     if (!isset(self::$features[$feature])) {
-      $options = (array) $options;
 
-      // require main feature file
-      $dirName = ucfirst(basename($dirPath));
-      $file = "{$dirPath}/{$dirName}.php";
+      $prettyName = StringHelpers::removePrefix('flynt', StringHelpers::kebapCaseToCamelCase($feature));
+      $dir = implode('/', [$basePath, $prettyName]);
+      $file = implode('/', [$dir, self::$initialFile]);
 
-      if (is_file($file)) require_once $file;
+      if (is_file($file)) {
 
-      $className = "Flynt\Features\\{$dirName}";
+        $options = (array) $options;
 
-      if (class_exists($className)) {
+        self::$features[$feature] = [
+          'options' => $options,
+          'dir' => $dir
+        ];
 
-        // add feature instance to list
-        self::$features[$feature] = new $className($options, $dirPath);
+        require_once $file;
 
-      } else {
+        // execute post register actions
+        do_action('Flynt/registerFeature', $feature, $options, $dir);
+        do_action("Flynt/registerFeature?name={$prettyName}", $feature, $options, $dir);
 
-        trigger_error("Could not register feature: {$feature}!", E_USER_WARNING);
-        return false;
+        return true;
 
       }
 
-      // execute post register actions
-      do_action('Flynt/registerFeature', $feature, $options, $dirPath);
-      do_action("Flynt/registerFeature?name={$feature}", $feature, $options, $dirPath);
-    }
-  }
+      trigger_error("{$feature}: Could not register feature! File not found: {$file}", E_USER_WARNING);
 
-  public static function initAllFeatures() {
-    foreach (self::$features as $featureName => $feature) {
-      $feature->init();
+      return false;
 
-      // execute post init actions
-      $options = $feature->getOptions();
-      $dir = $feature->getDir();
-
-      do_action('Flynt/initFeature', $featureName, $options, $dir);
-      do_action("Flynt/initFeature?name={$featureName}", $featureName, $options, $dir);
     }
   }
 
@@ -87,6 +64,10 @@ class Feature {
       return self::$features[$name];
     }
     return false;
+  }
+
+  public static function getFeatures() {
+    return self::$features;
   }
 
   public static function setInitialFile($fileName) {
