@@ -20,73 +20,30 @@ class OptionPages {
   const FILTER_NAMESPACE = 'Flynt/Components';
   const FIELD_GROUPS_DIR = '/config/fieldGroups';
 
-  const OPTION_TYPES = [
-    'flyntOptions' => [
-      'title' => 'Options',
-      'name' => 'options',
-      'translatable' => false
-    ],
-    'flyntLocaleOptions' => [
-      'title' => 'Locale Options',
-      'name' => 'localeOptions',
-      'translatable' => true // set this as a default (it is required and not checked for existence)
-    ]
-  ];
-
-  const OPTION_CATEGORIES = [
-    'component' => [
-      'title' => 'Component',
-      'name' => 'component',
-      'icon' => 'dashicons-editor-table'
-    ],
-    'customPostType' => [
-      'title' => 'Custom Post Type',
-      'name' => 'customPostType',
-      'icon' => 'dashicons-palmtree',
-      // 'label' => [ 'labels', 'menu_item' ], // TODO add this functionality
-      // 'showType' => false // TODO add this functionality
-    ],
-    'feature' => [
-      'title' => 'Feature',
-      'name' => 'feature',
-      'icon' => 'dashicons-carrot'
-    ]
+  const OPTION_TYPE_DEFAULTS = [
+    'translatable' => true
   ];
 
   protected static $optionPages = [];
+  protected static $optionTypes = [];
+  protected static $optionCategories = [];
 
-  // usage: OptionPages::getOptions('flyntOptions', 'customPostType', 'project');
-  // all params expected to be camelCase
-  public static function getOptions($optionType, $optionCategory, $subPageName) {
-    if (!isset(self::OPTION_TYPES[$optionType])) return [];
+  public static function setup(array $options) {
 
-    $prefix = implode('', [$optionType, ucfirst($optionCategory), ucfirst($subPageName), '_']);
-    $options = self::getOptionFields(self::OPTION_TYPES[$optionType]['translatable']);
+    $optionTypes = isset($options['optionTypes']) ? $options['optionTypes'] : [];
+    $optionCategories = isset($options['optionCategories']) ? $options['optionCategories'] : [];
 
-    // find and replace relevant keys, then return an array of all options for this Sub-Page
-    return array_reduce(array_keys($options), function ($carry, $key) use ($options, $prefix) {
-      $count = 0;
-      $option = $options[$key];
-      $key = str_replace($prefix, '', $key, $count);
-      if ($count > 0) {
-        $carry[$key] = $option;
-      }
-      return $carry;
-    }, []);
-  }
+    self::$optionTypes = array_map(function ($optionType) {
+      return is_array($optionType) ? array_merge(self::OPTION_TYPE_DEFAULTS, $optionType) : [];
+    }, $optionTypes);
 
-  // usage: OptionPages::getOption('flyntOptions', 'customPostType', 'project', 'myFieldName');
-  // all params expected to be camelCase
-  public static function getOption($optionType, $optionCategory, $subPageName, $fieldName) {
-    $options = self::getOptions($optionType, $optionCategory, $subPageName);
-    return array_key_exists($fieldName, $options) ? $options[$fieldName] : false;
-  }
+    // self::$optionCategories = $optionCategories;
+    self::$optionCategories = $optionCategories;
 
-  public static function setup() {
     self::createOptionPages();
 
     // Components
-    if (array_key_exists('component', self::OPTION_CATEGORIES)) {
+    if (array_key_exists('component', self::$optionCategories)) {
       add_action(
         'Flynt/registerComponent',
         ['Flynt\Features\Acf\OptionPages', 'addComponentSubPage'],
@@ -96,7 +53,7 @@ class OptionPages {
       add_filter('Flynt/addComponentData', function ($data, $parentData, $config) {
 
         // get fields for this component
-        $options = array_reduce(array_keys(self::OPTION_TYPES), function ($carry, $optionType) use ($config) {
+        $options = array_reduce(array_keys(self::$optionTypes), function ($carry, $optionType) use ($config) {
 
           return array_merge($carry, self::getOptions($optionType, 'Component', $config['name']));
 
@@ -109,7 +66,7 @@ class OptionPages {
     }
 
     // Custom Post Types
-    if (array_key_exists('customPostType', self::OPTION_CATEGORIES)) {
+    if (array_key_exists('customPostType', self::$optionCategories)) {
       add_action(
         'Flynt/Features/CustomPostTypes/Register',
         ['Flynt\Features\Acf\OptionPages', 'addCustomPostTypeSubPage'],
@@ -119,7 +76,7 @@ class OptionPages {
     }
 
     // Features
-    if (array_key_exists('feature', self::OPTION_CATEGORIES)) {
+    if (array_key_exists('feature', self::$optionCategories)) {
       add_action(
         'Flynt/afterRegisterFeatures',
         ['Flynt\Features\Acf\OptionPages', 'addAllFeatureSubPages']
@@ -150,9 +107,8 @@ class OptionPages {
   }
 
   public static function createOptionPages() {
-    $optionTypes = self::OPTION_TYPES;
 
-    foreach ($optionTypes as $optionType => $option) {
+    foreach (self::$optionTypes as $optionType => $option) {
       $title = _x($option['title'], 'title', 'flynt-theme');
       $slug = ucfirst($optionType);
 
@@ -170,11 +126,12 @@ class OptionPages {
 
     }
 
-    add_action('current_screen', function ($currentScreen) use ($optionTypes) {
-      foreach ($optionTypes as $optionType => $option) {
+    add_action('current_screen', function ($currentScreen) {
+      foreach (self::$optionTypes as $optionType => $option) {
         $isTranslatable = $option['translatable'];
         $toplevelPageId = 'toplevel_page_' . $optionType;
-        $subPageId = StringHelpers::camelCaseToKebap(self::$optionPages[$optionType]['menu_title']) . '_page_' . $optionType;
+        $menuTitle = self::$optionPages[$optionType]['menu_title'];
+        $subPageId = StringHelpers::camelCaseToKebap($menuTitle) . '_page_' . $optionType;
         $isCurrentPage = StringHelpers::startsWith($toplevelPageId, $currentScreen->id)
           || StringHelpers::startsWith($subPageId, $currentScreen->id);
 
@@ -191,6 +148,33 @@ class OptionPages {
       }
     });
 
+  }
+
+  // usage: OptionPages::getOptions('flyntOptions', 'customPostType', 'project');
+  // all params expected to be camelCase
+  public static function getOptions($optionType, $optionCategory, $subPageName) {
+    if (!isset(self::$optionTypes[$optionType])) return [];
+
+    $prefix = implode('', [$optionType, ucfirst($optionCategory), ucfirst($subPageName), '_']);
+    $options = self::getOptionFields(self::$optionTypes[$optionType]['translatable']);
+
+    // find and replace relevant keys, then return an array of all options for this Sub-Page
+    return array_reduce(array_keys($options), function ($carry, $key) use ($options, $prefix) {
+      $count = 0;
+      $option = $options[$key];
+      $key = str_replace($prefix, '', $key, $count);
+      if ($count > 0) {
+        $carry[$key] = $option;
+      }
+      return $carry;
+    }, []);
+  }
+
+  // usage: OptionPages::getOption('flyntOptions', 'customPostType', 'project', 'myFieldName');
+  // all params expected to be camelCase
+  public static function getOption($optionType, $optionCategory, $subPageName, $fieldName) {
+    $options = self::getOptions($optionType, $optionCategory, $subPageName);
+    return array_key_exists($fieldName, $options) ? $options[$fieldName] : false;
   }
 
   // ============
@@ -259,13 +243,13 @@ class OptionPages {
   protected static function createSubPageFromConfig($filePath, $optionCategory, $subPageName) {
     $fields = json_decode(file_get_contents($filePath), true);
 
-    foreach (self::OPTION_TYPES as $optionType => $option) {
-      if (array_key_exists($option['name'], $fields)) {
+    foreach (self::$optionTypes as $optionType => $option) {
+      if (array_key_exists($optionType, $fields)) {
         self::addOptionSubPage(
-          self::OPTION_CATEGORIES[$optionCategory],
+          $optionCategory,
           ucfirst($subPageName),
           $optionType,
-          $fields[$option['name']]
+          $fields[$optionType]
         );
       }
     }
@@ -273,13 +257,13 @@ class OptionPages {
 
   protected static function addOptionSubPage($optionCategory, $subPageName, $optionType, $fields) {
     $prettySubPageName = StringHelpers::splitCamelCase($subPageName);
-    $iconClasses = "flynt-submenu-item dashicons-before {$optionCategory['icon']}";
+    $iconClasses = 'flynt-submenu-item dashicons-before ' . self::$optionCategories[$optionCategory]['icon'];
 
     $subPageConfig = array(
-      'page_title'  => $prettySubPageName . ' ' . $optionCategory['title'],
+      'page_title'  => $prettySubPageName . ' ' . self::$optionCategories[$optionCategory]['title'],
       'menu_title'  => "<span class='{$iconClasses}'>{$prettySubPageName}</span>",
       'parent_slug' => self::$optionPages[$optionType]['menu_slug'],
-      'menu_slug'   => $optionType . ucfirst($optionCategory['name']) . $subPageName
+      'menu_slug'   => $optionType . ucfirst($optionCategory) . $subPageName
     );
 
     acf_add_options_sub_page($subPageConfig);
@@ -298,6 +282,7 @@ class OptionPages {
         'name' => $menuSlug,
         'title' => $prettySubPageName,
         'fields' => self::prefixFields($fields, $menuSlug),
+        'style' => 'seamless',
         'location' => [
           [
             [
@@ -314,8 +299,8 @@ class OptionPages {
   }
 
   protected static function checkFeature($optionCategory, $feature) {
-    if (array_key_exists($optionCategory, self::OPTION_CATEGORIES) && !Feature::isRegistered($feature)) {
-      $title = self::OPTION_CATEGORIES[$optionCategory]['title'];
+    if (array_key_exists($optionCategory, self::$optionCategories) && !Feature::isRegistered($feature)) {
+      $title = self::$optionCategories[$optionCategory]['title'];
       $noticeManager = AdminNoticeManager::getInstance();
       $noticeManager->addNotice(
         [

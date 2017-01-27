@@ -3,6 +3,7 @@
 namespace Flynt\Features\Acf;
 
 use Flynt\Features\AdminNotices\AdminNoticeManager;
+use Flynt\Utils\ArrayHelpers;
 
 class Loader {
 
@@ -13,7 +14,7 @@ class Loader {
   public static function setup($helpers) {
     if (empty($helpers)) return;
 
-    self::$helpers = $helpers;
+    self::$helpers = ArrayHelpers::indexedValuesToAssocKeys($helpers);
     self::$requirementsMet = !in_array(false, self::checkRequirements(), true);
 
     if (self::$requirementsMet) {
@@ -46,20 +47,20 @@ class Loader {
 
   protected static function setupHelpers() {
     $namespacePrefix = 'Flynt\Features\Acf';
-    foreach (self::$helpers as $helperName) {
+    foreach (self::$helpers as $helperName => $helperOptions) {
       $className = "{$namespacePrefix}\\$helperName";
       if (class_exists($className) && method_exists($className, 'setup')) {
-        $className::setup();
+        $className::setup($helperOptions);
       }
     }
   }
 
   protected static function initHelpers() {
     $namespacePrefix = 'Flynt\Features\Acf';
-    foreach (self::$helpers as $helperName) {
+    foreach (self::$helpers as $helperName => $helperOptions) {
       $className = "{$namespacePrefix}\\$helperName";
       if (class_exists($className) && method_exists($className, 'init')) {
-        $className::init();
+        $className::init($helperOptions);
       }
     }
   }
