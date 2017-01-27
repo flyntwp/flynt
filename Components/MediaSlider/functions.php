@@ -1,8 +1,6 @@
 <?php
 namespace Flynt\Components\MediaSlider;
 
-use Flynt\Helpers\Utils;
-use Flynt\Helpers\Log;
 use Flynt\Features\Components\Component;
 use Flynt\Utils\DomNode;
 
