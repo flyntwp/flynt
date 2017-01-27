@@ -1,7 +1,9 @@
 <?php
 
-// TODO make global fields untranslatable
 // TODO make order of option categories customizable (Components, CustomPostTypes, Features)
+// TODO add option fields to Feature Options somehow
+// TODO add custom post type label and option category showType functionality
+// TODO add notice for meta keys that are too long (unsolved ACF / WordPress issue)
 
 namespace Flynt\Features\Acf;
 
@@ -22,11 +24,12 @@ class OptionPages {
     'flyntOptions' => [
       'title' => 'Options',
       'name' => 'options',
-      // 'translatable' => false
+      'translatable' => false
     ],
     'flyntLocaleOptions' => [
       'title' => 'Locale Options',
-      'name' => 'localeOptions'
+      'name' => 'localeOptions',
+      'translatable' => true // set this as a default (it is required and not checked for existence)
     ]
   ];
 
@@ -52,6 +55,33 @@ class OptionPages {
 
   protected static $optionPages = [];
 
+  // usage: OptionPages::getOptions('flyntOptions', 'customPostType', 'project');
+  // all params expected to be camelCase
+  public static function getOptions($optionType, $optionCategory, $subPageName) {
+    if (!isset(self::OPTION_TYPES[$optionType])) return [];
+
+    $prefix = implode('', [$optionType, ucfirst($optionCategory), ucfirst($subPageName), '_']);
+    $options = self::getOptionFields(self::OPTION_TYPES[$optionType]['translatable']);
+
+    // find and replace relevant keys, then return an array of all options for this Sub-Page
+    return array_reduce(array_keys($options), function ($carry, $key) use ($options, $prefix) {
+      $count = 0;
+      $option = $options[$key];
+      $key = str_replace($prefix, '', $key, $count);
+      if ($count > 0) {
+        $carry[$key] = $option;
+      }
+      return $carry;
+    }, []);
+  }
+
+  // usage: OptionPages::getOption('flyntOptions', 'customPostType', 'project', 'myFieldName');
+  // all params expected to be camelCase
+  public static function getOption($optionType, $optionCategory, $subPageName, $fieldName) {
+    $options = self::getOptions($optionType, $optionCategory, $subPageName);
+    return array_key_exists($fieldName, $options) ? $options[$fieldName] : false;
+  }
+
   public static function setup() {
     self::createOptionPages();
 
@@ -62,6 +92,20 @@ class OptionPages {
         ['Flynt\Features\Acf\OptionPages', 'addComponentSubPage'],
         12
       );
+
+      add_filter('Flynt/addComponentData', function ($data, $parentData, $config) {
+
+        // get fields for this component
+        $options = array_reduce(array_keys(self::OPTION_TYPES), function ($carry, $optionType) use ($config) {
+
+          return array_merge($carry, self::getOptions($optionType, 'Component', $config['name']));
+
+        }, []);
+
+        // don't overwrite existing data
+        return array_merge($options, $data);
+
+      }, 10, 3);
     }
 
     // Custom Post Types
@@ -86,7 +130,7 @@ class OptionPages {
     add_action('admin_enqueue_scripts', function () {
       Component::addAsset('enqueue', [
         'type' => 'style',
-        'name' => 'ACF/AdminCSS',
+        'name' => 'Flynt/Features/Acf/AdminCss',
         'path' => 'Features/Acf/admin.css'
       ]);
     });
@@ -96,32 +140,21 @@ class OptionPages {
   }
 
   public static function init() {
-
+    // show (dismissible) Admin Notice if required feature is missing
     if (class_exists('Flynt\Features\AdminNotices\AdminNoticeManager')) {
-      // show (dismissible) Admin Notice if feature is missing
-      if (!Feature::isRegistered('flynt-custom-post-types')) {
-        $noticeManager = AdminNoticeManager::getInstance();
-        $noticeManager->addNotice(
-          [
-            'Could not add Option Pages for Custom Post Types because the "flynt-custom-post-types" feature is missing.'
-          ], [
-            'title' => 'Acf Option Pages Feature',
-            'dismissible' => true,
-            'type' => 'info'
-          ]
-        );
-      }
 
-      // TODO do the same for components
+      self::checkFeature('customPostType', 'flynt-custom-post-types');
+      self::checkFeature('component', 'flynt-components');
+
     }
-
-
   }
 
   public static function createOptionPages() {
-    foreach (self::OPTION_TYPES as $optionType => $option) {
+    $optionTypes = self::OPTION_TYPES;
+
+    foreach ($optionTypes as $optionType => $option) {
       $title = _x($option['title'], 'title', 'flynt-theme');
-      $slug = _x(ucfirst($optionType), 'slug', 'flynt-theme'); // what does this even do?
+      $slug = ucfirst($optionType);
 
       $generalSettings = acf_add_options_page(array(
         'page_title'  => $title,
@@ -131,9 +164,33 @@ class OptionPages {
       ));
 
       self::$optionPages[$optionType] = [
-        'menu_slug' => $slug
+        'menu_slug' => $slug,
+        'menu_title' => $title
       ];
+
     }
+
+    add_action('current_screen', function ($currentScreen) use ($optionTypes) {
+      foreach ($optionTypes as $optionType => $option) {
+        $isTranslatable = $option['translatable'];
+        $toplevelPageId = 'toplevel_page_' . $optionType;
+        $subPageId = StringHelpers::camelCaseToKebap(self::$optionPages[$optionType]['menu_title']) . '_page_' . $optionType;
+        $isCurrentPage = StringHelpers::startsWith($toplevelPageId, $currentScreen->id)
+          || StringHelpers::startsWith($subPageId, $currentScreen->id);
+
+        if (!$isTranslatable && $isCurrentPage) {
+          // set acf field values to default language
+          add_filter('acf/settings/current_language', 'Flynt\Features\Acf\OptionPages::getDefaultAcfLanguage', 101);
+
+          // hide language selector in admin bar
+          add_action('wp_before_admin_bar_render', function () {
+            $adminBar = $GLOBALS['wp_admin_bar'];
+            $adminBar->remove_menu('WPML_ALS');
+          });
+        }
+      }
+    });
+
   }
 
   // ============
@@ -145,9 +202,7 @@ class OptionPages {
     $componentManager = ComponentManager::getInstance();
     $filePath = $componentManager->getComponentFilePath($componentName, 'fields.json');
 
-    if (false === $filePath) {
-      return;
-    }
+    if (false === $filePath) return;
 
     self::createSubPageFromConfig($filePath, 'component', $componentName);
   }
@@ -187,9 +242,7 @@ class OptionPages {
 
       $filePath = $feature['dir'] . '/fields.json';
 
-      if (!is_file($filePath)) {
-        continue;
-      }
+      if (!is_file($filePath)) continue;
 
       $featureName = StringHelpers::removePrefix('flynt', StringHelpers::kebapCaseToCamelCase($featureName));
 
@@ -244,7 +297,7 @@ class OptionPages {
       [
         'name' => $menuSlug,
         'title' => $prettySubPageName,
-        'fields' => $fields,
+        'fields' => self::prefixFields($fields, $menuSlug),
         'location' => [
           [
             [
@@ -258,5 +311,48 @@ class OptionPages {
     );
 
     acf_add_local_field_group($fieldGroup);
+  }
+
+  protected static function checkFeature($optionCategory, $feature) {
+    if (array_key_exists($optionCategory, self::OPTION_CATEGORIES) && !Feature::isRegistered($feature)) {
+      $title = self::OPTION_CATEGORIES[$optionCategory]['title'];
+      $noticeManager = AdminNoticeManager::getInstance();
+      $noticeManager->addNotice(
+        [
+          "Could not add Option Pages for {$title} because the \"{$feature}\" feature is missing."
+        ], [
+          'title' => 'Acf Option Pages Feature',
+          'dismissible' => true,
+          'type' => 'info'
+        ]
+      );
+    }
+  }
+
+  protected static function prefixFields(array $fields, string $prefix) {
+    return array_map(function ($field) use ($prefix) {
+      $field['name'] = $prefix . '_' . $field['name'];
+      return $field;
+    }, $fields);
+  }
+
+  protected static function getOptionFields(bool $translatable) {
+    global $sitepress;
+
+    if (!isset($sitepress) || $translatable) return get_fields('options');
+
+    $sitepress->switch_lang(acf_get_setting('default_language'));
+    add_filter('acf/settings/current_language', 'Flynt\Features\Acf\OptionPages::getDefaultAcfLanguage', 100);
+
+    $options = get_fields('options');
+
+    remove_filter('acf/settings/current_language', 'Flynt\Features\Acf\OptionPages::getDefaultAcfLanguage', 100);
+    $sitepress->switch_lang(ICL_LANGUAGE_CODE);
+
+    return $options;
+  }
+
+  public static function getDefaultAcfLanguage() {
+    return acf_get_setting('default_language');
   }
 }
