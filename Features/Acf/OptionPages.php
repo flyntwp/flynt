@@ -17,11 +17,16 @@ use Flynt\Utils\FileLoader;
 use Flynt\Utils\StringHelpers;
 
 class OptionPages {
+  // TODO put these into feature options (params)
   const FILTER_NAMESPACE = 'Flynt/Components';
   const FIELD_GROUPS_DIR = '/config/fieldGroups';
 
   const OPTION_TYPE_DEFAULTS = [
     'translatable' => true
+  ];
+
+  const OPTION_CATEGORY_DEFAULTS = [
+    'icon' => 'dashicons-admin-generic'
   ];
 
   protected static $optionPages = [];
@@ -33,12 +38,8 @@ class OptionPages {
     $optionTypes = isset($options['optionTypes']) ? $options['optionTypes'] : [];
     $optionCategories = isset($options['optionCategories']) ? $options['optionCategories'] : [];
 
-    self::$optionTypes = array_map(function ($optionType) {
-      return is_array($optionType) ? array_merge(self::OPTION_TYPE_DEFAULTS, $optionType) : [];
-    }, $optionTypes);
-
-    // self::$optionCategories = $optionCategories;
-    self::$optionCategories = $optionCategories;
+    self::$optionTypes = self::combineArrayDefaults($optionTypes, self::OPTION_TYPE_DEFAULTS);
+    self::$optionCategories = self::combineArrayDefaults($optionCategories, self::OPTION_CATEGORY_DEFAULTS);
 
     self::createOptionPages();
 
@@ -112,6 +113,7 @@ class OptionPages {
       $title = _x($option['title'], 'title', 'flynt-theme');
       $slug = ucfirst($optionType);
 
+      // TODO add feature option (param) for redirect and dashicon used
       $generalSettings = acf_add_options_page(array(
         'page_title'  => $title,
         'menu_title'  => $title,
@@ -335,6 +337,12 @@ class OptionPages {
     $sitepress->switch_lang(ICL_LANGUAGE_CODE);
 
     return $options;
+  }
+
+  protected static function combineArrayDefaults(array $array, array $defaults) {
+    return array_map(function ($value) use ($defaults) {
+      return is_array($value) ? array_merge($defaults, $value) : [];
+    }, $array);
   }
 
   public static function getDefaultAcfLanguage() {
