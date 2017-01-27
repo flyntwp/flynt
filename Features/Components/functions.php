@@ -12,7 +12,7 @@ use Flynt\Utils\Feature;
 // register all components
 $componentPath = trailingslashit(Feature::getOption('flynt-components', 0));
 
-add_action('Flynt/afterRegisterFeatures', function() use ($componentPath) {
+add_action('Flynt/afterRegisterFeatures', function () use ($componentPath) {
   if (is_dir($componentPath)) {
     FileLoader::iterateDir($componentPath, function ($dir) {
       if ($dir->isDir()) {
