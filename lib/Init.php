@@ -75,6 +75,9 @@ function initTheme() {
   add_theme_support('flynt-remove-editor');
   add_theme_support('flynt-tiny-mce');
 
+  // add components previews
+  add_theme_support('flynt-admin-component-preview');
+
   // google analytics
   add_theme_support('flynt-google-analytics');
 

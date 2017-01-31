@@ -1,20 +1,19 @@
 <?php
-namespace Flynt\Components\AdminComponentPreview;
+namespace Flynt\Features\AdminComponentPreview;
 
-use Flynt\Helpers\Component;
-use Flynt\Helpers\Log;
+use Flynt\Features\Components\Component;
+use Flynt\Utils\Log;
 
 define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
 
 // @codingStandardsIgnoreLine
 function enqueueComponentScripts() {
-  Component::enqueueAssets('AdminComponentPreview', [
-    [
-      'name' => 'draggabilly',
-      'path' => 'vendor/draggabilly.js',
-      'type' => 'script'
-    ]
+  Component::addAsset('enqueue', [
+    'type' => 'script',
+    'name' => 'adminComponentPreview',
+    'path' => 'Features/AdminComponentPreview/script.js'
   ]);
+
   // add data to the javascript
   $data = [
     'templateDirectoryUri' => get_template_directory_uri()
