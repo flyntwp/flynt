@@ -14,6 +14,18 @@ function enqueueComponentScripts() {
     'path' => 'Features/AdminComponentPreview/script.js'
   ]);
 
+  // Component::addAsset('enqueue', [
+  //   'type' => 'style',
+  //   'name' => 'adminComponentPreview',
+  //   'path' => 'Features/AdminComponentPreview/style.css'
+  // ]);
+
+  Component::addAsset('enqueue', [
+    'type' => 'script',
+    'name' => 'draggabilly',
+    'path' => 'vendor/draggabilly.js'
+  ]);
+
   // add data to the javascript
   $data = [
     'templateDirectoryUri' => get_template_directory_uri()
@@ -23,10 +35,8 @@ function enqueueComponentScripts() {
 
 if (class_exists('acf')) {
   if (is_user_logged_in() || is_admin()) {
-    add_action('admin_enqueue_scripts', NS . 'enqueueComponentScripts');
-    add_action('wp_enqueue_scripts', NS . 'enqueueComponentScripts');
-
     if (is_admin()) {
+      add_action('admin_enqueue_scripts', NS . 'enqueueComponentScripts');
       // add image to the flexible content component name
       add_filter('acf/fields/flexible_content/layout_title', function ($title, $field, $layout, $i) {
         $componentPath = "/Components/$layout[name]/";
@@ -55,6 +65,10 @@ if (class_exists('acf')) {
         return $label;
       }, 10, 2);
     } else {
+      add_action('wp_enqueue_scripts', function () {
+        wp_enqueue_script('jquery');
+      });
+      add_action('wp_enqueue_scripts', NS . 'enqueueComponentScripts');
       // adds Component Previews button to admin bar on front-end when logged in
       add_action('admin_bar_menu', function ($wpAdminBar) {
         $title = 'Component Previews';
