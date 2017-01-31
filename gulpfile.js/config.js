@@ -38,7 +38,8 @@ module.exports = {
     sourceRoot: '/app/themes/flynt-theme/'
   },
   stylus: [
-    './{Components,Features}/**/style.styl'
+    './{Components,Features}/**/*.styl',
+    '!./{Components,Features}/**/_*.styl'
   ],
   watch: {
     stylus: './{Components,Features}/**/*.styl',

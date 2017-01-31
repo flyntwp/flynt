@@ -10,7 +10,7 @@ This class is to be used in other features to enable an easy-to-use interface fo
 ```php
 <?php
 
-use Flynt\Features\AdminNoticeManager;
+use Flynt\Features\AdminNotices\AdminNoticeManager;
 
 // get the singleton instance of the manager
 $manager = AdminNoticeManager::getInstance();

@@ -1,15 +1,15 @@
 <?php
-// TODO: remove phpcs ignore once issue is fixed on jenkins
-// @codingStandardsIgnoreStart
+// TODO: remove phpcs ignore once script tag issue is fixed on jenkins
+// @codingStandardsIgnoreFile
+
 namespace Flynt\Features\GoogleAnalytics;
 
 class GoogleAnalytics {
-  private $googleAnalyticsId;
 
-  public function __construct($gaId = '') {
-    $this->googleAnalyticsId = $gaId;
+  public function __construct($id) {
+    $this->googleAnalyticsId = $id;
 
-    if (self::isValidId($this->googleAnalyticsId)) { // @codingStandardsIgnoreLine
+    if ($this->isValidId($this->googleAnalyticsId)) {
       // cases:
       // - if you are on production, add the action
       // - if you are not an admin, add the action
@@ -42,4 +42,3 @@ class GoogleAnalytics {
     return preg_match('/^ua-\d{4,10}-\d{1,4}$/i', strval($gaId));
   }
 }
-// @codingStandardsIgnoreEnd

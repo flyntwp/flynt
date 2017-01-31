@@ -6,14 +6,17 @@
 
 ## Content
 ### Loader
-Checks for required plugins and initialises the helpers.
+Checks for required plugins and initializes the helpers.
 
-TIP: Add and activate the `AdminNotices` Feature before you activate the ACF Feature to enable a nice popup that shows you notifications in the admin panel for missing or inactive plugins.
+TIP: Add and activate the `AdminNotices` Feature to enable a nice popup that shows you notifications in the admin panel for missing or inactive plugins.
 
 ### Helper: Field Group Composer
 Requirements:
 - Flynt Core
-- Flynt Helper: Utils
+- Flynt Utils: ArrayHelpers
+- Flynt Utils: Feature
+- Flynt Utils: FileLoader
+- Flynt Utils: StringHelpers
 
 Maps `fields.json` files in components to field groups in `config/fieldGroups` according to the predefined filter name:
 ```
@@ -27,7 +30,7 @@ Requirements:
 Converts `option` key in `fields.json` files of components to acf option pages.
 
 ## Usage
-Drag and drop the ACF Folder into your Flynt Theme's `lib/Features` directory. Make sure the folder name doesn't change! Then add the following code to the after_setup_theme hook in your `lib/Init.php`:
+Drag and drop the ACF Folder into your Flynt Theme's `Features` directory. Make sure the folder name doesn't change! Then add the following code to the after_setup_theme hook in your `lib/Init.php`:
 ```php
 <?php
 

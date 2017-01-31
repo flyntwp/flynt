@@ -16,26 +16,55 @@ function initTheme() {
   // initialize plugin defaults
   Flynt\initDefaults();
 
-  // register all custom post types
-  add_theme_support('flynt-custom-post-types', get_template_directory() . '/config/customPostTypes/');
+  // register all components in 'Components' folder
+  add_theme_support('flynt-components', get_template_directory() . '/dist/Components/');
 
-  // enable admin notices
-  add_theme_support('flynt-admin-notices');
+  // register all custom post types
+  add_theme_support('flynt-custom-post-types', [
+    'dir' => get_template_directory() . '/config/customPostTypes/',
+    'fileName' => 'config.json'
+  ]);
 
   // initialize ACF Field Groups and Option Pages
   add_theme_support('flynt-acf', [
     'FieldGroupComposer',
-    'OptionPages'
+    'OptionPages' => [
+      'optionTypes' => [
+        'options' => [
+          'title' => 'Options',
+          'translatable' => false
+        ],
+        'localeOptions' => [
+          'title' => 'Locale Options'
+        ]
+      ],
+      'optionCategories' => [
+        'component' => [
+          'title' => 'Component',
+          'icon' => 'dashicons-editor-table'
+        ],
+        'customPostType' => [
+          'title' => 'Custom Post Type',
+          'icon' => 'dashicons-palmtree',
+          // 'label' => [ 'labels', 'menu_item' ], // TODO add this functionality
+          // 'showType' => false // TODO add this functionality
+        ],
+        'feature' => [
+          'title' => 'Feature',
+          'icon' => 'dashicons-carrot'
+        ]
+      ]
+    ]
   ]);
 
-  // register all components in 'Components' folder
-  add_theme_support('flynt-components');
+  // enable admin notices
+  add_theme_support('flynt-admin-notices');
 
   // set correct config dir (+ more?)
   add_theme_support('flynt-templates');
 
   // use timber rendering
-  add_theme_support('flynt-timber');
+  add_theme_support('flynt-timber-loader');
 
   // clean up some things
   add_theme_support('flynt-clean-head');
@@ -57,12 +86,25 @@ add_action('after_setup_theme', __NAMESPACE__ . '\\initTheme');
 
 // @codingStandardsIgnoreLine
 function loadFeatures() {
-  global $_wp_theme_features; // @codingStandardsIgnoreLine
-  foreach (glob(get_template_directory() . '/Features/*', GLOB_ONLYDIR) as $dir) {
-    $feature = 'flynt-' . StringHelpers::camelCaseToKebap(basename($dir));
-    if (isset($_wp_theme_features[$feature])) { // @codingStandardsIgnoreLine
-      Feature::init($feature, $dir, $_wp_theme_features[$feature]);
-    }
+  $basePath = get_template_directory() . '/dist/Features';
+
+  if (!is_dir($basePath)) {
+    trigger_error(
+      "Failed loading Features! {$basePath} does not exist! Did you run `flynt start` yet?",
+      E_USER_WARNING
+    );
+    return;
   }
+
+  // Filter out other (non-flynt) theme features
+  $flyntThemeFeatures = array_filter($GLOBALS['_wp_theme_features'], function ($feature) {
+    return StringHelpers::startsWith('flynt-', $feature);
+  }, ARRAY_FILTER_USE_KEY);
+
+  foreach ($flyntThemeFeatures as $feature => $options) {
+    Feature::register($feature, $basePath, $options);
+  }
+
+  do_action('Flynt/afterRegisterFeatures');
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\loadFeatures', 100);

@@ -1,11 +1,10 @@
 <?php
 
-namespace Flynt\Features\Timber;
+namespace Flynt\Features\TimberLoader;
 
 use Flynt;
-use Timber\Image;
-use Timber\Loader;
 use Timber\Timber;
+use Timber\Image;
 use Twig_SimpleFunction;
 
 // Render Component with Timber (Twig)

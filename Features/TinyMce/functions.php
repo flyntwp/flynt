@@ -2,7 +2,7 @@
 
 namespace Flynt\Features\TinyMce;
 
-// Clean Up Buttons of TinyMCE
+// Clean Up TinyMCE Buttons
 
 // First Bar
 add_filter('mce_buttons', function ($buttons) {

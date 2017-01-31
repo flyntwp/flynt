@@ -14,7 +14,7 @@ class FieldGroupComposer {
 
   protected static $fieldGroupsLoaded = false;
 
-  public static function init() {
+  public static function setup() {
     add_action(
       'Flynt/registerComponent',
       ['Flynt\Features\Acf\FieldGroupComposer', 'addFieldFilters'],
@@ -39,7 +39,7 @@ class FieldGroupComposer {
       return;
     }
 
-    FileLoader::iterateDirectory($dir, function ($file) {
+    FileLoader::iterateDir($dir, function ($file) {
       if ($file->getExtension() === 'json') {
         $filePath = $file->getPathname();
         $config = json_decode(file_get_contents($filePath), true);

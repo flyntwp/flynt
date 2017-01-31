@@ -18,4 +18,16 @@ class ArrayHelpers {
       return (array) $val;
     }, $obj);
   }
+
+  public static function indexedValuesToAssocKeys(array $array) {
+    $values = array_map(function ($value) {
+      return is_array($value) ? $value : [];
+    }, $array);
+
+    $keys = array_map(function ($key) use ($array) {
+      return is_int($key) ? $array[$key] : $key;
+    }, array_keys($array));
+
+    return array_combine($keys, $values);
+  }
 }

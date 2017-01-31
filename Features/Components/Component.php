@@ -2,9 +2,6 @@
 
 namespace Flynt\Features\Components;
 
-use RecursiveDirectoryIterator;
-use Flynt;
-use Flynt\Utils\FileLoader;
 use Flynt\Utils\Asset;
 
 class Component {
@@ -15,16 +12,6 @@ class Component {
     'inFooter' => true,
     'media' => 'all'
   ];
-
-  const COMPONENT_PATH = '/dist/Components/';
-
-  public static function registerAll() {
-    FileLoader::iterateDirectory(get_template_directory() . self::COMPONENT_PATH, function ($dir) {
-      if ($dir->isDir()) {
-        Flynt\registerComponent($dir->getFilename());
-      }
-    });
-  }
 
   public static function enqueueAssets($componentName, array $dependencies = []) {
 
@@ -73,6 +60,8 @@ class Component {
     }
   }
 
+  # TODO put all the functionality here into the Asset Util
+  # TODO figure out how to structure the component dependency
   public static function addAsset($funcType, $options) {
     if (!in_array($funcType, ['enqueue', 'register'])) {
       trigger_error('Cannot add asset: Invalid Parameter for funcType (' . $funcType . ')', E_USER_WARNING);

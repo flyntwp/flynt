@@ -5,7 +5,7 @@ namespace Flynt\Utils;
 use RecursiveDirectoryIterator;
 
 class FileLoader {
-  public static function iterateDirectory($dir, callable $callback) {
+  public static function iterateDir($dir, callable $callback) {
 
     $output = [];
 
@@ -32,7 +32,7 @@ class FileLoader {
 
       $dir = get_template_directory() . '/' . $dir;
 
-      self::iterateDirectory($dir, function ($file) use ($fileExtension) {
+      self::iterateDir($dir, function ($file) use ($fileExtension) {
 
         if ($file->isDir()) {
 
@@ -54,7 +54,7 @@ class FileLoader {
 
         if (!locate_template($filePath, true, true)) {
           trigger_error(
-            sprintf(__('Error locating %s for inclusion', 'wp-starter-boilerplate'), $filePath),
+            sprintf(__('Error locating %s for inclusion', 'flynt-theme'), $filePath),
             E_USER_ERROR
           );
         }
