@@ -18,7 +18,7 @@ function enqueueComponentScripts() {
   $data = [
     'templateDirectoryUri' => get_template_directory_uri()
   ];
-  wp_localize_script('Flynt/Components/AdminComponentPreview', 'wpData', $data);
+  wp_localize_script('adminComponentPreview', 'wpData', $data);
 }
 
 if (class_exists('acf')) {
