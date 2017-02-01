@@ -11,7 +11,8 @@ function enqueueComponentScripts() {
   Component::addAsset('enqueue', [
     'type' => 'script',
     'name' => 'adminComponentPreview',
-    'path' => 'Features/AdminComponentPreview/script.js'
+    'path' => 'Features/AdminComponentPreview/script.js',
+    'dependencies' => ['jquery']
   ]);
 
   Component::addAsset('enqueue', [
@@ -23,7 +24,8 @@ function enqueueComponentScripts() {
   Component::addAsset('enqueue', [
     'type' => 'script',
     'name' => 'draggabilly',
-    'path' => 'vendor/draggabilly.js'
+    'path' => 'vendor/draggabilly.js',
+    'dependencies' => ['jquery']
   ]);
 
   // add data to the javascript
@@ -65,9 +67,6 @@ if (class_exists('acf')) {
         return $label;
       }, 10, 2);
     } else {
-      add_action('wp_enqueue_scripts', function () {
-        wp_enqueue_script('jquery');
-      });
       add_action('wp_enqueue_scripts', NS . 'enqueueComponentScripts');
       // adds Component Previews button to admin bar on front-end when logged in
       add_action('admin_bar_menu', function ($wpAdminBar) {
