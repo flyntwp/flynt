@@ -1,0 +1,13 @@
+{
+  "options": [
+    {
+      "name": "gaId",
+      "label": "Google Analytics ID",
+      "type": "text",
+      "maxlength": 20,
+      "prepend": "",
+      "append": "",
+      "placeholder": "XX-XXXXXXXX-X"
+    }
+  ]
+}

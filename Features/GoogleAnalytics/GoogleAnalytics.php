@@ -16,7 +16,7 @@ class GoogleAnalytics {
       if (WP_ENV !== 'production' || !current_user_can('manage_options')) {
         add_action('wp_footer', [$this, 'addScript'], 20, 1);
       }
-    } else if ($this->googleAnalyticsId != 1) {
+    } else if ($this->googleAnalyticsId != 1 && !isset($_POST['acf'])) {
       trigger_error('Invalid Google Analytics Id: ' . $this->googleAnalyticsId, E_USER_WARNING);
     }
   }

@@ -6,7 +6,14 @@ require_once __DIR__ . '/GoogleAnalytics.php';
 
 use Flynt\Features\GoogleAnalytics\GoogleAnalytics;
 use Flynt\Utils\Feature;
+use Flynt\Features\Acf\OptionPages;
 
-$id = Feature::getOption('flynt-google-analytics', 0);
+add_action('Flynt/afterRegisterFeatures', 'Flynt\Features\GoogleAnalytics\init');
 
-new GoogleAnalytics($id);
+// @codingStandardsIgnoreLine
+function init() {
+  $id = OptionPages::getOption('options', 'feature', 'GoogleAnalytics', 'gaId');
+  if ($id) {
+    new GoogleAnalytics($id);
+  }
+}
