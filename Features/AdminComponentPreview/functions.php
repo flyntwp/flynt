@@ -14,11 +14,11 @@ function enqueueComponentScripts() {
     'path' => 'Features/AdminComponentPreview/script.js'
   ]);
 
-  // Component::addAsset('enqueue', [
-  //   'type' => 'style',
-  //   'name' => 'adminComponentPreview',
-  //   'path' => 'Features/AdminComponentPreview/style.css'
-  // ]);
+  Component::addAsset('enqueue', [
+    'type' => 'style',
+    'name' => 'adminComponentPreview',
+    'path' => 'Features/AdminComponentPreview/style.css'
+  ]);
 
   Component::addAsset('enqueue', [
     'type' => 'script',
