@@ -8,6 +8,15 @@
       "prepend": "",
       "append": "",
       "placeholder": "XX-XXXXXXXX-X"
+    },
+    {
+      "name": "anonymizeIp",
+      "label": "Anonymize IP",
+      "type": "true_false",
+      "ui": "no",
+      "ui_on_text": "",
+      "ui_off_text": "",
+      "message": ""
     }
   ]
 }

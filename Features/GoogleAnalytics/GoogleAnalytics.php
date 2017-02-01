@@ -6,8 +6,9 @@ namespace Flynt\Features\GoogleAnalytics;
 
 class GoogleAnalytics {
 
-  public function __construct($id) {
+  public function __construct($id, $anonymizeIp) {
     $this->googleAnalyticsId = $id;
+    $this->anonymizeIp = $anonymizeIp;
 
     if ($this->isValidId($this->googleAnalyticsId)) {
       // cases:
@@ -34,6 +35,9 @@ class GoogleAnalytics {
         }
       <?php endif; ?>
       ga('create','<?php echo $this->googleAnalyticsId; ?>','auto');ga('send','pageview');
+      <?php if($this->anonymizeIp == 1) : ?>
+      ga('set', 'anonymizeIp', true);
+      <?php endif; ?>
     </script>
     <?
   }
