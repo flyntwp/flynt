@@ -161,7 +161,8 @@ class OptionPages {
     $options = self::getOptionFields(self::$optionTypes[$optionType]['translatable']);
 
     // find and replace relevant keys, then return an array of all options for this Sub-Page
-    return array_reduce(array_keys($options), function ($carry, $key) use ($options, $prefix) {
+    $optionKeys = is_array($options) ? array_keys($options) : [];
+    return array_reduce($optionKeys, function ($carry, $key) use ($options, $prefix) {
       $count = 0;
       $option = $options[$key];
       $key = str_replace($prefix, '', $key, $count);
