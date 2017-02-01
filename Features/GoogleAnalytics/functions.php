@@ -14,7 +14,8 @@ add_action('Flynt/afterRegisterFeatures', 'Flynt\Features\GoogleAnalytics\init')
 function init() {
   $id = OptionPages::getOption('options', 'feature', 'GoogleAnalytics', 'gaId');
   $anonymizeIp = OptionPages::getOption('options', 'feature', 'GoogleAnalytics', 'anonymizeIp');
+  $usersNotToBeTracked = OptionPages::getOption('options', 'feature', 'GoogleAnalytics', 'usersNotToBeTracked');
   if ($id) {
-    new GoogleAnalytics($id, $anonymizeIp);
+    new GoogleAnalytics($id, $anonymizeIp, $usersNotToBeTracked);
   }
 }

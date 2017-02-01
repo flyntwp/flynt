@@ -17,6 +17,22 @@
       "ui_on_text": "",
       "ui_off_text": "",
       "message": ""
+    },
+    {
+      "name": "usersNotToBeTracked",
+      "label": "Users not to be tracked",
+      "type": "checkbox",
+      "choices": {
+        "administrator" :"Administrator",
+        "editor": "Editor",
+        "author": "Author",
+        "contributor": "Contributor",
+        "subscriber": "Subscriber"
+      },
+      "toggle": "All",
+      "allow_custom": 0,
+      "save_custom": 0,
+      "layout": "vertical"
     }
   ]
 }
