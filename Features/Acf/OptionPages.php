@@ -152,7 +152,8 @@ class OptionPages {
 
   }
 
-  // usage: OptionPages::getOptions('flyntOptions', 'customPostType', 'project');
+  // usage: OptionPages::getOptions('options', 'customPostType', 'project');
+  // usage: OptionPages::getOptions('options', 'feature', 'GoogleAnalytics');
   // all params expected to be camelCase
   public static function getOptions($optionType, $optionCategory, $subPageName) {
     if (!isset(self::$optionTypes[$optionType])) return [];
@@ -173,7 +174,8 @@ class OptionPages {
     }, []);
   }
 
-  // usage: OptionPages::getOption('flyntOptions', 'customPostType', 'project', 'myFieldName');
+  // usage: OptionPages::getOption('options', 'customPostType', 'project', 'myFieldName');
+  // usage: OptionPages::getOption('options', 'feature', 'GoogleAnalytics', 'gaId');
   // all params expected to be camelCase
   public static function getOption($optionType, $optionCategory, $subPageName, $fieldName) {
     $options = self::getOptions($optionType, $optionCategory, $subPageName);
