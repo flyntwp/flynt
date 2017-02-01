@@ -6,17 +6,17 @@ namespace Flynt\Features\GoogleAnalytics;
 
 class GoogleAnalytics {
 
-  public function __construct($id, $anonymizeIp, $usersNotToBeTracked) {
+  public function __construct($id, $anonymizeIp, $nonTrackedUsers) {
     $this->googleAnalyticsId = $id;
     $this->anonymizeIp = $anonymizeIp;
-    $this->usersNotToBeTracked = $usersNotToBeTracked;
+    $this->nonTrackedUsers = $nonTrackedUsers;
 
     if ($this->isValidId($this->googleAnalyticsId)) {
       // cases:
       // - if you are on production and not listed as non tracked (on the options), add the action
       // - if you are not on production, add the action
       $user = wp_get_current_user();
-      if (WP_ENV !== 'production' || (!$this->usersNotToBeTracked || !array_intersect($this->usersNotToBeTracked, $user->roles))) {
+      if (WP_ENV !== 'production' || (!$this->nonTrackedUsers || !array_intersect($this->nonTrackedUsers, $user->roles))) {
         add_action('wp_footer', [$this, 'addScript'], 20, 1);
       }
     } else if ($this->googleAnalyticsId != 1 && !isset($_POST['acf'])) {

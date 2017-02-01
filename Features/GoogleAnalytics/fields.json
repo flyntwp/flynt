@@ -19,8 +19,8 @@
       "message": ""
     },
     {
-      "name": "usersNotToBeTracked",
-      "label": "Users not to be tracked",
+      "name": "nonTrackedUsers",
+      "label": "Non Tracked Users",
       "type": "checkbox",
       "choices": {
         "administrator" :"Administrator",
