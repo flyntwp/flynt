@@ -18,13 +18,7 @@ class GoogleAnalytics {
     }
 
     if ($this->isValidId($this->googleAnalyticsId)) {
-      // cases:
-      // - If you are not listed as non tracked (on the options), add the action
-      // - If  your ip is not listed as non tracked, add the action
-      $user = wp_get_current_user();
-      if ((is_array($this->skippedUsers) && !array_intersect($this->skippedUsers, $user->roles)) || (is_array($this->skippedIps) && !in_array($_SERVER['REMOTE_ADDR'], $this->skippedIps))) {
-        add_action('wp_footer', [$this, 'addScript'], 20, 1);
-      }
+      add_action('wp_footer', [$this, 'addScript'], 20, 1);
     } else if ($this->googleAnalyticsId != 1 && !isset($_POST['acf'])) {
       trigger_error('Invalid Google Analytics Id: ' . $this->googleAnalyticsId, E_USER_WARNING);
     }
@@ -32,15 +26,20 @@ class GoogleAnalytics {
 
   public function addScript() { // @codingStandardsIgnoreLine ?>
     <script>
-      <?php if (WP_ENV === 'production') : ?>
+      <?php
+      $user = wp_get_current_user();
+      $debugMode = $this->googleAnalyticsId === 'debug';
+      $isSkippedUser = $this->skippedUsers && array_intersect($this->skippedUsers, $user->roles);
+      $isSkippedIp = is_array($this->skippedIps) && in_array($_SERVER['REMOTE_ADDR'], $this->skippedIps);
+      if ($debugMode || $isSkippedUser || $isSkippedIp) : ?>
+        function ga() {
+          console.log('GoogleAnalytics: ' + [].slice.call(arguments));
+        }
+      <?php else : ?>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-      <?php else : ?>
-        function ga() {
-          console.log('GoogleAnalytics: ' + [].slice.call(arguments));
-        }
       <?php endif; ?>
       ga('create','<?php echo $this->googleAnalyticsId; ?>','auto');ga('send','pageview');
       <?php if($this->anonymizeIp == 1) : ?>
@@ -51,6 +50,10 @@ class GoogleAnalytics {
   }
 
   private function isValidId($gaId) {
-    return preg_match('/^ua-\d{4,10}-\d{1,4}$/i', strval($gaId));
+    if ($gaId === 'debug') {
+      return true;
+    } else {
+      return preg_match('/^ua-\d{4,10}-\d{1,4}$/i', strval($gaId));
+    }
   }
 }
