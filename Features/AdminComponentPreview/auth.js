@@ -1,7 +1,7 @@
 /* globals wpData */
 let $body = $('body')
 let $container = null
-let $activeImage = []
+let $activeImage = {}
 
 $body
 .on('click', '#wp-admin-bar-toggleComponentPreviews', function (e) {
