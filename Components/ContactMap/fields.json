@@ -1,0 +1,13 @@
+{
+  "layout": {
+    "name": "contactMap",
+    "label": "Contact Map",
+    "sub_fields": [
+      {
+        "label": "Google Map",
+        "name": "googleMap",
+        "type": "google_map"
+      }
+    ]
+  }
+}

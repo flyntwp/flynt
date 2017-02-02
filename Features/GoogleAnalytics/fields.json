@@ -19,8 +19,8 @@
       "message": ""
     },
     {
-      "name": "nonTrackedUsers",
-      "label": "Non Tracked Users",
+      "name": "skippedUsers",
+      "label": "Skipped Users",
       "type": "checkbox",
       "choices": {
         "administrator" :"Administrator",
@@ -35,8 +35,8 @@
       "layout": "vertical"
     },
     {
-      "name": "nonTrackedIps",
-      "label": "Non Tracked Ips",
+      "name": "skippedIps",
+      "label": "Skipped Ips",
       "type": "textarea",
       "maxlength": 500,
       "placeholder" : "Separate IP Adresses with commas"
