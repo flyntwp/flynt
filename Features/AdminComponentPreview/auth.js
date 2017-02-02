@@ -1,6 +1,6 @@
 /* globals wpData */
 let $body = $('body')
-let $mpc = null
+let $container = null
 let $activeImage = []
 
 $body
@@ -16,10 +16,10 @@ $body
 })
 
 function showImages () {
-  if (($mpc = $('#component-preview-container')).length) {
-    $mpc.show()
+  if (($container = $('#component-preview-container')).length) {
+    $container.show()
   } else {
-    $mpc = $('<div id="component-preview-container"></div>').appendTo('body')
+    $container = $('<div id="component-preview-container"></div>').appendTo('body')
     getComponentImages()
     initComponentPreviewsDragEvents()
   }
@@ -27,7 +27,7 @@ function showImages () {
 }
 
 function hideImages () {
-  $mpc.hide()
+  $container.hide()
   return $(window).off('keydown.moveComponentPreviewImage')
 }
 
@@ -57,7 +57,7 @@ function addComponentPreviews ($component, images) {
 function appendImage (image, offset, $component) {
   const $image = $(image)
   return $image
-  .appendTo($mpc)
+  .appendTo($container)
   .css({
     opacity: 0.7,
     position: 'absolute',
