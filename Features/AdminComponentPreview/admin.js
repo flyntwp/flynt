@@ -23,12 +23,11 @@ function showAddComponentPreview (layout, $wrapper) {
   }
   const $wrapperContainer = $("<div class='add-component-preview-image-wrapper'>").appendTo($wrapper)
 
-  getImage(image.desktop)
-  ajaxCache[image.desktop].done(function () {
+  getImage(image.desktop).done(function () {
     $wrapperContainer.prepend(`<img class='add-component-preview-image add-component-preview-image-desktop' src='${image.desktop}'>`)
   })
-  getImage(image.mobile)
-  ajaxCache[image.mobile].done(function () {
+
+  getImage(image.mobile).done(function () {
     $wrapperContainer.append(`<img class='add-component-preview-image add-component-preview-image-mobile' src='${image.mobile}'>`)
   })
 }
@@ -39,6 +38,7 @@ function getImage (image) {
       url: image
     })
   }
+  return ajaxCache[image]
 }
 
 function hideAddComponentPreview ($wrapper) {
