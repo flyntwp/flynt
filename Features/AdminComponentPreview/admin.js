@@ -6,13 +6,13 @@ const ajaxCache = {}
 $body.on('mouseenter', 'a[data-layout]', function (e) {
   const $target = $(e.currentTarget)
   const layout = $target.data('layout')
-  return showAddComponentPreview(layout, $target.closest('.acf-fc-popup'))
+  showAddComponentPreview(layout, $target.closest('.acf-fc-popup'))
 })
 
 // hide preview images
 $body.on('mouseleave', 'a[data-layout]', function (e) {
   const $target = $(e.currentTarget)
-  return hideAddComponentPreview($target.closest('.acf-fc-popup'))
+  hideAddComponentPreview($target.closest('.acf-fc-popup'))
 })
 
 function showAddComponentPreview (layout, $wrapper) {
