@@ -33,6 +33,13 @@
       "allow_custom": 0,
       "save_custom": 0,
       "layout": "vertical"
+    },
+    {
+      "name": "nonTrackedIps",
+      "label": "Non Tracked Ips",
+      "type": "textarea",
+      "maxlength": 500,
+      "placeholder" : "Separate IP Adresses with commas"
     }
   ]
 }
