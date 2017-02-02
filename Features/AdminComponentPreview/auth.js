@@ -9,9 +9,9 @@ $body
   const $target = $(e.currentTarget)
   $target.toggleClass('active')
   if ($target.hasClass('active')) {
-    return showImages()
+    showImages()
   } else {
-    return hideImages()
+    hideImages()
   }
 })
 
@@ -23,12 +23,12 @@ function showImages () {
     getComponentImages()
     initComponentPreviewsDragEvents()
   }
-  return $(window).on('keydown.moveComponentPreviewImage', moveComponentPreviewImage)
+  $(window).on('keydown.moveComponentPreviewImage', moveComponentPreviewImage)
 }
 
 function hideImages () {
   $container.hide()
-  return $(window).off('keydown.moveComponentPreviewImage')
+  $(window).off('keydown.moveComponentPreviewImage')
 }
 
 function getComponentImages (output = {}) {
@@ -43,7 +43,6 @@ function getComponentImages (output = {}) {
     if (output[componentName] == null) { output[componentName] = images }
     addComponentPreviews($(this), images)
   })
-  return output
 }
 
 function addComponentPreviews ($component, images) {
@@ -56,7 +55,7 @@ function addComponentPreviews ($component, images) {
 
 function appendImage (image, offset, $component) {
   const $image = $(image)
-  return $image
+  $image
   .appendTo($container)
   .css({
     opacity: 0.7,
@@ -73,7 +72,7 @@ function appendImage (image, offset, $component) {
 
 function initComponentPreviewsDragEvents () {
   const $images = $('.component-preview-image')
-  return $images.each(function () {
+  $images.each(function () {
     const $draggable = $(this).draggabilly()
     $draggable.on('dragStart', function () {
       let maxZIndex = 0
@@ -82,7 +81,7 @@ function initComponentPreviewsDragEvents () {
         if (zIndex > maxZIndex) { maxZIndex = zIndex }
       })
       $activeImage = $(this)
-      return $activeImage.css('zIndex', maxZIndex + 1)
+      $activeImage.css('zIndex', maxZIndex + 1)
     })
   })
 }
@@ -93,21 +92,25 @@ function moveComponentPreviewImage (e) {
   const imageTop = parseInt($activeImage.css('top'), 10)
   switch (e.which) {
     case 38: // up
-      return $activeImage.css('top', imageTop - 1)
+      $activeImage.css('top', imageTop - 1)
+      break
     case 39: // right
-      return $activeImage.css('left', imageLeft + 1)
+      $activeImage.css('left', imageLeft + 1)
+      break
     case 40: // down
-      return $activeImage.css('top', imageTop + 1)
+      $activeImage.css('top', imageTop + 1)
+      break
     case 37: // left
-      return $activeImage.css('left', imageLeft - 1)
+      $activeImage.css('left', imageLeft - 1)
+      break
   }
 }
 
 function repositionComponentPreviewImages () {
   const $images = $('.component-preview-image')
-  return $images.each(function () {
+  $images.each(function () {
     const $component = $(this).data('component')
-    return $(this).css('top', $component.offset().top)
+    $(this).css('top', $component.offset().top)
   })
 }
 
