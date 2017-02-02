@@ -75,6 +75,9 @@ function initTheme() {
   add_theme_support('flynt-remove-editor');
   add_theme_support('flynt-tiny-mce');
 
+  // add admin acf flexible content toggle
+  add_theme_support('flynt-admin-acf-flexible-content-toggle');
+
   // google analytics
   add_theme_support('flynt-google-analytics');
 
