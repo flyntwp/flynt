@@ -19,10 +19,10 @@ class GoogleAnalytics {
 
     if ($this->isValidId($this->googleAnalyticsId)) {
       // cases:
-      // - if you are on production and not listed as non tracked (on the options), add the action
-      // - if you are not on production, and your ip is not listed as non tracked, add the action
+      // - If you are not listed as non tracked (on the options), add the action
+      // - If  your ip is not listed as non tracked, add the action
       $user = wp_get_current_user();
-      if (WP_ENV !== 'production' || ((!$this->skippedUsers || !array_intersect($this->skippedUsers, $user->roles)) && !in_array($_SERVER['REMOTE_ADDR'], $this->skippedIps))) {
+      if ((!$this->skippedUsers || !array_intersect($this->skippedUsers, $user->roles)) || (is_array($this->skippedIps) && !in_array($_SERVER['REMOTE_ADDR'], $this->skippedIps))) {
         add_action('wp_footer', [$this, 'addScript'], 20, 1);
       }
     } else if ($this->googleAnalyticsId != 1 && !isset($_POST['acf'])) {
