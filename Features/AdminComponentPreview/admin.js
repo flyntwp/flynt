@@ -23,17 +23,17 @@ function showAddComponentPreview (layout, $wrapper) {
   }
   const $wrapperContainer = $("<div class='add-component-preview-image-wrapper'>").appendTo($wrapper)
 
-  cacheImage(image.desktop)
+  getImage(image.desktop)
   ajaxCache[image.desktop].done(function () {
     $wrapperContainer.prepend(`<img class='add-component-preview-image add-component-preview-image-desktop' src='${image.desktop}'>`)
   })
-  cacheImage(image.mobile)
+  getImage(image.mobile)
   ajaxCache[image.mobile].done(function () {
     $wrapperContainer.append(`<img class='add-component-preview-image add-component-preview-image-mobile' src='${image.mobile}'>`)
   })
 }
 
-function cacheImage (image) {
+function getImage (image) {
   if (!ajaxCache[image]) {
     ajaxCache[image] = $.ajax({
       url: image
