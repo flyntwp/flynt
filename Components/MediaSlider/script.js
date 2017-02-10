@@ -1,8 +1,8 @@
 // name=[location in our vendor folder] ! [location in package folder]
-import 'file-loader?name=vendor/normalize.css!normalize.css/normalize.css'
+import 'file-loader?name=vendor/normalize.css!minifycss-loader?minify!normalize.css/normalize.css'
 // Webpack looks for dist file in package "main".
-import 'file-loader?name=vendor/slick.js!slick-carousel'
-import 'file-loader?name=vendor/slick.css!slick-carousel/slick/slick.css'
+import 'file-loader?name=vendor/slick.js!slick-carousel/slick/slick.min'
+import 'file-loader?name=vendor/slick.css!minifycss-loader?minify!slick-carousel/slick/slick.css'
 
 function importSlickFonts (fontName) { // eslint-disable-line no-unused-vars
   require(`file-loader?name=vendor/slick/[name].[ext]!slick-carousel/slick/fonts/${fontName}`)
