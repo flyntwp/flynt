@@ -1,9 +1,9 @@
 const path = require('path')
 const fs = require('fs')
-const browserSync = require('browser-sync')
 const gulp = require('gulp')
 const watch = require('gulp-watch')
 const runSequence = require('run-sequence')
+const webpackTask = require('./webpack')
 
 const extensionMappings = {
   '.styl': '.css'
@@ -36,14 +36,26 @@ function watchAndDelete (src, callback, dest) {
   })
 }
 
+function watchWebpack (src) {
+  watch(src, function () { console.log('watch', arguments) })
+  .on('data', function (file) {
+    if (webpackTask.watching) {
+      if (file.event === 'add' || file.event === 'unlink') {
+        webpackTask.watching.invalidate()
+      }
+    }
+  })
+}
+
 module.exports = function (config) {
   gulp.task('watch:files', function () {
     watchAndDelete(config.copy, function () { gulp.start('copy') }, config.dest)
     watchAndDelete(config.watch.stylus, function () { gulp.start('stylus') }, config.dest)
-    watch(config.watch.php, function () { }).on('change', browserSync.reload)
+    watch(config.watch.php, function () { })
     watch(config.lint.stylus, function () { gulp.start('lint:stylus') })
     watch(config.lint.js, function () { gulp.start('lint:js') })
     watch(config.lint.php, function () { gulp.start('lint:php') })
+    watchWebpack(config.webpack.entry)
   })
   gulp.task('watch', function (cb) {
     runSequence(

@@ -6,6 +6,7 @@ const gutil = require('gulp-util')
 const webpack = require('webpack')
 
 let previousAssets = []
+let previousHash
 
 function removeUnusedAssets (stats) {
   const basePath = path.join(
@@ -31,17 +32,20 @@ const webpackTask = function (callback) {
     if (err) {
       throw new gutil.PluginError('webpack:build', err)
     }
-    removeUnusedAssets(stats)
-    browserSync.reload()
-    gutil.log('[webpack:build] Completed\n' + stats.toString({
-      assets: true,
-      chunks: false,
-      chunkModules: false,
-      colors: true,
-      hash: false,
-      timings: false,
-      version: false
-    }))
+    if (previousHash !== stats.hash) {
+      previousHash = stats.hash
+      removeUnusedAssets(stats)
+      browserSync.reload()
+      gutil.log('[webpack:build] Completed\n' + stats.toString({
+        assets: true,
+        chunks: false,
+        chunkModules: false,
+        colors: true,
+        hash: false,
+        timings: false,
+        version: false
+      }))
+    }
     if (!initialCompile) {
       initialCompile = true
       callback()
@@ -56,6 +60,6 @@ module.exports = function (webpackConfig, config) {
   })
 
   gulp.task('webpack:watch', function (callback) {
-    webpack(webpackConfig(config.webpack)).watch(null, webpackTask(callback))
+    module.exports.watching = webpack(webpackConfig(config.webpack)).watch(null, webpackTask(callback))
   })
 }
