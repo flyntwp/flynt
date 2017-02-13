@@ -1,0 +1,18 @@
+{
+  "options": [
+    {
+      "name": "googleMapTab",
+      "label": "Google Map",
+      "type": "tab"
+    },
+    {
+      "name": "googleMapApiKey",
+      "label": "Google Map Api Key",
+      "type": "text",
+      "maxlength": 100,
+      "prepend": "",
+      "append": "",
+      "placeholder": ""
+    }
+  ]
+}
