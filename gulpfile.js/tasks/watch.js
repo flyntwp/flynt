@@ -10,7 +10,9 @@ const extensionMappings = {
 }
 
 function watchAndDelete (src, callback, dest) {
-  return watch(src, callback)
+  return watch(src, {
+    events: ['add', 'change', 'unlink', 'unlinkDir']
+  }, callback)
   .on('data', function (file) {
     if (file.event === 'unlink') {
       const filePath = path.join(dest, file.relative)
@@ -23,6 +25,12 @@ function watchAndDelete (src, callback, dest) {
         if (fs.existsSync(mappedFilePath)) {
           fs.unlinkSync(mappedFilePath)
         }
+      }
+    }
+    if (file.event === 'unlinkDir') {
+      const dirPath = path.join(dest, file.relative)
+      if (fs.existsSync(dirPath)) {
+        fs.rmdirSync(dirPath)
       }
     }
   })
