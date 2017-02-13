@@ -1,12 +1,37 @@
+const path = require('path')
+const fs = require('fs')
 const browserSync = require('browser-sync')
 const gulp = require('gulp')
 const watch = require('gulp-watch')
 const runSequence = require('run-sequence')
 
+const extensionMappings = {
+  '.styl': '.css'
+}
+
+function watchAndDelete (src, callback, dest) {
+  return watch(src, callback)
+  .on('data', function (file) {
+    if (file.event === 'unlink') {
+      const filePath = path.join(dest, file.relative)
+      if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath)
+      }
+      if (extensionMappings[file.extname]) {
+        const relativeDest = path.dirname(filePath)
+        const mappedFilePath = path.join(relativeDest, file.stem + extensionMappings[file.extname])
+        if (fs.existsSync(mappedFilePath)) {
+          fs.unlinkSync(mappedFilePath)
+        }
+      }
+    }
+  })
+}
+
 module.exports = function (config) {
   gulp.task('watch:files', function () {
-    watch(config.copy, function () { gulp.start('copy') })
-    watch(config.watch.stylus, function () { gulp.start('stylus') })
+    watchAndDelete(config.copy, function () { gulp.start('copy') }, config.dest)
+    watchAndDelete(config.watch.stylus, function () { gulp.start('stylus') }, config.dest)
     watch(config.watch.php, function () { }).on('change', browserSync.reload)
     watch(config.lint.stylus, function () { gulp.start('lint:stylus') })
     watch(config.lint.js, function () { gulp.start('lint:js') })
