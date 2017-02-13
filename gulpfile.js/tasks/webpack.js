@@ -1,7 +1,29 @@
+const path = require('path')
+const fs = require('fs')
 const browserSync = require('browser-sync')
 const gulp = require('gulp')
 const gutil = require('gulp-util')
 const webpack = require('webpack')
+
+let previousAssets = []
+
+function removeUnusedAssets (stats) {
+  const basePath = path.join(
+    stats.compilation.options.context,
+    stats.compilation.outputOptions.path
+  )
+  const currentAssets = Object.keys(stats.compilation.assets)
+  const unusedAssets = previousAssets.filter(function (asset) {
+    return currentAssets.indexOf(asset) === -1
+  })
+  unusedAssets.forEach(function (asset) {
+    const assetPath = path.join(basePath, asset)
+    if (fs.existsSync(assetPath)) {
+      fs.unlinkSync(assetPath)
+    }
+  })
+  previousAssets = currentAssets
+}
 
 const webpackTask = function (callback) {
   var initialCompile = false
@@ -9,6 +31,7 @@ const webpackTask = function (callback) {
     if (err) {
       throw new gutil.PluginError('webpack:build', err)
     }
+    removeUnusedAssets(stats)
     browserSync.reload()
     gutil.log('[webpack:build] Completed\n' + stats.toString({
       assets: true,
