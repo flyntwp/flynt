@@ -1,5 +1,5 @@
 const $ = jQuery
-let $body = $('body')
+const $body = $('body')
 
 // collapse components
 $body
