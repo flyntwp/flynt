@@ -57,7 +57,7 @@ function initTheme() {
     ]
   ]);
 
-  // enable gaId notices
+  // enable admin notices
   add_theme_support('flynt-admin-notices');
 
   // set correct config dir (+ more?)
