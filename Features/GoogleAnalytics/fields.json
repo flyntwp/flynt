@@ -40,7 +40,7 @@
       "label": "Skipped IPs",
       "type": "textarea",
       "maxlength": 500,
-      "placeholder" : "Separate IP adresses with commas"
+      "placeholder" : "Separate IP addresses with commas"
     }
   ]
 }
