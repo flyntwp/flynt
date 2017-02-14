@@ -1,8 +1,8 @@
 {
   "options": [
     {
-      "name": "googleMapTab",
-      "label": "Google Map",
+      "name": "googleMapsTab",
+      "label": "Google Maps",
       "type": "tab"
     },
     {
