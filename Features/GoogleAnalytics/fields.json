@@ -20,8 +20,8 @@
       "message": ""
     },
     {
-      "name": "skippedUsers",
-      "label": "Skipped Users",
+      "name": "skippedUserRoles",
+      "label": "Skipped User Roles",
       "type": "checkbox",
       "choices": {
         "administrator" :"Administrator",

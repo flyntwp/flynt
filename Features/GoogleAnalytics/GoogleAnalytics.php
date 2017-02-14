@@ -6,10 +6,10 @@ namespace Flynt\Features\GoogleAnalytics;
 
 class GoogleAnalytics {
 
-  public function __construct($id, $anonymizeIp, $skippedUsers, $skippedIps) {
+  public function __construct($id, $anonymizeIp, $skippedUserRoles, $skippedIps) {
     $this->googleAnalyticsId = $id;
     $this->anonymizeIp = $anonymizeIp;
-    $this->skippedUsers = $skippedUsers;
+    $this->skippedUserRoles = $skippedUserRoles;
     $this->skippedIps = $skippedIps;
 
     if ($this->skippedIps) {
@@ -29,7 +29,7 @@ class GoogleAnalytics {
       <?php
       $user = wp_get_current_user();
       $debugMode = $this->googleAnalyticsId === 'debug';
-      $isSkippedUser = $this->skippedUsers && array_intersect($this->skippedUsers, $user->roles);
+      $isSkippedUser = $this->skippedUserRoles && array_intersect($this->skippedUserRoles, $user->roles);
       $isSkippedIp = is_array($this->skippedIps) && in_array($_SERVER['REMOTE_ADDR'], $this->skippedIps);
       if ($debugMode || $isSkippedUser || $isSkippedIp) : ?>
         function ga() {
