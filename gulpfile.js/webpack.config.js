@@ -77,19 +77,19 @@ module.exports = function (config) {
     const entries = [].concat(config.entry)
     return entries.reduce(function (carry, entry) {
       glob.sync(entry).forEach(function (filePath) {
-        const chunkName = path.join(
-          path.dirname(
-            path.normalize(filePath)
-          ),
-          path.basename(
-            filePath,
-            path.extname(filePath)
-          )
-        )
+        const chunkName = path.normalize(removeExtension(filePath))
         carry[chunkName] = filePath
       })
       return carry
     }, {})
   }
+  console.log(output.entry())
   return output
+}
+
+function removeExtension (filePath) {
+  return path.join(
+    path.dirname(filePath),
+    path.basename(filePath, path.extname(filePath))
+  )
 }
