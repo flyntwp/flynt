@@ -83,7 +83,6 @@ module.exports = function (config) {
       return carry
     }, {})
   }
-  console.log(output.entry())
   return output
 }
 
