@@ -7,7 +7,7 @@ namespace Flynt\Features\GoogleAnalytics;
 class GoogleAnalytics {
 
   public function __construct($gaId, $anonymizeIp, $skippedUserRoles, $skippedIps) {
-    $this->googleAnalyticsId = $gaId;
+    $this->gaId = $gaId;
     $this->anonymizeIp = $anonymizeIp;
     $this->skippedUserRoles = $skippedUserRoles;
     $this->skippedIps = $skippedIps;
@@ -17,10 +17,10 @@ class GoogleAnalytics {
       $this->skippedIps = array_map('trim', $skippedIps);
     }
 
-    if ($this->isValidId($this->googleAnalyticsId)) {
+    if ($this->isValidId($this->gaId)) {
       add_action('wp_footer', [$this, 'addScript'], 20, 1);
-    } else if ($this->googleAnalyticsId != 1 && !isset($_POST['acf'])) {
-      trigger_error('Invalid Google Analytics Id: ' . $this->googleAnalyticsId, E_USER_WARNING);
+    } else if ($this->gaId != 1 && !isset($_POST['acf'])) {
+      trigger_error('Invalid Google Analytics Id: ' . $this->gaId, E_USER_WARNING);
     }
   }
 
@@ -28,7 +28,7 @@ class GoogleAnalytics {
     <script>
       <?php
       $user = wp_get_current_user();
-      $debugMode = $this->googleAnalyticsId === 'debug';
+      $debugMode = $this->gaId === 'debug';
       $isSkippedUser = $this->skippedUserRoles && array_intersect($this->skippedUserRoles, $user->roles);
       $isSkippedIp = is_array($this->skippedIps) && in_array($_SERVER['REMOTE_ADDR'], $this->skippedIps);
       if ($debugMode || $isSkippedUser || $isSkippedIp) : ?>
@@ -41,7 +41,7 @@ class GoogleAnalytics {
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
       <?php endif; ?>
-      ga('create','<?php echo $this->googleAnalyticsId; ?>','auto');ga('send','pageview');
+      ga('create','<?php echo $this->gaId; ?>','auto');ga('send','pageview');
       <?php if($this->anonymizeIp == 1) : ?>
       ga('set', 'anonymizeIp', true);
       <?php endif; ?>
