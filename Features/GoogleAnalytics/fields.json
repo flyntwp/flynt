@@ -37,10 +37,10 @@
     },
     {
       "name": "skippedIps",
-      "label": "Skipped Ips",
+      "label": "Skipped IPs",
       "type": "textarea",
       "maxlength": 500,
-      "placeholder" : "Separate IP Adresses with commas"
+      "placeholder" : "Separate IP adresses with commas"
     }
   ]
 }

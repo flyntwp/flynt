@@ -12,11 +12,11 @@ add_action('Flynt/afterRegisterFeatures', 'Flynt\Features\GoogleAnalytics\init')
 
 // @codingStandardsIgnoreLine
 function init() {
-  $id = OptionPages::getOption('options', 'feature', 'GoogleAnalytics', 'gaId');
+  $gaId = OptionPages::getOption('options', 'feature', 'GoogleAnalytics', 'gaId');
   $anonymizeIp = OptionPages::getOption('options', 'feature', 'GoogleAnalytics', 'anonymizeIp');
   $skippedUserRoles = OptionPages::getOption('options', 'feature', 'GoogleAnalytics', 'skippedUserRoles');
   $skippedIps = OptionPages::getOption('options', 'feature', 'GoogleAnalytics', 'skippedIps');
-  if ($id) {
-    new GoogleAnalytics($id, $anonymizeIp, $skippedUserRoles, $skippedIps);
+  if ($gaId) {
+    new GoogleAnalytics($gaId, $anonymizeIp, $skippedUserRoles, $skippedIps);
   }
 }

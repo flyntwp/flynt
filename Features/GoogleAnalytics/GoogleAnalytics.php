@@ -6,8 +6,8 @@ namespace Flynt\Features\GoogleAnalytics;
 
 class GoogleAnalytics {
 
-  public function __construct($id, $anonymizeIp, $skippedUserRoles, $skippedIps) {
-    $this->googleAnalyticsId = $id;
+  public function __construct($gaId, $anonymizeIp, $skippedUserRoles, $skippedIps) {
+    $this->googleAnalyticsId = $gaId;
     $this->anonymizeIp = $anonymizeIp;
     $this->skippedUserRoles = $skippedUserRoles;
     $this->skippedIps = $skippedIps;
