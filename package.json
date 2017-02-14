@@ -41,6 +41,7 @@
     "hasbin": "^1.2.3",
     "jeet": "^7.0.0",
     "jquery": "^1.12.4",
+    "minifycss-loader": "^0.2.0",
     "normalize.css": "^5.0.0",
     "picturefill": "^3.0.2",
     "require-dir": "^0.3.1",
@@ -51,6 +52,7 @@
     "stylint": "^1.5.7",
     "stylint-stylish": "^1.4.0",
     "stylus": "^0.54.5",
+    "uglify-loader": "^1.4.0",
     "webpack": "^1.13.3"
   },
   "standard": {
