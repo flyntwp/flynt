@@ -79,6 +79,7 @@ function initTheme() {
   add_theme_support('flynt-google-analytics');
 
   // WP Stuff
+  add_theme_support('title-tag');
   add_theme_support('post-thumbnails');
   add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio'));
 }
