@@ -46,3 +46,14 @@ add_filter('acf/format_value/type=image', function ($value) {
   }
   return $value;
 }, 100);
+
+// Convert ACF Field of type post_object to a Timber\Post and add all ACF Fields of that Post
+add_filter('acf/format_value/type=post_object', function ($value) {
+  if (!empty($value)) {
+    if(is_object($value) && get_class($value) === 'WP_Post') {
+      $value = new Post($value);
+      $value->fields = get_fields($value->ID);
+    }
+  }
+  return $value;
+}, 100);
