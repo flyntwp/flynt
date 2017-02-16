@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js {{ body_class }}" lang="{{ site.language }}" dir="{{ dir }}" is="wps-main-layout">
+<html class="no-js {{ body_class }}" lang="{{ site.language }}" dir="{{ dir }}" is="flynt-main-layout">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,8 +9,7 @@
     <link rel="apple-touch-icon" href="{{ appleTouchIcon180x180Path|e('esc_url') }}">
     {{ wp_head }}
   </head>
-  <body>
-    {{ area('mainHeader') }}
+  <body role="document">
     {{ area('mainTemplate') }}
     {{ wp_footer }}
   </body>
