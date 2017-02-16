@@ -1,7 +1,7 @@
 <?php
 namespace Flynt\Components\Oembed;
 
-use Flynt\Helpers\Log;
+use Flynt\Utils\Log;
 use Flynt\Features\Components\Component;
 use Flynt\Utils\DomNode;
 
