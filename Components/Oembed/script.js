@@ -27,4 +27,4 @@ class Oembed extends window.HTMLDivElement {
   }
 }
 
-window.customElements.define('wps-oembed', Oembed, {extends: 'div'})
+window.customElements.define('flynt-oembed', Oembed, {extends: 'div'})
