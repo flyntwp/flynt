@@ -1,9 +1,9 @@
-rupture.scale = lookup('$global-layout-scale') || (0 400px 800px 1200px)
+$rupture.scale = lookup('$global-layout-scale') || (0 576px 768px 992px 1200px)
 
 .layout-component-preview
-  bottom: 5px
   background: #fff
   border: 1px solid #e1e1e1
+  bottom: 5px
   display: inline-block
   height: 36px
   margin-left: 5px
@@ -28,8 +28,8 @@ rupture.scale = lookup('$global-layout-scale') || (0 400px 800px 1200px)
   right: 105%
 
   .add-component-preview-image
-    border: 3px solid #333739
     border-radius: 3px
+    border: 3px solid #333739
     bottom: 0
     display: block
     position: absolute
@@ -91,8 +91,9 @@ html.admin-bar
     background: #000
 
   #wp-admin-bar-toggleComponentPreviews
-    &.active
-      background: red
+    &.hover > div,
+    &.active > div
+      background: #f00 !important
 
   @media (max-width: 600px)
     html.admin-bar
