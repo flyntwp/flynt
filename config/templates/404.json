@@ -1,26 +1,26 @@
 {
   "name": "MainLayout",
   "areas": {
-    "mainHeader": [
-      {
-        "name": "MainNavigation",
-        "customData": {
-          "menuSlug": "main_navigation"
-        }
-      }
-    ],
     "mainTemplate": [
       {
         "name": "MainTemplate",
         "areas": {
+          "mainHeader": [
+            {
+              "name": "MainNavigation",
+              "customData": {
+                "menuSlug": "main_navigation"
+              }
+            }
+          ],
           "pageComponents": [
             {
-              "name": "NotFound"
+              "name": "NotFoundBlock"
             }
-          ]
+          ],
+          "mainFooter": []
         }
       }
-    ],
-    "mainFooter": []
+    ]
   }
 }
