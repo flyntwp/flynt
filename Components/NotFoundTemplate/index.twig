@@ -1,0 +1,18 @@
+<div is="flynt-not-found-template">
+  <section class="pageWrapper">
+    <header class="mainHeader">
+      {{ area('mainHeader') }}
+    </header>
+    <main class="mainContent" role="main">
+      {{ contentHTML }}
+      {% if backLinkLabel %}
+        <p>
+          <a href="{{ function('home_url') }}">{{ backLinkLabel }}</a>
+        </p>
+      {% endif %}
+    </main>
+    <footer class="mainFooter">
+      {{ area('mainFooter') }}
+    </footer>
+  </section>
+</div>
