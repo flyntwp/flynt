@@ -1,5 +1,10 @@
 <div is="flynt-not-found-block">
   <div class="notFoundBlock">
     {{ contentHTML }}
+    {% if backLinkLabel %}
+      <p>
+        <a class="notFoundBlock-backToHomeLink" href="{{ function('home_url') }}">{{ backLinkLabel }}</a>
+      </p>
+    {% endif %}
   </div>
 </div>
