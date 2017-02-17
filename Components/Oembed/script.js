@@ -1,3 +1,5 @@
+// TODO: hide poster after video is succesfully loaded
+
 class Oembed extends window.HTMLDivElement {
   constructor (self) {
     self = super(self)
@@ -20,8 +22,8 @@ class Oembed extends window.HTMLDivElement {
 
   startVideo = () => {
     this.$iframe.attr('src', this.$iframe.data('src'))
-    this.$posterImage.addClass('oembed-posterImage-isHidden')
     this.$video.addClass('oembed-video-isVisible')
+    this.$posterImage.addClass('oembed-posterImage-isHidden')
   }
 }
 

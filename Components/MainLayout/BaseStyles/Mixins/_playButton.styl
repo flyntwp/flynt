@@ -1,0 +1,37 @@
+playButton(pseudoElementDefaults, colorPlayButton, backgroundOpacity, borderWidth, colorBorder, playButtonCircleDiameter, colorTriangle, playButtonTriangleSize)
+  &::before
+    {pseudoElementDefaults}
+    background-color: rgba(colorPlayButton, backgroundOpacity)
+    border: borderWidth solid colorBorder
+    border-radius: (playButtonCircleDiameter.desktop / 2)
+    height: playButtonCircleDiameter.desktop
+    margin-top: -(playButtonCircleDiameter.desktop / 2)
+    margin-left: -(playButtonCircleDiameter.desktop / 2)
+    width: playButtonCircleDiameter.desktop
+
+    +below('s')
+      height: playButtonCircleDiameter.mobile
+      margin-top: -(playButtonCircleDiameter.mobile / 2)
+      margin-left: -(playButtonCircleDiameter.mobile / 2)
+      width: playButtonCircleDiameter.mobile
+
+  &::after
+    {pseudoElementDefaults}
+    border-bottom: (playButtonTriangleSize.desktop / 2) solid transparent
+    border-left: playButtonTriangleSize.desktop solid colorTriangle
+    border-top: (playButtonTriangleSize.desktop / 2) solid transparent
+    height: 0
+    margin-top: -(playButtonTriangleSize.desktop / 2)
+    margin-left:-(playButtonTriangleSize.desktop / 2 * .9)
+    width: 0
+
+    +below('s')
+      border-bottom: (playButtonTriangleSize.mobile / 2) solid transparent
+      border-left: playButtonTriangleSize.mobile solid colorTriangle
+      border-top: (playButtonTriangleSize.mobile / 2) solid transparent
+      margin-top: -(playButtonTriangleSize.mobile / 2)
+      margin-left: -(playButtonTriangleSize.mobile / 2 * .9)
+
+  &:hover::before,
+  &:hover::after
+    transform: scale(1.1)
