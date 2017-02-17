@@ -11,10 +11,8 @@ class MainLayoutElement extends window.HTMLHtmlElement {
   // and eventually return
   constructor (self) {
     self = super(self)
-    // self.addEventListener('click', console.log)
-    // important in case you create instances procedurally:
-    // var me = new MyElement()
     self.$ = $(self)
+    self.resolveElements()
     return self
   }
 
@@ -22,8 +20,11 @@ class MainLayoutElement extends window.HTMLHtmlElement {
     return $(selector, this)
   }
 
+  resolveElements () {
+  }
+
   connectedCallback () {
   }
 
 }
-window.customElements.define('wps-main-layout', MainLayoutElement, {extends: 'html'})
+window.customElements.define('flynt-main-layout', MainLayoutElement, {extends: 'html'})
