@@ -3,7 +3,7 @@
   "areas": {
     "mainTemplate": [
       {
-        "name": "MainTemplate",
+        "name": "NotFoundTemplate",
         "areas": {
           "mainHeader": [
             {
@@ -11,11 +11,6 @@
               "customData": {
                 "menuSlug": "main_navigation"
               }
-            }
-          ],
-          "pageComponents": [
-            {
-              "name": "NotFoundBlock"
             }
           ],
           "mainFooter": []

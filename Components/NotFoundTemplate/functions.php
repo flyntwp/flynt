@@ -1,9 +1,9 @@
 <?php
 
-namespace Flynt\Components\NotFoundBlock;
+namespace Flynt\Components\NotFoundTemplate;
 
 use Flynt\Features\Components\Component;
 
 add_action('wp_enqueue_scripts', function () {
-  Component::enqueueAssets('NotFoundBlock');
+  Component::enqueueAssets('NotFoundTemplate');
 });
