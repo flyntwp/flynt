@@ -16,9 +16,8 @@
   ]
 }
 ```
-`mixins/functions.php`
 
-description on what you need to take care of
+`functions.php`
 
 ```php
 add_filter('Flynt/addComponentData?name=Oembed', function ($data) {
