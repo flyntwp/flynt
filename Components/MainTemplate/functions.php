@@ -3,6 +3,11 @@
 namespace Flynt\Components\MainTemplate;
 
 use Timber\Timber;
+use Flynt\Features\Components\Component;
+
+add_action('wp_enqueue_scripts', function () {
+  Component::enqueueAssets('MainTemplate');
+});
 
 add_filter('Flynt/addComponentData?name=MainTemplate', function ($data) {
   $query = !empty($data['query']) ? $data['query'] : false;

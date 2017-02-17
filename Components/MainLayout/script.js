@@ -1,8 +1,8 @@
-import 'file-loader?name=vendor/console.js!console-polyfill'
-import 'file-loader?name=vendor/babel-polyfill.js!babel-polyfill/dist/polyfill'
+import 'file-loader?name=vendor/console.js!uglify-loader!console-polyfill'
+import 'file-loader?name=vendor/babel-polyfill.js!babel-polyfill/dist/polyfill.min'
 import 'file-loader?name=vendor/document-register-element.js!document-register-element/build/document-register-element'
-import 'file-loader?name=vendor/picturefill.js!picturefill'
-import 'file-loader?name=vendor/normalize.css!normalize.css/normalize.css'
+import 'file-loader?name=vendor/picturefill.js!picturefill/dist/picturefill.min'
+import 'file-loader?name=vendor/normalize.css!csso-loader!normalize.css/normalize.css'
 
 class MainLayoutElement extends window.HTMLHtmlElement {
   // the self argument might be provided or not
@@ -11,10 +11,8 @@ class MainLayoutElement extends window.HTMLHtmlElement {
   // and eventually return
   constructor (self) {
     self = super(self)
-    // self.addEventListener('click', console.log)
-    // important in case you create instances procedurally:
-    // var me = new MyElement()
     self.$ = $(self)
+    self.resolveElements()
     return self
   }
 
@@ -22,8 +20,11 @@ class MainLayoutElement extends window.HTMLHtmlElement {
     return $(selector, this)
   }
 
+  resolveElements () {
+  }
+
   connectedCallback () {
   }
 
 }
-window.customElements.define('wps-main-layout', MainLayoutElement, {extends: 'html'})
+window.customElements.define('flynt-main-layout', MainLayoutElement, {extends: 'html'})

@@ -3,8 +3,9 @@
 namespace Flynt\Features\TimberLoader;
 
 use Flynt;
-use Timber\Timber;
+use Flynt\Utils\Log;
 use Timber\Image;
+use Timber\Timber;
 use Twig_SimpleFunction;
 
 // Render Component with Timber (Twig)
@@ -32,7 +33,16 @@ add_filter('Flynt/renderComponent', function ($output, $componentName, $componen
 
   add_filter('get_twig', $addArea);
 
+  $returnTimberPaths = function ($paths) use ($filePath) {
+    array_unshift($paths, dirname($filePath));
+    return $paths;
+  };
+
+  add_filter('timber/loader/paths', $returnTimberPaths);
+
   $output = Timber::fetch($filePath, $componentData);
+
+  remove_filter('timber/loader/paths', $returnTimberPaths);
 
   remove_filter('get_twig', $addArea);
 
@@ -43,6 +53,14 @@ add_filter('Flynt/renderComponent', function ($output, $componentName, $componen
 add_filter('acf/format_value/type=image', function ($value) {
   if (!empty($value)) {
     $value = new Image($value);
+  }
+  return $value;
+}, 100);
+
+// Convert ACF Field of type post_object to a Timber\Post and add all ACF Fields of that Post
+add_filter('acf/format_value/type=post_object', function ($value) {
+  if (!empty($value) && is_object($value) && get_class($value) === 'WP_Post') {
+    $value = new Post($value);
   }
   return $value;
 }, 100);
