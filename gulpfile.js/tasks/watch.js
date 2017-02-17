@@ -37,7 +37,7 @@ function watchAndDelete (src, callback, dest) {
 }
 
 function watchWebpack (src) {
-  watch(src, function () { console.log('watch', arguments) })
+  watch(src)
   .on('data', function (file) {
     if (webpackTask.watching) {
       if (file.event === 'add' || file.event === 'unlink') {

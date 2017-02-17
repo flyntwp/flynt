@@ -33,7 +33,16 @@ add_filter('Flynt/renderComponent', function ($output, $componentName, $componen
 
   add_filter('get_twig', $addArea);
 
+  $returnTimberPaths = function ($paths) use ($filePath) {
+    array_unshift($paths, dirname($filePath));
+    return $paths;
+  };
+
+  add_filter('timber/loader/paths', $returnTimberPaths);
+
   $output = Timber::fetch($filePath, $componentData);
+
+  remove_filter('timber/loader/paths', $returnTimberPaths);
 
   remove_filter('get_twig', $addArea);
 
