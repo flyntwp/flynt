@@ -85,7 +85,7 @@ You can also create new **styles**, globally by modifying the TinyMce Feature, b
 <?php
 
 add_filter('mce_buttons', function ($buttons) {
-  return array(
+  return [
     'formatselect',
     'styleselect',
     'bold',
@@ -105,7 +105,8 @@ add_filter('mce_buttons', function ($buttons) {
     '|',
     'undo',
     'redo',
-    'fullscreen',);
+    'fullscreen',
+  ];
 });
 ```
 
