@@ -2,7 +2,7 @@
 namespace Flynt\Components\MediaTextBlock;
 
 use Flynt\Features\Components\Component;
-use Flynt\Helpers\Log;
+use Flynt\Utils\Log;
 use Flynt\Utils\DomNode;
 
 add_action('wp_enqueue_scripts', function () {
