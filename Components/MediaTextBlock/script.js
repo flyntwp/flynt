@@ -7,7 +7,7 @@ class MediaTextBlock extends window.HTMLDivElement {
   }
 
   resolveElements () {
-    this.$posterImage = $('.mediaTextBlock-oembedPosterImage', this)
+    this.$imageWrapper = $('.mediaTextBlock-imageWrapper', this)
     this.$video = $('.mediaTextBlock-oembedVideo', this)
     this.$iframe = $('iframe', this)
   }
@@ -20,9 +20,9 @@ class MediaTextBlock extends window.HTMLDivElement {
 
   startVideo = () => {
     this.$iframe.attr('src', this.$iframe.data('src'))
-    this.$posterImage.addClass('mediaTextBlock-oembedPosterImage-isHidden')
-    this.$video.addClass('mediaTextBlock-oembedVideo-isActive')
+    this.$posterImage.addClass('mediaTextBlock-imageWrapper-isHidden')
+    this.$video.addClass('mediaTextBlock-oembedVideo-isVisible')
   }
 }
 
-window.customElements.define('wps-media-text-block', MediaTextBlock, {extends: 'div'})
+window.customElements.define('flynt-media-text-block', MediaTextBlock, {extends: 'div'})

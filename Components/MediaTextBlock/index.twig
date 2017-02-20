@@ -1,8 +1,8 @@
-<div is="wps-media-text-block">
+<div is="flynt-media-text-block">
   <div class="mediaTextBlock {{ mediaPosition }}">
     <div class="mediaTextBlock-columnMedia">
       {% if mediaType == 'mediaImage' %}
-        <div class="mediaTextBlock-image">
+        <div class="mediaTextBlock-imageWrapper">
           <img class="mediaTextBlock-imageElement" srcset="
             {{ image.src | resize(400, 200) }} 400w,
             {{ image.src | resize(800, 400) }} 800w,
@@ -13,7 +13,7 @@
         </div>
       {% else %}
         <div class="mediaTextBlock-oembedVideoContainer">
-          <div class="mediaTextBlock-oembedPosterImage">
+          <div class="mediaTextBlock-imageWrapper">
             <img class="mediaTextBlock-imageElement" srcset="
               {{ posterImage.src | resize(400, 225) }} 400w,
               {{ posterImage.src | resize(800, 450) }} 800w,
