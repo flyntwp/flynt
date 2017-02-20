@@ -6,7 +6,7 @@
       {{ image.src | resize(1200, 600) }} 1200w,
       {{ image.src | resize(1440, 720) }} 1440w"
       src="{{ image.src }}"
-      sizes="100vw"
+      sizes="(min-width: 1140px) 1140px, 100vw"
       alt="{{ image.alt }}">
   </div>
 </div>
