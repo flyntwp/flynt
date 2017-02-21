@@ -58,7 +58,7 @@ if (class_exists('acf')) {
       add_action('wp_enqueue_scripts', NS . 'enqueueComponentScripts');
       // adds Component Previews button to admin bar on front-end when logged in
       add_action('admin_bar_menu', function ($wpAdminBar) {
-        $title = 'Component Previews';
+        $title = __('Component Previews', 'flynt-theme');
         $wpAdminBar->add_menu([
           'id' => 'toggleComponentPreviews',
           'title' => $title
