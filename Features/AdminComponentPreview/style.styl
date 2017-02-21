@@ -4,9 +4,29 @@ $containerMaxWidth = lookup('$global-layout-containerMaxWidth') || 1140px
 $gutterWidth = lookup('$global-layout-gutterWidth') || 15px
 $maxWidth = $containerMaxWidth - (2 * $gutterWidth)
 
+// Frontend Preview Images
+[is="flynt-component-preview"]
+  height: 100%
+  left: 50%
+  max-width: $maxWidth
+  position: fixed
+  top: 0
+  transform: translateX(-50%)
+  width: 100%
+  z-index: 1000000
+
+  .componentPreview
+    &-imageDesktop
+      +below('s')
+        display: none
+
+    &-imageMobile
+      +above('s')
+        display: none
+
 // Backend Preview Images
-.layoutComponentPreview
-  background: #fff
+.flyntComponentPreview
+  background-color: #fff
   border: 1px solid #e1e1e1
   bottom: 5px
   display: inline-block
@@ -15,23 +35,15 @@ $maxWidth = $containerMaxWidth - (2 * $gutterWidth)
   padding: 2px
   position: absolute
 
-  &-imageElement
-    display: block
-    height: 100%
-    width: auto
-
-  &-label
-    bottom: 4px
-    left: 100%
-    padding-left: 8px
-    position: absolute
-    white-space: nowrap
-
-.addComponentPreview
   &-imageWrapper
     bottom: 0
     position: absolute
     right: 105%
+
+  &-imageElement
+    display: block
+    height: 100%
+    width: auto
 
   &-image
     border-radius: 3px
@@ -49,23 +61,12 @@ $maxWidth = $containerMaxWidth - (2 * $gutterWidth)
     height: 150px
     right: 0
 
-// Frontend Preview Images
-#componentPreviewContainer
-  left: 50%
-  max-width: $maxWidth
-  position: absolute
-  top: 0
-  transform: translateX(-50%)
-  width: 100%
-
-.componentPreviewImage
-  &-desktop
-    +below('s')
-      display: none
-
-  &-mobile
-    +above('s')
-      display: none
+  &-label
+    bottom: 4px
+    left: 100%
+    padding-left: 8px
+    position: absolute
+    white-space: nowrap
 
 // Custom WP Adminbar
 html.admin-bar
@@ -73,10 +74,10 @@ html.admin-bar
   margin-top: 0 !important
 
   #wpadminbar
-    background: #000
+    background-color: #000
     bottom: 0
     top: auto
-    z-index: 10
+    z-index: 1000001
 
     #adminbarsearch
       &.adminbar-focused:before,
@@ -96,7 +97,7 @@ html.admin-bar
   #wpadminbar.nojq .quicklinks .ab-top-menu>li>.ab-item:focus,
   #wpadminbar:not(.mobile) .ab-top-menu>li:hover>.ab-item,
   #wpadminbar:not(.mobile) .ab-top-menu>li>.ab-item:focus
-    background: #000
+    background-color: #000
     color: #fff
 
     &:before,
@@ -106,12 +107,14 @@ html.admin-bar
 
   #wpadminbar .menupop .ab-sub-wrapper,
   #wpadminbar .shortlink-input
-    background: #000
+    background-color: #000
 
   #wp-admin-bar-toggleComponentPreviews
+    transition: background-color .2s ease
+
     &.hover > div,
     &.active > div
-      background: #f00 !important
+      background-color: lighten(#000, 20) !important
 
   @media (max-width: 600px)
     html.admin-bar

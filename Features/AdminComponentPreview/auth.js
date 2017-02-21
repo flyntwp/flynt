@@ -17,10 +17,10 @@ $body
 })
 
 function showImages () {
-  if (($container = $('#componentPreviewContainer')).length) {
+  if (($container = $('[is="flynt-component-preview"]')).length) {
     $container.show()
   } else {
-    $container = $('<div id="componentPreviewContainer"></div>').appendTo('body')
+    $container = $('<div is="flynt-component-preview"></div>').appendTo('body')
     getComponentImages()
     initComponentPreviewsDragEvents()
   }
@@ -48,9 +48,9 @@ function getComponentImages (output = {}) {
 
 function addComponentPreviews ($component, images) {
   const offset = $component.offset()
-  const desktopImage = `<img class='componentPreviewImage componentPreviewImage-desktop' src='${images.desktop}'>`
+  const desktopImage = `<img class='componentPreview-image componentPreview-imageDesktop' src='${images.desktop}'>`
   appendImage(desktopImage, offset, $component)
-  const mobileImage = `<img class='componentPreviewImage componentPreviewImage-mobile' src='${images.mobile}'>`
+  const mobileImage = `<img class='componentPreview-image componentPreview-imageMobile' src='${images.mobile}'>`
   appendImage(mobileImage, offset, $component)
 }
 
@@ -72,7 +72,7 @@ function appendImage (image, offset, $component) {
 }
 
 function initComponentPreviewsDragEvents () {
-  const $images = $('.componentPreviewImage')
+  const $images = $('.componentPreview-image')
   $images.each(function () {
     const $draggable = $(this).draggabilly()
     $draggable.on('dragStart', function () {
@@ -108,7 +108,7 @@ function moveComponentPreviewImage (e) {
 }
 
 function repositionComponentPreviewImages () {
-  const $images = $('.componentPreviewImage')
+  const $images = $('.componentPreview-image')
   $images.each(function () {
     const $component = $(this).data('component')
     $(this).css('top', $component.offset().top)

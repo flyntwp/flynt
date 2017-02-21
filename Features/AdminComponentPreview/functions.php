@@ -45,10 +45,10 @@ if (class_exists('acf')) {
         $componentPreviewDesktopUrl = get_template_directory_uri() . $componentPath . 'preview-desktop.jpg';
 
         if (is_file($componentPreviewDesktopPath)) {
-          $newTitle = '<span class="layoutComponentPreview">';
+          $newTitle = '<span class="flyntComponentPreview">';
           // @codingStandardsIgnoreLine
-          $newTitle .= '<img class="layoutComponentPreview-imageElement" src="' . $componentPreviewDesktopUrl . '" height="36px">';
-          $newTitle .= '<span class="layoutComponentPreview-label">' . $title . '</span>';
+          $newTitle .= '<img class="flyntComponentPreview-imageElement" src="' . $componentPreviewDesktopUrl . '" height="36px">';
+          $newTitle .= '<span class="flyntComponentPreview-label">' . $title . '</span>';
           $newTitle .= '</span>';
           $title = $newTitle;
         }

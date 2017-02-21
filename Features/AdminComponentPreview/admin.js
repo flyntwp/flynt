@@ -22,14 +22,14 @@ function showComponentPreview (layout, $wrapper) {
     desktop: wpData.templateDirectoryUri + '/Components/' + componentName + '/preview-desktop.jpg',
     mobile: wpData.templateDirectoryUri + '/Components/' + componentName + '/preview-mobile.jpg'
   }
-  const $wrapperContainer = $("<div class='addComponentPreview-imageWrapper'>").appendTo($wrapper)
+  const $wrapperContainer = $("<div class='flyntComponentPreview-imageWrapper'>").appendTo($wrapper)
 
   getImage(image.desktop).done(function () {
-    $wrapperContainer.prepend(`<img class='addComponentPreview-image addComponentPreview-imageDesktop' src='${image.desktop}'>`)
+    $wrapperContainer.prepend(`<img class='flyntComponentPreview-image flyntComponentPreview-imageDesktop' src='${image.desktop}'>`)
   })
 
   getImage(image.mobile).done(function () {
-    $wrapperContainer.append(`<img class='addComponentPreview-image addComponentPreview-imageMobile' src='${image.mobile}'>`)
+    $wrapperContainer.append(`<img class='flyntComponentPreview-image flyntComponentPreview-imageMobile' src='${image.mobile}'>`)
   })
 }
 
@@ -43,6 +43,6 @@ function getImage (image) {
 }
 
 function hideComponentPreview ($wrapper) {
-  $wrapper.find('.addComponentPreview-imageWrapper')
+  $wrapper.find('.flyntComponentPreview-imageWrapper')
   .remove()
 }
