@@ -14,7 +14,7 @@
         "type": "image",
         "instructions": "Image-Format: JPG",
         "mime_types": "jpg,jpeg",
-        "instructions": "Image-Format: JPG, Aspect Ratio 16/9.",
+        "instructions": "Image-Format: JPG.",
         "required": 1,
         "conditional_logic": [
           [
@@ -30,7 +30,7 @@
         "name": "posterImage",
         "label": "Poster Image",
         "type": "image",
-        "instructions": "Image-Format: JPG",
+        "instructions": "Image-Format: JPG, Aspect Ratio 16/9.",
         "mime_types": "jpg,jpeg",
         "conditional_logic": [
           [
