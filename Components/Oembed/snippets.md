@@ -1,8 +1,9 @@
 # Snippets
 
-## Global Default posterImage
+## Global Default Poster Image
 
 `fields.json`
+
 ```json
 {
   "options": [
@@ -18,6 +19,7 @@
 ```
 
 `functions.php`
+
 ```php
 <?php
 add_filter('Flynt/addComponentData?name=Oembed', function ($data) {
