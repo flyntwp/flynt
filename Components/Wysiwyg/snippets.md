@@ -1,23 +1,10 @@
 # Snippets
 
-## Global Default posterImage
+## Default Theme
 
 `fields.json`
 ```json
 {
-  "options": [
-    {
-      "name": "defaultTheme",
-      "label": "Default Theme",
-      "type": "select",
-      "choices": {
-        "": "---",
-        "wysiwyg-fullwidth": "Fullwidth",
-        "wysiwyg-narrow": "Narrow"
-      },
-      "default_value": ""
-    }
-  ],
   "layout": {
     "name": "wysiwyg",
     "label": "Wysiwyg",
@@ -43,16 +30,6 @@
 }
 ```
 
-`functions.php`
-```php
-add_filter('Flynt/addComponentData?name=Wysiwyg', function ($data) {
-  if (empty($data['theme'])) {
-    $data['theme'] = get_field('defaultTheme', 'options');
-  }
-  return $data;
-});
-```
-
 `index.twig`
 ```html
 <div class="wysiwyg {{ theme }}">
@@ -71,4 +48,38 @@ $narrowWidth = lookup('$global-layout-narrowWidth') || 650px
 
   &-narrow
     center($narrowWidth, $gutterWidth)
+```
+
+## Additional Global Default Theme
+
+To add an additional Global Default Theme simply add the following code to the Default Theme solution from above.
+
+`fields.json`
+```json
+{
+  "options": [
+    {
+      "name": "defaultTheme",
+      "label": "Default Theme",
+      "type": "select",
+      "choices": {
+        "": "---",
+        "wysiwyg-fullwidth": "Fullwidth",
+        "wysiwyg-narrow": "Narrow"
+      },
+      "default_value": ""
+    }
+  ]
+}
+```
+
+`functions.php`
+```php
+<?php
+add_filter('Flynt/addComponentData?name=Wysiwyg', function ($data) {
+  if (empty($data['theme'])) {
+    $data['theme'] = get_field('defaultTheme', 'options');
+  }
+  return $data;
+});
 ```
