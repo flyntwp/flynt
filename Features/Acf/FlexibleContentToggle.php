@@ -31,7 +31,8 @@ class FlexibleContentToggle {
     Component::addAsset('enqueue', [
       'type' => 'script',
       'name' => 'AdminAcfFlexibleContentToggle',
-      'path' => 'Features/Acf/script.js'
+      'path' => 'Features/Acf/admin.js',
+      'dependencies' => ['jquery']
     ]);
 
     Component::addAsset('enqueue', [
