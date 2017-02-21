@@ -5,6 +5,7 @@
 `functions.php`
 
 ```php
+<?php
 add_action('wp_enqueue_scripts', function () {
   Component::enqueueAssets('ImageHero', [
     [
