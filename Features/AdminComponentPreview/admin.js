@@ -1,6 +1,6 @@
 /* globals wpData */
 const $ = jQuery
-let $body = $('body')
+const $body = $('body')
 const ajaxCache = {}
 // show component preview images
 $body.on('mouseenter', 'a[data-layout]', function (e) {
