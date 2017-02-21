@@ -18,8 +18,8 @@
 ```
 
 `functions.php`
-
 ```php
+<?php
 add_filter('Flynt/addComponentData?name=Oembed', function ($data) {
   if (empty($data['posterImage'])) {
     $data['posterImage'] = get_field('defaultPosterImage', 'options');
