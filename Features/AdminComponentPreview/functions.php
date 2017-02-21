@@ -8,31 +8,31 @@ define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
 
 // @codingStandardsIgnoreLine
 function enqueueComponentScripts() {
+
+  Component::addAsset('register', [
+    'type' => 'script',
+    'name' => 'draggabilly',
+    'path' => 'vendor/draggabilly.js'
+  ]);
+
   Component::addAsset('enqueue', [
     'type' => 'script',
-    'name' => 'adminComponentPreview',
+    'name' => 'Flynt/Features/AdminComponentPreview',
     'path' => 'Features/AdminComponentPreview/script.js',
-    'dependencies' => ['jquery']
+    'dependencies' => ['jquery', 'draggabilly']
   ]);
 
   Component::addAsset('enqueue', [
     'type' => 'style',
-    'name' => 'adminComponentPreview',
+    'name' => 'Flynt/Features/AdminComponentPreview',
     'path' => 'Features/AdminComponentPreview/style.css'
-  ]);
-
-  Component::addAsset('enqueue', [
-    'type' => 'script',
-    'name' => 'draggabilly',
-    'path' => 'vendor/draggabilly.js',
-    'dependencies' => ['jquery']
   ]);
 
   // add data to the javascript
   $data = [
     'templateDirectoryUri' => get_template_directory_uri()
   ];
-  wp_localize_script('adminComponentPreview', 'wpData', $data);
+  wp_localize_script('Flynt/Features/AdminComponentPreview', 'wpData', $data);
 }
 
 if (class_exists('acf')) {
