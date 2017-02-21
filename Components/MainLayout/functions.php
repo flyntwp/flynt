@@ -32,7 +32,7 @@ add_action('wp_enqueue_scripts', function () {
       'type' => 'style'
     ]
   ]);
-});
+}, 0);
 
 add_filter('Flynt/addComponentData?name=MainLayout', function ($data) {
   $context = Timber::get_context();

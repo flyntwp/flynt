@@ -46,10 +46,9 @@ module.exports = {
     php: './**/*.php'
   },
   webpack: {
-    entry: {
-      'Components': './Components/script.js',
-      'Features': './Features/script.js'
-    }
+    entry: [
+      './{Components,Features}/**/{script,admin,auth}.js'
+    ]
   },
   lint: {
     stylus: './{Components,Features}/**/*.styl',
