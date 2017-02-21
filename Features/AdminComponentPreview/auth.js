@@ -1,5 +1,5 @@
 /* globals wpData */
-let $body = $('body')
+const $body = $('body')
 let $container = null
 let $activeImage = {}
 
