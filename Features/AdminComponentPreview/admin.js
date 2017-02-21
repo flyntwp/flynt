@@ -1,4 +1,5 @@
 /* globals wpData */
+const helper = require('./helper')
 const $ = jQuery
 const $body = $('body')
 const ajaxCache = {}
@@ -16,7 +17,7 @@ $body.on('mouseleave', 'a[data-layout]', function (e) {
 })
 
 function showComponentPreview (layout, $wrapper) {
-  const componentName = firstToUpperCase(layout)
+  const componentName = helper.firstToUpperCase(layout)
   const image = {
     desktop: wpData.templateDirectoryUri + '/Components/' + componentName + '/preview-desktop.jpg',
     mobile: wpData.templateDirectoryUri + '/Components/' + componentName + '/preview-mobile.jpg'
@@ -44,8 +45,4 @@ function getImage (image) {
 function hideComponentPreview ($wrapper) {
   $wrapper.find('.add-component-preview-image-wrapper')
   .remove()
-}
-
-function firstToUpperCase (str) {
-  return str.substr(0, 1).toUpperCase() + str.substr(1)
 }

@@ -1,4 +1,5 @@
 /* globals wpData */
+const helper = require('./helper')
 const $body = $('body')
 let $container = null
 let $activeImage = {}
@@ -35,7 +36,7 @@ function getComponentImages (output = {}) {
   $('.mainContent [is]').each(function () {
     const componentString = $(this).attr('is')
     let componentName = $.camelCase(componentString.substring(componentString.indexOf('-') + 1))
-    componentName = firstToUpperCase(componentName)
+    componentName = helper.firstToUpperCase(componentName)
     const images = {
       desktop: wpData.templateDirectoryUri + '/Components/' + componentName + '/preview-desktop.jpg',
       mobile: wpData.templateDirectoryUri + '/Components/' + componentName + '/preview-mobile.jpg'
@@ -115,7 +116,3 @@ function repositionComponentPreviewImages () {
 }
 
 $(window).on('resize', repositionComponentPreviewImages)
-
-function firstToUpperCase (str) {
-  return str.substr(0, 1).toUpperCase() + str.substr(1)
-}
