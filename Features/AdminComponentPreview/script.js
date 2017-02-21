@@ -1,4 +1,4 @@
-import 'file-loader?name=vendor/draggabilly.js!draggabilly/dist/draggabilly.pkgd'
+import 'file-loader?name=vendor/draggabilly.js!draggabilly/dist/draggabilly.pkgd.min'
 const $ = jQuery
 
 // admin
