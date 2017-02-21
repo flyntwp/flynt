@@ -6,16 +6,16 @@ const ajaxCache = {}
 $body.on('mouseenter', 'a[data-layout]', function (e) {
   const $target = $(e.currentTarget)
   const layout = $target.data('layout')
-  showAddComponentPreview(layout, $target.closest('.acf-fc-popup'))
+  showComponentPreview(layout, $target.closest('.acf-fc-popup'))
 })
 
 // hide preview images
 $body.on('mouseleave', 'a[data-layout]', function (e) {
   const $target = $(e.currentTarget)
-  hideAddComponentPreview($target.closest('.acf-fc-popup'))
+  hideComponentPreview($target.closest('.acf-fc-popup'))
 })
 
-function showAddComponentPreview (layout, $wrapper) {
+function showComponentPreview (layout, $wrapper) {
   const componentName = firstToUpperCase(layout)
   const image = {
     desktop: wpData.templateDirectoryUri + '/Components/' + componentName + '/preview-desktop.jpg',
@@ -41,7 +41,7 @@ function getImage (image) {
   return ajaxCache[image]
 }
 
-function hideAddComponentPreview ($wrapper) {
+function hideComponentPreview ($wrapper) {
   $wrapper.find('.add-component-preview-image-wrapper')
   .remove()
 }
