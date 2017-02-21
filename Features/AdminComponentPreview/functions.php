@@ -2,7 +2,6 @@
 namespace Flynt\Features\AdminComponentPreview;
 
 use Flynt\Features\Components\Component;
-use Flynt\Utils\Log;
 
 define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
 
@@ -46,9 +45,10 @@ if (class_exists('acf')) {
         $componentPreviewDesktopUrl = get_template_directory_uri() . $componentPath . 'preview-desktop.jpg';
 
         if (is_file($componentPreviewDesktopPath)) {
-          $newTitle = '<span class="layout-component-preview">';
-          $newTitle .= '<img src="' . $componentPreviewDesktopUrl . '" height="36px">';
-          $newTitle .= '<span class="label">' . $title . '</span>';
+          $newTitle = '<span class="layoutComponentPreview">';
+          // @codingStandardsIgnoreLine
+          $newTitle .= '<img class="layoutComponentPreview-imageElement" src="' . $componentPreviewDesktopUrl . '" height="36px">';
+          $newTitle .= '<span class="layoutComponentPreview-label">' . $title . '</span>';
           $newTitle .= '</span>';
           $title = $newTitle;
         }

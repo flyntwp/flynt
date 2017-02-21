@@ -1,6 +1,11 @@
 $rupture.scale = lookup('$global-layout-scale') || (0 576px 768px 992px 1200px)
+$rupture.anti-overlap = lookup('$global-layout-overlap') || -1px
+$containerMaxWidth = lookup('$global-layout-containerMaxWidth') || 1140px
+$gutterWidth = lookup('$global-layout-gutterWidth') || 15px
+$maxWidth = $containerMaxWidth - (2 * $gutterWidth)
 
-.layout-component-preview
+// Backend Preview Images
+.layoutComponentPreview
   background: #fff
   border: 1px solid #e1e1e1
   bottom: 5px
@@ -10,24 +15,25 @@ $rupture.scale = lookup('$global-layout-scale') || (0 576px 768px 992px 1200px)
   padding: 2px
   position: absolute
 
-  img
+  &-imageElement
     display: block
     height: 100%
     width: auto
 
-  .label
+  &-label
     bottom: 4px
     left: 100%
     padding-left: 8px
     position: absolute
     white-space: nowrap
 
-.add-component-preview-image-wrapper
-  bottom: 0
-  position: absolute
-  right: 105%
+.addComponentPreview
+  &-imageWrapper
+    bottom: 0
+    position: absolute
+    right: 105%
 
-  .add-component-preview-image
+  &-image
     border-radius: 3px
     border: 3px solid #333739
     bottom: 0
@@ -35,22 +41,33 @@ $rupture.scale = lookup('$global-layout-scale') || (0 576px 768px 992px 1200px)
     max-width: 500px
     position: absolute
 
-  .add-component-preview-image-desktop
+  &-imageDesktop
     height: 250px
     right: 30px
 
-  .add-component-preview-image-mobile
+  &-imageMobile
     height: 150px
     right: 0
 
-.component-preview-image-desktop
-  +below('s')
-    display: none
+// Frontend Preview Images
+#componentPreviewContainer
+  left: 50%
+  max-width: $maxWidth
+  position: absolute
+  top: 0
+  transform: translateX(-50%)
+  width: 100%
 
-.component-preview-image-mobile
-  +above('m')
-    display: none
+.componentPreviewImage
+  &-desktop
+    +below('s')
+      display: none
 
+  &-mobile
+    +above('s')
+      display: none
+
+// Custom WP Adminbar
 html.admin-bar
   margin-bottom: 32px !important
   margin-top: 0 !important
