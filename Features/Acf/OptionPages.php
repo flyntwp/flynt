@@ -10,7 +10,6 @@ namespace Flynt\Features\Acf;
 use ACFComposer;
 use Flynt\ComponentManager;
 use Flynt\Features\AdminNotices\AdminNoticeManager;
-use Flynt\Features\Components\Component;
 use Flynt\Features\CustomPostTypes\CustomPostTypeRegister;
 use Flynt\Utils\Feature;
 use Flynt\Utils\FileLoader;
@@ -83,15 +82,6 @@ class OptionPages {
         ['Flynt\Features\Acf\OptionPages', 'addAllFeatureSubPages']
       );
     }
-
-    // add styles for admin area
-    add_action('admin_enqueue_scripts', function () {
-      Component::addAsset('enqueue', [
-        'type' => 'style',
-        'name' => 'Flynt/Features/Acf/AdminCss',
-        'path' => 'Features/Acf/admin.css'
-      ]);
-    });
 
     // TODO do a check on wp_loaded or admin_menu hook
     // self::removeEmptyOptionPages();
