@@ -4,6 +4,31 @@
     "label": "Media Text Block",
     "sub_fields": [
       {
+        "name": "settingsTab",
+        "label": "Settings",
+        "type": "tab"
+      },
+      {
+        "name": "mediaPosition",
+        "label": "Media Position",
+        "type": "select",
+        "choices": {
+          "mediaLeft": "Left",
+          "mediaRight": "Right"
+        },
+        "default_value": ""
+      },
+      {
+        "name": "mediaType",
+        "label": "Media Type",
+        "type": "select",
+        "choices": {
+          "mediaImage": "Image",
+          "mediaVideo": "Video"
+        },
+        "default_value": ""
+      },
+      {
         "name": "contentTab",
         "label": "Content",
         "type": "tab"
@@ -12,7 +37,6 @@
         "name": "image",
         "label": "Image",
         "type": "image",
-        "instructions": "Image-Format: JPG",
         "mime_types": "jpg,jpeg",
         "instructions": "Image-Format: JPG.",
         "required": 1,
@@ -30,8 +54,9 @@
         "name": "posterImage",
         "label": "Poster Image",
         "type": "image",
-        "instructions": "Image-Format: JPG, Aspect Ratio 16/9.",
         "mime_types": "jpg,jpeg",
+        "instructions": "Image-Format: JPG, Aspect Ratio 16/9.",
+        "required": 1,
         "conditional_logic": [
           [
             {
@@ -63,31 +88,6 @@
         "type": "wysiwyg",
         "media_upload": 0,
         "required": 1
-      },
-      {
-        "name": "settingsTab",
-        "label": "Settings",
-        "type": "tab"
-      },
-      {
-        "name": "mediaPosition",
-        "label": "Media Position",
-        "type": "select",
-        "choices": {
-          "mediaLeft": "Left",
-          "mediaRight": "Right"
-        },
-        "default_value": ""
-      },
-      {
-        "name": "mediaType",
-        "label": "Media Type",
-        "type": "select",
-        "choices": {
-          "mediaImage": "Image",
-          "mediaVideo": "Video"
-        },
-        "default_value": ""
       }
     ]
   }
