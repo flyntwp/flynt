@@ -1,0 +1,61 @@
+rupture.scale = lookup('$global-layout-scale') || (0 576px 768px 992px 1200px)
+rupture.anti-overlap = lookup('$global-layout-overlap') || -1px
+
+$colors = {
+  postTagLink: lookup('$global-color-text') || #1e1e1e,
+  postTagBackground: lookup('$global-color-tags') || #ccc,
+  postCategoryLink: lookup('$global-color-text') || #1e1e1e
+}
+
+.postList
+  &-postItemFooter
+    clearfix()
+
+  &-postCategories,
+  &-postTags
+    column(1/2, 0, 2)
+
+    +below('m')
+      stack()
+
+  &-postCategories
+    list-style: none
+    margin: 0
+    padding: 0
+
+  &-postCategoryItem
+    display: inline-block
+    font-size: 12px
+    margin-right: 5px
+
+  &-postCategoryLink
+    color: $colors.postCategoryLink
+    text-decoration: none
+
+  &-postTags
+    list-style: none
+    margin: 0
+    padding: 0
+
+    +below('m')
+      margin-top: 10px
+
+  &-postTagItem
+    display: inline-block
+    font-size: 10px
+    font-weight: 600
+    margin-right: 5px
+    text-transform: uppercase
+
+  &-postTagLink
+    background: $colors.postTagBackground
+    border-radius: 4px
+    color: $colors.postTagLink
+    display: block
+    padding: 4px
+    text-decoration: none
+
+    &:hover
+      background: darken($colors.postTagBackground, 5)
+      color: $colors.postTagLink
+      text-decoration: none
