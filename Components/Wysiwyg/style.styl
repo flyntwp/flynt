@@ -1,20 +1,13 @@
+$rupture.scale = lookup('$global-layout-scale') || (0 576px 768px 992px 1200px)
+$rupture.anti-overlap = lookup('$global-layout-overlap') || -1px
 $gutterWidth = lookup('$global-layout-gutterWidth') || 15px
-$maxWidth = lookup('$global-layout-maxWidth') || 1140px
-$fullWidth = lookup('$global-layout-fullWidth') || 100%
-$narrowWidth = lookup('$global-layout-narrowWidth') || 650px
-rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px 800px 1200px
+$containerMaxWidth = lookup('$global-layout-containerMaxWidth') || 1140px
 
-[is='wps-wysiwyg']
+[is='flynt-wysiwyg']
   *,
   *:before,
   *:after
     box-sizing: border-box
 
   .wysiwyg
-    center($maxWidth, $gutterWidth)
-
-    &-fullwidth
-      center($fullwidthWidth, $gutterWidth)
-
-    &-narrow
-      center($narrowWidth, $gutterWidth)
+    center($containerMaxWidth, $gutterWidth)
