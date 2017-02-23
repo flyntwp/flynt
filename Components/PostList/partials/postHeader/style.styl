@@ -1,43 +1,21 @@
-rupture.scale = lookup('$global-layout-scale') || (0 576px 768px 992px 1200px)
-rupture.anti-overlap = lookup('$global-layout-overlap') || -1px
+@import '../../config.styl'
 
-$colors = {
-  postLink: lookup('$global-color-headline') || #1e1e1e,
-  postMeta: lookup('$global-color-meta') || #999,
-  postAuthorLink: lookup('$global-color-brand' || #333)
-}
+&-header
+  margin-bottom: 2em
 
-.postList
-  &-postHeader
-    margin-bottom: 2em
+&-title
+  font-size: 28px
+  font-weight: 600
+  margin: 0 0 .2em
 
-  &-postTitle
-    font-size: 28px
-    font-weight: 600
-    margin: 0 0 .2em
+&-link
+  color: $colors.postLink
+  text-decoration: none
 
-  &-postLink
-    color: $colors.postLink
+  &:hover
+    color: darken($colors.postLink, 15)
     text-decoration: none
 
-    &:hover
-      color: darken($colors.postLink, 15)
-      text-decoration: none
-
-  &-postMeta
-    color: $colors.postMeta
-    margin: 0
-
-  &-postDate
-    font-size: 12px
-
-    +below('s')
-      display: block
-
-  &-postAuthorLink
-    color: $colors.postAuthorLink
-    font-weight: 400
-    text-decoration: none
-
-    &:hover
-      darken($colors.postAuthorLink, 10)
+&-meta
+  color: $colors.postMeta
+  margin: 0

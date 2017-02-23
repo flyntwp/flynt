@@ -1,0 +1,7 @@
+<ul class="postList-tags">
+  {% for tag in post.tags %}
+    <li class="postList-tagItem">
+      <a class="postList-tagLink" href="{{ tag.permalink }}" title="{{ tag.title }}">{{ tag.title }}</a>
+    </li>
+  {% endfor %}
+</ul>

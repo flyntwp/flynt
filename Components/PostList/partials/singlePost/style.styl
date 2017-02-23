@@ -1,45 +1,36 @@
-rupture.scale = lookup('$global-layout-scale') || (0 576px 768px 992px 1200px)
-rupture.anti-overlap = lookup('$global-layout-overlap') || -1px
+@import '../../config.styl'
 
-.postList
-  &-postArticle
-    border-radius: 4px
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .15)
-    margin: 30px 0
-    padding: 15px
+&-article
+  border-radius: 4px
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .15)
+  margin: 30px 0
+  padding: 15px
 
-    &:first-child
-      margin-top: 0
+  &:first-child
+    margin-top: 0
 
-    &:last-child
-      margin-bottom: 0
+  &:last-child
+    margin-bottom: 0
 
-  &-postContent
-    overflow: hidden
-    zoom: 1
+&-content
+  overflow: hidden
+  zoom: 1
 
-  &-postThumbnailWrapper
-    display: table-cell
-    padding-right: 15px
-    vertical-align: top
+&-thumbnailWrapper
+  display: table-cell
+  padding-right: 15px
+  vertical-align: top
 
-    +below('s')
-      margin-bottom: 15px
+  +below('s')
+    margin-bottom: 15px
 
-  &-postContentWrapper
-    display: table-cell
-    vertical-align: top
-    width: 1000000px
+&-contentWrapper
+  display: table-cell
+  vertical-align: top
+  width: 1000000px
 
   +below('s')
     &-postThumbnailWrapper,
     &-postContentWrapper
       display: block
-      width: 100%
-
-  &-postThumbnail
-    width: 180px
-    height: auto
-
-    +below('s')
       width: 100%

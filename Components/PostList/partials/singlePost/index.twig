@@ -1,18 +1,12 @@
-<article class="postList-postArticle">
-  <div class="postList-postContent">
-    <div class="postList-postThumbnailWrapper">
-      <a href="{{ post.permalink }}" title="{{ post.title }}">
-        <img class="postList-postThumbnail" srcset="
-          {{ post.thumbnail | resize(180, 180) }} 180w,
-          {{ post.thumbnail | resize(450, 450) }} 450w,
-          {{ post.thumbnail | resize(800, 800) }} 800w"
-          src="{{ post.thumbnail }}">
-      </a>
+<article class="postList-article">
+  <div class="postList-content">
+    <div class="postList-thumbnailWrapper">
+      {% include 'partials/PostThumbnail/index.twig' %}
     </div>
-    <div class="postList-postContentWrapper">
-      {% include 'partials/postHeader/index.twig' %}
-      {% include 'partials/postContent/index.twig' %}
-      {% include 'partials/postFooter/index.twig' %}
+    <div class="postList-contentWrapper">
+      {% include 'partials/PostHeader/index.twig' %}
+      {% include 'partials/PostContent/index.twig' %}
+      {% include 'partials/PostFooter/index.twig' %}
     </div>
   </div>
 </article>

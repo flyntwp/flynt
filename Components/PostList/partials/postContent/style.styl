@@ -1,25 +1,19 @@
-rupture.scale = lookup('$global-layout-scale') || (0 576px 768px 992px 1200px)
-rupture.anti-overlap = lookup('$global-layout-overlap') || -1px
+@import '../../config.styl'
 
-$colors = {
-  readMoreLink: lookup('$global-color-text') || #1e1e1e
-}
+&-itemContent
+  margin-bottom: 2em
 
-.postList
-  &-postItemContent
-    margin-bottom: 2em
+&-excerpt
+  font-size: 16px
+  margin: 0 0 .5em
 
-  &-postExcerpt
-    font-size: 16px
-    margin: 0 0 .5em
+&-readMoreLink
+  color: $colors.readMoreLink
+  font-size: 12px
+  font-weight: 600
+  text-transform: uppercase
+  text-decoration: none
 
-  &-postReadMoreLink
-    color: $colors.readMoreLink
-    font-size: 12px
-    font-weight: 600
-    text-transform: uppercase
+  &:hover
+    color: lighten($colors.readMoreLink, 30)
     text-decoration: none
-
-    &:hover
-      color: lighten($colors.readMoreLink, 30)
-      text-decoration: none

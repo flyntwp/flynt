@@ -1,9 +1,9 @@
-<header class="postList-postHeader">
-  <h2 class="postList-postTitle">
-    <a class="postList-postLink" href="{{ post.permalink }}" title="{{ readMoreLabel }}: {{ post.title }}">{{ post.title }}</a>
+<header class="postList-header">
+  <h2 class="postList-title">
+    <a class="postList-link" href="{{ post.permalink }}" title="{{ readMoreLabel }}: {{ post.title }}">{{ post.title }}</a>
   </h2>
-  <p class="postList-postMeta">
-    <a href="{{ post.authorPermalink }}" title="{{ post.author }}" class="postList-postAuthorLink">{{ post.author }}</a>
-    <span class="postList-postDate">{{ publishedAtLabel }} {{ post.date }}</span>
+  <p class="postList-meta">
+    {% include 'partials/PostAuthor/index.twig' %}
+    {% include 'partials/PostDate/index.twig' %}
   </p>
 </header>

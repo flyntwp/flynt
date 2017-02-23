@@ -1,17 +1,4 @@
-<footer class="postList-postItemFooter">
-  <ul class="postList-postCategories">
-    {% for category in post.categories %}
-      <li class="postList-postCategoryItem">
-        <a class="postList-postCategoryLink" href="{{ category.permalink }}" title="{{ category.title }}">{{ category.title }}</a>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <ul class="postList-postTags">
-    {% for tag in post.tags %}
-      <li class="postList-postTagItem">
-        <a class="postList-postTagLink" href="{{ tag.permalink }}" title="{{ tag.title }}">{{ tag.title }}</a>
-      </li>
-    {% endfor %}
-  </ul>
+<footer class="postList-itemFooter">
+  {% include 'partials/postCategories/index.twig' %}
+  {% include 'partials/postTags/index.twig' %}
 </footer>

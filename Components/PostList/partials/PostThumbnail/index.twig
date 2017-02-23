@@ -1,0 +1,7 @@
+<a href="{{ post.permalink }}" title="{{ post.title }}">
+  <img class="postList-thumbnail" srcset="
+    {{ post.thumbnail | resize(180, 180) }} 180w,
+    {{ post.thumbnail | resize(450, 450) }} 450w,
+    {{ post.thumbnail | resize(800, 800) }} 800w"
+    src="{{ post.thumbnail }}">
+</a>

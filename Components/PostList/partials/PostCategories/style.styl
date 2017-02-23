@@ -1,0 +1,21 @@
+@import '../../config.styl'
+
+&-categories
+  column(1/2, 0, 2)
+
+  +below('m')
+    stack()
+
+&-categories
+  list-style: none
+  margin: 0
+  padding: 0
+
+&-categoryItem
+  display: inline-block
+  font-size: 12px
+  margin-right: 5px
+
+&-categoryLink
+  color: $colors.postCategoryLink
+  text-decoration: none
