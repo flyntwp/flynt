@@ -1,8 +1,7 @@
 <?php
 
-// TODO option category showType functionality
-// TODO add setting for dashicon used in option types
 // TODO add caching
+// TODO remove empty option types (top level page)
 // TODO [minor] Overview Page + setting for redirect
 // TODO [minor] add custom post type label
 // TODO [minor] add notice for meta keys that are too long (unsolved ACF / WordPress issue)
@@ -36,17 +35,19 @@ class OptionPages {
   const OPTION_CATEGORIES = [
     'component' => [
       'title' => 'Component',
-      'icon' => 'dashicons-editor-table'
+      'icon' => 'dashicons-editor-table',
+      'showType' => true
     ],
     'customPostType' => [
       'title' => 'Custom Post Type',
       'icon' => 'dashicons-palmtree',
+      'showType' => true
       // 'label' => [ 'labels', 'menu_item' ], // TODO add this functionality
-      // 'showType' => false // TODO add this functionality
     ],
     'feature' => [
       'title' => 'Feature',
-      'icon' => 'dashicons-carrot'
+      'icon' => 'dashicons-carrot',
+      'showType' => true
     ]
   ];
 
@@ -264,13 +265,13 @@ class OptionPages {
 
   }
 
-  protected static function createSubPageFromConfig($filePath, $optionCategory, $subPageName) {
+  protected static function createSubPageFromConfig($filePath, $optionCategoryName, $subPageName) {
     $fields = json_decode(file_get_contents($filePath), true);
 
     foreach (self::$optionTypes as $optionType => $option) {
       if (array_key_exists($optionType, $fields)) {
         self::addOptionSubPage(
-          $optionCategory,
+          $optionCategoryName,
           ucfirst($subPageName),
           $optionType,
           $fields[$optionType]
@@ -279,16 +280,22 @@ class OptionPages {
     }
   }
 
-  protected static function addOptionSubPage($optionCategory, $subPageName, $optionType, $fields) {
+  protected static function addOptionSubPage($optionCategoryName, $subPageName, $optionType, $fields) {
     $prettySubPageName = StringHelpers::splitCamelCase($subPageName);
-    $iconClasses = 'flynt-submenu-item dashicons-before ' . self::$optionCategories[$optionCategory]['icon'];
+    $optionCategorySettings = self::$optionCategories[$optionCategoryName];
+    $iconClasses = 'flynt-submenu-item dashicons-before ' . $optionCategorySettings['icon'];
 
-    $subPageConfig = array(
-      'page_title'  => $prettySubPageName . ' ' . self::$optionCategories[$optionCategory]['title'],
+    $appendCategory = '';
+    if (isset($optionCategorySettings['showType']) && true === $optionCategorySettings['showType']) {
+      $appendCategory = ' (' . $optionCategorySettings['title'] . ')';
+    }
+
+    $subPageConfig = [
+      'page_title'  => $prettySubPageName . $appendCategory,
       'menu_title'  => "<span class='{$iconClasses}'>{$prettySubPageName}</span>",
       'parent_slug' => self::$optionPages[$optionType]['menu_slug'],
-      'menu_slug'   => $optionType . ucfirst($optionCategory) . $subPageName
-    );
+      'menu_slug'   => $optionType . ucfirst($optionCategoryName) . $subPageName
+    ];
 
     acf_add_options_sub_page($subPageConfig);
 
