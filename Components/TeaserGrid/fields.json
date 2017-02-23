@@ -1,5 +1,5 @@
 {
-  "options": [
+  "globalOptions": [
     {
       "default_value": 4,
       "label": "Teaser Count",

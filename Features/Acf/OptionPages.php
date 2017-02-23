@@ -1,9 +1,11 @@
 <?php
 
-// TODO make order of option categories customizable (Components, CustomPostTypes, Features)
-// TODO add option fields to Feature Options somehow
-// TODO add custom post type label and option category showType functionality
-// TODO add notice for meta keys that are too long (unsolved ACF / WordPress issue)
+// TODO option category showType functionality
+// TODO add setting for dashicon used in option types
+// TODO add caching
+// TODO [minor] Overview Page + setting for redirect
+// TODO [minor] add custom post type label
+// TODO [minor] add notice for meta keys that are too long (unsolved ACF / WordPress issue)
 
 namespace Flynt\Features\Acf;
 
@@ -16,29 +18,45 @@ use Flynt\Utils\FileLoader;
 use Flynt\Utils\StringHelpers;
 
 class OptionPages {
-  // TODO put these into feature options (params)
-  const FILTER_NAMESPACE = 'Flynt/Components';
   const FIELD_GROUPS_DIR = '/config/fieldGroups';
 
-  const OPTION_TYPE_DEFAULTS = [
-    'translatable' => true
+  const OPTION_TYPES = [
+    'globalOptions' => [
+      'title' => 'Global Options',
+      'translatable' => false,
+      // 'icon' => // TODO do
+    ],
+    'translatableOptions' => [
+      'title' => 'Translatable Options',
+      'translatable' => true
+    ]
   ];
 
-  const OPTION_CATEGORY_DEFAULTS = [
-    'icon' => 'dashicons-admin-generic'
+  const OPTION_CATEGORIES = [
+    'component' => [
+      'title' => 'Component',
+      'icon' => 'dashicons-editor-table'
+    ],
+    'customPostType' => [
+      'title' => 'Custom Post Type',
+      'icon' => 'dashicons-palmtree',
+      // 'label' => [ 'labels', 'menu_item' ], // TODO add this functionality
+      // 'showType' => false // TODO add this functionality
+    ],
+    'feature' => [
+      'title' => 'Feature',
+      'icon' => 'dashicons-carrot'
+    ]
   ];
 
   protected static $optionPages = [];
   protected static $optionTypes = [];
   protected static $optionCategories = [];
 
-  public static function setup(array $options) {
+  public static function setup() {
 
-    $optionTypes = isset($options['optionTypes']) ? $options['optionTypes'] : [];
-    $optionCategories = isset($options['optionCategories']) ? $options['optionCategories'] : [];
-
-    self::$optionTypes = self::combineArrayDefaults($optionTypes, self::OPTION_TYPE_DEFAULTS);
-    self::$optionCategories = self::combineArrayDefaults($optionCategories, self::OPTION_CATEGORY_DEFAULTS);
+    self::$optionTypes = self::OPTION_TYPES;
+    self::$optionCategories = self::OPTION_CATEGORIES;
 
     self::createOptionPages();
 
@@ -103,7 +121,6 @@ class OptionPages {
       $title = _x($option['title'], 'title', 'flynt-theme');
       $slug = ucfirst($optionType);
 
-      // TODO add feature option (param) for redirect and dashicon used
       $generalSettings = acf_add_options_page(array(
         'page_title'  => $title,
         'menu_title'  => $title,
