@@ -10,4 +10,4 @@ Tags: image, hero, header
 
 ----
 
-Text: Image Hero component.
+Text: Image Hero component. Upload an image that takes full width.
