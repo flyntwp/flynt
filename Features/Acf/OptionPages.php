@@ -243,7 +243,7 @@ class OptionPages {
         $isTranslatable = $option['translatable'];
         $toplevelPageId = 'toplevel_page_' . $optionType;
         $menuTitle = self::$optionPages[$optionType]['menu_title'];
-        $subPageId = StringHelpers::camelCaseToKebap($menuTitle) . '_page_' . $optionType;
+        $subPageId = sanitize_title($menuTitle) . '_page_' . $optionType;
         $isCurrentPage = StringHelpers::startsWith($toplevelPageId, $currentScreen->id)
           || StringHelpers::startsWith($subPageId, $currentScreen->id);
 
