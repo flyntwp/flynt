@@ -21,14 +21,14 @@ class OptionPages {
   const FIELD_GROUPS_DIR = '/config/fieldGroups';
 
   const OPTION_TYPES = [
-    'globalOptions' => [
-      'title' => 'Global Options',
-      'translatable' => false,
-      // 'icon' => // TODO do
-    ],
     'translatableOptions' => [
       'title' => 'Translatable Options',
       'translatable' => true
+    ],
+    'globalOptions' => [
+      'title' => 'Global Options',
+      'translatable' => false
+      // 'icon' => // TODO do
     ]
   ];
 
@@ -60,49 +60,15 @@ class OptionPages {
 
     self::createOptionPages();
 
-    // Components
-    if (array_key_exists('component', self::$optionCategories)) {
-      add_action(
-        'Flynt/registerComponent',
-        ['Flynt\Features\Acf\OptionPages', 'addComponentSubPage'],
-        12
-      );
-
-      add_filter('Flynt/addComponentData', function ($data, $parentData, $config) {
-
-        // get fields for this component
-        $options = array_reduce(array_keys(self::$optionTypes), function ($carry, $optionType) use ($config) {
-
-          return array_merge($carry, self::getOptions($optionType, 'Component', $config['name']));
-
-        }, []);
-
-        // don't overwrite existing data
-        return array_merge($options, $data);
-
-      }, 10, 3);
-    }
-
-    // Custom Post Types
-    if (array_key_exists('customPostType', self::$optionCategories)) {
-      add_action(
-        'Flynt/Features/CustomPostTypes/Register',
-        ['Flynt\Features\Acf\OptionPages', 'addCustomPostTypeSubPage'],
-        10,
-        2
-      );
-    }
-
-    // Features
-    if (array_key_exists('feature', self::$optionCategories)) {
-      add_action(
-        'Flynt/afterRegisterFeatures',
-        ['Flynt\Features\Acf\OptionPages', 'addAllFeatureSubPages']
-      );
+    // Register Categories
+    foreach (self::$optionCategories as $categoryName => $categorySettings) {
+      $registerFn = 'registerOptionCategory' . ucfirst($categoryName);
+      self::$registerFn();
     }
 
     // TODO do a check on wp_loaded or admin_menu hook
     // self::removeEmptyOptionPages();
+
   }
 
   public static function init() {
@@ -115,7 +81,144 @@ class OptionPages {
     }
   }
 
-  public static function createOptionPages() {
+  // ============
+  // PUBLIC API
+  // ============
+
+  // usage: OptionPages::getOptions('options', 'customPostType', 'myCustomPostTypeName');
+  // usage: OptionPages::getOptions('options', 'feature', 'myFeatureName');
+  // usage: OptionPages::getOptions('localeOptions', 'component', 'myComponentName');
+  // all params expected to be camelCase
+  public static function getOptions($optionType, $optionCategory, $subPageName) {
+    if (!isset(self::$optionTypes[$optionType])) return [];
+
+    $prefix = implode('', [$optionType, ucfirst($optionCategory), ucfirst($subPageName), '_']);
+    $options = self::getOptionFields(self::$optionTypes[$optionType]['translatable']);
+
+    // find and replace relevant keys, then return an array of all options for this Sub-Page
+    $optionKeys = is_array($options) ? array_keys($options) : [];
+    return array_reduce($optionKeys, function ($carry, $key) use ($options, $prefix) {
+      $count = 0;
+      $option = $options[$key];
+      $key = str_replace($prefix, '', $key, $count);
+      if ($count > 0) {
+        $carry[$key] = $option;
+      }
+      return $carry;
+    }, []);
+  }
+
+  // usage: OptionPages::getOption('options', 'customPostType', 'myCustomPostTypeName', 'myFieldName');
+  // usage: OptionPages::getOption('options', 'feature', 'myFeatureName', 'myFieldName');
+  // usage: OptionPages::getOption('localeOptions', 'component', 'myComponentName', 'myFieldName');
+  // all params expected to be camelCase
+  public static function getOption($optionType, $optionCategory, $subPageName, $fieldName) {
+    $options = self::getOptions($optionType, $optionCategory, $subPageName);
+    return array_key_exists($fieldName, $options) ? $options[$fieldName] : false;
+  }
+
+  // ============
+  // COMPONENTS
+  // ============
+
+  protected static function registerOptionCategoryComponent() {
+    add_action(
+      'Flynt/registerComponent',
+      ['Flynt\Features\Acf\OptionPages', 'addComponentSubPage'],
+      12
+    );
+
+    add_filter('Flynt/addComponentData', function ($data, $parentData, $config) {
+
+      // get fields for this component
+      $options = array_reduce(array_keys(self::$optionTypes), function ($carry, $optionType) use ($config) {
+
+        return array_merge($carry, self::getOptions($optionType, 'Component', $config['name']));
+
+      }, []);
+
+      // don't overwrite existing data
+      return array_merge($options, $data);
+
+    }, 10, 3);
+  }
+
+  public static function addComponentSubPage($componentName) {
+    // load fields.json if it exists
+    $componentManager = ComponentManager::getInstance();
+    $filePath = $componentManager->getComponentFilePath($componentName, 'fields.json');
+
+    if (false === $filePath) return;
+
+    self::createSubPageFromConfig($filePath, 'component', $componentName);
+  }
+
+  // ==================
+  // CUSTOM POST TYPES
+  // ==================
+
+  protected static function registerOptionCategoryCustomPostType() {
+    add_action(
+      'Flynt/Features/CustomPostTypes/Register',
+      ['Flynt\Features\Acf\OptionPages', 'addCustomPostTypeSubPage'],
+      10,
+      2
+    );
+  }
+
+  public static function addCustomPostTypeSubPage($name, $customPostType) {
+    // load fields.json file
+    $filePath = $customPostType['dir'] . '/fields.json';
+
+    if (is_file($filePath)) {
+      // TODO refactor
+      // $cptName = ucfirst($cptDir->getFilename());
+      // if (isset($cptConfig['label'])) {
+      //   $label = $cptConfig['label'];
+      // }
+      // if (isset($cptConfig['labels'])) {
+      //   if (isset($cptConfig['labels']['menu_name'])) {
+      //     $label = $cptConfig['labels']['menu_name'];
+      //   } else if (isset($cptConfig['labels']['singular_name'])) {
+      //     $label = $cptConfig['labels']['singular_name'];
+      //   }
+      // }
+      self::createSubPageFromConfig($filePath, 'customPostType', ucfirst($name));
+    }
+  }
+
+  // ========
+  // FEATURES
+  // ========
+
+  protected static function registerOptionCategoryFeature() {
+    add_action(
+      'Flynt/afterRegisterFeatures',
+      ['Flynt\Features\Acf\OptionPages', 'addAllFeatureSubPages']
+    );
+  }
+
+  public static function addAllFeatureSubPages() {
+
+    foreach (Feature::getFeatures() as $featureName => $feature) {
+
+      $filePath = $feature['dir'] . '/fields.json';
+
+      if (!is_file($filePath)) continue;
+
+      $featureName = StringHelpers::removePrefix('flynt', StringHelpers::kebapCaseToCamelCase($featureName));
+
+      self::createSubPageFromConfig($filePath, 'feature', $featureName);
+
+    }
+
+  }
+
+  // ========
+  // GENERAL
+  // ========
+
+  protected static function createOptionPages() {
 
     foreach (self::$optionTypes as $optionType => $option) {
       $title = _x($option['title'], 'title', 'flynt-theme');
@@ -158,101 +261,6 @@ class OptionPages {
     });
 
   }
-
-  // usage: OptionPages::getOptions('options', 'customPostType', 'myCustomPostTypeName');
-  // usage: OptionPages::getOptions('options', 'feature', 'myFeatureName');
-  // usage: OptionPages::getOptions('localeOptions', 'component', 'myComponentName');
-  // all params expected to be camelCase
-  public static function getOptions($optionType, $optionCategory, $subPageName) {
-    if (!isset(self::$optionTypes[$optionType])) return [];
-
-    $prefix = implode('', [$optionType, ucfirst($optionCategory), ucfirst($subPageName), '_']);
-    $options = self::getOptionFields(self::$optionTypes[$optionType]['translatable']);
-
-    // find and replace relevant keys, then return an array of all options for this Sub-Page
-    $optionKeys = is_array($options) ? array_keys($options) : [];
-    return array_reduce($optionKeys, function ($carry, $key) use ($options, $prefix) {
-      $count = 0;
-      $option = $options[$key];
-      $key = str_replace($prefix, '', $key, $count);
-      if ($count > 0) {
-        $carry[$key] = $option;
-      }
-      return $carry;
-    }, []);
-  }
-
-  // usage: OptionPages::getOption('options', 'customPostType', 'myCustomPostTypeName', 'myFieldName');
-  // usage: OptionPages::getOption('options', 'feature', 'myFeatureName', 'myFieldName');
-  // usage: OptionPages::getOption('localeOptions', 'component', 'myComponentName', 'myFieldName');
-  // all params expected to be camelCase
-  public static function getOption($optionType, $optionCategory, $subPageName, $fieldName) {
-    $options = self::getOptions($optionType, $optionCategory, $subPageName);
-    return array_key_exists($fieldName, $options) ? $options[$fieldName] : false;
-  }
-
-  // ============
-  // COMPONENTS
-  // ============
-
-  public static function addComponentSubPage($componentName) {
-    // load fields.json if it exists
-    $componentManager = ComponentManager::getInstance();
-    $filePath = $componentManager->getComponentFilePath($componentName, 'fields.json');
-
-    if (false === $filePath) return;
-
-    self::createSubPageFromConfig($filePath, 'component', $componentName);
-  }
-
-  // ==================
-  // CUSTOM POST TYPES
-  // ==================
-
-  public static function addCustomPostTypeSubPage($name, $customPostType) {
-    // load fields.json file
-    $filePath = $customPostType['dir'] . '/fields.json';
-
-    if (is_file($filePath)) {
-      // TODO refactor
-      // $cptName = ucfirst($cptDir->getFilename());
-      // if (isset($cptConfig['label'])) {
-      //   $label = $cptConfig['label'];
-      // }
-      // if (isset($cptConfig['labels'])) {
-      //   if (isset($cptConfig['labels']['menu_name'])) {
-      //     $label = $cptConfig['labels']['menu_name'];
-      //   } else if (isset($cptConfig['labels']['singular_name'])) {
-      //     $label = $cptConfig['labels']['singular_name'];
-      //   }
-      // }
-      self::createSubPageFromConfig($filePath, 'customPostType', ucfirst($name));
-    }
-  }
-
-  // ========
-  // FEATURES
-  // ========
-
-  public static function addAllFeatureSubPages() {
-
-    foreach (Feature::getFeatures() as $featureName => $feature) {
-
-      $filePath = $feature['dir'] . '/fields.json';
-
-      if (!is_file($filePath)) continue;
-
-      $featureName = StringHelpers::removePrefix('flynt', StringHelpers::kebapCaseToCamelCase($featureName));
-
-      self::createSubPageFromConfig($filePath, 'feature', $featureName);
-
-    }
-
-  }
-
-  // ========
-  // GENERAL
-  // ========
 
   protected static function createSubPageFromConfig($filePath, $optionCategory, $subPageName) {
     $fields = json_decode(file_get_contents($filePath), true);
