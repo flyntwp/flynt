@@ -27,8 +27,8 @@ Go to the  component (`Wysiwyg` here) `functions.php` file, and use the `acf/fie
 ```php
 <?php
 add_filter('acf/fields/wysiwyg/toolbars', function ($toolbars) {
-  $toolbars['flynt'] = [];
-  $toolbars['flynt'][1] = [
+  $toolbars['myCustomToolbar'] = [];
+  $toolbars['myCustomToolbar'][1] = [
     'formatselect',
     'styleselect',
     'bold',
@@ -69,7 +69,7 @@ add_filter('acf/fields/wysiwyg/toolbars', function ($toolbars) {
 });
 ```
 
-In this example, we create a new toolbar called `flynt`. You define which buttons show up. Then you need to specify that toolbar on your Wysiwyg field configuration (fields.json):
+In this example, we create a new toolbar called `myCustomToolbar`. You define which buttons show up. Then you need to specify that toolbar on your Wysiwyg field configuration (fields.json):
 
 ```json
 {
@@ -78,7 +78,7 @@ In this example, we create a new toolbar called `flynt`. You define which button
   "type": "wysiwyg",
   "media_upload": 0,
   "required": 1,
-  "toolbar": "flynt"
+  "toolbar": "myCustomToolbar"
 }
 ```
 
