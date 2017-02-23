@@ -1,10 +1,10 @@
 <?php
 
-// TODO add caching
-// TODO remove empty option types (top level page)
+// TODO adjust readme
 // TODO [minor] Overview Page + setting for redirect
 // TODO [minor] add custom post type label
 // TODO [minor] add notice for meta keys that are too long (unsolved ACF / WordPress issue)
+// TODO [minor] remove / don't create empty (parent) option pages
 
 namespace Flynt\Features\Acf;
 
@@ -67,9 +67,6 @@ class OptionPages {
       $registerFn = 'registerOptionCategory' . ucfirst($categoryName);
       self::$registerFn();
     }
-
-    // TODO do a check on wp_loaded or admin_menu hook
-    // self::removeEmptyOptionPages();
 
   }
 
@@ -345,25 +342,55 @@ class OptionPages {
     }
   }
 
-  protected static function prefixFields(array $fields, string $prefix) {
+  protected static function prefixFields($fields, $prefix) {
     return array_map(function ($field) use ($prefix) {
       $field['name'] = $prefix . '_' . $field['name'];
       return $field;
     }, $fields);
   }
 
-  protected static function getOptionFields(bool $translatable) {
+  protected static function getOptionFields($translatable) {
     global $sitepress;
 
-    if (!isset($sitepress) || $translatable) return get_fields('options');
+    if (!isset($sitepress)) {
 
-    $sitepress->switch_lang(acf_get_setting('default_language'));
-    add_filter('acf/settings/current_language', 'Flynt\Features\Acf\OptionPages::getDefaultAcfLanguage', 100);
+      $options = self::getCachedOptionFields();
 
-    $options = get_fields('options');
+    } else if ($translatable) {
 
-    remove_filter('acf/settings/current_language', 'Flynt\Features\Acf\OptionPages::getDefaultAcfLanguage', 100);
-    $sitepress->switch_lang(ICL_LANGUAGE_CODE);
+      // get options from cache with language namespace
+      $options = self::getCachedOptionFields(ICL_LANGUAGE_CODE);
+
+    } else {
+
+      // switch to default language to get global options
+      $sitepress->switch_lang(acf_get_setting('default_language'));
+
+      add_filter('acf/settings/current_language', 'Flynt\Features\Acf\OptionPages::getDefaultAcfLanguage', 100);
+
+      // get optios from cache with global namespace
+      $options = self::getCachedOptionFields('global');
+
+      remove_filter('acf/settings/current_language', 'Flynt\Features\Acf\OptionPages::getDefaultAcfLanguage', 100);
+
+      $sitepress->switch_lang(ICL_LANGUAGE_CODE);
+    }
+
+    return $options;
+  }
+
+  protected static function getCachedOptionFields($namespace = '') {
+    // get cached options
+    $found = false;
+    $suffix = !empty($namespace) ? "_${namespace}" : '';
+    $cacheKey = "Flynt/Features/Acf/OptionPages/ID=options${suffix}";
+
+    $options = wp_cache_get($cacheKey, 'flynt', null, $found);
+
+    if (!$found) {
+      $options = get_fields('options');
+      wp_cache_set($cacheKey, $options, 'flynt');
+    }
 
     return $options;
   }
