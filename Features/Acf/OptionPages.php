@@ -23,12 +23,13 @@ class OptionPages {
   const OPTION_TYPES = [
     'translatableOptions' => [
       'title' => 'Translatable Options',
+      'icon' => 'dashicons-translation',
       'translatable' => true
     ],
     'globalOptions' => [
       'title' => 'Global Options',
+      'icon' => 'dashicons-admin-site',
       'translatable' => false
-      // 'icon' => // TODO do
     ]
   ];
 
@@ -224,12 +225,13 @@ class OptionPages {
       $title = _x($option['title'], 'title', 'flynt-theme');
       $slug = ucfirst($optionType);
 
-      $generalSettings = acf_add_options_page(array(
+      acf_add_options_page([
         'page_title'  => $title,
         'menu_title'  => $title,
         'redirect'    => true,
-        'menu_slug'   => $slug
-      ));
+        'menu_slug'   => $slug,
+        'icon_url'    => $option['icon']
+      ]);
 
       self::$optionPages[$optionType] = [
         'menu_slug' => $slug,
