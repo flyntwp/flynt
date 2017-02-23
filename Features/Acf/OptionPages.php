@@ -68,6 +68,9 @@ class OptionPages {
       self::$registerFn();
     }
 
+    // Setup Flynt Non Persistent Cache
+    wp_cache_add_non_persistent_groups('flynt');
+
   }
 
   public static function init() {
@@ -383,7 +386,7 @@ class OptionPages {
     // get cached options
     $found = false;
     $suffix = !empty($namespace) ? "_${namespace}" : '';
-    $cacheKey = "Flynt/Features/Acf/OptionPages/ID=options${suffix}";
+    $cacheKey = "Features/Acf/OptionPages/ID=options${suffix}";
 
     $options = wp_cache_get($cacheKey, 'flynt', null, $found);
 
