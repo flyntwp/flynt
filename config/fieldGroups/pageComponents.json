@@ -12,7 +12,7 @@
         "Flynt/Components/MediaSlider/Fields/Layout",
         "Flynt/Components/MediaTextBlock/Fields/Layout",
         "Flynt/Components/Oembed/Fields/Layout",
-        "Flynt/Components/PostList/Fields/Layout",
+        "Flynt/Components/ListPosts/Fields/Layout",
         "Flynt/Components/TeaserGrid/Fields/Layout",
         "Flynt/Components/Wysiwyg/Fields/Layout"
       ]

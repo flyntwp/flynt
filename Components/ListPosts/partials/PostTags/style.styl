@@ -1,0 +1,37 @@
+@import '../../config.styl'
+
+.postTags
+  column(1/2, 0, 2)
+
+  +below('m')
+    stack()
+
+  &-list
+    list-style: none
+    margin: 0
+    padding: 0
+    text-align: right
+
+    +below('m')
+      margin-top: 10px
+      text-align: left
+
+  &-item
+    display: inline-block
+    font-size: 10px
+    font-weight: 600
+    margin-right: 5px
+    text-transform: uppercase
+
+  &-link
+    background: $colors.postTagBackground
+    border-radius: 4px
+    color: $colors.postTagLink
+    display: block
+    padding: 4px
+    text-decoration: none
+
+    &:hover
+      background: darken($colors.postTagBackground, 5)
+      color: $colors.postTagLink
+      text-decoration: none

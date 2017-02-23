@@ -1,0 +1,9 @@
+<section is="flynt-list-posts" class="flyntComponent">
+  <div class="postList">
+    <div class="postList-posts">
+      {% for post in posts %}
+        {% include 'partials/SinglePost/index.twig' %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
