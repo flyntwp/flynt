@@ -1,7 +1,6 @@
 <?php
 namespace Flynt\Components\Oembed;
 
-use Flynt\Utils\Log;
 use Flynt\Features\Components\Component;
 use Flynt\Utils\DomNode;
 
@@ -10,10 +9,6 @@ add_action('wp_enqueue_scripts', function () {
 });
 
 add_filter('Flynt/addComponentData?name=Oembed', function ($data) {
-  if (empty($data['posterImage'])) {
-    $data['posterImage'] = get_field('defaultPosterImage', 'options');
-  }
-
   $data['oembedLazyLoad'] = DomNode::setSrcDataAttribute(
     $data['oembed'],
     'iframe',

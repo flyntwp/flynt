@@ -1,14 +1,14 @@
-<div is="wps-oembed">
+<div is="flynt-oembed">
   <div class="oembed">
-    <div class="oembed-videoContainer">
+    <div class="oembed-videoWrapper">
       <div class="oembed-posterImage">
         <img class="oembed-imageElement" srcset="
-          {{ posterImage.src | resize(400, 225) }} 400w,
-          {{ posterImage.src | resize(800, 450) }} 800w,
-          {{ posterImage.src | resize(1200, 675) }} 1200w,
-          {{ posterImage.src | resize(1600, 900) }} 1600w"
+          {{ posterImage.src | resize(576, 324) }} 576w,
+          {{ posterImage.src | resize(768, 432) }} 768w,
+          {{ posterImage.src | resize(1200, 675) }} 1200w"
           src="{{ posterImage.src }}"
-          sizes="100vw">
+          sizes="(min-width: 1140px) 1140px, 100vw"
+          alt="{{ posterImage.alt }}">
       </div>
       <div class="oembed-video">
         {{ oembedLazyLoad }}

@@ -1,13 +1,4 @@
 {
-  "globalOptions": [
-    {
-      "name": "defaultPosterImage",
-      "label": "Default Poster Image",
-      "type": "image",
-      "mime_types": "jpg,jpeg",
-      "instructions": "Image-Format: JPG"
-    }
-  ],
   "layout": {
     "name": "oembed",
     "label": "Oembed",
@@ -17,7 +8,8 @@
         "label": "Poster Image",
         "type": "image",
         "mime_types": "jpg,jpeg",
-        "instructions": "Image-Format: JPG"
+        "instructions": "Recommended Size: Min-Width 1200px; Min-Height: 675px; Image-Format: JPG, Aspect Ratio 16/9.",
+        "required": 1
       },
       {
         "label": "Oembed",
