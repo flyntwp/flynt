@@ -22,6 +22,7 @@ add_filter('Flynt/addComponentData?name=MainTemplate', function ($data) {
   return array_merge(getPasswordContext($post->ID), $context, $data);
 });
 
+// @codingStandardsIgnoreLine
 function getPasswordContext ($postId) {
   $passwordProtected = post_password_required($postId);
   return [

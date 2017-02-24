@@ -5,7 +5,6 @@
 Replace the `add_filter` function call in this feature's **functions.php** with
 
 ```php
-@codingStandardsIgnoreLine
 function getPasswordForm ($postId = 0) {
   $context = Timber::get_context();
   $post = new Post($postId);
