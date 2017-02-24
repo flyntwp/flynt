@@ -1,28 +1,24 @@
-<div is="wps-media-text-block">
+<div is="flynt-media-text-block">
   <div class="mediaTextBlock {{ mediaPosition }}">
     <div class="mediaTextBlock-columnMedia">
       {% if mediaType == 'mediaImage' %}
-        <div class="mediaTextBlock-image">
-          <img class="mediaTextBlock-imageElement" srcset="
-            {{ image.src | resize(400, 200) }} 400w,
-            {{ image.src | resize(800, 400) }} 800w,
-            {{ image.src | resize(1200, 600) }} 1200w,
-            {{ image.src | resize(1600, 800) }} 1600w"
-            src="{{ image.src }}"
-            sizes="(max-width: 800px) 50vw, 100vw">
-        </div>
+        <img class="mediaTextBlock-imageElement" srcset="
+          {{ image.src | resize(576, 324) }} 576w,
+          {{ image.src | resize(768, 432) }} 768w"
+          src="{{ image.src }}"
+          sizes="(min-width: 1140px) 1140px, 100vw"
+          alt="{{ image.alt }}">
       {% else %}
-        <div class="mediaTextBlock-oembedVideoContainer">
-          <div class="mediaTextBlock-oembedPosterImage">
+        <div class="mediaTextBlock-videoWrapper">
+          <div class="mediaTextBlock-posterImage">
             <img class="mediaTextBlock-imageElement" srcset="
-              {{ posterImage.src | resize(400, 225) }} 400w,
-              {{ posterImage.src | resize(800, 450) }} 800w,
-              {{ posterImage.src | resize(1200, 675) }} 1200w,
-              {{ posterImage.src | resize(1600, 900) }} 1600w"
+              {{ posterImage.src | resize(576, 324) }} 576w,
+              {{ posterImage.src | resize(768, 432) }} 768w"
               src="{{ posterImage.src }}"
-              sizes="(max-width: 800px) 50vw, 100vw">
+              sizes="(min-width: 1140px) 1140px, 100vw"
+              alt="{{ posterImage.alt }}">
           </div>
-          <div class="mediaTextBlock-oembedVideo">
+          <div class="mediaTextBlock-video">
             {{ oembedLazyLoad }}
           </div>
         </div>

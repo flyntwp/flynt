@@ -1,3 +1,5 @@
+// TODO: hide poster after video is succesfully loaded
+
 class MediaTextBlock extends window.HTMLDivElement {
   constructor (self) {
     self = super(self)
@@ -7,8 +9,8 @@ class MediaTextBlock extends window.HTMLDivElement {
   }
 
   resolveElements () {
-    this.$posterImage = $('.mediaTextBlock-oembedPosterImage', this)
-    this.$video = $('.mediaTextBlock-oembedVideo', this)
+    this.$posterImage = $('.mediaTextBlock-posterImage', this)
+    this.$video = $('.mediaTextBlock-video', this)
     this.$iframe = $('iframe', this)
   }
 
@@ -20,9 +22,9 @@ class MediaTextBlock extends window.HTMLDivElement {
 
   startVideo = () => {
     this.$iframe.attr('src', this.$iframe.data('src'))
-    this.$posterImage.addClass('mediaTextBlock-oembedPosterImage-isHidden')
-    this.$video.addClass('mediaTextBlock-oembedVideo-isActive')
+    this.$video.addClass('mediaTextBlock-video-isVisible')
+    this.$posterImage.addClass('mediaTextBlock-posterImage-isHidden')
   }
 }
 
-window.customElements.define('wps-media-text-block', MediaTextBlock, {extends: 'div'})
+window.customElements.define('flynt-media-text-block', MediaTextBlock, {extends: 'div'})

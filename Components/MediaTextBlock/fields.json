@@ -1,31 +1,12 @@
 {
-  "globalOptions": [
-    {
-      "name": "defaultPosterImage",
-      "label": "Default Poster Image",
-      "type": "image",
-      "mime_types": "jpg,jpeg",
-      "instructions": "Image-Format: JPG"
-    }
-  ],
   "layout": {
     "name": "mediaTextBlock",
     "label": "Media Text Block",
     "sub_fields": [
       {
-        "name": "settingsTab",
-        "label": "Settings",
+        "name": "contentTab",
+        "label": "Content",
         "type": "tab"
-      },
-      {
-        "name": "mediaPosition",
-        "label": "Media Position",
-        "type": "select",
-        "choices": {
-          "mediaLeft": "Left",
-          "mediaRight": "Right"
-        },
-        "default_value": ""
       },
       {
         "name": "mediaType",
@@ -38,16 +19,11 @@
         "default_value": ""
       },
       {
-        "name": "contentTab",
-        "label": "Content",
-        "type": "tab"
-      },
-      {
         "name": "image",
         "label": "Image",
         "type": "image",
-        "instructions": "Image-Format: JPG",
         "mime_types": "jpg,jpeg",
+        "instructions": "Image-Format: JPG.",
         "required": 1,
         "conditional_logic": [
           [
@@ -63,8 +39,9 @@
         "name": "posterImage",
         "label": "Poster Image",
         "type": "image",
-        "instructions": "Image-Format: JPG",
         "mime_types": "jpg,jpeg",
+        "instructions": "Image-Format: JPG, Aspect Ratio 16/9.",
+        "required": 1,
         "conditional_logic": [
           [
             {
@@ -96,6 +73,21 @@
         "type": "wysiwyg",
         "media_upload": 0,
         "required": 1
+      },
+      {
+        "name": "settingsTab",
+        "label": "Settings",
+        "type": "tab"
+      },
+      {
+        "name": "mediaPosition",
+        "label": "Media Position",
+        "type": "select",
+        "choices": {
+          "mediaLeft": "Left",
+          "mediaRight": "Right"
+        },
+        "default_value": ""
       }
     ]
   }
