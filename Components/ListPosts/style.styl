@@ -1,4 +1,4 @@
-@import 'config.styl'
+@import '_config.styl'
 
 .flyntComponent[is="flynt-list-posts"]
   *,
@@ -9,7 +9,12 @@
   .postList
     center($containerMaxWidth, $gutterWidth)
 
-    &-posts
-      margin: 30px 0
-
-  @import 'partials/**/*.styl'
+  @import 'partials/PostAuthor/*.styl'
+  @import 'partials/PostCategories/*.styl'
+  @import 'partials/PostContent/*.styl'
+  @import 'partials/PostDate/*.styl'
+  @import 'partials/PostFooter/*.styl'
+  @import 'partials/PostHeader/*.styl'
+  @import 'partials/PostTags/*.styl'
+  @import 'partials/PostThumbnail/*.styl'
+  @import 'partials/SinglePost/*.styl'
