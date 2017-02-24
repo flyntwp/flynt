@@ -6,10 +6,13 @@ Replace the `add_filter` function call in this feature's **functions.php** with
 
 ```php
 @codingStandardsIgnoreLine
-function getPasswordForm ($postId = null) {
+function getPasswordForm ($postId = 0) {
   $context = Timber::get_context();
   $post = new Post($postId);
-  $context['post'] = $post;
+  $context['form'] = [
+    'url' => site_url('/wp-login.php?action=postpass', 'login_post'),
+    'inputId' => empty($post->id) ? rand() : $post->Id
+  ];
 
   $output =  Timber::fetch('index.twig', $context);
 
