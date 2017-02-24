@@ -6,19 +6,12 @@ const rupture = require('rupture')
 const sourcemaps = require('gulp-sourcemaps')
 const stylus = require('gulp-stylus')
 const gulpIf = require('gulp-if')
-const plumber = require('gulp-plumber')
-const notify = require('gulp-notify')
+const handleErrors = require('../utils/handleErrors')
 
 module.exports = function (config) {
   const isProduction = process.env.NODE_ENV === 'production'
   gulp.task('stylus', function () {
     return gulp.src(config.stylus)
-    .pipe(plumber({errorHandler: notify.onError({
-      title: 'Flynt Theme',
-      subtitle: 'Build failed',
-      message: 'Error:\n <%= error.message %>',
-      sound: 'Beep'
-    })}))
     .pipe(changed(config.dest))
     .pipe(gulpIf(!isProduction, sourcemaps.init()))
     .pipe(stylus({
@@ -31,8 +24,8 @@ module.exports = function (config) {
         path.resolve(__dirname, '../../node_modules/jeet/styl/index.styl')
       ]
     }))
+    .on('error', handleErrors)
     .pipe(gulpIf(!isProduction, sourcemaps.write(config.sourcemaps)))
-    .pipe(plumber.stop())
     .pipe(gulp.dest(config.dest))
     .pipe(browserSync.stream())
   })
