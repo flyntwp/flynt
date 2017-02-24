@@ -4,7 +4,11 @@
       {{ area('mainHeader') }}
     </header>
     <main class="mainContent" role="main">
-      {{ area('pageComponents') }}
+      {% if passwordProtected %}
+        {{ passwordForm }}
+      {% else %}
+        {{ area('pageComponents') }}
+      {% endif %}
     </main>
     <footer class="mainFooter">
       {{ area('mainFooter') }}
