@@ -1,17 +1,4 @@
 {
-  "options": [
-    {
-      "name": "defaultTheme",
-      "label": "Default Theme",
-      "type": "select",
-      "choices": {
-        "": "---",
-        "wysiwyg-fullwidth": "Fullwidth",
-        "wysiwyg-narrow": "Narrow"
-      },
-      "default_value": ""
-    }
-  ],
   "layout": {
     "name": "wysiwyg",
     "label": "Wysiwyg",
@@ -23,17 +10,6 @@
         "media_upload": 0,
         "toolbar": "full",
         "required": 1
-      },
-      {
-        "name": "theme",
-        "label": "Theme",
-        "type": "select",
-        "choices": {
-          "": "---",
-          "wysiwyg-fullwidth": "Fullwidth",
-          "wysiwyg-narrow": "Narrow"
-        },
-        "default_value": ""
       }
     ]
   }

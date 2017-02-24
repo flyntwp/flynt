@@ -1,0 +1,23 @@
+{
+  "localeOptions": [
+    {
+      "name": "readMoreLabel",
+      "label": "Read More Label",
+      "type": "text",
+      "default_value": "Read more",
+      "required": 1
+    },
+    {
+      "name": "publishedAtLabel",
+      "label": "Published At Label",
+      "type": "text",
+      "default_value": "Published at",
+      "required": 1
+    }
+  ],
+  "layout": {
+    "name": "listPosts",
+    "label": "List: Posts",
+    "sub_fields": []
+  }
+}

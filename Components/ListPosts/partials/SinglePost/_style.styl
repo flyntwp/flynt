@@ -1,0 +1,33 @@
+@import '../../_config.styl'
+
+.singlePost
+  margin: 15px 0
+  padding: 15px
+
+  &:first-child
+    margin-top: 0
+
+  &:last-child
+    margin-bottom: 0
+
+  &-content
+    overflow: hidden
+    zoom: 1
+
+  &-thumbnailWrapper
+    display: table-cell
+    vertical-align: top
+
+    +below('s')
+      margin-bottom: 15px
+
+  &-contentWrapper
+    display: table-cell
+    vertical-align: top
+    width: 1000000px
+
+    +below('s')
+      &-postThumbnailWrapper,
+      &-postContentWrapper
+        display: block
+        width: 100%
