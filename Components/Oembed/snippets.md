@@ -6,7 +6,7 @@
 
 ```json
 {
-  "options": [
+  "globalOptions": [
     {
       "name": "defaultPosterImage",
       "label": "Default Poster Image",
