@@ -27,6 +27,5 @@ function getPasswordContext ($postId) {
   return [
     'passwordProtected' => $passwordProtected,
     'passwordForm' => $passwordProtected ? get_the_password_form() : ''
-    // 'passwordForm' => $passwordProtected ? \Flynt\Features\PasswordForm\getPasswordForm() : ''
   ];
 }

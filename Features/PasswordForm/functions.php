@@ -11,14 +11,3 @@ add_filter('the_password_form', function ($output) {
 
   return Timber::fetch('index.twig', $context);
 });
-
-// @codingStandardsIgnoreLine
-// function getPasswordForm ($postId = null) {
-//   $context = Timber::get_context();
-//   $post = new Post($postId);
-//   $context['post'] = $post;
-//
-//   $output =  Timber::fetch('index.twig', $context);
-//
-//   return apply_filters('the_password_form', $output);
-// }
