@@ -1,5 +1,5 @@
 {
-  "options": [
+  "globalOptions": [
     {
       "label": "Default Image",
       "name": "defaultImage",
@@ -16,7 +16,7 @@
       "mime_types": "jpg,jpeg"
     }
   ],
-  "localeOptions": [
+  "translatableOptions": [
     {
       "name": "defaultTitleText",
       "label": "Default Title Text",

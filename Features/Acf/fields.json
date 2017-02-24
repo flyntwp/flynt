@@ -1,5 +1,5 @@
 {
-  "options": [
+  "globalOptions": [
     {
       "name": "googleMapsTab",
       "label": "Google Maps",
