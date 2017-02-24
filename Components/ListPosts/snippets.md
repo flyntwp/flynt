@@ -2,12 +2,16 @@
 
 ## Adding a optional partial
 
-This component includes optional partials which can be added or removed easily
+This component includes partials which can be added or removed easily
 
-* PostDate
-* PostAuthor
-* PostCategories
-* PostTags
+* SinglePost
+  * PostHeader
+    * PostDate
+    * PostAuthor
+  * PostContent
+  * PostFooter
+    * PostCategories
+    * PostTags
 
 Twig (PostHeader for example):
 ```twig

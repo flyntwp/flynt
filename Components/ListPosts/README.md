@@ -10,6 +10,6 @@ Tags: list, posts, blog, postlist
 
 ----
 
-Text: A vertical post list which shows post of a selected post type.
+Text: A vertical post list which shows posts of a selected post type.
 
 ----
