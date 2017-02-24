@@ -1,9 +1,23 @@
 @import '../../_config.styl'
 
 .postThumbnail
+  &-link
+    display: block
+    width: 100%
+    
   &-image
     width: 180px
     height: auto
 
     +below('s')
+      width: 100%
+
+  &-imagePlaceholder
+    background: #f3f3f3
+    width: 180px
+    height: 180px
+
+    +below('s')
+      height: 0
+      padding-bottom: 100%
       width: 100%

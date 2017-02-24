@@ -19,7 +19,8 @@
     vertical-align: top
 
     +below('s')
-      margin-bottom: 15px
+      display: block
+      margin: 0 auto 15px
 
   &-contentWrapper
     display: table-cell
@@ -27,7 +28,5 @@
     width: 1000000px
 
     +below('s')
-      &-postThumbnailWrapper,
-      &-postContentWrapper
-        display: block
-        width: 100%
+      display: block
+      width: 100%

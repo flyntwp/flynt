@@ -1,9 +1,13 @@
 <div class="postThumbnail">
   <a class="postThumbnail-link" href="{{ post.permalink }}" title="{{ post.title }}">
-    <img class="postThumbnail-image" srcset="
-      {{ post.thumbnail | resize(180, 180) }} 180w,
-      {{ post.thumbnail | resize(450, 450) }} 450w,
-      {{ post.thumbnail | resize(800, 800) }} 800w"
-      src="{{ post.thumbnail }}">
+    {% if post.thumbnail %}
+      <img class="postThumbnail-image" srcset="
+        {{ post.thumbnail | resize(180, 180) }} 180w,
+        {{ post.thumbnail | resize(450, 450) }} 450w,
+        {{ post.thumbnail | resize(800, 800) }} 800w"
+        src="{{ post.thumbnail }}">
+    {% else %}
+      <div class="postThumbnail-imagePlaceholder"></div>
+    {% endif %}
   </a>
 </div>
