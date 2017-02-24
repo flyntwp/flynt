@@ -3,8 +3,8 @@
 namespace Flynt\Features\TimberLoader;
 
 use Flynt;
-use Flynt\Utils\Log;
 use Timber\Image;
+use Timber\Post;
 use Timber\Timber;
 use Twig_SimpleFunction;
 
