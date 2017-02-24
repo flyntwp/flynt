@@ -1,0 +1,124 @@
+$rupture.scale = lookup('$global-layout-scale') || (0 576px 768px 992px 1200px)
+$rupture.anti-overlap = lookup('$global-layout-overlap') || -1px
+$containerMaxWidth = lookup('$global-layout-containerMaxWidth') || 1140px
+$gutterWidth = lookup('$global-layout-gutterWidth') || 15px
+$maxWidth = $containerMaxWidth - (2 * $gutterWidth)
+
+// Frontend Preview Images
+[is="flynt-component-preview"]
+  height: 100%
+  left: 50%
+  max-width: $maxWidth
+  position: fixed
+  top: 0
+  transform: translateX(-50%)
+  width: 100%
+  z-index: 1000000
+
+  .componentPreview
+    &-imageDesktop
+      +below('s')
+        display: none
+
+    &-imageMobile
+      +above('s')
+        display: none
+
+// Backend Preview Images
+.flyntComponentPreview
+  background-color: #fff
+  border: 1px solid #e1e1e1
+  bottom: 5px
+  display: inline-block
+  height: 36px
+  margin-left: 5px
+  padding: 2px
+  position: absolute
+
+  &-imageWrapper
+    bottom: 0
+    position: absolute
+    right: 105%
+
+  &-imageElement
+    display: block
+    height: 100%
+    width: auto
+
+  &-image
+    border-radius: 3px
+    border: 3px solid #333739
+    bottom: 0
+    display: block
+    max-width: 500px
+    position: absolute
+
+  &-imageDesktop
+    height: 250px
+    right: 30px
+
+  &-imageMobile
+    height: 150px
+    right: 0
+
+  &-label
+    bottom: 4px
+    left: 100%
+    padding-left: 8px
+    position: absolute
+    white-space: nowrap
+
+// Custom WP Adminbar
+html.admin-bar
+  margin-bottom: 32px !important
+  margin-top: 0 !important
+
+  #wpadminbar
+    background-color: #000
+    bottom: 0
+    top: auto
+    z-index: 1000001
+
+    #adminbarsearch
+      &.adminbar-focused:before,
+      &.adminbar-focused:hover:before
+        color: #000 !important
+
+      &:hover:before
+        color: #fff !important
+
+    #wp-admin-bar-wp-logo
+      display: none
+
+    .menupop .ab-sub-wrapper
+      bottom: 100%
+
+  #wpadminbar .ab-top-menu>li.hover>.ab-item,
+  #wpadminbar.nojq .quicklinks .ab-top-menu>li>.ab-item:focus,
+  #wpadminbar:not(.mobile) .ab-top-menu>li:hover>.ab-item,
+  #wpadminbar:not(.mobile) .ab-top-menu>li>.ab-item:focus
+    background-color: #000
+    color: #fff
+
+    &:before,
+    .ab-icon:before,
+    .ab-label
+      color: #fff !important
+
+  #wpadminbar .menupop .ab-sub-wrapper,
+  #wpadminbar .shortlink-input
+    background-color: #000
+
+  #wp-admin-bar-toggleComponentPreviews
+    transition: background-color .2s ease
+
+    &.hover > div,
+    &.active > div
+      background-color: lighten(#000, 20) !important
+
+  @media (max-width: 600px)
+    html.admin-bar
+      margin-bottom: 46px !important
+
+    #wpadminbar
+      position: fixed

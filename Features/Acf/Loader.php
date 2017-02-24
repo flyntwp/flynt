@@ -3,6 +3,7 @@
 namespace Flynt\Features\Acf;
 
 use Flynt\Features\AdminNotices\AdminNoticeManager;
+use Flynt\Features\Components\Component;
 use Flynt\Utils\ArrayHelpers;
 
 class Loader {
@@ -21,6 +22,21 @@ class Loader {
 
       self::setupHelpers();
 
+      // add styles for admin area
+      add_action('admin_enqueue_scripts', function () {
+        Component::addAsset('enqueue', [
+          'type' => 'style',
+          'name' => 'Flynt/Features/Acf/AdminCss',
+          'path' => 'Features/Acf/admin.css'
+        ]);
+
+        Component::addAsset('enqueue', [
+          'type' => 'script',
+          'name' => 'Flynt/Features/Acf/AdminJs',
+          'path' => 'Features/Acf/admin.js',
+          'dependencies' => ['jquery']
+        ]);
+      });
     }
   }
 

@@ -1,5 +1,5 @@
 {
-  "localeOptions": [
+  "translatableOptions": [
     {
       "name": "contentHTML",
       "label": "Content",

@@ -22,11 +22,9 @@ $containerMaxWidth = lookup('$global-layout-containerMaxWidth') || 1140px
         stack()
 
     &.mediaRight
-      .mediaTextBlock-columnMedia
-        move(1/2, $gutter: 2.5)
-
+      .mediaTextBlock-columnMedia,
       .mediaTextBlock-columnContentHtml
-        move(-1/2, $gutter: 2.5)
+        move(1/2, $gutter: 2)
 
       .mediaTextBlock-columnMedia,
       .mediaTextBlock-columnContentHtml
