@@ -87,9 +87,9 @@ class OptionPages {
   // PUBLIC API
   // ============
 
-  // usage: OptionPages::getOptions('options', 'customPostType', 'myCustomPostTypeName');
-  // usage: OptionPages::getOptions('options', 'feature', 'myFeatureName');
-  // usage: OptionPages::getOptions('localeOptions', 'component', 'myComponentName');
+  // usage: OptionPages::getOptions('globalOptions', 'customPostType', 'myCustomPostTypeName');
+  // usage: OptionPages::getOptions('globalOptions', 'feature', 'myFeatureName');
+  // usage: OptionPages::getOptions('translatableOptions', 'component', 'myComponentName');
   // all params expected to be camelCase
   public static function getOptions($optionType, $optionCategory, $subPageName) {
     if (!isset(self::$optionTypes[$optionType])) return [];
@@ -110,9 +110,9 @@ class OptionPages {
     }, []);
   }
 
-  // usage: OptionPages::getOption('options', 'customPostType', 'myCustomPostTypeName', 'myFieldName');
-  // usage: OptionPages::getOption('options', 'feature', 'myFeatureName', 'myFieldName');
-  // usage: OptionPages::getOption('localeOptions', 'component', 'myComponentName', 'myFieldName');
+  // usage: OptionPages::getOption('globalOptions', 'customPostType', 'myCustomPostTypeName', 'myFieldName');
+  // usage: OptionPages::getOption('globalOptions', 'feature', 'myFeatureName', 'myFieldName');
+  // usage: OptionPages::getOption('translatableOptions', 'component', 'myComponentName', 'myFieldName');
   // all params expected to be camelCase
   public static function getOption($optionType, $optionCategory, $subPageName, $fieldName) {
     $options = self::getOptions($optionType, $optionCategory, $subPageName);
