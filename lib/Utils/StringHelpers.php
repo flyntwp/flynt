@@ -3,16 +3,16 @@
 namespace Flynt\Utils;
 
 class StringHelpers {
-  public static function camelCaseToKebap(string $str) {
+  public static function camelCaseToKebap($str) {
     return strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $str));
   }
 
-  public static function trimStrip(string $str, int $length = 25) {
+  public static function trimStrip($str, $length = 25) {
     if(isset($str))
       return wp_trim_words(wp_strip_all_tags($str), $length, '...');
   }
 
-  public static function splitCamelCase(string $str) {
+  public static function splitCamelCase($str) {
     $a = preg_split(
       '/(^[^A-Z]+|[A-Z][^A-Z]+)/',
       $str,
@@ -23,7 +23,7 @@ class StringHelpers {
     return join($a, ' ');
   }
 
-  public static function kebapCaseToCamelCase(string $str, bool $capitalizeFirstCharacter = false) {
+  public static function kebapCaseToCamelCase($str, $capitalizeFirstCharacter = false) {
     $str = str_replace(' ', '', ucwords(str_replace('-', ' ', $str)));
 
     if (!$capitalizeFirstCharacter) {
@@ -33,14 +33,14 @@ class StringHelpers {
     return $str;
   }
 
-  public static function removePrefix(string $prefix, string $str) {
+  public static function removePrefix($prefix, $str) {
     if (substr($str, 0, strlen($prefix)) == $prefix) {
       return substr($str, strlen($prefix));
     }
     return $str;
   }
 
-  public static function startsWith(string $search, string $subject) {
+  public static function startsWith($search, $subject) {
     return substr($subject, 0, strlen($search)) === $search;
   }
 }
