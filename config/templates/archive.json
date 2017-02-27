@@ -16,6 +16,9 @@
           "pageComponents": [
             {
               "name": "ListPosts"
+            },
+            {
+              "name": "PaginationButtons"
             }
           ],
           "mainFooter": []

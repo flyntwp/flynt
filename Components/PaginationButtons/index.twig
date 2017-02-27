@@ -1,0 +1,14 @@
+<div is="flynt-pagination-buttons" class="flyntComponent">
+  <div class="paginationButtons">
+    <div class="paginationButtons-prevWrapper">
+      {% if pagination.prev %}
+        <a href="{{pagination.prev.link}}" class="paginationButtons-prevButton btn btn-primary">Previous</a>
+      {% endif %}
+    </div>
+    <div class="paginationButtons-nextWrapper">
+      {% if pagination.next %}
+        <a href="{{ pagination.next.link }}" class="paginationButtons-nextButton btn btn-primary">Next</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
