@@ -1,11 +1,11 @@
 <div class="postThumbnail">
-  <a class="postThumbnail-link" href="{{ post.permalink }}" title="{{ post.title }}">
-    {% if post.thumbnail %}
+  <a class="postThumbnail-link" href="{{ post.link }}" title="{{ post.title }}">
+    {% if post.thumbnail.src %}
       <img class="postThumbnail-image" srcset="
-        {{ post.thumbnail | resize(180, 180) }} 180w,
-        {{ post.thumbnail | resize(450, 450) }} 450w,
-        {{ post.thumbnail | resize(800, 800) }} 800w"
-        src="{{ post.thumbnail }}">
+        {{ post.thumbnail.src | resize(180, 180) }} 180w,
+        {{ post.thumbnail.src | resize(450, 450) }} 450w,
+        {{ post.thumbnail.src | resize(800, 800) }} 800w"
+        src="{{ post.thumbnail.src }}">
     {% else %}
       <div class="postThumbnail-imagePlaceholder"></div>
     {% endif %}
