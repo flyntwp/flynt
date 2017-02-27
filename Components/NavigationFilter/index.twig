@@ -1,0 +1,17 @@
+<div is="flynt-navigation-filter" class="flyntComponent">
+  <div class="filters">
+    <select class="filters-categoryFilter" name="categoryFilter">
+      <option value="">{{ categoryLabel }}</option>
+      {% for category in categories %}
+        <option {{ category.selectedAttribute }} value="{{ category.slug }}">{{ category.title }}</option>
+      {% endfor %}
+    </select>
+
+    <select class="filters-tagFilter" name="tagFilter">
+      <option value="">{{ tagLabel }}</option>
+      {% for tag in tags %}
+        <option {{ tag.selectedAttribute }} value="{{ tag.slug }}">{{ tag.title }}</option>
+      {% endfor %}
+    </select>
+  </div>
+</div>
