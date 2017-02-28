@@ -4,7 +4,7 @@
 
   <exclude-pattern>*/bower_components/*</exclude-pattern>
   <exclude-pattern>*/node_modules/*</exclude-pattern>
-	<exclude-pattern>*.js</exclude-pattern>
+  <exclude-pattern>*.js</exclude-pattern>
   <exclude-pattern>*.css</exclude-pattern>
 
   <rule ref="PEAR.WhiteSpace.ScopeIndent">
@@ -44,5 +44,9 @@
     <properties>
       <property name="indent" value="2" />
     </properties>
+  </rule>
+
+  <rule ref="Squiz.Functions.GlobalFunction">
+    <exclude name="Squiz.Functions.GlobalFunction.Found" />
   </rule>
 </ruleset>
