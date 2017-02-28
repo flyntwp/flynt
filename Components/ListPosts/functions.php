@@ -24,6 +24,25 @@ add_filter('Flynt/addComponentData?name=ListPosts', function ($data) {
     $data['posts'] = Timber::get_posts();
   }
 
+  $data['isArchive'] = is_archive();
+  $data['archiveTitle'] = '';
+  $data['filterTitle'] = '';
+
+  if (is_category()) {
+    $data['archiveTitle'] = single_cat_title('', false);
+    $data['filterTitle'] = $data['categoryLabel'] . ': ';
+  } elseif (is_tag()) {
+    $data['archiveTitle'] = single_tag_title('', false);
+    $data['filterTitle'] = $data['tagLabel'] . ': ';
+  } elseif (is_author()) {
+    $data['archiveTitle'] = get_the_author();
+    $data['filterTitle'] = $data['authorLabel'] . ': ';
+  } elseif (is_post_type_archive()) {
+    $data['archiveTitle'] = post_type_archive_title('', false);
+  } elseif (is_tax()) {
+    $data['archiveTitle'] = single_term_title('', false);
+  }
+
   return $data;
 });
 

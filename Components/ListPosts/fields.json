@@ -20,6 +20,27 @@
       "type": "text",
       "default_value": "No posts found.",
       "required": 1
+    },
+    {
+      "name": "categoryLabel",
+      "label": "Category Label",
+      "type": "text",
+      "default_value": "Category",
+      "required": 1
+    },
+    {
+      "name": "tagLabel",
+      "label": "Tag Label",
+      "type": "text",
+      "default_value": "Tag",
+      "required": 1
+    },
+    {
+      "name": "authorLabel",
+      "label": "Author Label",
+      "type": "text",
+      "default_value": "Author",
+      "required": 1
     }
   ],
   "layout": {
