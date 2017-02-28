@@ -15,6 +15,9 @@
           ],
           "pageComponents": [
             {
+              "name": "NavigationFilter"
+            },
+            {
               "name": "ListPosts"
             },
             {
