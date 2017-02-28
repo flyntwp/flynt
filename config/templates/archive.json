@@ -18,6 +18,9 @@
               "name": "NavigationFilter"
             },
             {
+              "name": "PaginationDefault"
+            },
+            {
               "name": "ListPosts"
             },
             {
