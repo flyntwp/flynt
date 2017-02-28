@@ -34,7 +34,11 @@ class NavigationFilter extends window.HTMLDivElement {
     getParams.tag = tag
 
     const queryString = buildQueryString(getParams)
-    const url = window.location.href.replace(window.location.search, '') + '?' + queryString
+    let url = window.location.href.replace(window.location.search, '') + '?' + queryString
+    const regex = /(\/page\/([0-9]*))/
+
+    url = url.replace(regex, '')
+    alert(url)
     window.location = url
   }
 

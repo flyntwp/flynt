@@ -16,7 +16,9 @@ add_filter('Flynt/addComponentData?name=ListPosts', function ($data) {
     $args = [
       'post_type' => 'post'
     ];
+    $pagination = Timber::get_pagination();
     $args = array_merge($args, $queries);
+    $args['paged'] = $pagination['current'];
     $data['posts'] = Timber::get_posts($args);
   } else {
     $data['posts'] = Timber::get_posts();
