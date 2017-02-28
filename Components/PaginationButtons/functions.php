@@ -32,8 +32,8 @@ function getQueries() {
     $queries['category_name'] = $_GET['category'];
   }
 
-  if (isset($_GET['tag'])) {
-    $queries['tag'] = $_GET['tag'];
+  if (isset($_GET['filtertag'])) {
+    $queries['tag'] = $_GET['filtertag'];
   }
 
   if (count($queries) === 0) {

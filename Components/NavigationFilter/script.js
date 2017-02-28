@@ -29,7 +29,7 @@ class NavigationFilter extends window.HTMLDivElement {
     let getParams = extractGetParams()
 
     getParams.category = category
-    getParams.tag = tag
+    getParams.filtertag = tag
 
     const queryString = buildQueryString(getParams)
     let url = window.location.href.replace(window.location.search, '') + '?' + queryString
