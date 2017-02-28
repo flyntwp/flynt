@@ -27,6 +27,7 @@ add_filter('Flynt/addComponentData?name=ListPosts', function ($data) {
   return $data;
 });
 
+// @codingStandardsIgnoreLine
 function getQueries() {
   $queries = [];
   if (isset($_GET['category'])) {

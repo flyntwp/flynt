@@ -16,11 +16,9 @@ class NavigationFilter extends window.HTMLDivElement {
   resolveElements () {
     this.$categoryFilter = $('.filters-categoryFilter', this)
     this.$tagFilter = $('.filters-tagFilter', this)
-    this.queryString = false
   }
 
   connectedCallback () {
-    this.checkIfGetParamsExist()
     this.$categoryFilter.on('change', this.changeFilter.bind(this))
     this.$tagFilter.on('change', this.changeFilter.bind(this))
   }
@@ -39,12 +37,6 @@ class NavigationFilter extends window.HTMLDivElement {
 
     url = url.replace(regex, '')
     window.location = url
-  }
-
-  checkIfGetParamsExist () {
-    if (window.location.search.indexOf('?') === 0) {
-      this.queryString = window.location.search
-    }
   }
 }
 
