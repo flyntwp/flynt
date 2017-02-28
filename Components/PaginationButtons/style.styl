@@ -1,0 +1,21 @@
+@import '_config.styl'
+
+.flyntComponent[is="flynt-pagination-buttons"]
+  *,
+  *:before,
+  *:after
+    box-sizing: border-box
+
+  .paginationButtons
+    center($containerMaxWidth, $gutterWidth)
+    padding-bottom: 15px
+    padding-top: 15px
+
+    &-prevWrapper
+      column(1/2, $gutter: 2)
+      min-height: 1px
+
+    &-nextWrapper
+      column(1/2, $gutter: 2)
+      min-height: 1px
+      text-align: right

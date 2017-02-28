@@ -1,0 +1,18 @@
+{
+  "translatableOptions": [
+    {
+      "name": "previousLabel",
+      "label": "Previous Label",
+      "type": "text",
+      "default_value": "Previous",
+      "required": 1
+    },
+    {
+      "name": "nextLabel",
+      "label": "Next Label",
+      "type": "text",
+      "default_value": "Next",
+      "required": 1
+    }
+  ]
+}
