@@ -38,7 +38,6 @@ class NavigationFilter extends window.HTMLDivElement {
     const regex = /(\/page\/([0-9]*))/
 
     url = url.replace(regex, '')
-    alert(url)
     window.location = url
   }
 
