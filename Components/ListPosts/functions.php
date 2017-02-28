@@ -12,7 +12,7 @@ add_action('wp_enqueue_scripts', function () {
 
 add_filter('Flynt/addComponentData?name=ListPosts', function ($data) {
   $queries = getQueries();
-  if($queries) {
+  if ($queries) {
     $args = [
       'post_type' => 'post'
     ];
@@ -27,15 +27,15 @@ add_filter('Flynt/addComponentData?name=ListPosts', function ($data) {
 
 function getQueries() {
   $queries = [];
-  if(isset($_GET['category'])) {
+  if (isset($_GET['category'])) {
     $queries['category_name'] = $_GET['category'];
   }
 
-  if(isset($_GET['tag'])) {
+  if (isset($_GET['tag'])) {
     $queries['tag'] = $_GET['tag'];
   }
 
-  if(count($queries) === 0) {
+  if (count($queries) === 0) {
     $queries = false;
   }
 

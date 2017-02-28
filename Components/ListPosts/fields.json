@@ -13,6 +13,13 @@
       "type": "text",
       "default_value": "Published at",
       "required": 1
+    },
+    {
+      "name": "noPostsFoundLabel",
+      "label": "No Posts Found Label",
+      "type": "text",
+      "default_value": "No posts found.",
+      "required": 1
     }
   ],
   "layout": {

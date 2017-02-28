@@ -1,5 +1,10 @@
 @import '_config.styl'
 
 .flyntComponent[is="flynt-navigation-filter"]
+  *,
+  *:before,
+  *:after
+    box-sizing: border-box
+    
   .filters
     center($containerMaxWidth, $gutterWidth)
