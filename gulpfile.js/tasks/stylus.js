@@ -27,6 +27,7 @@ module.exports = function (config) {
     .on('error', handleErrors)
     .pipe(gulpIf(!isProduction, sourcemaps.write(config.sourcemaps)))
     .pipe(gulp.dest(config.dest))
+    .on('error', handleErrors)
     .pipe(browserSync.stream())
   })
 }

@@ -6,10 +6,12 @@ module.exports = function () {
   // Send error to notification center with gulp-notify
   notify.onError({
     title: 'Flynt Compile Failed',
-    subtitle: 'Check the terminal for more information',
+    subtitle: '<%= error.plugin %>: <%= error.name %>',
     message: '<%= error.message %>'
   }).apply(this, args)
 
   // Keep gulp from hanging on this task
-  this.emit('end')
+  if (typeof this.emit === 'function') {
+    this.emit('end')
+  }
 }
