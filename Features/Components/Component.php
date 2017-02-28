@@ -3,6 +3,7 @@
 namespace Flynt\Features\Components;
 
 use Flynt\Utils\Asset;
+use Flynt\Utils\StringHelpers;
 
 class Component {
 
@@ -84,10 +85,20 @@ class Component {
     $funcName = "wp_{$funcType}_{$options['type']}";
     $lastVar = $options['type'] === 'script' ? $options['inFooter'] : $options['media'];
 
+    // allow external urls
+    $path = $options['path'];
+    if (
+      !(StringHelpers::startsWith('http://', $path))
+      && !(StringHelpers::startsWith('https://', $path))
+      && !(StringHelpers::startsWith('//', $path))
+    ) {
+      $path = Asset::requireUrl($options['path']);
+    }
+
     if (function_exists($funcName)) {
       $funcName(
         $options['name'],
-        Asset::requireUrl($options['path']),
+        $path,
         $options['dependencies'],
         $options['version'],
         $lastVar
