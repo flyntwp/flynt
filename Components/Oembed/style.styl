@@ -1,79 +1,35 @@
-$trasitionTime = .3s
-$transitionEasing = ease
-$buttonColor = lookup('$global-color-play-button') || #f00
-$triangleColor = lookup('$global-color-triangle') || #fff
+$rupture.scale = lookup('$global-layout-scale') || (0 576px 768px 992px 1200px)
+$rupture.anti-overlap = lookup('$global-layout-overlap') || -1px
 $gutterWidth = lookup('$global-layout-gutterWidth') || 15px
-$maxWidth = lookup('$global-layout-maxWidth') || 1140px
-rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px 800px 1200px
+$containerMaxWidth = lookup('$global-layout-containerMaxWidth') || 1140px
 
-[is='wps-oembed']
+@import 'Mixins/_playButton.styl'
+
+[is='flynt-oembed']
   *,
   *:before,
   *:after
     box-sizing: border-box
 
-  img
-    height: auto
-    width: 100%
-
   .oembed
-    center($maxWidth, $gutterWidth)
+    center($containerMaxWidth, $gutterWidth)
 
-    &-videoContainer
+    &-videoWrapper
       position: relative
 
+    &-imageElement
+      display: block
+      height: auto
+      width: 100%
+
     &-posterImage
-      bottom: 0
       cursor: pointer
-      left: 0
-      overflow: hidden
       position: absolute
-      right: 0
-      top: 0
-      transition: visibility $trasitionTime $transitionEasing
+      transition: visibility $transitionTime $transitionEasing
       visibility: visible
       z-index: 1
 
-      $pseudoElements = {
-        left: 50%
-        position: absolute
-        top: 50%
-        transition: transform $trasitionTime $transitionEasing
-      }
-
-      &::before
-        {$pseudoElements}
-        background-color: $buttonColor
-        border-radius: 50px
-        content: ''
-        height: 100px
-        margin: -50px 0 0 -50px
-        width: 100px
-
-        +below('s')
-          height: 60px
-          margin: -30px 0 0 -30px
-          width: 60px
-
-      &::after
-        {$pseudoElements}
-        border-bottom: 20px solid transparent
-        border-left: 40px solid $triangleColor
-        border-top: 20px solid transparent
-        content: ''
-        height: 0
-        margin: -20px 0 0 -15px
-        width: 0
-
-        +below('s')
-          border-bottom: 12px solid transparent
-          border-left: 20px solid $triangleColor
-          border-top: 12px solid transparent
-          margin: -10px 0 0 -8px
-
-      &:hover::before,
-      &:hover::after
-        transform: scale(1.1)
+      playButton($pseudoElementDefaults, $colorGray, $backgroundOpacity, $borderWidth, $colorWhite, $playButtonCircleDiameter, $colorWhite, $playButtonTriangleSize)
 
       &-isHidden
         visibility: hidden
@@ -83,7 +39,7 @@ rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px
       padding-bottom: percentage(9 / 16)
       visibility: hidden
 
-      &-isActive
+      &-isVisible
         visibility: visible
 
       iframe
