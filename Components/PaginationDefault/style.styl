@@ -1,0 +1,40 @@
+@import '_config.styl'
+
+.flyntComponent[is="flynt-pagination-default"]
+  *,
+  *:before,
+  *:after
+    box-sizing: border-box
+
+  .pagination
+    center($containerMaxWidth, $gutterWidth)
+    padding-right: 15px
+    padding-top: 15px
+
+    &-list
+      list-style: none
+      margin: 0
+      min-height: 1px
+      padding: 0
+      text-align: center
+
+    &-item
+      display: inline-block
+
+    &-link
+      display: block
+      margin: 0 5px
+      padding: 15px 0
+
+      &.current
+        font-weight: 600
+
+    &-prevLink
+      display: block
+      margin: 0 5px
+      padding: 15px 0
+
+    &-nextLink
+      display: block
+      margin: 0 5px
+      padding: 15px 0
