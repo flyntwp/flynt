@@ -1,11 +1,12 @@
+const autoprefixer = require('autoprefixer-stylus')
 const browserSync = require('browser-sync')
 const changed = require('gulp-changed')
 const gulp = require('gulp')
+const gulpIf = require('gulp-if')
 const path = require('path')
 const rupture = require('rupture')
 const sourcemaps = require('gulp-sourcemaps')
 const stylus = require('gulp-stylus')
-const gulpIf = require('gulp-if')
 
 module.exports = function (config) {
   const isProduction = process.env.NODE_ENV === 'production'
@@ -16,7 +17,8 @@ module.exports = function (config) {
     .pipe(stylus({
       compress: isProduction,
       use: [
-        rupture()
+        rupture(),
+        autoprefixer()
       ],
       import: [
         path.resolve(__dirname, '../../Components/_variables.styl'),
