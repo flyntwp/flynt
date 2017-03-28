@@ -1,8 +1,7 @@
 @import '../../_config.styl'
 
 .singlePost
-  margin: 15px 0
-  padding: 15px
+  margin: 30px 0
 
   &:first-child
     margin-top: 0
@@ -16,10 +15,12 @@
 
   &-thumbnailWrapper
     display: table-cell
+    padding-right: 15px
     vertical-align: top
 
     +below('s')
-      margin-bottom: 15px
+      display: block
+      margin: 0 auto 15px
 
   &-contentWrapper
     display: table-cell
@@ -27,7 +28,5 @@
     width: 1000000px
 
     +below('s')
-      &-postThumbnailWrapper,
-      &-postContentWrapper
-        display: block
-        width: 100%
+      display: block
+      width: 100%

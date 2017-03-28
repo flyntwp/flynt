@@ -1,0 +1,18 @@
+{
+  "translatableOptions": [
+    {
+      "name": "categoryLabel",
+      "label": "Select Category - Label",
+      "type": "text",
+      "default_value": "Select category",
+      "required": 1
+    },
+    {
+      "name": "tagLabel",
+      "label": "Select Tag - Label",
+      "type": "text",
+      "default_value": "Select tag",
+      "required": 1
+    }
+  ]
+}

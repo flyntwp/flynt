@@ -10,6 +10,7 @@
     "build": "check-node-version --package && NODE_ENV=production gulp build"
   },
   "devDependencies": {
+    "autoprefixer-stylus": "^0.13.0",
     "babel-core": "^6.18.2",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.7",
@@ -68,5 +69,10 @@
   "engines": {
     "node": "^6.0.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "ie 11"
+  ]
 }
