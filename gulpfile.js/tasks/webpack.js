@@ -4,6 +4,7 @@ const browserSync = require('browser-sync')
 const gulp = require('gulp')
 const gutil = require('gulp-util')
 const webpack = require('webpack')
+const handleErrors = require('../utils/handleErrors.js')
 
 let previousAssets = []
 let previousHash
@@ -32,6 +33,14 @@ const webpackTask = function (callback) {
     if (err) {
       throw new gutil.PluginError('webpack:build', err)
     }
+
+    if (stats.compilation.errors.length > 0) {
+      stats.compilation.errors.forEach(function (error) {
+        error.plugin = 'Webpack'
+        handleErrors(error)
+      })
+    }
+
     if (previousHash !== stats.hash) {
       previousHash = stats.hash
       removeUnusedAssets(stats)

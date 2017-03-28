@@ -3,6 +3,7 @@ const browserSync = require('browser-sync')
 const changed = require('gulp-changed')
 const gulp = require('gulp')
 const gulpIf = require('gulp-if')
+const handleErrors = require('../utils/handleErrors')
 const path = require('path')
 const rupture = require('rupture')
 const sourcemaps = require('gulp-sourcemaps')
@@ -25,8 +26,10 @@ module.exports = function (config) {
         path.resolve(__dirname, '../../node_modules/jeet/styl/index.styl')
       ]
     }))
+    .on('error', handleErrors)
     .pipe(gulpIf(!isProduction, sourcemaps.write(config.sourcemaps)))
     .pipe(gulp.dest(config.dest))
+    .on('error', handleErrors)
     .pipe(browserSync.stream())
   })
 }
