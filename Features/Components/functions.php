@@ -13,16 +13,16 @@ use Flynt\Utils\Feature;
 $componentPath = trailingslashit(Feature::getOption('flynt-components', 0));
 
 add_action('Flynt/afterRegisterFeatures', function () use ($componentPath) {
-  if (is_dir($componentPath)) {
-    FileLoader::iterateDir($componentPath, function ($dir) {
-      if ($dir->isDir()) {
-        Flynt\registerComponent($dir->getFilename());
-      }
-    });
-  }
+    if (is_dir($componentPath)) {
+        FileLoader::iterateDir($componentPath, function ($dir) {
+            if ($dir->isDir()) {
+                Flynt\registerComponent($dir->getFilename());
+            }
+        });
+    }
 });
 
 // set Component Path
 add_filter('Flynt/componentPath', function ($defaultPath, $componentName) use ($componentPath) {
-  return $componentPath . $componentName;
+    return $componentPath . $componentName;
 }, 10, 2);

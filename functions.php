@@ -16,7 +16,5 @@ Bootstrap::setTemplateDirectory();
 // If it isn't, this function redirects the template rendering to use
 // plugin-inactive.php instead
 if (Bootstrap::checkPlugin()) {
-
-  require_once get_template_directory() . '/lib/Init.php';
-
+    require_once get_template_directory() . '/lib/Init.php';
 }

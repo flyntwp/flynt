@@ -9,10 +9,9 @@ use Flynt\Features\CustomPostTypes\CustomPostTypeRegister;
 
 add_action('Flynt/afterRegisterFeatures', function () {
 
-  $featureOptions = Feature::getOption('flynt-custom-post-types', 0);
-  $dir = isset($featureOptions['dir']) ? $featureOptions['dir'] : null;
-  $fileName = isset($featureOptions['fileName']) ? $featureOptions['fileName'] : null;
+    $featureOptions = Feature::getOption('flynt-custom-post-types', 0);
+    $dir = isset($featureOptions['dir']) ? $featureOptions['dir'] : null;
+    $fileName = isset($featureOptions['fileName']) ? $featureOptions['fileName'] : null;
 
-  CustomPostTypeRegister::fromDir($dir, $fileName);
-
+    CustomPostTypeRegister::fromDir($dir, $fileName);
 });

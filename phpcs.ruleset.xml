@@ -7,46 +7,19 @@
   <exclude-pattern>*.js</exclude-pattern>
   <exclude-pattern>*.css</exclude-pattern>
 
-  <rule ref="PEAR.WhiteSpace.ScopeIndent">
-    <properties>
-      <property name="indent" value="2"/>
-    </properties>
-  </rule>
+  <file>.</file>
 
-  <rule ref="PEAR.Functions.FunctionCallSignature">
-    <exclude name="PEAR.Functions.FunctionCallSignature.ContentAfterOpenBracket" />
-    <exclude name="PEAR.Functions.FunctionCallSignature.CloseBracketLine" />
-     <properties>
-      <property name="indent" value="2" />
-    </properties>
-  </rule>
+  <arg name="extensions" value="php"/>
 
-  <rule ref="Generic.NamingConventions.CamelCapsFunctionName" />
+  <exclude-pattern>*/node_modules/*</exclude-pattern>
+  <exclude-pattern>*/vendor/*</exclude-pattern>
 
-  <rule ref="Zend">
-    <exclude name="Generic.Functions.OpeningFunctionBraceBsdAllman" />
-    <exclude name="PEAR.Classes.ClassDeclaration" />
-    <exclude name="Zend.NamingConventions.ValidVariableName.PrivateNoUnderscore" />
-    <exclude name="Generic.PHP.DisallowShortOpenTag" />
-  </rule>
+  <arg value="-colors"/>
 
-  <rule ref="Generic.Files.LineLength">
-    <properties>
-     <property name="lineLimit" value="120"/>
-     <property name="absoluteLineLimit" value="120"/>
-    </properties>
-  </rule>
+  <!-- Show sniff codes in all reports -->
+  <arg value="s"/>
+  <!-- Exclude Warnings -->
+  <arg value="n"/>
 
-  <rule ref="Generic.Functions.OpeningFunctionBraceKernighanRitchie" />
-  <rule ref="Generic.Classes.OpeningBraceSameLine" />
-  <rule ref="Squiz.Functions.MultiLineFunctionDeclaration">
-    <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine" />
-    <properties>
-      <property name="indent" value="2" />
-    </properties>
-  </rule>
-
-  <rule ref="Squiz.Functions.GlobalFunction">
-    <exclude name="Squiz.Functions.GlobalFunction.Found" />
-  </rule>
+  <rule ref="PSR2"/>
 </ruleset>

@@ -5,7 +5,7 @@ use Timber\Timber;
 use Flynt\Features\Components\Component;
 
 add_action('wp_enqueue_scripts', function () {
-  Component::enqueueAssets('MainLayout', [
+    Component::enqueueAssets('MainLayout', [
     [
       'name' => 'console-polyfill',
       'type' => 'script',
@@ -31,18 +31,18 @@ add_action('wp_enqueue_scripts', function () {
       'path' => 'vendor/normalize.css',
       'type' => 'style'
     ]
-  ]);
+    ]);
 }, 0);
 
 add_filter('Flynt/addComponentData?name=MainLayout', function ($data) {
-  $context = Timber::get_context();
+    $context = Timber::get_context();
 
-  $output = array(
+    $output = array(
     'appleTouchIcon180x180Path' => get_template_directory_uri() . '/apple-touch-icon-180x180.png',
     'faviconPath' => get_template_directory_uri() . '/favicon.png',
     'feedTitle' => $context['site']->name . ' ' . __('Feed', 'flynt-theme'),
     'dir' => is_rtl() ? 'rtl' : 'ltr'
-  );
+    );
 
-  return array_merge($context, $data, $output);
+    return array_merge($context, $data, $output);
 });

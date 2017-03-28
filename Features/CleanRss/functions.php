@@ -13,6 +13,6 @@ add_filter('the_generator', '__return_false');
  * Don't return the default description in the RSS feed if it hasn't been changed
  */
 add_filter('get_bloginfo_rss', function ($bloginfo) {
-  $defaultTagline = 'Just another WordPress site';
-  return ($bloginfo === $defaultTagline) ? '' : $bloginfo;
+    $defaultTagline = 'Just another WordPress site';
+    return ($bloginfo === $defaultTagline) ? '' : $bloginfo;
 });
