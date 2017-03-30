@@ -20,7 +20,7 @@ module.exports = function (config) {
   const output = {
     name: 'browser',
     output: {
-      path: './dist',
+      path: path.join(__dirname, '../dist'),
       publicPath: 'http://localhost:3000/'
     },
     devtool: config.production ? 'source-map' : 'inline-source-map',
