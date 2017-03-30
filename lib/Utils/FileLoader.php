@@ -26,7 +26,7 @@ class FileLoader {
   // TODO fix this, this makes no sense (require only works for php files...?)
   // recursively load all files with a specified extension
   // optionally able to specify the files in an array to load in a certain order
-  public static function loadFilesWithExtension(string $fileExtension, $dir = '', $files = []) {
+  public static function loadFilesWithExtension($fileExtension, $dir = '', $files = []) {
 
     if (count($files) === 0) {
 
@@ -63,7 +63,6 @@ class FileLoader {
   }
 
   public static function loadPhpFiles($dir = '', $files = []) {
-    $fileExtension = 'php';
     self::loadFilesWithExtension('php', $dir, $files);
   }
 }

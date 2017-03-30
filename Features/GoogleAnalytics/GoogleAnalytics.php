@@ -46,14 +46,14 @@ class GoogleAnalytics {
       ga('set', 'anonymizeIp', true);
       <?php endif; ?>
     </script>
-    <?
+    <?php
   }
 
   private function isValidId($gaId) {
     if ($gaId === 'debug') {
       return true;
     } else {
-      return preg_match('/^ua-\d{4,10}-\d{1,4}$/i', strval($gaId));
+      return preg_match('/^ua-\d{4,10}-\d{1,4}$/i', (string) $gaId);
     }
   }
 }

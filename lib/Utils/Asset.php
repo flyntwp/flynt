@@ -26,7 +26,6 @@ class Asset {
 
   public static function requirePath($asset) {
     $distPath = get_template_directory() . '/dist';
-    $distUrl = get_template_directory_uri() . '/dist';
     if (!isset(self::$assetManifest)) {
       $manifestPath = $distPath . '/rev-manifest.json';
       if (is_file($manifestPath)) {
