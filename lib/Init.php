@@ -27,8 +27,10 @@ function initTheme()
 
     // initialize ACF Field Groups and Option Pages
     add_theme_support('flynt-acf', [
-    'FieldGroupComposer',
-    'OptionPages'
+        'FieldGroupComposer',
+        'OptionPages',
+        'FlexibleContentToggle',
+        'GoogleMaps'
     ]);
 
     // enable admin notices
