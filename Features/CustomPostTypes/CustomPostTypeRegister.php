@@ -118,9 +118,12 @@ class CustomPostTypeRegister
                     $dir = $file->getPathname();
                     $name = $file->getFilename();
                     self::$registeredCustomPostTypes[$name] = [
-                    'dir' => $dir
+                        'dir' => $dir
                     ];
-                    return array_merge(self::getConfigFromJson($configPath), ['name' => $name]);
+                    $config = self::getConfigFromJson($configPath);
+                    if (!empty($config)) {
+                        return array_merge($config, ['name' => $name]);
+                    }
                 }
             }
             return null;
@@ -131,6 +134,13 @@ class CustomPostTypeRegister
 
     protected static function getConfigFromJson($filePath)
     {
-        return json_decode(file_get_contents($filePath), true);
+        $config = json_decode(file_get_contents($filePath), true);
+
+        if (null === $config) {
+            trigger_error("<strong>[Custom Post Type Register]</strong> Invalid JSON file: {$filePath}", E_USER_WARNING);
+            $config = [];
+        }
+
+        return $config;
     }
 }
