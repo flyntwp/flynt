@@ -21,35 +21,35 @@ class OptionPages
     const FIELD_GROUPS_DIR = '/config/fieldGroups';
 
     const OPTION_TYPES = [
-    'translatableOptions' => [
-      'title' => 'Translatable Options',
-      'icon' => 'dashicons-translation',
-      'translatable' => true
-    ],
-    'globalOptions' => [
-      'title' => 'Global Options',
-      'icon' => 'dashicons-admin-site',
-      'translatable' => false
-    ]
+        'translatableOptions' => [
+            'title' => 'Translatable Options',
+            'icon' => 'dashicons-translation',
+            'translatable' => true
+        ],
+        'globalOptions' => [
+            'title' => 'Global Options',
+            'icon' => 'dashicons-admin-site',
+            'translatable' => false
+        ]
     ];
 
     const OPTION_CATEGORIES = [
-    'component' => [
-      'title' => 'Component',
-      'icon' => 'dashicons-editor-table',
-      'showType' => true
-    ],
-    'customPostType' => [
-      'title' => 'Custom Post Type',
-      'icon' => 'dashicons-palmtree',
-      'showType' => true
-      // 'label' => [ 'labels', 'menu_item' ], // TODO add this functionality
-    ],
-    'feature' => [
-      'title' => 'Feature',
-      'icon' => 'dashicons-carrot',
-      'showType' => true
-    ]
+        'component' => [
+            'title' => 'Component',
+            'icon' => 'dashicons-editor-table',
+            'showType' => true
+        ],
+        'customPostType' => [
+            'title' => 'Custom Post Type',
+            'icon' => 'dashicons-palmtree',
+            'showType' => true
+            // 'label' => [ 'labels', 'menu_item' ], // TODO add this functionality
+        ],
+        'feature' => [
+            'title' => 'Feature',
+            'icon' => 'dashicons-carrot',
+            'showType' => true
+        ]
     ];
 
     protected static $optionPages = [];
@@ -139,7 +139,6 @@ class OptionPages
 
             // get fields for this component
             $options = array_reduce(array_keys(self::$optionTypes), function ($carry, $optionType) use ($config) {
-
                 return array_merge($carry, self::getOptions($optionType, 'Component', $config['name']));
             }, []);
 
@@ -237,16 +236,16 @@ class OptionPages
             $slug = ucfirst($optionType);
 
             acf_add_options_page([
-            'page_title'  => $title,
-            'menu_title'  => $title,
-            'redirect'    => true,
-            'menu_slug'   => $slug,
-            'icon_url'    => $option['icon']
+                'page_title'  => $title,
+                'menu_title'  => $title,
+                'redirect'    => true,
+                'menu_slug'   => $slug,
+                'icon_url'    => $option['icon']
             ]);
 
             self::$optionPages[$optionType] = [
-            'menu_slug' => $slug,
-            'menu_title' => $title
+                'menu_slug' => $slug,
+                'menu_title' => $title
             ];
         }
 
@@ -301,10 +300,10 @@ class OptionPages
         }
 
         $subPageConfig = [
-        'page_title'  => $prettySubPageName . $appendCategory,
-        'menu_title'  => "<span class='{$iconClasses}'>{$prettySubPageName}</span>",
-        'parent_slug' => self::$optionPages[$optionType]['menu_slug'],
-        'menu_slug'   => $optionType . ucfirst($optionCategoryName) . $subPageName
+            'page_title'  => $prettySubPageName . $appendCategory,
+            'menu_title'  => "<span class='{$iconClasses}'>{$prettySubPageName}</span>",
+            'parent_slug' => self::$optionPages[$optionType]['menu_slug'],
+            'menu_slug'   => $optionType . ucfirst($optionCategoryName) . $subPageName
         ];
 
         acf_add_options_sub_page($subPageConfig);
@@ -321,22 +320,22 @@ class OptionPages
     {
         $fieldGroup = ACFComposer\ResolveConfig::forFieldGroup(
             [
-            'name' => $menuSlug,
-            'title' => $prettySubPageName,
-            'fields' => self::prefixFields($fields, $menuSlug),
-            'style' => 'seamless',
-            'location' => [
-            [
-            [
-              'param' => 'options_page',
-              'operator' => '==',
-              'value' => $menuSlug
-            ]
-            ]
-            ]
+                'name' => $menuSlug,
+                'title' => $prettySubPageName,
+                'fields' => $fields,
+                'style' => 'seamless',
+                'location' => [
+                    [
+                        [
+                            'param' => 'options_page',
+                            'operator' => '==',
+                            'value' => $menuSlug
+                        ]
+                    ]
+                ]
             ]
         );
-
+        $fieldGroup['fields'] = self::prefixFields($fieldGroup['fields'], $menuSlug);
         acf_add_local_field_group($fieldGroup);
     }
 
@@ -347,12 +346,12 @@ class OptionPages
             $noticeManager = AdminNoticeManager::getInstance();
             $noticeManager->addNotice(
                 [
-                "Could not add Option Pages for {$title} because the \"{$feature}\" feature is missing."
+                    "Could not add Option Pages for {$title} because the \"{$feature}\" feature is missing."
                 ],
                 [
-                'title' => 'Acf Option Pages Feature',
-                'dismissible' => true,
-                'type' => 'info'
+                    'title' => 'Acf Option Pages Feature',
+                    'dismissible' => true,
+                    'type' => 'info'
                 ]
             );
         }
