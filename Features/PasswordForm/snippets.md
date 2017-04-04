@@ -21,7 +21,7 @@ function getPasswordForm ($postId = 0) {
 
 This enables you to use `\Flynt\Features\PasswordForm\getPasswordForm($postId)` anywhere in your project. The default filter `the_password_form` will not be changed, however.
 
-For example change the `getPasswordContext` function in **Components/MainTemplate/functions.php** to
+For example change the `getPasswordContext` function in **Components/LayoutDefault/functions.php** to
 
 ```php
 function getPasswordContext ($postId) {

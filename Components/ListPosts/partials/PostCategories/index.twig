@@ -1,9 +1,0 @@
-<div class="postCategories">
-  <ul class="postCategories-list">
-    {% for category in post.terms('category') %}
-      <li class="postCategories-item">
-        <a class="postCategories-link" href="{{ category.link }}" title="{{ category.title }}">{{ category.title }}</a>
-      </li>
-    {% endfor %}
-  </ul>
-</div>

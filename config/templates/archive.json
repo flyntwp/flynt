@@ -1,32 +1,19 @@
 {
-  "name": "MainLayout",
+  "name": "DocumentDefault",
   "areas": {
-    "mainTemplate": [
+    "layout": [
       {
-        "name": "MainTemplate",
+        "name": "LayoutMultiplePosts",
         "areas": {
           "mainHeader": [
             {
-              "name": "MainNavigation",
+              "name": "NavigationMain",
               "customData": {
-                "menuSlug": "main_navigation"
+                "menuSlug": "navigation_main"
               }
             }
           ],
-          "pageComponents": [
-            {
-              "name": "NavigationFilter"
-            },
-            {
-              "name": "PaginationDefault"
-            },
-            {
-              "name": "ListPosts"
-            },
-            {
-              "name": "PaginationButtons"
-            }
-          ],
+          "pageComponents": [],
           "mainFooter": []
         }
       }

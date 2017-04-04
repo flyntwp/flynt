@@ -1,6 +1,0 @@
-<div class="postContent">
-  {% if post.post_excerpt %}
-    <p class="postContent-excerpt">{{ post.post_excerpt | excerpt(30) }}</p>
-  {% endif %}
-  <a class="postContent-link" href="{{ post.link }}" title="{{ readMoreLabel }}">{{ readMoreLabel }}</a>
-</div>

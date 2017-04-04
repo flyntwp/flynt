@@ -1,21 +1,21 @@
 {
-  "name": "MainLayout",
+  "name": "DocumentDefault",
   "areas": {
-    "mainTemplate": [
+    "layout": [
       {
-        "name": "MainTemplate",
+        "name": "LayoutSinglePost",
         "areas": {
           "mainHeader": [
             {
-              "name": "MainNavigation",
+              "name": "NavigationMain",
               "customData": {
-                "menuSlug": "main_navigation"
+                "menuSlug": "navigation_main"
               }
             }
           ],
           "pageComponents": [
             {
-              "name": "FlexibleContent",
+              "name": "ComponentLoaderFlexible",
               "customData": {
                 "fieldGroup": "pageComponents"
               }

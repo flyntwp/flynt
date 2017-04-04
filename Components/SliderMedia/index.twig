@@ -1,0 +1,52 @@
+<div is="flynt-slider-media" class="flyntComponent">
+  <div class="sliderMedia">
+    <ul class="sliderMedia-slides">
+      {% for mediaSlide in mediaSlides %}
+        <li class="sliderMedia-slide">
+          {% if sliderMediaTitle and sliderMediaTitlePosition == 'above' %}
+            <div class="sliderMedia-slideTitleWrapper">
+              <div class="sliderMedia-slideTitle">
+                {{ mediaSlide.titleText }}
+              </div>
+            </div>
+          {% endif %}
+          {% if mediaSlide.mediaType == 'image' %}
+            <img class="sliderMedia-imageElement" srcset="
+              {{ mediaSlide.image.src | resize(400, 200) }} 400w,
+              {{ mediaSlide.image.src | resize(800, 400) }} 800w,
+              {{ mediaSlide.image.src | resize(1200, 600) }} 1200w,
+              {{ mediaSlide.image.src | resize(1600, 800) }} 1600w"
+              src="{{ mediaSlide.image.src }}"
+              sizes="100vw">
+          {% elseif mediaSlide.mediaType == 'oembed' %}
+            <div class="sliderMedia-oembed">
+              <div class="sliderMedia-oembedVideoContainer">
+                {% if sliderMediaUsePoster %}
+                  <div class="sliderMedia-oembedPosterImage">
+                    <img class="sliderMedia-imageElement" srcset="
+                      {{ mediaSlide.image.src | resize(400, 225) }} 400w,
+                      {{ mediaSlide.image.src | resize(800, 450) }} 800w,
+                      {{ mediaSlide.image.src | resize(1200, 675) }} 1200w,
+                      {{ mediaSlide.image.src | resize(1600, 900) }} 1600w"
+                      src="{{ mediaSlide.image.src }}"
+                      sizes="100vw">
+                  </div>
+                {% endif %}
+                <div class="sliderMedia-oembedVideo">
+                  {{ mediaSlide.oembedLazyLoad }}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+          {% if sliderMediaTitle and sliderMediaTitlePosition == 'below' %}
+            <div class="sliderMedia-slideTitleWrapper">
+              <div class="sliderMedia-slideTitle">
+                {{ mediaSlide.titleText }}
+              </div>
+            </div>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<nav is="flynt-navigation-main" class="flyntComponent">
+  <ul class="navigationMain">
+    {% for item in menu.get_items %}
+      <li class="navigationMain-item {{item.classes | join(' ')}}">
+        <a class="navigationMain-link" href="{{item.link}}">{{item.title}}</a>
+          {% if item.get_children %}
+            <ul class="navigationMain-subMenu">
+              {% for child in item.get_children %}
+                <li class="navigationMain-subItem"><a href="{{child.link}}">{{child.title}}</a></li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

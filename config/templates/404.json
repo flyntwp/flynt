@@ -1,16 +1,21 @@
 {
-  "name": "MainLayout",
+  "name": "DocumentDefault",
   "areas": {
-    "mainTemplate": [
+    "layout": [
       {
-        "name": "NotFoundTemplate",
+        "name": "LayoutSinglePost",
         "areas": {
           "mainHeader": [
             {
-              "name": "MainNavigation",
+              "name": "NavigationMain",
               "customData": {
-                "menuSlug": "main_navigation"
+                "menuSlug": "navigation_main"
               }
+            }
+          ],
+          "pageComponents": [
+            {
+              "name": "BlockNotFound"
             }
           ],
           "mainFooter": []
