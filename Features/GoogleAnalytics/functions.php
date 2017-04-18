@@ -8,15 +8,12 @@ use Flynt\Features\GoogleAnalytics\GoogleAnalytics;
 use Flynt\Utils\Feature;
 use Flynt\Features\Acf\OptionPages;
 
-add_action('Flynt/afterRegisterFeatures', 'Flynt\Features\GoogleAnalytics\init');
+add_action('init', 'Flynt\Features\GoogleAnalytics\init');
 
 function init()
 {
-    $gaId = OptionPages::getOption('options', 'feature', 'GoogleAnalytics', 'gaId');
-    $anonymizeIp = OptionPages::getOption('options', 'feature', 'GoogleAnalytics', 'anonymizeIp');
-    $skippedUserRoles = OptionPages::getOption('options', 'feature', 'GoogleAnalytics', 'skippedUserRoles');
-    $skippedIps = OptionPages::getOption('options', 'feature', 'GoogleAnalytics', 'skippedIps');
-    if ($gaId) {
-        new GoogleAnalytics($gaId, $anonymizeIp, $skippedUserRoles, $skippedIps);
+    $googleAnalyticsOptions = OptionPages::getOptions('globalOptions', 'feature', 'GoogleAnalytics');
+    if ($googleAnalyticsOptions) {
+        new GoogleAnalytics($googleAnalyticsOptions);
     }
 }
