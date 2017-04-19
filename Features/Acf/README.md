@@ -20,14 +20,14 @@ Requirements:
 
 Maps `fields.json` files in components to field groups in `config/fieldGroups` according to the predefined filter name:
 ```
-Flynt/Components/<ComponentName>/<FieldArray>[/<OptionalFieldName>]
+Flynt/Components/<ComponentName>/Fields/<FieldArray>[/<OptionalFieldName>]
 ```
 
 ### Helper: Option Pages
 Requirements:
 - Flynt Helper: StringHelpers
 
-Converts `option` key in `fields.json` files of components to acf option pages.
+Converts `globalOptions` key in `fields.json` files of components to acf option pages.
 
 ## Usage
 Drag and drop the ACF Folder into your Flynt Theme's `Features` directory. Make sure the folder name doesn't change! Then add the following code to the after_setup_theme hook in your `lib/Init.php`:
@@ -42,9 +42,9 @@ function initTheme() {
     'FieldGroupComposer',
     'OptionPages'
   ]);
-  
+
   ...
-  
+
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\initTheme');
 
