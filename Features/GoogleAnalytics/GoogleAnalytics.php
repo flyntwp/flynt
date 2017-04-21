@@ -3,19 +3,19 @@ namespace Flynt\Features\GoogleAnalytics;
 
 class GoogleAnalytics
 {
-    public function __construct($gaId, $anonymizeIp, $skippedUserRoles, $skippedIps)
+    public function __construct($options)
     {
-        $this->gaId = $gaId;
-        $this->anonymizeIp = $anonymizeIp;
-        $this->skippedUserRoles = $skippedUserRoles;
-        $this->skippedIps = $skippedIps;
+        $this->gaId = $options['gaId'];
+        $this->anonymizeIp = $options['anonymizeIp'];
+        $this->skippedUserRoles = $options['skippedUserRoles'];
+        $this->skippedIps = $options['skippedIps'];
 
         if ($this->skippedIps) {
             $skippedIps = explode(',', $this->skippedIps);
             $this->skippedIps = array_map('trim', $skippedIps);
         }
 
-        if ($this->isValidId($this->gaId)) {
+        if ($this->gaId && $this->isValidId($this->gaId)) {
             add_action('wp_footer', [$this, 'addScript'], 20, 1);
         } else if ($this->gaId != 1 && !isset($_POST['acf'])) {
             trigger_error('Invalid Google Analytics Id: ' . $this->gaId, E_USER_WARNING);
