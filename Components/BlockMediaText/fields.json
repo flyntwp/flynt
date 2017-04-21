@@ -88,6 +88,12 @@
           "mediaRight": "Right"
         },
         "default_value": ""
+      },
+      {
+        "name": "tabEnd",
+        "label": "",
+        "type": "tab",
+        "endpoint": 1
       }
     ]
   }
