@@ -103,10 +103,10 @@ class Loader
 
         $manager = AdminNoticeManager::getInstance();
         $manager->addNotice($messages, [
-        'title' => 'Could not initialize ACF Helpers (' . implode(', ', self::$helpers) . ')',
-        'type' => 'warning',
-        'dismissible' => true,
-        'filenames' => basename(__DIR__)
+            'title' => 'Could not initialize ACF Helpers (' . implode(', ', array_keys(self::$helpers)) . ')',
+            'type' => 'warning',
+            'dismissible' => true,
+            'filenames' => basename(__DIR__)
         ]);
     }
 }
