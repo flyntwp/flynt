@@ -4,7 +4,7 @@ namespace Flynt\Components\ComponentLoaderStatic;
 
 use Flynt\Features\Acf\OptionPages;
 
-add_filter('Flynt/addComponentData?name=ComponentLoaderStatic', function ($data) {
+add_filter('Flynt/addComponentData?name=ComponentLoaderStatic', function ($data, $parentData) {
     $optionPage = (array_key_exists('optionPage', $data)) ? $data['optionPage'] : [];
     if (is_array($optionPage) &&
         array_key_exists('optionType', $optionPage) &&
@@ -17,16 +17,29 @@ add_filter('Flynt/addComponentData?name=ComponentLoaderStatic', function ($data)
             $optionPage['subPageName']
         );
         $data = array_merge($data, $options);
+    } else if (isset($parentData['post'])) {
+        $data = array_merge($data, $parentData['post']->fields);
     }
     return $data;
-});
+}, 10, 2);
 
 add_filter('Flynt/dynamicSubcomponents?name=ComponentLoaderStatic', function ($areas, $data, $parentData) {
     if (!empty($areas['components'])) {
-        $areas['components'] = array_map(function ($area) use ($data, $parentData) {
-            $area['customData'] = isset($area['customData']) ? array_merge($area['customData'], $data) : $data;
-            $area['parentData'] = isset($area['parentData']) ? array_merge($area['parentData'], $parentData) : $parentData;
-            return $area;
+        $areas['components'] = array_map(function ($component) use ($data, $parentData) {
+            if (isset($component['customData']) && isset($component['customData']['filterArgument'])) {
+                $filterArgument = $component['customData']['filterArgument'] . '_';
+                $componentData = [];
+                foreach ($data as $key => $value) {
+                    if (strrpos($key, $filterArgument) === 0) {
+                        $componentData[substr($key, strlen($filterArgument))] = $data[$key];
+                    }
+                }
+                $component['customData'] = array_merge($component['customData'], $componentData);
+            } else {
+                $component['customData'] = isset($component['customData']) ? array_merge($component['customData'], $data) : $data;
+                $component['parentData'] = isset($component['parentData']) ? array_merge($component['parentData'], $parentData) : $parentData;
+            }
+            return $component;
         }, $areas['components']);
     }
     return $areas;
