@@ -21,8 +21,13 @@ function initTheme()
 
     // register all custom post types
     add_theme_support('flynt-custom-post-types', [
-    'dir' => get_template_directory() . '/config/customPostTypes/',
-    'fileName' => 'config.json'
+        'dir' => get_template_directory() . '/config/customPostTypes/',
+        'fileName' => 'config.json'
+    ]);
+
+    // register all custom taxonomies
+    add_theme_support('flynt-custom-taxonomies', [
+        'dir' => get_template_directory() . '/config/customTaxonomies/'
     ]);
 
     // initialize ACF Field Groups and Option Pages

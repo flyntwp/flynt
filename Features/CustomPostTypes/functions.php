@@ -15,4 +15,4 @@ add_action('init', function () {
     $fileName = isset($featureOptions['fileName']) ? $featureOptions['fileName'] : null;
 
     CustomPostTypeRegister::fromDir($dir, $fileName);
-});
+}, 12);
