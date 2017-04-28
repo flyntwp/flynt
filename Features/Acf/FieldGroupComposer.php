@@ -95,6 +95,9 @@ class FieldGroupComposer
     protected static function addFilterForSubFields($parentFilterName, $subFields)
     {
         foreach ($subFields as $subField) {
+            if (is_string($subField)) {
+                continue;
+            }
             if (!array_key_exists('name', $subField)) {
                 trigger_error('[ACF] Name is missing in Sub Field while adding Filter: ' . $parentFilterName, E_USER_WARNING);
                 continue;
