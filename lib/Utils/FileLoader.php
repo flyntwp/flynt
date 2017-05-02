@@ -2,22 +2,24 @@
 
 namespace Flynt\Utils;
 
-use RecursiveDirectoryIterator;
+use DirectoryIterator;
 
 class FileLoader
 {
     public static function iterateDir($dir, callable $callback)
     {
-
         $output = [];
 
         if (!is_dir($dir)) {
             return $output;
         }
 
-        $directoryIterator = new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS);
+        $directoryIterator = new DirectoryIterator($dir);
 
-        foreach ($directoryIterator as $name => $file) {
+        foreach ($directoryIterator as $file) {
+            if ($file->isDot()) {
+                continue;
+            }
             $callbackResult = call_user_func($callback, $file);
             array_push($output, $callbackResult);
         }
@@ -25,28 +27,35 @@ class FileLoader
         return $output;
     }
 
-    // TODO fix this, this makes no sense (require only works for php files...?)
-    // recursively load all files with a specified extension
-    // optionally able to specify the files in an array to load in a certain order
-    public static function loadFilesWithExtension($fileExtension, $dir = '', $files = [])
+    /**
+     * Recursively require all files in a specific directory.
+     *
+     * By default, requires all php files in a specific directory once.
+     * Optionally able to specify the files in an array to load in a certain order.
+     * Starting and trailing slashes will be stripped for the directory and all files provided.
+     *
+     * @param string $dir Directory to search through.
+     * @param array $files Optional array of files to include. If this is set, only the files specified will be loaded.
+     **/
+    public static function loadPhpFiles($dir, $files = [])
     {
+        $dir = trim($dir, '/');
 
         if (count($files) === 0) {
             $dir = get_template_directory() . '/' . $dir;
 
-            self::iterateDir($dir, function ($file) use ($fileExtension) {
-
+            self::iterateDir($dir, function ($file) {
                 if ($file->isDir()) {
-                    $dirPath = str_replace(get_template_directory(), '', $file->getPathname());
-                    self::loadFilesWithExtension($fileExtension, $dirPath, []);
-                } elseif ($file->isFile() && $file->getExtension() === $fileExtension) {
+                    $dirPath = trim(str_replace(get_template_directory(), '', $file->getPathname()), '/');
+                    self::loadPhpFiles($dirPath);
+                } elseif ($file->isFile() && $file->getExtension() === 'php') {
                     $filePath = $file->getPathname();
                     require_once $filePath;
                 }
             });
         } else {
             array_walk($files, function ($file) use ($dir) {
-                $filePath = $dir . $file;
+                $filePath = $dir . '/' . ltrim($file, '/');
 
                 if (!locate_template($filePath, true, true)) {
                     trigger_error(
@@ -56,11 +65,5 @@ class FileLoader
                 }
             });
         }
-    }
-
-    public static function loadPhpFiles($dir = '', $files = [])
-    {
-        $fileExtension = 'php';
-        self::loadFilesWithExtension('php', $dir, $files);
     }
 }
