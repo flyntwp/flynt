@@ -1,29 +1,29 @@
 <?php
 namespace Flynt\Features\AdminComponentPreview;
 
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Asset;
 
 define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
 
 function enqueueComponentScripts()
 {
-    Component::addAsset('register', [
-    'type' => 'script',
-    'name' => 'draggabilly',
-    'path' => 'vendor/draggabilly.js'
+    Asset::register([
+        'type' => 'script',
+        'name' => 'draggabilly',
+        'path' => 'vendor/draggabilly.js'
     ]);
 
-    Component::addAsset('enqueue', [
-    'type' => 'script',
-    'name' => 'Flynt/Features/AdminComponentPreview',
-    'path' => 'Features/AdminComponentPreview/script.js',
-    'dependencies' => ['jquery', 'draggabilly']
+    Asset::enqueue([
+        'type' => 'script',
+        'name' => 'Flynt/Features/AdminComponentPreview',
+        'path' => 'Features/AdminComponentPreview/script.js',
+        'dependencies' => ['jquery', 'draggabilly']
     ]);
 
-    Component::addAsset('enqueue', [
-    'type' => 'style',
-    'name' => 'Flynt/Features/AdminComponentPreview',
-    'path' => 'Features/AdminComponentPreview/style.css'
+    Asset::enqueue([
+        'type' => 'style',
+        'name' => 'Flynt/Features/AdminComponentPreview',
+        'path' => 'Features/AdminComponentPreview/style.css'
     ]);
 
     // add data to the javascript
