@@ -53,12 +53,12 @@ class Translator
             // NOTE: assuming it's a single dimensional array
             return array_reduce(array_keys($value), function ($carry, $key) use ($value) {
                 return array_merge($carry, [
-                    $key => _x($value[$key], $key, 'flynt-theme')
+                    $key => _x($value[$key], $key, 'flynt-starter-theme')
                 ]);
             }, []);
         } else {
             $context = array_pop($args);
-            return _x($value, $context, 'flynt-theme');
+            return _x($value, $context, 'flynt-starter-theme');
         }
     }
 }

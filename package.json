@@ -1,8 +1,8 @@
 {
-  "name": "flynt-theme",
-  "version": "1.0.0",
+  "name": "flynt-starter-theme",
+  "version": "0.1.0",
   "main": "index.js",
-  "repository": "git@github.com:flyntwp/flynt-theme.git",
+  "repository": "git@github.com:flyntwp/flynt-starter-theme.git",
   "author": "bleech <hello@bleech.de>",
   "license": "MIT",
   "scripts": {

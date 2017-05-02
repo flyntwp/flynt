@@ -232,7 +232,7 @@ class OptionPages
     {
 
         foreach (self::$optionTypes as $optionType => $option) {
-            $title = _x($option['title'], 'title', 'flynt-theme');
+            $title = _x($option['title'], 'title', 'flynt-starter-theme');
             $slug = ucfirst($optionType);
 
             acf_add_options_page([

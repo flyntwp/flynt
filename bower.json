@@ -1,12 +1,12 @@
 {
-  "name": "flynt-theme",
+  "name": "flynt-starter-theme",
   "description": "",
   "main": "index.js",
   "authors": [
     "hello@bleech.de"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/flyntwp/flynt-theme",
+  "homepage": "https://github.com/flyntwp/flynt-starter-theme",
   "moduleType": [],
   "private": true,
   "ignore": [

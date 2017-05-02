@@ -1,4 +1,4 @@
-# flynt-theme
+# flynt-starter-theme
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
@@ -29,17 +29,17 @@ Flynt Theme is a ready-to-go WordPress theme that implements all of Flynt's best
   - [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/)
   - [ACF Field Group Composer](https://github.com/flyntwp/acf-field-group-composer)
   - [Timber](https://wordpress.org/plugins/timber-library/)
-5. Clone the flynt-theme repo to `<your-project>/wp-content/themes`.
-6. Change the host variable in `flynt-theme/gulpfile.js/config.js` to match your host URL.
+5. Clone the flynt-starter-theme repo to `<your-project>/wp-content/themes`.
+6. Change the host variable in `flynt-starter-theme/gulpfile.js/config.js` to match your host URL.
 ```js
 const host = 'your-host-url.dev'
 ```
-7. In your terminal, navigate to `<your-project>/wp-content/themes/flynt-theme`. Run `yarn` and then `yarn build`.
-8. Go to the administrator back-end of your WordPress site and activate the `flynt-theme` theme.
+7. In your terminal, navigate to `<your-project>/wp-content/themes/flynt-starter-theme`. Run `yarn` and then `yarn build`.
+8. Go to the administrator back-end of your WordPress site and activate the `flynt-starter-theme` theme.
 
 ## Usage
 
-In your terminal, navigate to `<your-project>/wp-content/themes/flynt-theme` and run `yarn start`. This will start a local server at  `localhost:3000`.
+In your terminal, navigate to `<your-project>/wp-content/themes/flynt-starter-theme` and run `yarn start`. This will start a local server at  `localhost:3000`.
 
 Changes to files made in `Components` and `Features` will now be watched for changes and compiled to the `dist` folder.
 
@@ -48,7 +48,7 @@ Changes to files made in `Components` and `Features` will now be watched for cha
 ### Theme Structure
 
 ```
-flynt-theme/                     # → Root of the theme
+flynt-starter-theme/                     # → Root of the theme
 ├── Components/                  # → All base components
 ├── config/                      # → WP/ACF Configuration
 │   ├── customPostTypes/         # → Configure custom post types
@@ -90,7 +90,7 @@ The main people in charge of this repo are:
 
 ## Contribute
 
-To contribute, please use github [issues](https://github.com/flyntwp/flynt-theme/issues). Pull requests are accepted.
+To contribute, please use github [issues](https://github.com/flyntwp/flynt-starter-theme/issues). Pull requests are accepted.
 
 If editing the README, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
 

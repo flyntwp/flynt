@@ -35,7 +35,7 @@ module.exports = {
     staticFileExtensions: ['.html', '.php', '.twig']
   },
   sourcemaps: {
-    sourceRoot: '/app/themes/flynt-theme/'
+    sourceRoot: '/app/themes/flynt-starter-theme/'
   },
   stylus: [
     './{Components,Features}/**/*.styl',
