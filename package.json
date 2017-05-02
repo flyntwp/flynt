@@ -7,7 +7,9 @@
   "license": "MIT",
   "scripts": {
     "start": "check-node-version --package && gulp",
-    "build": "check-node-version --package && NODE_ENV=production gulp build"
+    "build": "check-node-version --package && NODE_ENV=production gulp build",
+    "release": "standard-version",
+    "releaseGithub": "conventional-github-releaser -p angular"
   },
   "devDependencies": {
     "autoprefixer-stylus": "^0.13.0",
@@ -22,6 +24,7 @@
     "browser-sync": "^2.18.1",
     "check-node-version": "^2.0.1",
     "console-polyfill": "^0.2.3",
+    "conventional-github-releaser": "^1.1.3",
     "csso-loader": "^0.3.0",
     "del": "^2.2.2",
     "document-register-element": "^1.3.0",
@@ -53,6 +56,7 @@
     "rupture": "^0.6.2",
     "slick-carousel": "^1.6.0",
     "standard": "^9.0.2",
+    "standard-version": "^4.0.0",
     "stylint": "^1.5.7",
     "stylint-stylish": "^1.4.0",
     "stylus": "^0.54.5",
