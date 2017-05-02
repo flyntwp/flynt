@@ -12,8 +12,9 @@ class StringHelpers
     public static function trimStrip($str, $length = 25)
     {
         if (isset($str)) {
-            return wp_trim_words(wp_strip_all_tags($str), $length, '...');
+            return wp_trim_words(wp_strip_all_tags($str), $length, '&hellip;');
         }
+        return $str;
     }
 
     public static function splitCamelCase($str)
@@ -21,9 +22,9 @@ class StringHelpers
         $a = preg_split(
             '/(^[^A-Z]+|[A-Z][^A-Z]+)/',
             $str,
-            -1, /* no limit for replacement count */
-            PREG_SPLIT_NO_EMPTY /*don't return empty elements*/
-            | PREG_SPLIT_DELIM_CAPTURE /*don't strip anything from output array*/
+            -1, // no limit for replacement count
+            PREG_SPLIT_NO_EMPTY // don't return empty elements
+            | PREG_SPLIT_DELIM_CAPTURE // don't strip anything from output array
         );
         return implode($a, ' ');
     }
@@ -31,11 +32,9 @@ class StringHelpers
     public static function kebapCaseToCamelCase($str, $capitalizeFirstCharacter = false)
     {
         $str = str_replace(' ', '', ucwords(str_replace('-', ' ', $str)));
-
-        if (!$capitalizeFirstCharacter) {
+        if (false === $capitalizeFirstCharacter) {
             $str[0] = strtolower($str[0]);
         }
-
         return $str;
     }
 
@@ -50,5 +49,15 @@ class StringHelpers
     public static function startsWith($search, $subject)
     {
         return substr($subject, 0, strlen($search)) === $search;
+    }
+
+    public static function endsWith($search, $subject)
+    {
+        $searchLength = strlen($search);
+        $subjectLength = strlen($subject);
+        if ($searchLength > $subjectLength) {
+            return false;
+        }
+        return substr_compare($subject, $search, $subjectLength - $searchLength, $searchLength) === 0;
     }
 }
