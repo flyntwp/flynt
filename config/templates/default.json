@@ -5,14 +5,7 @@
       {
         "name": "LayoutSinglePost",
         "areas": {
-          "mainHeader": [
-            {
-              "name": "NavigationMain",
-              "customData": {
-                "menuSlug": "navigation_main"
-              }
-            }
-          ],
+          "mainHeader": [],
           "pageComponents": [
             {
               "name": "ComponentLoaderFlexible",
