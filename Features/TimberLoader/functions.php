@@ -8,6 +8,8 @@ use Timber\Post;
 use Timber\Timber;
 use Twig_SimpleFunction;
 
+define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
+
 // Render Component with Timber (Twig)
 add_filter('Flynt/renderComponent', function ($output, $componentName, $componentData, $areaHtml) {
     // get index file
@@ -58,8 +60,18 @@ add_filter('acf/format_value/type=image', function ($value) {
 
 // Convert ACF Field of type post_object to a Timber\Post and add all ACF Fields of that Post
 add_filter('acf/format_value/type=post_object', function ($value) {
+    if (is_array($value)) {
+        $value = array_map(NS . 'convertToTimberPost', $value);
+    } else {
+        $value = convertToTimberPost($value);
+    }
+    return $value;
+}, 100);
+
+function convertToTimberPost($value)
+{
     if (!empty($value) && is_object($value) && get_class($value) === 'WP_Post') {
         $value = new Post($value);
     }
     return $value;
-}, 100);
+}
