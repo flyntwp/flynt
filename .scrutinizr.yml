@@ -1,0 +1,35 @@
+# language: php
+
+filter:
+    paths: [./*]
+    excluded_paths: [./node_modules/*, ./bower_components/*]
+
+# before_commands:
+#   - 'composer self-update'
+#   - 'composer update --prefer-stable --prefer-source --no-interaction --no-scripts --no-progress --no-suggest'
+
+tools:
+  php_code_coverage: false
+  php_code_sniffer:
+    enabled: true
+    config:
+      ruleset: ./phpcs.ruleset.xml
+      standard: custom
+    filter:
+      paths: [./*]
+      excluded_paths: [./node_modules/*, ./bower_components/*]
+  php_mess_detector:
+    enabled: true
+    config:
+      ruleset: 'unusedcode,naming,design,controversial,codesize'
+  php_cpd: true
+  php_loc: true
+  php_pdepend: true
+  php_analyzer: true
+  sensiolabs_security_checker: true
+
+checks:
+  php:
+    custom_coding_standard:
+      ruleset_path: phpcs.ruleset.xml
+  javascript: true

@@ -1,0 +1,38 @@
+language: php
+
+sudo: false
+
+git:
+  depth: 3
+
+notifications:
+  email:
+    on_success: never
+    on_failure: change
+
+cache:
+  yarn: true
+
+php:
+  # - 5.6
+  - 7.0
+  # - 7.1
+  # - nightly
+
+matrix:
+  fast_finish: true
+  # allow_failures:
+  #   - php: nightly
+
+before_script:
+  - yarn
+
+install:
+  - composer global require "squizlabs/php_codesniffer=*"
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+  - nvm install 6
+  - nvm use 6
+  - npm i -g yarn gulp
+
+script:
+  - gulp lint
