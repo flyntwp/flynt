@@ -1,0 +1,16 @@
+<div is="flynt-slider-media" class="flyntComponent">
+  <div class="sliderMedia sliderMedia-isHidden">
+    <ul class="sliderMedia-slides">
+      {% for mediaSlide in mediaSlides %}
+        <li class="sliderMedia-slide">
+          {% if mediaSlide.mediaType == 'image' %}
+            {% include 'Partials/Image/index.twig' %}
+          {% elseif mediaSlide.mediaType == 'oembed' %}
+            {% include 'Partials/OembedVideo/index.twig' with {'posterImage': mediaSlide.image, 'oembedLazyLoad': mediaSlide.oembedLazyLoad } only %}
+          {% endif %}
+          {% include 'Partials/SlideTitle/index.twig' %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
