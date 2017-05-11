@@ -14,11 +14,14 @@ $componentPath = trailingslashit(Feature::getOption('flynt-components', 0));
 
 add_action('Flynt/afterRegisterFeatures', function () use ($componentPath) {
     if (is_dir($componentPath)) {
-        FileLoader::iterateDir($componentPath, function ($dir) {
+        $components = [];
+        FileLoader::iterateDir($componentPath, function ($dir) use (&$components) {
             if ($dir->isDir()) {
-                Flynt\registerComponent($dir->getFilename());
+                $components[] = $dir->getFilename();
             }
         });
+        sort($components, SORT_STRING);
+        array_map('Flynt\registerComponent', $components);
     }
 });
 
