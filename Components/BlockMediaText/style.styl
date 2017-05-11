@@ -1,0 +1,35 @@
+$rupture.scale = lookup('$global-layout-scale') || (0 576px 768px 992px 1200px)
+$rupture.anti-overlap = lookup('$global-layout-overlap') || -1px
+$gutterWidth = lookup('$global-layout-gutterWidth') || 15px
+$containerMaxWidth = lookup('$global-layout-containerMaxWidth') || 1140px
+
+[is='flynt-block-media-text']
+  *,
+  *:before,
+  *:after
+    box-sizing: border-box
+
+  .blockMediaText
+    center($containerMaxWidth, $gutterWidth)
+
+    &-columnMedia,
+    &-columnContentHtml
+      column(1/2, $gutter: 2)
+
+      +below('s')
+        stack()
+
+    &--mediaRight
+      .blockMediaText-columnMedia
+        move(1/2, $gutter: 2)
+
+      .blockMediaText-columnContentHtml
+        move(-1/2, $gutter: 2)
+
+      .blockMediaText-columnMedia,
+      .blockMediaText-columnContentHtml
+        +below('s')
+          unmove()
+
+    @import 'Partials/Image/_style.styl'
+    @import 'Partials/OembedVideo/_style.styl'

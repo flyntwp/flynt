@@ -1,0 +1,13 @@
+<div class="oembedVideo">
+  <div class="oembedVideo-posterImage">
+    <img class="oembedVideo-imageElement" srcset="
+      {{ posterImage.src | resize(542, 305) }} 542w,
+      {{ posterImage.src | resize(720, 405) }} 720w"
+      src="{{ posterImage.src | resize(720, 405) }}"
+      sizes="(min-width: 1140px) 1140px, 100vw"
+      alt="{{ posterImage.alt }}">
+  </div>
+  <div class="oembedVideo-video">
+    {{ oembedLazyLoad }}
+  </div>
+</div>

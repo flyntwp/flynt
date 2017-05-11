@@ -1,0 +1,6 @@
+<img class="image-imageElement" srcset="
+  {{ image.src | resize(542) }} 542w,
+  {{ image.src | resize(720) }} 720w"
+  src="{{ image.src | resize(720) }}"
+  sizes="(min-width: 1140px) 1140px, 100vw"
+  alt="{{ image.alt }}">
