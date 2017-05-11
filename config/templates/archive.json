@@ -6,7 +6,11 @@
         "name": "LayoutMultiplePosts",
         "areas": {
           "mainHeader": [],
-          "pageComponents": [],
+          "pageComponents": [
+            {
+              "name": "ListPosts"
+            }
+          ],
           "mainFooter": []
         }
       }

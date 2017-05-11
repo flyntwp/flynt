@@ -1,0 +1,22 @@
+{
+  "name": "postComponents",
+  "title": "Post Components",
+  "fields": [
+    {
+      "name": "postComponents",
+      "label": "Post Components",
+      "type": "flexible_content",
+      "button_label": "Add Component",
+      "layouts": []
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "post"
+      }
+    ]
+  ]
+}

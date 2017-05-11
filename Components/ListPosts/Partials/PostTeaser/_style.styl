@@ -1,0 +1,26 @@
+.postTeaser
+  clearfix()
+  margin-bottom: 10px
+
+  .thumbnail
+    column(1/3, $gutter: 2)
+
+    &-image
+      display: block
+      height: auto
+      max-width: 100%
+
+    +below('s')
+      stack()
+
+      &-image
+        width: 100%
+
+  &-content
+    column(2/3, $gutter: 2)
+
+    +below('s')
+      stack()
+
+  .read-more
+    white-space: nowrap
