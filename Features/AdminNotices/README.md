@@ -16,7 +16,7 @@ use Flynt\Features\AdminNotices\AdminNoticeManager;
 $manager = AdminNoticeManager::getInstance();
 
 // Prepare the admin notice
-$message = 'This notice will show up in the admin backend.';
+$message = ['This notice will show up in the admin backend.'];
 $options = [
   'type' => 'info',
   'title' => 'Flynt Notice',

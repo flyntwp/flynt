@@ -10,10 +10,10 @@ class AdminNoticeManager
     protected static $notices = [];
 
     const DEFAULT_OPTIONS = [
-    'type' => 'info',
-    'title' => 'Flynt - Oops, something went wrong',
-    'dismissible' => true,
-    'filenames' => ''
+        'type' => 'info',
+        'title' => 'Flynt - Oops, something went wrong',
+        'dismissible' => true,
+        'filenames' => ''
     ];
 
     public static function getInstance()
@@ -73,8 +73,8 @@ class AdminNoticeManager
         });
 
         array_push(self::$notices, [
-        'options' => $options,
-        'message' => $msg
+            'options' => $options,
+            'message' => $msg
         ]);
     }
 
