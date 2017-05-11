@@ -148,7 +148,7 @@ class OptionPages
 
             // get fields for this component
             $options = array_reduce(array_keys(self::$optionTypes), function ($carry, $optionType) use ($config) {
-                return array_merge($carry, self::getOptions($optionType, 'Component', $config['name']));
+                return array_merge($carry, self::get($optionType, 'Component', $config['name']));
             }, []);
 
             // don't overwrite existing data
