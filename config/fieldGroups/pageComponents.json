@@ -8,6 +8,7 @@
       "type": "flexible_content",
       "button_label": "Add Component",
       "layouts": [
+        "Flynt/Components/BlockImage/Fields/Layout",
         "Flynt/Components/BlockWysiwyg/Fields/Layout",
         "Flynt/Components/SliderMedia/Fields/Layout"
       ]

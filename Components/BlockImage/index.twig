@@ -1,0 +1,12 @@
+<div is="flynt-block-image" class="flyntComponent">
+  <div class="blockImage">
+    <img class="blockImage-imageElement" srcset="
+      {{ image.src | resize(576, 288) }} 576w,
+      {{ image.src | resize(768, 384) }} 768w,
+      {{ image.src | resize(1200, 600) }} 1200w,
+      {{ image.src | resize(1440, 720) }} 1440w"
+      src="{{ image.src | resize(1200, 600) }}"
+      sizes="(min-width: 1140px) 1140px, 100vw"
+      alt="{{ image.alt }}">
+  </div>
+</div>
