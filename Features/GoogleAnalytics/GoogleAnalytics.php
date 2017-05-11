@@ -1,8 +1,16 @@
 <?php
 namespace Flynt\Features\GoogleAnalytics;
 
+use Flynt\Features\AdminNotices\AdminNoticeManager;
+use Timber\Timber;
+
 class GoogleAnalytics
 {
+    private $gaId;
+    private $anonymizeIp;
+    private $skippedUserRoles;
+    private $skippedIps;
+
     public function __construct($options)
     {
         $this->gaId = $options['gaId'];
@@ -17,38 +25,32 @@ class GoogleAnalytics
 
         if ($this->gaId && $this->isValidId($this->gaId)) {
             add_action('wp_footer', [$this, 'addScript'], 20, 1);
-        } else if ($this->gaId != 1 && !isset($_POST['acf'])) {
-            trigger_error('Invalid Google Analytics Id: ' . $this->gaId, E_USER_WARNING);
+        } else if ($this->gaId != '' && !isset($_POST['acf'])) {
+            $manager = AdminNoticeManager::getInstance();
+            $message = ["Invalid Google Analytics Id: {$this->gaId}"];
+            $options = [
+                'type' => 'error',
+                'title' => 'Google Analytics Error',
+                'dismissible' => true,
+                'filenames' => 'functions.php'
+            ];
+            $manager->addNotice($message, $options);
         }
     }
 
     public function addScript()
     {
-        ?>
-        <script>
-            <?php
-            $user = wp_get_current_user();
-            $debugMode = $this->gaId === 'debug';
-            $isSkippedUser = $this->skippedUserRoles && array_intersect($this->skippedUserRoles, $user->roles);
-            $isSkippedIp = is_array($this->skippedIps) && in_array($_SERVER['REMOTE_ADDR'], $this->skippedIps);
-            if ($debugMode || $isSkippedUser || $isSkippedIp) : ?>
-                function ga() {
-                  console.log('GoogleAnalytics: ' + [].slice.call(arguments));
-                }
-            <?php
-            else : ?>
-                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-            <?php
-            endif; ?>
-            ga('create','<?php echo $this->gaId; ?>','auto');ga('send','pageview');
-            <?php if ($this->anonymizeIp == 1) : ?>
-                ga('set', 'anonymizeIp', true);
-            <?php endif; ?>
-        </script>
-        <?php
+        $user = wp_get_current_user();
+        $trackingEnabled = !(
+            $this->gaId === 'debug' // debug mode enabled
+            || $this->skippedUserRoles && array_intersect($this->skippedUserRoles, $user->roles) // current user role should be skipped
+            || is_array($this->skippedIps) && in_array($_SERVER['REMOTE_ADDR'], $this->skippedIps) // current ip should be skipped
+        );
+        Timber::render('script.twig', [
+            'gaId' => $this->gaId,
+            'trackingEnabled' => $trackingEnabled,
+            'anonymizeIp' => $this->anonymizeIp
+        ]);
     }
 
     private function isValidId($gaId)
