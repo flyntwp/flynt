@@ -28,7 +28,7 @@ function enqueueComponentScripts()
 
     // add data to the javascript
     $data = [
-    'templateDirectoryUri' => get_template_directory_uri()
+        'templateDirectoryUri' => get_template_directory_uri() . '/dist'
     ];
     wp_localize_script('Flynt/Features/AdminComponentPreview', 'wpData', $data);
 }
@@ -37,13 +37,12 @@ if (class_exists('acf')) {
     if (is_user_logged_in() || is_admin()) {
         if (is_admin()) {
             add_action('admin_enqueue_scripts', NS . 'enqueueComponentScripts');
-
             // add image to the flexible content component name
             add_filter('acf/fields/flexible_content/layout_title', function ($title, $field, $layout, $i) {
-                $componentPath = "/Components/$layout[name]/";
-                $componentPreviewDesktopPath = get_template_directory() . $componentPath . 'preview-desktop.jpg';
-                $componentPreviewDesktopUrl = get_template_directory_uri() . $componentPath . 'preview-desktop.jpg';
-
+                $componentName = ucfirst($layout['name']);
+                $componentPath = "Components/{$componentName}";
+                $componentPreviewDesktopPath = Asset::requirePath("{$componentPath}/preview-desktop.jpg") ;
+                $componentPreviewDesktopUrl = Asset::requireUrl("{$componentPath}/preview-desktop.jpg");
                 if (is_file($componentPreviewDesktopPath)) {
                     $newTitle = '<span class="flyntComponentPreview">';
                     $newTitle .= '<img class="flyntComponentPreview-imageElement" src="' . $componentPreviewDesktopUrl . '" height="36px">';
@@ -59,8 +58,8 @@ if (class_exists('acf')) {
             add_action('admin_bar_menu', function ($wpAdminBar) {
                 $title = __('Component Previews', 'flynt-starter-theme');
                 $wpAdminBar->add_menu([
-                'id' => 'toggleComponentPreviews',
-                'title' => $title
+                    'id' => 'toggleComponentPreviews',
+                    'title' => $title
                 ]);
             });
         }
