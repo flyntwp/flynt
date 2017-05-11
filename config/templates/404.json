@@ -6,7 +6,11 @@
         "name": "LayoutSinglePost",
         "areas": {
           "mainHeader": [],
-          "pageComponents": [],
+          "pageComponents": [
+            {
+              "name": "BlockNotFound"
+            }
+          ],
           "mainFooter": []
         }
       }
