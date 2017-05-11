@@ -1,7 +1,12 @@
-[is='flynt-document-default']
+$colorBackground = lookup('$globalColorBackground') || #fff
+$colorBrand = lookup('$globalColorBrand') || #254fc7
+$colorHeadline = lookup('$globalColorHeadline') || #153cab
+$colorText = lookup('$globalColorText') || #153cab
+
+.flyntComponent[is='flynt-document-default']
   body
-    background-color: $globalColorBackground
-    color: $globalColorText
+    background-color: $colorBackground
+    color: $colorText
     font-family: Helvetica, Arial, sans-serif
     font-size: 14px
     line-height: 1.3
@@ -11,7 +16,7 @@
   h3, .h3,
   h4, .h4,
   h5, .h5
-    color: $globalColorHeadline
+    color: $colorHeadline
     font-weight: normal
 
   h1, .h1
@@ -33,8 +38,8 @@
     margin: 15px 0
 
   a, .link
-    color: $globalColorBrand
+    color: $colorBrand
 
     &:hover
-      color: $globalColorBrand
+      color: $colorBrand
       text-decoration: underline

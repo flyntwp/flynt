@@ -1,10 +1,13 @@
+$colorBrand = lookup('$globalColorBrand') || #254fc7
+$colorText = lookup('$globalColorText') || #153cab
+
 [is='flynt-document-default']
   .btn-primary
-    background-color: $globalColorBrand
-    color: $globalColorText
+    background-color: $colorBrand
+    color: $colorText
 
     &:hover
-      background-color: $globalColorBrand
+      background-color: $colorBrand
       text-decoration: none
 
   .btn
@@ -15,7 +18,7 @@
     padding: 10px 14px
     transition: background-color .3s ease
 
-    &.--block
+    &--block
       display: block
       text-align: center
 
