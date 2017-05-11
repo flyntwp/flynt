@@ -1,7 +1,8 @@
-$rupture.scale = lookup('$global-layout-scale') || (0 576px 768px 992px 1200px)
-$rupture.anti-overlap = lookup('$global-layout-overlap') || -1px
-$gutterWidth = lookup('$global-layout-gutterWidth') || 15px
-$containerMaxWidth = lookup('$global-layout-containerMaxWidth') || 1140px
+$rupture.scale = lookup('$globalRuptureScale') || (0 575px 767px 991px 1199px)
+$rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
+$containerPadding = lookup('$globalContainerPadding') || 15px
+$gutterWidth = lookup('$globalGutterWidth') || 1.5
+$containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
 
 .flyntComponent[is='flynt-block-media-text']
   *,
@@ -10,26 +11,26 @@ $containerMaxWidth = lookup('$global-layout-containerMaxWidth') || 1140px
     box-sizing: border-box
 
   .blockMediaText
-    center($containerMaxWidth, $gutterWidth)
+    center($containerMaxWidth, $containerPadding)
 
     &-columnMedia,
     &-columnContentHtml
-      column(1/2, $gutter: 2)
+      column(1/2, $gutter: $gutterWidth)
 
       +below('s')
         stack()
 
     &--mediaRight
       .blockMediaText-columnMedia
-        move(1/2, $gutter: 2)
+        move(1/2, $gutter: $gutterWidth)
 
       .blockMediaText-columnContentHtml
-        move(-1/2, $gutter: 2)
+        move(-1/2, $gutter: $gutterWidth)
 
       .blockMediaText-columnMedia,
       .blockMediaText-columnContentHtml
         +below('s')
           unmove()
 
-    @import 'Partials/Image/_style.styl'
-    @import 'Partials/OembedVideo/_style.styl'
+    @import 'Partials/Image/_style'
+    @import 'Partials/OembedVideo/_style'

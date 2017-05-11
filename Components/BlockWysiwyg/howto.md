@@ -115,18 +115,19 @@ Unfortunately there is no way to have a stylesheet to a specific acf Wysiwyg fie
 
 `style.styl`
 ```stylus
-$containerMaxWidth = lookup('$global-layout-containerMaxWidth') || 1140px
-$narrowWidth = lookup('$global-layout-narrowWidth') || 650px
+$containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
+$containerPadding = lookup('$globalContainerPadding') || 15px
+$narrowWidth = 650px
 
 [is='flynt-block-wysiwyg']
   .blockWysiwyg
-    center($containerMaxWidth, $gutterWidth)
+    center($containerMaxWidth, $containerPadding)
 
     &-fullwidth
-      center($containerMaxWidth, $gutterWidth)
+      center($containerMaxWidth, $containerPadding)
 
     &-narrow
-      center($narrowWidth, $gutterWidth)
+      center($narrowWidth, $containerPadding)
 ```
 
 ## Additional Global Default Theme

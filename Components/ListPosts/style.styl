@@ -1,7 +1,8 @@
-$rupture.scale = lookup('$global-layout-scale') || (0 576px 768px 992px 1200px)
-$rupture.anti-overlap = lookup('$global-layout-overlap') || -1px
-$gutterWidth = lookup('$global-layout-gutterWidth') || 15px
-$containerMaxWidth = lookup('$global-layout-containerMaxWidth') || 1140px
+$rupture.scale = lookup('$globalRuptureScale') || (0 575px 767px 991px 1199px)
+$rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
+$containerPadding = lookup('$globalContainerPadding') || 15px
+$gutterWidth = lookup('$globalGutterWidth') || 15px
+$containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
 
 .flyntComponent[is="flynt-list-posts"]
   *,
@@ -10,7 +11,7 @@ $containerMaxWidth = lookup('$global-layout-containerMaxWidth') || 1140px
     box-sizing: border-box
 
   .listPosts
-    center($containerMaxWidth, $gutterWidth)
+    center($containerMaxWidth, $containerPadding)
 
     &-list
       list-style-type: none
