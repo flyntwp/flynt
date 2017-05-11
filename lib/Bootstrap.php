@@ -19,29 +19,43 @@ class Bootstrap
         });
     }
 
-    public static function checkPlugin()
+    public static function checkRequiredPlugins()
     {
-        $pluginActive = class_exists('\\Flynt\\Render');
+        $flyntCoreActive = class_exists('\\Flynt\\Render');
+        $acfActive = class_exists('acf');
 
-        if (!$pluginActive) {
-            add_action('admin_notices', function () {
-                echo '<div class="error"><p>Flynt Core Plugin not activated. Make sure you activate the plugin in <a href="'
-                    . esc_url(admin_url('plugins.php#flynt')) . '">'
-                    . esc_url(admin_url('plugins.php')) . '</a></p></div>';
-            });
+        if (!$flyntCoreActive) {
+            self::notifyRequiredPluginIsMissing('Flynt Core');
+        }
 
+        if (!$acfActive) {
+            self::notifyRequiredPluginIsMissing('ACF');
+        }
+
+        if (!$acfActive || !$flyntCoreActive) {
             add_filter('template_include', function () {
-                $newTemplate = locate_template(['plugin-inactive.php']);
+                $newTemplate = locate_template('plugin-inactive.php');
                 if ('' != $newTemplate) {
                     return $newTemplate;
                 } else {
-                    return 'Flynt Core Plugin not activated! Please <a href="'
+                    trigger_error(
+                        'One or more required plugins are not activated! Please <a href="'
                         . esc_url(admin_url('plugins.php'))
-                        . '">activate the plugin</a> and reload the page.';
+                        . '">activate or install the required plugin(s)</a> and reload the page.',
+                        E_USER_WARNING
+                    );
                 }
             });
         }
 
-        return $pluginActive;
+        return $acfActive && $flyntCoreActive;
+    }
+
+    protected static function notifyRequiredPluginIsMissing($pluginName)
+    {
+        add_action('admin_notices', function () use ($pluginName) {
+            echo "<div class=\"error\"><p>${pluginName} Plugin not activated. Make sure you activate the plugin on the <a href=\""
+                . esc_url(admin_url('plugins.php')) . "\">plugin page</a>.</p></div>";
+        });
     }
 }

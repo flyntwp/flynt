@@ -12,9 +12,9 @@ use Flynt\Bootstrap;
 //          defined here.
 Bootstrap::setTemplateDirectory();
 
-// Check if the plugin is installed and activated.
-// If it isn't, this function redirects the template rendering to use
-// plugin-inactive.php instead
-if (Bootstrap::checkPlugin()) {
+// Check if the required plugins are installed and activated.
+// If they aren't, this function redirects the template rendering to use
+// plugin-inactive.php instead and shows a warning in the admin backend.
+if (Bootstrap::checkRequiredPlugins()) {
     require_once get_template_directory() . '/lib/Init.php';
 }
