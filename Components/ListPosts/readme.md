@@ -1,4 +1,4 @@
-Title: List Posts
+Title: ListPosts
 
 ----
 

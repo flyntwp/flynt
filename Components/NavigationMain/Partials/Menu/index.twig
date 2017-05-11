@@ -1,8 +1,8 @@
-<ul class="menu menu-{{ level }}">
+<ul class="menu menu--level-{{ level }}">
   {% for item in items %}
     <li class="{{ item.classes | join(' ') }}">
       <a class="menu-link" href="{{ item.link }}">{{ item.title }}</a>
-      {% if item.get_children and level + 1  <= maxLevel %}
+      {% if item.get_children and level + 1 <= maxLevel %}
         {% include 'Partials/Menu/index.twig' with { 'items': item.get_children, 'level': level + 1, 'maxLevel': maxLevel } only %}
       {% endif %}
     </li>

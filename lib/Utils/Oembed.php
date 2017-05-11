@@ -6,7 +6,7 @@ use DOMDocument;
 
 class Oembed
 {
-    public static function setOembedSrcAsDataAttribute($iframeTagHtml, $additionalGetParams)
+    public static function setSrcAsDataAttribute($iframeTagHtml, $additionalGetParams)
     {
         $output = '';
         $Dom = new DOMDocument();

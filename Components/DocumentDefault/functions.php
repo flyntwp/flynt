@@ -1,4 +1,5 @@
 <?php
+
 namespace Flynt\Components\DocumentDefault;
 
 use Timber\Timber;

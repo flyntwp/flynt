@@ -1,4 +1,5 @@
 <?php
+
 namespace Flynt\Components\SliderMedia;
 
 use Flynt\Features\Components\Component;
@@ -7,7 +8,7 @@ use Flynt\Utils\Oembed;
 add_filter('Flynt/addComponentData?name=SliderMedia', function ($data) {
     $data['mediaSlides'] = array_map(function ($item) {
         if ($item['mediaType'] == 'oembed') {
-            $item['oembedLazyLoad'] = Oembed::setOembedSrcAsDataAttribute(
+            $item['oembedLazyLoad'] = Oembed::setSrcAsDataAttribute(
                 $item['oembed'],
                 [
                     'autoplay' => 'true'

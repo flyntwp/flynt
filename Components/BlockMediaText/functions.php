@@ -1,4 +1,5 @@
 <?php
+
 namespace Flynt\Components\BlockMediaText;
 
 use Flynt\Features\Components\Component;
@@ -10,7 +11,7 @@ add_action('wp_enqueue_scripts', function () {
 
 add_filter('Flynt/addComponentData?name=BlockMediaText', function ($data) {
     if ($data['mediaType'] === 'oembedVideo') {
-        $data['oembedLazyLoad'] = Oembed::setOembedSrcAsDataAttribute(
+        $data['oembedLazyLoad'] = Oembed::setSrcAsDataAttribute(
             $data['oembed'],
             [
                 'autoplay' => 'true'

@@ -5,7 +5,14 @@
       {
         "name": "LayoutMultiplePosts",
         "areas": {
-          "mainHeader": [],
+          "mainHeader": [
+            {
+              "name": "NavigationMain",
+              "customData": {
+                "menuSlug": "navigation_main"
+              }
+            }
+          ],
           "pageComponents": [
             {
               "name": "ListPosts"

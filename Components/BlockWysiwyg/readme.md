@@ -1,4 +1,4 @@
-Title: Block Wysiwyg
+Title: BlockWysiwyg
 
 ----
 

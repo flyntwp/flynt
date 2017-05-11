@@ -3,7 +3,7 @@ $rupture.anti-overlap = lookup('$global-layout-overlap') || -1px
 $gutterWidth = lookup('$global-layout-gutterWidth') || 15px
 $containerMaxWidth = lookup('$global-layout-containerMaxWidth') || 1140px
 
-[is='flynt-block-image']
+.flyntComponent[is='flynt-block-image']
   *,
   *:before,
   *:after
@@ -11,10 +11,6 @@ $containerMaxWidth = lookup('$global-layout-containerMaxWidth') || 1140px
 
   .blockImage
     center($containerMaxWidth, $gutterWidth)
-
-    &-imageContainer
-      display: block
-      width: 100%
 
     &-imageElement
       display: block

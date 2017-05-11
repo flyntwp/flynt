@@ -5,7 +5,14 @@
       {
         "name": "LayoutSinglePost",
         "areas": {
-          "mainHeader": [],
+          "mainHeader": [
+            {
+              "name": "NavigationMain",
+              "customData": {
+                "menuSlug": "navigation_main"
+              }
+            }
+          ],
           "pageComponents": [
             {
               "name": "BlockNotFound"

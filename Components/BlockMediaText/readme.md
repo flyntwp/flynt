@@ -1,4 +1,4 @@
-Title: Block Media Text
+Title: BlockMediaText
 
 ----
 
