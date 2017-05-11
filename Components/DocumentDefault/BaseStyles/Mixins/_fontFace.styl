@@ -1,12 +1,6 @@
-fontFace($family, $file, $weight = 'normal', $hack-chrome-windows = false, $basePath = '../../Components/DocumentDefault/Fonts/')
+fontFace($family, $file, $weight = 'normal', $style = 'normal', $basePath = '../../Components/DocumentDefault/Fonts/')
   @font-face
     font-family: $family
-    src: url($basePath + $file + '.eot')
-    src: url($basePath + $file + '.eot?#iefix') format('embedded-opentype'), url($basePath + $file + '.woff') format('woff'), url($basePath + $file + '.ttf') format('truetype'), url($basePath + $file + '.svg#'+ $family) format('svg')
-    font-style: normal
-    font-weight: $weight
-  if $hack-chrome-windows
-    @media screen and (-webkit-min-device-pixel-ratio: 0)
-      @font-face
-        font-family: $family
-        src: url($basePath + $file + '.svg#'+ $family) format('svg')
+    src: url($basePath + $file + '.woff2') format('woff2'), url($basePath + $file + '.woff') format('woff'), url($basePath + $file + '.ttf') format('truetype')
+    font-style: unquote($style)
+    font-weight: unquote($weight)
