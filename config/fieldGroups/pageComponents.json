@@ -7,7 +7,9 @@
       "label": "Page Components",
       "type": "flexible_content",
       "button_label": "Add Component",
-      "layouts": []
+      "layouts": [
+        "Flynt/Components/BlockWysiwyg/Fields/Layout"
+      ]
     }
   ],
   "location": [

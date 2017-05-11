@@ -1,0 +1,17 @@
+{
+  "layout": {
+    "name": "blockWysiwyg",
+    "label": "Block: Wysiwyg",
+    "sub_fields": [
+      {
+        "name": "contentHtml",
+        "label": "Content",
+        "type": "wysiwyg",
+        "delay": 1,
+        "media_upload": 0,
+        "toolbar": "full",
+        "required": 1
+      }
+    ]
+  }
+}
