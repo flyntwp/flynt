@@ -7,7 +7,7 @@ class GoogleMaps
     public static function init()
     {
         add_filter('acf/fields/google_map/api', function ($api) {
-            $apiKey = OptionPages::getOption('globalOptions', 'feature', 'Acf', 'googleMapsApiKey');
+            $apiKey = OptionPages::get('globalOptions', 'feature', 'Acf', 'googleMapsApiKey');
             if ($apiKey) {
                 $api['key'] = $apiKey;
             }

@@ -12,7 +12,7 @@ add_action('init', 'Flynt\Features\GoogleAnalytics\init', 100);
 
 function init()
 {
-    $googleAnalyticsOptions = OptionPages::getOptions('globalOptions', 'feature', 'GoogleAnalytics');
+    $googleAnalyticsOptions = OptionPages::get('globalOptions', 'feature', 'GoogleAnalytics');
     if ($googleAnalyticsOptions) {
         new GoogleAnalytics($googleAnalyticsOptions);
     }

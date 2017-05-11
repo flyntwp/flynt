@@ -87,22 +87,35 @@ class OptionPages
     // PUBLIC API
     // ============
 
-    // usage: OptionPages::getOptions('globalOptions', 'customPostType', 'myCustomPostTypeName');
-    // usage: OptionPages::getOptions('globalOptions', 'feature', 'myFeatureName');
-    // usage: OptionPages::getOptions('translatableOptions', 'component', 'myComponentName');
-    // all params expected to be camelCase
-    public static function getOptions($optionType, $optionCategory, $subPageName)
+    /**
+     * Get option(s) from a sub page.
+     *
+     * Returns an option of a sub page. If no field name is provided it will get all option of that sub page.
+     * Parameters are expected to be camelCase.
+     *
+     * @param string $optionType Type of option page. Either globalOptions or translatableOptions.
+     * @param string $optionCategory Category of option page. One of these three values: component, feature, customPostType.
+     * @param string $subPageName Name of the sub page.
+     * @param string $fieldName (optional) Name of the field to get.
+     * @return mixed The value of the option or array of options. False if subpage doesn't exist or no option was found.
+     **/
+    public static function get($optionType, $optionCategory, $subPageName, $fieldName = null)
     {
+        $optionType = lcfirst($optionType);
+
         if (!isset(self::$optionTypes[$optionType])) {
-            return [];
+            return false;
         }
 
-        $prefix = implode('', [$optionType, ucfirst($optionCategory), ucfirst($subPageName), '_']);
+        $optionCategory = ucfirst($optionCategory);
+        $subPageName = ucfirst($subPageName);
+
+        $prefix = implode('', [$optionType, $optionCategory, $subPageName, '_']);
         $options = self::getOptionFields(self::$optionTypes[$optionType]['translatable']);
 
         // find and replace relevant keys, then return an array of all options for this Sub-Page
         $optionKeys = is_array($options) ? array_keys($options) : [];
-        return array_reduce($optionKeys, function ($carry, $key) use ($options, $prefix) {
+        $options = array_reduce($optionKeys, function ($carry, $key) use ($options, $prefix) {
             $count = 0;
             $option = $options[$key];
             $key = str_replace($prefix, '', $key, $count);
@@ -111,16 +124,12 @@ class OptionPages
             }
             return $carry;
         }, []);
-    }
 
-    // usage: OptionPages::getOption('globalOptions', 'customPostType', 'myCustomPostTypeName', 'myFieldName');
-    // usage: OptionPages::getOption('globalOptions', 'feature', 'myFeatureName', 'myFieldName');
-    // usage: OptionPages::getOption('translatableOptions', 'component', 'myComponentName', 'myFieldName');
-    // all params expected to be camelCase
-    public static function getOption($optionType, $optionCategory, $subPageName, $fieldName)
-    {
-        $options = self::getOptions($optionType, $optionCategory, $subPageName);
-        return array_key_exists($fieldName, $options) ? $options[$fieldName] : false;
+        if (isset($fieldName)) {
+            $fieldName = lcfirst($fieldName);
+            return array_key_exists($fieldName, $options) ? $options[$fieldName] : false;
+        }
+        return $options;
     }
 
     // ============
@@ -180,19 +189,8 @@ class OptionPages
         $filePath = $customPostType['dir'] . '/fields.json';
 
         if (is_file($filePath)) {
-            // TODO refactor
-            // $cptName = ucfirst($cptDir->getFilename());
-            // if (isset($cptConfig['label'])) {
-            //   $label = $cptConfig['label'];
-            // }
-            // if (isset($cptConfig['labels'])) {
-            //   if (isset($cptConfig['labels']['menu_name'])) {
-            //     $label = $cptConfig['labels']['menu_name'];
-            //   } else if (isset($cptConfig['labels']['singular_name'])) {
-            //     $label = $cptConfig['labels']['singular_name'];
-            //   }
-            // }
-            self::createSubPageFromConfig($filePath, 'customPostType', ucfirst($name));
+            $name = StringHelpers::kebapCaseToCamelCase($name);
+            self::createSubPageFromConfig($filePath, 'customPostType', $name);
         }
     }
 

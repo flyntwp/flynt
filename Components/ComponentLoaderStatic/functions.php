@@ -11,12 +11,14 @@ add_filter('Flynt/addComponentData?name=ComponentLoaderStatic', function ($data,
         array_key_exists('optionCategory', $optionPage) &&
         array_key_exists('subPageName', $optionPage)
     ) {
-        $options = OptionPages::getOptions(
+        $options = OptionPages::get(
             $optionPage['optionType'],
             $optionPage['optionCategory'],
             $optionPage['subPageName']
         );
-        $data = array_merge($data, $options);
+        if ($options) {
+            $data = array_merge($data, $options);
+        }
     } else if (isset($parentData['post'])) {
         $data = array_merge($data, $parentData['post']->fields);
     }
