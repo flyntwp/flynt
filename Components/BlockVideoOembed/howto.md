@@ -16,6 +16,7 @@
   ]
 }
 ```
+Don't forget to remove the `required: 1` option inside the `posterImage` field.
 
 `functions.php`
 ```php
