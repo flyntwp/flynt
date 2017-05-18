@@ -1,3 +1,5 @@
+import $ from 'jquery'
+
 class BlockVideoOembed extends window.HTMLDivElement {
   constructor (self) {
     self = super(self)

@@ -1,3 +1,4 @@
+import $ from 'jquery'
 import 'file-loader?name=vendor/slick.js!slick-carousel/slick/slick.min'
 import 'file-loader?name=vendor/slick.css!csso-loader!slick-carousel/slick/slick.css'
 

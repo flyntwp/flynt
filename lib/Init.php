@@ -5,6 +5,7 @@ namespace Flynt\Init;
 require_once __DIR__ . '/Utils/FileLoader.php';
 
 use Flynt;
+use Flynt\Utils\Asset;
 use Flynt\Utils\Feature;
 use Flynt\Utils\FileLoader;
 use Flynt\Utils\StringHelpers;
@@ -15,6 +16,9 @@ function initTheme()
 {
     // initialize plugin defaults
     Flynt\initDefaults();
+
+    // Set to true to load all assets from a CDN if there is one specified
+    Asset::loadFromCdn(false);
 
     // register all components in 'Components' folder
     add_theme_support('flynt-components', get_template_directory() . '/dist/Components/');
@@ -47,10 +51,12 @@ function initTheme()
     // use timber rendering
     add_theme_support('flynt-timber-loader');
 
+    // load jQuery in footer by default
+    add_theme_support('flynt-jquery');
+
     // clean up some things
     add_theme_support('flynt-clean-head');
     add_theme_support('flynt-clean-rss');
-    add_theme_support('flynt-jquery');
     add_theme_support('flynt-mime-types');
     add_theme_support('flynt-navigation');
     add_theme_support('flynt-remove-editor');

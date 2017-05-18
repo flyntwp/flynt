@@ -1,4 +1,5 @@
 /* globals wpData */
+import $ from 'jquery'
 const helper = require('./helper')
 const $body = $('body')
 let $container = null

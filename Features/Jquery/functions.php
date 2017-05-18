@@ -2,22 +2,21 @@
 
 namespace Flynt\Features\Jquery;
 
-/**
- * registerJquery
- *
- * Load jQuery from jQuery's CDN
- *
- * TODO add local fallback
- * TODO add cdn again just removed it because internet so slow
- */
+use Flynt\Utils\Asset;
+use Flynt\Utils\Feature;
+
 add_action('wp_enqueue_scripts', function () {
     $jqueryVersion = wp_scripts()->registered['jquery']->ver;
     wp_deregister_script('jquery');
-    wp_register_script(
-        'jquery',
-        '//code.jquery.com/jquery-' . $jqueryVersion . '.min.js',
-        [],
-        null,
-        true
-    );
-}, 100);
+
+    $jqueryLocalUrl = esc_url(includes_url("/js/jquery/jquery.js?ver=${jqueryVersion}"));
+    Asset::register([
+        'name' => 'jquery',
+        'cdn' => [
+            'url' => "//ajax.googleapis.com/ajax/libs/jquery/${jqueryVersion}/jquery.min.js",
+            'check' => 'window.jQuery'
+        ],
+        'type' => 'script',
+        'path' => $jqueryLocalUrl
+    ]);
+}, 0); // NOTE: prio needs to be < 1

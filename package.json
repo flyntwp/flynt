@@ -48,7 +48,6 @@
     "gulp-watch": "^4.3.10",
     "hasbin": "^1.2.3",
     "jeet": "^7.0.0",
-    "jquery": "^3.2.1",
     "normalize.css": "^6.0.0",
     "picturefill": "^3.0.2",
     "require-dir": "^0.3.1",

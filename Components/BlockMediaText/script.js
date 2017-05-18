@@ -1,3 +1,5 @@
+import $ from 'jquery'
+
 class BlockMediaText extends window.HTMLDivElement {
   constructor (self) {
     self = super(self)

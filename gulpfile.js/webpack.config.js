@@ -56,7 +56,10 @@ module.exports = function (config) {
       new webpack.LoaderOptionsPlugin({
         debug: !config.production
       })
-    ]
+    ],
+    externals: {
+      jquery: 'jQuery'
+    }
   }
   if (config.production) {
     output.plugins = output.plugins || []
