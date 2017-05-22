@@ -1,3 +1,3 @@
 <?php
 
-Flynt\echoHtmlFromConfigFile('archive-unfiltered.json');
+Flynt\echoHtmlFromConfigFile('archive.json');
