@@ -52,6 +52,12 @@ class OptionPages
         ]
     ];
 
+    const FILTER_NAMESPACES = [
+        'component' => 'Flynt/Components',
+        'customPostType' => 'Flynt/CustomPostTypes',
+        'feature' => 'Flynt/Features'
+    ];
+
     protected static $optionPages = [];
     protected static $optionTypes = [];
     protected static $optionCategories = [];
@@ -65,10 +71,18 @@ class OptionPages
         self::createOptionPages();
 
         // Register Categories
-        foreach (self::$optionCategories as $categoryName => $categorySettings) {
-            $registerFn = 'registerOptionCategory' . ucfirst($categoryName);
-            self::$registerFn();
-        }
+        add_action('acf/init', function () {
+            self::addComponentSubPages();
+            self::addFeatureSubPages();
+            self::addCustomPostTypeSubPages();
+        });
+
+        add_filter(
+            'Flynt/addComponentData',
+            ['Flynt\Features\Acf\OptionPages', 'addComponentData'],
+            10,
+            3
+        );
 
         // Setup Flynt Non Persistent Cache
         wp_cache_add_non_persistent_groups('flynt');
@@ -136,61 +150,38 @@ class OptionPages
     // COMPONENTS
     // ============
 
-    protected static function registerOptionCategoryComponent()
+    public static function addComponentData($data, $parentData, $config)
     {
-        add_action(
-            'Flynt/registerComponent',
-            ['Flynt\Features\Acf\OptionPages', 'addComponentSubPage'],
-            12
-        );
+        // get fields for this component
+        $options = array_reduce(array_keys(self::$optionTypes), function ($carry, $optionType) use ($config) {
+            return array_merge($carry, self::get($optionType, 'Component', $config['name']));
+        }, []);
 
-        add_filter('Flynt/addComponentData', function ($data, $parentData, $config) {
-
-            // get fields for this component
-            $options = array_reduce(array_keys(self::$optionTypes), function ($carry, $optionType) use ($config) {
-                return array_merge($carry, self::get($optionType, 'Component', $config['name']));
-            }, []);
-
-            // don't overwrite existing data
-            return array_merge($options, $data);
-        }, 10, 3);
+        // don't overwrite existing data
+        return array_merge($options, $data);
     }
 
-    public static function addComponentSubPage($componentName)
+    public static function addComponentSubPages()
     {
         // load fields.json if it exists
         $componentManager = ComponentManager::getInstance();
-        $filePath = $componentManager->getComponentFilePath($componentName, 'fields.json');
+        $components = $componentManager->getAll();
 
-        if (false === $filePath) {
-            return;
+        foreach ($components as $name => $path) {
+            self::createSubPage('component', $name);
         }
-
-        self::createSubPageFromConfig($filePath, 'component', $componentName);
     }
 
     // ==================
     // CUSTOM POST TYPES
     // ==================
 
-    protected static function registerOptionCategoryCustomPostType()
+    public static function addCustomPostTypeSubPages()
     {
-        add_action(
-            'Flynt/Features/CustomPostTypes/Register',
-            ['Flynt\Features\Acf\OptionPages', 'addCustomPostTypeSubPage'],
-            10,
-            2
-        );
-    }
+        $customPostTypes = CustomPostTypeRegister::getAll();
 
-    public static function addCustomPostTypeSubPage($name, $customPostType)
-    {
-        // load fields.json file
-        $filePath = $customPostType['dir'] . '/fields.json';
-
-        if (is_file($filePath)) {
-            $name = StringHelpers::kebapCaseToCamelCase($name);
-            self::createSubPageFromConfig($filePath, 'customPostType', $name);
+        foreach ($customPostTypes as $name => $config) {
+            self::createSubPage('customPostType', $name);
         }
     }
 
@@ -198,27 +189,10 @@ class OptionPages
     // FEATURES
     // ========
 
-    protected static function registerOptionCategoryFeature()
+    public static function addFeatureSubPages()
     {
-        add_action(
-            'Flynt/afterRegisterFeatures',
-            ['Flynt\Features\Acf\OptionPages', 'addAllFeatureSubPages']
-        );
-    }
-
-    public static function addAllFeatureSubPages()
-    {
-
-        foreach (Feature::getFeatures() as $featureName => $feature) {
-            $filePath = $feature['dir'] . '/fields.json';
-
-            if (!is_file($filePath)) {
-                continue;
-            }
-
-            $featureName = StringHelpers::removePrefix('flynt', StringHelpers::kebapCaseToCamelCase($featureName));
-
-            self::createSubPageFromConfig($filePath, 'feature', $featureName);
+        foreach (Feature::getFeatures() as $handle => $config) {
+            self::createSubPage('feature', $config['name']);
         }
     }
 
@@ -270,17 +244,18 @@ class OptionPages
         });
     }
 
-    protected static function createSubPageFromConfig($filePath, $optionCategoryName, $subPageName)
+    protected static function createSubPage($type, $name)
     {
-        $fields = json_decode(file_get_contents($filePath), true);
-
+        $namespace = self::FILTER_NAMESPACES[$type];
         foreach (self::$optionTypes as $optionType => $option) {
-            if (array_key_exists($optionType, $fields)) {
+            $filterName = "{$namespace}/{$name}/Fields/" . ucfirst($optionType);
+            $fields = apply_filters($filterName, []);
+            if (!empty($fields)) {
                 self::addOptionSubPage(
-                    $optionCategoryName,
-                    ucfirst($subPageName),
+                    $type,
+                    ucfirst($name),
                     $optionType,
-                    $fields[$optionType]
+                    $fields
                 );
             }
         }

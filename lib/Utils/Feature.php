@@ -38,14 +38,15 @@ class Feature
 
                 self::$features[$feature] = [
                 'options' => $options,
-                'dir' => $dir
+                'dir' => $dir,
+                'name' => $prettyName
                 ];
 
                 require_once $file;
 
                 // execute post register actions
-                do_action('Flynt/registerFeature', $feature, $options, $dir);
-                do_action("Flynt/registerFeature?name={$prettyName}", $feature, $options, $dir);
+                do_action('Flynt/registerFeature', $prettyName, $options, $dir);
+                do_action("Flynt/registerFeature?name={$prettyName}", $prettyName, $options, $dir);
 
                 return true;
             }

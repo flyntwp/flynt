@@ -36,6 +36,7 @@ function initTheme()
 
     // initialize ACF Field Groups and Option Pages
     add_theme_support('flynt-acf', [
+        'FieldLoader',
         'FieldGroupComposer',
         'OptionPages',
         'FlexibleContentToggle',

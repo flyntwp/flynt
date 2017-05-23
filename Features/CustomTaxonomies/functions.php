@@ -14,4 +14,4 @@ add_action('init', function () {
     $fileName = isset($featureOptions['fileName']) ? $featureOptions['fileName'] : null;
 
     CustomTaxonomyRegister::fromDir($dir, $fileName);
-}, 11); // needs to happen before custom post types get added
+}, 3); // needs to happen before custom post types get added

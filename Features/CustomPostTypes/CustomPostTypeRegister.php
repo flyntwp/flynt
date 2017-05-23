@@ -100,4 +100,9 @@ class CustomPostTypeRegister
 
         return $config;
     }
+
+    public static function getAll()
+    {
+        return self::$registeredCustomPostTypes;
+    }
 }

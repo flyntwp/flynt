@@ -18,12 +18,6 @@ class FieldGroupComposer
     public static function setup()
     {
         add_action(
-            'Flynt/registerComponent',
-            ['Flynt\Features\Acf\FieldGroupComposer', 'addFieldFilters'],
-            11
-        );
-
-        add_action(
             'acf/init',
             ['Flynt\Features\Acf\FieldGroupComposer', 'loadFieldGroups']
         );
@@ -53,61 +47,5 @@ class FieldGroupComposer
         });
 
         self::$fieldGroupsLoaded = true;
-    }
-
-    public static function addFieldFilters($componentName)
-    {
-        // load fields.json if it exists
-        $componentManager = ComponentManager::getInstance();
-        $filePath = $componentManager->getComponentFilePath($componentName, 'fields.json');
-
-        if (false === $filePath) {
-            return;
-        }
-
-        $fields = json_decode(file_get_contents($filePath), true);
-
-        // make sure naming convention is kept
-        $componentName = ucfirst($componentName);
-
-        // add filters
-        foreach ($fields as $groupKey => $groupValue) {
-            $groupKey = ucfirst($groupKey);
-            $filterName = self::FILTER_NAMESPACE . "/{$componentName}/Fields/{$groupKey}";
-
-            add_filter($filterName, function ($config) use ($groupValue) {
-                return $groupValue;
-            });
-            if (ArrayHelpers::isAssoc($groupValue) && array_key_exists('sub_fields', $groupValue)) {
-                $filterName .= '/SubFields';
-                $subFields = $groupValue['sub_fields'];
-
-                add_filter($filterName, function ($subFieldsconfig) use ($subFields) {
-                    return $subFields;
-                });
-                self::addFilterForSubFields($filterName, $subFields);
-            } elseif (is_array($groupValue)) {
-                self::addFilterForSubFields($filterName, $groupValue);
-            }
-        }
-    }
-
-    protected static function addFilterForSubFields($parentFilterName, $subFields)
-    {
-        foreach ($subFields as $subField) {
-            if (is_string($subField)) {
-                continue;
-            }
-            if (!array_key_exists('name', $subField)) {
-                trigger_error('[ACF] Name is missing in Sub Field while adding Filter: ' . $parentFilterName, E_USER_WARNING);
-                continue;
-            }
-            $subFieldName = ucfirst($subField['name']);
-            $subFilterName = $parentFilterName . "/{$subFieldName}";
-
-            add_filter($subFilterName, function ($subFieldConfig) use ($subField) {
-                return $subField;
-            });
-        }
     }
 }

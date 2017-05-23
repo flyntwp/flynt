@@ -1,6 +1,7 @@
 <?php
 namespace Flynt\Features\Acf;
 
+require_once __DIR__ . '/FieldLoader.php';
 require_once __DIR__ . '/FieldGroupComposer.php';
 require_once __DIR__ . '/OptionPages.php';
 require_once __DIR__ . '/FlexibleContentToggle.php';
