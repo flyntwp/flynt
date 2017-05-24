@@ -38,6 +38,8 @@ class SliderMedia extends window.HTMLDivElement {
       this.$.on('init', this.$mediaSlides.selector, this.slickInit)
       this.$mediaSlides.slick(slickConfiguration)
       this.$.on('beforeChange', this.$mediaSlides.selector, this.unsetIframeSrc)
+    } else {
+      this.$sliderMedia.removeClass('sliderMedia-isHidden')
     }
   }
 

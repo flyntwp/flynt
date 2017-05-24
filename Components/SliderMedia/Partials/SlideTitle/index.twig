@@ -1,5 +1,7 @@
-<div class="slideTitle slideTitle--overlayTitleTop">
-  <div class="slideTitle-content">
-    {{ mediaSlide.titleText }}
+{% if mediaSlide.titleText %}
+  <div class="slideTitle slideTitle--overlayTitleTop">
+    <div class="slideTitle-content">
+      {{ mediaSlide.titleText }}
+    </div>
   </div>
-</div>
+{% endif %}
