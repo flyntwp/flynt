@@ -43,9 +43,6 @@ class FieldLoader
         $componentManager = ComponentManager::getInstance();
         $filePath = $componentManager->getComponentFilePath($name, 'fields.json');
 
-        // make sure naming convention is kept
-        $name = ucfirst($name);
-
         // add filters
         self::addFilters('component', $name, $filePath);
     }
@@ -71,6 +68,9 @@ class FieldLoader
         if (false === $filePath || !file_exists($filePath)) {
             return;
         }
+
+        // make sure naming convention is kept
+        $name = ucfirst($name);
 
         $fields = json_decode(file_get_contents($filePath), true);
 
