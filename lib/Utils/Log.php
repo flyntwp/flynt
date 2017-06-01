@@ -4,36 +4,56 @@ namespace Flynt\Utils;
 
 class Log
 {
-    public static function console($data)
+    public static function console($data, $postpone = true)
     {
-        self::consoleDebug($data);
+        self::consoleDebug($data, $postpone);
     }
 
-    public static function error($data)
+    public static function error($data, $postpone = true)
     {
-        self::consoleDebug($data, 'PHP', 'error');
+        self::consoleDebug($data, $postpone, 'PHP', 'error');
     }
 
-    public static function consoleDebug($data, $title = 'PHP', $logType = 'log')
+    public static function pp($data, $postpone = true)
+    {
+        self::printDebug($data, $postpone);
+    }
+
+    public static function consoleDebug($data, $postpone, $title = 'PHP', $logType = 'log')
     {
         $title .= '(' . self::getCallerFile(2) .'):';
         $type = gettype($data);
         if (is_array($data) || is_object($data)) {
             $output = json_encode($data);
-            echo "<script>console.$logType('$title', '($type)', $output);</script>\n";
+            $result =  "<script>console.{$logType}('{$title}', '({$type})', {$output});</script>\n";
         } else {
-            echo "<script>console.$logType('$title', '($type)', '$data');</script>\n";
+            $result = "<script>console.{$logType}('{$title}', '({$type})', '{$data}');</script>\n";
         }
+        self::echoDebug($result, $postpone);
     }
 
-    public static function pp($data)
+    public static function printDebug($data, $postpone)
     {
         $type = gettype($data);
-        echo "<pre>";
-        echo "(" . $type . ") ";
+        $output = '<pre>';
+        $output .= '(' . $type . ') ';
+        ob_start();
         print_r($data);
-        echo "<br />File: <strong>" . self::getCallerFile() . "</strong>";
-        echo "</pre>\n";
+        $output .= ob_get_clean();
+        $output .= '<br />File: <strong>' . self::getCallerFile(2) . '</strong>';
+        $output .= "</pre>\n";
+        self::echoDebug($output, $postpone);
+    }
+
+    protected static function echoDebug($data, $postpone)
+    {
+        if ($postpone) {
+            add_action('wp_footer', function () use ($data) {
+                echo $data;
+            }, 30);
+        } else {
+            echo $data;
+        }
     }
 
     protected static function getCallerFile($depth = 1)
