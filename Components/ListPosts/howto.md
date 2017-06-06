@@ -220,10 +220,7 @@ add partial `Partials/AllPostsCta/*.*`
 namespace Flynt\Components\ListPosts;
 
 use Flynt\Features\Components\Component;
-use Flynt\Utils\TimberHelper;
-
 use Timber\Timber;
-use Timber\TextHelper;
 
 add_filter('Flynt/addComponentData?name=ListPosts', function ($data, $parentData) {
     if (isset($data['postType'])) {
@@ -243,22 +240,11 @@ add_filter('Flynt/addComponentData?name=ListPosts', function ($data, $parentData
 function addDataToAllPosts($posts) {
     if (is_array($posts)) {
         $posts = array_map(function ($post) {
-            $post = addExcerpt($post);
+            $post->excerpt = $post->get_preview(50, false, $data['readMoreLabel']);
             return $post;
         }, $posts);
     }
     return $posts;
-}
-
-function addExcerpt($post) {
-    if (is_object($post)) {
-        $timberPost = TimberHelper::getTimberPostById($post->id);
-        $post->excerpt = TextHelper::trim_characters(
-            TimberHelper::getExcerpt($timberPost->id, 50, false, false),
-            50
-        );
-    }
-    return $post;
 }
 ```
 
