@@ -69,6 +69,9 @@ function initTheme()
     // google analytics
     add_theme_support('flynt-google-analytics');
 
+    // hide protected posts
+    add_theme_support('flynt-hide-protected-posts');
+
     // WP Stuff
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
