@@ -19,20 +19,18 @@ class Log
         self::printDebug($data, $postpone);
     }
 
-    public static function consoleDebug($data, $postpone, $title = 'PHP', $logType = 'log')
+    public static function consoleDebug($data, $postpone = true, $title = 'PHP', $logType = 'log')
     {
-        $title .= '(' . self::getCallerFile(2) .'):';
-        $type = gettype($data);
-        if (is_array($data) || is_object($data)) {
+        if (in_array($logType, ['log', 'error', 'trace'])) {
+            $title .= '(' . self::getCallerFile(2) .'):';
+            $type = gettype($data);
             $output = json_encode($data);
             $result =  "<script>console.{$logType}('{$title}', '({$type})', {$output});</script>\n";
-        } else {
-            $result = "<script>console.{$logType}('{$title}', '({$type})', '{$data}');</script>\n";
+            self::echoDebug($result, $postpone);
         }
-        self::echoDebug($result, $postpone);
     }
 
-    public static function printDebug($data, $postpone)
+    public static function printDebug($data, $postpone = true)
     {
         $type = gettype($data);
         $output = '<pre>';
