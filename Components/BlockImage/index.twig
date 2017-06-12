@@ -3,10 +3,10 @@
     <img class="blockImage-imageElement" srcset="
       {{ image.src | resize(576) }} 576w,
       {{ image.src | resize(768) }} 768w,
-      {{ image.src | resize(1200) }} 1200w,
+      {{ image.src | resize(1110) }} 1110w,
       {{ image.src | resize(1440) }} 1440w"
-      src="{{ image.src | resize(1200) }}"
-      sizes="(min-width: 1140px) 1140px, 100vw"
+      src="{{ image.src | resize(1110) }}"
+      sizes="(min-width: 1140px) 1110px, calc(100vw - 30px)"
       alt="{{ image.alt }}">
   </div>
 </div>
