@@ -4,6 +4,15 @@ namespace Flynt\Utils;
 
 class ArrayHelpers
 {
+    /**
+     * Checks if an array is associative.
+     *
+     * @since 0.1.0
+     *
+     * @param array $array The array to check.
+     *
+     * @return boolean
+     */
     public static function isAssoc(array $array)
     {
         // Keys of the array
@@ -14,14 +23,15 @@ class ArrayHelpers
         return array_keys($keys) !== $keys;
     }
 
-    // only converts first dimension of object
-    public static function objectToArray($obj)
-    {
-        return array_map(function ($val) {
-            return (array) $val;
-        }, $obj);
-    }
-
+    /**
+     * Converts indexed values to associative keys.
+     *
+     * @since 0.1.0
+     *
+     * @param array $array The array to convert.
+     *
+     * @return array
+     */
     public static function indexedValuesToAssocKeys(array $array)
     {
         $values = array_map(function ($value) {
