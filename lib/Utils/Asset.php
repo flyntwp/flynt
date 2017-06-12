@@ -17,21 +17,90 @@ class Asset
     protected static $assetManifest;
     protected static $loadFromCdn = false;
 
+    /**
+     * Gets the asset's url.
+     *
+     * @since 0.1.0
+     *
+     * @param string $asset The filename of the required asset.
+     *
+     * @return string/boolean Returns the url or false if the asset is not found.
+     */
     public static function requireUrl($asset)
     {
         return self::get('url', $asset);
     }
 
+    /**
+     * Gets the asset's absolute path.
+     *
+     * @since 0.1.0
+     *
+     * @param string $asset The filename of the required asset.
+     *
+     * @return string/boolean Returns the absolute path or false if the asset is not found.
+     */
     public static function requirePath($asset)
     {
         return self::get('path', $asset);
     }
 
+    /**
+     * Registers an asset.
+     * It can register a script or a style.
+     *
+     * If the Asset utility has `loadFromCdn` set to true, you can use the cdn option to load an asset from the CDN,
+     * the path option will then become the local fallback file, using the 'check' in the 'cdn' array.
+     *
+     * @since 0.1.0
+     * @since %%NEXT_VERSION%% Supports CDN parameter.
+     *
+     * @param array $options Options must specify a type, a name and a path.
+     *              $options = [
+     *                 'type'          => (string) The type of asset to register (script|style).
+     *                 'name'          => (string) Should be unique as it is used to identify the script in the whole system.
+     *                 'path'          => (string) The path.
+     *                 'dependencies'  => (array) An array of registered script handles this script depends on.
+     *                 'version'       => (string/boolean) String specifying script version number, if it has one.
+     *                 'inFooter'      => (boolean) If the type is 'script', whether to enqueue the script before </body> instead of in the <head>. Default 'false'.
+     *                 'media'         => (string) If the type is 'style', string specifying the media for which this stylesheet has been defined (all/screen/handheld/print).
+     *                 'cdn'           => [
+     *                      'url'   => (string) The CDN url.
+     *                      'check' => (string/boolean) Javascript boolean value that loads the local fallback if it is false.
+     *                 ]
+     *              ]
+     *
+     * @return boolean
+     */
     public static function register($options)
     {
         return self::add('register', $options);
     }
 
+    /**
+     * Enqueues an asset.
+     * It can enqueue a script or a style.
+     *
+     * @since 0.1.0
+     * @since %%NEXT_VERSION%% Supports CDN parameter.
+     *
+     * @param array $options Options must specify a type, a name and a path.
+     *              $options = [
+     *                 'type'          => (string) The type of asset to register (script|style).
+     *                 'name'          => (string) Should be unique as it is used to identify the script in the whole system.
+     *                 'path'          => (string) The path.
+     *                 'dependencies'  => (array) An array of registered script handles this script depends on.
+     *                 'version'       => (string/boolean) String specifying script version number, if it has one.
+     *                 'inFooter'      => (boolean) If the type is 'script', whether to enqueue the script before </body> instead of in the <head>. Default 'false'.
+     *                 'media'         => (string) If the type is 'style', string specifying the media for which this stylesheet has been defined (all/screen/handheld/print).
+     *                 'cdn'           => [
+     *                      'url'   => (string) The CDN url.
+     *                      'check' => (string/boolean) Javascript boolean value that loads the local fallback if it is false.
+     *                 ]
+     *              ]
+     *
+     * @return boolean
+     */
     public static function enqueue($options)
     {
         return self::add('enqueue', $options);
@@ -145,7 +214,9 @@ class Asset
      * Getter and setter for the loadFromCdn setting.
      *
      * @param boolean $load (optional) Value to set the parameter to.
-     **/
+     *
+     * @since %%NEXT_VERSION%%
+     */
     public static function loadFromCdn($load = null)
     {
         if (!isset($load)) {
