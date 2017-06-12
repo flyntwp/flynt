@@ -6,6 +6,17 @@ use DirectoryIterator;
 
 class FileLoader
 {
+    /**
+     * Iterates through a directory and executes the provided callback function
+     * on each file or folder in the directory (excluding dot files).
+     *
+     * @since 0.1.0
+     *
+     * @param $dir string Absolute path to the directory.
+     * @param $callback callable The callback function.
+     *
+     * @return array An array of the callback results.
+     */
     public static function iterateDir($dir, callable $callback)
     {
         $output = [];
@@ -34,9 +45,11 @@ class FileLoader
      * Optionally able to specify the files in an array to load in a certain order.
      * Starting and trailing slashes will be stripped for the directory and all files provided.
      *
+     * @since 0.1.0
+     *
      * @param string $dir Directory to search through.
      * @param array $files Optional array of files to include. If this is set, only the files specified will be loaded.
-     **/
+     */
     public static function loadPhpFiles($dir, $files = [])
     {
         $dir = trim($dir, '/');
