@@ -24,7 +24,7 @@ class Asset
      *
      * @param string $asset The filename of the required asset.
      *
-     * @return string/boolean Returns the url or false if the asset is not found.
+     * @return string|boolean Returns the url or false if the asset is not found.
      */
     public static function requireUrl($asset)
     {
@@ -38,7 +38,7 @@ class Asset
      *
      * @param string $asset The filename of the required asset.
      *
-     * @return string/boolean Returns the absolute path or false if the asset is not found.
+     * @return string|boolean Returns the absolute path or false if the asset is not found.
      */
     public static function requirePath($asset)
     {
@@ -104,6 +104,42 @@ class Asset
     public static function enqueue($options)
     {
         return self::add('enqueue', $options);
+    }
+
+    /**
+     * Getter and setter for the loadFromCdn setting.
+     *
+     * @param boolean $load (optional) Value to set the parameter to.
+     *
+     * @since %%NEXT_VERSION%%
+     */
+    public static function loadFromCdn($load = null)
+    {
+        if (!isset($load)) {
+            return self::$loadFromCdn;
+        }
+        self::$loadFromCdn = (bool) $load;
+    }
+
+    /**
+     * Gets the contents of an asset.
+     *
+     * Useful for loading SVGs or other files inline.
+     *
+     * @since %%NEXT_VERSION%%
+     *
+     * @param string $asset Asset path (relative to the theme directory).
+     * @return string|boolean Returns the file contents or false in case of failure.
+     */
+    public static function getContents($asset)
+    {
+        $file = self::requirePath($asset);
+        if (file_exists($file)) {
+            return file_get_contents($file);
+        } else {
+            trigger_error("File not found at: ${asset}", E_USER_WARNING);
+            return false;
+        }
     }
 
     protected static function get($returnType, $asset)
@@ -208,20 +244,5 @@ class Asset
         }
 
         return false;
-    }
-
-    /**
-     * Getter and setter for the loadFromCdn setting.
-     *
-     * @param boolean $load (optional) Value to set the parameter to.
-     *
-     * @since %%NEXT_VERSION%%
-     */
-    public static function loadFromCdn($load = null)
-    {
-        if (!isset($load)) {
-            return self::$loadFromCdn;
-        }
-        self::$loadFromCdn = (bool) $load;
     }
 }
