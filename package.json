@@ -8,7 +8,7 @@
   "scripts": {
     "start": "check-node-version --package && gulp",
     "build": "check-node-version --package && NODE_ENV=production gulp build",
-    "release": "standard-version",
+    "release": "standard-version -a",
     "releaseGithub": "conventional-github-releaser -p angular"
   },
   "devDependencies": {
@@ -50,12 +50,13 @@
     "jeet": "^7.0.0",
     "normalize.css": "^6.0.0",
     "picturefill": "^3.0.2",
+    "replace-in-file": "^2.5.0",
     "require-dir": "^0.3.1",
     "run-sequence": "^1.2.2",
     "rupture": "^0.6.2",
     "slick-carousel": "^1.6.0",
     "standard": "^9.0.2",
-    "standard-version": "^4.0.0",
+    "standard-version": "^4.2.0",
     "stylint": "^1.5.7",
     "stylint-stylish": "^1.4.0",
     "stylus": "^0.54.5",
@@ -71,6 +72,11 @@
   },
   "engines": {
     "node": "^6.0.0"
+  },
+  "standard-version": {
+    "scripts": {
+      "postbump": "gulp replaceVersion && git add ."
+    }
   },
   "dependencies": {},
   "browserslist": [
