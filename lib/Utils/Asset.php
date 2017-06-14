@@ -53,7 +53,7 @@ class Asset
      * the path option will then become the local fallback file, using the 'check' in the 'cdn' array.
      *
      * @since 0.1.0
-     * @since %%NEXT_VERSION%% Supports CDN parameter.
+     * @since 0.2.0 Supports CDN parameter.
      *
      * @param array $options Options must specify a type, a name and a path.
      *              $options = [

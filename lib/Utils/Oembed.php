@@ -10,7 +10,7 @@ class Oembed
      * Sets an oembed source as data attribute.
      * Possibility to append query variables to the URL by using additional get parameters.
      *
-     * @since %%NEXT_VERSION%%
+     * @since 0.2.0
      *
      * @param $iframeTagHtml string The oembed iframe HTML tag.
      * @param $additionalGetParams array Associative array of key/values of additional query variables to append to the url.
