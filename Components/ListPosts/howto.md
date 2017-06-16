@@ -32,7 +32,7 @@
 ```stylus
 .flyntComponent[is="flynt-list-posts"]
   .listPosts
-    @import 'partials/Tags/_style'
+    @import 'Partials/Tags/_style'
 ```
 
 `Partials/PostTeaser/index.twig`
@@ -71,7 +71,7 @@
 ```stylus
 .flyntComponent[is="flynt-list-posts"]
   .listPosts
-    @import 'partials/Categories/_style'
+    @import 'Partials/Categories/_style'
 ```
 
 `Partials/PostTeaser/index.twig`
@@ -123,7 +123,7 @@ $containerPadding = lookup('$globalContainerPadding') || 15px
 ```stylus
 .flyntComponent[is="flynt-list-posts"]
   .listPosts
-    @import 'partials/AllPostsCta/_style'
+    @import 'Partials/AllPostsCta/_style'
 ```
 
 ## Automatic Post Teaser list by selecting a post type
