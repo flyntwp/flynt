@@ -82,7 +82,7 @@ class Asset
      * It can enqueue a script or a style.
      *
      * @since 0.1.0
-     * @since %%NEXT_VERSION%% Supports CDN parameter.
+     * @since 0.2.0 Supports CDN parameter.
      *
      * @param array $options Options must specify a type, a name and a path.
      *              $options = [
@@ -111,7 +111,7 @@ class Asset
      *
      * @param boolean $load (optional) Value to set the parameter to.
      *
-     * @since %%NEXT_VERSION%%
+     * @since 0.2.0
      */
     public static function loadFromCdn($load = null)
     {
@@ -126,7 +126,7 @@ class Asset
      *
      * Useful for loading SVGs or other files inline.
      *
-     * @since %%NEXT_VERSION%%
+     * @since 0.2.0
      *
      * @param string $asset Asset path (relative to the theme directory).
      * @return string|boolean Returns the file contents or false in case of failure.

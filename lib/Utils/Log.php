@@ -102,7 +102,7 @@ class Log
     /**
      * Echoes a variable.
      *
-     * @since %%NEXT_VERSION%%
+     * @since 0.2.0
      *
      * @param mixed    $data     Data to be printed.
      * @param boolean  $postpone Postpone printing to the wp_footer action.
