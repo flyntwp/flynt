@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.1"></a>
+## [0.2.1](https://github.com/flyntwp/flynt-starter-theme/compare/v0.2.0...v0.2.1) (2017-06-20)
+
+
+### Bug Fixes
+
+* **Components/ListPosts:** fix wrong case on css import in partials path (#226) ([f86a6f0](https://github.com/flyntwp/flynt-starter-theme/commit/f86a6f0)), closes [#226](https://github.com/flyntwp/flynt-starter-theme/issues/226)
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/flyntwp/flynt-starter-theme/compare/v0.1.0...v0.2.0) (2017-06-14)
 
