@@ -107,6 +107,9 @@ class OptionPages
      * Returns an option of a sub page. If no field name is provided it will get all option of that sub page.
      * Parameters are expected to be camelCase.
      *
+     * @since 0.2.0 introduced as a replacement for OptionPages::getOption and OptionPages::getOptions
+     * @since %%NEXT_VERSION%% added check for required hooks to have run to alert of timing issues when used incorrectly
+     *
      * @param string $optionType Type of option page. Either globalOptions or translatableOptions.
      * @param string $optionCategory Category of option page. One of these three values: component, feature, customPostType.
      * @param string $subPageName Name of the sub page.
@@ -115,29 +118,22 @@ class OptionPages
      **/
     public static function get($optionType, $optionCategory, $subPageName, $fieldName = null)
     {
+        if (!self::checkRequiredHooks($optionType, $optionCategory, $subPageName, $fieldName)) {
+            return false;
+        }
+
+        // convert parameters
         $optionType = lcfirst($optionType);
+        $optionCategory = ucfirst($optionCategory);
+        $subPageName = ucfirst($subPageName);
 
         if (!isset(self::$optionTypes[$optionType])) {
             return false;
         }
 
-        $optionCategory = ucfirst($optionCategory);
-        $subPageName = ucfirst($subPageName);
-
         $prefix = implode('', [$optionType, $optionCategory, $subPageName, '_']);
         $options = self::getOptionFields(self::$optionTypes[$optionType]['translatable']);
-
-        // find and replace relevant keys, then return an array of all options for this Sub-Page
-        $optionKeys = is_array($options) ? array_keys($options) : [];
-        $options = array_reduce($optionKeys, function ($carry, $key) use ($options, $prefix) {
-            $count = 0;
-            $option = $options[$key];
-            $key = str_replace($prefix, '', $key, $count);
-            if ($count > 0) {
-                $carry[$key] = $option;
-            }
-            return $carry;
-        }, []);
+        $options = self::collectOptionsWithPrefix($options, $prefix);
 
         if (isset($fieldName)) {
             $fieldName = lcfirst($fieldName);
@@ -338,6 +334,17 @@ class OptionPages
         }, $fields);
     }
 
+    protected static function checkRequiredHooks($optionType, $optionCategory, $subPageName, $fieldName)
+    {
+        if (did_action('acf/init') < 1) {
+            $parameters = "${optionType}, ${optionCategory}, ${subPageName}, ";
+            $parameters .= isset($fieldName) ? $fieldName : 'NULL';
+            trigger_error("Could not get option/s for [${parameters}]. Required hooks have not yet been executed! Please make sure to run `OptionPages::get()` after the `acf/init` action is finished.", E_USER_WARNING);
+            return false;
+        }
+        return true;
+    }
+
     protected static function getOptionFields($translatable)
     {
         global $sitepress;
@@ -379,6 +386,21 @@ class OptionPages
         }
 
         return $options;
+    }
+
+    // find and replace relevant keys, then return an array of all options for this Sub-Page
+    protected static function collectOptionsWithPrefix($options, $prefix)
+    {
+        $optionKeys = is_array($options) ? array_keys($options) : [];
+        return array_reduce($optionKeys, function ($carry, $key) use ($options, $prefix) {
+            $count = 0;
+            $option = $options[$key];
+            $key = str_replace($prefix, '', $key, $count);
+            if ($count > 0) {
+                $carry[$key] = $option;
+            }
+            return $carry;
+        }, []);
     }
 
     protected static function combineArrayDefaults(array $array, array $defaults)
