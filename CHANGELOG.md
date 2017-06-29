@@ -55,14 +55,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### BREAKING CHANGES
 
-* **lib/Bootstrap:** not used anywhere else, but still a public method name that changed
+* **lib/Bootstrap:** Renamed checkPlugin to checkRequiredPlugins; only used in the theme's functions.php, but still a public method name that changed.
 
-* style(lib/Bootstrap): fix linting error opening brace on same line
-
-* fix(lib/Bootstrap): add missing parameter to function closure
 * **Features/Acf/OptionPages:** Removed OptionPages::getOption and OptionPages::getOptions. Using OptionPages::get instead.
-
-* fix(Features/Acf/OptionPages): convert custom post type option sub page name to camelCase
 
 
 
