@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.2.2"></a>
+## [0.2.2](https://github.com/flyntwp/flynt-starter-theme/compare/v0.2.1...v0.2.2) (2017-08-24)
+
+
+### Bug Fixes
+
+* **Components/SliderMedia:** remove pointer-events on .slick-dots, so it doesn't overlap Youtube's controls (#245) ([45f9343](https://github.com/flyntwp/flynt-starter-theme/commit/45f9343))
+* **Components/SliderMedia:** set slick-dots line-height to 0 (#243) ([92e7630](https://github.com/flyntwp/flynt-starter-theme/commit/92e7630))
+* **Features/Acf:** add required hooks check to OptionPages::get() (#229) ([0f62245](https://github.com/flyntwp/flynt-starter-theme/commit/0f62245))
+* **nodejs:** add compatibility for node 8 ([edb01eb](https://github.com/flyntwp/flynt-starter-theme/commit/edb01eb)), closes [flyntwp/flynt-cli#59](https://github.com/flyntwp/flynt-cli/issues/59)
+
+
+### Features
+
+* **Components/SliderMedia:** Add alt attribute for images (#247) ([aa63791](https://github.com/flyntwp/flynt-starter-theme/commit/aa63791))
+* **Feature/ExternalScriptLoader:** Add GoogleMaps support (#236) ([cf5c83e](https://github.com/flyntwp/flynt-starter-theme/commit/cf5c83e))
+
+
+
 <a name="0.2.1"></a>
 ## [0.2.1](https://github.com/flyntwp/flynt-starter-theme/compare/v0.2.0...v0.2.1) (2017-06-20)
 

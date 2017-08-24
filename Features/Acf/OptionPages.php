@@ -108,7 +108,7 @@ class OptionPages
      * Parameters are expected to be camelCase.
      *
      * @since 0.2.0 introduced as a replacement for OptionPages::getOption and OptionPages::getOptions
-     * @since %%NEXT_VERSION%% added check for required hooks to have run to alert of timing issues when used incorrectly
+     * @since 0.2.2 added check for required hooks to have run to alert of timing issues when used incorrectly
      *
      * @param string $optionType Type of option page. Either globalOptions or translatableOptions.
      * @param string $optionCategory Category of option page. One of these three values: component, feature, customPostType.
