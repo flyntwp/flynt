@@ -22,8 +22,8 @@ module.exports = function (config) {
         autoprefixer()
       ],
       import: [
-        path.resolve(__dirname, '../../Components/_variables.styl'),
-        path.resolve(__dirname, '../../node_modules/jeet/styl/index.styl')
+        path.resolve(__dirname, '../../node_modules/jeet/styl/index.styl'),
+        path.resolve(__dirname, '../../Components/_variables.styl')
       ]
     }))
     .on('error', handleErrors)
