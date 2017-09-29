@@ -52,9 +52,6 @@ module.exports = function (config) {
     watchAndDelete(config.copy, function () { gulp.start('copy') }, config.dest)
     watchAndDelete(config.watch.stylus, function () { gulp.start('stylus') }, config.dest)
     watch(config.watch.php, function () { })
-    watch(config.lint.stylus, function () { gulp.start('lint:stylus') })
-    watch(config.lint.js, function () { gulp.start('lint:js') })
-    watch(config.lint.php, function () { gulp.start('lint:php') })
     watchWebpack(config.webpack.entry)
   })
   gulp.task('watch', function (cb) {

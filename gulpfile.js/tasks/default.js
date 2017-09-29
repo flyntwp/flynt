@@ -6,7 +6,7 @@ module.exports = function (config) {
     global.watchMode = true
     runSequence(
       'clean',
-      ['copy', 'stylus', 'lint'],
+      ['copy', 'stylus'],
       ['watch'],
       cb
     )
