@@ -10,9 +10,20 @@
   },
   "styleformats": [
     {
-      "title": "Button Primary",
-      "classes": "a.btn.btn-primary",
-      "selector": "a"
+      "title": "Buttons",
+      "icon": "",
+      "items": [
+        {
+          "title": "Button Primary",
+          "classes": "btn btn--primary",
+          "selector": "a"
+        },
+        {
+          "title": "Button Primary Block",
+          "classes": "btn btn--primary btn--block",
+          "selector": "a"
+        }
+      ]
     }
   ],
   "toolbars": {
