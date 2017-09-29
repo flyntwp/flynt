@@ -58,6 +58,16 @@ add_filter('acf/format_value/type=image', function ($value) {
     return $value;
 }, 100);
 
+// Convert ACF Gallery Images to Timber Images
+add_filter('acf/format_value/type=gallery', function ($value) {
+    if (!empty($value)) {
+        $value = array_map(function ($image) {
+            return new Image($image);
+        }, $value);
+    }
+    return $value;
+}, 100);
+
 // Convert ACF Field of type post_object to a Timber\Post and add all ACF Fields of that Post
 add_filter('acf/format_value/type=post_object', function ($value) {
     if (is_array($value)) {
