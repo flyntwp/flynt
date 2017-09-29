@@ -243,13 +243,14 @@ class OptionPages
     protected static function createSubPage($type, $name)
     {
         $namespace = self::FILTER_NAMESPACES[$type];
+        $name = ucfirst($name);
         foreach (self::$optionTypes as $optionType => $option) {
             $filterName = "{$namespace}/{$name}/Fields/" . ucfirst($optionType);
             $fields = apply_filters($filterName, []);
             if (!empty($fields)) {
                 self::addOptionSubPage(
                     $type,
-                    ucfirst($name),
+                    $name,
                     $optionType,
                     $fields
                 );
