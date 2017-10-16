@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/flyntwp/flynt-starter-theme/compare/v0.2.2...v0.3.0) (2017-10-16)
+
+
+### Bug Fixes
+
+* **config/fieldGroups:** hide pageComponents on the posts page by default ([#256](https://github.com/flyntwp/flynt-starter-theme/issues/256)) ([da6b99f](https://github.com/flyntwp/flynt-starter-theme/commit/da6b99f))
+* **Features/Acf/OptionPages:** use correct casing for subpage filter name ([#254](https://github.com/flyntwp/flynt-starter-theme/issues/254)) ([57aed0e](https://github.com/flyntwp/flynt-starter-theme/commit/57aed0e))
+* **Features/TinyMce:** correct styleformats in config ([#257](https://github.com/flyntwp/flynt-starter-theme/issues/257)) ([1fac210](https://github.com/flyntwp/flynt-starter-theme/commit/1fac210))
+
+
+### Features
+
+* **Features/TimberLoader:** convert images in ACF gallery field to Timber images ([#258](https://github.com/flyntwp/flynt-starter-theme/issues/258)) ([40c5daa](https://github.com/flyntwp/flynt-starter-theme/commit/40c5daa))
+
+
+### BREAKING CHANGES
+
+* **Features/TimberLoader:** anyone previously relying on the gallery field's default return values will
+probably run into issues with this change
+
+
+
 <a name="0.2.2"></a>
 ## [0.2.2](https://github.com/flyntwp/flynt-starter-theme/compare/v0.2.1...v0.2.2) (2017-08-24)
 
