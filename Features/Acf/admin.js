@@ -9,7 +9,7 @@ $body
   .closestChild('.values')
   .children('.layout:not(.-collapsed)')
   .children('.acf-fc-layout-controlls')
-  .find('[data-event="collapse-layout"]')
+  .find('[data-name="collapse-layout"]')
   .click()
 )
 // expand components
@@ -19,7 +19,7 @@ $body
   .closestChild('.values')
   .children('.layout.-collapsed')
   .children('.acf-fc-layout-controlls')
-  .find('[data-event="collapse-layout"]')
+  .find('[data-name="collapse-layout"]')
   .click()
 )
 
