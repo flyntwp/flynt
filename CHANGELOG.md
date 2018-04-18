@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/flyntwp/flynt-starter-theme/compare/v0.3.0...v0.3.1) (2018-04-18)
+
+
+### Bug Fixes
+
+* **.gitignore:** add yarn error log ([#268](https://github.com/flyntwp/flynt-starter-theme/issues/268)) ([4e04b47](https://github.com/flyntwp/flynt-starter-theme/commit/4e04b47))
+* **Features/Acf:** set correct toggle selector after ACF update ([#264](https://github.com/flyntwp/flynt-starter-theme/issues/264)) ([689b580](https://github.com/flyntwp/flynt-starter-theme/commit/689b580))
+
+
+### Features
+
+* **Components:** update DocumentDefault, Layouts and variables ([#271](https://github.com/flyntwp/flynt-starter-theme/issues/271)) ([0c7ecb6](https://github.com/flyntwp/flynt-starter-theme/commit/0c7ecb6))
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/flyntwp/flynt-starter-theme/compare/v0.2.2...v0.3.0) (2017-10-16)
 
