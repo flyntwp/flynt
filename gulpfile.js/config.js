@@ -58,8 +58,7 @@ module.exports = {
     php: [
       './**/*.php',
       '!./dist/**/*.php',
-      '!./node_modules/**/*.php',
-      '!./bower_components/**/*.php'
+      '!./node_modules/**/*.php'
     ],
     phpcs: {
       standard: 'phpcs.ruleset.xml',
@@ -73,7 +72,7 @@ module.exports = {
       to: 'Version: '
     },
     php: {
-      files: '!(node_modules|bower_components|dist)/**/*.php',
+      files: '!(node_modules|dist)/**/*.php',
       from: '%%NEXT_VERSION%%'
     }
   }

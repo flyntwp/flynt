@@ -157,7 +157,6 @@ flynt-starter-theme/             # → Root of the theme
 ├── templates/                   # → Page templates (PHP)
 ├── .gitignore                   # → Files/Folders that will not be committed to Git.
 ├── .stylintrc                   # → Define Stylus linting rules
-├── bower.json                   # → Bower dependencies
 ├── functions.php                # → Set template directory and load lib/Init.php
 ├── index.php                    # → Theme entry point (never edit)
 ├── package.json                 # → Node.js dependencies and scripts

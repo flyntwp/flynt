@@ -28,7 +28,7 @@ module.exports = function (config) {
       rules: [
         {
           test: /\.js$/,
-          exclude: /(node_modules|bower_components)/,
+          exclude: /(node_modules)/,
           use: [{
             loader: 'babel-loader',
             options: babelQuery
@@ -38,12 +38,10 @@ module.exports = function (config) {
     },
     resolve: {
       modules: [
-        'node_modules',
-        'bower_components'
+        'node_modules'
       ],
       descriptionFiles: [
-        'package.json',
-        'bower.json'
+        'package.json'
       ],
       mainFields: ['main', 'browser']
     },
