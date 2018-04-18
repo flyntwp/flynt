@@ -1,28 +1,38 @@
-$colorBrand = lookup('$globalColorBrand') || #254fc7
-$colorText = lookup('$globalColorText') || #153cab
+$colorBackgroundPrimary = lookup('$globalColorAccent') || #F98928
+$colorTextPrimary = lookup('$globalColorText') || #000000
+$rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
+$rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
 
-[is='flynt-document-default']
-  .btn-primary
-    background-color: $colorBrand
-    color: $colorText
-
-    &:hover
-      background-color: $colorBrand
-      text-decoration: none
-
+.flyntComponent[is='flynt-document-default']
   .btn
+    appearance: none
     border-radius: 5px
     border: 1px solid
+    cursor: pointer
     display: inline-block
-    margin: 5px 0
+    font-size: inherit
+    line-height: inherit
+    margin: 0
+    outline: 0
     padding: 10px 14px
+    text-decoration: none
     transition: background-color .3s ease
+
+    &--primary
+      background-color: $colorBackgroundPrimary
+      border-color: darken($colorBackgroundPrimary, 20)
+
+      &,
+      &:hover,
+      &:focus
+        color: $colorTextPrimary
+
+      &:hover,
+      &:focus
+        background-color: lighten($colorBackgroundPrimary, 10)
 
     &--block
       display: block
+      margin-bottom: 16px
       text-align: center
-
-    &:focus,
-    &:active
-      box-shadow: none
-      outline: 0
+      width: 100%

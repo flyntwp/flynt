@@ -1,45 +1,81 @@
-$colorBackground = lookup('$globalColorBackground') || #fff
-$colorBrand = lookup('$globalColorBrand') || #254fc7
-$colorHeadline = lookup('$globalColorHeadline') || #153cab
-$colorText = lookup('$globalColorText') || #153cab
+$colorHeadline = lookup('$globalColorHeadline') || #000000
+$colorLink = lookup('$globalColorAccent') || #F98928
+$colorText = lookup('$globalColorText') || #000000
+$rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
+$rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
 
 .flyntComponent[is='flynt-document-default']
   body
-    background-color: $colorBackground
+    -moz-osx-font-smoothing: grayscale
+    -webkit-font-smoothing: antialiased
     color: $colorText
     font-family: Helvetica, Arial, sans-serif
-    font-size: 14px
-    line-height: 1.3
+    font-size: 16px
+    line-height: 1.375
 
   h1, .h1,
   h2, .h2,
   h3, .h3,
   h4, .h4,
-  h5, .h5
+  h5, .h5,
+  h6, .h6
     color: $colorHeadline
     font-weight: normal
+    margin: 0
 
   h1, .h1
-    font-size: 40px
+    font-size: 32px
+    margin-bottom: 12px
+    padding-top: 12px
+
+    +below('s')
+      font-size: 24px
 
   h2, .h2
-    font-size: 30px
+    font-size: 24px
+    margin-bottom: 8px
+    padding-top: 8px
+
+    +below('s')
+      font-size: 18px
 
   h3, .h3
-    font-size: 25px
-
-  h4, .h4
     font-size: 18px
+    margin-bottom: 6px
+    padding-top: 6px
 
-  h5, .h5
+    +below('s')
+      font-size: 16px
+
+  h4, .h4,
+  h5, .h5,
+  h6, .h6
+    font-size: 16px
+    margin-bottom: 4px
+    padding-top: 4px
+
+  a
+    &, &:hover
+      color: $colorLink
+
+  dt
+    font-weight: bold
+
+  p,
+  ul,
+  ol,
+  dl,
+  dd
+    margin: 0 0 16px
+
+  ul,
+  ol,
+  dd
+    padding-left: 20px
+
+  blockquote
+    margin: 0 0 16px
+    padding-left: 40px
+
+  small
     font-size: 14px
-
-  p, .paragraph
-    margin: 15px 0
-
-  a, .link
-    color: $colorBrand
-
-    &:hover
-      color: $colorBrand
-      text-decoration: underline

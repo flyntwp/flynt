@@ -1,6 +1,18 @@
+$colorBackground = lookup('$globalColorBackground') || #ffffff
+$colorLine = lookup('$globalColorAccent') || #F98928
+$rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
+$rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
+
 .flyntComponent[is='flynt-document-default']
   &,
   body
-    height: 100%
+    background-color: $colorBackground
     margin: 0
     padding: 0
+
+  hr
+    background-color: $colorLine
+    border: 0
+    display: block
+    height: 1px
+    margin: 24px 0
