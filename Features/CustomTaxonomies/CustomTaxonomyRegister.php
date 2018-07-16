@@ -103,4 +103,9 @@ class CustomTaxonomyRegister
 
         return $config;
     }
+
+    public static function getAll()
+    {
+        return self::$registeredCustomTaxonomies;
+    }
 }
