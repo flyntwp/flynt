@@ -15,6 +15,7 @@ add_filter('Flynt/renderComponent', function ($output, $componentName, $componen
     // get index file
     $componentManager = Flynt\ComponentManager::getInstance();
     $filePath = $componentManager->getComponentFilePath($componentName, 'index.twig');
+    $relativeFilePath = ltrim(str_replace(get_template_directory(), '', $filePath), '/');
 
     if (!is_file($filePath)) {
         trigger_error("Template not found: {$filePath}", E_USER_WARNING);
@@ -41,7 +42,7 @@ add_filter('Flynt/renderComponent', function ($output, $componentName, $componen
 
     add_filter('timber/loader/paths', $returnTimberPaths);
 
-    $output = Timber::fetch($filePath, $componentData);
+    $output = Timber::fetch($relativeFilePath, $componentData);
 
     remove_filter('timber/loader/paths', $returnTimberPaths);
 
