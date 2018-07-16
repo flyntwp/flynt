@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const glob = require('glob')
+const HardSourcePlugin = require('hard-source-webpack-plugin')
 
 module.exports = function (config) {
   const babelQuery = {
@@ -23,7 +24,7 @@ module.exports = function (config) {
       path: path.join(__dirname, '../dist'),
       publicPath: 'http://localhost:3000/'
     },
-    devtool: config.production ? 'source-map' : 'inline-source-map',
+    devtool: config.production ? false : 'inline-source-map',
     module: {
       rules: [
         {
@@ -53,7 +54,8 @@ module.exports = function (config) {
     plugins: [
       new webpack.LoaderOptionsPlugin({
         debug: !config.production
-      })
+      }),
+      new HardSourcePlugin()
     ],
     externals: {
       jquery: 'jQuery'

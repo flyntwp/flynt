@@ -1,19 +1,18 @@
-const autoprefixer = require('autoprefixer-stylus')
-const browserSync = require('browser-sync')
-const changed = require('gulp-changed')
 const gulp = require('gulp')
-const gulpIf = require('gulp-if')
-const handleErrors = require('../utils/handleErrors')
-const path = require('path')
-const rupture = require('rupture')
-const sourcemaps = require('gulp-sourcemaps')
-const stylus = require('gulp-stylus')
 
 module.exports = function (config) {
   const isProduction = process.env.NODE_ENV === 'production'
   gulp.task('stylus', function () {
-    return gulp.src(config.stylus)
-    .pipe(changed(config.dest))
+    const autoprefixer = require('autoprefixer-stylus')
+    const changed = require('gulp-changed')
+    const gulpIf = require('gulp-if')
+    const handleErrors = require('../utils/handleErrors')
+    const path = require('path')
+    const rupture = require('rupture')
+    const stylus = require('gulp-stylus')
+    const sourcemaps = require('gulp-sourcemaps')
+    let task = gulp.src(config.stylus)
+    .pipe(changed(config.dest, {extension: '.css'}))
     .pipe(gulpIf(!isProduction, sourcemaps.init()))
     .pipe(stylus({
       compress: isProduction,
@@ -30,6 +29,10 @@ module.exports = function (config) {
     .pipe(gulpIf(!isProduction, sourcemaps.write(config.sourcemaps)))
     .pipe(gulp.dest(config.dest))
     .on('error', handleErrors)
-    .pipe(browserSync.stream())
+    if (global.watchMode) {
+      const browserSync = require('browser-sync')
+      task = task.pipe(browserSync.stream())
+    }
+    return task
   })
 }

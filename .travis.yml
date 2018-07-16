@@ -30,8 +30,8 @@ before_script:
 install:
   - composer global require "squizlabs/php_codesniffer=~3.1"
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
-  - nvm install 6
-  - nvm use 6
+  - nvm install 8
+  - nvm use 8
   - npm i -g yarn gulp
 
 script:

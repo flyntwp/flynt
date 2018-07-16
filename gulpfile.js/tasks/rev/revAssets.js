@@ -1,11 +1,11 @@
 const gulp = require('gulp')
-const path = require('path')
-const rev = require('gulp-rev')
-const revNapkin = require('gulp-rev-napkin')
 
 module.exports = function (config) {
   // 1) Add md5 hashes to assets referenced by CSS and JS files
   gulp.task('revAssets', function () {
+    const path = require('path')
+    const rev = require('gulp-rev')
+    const revNapkin = require('gulp-rev-napkin')
     // Ignore files that may reference assets. We'll rev them next.
     return gulp.src(config.rev.assetSrc)
     .pipe(rev())

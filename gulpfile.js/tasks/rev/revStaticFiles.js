@@ -1,10 +1,10 @@
 const gulp = require('gulp')
-const path = require('path')
-const revReplace = require('gulp-rev-replace')
 
 module.exports = function (config) {
   // 4) Update asset references in HTML
   gulp.task('revStaticFiles', function () {
+    const path = require('path')
+    const revReplace = require('gulp-rev-replace')
     var manifest = gulp.src(path.join(config.dest, '/rev-manifest.json'))
     return gulp.src(config.rev.srcStatic)
     .pipe(revReplace({
