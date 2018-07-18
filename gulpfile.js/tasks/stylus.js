@@ -15,6 +15,7 @@ module.exports = function (config) {
     .pipe(changed(config.dest, {extension: '.css'}))
     .pipe(gulpIf(!isProduction, sourcemaps.init()))
     .pipe(stylus({
+      'include css': true,
       compress: isProduction,
       use: [
         rupture(),

@@ -5,7 +5,13 @@ module.exports = {
   browserSync: {
     ghostMode: false,
     open: false,
-    proxy: host
+    proxy: host,
+    watchOptions: {
+      ignoreInitial: true
+    },
+    files: ['dist/{Components,Features}/**/*.css'],
+    injectChanges: true,
+    reloadDebounce: 1000
   },
   copy: [
     './{Components,Features}/**/*',
@@ -43,7 +49,13 @@ module.exports = {
   ],
   watch: {
     stylus: './{Components,Features}/**/*.styl',
-    php: './**/*.php'
+    php: './**/*.php',
+    hardReloadOnStylFiles: ['Components/_variables.styl'],
+    stylusPartials: {
+      partialCssFilenamePrefix: '_',
+      rootCssFilename: 'style.styl',
+      stopSearchDirnames: ['Components', 'Features']
+    }
   },
   webpack: {
     entry: [
