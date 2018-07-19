@@ -49,7 +49,10 @@ module.exports = {
   ],
   watch: {
     stylus: './{Components,Features}/**/*.styl',
-    php: './**/*.php',
+    php: [
+      './**/*.php',
+      '!./{Components,Features}/**/*.php'
+    ],
     hardReloadOnStylFiles: ['Components/_variables.styl'],
     stylusPartials: {
       partialCssFilenamePrefix: '_',

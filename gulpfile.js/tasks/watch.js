@@ -96,6 +96,7 @@ function checkForCssVariablesStyl (file, config) {
 
 module.exports = function (config) {
   gulp.task('watch:files', function () {
+    const browserSync = require('browser-sync')
     globby = require('globby')
     touch = require('touch')
     watch = require('gulp-watch')
@@ -105,7 +106,7 @@ module.exports = function (config) {
       checkForCssVariablesStyl(file, config)
       gulp.start('stylus')
     }, config.dest)
-    watch(config.watch.php, function () { })
+    watch(config.watch.php, function () { browserSync.reload() })
     watchWebpack(config.webpack.entry)
   })
   gulp.task('watch', function (cb) {
