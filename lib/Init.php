@@ -79,6 +79,7 @@ function initTheme()
 
     add_theme_support('flynt-password-form');
     add_theme_support('flynt-external-script-loader');
+    add_theme_support('flynt-lodash');
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\initTheme');
 
