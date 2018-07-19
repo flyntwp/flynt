@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/flyntwp/flynt-starter-theme/compare/v0.3.1...v0.4.0) (2018-07-19)
+
+
+### Bug Fixes
+
+* **DocumentDefault:** enable zoom by default ([#278](https://github.com/flyntwp/flynt-starter-theme/issues/278)) ([2bfd385](https://github.com/flyntwp/flynt-starter-theme/commit/2bfd385))
+* **Features/TimberLoader:** use relative file path in renderComponent hook ([#265](https://github.com/flyntwp/flynt-starter-theme/issues/265)) ([886c94e](https://github.com/flyntwp/flynt-starter-theme/commit/886c94e))
+* **gulpfile.js:** fix reloading of PHP files outside the copy scope ([#283](https://github.com/flyntwp/flynt-starter-theme/issues/283)) ([c0e8779](https://github.com/flyntwp/flynt-starter-theme/commit/c0e8779))
+* **yarn:** set version constraint for document-register-element to ~1.8.0 ([#282](https://github.com/flyntwp/flynt-starter-theme/issues/282)) ([32160d1](https://github.com/flyntwp/flynt-starter-theme/commit/32160d1))
+
+
+### Features
+
+* **DocumentDefault, Layouts:** add sticky footer styles ([#280](https://github.com/flyntwp/flynt-starter-theme/issues/280)) ([6263ffc](https://github.com/flyntwp/flynt-starter-theme/commit/6263ffc))
+* **Features/CustomTaxonomies:** add public getAll method ([#277](https://github.com/flyntwp/flynt-starter-theme/issues/277)) ([40fb705](https://github.com/flyntwp/flynt-starter-theme/commit/40fb705))
+* **Features/Lodash:** add lodash feature ([#284](https://github.com/flyntwp/flynt-starter-theme/issues/284)) ([112b4d3](https://github.com/flyntwp/flynt-starter-theme/commit/112b4d3))
+* **Features/TimberLoader:** add template file name filter ([#279](https://github.com/flyntwp/flynt-starter-theme/issues/279)) ([769a7ef](https://github.com/flyntwp/flynt-starter-theme/commit/769a7ef))
+
+
+### Performance Improvements
+
+* **gulpfile.js:** improve initial startup time ([#276](https://github.com/flyntwp/flynt-starter-theme/issues/276)) ([a98dd11](https://github.com/flyntwp/flynt-starter-theme/commit/a98dd11))
+
+
+### BREAKING CHANGES
+
+* **gulpfile.js:** The minimum engine requirement is now Node >= 8.
+
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/flyntwp/flynt-starter-theme/compare/v0.3.0...v0.3.1) (2018-04-18)
 
