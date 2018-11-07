@@ -1,17 +1,20 @@
 $colorHeadline = lookup('$globalColorHeadline') || #000000
-$colorLink = lookup('$globalColorAccent') || #F98928
+$colorAccent = lookup('$globalColorAccent') || #F98928
 $colorText = lookup('$globalColorText') || #000000
 $rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
 $rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
 
 .flyntComponent[is='flynt-document-default']
-  body
-    -moz-osx-font-smoothing: grayscale
-    -webkit-font-smoothing: antialiased
-    color: $colorText
-    font-family: Helvetica, Arial, sans-serif
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+  background-color: $colorBackground
+  color: $colorText
+  font-family: Helvetica, Arial, sans-serif
+  font-size: 18px
+  line-height: 1.5
+
+  +below('m')
     font-size: 16px
-    line-height: 1.375
 
   h1, .h1,
   h2, .h2,
@@ -20,62 +23,58 @@ $rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 120
   h5, .h5,
   h6, .h6
     color: $colorHeadline
-    font-weight: normal
-    margin: 0
+    line-height: 1.3
+    margin-bottom: .5rem
+    margin-top: 0
 
   h1, .h1
-    font-size: 32px
-    margin-bottom: 12px
-    padding-top: 12px
-
-    +below('s')
-      font-size: 24px
+    font-size: 2rem
+    padding-top: 2rem
 
   h2, .h2
-    font-size: 24px
-    margin-bottom: 8px
-    padding-top: 8px
-
-    +below('s')
-      font-size: 18px
+    font-size: 1.5rem
+    padding-top: 1rem
 
   h3, .h3
-    font-size: 18px
-    margin-bottom: 6px
-    padding-top: 6px
+    font-size: 1.3rem
+    padding-top: .8rem
 
-    +below('s')
-      font-size: 16px
+  h4, .h4
+    font-size: 1rem
+    padding-top: .5rem
 
-  h4, .h4,
-  h5, .h5,
+  h5, .h5
+    font-size: 1rem
+    font-weight: normal
+    padding-top: .5rem
+
   h6, .h6
-    font-size: 16px
-    margin-bottom: 4px
-    padding-top: 4px
+    font-size: .8rem
+    padding-top: .5rem
 
   a
     &, &:hover
-      color: $colorLink
+      color: $colorAccent
 
   dt
     font-weight: bold
 
-  p,
-  ul,
-  ol,
-  dl,
-  dd
-    margin: 0 0 16px
+  p, .paragraph,
+  ul, ol,
+  dl, dd
+    margin: 0 0 1rem
 
-  ul,
-  ol,
-  dd
-    padding-left: 20px
+  ul, ol
+    padding-left: 1.5rem
 
-  blockquote
-    margin: 0 0 16px
-    padding-left: 40px
+  blockquote, .blockquote
+    border-left: 3px solid $colorBrand
+    font-size: 1.3rem
+    font-style: italic
+    line-height: 1.3
+    margin: 2rem auto
+    max-width: 28rem
+    padding: .5rem 1.5rem
 
-  small
-    font-size: 14px
+    p:last-child
+       margin-bottom: 0

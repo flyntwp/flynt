@@ -1,26 +1,39 @@
+$colorBackground = lookup('$globalColorBackground') || #FFFFFF
 $rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
 $rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
 
 .flyntComponent[is='flynt-document-default']
   fieldset
-    margin: 0 0 16px
+    border: none
+    margin: 0 0 1rem
+    padding: 0
 
-  input,
-  label,
-  select,
-  textarea
-    font-size: inherit
+  legend
+    display: inline-block
+    font-weight: bold
+    margin-bottom: .5rem
+
+  label
+    display: inline-block
+    margin-bottom: .2rem
+
+  input[type='text'],
+  input[type='email']
+  input[type='search'],
+  textarea,
+  select
+    -webkit-appearance: none
+    border: 1px solid darken($colorBackground, 50)
     font-family: inherit
 
   input,
   select,
   textarea
-    display: inline-block
     padding: 10px
-    margin: 0 0 16px
+    margin: 0 0 1rem
 
   input[type='checkbox'],
   input[type='radio']
-    cursor: pointer
+    margin: 0 .5rem .5rem 0
     position: relative
     top: -2px

@@ -1,0 +1,17 @@
+{
+  "name": "DocumentDefault",
+  "areas": {
+    "layout": [
+      {
+        "name": "LayoutSinglePost",
+        "areas": {
+          "pageComponents": [
+            {
+              "name": "BlockBaseStyle"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

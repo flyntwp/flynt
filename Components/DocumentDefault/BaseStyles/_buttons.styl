@@ -1,38 +1,44 @@
-$colorBackgroundPrimary = lookup('$globalColorAccent') || #F98928
-$colorTextPrimary = lookup('$globalColorText') || #000000
+$colorBackground = lookup('$globalColorBackground') || #FFFFFF
+$colorAccent = lookup('$globalColorAccent') || #F98928
+$colorTextPrimary = lookup('$globalColorText') || #2A2A2A
 $rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
 $rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
 
 .flyntComponent[is='flynt-document-default']
   .btn
     appearance: none
-    border-radius: 5px
-    border: 1px solid
+    background: $colorBackground
+    border-radius: 3px
+    border: 1px solid $colorAccent
+    color: $colorAccent
     cursor: pointer
     display: inline-block
     font-size: inherit
     line-height: inherit
-    margin: 0
+    margin-bottom: 1em
     outline: 0
-    padding: 10px 14px
+    padding: .5rem 1rem
     text-decoration: none
-    transition: background-color .3s ease
+    transition: background .2s ease, border .2s ease, color .2s ease
+
+    +above('xl')
+      &:hover,
+      &:focus
+        border-color: darken($colorAccent, 10)
+        color: darken($colorAccent, 10)
 
     &--primary
-      background-color: $colorBackgroundPrimary
-      border-color: darken($colorBackgroundPrimary, 20)
+      background-color: $colorAccent
+      border-color: $colorAccent
+      color: $colorBackground
 
-      &,
-      &:hover,
-      &:focus
-        color: $colorTextPrimary
-
-      &:hover,
-      &:focus
-        background-color: lighten($colorBackgroundPrimary, 10)
+      +above('xl')
+        &:hover,
+        &:focus
+          background-color: darken($colorAccent, 10)
+          color: $colorBackground
 
     &--block
       display: block
-      margin-bottom: 16px
       text-align: center
       width: 100%

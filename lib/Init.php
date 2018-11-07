@@ -62,6 +62,7 @@ function initTheme()
     add_theme_support('flynt-navigation');
     add_theme_support('flynt-remove-editor');
     add_theme_support('flynt-tiny-mce');
+    add_theme_support('flynt-base-style');
 
     // add components previews
     add_theme_support('flynt-admin-component-preview');
