@@ -5,7 +5,11 @@ $rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
 $rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
 
 .flyntComponent[is='flynt-document-default']
-  .btn
+  .btn,
+  button,
+  [type='button'],
+  [type='submit'],
+  [type='reset']
     appearance: none
     background: $colorBackground
     border-radius: 3px
@@ -27,6 +31,7 @@ $rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 120
         border-color: darken($colorAccent, 10)
         color: darken($colorAccent, 10)
 
+  .btn
     &--primary
       background-color: $colorAccent
       border-color: $colorAccent
