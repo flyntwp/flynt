@@ -61,16 +61,15 @@ $rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 120
 
   p, .paragraph,
   ul, ol,
-  dl, dd
+  dl, dd,
+  table
     margin: 0 0 1rem
 
-  ul ul,
-  ul ol,
-  ol ol,
-  ol ul
-    margin-bottom: 0
+  ul, ol // @stylint ignore
+    ul, ol // @stylint ignore
+      margin-bottom: 0
 
-  ul, ol
+  ul, ol // @stylint ignore
     padding-left: 1.5rem
 
   blockquote, .blockquote
@@ -83,4 +82,25 @@ $rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 120
     padding: .5rem 1.5rem
 
     p:last-child
-       margin-bottom: 0
+      margin-bottom: 0
+
+  table
+    border-collapse: collapse
+    border-spacing: 0
+    max-width: 100%
+    width: 100%
+
+  td,
+  th
+    padding: .75rem
+    text-align: inherit
+    vertical-align: top
+
+  thead
+    th
+      border-bottom: 2px solid $colorBrand
+      border-top: none
+      vertical-align: bottom
+
+  tr:nth-child(even)
+    background-color: rgba(0, 0, 0, .03)
