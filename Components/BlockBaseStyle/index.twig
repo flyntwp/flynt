@@ -18,30 +18,32 @@
       <p>In addition to the 2.0.3 install, you should be aware that some bugs have already been found, and that a plugin will need to be installed to repair those bugs. If you modify any of the files that this patch plugin fixes, you’ll need to either merge the changes with the new files or make those changes manually once again. You can find these issues by running a diff to locate changes; if the only changes you find are your own, then you’re fine, and otherwise you’ll need to merge them manually into the new files.</p>
       <hr>
       <form>
-        <label>Text Input</label><br>
-        <input type="text" name="text" placeholder="Placeholder"><br>
-        <label>Email Input</label><br>
-        <input type="email" name="email" placeholder="Placeholder"><br>
-        <label>Search Input</label><br>
-        <input type="search" name="search" placeholder="Placeholder"><br>
-        <label>Your message</label><br>
-        <textarea></textarea><br>
-        <select name="select">
-          <option value="select-value-1">Select Option #1</option>
-          <option value="select-value-2">Select Option #2</option>
-          <option value="select-value-3">Select Option #3</option>
-        </select><br>
+        <fieldset>
+          <label>Text Input</label><br>
+          <input type="text" name="text" placeholder="Placeholder"><br>
+          <label>Email Input</label><br>
+          <input type="email" name="email" placeholder="Placeholder"><br>
+          <label>Search Input</label><br>
+          <input type="search" name="search" placeholder="Placeholder"><br>
+          <label>Your message</label><br>
+          <textarea></textarea><br>
+          <select name="select">
+            <option value="select-value-1">Select Option #1</option>
+            <option value="select-value-2">Select Option #2</option>
+            <option value="select-value-3">Select Option #3</option>
+          </select>
+        </fieldset>
         <fieldset>
           <legend>Checkbox Inputs</legend>
           <label><input type="checkbox" name="checkbox" value="checkbox-value-1">Checkbox Label #1</label><br>
           <label><input type="checkbox" name="checkbox" value="checkbox-value-2">Checkbox Label #2</label><br>
-          <label><input type="checkbox" name="checkbox" value="checkbox-value-3">Checkbox Label #3</label><br>
+          <label><input type="checkbox" name="checkbox" value="checkbox-value-3">Checkbox Label #3</label>
         </fieldset>
         <fieldset>
           <legend>Radio Inputs</legend>
           <label><input type="radio" name="radio" value="radio-value-1">Radio Label #1</label><br>
           <label><input type="radio" name="radio" value="radio-value-2">Radio Label #2</label><br>
-          <label><input type="radio" name="radio" value="radio-value-3">Radio Label #3</label><br>
+          <label><input type="radio" name="radio" value="radio-value-3">Radio Label #3</label>
         </fieldset>
         <button>Button</button>
         <button class="btn--primary">Button Primary</button><br>
