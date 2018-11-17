@@ -62,7 +62,8 @@ $rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 120
   p, .paragraph,
   ul, ol,
   dl, dd,
-  table
+  table,
+  figure
     margin: 0 0 1rem
 
   ul, ol // @stylint ignore
@@ -71,6 +72,9 @@ $rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 120
 
   ul, ol // @stylint ignore
     padding-left: 1.5rem
+
+  figcaption
+    margin-top: .4rem
 
   blockquote, .blockquote
     border-left: 3px solid $colorBrand
