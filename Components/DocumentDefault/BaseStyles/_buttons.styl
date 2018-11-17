@@ -24,6 +24,12 @@ $rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 120
     padding: .5rem 1rem
     text-decoration: none
     transition: background .2s ease, border .2s ease, color .2s ease
+    user-select: none
+
+    &:disabled
+      cursor: default
+      opacity: .65
+      pointer-events: none
 
     +above('xl')
       &:hover,
