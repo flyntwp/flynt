@@ -1,0 +1,44 @@
+$playButtonCircleDiameter = {
+  'desktop': 100px,
+  'mobile': 60px
+}
+
+.loader
+  animation: loading 1.1s infinite linear
+  border-bottom: 4px solid rgba(255, 255, 255, 0.2)
+  border-left: 4px solid #ffffff
+  border-right: 4px solid rgba(255, 255, 255, 0.2)
+  border-top: 4px solid rgba(255, 255, 255, 0.2)
+  display: none
+  left: 50%
+  margin-left: -($playButtonCircleDiameter.desktop / 2)
+  margin-top: -($playButtonCircleDiameter.desktop / 2)
+  position: absolute
+  text-indent: -9999em
+  top: 50%
+  transform: translate(-50%, -50%)
+  z-index: 2
+
+  +below('s')
+    margin-left: -($playButtonCircleDiameter.mobile / 2)
+    margin-top: -($playButtonCircleDiameter.mobile / 2)
+
+  &--isVisible
+    display: block
+
+.loader,
+.loader:after
+  border-radius: 50%
+  height: $playButtonCircleDiameter.desktop
+  width: $playButtonCircleDiameter.desktop
+
+  +below('s')
+    height: $playButtonCircleDiameter.mobile
+    width: $playButtonCircleDiameter.mobile
+
+@keyframes loading
+  0%
+    transform: rotate(0deg)
+
+  100%
+    transform: rotate(360deg)

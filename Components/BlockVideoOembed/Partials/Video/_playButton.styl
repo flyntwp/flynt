@@ -1,7 +1,7 @@
 $colorGray = #333
 $colorWhite = #fff
 $backgroundOpacity = .5
-$borderWidth = 5px
+$borderWidth = 3px
 $transitionTime = .3s
 $transitionEasing = ease
 
@@ -60,3 +60,15 @@ playButton($pseudoElementDefaults, $colorPlayButton, $backgroundOpacity, $border
   &:hover::before,
   &:hover::after
     transform: scale(1.1)
+
+.play
+  display: none
+  left: 50%
+  position: absolute
+  top: 50%
+  transform: translate(-50%, -50%)
+  playButton($pseudoElementDefaults, $colorGray, $backgroundOpacity, $borderWidth, $colorWhite, $playButtonCircleDiameter, $colorWhite, $playButtonTriangleSize)
+  z-index: 2
+
+  &--isVisible
+    display: block

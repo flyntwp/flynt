@@ -1,18 +1,20 @@
 @import '_playButton'
+@import '_loader'
 
-.oembedVideo
+.video
   position: relative
 
   &-posterImage
     cursor: pointer
     position: absolute
-    transition: visibility $transitionTime $transitionEasing
     visibility: visible
+    opacity: 1
+    transition: opacity .2s, visibility 0s linear .2s
+    width: 100%
     z-index: 1
 
-    playButton($pseudoElementDefaults, $colorGray, $backgroundOpacity, $borderWidth, $colorWhite, $playButtonCircleDiameter, $colorWhite, $playButtonTriangleSize)
-
     &-isHidden
+      opacity: 0
       visibility: hidden
 
   &-imageElement
@@ -20,7 +22,7 @@
     height: auto
     width: 100%
 
-  &-video
+  &-content
     height: 0
     padding-bottom: percentage(9 / 16)
     visibility: hidden
@@ -35,3 +37,5 @@
       position: absolute
       top: 0
       width: 100%
+
+  @import '../Figure/_style'

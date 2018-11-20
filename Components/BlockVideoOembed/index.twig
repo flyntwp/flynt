@@ -1,5 +1,9 @@
 <div is="flynt-block-video-oembed" class="flyntComponent">
-  <div class="blockVideoOembed">
-    {% include 'Partials/OembedVideo/index.twig' %}
+  <div class="wrapper">
+    <div class="container">
+      <div class="video">
+        {% include 'Partials/Video/index.twig' ignore missing with {video: oembedIframe, image: posterImage} only %}
+      </div>
+    </div>
   </div>
 </div>
