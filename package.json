@@ -51,6 +51,7 @@
     "hard-source-webpack-plugin": "^0.11.1",
     "hasbin": "^1.2.3",
     "jeet": "^7.0.0",
+    "lazysizes": "^4.1.4",
     "lodash": "^4.17.10",
     "normalize.css": "^7.0.0",
     "picturefill": "^3.0.2",
