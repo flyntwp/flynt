@@ -1,0 +1,44 @@
+$rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
+$rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
+$containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
+$containerPadding = lookup('$globalContainerPadding') || 15px
+
+.flyntComponent[is='flynt-block-image-text']
+  .wrapper
+    margin-bottom: 2rem
+
+  .container
+    center($containerMaxWidth, $containerPadding)
+
+  .box
+    align-items: center
+    display: flex
+    justify-content: space-between
+
+    +below('m')
+      display: block
+
+    &--imageLeft
+      flex-direction: row
+
+    &--imageRight
+      flex-direction: row-reverse
+
+    &-image,
+    &-content
+      width: calc(50% - .5rem)
+
+      +below('m')
+        width: auto
+
+  .box-image
+    @import 'Partials/Figure/_style'
+
+  .box-content
+    > :first-child
+      padding-top: 0
+      margin-top: 0
+
+    > :last-child
+      padding-bottom: 0
+      margin-bottom: 0

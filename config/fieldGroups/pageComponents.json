@@ -9,6 +9,7 @@
       "button_label": "Add Component",
       "layouts": [
         "Flynt/Components/BlockImage/Fields/Layout",
+        "Flynt/Components/BlockImageText/Fields/Layout",
         "Flynt/Components/BlockMediaText/Fields/Layout",
         "Flynt/Components/BlockVideoOembed/Fields/Layout",
         "Flynt/Components/BlockWysiwyg/Fields/Layout",
