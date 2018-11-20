@@ -1,7 +1,7 @@
 {
   "layout": {
     "name": "blockImageText",
-    "label": "Block Image Text",
+    "label": "Block: Image Text",
     "sub_fields": [
       {
         "label": "Image Position",
