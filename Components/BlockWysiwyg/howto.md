@@ -98,8 +98,8 @@ Unfortunately there is no way to have a stylesheet to a specific acf Wysiwyg fie
         "type": "select",
         "choices": {
           "": "---",
-          "wysiwyg-fullwidth": "Fullwidth",
-          "wysiwyg-narrow": "Narrow"
+          "wysiwyg--fullwidth": "Fullwidth",
+          "wysiwyg--narrow": "Narrow"
         },
         "default_value": ""
       }
@@ -120,13 +120,13 @@ $containerPadding = lookup('$globalContainerPadding') || 15px
 $narrowWidth = 650px
 
 [is='flynt-block-wysiwyg']
-  .blockWysiwyg
+  .content
     center($containerMaxWidth, $containerPadding)
 
-    &-fullwidth
+    &--fullwidth
       center($containerMaxWidth, $containerPadding)
 
-    &-narrow
+    &--narrow
       center($narrowWidth, $containerPadding)
 ```
 
@@ -144,8 +144,8 @@ To add an additional Global Default Theme simply add the following code to the D
       "type": "select",
       "choices": {
         "": "---",
-        "wysiwyg-fullwidth": "Fullwidth",
-        "wysiwyg-narrow": "Narrow"
+        "wysiwyg--fullwidth": "Fullwidth",
+        "wysiwyg--narrow": "Narrow"
       },
       "default_value": ""
     }

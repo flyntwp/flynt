@@ -4,10 +4,5 @@ $containerPadding = lookup('$globalContainerPadding') || 15px
 $containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
 
 .flyntComponent[is='flynt-block-wysiwyg']
-  *,
-  *:before,
-  *:after
-    box-sizing: border-box
-
-  .blockWysiwyg
+  .container
     center($containerMaxWidth, $containerPadding)

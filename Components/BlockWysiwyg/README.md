@@ -10,4 +10,4 @@ Tags: wysiwyg, content, html, dom
 
 ----
 
-Text: Content Editor.
+Text: Simple formatted text.
