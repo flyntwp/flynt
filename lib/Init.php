@@ -20,6 +20,8 @@ function initTheme()
     // Set to true to load all assets from a CDN if there is one specified
     Asset::loadFromCdn(false);
 
+    add_theme_support('flynt-youtube-no-cookie-embed');
+
     // register all components in 'Components' folder
     add_theme_support('flynt-components', get_template_directory() . '/dist/Components/');
 
@@ -81,6 +83,7 @@ function initTheme()
     add_theme_support('flynt-password-form');
     add_theme_support('flynt-external-script-loader');
     add_theme_support('flynt-lodash');
+    add_theme_support('flynt-component-log-server');
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\initTheme');
 
