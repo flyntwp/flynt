@@ -21,3 +21,15 @@ $rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 120
     display: block
     height: 1px
     margin: 2rem 0
+
+  img
+    display: block
+    max-width: 100%
+    width: 100%
+
+    &.lazyload--fade
+      opacity: 0
+      transition: opacity .2s
+
+    &.lazyloaded
+      opacity: 1
