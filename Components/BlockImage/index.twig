@@ -1,12 +1,5 @@
-<div is="flynt-block-image" class="flyntComponent">
-  <div class="blockImage">
-    <img class="blockImage-imageElement" srcset="
-      {{ image.src | resize(576) }} 576w,
-      {{ image.src | resize(768) }} 768w,
-      {{ image.src | resize(1110) }} 1110w,
-      {{ image.src | resize(1440) }} 1440w"
-      src="{{ image.src | resize(1110) }}"
-      sizes="(min-width: 1140px) 1110px, calc(100vw - 30px)"
-      alt="{{ image.alt }}">
+<div class="flyntComponent" is="flynt-block-image">
+  <div class="container">
+    {% include 'Partials/Figure/index.twig' ignore missing with {image: image} only %}
   </div>
 </div>

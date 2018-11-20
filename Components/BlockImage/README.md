@@ -10,4 +10,4 @@ Tags: block, image
 
 ----
 
-Text: Full width image component. Upload an image that takes full width.
+Text: Simple full width image with optional caption.

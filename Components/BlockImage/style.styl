@@ -1,18 +1,11 @@
-$rupture.scale = lookup('$globalRuptureScale') || (0 575px 767px 991px 1199px)
+$rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
 $rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
-$containerPadding = lookup('$globalContainerPadding') || 15px
 $containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
+$containerPadding = lookup('$globalContainerPadding') || 15px
 
 .flyntComponent[is='flynt-block-image']
-  *,
-  *:before,
-  *:after
-    box-sizing: border-box
 
-  .blockImage
+  .container
     center($containerMaxWidth, $containerPadding)
 
-    &-imageElement
-      display: block
-      height: auto
-      max-width: 100%
+  @import 'Partials/Figure/_style'

@@ -7,11 +7,12 @@
         "label": "Image",
         "name": "image",
         "type": "image",
-        "instructions": "Recommended Size: Min-Width 1440px; Min-Height: 720px; Image-Format: JPG",
-        "min_width": 1440,
-        "min_height": 720,
-        "mime_types": "jpg,jpeg",
-        "required": 1
+        "preview_size": "medium",
+        "instructions": "",
+        "max_size": 4,
+        "min_width": 1920,
+        "required": true,
+        "mime_types": "gif,jpg,jpeg,png"
       }
     ]
   }
