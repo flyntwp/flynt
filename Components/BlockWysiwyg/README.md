@@ -6,7 +6,7 @@ Category: Block
 
 ----
 
-Tags: wysiwyg, content, html, dom
+Tags: wysiwyg, content, html
 
 ----
 
