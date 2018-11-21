@@ -13,7 +13,7 @@
     {
       "name": "backLinkLabel",
       "label": "Back to Homepage Label",
-      "instructions": "Leave empty to remove back to home link below the content area",
+      "instructions": "Leave empty to remove back to home link below the content area.",
       "type": "text",
       "default_value": "Back to homepage"
     }
