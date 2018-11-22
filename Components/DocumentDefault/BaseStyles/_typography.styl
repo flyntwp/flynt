@@ -88,11 +88,14 @@ $rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 120
     p:last-child
       margin-bottom: 0
 
+  .scrollableTableWrapper
+    -webkit-overflow-scrolling: touch
+    overflow-x: auto
+
   table
     border-collapse: collapse
     border-spacing: 0
     max-width: 100%
-    width: 100%
 
   td,
   th
@@ -103,8 +106,8 @@ $rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 120
   thead
     th
       border-bottom: 2px solid $colorBrand
-      border-top: none
       vertical-align: bottom
+      white-space: nowrap
 
   tr:nth-child(even)
     background-color: rgba(0, 0, 0, .03)

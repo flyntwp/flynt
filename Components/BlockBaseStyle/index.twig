@@ -19,14 +19,14 @@
       <hr>
       <form>
         <fieldset>
-          <label>Text Input</label><br>
-          <input type="text" name="text" placeholder="Placeholder"><br>
-          <label>Email Input</label><br>
-          <input type="email" name="email" placeholder="Placeholder"><br>
-          <label>Search Input</label><br>
-          <input type="search" name="search" placeholder="Placeholder"><br>
-          <label>Your message</label><br>
-          <textarea></textarea><br>
+          <label for="textInput">Text Input</label><br>
+          <input id="textInput" type="text" name="text" placeholder="Placeholder"><br>
+          <label for="emailInput" >Email Input</label><br>
+          <input id="emailInput" type="email" name="email" placeholder="Placeholder"><br>
+          <label for="searchInput">Search Input</label><br>
+          <input id="searchInput" type="search" name="search" placeholder="Placeholder"><br>
+          <label for="textarea">Your message</label><br>
+          <textarea id="textarea"></textarea><br>
           <select name="select">
             <option value="select-value-1">Select Option #1</option>
             <option value="select-value-2">Select Option #2</option>
@@ -47,12 +47,12 @@
         </fieldset>
         <button>Button</button>
         <button class="btn--primary">Button Primary</button><br>
-        <input type="button" value="Input Button">
-        <input type="button" class="btn--primary" value="Input Button Primary"><br>
-        <input type="submit" value="Input Submit Button">
-        <input type="submit" class="btn--primary" value="Input Submit Button Primary"><br>
-        <input type="reset" value="Input Reset Button">
-        <input type="reset" class="btn--primary" value="Input Reset Button Primary"><br>
+        <button type="button">Type Button</button>
+        <button type="button" class="btn--primary">Type Button Primary</button><br>
+        <button type="submit">Type Submit Button</button>
+        <button type="submit" class="btn--primary">Type Submit Button Primary</button><br>
+        <button type="reset">Type Reset Button</button>
+        <button type="reset" class="btn--primary">Type Reset Button Primary</button><br>
         <a class="btn">Link Button</a>
         <a class="btn btn--primary">Link Button Primary</a><br>
         <button disabled>Button Disabled</button>
@@ -117,54 +117,56 @@
       <p>WordPress, the premier free open-source blogging utility, has gone through several upgrades in its life. Today it’s one of the most popular blogging tools on the Internet; it’s easy to use, powerful, and very versatile. It also has a very active base of skilled users who are eager to improve the product and to help out those who haven’t tried it before.</p>
       <h6>Headline H6</h6>
       <p>WordPress, the premier free open-source blogging utility, has gone through several upgrades in its life. Today it’s one of the most popular blogging tools on the Internet; it’s easy to use, powerful, and very versatile. It also has a very active base of skilled users who are eager to improve the product and to help out those who haven’t tried it before.</p>
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Ingredients</th>
-            <th scope="col">Serves 12</th>
-            <th scope="col">Serves 24</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>milk</td>
-            <td>1 quart</td>
-            <td>2 quart</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>cinnamon sticks</td>
-            <td>2</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>cloves</td>
-            <td>5</td>
-            <td>10</td>
-          </tr>
-          <tr>
-            <th scope="row">4</th>
-            <td>egg yolks</td>
-            <td>12</td>
-            <td>24</td>
-          </tr>
-          <tr>
-            <th scope="row">5</th>
-            <td>cups sugar</td>
-            <td>1 &frac12; cups</td>
-            <td>3 cups</td>
-          </tr>
-          <tr>
-            <th scope="row">6</th>
-            <td>dark rum</td>
-            <td>1 &frac12; cups</td>
-            <td>3 cups</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="scrollableTableWrapper">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Ingredients</th>
+              <th scope="col">Serves 12</th>
+              <th scope="col">Serves 24</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>milk</td>
+              <td>1 quart</td>
+              <td>2 quart</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>cinnamon sticks</td>
+              <td>2</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>cloves</td>
+              <td>5</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>egg yolks</td>
+              <td>12</td>
+              <td>24</td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>cups sugar</td>
+              <td>1 &frac12; cups</td>
+              <td>3 cups</td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td>dark rum</td>
+              <td>1 &frac12; cups</td>
+              <td>3 cups</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
   </div>
 </div>
