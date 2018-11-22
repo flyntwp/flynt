@@ -1,9 +1,0 @@
-fontFace($family, $file, $weight = 'normal', $style = 'normal', $woff2 = true, $basePath = '../../Components/DocumentDefault/Fonts/')
-  @font-face
-    font-family: $family
-    if $woff2
-      src: url($basePath + $file + '.woff2') format('woff2'), url($basePath + $file + '.woff') format('woff')
-    else
-      src: url($basePath + $file + '.woff') format('woff')
-    font-style: unquote($style)
-    font-weight: unquote($weight)

@@ -1,5 +1,254 @@
-@import 'BaseStyles/Mixins/_fontFace'
-@import 'BaseStyles/_layout'
-@import 'BaseStyles/_typography'
-@import 'BaseStyles/_buttons'
-@import 'BaseStyles/_forms'
+$colorBackground = lookup('$globalColorBackground') || #FFFFFF
+$colorBrand = lookup('$globalColorBrand') || #91C6C4
+$colorAccent = lookup('$globalColorAccent') || #F98928
+$colorHeadline = lookup('$globalColorHeadline') || #2A2A2A
+$colorText = lookup('$globalColorText') || #222222
+
+$rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
+$rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
+
+// MIXINS
+// -------------------------------------------------------------
+
+fontFace($family, $file, $weight = 'normal', $style = 'normal', $woff2 = true, $basePath = '../../Components/DocumentDefault/Fonts/')
+  @font-face
+    font-family: $family
+    if $woff2
+      src: url($basePath + $file + '.woff2') format('woff2'), url($basePath + $file + '.woff') format('woff')
+    else
+      src: url($basePath + $file + '.woff') format('woff')
+    font-style: unquote($style)
+    font-weight: unquote($weight)
+
+.flyntComponent[is='flynt-document-default']
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+  background-color: $colorBackground
+  color: $colorText
+  font-family: Helvetica, Arial, sans-serif
+  font-size: 18px
+  line-height: 1.5
+
+  +below('m')
+    font-size: 16px
+
+  &
+    box-sizing: border-box
+
+  *,
+  *::before,
+  *::after
+    box-sizing: inherit
+
+  h1, .h1,
+  h2, .h2,
+  h3, .h3,
+  h4, .h4,
+  h5, .h5,
+  h6, .h6
+    color: $colorHeadline
+    line-height: 1.3
+    margin-bottom: .5rem
+    margin-top: 0
+
+  h1, .h1
+    font-size: 2rem
+    padding-top: 2rem
+
+  h2, .h2
+    font-size: 1.5rem
+    padding-top: 1rem
+
+  h3, .h3
+    font-size: 1.3rem
+    padding-top: .8rem
+
+  h4, .h4
+    font-size: 1rem
+    padding-top: .5rem
+
+  h5, .h5
+    font-size: 1rem
+    font-weight: normal
+    padding-top: .5rem
+
+  h6, .h6
+    font-size: .8rem
+    padding-top: .5rem
+
+  a
+    &, &:hover
+      color: $colorAccent
+
+  dt
+    font-weight: bold
+
+  p, .paragraph,
+  ul, ol,
+  dl, dd,
+  table,
+  figure
+    margin: 0 0 1rem
+
+  ul, ol // @stylint ignore
+    ul, ol // @stylint ignore
+      margin-bottom: 0
+
+  ul, ol // @stylint ignore
+    padding-left: 1.5rem
+
+  hr
+    background-color: $colorBrand
+    border: 0
+    display: block
+    height: 1px
+    margin: 2rem 0
+
+  img
+    display: block
+    max-width: 100%
+    width: 100%
+
+    &.lazyload--fade
+      opacity: 0
+      transition: opacity .2s
+
+    &.lazyloaded
+      opacity: 1
+
+  figcaption
+    margin-top: .4rem
+
+  blockquote, .blockquote
+    border-left: 3px solid $colorBrand
+    font-size: 1.3rem
+    font-style: italic
+    line-height: 1.3
+    margin: 2rem auto
+    max-width: 28rem
+    padding: .5rem 1.5rem
+
+    p:last-child
+      margin-bottom: 0
+
+  .scrollableTableWrapper
+    -webkit-overflow-scrolling: touch
+    overflow-x: auto
+
+  table
+    border-collapse: collapse
+    border-spacing: 0
+    max-width: 100%
+
+  td,
+  th
+    padding: .75rem
+    text-align: inherit
+    vertical-align: top
+
+  thead
+    th
+      border-bottom: 2px solid $colorBrand
+      vertical-align: bottom
+      white-space: nowrap
+
+  tr:nth-child(even)
+    background-color: rgba(0, 0, 0, .03)
+
+  // BUTTONS
+  // -------------------------------------------------------------
+
+  .btn,
+  button,
+  [type='button'],
+  [type='submit'],
+  [type='reset']
+    appearance: none
+    background: $colorBackground
+    border-radius: 3px
+    border: 1px solid $colorAccent
+    color: $colorAccent
+    cursor: pointer
+    display: inline-block
+    font-family: inherit
+    font-size: inherit
+    line-height: inherit
+    margin-bottom: 1em
+    outline: 0
+    padding: .5rem 1rem
+    text-decoration: none
+    transition: background .2s ease, border .2s ease, color .2s ease
+    user-select: none
+
+    &:disabled
+      cursor: default
+      opacity: .65
+      pointer-events: none
+
+    +above('xl')
+      &:hover,
+      &:focus
+        border-color: darken($colorAccent, 10)
+        color: darken($colorAccent, 10)
+
+  .btn
+    &--primary
+      background-color: $colorAccent
+      border-color: $colorAccent
+      color: $colorBackground
+
+      +above('xl')
+        &:hover,
+        &:focus
+          background-color: darken($colorAccent, 10)
+          color: $colorBackground
+
+    &--block
+      display: block
+      margin-left: auto
+      margin-right: auto
+      max-width: 400px
+      text-align: center
+      width: 100%
+
+  // FORMS
+  // -------------------------------------------------------------
+
+  fieldset
+    border: 0
+    margin: 0 0 1rem
+    padding: 0
+
+    *:last-child
+      margin-bottom: 0
+
+  legend
+    display: inline-block
+    font-weight: bold
+    margin-bottom: .5rem
+
+  label
+    display: inline-block
+    margin-bottom: .2rem
+
+  [type='text'],
+  [type='email']
+  [type='search'],
+  textarea,
+  select
+    -webkit-appearance: none
+    border: 1px solid rgba(0, 0, 0, .5)
+    font-family: inherit
+
+  input,
+  select,
+  textarea
+    margin: 0 0 1rem
+    padding: 10px
+
+  [type='checkbox'],
+  [type='radio']
+    margin: 0 .5rem 0 0
+    position: relative
+    top: -2px
+    vertical-align: middle
