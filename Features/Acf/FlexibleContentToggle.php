@@ -17,10 +17,9 @@ class FlexibleContentToggle
             add_filter('acf/get_field_label', function ($label, $field) {
                 if ($field['type'] === 'flexible_content') {
                     $label .= '<span class="flexible-content-controls">';
-                    $label .= '<a class="acf-icon small -collapse collapse-all" title="collapse all"></a>';
-                    $label .= '<span class="-collapsed">';
-                    $label .= '<a class="acf-icon small -collapse expand-all" title="expand all"></a>';
-                    $label .= '</span></span>';
+                    $label .= '<span class="flexible-content-control"><a class="acf-icon small -collapse collapse-all" title="collapse all"></a></span>';
+                    $label .= '<span class="flexible-content-control"><span class="-collapsed"><a class="acf-icon small -collapse expand-all" title="expand all"></a></span></span>';
+                    $label .= '</span>';
                 }
                 return $label;
             }, 10, 2);
