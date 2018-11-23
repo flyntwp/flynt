@@ -6,3 +6,12 @@ $containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
 .flyntComponent[is='flynt-block-wysiwyg']
   .container
     center($containerMaxWidth, $containerPadding)
+
+  .content
+    text-align: inherit
+
+    &--textLeft
+      text-align: left
+
+    &--textCenter
+      text-align: center
