@@ -1,0 +1,19 @@
+{
+  "translatableOptions": [
+    {
+      "label": "Content Html",
+      "name": "contentHtml",
+      "type": "wysiwyg",
+      "tabs": "visual,text",
+      "toolbar": "full",
+      "media_upload": false,
+      "delay": true
+    },
+    {
+      "label": "Logo Link",
+      "type": "link",
+      "name": "link",
+      "return_format": "array"
+    }
+  ]
+}
