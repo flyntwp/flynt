@@ -1,97 +1,13 @@
-// GRID
-$pageMaxWidth = lookup('$globalPageMaxWidth') || 2560px
-$containerMaxWidth = lookup('$globalContainerMaxWidth') || 1376px
-$containerPadding = lookup('$globalContainerPadding') || 32px
-$containerPaddingMobile = lookup('$globalContainerPaddingMobile') || 16px
-// BREAKPOINTS
-$rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1280px)
+$rupture.scale = lookup('$globalRuptureScale') || (0 575px 767px 991px 1199px)
 $rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
-// FONT
-$fontHeadingLineHeight = lookup('$globalFontHeadingLineHeight') || 1.3
-// COLOR
-$colorBlack = lookup('$globalColorPrimaryBlack') || #222
-$colorRed = lookup('$globalColorPrimaryRed') || #FA5046
-$colorWhite = lookup('$globalColorPrimaryWhite') || #FFF
+$containerPadding = lookup('$globalContainerPadding') || 15px
+$containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
 
-// ##NAVIGATION-FOOTER
-// =============================================================
+.flyntComponent[is='flynt-navigation-footer']
+  .container
+    center($containerMaxWidth, $containerPadding)
 
-[is='flynt-navigation-footer']
-  &.flyntComponent
-    .wrapper
-      background-color: $colorBlack
+  .navigation
+    padding: 2rem 0
 
-    .container
-      center($containerMaxWidth, $containerPadding)
-
-      +below('m')
-        center($containerMaxWidth, $containerPaddingMobile)
-
-    @import 'Partials/Menu/_style'
-
-    .navigationFooter
-      display: flex
-      justify-content: space-between
-      padding-bottom: 3rem
-      padding-top: 2.5rem
-
-      +below('l')
-        flex-direction: column
-        padding-top: 2rem
-
-      +below('xs')
-        padding-bottom: 2.5rem
-
-      &-menu
-        +above('l')
-          flex-grow: 1
-          margin-bottom: 4rem
-          padding-right: 32px
-
-        +below('m')
-          margin-bottom: 3.5rem
-
-      &-info
-        max-width: 400px
-
-        > *
-          color: $colorWhite
-
-        p
-          margin: 0
-
-      &-logo
-        display: inline-block
-        margin: 0 0 1rem
-
-        svg
-          display: block
-
-// THEME-DFP
-// -------------------------------------------------------------
-
-[is='flynt-navigation-footer']
-  &.flyntComponent
-    &--themeDfp
-      .navigationFooter
-        &-logo
-          transition: color .3s
-
-          &:focus,
-          &:hover
-            color: $colorRed
-
-// THEME-DFA
-// -------------------------------------------------------------
-
-[is='flynt-navigation-footer']
-  &.flyntComponent
-    &--themeDfa
-      .navigationFooter
-        &-logo
-          transition: opacity .4s
-
-          &:focus,
-          &:hover
-            color: $colorWhite
-            opacity: .5
+  @import 'Partials/Menu/_style'

@@ -1,21 +1,9 @@
-<div class="flyntComponent {{ theme.cssClass }}" is="flynt-navigation-footer">
-  <div class="wrapper">
-    <div class="container">
-      <div class="navigationFooter">
-        <div class="navigationFooter-menu">
-          {% if menu %}
-            {% include 'Partials/Menu/index.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel } only %}
-          {% endif %}
-        </div>
-        <div class="navigationFooter-info">
-          {% if link %}
-            <a class="navigationFooter-logo" href="{{ link.url }}" title="{{ link.title }}" {{ link.target == '_blank' ? 'target="_blank" rel="noreferrer noopener"' }}>{{ icon }}</a>
-          {% endif %}
-          {% if contentHtml %}
-            {{ contentHtml|e('wp_kses_post') }}
-          {% endif %}
-        </div>
-      </div>
-    </div>
+<div class="flyntComponent" is="flynt-navigation-footer">
+  <div class="container">
+    <nav class="navigation">
+      {% if menu %}
+        {% include 'Partials/Menu/index.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel } only %}
+      {% endif %}
+    </nav>
   </div>
 </div>

@@ -18,7 +18,14 @@
               "name": "ListPosts"
             }
           ],
-          "mainFooter": []
+          "mainFooter": [
+            {
+              "name": "NavigationFooter",
+              "customData": {
+                "menuSlug": "navigation_footer"
+              }
+            }
+          ]
         }
       }
     ]

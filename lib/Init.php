@@ -61,7 +61,6 @@ function initTheme()
     add_theme_support('flynt-clean-head');
     add_theme_support('flynt-clean-rss');
     add_theme_support('flynt-mime-types');
-    add_theme_support('flynt-navigation');
     add_theme_support('flynt-remove-editor');
     add_theme_support('flynt-tiny-mce');
     add_theme_support('flynt-base-style');
