@@ -74,6 +74,9 @@ function initTheme()
     // hide protected posts
     add_theme_support('flynt-hide-protected-posts');
 
+    // move yoast seo plugin box to the bottom of the backend interface
+    add_theme_support('flynt-yoast-to-bottom');
+
     // WP Stuff
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
