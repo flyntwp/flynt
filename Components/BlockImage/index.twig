@@ -1,5 +1,19 @@
 <div class="flyntComponent" is="flynt-block-image">
   <div class="container">
-    {% include 'Partials/Figure/index.twig' ignore missing with {image: image} only %}
+    <figure class="figure">
+      <img class="figure-image lazyload lazyload--fade"
+        src="{{ image.src|resize(1280) }}"
+        srcset="{{ transparentPng(image.aspect) }}"
+        data-srcset="
+          {{ image.src|resize(1920) }} 1920w,
+          {{ image.src|resize(1280) }} 1280w,
+          {{ image.src|resize(750) }} 750w,
+          {{ image.src|resize(375) }} 375w"
+        data-sizes="auto"
+        alt="{{ image.alt|e }}">
+      {% if image.caption %}
+        <figcaption class="figure-caption">{{ image.caption|e }}</figcaption>
+      {% endif %}
+    </figure>
   </div>
 </div>
