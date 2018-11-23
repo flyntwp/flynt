@@ -1,6 +1,7 @@
 {
   "name": "postComponents",
   "title": "Post Components",
+  "style": "seamless",
   "fields": [
     {
       "name": "postComponents",

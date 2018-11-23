@@ -1,6 +1,7 @@
 {
   "name": "pageComponents",
   "title": "Page Components",
+  "style": "seamless",
   "fields": [
     {
       "name": "pageComponents",
