@@ -1,5 +1,5 @@
 const dest = './dist'
-const host = 'flynt.test'
+const host = 'https://component.local.blee.ch'
 
 module.exports = {
   browserSync: {
