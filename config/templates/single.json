@@ -3,7 +3,7 @@
   "areas": {
     "layout": [
       {
-        "name": "LayoutMultiplePosts",
+        "name": "LayoutSinglePost",
         "areas": {
           "mainHeader": [
             {
@@ -15,7 +15,10 @@
           ],
           "pageComponents": [
             {
-              "name": "ListPosts"
+              "name": "ComponentLoaderFlexible",
+              "customData": {
+                "fieldGroup": "postComponents"
+              }
             }
           ],
           "mainFooter": [

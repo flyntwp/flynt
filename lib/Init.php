@@ -61,7 +61,6 @@ function initTheme()
     add_theme_support('flynt-clean-head');
     add_theme_support('flynt-clean-rss');
     add_theme_support('flynt-mime-types');
-    add_theme_support('flynt-navigation');
     add_theme_support('flynt-remove-editor');
     add_theme_support('flynt-tiny-mce');
     add_theme_support('flynt-base-style');
@@ -74,6 +73,9 @@ function initTheme()
 
     // hide protected posts
     add_theme_support('flynt-hide-protected-posts');
+
+    // move yoast seo plugin box to the bottom of the backend interface
+    add_theme_support('flynt-yoast-to-bottom');
 
     // WP Stuff
     add_theme_support('title-tag');

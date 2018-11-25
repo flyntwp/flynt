@@ -1,13 +1,17 @@
 {
   "name": "postComponents",
   "title": "Post Components",
+  "style": "seamless",
   "fields": [
     {
       "name": "postComponents",
       "label": "Post Components",
       "type": "flexible_content",
       "button_label": "Add Component",
-      "layouts": []
+      "layouts": [
+        "Flynt/Components/BlockWysiwyg/Fields/Layout",
+        "Flynt/Components/BlockImage/Fields/Layout"
+      ]
     }
   ],
   "location": [

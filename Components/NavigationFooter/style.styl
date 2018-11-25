@@ -3,15 +3,11 @@ $rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
 $containerPadding = lookup('$globalContainerPadding') || 15px
 $containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
 
-.flyntComponent[is='flynt-block-wysiwyg']
+.flyntComponent[is='flynt-navigation-footer']
   .container
     center($containerMaxWidth, $containerPadding)
 
-  .content
-    text-align: inherit
+  .navigation
+    padding: 2rem 0
 
-    &--textLeft
-      text-align: left
-
-    &--textCenter
-      text-align: center
+  @import 'Partials/Menu/_style'

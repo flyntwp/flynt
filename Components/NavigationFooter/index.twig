@@ -1,0 +1,9 @@
+<div class="flyntComponent" is="flynt-navigation-footer">
+  <div class="container">
+    <nav class="navigation">
+      {% if menu %}
+        {% include 'Partials/Menu/index.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel } only %}
+      {% endif %}
+    </nav>
+  </div>
+</div>
