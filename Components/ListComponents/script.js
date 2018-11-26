@@ -23,8 +23,8 @@ class ListComponents extends window.HTMLDivElement {
     let $imageWrapper = $(e.currentTarget)
     let $image = $imageWrapper.find('.image')
     if ($image.height() > $imageWrapper.height()) {
-      $image.css('transition', 'transform ' +  0.01 * ($image.height() - $imageWrapper.height()) +  's cubic-bezier(0.165, 0.84, 0.44, 1)')
-      $image.css('transform', 'translateY(-' +  ($image.height() - $imageWrapper.height()) +  'px)')
+      $image.css('transition', 'transform ' + 0.01 * ($image.height() - $imageWrapper.height()) + 's cubic-bezier(0.165, 0.84, 0.44, 1)')
+      $image.css('transform', 'translateY(-' + ($image.height() - $imageWrapper.height()) + 'px)')
     }
   }
 
@@ -32,7 +32,7 @@ class ListComponents extends window.HTMLDivElement {
     let $imageWrapper = $(e.currentTarget)
     let $image = $imageWrapper.find('.image')
     if ($image.height() > $imageWrapper.height()) {
-      $image.css('transition', 'transform ' + 0.01 * ($image.height() - $imageWrapper.height()) +  's cubic-bezier(0.165, 0.84, 0.44, 1)')
+      $image.css('transition', 'transform ' + 0.01 * ($image.height() - $imageWrapper.height()) + 's cubic-bezier(0.165, 0.84, 0.44, 1)')
       $image.css('transform', 'translateY(0)')
     }
   }
