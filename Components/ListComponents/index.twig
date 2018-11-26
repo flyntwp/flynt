@@ -1,0 +1,57 @@
+<div class="flyntComponent" is="flynt-list-components">
+  <div class="listComponents">
+    {% for block in componentBlocks %}
+      {% if block.readme %}
+        <div class="component">
+          <div class="component-content">
+            <h2>{{ block.readme.title }}</h2>
+            {% if  block.readme.html %}
+              {{ block.readme.html }}
+            {% elseif block.readme.text %}
+              {{ block.readme.text }}
+            {% endif %}
+            {% if block.ctas %}
+              <div class="component-ctas">
+                {% for cta in block.ctas %}
+                  <a href="{{ cta.link.url }}" class="btn{% if cta.primary %} btn--primary{% endif %}">
+                    {{ cta.link.title }}
+                  </a>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+          {% if block.componentPreviewDesktopUrl %}
+            <div class="component-imageWrapper">
+              <div class="component-desktopImageWrapper">
+                <img class="lazyload lazyload--fade image"
+                     src="{{ block.componentPreviewDesktopUrl|resize(1280) }}"
+                     srcset="{{ transparentPng(0.5) }}"
+                     data-srcset="
+                {{ block.componentPreviewDesktopUrl|resize(1920) }} 1920w,
+                {{ block.componentPreviewDesktopUrl|resize(1280) }} 1280w,
+                {{ block.componentPreviewDesktopUrl|resize(750) }} 750w,
+                {{ block.componentPreviewDesktopUrl|resize(375) }} 375w"
+                     data-sizes="auto"
+                     alt="{{ image.alt|e }}">
+              </div>
+              {% if block.componentPreviewMobileUrl %}
+                <div class="component-mobileImageWrapper">
+                  <img class="lazyload lazyload--fade image"
+                       src="{{ block.componentPreviewMobileUrl|resize(1280) }}"
+                       srcset="{{ transparentPng(0.5) }}"
+                       data-srcset="
+                    {{ block.componentPreviewMobileUrl|resize(1920) }} 1920w,
+                    {{ block.componentPreviewMobileUrl|resize(1280) }} 1280w,
+                    {{ block.componentPreviewMobileUrl|resize(750) }} 750w,
+                    {{ block.componentPreviewMobileUrl|resize(375) }} 375w"
+                       data-sizes="auto"
+                       alt="{{ image.alt|e }}">
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

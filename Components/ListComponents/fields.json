@@ -1,0 +1,51 @@
+{
+  "layout": {
+    "name": "listComponents",
+    "label": "List: Components",
+    "sub_fields": [
+      {
+        "label": "Component Blocks",
+        "name": "componentBlocks",
+        "type": "repeater",
+        "collapsed": 0,
+        "min": 1,
+        "layout": "block",
+        "button_label": "Add Component Block",
+        "sub_fields": [
+          {
+            "label": "Components",
+            "name": "component",
+            "type": "select",
+            "ui": 1,
+            "ajax": 0,
+            "choices": {}
+          },
+          {
+            "label": "Calls To Action",
+            "name": "ctas",
+            "type": "repeater",
+            "collapsed": 0,
+            "min": 1,
+            "layout": "block",
+            "button_label": "Add Call To Action",
+            "sub_fields": [
+              {
+                "label": "Link",
+                "name": "link",
+                "type": "link",
+                "return_format": "array",
+                "required": 1
+              },
+              {
+                  "label": "Primary Button",
+                  "name": "primary",
+                  "type": "true_false",
+                  "ui": 1
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

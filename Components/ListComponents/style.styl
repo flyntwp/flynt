@@ -1,0 +1,78 @@
+$containerPadding     = lookup('$globalContainerPadding')  || 20px
+$containerMaxWidth    = lookup('$globalContainerMaxWidth') || 1270px
+$rupture.anti-overlap = lookup('$globalRuptureOverlap')    || -1px
+$rupture.scale        = lookup('$globalRuptureScale')      || (0 426px 576px 768px 992px 1200px)
+$colorBlack           = lookup('$globalColorBlack')        || #00000
+
+$innerShadow = inset 0 0 11px rgba(0, 0, 0, 0.15)
+
+.flyntComponent[is="flynt-list-components"]
+  display: flex
+  justify-content: center
+
+  .listComponents
+    max-width: $containerMaxWidth
+    padding: $containerPadding
+
+    .component
+      display: flex
+      flex-direction: row-reverse
+      justify-content: flex-end
+      padding-bottom: 50px
+
+      +below('m')
+        display: block
+
+      &-imageWrapper
+        margin-right: 50px
+        max-height: 340px
+        margin-top: calc(1rem + 8px)
+        position: relative
+
+        +below('m')
+          margin-right: 20px
+
+      &-desktopImageWrapper
+        max-height: 300px
+        overflow: hidden
+        width: 500px
+
+        &:after
+          box-shadow: $innerShadow
+          content: ''
+          display: block
+          position: absolute
+          top: 0
+          height: 100%
+          width: 100%
+
+        +below('m')
+          width: 100%
+
+        .image
+          display: block
+          width: 100%
+
+      &-mobileImageWrapper
+        bottom: -20px
+        height: 240px
+        overflow: hidden
+        position: absolute
+        right: @bottom
+        width: 160px
+
+        &:after
+          box-shadow: $innerShadow
+          content: ''
+          display: block
+          position: absolute
+          top: 0
+          height: 100%
+          width: 100%
+
+      &-content
+        +below('m')
+          padding-top: 30px
+
+      &-ctas
+        padding-top: 20px
