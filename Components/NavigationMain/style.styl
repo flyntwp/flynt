@@ -1,0 +1,52 @@
+$rupture.scale = lookup('$globalRuptureScale') || (0 575px 767px 991px 1199px)
+$rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
+$gutterWidth = lookup('$globalGutterWidth') || 15px
+$containerPadding = lookup('$globalContainerPadding') || 15px
+$containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
+$navigationHeight = lookup('$globalNavHeight') || 75px
+$colorNavHead = lookup('$globalColorBackground') || #fff
+
+.flyntComponent[is='flynt-document-default'] body
+  +below('s')
+    margin-top: $navigationHeight
+
+  &.navigationMain-isActive
+    overflow: hidden
+
+  +below('s')
+    margin-top: $navigationHeight
+
+.flyntComponent[is='flynt-navigation-main']
+  *,
+  *:before,
+  *:after
+    box-sizing: border-box
+
+  .navigationMain
+    center($containerMaxWidth, $containerPadding)
+    clearfix()
+    padding-bottom: 40px
+    padding-top: @padding-bottom
+
+    +below('s')
+      padding-bottom: 0
+      padding-top: 0
+
+    &-head
+      float: left
+      position: relative
+
+      +below('s')
+        background: $colorNavHead
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .13)
+        height: $navigationHeight
+        left: 0
+        padding: 10px $containerPadding
+        position: fixed
+        top: 0
+        width: 100%
+        z-index: 9
+
+  @import 'Partials/BrandLogo/_style'
+  @import 'Partials/Hamburger/_style'
+  @import 'Partials/Menu/_style'

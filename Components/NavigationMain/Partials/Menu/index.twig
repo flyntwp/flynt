@@ -1,0 +1,17 @@
+<div class="menu">
+  <ul class="menu-list menu--level-{{ level }}" itemscope itemtype="http://schema.org/SiteNavigationElement">
+    {% for item in items %}
+      <li class="menu-item {{ item.classes | join(' ') }}">
+        <a itemprop="url" class="menu-link {{ item.btnClasses | join(' ') }}" href="{{ item.link }}" target="{{ item.target}}">
+          <span itemprop="name" class="menu-text">{{ item.title }}</span>
+        </a>
+        {% if item.get_children and level + 1 <= maxLevel %}
+          {% include 'Partials/Menu/index.twig' with { 'items': item.get_children, 'level': level + 1, 'maxLevel': maxLevel } only %}
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  <a class="menu-logo" href="{{ brandLogoDarkUrl }}">
+    <img class="menu-logoImage" src="{{ brandLogoDark }}" alt="{{ brandLogoDarkTitle }}" />
+  </a>
+</div>

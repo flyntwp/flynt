@@ -1,0 +1,114 @@
+$colorMenuLink       = lookup('$globalColorText')       || #aaa
+$colorMenuLinkHover  = lookup('$globalColorAccent')     || #333
+$colorMenuLinkMobile = lookup('$globalColorBackground') || #fff
+$navigationHeight    = lookup('$globalNavHeight')       || 93px
+$colorBackground     = lookup('$globalColorBackground') || #fff
+$colorAccent         = lookup('$globalColorAccent')     || #F98928
+
+.menu
+  float: right
+  margin-top: 3px
+
+  +below('s')
+    background-color: $colorAccent
+    height: 100%
+    left: 0
+    margin: 0
+    opacity: 0
+    padding-top: $navigationHeight
+    position: fixed
+    top: 0
+    transition: opacity .35s, visibility .35s
+    visibility: hidden
+    width: 100%
+    z-index: 10
+
+    &-hasNoTransition
+      transition: none
+
+  &-logoImage
+    margin-left: 5px
+
+  &-logo
+    display: none
+    height: auto
+    margin: 45px auto 35px
+    max-width: 62px
+
+    +below('s')
+      display: block
+
+  &-list
+    clearfix()
+    list-style: none
+    margin: 0
+    padding: 0
+
+  &-item
+    float: left
+    line-height: 1
+    margin: 0 0 0 10px
+    padding: 0
+
+    +below('s')
+      display: block
+      float: none
+      margin: 0
+
+    &:first-child
+      margin-left: 0
+
+    &:before
+      content: none
+
+    &-hasButton
+      +above('m')
+        margin-left: 24px
+
+        .menu-link
+          margin: 0
+
+  &-link
+    display: block
+    font-size: 16px
+    padding: 14px
+    text-decoration: none
+
+    +above('m')
+      &:not(.btn)
+        color: $colorMenuLink
+
+    +below('s')
+      border: 0
+      display: block
+      font-size: 20px
+      margin: 0
+      text-align: center
+
+      &,
+      &.btn
+        padding: 14px 15px
+
+        &:after,
+        &:before
+          display: none
+
+      &,
+      &:hover
+        background-color: transparent
+        color: $colorMenuLinkMobile
+
+  &-item:not(.menu-item-hasButton):hover .menu-link,
+  .current-menu-item .menu-link,
+  .current-menu-ancestor .menu-link
+    +above('m')
+      color: $colorMenuLinkHover
+      text-decoration: underline
+
+    +below('s')
+      color: $colorMenuLinkMobile
+
+.navigationMain-isActive .menu
+  +below('s')
+    opacity: 1
+    visibility: visible
