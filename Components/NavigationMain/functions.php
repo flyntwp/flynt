@@ -30,7 +30,6 @@ add_filter('Flynt/addComponentData?name=NavigationMain', function ($data) {
     $data['siteTitle'] = get_bloginfo('name');
     $data['logo'] = Asset::requireUrl('Components/NavigationMain/Assets/logo.svg');
     return $data;
-
 });
 
 add_action('init', function () {
