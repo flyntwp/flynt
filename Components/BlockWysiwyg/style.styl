@@ -1,18 +1,17 @@
 $rupture.scale = lookup('$globalRuptureScale') || (0 575px 767px 991px 1199px)
 $rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
 $containerPadding = lookup('$globalContainerPadding') || 15px
-$containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
+$containerMaxWidth = 640px
 
 .flyntComponent[is='flynt-block-wysiwyg']
   .container
-    center($containerMaxWidth, $containerPadding)
-    padding-bottom: 30px
+    center($containerMaxWidth + 2 * $containerPadding, $containerPadding)
+    padding-bottom: 2rem
 
   .content
     text-align: inherit
 
     &--textLeft
-      max-width: 640px
       text-align: left
 
     &--textCenter
