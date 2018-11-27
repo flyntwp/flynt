@@ -3,6 +3,7 @@ $containerMaxWidth    = lookup('$globalContainerMaxWidth') || 1270px
 $rupture.anti-overlap = lookup('$globalRuptureOverlap')    || -1px
 $rupture.scale        = lookup('$globalRuptureScale')      || (0 426px 576px 768px 992px 1200px)
 $colorBlack           = lookup('$globalColorBlack')        || #00000
+$colorWhite           = lookup('$globalColorWhite')        || #FFFFF
 
 $innerShadow = inset 0 0 11px rgba(0, 0, 0, .15)
 
@@ -18,24 +19,26 @@ $innerShadow = inset 0 0 11px rgba(0, 0, 0, .15)
       display: flex
       flex-direction: row-reverse
       justify-content: flex-end
-      padding-bottom: 50px
+      padding-bottom: 3rem
 
-      +below('m')
+      &--noImage
+        justify-content: center
+
+      +below('l')
         display: block
 
       &-imageWrapper
         margin-right: 50px
-        max-height: 340px
-        margin-top: calc(1rem + 8px)
+        max-height: 380px
         position: relative
 
         +below('m')
           margin-right: 20px
 
       &-desktopImageWrapper
-        max-height: 300px
+        max-height: 380px
         overflow: hidden
-        width: 500px
+        width: 640px - 2 * $containerPadding
 
         &:after
           box-shadow: $innerShadow
@@ -54,6 +57,7 @@ $innerShadow = inset 0 0 11px rgba(0, 0, 0, .15)
           width: 100%
 
       &-mobileImageWrapper
+        background-color: $colorWhite
         bottom: -20px
         height: 240px
         overflow: hidden
@@ -72,9 +76,14 @@ $innerShadow = inset 0 0 11px rgba(0, 0, 0, .15)
 
       &-content
         max-width: 640px
+        padding-bottom: 2rem
+
+        h2
+          margin-top: -7px
+          padding-top: 0
 
         +below('m')
-          padding-top: 30px
+          padding-top: 2rem
 
       &-ctas
         padding-top: 20px

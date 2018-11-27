@@ -2,7 +2,7 @@
   <div class="listComponents">
     {% for block in componentBlocks %}
       {% if block.readme %}
-        <div class="component">
+        <div class="component{% if not block.componentPreviewDesktopUrl %} component--noImage{% endif %}">
           <div class="component-content">
             <h2>{{ block.readme.title }}</h2>
             {% if  block.readme.html %}
