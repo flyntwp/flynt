@@ -4,9 +4,7 @@ $rupture.scale        = lookup('$globalRuptureScale')       || (0 575px 767px 99
 $rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
 
 .flyntComponent[is='flynt-block-basestyle']
-  display: flex
-  justify-content: center
-
   .baseStyle
+    margin: 0 auto
     max-width: 640px
     padding: 0 $containerPadding
