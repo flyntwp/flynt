@@ -245,7 +245,10 @@ fontFace($family, $file, $weight = 'normal', $style = 'normal', $woff2 = true, $
   textarea,
   select
     appearance: none
+    background-color: $colorBackground
     border: 1px solid rgba(0, 0, 0, .5)
+    border-radius: 0
+    color: inherit
     font-family: inherit
 
   input,
@@ -253,6 +256,14 @@ fontFace($family, $file, $weight = 'normal', $style = 'normal', $woff2 = true, $
   textarea
     margin: 0 0 1rem
     padding: 10px
+
+  select
+    $colorTextRgb = red($colorText), green($colorText), blue($colorText)
+    background-image: url("data:image/svg+xml;utf8,<svg width='32' height='32' xmlns='http://www.w3.org/2000/svg'><polyline fill='none' stroke='rgb("$colorTextRgb")' stroke-width='3'  points='2,9 16,25 30,9 '/></svg>")
+    background-position: calc(100% - 16px) center
+    background-repeat: no-repeat
+    background-size: 16px
+    padding-right: 48px
 
   [type='checkbox'],
   [type='radio']
