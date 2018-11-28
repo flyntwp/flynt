@@ -48,9 +48,6 @@ function initTheme()
     // enable admin notices
     add_theme_support('flynt-admin-notices');
 
-    // set correct config dir (+ more?)
-    add_theme_support('flynt-templates');
-
     // use timber rendering
     add_theme_support('flynt-timber-loader');
 

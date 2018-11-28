@@ -24,26 +24,27 @@
             <div class="component-imageWrapper">
               <div class="component-desktopImageWrapper">
                 <img class="lazyload lazyload--fade image"
-                     src="{{ block.componentPreviewDesktopUrl|resize(1280) }}"
-                     srcset="{{ transparentPng(0.5) }}"
+                     src="{{ block.componentPreviewDesktopUrl|resize(600) }}"
+                     srcset="{{ transparentPng(0.633) }}"
                      data-srcset="
-                {{ block.componentPreviewDesktopUrl|resize(1920) }} 1920w,
-                {{ block.componentPreviewDesktopUrl|resize(1280) }} 1280w,
-                {{ block.componentPreviewDesktopUrl|resize(750) }} 750w,
-                {{ block.componentPreviewDesktopUrl|resize(375) }} 375w"
+                {{ block.componentPreviewDesktopUrl|resize(1800) }} 1800w,
+                {{ block.componentPreviewDesktopUrl|resize(1200) }} 1200w,
+                {{ block.componentPreviewDesktopUrl|resize(600) }} 600w,
+                {{ block.componentPreviewDesktopUrl|resize(300) }} 300w"
                      data-sizes="auto"
                      alt="{{ image.alt|e }}">
               </div>
               {% if block.componentPreviewMobileUrl %}
                 <div class="component-mobileImageWrapper">
                   <img class="lazyload lazyload--fade image"
-                       src="{{ block.componentPreviewMobileUrl|resize(1280) }}"
-                       srcset="{{ transparentPng(0.5) }}"
+                       src="{{ block.componentPreviewMobileUrl|resize(120) }}"
+                       srcset="{{ transparentPng(2) }}"
                        data-srcset="
-                    {{ block.componentPreviewMobileUrl|resize(1920) }} 1920w,
-                    {{ block.componentPreviewMobileUrl|resize(1280) }} 1280w,
-                    {{ block.componentPreviewMobileUrl|resize(750) }} 750w,
-                    {{ block.componentPreviewMobileUrl|resize(375) }} 375w"
+                    {{ block.componentPreviewMobileUrl|resize(670) }} 670w,
+                    {{ block.componentPreviewMobileUrl|resize(360) }} 360w,
+                    {{ block.componentPreviewMobileUrl|resize(240) }} 240w,
+                    {{ block.componentPreviewMobileUrl|resize(120) }} 120w,
+                    {{ block.componentPreviewMobileUrl|resize(60) }} 60w"
                        data-sizes="auto"
                        alt="{{ image.alt|e }}">
                 </div>
