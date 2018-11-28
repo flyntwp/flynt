@@ -3,7 +3,7 @@ $containerMaxWidth    = lookup('$globalContainerMaxWidth') || 1270px
 $rupture.anti-overlap = lookup('$globalRuptureOverlap')    || -1px
 $rupture.scale        = lookup('$globalRuptureScale')      || (0 426px 576px 768px 992px 1200px)
 $colorBlack           = lookup('$globalColorBlack')        || #00000
-$colorWhite           = lookup('$globalColorWhite')        || #FFFFF
+$colorWhite           = lookup('$globalColorBackground')   || #FFFFFF
 
 $innerShadow = inset 0 0 11px rgba(0, 0, 0, .15)
 
@@ -35,6 +35,10 @@ $innerShadow = inset 0 0 11px rgba(0, 0, 0, .15)
         +below('m')
           margin-right: 20px
 
+        +below('s')
+          margin-right: 0
+          max-height: none
+
       &-desktopImageWrapper
         max-height: 380px
         overflow: hidden
@@ -49,8 +53,11 @@ $innerShadow = inset 0 0 11px rgba(0, 0, 0, .15)
           height: 100%
           width: 100%
 
-        +below('m')
+        +below('l')
           width: 100%
+
+        +below('s')
+          display: none
 
         .image
           display: block
@@ -74,6 +81,13 @@ $innerShadow = inset 0 0 11px rgba(0, 0, 0, .15)
           height: 100%
           width: 100%
 
+        +below('s')
+          bottom: auto
+          height: auto
+          position: relative
+          right: auto
+          width: 100%
+        
       &-content
         max-width: 640px
         padding-bottom: 2rem
