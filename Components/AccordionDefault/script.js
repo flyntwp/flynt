@@ -9,7 +9,7 @@ class AccordionDefault extends window.HTMLDivElement {
   }
 
   resolveElements () {
-    this.$accordionTriggers = $('.panel-trigger', this)
+    this.$accordionTriggers = $('[aria-controls]', this)
   }
 
   connectedCallback () {
@@ -20,10 +20,10 @@ class AccordionDefault extends window.HTMLDivElement {
     let $this = $(this)
     if ($this.attr('aria-expanded') === 'true') {
       $this.attr('aria-expanded', 'false')
-      $this.next().slideUp('slow').attr('aria-hidden', 'true')
+      $this.next().attr('aria-hidden', 'true').slideUp()
     } else {
       $this.attr('aria-expanded', 'true')
-      $this.next().slideDown('slow').attr('aria-hidden', 'false')
+      $this.next().attr('aria-hidden', 'false').slideDown()
     }
   }
 }

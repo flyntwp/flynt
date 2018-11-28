@@ -1,28 +1,31 @@
+$colorText = lookup('$globalColorText') || #222222
+$containerPadding = lookup('$globalContainerPadding') || 15px
+$containerMaxWidth = 640px
+
 $rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
 $rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
-$containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
-$containerPadding = lookup('$globalContainerPadding') || 15px
-$colorText = lookup('$globalColorText') || #222222
 
 .flyntComponent[is="flynt-accordion-default"]
   .container
-    center($containerMaxWidth, $containerPadding)
+    center($containerMaxWidth + 2 * $containerPadding, $containerPadding)
 
   .accordion
-    list-style-type: none
+    list-style: none
     margin: 0
     padding: 0
 
   .panel
-    margin-bottom: 20px
+    padding-bottom: 15px
 
-  .panel-trigger
-    cursor: pointer
-    padding: 20px 0
-    position: relative
-    width: 100%
+    &-trigger
+      cursor: pointer
+      outline: none
+      margin: 0
+      padding: 15px 30px 15px 0
+      position: relative
+      width: 100%
 
-    .panel-arrow
+    &-arrow
       display: block
       height: 20px
       position: absolute
@@ -31,31 +34,38 @@ $colorText = lookup('$globalColorText') || #222222
       transform: translateY(-50%)
       width: 30px
 
-      &:before, &:after
+      &::before,
+      &::after
         background-color: $colorText
         content: ''
         height: 100%
         position: absolute
-        transition: all .2s cubic-bezier(.165, .840, .440, 1.000)
-        width: 1px
+        transition: transform .2s cubic-bezier(.165, .840, .440, 1.000)
+        width: 2px
 
-      &:before
+      &::before
         left: 8px
+        transform: rotate(140deg)
+
+      &::after
+        right: 8px
+        transform: rotate(-140deg)
+
+  [aria-expanded="true"]
+    .panel-arrow
+      &::before
         transform: rotate(40deg)
 
-      &:after
-        right: 8px
+      &::after
         transform: rotate(-40deg)
-
-    &[aria-expanded="true"]
-      .panel-arrow
-
-        &:before
-          transform: rotate(140deg)
-
-        &:after
-          transform: rotate(-140deg)
 
   .panel-content
     display: none
-    padding: 20px 0
+
+    > :first-child
+      margin-top: 0
+      padding-top: 0
+
+    > :last-child
+      margin-bottom: 0
+      padding-bottom: 0

@@ -3,8 +3,8 @@
     <ul class="accordion" aria-label="Accordion Panel">
       {% for panel in accordionPanels %}
         <li class="panel">
-          <button class="panel-trigger" type="button" aria-expanded="false" aria-controls="content-{{ loop.index }}">
-            {{panel.panelTitle}}
+          <button class="panel-trigger h3" type="button" aria-expanded="false" aria-controls="content-{{ loop.index }}">
+            {{ panel.panelTitle }}
             <span class="panel-arrow"></span>
           </button>
           <div class="panel-content" aria-hidden="true" id="content-{{ loop.index }}">
