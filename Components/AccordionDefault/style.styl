@@ -1,0 +1,61 @@
+$rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
+$rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
+$containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
+$containerPadding = lookup('$globalContainerPadding') || 15px
+$colorText = lookup('$globalColorText') || #222222
+
+.flyntComponent[is="flynt-accordion-default"]
+  .container
+    center($containerMaxWidth, $containerPadding)
+
+  .accordion
+    list-style-type: none
+    margin: 0
+    padding: 0
+
+  .panel
+    margin-bottom: 20px
+
+  .panel-trigger
+    cursor: pointer
+    padding: 20px 0
+    position: relative
+    width: 100%
+
+    .panel-arrow
+      display: block
+      height: 20px
+      position: absolute
+      right: 0
+      top: 50%
+      transform: translateY(-50%)
+      width: 30px
+
+      &:before, &:after
+        background-color: $colorText
+        content: ''
+        height: 100%
+        position: absolute
+        transition: all .2s cubic-bezier(.165, .840, .440, 1.000)
+        width: 1px
+
+      &:before
+        left: 8px
+        transform: rotate(40deg)
+
+      &:after
+        right: 8px
+        transform: rotate(-40deg)
+
+    &[aria-expanded="true"]
+      .panel-arrow
+
+        &:before
+          transform: rotate(140deg)
+
+        &:after
+          transform: rotate(-140deg)
+
+  .panel-content
+    display: none
+    padding: 20px 0

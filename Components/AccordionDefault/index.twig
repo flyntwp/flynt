@@ -1,0 +1,17 @@
+<div class="flyntComponent" is="flynt-accordion-default">
+  <div class="container">
+    <ul class="accordion" aria-label="Accordion Panel">
+      {% for panel in accordionPanels %}
+        <li class="panel">
+          <button class="panel-trigger" type="button" aria-expanded="false" aria-controls="content-{{ loop.index }}">
+            {{panel.panelTitle}}
+            <span class="panel-arrow"></span>
+          </button>
+          <div class="panel-content" aria-hidden="true" id="content-{{ loop.index }}">
+            {{ panel.panelContent }}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
