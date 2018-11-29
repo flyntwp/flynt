@@ -10,20 +10,19 @@ class ListComponents extends window.HTMLDivElement {
 
   resolveElements () {
     this.animating = []
-    this.$components = $('.component-desktopImageWrapper, .component-mobileImageWrapper', this)
+    this.$componentImageWrappers = $('.component-desktopImageWrapper, .component-mobileImageWrapper', this)
   }
 
   connectedCallback () {
-    this.$.on('mouseover', this.$components.selector, this.previewScroll.bind(this))
-    this.$.on('mouseout', this.$components.selector, this.stopPreviewScroll.bind(this))
+    this.$.on('mouseover', this.$componentImageWrappers.selector, this.startPreviewScroll.bind(this))
+    this.$.on('mouseout', this.$componentImageWrappers.selector, this.stopPreviewScroll.bind(this))
   }
 
-  previewScroll (e) {
-    console.log('scroll')
+  startPreviewScroll (e) {
     let $imageWrapper = $(e.currentTarget)
     let $image = $imageWrapper.find('.image')
     if ($image.height() > $imageWrapper.height()) {
-      $image.css('transition', 'transform ' + 0.01 * ($image.height() - $imageWrapper.height()) + 's cubic-bezier(0.165, 0.84, 0.44, 1)')
+      $image.css('transition', 'transform ' + 0.01 * ($image.height() - $imageWrapper.height()) + 's cubic-bezier(0.215, 0.61, 0.355, 1)')
       $image.css('transform', 'translateY(-' + ($image.height() - $imageWrapper.height()) + 'px)')
     }
   }
@@ -32,7 +31,7 @@ class ListComponents extends window.HTMLDivElement {
     let $imageWrapper = $(e.currentTarget)
     let $image = $imageWrapper.find('.image')
     if ($image.height() > $imageWrapper.height()) {
-      $image.css('transition', 'transform ' + 0.01 * ($image.height() - $imageWrapper.height()) + 's cubic-bezier(0.165, 0.84, 0.44, 1)')
+      $image.css('transition', 'transform ' + 0.01 * ($image.height() - $imageWrapper.height()) + 's cubic-bezier(0.23, 1, 0.32, 1)')
       $image.css('transform', 'translateY(0)')
     }
   }

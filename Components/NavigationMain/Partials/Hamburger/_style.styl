@@ -2,8 +2,6 @@ $colorBars = lookup('$globalColorAccent') || #333
 $colorBarsActive = lookup('$globalColorBackground') || #fff
 
 .hamburger
-  background: transparent
-  border: 0
   cursor: pointer
   display: none
   height: 22px
@@ -12,14 +10,17 @@ $colorBarsActive = lookup('$globalColorBackground') || #fff
   right: 20px
   top: 22px
   width: 30px
-  z-index: 11
+  z-index: 999
 
-  &:before,
-  &:after
+  +below('s')
+    display: block
+
+  &::before,
+  &::after
     content: ''
 
-  &:before,
-  &:after,
+  &::before,
+  &::after,
   &-barPrimary,
   &-barSecondary
     background: $colorBars
@@ -28,9 +29,9 @@ $colorBarsActive = lookup('$globalColorBackground') || #fff
     left: 0
     position: absolute
     width: 30px
-    transition: opacity .35s ease-in-out, transform .35s ease-in-out, background .35s ease-in-out
+    transition: opacity .2s ease-in-out, transform .2s ease-in-out, background .2s ease-in-out
 
-  &:before
+  &::before
     top: 0
 
   &-barPrimary,
@@ -39,9 +40,6 @@ $colorBarsActive = lookup('$globalColorBackground') || #fff
 
   &:after
     top: 20px
-
-  +below('s')
-    display: block
 
 .navigationMain-isActive .hamburger
   &:before,

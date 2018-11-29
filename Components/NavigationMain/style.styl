@@ -4,24 +4,16 @@ $gutterWidth          = lookup('$globalGutterWidth')        || 15px
 $containerPadding     = lookup('$globalContainerPadding')   || 15px
 $containerMaxWidth    = lookup('$globalContainerMaxWidth')  || 1140px
 $navigationHeight     = lookup('$globalNavHeight')          || 64px
-$colorNavHead         = lookup('$globalColorBackground')    || #fff
+$colorBackground      = lookup('$globalColorBackground')    || #fff
 
 .flyntComponent[is='flynt-document-default'] body
   +below('s')
     margin-top: $navigationHeight
 
-  &.navigationMain-isActive
-    overflow: hidden
-
-  +below('s')
-    margin-top: $navigationHeight
+    &.navigationMain-isActive
+      overflow: hidden
 
 .flyntComponent[is='flynt-navigation-main']
-  *,
-  *:before,
-  *:after
-    box-sizing: border-box
-
   .navigationMain
     center($containerMaxWidth, $containerPadding)
     clearfix()
@@ -29,23 +21,20 @@ $colorNavHead         = lookup('$globalColorBackground')    || #fff
     padding-top: @padding-bottom
 
     +below('s')
-      padding-bottom: 0
-      padding-top: 0
+      padding: 0
 
-    &-head
-      float: left
-      position: relative
-
-      +below('s')
-        background: $colorNavHead
+      &-head
+        background: $colorBackground
         box-shadow: 0 2px 4px rgba(0, 0, 0, .13)
+        display: block
         height: $navigationHeight
         left: 0
         padding: 10px $containerPadding
         position: fixed
+        right: 0
         top: 0
         width: 100%
-        z-index: 11
+        z-index: 998
 
   @import 'Partials/BrandLogo/_style'
   @import 'Partials/Hamburger/_style'

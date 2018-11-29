@@ -3,40 +3,11 @@ $colorMenuLinkHover   = lookup('$globalColorAccent')      || #333
 $colorMenuLinkMobile  = lookup('$globalColorBackground')  || #fff
 $navigationHeight     = lookup('$globalNavHeight')        || 93px
 $colorBackground      = lookup('$globalColorBackground')  || #fff
-$colorAccent          = lookup('$globalColorAccent')      || #F98928
+$colorAccent          = lookup('$globalColorBrand')       || #91C6C4
 $navigationHeight     = lookup('$globalNavHeight')        || 64px
 
 .menu
   float: right
-  margin-top: 3px
-
-  +below('s')
-    background-color: $colorAccent
-    height: 100%
-    left: 0
-    margin: 0
-    transform: translateX(100%)
-    padding-top: 30px
-    position: fixed
-    top: $navigationHeight
-    transition: transform .45s cubic-bezier(.19, 1, .22, 1)
-    width: 100%
-    z-index: 10
-
-    &-hasNoTransition
-      transition: none
-
-  &-logoImage
-    margin-left: 5px
-
-  &-logo
-    display: none
-    height: auto
-    margin: 45px auto 35px
-    max-width: 62px
-
-    +below('s')
-      display: block
 
   &-list
     clearfix()
@@ -46,67 +17,50 @@ $navigationHeight     = lookup('$globalNavHeight')        || 64px
 
   &-item
     float: left
-    line-height: 1
     margin: 0 0 0 10px
     padding: 0
-
-    +below('s')
-      display: block
-      float: none
-      margin: 0
 
     &:first-child
       margin-left: 0
 
-    &:before
-      content: none
-
-    &-hasButton
-      +above('m')
-        margin-left: 24px
-
-        .menu-link
-          margin: 0
-
   &-link
+    color: $colorMenuLink
     display: block
-    font-size: 16px
-    padding: 14px
+    font-size: 18px
+    padding: 11px
     text-decoration: none
 
-    +above('m')
-      &:not(.btn)
-        color: $colorMenuLink
+  +below('s')
+    backface-visibility: hidden
+    background-color: $colorAccent
+    height: 100%
+    left: 0
+    margin: 0
+    transform: translateX(100%)
+    padding-top: $navigationHeight
+    position: fixed
+    top: 0
+    transition: transform .45s cubic-bezier(.19, 1, .22, 1)
+    width: 100%
+    z-index: 997
 
-    +below('s')
-      border: 0
-      display: block
-      font-size: 20px
+    &-hasNoTransition
+      transition: none
+
+    &-list
+      margin-top: 30px
+
+    &-item
+      float: none
       margin: 0
+
+    &-link
+      font-size: 1.25rem
       text-align: center
 
       &,
-      &.btn
-        padding: 14px 15px
-
-        &:after,
-        &:before
-          display: none
-
-      &,
       &:hover
-        background-color: transparent
         color: $colorMenuLinkMobile
-
-  &-item:not(.menu-item-hasButton):hover .menu-link,
-  .current-menu-item .menu-link,
-  .current-menu-ancestor .menu-link
-    +above('m')
-      color: $colorMenuLinkHover
-      text-decoration: underline
-
-    +below('s')
-      color: $colorMenuLinkMobile
 
 .navigationMain-isActive .menu
   +below('s')
