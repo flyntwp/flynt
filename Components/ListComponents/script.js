@@ -19,7 +19,6 @@ class ListComponents extends window.HTMLDivElement {
   }
 
   previewScroll (e) {
-    console.log('scroll')
     let $imageWrapper = $(e.currentTarget)
     let $image = $imageWrapper.find('.image')
     if ($image.height() > $imageWrapper.height()) {
