@@ -13,7 +13,7 @@
             {% if block.ctas %}
               <div class="component-ctas">
                 {% for cta in block.ctas %}
-                  <a href="{{ cta.link.url }}" class="btn{% if cta.primary %} btn--primary{% endif %}">
+                  <a href="{{ cta.link.url }}" class="btn{% if cta.primary == 'primary' %} btn--primary{% endif %}">
                     {{ cta.link.title }}
                   </a>
                 {% endfor %}
