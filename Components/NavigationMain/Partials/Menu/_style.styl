@@ -1,9 +1,10 @@
-$colorMenuLink       = lookup('$globalColorText')       || #aaa
-$colorMenuLinkHover  = lookup('$globalColorAccent')     || #333
-$colorMenuLinkMobile = lookup('$globalColorBackground') || #fff
-$navigationHeight    = lookup('$globalNavHeight')       || 93px
-$colorBackground     = lookup('$globalColorBackground') || #fff
-$colorAccent         = lookup('$globalColorAccent')     || #F98928
+$colorMenuLink        = lookup('$globalColorText')        || #aaa
+$colorMenuLinkHover   = lookup('$globalColorAccent')      || #333
+$colorMenuLinkMobile  = lookup('$globalColorBackground')  || #fff
+$navigationHeight     = lookup('$globalNavHeight')        || 93px
+$colorBackground      = lookup('$globalColorBackground')  || #fff
+$colorAccent          = lookup('$globalColorAccent')      || #F98928
+$navigationHeight     = lookup('$globalNavHeight')        || 64px
 
 .menu
   float: right
@@ -14,12 +15,11 @@ $colorAccent         = lookup('$globalColorAccent')     || #F98928
     height: 100%
     left: 0
     margin: 0
-    opacity: 0
-    padding-top: $navigationHeight
+    transform: translateX(100%)
+    padding-top: 30px
     position: fixed
-    top: 0
-    transition: opacity .35s, visibility .35s
-    visibility: hidden
+    top: $navigationHeight
+    transition: transform .45s cubic-bezier(.19, 1, .22, 1)
     width: 100%
     z-index: 10
 
@@ -110,5 +110,4 @@ $colorAccent         = lookup('$globalColorAccent')     || #F98928
 
 .navigationMain-isActive .menu
   +below('s')
-    opacity: 1
-    visibility: visible
+    transform: translateX(0)

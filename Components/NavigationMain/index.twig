@@ -3,8 +3,8 @@
     <div class="navigationMain-head">
       {% include 'Partials/BrandLogo/index.twig' %}
     </div>
-    {% include 'Partials/Hamburger/index.twig' %}
     {% if menu %}
+      {% include 'Partials/Hamburger/index.twig' %}
       {% include 'Partials/Menu/index.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel, 'socialLinks': socialLinks, 'brandLogoDarkUrl': brandLogoDarkUrl, 'brandLogoDark': brandLogoDark } %}
     {% endif %}
   </div>

@@ -1,10 +1,10 @@
-$rupture.scale = lookup('$globalRuptureScale') || (0 575px 767px 991px 1199px)
+$rupture.scale        = lookup('$globalRuptureScale')       || (0 575px 767px 991px 1199px)
 $rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
-$gutterWidth = lookup('$globalGutterWidth') || 15px
-$containerPadding = lookup('$globalContainerPadding') || 15px
-$containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
-$navigationHeight = lookup('$globalNavHeight') || 75px
-$colorNavHead = lookup('$globalColorBackground') || #fff
+$gutterWidth          = lookup('$globalGutterWidth')        || 15px
+$containerPadding     = lookup('$globalContainerPadding')   || 15px
+$containerMaxWidth    = lookup('$globalContainerMaxWidth')  || 1140px
+$navigationHeight     = lookup('$globalNavHeight')          || 64px
+$colorNavHead         = lookup('$globalColorBackground')    || #fff
 
 .flyntComponent[is='flynt-document-default'] body
   +below('s')
@@ -45,7 +45,7 @@ $colorNavHead = lookup('$globalColorBackground') || #fff
         position: fixed
         top: 0
         width: 100%
-        z-index: 9
+        z-index: 11
 
   @import 'Partials/BrandLogo/_style'
   @import 'Partials/Hamburger/_style'
