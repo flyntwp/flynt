@@ -45,7 +45,7 @@
               {% if block.ctas %}
                 <p>
                   {% for cta in block.ctas %}
-                    <a href="{{ cta.link.url }}" class="btn{% if cta.primary %} btn--primary{% endif %}">
+                    <a href="{{ cta.link.url }}" class="btn btn--{{ cta.buttonType }}">
                       {{ cta.link.title }}
                     </a>
                   {% endfor %}

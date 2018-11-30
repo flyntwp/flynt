@@ -26,7 +26,7 @@
             "type": "repeater",
             "collapsed": 0,
             "min": 1,
-            "layout": "block",
+            "layout": "table",
             "button_label": "Add Call To Action",
             "sub_fields": [
               {
@@ -34,13 +34,23 @@
                 "name": "link",
                 "type": "link",
                 "return_format": "array",
-                "required": 1
+                "required": 1,
+                "wrapper": {
+                  "width": 70
+                }
               },
               {
-                  "label": "Primary Button",
-                  "name": "primary",
-                  "type": "true_false",
-                  "ui": 1
+                "label": "Button Type",
+                "name": "buttonType",
+                "type": "button_group",
+                "choices": {
+                  "primary": "Primary",
+                  "secondary": "Secondary"
+                },
+                "wrapper": {
+                  "width": 30
+                },
+                "ui": 1
               }
             ]
           }
