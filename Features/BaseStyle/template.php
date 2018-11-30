@@ -1,9 +1,35 @@
 <?php
 
-use Flynt\BuildConstructionPlan;
-use Flynt\Render;
-
-$config = json_decode(file_get_contents(__DIR__ . '/template.json'), true);
-$cp = BuildConstructionPlan::fromConfig($config);
-
-echo Render::fromConstructionPlan($cp);
+Flynt\echoHtmlFromConfig([
+    'name' => 'DocumentDefault',
+    'areas' => [
+        'layout' => [
+            [
+                'name' => 'LayoutSinglePost',
+                'areas' => [
+                    'mainHeader' => [
+                        [
+                            'name' => 'NavigationMain',
+                            'customData' => [
+                                'menuSlug' => 'navigation_main'
+                            ]
+                        ]
+                    ],
+                    'pageComponents' => [
+                        [
+                            'name' => 'BlockBaseStyle'
+                        ]
+                    ],
+                    'mainFooter' => [
+                        [
+                            'name' => 'NavigationFooter',
+                            'customData' => [
+                                'menuSlug' => 'navigation_footer'
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ]
+    ]
+]);
