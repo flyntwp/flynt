@@ -60,7 +60,7 @@
     "require-dir": "^0.3.1",
     "run-sequence": "^2.2.0",
     "rupture": "^0.6.2",
-    "slick-carousel": "^1.6.0",
+    "slick-carousel": "^1.8.1",
     "standard": "^9.0.2",
     "standard-version": "^4.2.0",
     "stylint": "^1.5.7",

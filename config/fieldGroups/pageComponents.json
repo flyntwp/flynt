@@ -17,7 +17,8 @@
         "Flynt/Components/BlockWysiwyg/Fields/Layout",
         "Flynt/Components/ListComponents/Fields/Layout",
         "Flynt/Components/SliderMedia/Fields/Layout",
-        "Flynt/Components/AccordionDefault/Fields/Layout"
+        "Flynt/Components/AccordionDefault/Fields/Layout",
+        "Flynt/Components/SliderImages/Fields/Layout"
       ]
     }
   ],
