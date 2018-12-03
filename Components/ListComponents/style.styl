@@ -1,103 +1,87 @@
-$containerPadding     = lookup('$globalContainerPadding')  || 20px
-$containerMaxWidth    = lookup('$globalContainerMaxWidth') || 1270px
-$rupture.anti-overlap = lookup('$globalRuptureOverlap')    || -1px
-$rupture.scale        = lookup('$globalRuptureScale')      || (0 426px 576px 768px 992px 1200px)
-$colorBlack           = lookup('$globalColorBlack')        || #00000
-$colorWhite           = lookup('$globalColorBackground')   || #FFFFFF
-
-$innerShadow = inset 0 0 11px rgba(0, 0, 0, .15)
+$containerPadding     = lookup('$globalContainerPadding')   || 20px
+$containerMaxWidth    = lookup('$globalContainerMaxWidth')  || 1270px
+$contentMaxWidth      = lookup('$globalContentMaxWidth')    || 600px
+$rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
+$rupture.scale        = lookup('$globalRuptureScale')       || (0 426px 576px 768px 992px 1200px)
+$colorBlack           = lookup('$globalColorBlack')         || #00000
+$colorBackground      = lookup('$globalColorBackground')    || #FFFFFF
 
 .flyntComponent[is="flynt-list-components"]
   display: flex
   justify-content: center
 
-  .listComponents
+  .container
     max-width: $containerMaxWidth
     padding: $containerPadding
 
-    .component
-      display: flex
-      flex-direction: row-reverse
-      justify-content: flex-end
-      padding-bottom: 3rem
+  .components
+    list-style: none
+    margin: 0
+    padding: 0
 
-      &--noImage
-        justify-content: center
+  .component
+    display: flex
+    padding-bottom: 100px
+
+    &--noImage
+      justify-content: center
+
+    +below('l')
+      display: block
+
+    &-previews
+      margin-right: 40px
+      padding: 0 20px 20px 0
+      position: relative
 
       +below('l')
-        display: block
+        margin-right: 0
 
-      &-imageWrapper
-        margin-right: 50px
+      +below('s')
+        margin-right: 0
+        max-height: none
+
+    &-previewImage
+      background-color: $colorBackground
+      box-shadow: 0 0 11px rgba(0, 0, 0, .15)
+      overflow: hidden
+
+      &--desktop
+        height: 100%
+        min-height: 290px
         max-height: 380px
-        position: relative
-
-        +below('m')
-          margin-right: 20px
-
-        +below('s')
-          margin-right: 0
-          max-height: none
-
-      &-desktopImageWrapper
-        max-height: 380px
-        overflow: hidden
-        width: 640px - 2 * $containerPadding
-
-        &:after
-          box-shadow: $innerShadow
-          content: ''
-          display: block
-          position: absolute
-          top: 0
-          height: 100%
-          width: 100%
+        width: 580px
 
         +below('l')
+          max-width: $containerMaxWidth - 20px
           width: 100%
 
         +below('s')
           display: none
 
-        .image
-          display: block
-          width: 100%
-
-      &-mobileImageWrapper
-        background-color: $colorWhite
-        bottom: -20px
-        height: 240px
-        overflow: hidden
+      &--mobile
+        bottom: 0
+        max-height: 240px
         position: absolute
-        right: @bottom
+        right: 0
         width: 160px
-
-        &:after
-          box-shadow: $innerShadow
-          content: ''
-          display: block
-          position: absolute
-          top: 0
-          height: 100%
-          width: 100%
 
         +below('s')
           bottom: auto
-          height: auto
+          max-height: none
           position: relative
           right: auto
           width: 100%
 
-      &-content
-        max-width: 640px
-        padding-bottom: 2rem
+    &-content
+      max-width: $contentMaxWidth
 
-        h2
-          margin-top: -7px
+      > :first-child
+        margin-top: 0
+
+        +above('m')
           padding-top: 0
 
-        +below('m')
-          padding-top: 2rem
-
-      &-ctas
-        padding-top: 20px
+      > :last-child
+        margin-bottom: 0
+        padding-bottom: 0

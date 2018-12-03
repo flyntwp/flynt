@@ -1,22 +1,20 @@
 <div class="flyntComponent" is="flynt-block-image-text">
-  <div class="wrapper">
-    <div class="container">
-      <div class="box box--{{ imagePosition }}">
-        <div class="box-image">
-          <img class="lazyload lazyload--fade"
-            src="{{ image.src|resize(1280) }}"
-            srcset="{{ transparentPng(image.aspect) }}"
-            data-srcset="
-              {{ image.src|resize(1920) }} 1920w,
-              {{ image.src|resize(1280) }} 1280w,
-              {{ image.src|resize(750) }} 750w,
-              {{ image.src|resize(375) }} 375w"
-            data-sizes="auto"
-            alt="{{ image.alt|e }}">
-        </div>
-        <div class="box-content">
-          {{ contentHtml|e('wp_kses_post') }}
-        </div>
+  <div class="container">
+    <div class="box box--{{ imagePosition }}">
+      <div class="box-image">
+        <img class="lazyload lazyload--fade"
+          src="{{ image.src|resize(1280) }}"
+          srcset="{{ transparentPng(image.aspect) }}"
+          data-srcset="
+            {{ image.src|resize(1920) }} 1920w,
+            {{ image.src|resize(1280) }} 1280w,
+            {{ image.src|resize(750) }} 750w,
+            {{ image.src|resize(375) }} 375w"
+          data-sizes="auto"
+          alt="{{ image.alt|e }}">
+      </div>
+      <div class="box-content">
+        {{ contentHtml|e('wp_kses_post') }}
       </div>
     </div>
   </div>

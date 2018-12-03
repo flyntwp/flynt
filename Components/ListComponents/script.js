@@ -10,7 +10,7 @@ class ListComponents extends window.HTMLDivElement {
 
   resolveElements () {
     this.animating = []
-    this.$componentImageWrappers = $('.component-desktopImageWrapper, .component-mobileImageWrapper', this)
+    this.$componentImageWrappers = $('.component-previewImage', this)
   }
 
   connectedCallback () {

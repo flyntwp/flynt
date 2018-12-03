@@ -41,7 +41,7 @@
               },
               {
                 "label": "Button Type",
-                "name": "primary",
+                "name": "buttonType",
                 "type": "button_group",
                 "choices": {
                   "primary": "Primary",

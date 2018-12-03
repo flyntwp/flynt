@@ -4,11 +4,10 @@ $containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
 $containerPadding = lookup('$globalContainerPadding') || 15px
 
 .flyntComponent[is='flynt-block-image-text']
-  .wrapper
-    margin-bottom: 2rem
-
   .container
-    center($containerMaxWidth, $containerPadding)
+    padding: 0 $containerPadding
+    margin: 0 auto 2rem
+    max-width: $containerMaxWidth
 
   .box
     align-items: center

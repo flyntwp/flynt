@@ -1,10 +1,13 @@
 $containerPadding     = lookup('$globalContainerPadding')   || 20px
 $containerMaxWidth    = lookup('$globalContainerMaxWidth')  || 1270px
+$contentMaxWidth      = lookup('$globalContentMaxWidth')    || 600px
 $rupture.scale        = lookup('$globalRuptureScale')       || (0 575px 767px 991px 1199px)
 $rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
 
 .flyntComponent[is='flynt-block-basestyle']
-  .baseStyle
-    margin: 0 auto
-    max-width: 640px
+  .container
     padding: 0 $containerPadding
+
+  .content
+    margin: 0 auto
+    max-width: $contentMaxWidth

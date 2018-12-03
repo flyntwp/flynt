@@ -1,13 +1,17 @@
-$colorText = lookup('$globalColorText') || #222222
-$containerPadding = lookup('$globalContainerPadding') || 15px
-$containerMaxWidth = 640px
+$colorText            = lookup('$globalColorText')          || #222222
+$containerPadding     = lookup('$globalContainerPadding')   || 15px
+$contentMaxWidth      = lookup('$globalContentMaxWidth')    || 600px
 
 $rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
 $rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
 
 .flyntComponent[is="flynt-accordion-default"]
   .container
-    center($containerMaxWidth + 2 * $containerPadding, $containerPadding)
+    padding: 0 $containerPadding
+
+  .content
+    margin: 0 auto
+    max-width: $contentMaxWidth
 
   .accordion
     list-style: none
