@@ -1,0 +1,97 @@
+$rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
+$rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
+$containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
+$containerPadding = lookup('$globalContainerPadding') || 15px
+$colorText = lookup('$globalColorText') || #222222
+
+.flyntComponent[is="flynt-slider-image-gallery"]
+  .container
+    center($containerMaxWidth, $containerPadding)
+
+  .slider
+    position: relative
+
+    .slick-list,
+    .slick-track
+      height: 100%
+
+    .slide
+      outline: 0
+      padding: 0 2px
+
+    &-thumb
+
+      .slide
+        cursor: pointer
+        opacity: .5
+        padding: 0 6px
+        transition: opacity .2s ease-out
+
+        &:hover
+          opacity: 1
+
+        &.slick-current
+          cursor: default
+          opacity: 1
+
+      img
+        width: auto
+
+  // SLICK ARROWS
+  .slick-arrow
+    cursor: pointer
+    display: none
+    padding: 10px
+    position: absolute
+    text-indent: -99999px
+    top: 50%
+    transform: translateY(-50%)
+    z-index: 2
+
+    &.slick-prev
+      background: url('../../Components/SliderImageGallery/Assets/arrow-left.svg') no-repeat center
+      left: 10px
+      padding-left: 20px
+
+    &.slick-next
+      background: url('../../Components/SliderImageGallery/Assets/arrow-right.svg') no-repeat center
+      padding-right: 20px
+      right: 10px
+
+    &.slick-disabled
+      opacity: 0
+      transition: opacity .2s ease-out, visibility 0s linear .2s
+      visibility: hidden
+
+  // SLICK DOTS
+  .slick-dots
+    display: none
+    left: 0
+    margin: 0
+    padding: 0
+    position: absolute
+    text-align: center
+    top: 75%
+    width: 100%
+
+    > li
+      display: inline-block
+      list-style: none
+      margin: 0 4px
+      vertical-align: middle
+
+      button
+        background: transparent
+        border-radius: 50%
+        border: 1px solid #ffffff
+        color: transparent
+        cursor: pointer
+        display: block
+        height: 8px
+        outline: 0
+        pointer-events: all
+        width: 8px
+
+      &.slick-active
+        button
+          background: #ffffff

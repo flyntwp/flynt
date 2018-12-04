@@ -1,12 +1,12 @@
 <?php
 
-namespace Flynt\Components\SliderImages;
+namespace Flynt\Components\SliderImageGallery;
 
 use Flynt\Features\Components\Component;
 
-add_filter('Flynt/addComponentData?name=SliderImages', function ($data) {
+add_filter('Flynt/addComponentData?name=SliderImageGallery', function ($data) {
     add_action('wp_enqueue_scripts', function () {
-        Component::enqueueAssets('SliderImages', [
+        Component::enqueueAssets('SliderImageGallery', [
             [
                 'name' => 'slick-carousel',
                 'path' => 'vendor/slick.js',
