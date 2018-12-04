@@ -18,7 +18,7 @@ class SliderImages extends window.HTMLDivElement {
   setOptions () {
     this.slickOptions = {
       dots: false,
-      infinite: true,
+      infinite: false,
       arrows: true,
       responsive: [
         {
