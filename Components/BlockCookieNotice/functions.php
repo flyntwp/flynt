@@ -26,4 +26,3 @@ add_filter('Flynt/addComponentData?name=BlockCookieNotice', function ($data) {
     ];
     return $data;
 });
-

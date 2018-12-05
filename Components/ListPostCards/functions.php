@@ -5,7 +5,6 @@ use Flynt\Features\Components\Component;
 use Timber\Timber;
 use Timber\Post;
 
-
 add_filter('Flynt/addComponentData?name=ListPostCards', function ($data) {
     add_action('wp_enqueue_scripts', function () {
         Component::enqueueAssets('ListPostCards');
