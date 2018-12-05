@@ -9,6 +9,7 @@
       "type": "flexible_content",
       "button_label": "Add Component",
       "layouts": [
+        "Flynt/Components/BlockCookieNotice/Fields/Layout",
         "Flynt/Components/BlockImage/Fields/Layout",
         "Flynt/Components/BlockImageText/Fields/Layout",
         "Flynt/Components/BlockMediaText/Fields/Layout",

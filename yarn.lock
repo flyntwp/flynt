@@ -3726,9 +3726,9 @@ jeet@^7.0.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/jeet/-/jeet-7.2.0.tgz#2aa562a2dc1d74cc99527113f16a821e974e30ee"
 
-jquery@>=1.7.2:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
+js-cookie@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-2.2.0.tgz#1b2c279a6eece380a12168b92485265b35b1effb"
 
 js-tokens@^3.0.0, js-tokens@^3.0.2:
   version "3.0.2"
@@ -3831,7 +3831,6 @@ lazy-cache@^1.0.3:
 lazysizes@^4.1.4:
   version "4.1.4"
   resolved "https://registry.yarnpkg.com/lazysizes/-/lazysizes-4.1.4.tgz#1b2974420252e6eab7a6a1e8c8bdcb177a72a06a"
-  integrity sha512-jVplgeHHoQ6a2RZtxCAKFAnm6QPQmEIKq4JWSTI1XfCBhn+CqDgMKWDJO81f8VtVBdAlHs+BzP2WGzMLUi3oFg==
 
 lcid@^1.0.0:
   version "1.0.0"
@@ -5665,7 +5664,6 @@ slice-ansi@0.0.4:
 slick-carousel@^1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/slick-carousel/-/slick-carousel-1.8.1.tgz#a4bfb29014887bb66ce528b90bd0cda262cc8f8d"
-  integrity sha512-XB9Ftrf2EEKfzoQXt3Nitrt/IPbT+f1fgqBdoxO3W/+JYvtEOW6EgxnWfr9GH6nmULv7Y2tPmEX3koxThVmebA==
 
 snapdragon-node@^2.0.1:
   version "2.1.1"
