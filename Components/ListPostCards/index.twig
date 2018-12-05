@@ -1,0 +1,44 @@
+<div class="flyntComponent" is="flynt-list-post-cards">
+  <div class="container">
+    {% if listPostsHtmlContent %}
+      <div class="heading">{{ listPostsHtmlContent }}</div>
+    {% endif %}
+    {% if posts %}
+      <ul class="list">
+        {% for post in posts %}
+          <li class="post">
+          <a class="post-link" href="{{ post.link }}" {{ post.target == '_blank' ? 'target="_blank" rel="noreferrer noopener"' }} title="{{ post.title|e }}">
+            {% if post.thumbnail %}
+              <figure class="figure">
+                <img class="figure-image lazyload lazyload--fade"
+                  src="{{ post.thumbnail|resize(1280) }}"
+                  srcset="{{ transparentPng(post.thumbnail.aspect) }}"
+                  data-srcset="
+                    {{ post.thumbnail|resize(1920) }} 1920w,
+                    {{ post.thumbnail|resize(1280, 720) }} 1280w,
+                    {{ post.thumbnail|resize(752, 423) }} 752w,
+                    {{ post.thumbnail|resize(368, 207) }} 368w"
+                  data-sizes="auto"
+                  alt="{{ post.thumbnail.alt|e }}">
+              </figure>
+            {% endif %}
+            <div class="content">
+              {% if post.post_date %}
+                <time class="date" datetime="{{ post.post_date }}">{{ post.post_date | date }}</time>
+              {% endif %}
+              <h3 class="h4">
+                {{ post.title }}
+              </h3>
+            </div>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+      {% if listPostsLink %}
+        <div class="see-more-link">
+          <a href="{{ listPostsLink.url }}" target="{{ listPostsLink.target }}" title="{{ listPostsLink.title|e }}">{{ readMoreText|e }}</a>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+</div>
