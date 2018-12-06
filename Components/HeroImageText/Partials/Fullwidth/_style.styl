@@ -1,0 +1,77 @@
+  .heroImageText
+    .container-fullWidth
+      position: relative
+
+    .image
+      width: 100%
+
+      +below('l')
+        min-height: 357px
+        object-fit: cover
+
+    .content
+      position: absolute
+      top: 50%
+      transform: translate3d(0, -50%, 0)
+      width: 100%
+      z-index: 4
+
+      +below('l')
+        bottom: 20px
+        top: auto
+        transform: translate3d(0, 0, 0)
+
+    .content-inner
+      margin: 0 auto
+      max-width: $contentMaxWidth
+      padding: $containerPadding
+      text-align: center
+
+      &--whiteColor
+        {$headings}
+          color: $colorWhite
+
+      .btn.btn--primary
+        display: block
+        margin-left: auto
+        margin-right: @margin-left
+        max-width: 380px
+
+        +below('m')
+          max-width: 340px
+
+  .heroImageText-boxed
+    .container
+      max-width: $containerMaxWidth
+      margin: 0 auto
+
+    .content
+      position: absolute
+      top: 50%
+      transform: translate3d(0, -50%, 0)
+      width: 100%
+      z-index: 4
+
+      +below('l')
+        bottom: 20px
+        top: auto
+        transform: translate3d(0, 0, 0)
+
+    .content-inner
+      margin: 0 auto
+      max-width: $contentMaxWidth
+      padding: $containerPadding
+      text-align: center
+
+      &--whiteColor
+        {$headings}
+          color: $colorWhite
+
+      .btn.btn--primary
+        display: block
+        margin-left: auto
+        margin-right: @margin-left
+        max-width: 380px
+
+        +below('m')
+          max-width: 340px
