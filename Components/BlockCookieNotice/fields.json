@@ -1,19 +1,6 @@
 
 {
-  "layout": {
-    "name": "blockCookieNotice",
-    "label": "Block: Cookie Notice",
-    "sub_fields": []
-  },
-
   "translatableOptions": [
-    {
-      "label": "Show Cookie Notice",
-      "name": "showCookieNotice",
-      "type": "true_false",
-      "default_value": 0,
-      "ui": 1
-    },
     {
       "label": "Content Html",
       "name": "contentHtml",
@@ -22,49 +9,14 @@
       "toolbar": "full",
       "media_upload": 0,
       "delay": 1,
-      "required": 1,
-      "conditional_logic": [
-        [
-          {
-            "fieldPath": "showCookieNotice",
-            "operator": "==",
-            "value": 1
-          }
-        ]
-      ]
-    },
-    {
-      "label": "Number of days for cookie expiration",
-      "name": "expiryDays",
-      "type": "number",
-      "min": 1,
-      "required": 1,
-      "default_value": 28,
-      "conditional_logic": [
-        [
-          {
-            "fieldPath": "showCookieNotice",
-            "operator": "==",
-            "value": 1
-          }
-        ]
-      ]
+      "required": 1
     },
     {
       "label": "Close Button Label",
       "name": "closeButtonLabel",
       "type": "text",
       "default_value": "Schliessen",
-      "required": 1,
-      "conditional_logic": [
-        [
-          {
-            "fieldPath": "showCookieNotice",
-            "operator": "==",
-            "value": 1
-          }
-        ]
-      ]
+      "required": 1
     }
   ]
 }

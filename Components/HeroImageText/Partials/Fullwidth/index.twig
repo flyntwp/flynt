@@ -1,0 +1,30 @@
+<div class="heroImageText">
+  <div class="container-fullWidth">
+    <div class="picture">
+      <picture>
+        <source srcset="
+          {{ image.src | resize(670, 216) }} 670w,
+          {{ image.src | resize(1000, 360) }} 1000w,
+          {{ image.src | resize(1200, 432) }} 1200w,
+          {{ image.src | resize(2000, 720) }} 2000w,
+          {{ image.src | resize(4000, 1440) }} 4000w"
+        media="(min-width: 800px)">
+        <img class="image lazyload" data-srcset="
+          {{ mobileImage.src | resize(800, 357) }} 800w"
+        src="{{ image.src | resize(1200, 675) }}"
+        srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+        data-sizes="auto"
+        itemprop="image"
+        alt="{{ image.alt }}">
+        <meta content="{{ image.src }}" itemprop="contentUrl">
+      </picture>
+    </div>
+    {% if contentHtml %}
+      <div class="content">
+        <div class="content-inner {% if fontColor == true %}content-inner--whiteColor{% endif %}">
+          {{ contentHtml }}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>

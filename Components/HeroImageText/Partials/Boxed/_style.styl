@@ -1,0 +1,81 @@
+$minComponentHeight   = 575px
+$maxComponentHeight   = 1080px
+
+.heroImageText-boxed,
+.heroImageText-boxed-wrapper
+  max-height: $maxComponentHeight
+  min-height: $minComponentHeight
+
+.heroImageText-boxed
+  height: calc(100vh - 80px)
+  overflow: hidden
+
+  &-wrapper
+    center(1920px)
+    align-items: center
+    display: flex
+    height: 100%
+    position: relative
+
+  .containerContent
+    max-width: $containerMaxWidth
+    width: 100%
+    margin: 0 auto
+
+    .content
+      margin-top: -50px
+      max-width: 720px
+      padding: $containerPadding
+      position: absolute
+      width: 100%
+      z-index: 2
+
+      +below('m')
+        max-width: 300px
+
+      h1, .h1
+        font-size: 6.25rem
+        line-height: 1.04
+        margin-bottom: 1.25rem
+        margin-left: -4px
+        padding: 0
+
+        +below('m')
+          font-size: 3.063rem
+          margin-left: -1px
+
+        +below(365px)
+          font-size: 2.463rem
+
+  .imageWrapper
+    max-height: 620px
+    max-width: 916px
+    object-fit: cover
+    position: absolute
+    right: 0
+    top: 50%
+    transform: translateY(-50%)
+    width: 100%
+
+    +above(1500px)
+      max-height: 839px
+      max-width: 1240px
+
+    +below(1500px)
+      max-height: 700px
+      max-width: 1034px
+
+    +below('xl')
+      width: 750px
+
+    +below('l')
+      width: 550px
+
+    +below('m')
+      width: 68%
+
+  .image
+    display: block
+    height: 100%
+    object-fit: cover
+    width: 100%

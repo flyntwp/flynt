@@ -1,0 +1,115 @@
+$rupture.anti-overlap = lookup('$globalRuptureOverlap') || -1px
+$rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
+$containerPadding     = lookup('$globalContainerPadding')   || 20px
+$containerMaxWidth    = lookup('$globalContainerMaxWidth')  || 1270px
+$contentMaxWidth      = lookup('$globalContentMaxWidth')    || 600px
+
+
+/**** */
+
+.flyntComponent[is="flynt-grid-download-portrait"]
+  *,
+  *:before,
+  *:after
+    box-sizing: border-box
+
+  .container
+    max-width: $containerMaxWidth
+    display: block
+    position: relative
+    margin: 0 auto
+
+
+  .downloadGrid
+    overflow: hidden
+
+    &-list
+      clearfix()
+      display: flex
+      list-style-type: none
+      flex-direction: row
+      flex-wrap: wrap
+
+    &-item
+      // span((1 / 6), $cycle: 6)
+      // margin-bottom: 3px
+      overflow: hidden
+      // padding-bottom: unit(16.666666666666664 * 1.3242009132, '%')
+      position: relative
+      padding: 3px
+      flex: 0 33.3333%
+
+    &-link
+      background-color: #fff
+      color: $colorText
+      height: 100%
+      opacity: 0
+      position: absolute
+      text-align: center
+      text-decoration: none
+      transition: opacity .3s ease-out
+      width: 100%
+      z-index: 2
+
+      &:hover
+        // color: $colorText
+        opacity: 1
+        text-decoration: none
+
+      +below(375px)
+        bottom: 0
+        height: auto
+        opacity: 1
+        text-align: left
+        transform: translateY(100%)
+        width: auto
+
+        &:hover
+          // color: $colorLinkHover
+          text-decoration: none
+
+    &-tableWrapper
+      display: flex
+      align-items: center
+      height: 100%
+      width: 100%
+      flex-direction: column
+      align-content: center
+
+    &-content
+      display: flex
+      flex-direction: column
+      align-items: center
+
+      +below(375px)
+        display: block
+        margin-top: 1.125rem
+        text-align: left
+
+    &-title
+      display: block
+      margin-top: 0
+      word-break: break-word
+
+      +below(375px)
+        margin-left: 1.5rem
+
+    &-fileSize
+      display: block
+
+      +below(375px)
+        margin-left: 1.5rem
+
+    &-image
+      display: block
+      font-family: 'object-fit: contain; object-position: center;' // @stylint ignore
+      height: auto
+      object-fit: contain
+      object-position: center
+      padding: 3px 3px 0
+      position: absolute
+      width: 100%
+      z-index: 1
+
+      +below(375px)
+        padding: 0

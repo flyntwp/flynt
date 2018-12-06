@@ -147,3 +147,23 @@ function aspectToRatio($n, $tolerance = 1.e-6)
         'height' => $k1
     ];
 }
+
+function generateToken($args)
+{
+    return crypt(serialize($args), NONCE_SALT);
+}
+
+add_action('timber/twig/filters', function ($twig) {
+    $twig->addFilter(new \Twig_SimpleFilter('resizeDynamic', function ($src, $w, $h = 0, $crop = 'default', $force = false) {
+        $arguments = [
+            'src' => $src,
+            'w' => $w,
+            'h' => $h,
+            'crop' => $crop,
+            'force' => $force,
+        ];
+        $arguments['token'] = generateToken($arguments);
+        return add_query_arg($arguments, home_url('dynamic-images'));
+    }));
+    return $twig;
+});

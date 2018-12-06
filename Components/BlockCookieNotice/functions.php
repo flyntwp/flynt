@@ -18,7 +18,7 @@ add_filter('Flynt/addComponentData?name=BlockCookieNotice', function ($data) {
     if (!empty($data['expiryDays'])) {
         $expiryDays = (int) $data['expiryDays'];
     } else {
-        $expiryDays = 7;
+        $expiryDays = 365;
     }
 
     $data['json'] = [
