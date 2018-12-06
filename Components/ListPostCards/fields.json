@@ -5,12 +5,6 @@
       "label": "no Posts Found Text",
       "type": "text",
       "default_value": "No posts found"
-    },
-    {
-      "name": "readMoreText",
-      "label": "Read More Text",
-      "type": "text",
-      "default_value": "Read More"
     }
   ],
   "globalOptions": [
