@@ -1,0 +1,57 @@
+{
+  "translatableOptions": [
+
+  ],
+  "globalOptions": [
+
+  ],
+  "layout": {
+    "name": "listTitleTextList",
+    "label": "List: TitleTextList",
+    "sub_fields": [
+      {
+        "label": "Title Text List Blocks",
+        "type": "repeater",
+        "name": "titleTextListBlocks",
+        "collapsed": "",
+        "min": 0,
+        "max": 4,
+        "layout": "block",
+        "button_label": "Add Block",
+        "wrapper": {
+          "width": "100"
+        },
+        "sub_fields": [
+          {
+            "label": "Title Text",
+            "name": "title",
+            "type": "text"
+          },
+          {
+            "label": "Subtitle Text",
+            "name": "subtitle",
+            "type": "text"
+          },
+          {
+            "label": "Link List",
+            "type": "repeater",
+            "name": "linkList",
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "block",
+            "button_label": "Add Link",
+            "sub_fields": [
+              {
+                "label": "listLink",
+                "type": "link",
+                "name": "listLink",
+                "return_format": "array"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

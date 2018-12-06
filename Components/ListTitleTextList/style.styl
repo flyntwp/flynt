@@ -1,0 +1,76 @@
+$containerPadding = lookup('$globalContainerPadding') || 15px
+$rupture.anti-overlap = lookup('$globalRuptureOverlap') || -1px
+$rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
+$containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
+$colorAccent = lookup('$globalColorAccent') || #F98928
+$colorText = lookup('$globalColorText') || #222222
+
+.flyntComponent[is="flynt-list-title-text-list"]
+  background-color: rgba(0, 0, 0, .03)
+  padding: 40px 0
+
+  .container
+    margin: 0 auto
+    padding: 0 $containerPadding
+    max-width: $containerMaxWidth
+
+  ul
+    list-style: none
+    padding: 0
+    margin: 0
+
+  .titleTextListBlocks
+    // GRID
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+
+    +below('s')
+      display: block
+
+    > li
+      flex-basis: calc(100% / 4)
+      flex-grow: 0
+      flex-shrink: 0
+      margin-bottom: 20px
+      max-width: 25%
+      padding: 0 10px
+
+      +below('l')
+        max-width: 50%
+        flex-basis: calc(100% / 2)
+
+      +below('s')
+        padding: 0
+        max-width: 100%
+
+    &-wrapper
+        background-color: #ffffff
+        height: 100%
+        padding: 20px 30px 60px
+
+    .heading
+      hyphens: auto
+      padding-bottom: 30px
+      word-break: break-word
+
+      .title
+        padding-top: 0
+
+  .linkList
+    > li
+      padding-bottom: 5px
+      margin-bottom: 5px
+      border-bottom: 1px solid #f0f0f0
+
+      &:last-child
+        border-bottom: none
+
+      > a
+        display: block
+        text-decoration: none
+        color: $colorText
+        transition: color .3s cubic-bezier(.190, 1.000, .220, 1.000)
+
+        &:hover
+          color: $colorAccent
