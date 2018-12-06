@@ -1,0 +1,15 @@
+{
+  "translatableOptions": [
+
+  ],
+  "globalOptions": [
+
+  ],
+  "layout": {
+    "name": "listSearchResults",
+    "label": "List: SearchResults",
+    "sub_fields": [
+      
+    ]
+  }
+}

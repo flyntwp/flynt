@@ -1,0 +1,11 @@
+<div class="flyntComponent" is="flynt-list-search-results">
+  <h1>Component: List Search Results</h1>
+  {% for post in posts %}
+    <h2>{{ post.title}}</h2>
+    {{ post.preview }}
+  {% endfor %}
+  <pre>
+    {{ dump(pagination) }}
+  </pre>
+  {% include 'Partials/PaginationButtons/index.twig' %}
+</div>
