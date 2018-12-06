@@ -1,11 +1,8 @@
 <div is="flynt-block-cookie-notice" class="flyntComponent">
-  {% if json %}
-    <script type="application/json" data-is="componentData">{{ json|json_encode }}</script>
-  {% endif %}
   <div class="container">
     <div class="content">
       {{ contentHtml }}
     </div>
-    <button type="button" class="btn-close" aria-label="{{ closeButtonLabel }}" title="{{ closeButtonLabel }}"></button>
+    <button type="button" class="btnClose" aria-label="{{ closeButtonLabel }}">{{ closeButtonLabel }}</button>
   </div>
 </div>

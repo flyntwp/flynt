@@ -12,32 +12,28 @@ class BlockCookieNotice extends window.HTMLDivElement {
   }
 
   setOptions () {
-    this.data = JSON.parse(this.$.children('[data-is=componentData]').first().html()) || {}
     this.cookieName = 'cookieNoticeSeen'
+    this.expiryDays = 365
   }
 
   resolveElements () {
-    this.$closeBtn = $('.btn-close', this)
-    this.checkCookie()
+    this.$btnClose = $('.btnClose', this)
   }
 
   connectedCallback () {
-    this.$.on('click', this.$closeBtn.selector, this.close.bind(this))
+    this.checkCookie()
+    this.$.on('click', this.$btnClose.selector, this.close.bind(this))
   }
 
   checkCookie () {
     if (typeof Cookies.get(this.cookieName) === 'undefined') {
-      this.show()
+      this.$.show()
     }
-  }
-
-  show () {
-    this.$.show()
   }
 
   close (e) {
     e.preventDefault()
-    Cookies.set(this.cookieName, true, { expires: this.data.expiryDays })
+    Cookies.set(this.cookieName, true, { expires: this.expiryDays })
     this.$.slideUp()
   }
 }
