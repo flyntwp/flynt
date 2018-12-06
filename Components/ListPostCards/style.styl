@@ -24,7 +24,7 @@ $colorAccent = lookup('$globalColorAccent') || #F98928
     // GRID
     display: flex
     flex-wrap: wrap
-    justify-content: flex-start
+    justify-content: center
 
     +below('s')
       display: block
@@ -32,11 +32,18 @@ $colorAccent = lookup('$globalColorAccent') || #F98928
     // GRID ITEMS
     & > *
       flex-basis: calc(100% / 4)
+      flex-grow: 0
+      flex-shrink: 0
       margin-bottom: 20px
+      max-width: 25%
       padding: 0 10px
 
       +below('l')
+        max-width: 50%
         flex-basis: calc(100% / 2)
+
+      +below('s')
+        max-width: 100%
 
   .post
 
