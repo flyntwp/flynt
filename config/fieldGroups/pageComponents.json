@@ -21,7 +21,8 @@
         "Flynt/Components/AccordionDefault/Fields/Layout",
         "Flynt/Components/SliderImages/Fields/Layout",
         "Flynt/Components/SliderImageGallery/Fields/Layout",
-        "Flynt/Components/ListPostCards/Fields/Layout"
+        "Flynt/Components/ListPostCards/Fields/Layout",
+        "Flynt/Components/HeroCta/Fields/Layout"
       ]
     }
   ],

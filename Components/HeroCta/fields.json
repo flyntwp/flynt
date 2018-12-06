@@ -1,0 +1,31 @@
+{
+  "translatableOptions": [
+
+  ],
+  "globalOptions": [
+
+  ],
+  "layout": {
+    "name": "heroCta",
+    "label": "Hero: CTA",
+    "sub_fields": [
+      {
+        "label": "Html Content",
+        "name": "htmlContent",
+        "description": "Hero CTA Html Content",
+        "type": "wysiwyg",
+        "tabs": "visual,text",
+        "toolbar": "full",
+        "media_upload": false,
+        "delay": true
+      },
+      {
+        "label": "Button Link",
+        "type": "link",
+        "name": "buttonLink",
+        "description": "Hero CTA Button Link",
+        "return_format": "array"
+      }
+    ]
+  }
+}
