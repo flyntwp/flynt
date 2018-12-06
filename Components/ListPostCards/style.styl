@@ -1,0 +1,61 @@
+$rupture.anti-overlap = lookup('$globalRuptureOverlap') || -1px
+$rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
+$containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
+$containerPadding = lookup('$globalContainerPadding') || 15px
+$colorText = lookup('$globalColorText') || #222222
+$colorAccent = lookup('$globalColorAccent') || #F98928
+
+.flyntComponent[is="flynt-list-post-cards"]
+  background-color: rgba(0, 0, 0, .03)
+  padding: 40px 0
+
+  .container
+    margin: 0 auto
+    max-width: $containerMaxWidth
+    padding: 0 $containerPadding
+
+  .see-more-link
+    text-align: center
+
+  .list
+    list-style: none
+    margin: 0
+    padding: 0
+    // GRID
+    display: flex
+    flex-wrap: wrap
+    justify-content: flex-start
+
+    +below('s')
+      display: block
+
+    // GRID ITEMS
+    & > *
+      flex-basis: calc(100% / 4)
+      margin-bottom: 20px
+      padding: 0 10px
+
+      +below('l')
+        flex-basis: calc(100% / 2)
+
+  .post
+
+    &-link
+      display: block
+      text-decoration: none
+
+      &:hover
+        .content
+          background-color: rgba(0, 0, 0, .03)
+
+
+    .figure
+      background-color: $colorText
+      margin-bottom:0
+      opacity: 1
+      transition: opacity .3s cubic-bezier(.250, .460, .450, .940)
+
+    .content
+      background-color: #fff
+      padding: 10px
+      transition: background-color .3s cubic-bezier(.250, .460, .450, .940)

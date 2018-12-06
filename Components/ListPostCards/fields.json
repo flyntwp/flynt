@@ -1,0 +1,47 @@
+{
+  "translatableOptions": [
+    {
+      "name": "noPostsFoundText",
+      "label": "no Posts Found Text",
+      "type": "text",
+      "default_value": "No posts found"
+    }
+  ],
+  "globalOptions": [
+  ],
+  "layout": {
+    "name": "listPostCards",
+    "label": "List: Post Cards",
+    "sub_fields": [
+      {
+        "label": "List Posts Html Content",
+        "name": "listPostsHtmlContent",
+        "type": "wysiwyg",
+        "tabs": "visual,text",
+        "toolbar": "full",
+        "media_upload": false,
+        "delay": true
+      },
+      {
+        "label": "List Posts Read More Link",
+        "type": "link",
+        "name": "listPostsLink",
+        "return_format": "array"
+      },
+      {
+        "label": "Category",
+        "name": "category",
+        "type": "taxonomy",
+        "instructions": "Choose Category",
+        "taxonomy": "category",
+        "field_type": "multi_select",
+        "allow_null": false,
+        "multiple": false,
+        "add_term": false,
+        "save_terms": false,
+        "load_terms": false,
+        "return_format": "id"
+      }
+    ]
+  }
+}

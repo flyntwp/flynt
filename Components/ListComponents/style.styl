@@ -40,6 +40,7 @@ $colorBackground      = lookup('$globalColorBackground')    || #FFFFFF
       +below('s')
         margin-right: 0
         max-height: none
+        padding: 0
 
     &-previewImage
       background-color: $colorBackground
@@ -53,7 +54,7 @@ $colorBackground      = lookup('$globalColorBackground')    || #FFFFFF
         width: 580px
 
         +below('l')
-          max-width: $containerMaxWidth - 20px
+          max-width: $contentMaxWidth - 20px
           width: 100%
 
         +below('s')

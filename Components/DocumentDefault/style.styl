@@ -28,6 +28,8 @@ fontFace($family, $file, $weight = 'normal', $style = 'normal', $woff2 = true, $
   font-family: Helvetica, Arial, sans-serif
   font-size: 18px
   line-height: 1.5
+  overflow-wrap: break-word
+  word-wrap: break-word
 
   +below('s')
     font-size: 16px
@@ -131,6 +133,9 @@ fontFace($family, $file, $weight = 'normal', $style = 'normal', $woff2 = true, $
 
     p:last-child
       margin-bottom: 0
+
+  time
+    font-size: .8rem
 
   .scrollableTableWrapper
     -webkit-overflow-scrolling: touch
