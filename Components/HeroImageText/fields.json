@@ -4,13 +4,6 @@
     "label": "Hero: ImageText",
     "sub_fields": [
       {
-        "label": "Hero Image Fullscreen",
-        "name": "heroFullscreenOption",
-        "type": "true_false",
-        "default_value": 1,
-        "ui": 1
-      },
-      {
         "name": "contentTab",
         "label": "Content",
         "type": "tab"
@@ -46,13 +39,6 @@
         "media_upload": 0,
         "delay": 1,
         "instructions": "The content that sits over the image. Character Recommendations: Title : 30-100, Content: 80-250."
-      },
-      {
-        "label": "White font color",
-        "name": "fontColor",
-        "type": "true_false",
-        "default_value": 0,
-        "ui": 1
       }
     ]
   }
