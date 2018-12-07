@@ -1,6 +1,7 @@
 $rupture.anti-overlap = lookup('$globalRuptureOverlap') || -1px
 $rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
 $containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
+$contentMaxWidth = lookup('$globalContentMaxWidth')    || 600px
 $containerPadding = lookup('$globalContainerPadding') || 15px
 $colorBackground = lookup('$globalColorBackground') || #ffffff
 $colorText = lookup('$globalColorText') || #222222
@@ -16,10 +17,11 @@ $colorAccent = lookup('$globalColorAccent') || #F98928
 
   .preContent
     padding: 0 10px
+    max-width: $contentMaxWidth
 
   .postContent
     text-align: center
-    max-width: $globalContentMaxWidth
+    max-width: $contentMaxWidth
     margin: 0 auto
 
     .btn
