@@ -24,6 +24,7 @@
         "Flynt/Components/HeroCta/Fields/Layout",
         "Flynt/Components/GridContentLists/Fields/Layout",
         "Flynt/Components/HeroImageText/Fields/Layout",
+        "Flynt/Components/HeroImage/Fields/Layout",
         "Flynt/Components/GridDownloadPortrait/Fields/Layout",
         "Flynt/Components/ListSearchResults/Fields/Layout"
       ]

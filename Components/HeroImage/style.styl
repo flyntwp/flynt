@@ -1,3 +1,17 @@
+$containerPadding     = lookup('$globalContainerPadding')   || 20px
+$containerMaxWidth    = lookup('$globalContainerMaxWidth')  || 1270px
+$contentMaxWidth      = lookup('$globalContentMaxWidth')    || 600px
+$rupture.anti-overlap = lookup('$globalRuptureOverlap')     || -1px
+$rupture.scale        = lookup('$globalRuptureScale')       || (0 426px 576px 768px 992px 1200px)
+$colorWhite           = lookup('$globalColorBackground')    || #FFFFFF
+$headings             = 'p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6'
+
+.flyntComponent[is="flynt-hero-image"]
+  *,
+  *:before,
+  *:after
+    box-sizing: border-box
+
 $minComponentHeight   = 575px
 $maxComponentHeight   = 1080px
 

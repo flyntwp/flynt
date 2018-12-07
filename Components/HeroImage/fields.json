@@ -1,7 +1,7 @@
 {
   "layout": {
-    "name": "heroImageText",
-    "label": "Hero: ImageText",
+    "name": "heroImage",
+    "label": "Hero: Image",
     "sub_fields": [
       {
         "name": "contentTab",

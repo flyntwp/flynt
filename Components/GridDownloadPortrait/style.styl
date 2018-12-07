@@ -15,6 +15,7 @@ $contentMaxWidth      = lookup('$globalContentMaxWidth')    || 600px
 
   .container
     max-width: $containerMaxWidth
+    padding: 0 $containerPadding
     display: block
     position: relative
     margin: 0 auto
@@ -29,6 +30,7 @@ $contentMaxWidth      = lookup('$globalContentMaxWidth')    || 600px
       list-style-type: none
       flex-direction: row
       flex-wrap: wrap
+      padding-left: 0
 
     &-item
       // span((1 / 6), $cycle: 6)
@@ -36,8 +38,9 @@ $contentMaxWidth      = lookup('$globalContentMaxWidth')    || 600px
       overflow: hidden
       // padding-bottom: unit(16.666666666666664 * 1.3242009132, '%')
       position: relative
-      padding: 3px
-      flex: 0 33.3333%
+      // padding: 3px
+      flex: 0 20%
+      height: 390px
 
     &-link
       background-color: #fff
@@ -73,16 +76,15 @@ $contentMaxWidth      = lookup('$globalContentMaxWidth')    || 600px
       align-items: center
       height: 100%
       width: 100%
-      flex-direction: column
+      flex-direction: row
       align-content: center
+      padding: $containerPadding
 
     &-content
-      display: flex
-      flex-direction: column
-      align-items: center
+      display: block
+      margin: 0 auto
 
       +below(375px)
-        display: block
         margin-top: 1.125rem
         text-align: left
 
@@ -102,11 +104,11 @@ $contentMaxWidth      = lookup('$globalContentMaxWidth')    || 600px
 
     &-image
       display: block
-      font-family: 'object-fit: contain; object-position: center;' // @stylint ignore
-      height: auto
-      object-fit: contain
+      // font-family: 'object-fit: contain; object-position: center;' // @stylint ignore
+      height: 100%
+      object-fit: cover
       object-position: center
-      padding: 3px 3px 0
+      padding: 3px
       position: absolute
       width: 100%
       z-index: 1
