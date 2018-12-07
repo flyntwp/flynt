@@ -6,8 +6,8 @@
 
   ],
   "layout": {
-    "name": "listTitleTextList",
-    "label": "List: TitleTextList",
+    "name": "GridLinkList",
+    "label": "List: Grid Link List",
     "sub_fields": [
       {
         "label": "Title Text List Blocks",

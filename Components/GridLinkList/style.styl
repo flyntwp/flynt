@@ -5,7 +5,7 @@ $containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
 $colorAccent = lookup('$globalColorAccent') || #F98928
 $colorText = lookup('$globalColorText') || #222222
 
-.flyntComponent[is="flynt-list-title-text-list"]
+.flyntComponent[is="flynt-grid-link-list"]
   background-color: rgba(0, 0, 0, .03)
   padding: 40px 0
 
@@ -19,7 +19,7 @@ $colorText = lookup('$globalColorText') || #222222
     padding: 0
     margin: 0
 
-  .titleTextListBlocks
+  .gridLinkList
     // GRID
     display: flex
     flex-wrap: wrap
@@ -44,7 +44,7 @@ $colorText = lookup('$globalColorText') || #222222
         padding: 0
         max-width: 100%
 
-    &-wrapper
+    .wrapper
         background-color: #ffffff
         height: 100%
         padding: 20px 30px 60px

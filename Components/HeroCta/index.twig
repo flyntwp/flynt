@@ -4,7 +4,7 @@
       {{ htmlContent }}
     {% endif %}
     {% if buttonLink.url %}
-      <a target={% if buttonLink.target %}"{{ buttonLink.target }}" rel="noreferrer noopener"{% else %}"_self"{% endif %} class="btn">{{ buttonLink.title|e }}</a>
+      <a target={% if buttonLink.target %}"{{ buttonLink.target }}" rel="noreferrer noopener"{% else %}"_self"{% endif %} class="btn btn--primary">{{ buttonLink.title|e }}</a>
     {% endif %}
   </div>
 </div>

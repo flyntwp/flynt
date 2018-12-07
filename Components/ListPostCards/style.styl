@@ -2,20 +2,28 @@ $rupture.anti-overlap = lookup('$globalRuptureOverlap') || -1px
 $rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
 $containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
 $containerPadding = lookup('$globalContainerPadding') || 15px
+$colorBackground = lookup('$globalColorBackground') || #ffffff
 $colorText = lookup('$globalColorText') || #222222
 $colorAccent = lookup('$globalColorAccent') || #F98928
 
 .flyntComponent[is="flynt-list-post-cards"]
   background-color: rgba(0, 0, 0, .03)
-  padding: 40px 0
 
   .container
     margin: 0 auto
     max-width: $containerMaxWidth
-    padding: 0 $containerPadding
+    padding: 40px $containerPadding
 
-  .see-more-link
+  .preContent
+    padding: 0 10px
+
+  .postContent
     text-align: center
+    max-width: $globalContentMaxWidth
+    margin: 0 auto
+
+    .btn
+      margin-bottom: 0
 
   .list
     list-style: none
@@ -29,23 +37,23 @@ $colorAccent = lookup('$globalColorAccent') || #F98928
     +below('s')
       display: block
 
-    // GRID ITEMS
-    & > *
-      flex-basis: calc(100% / 4)
-      flex-grow: 0
-      flex-shrink: 0
-      margin-bottom: 20px
-      max-width: 25%
-      padding: 0 10px
-
-      +below('l')
-        max-width: 50%
-        flex-basis: calc(100% / 2)
-
-      +below('s')
-        max-width: 100%
-
   .post
+    flex-basis: calc(100% / 4)
+    flex-grow: 0
+    flex-shrink: 0
+    margin-bottom: 20px
+    padding: 0 10px
+    //padding: 0 20px 0 0
+
+    //&:nth-child(4n+4)
+      //padding-right: 0
+
+    +below('l')
+      max-width: 50%
+      flex-basis: calc(100% / 2)
+
+    +below('s')
+      max-width: 100%
 
     &-link
       display: block
@@ -55,14 +63,14 @@ $colorAccent = lookup('$globalColorAccent') || #F98928
         .content
           background-color: rgba(0, 0, 0, .03)
 
-
     .figure
       background-color: $colorText
-      margin-bottom:0
-      opacity: 1
-      transition: opacity .3s cubic-bezier(.250, .460, .450, .940)
+      margin-bottom: 0
 
     .content
-      background-color: #fff
+      background-color: $colorBackground
       padding: 10px
       transition: background-color .3s cubic-bezier(.250, .460, .450, .940)
+
+    time
+      font-size: .8rem

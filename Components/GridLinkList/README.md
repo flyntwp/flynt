@@ -1,8 +1,8 @@
-## List Title Text List README
+## Grid Link List README
 
 ### Title:
 
-Title Text List Blocks
+Grid Link List
 
 ---
 
