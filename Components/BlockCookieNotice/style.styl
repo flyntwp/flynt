@@ -22,7 +22,7 @@ $colorBrand           = lookup('$globalColorBrand')         || #91C6C4
     justify-content: space-between
     margin: 0 auto
     max-width: $containerMaxWidth
-    padding: $containerPadding
+    padding: 1rem $containerPadding
 
     +below('s')
       display: block
@@ -30,9 +30,6 @@ $colorBrand           = lookup('$globalColorBrand')         || #91C6C4
     .content
       font-size: .8rem
       padding: 1rem 0
-
-      +below('s')
-        float: left
 
       > :first-child
         margin-top: 0
@@ -43,12 +40,9 @@ $colorBrand           = lookup('$globalColorBrand')         || #91C6C4
         padding-bottom: 0
 
     .btnClose
-      border: 0
-      cursor: pointer
       margin-bottom: 0
       margin-left: 30px
-      outline: 0
 
       +below('s')
-        margin-bottom: 1em
+        margin-bottom: 1rem
         margin-left: 0
