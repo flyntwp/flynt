@@ -18,6 +18,9 @@ add_filter('Flynt/addComponentData?name=ListSearchResults', function ($data, $pa
     if (!isset($data['postsCount']) && isset($parentData['postsCount'])) {
         $data['postsCount'] = $parentData['postsCount'];
     }
-var_dump($data['postsCount']);die();
+
+    var_dump($data['postsCount']);
+    die();
+
     return $data;
 }, 10, 2);

@@ -3,10 +3,12 @@ $containerMaxWidth    = lookup('$globalContainerMaxWidth')  || 1270px
 $rupture.anti-overlap = lookup('$globalRuptureOverlap')     || -1px
 $rupture.scale        = lookup('$globalRuptureScale')       || (0 426px 576px 768px 992px 1200px)
 $colorWhite           = lookup('$globalColorBackground')    || #FFFFFF
+$colorBrand           = lookup('$globalColorBrand')         || #91C6C4
+
 
 .flyntComponent[is='flynt-block-cookie-notice']
   background-color: $colorWhite
-  border-top: 1px solid #91C6C4
+  border-top: 1px solid $colorBrand
   bottom: 0
   display: none
   left: 0
@@ -21,14 +23,15 @@ $colorWhite           = lookup('$globalColorBackground')    || #FFFFFF
     max-width: $containerMaxWidth
     padding: $containerPadding
 
-    +below('m')
-      align-items: start
-      flex-direction: column-reverse
-      padding-top: 0
+    +below('s')
+      display: block
 
     .content
       font-size: .8rem
       padding: 1rem 0
+
+      +below('s')
+        float: left
 
       > :first-child
         margin-top: 0
@@ -43,19 +46,26 @@ $colorWhite           = lookup('$globalColorBackground')    || #FFFFFF
       background-image: url('../../Components/BlockCookieNotice/Assets/close.svg')
       background-position: center center
       background-repeat: no-repeat
-      background-size: 46px auto
+      background-size: contain
       border: 0
       cursor: pointer
-      height: 23px
-      margin-left: 20px
-      min-width: 33px
+      height: 20px
+      margin-left: 30px
       outline: 0
+      width: 20px
 
-      +below('m')
-        align-self: flex-end
-        margin: 0 0 10px
-        min-width: 40px
-        padding: 20px
-        position: relative
-        right: -12px
-        width: 40px
+      span
+        visibility: hidden
+
+      &.desktop
+        +below('s')
+          display: none
+
+      &.mobile
+        +above('s')
+          display: none
+
+        +below('s')
+          display: block
+          float: right
+          margin-left: inherit

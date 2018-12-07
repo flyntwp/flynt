@@ -39,7 +39,8 @@ function getPasswordContext($postId = null)
     ];
 }
 
-function getPostsCount($query) {
+function getPostsCount($query)
+{
     if ($query) {
         $wpQuery = new WP_Query($query);
     } else {
