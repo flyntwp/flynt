@@ -1,57 +1,41 @@
 <div class="flyntComponent" is="flynt-grid-download-portrait">
   <div class="container">
-    <div class="downloadGrid">
-      {% if sectionTitle %}
-        <div class="downloadGrid-sectionHeader">
-          <h2 class="sectionTitle">{{ sectionTitle|e }}</h2>
-        </div>
-      {% endif %}
-      <ul class="downloadGrid-list">
-        {% for item in items %}
-          <li class="downloadGrid-item">
+    {% if preContentHtml %}
+      <div class="preContent">{{ preContentHtml }}</div>
+    {% endif %}
+    <ul class="downloadList">
+      {% for item in items %}
+        <li class="download">
+          <div class="download-wrapper">
             {% if item.itemType == 'itemFile' %}
-              <a class="downloadGrid-link" href="{{ item.file.url|e('esc_url') }}" target="_blank" download="{{ item.itemFile.title|e('html_attr') }}">
-                <span class="downloadGrid-tableWrapper">
-                  <span class="downloadGrid-content">
-                    <h3 class="downloadGrid-title">{{ item.file.title|e }}</h3>
-                    <span class="downloadGrid-fileSize">{{ item.file.fileSize|e }}</span>
-                  </span>
+              <a class="download-link" href="{{ item.file.url|e('esc_url') }}" target="_blank" download="{{ item.itemFile.title|e('html_attr') }}">
+                <span class="download-content">
+                  <h4 class="download-title">{{ item.file.title|e }}</h3>
+                  <span class="download-fileSize">{{ item.file.fileSize|e }}</span>
                 </span>
               </a>
             {% elseif item.itemType == 'itemLink' %}
-              <a class="downloadGrid-link" href="{{ item.link|e('esc_url') }}" target="_blank">
-                <span class="downloadGrid-tableWrapper">
-                  <span class="downloadGrid-content">
-                    <h3 class="downloadGrid-title">{{ item.domain|e }}</h3>
-                  </span>
+              <a class="download-link" href="{{ item.link|e('esc_url') }}" target="_blank">
+                <span class="download-content">
+                  <h4 class="download-title">{{ item.domain|e }}</h3>
                 </span>
               </a>
             {% endif %}
             {% if item.image %}
               <img
-                class="downloadGrid-image lazyload lazyload--fade"
-                srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                src="{{ item.image.src|resizeDynamic(370, 'center') }}"
+                class="download-image lazyload lazyload--fade"
+                srcset="{{ transparentPng(2/3) }}"
+                src="{{ item.image.src|resize(370, 555) }}"
                 data-srcset="
-                {{ item.image.src|resizeDynamic(450, 'center') }} 450w,
-                {{ item.image.src|resizeDynamic(370, 'center') }} 370w,
-                {{ item.image.src|resizeDynamic(240, 'center') }} 240w"
+                {{ item.image.src|resize(450, 675) }} 450w,
+                {{ item.image.src|resize(370, 555) }} 370w,
+                {{ item.image.src|resize(240, 360) }} 240w"
                 sizes="auto"
                 alt="{{ item.image.alt|e }}">
-
-                {# <picture>
-                  <source media="(max-width: 320px)" srcset="
-                    {{ item.image.src | resize(218, 455) }} 1x,
-                    {{ item.image.src | resize(436, 910) }} 2x
-                  ">
-                   <img
-                    class="downloadGrid-image lazyload lazyload--fade"
-                    srcset="{{ item.image.src | resize(246, 390) }} 1x, {{ item.image.src | resize(492, 780) }} 2x" alt="{{ item.image.alt }}">
-                </picture> #}
             {% endif %}
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
   </div>
 </div>
