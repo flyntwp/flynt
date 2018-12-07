@@ -1,10 +1,10 @@
-<div class="flyntComponent" is="flynt-grid-content-list">
+<div class="flyntComponent" is="flynt-grid-content-lists">
   <div class="container">
     <ul class="gridLinkList">
-      {% for gridBlock in gridBlocks %}
+      {% for block in blocks %}
         <li class="gridLinkList-item">
           <div class="content">
-          {{ gridBlock.htmlContent }}
+          {{ block.contentHtml }}
           </div>
         </li>
       {% endfor %}

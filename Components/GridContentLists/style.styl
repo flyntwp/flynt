@@ -1,0 +1,74 @@
+$containerPadding = lookup('$globalContainerPadding') || 15px
+$rupture.anti-overlap = lookup('$globalRuptureOverlap') || -1px
+$rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
+$containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
+$colorAccent = lookup('$globalColorAccent') || #F98928
+$colorBackground = lookup('$globalColorBackground') || #ffffff
+$colorText = lookup('$globalColorText') || #222222
+
+.flyntComponent[is="flynt-grid-content-lists"]
+  background-color: rgba(0, 0, 0, .03)
+  padding: 40px 0
+
+  .container
+    margin: 0 auto
+    padding: 0 $containerPadding
+    max-width: $containerMaxWidth
+
+  ul
+    list-style: none
+    margin: 0
+    padding: 0
+
+  .gridLinkList
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    margin: 0 -10px
+
+    &-item
+      max-width: 400px
+      padding: 0 10px
+      width: 25%
+
+      +below('xl')
+        width: 50%
+
+      +below('s')
+        margin-bottom: 20px
+        width: 100%
+
+  .content
+    background-color: $colorBackground
+    height: 100%
+    padding: 20px 30px 60px
+
+    > :first-child
+      margin-top: 0
+      padding-top: 0
+
+    > :last-child
+      margin-top: 0
+      padding-top: 0
+
+    ul > li
+      border-bottom: 1px solid #f0f0f0
+      margin-bottom: 5px
+      padding-bottom: 5px
+
+      &:last-child
+        border-bottom: none
+
+      > a
+        color: $colorText
+        position: relative
+        text-decoration: none
+        transition: color .3s cubic-bezier(.190, 1.000, .220, 1.000)
+
+        &:after
+          content: "\2192"
+          font-size: .8rem
+          padding-left: 10px
+
+        &:hover
+          color: $colorAccent

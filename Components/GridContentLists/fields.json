@@ -1,18 +1,12 @@
 {
-  "translatableOptions": [
-
-  ],
-  "globalOptions": [
-
-  ],
   "layout": {
-    "name": "GridContentList",
-    "label": "List: Grid Content List",
+    "name": "GridContentLists",
+    "label": "List: Grid Content Lists",
     "sub_fields": [
       {
-        "label": "Grid Blocks",
+        "label": "Blocks",
         "type": "repeater",
-        "name": "gridBlocks",
+        "name": "blocks",
         "collapsed": "",
         "min": 0,
         "max": 4,
@@ -23,8 +17,8 @@
         },
         "sub_fields": [
          {
-           "label": "Html Content",
-           "name": "htmlContent",
+           "label": "Content",
+           "name": "contentHtml",
            "type": "wysiwyg",
            "tabs": "visual,text",
            "toolbar": "full",
