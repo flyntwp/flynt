@@ -11,13 +11,13 @@
               {% if post.thumbnail %}
                 <figure class="figure">
                   <img class="figure-image lazyload lazyload--fade"
-                    src="{{ post.thumbnail|resize(1280) }}"
-                    srcset="{{ transparentPng(post.thumbnail.aspect) }}"
+                    src="{{ post.thumbnail|resize(1280, 853) }}"
+                    srcset="{{ transparentPng(3/2) }}"
                     data-srcset="
-                      {{ post.thumbnail|resize(1920) }} 1920w,
-                      {{ post.thumbnail|resize(1280) }} 1280w,
-                      {{ post.thumbnail|resize(750) }} 750w,
-                      {{ post.thumbnail|resize(375) }} 375w"
+                      {{ post.thumbnail|resize(1920, 1280) }} 1920w,
+                      {{ post.thumbnail|resize(1280, 853) }} 1280w,
+                      {{ post.thumbnail|resize(750, 500) }} 750w,
+                      {{ post.thumbnail|resize(375, 250) }} 375w"
                     data-sizes="auto"
                     alt="{{ post.thumbnail.alt|e }}">
                 </figure>
@@ -26,7 +26,7 @@
                 {% if post.post_date %}
                   <time class="date" datetime="{{ post.post_date }}">{{ post.post_date | date }}</time>
                 {% endif %}
-                <h3 class="h4">
+                <h3 class="h4 title">
                   {{ post.title }}
                 </h3>
               </div>

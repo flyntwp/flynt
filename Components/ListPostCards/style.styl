@@ -16,7 +16,6 @@ $colorAccent = lookup('$globalColorAccent') || #F98928
     padding: 40px $containerPadding
 
   .preContent
-    padding: 0 10px
     max-width: $contentMaxWidth
 
   .postContent
@@ -28,51 +27,43 @@ $colorAccent = lookup('$globalColorAccent') || #F98928
       margin-bottom: 0
 
   .list
-    list-style: none
-    margin: 0
-    padding: 0
-    // GRID
     display: flex
     flex-wrap: wrap
     justify-content: center
-
-    +below('s')
-      display: block
+    list-style: none
+    margin: 0 -10px
+    padding: 0
 
   .post
-    flex-basis: calc(100% / 4)
-    flex-grow: 0
-    flex-shrink: 0
-    margin-bottom: 20px
-    padding: 0 10px
-    //padding: 0 20px 0 0
-
-    //&:nth-child(4n+4)
-      //padding-right: 0
+    padding: 0 10px 20px
+    max-width: 360px
+    width: 25%
 
     +below('l')
-      max-width: 50%
-      flex-basis: calc(100% / 2)
+      width: 50%
 
     +below('s')
-      max-width: 100%
+      width: 100%
 
     &-link
+      background-color: $colorBackground
       display: block
       text-decoration: none
+      transition: background-color .3s cubic-bezier(.250, .460, .450, .940)
 
       &:hover
-        .content
-          background-color: rgba(0, 0, 0, .03)
+        background-color: rgba(0, 0, 0, .03)
 
     .figure
       background-color: $colorText
       margin-bottom: 0
 
     .content
-      background-color: $colorBackground
       padding: 10px
-      transition: background-color .3s cubic-bezier(.250, .460, .450, .940)
+
+    .title
+      padding-top: .1rem
+      margin-bottom: .1rem
 
     time
       font-size: .8rem
