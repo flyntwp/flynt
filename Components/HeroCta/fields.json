@@ -4,8 +4,8 @@
     "label": "Hero: CTA",
     "sub_fields": [
       {
-        "label": "Html Content",
-        "name": "htmlContent",
+        "label": "Content",
+        "name": "contentHtml",
         "type": "wysiwyg",
         "tabs": "visual,text",
         "toolbar": "full",

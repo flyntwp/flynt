@@ -1,7 +1,7 @@
 <div class="flyntComponent" is="flynt-hero-cta">
   <div class="container">
-    {% if htmlContent %}
-      {{ htmlContent }}
+    {% if contentHtml %}
+      {{ contentHtml }}
     {% endif %}
     {% if buttonLink.url %}
       <a target={% if buttonLink.target %}"{{ buttonLink.target }}" rel="noreferrer noopener"{% else %}"_self"{% endif %} class="btn btn--primary">{{ buttonLink.title|e }}</a>

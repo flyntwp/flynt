@@ -1,8 +1,8 @@
 {% if posts %}
   <div class="flyntComponent" is="flynt-list-post-cards">
     <div class="container">
-      {% if preHtmlContent %}
-        <div class="preContent">{{ preHtmlContent }}</div>
+      {% if preContentHtml %}
+        <div class="preContent">{{ preContentHtml }}</div>
       {% endif %}
       <ul class="list">
         {% for post in posts %}
