@@ -19,6 +19,7 @@ $colorBrand           = lookup('$globalColorBrand')         || #91C6C4
   .container
     align-items: center
     display: flex
+    justify-content: space-between
     margin: 0 auto
     max-width: $containerMaxWidth
     padding: $containerPadding
@@ -42,30 +43,12 @@ $colorBrand           = lookup('$globalColorBrand')         || #91C6C4
         padding-bottom: 0
 
     .btnClose
-      background-color: transparent
-      background-image: url('../../Components/BlockCookieNotice/Assets/close.svg')
-      background-position: center center
-      background-repeat: no-repeat
-      background-size: contain
       border: 0
       cursor: pointer
-      height: 20px
+      margin-bottom: 0
       margin-left: 30px
       outline: 0
-      width: 20px
 
-      span
-        visibility: hidden
-
-      &.desktop
-        +below('s')
-          display: none
-
-      &.mobile
-        +above('s')
-          display: none
-
-        +below('s')
-          display: block
-          float: right
-          margin-left: 10px
+      +below('s')
+        margin-bottom: 1em
+        margin-left: 0
