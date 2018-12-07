@@ -28,7 +28,7 @@
               </a>
             {% endif %}
             {% if item.image %}
-              {# <img
+              <img
                 class="downloadGrid-image lazyload lazyload--fade"
                 srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
                 src="{{ item.image.src|resizeDynamic(370, 'center') }}"
@@ -37,41 +37,17 @@
                 {{ item.image.src|resizeDynamic(370, 'center') }} 370w,
                 {{ item.image.src|resizeDynamic(240, 'center') }} 240w"
                 sizes="auto"
-                alt="{{ item.image.alt|e }}"> #}
+                alt="{{ item.image.alt|e }}">
 
-                <picture>
+                {# <picture>
                   <source media="(max-width: 320px)" srcset="
                     {{ item.image.src | resize(218, 455) }} 1x,
                     {{ item.image.src | resize(436, 910) }} 2x
                   ">
-                  <source media="(max-width: 375px)" srcset="
-                    {{ item.image.src | resize(255, 467) }} 1x,
-                    {{ item.image.src | resize(510, 934) }} 2x
-                  ">
-                  <source media="(max-width: 424px)" srcset="
-                    {{ item.image.src | resize(282, 536) }} 1x,
-                    {{ item.image.src | resize(564, 1072) }} 2x
-                  ">
-                  <source media="(max-width: 768px)" srcset="
-                    {{ item.image.src | resize(422, 700) }} 1x,
-                    {{ item.image.src | resize(844, 1400) }} 2x
-                  ">
-                  <source media="(max-width: 991px)" srcset="
-                    {{ item.image.src | resize(550, 700) }} 1x,
-                    {{ item.image.src | resize(1100, 1400) }} 2x
-                  ">
-                  <source media="(max-width: 1200px)" srcset="
-                    {{ item.image.src | resize(750, 700) }} 1x,
-                    {{ item.image.src | resize(1500, 1400) }} 2x
-                  ">
-                  <source media="(max-width: 1500px)" srcset="
-                    {{ item.image.src | resize(1034, 700) }} 1x,
-                    {{ item.image.src | resize(2068, 1400) }} 2x
-                  ">
-                  <img
-                    class="image"
-                    srcset="{{ item.image.src | resize(1240, 839) }} 1x, {{ item.image.src | resize(2480, 1678) }} 2x" alt="{{ item.image.alt }}">
-                </picture>
+                   <img
+                    class="downloadGrid-image lazyload lazyload--fade"
+                    srcset="{{ item.image.src | resize(246, 390) }} 1x, {{ item.image.src | resize(492, 780) }} 2x" alt="{{ item.image.alt }}">
+                </picture> #}
             {% endif %}
           </li>
         {% endfor %}
