@@ -1,6 +1,5 @@
 /* globals Cookies */
 import $ from 'jquery'
-import 'file-loader?name=vendor/js-cookie.js!uglify-loader!js-cookie/src/js.cookie.js'
 
 class BlockCookieNotice extends window.HTMLDivElement {
   constructor (self) {
@@ -13,7 +12,6 @@ class BlockCookieNotice extends window.HTMLDivElement {
 
   setOptions () {
     this.cookieName = 'cookieNoticeSeen'
-    this.expiryDays = 365
   }
 
   resolveElements () {
@@ -21,20 +19,20 @@ class BlockCookieNotice extends window.HTMLDivElement {
   }
 
   connectedCallback () {
-    this.checkCookie()
-    this.$.on('click', this.$btnClose.selector, this.close.bind(this))
+    this.showCookieNotice()
+    this.$.on('click', this.$btnClose.selector, this.hideCookieNotice.bind(this))
   }
 
-  checkCookie () {
-    if (typeof Cookies.get(this.cookieName) === 'undefined') {
-      this.$.show()
+  showCookieNotice () {
+    if (document.cookie.match(this.cookieName) === null) {
+      this.$.addClass('cookieNotice--isVisible')
     }
   }
 
-  close (e) {
+  hideCookieNotice (e) {
     e.preventDefault()
-    Cookies.set(this.cookieName, true, { expires: this.expiryDays })
-    this.$.slideUp()
+    document.cookie = this.cookieName + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+    this.$.removeClass('cookieNotice--isVisible')
   }
 }
 
