@@ -22,7 +22,7 @@
         "Flynt/Components/SliderImageGallery/Fields/Layout",
         "Flynt/Components/ListPostCards/Fields/Layout",
         "Flynt/Components/HeroCta/Fields/Layout",
-        "Flynt/Components/GridLinkList/Fields/Layout",
+        "Flynt/Components/GridContentList/Fields/Layout",
         "Flynt/Components/HeroImageText/Fields/Layout",
         "Flynt/Components/GridDownloadPortrait/Fields/Layout",
         "Flynt/Components/ListSearchResults/Fields/Layout"

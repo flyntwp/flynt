@@ -2,7 +2,7 @@
 
 ### Title:
 
-Grid Link List
+Grid Content List
 
 ---
 

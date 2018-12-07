@@ -5,7 +5,7 @@ $containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
 $colorAccent = lookup('$globalColorAccent') || #F98928
 $colorText = lookup('$globalColorText') || #222222
 
-.flyntComponent[is="flynt-grid-link-list"]
+.flyntComponent[is="flynt-grid-content-list"]
   background-color: rgba(0, 0, 0, .03)
   padding: 40px 0
 
@@ -28,49 +28,35 @@ $colorText = lookup('$globalColorText') || #222222
     +below('s')
       display: block
 
-    > li
-      flex-basis: calc(100% / 4)
-      flex-grow: 0
-      flex-shrink: 0
+    &-item
+      width: calc(100% / 4)
       margin-bottom: 20px
-      max-width: 25%
+      min-width: 300px
       padding: 0 10px
-
-      +below('l')
-        max-width: 50%
-        flex-basis: calc(100% / 2)
 
       +below('s')
         padding: 0
-        max-width: 100%
+        min-width: 100%
 
-    .wrapper
+    .content
         background-color: #ffffff
         height: 100%
         padding: 20px 30px 60px
 
-    .heading
-      hyphens: auto
-      padding-bottom: 30px
-      word-break: break-word
+      ul
+        > li
+          padding-bottom: 5px
+          margin-bottom: 5px
+          border-bottom: 1px solid #f0f0f0
 
-      .title
-        padding-top: 0
+          &:last-child
+            border-bottom: none
 
-  .linkList
-    > li
-      padding-bottom: 5px
-      margin-bottom: 5px
-      border-bottom: 1px solid #f0f0f0
+          > a
+            display: block
+            text-decoration: none
+            color: $colorText
+            transition: color .3s cubic-bezier(.190, 1.000, .220, 1.000)
 
-      &:last-child
-        border-bottom: none
-
-      > a
-        display: block
-        text-decoration: none
-        color: $colorText
-        transition: color .3s cubic-bezier(.190, 1.000, .220, 1.000)
-
-        &:hover
-          color: $colorAccent
+            &:hover
+              color: $colorAccent

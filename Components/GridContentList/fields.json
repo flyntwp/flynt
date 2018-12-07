@@ -1,0 +1,38 @@
+{
+  "translatableOptions": [
+
+  ],
+  "globalOptions": [
+
+  ],
+  "layout": {
+    "name": "GridContentList",
+    "label": "List: Grid Content List",
+    "sub_fields": [
+      {
+        "label": "Grid Blocks",
+        "type": "repeater",
+        "name": "gridBlocks",
+        "collapsed": "",
+        "min": 0,
+        "max": 4,
+        "layout": "block",
+        "button_label": "Add Block",
+        "wrapper": {
+          "width": "100"
+        },
+        "sub_fields": [
+         {
+           "label": "Html Content",
+           "name": "htmlContent",
+           "type": "wysiwyg",
+           "tabs": "visual,text",
+           "toolbar": "full",
+           "media_upload": 0,
+           "delay": 1
+         }
+        ]
+      }
+    ]
+  }
+}
