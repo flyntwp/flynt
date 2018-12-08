@@ -6,23 +6,7 @@ use Flynt\Features\Components\Component;
 
 add_filter('Flynt/addComponentData?name=GridDownloadPortrait', function ($data) {
     add_action('wp_enqueue_scripts', function () {
-        Component::enqueueAssets('GridDownloadPortrait', [
-            [
-                'name' => 'lazysizes-object-fit',
-                'type' => 'script',
-                'path' => 'vendor/lazysizes-object-fit.js'
-            ],
-            [
-                'name' => 'lazysizes-parent-fit',
-                'type' => 'script',
-                'path' => 'vendor/lazysizes-parent-fit.js'
-            ],
-            [
-                'name' => 'lazysizes',
-                'type' => 'script',
-                'path' => 'vendor/lazysizes.js'
-            ]
-        ]);
+        Component::enqueueAssets('GridDownloadPortrait');
     });
 
     if (!empty($data['items'])) {
