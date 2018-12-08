@@ -13,7 +13,7 @@
                   {{ image.src|resize(750) }} 750w,
                   {{ image.src|resize(375) }} 375w"
                 data-sizes="auto"
-                alt="{{ image.alt|e }}">
+                alt="{{ image.alt|e('html_attr') }}">
             </figure>
           </div>
         {% endfor %}
@@ -26,7 +26,7 @@
                 srcset="{{ transparentPng(image.aspect) }}"
                 src="{{ image.src|resize(0, 65) }}"
                 data-srcset="{{ image.src|resize(0, 65) }}"
-                alt="{{ image.alt|e }}">
+                alt="{{ image.alt|e('html_attr') }}">
             </figure>
           </div>
         {% endfor %}

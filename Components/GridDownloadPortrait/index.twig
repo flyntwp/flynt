@@ -1,7 +1,7 @@
 <div class="flyntComponent" is="flynt-grid-download-portrait">
   <div class="container">
     {% if preContentHtml %}
-      <div class="preContent">{{ preContentHtml }}</div>
+      <div class="preContent">{{ preContentHtml|e('wp_kses_post') }}</div>
     {% endif %}
     <ul class="downloadList">
       {% for item in items %}
@@ -31,7 +31,7 @@
                 {{ item.image.src|resize(370, 555) }} 370w,
                 {{ item.image.src|resize(240, 360) }} 240w"
                 sizes="auto"
-                alt="{{ item.image.alt|e }}">
+                alt="{{ item.image.alt|e('html_attr') }}">
             {% endif %}
           </div>
         </li>

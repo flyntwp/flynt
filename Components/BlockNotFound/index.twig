@@ -1,9 +1,9 @@
 <div is="flynt-block-not-found" class="flyntComponent">
   <div class="container">
-    {{ contentHtml }}
+    {{ contentHtml|e('wp_kses_post') }}
     {% if backLinkLabel %}
       <p>
-        <a href="{{ function('home_url') }}">{{ backLinkLabel }}</a>
+        <a href="{{ function('home_url') }}">{{ backLinkLabel|e }}</a>
       </p>
     {% endif %}
   </div>

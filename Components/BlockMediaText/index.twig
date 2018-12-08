@@ -8,7 +8,7 @@
       {% endif %}
     </div>
     <div class="blockMediaText-columnContentHtml">
-      {{ contentHTML }}
+      {{ contentHTML|e('wp_kses_post') }}
     </div>
   </div>
 </div>

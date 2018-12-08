@@ -2,7 +2,7 @@
   <div class="flyntComponent" is="flynt-list-post-cards">
     <div class="container">
       {% if preContentHtml %}
-        <div class="preContent">{{ preContentHtml }}</div>
+        <div class="preContent">{{ preContentHtml|e('wp_kses_post') }}</div>
       {% endif %}
       <ul class="list">
         {% for post in posts %}
@@ -19,7 +19,7 @@
                       {{ post.thumbnail|resize(750, 500) }} 750w,
                       {{ post.thumbnail|resize(375, 250) }} 375w"
                     data-sizes="auto"
-                    alt="{{ post.thumbnail.alt|e }}">
+                    alt="{{ post.thumbnail.alt|e('html_attr') }}">
                 </figure>
               {% endif %}
               <div class="content">
@@ -36,9 +36,9 @@
       </ul>
       {% if ctaButton %}
         <div class="postContent">
-          <a class="btn btn--primary" href="{{ ctaButton.url }}"
-          target={% if ctaButton.target %}"{{ ctaButton.target }}" rel="noreferrer noopener"{% else %}"_self"{% endif %}
-          title="{{ ctaButton.title|e }}">{{ ctaButton.title|e }}</a>
+          <a class="btn btn--primary" href="{{ ctaButton.url|e('esc_url') }}"
+          target={% if ctaButton.target|e('html_attr') %}"{{ ctaButton.target|e('html_attr') }}" rel="noreferrer noopener"{% else %}"_self"{% endif %}>
+          {{ ctaButton.title|e }}</a>
         </div>
       {% endif %}
     </div>
