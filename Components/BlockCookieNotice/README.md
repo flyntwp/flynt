@@ -1,31 +1,14 @@
-## Block Cookie Notice README
-
-### Title:
-
-Block Cookie Notice
+Title: Block Cookie Notice
 
 ---
 
-### Category:
-
-Block
+Category: Block
 
 ---
 
-### Tags:
-
-block, cookie, notice
+Tags: block, cookie, notice
 
 ---
 
-### Description:
+Text: On a first visit, the website visitor will see this notice at the bottom of the screen, until dismissed with a click on the button. Custom formatted text and a button label can be set in the "Translatable Options" tab.
 
-A cookie notice who can edited in translatabale options. There you can set the content in a WYSIWYG and set a Close Button Label. The label will not shown up, you will see a close icon. The cookie expired date is set by default to 365 days.
-
----
-
-### Fields:
-
-contentHtml, closeButtonLabel
-
----
