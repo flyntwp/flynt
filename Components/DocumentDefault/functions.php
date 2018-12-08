@@ -4,6 +4,7 @@ namespace Flynt\Components\DocumentDefault;
 
 use Timber\Timber;
 use Flynt\Features\Components\Component;
+use Flynt\Utils\Asset;
 
 add_action('wp_enqueue_scripts', function () {
     Component::enqueueAssets('DocumentDefault', [
@@ -26,12 +27,13 @@ add_action('wp_enqueue_scripts', function () {
       'name' => 'normalize',
       'path' => 'vendor/normalize.css',
       'type' => 'style'
-    ],
-    [
+    ]
+    ]);
+
+    Asset::enqueue([
         'name' => 'lazysizes',
         'type' => 'script',
         'path' => 'vendor/lazysizes.js'
-    ]
     ]);
 }, 0);
 

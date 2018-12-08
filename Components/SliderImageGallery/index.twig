@@ -4,7 +4,7 @@
         {% for image in images %}
           <div class="slide">
             <figure class="figure">
-              <img class="figure-image lazyload lazyload--fade"
+              <img class="figure-image lazyload"
                 src="{{ image.src|resize(1230) }}"
                 srcset="{{ transparentPng(image.aspect) }}"
                 data-srcset="
@@ -22,7 +22,7 @@
         {% for image in images %}
           <div class="slide">
             <figure class="figure">
-              <img class="figure-image lazyload lazyload--fade"
+              <img class="figure-image lazyload"
                 srcset="{{ transparentPng(image.aspect) }}"
                 src="{{ image.src|resize(0, 65) }}"
                 data-srcset="{{ image.src|resize(0, 65) }}"

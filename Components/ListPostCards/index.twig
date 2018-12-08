@@ -10,7 +10,7 @@
             <a class="post-link" href="{{ post.link }}" {{ post.target == '_blank' ? 'target="_blank" rel="noreferrer noopener"' }} title="{{ post.title|e }}">
               {% if post.thumbnail %}
                 <figure class="figure">
-                  <img class="figure-image lazyload lazyload--fade"
+                  <img class="figure-image lazyload"
                     src="{{ post.thumbnail|resize(1280, 853) }}"
                     srcset="{{ transparentPng(3/2) }}"
                     data-srcset="

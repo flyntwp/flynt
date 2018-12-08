@@ -7,7 +7,7 @@
             {% if block.componentPreviewDesktopUrl %}
               <div class="component-previews">
                 <div class="component-previewImage component-previewImage--desktop">
-                  <img class="lazyload lazyload--fade"
+                  <img class="lazyload"
                       src="{{ block.componentPreviewDesktopUrl|resize(600) }}"
                       srcset="{{ transparentPng(0.5) }}"
                       data-srcset="
@@ -20,7 +20,7 @@
                 </div>
                 {% if block.componentPreviewMobileUrl %}
                   <div class="component-previewImage component-previewImage--mobile">
-                    <img class="lazyload lazyload--fade"
+                    <img class="lazyload"
                         src="{{ block.componentPreviewMobileUrl|resize(120) }}"
                         srcset="{{ transparentPng(2) }}"
                         data-srcset="

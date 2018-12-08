@@ -7,13 +7,7 @@ use Flynt\Utils\Oembed;
 
 add_filter('Flynt/addComponentData?name=BlockVideoOembed', function ($data) {
     add_action('wp_enqueue_scripts', function () {
-        Component::enqueueAssets('BlockVideoOembed', [
-            [
-                'name' => 'lazysizes',
-                'type' => 'script',
-                'path' => 'vendor/lazysizes.js'
-            ]
-        ]);
+        Component::enqueueAssets('BlockVideoOembed');
     });
 
     $data['video'] = Oembed::setSrcAsDataAttribute(

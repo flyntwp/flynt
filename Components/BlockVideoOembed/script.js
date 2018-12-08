@@ -1,4 +1,3 @@
-import 'file-loader?name=vendor/lazysizes.js!uglify-loader!lazysizes'
 import $ from 'jquery'
 
 class BlockVideoOembed extends window.HTMLDivElement {
