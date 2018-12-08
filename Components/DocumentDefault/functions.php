@@ -30,6 +30,8 @@ add_action('wp_enqueue_scripts', function () {
     ]
     ]);
 
+    // separately enqueued after components script.js to being able
+    // to set global config variables before lazysizes is loaded
     Asset::enqueue([
         'name' => 'lazysizes',
         'type' => 'script',
