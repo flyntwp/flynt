@@ -25,7 +25,6 @@
             "name": "ctas",
             "type": "repeater",
             "collapsed": 0,
-            "min": 1,
             "layout": "table",
             "button_label": "Add Call To Action",
             "sub_fields": [
