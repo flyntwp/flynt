@@ -7,14 +7,13 @@
         "name": "posterImage",
         "label": "Poster Image",
         "type": "image",
+        "preview_size": "medium",
         "mime_types": "jpg,jpeg",
-        "min_width": 1200,
-        "min_height": 675,
         "instructions": "Recommended Size: Min-Width 1200px; Min-Height: 675px; Image-Format: JPG, Aspect Ratio 16/9.",
         "required": 1
       },
       {
-        "label": "BlockVideoOembed",
+        "label": "Video",
         "name": "oembed",
         "type": "oembed",
         "required": 1

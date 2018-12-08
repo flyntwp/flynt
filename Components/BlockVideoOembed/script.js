@@ -9,45 +9,26 @@ class BlockVideoOembed extends window.HTMLDivElement {
   }
 
   resolveElements () {
-    this.$posterImage = $('.video-posterImage', this)
-    this.$videoContent = $('.video-content', this)
+    this.$posterImage = $('.figure-image', this)
+    this.$videoPlayer = $('.video-player', this)
     this.$iframe = $('iframe', this)
-    this.$play = $('.play', this)
-    this.$loader = $('.loader', this)
+    this.$playBtn = $('.video-playBtn', this)
   }
 
   connectedCallback () {
-    this.$.on('click', this.$posterImage.selector, this.setIframeSrc.bind(this))
-    this.$iframe.on('load', this.onIframeLoad.bind(this))
-    this.videoIsStopped()
+    this.$.one('click', this.$playBtn.selector, this.loadVideo.bind(this))
   }
 
-  setIframeSrc = () => {
+  loadVideo = () => {
+    this.$iframe.one('load', this.videoIsLoaded.bind(this))
     this.$iframe.attr('src', this.$iframe.data('src'))
-    this.videoIsLoading()
+    this.$videoPlayer.addClass('video-player--isLoading')
   }
 
-  onIframeLoad = () => {
-    if (this.$iframe.attr('src') !== undefined && this.$iframe.attr('src') !== '') {
-      this.$videoContent.addClass('video-content-isVisible')
-      this.$posterImage.addClass('video-posterImage-isHidden')
-      this.videoIsPlaying()
-    }
-  }
-
-  videoIsStopped () {
-    this.$play.addClass('play--isVisible')
-    this.$loader.removeClass('loader--isVisible')
-  }
-
-  videoIsLoading () {
-    this.$play.removeClass('play--isVisible')
-    this.$loader.addClass('loader--isVisible')
-  }
-
-  videoIsPlaying () {
-    this.$play.removeClass('play--isVisible')
-    this.$loader.removeClass('loader--isVisible')
+  videoIsLoaded () {
+    this.$videoPlayer.removeClass('video-player--isLoading')
+    this.$videoPlayer.addClass('video-player--isLoaded')
+    this.$posterImage.addClass('figure-image--isHidden')
   }
 }
 

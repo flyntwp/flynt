@@ -1,41 +1,41 @@
+@import '../Figure/_style'
 @import '_playButton'
 @import '_loader'
 
 .video
   position: relative
 
-  &-posterImage
-    cursor: pointer
-    position: absolute
-    visibility: visible
-    opacity: 1
-    transition: opacity .2s, visibility 0s linear .2s
-    width: 100%
-    z-index: 1
-
-    &-isHidden
-      opacity: 0
-      visibility: hidden
-
-  &-imageElement
-    display: block
-    height: auto
-    width: 100%
-
-  &-content
+  &-player
     height: 0
     padding-bottom: percentage(9 / 16)
-    visibility: hidden
+    position: absolute
+    top: 0
+    width: 100%
+    z-index: 10
 
-    &-isVisible
-      visibility: visible
+  iframe
+    display: none
+    height: 100%
+    left: 0
+    position: absolute
+    top: 0
+    width: 100%
 
-    iframe
-      display: block
-      height: 100%
-      left: 0
-      position: absolute
-      top: 0
-      width: 100%
+.video-player--isLoading
+  background: rgba(0, 0, 0, 0.5)
+  transition: background .2s ease-out
 
-  @import '../Figure/_style'
+  .video-loader
+    display: block
+
+  .video-playBtn
+    display: none
+
+.video-player--isLoaded
+  .video-loader,
+  .video-playBtn
+    display: none
+
+  iframe
+    display: block
+

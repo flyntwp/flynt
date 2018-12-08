@@ -1,10 +1,8 @@
 <div class="video">
-  <div class="video-posterImage">
-    <div class="loader"></div>
-    <div class="play"></div>
-    {% include 'Partials/Figure/index.twig' ignore missing with {image: image} only %}
-  </div>
-  <div class="video-content">
+  {% include 'Partials/Figure/index.twig' ignore missing with {image: image} only %}
+  <div class="video-player">
     {{ video }}
+    <div class="video-loader"></div>
+    <button class="video-playBtn" type="button" aria-label="Play Video"></button>
   </div>
 </div>

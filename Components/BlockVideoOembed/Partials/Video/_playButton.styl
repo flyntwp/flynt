@@ -57,18 +57,20 @@ playButton($pseudoElementDefaults, $colorPlayButton, $backgroundOpacity, $border
       margin-top: -($playButtonTriangleSize.mobile / 2)
       margin-left: -($playButtonTriangleSize.mobile / 2 * .9)
 
-  &:hover::before,
-  &:hover::after
-    transform: scale(1.1)
+  &:hover
+    &::before,
+    &::after
+      transform: scale(1.1)
 
-.play
-  display: none
-  left: 50%
+.video-playBtn
+  cursor: pointer
+  display: block
+  height: 100%
+  left: 0
+  outline: 0
   position: absolute
-  top: 50%
-  transform: translate(-50%, -50%)
+  top: 0
   playButton($pseudoElementDefaults, $colorGray, $backgroundOpacity, $borderWidth, $colorWhite, $playButtonCircleDiameter, $colorWhite, $playButtonTriangleSize)
+  width: 100%
   z-index: 2
 
-  &--isVisible
-    display: block
