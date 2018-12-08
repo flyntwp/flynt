@@ -1,10 +1,9 @@
 $colorMenuLink        = lookup('$globalColorText')        || #aaa
 $colorMenuLinkHover   = lookup('$globalColorAccent')      || #333
 $colorMenuLinkMobile  = lookup('$globalColorBackground')  || #fff
-$navigationHeight     = lookup('$globalNavHeight')        || 93px
 $colorBackground      = lookup('$globalColorBackground')  || #fff
 $colorAccent          = lookup('$globalColorBrand')       || #91C6C4
-$navigationHeight     = lookup('$globalNavHeight')        || 64px
+$navHeightMobile      = lookup('$navHeightMobile')       || 64px
 
 .menu
   float: right
@@ -37,7 +36,7 @@ $navigationHeight     = lookup('$globalNavHeight')        || 64px
     left: 0
     margin: 0
     transform: translateX(100%)
-    padding-top: $navigationHeight
+    padding-top: $navHeightMobile
     position: fixed
     top: 0
     transition: transform .45s cubic-bezier(.19, 1, .22, 1)
