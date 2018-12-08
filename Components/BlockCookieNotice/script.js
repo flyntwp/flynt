@@ -1,4 +1,3 @@
-/* globals Cookies */
 import $ from 'jquery'
 
 class BlockCookieNotice extends window.HTMLDivElement {
@@ -31,7 +30,7 @@ class BlockCookieNotice extends window.HTMLDivElement {
 
   hideCookieNotice (e) {
     e.preventDefault()
-    document.cookie = this.cookieName + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+    document.cookie = this.cookieName + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/'
     this.$.removeClass('cookieNotice--isVisible')
   }
 }
