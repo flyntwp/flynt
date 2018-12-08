@@ -53,7 +53,8 @@
           {
             "label": "Link",
             "name": "link",
-            "type": "url",
+            "type": "link",
+            "return_format": "array",
             "required": 1,
             "conditional_logic": [
               [

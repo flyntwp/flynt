@@ -14,11 +14,6 @@ add_filter('Flynt/addComponentData?name=GridDownloadPortrait', function ($data) 
             if ($item['itemType'] === 'itemFile') {
                 $fileSize = filesize(get_attached_file($item['file']['id']));
                 $item['file']['fileSize'] = size_format($fileSize, 2);
-            } else {
-                $pattern = '/\w+\..{2,3}(?:\..{2,3})?(?:$|(?=\/))/i';
-                if (preg_match($pattern, $item['link'], $matches) === 1) {
-                    $item['domain'] = $matches[0];
-                }
             }
             return $item;
         }, $data['items']);
