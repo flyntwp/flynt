@@ -1,10 +1,15 @@
 <div is="flynt-block-not-found" class="flyntComponent">
   <div class="container">
-    {{ contentHtml|e('wp_kses_post') }}
-    {% if backLinkLabel %}
+    <div class="content">
+      {% if contentHtml %}
+        {{- contentHtml|e('wp_kses_post') -}}
+      {% else %}
+        <h1>Not Found</h1>
+        <p>The page you are looking for does not exist.</p>
+      {% endif %}
       <p>
-        <a href="{{ function('home_url') }}">{{ backLinkLabel|e }}</a>
+        <a href="{{ function('home_url') }}">{{ backLinkLabel ? backLinkLabel|e : 'Back to homepage' }}</a>
       </p>
-    {% endif %}
+    </div>
   </div>
 </div>

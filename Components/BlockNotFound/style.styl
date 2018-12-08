@@ -1,8 +1,15 @@
-$rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
+$rupture.scale        = lookup('$globalRuptureScale')       || (0 426px 576px 768px 992px 1200px)
 $rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
-$containerPadding = lookup('$globalContainerPadding') || 15px
-$containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
+$containerPadding     = lookup('$globalContainerPadding')   || 15px
+$containerMaxWidth    = lookup('$globalContainerMaxWidth')  || 600px
+$contentMaxWidth      = lookup('$globalContentMaxWidth')    || 600px
 
 .flyntComponent[is='flynt-block-not-found']
   .container
-    center($containerMaxWidth, $containerPadding)
+    margin: 0 auto 2rem
+    max-width: $containerMaxWidth
+    padding: 0 $containerPadding
+
+  .content
+    max-width: $contentMaxWidth
+    text-align: left
