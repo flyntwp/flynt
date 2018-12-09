@@ -40,33 +40,23 @@ $maxWidth = $containerMaxWidth - (2 * $gutterWidth)
     position: absolute
     right: 105%
 
-  &-imageElement
-    display: block
-    height: 100%
-    width: auto
-
   &-image
+    background: #fff
     border-radius: 3px
     border: 3px solid #333739
     bottom: 0
     display: block
     max-width: 500px
+    object-fit: contain
     position: absolute
 
-  &-imageDesktop
-    height: 250px
-    right: 30px
+    &--desktop
+      height: 250px
+      right: 30px
 
-  &-imageMobile
-    height: 150px
-    right: 0
-
-  &-label
-    bottom: 4px
-    left: 100%
-    padding-left: 8px
-    position: absolute
-    white-space: nowrap
+    &--mobile
+      height: 150px
+      right: 0
 
 // Custom WP Adminbar
 html.admin-bar

@@ -25,11 +25,11 @@ function showComponentPreview (layout, $wrapper) {
   const $wrapperContainer = $("<div class='flyntComponentPreview-imageWrapper'>").appendTo($wrapper)
 
   getImage(image.desktop).done(function () {
-    $wrapperContainer.prepend(`<img class='flyntComponentPreview-image flyntComponentPreview-imageDesktop' src='${image.desktop}'>`)
+    $wrapperContainer.prepend(`<img class='flyntComponentPreview-image flyntComponentPreview-image--desktop' src='${image.desktop}'>`)
   })
 
   getImage(image.mobile).done(function () {
-    $wrapperContainer.append(`<img class='flyntComponentPreview-image flyntComponentPreview-imageMobile' src='${image.mobile}'>`)
+    $wrapperContainer.append(`<img class='flyntComponentPreview-image flyntComponentPreview-image--mobile' src='${image.mobile}'>`)
   })
 }
 
