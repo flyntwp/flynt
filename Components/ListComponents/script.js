@@ -37,7 +37,7 @@ class ListComponents extends window.HTMLDivElement {
   }
 
   easeOutCubic (t) {
-    return (--t)*t*t+1
+    return (--t) * t * t + 1
   }
 }
 
