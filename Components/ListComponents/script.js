@@ -22,7 +22,7 @@ class ListComponents extends window.HTMLDivElement {
     let $imageWrapper = $(e.currentTarget)
     let $image = $imageWrapper.find('img')
     if ($image.height() > $imageWrapper.height()) {
-      $image.css('transition', 'transform ' + 0.01 * ($image.height() - $imageWrapper.height()) + 's cubic-bezier(0.215, 0.61, 0.355, 1)')
+      $image.css('transition', 'transform ' + this.easeOutQuart(($image.height() - $imageWrapper.height()) / 200) + 's cubic-bezier(0.215, 0.61, 0.355, 1)')
       $image.css('transform', 'translateY(-' + ($image.height() - $imageWrapper.height()) + 'px)')
     }
   }
@@ -31,9 +31,13 @@ class ListComponents extends window.HTMLDivElement {
     let $imageWrapper = $(e.currentTarget)
     let $image = $imageWrapper.find('img')
     if ($image.height() > $imageWrapper.height()) {
-      $image.css('transition', 'transform ' + 0.01 * ($image.height() - $imageWrapper.height()) + 's cubic-bezier(0.23, 1, 0.32, 1)')
+      $image.css('transition', 'transform ' + this.easeOutQuart(($image.height() - $imageWrapper.height()) / 200) + 's cubic-bezier(0.23, 1, 0.32, 1)')
       $image.css('transform', 'translateY(0)')
     }
+  }
+
+  easeOutCubic (t) {
+    return (--t)*t*t+1
   }
 }
 
