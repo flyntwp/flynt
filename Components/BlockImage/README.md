@@ -1,4 +1,4 @@
-Title: BlockImage
+Title: Block Image
 
 ---
 
