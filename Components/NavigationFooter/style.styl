@@ -5,7 +5,9 @@ $containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
 
 .flyntComponent[is='flynt-navigation-footer']
   .container
-    center($containerMaxWidth, $containerPadding)
+    margin: 0 auto
+    max-width: $containerMaxWidth
+    padding: 0 $containerPadding
 
   .navigation
     padding: 2rem 0

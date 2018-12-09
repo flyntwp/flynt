@@ -1,13 +1,13 @@
-Title: NavigationFooter
+Title: Navigation Footer
 
-----
+---
 
 Category: Navigation
 
-----
+---
 
 Tags: navigation, menu, footer
 
-----
+---
 
-Text: Simple list of links generated from a WordPress menu.
+Text: A simple list of links generated from a WordPress menu, to be easily extended into a more complex website footer.
