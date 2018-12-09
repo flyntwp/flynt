@@ -13,7 +13,7 @@
         "button_label": "Add Component Block",
         "sub_fields": [
           {
-            "label": "Components",
+            "label": "Component",
             "name": "component",
             "type": "select",
             "ui": 1,
