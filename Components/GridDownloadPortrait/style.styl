@@ -58,6 +58,7 @@ $contentMaxWidth      = lookup('$globalContentMaxWidth')    || 600px
 
     &-image
       backface-visibility: hidden
+      transition: opacity .2s ease-out
 
     &-link
       align-items: center
@@ -65,11 +66,10 @@ $contentMaxWidth      = lookup('$globalContentMaxWidth')    || 600px
       height: 100%
       justify-content: center
       opacity: 0
-      padding: 3px
+      padding: 6px
       position: absolute
       text-align: center
       text-decoration: none
-      transition: opacity .2s ease-out
       width: 100%
       word-break: break-word
       z-index: 2

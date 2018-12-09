@@ -13,7 +13,7 @@ add_filter('Flynt/addComponentData?name=GridDownloadPortrait', function ($data) 
         $data['items'] = array_map(function ($item) {
             if ($item['itemType'] === 'itemFile') {
                 $fileSize = filesize(get_attached_file($item['file']['id']));
-                $item['file']['fileSize'] = size_format($fileSize, 2);
+                $item['file']['fileSize'] = size_format($fileSize);
             }
             return $item;
         }, $data['items']);

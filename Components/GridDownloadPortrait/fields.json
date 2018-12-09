@@ -1,7 +1,7 @@
 {
   "layout": {
     "name": "gridDownloadPortrait",
-    "label": "Grid: DownloadPortrait",
+    "label": "Grid: Download Portrait",
     "sub_fields": [
       {
         "label": "Pre-Content",
