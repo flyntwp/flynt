@@ -1,14 +1,13 @@
-# NavigationMain
+Title: Navigation Main
 
-## Category
-Navigation
+---
 
-## Tags
-navigation, sticky
+Category: Navigation
 
-## Description
-An absolutely positioned navigation with a brand logo and a WordPress menu.
+---
 
-## Fields
-* brandLogo
-* menuItems
+Tags: navigation, menu
+
+---
+
+Text: A static brand logo and a simple list of links generated from a WordPress menu, to be easily extended into a more complex website navigation. Transforms into a sticky navigation with a burger menu on mobile.
