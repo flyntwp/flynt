@@ -2,19 +2,20 @@ $rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 120
 $rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
 $containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
 $containerPadding = lookup('$globalContainerPadding') || 15px
+$contentMaxWidth = lookup('$globalContentMaxWidth') || 600px
 
 .flyntComponent[is='flynt-block-image-text']
   .container
-    padding: 0 $containerPadding
-    margin: 0 auto 2rem
+    padding: 40px $containerPadding
+    margin: 0 auto
     max-width: $containerMaxWidth
 
   .box
     align-items: center
     display: flex
-    justify-content: space-between
+    margin: 0 -20px
 
-    +below('m')
+    +below('l')
       display: block
 
     &--imageLeft
@@ -23,12 +24,32 @@ $containerPadding = lookup('$globalContainerPadding') || 15px
     &--imageRight
       flex-direction: row-reverse
 
+    &-image
+      width: 60%
+
+    &-content
+      width: 40%
+
     &-image,
     &-content
-      width: calc(50% - .5rem)
+      padding: 0 20px
 
-      +below('m')
-        width: auto
+      +below('xl')
+        width: 50%
+
+      +below('l')
+        margin: 0 auto
+        max-width: $contentMaxWidth
+        width: 100%
+
+  .figure
+    font-size: .8rem
+
+    +above('xl')
+      margin-bottom: 0
+
+      &-caption
+        position: absolute
 
   .box-content
     > :first-child
