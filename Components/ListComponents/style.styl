@@ -51,11 +51,14 @@ $colorBackground      = lookup('$globalColorBackground')    || #FFFFFF
         min-height: 100%
         object-fit: contain
 
+        +above('hd')
+          transition: transform .2s ease-out
+
       &--desktop
         height: 100%
         min-height: 290px
         max-height: 380px
-        width: 580px
+        width: $contentMaxWidth - 20px
 
         +below('l')
           max-width: $contentMaxWidth - 20px
@@ -73,7 +76,7 @@ $colorBackground      = lookup('$globalColorBackground')    || #FFFFFF
 
         +below('s')
           bottom: auto
-          max-height: none
+          max-height: 400px
           position: relative
           right: auto
           width: 100%
