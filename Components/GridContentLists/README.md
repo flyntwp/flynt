@@ -1,29 +1,13 @@
-## Grid Link List README
-
-### Title:
-
-Grid Content Lists
+Title: Grid Content Lists
 
 ---
 
-### Category:
-
-List
+Category: Grid
 
 ---
 
-### Tags:
-
-List blocks, wysiwyg
+Tags: lists, wysiwyg, links
 
 ---
 
-### Description:
-
-List of blocks with wysiwyg
-
----
-
-### Fields:
-
-Blocks repeater, wysiwyg
+Text: Multiple formatted text boxes with special full-width list styling, typically used for internal site links, or other additional resources. Up to 4 boxes show side by side on desktop, 2 on tablet and 1 on mobile.
