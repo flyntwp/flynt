@@ -8,8 +8,6 @@
         "type": "repeater",
         "name": "blocks",
         "collapsed": "",
-        "min": 0,
-        "max": 4,
         "layout": "block",
         "button_label": "Add Block",
         "wrapper": {

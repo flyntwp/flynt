@@ -24,15 +24,14 @@ $colorText = lookup('$globalColorText') || #222222
     display: flex
     flex-wrap: wrap
     justify-content: center
-    margin: 0 -10px
+    margin: -20px -10px 0
 
     &-item
       max-width: 400px
-      padding: 0 10px
+      padding: 20px 10px 0
       width: 25%
 
       +below('xl')
-        margin-bottom: 20px
         width: 50%
 
       +below('s')
@@ -41,7 +40,7 @@ $colorText = lookup('$globalColorText') || #222222
   .content
     background-color: $colorBackground
     height: 100%
-    padding: 20px 30px 60px
+    padding: 25px 30px
 
     > :first-child
       margin-top: 0
@@ -52,9 +51,8 @@ $colorText = lookup('$globalColorText') || #222222
       padding-top: 0
 
     ul > li
-      border-bottom: 1px solid #f0f0f0
-      margin-bottom: 5px
-      padding-bottom: 5px
+      border-bottom: 1px solid rgba(0, 0, 0, .06)
+      padding: 5px 0
 
       &:last-child
         border-bottom: none
@@ -65,10 +63,8 @@ $colorText = lookup('$globalColorText') || #222222
         text-decoration: none
         transition: color .3s cubic-bezier(.190, 1.000, .220, 1.000)
 
-        &:after
-          content: "\2192"
-          font-size: .8rem
-          padding-left: 10px
+        &::after
+          content: "\00a0➟"
 
         &:hover
           color: $colorAccent
