@@ -2,18 +2,32 @@ $containerPadding = lookup('$globalContainerPadding') || 15px
 $rupture.anti-overlap = lookup('$globalRuptureOverlap') || -1px
 $rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
 $containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
+$contentMaxWidth = lookup('$globalContentMaxWidth') || 600px
 $colorAccent = lookup('$globalColorAccent') || #F98928
 $colorBackground = lookup('$globalColorBackground') || #ffffff
 $colorText = lookup('$globalColorText') || #222222
 
 .flyntComponent[is="flynt-grid-content-lists"]
   background-color: rgba(0, 0, 0, .03)
-  padding: 40px 0
+  padding: 60px 0
 
   .container
     margin: 0 auto
     padding: 0 $containerPadding
     max-width: $containerMaxWidth
+
+  .preContent
+    margin: 0 auto 50px
+    max-width: $contentMaxWidth
+    text-align: center
+
+    > :first-child
+      margin-top: 0
+      padding-top: 0
+
+    > :last-child
+      margin-bottom: 0
+      padding-bottom: 0
 
   ul
     list-style: none
