@@ -15,15 +15,18 @@ class ListComponents extends window.HTMLDivElement {
   }
 
   connectedCallback () {
-    // this.$.on('mouseenter mouseleave', this.$componentImageWrappers.selector, this.toggleHoverScroll.bind(this))
-    this.$window.on('resize', this.setParallaxConfig.bind(this))
-    $(document).on('lazyloaded', this.setParallaxConfig.bind(this))
-    this.$window.on('scroll', this.startParallaxScroll.bind(this))
+    if (this.$window.width() > 575) {
+      this.$.on('mouseenter mouseleave', this.$componentImageWrappers.selector, this.toggleHoverScroll.bind(this))
+    } else {
+      this.$window.on('resize', this.setParallaxConfig.bind(this))
+      $(document).on('lazyloaded', this.setParallaxConfig.bind(this))
+      this.$window.on('scroll', this.startParallaxScroll.bind(this))
+    }
   }
 
   toggleHoverScroll (e) {
     let $imageWrapper = $(e.currentTarget)
-    let $imageWrapperHeight = $imageWrapper.height()
+    let $imageWrapperHeight = $imageWrapper.outerHeight()
     let $image = $imageWrapper.find('img')
     let $imageHeight = $image.height()
 
@@ -46,10 +49,10 @@ class ListComponents extends window.HTMLDivElement {
       let $imageWrapper = $image.parent()
       let $previewWrapper = $image.closest('.component-previews')
 
-      let imageOverflow = $image.height() - $imageWrapper.height()
+      let imageOverflow = $image.height() - $imageWrapper.outerHeight()
       let topOffset = $previewWrapper.offset().top
       let startOffset = topOffset - windowHeight * 0.4
-      let endOffset = topOffset + $previewWrapper.height() - windowHeight * 0.6
+      let endOffset = topOffset - 100
 
       $image.data('parallaxConfig', {
         imageOverflow: imageOverflow,
