@@ -1,27 +1,27 @@
 {
   "layout": {
-    "name": "gridListSteps",
-    "label": "Grid: ListSteps",
+    "name": "listTestimorialsCards",
+    "label": "List: TestimorialsCards",
     "sub_fields": [
       {
-        "label": "Pre Content Html",
+        "label": "Pre-Content",
         "name": "preContentHtml",
-        "instructions": "Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.",
         "type": "wysiwyg",
+        "instructions": "Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.",
         "tabs": "visual,text",
         "toolbar": "full",
         "media_upload": 0,
         "delay": 1
       },
       {
-        "label": "Step List",
+        "label": "Testimorials List",
         "type": "repeater",
-        "name": "stepList",
+        "name": "testimorialsList",
         "collapsed": "",
         "min": 0,
         "max": 0,
         "layout": "table",
-        "button_label": "Add Steps",
+        "button_label": "Add Testimorial",
         "sub_fields": [
           {
             "label": "Content",

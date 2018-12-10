@@ -27,7 +27,8 @@
         "Flynt/Components/SliderMedia/Fields/Layout",
         "Flynt/Components/SliderImages/Fields/Layout",
         "Flynt/Components/SliderImageGallery/Fields/Layout",
-        "Flynt/Components/GridListSteps/Fields/Layout"
+        "Flynt/Components/GridListSteps/Fields/Layout",
+        "Flynt/Components/ListTestimorialsCards/Fields/Layout"
       ]
     }
   ],
