@@ -1,13 +1,13 @@
-<div class="flyntComponent" is="flynt-grid-list-steps">
+<div class="flyntComponent" is="flynt-list-testimorials-cards">
   <div class="container">
     {% if preContentHtml %}
       <div class="preContent">{{ preContentHtml|e('wp_kses_post') }}</div>
     {% endif %}
-    <ul class="stepsList">
-      {% for step in stepList %}
-        <li class="step">
+    <ul class="testimorialsList">
+      {% for testimorial in testimorialsList %}
+        <li class="testimorial">
           <div class="content">
-            {{ step.contentHtml|e('wp_kses_post') }}
+            {{ testimorial.contentHtml|e('wp_kses_post') }}
           </div>
         </li>
       {% endfor %}
