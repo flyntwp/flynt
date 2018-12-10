@@ -30,38 +30,23 @@ $rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
       width: 100%
 
     &-arrow
+      $colorTextRgb = red($colorText), green($colorText), blue($colorText)
+      background-image: url("data:image/svg+xml;utf8,<svg width='32' height='32' xmlns='http://www.w3.org/2000/svg'><polyline fill='none' stroke='rgb("$colorTextRgb")' stroke-width='2'  points='2,9 16,25 30,9 '/></svg>")
+      background-position: center center
+      background-repeat: no-repeat
+      background-size: 100%
       display: block
       height: 20px
       position: absolute
       right: 0
       top: 50%
       transform: translateY(-50%)
+      transition: transform .2s cubic-bezier(.165, .840, .440, 1.000)
       width: 30px
-
-      &::before,
-      &::after
-        background-color: $colorText
-        content: ''
-        height: 100%
-        position: absolute
-        transition: transform .2s cubic-bezier(.165, .840, .440, 1.000)
-        width: 2px
-
-      &::before
-        left: 8px
-        transform: rotate(140deg)
-
-      &::after
-        right: 8px
-        transform: rotate(-140deg)
 
   [aria-expanded="true"]
     .panel-arrow
-      &::before
-        transform: rotate(40deg)
-
-      &::after
-        transform: rotate(-40deg)
+      transform: translateY(-50%) rotateX(180deg)
 
   .panel-content
     display: none
