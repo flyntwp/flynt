@@ -1,0 +1,16 @@
+<div class="flyntComponent" is="flynt-grid-list-steps">
+  <div class="container">
+    {% if preContentHtml %}
+      <div class="preContent">{{ preContentHtml|e('wp_kses_post') }}</div>
+    {% endif %}
+    <ul class="stepsList">
+      {% for step in stepList %}
+        <li class="step">
+          <div class="content">
+            {{ step.stepContent|e('wp_kses_post') }}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
