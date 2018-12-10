@@ -5,15 +5,21 @@
           <div class="slide">
             <figure class="figure">
               <img class="figure-image lazyload"
-                src="{{ image.src|resize(1230) }}"
+                src="{{ image.src|resize(0, 650) }}"
                 srcset="{{ transparentPng(image.aspect) }}"
                 data-srcset="
-                  {{ image.src|resize(1920) }} 1920w,
-                  {{ image.src|resize(1230) }} 1230w,
-                  {{ image.src|resize(750) }} 750w,
-                  {{ image.src|resize(375) }} 375w"
+                  {{ image.src|resize(0, 1300) }} {{ (image.aspect * 1300)|round }}w,
+                  {{ image.src|resize(0, 1024) }} {{ (image.aspect * 1024)|round }}w,
+                  {{ image.src|resize(0, 750) }} {{ (image.aspect * 750)|round }}w,
+                  {{ image.src|resize(0, 650) }} {{ (image.aspect * 650)|round }}w,
+                  {{ image.src|resize(0, 512) }} {{ (image.aspect * 512)|round }}w,
+                  {{ image.src|resize(0, 385) }} {{ (image.aspect * 385)|round }}w,
+                  {{ image.src|resize(0, 250) }} {{ (image.aspect * 250)|round }}w"
                 data-sizes="auto"
                 alt="{{ image.alt|e('html_attr') }}">
+              {% if image.caption %}
+                <figcaption class="figure-caption">{{ image.caption|e }}</figcaption>
+              {% endif %}
             </figure>
           </div>
         {% endfor %}

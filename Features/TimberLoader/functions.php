@@ -123,7 +123,7 @@ add_action('timber/twig/filters', function ($twig) {
     return $twig;
 });
 
-function aspectToRatio($n, $tolerance = 1.e-4)
+function aspectToRatio($n, $tolerance = 1.e-3)
 {
     $h1 = 1;
     $h2 = 0;

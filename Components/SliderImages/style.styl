@@ -1,13 +1,12 @@
 $rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
 $rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
 $containerPadding = lookup('$globalContainerPadding') || 20px
-$containerMaxWidth = 800px + (2 * $containerPadding)
+$containerMaxWidth = 800px
 $colorText = lookup('$globalColorText') || #222222
 
 .flyntComponent[is="flynt-slider-images"]
   .container
     margin: 0 auto 2rem
-    padding: 0 $containerPadding
     max-width: $containerMaxWidth
 
     +below($containerMaxWidth)
@@ -88,15 +87,9 @@ $colorText = lookup('$globalColorText') || #222222
       background: url('../../Components/SliderImages/Assets/arrow-left.svg') no-repeat center
       left: 10px
 
-      +below($containerMaxWidth)
-        left: 10px + $containerPadding
-
     &.slick-next
       background: url('../../Components/SliderImages/Assets/arrow-right.svg') no-repeat center
       right: 10px
-
-      +below($containerMaxWidth)
-        right: 10px + $containerPadding
 
     &.slick-disabled
       opacity: 0

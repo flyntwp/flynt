@@ -25,8 +25,7 @@ class SliderImageGallery extends window.HTMLDivElement {
         {
           breakpoint: 576,
           settings: {
-            arrows: false,
-            dots: true
+            arrows: false
           }
         }
       ]

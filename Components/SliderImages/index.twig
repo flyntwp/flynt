@@ -5,13 +5,13 @@
         <div class="slide">
           <figure class="figure">
             <img class="figure-image lazyload"
-              src="{{ image.src|resize(0, 1080) }}"
+              src="{{ image.src|resize(0, 540) }}"
               srcset="{{ transparentPng(image.aspect) }}"
               data-srcset="
                 {{ image.src|resize(0, 1080) }} {{ (image.aspect * 1080)|round }}w,
                 {{ image.src|resize(0, 750) }} {{ (image.aspect * 750)|round }}w,
                 {{ image.src|resize(0, 540) }} {{ (image.aspect * 540)|round }}w,
-                {{ image.src|resize(0, 350) }} {{ (image.aspect * 350)|round }}w,
+                {{ image.src|resize(0, 385) }} {{ (image.aspect * 385)|round }}w,
                 {{ image.src|resize(0, 250) }} {{ (image.aspect * 250)|round }}w"
               data-sizes="auto"
               alt="{{ image.alt|e('html_attr') }}">
