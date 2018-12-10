@@ -10,7 +10,6 @@
       "button_label": "Add Component",
       "layouts": [
         "Flynt/Components/AccordionDefault/Fields/Layout",
-        "Flynt/Components/BlockBaseStyle/Fields/Layout",
         "Flynt/Components/BlockImage/Fields/Layout",
         "Flynt/Components/BlockImageText/Fields/Layout",
         "Flynt/Components/BlockMediaText/Fields/Layout",
