@@ -9,6 +9,13 @@
         "type": "tab"
       },
       {
+        "label": "Boxed",
+        "name": "boxed",
+        "type": "true_false",
+        "default_value": 0,
+        "ui": 1
+      },
+      {
         "label": "Desktop Image",
         "name": "image",
         "type": "image",
