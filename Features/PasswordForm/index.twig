@@ -1,6 +1,8 @@
-<form action="{{ form.url }}" class="post-password-form" method="post">
-  {{ __('This content is password protected. To view it please enter your password below:') }}
-  <label for="pwbox-{{ form.inputId }}">{{ __('Password:') }}</label>
-  <input name="post_password" id="pwbox-{{ form.inputId }}" type="password" size="20" maxlength="20" />
-  <input type="submit" name="Submit" value="{{ __('Submit') | e('html_attr') }}" />
-</form>
+<div style="text-align:center">
+  <form action="{{ form.url }}" class="post-password-form" method="post">
+    <h3>{{ __('This content is password protected.') }}</h3>
+    <p>To view it please enter your password below:</p>
+    <input name="post_password" id="pwbox-{{ form.inputId }}" type="password" size="20" maxlength="20" /><br>
+    <button class="btn btn--primary" type="submit" name="Submit">{{ __('Submit') | e }}</button>
+  </form>
+</div>
