@@ -1,6 +1,6 @@
 <div class="flyntComponent" is="flynt-hero-image-text">
   <div class="heroImageText">
-    <div class="container-fullWidth">
+    <div class="container{%if boxed%}-boxed{% endif %}">
       <div class="picture">
         <picture>
           <source srcset="
@@ -12,7 +12,7 @@
           media="(min-width: 800px)">
           <img class="image lazyload" data-srcset="
             {{ mobileImage.src | resize(800, 357) }} 800w"
-          src="{{ image.src | resize(1200, 675) }}"
+          src="{{ image.src | resize(1200, 432) }}"
           srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
           data-sizes="auto"
           itemprop="image"
