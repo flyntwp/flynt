@@ -1,58 +1,43 @@
 $containerPadding     = lookup('$globalContainerPadding')   || 20px
-$containerMaxWidth    = lookup('$globalContainerMaxWidth')  || 1270px
+$containerMaxWidth    = lookup('$globalContainerMaxWidth')  || 1280px
 $contentMaxWidth      = lookup('$globalContentMaxWidth')    || 600px
 $rupture.anti-overlap = lookup('$globalRuptureOverlap')     || -1px
 $rupture.scale        = lookup('$globalRuptureScale')       || (0 426px 576px 768px 992px 1200px)
-$colorWhite           = lookup('$globalColorBackground')    || #FFFFFF
-$headings             = 'p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6'
+$headings             = 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6'
 
 .flyntComponent[is="flynt-hero-image-text"]
-  *,
-  *:before,
-  *:after
-    box-sizing: border-box
-
-  .heroImageText
   .container
+    margin: 0 auto
+    max-width: $containerMaxWidth
+
+  .wrapper
+    background: rgba(0, 0, 0, .8)
     position: relative
 
-    .picture
-      &:before
-        content:''
-        background: linear-gradient(to bottom, rgba(30, 87, 153, 0) 0, rgba(0, 0, 0, .14) 14%, rgba(0, 0, 0, .18) 18%, rgba(0, 0, 0, .27) 27%, rgba(0, 0, 0, .38) 38%, rgba(0, 0, 0, .5) 50%, rgba(0, 0, 0, 1) 100%)
-        display: block
-        height: 100%
-        position: absolute
-        top: 0
-        width: 100%
+  .image
+    height: 400px
+    object-fit: cover
+    width: 100%
 
-    .image
-      width: 100%
+  .content
+    background: linear-gradient(to top, rgba(0, 0, 0, .5), rgba(0, 0, 0, 0))
+    align-items: center
+    display: flex
+    height: 100%
+    justify-content: center
+    left: 0
+    padding: 0 $containerPadding
+    position: absolute
+    top: 0
+    width: 100%
 
-      +below('l')
-        min-height: 357px
-        object-fit: cover
-
-    .content
-      position: absolute
-      top: 50%
-      transform: translate3d(0, -50%, 0)
-      width: 100%
-      z-index: 4
-
-      +below('l')
-        bottom: 20px
-        top: auto
-        transform: translate3d(0, 0, 0)
-
-    .content-inner
-      margin: 0 auto
+    &-inner
+      color: #fff
       max-width: $contentMaxWidth
-      padding: $containerPadding
       text-align: center
 
       {$headings}
-        color: $colorWhite
+        color: inherit
 
       > :first-child
         margin-top: 0
@@ -61,15 +46,3 @@ $headings             = 'p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
       > :last-child
         margin-bottom: 0
         padding-bottom: 0
-
-    &-boxed
-      center($containerMaxWidth, $containerPadding)
-      position: relative
-
-      .content,
-      .overlayGradient
-        width: 'calc(100% - %s*2)' % $containerPadding
-
-
-
-
