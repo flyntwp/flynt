@@ -5,6 +5,8 @@ $rupture.anti-overlap = lookup('$globalRuptureOverlap')     || -1px
 $rupture.scale        = lookup('$globalRuptureScale')       || (0 426px 576px 768px 992px 1200px)
 $colorWhite           = lookup('$globalColorBackground')    || #FFFFFF
 $headings             = 'p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6'
+$minComponentHeight   = 575px
+$maxComponentHeight   = 1080px
 
 .flyntComponent[is="flynt-hero-image"]
   *,
@@ -12,84 +14,126 @@ $headings             = 'p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
   *:after
     box-sizing: border-box
 
-$minComponentHeight   = 575px
-$maxComponentHeight   = 1080px
+  .heroImage,
+  .wrapper
+    max-height: $maxComponentHeight
+    min-height: $minComponentHeight
 
-.heroImageText-boxed,
-.heroImageText-boxed-wrapper
-  max-height: $maxComponentHeight
-  min-height: $minComponentHeight
+  .heroImage
+    height: calc(100vh - 80px)
+    overflow: hidden
 
-.heroImageText-boxed
-  height: calc(100vh - 80px)
-  overflow: hidden
+    .wrapper
+      center(1920px)
+      align-items: center
+      display: flex
+      height: 100%
+      position: relative
 
-  &-wrapper
-    center(1920px)
-    align-items: center
-    display: flex
-    height: 100%
-    position: relative
+      &-boxed
+        max-width: $containerMaxWidth
 
-  .containerContent
-    max-width: $containerMaxWidth
-    width: 100%
-    margin: 0 auto
-
-    .content
-      margin-top: -50px
-      max-width: 720px
-      padding: $containerPadding
-      position: absolute
+    .containerContent
+      max-width: $containerMaxWidth
       width: 100%
-      z-index: 2
+      margin: 0 auto
 
-      +below('m')
-        max-width: 300px
-
-      h1, .h1
-        font-size: 6.25rem
-        line-height: 1.04
-        margin-bottom: 1.25rem
-        margin-left: -4px
-        padding: 0
+      .content
+        max-width: 720px
+        padding: $containerPadding
+        position: relative
+        width: 100%
+        z-index: 2
 
         +below('m')
-          font-size: 3.063rem
-          margin-left: -1px
+          max-width: 300px
 
-        +below(365px)
-          font-size: 2.463rem
+        &--left
+          margin-left: auto
+          margin-right: 0
+          text-align: right
 
-  .imageWrapper
-    max-height: 620px
-    max-width: 916px
-    object-fit: cover
-    position: absolute
-    right: 0
-    top: 50%
-    transform: translateY(-50%)
-    width: 100%
+        &--whiteFont
+          {$headings}
+            color: $colorWhite
 
-    +above(1500px)
-      max-height: 839px
-      max-width: 1240px
+        h1, .h1
+          font-size: 6.25rem
+          line-height: 1.04
+          margin-bottom: 1.25rem
+          margin-left: -4px
+          padding: 0
 
-    +below(1500px)
-      max-height: 700px
-      max-width: 1034px
+          +below('m')
+            font-size: 3.063rem
+            margin-left: -1px
 
-    +below('xl')
-      width: 750px
+          +below(365px)
+            font-size: 2.463rem
 
-    +below('l')
-      width: 550px
+        > :first-child
+          margin-top: 0
+          padding-top: 0
 
-    +below('m')
-      width: 68%
+        > :last-child
+          margin-bottom: 0
+          padding-bottom: 0
 
-  .image
-    display: block
-    height: 100%
-    object-fit: cover
-    width: 100%
+    .imageWrapper
+      height: 80vh
+      max-height: 620px
+      max-width: 916px
+      position: absolute
+      right: 0
+      top: 50%
+      transform: translateY(-50%)
+      width: 100%
+
+      &-hasOverlay
+        &:before
+          background-color: #000
+          content: ''
+          display: block
+          height: 100%
+          opacity: .3
+          position: absolute
+          top: 0
+          width: 100%
+          z-index: 2
+
+      +above(1500px)
+        max-height: 839px
+        max-width: 1240px
+
+      +below(1500px)
+        max-height: 700px
+        max-width: 1034px
+
+      &-boxed
+        margin: 0 20px
+        max-width: 1000px
+
+      +below('xl')
+        width: 750px
+
+      +below('l')
+        width: 550px
+
+      +below('m')
+        width: 68%
+
+      &--left
+        left: 0
+        right: auto
+
+    .image
+      bottom: 0
+      display: block
+      font-family: 'object-fit: cover; object-position: center;' // @stylint ignore
+      height: 100%
+      left: 0
+      object-fit: cover
+      position: absolute
+      right: 0
+      top: 0
+      width: 100%

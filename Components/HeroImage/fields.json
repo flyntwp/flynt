@@ -9,6 +9,25 @@
         "type": "tab"
       },
       {
+        "label": "Boxed",
+        "name": "boxed",
+        "type": "true_false",
+        "default_value": 0,
+        "ui": 1
+      },
+      {
+        "label": "Bild links",
+        "name": "imagePosition",
+        "type": "true_false",
+        "default_value": 0,
+        "ui": 1
+      },
+      {
+        "label": "Background Color",
+        "name": "backgroundColor",
+        "type": "text"
+      },
+      {
         "label": "Desktop Image",
         "name": "image",
         "type": "image",
@@ -29,6 +48,20 @@
         "mime_types": "jpg,jpeg",
         "required": 1,
         "instructions": "Recommended resolution greater than 380 x 570 px."
+      },
+      {
+        "label": "Dark Overlay",
+        "name": "overlay",
+        "type": "true_false",
+        "default_value": 0,
+        "ui": 1
+      },
+      {
+        "label": "White Font Color",
+        "name": "fontColor",
+        "type": "true_false",
+        "default_value": 0,
+        "ui": 1
       },
       {
         "name": "contentHtml",
