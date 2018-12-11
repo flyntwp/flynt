@@ -1,18 +1,19 @@
+$containerPadding = lookup('$globalContainerPadding') || 20px
 $rupture.anti-overlap = lookup('$globalRuptureOverlap') || -1px
 $rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
 $containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
-$contentMaxWidth = lookup('$globalContentMaxWidth')    || 600px
-$containerPadding = lookup('$globalContainerPadding') || 15px
+$contentMaxWidth = lookup('$globalContentMaxWidth') || 600px
 $colorBackground = lookup('$globalColorBackground') || #ffffff
 $colorText = lookup('$globalColorText') || #222222
 
-.flyntComponent[is="flynt-list-post-cards"]
+.flyntComponent[is="flynt-grid-posts"]
   background-color: rgba(0, 0, 0, .03)
+  padding: 60px 0
 
   .container
     margin: 0 auto
+    padding: 0 $containerPadding
     max-width: $containerMaxWidth
-    padding: 40px $containerPadding
 
   .preContent
     margin: 0 auto 50px
@@ -27,15 +28,12 @@ $colorText = lookup('$globalColorText') || #222222
       margin-bottom: 0
       padding-bottom: 0
 
-  .postContent
-    margin: 0 auto
-    max-width: $contentMaxWidth
-    text-align: center
+  ul
+    list-style: none
+    margin: 0
+    padding: 0
 
-    .btn
-      margin-bottom: 0
-
-  .list
+  .gridPosts
     display: flex
     flex-wrap: wrap
     justify-content: center
@@ -76,3 +74,20 @@ $colorText = lookup('$globalColorText') || #222222
 
     time
       font-size: .8rem
+
+  .pagination
+    align-items: center
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    margin-top: 40px
+
+    &-counter
+      margin: 0 5px
+
+    .btn
+      margin-bottom: 0
+
+      &--primary
+        &:hover
+          color: #fff
