@@ -1,0 +1,38 @@
+<div class="flyntComponent" is="flynt-block-share">
+  <div class="wrapper">
+    <div class="content">
+      {{ contentHtml }}
+    </div>
+    <ul class="shareList">
+      {% for shares in share %}
+        <li class="shareList-item">
+          <a class="shareList-link" href="{{ shares.url }}" target="_blank" rel="noopener noreferrer">
+            {# <img class="shareList-image" src=" #}
+              {% if ('facebook' in shares.platform) %}
+                {{ facebook }}
+              {% endif %}
+              {% if ('twitter' in shares.platform) %}
+                {{ twitter }}
+              {% endif %}
+              {% if ('mail' in shares.platform) %}
+                {{ mail }}
+              {% endif %}
+              {% if ('instagram' in shares.platform) %}
+                {{ instagram }}
+              {% endif %}
+              {% if ('youtube' in shares.platform) %}
+                {{ youtube }}
+              {% endif %}
+              {% if ('linkedin' in shares.platform) %}
+                {{ linkedin }}
+              {% endif %}
+              {% if ('xing' in shares.platform) %}
+                {{ xing }}
+              {% endif %}
+              {# " alt="{{ shares.platform }}"> #}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

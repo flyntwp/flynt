@@ -13,6 +13,7 @@
         "Flynt/Components/BlockImage/Fields/Layout",
         "Flynt/Components/BlockImageText/Fields/Layout",
         "Flynt/Components/BlockMediaText/Fields/Layout",
+        "Flynt/Components/BlockShare/Fields/Layout",
         "Flynt/Components/BlockVideoOembed/Fields/Layout",
         "Flynt/Components/BlockWysiwyg/Fields/Layout",
         "Flynt/Components/GridContentLists/Fields/Layout",
