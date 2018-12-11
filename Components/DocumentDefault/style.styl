@@ -80,8 +80,11 @@ fontFace($family, $file, $weight = 'normal', $style = 'normal', $woff2 = true, $
     padding-top: .5rem
 
   a
-    &, &:hover
-      color: $colorAccent
+    color: $colorAccent
+
+    +above('hd')
+      &:hover
+        color: $colorAccent
 
   dt
     font-weight: bold
@@ -176,7 +179,6 @@ fontFace($family, $file, $weight = 'normal', $style = 'normal', $woff2 = true, $
     font-family: inherit
     font-size: inherit
     line-height: inherit
-    margin-bottom: 1em
     outline: 0
     padding: .5rem 1rem
     text-align: center

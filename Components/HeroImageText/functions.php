@@ -9,12 +9,5 @@ add_filter('Flynt/addComponentData?name=HeroImageText', function ($data) {
         Component::enqueueAssets('HeroImageText');
     });
 
-    // $data['image'] = new Image($data['image']);
-    // if (empty($data['mobileImage'])) {
-    //     $data['mobileImage'] = $data['image'];
-    // } else {
-    //     $data['mobileImage'] = new Image($data['mobileImage']);
-    // }
-
     return $data;
 });

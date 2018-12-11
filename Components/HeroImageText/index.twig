@@ -1,33 +1,29 @@
 <div class="flyntComponent" is="flynt-hero-image-text">
-  <div class="heroImageText">
-    <div class="container{%if boxed%}-boxed{% endif %}">
-      <div class="picture">
-        <picture>
-          <source srcset="
-            {{ image.src | resize(670, 216) }} 670w,
-            {{ image.src | resize(1000, 360) }} 1000w,
-            {{ image.src | resize(1200, 432) }} 1200w,
-            {{ image.src | resize(2000, 720) }} 2000w,
-            {{ image.src | resize(4000, 1440) }} 4000w"
-          media="(min-width: 800px)">
-          <img class="image lazyload" data-srcset="
-            {{ mobileImage.src | resize(800, 357) }} 800w"
-          src="{{ image.src | resize(1200, 432) }}"
-          srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-          data-sizes="auto"
-          itemprop="image"
-          alt="{{ image.alt|e('html_attr') }}">
-          <meta content="{{ image.src }}" itemprop="contentUrl">
-        </picture>
-      </div>
+  <div class="container">
+    <div class="wrapper">
+      <picture>
+        <source srcset="
+          {{ images.imageDesktop.src | resize(2560, 800, 'center') }} 2560w,
+          {{ images.imageDesktop.src | resize(2048, 800, 'center') }} 2048w,
+          {{ images.imageDesktop.src | resize(1280, 400, 'center') }} 1280w,
+          {{ images.imageDesktop.src | resize(900, 400, 'center') }} 900w,
+          {{ images.imageDesktop.src | resize(768, 400, 'center') }} 768w"
+        media="(min-width: 576px)"
+        sizes="(min-width: 1280px) 1280px, 100vw">
+        <img class="image" srcset="
+          {{ images.imageMobile.src | resize(375, 400) }} 375w,
+          {{ images.imageMobile.src | resize(750, 800) }} 750w"
+        src="{{ images.mobileImage.src | resize(375, 400) }}"
+        sizes="(min-width: 1280px) 1280px, 100vw"
+        alt="{{ images.imageDesktop.alt|e('html_attr') }}">
+      </picture>
       {% if contentHtml %}
         <div class="content">
-          <div class="content-inner {% if fontColor == true %}content-inner--whiteColor{% endif %}">
+          <div class="content-inner">
             {{ contentHtml|e('wp_kses_post') }}
           </div>
         </div>
       {% endif %}
-      <div class="overlayGradient"></div>
     </div>
   </div>
 </div>
