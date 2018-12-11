@@ -17,7 +17,7 @@ Flynt\echoHtmlFromConfig([
                     ],
                     'pageComponents' => [
                         [
-                            'name' => 'ListPosts'
+                            'name' => 'GridPosts'
                         ]
                     ],
                     'mainFooter' => [
