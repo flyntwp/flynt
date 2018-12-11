@@ -10,13 +10,12 @@ add_filter('Flynt/addComponentData?name=BlockShare', function ($data) {
         Component::enqueueAssets('BlockShare');
     });
 
-    $data['mail'] = Asset::getContents('Components/BlockShare/Assets/mail.svg');
-    $data['facebook'] = Asset::getContents('Components/BlockShare/Assets/facebook.svg');
-    $data['linkedin'] = Asset::getContents('Components/BlockShare/Assets/linkedin.svg');
-    $data['twitter'] = Asset::getContents('Components/BlockShare/Assets/twitter.svg');
-    $data['youtube'] = Asset::getContents('Components/BlockShare/Assets/youtube.svg');
-    $data['xing'] = Asset::getContents('Components/BlockShare/Assets/xing.svg');
-    $data['instagram'] = Asset::getContents('Components/BlockShare/Assets/instagram.svg');
+    if (!empty($data['share'])) {
+        $data['share'] = array_map(function ($item) {
+            $item['icon'] = Asset::getContents("Components/BlockShare/Assets/{$item['platform']}.svg");
+            return $item;
+        }, $data['share']);
+    }
 
     return $data;
 });
