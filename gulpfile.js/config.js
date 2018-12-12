@@ -9,13 +9,13 @@ module.exports = {
     watchOptions: {
       ignoreInitial: true
     },
-    files: ['dist/{Components,Features}/**/*.css'],
+    files: ['dist/{Components,Features,assets}/**/*.css'],
     injectChanges: true,
     reloadDebounce: 1000
   },
   copy: [
-    './{Components,Features}/**/*',
-    '!./{Components,Features}/**/*.{js,styl,sass,less}'
+    './{Components,Features,assets}/**/*',
+    '!./{Components,Features,assets}/**/*.{js,styl,sass,less}'
   ],
   dest: dest,
   rev: {
@@ -44,14 +44,15 @@ module.exports = {
     sourceRoot: '/app/themes/flynt-starter-theme/'
   },
   stylus: [
-    './{Components,Features}/**/*.styl',
-    '!./{Components,Features}/**/_*.styl'
+    './{Components,Features,assets}/**/*.styl',
+    '!./{Components,Features,assets}/**/_*.styl'
+
   ],
   watch: {
-    stylus: './{Components,Features}/**/*.styl',
+    stylus: './{Components,Features,assets}/**/*.styl',
     php: [
       './**/*.php',
-      '!./{Components,Features}/**/*.php'
+      '!./{Components,Features,assets}/**/*.php'
     ],
     hardReloadOnStylFiles: ['Components/_variables.styl'],
     stylusPartials: {
@@ -62,13 +63,13 @@ module.exports = {
   },
   webpack: {
     entry: [
-      './{Components,Features}/**/{script,admin,auth}.js'
+      './{Components,Features,assets}/**/{script,admin,auth}.js'
     ]
   },
   lint: {
-    stylus: './{Components,Features}/**/*.styl',
+    stylus: './{Components,Features,assets}/**/*.styl',
     js: [
-      './{Components,Features,gulpfile.js}/**/*.js'
+      './{Components,Features,assets,gulpfile.js}/**/*.js'
     ],
     php: [
       './**/*.php',

@@ -5,7 +5,8 @@ use Timber\PostQuery;
 
 $context = Timber::get_context();
 $context['posts'] = new PostQuery();
-// $context['foo'] = 'bar';
+$context['feedTitle'] = $context['site']->name . ' ' . __('Feed', 'flynt-starter-theme');
+$context['dir'] = is_rtl() ? 'rtl' : 'ltr';
 $templates = ['twig/index.twig'];
 // if ( is_home() ) {
 // 	array_unshift( $templates, 'front-page.twig', 'home.twig' );

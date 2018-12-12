@@ -281,3 +281,48 @@ fontFace($family, $file, $weight = 'normal', $style = 'normal', $woff2 = true, $
     position: relative
     top: -2px
     vertical-align: middle
+
+
+.flyntComponent[is='flynt-layout-single-post'],
+  &,
+  .pageWrapper
+    height: 100%
+
+  .pageWrapper
+    display: flex
+    flex-direction: column
+
+  .mainContent
+    flex: 1 0 auto
+
+    > .flyntComponent:first-child .container
+      margin-top: 0
+
+    > .flyntComponent:last-child .container
+      margin-bottom: 0
+
+html,
+body
+  height: 100%
+
+.flyntComponent[is='flynt-layout-multiple-posts']
+  &,
+  .pageWrapper
+    height: 100%
+
+  .pageWrapper
+    display: flex
+    flex-direction: column
+
+  .mainContent
+    flex: 1 0 auto
+
+    > .flyntComponent:first-child .container
+      margin-top: 0
+
+    > .flyntComponent:last-child .container
+      margin-bottom: 0
+
+html,
+body
+  height: 100%
