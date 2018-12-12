@@ -7,6 +7,7 @@ use Flynt\Utils\Asset;
 use Flynt\Utils\Feature;
 use Flynt\Utils\FileLoader;
 use Flynt\Utils\StringHelpers;
+use Timber\Timber;
 
 add_action('after_setup_theme', __NAMESPACE__ . '\\initTheme');
 add_action('after_setup_theme', __NAMESPACE__ . '\\loadFeatures', 100);
@@ -23,6 +24,8 @@ function initTheme()
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
     add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio'));
+
+    new Timber();
 }
 
 function loadFeatures()

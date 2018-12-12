@@ -1,46 +1,6 @@
 <?php
 
-use Flynt\Features\Components\Component;
 use Flynt\Utils\Asset;
-use function Flynt\Features\TimberLoader\renderTwigIndex;
-
-add_filter('get_twig', function ($twig) {
-    $twig->addFunction(new Twig_SimpleFunction('renderComponent', 'renderComponent'));
-
-    $twig->addFunction(new Twig_SimpleFunction('renderFlexibleContent', function ($fcField) {
-        return implode('', array_map(function ($field) {
-            return renderComponent(ucfirst($field['acf_fc_layout']), $field);
-        }, $fcField));
-    }));
-
-    return $twig;
-});
-
-function renderComponent($name, $data = [])
-{
-    $data = apply_filters(
-        'Flynt/addComponentData',
-        $data,
-        [],
-        [
-            'name' => $name,
-        ]
-    );
-    $data = apply_filters(
-        "Flynt/addComponentData?name={$name}",
-        $data,
-        [],
-        [
-            'name' => $name,
-        ]
-    );
-
-    return renderTwigIndex(null, $name, $data, null);
-};
-
-add_action('after_setup_theme', function () {
-    new Timber\Timber();
-});
 
 add_action('wp_enqueue_scripts', function () {
     Asset::register([
