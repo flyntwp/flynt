@@ -1,0 +1,57 @@
+.searchList
+  ul
+    list-style: none
+    padding: 0
+
+    li
+      padding: $containerPadding
+      border-bottom: 1px solid #9b9b9b
+
+      a
+        text-decoration: none
+
+        &:hover
+          .postTitle
+            color: $colorAccent
+
+      .excerpt
+        color: #9b9b9b
+
+
+
+
+.listSearchResults
+  &-wrapper
+    center($containerInnerMaxWidth, $pad:$containerPadding)
+    margin-top: 50px
+
+    {$headings}
+      font-weight: 800
+
+  &-searchResults-outer
+    padding-left: 0
+
+  &-searchResults-item
+    border-bottom: 2px solid red
+    list-style: none
+
+  &-searchResults-itemInner
+    margin: 30px 0 30px 40px
+
+    +below('s')
+      margin: 20px 0
+
+  &-searchResults-itemTitle
+    color: blue
+    font-weight: 600
+    line-height: 1.5
+    margin: 20px 0 0
+    padding: 0
+
+  &-searchResults-itemExcerpt
+    color: black
+    font-size: 18px
+    margin: 0
+    // overflow: hidden
+    // // text-overflow: ellipsis
+    // // white-space: nowrap

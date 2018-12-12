@@ -1,0 +1,37 @@
+.searchPagination
+  display: flex
+  justify-content: space-around
+
+  .navigation
+    border: 1px solid $colorAccent
+    display: flex
+
+    .browselinks
+      display: flex
+
+    .prev
+    .next
+    .browselinks a
+    .browselinks span
+      height: 60px
+      width: @height
+      display: flex
+      justify-content: space-around
+      align-items: center
+      text-decoration: none
+      line-height: 0
+
+      .browselinks a
+        &:hover
+          background-color: $colorAccent
+          color: #fff
+
+          svg
+            path
+              fill: #fff
+
+
+    .page-number
+      &.current
+        background-color: $colorAccent
+        color: #fff

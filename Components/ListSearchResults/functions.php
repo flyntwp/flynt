@@ -2,6 +2,7 @@
 
 namespace Flynt\Components\ListSearchResults;
 
+use Flynt\Utils\Asset;
 use Flynt\Features\Components\Component;
 
 add_filter('Flynt/addComponentData?name=ListSearchResults', function ($data, $parentData) {
@@ -9,18 +10,27 @@ add_filter('Flynt/addComponentData?name=ListSearchResults', function ($data, $pa
         Component::enqueueAssets('ListSearchResults');
     });
 
-    if (!isset($data['pagination']) && isset($parentData['pagination'])) {
-        $data['pagination'] = $parentData['pagination'];
-    }
-    if (!isset($data['posts']) && isset($parentData['posts'])) {
-        $data['posts'] = $parentData['posts'];
-    }
-    if (!isset($data['postsCount']) && isset($parentData['postsCount'])) {
-        $data['postsCount'] = $parentData['postsCount'];
+    global $wp_query;
+    $data['posts'] = $parentData['posts'];
+    $data['posts_found'] = $wp_query->found_posts;
+    $searchQuery = get_search_query();
+    $data['searchTerm'] = $searchQuery;
+
+    if (!empty($parentData['posts'])) {
+        $data['searchResult'] = str_replace('%%resultCount%%', $data['posts_found'], $data['searchResult']);
+        $data['searchResult'] = str_replace('%%resultTerm%%', $data['searchTerm'], $data['searchResult']);
+    } else {
+        $data['searchResult'] = str_replace('%%resultTerm%%', $data['searchTerm'], $data['noResults']);
     }
 
-    var_dump($data['postsCount']);
-    die();
+    if (!empty($searchQuery)) {
+        $data['searchTerm'] = $searchQuery;
+    }
+
+    $data['pagination'] = (isset($parentData['pagination'])) ? $parentData['pagination'] : null;
+    $data['prevIcon'] = Asset::getContents('Components/ListSearchResults/Assets/navigation-prev.svg');
+    $data['nextIcon'] = Asset::getContents('Components/ListSearchResults/Assets/navigation-next.svg');
+    $data['searchIcon'] = Asset::getContents('Components/ListSearchResults/Assets/search.svg');
 
     return $data;
 }, 10, 2);

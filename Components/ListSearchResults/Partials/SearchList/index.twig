@@ -1,0 +1,8 @@
+<ul>
+  {% for post in posts  %}
+    <li class="searchList-item">
+      <a href="{{ post.link }}"><h3 class="postTitle">{{ post.title }}</h3></a>
+      <p class="excerpt">{{ post.preview }}</p>
+    </li>
+  {% endfor %}
+</ul>
