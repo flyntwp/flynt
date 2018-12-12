@@ -9,7 +9,7 @@ $headings             = 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6'
 
 .flyntComponent[is="flynt-list-social"]
   background-color: $colorAccent
-  padding: $containerPadding*2 $containerPadding
+  padding: 60px 0 40px
   text-align: center
 
   .content
@@ -28,7 +28,15 @@ $headings             = 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6'
     {$headings}
       color: inherit
 
-  .socialList
+    > :first-child
+      margin-top: 0
+      padding-top: 0
+
+    > :last-child
+      margin-bottom: 0
+      padding-bottom: 0
+
+  .shareList
     align-items: center
     display: flex
     flex: 1 0 auto
@@ -36,7 +44,7 @@ $headings             = 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6'
     flex-wrap: wrap
     justify-content: center
     list-style: none
-    margin: 45px auto 0
+    margin: 0 auto
     padding: 0
 
     &-link
