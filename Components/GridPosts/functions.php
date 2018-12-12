@@ -3,7 +3,6 @@
 namespace Flynt\Components\GridPosts;
 
 use Flynt\Features\Components\Component;
-use Timber\Timber;
 
 add_filter('Flynt/addComponentData?name=GridPosts', function ($data, $parentData) {
     add_action('wp_enqueue_scripts', function () {

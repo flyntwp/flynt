@@ -3,31 +3,22 @@ $containerMaxWidth    = lookup('$globalContainerMaxWidth')  || 1270px
 $contentMaxWidth      = lookup('$globalContentMaxWidth')    || 600px
 $rupture.anti-overlap = lookup('$globalRuptureOverlap')     || -1px
 $rupture.scale        = lookup('$globalRuptureScale')       || (0 426px 576px 768px 992px 1200px)
-$colorWhite           = lookup('$globalColorBackground')    || #FFFFFF
 $colorAccent          = lookup('$globalColorAccent')        || #F98928
 $colorBrand           = lookup('$globalColorBrand')         || #91C6C4
-$headings             = 'p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6'
+$headings             = 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6'
 
-.flyntComponent[is="flynt-block-share"]
-  *,
-  *:before,
-  *:after
-    box-sizing: border-box
-
+.flyntComponent[is="flynt-list-social"]
   background-color: $colorAccent
   padding: 60px 0 40px
   text-align: center
 
-  +below('m')
-    padding-bottom: 32px
-    padding-top: 21px
-
   .content
+    color: #fff
     margin: 0 auto
-    max-width: 587px
+    max-width: $contentMaxWidth
 
     {$headings}
-      color: #fff
+      color: inherit
 
     > :first-child
       margin-top: 0
@@ -40,50 +31,41 @@ $headings             = 'p, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
   .shareList
     align-items: center
     display: flex
-    flex-direction: row
     flex: 1 0 auto
+    flex-direction: row
+    flex-wrap: wrap
     justify-content: center
     list-style: none
     margin: 0 auto
     padding: 0
 
-    +below('m')
-      flex-wrap: wrap
-      margin-top: 15px
-
     &-link
       align-items: center
-      border-radius: 50%
       display: flex
       flex: 1 0 auto
-      height: 108px
+      height: 60px
       justify-content: center
-      transition: box-shadow .2s ease
       width: @height
-
-      +below('m')
-        height: 70px
-        width: @height
-
-      &:hover
-        // box-shadow: 0 12px 16px rgba($colorBlack, .16)
 
     &-item
       cursor: pointer
-      display: inline-block
-      margin: 0
+
+      svg
+        max-height: 40px
+        max-width: @max-height
+        width: 100%
+        height: auto
+        transition: all 900ms cubic-bezier(.175, .885, .32, .275)
+
+        path
+          transition: all 900ms cubic-bezier(.175, .885, .32, .275)
 
       &:hover
-          svg
-            path
-              fill: $colorBrand
+        svg
+          transform: scale(1.1)
+          path
+            fill: $colorBrand
 
-    svg
-      max-width: 50px
-      max-height: 50px
-      width: 100%
-      height: auto
 
-      path
-        transition: all .2s cubic-bezier(.86, 0, .07, 1)
+
 

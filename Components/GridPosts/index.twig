@@ -1,40 +1,44 @@
 <div class="flyntComponent" is="flynt-grid-posts">
   <div class="container">
     <ul class="gridPosts">
-      {% for post in posts %}
-        <li class="post">
-          <a class="post-link" href="{{ post.link }}" {{ post.target == '_blank' ? 'target="_blank" rel="noreferrer noopener"' }} title="{{ post.title|e }}">
-            {% if post.thumbnail %}
-              <figure class="figure">
-                <img class="figure-image lazyload"
-                  src="{{ post.thumbnail|resize(1280, 853) }}"
-                  srcset="{{ transparentPng(3/2) }}"
-                  data-srcset="
-                    {{ post.thumbnail|resize(1920, 1280) }} 1920w,
-                    {{ post.thumbnail|resize(1280, 853) }} 1280w,
-                    {{ post.thumbnail|resize(750, 500) }} 750w,
-                    {{ post.thumbnail|resize(375, 250) }} 375w"
-                  data-sizes="auto"
-                  alt="{{ post.thumbnail.alt|e('html_attr') }}">
-              </figure>
-            {% endif %}
-            <div class="content">
-              {% if post.post_date %}
-                <time class="date" datetime="{{ post.post_date }}">{{ post.post_date | date }}</time>
+      {% if posts %}
+        {% for post in posts %}
+          <li class="post">
+            <a class="post-link" href="{{ post.link }}" {{ post.target == '_blank' ? 'target="_blank" rel="noreferrer noopener"' }} title="{{ post.title|e }}">
+              {% if post.thumbnail %}
+                <figure class="figure">
+                  <img class="figure-image lazyload"
+                    src="{{ post.thumbnail|resize(1280, 853) }}"
+                    srcset="{{ transparentPng(3/2) }}"
+                    data-srcset="
+                      {{ post.thumbnail|resize(1920, 1280) }} 1920w,
+                      {{ post.thumbnail|resize(1280, 853) }} 1280w,
+                      {{ post.thumbnail|resize(750, 500) }} 750w,
+                      {{ post.thumbnail|resize(375, 250) }} 375w"
+                    data-sizes="auto"
+                    alt="{{ post.thumbnail.alt|e('html_attr') }}">
+                </figure>
               {% endif %}
-              <h3 class="h4 title">
-                {{ post.title }}
-              </h3>
-            </div>
-          </a>
-        </li>
-      {% endfor %}
+              <div class="content">
+                {% if post.post_date %}
+                  <time class="date" datetime="{{ post.post_date }}">{{ post.post_date | date }}</time>
+                {% endif %}
+                <h3 class="h4 title">
+                  {{ post.title }}
+                </h3>
+              </div>
+            </a>
+          </li>
+        {% endfor %}
+      {% else %}
+        <p class="noPosts">{{ noPostsFoundText }}</p>
+      {% endif %}
     </ul>
     {% if pagination.pages %}
       <div class="pagination">
         <div class="pagination-prevLink">
           <a href="{% if pagination.prev %}{{ pagination.prev.link }}{% else %}javascript:void(0){% endif %}"
-            class="btn {% if pagination.prev %}btn--primary{% else %}btn--disabled{% endif %}">&#8678;</a>
+            class="btn {% if pagination.prev %}btn--primary{% else %}btn--disabled{% endif %}">{{ previousLabel }}</a>
         </div>
         <div class="pagination-counter">
           {% for page in pagination.pages %}
@@ -47,7 +51,7 @@
         </div>
         <div class="pagination-nextLink">
           <a href="{% if pagination.next %}{{ pagination.next.link }}{% else %}javascript:void(0){% endif %}"
-            class="btn {% if pagination.next %}btn--primary{% else %}btn--disabled{% endif %}">&#8680;</a>
+            class="btn {% if pagination.next %}btn--primary{% else %}btn--disabled{% endif %}">{{ nextLabel }}</a>
         </div>
       </div>
     {% endif %}

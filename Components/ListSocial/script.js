@@ -1,6 +1,6 @@
 import $ from 'jquery'
 
-class BlockShare extends window.HTMLDivElement {
+class ListSocial extends window.HTMLDivElement {
   constructor (self) {
     self = super(self)
     self.$ = $(self)
@@ -15,4 +15,4 @@ class BlockShare extends window.HTMLDivElement {
   }
 }
 
-window.customElements.define('flynt-block-share', BlockShare, {extends: 'div'})
+window.customElements.define('flynt-block-share', ListSocial, {extends: 'div'})
