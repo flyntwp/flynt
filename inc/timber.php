@@ -16,7 +16,7 @@ add_filter('get_twig', function ($twig) {
     return $twig;
 });
 
-function renderComponent ($name, $data = [])
+function renderComponent($name, $data = [])
 {
     $data = apply_filters(
         'Flynt/addComponentData',

@@ -8,7 +8,6 @@ use Flynt\Utils\Feature;
 use Flynt\Utils\FileLoader;
 use Flynt\Utils\StringHelpers;
 
-
 add_action('after_setup_theme', __NAMESPACE__ . '\\initTheme');
 add_action('after_setup_theme', __NAMESPACE__ . '\\loadFeatures', 100);
 
