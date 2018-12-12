@@ -1,0 +1,63 @@
+$containerPadding     = lookup('$globalContainerPadding')   || 20px
+$containerMaxWidth    = lookup('$globalContainerMaxWidth')  || 1270px
+$contentMaxWidth      = lookup('$globalContentMaxWidth')    || 600px
+$rupture.anti-overlap = lookup('$globalRuptureOverlap')     || -1px
+$rupture.scale        = lookup('$globalRuptureScale')       || (0 426px 576px 768px 992px 1200px)
+$colorAccent          = lookup('$globalColorAccent')        || #F98928
+$colorBrand           = lookup('$globalColorBrand')         || #91C6C4
+$headings             = 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6'
+
+.flyntComponent[is="flynt-list-social"]
+  background-color: $colorAccent
+  padding: $containerPadding*2 $containerPadding
+  text-align: center
+
+  .content
+    color: #fff
+    margin: 0 auto
+    max-width: $contentMaxWidth
+
+    {$headings}
+      color: inherit
+
+  .socialList
+    align-items: center
+    display: flex
+    flex: 1 0 auto
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: center
+    list-style: none
+    margin: 45px auto 0
+    padding: 0
+
+    &-link
+      align-items: center
+      display: flex
+      flex: 1 0 auto
+      height: 60px
+      justify-content: center
+      width: @height
+
+    &-item
+      cursor: pointer
+
+      svg
+        max-height: 40px
+        max-width: @max-height
+        width: 100%
+        height: auto
+        transition: all 900ms cubic-bezier(.175, .885, .32, .275)
+
+        path
+          transition: all 900ms cubic-bezier(.175, .885, .32, .275)
+
+      &:hover
+        svg
+          transform: scale(1.1)
+          path
+            fill: $colorBrand
+
+
+
+
