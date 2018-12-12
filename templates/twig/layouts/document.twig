@@ -6,14 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="alternate" type="application/rss+xml" title="{{ feedTitle }}" href="{{ site.rss2 | e('esc_url') }}">
     {{ function('wp_head') }}
-    {{ foobar('HEAD') }}
   </head>
   <body role="document">
     {% block layout %}
     {% endblock %}
     <div class="wpFooter">
       {{ function('wp_footer') }}
-      {{ foobar('FOOTER') }}
     </div>
   </body>
 </html>
