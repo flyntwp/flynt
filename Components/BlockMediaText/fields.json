@@ -73,7 +73,10 @@
         "delay": 1,
         "toolbar": "full",
         "media_upload": 0,
-        "required": 1
+        "required": 1,
+        "wrapper": {
+          "class": "autosize"
+        }
       },
       {
         "name": "settingsTab",
