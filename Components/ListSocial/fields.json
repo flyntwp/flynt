@@ -13,7 +13,7 @@
         "delay": 1
       },
       {
-        "label": "Social Platform",
+        "label": "Social Platforms",
         "type": "repeater",
         "name": "social",
         "layout": "table",

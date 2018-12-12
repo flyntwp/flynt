@@ -1,34 +1,13 @@
-## List Social README
-
-### Title:
-
-List Social
+Title: List Social
 
 ---
 
-### Category:
-
-List
+Category: list
 
 ---
 
-### Tags:
-
-list, social, platform, url, twitter, facebook, xing, mail, linkedin, xing, youtube, instagram, share
+Tags: list, socialmedia, platform, twitter, facebook, xing, mail, linkedin, xing, youtube, instagram
 
 ---
 
-### Description:
-
-Here is a repeater for defined social platforms including an email. Icons includes as assets with a white color. Above the the social platform list you have a wysiwyg, where you can add content.
-
----
-
-### Fields:
-
-contentHtml
-social
-platform
-url
-
----
+Text: Add your social media platforms as external links and they will show up as predefined svg icons. Optionally some text above the icons.

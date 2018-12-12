@@ -1,13 +1,13 @@
 <div class="flyntComponent" is="flynt-list-social">
-  <div class="wrapper">
-    <div class="content">
-      {{ contentHtml|e('wp_kses_post') }}
-    </div>
+  <div class="container">
+    {% if contentHtml %}
+      <div class="content">{{ contentHtml|e('wp_kses_post') }}</div>
+    {% endif %}
     <ul class="socialList">
       {% for socials in social %}
         <li class="socialList-item">
           <a class="socialList-link" href="{{ socials.url }}" target="_blank" rel="noopener noreferrer">
-            {{ socials.icon }}
+            {{- socials.icon -}}
           </a>
         </li>
       {% endfor %}
