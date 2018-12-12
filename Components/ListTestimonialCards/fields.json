@@ -1,7 +1,7 @@
 {
   "layout": {
-    "name": "listTestimorialsCards",
-    "label": "List: TestimorialsCards",
+    "name": "listTestimonialCards",
+    "label": "List: Testimonial Cards",
     "sub_fields": [
       {
         "label": "Pre-Content",
@@ -17,14 +17,14 @@
         }
       },
       {
-        "label": "Testimorials List",
+        "label": "Testimonials",
         "type": "repeater",
-        "name": "testimorialsList",
+        "name": "testimonials",
         "collapsed": "",
         "min": 0,
         "max": 0,
         "layout": "table",
-        "button_label": "Add Testimorial",
+        "button_label": "Add Testimonial",
         "sub_fields": [
           {
             "label": "Content",
