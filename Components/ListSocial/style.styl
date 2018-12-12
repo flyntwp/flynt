@@ -5,17 +5,20 @@ $rupture.anti-overlap = lookup('$globalRuptureOverlap')     || -1px
 $rupture.scale        = lookup('$globalRuptureScale')       || (0 426px 576px 768px 992px 1200px)
 $colorAccent          = lookup('$globalColorAccent')        || #F98928
 $colorBrand           = lookup('$globalColorBrand')         || #91C6C4
+$colorText            = lookup('$globalColorText')          || #222222
 $headings             = 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6'
 
 .flyntComponent[is="flynt-list-social"]
-  background-color: $colorAccent
-  padding: 60px 0 40px
-  text-align: center
+
+  .container
+    background-color: $colorBrand
+    padding: 60px $containerPadding
 
   .content
     color: #fff
-    margin: 0 auto
+    margin: 10px auto
     max-width: $contentMaxWidth
+    text-align: center
 
     {$headings}
       color: inherit
@@ -29,40 +32,31 @@ $headings             = 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6'
       padding-bottom: 0
 
   .socialList
-    align-items: center
     display: flex
-    flex: 1 0 auto
-    flex-direction: row
     flex-wrap: wrap
     justify-content: center
     list-style: none
-    margin: 0 auto
+    margin: 0
     padding: 0
 
     &-link
-      align-items: center
-      display: flex
-      flex: 1 0 auto
-      height: 60px
-      justify-content: center
-      width: @height
-
-    &-item
       cursor: pointer
+      display: block
+      height: 70px
+      padding: 15px
 
       svg
-        max-height: 40px
-        max-width: @max-height
-        width: 100%
-        height: auto
+        display: block
+        height: 100%
+        width: auto
 
         path
-          transition: fill 900ms cubic-bezier(.175, .885, .32, .275)
+          transition: fill .2s cubic-bezier(.175, .885, .32, .275)
 
       &:hover
         svg
           path
-            fill: $colorBrand
+            fill: gray
 
 
 
