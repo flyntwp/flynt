@@ -8,46 +8,39 @@
     border-top: 1px solid $colorAccent
     display: flex
 
-    div
+    > *
       border-right: 1px solid $colorAccent
 
       &:first-child
         border-left: 1px solid $colorAccent
 
-    .browselinks
-      display: flex
-
-    // .prev
-    // .next
-    // .browselinks
-    span
-    a
-      height: 60px
-      width: @height
-      display: flex
-      justify-content: space-around
+    &-item
       align-items: center
+      display: flex
+      height: 60px
+      justify-content: space-around
       text-decoration: none
-      line-height: 0
+      width: @height
 
-    .browselinks
-    .next
-    .prev
-      a
-        &:hover
-          background-color: $colorAccent
-          color: #fff
+      &--hide
+        display: none
 
-          svg
-            path
-              fill: #fff
+  a.navigation-item
+    &:hover
+      background-color: $colorAccent
+      color: #fff
 
+      svg
+        path
+          fill: #fff
 
-    span
-      display: none
+  .page-number
+    &.current
+      align-items: center
+      background-color: $colorAccent
+      color: #fff
+      display: flex
+      height: 60px
+      justify-content: space-around
+      width: @height
 
-
-    .page-number
-      &.current
-        background-color: $colorAccent
-        color: #fff
