@@ -7,9 +7,7 @@ use Flynt\Features\Components\Component;
 use Flynt\Utils\Asset;
 
 add_filter('Flynt/addComponentData?name=ListComponents', function ($data) {
-    add_action('wp_enqueue_scripts', function () {
-        Component::enqueueAssets('ListComponents');
-    });
+    Component::enqueueAssets('ListComponents');
 
     if (!empty($data['componentBlocks'])) {
         $data['componentBlocks'] = array_map(function ($block) {

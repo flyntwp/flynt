@@ -6,9 +6,7 @@ use Flynt\Utils\Asset;
 use Flynt\Features\Components\Component;
 
 add_filter('Flynt/addComponentData?name=ListSocial', function ($data) {
-    add_action('wp_enqueue_scripts', function () {
-        Component::enqueueAssets('ListSocial');
-    });
+    Component::enqueueAssets('ListSocial');
 
     if (!empty($data['social'])) {
         $data['social'] = array_map(function ($item) {

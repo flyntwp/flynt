@@ -6,9 +6,7 @@ use Flynt\Utils\Asset;
 use Flynt\Features\Components\Component;
 
 add_filter('Flynt/addComponentData?name=ListSearchResults', function ($data, $parentData) {
-    add_action('wp_enqueue_scripts', function () {
-        Component::enqueueAssets('ListSearchResults');
-    });
+    Component::enqueueAssets('ListSearchResults');
 
     global $wp_query;
     $data['posts'] = $parentData['posts'];

@@ -4,11 +4,8 @@ namespace Flynt\Components\ListPosts;
 
 use Flynt\Features\Components\Component;
 
-add_action('wp_enqueue_scripts', function () {
-    Component::enqueueAssets('ListPosts');
-});
-
 add_filter('Flynt/addComponentData?name=ListPosts', function ($data, $parentData) {
+    Component::enqueueAssets('ListPosts');
     $data['isArchive'] = is_home() || is_archive();
 
     $data['pagination'] = (isset($parentData['pagination'])) ? $parentData['pagination'] : null;

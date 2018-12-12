@@ -5,9 +5,7 @@ namespace Flynt\Components\GridDownloadPortrait;
 use Flynt\Features\Components\Component;
 
 add_filter('Flynt/addComponentData?name=GridDownloadPortrait', function ($data) {
-    add_action('wp_enqueue_scripts', function () {
-        Component::enqueueAssets('GridDownloadPortrait');
-    });
+    Component::enqueueAssets('GridDownloadPortrait');
 
     if (!empty($data['items'])) {
         $data['items'] = array_map(function ($item) {

@@ -5,9 +5,7 @@ namespace Flynt\Components\GridPosts;
 use Flynt\Features\Components\Component;
 
 add_filter('Flynt/addComponentData?name=GridPosts', function ($data, $parentData) {
-    add_action('wp_enqueue_scripts', function () {
-        Component::enqueueAssets('GridPosts');
-    });
+    Component::enqueueAssets('GridPosts');
 
     $data['pagination'] = (isset($parentData['pagination'])) ? $parentData['pagination'] : null;
     if (!isset($data['posts']) && isset($parentData['posts'])) {

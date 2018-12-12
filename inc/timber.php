@@ -16,6 +16,28 @@ add_filter('get_twig', function ($twig) {
     return $twig;
 });
 
+function renderComponent ($name, $data = [])
+{
+    $data = apply_filters(
+        'Flynt/addComponentData',
+        $data,
+        [],
+        [
+            'name' => $name,
+        ]
+    );
+    $data = apply_filters(
+        "Flynt/addComponentData?name={$name}",
+        $data,
+        [],
+        [
+            'name' => $name,
+        ]
+    );
+
+    return renderTwigIndex(null, $name, $data, null);
+};
+
 add_action('after_setup_theme', function () {
     new Timber\Timber();
 });
@@ -55,25 +77,3 @@ add_action('Flynt\afterRegisterFeatures', function () {
     Component::enqueueAssets('LayoutSinglePost');
     Component::enqueueAssets('LayoutMultiplePost');
 });
-
-function renderComponent ($name, $data = [])
-{
-    $data = apply_filters(
-        'Flynt/addComponentData',
-        $data,
-        [],
-        [
-            'name' => $name,
-        ]
-    );
-    $data = apply_filters(
-        "Flynt/addComponentData?name={$name}",
-        $data,
-        [],
-        [
-            'name' => $name,
-        ]
-    );
-
-    return renderTwigIndex(null, $name, $data, null);
-};

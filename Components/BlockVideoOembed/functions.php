@@ -6,9 +6,7 @@ use Flynt\Features\Components\Component;
 use Flynt\Utils\Oembed;
 
 add_filter('Flynt/addComponentData?name=BlockVideoOembed', function ($data) {
-    add_action('wp_enqueue_scripts', function () {
-        Component::enqueueAssets('BlockVideoOembed');
-    });
+    Component::enqueueAssets('BlockVideoOembed');
 
     $data['video'] = Oembed::setSrcAsDataAttribute(
         $data['oembed'],

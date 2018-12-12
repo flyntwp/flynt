@@ -12,9 +12,7 @@ add_action('init', function () {
 });
 
 add_filter('Flynt/addComponentData?name=NavigationFooter', function ($data) {
-    add_action('wp_enqueue_scripts', function () {
-        Component::enqueueAssets('NavigationFooter');
-    });
+    Component::enqueueAssets('NavigationFooter');
 
     // set max level of the menu
     $data['maxLevel'] = 0;
