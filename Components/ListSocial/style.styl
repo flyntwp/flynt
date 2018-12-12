@@ -55,14 +55,12 @@ $headings             = 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6'
         max-width: @max-height
         width: 100%
         height: auto
-        transition: all 900ms cubic-bezier(.175, .885, .32, .275)
 
         path
-          transition: all 900ms cubic-bezier(.175, .885, .32, .275)
+          transition: fill 900ms cubic-bezier(.175, .885, .32, .275)
 
       &:hover
         svg
-          transform: scale(1.1)
           path
             fill: $colorBrand
 
