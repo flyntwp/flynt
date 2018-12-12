@@ -23,7 +23,6 @@ function initTheme()
     // WP Stuff
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
-    add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio'));
 
     new Timber();
 }
@@ -31,14 +30,6 @@ function initTheme()
 function loadFeatures()
 {
     $basePath = get_template_directory() . '/dist/Features';
-
-    if (!is_dir($basePath)) {
-        trigger_error(
-            "Failed loading Features! {$basePath} does not exist! Did you run `flynt start` yet?",
-            E_USER_WARNING
-        );
-        return;
-    }
 
     Feature::register('flynt-youtube-no-cookie-embed', $basePath);
 

@@ -34,17 +34,11 @@ class Bootstrap
 
         if (!$acfActive || !$flyntCoreActive) {
             add_filter('template_include', function () {
-                $newTemplate = locate_template('plugin-inactive.php');
-                if ('' != $newTemplate) {
-                    return $newTemplate;
-                } else {
-                    trigger_error(
-                        'One or more required plugins are not activated! Please <a href="'
-                        . esc_url(admin_url('plugins.php'))
-                        . '">activate or install the required plugin(s)</a> and reload the page.',
-                        E_USER_WARNING
-                    );
-                }
+                die(
+                    'One or more required plugins are not activated! Please <a href="'
+                    . esc_url(admin_url('plugins.php'))
+                    . '">activate or install the required plugin(s)</a> and reload the page.'
+                );
             });
         }
 

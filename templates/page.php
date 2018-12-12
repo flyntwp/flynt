@@ -8,7 +8,8 @@ $post = new Post();
 $context['post'] = $post;
 $context['feedTitle'] = $context['site']->name . ' ' . __('Feed', 'flynt-starter-theme');
 $context['dir'] = is_rtl() ? 'rtl' : 'ltr';
-Timber::render(['twig/page.twig'], $context);
+
+Timber::render('twig/page.twig', $context);
 
 // Flynt\echoHtmlFromConfig([
 //     'name' => 'DocumentDefault',
