@@ -1,13 +1,12 @@
-$rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
+$rupture.scale        = lookup('$globalRuptureScale')       || (0 426px 576px 768px 992px 1200px)
 $rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
-$containerPadding = lookup('$globalContainerPadding') || 20px
-$containerMaxWidth = lookup('$globalContainerMaxWidth') || 1280px
-$colorText = lookup('$globalColorText') || #222222
+$containerPadding     = lookup('$globalContainerPadding')   || 20px
+$containerMaxWidth    = lookup('$globalContainerMaxWidth')  || 1280px
+$colorText            = lookup('$globalColorText')          || #222222
 
 .flyntComponent[is="flynt-slider-image-gallery"]
   .container
-    margin: 0 auto 2rem
-    max-width: $containerMaxWidth
+    margin: 60px auto
 
   .slider-main
     background: rgba(0, 0, 0, .8)
@@ -32,7 +31,6 @@ $colorText = lookup('$globalColorText') || #222222
 
       .figure
         height: 100%
-        margin-bottom: 0
 
         &-image
           height: 100%
@@ -62,6 +60,9 @@ $colorText = lookup('$globalColorText') || #222222
     &:first-child,
     &.slick-slide
       display: block
+
+    .figure
+      margin-bottom: 0
 
   .slider-thumb
     margin-top: 1rem

@@ -7,7 +7,7 @@ $rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
 
 .flyntComponent[is="flynt-accordion-default"]
   .container
-    padding: 0 $containerPadding
+    padding: 60px $containerPadding
 
   .content
     margin: 0 auto
@@ -20,6 +20,9 @@ $rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
 
   .panel
     padding-bottom: 15px
+
+    &:last-child
+      padding-bottom: 0
 
     &-trigger
       cursor: pointer

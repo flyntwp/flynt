@@ -1,5 +1,5 @@
-$rupture.anti-overlap = lookup('$globalRuptureOverlap') || -1px
-$rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
+$rupture.anti-overlap = lookup('$globalRuptureOverlap')     || -1px
+$rupture.scale        = lookup('$globalRuptureScale')       || (0 426px 576px 768px 992px 1200px)
 $containerPadding     = lookup('$globalContainerPadding')   || 20px
 $containerMaxWidth    = lookup('$globalContainerMaxWidth')  || 1270px
 $contentMaxWidth      = lookup('$globalContentMaxWidth')    || 600px
@@ -42,7 +42,7 @@ $colorBackground = lookup('$globalColorBackground') || #ffffff
   .step
     max-width: 360px
     padding: 20px 10px 0
-    width: 25%
+    width: 33.33%
 
     +below('l')
       width: 50%
@@ -52,7 +52,7 @@ $colorBackground = lookup('$globalColorBackground') || #ffffff
 
   .content
     background-color: $colorBackground
-    padding: 10px 15px 10px 60px
+    padding: 20px 15px 20px 60px
     position: relative
 
     &::before
@@ -67,7 +67,7 @@ $colorBackground = lookup('$globalColorBackground') || #ffffff
       line-height: 32px
       position: absolute
       text-align: center
-      top: 10px
+      top: 20px
       width: 35px
 
     > :first-child

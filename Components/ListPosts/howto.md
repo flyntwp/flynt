@@ -92,8 +92,8 @@
 
 `Partials/AllPostsCta/_style.style`
 ```stylus
-$containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
-$containerPadding = lookup('$globalContainerPadding') || 15px
+$containerMaxWidth = lookup('$globalContainerMaxWidth') || 1280px
+$containerPadding = lookup('$globalContainerPadding') || 20px
 
 .allPostsCta
   center($containerMaxWidth, $containerPadding)

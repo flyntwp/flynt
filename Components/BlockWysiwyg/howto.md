@@ -115,8 +115,8 @@ Unfortunately there is no way to have a stylesheet to a specific acf Wysiwyg fie
 
 `style.styl`
 ```stylus
-$containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
-$containerPadding = lookup('$globalContainerPadding') || 15px
+$containerMaxWidth = lookup('$globalContainerMaxWidth') || 1280px
+$containerPadding = lookup('$globalContainerPadding') || 20px
 $narrowWidth = 650px
 
 [is='flynt-block-wysiwyg']
