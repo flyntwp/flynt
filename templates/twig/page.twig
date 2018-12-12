@@ -1,0 +1,14 @@
+{% extends 'twig/layouts/default.twig' %}
+
+{% block header %}
+  {{ renderComponent('NavigationMain') }}
+{% endblock %}
+
+{% block components %}
+  {{ renderFlexibleContent(post.meta('pageComponents')) }}
+{% endblock %}
+
+{% block footer %}
+  {{ renderComponent('NavigationFooter') }}
+  {{ renderComponent('BlockCookieNotice') }}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'twig/layouts/document.twig' %}
+
+{% block layout %}
+  <div is="flynt-layout-multiple-posts" class="flyntComponent">
+    <section class="pageWrapper">
+      <header class="mainHeader">
+        {# {{ area('mainHeader') }} #}
+        {% block header %}
+        {% endblock %}
+      </header>
+      <main class="mainContent" role="main">
+        {% if passwordProtected %}
+          {{ passwordForm }}
+        {% else %}
+          {# {{ area('pageComponents') }} #}
+          {% block components %}
+          {% endblock %}
+        {% endif %}
+      </main>
+      <footer class="mainFooter">
+        {# {{ area('mainFooter') }} #}
+        {% block footer %}
+        {% endblock %}
+      </footer>
+    </section>
+  </div>
+{% endblock %}

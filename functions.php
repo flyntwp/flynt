@@ -18,3 +18,11 @@ Bootstrap::setTemplateDirectory();
 if (Bootstrap::checkRequiredPlugins()) {
     require_once get_template_directory() . '/lib/Init.php';
 }
+
+$incPath = __DIR__ . '/inc';
+foreach (scandir($incPath) as $filename) {
+    $path = $incPath . '/' . $filename;
+    if (is_file($path)) {
+        require_once $path;
+    }
+}
