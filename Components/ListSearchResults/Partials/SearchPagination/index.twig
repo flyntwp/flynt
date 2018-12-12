@@ -6,7 +6,7 @@
       <span aria-label="{{ prevLabel }}">{{ prevIcon }}</span>
     {% endif %}
   </div>
-  <div class="browselinks">
+  {# <div class="browselinks"> #}
     {% for page in pagination.pages %}
       {% if page.current %}
         <span class="{{ page.class }}">{{ page.title }}</span>
@@ -14,7 +14,7 @@
         <a href="{{ page.link }}" class="{{ page.class }}">{{ page.title }}</a>
       {% endif %}
     {% endfor %}
-  </div>
+  {# </div> #}
   <div class="next">
     {% if pagination.next.link %}
       <a href="{{ pagination.next.link }}" aria-label="{{ nextLabel }}">{{ nextIcon }}</a>
