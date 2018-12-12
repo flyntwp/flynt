@@ -1,11 +1,15 @@
 <div class="flyntComponent" is="flynt-list-search-results">
-  <h1>Component: List Search Results</h1>
-  {% for post in posts %}
-    <h2>{{ post.title}}</h2>
-    {{ post.preview }}
-  {% endfor %}
-  <pre>
-    {{ dump(pagination) }}
-  </pre>
-  {% include 'Partials/PaginationButtons/index.twig' %}
+  <div class="container">
+    <div class="searchHead">
+      {% include 'Partials/SearchHead/index.twig' %}
+    </div>
+    <div class="searchList">
+      {% include 'Partials/SearchList/index.twig' %}
+    </div>
+    <div class="searchPagination">
+      {% if pagination.pages %}
+        {% include 'Partials/SearchPagination/index.twig' %}
+      {% endif %}
+    </div>
+  </div>
 </div>
