@@ -2,15 +2,12 @@
 
 namespace Flynt\Init;
 
-require_once __DIR__ . '/Utils/FileLoader.php';
-
 use Flynt;
 use Flynt\Utils\Asset;
 use Flynt\Utils\Feature;
 use Flynt\Utils\FileLoader;
 use Flynt\Utils\StringHelpers;
 
-FileLoader::loadPhpFiles('inc/Utils');
 
 add_action('after_setup_theme', __NAMESPACE__ . '\\initTheme');
 add_action('after_setup_theme', __NAMESPACE__ . '\\loadFeatures', 100);
@@ -46,21 +43,9 @@ function loadFeatures()
     // register all components in 'Components' folder
     Feature::register('flynt-components', $basePath, [get_template_directory() . '/dist/Components/']);
 
-    // register all custom post types
-    Feature::register('flynt-custom-post-types', $basePath, [[
-        'dir' => get_template_directory() . '/config/customPostTypes/',
-        'fileName' => 'config.json'
-    ]]);
-
-    // register all custom taxonomies
-    Feature::register('flynt-custom-taxonomies', $basePath, [[
-        'dir' => get_template_directory() . '/config/customTaxonomies/'
-    ]]);
-
     // initialize ACF Field Groups and Option Pages
     Feature::register('flynt-acf', $basePath, [[
         'FieldLoader',
-        'FieldGroupComposer',
         'OptionPages',
         'FlexibleContentToggle',
         'GoogleMaps'

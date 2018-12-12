@@ -2,9 +2,10 @@
 
 namespace Flynt;
 
-require_once __DIR__ . '/inc/Bootstrap.php';
-
+use Flynt\Utils\FileLoader;
 use Flynt\Bootstrap;
+
+require_once __DIR__ . '/inc/Bootstrap.php';
 
 // This needs to happen first.
 // Reason:  In case the theme was just activated and the plugin is not active,
@@ -16,11 +17,7 @@ Bootstrap::setTemplateDirectory();
 // If they aren't, this function redirects the template rendering to use
 // plugin-inactive.php instead and shows a warning in the admin backend.
 if (Bootstrap::checkRequiredPlugins()) {
-    $incPath = __DIR__ . '/inc';
-    foreach (scandir($incPath) as $filename) {
-        $path = $incPath . '/' . $filename;
-        if (is_file($path)) {
-            require_once $path;
-        }
-    }
+    require_once __DIR__ . '/inc/Utils/FileLoader.php';
+    FileLoader::loadPhpFiles('inc/Utils');
+    FileLoader::loadPhpFiles('inc');
 }

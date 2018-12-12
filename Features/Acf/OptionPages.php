@@ -11,7 +11,7 @@ namespace Flynt\Features\Acf;
 use ACFComposer;
 use Flynt\ComponentManager;
 use Flynt\Features\AdminNotices\AdminNoticeManager;
-use Flynt\Features\CustomPostTypes\CustomPostTypeRegister;
+// use Flynt\Features\CustomPostTypes\CustomPostTypeRegister;
 use Flynt\Utils\Feature;
 use Flynt\Utils\FileLoader;
 use Flynt\Utils\StringHelpers;
@@ -74,7 +74,7 @@ class OptionPages
         add_action('acf/init', function () {
             self::addComponentSubPages();
             self::addFeatureSubPages();
-            self::addCustomPostTypeSubPages();
+            // self::addCustomPostTypeSubPages();
         });
 
         add_filter(
@@ -172,14 +172,14 @@ class OptionPages
     // CUSTOM POST TYPES
     // ==================
 
-    public static function addCustomPostTypeSubPages()
-    {
-        $customPostTypes = CustomPostTypeRegister::getAll();
+    // public static function addCustomPostTypeSubPages()
+    // {
+    //     $customPostTypes = CustomPostTypeRegister::getAll();
 
-        foreach ($customPostTypes as $name => $config) {
-            self::createSubPage('customPostType', $name);
-        }
-    }
+    //     foreach ($customPostTypes as $name => $config) {
+    //         self::createSubPage('customPostType', $name);
+    //     }
+    // }
 
     // ========
     // FEATURES
