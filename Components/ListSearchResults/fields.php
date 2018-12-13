@@ -11,7 +11,10 @@ Options::addTranslatable('ListSearchResults', [
         'default_value' => 'Search Result ',
         'instructions' => 'Title of the search Page.',
         'media_upload' => 0,
-        'delay' => 1
+        'delay' => 1,
+        'wrapper' => [
+            'class' => 'autosize',
+        ],
     ],
     [
         'label' => 'Search placholder text',
@@ -26,6 +29,9 @@ Options::addTranslatable('ListSearchResults', [
         'name' => 'searchResult',
         'type' => 'wysiwyg',
         'required' => 1,
+        'wrapper' => [
+            'class' => 'autosize',
+        ],
         'default_value' => 'Es wurden %%resultCount%% Blogeinträge gefunden.',
         'instructions' => 'Sentence for a successful search. The placeholder %%resultCount%% replace the counted results and %%resultTerm%% replace the searching phrase'
     ],
@@ -34,6 +40,9 @@ Options::addTranslatable('ListSearchResults', [
         'name' => 'noResults',
         'type' => 'wysiwyg',
         'required' => 1,
+        'wrapper' => [
+            'class' => 'autosize',
+        ],
         'default_value' => 'No results found.',
         'instructions' => 'Sentence for an unsuccessful search. The placeholder %%resultCount%% replace the counted results and %%resultTerm%% replace the searching phrase'
     ]

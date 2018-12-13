@@ -1,34 +1,13 @@
-## Hero Image Text README
-
-### Title:
-
-Hero Image Text
+Title: Hero Image Text
 
 ---
 
-### Category:
-
-Hero
+Category: Hero
 
 ---
 
-### Tags:
-
-hero, image, container, fullwidth, boxed, picture, gradient, headline
+Tags: image, fullwidth, picture, header
 
 ---
 
-### Description:
-
-Hero Component, where you can add a title or content in a wysiwyg and set a picture as background-image. You can choose between a fullwidth or container view
-
----
-
-### Fields:
-
-boxed
-image
-mobileImage
-contentHtml
-
----
+Text: A full width image with a separate mobile image upload to optimize the crop. Optional formatted text is shown as an overlay that comes with a gray gradient background to ensure readability. Linebreaks (br-tags) convert to spaces on mobile for optimal text flow control.

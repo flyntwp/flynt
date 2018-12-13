@@ -13,6 +13,9 @@ Options::addTranslatable('BlockCookieNotice', [
         'media_upload' => 0,
         'delay' => 1,
         'required' => 1,
+        'wrapper' => [
+            'class' => 'autosize',
+        ],
     ],
     [
         'label' => 'Close Button Label',

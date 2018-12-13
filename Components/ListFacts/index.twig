@@ -1,0 +1,26 @@
+<div class="flyntComponent" is="flynt-list-facts">
+  <div class="container">
+    {% if preContentHtml %}
+      <div class="preContent">{{ preContentHtml|e('wp_kses_post') }}</div>
+    {% endif %}
+    <ul class="listFacts">
+      {% for column in columns %}
+        <li class="fact">
+          <h3 class="title h1">
+            <span class="number" data-count-number="{{ column.countToNumber }}" data-number="{{ column.columnNumber }}">
+                {{ column.columnNumber }}
+            </span>
+            {% if column.columnSuffix %}
+              <span class="suffix">
+                {{- column.columnSuffix -}}
+              </span>
+            {% endif %}
+          </h3>
+          <div class="content">
+            {{ column.contentHtml|e('wp_kses_post') }}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

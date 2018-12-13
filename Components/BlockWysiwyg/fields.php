@@ -21,7 +21,10 @@ Flynt\registerFields('BlockWysiwyg', [
                 'delay' => 1,
                 'media_upload' => 0,
                 'toolbar' => 'full',
-                'required' => 1
+                'required' => 1,
+                'wrapper' => [
+                    'class' => 'autosize',
+                ],
             ]
         ]
     ]

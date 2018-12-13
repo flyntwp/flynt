@@ -1,25 +1,23 @@
 <nav class="navigation" role="navigation">
   <div class="prev">
     {% if pagination.prev.link %}
-      <a href="{{ pagination.prev.link }}" aria-label="{{ prevLabel }}">{{ prevIcon }}</a>
+      <a class="navigation-item" href="{{ pagination.prev.link }}" aria-label="{{ prevLabel }}">{{ prevIcon }}</a>
     {% else %}
-      <span aria-label="{{ prevLabel }}">{{ prevIcon }}</span>
+      <span class="navigation-item navigation-item--hide" aria-label="{{ prevLabel }}">{{ prevIcon }}</span>
     {% endif %}
   </div>
-  <div class="browselinks">
-    {% for page in pagination.pages %}
-      {% if page.current %}
-        <span class="{{ page.class }}">{{ page.title }}</span>
-      {% else %}
-        <a href="{{ page.link }}" class="{{ page.class }}">{{ page.title }}</a>
-      {% endif %}
-    {% endfor %}
-  </div>
+  {% for page in pagination.pages %}
+    {% if page.current or page.link == false %}
+      <span class="navigation-item {{ page.class }}">{{ page.title }}</span>
+    {% else %}
+      <a href="{{ page.link }}" class="navigation-item {{ page.class }}">{{ page.title }}</a>
+    {% endif %}
+  {% endfor %}
   <div class="next">
     {% if pagination.next.link %}
-      <a href="{{ pagination.next.link }}" aria-label="{{ nextLabel }}">{{ nextIcon }}</a>
+      <a class="navigation-item" href="{{ pagination.next.link }}" aria-label="{{ nextLabel }}">{{ nextIcon }}</a>
     {% else %}
-      <span aria-label="{{ nextLabel }}">{{ nextIcon }}</span>
+      <span class="navigation-item navigation-item--hide" aria-label="{{ nextLabel }}">{{ nextIcon }}</span>
     {% endif %}
   </div>
 </nav>

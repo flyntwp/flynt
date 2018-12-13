@@ -53,6 +53,9 @@ Flynt\registerFields('HeroImageText', [
                 'toolbar' => 'full',
                 'media_upload' => 0,
                 'delay' => 1,
+                'wrapper' => [
+                    'class' => 'autosize',
+                ],
                 'instructions' => 'The content overlaying the image. Character Recommendations: Title: 30-100, Content: 80-250.'
             ]
         ]

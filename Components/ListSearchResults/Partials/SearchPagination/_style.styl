@@ -1,37 +1,46 @@
 .searchPagination
   display: flex
   justify-content: space-around
+  margin: 50px auto
 
   .navigation
-    border: 1px solid $colorAccent
+    border-bottom: 1px solid $colorAccent
+    border-top: 1px solid $colorAccent
     display: flex
 
-    .browselinks
-      display: flex
+    > *
+      border-right: 1px solid $colorAccent
 
-    .prev
-    .next
-    .browselinks a
-    .browselinks span
-      height: 60px
-      width: @height
-      display: flex
-      justify-content: space-around
+      &:first-child
+        border-left: 1px solid $colorAccent
+
+    &-item
       align-items: center
+      display: flex
+      height: 60px
+      justify-content: space-around
       text-decoration: none
-      line-height: 0
+      width: @height
 
-      .browselinks a
-        &:hover
-          background-color: $colorAccent
-          color: #fff
+      &--hide
+        display: none
 
-          svg
-            path
-              fill: #fff
+  a.navigation-item
+    &:hover
+      background-color: $colorAccent
+      color: #fff
 
+      svg
+        path
+          fill: #fff
 
-    .page-number
-      &.current
-        background-color: $colorAccent
-        color: #fff
+  .page-number
+    &.current
+      align-items: center
+      background-color: $colorAccent
+      color: #fff
+      display: flex
+      height: 60px
+      justify-content: space-around
+      width: @height
+

@@ -11,7 +11,10 @@ Options::addTranslatable('BlockNotFound', [
         'media_upload' => 0,
         'default_value' => '<h1>Not Found</h1><p>The page you are looking for does not exist.</p>',
         'required' => 1,
-        'delay' => 1
+        'delay' => 1,
+        'wrapper' => [
+            'class' => 'autosize',
+        ],
     ],
     [
         'name' => 'backLinkLabel',

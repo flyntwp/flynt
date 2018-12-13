@@ -12,7 +12,10 @@ Flynt\registerFields('ListSocial', [
                 'tabs' => 'visual,text',
                 'toolbar' => 'full',
                 'media_upload' => 0,
-                'delay' => 1
+                'delay' => 1,
+                'wrapper' => [
+                    'class' => 'autosize',
+                ],
             ],
             [
                 'label' => 'Social Platform',

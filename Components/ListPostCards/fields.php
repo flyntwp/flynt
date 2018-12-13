@@ -13,7 +13,10 @@ Flynt\registerFields('ListPostCards', [
                 'tabs' => 'visual,text',
                 'toolbar' => 'full',
                 'media_upload' => 0,
-                'delay' => 1
+                'delay' => 1,
+                'wrapper' => [
+                    'class' => 'autosize',
+                ],
             ],
             [
                 'label' => 'Category',

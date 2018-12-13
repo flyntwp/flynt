@@ -26,6 +26,9 @@ Flynt\registerFields('AccordionDefault', [
                         'toolbar' => 'full',
                         'media_upload' => false,
                         'delay' => true,
+                        'wrapper' => [
+                            'class' => 'autosize',
+                        ],
                     ],
                 ],
             ],
