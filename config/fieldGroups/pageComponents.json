@@ -24,13 +24,13 @@
         "Flynt/Components/HeroImage/Fields/Layout",
         "Flynt/Components/HeroImageText/Fields/Layout",
         "Flynt/Components/ListComponents/Fields/Layout",
+        "Flynt/Components/ListFacts/Fields/Layout",
         "Flynt/Components/ListPostCards/Fields/Layout",
         "Flynt/Components/ListSocial/Fields/Layout",
         "Flynt/Components/ListTestimonialCards/Fields/Layout",
         "Flynt/Components/SliderMedia/Fields/Layout",
         "Flynt/Components/SliderImages/Fields/Layout",
-        "Flynt/Components/SliderImageGallery/Fields/Layout",
-        "Flynt/Components/ListFacts/Fields/Layout"
+        "Flynt/Components/SliderImageGallery/Fields/Layout"
       ]
     }
   ],
