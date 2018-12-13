@@ -1,14 +1,5 @@
-{% extends 'twig/layouts/default.twig' %}
-
-{% block header %}
-  {{ renderComponent('NavigationMain') }}
-{% endblock %}
+{% extends 'twig/_document.twig' %}
 
 {% block components %}
   {{ renderComponent('GridPosts', {posts: posts, pagination: pagination}) }}
-{% endblock %}
-
-{% block footer %}
-  {{ renderComponent('NavigationFooter') }}
-  {{ renderComponent('BlockCookieNotice') }}
 {% endblock %}
