@@ -20,9 +20,7 @@
                       alt="{{ post.thumbnail.alt|e('html_attr') }}">
                   </figure>
                 {% else %}
-                  <div class="imagePlaceholder">
-                    <p>No Preview Image </p>
-                  </div>
+                  <div class="imagePlaceholder"></div>
                 {% endif %}
                 <div class="content">
                   {% if post.post_date %}

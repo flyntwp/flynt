@@ -2,7 +2,6 @@
 
 namespace Flynt\Components\GridPostsSlider;
 
-// use Flynt\Utils\Asset;
 use Flynt\Features\Components\Component;
 
 add_filter('Flynt/addComponentData?name=GridPostsSlider', function ($data) {
@@ -20,8 +19,6 @@ add_filter('Flynt/addComponentData?name=GridPostsSlider', function ($data) {
             ]
         ]);
     });
-
-    // $data['logo'] = Asset::requireUrl('Components/GridPostsSlider/Assets/arrowSlider.svg');
 
     return $data;
 });
