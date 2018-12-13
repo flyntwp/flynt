@@ -54,6 +54,13 @@ class TwigExtensionFlynt extends Twig_Extension {
 
         $loader->setPaths($loaderPaths);
 
+        $output = apply_filters(
+            'Flynt/renderComponent',
+            $output,
+            $componentName,
+            $data
+        );
+
         return $output;
     }
 
@@ -62,18 +69,7 @@ class TwigExtensionFlynt extends Twig_Extension {
         $data = apply_filters(
             'Flynt/addComponentData',
             $data,
-            [],
-            [
-                'name' => $componentName,
-            ]
-        );
-        $data = apply_filters(
-            "Flynt/addComponentData?name={$componentName}",
-            $data,
-            [],
-            [
-                'name' => $componentName,
-            ]
+            $componentName
         );
 
         return $data;

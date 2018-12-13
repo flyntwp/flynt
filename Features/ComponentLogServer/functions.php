@@ -6,7 +6,7 @@ use Flynt;
 
 define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
 
-add_action('Flynt/afterRegisterFeatures', function () {
+add_action('Flynt/afterRegisterComponents', function () {
     $componentManager = Flynt\ComponentManager::getInstance();
     $componentWhitelist = [];
     if (isset($_GET['component']) && !empty($_GET['component'])) {
@@ -14,25 +14,23 @@ add_action('Flynt/afterRegisterFeatures', function () {
     }
     if (count($componentWhitelist) === 0) {
         foreach ($componentManager->getAll() as $name => $path) {
-            add_filter("Flynt/addComponentData?name={$name}", NS . 'addDebugInfo', 12, 3);
+            add_filter("Flynt/addComponentData?name={$name}", NS . 'addDebugInfo', 12, 2);
         }
     } else {
         foreach ($componentManager->getAll() as $name => $path) {
             if (in_array($name, $componentWhitelist)) {
-                add_filter("Flynt/addComponentData?name={$name}", NS . 'addDebugInfo', 12, 3);
+                add_filter("Flynt/addComponentData?name={$name}", NS . 'addDebugInfo', 12, 2);
             }
         }
     }
 }, 11);
 
-function addDebugInfo($data, $parentData, $config)
+function addDebugInfo($data, $componentName)
 {
     if ((WP_ENV === 'development' || current_user_can('editor') || current_user_can('administrator')) && isset($_GET['log'])) {
         consoleDebug([
-            'component' => $config['name'],
-            'config' => $config,
+            'component' => $componentName,
             'data' => $data,
-            'parentData' => $parentData,
         ]);
     }
 

@@ -4,13 +4,8 @@ namespace Flynt\Components\GridPosts;
 
 use Flynt\Utils\Component;
 
-add_filter('Flynt/addComponentData?name=GridPosts', function ($data, $parentData) {
+add_filter('Flynt/addComponentData?name=GridPosts', function ($data) {
     Component::enqueueAssets('GridPosts');
-
-    $data['pagination'] = (isset($parentData['pagination'])) ? $parentData['pagination'] : null;
-    if (!isset($data['posts']) && isset($parentData['posts'])) {
-        $data['posts'] = $parentData['posts'];
-    }
 
     return $data;
 }, 10, 2);

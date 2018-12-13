@@ -81,7 +81,7 @@ class OptionPages
             'Flynt/addComponentData',
             ['Flynt\Features\Acf\OptionPages', 'addComponentData'],
             10,
-            3
+            2
         );
 
         // Setup Flynt Non Persistent Cache
@@ -146,11 +146,11 @@ class OptionPages
     // COMPONENTS
     // ============
 
-    public static function addComponentData($data, $parentData, $config)
+    public static function addComponentData($data, $componentName)
     {
         // get fields for this component
-        $options = array_reduce(array_keys(self::$optionTypes), function ($carry, $optionType) use ($config) {
-            return array_merge($carry, self::get($optionType, 'Component', $config['name']));
+        $options = array_reduce(array_keys(self::$optionTypes), function ($carry, $optionType) use ($componentName) {
+            return array_merge($carry, self::get($optionType, 'Component', $componentName));
         }, []);
 
         // don't overwrite existing data

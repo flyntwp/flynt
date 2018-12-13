@@ -21,7 +21,7 @@ class Bootstrap
 
     public static function checkRequiredPlugins()
     {
-        $flyntCoreActive = class_exists('\\Flynt\\Render');
+        $flyntCoreActive = function_exists('\\Flynt\\renderComponent');
         $acfActive = class_exists('acf');
 
         if (!$flyntCoreActive) {

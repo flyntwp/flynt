@@ -76,11 +76,12 @@ function loadFeatures()
     Feature::register('flynt-lodash', $basePath);
     Feature::register('flynt-component-log-server', $basePath);
 
-    do_action('Flynt/afterRegisterFeatures', $basePath);
+    do_action('Flynt/afterRegisterFeatures');
 }
 
 function loadComponents()
 {
     $basePath = get_template_directory() . '/dist/Components';
     Flynt\registerComponentsFromPath($basePath);
+    do_action('Flynt/afterRegisterComponents');
 }

@@ -12,30 +12,12 @@ class Defaults
 
     public static function init()
     {
-        add_filter('Flynt/configPath', ['Flynt\Defaults', 'setConfigPath'], 999, 2);
-        add_filter('Flynt/configFileLoader', ['Flynt\Defaults', 'loadConfigFile'], 999, 3);
-        add_filter('Flynt/renderComponent', ['Flynt\Defaults', 'renderComponent'], 999, 4);
-        add_filter('Flynt/componentPath', ['Flynt\Defaults', 'setComponentPath'], 999, 2);
+        add_filter('Flynt/renderComponent', ['Flynt\Defaults', 'renderComponent'], 999, 3);
         add_action('Flynt/registerComponent', ['Flynt\Defaults', 'loadFunctionsFile']);
+        // TODO: load fields.php
     }
 
-    public static function setConfigPath($configPath, $configFileName)
-    {
-        if (is_null($configPath)) {
-            $configPath = get_template_directory() . '/' . self::CONFIG_DIR . '/' . $configFileName;
-        }
-        return $configPath;
-    }
-
-    public static function loadConfigFile($config, $configName, $configPath)
-    {
-        if (is_null($config)) {
-            $config = json_decode(file_get_contents($configPath), true);
-        }
-        return $config;
-    }
-
-    public static function renderComponent($output, $componentName, $componentData, $areaHtml)
+    public static function renderComponent($output, $componentName, $componentData)
     {
         if (is_null($output)) {
             $componentManager = ComponentManager::getInstance();
@@ -43,19 +25,6 @@ class Defaults
             $output = self::renderFile($componentData, $areaHtml, $filePath);
         }
         return $output;
-    }
-
-    public static function setComponentPath($componentPath, $componentName)
-    {
-        if (is_null($componentPath)) {
-            $componentPath = self::getComponentsDirectory() . '/' . $componentName;
-        }
-        return $componentPath;
-    }
-
-    public static function getComponentsDirectory()
-    {
-        return get_template_directory() . '/' . self::COMPONENT_DIR;
     }
 
   // this action needs to be removed by the user if they want to overwrite this functionality

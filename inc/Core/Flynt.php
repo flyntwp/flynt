@@ -24,3 +24,38 @@ function registerComponentsFromPath($componentBasePath)
         registerComponent($componentName, $componentPath);
     }
 }
+
+function renderComponent($componentName, $data)
+{
+    // var_dump($componentName, $data);die();
+    $data = apply_filters(
+        'Flynt/addComponentData',
+        $data,
+        $componentName
+    );
+    $output = apply_filters(
+        'Flynt/renderComponent',
+        null,
+        $componentName,
+        $data
+    );
+
+    return is_null($output) ? '' : $output;
+}
+
+add_filter('Flynt/renderComponent', function ($output, $componentName, $data) {
+    return apply_filters(
+        "Flynt/renderComponent?name={$componentName}",
+        $output,
+        $componentName,
+        $data
+    );
+}, 10, 3);
+
+add_filter('Flynt/addComponentData', function ($data, $componentName) {
+    return apply_filters(
+        "Flynt/addComponentData?name={$componentName}",
+        $data,
+        $componentName
+    );
+}, 10, 2);
