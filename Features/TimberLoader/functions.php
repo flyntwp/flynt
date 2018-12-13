@@ -22,6 +22,9 @@ add_filter('acf/format_value/type=gallery', NS . 'formatGallery', 100);
 // Convert ACF Field of type post_object to a Timber\Post and add all ACF Fields of that Post
 add_filter('acf/format_value/type=post_object', NS . 'formatPostObject', 100);
 
+// Convert ACF Field of type relationship to a Timber\Post and add all ACF Fields of that Post
+add_filter('acf/format_value/type=relationship', NS . 'formatPostObject', 100);
+
 function renderTwigIndex($output, $componentName, $componentData, $areaHtml)
 {
     // get index file
