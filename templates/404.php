@@ -9,10 +9,7 @@ Flynt\echoHtmlFromConfig([
                 'areas' => [
                     'mainHeader' => [
                         [
-                            'name' => 'NavigationMain',
-                            'customData' => [
-                                'menuSlug' => 'navigation_main'
-                            ]
+                            'name' => 'NavigationMain'
                         ]
                     ],
                     'pageComponents' => [
