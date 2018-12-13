@@ -32,47 +32,47 @@ function loadFeatures()
 {
     $basePath = get_template_directory() . '/dist/Features';
 
-    Feature::register('flynt-youtube-no-cookie-embed', $basePath);
+    Feature::register('YoutubeNoCookieEmbed', $basePath);
 
     // initialize ACF Field Groups and Option Pages
-    Feature::register('flynt-acf', $basePath, [[
+    Feature::register('Acf', $basePath, [[
         'FlexibleContentToggle',
         'GoogleMaps'
     ]]);
 
     // enable admin notices
-    Feature::register('flynt-admin-notices', $basePath);
+    Feature::register('AdminNotices', $basePath);
 
     // use timber rendering
-    Feature::register('flynt-timber-loader', $basePath);
+    Feature::register('TimberLoader', $basePath);
 
     // load jQuery in footer by default
-    Feature::register('flynt-jquery', $basePath);
+    Feature::register('Jquery', $basePath);
 
     // clean up some things
-    Feature::register('flynt-clean-head', $basePath);
-    Feature::register('flynt-clean-rss', $basePath);
-    Feature::register('flynt-mime-types', $basePath);
-    Feature::register('flynt-remove-editor', $basePath);
-    Feature::register('flynt-tiny-mce', $basePath);
-    Feature::register('flynt-base-style', $basePath);
+    Feature::register('CleanHead', $basePath);
+    Feature::register('CleanRss', $basePath);
+    Feature::register('MimeTypes', $basePath);
+    Feature::register('RemoveEditor', $basePath);
+    Feature::register('TinyMce', $basePath);
+    Feature::register('BaseStyle', $basePath);
 
     // add components previews
-    Feature::register('flynt-admin-component-preview', $basePath);
+    Feature::register('AdminComponentPreview', $basePath);
 
     // google analytics
-    Feature::register('flynt-google-analytics', $basePath);
+    Feature::register('GoogleAnalytics', $basePath);
 
     // hide protected posts
-    Feature::register('flynt-hide-protected-posts', $basePath);
+    Feature::register('HideProtectedPosts', $basePath);
 
     // move yoast seo plugin box to the bottom of the backend interface
-    Feature::register('flynt-yoast-to-bottom', $basePath);
+    Feature::register('YoastToBottom', $basePath);
 
-    Feature::register('flynt-password-form', $basePath);
-    Feature::register('flynt-external-script-loader', $basePath);
-    Feature::register('flynt-lodash', $basePath);
-    Feature::register('flynt-component-log-server', $basePath);
+    Feature::register('PasswordForm', $basePath);
+    Feature::register('ExternalScriptLoader', $basePath);
+    Feature::register('Lodash', $basePath);
+    Feature::register('ComponentLogServer', $basePath);
 
     do_action('Flynt/afterRegisterFeatures');
 }

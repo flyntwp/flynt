@@ -19,9 +19,9 @@ class Feature
      *
      * @return array|null Returns an array of options or null if the feature wasn't found.
      */
-    public static function getOptions($feature)
+    public static function getOptions($featureName)
     {
-        $feature = self::getFeature($feature);
+        $feature = self::getFeature($featureName);
         return $feature ? $feature['options'] : null;
     }
 
@@ -37,9 +37,9 @@ class Feature
      *
      * @return mixed|null Returns the option or null if the option / the feature doesn't exist.
      */
-    public static function getOption($feature, $key)
+    public static function getOption($featureName, $key)
     {
-        $options = self::getOptions($feature);
+        $options = self::getOptions($featureName);
         return is_array($options) && array_key_exists($key, $options) ? $options[$key] : null;
     }
 
@@ -69,21 +69,20 @@ class Feature
      *
      * @return boolean
      */
-    public static function register($feature, $basePath, $options = [])
+    public static function register($featureName, $basePath, $options = [])
     {
-        if (!isset(self::$features[$feature])) {
-            $prettyName = StringHelpers::removePrefix('flynt', StringHelpers::kebapCaseToCamelCase($feature));
-            $dir = implode('/', [$basePath, $prettyName]);
+        if (!isset(self::$features[$featureName])) {
+            $dir = implode('/', [$basePath, $featureName]);
             $file = implode('/', [$dir, self::$initialFile]);
             $fieldsFile = implode('/', [$dir, 'fields.php']);
 
             if (is_file($file)) {
                 $options = (array) $options;
 
-                self::$features[$feature] = [
+                self::$features[$featureName] = [
                 'options' => $options,
                 'dir' => $dir,
-                'name' => $prettyName
+                'name' => $featureName
                 ];
 
                 if (is_file($fieldsFile)) {
@@ -95,8 +94,8 @@ class Feature
                 require_once $file;
 
                 // execute post register actions
-                do_action('Flynt/registerFeature', $prettyName, $options, $dir);
-                do_action("Flynt/registerFeature?name={$prettyName}", $prettyName, $options, $dir);
+                do_action('Flynt/registerFeature', $featureName, $options, $dir);
+                do_action("Flynt/registerFeature?name={$featureName}", $featureName, $options, $dir);
 
                 return true;
             }
