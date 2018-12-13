@@ -44,7 +44,3 @@ Options::addTranslatable('GridPosts', [
         'required' => 1
     ]
 ]);
-
-
-
-

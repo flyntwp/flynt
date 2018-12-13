@@ -1,4 +1,4 @@
-const $ = jQuery
+const $ = window.jQuery
 const $body = $('body')
 
 // collapse components

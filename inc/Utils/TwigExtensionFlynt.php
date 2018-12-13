@@ -7,18 +7,21 @@ use Twig_Environment;
 use Twig_Extension;
 use Twig_SimpleFunction;
 
-class TwigExtensionFlynt extends Twig_Extension {
+class TwigExtensionFlynt extends Twig_Extension
+{
 
-	public function getName() {
-		return 'twig_extension_flynt';
-	}
+    public function getName()
+    {
+        return 'twig_extension_flynt';
+    }
 
-	public function getFunctions() {
-		return array(
+    public function getFunctions()
+    {
+        return array(
             new Twig_SimpleFunction('renderComponent', [$this, 'renderComponent'], array('needs_environment' => true, 'needs_context' => true, 'is_safe' => array('all'))),
             new Twig_SimpleFunction('renderFlexibleContent', [$this, 'renderFlexibleContent'], array('needs_environment' => true, 'needs_context' => true, 'is_safe' => array('all'))),
-		);
-	}
+        );
+    }
 
     public function renderFlexibleContent(Twig_Environment $env, $context, $fields, $withContext = true, $ignoreMissing = false, $sandboxed = false)
     {

@@ -99,7 +99,3 @@ Flynt\registerFields('SliderMedia', [
         ]
     ]
 ]);
-
-
-
-

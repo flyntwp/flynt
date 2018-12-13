@@ -22,9 +22,3 @@ Options::addTranslatable('BlockCookieNotice', [
         'required' => 1,
     ],
 ]);
-
-
-
-
-
-

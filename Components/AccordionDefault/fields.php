@@ -32,4 +32,3 @@ Flynt\registerFields('AccordionDefault', [
         ],
     ],
 ]);
-

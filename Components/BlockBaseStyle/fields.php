@@ -6,6 +6,3 @@ Flynt\registerFields('BlockBaseStyle', [
         'label' => 'Block: BaseStyle',
     ],
 ]);
-
-
-

@@ -21,7 +21,3 @@ Flynt\registerFields('SliderImages', [
         ]
     ]
 ]);
-
-
-
-

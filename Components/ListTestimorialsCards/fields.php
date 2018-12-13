@@ -39,8 +39,3 @@ Flynt\registerFields('ListTestimorialsCards', [
         ]
     ]
 ]);
-
-
-
-
-

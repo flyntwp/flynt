@@ -4,7 +4,6 @@ namespace Flynt\Utils;
 
 use ACFComposer;
 
-
 class Options
 {
     const OPTION_TYPES = [
