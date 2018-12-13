@@ -1,10 +1,10 @@
 {
   "layout": {
     "name": "gridListSteps",
-    "label": "Grid: ListSteps",
+    "label": "Grid: List Steps",
     "sub_fields": [
       {
-        "label": "Pre Content Html",
+        "label": "Pre-Content",
         "name": "preContentHtml",
         "instructions": "Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.",
         "type": "wysiwyg",
@@ -20,11 +20,8 @@
         "label": "Step List",
         "type": "repeater",
         "name": "stepList",
-        "collapsed": "",
-        "min": 0,
-        "max": 0,
         "layout": "table",
-        "button_label": "Add Steps",
+        "button_label": "Add Step",
         "sub_fields": [
           {
             "label": "Content",
