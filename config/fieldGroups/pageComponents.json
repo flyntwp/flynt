@@ -27,7 +27,8 @@
         "Flynt/Components/ListTestimonialCards/Fields/Layout",
         "Flynt/Components/SliderMedia/Fields/Layout",
         "Flynt/Components/SliderImages/Fields/Layout",
-        "Flynt/Components/SliderImageGallery/Fields/Layout"
+        "Flynt/Components/SliderImageGallery/Fields/Layout",
+        "Flynt/Components/ListFacts/Fields/Layout"
       ]
     }
   ],

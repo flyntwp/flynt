@@ -1,0 +1,61 @@
+$containerPadding     = lookup('$globalContainerPadding')   || 20px
+$containerMaxWidth    = lookup('$globalContainerMaxWidth')  || 1280px
+$contentMaxWidth      = lookup('$globalContentMaxWidth')    || 600px
+$rupture.anti-overlap = lookup('$globalRuptureOverlap')     || -1px
+$rupture.scale        = lookup('$globalRuptureScale')       || (0 426px 576px 768px 992px 1200px)
+$colorAccent          = lookup('$globalColorAccent')        || #F98928
+
+.flyntComponent[is="flynt-list-facts"]
+  padding: 60px 0
+
+  .container
+    margin: 0 auto
+    padding: 0 $containerPadding
+    max-width: $containerMaxWidth
+
+  .preContent
+    margin: 0 auto 50px
+    max-width: $contentMaxWidth
+    text-align: center
+
+    > :first-child
+      margin-top: 0
+      padding-top: 0
+
+    > :last-child
+      margin-bottom: 0
+      padding-bottom: 0
+
+  .listFacts
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    list-style: none
+    margin: -20px -10px 0
+    padding: 0
+
+  .fact
+    max-width: 400px
+    padding: 20px 50px 0
+    text-align: center
+    width: 33%
+
+    +below('m')
+      width: 100%
+
+    .title
+      color: $colorAccent
+      display: flex
+      justify-content: center
+      letter-spacing: 0.1rem
+      padding-top: .8rem
+
+  .content
+
+    > :first-child
+      margin-top: 0
+      padding-top: 0
+
+    > :last-child
+      margin-bottom: 0
+      padding-bottom: 0
