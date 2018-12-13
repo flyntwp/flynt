@@ -1,9 +1,9 @@
 <?php
 
-Flynt\registerFields('ListTestimorialsCards', [
+Flynt\registerFields('ListTestimonialCards', [
     'layout' => [
-        'name' => 'listTestimorialsCards',
-        'label' => 'List: TestimorialsCards',
+        'name' => 'listTestimonialCards',
+        'label' => 'List: TestimonialCards',
         'sub_fields' => [
             [
                 'label' => 'Pre-Content',
@@ -19,7 +19,7 @@ Flynt\registerFields('ListTestimorialsCards', [
                 ],
             ],
             [
-                'label' => 'Testimorials List',
+                'label' => 'Testimonial List',
                 'type' => 'repeater',
                 'name' => 'testimorialsList',
                 'collapsed' => '',
