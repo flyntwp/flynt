@@ -17,6 +17,8 @@
         "Flynt/Components/BlockWysiwyg/Fields/Layout",
         "Flynt/Components/GridContentLists/Fields/Layout",
         "Flynt/Components/GridDownloadPortrait/Fields/Layout",
+        "Flynt/Components/GridPosts/Fields/Layout",
+        "Flynt/Components/GridPostsSlider/Fields/Layout",
         "Flynt/Components/GridListSteps/Fields/Layout",
         "Flynt/Components/HeroCta/Fields/Layout",
         "Flynt/Components/HeroImage/Fields/Layout",

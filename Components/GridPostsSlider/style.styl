@@ -1,0 +1,161 @@
+$containerPadding = lookup('$globalContainerPadding') || 20px
+$rupture.anti-overlap = lookup('$globalRuptureOverlap') || -1px
+$rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
+$containerMaxWidth = lookup('$globalContainerMaxWidth') || 1280px
+$contentMaxWidth = lookup('$globalContentMaxWidth') || 600px
+$colorBackground = lookup('$globalColorBackground') || #ffffff
+$colorText = lookup('$globalColorText') || #222222
+$colorBrand = lookup('$globalColorBrand') || #91C6C4
+$colorAccent = lookup('$globalColorAccent') || #F98928
+$slideGutter = 10px
+
+.flyntComponent[is="flynt-grid-posts-slider"]
+  background-color: rgba(0, 0, 0, .03)
+  padding: 60px 0
+
+  .container
+    margin: 0 auto
+    padding: 0 $containerPadding
+    max-width: $containerMaxWidth
+
+  .preContent
+    margin: 0 auto 50px
+    max-width: $contentMaxWidth
+    text-align: center
+
+    > :first-child
+      margin-top: 0
+      padding-top: 0
+
+    > :last-child
+      margin-bottom: 0
+      padding-bottom: 0
+
+  ul
+    list-style: none
+    margin: 0
+    padding: 0
+
+  .gridPosts
+    position: relative
+
+    .slick-prev
+    .slick-next
+      outline: 0
+      cursor: pointer
+      position: absolute
+      z-index: 999
+      top: 34%
+      color: transparent
+      font-size: 0
+
+      &:before
+        content: ''
+        display: block
+        width: 13px
+        height: 25px
+        background-image: url('../../Components/GridPostsSlider/Assets/arrowSlider.svg')
+        background-size: contain
+        background-repeat: no-repeat
+
+    .slick-prev
+      left: 0
+
+    .slick-next
+      right: 0
+
+      &:before
+        transform: rotate(180deg)
+
+  .gridPosts-wrapper
+    +below(1025px)
+      padding: 0 20px
+
+    // > .slick-list
+    //   display: flex
+
+    .slick-list,
+    .slick-track
+      display: flex
+      flex: 1 0 auto
+      flex-direction: row
+
+    .slick-dots
+      text-align: center
+
+      li
+        display: inline-block
+        margin: 0 5px
+
+        &:first-child
+          margin-left: 0
+
+        &:last-child
+          margin-right: 0
+
+        button
+          background: $colorBrand
+          border-radius: 50%
+          width: 15px
+          height: 15px
+          overflow: hidden
+          font-size: 0
+          cursor: pointer
+          outline: 0
+          transition: background-color .3s cubic-bezier(.250, .460, .450, .940)
+
+          &:hover
+            background-color: $colorAccent
+
+        &.slick-active
+          button
+            background-color: $colorAccent
+
+  .noPosts
+    padding: 40px 0 0
+
+  .post
+    display: flex
+    flex-direction: column
+    flex: 1 0 auto
+    background-color: $colorBackground
+    outline: 0
+    margin: 0 $slideGutter
+
+    &-link
+      // display: flex
+      // flex-direction: column
+      // flex: 1 0 auto
+      // height: 100%
+      // justify-content: flex-end
+      outline: 0
+      text-decoration: none
+      transition: background-color .3s cubic-bezier(.250, .460, .450, .940)
+
+      &:hover
+        background-color: rgba(0, 0, 0, .03)
+
+      .imagePlaceholder
+        align-items: center
+        background: $colorBrand
+        color: #fff
+        // display: flex
+        // height: 100%
+        // justify-content: space-around
+
+        p
+          margin: 0
+
+    .figure
+      background-color: $colorText
+      margin-bottom: 0
+
+    .content
+      padding: 10px
+
+    .title
+      padding-top: .1rem
+      margin-bottom: .1rem
+
+    time
+      font-size: .8rem
