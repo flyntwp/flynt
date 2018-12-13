@@ -4,7 +4,6 @@ use Timber\Timber;
 use Timber\Post;
 
 $context = Timber::get_context();
-$post = new Post();
-$context['post'] = $post;
+$context['post'] = new Post();
 
 Timber::render('twig/single.twig', $context);
