@@ -25,10 +25,7 @@ Flynt\echoHtmlFromConfig([
                     ],
                     'mainFooter' => [
                         [
-                            'name' => 'NavigationFooter',
-                            'customData' => [
-                                'menuSlug' => 'navigation_footer'
-                            ]
+                            'name' => 'NavigationFooter'
                         ],
                         [
                             'name' => 'BlockCookieNotice'
