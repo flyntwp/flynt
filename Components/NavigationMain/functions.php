@@ -14,7 +14,7 @@ add_action('wp_enqueue_scripts', function () {
 add_filter('Flynt/addComponentData?name=NavigationMain', function ($data) {
     // set max level of the menu
     $data['maxLevel'] = 0;
-    $data['menuSlug'] = !empty($data['menuSlug']) ? $data['menuSlug'] : '';
+    $data['menuSlug'] = !empty($data['menuSlug']) ? $data['menuSlug'] : 'navigation_main';
     $data['menu'] = has_nav_menu($data['menuSlug']) ? new Menu($data['menuSlug']) : false;
 
     if (!empty($data['menu'])) {

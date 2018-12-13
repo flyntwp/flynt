@@ -16,7 +16,7 @@ add_filter('Flynt/addComponentData?name=NavigationFooter', function ($data) {
 
     // set max level of the menu
     $data['maxLevel'] = 0;
-    $data['menuSlug'] = !empty($data['menuSlug']) ? $data['menuSlug'] : '';
+    $data['menuSlug'] = !empty($data['menuSlug']) ? $data['menuSlug'] : 'navigation_footer';
     $data['menu'] = has_nav_menu($data['menuSlug']) ? new Menu($data['menuSlug']) : false;
 
     return $data;
