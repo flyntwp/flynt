@@ -3,7 +3,7 @@
 namespace Flynt\Components\ListSocial;
 
 use Flynt\Utils\Asset;
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Component;
 
 add_filter('Flynt/addComponentData?name=ListSocial', function ($data) {
     Component::enqueueAssets('ListSocial');

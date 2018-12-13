@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\AccordionDefault;
 
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Component;
 
 add_filter('Flynt/addComponentData?name=AccordionDefault', function ($data) {
     Component::enqueueAssets('AccordionDefault');

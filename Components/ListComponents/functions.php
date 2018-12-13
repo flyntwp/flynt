@@ -3,7 +3,7 @@
 namespace Flynt\Components\ListComponents;
 
 use Flynt\ComponentManager;
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Component;
 use Flynt\Utils\Asset;
 
 add_filter('Flynt/addComponentData?name=ListComponents', function ($data) {

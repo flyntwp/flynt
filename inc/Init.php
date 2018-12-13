@@ -11,6 +11,7 @@ use Timber\Timber;
 
 add_action('after_setup_theme', __NAMESPACE__ . '\\initTheme');
 add_action('after_setup_theme', __NAMESPACE__ . '\\loadFeatures', 100);
+add_action('after_setup_theme', __NAMESPACE__ . '\\loadComponents', 101);
 
 function initTheme()
 {
@@ -32,9 +33,6 @@ function loadFeatures()
     $basePath = get_template_directory() . '/dist/Features';
 
     Feature::register('flynt-youtube-no-cookie-embed', $basePath);
-
-    // register all components in 'Components' folder
-    Feature::register('flynt-components', $basePath, [get_template_directory() . '/dist/Components/']);
 
     // initialize ACF Field Groups and Option Pages
     Feature::register('flynt-acf', $basePath, [[
@@ -79,4 +77,10 @@ function loadFeatures()
     Feature::register('flynt-component-log-server', $basePath);
 
     do_action('Flynt/afterRegisterFeatures', $basePath);
+}
+
+function loadComponents()
+{
+    $basePath = get_template_directory() . '/dist/Components';
+    Flynt\registerComponentsFromPath($basePath);
 }

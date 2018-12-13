@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\GridPosts;
 
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Component;
 
 add_filter('Flynt/addComponentData?name=GridPosts', function ($data, $parentData) {
     Component::enqueueAssets('GridPosts');

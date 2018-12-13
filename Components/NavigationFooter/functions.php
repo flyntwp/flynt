@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\NavigationFooter;
 
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Component;
 use Timber\Menu;
 
 add_action('init', function () {

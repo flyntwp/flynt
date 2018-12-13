@@ -22,7 +22,7 @@ Add the lodash dependency to the component you want to use it in.
 
 namespace Flynt\Components\ComponentName;
 
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Component;
 
 ...
 

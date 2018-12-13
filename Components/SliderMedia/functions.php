@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\SliderMedia;
 
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Component;
 use Flynt\Utils\Oembed;
 
 add_filter('Flynt/addComponentData?name=SliderMedia', function ($data) {

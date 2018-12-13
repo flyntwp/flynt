@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\HeroCta;
 
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Component;
 
 add_filter('Flynt/addComponentData?name=HeroCta', function ($data) {
     Component::enqueueAssets('HeroCta');

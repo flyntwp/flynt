@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\GridDownloadPortrait;
 
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Component;
 
 add_filter('Flynt/addComponentData?name=GridDownloadPortrait', function ($data) {
     Component::enqueueAssets('GridDownloadPortrait');

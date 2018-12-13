@@ -1,7 +1,7 @@
 <?php
 namespace Flynt\Components\ListPostCards;
 
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Component;
 use Timber\Timber;
 use Timber\Post;
 

@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\HeroImage;
 
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Component;
 
 add_filter('Flynt/addComponentData?name=HeroImage', function ($data) {
     Component::enqueueAssets('HeroImage', [

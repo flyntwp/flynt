@@ -1,9 +1,6 @@
 <?php
 
-namespace Flynt\Features\Components;
-
-use Flynt\Utils\Asset;
-use Flynt\Utils\StringHelpers;
+namespace Flynt\Utils;
 
 class Component
 {

@@ -219,7 +219,7 @@ add partial `Partials/AllPostsCta/*.*`
 
 namespace Flynt\Components\ListPosts;
 
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Component;
 use Timber\Timber;
 
 add_filter('Flynt/addComponentData?name=ListPosts', function ($data, $parentData) {

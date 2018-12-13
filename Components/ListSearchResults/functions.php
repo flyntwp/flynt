@@ -3,7 +3,7 @@
 namespace Flynt\Components\ListSearchResults;
 
 use Flynt\Utils\Asset;
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Component;
 
 add_filter('Flynt/addComponentData?name=ListSearchResults', function ($data, $parentData) {
     Component::enqueueAssets('ListSearchResults');
