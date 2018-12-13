@@ -59,3 +59,17 @@ add_filter('Flynt/addComponentData', function ($data, $componentName) {
         $componentName
     );
 }, 10, 2);
+
+function registerFields($scope, $fields, $type = null)
+{
+    if (empty($type)) {
+        global $flyntCurrentFieldType;
+        $type = $flyntCurrentFieldType ?? 'Components';
+    }
+    foreach ($fields as $key => $fieldData) {
+        $key = ucfirst($key);
+        add_filter("Flynt/{$type}/{$scope}/Fields/{$key}", function () use ($fieldData) {
+            return $fieldData;
+        });
+    }
+}

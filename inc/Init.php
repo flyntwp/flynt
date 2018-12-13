@@ -36,8 +36,6 @@ function loadFeatures()
 
     // initialize ACF Field Groups and Option Pages
     Feature::register('flynt-acf', $basePath, [[
-        'FieldLoader',
-        'OptionPages',
         'FlexibleContentToggle',
         'GoogleMaps'
     ]]);
@@ -82,6 +80,8 @@ function loadFeatures()
 function loadComponents()
 {
     $basePath = get_template_directory() . '/dist/Components';
+    global $flyntCurrentOptionCategory;
+    $flyntCurrentOptionCategory = 'component';
     Flynt\registerComponentsFromPath($basePath);
     do_action('Flynt/afterRegisterComponents');
 }
