@@ -6,7 +6,7 @@
           <figure class="figure">
             <img class="figure-image lazyload"
               src="{{ image.src|resize(0, 540) }}"
-              srcset="{{ placeholderImage(image.width, image.height) }}"
+              srcset="{{ placeholderImage(image.aspect * 540, 540) }}"
               data-srcset="
                 {{ image.src|resize(0, 1080) }} {{ (image.aspect * 1080)|round }}w,
                 {{ image.src|resize(0, 750) }} {{ (image.aspect * 750)|round }}w,

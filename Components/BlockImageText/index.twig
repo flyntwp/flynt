@@ -4,8 +4,8 @@
       <div class="box-image">
         <figure class="figure">
           <img class="figure-image lazyload"
-            src="{{ image.src|resize(1280) }}"
-            srcset="{{ placeholderImage(image.width, image.height) }}"
+            src="{{ image.src|resize(750) }}"
+            srcset="{{ placeholderImage(750, 750 / image.aspect) }}"
             data-srcset="
               {{ image.src|resize(1920) }} 1920w,
               {{ image.src|resize(1280) }} 1280w,

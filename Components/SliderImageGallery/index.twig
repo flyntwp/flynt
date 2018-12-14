@@ -6,7 +6,7 @@
           <figure class="figure">
             <img class="figure-image lazyload"
               src="{{ image.src|resize(0, 650) }}"
-              srcset="{{ placeholderImage(image.width, image.height) }}"
+              srcset="{{ placeholderImage(image.aspect * 650, 650) }}"
               data-srcset="
                 {{ image.src|resize(0, 1300) }} {{ (image.aspect * 1300)|round }}w,
                 {{ image.src|resize(0, 1024) }} {{ (image.aspect * 1024)|round }}w,
@@ -29,7 +29,7 @@
         <div class="slide">
           <figure class="figure">
             <img class="figure-image lazyload"
-              srcset="{{ placeholderImage(image.width, image.height) }}"
+              srcset="{{ placeholderImage(image.aspect * 65, 65) }}"
               src="{{ image.src|resize(0, 65) }}"
               data-srcset="{{ image.src|resize(0, 65) }}"
               alt="{{ image.alt|e('html_attr') }}">
