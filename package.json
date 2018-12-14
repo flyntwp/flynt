@@ -76,13 +76,13 @@
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2"
   },
-  "standard": {
-    "globals": [
-      "$",
-      "jQuery"
-    ],
-    "parser": "babel-eslint"
+  "eslintConfig": {
+    "extends": "eslint-config-standard",
+    "rules": {
+      "import/no-webpack-loader-syntax": false
+    }
   },
+  "eslintIgnore": ["dist/**"],
   "engines": {
     "node": ">=8.0.0"
   },

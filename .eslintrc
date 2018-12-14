@@ -1,6 +1,0 @@
-{
-  "extends": "eslint-config-standard",
-  "rules": {
-    "import/no-webpack-loader-syntax": false
-  }
-}
