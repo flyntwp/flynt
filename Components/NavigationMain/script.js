@@ -9,6 +9,8 @@ class NavigationMain extends window.HTMLElement {
   }
 
   resolveElements () {
+    this.enableTransition = this.enableTransition.bind(this)
+    this.triggerMenu = this.triggerMenu.bind(this)
     this.$hamburger = $('.hamburger', this)
     this.$navigation = $('.navigationMain', this)
     this.$body = $('body')
@@ -29,11 +31,11 @@ class NavigationMain extends window.HTMLElement {
     this.$menu.addClass(this.noTransitionClass)
   }
 
-  enableTransition = () => {
+  enableTransition () {
     this.$menu.removeClass(this.noTransitionClass)
   }
 
-  triggerMenu = (e) => {
+  triggerMenu (e) {
     e.preventDefault()
     this.$navigation.toggleClass('navigationMain-isActive')
     this.$body.toggleClass('navigationMain-isActive')

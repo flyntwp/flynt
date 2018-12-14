@@ -2,23 +2,18 @@ const path = require('path')
 const webpack = require('webpack')
 const glob = require('glob')
 const HardSourcePlugin = require('hard-source-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = function (config) {
   const babelQuery = {
     presets: [
-      ['es2015', {loose: true}]
-    ],
-    plugins: [
-      'transform-class-properties',
-      [
-        'babel-plugin-transform-builtin-extend', {
-          globals: ['Error', 'Array', 'Object'],
-          approximate: true
-        }
-      ]
+      ['@babel/preset-env', {
+        useBuiltIns: 'entry'
+      }]
     ]
   }
   const output = {
+    mode: config.production ? 'production' : 'development',
     name: 'browser',
     output: {
       path: path.join(__dirname, '../dist'),
@@ -75,6 +70,13 @@ module.exports = function (config) {
       sourceMap: false
     }))
     output.plugins.push(new webpack.optimize.AggressiveMergingPlugin())
+    output.optimization = {
+      minimizer: [
+        new UglifyJsPlugin({
+          sourceMap: false
+        })
+      ]
+    }
   }
   output.entry = function () {
     const entries = [].concat(config.entry)

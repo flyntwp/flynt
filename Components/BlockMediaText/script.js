@@ -9,6 +9,8 @@ class BlockMediaText extends window.HTMLDivElement {
   }
 
   resolveElements () {
+    this.setIframeSrc = this.setIframeSrc.bind(this)
+    this.onIframeLoad = this.onIframeLoad.bind(this)
     this.$posterImage = $('.oembedVideo-posterImage', this)
     this.$video = $('.oembedVideo-video', this)
     this.$iframe = $('iframe', this)
@@ -19,11 +21,11 @@ class BlockMediaText extends window.HTMLDivElement {
     this.$.on('click', this.$posterImage.selector, this.setIframeSrc)
   }
 
-  setIframeSrc = () => {
+  setIframeSrc () {
     this.$iframe.attr('src', this.$iframe.data('src'))
   }
 
-  onIframeLoad = () => {
+  onIframeLoad () {
     this.$video.addClass('oembedVideo-video-isVisible')
     this.$posterImage.addClass('oembedVideo-posterImage-isHidden')
   }
