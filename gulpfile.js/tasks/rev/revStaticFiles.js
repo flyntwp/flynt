@@ -7,10 +7,10 @@ module.exports = function (config) {
     const revReplace = require('gulp-rev-replace')
     var manifest = gulp.src(path.join(config.dest, '/rev-manifest.json'))
     return gulp.src(config.rev.srcStatic)
-    .pipe(revReplace({
-      manifest: manifest,
-      replaceInExtensions: config.rev.staticFileExtensions
-    }))
-    .pipe(gulp.dest(path.join(config.dest)))
+      .pipe(revReplace({
+        manifest: manifest,
+        replaceInExtensions: config.rev.staticFileExtensions
+      }))
+      .pipe(gulp.dest(path.join(config.dest)))
   })
 }

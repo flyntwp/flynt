@@ -2,11 +2,11 @@ import $ from 'jquery'
 import 'file-loader?name=vendor/slick.js!slick-carousel/slick/slick.min'
 import 'file-loader?name=vendor/slick.css!csso-loader!slick-carousel/slick/slick.css'
 
+import slickConfiguration from './sliderConfiguration.js'
+
 function importSlickFonts (fontName) { // eslint-disable-line no-unused-vars
   require(`file-loader?name=vendor/slick/[name].[ext]!slick-carousel/slick/fonts/${fontName}`)
 }
-
-import slickConfiguration from './sliderConfiguration.js'
 
 class SliderMedia extends window.HTMLDivElement {
   constructor (self) {
@@ -86,4 +86,4 @@ class SliderMedia extends window.HTMLDivElement {
   }
 }
 
-window.customElements.define('flynt-slider-media', SliderMedia, {extends: 'div'})
+window.customElements.define('flynt-slider-media', SliderMedia, { extends: 'div' })

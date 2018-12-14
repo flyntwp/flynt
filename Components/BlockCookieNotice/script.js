@@ -35,4 +35,4 @@ class BlockCookieNotice extends window.HTMLDivElement {
   }
 }
 
-window.customElements.define('flynt-block-cookie-notice', BlockCookieNotice, {extends: 'div'})
+window.customElements.define('flynt-block-cookie-notice', BlockCookieNotice, { extends: 'div' })

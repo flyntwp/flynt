@@ -42,4 +42,4 @@ class NavigationMain extends window.HTMLElement {
   }
 }
 
-window.customElements.define('flynt-navigation-main', NavigationMain, {extends: 'nav'})
+window.customElements.define('flynt-navigation-main', NavigationMain, { extends: 'nav' })

@@ -31,4 +31,4 @@ class BlockMediaText extends window.HTMLDivElement {
   }
 }
 
-window.customElements.define('flynt-block-media-text', BlockMediaText, {extends: 'div'})
+window.customElements.define('flynt-block-media-text', BlockMediaText, { extends: 'div' })

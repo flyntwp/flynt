@@ -33,4 +33,4 @@ class BlockVideoOembed extends window.HTMLDivElement {
   }
 }
 
-window.customElements.define('flynt-block-video-oembed', BlockVideoOembed, {extends: 'div'})
+window.customElements.define('flynt-block-video-oembed', BlockVideoOembed, { extends: 'div' })

@@ -8,7 +8,7 @@ module.exports = function (config) {
     var manifest = gulp.src(path.join(config.dest, 'rev-manifest.json'))
 
     return gulp.src(path.join(config.dest, '/**/**.{css,js}'))
-    .pipe(revReplace({manifest: manifest}))
-    .pipe(gulp.dest(config.dest))
+      .pipe(revReplace({ manifest: manifest }))
+      .pipe(gulp.dest(config.dest))
   })
 }

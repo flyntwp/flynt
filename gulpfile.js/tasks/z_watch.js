@@ -11,43 +11,43 @@ function watchAndDelete (src, callback, dest) {
   return gulp.watch(src, {
     events: ['add', 'change', 'unlink', 'unlinkDir']
   }, callback)
-  .on('all', function (event, relativePath) {
-    if (event === 'unlink') {
-      const filePath = path.join(dest, relativePath)
-      if (fs.existsSync(filePath)) {
-        fs.unlinkSync(filePath)
-      }
-      const extname = path.extname(relativePath)
-      if (extensionMappings[extname]) {
-        const relativeDest = path.dirname(filePath)
-        const mappedFilePath = path.join(relativeDest, path.basename(relativePath, extname) + extensionMappings[extname])
-        if (fs.existsSync(mappedFilePath)) {
-          fs.unlinkSync(mappedFilePath)
+    .on('all', function (event, relativePath) {
+      if (event === 'unlink') {
+        const filePath = path.join(dest, relativePath)
+        if (fs.existsSync(filePath)) {
+          fs.unlinkSync(filePath)
+        }
+        const extname = path.extname(relativePath)
+        if (extensionMappings[extname]) {
+          const relativeDest = path.dirname(filePath)
+          const mappedFilePath = path.join(relativeDest, path.basename(relativePath, extname) + extensionMappings[extname])
+          if (fs.existsSync(mappedFilePath)) {
+            fs.unlinkSync(mappedFilePath)
+          }
         }
       }
-    }
-    if (event === 'unlinkDir') {
-      const dirPath = path.join(dest, relativePath)
-      if (fs.existsSync(dirPath)) {
-        const del = require('del')
-        return del(dirPath, {force: true})
+      if (event === 'unlinkDir') {
+        const dirPath = path.join(dest, relativePath)
+        if (fs.existsSync(dirPath)) {
+          const del = require('del')
+          return del(dirPath, { force: true })
+        }
       }
-    }
-  })
+    })
 }
 
 function watchWebpack (src) {
   gulp.watch(src, {
     events: ['add', 'unlink']
   })
-  .on('all', function (event) {
-    const webpackTask = require('./webpack')
-    if (webpackTask.watching) {
-      if (event === 'add' || event === 'unlink') {
-        webpackTask.watching.invalidate()
+    .on('all', function (event) {
+      const webpackTask = require('./webpack')
+      if (webpackTask.watching) {
+        if (event === 'add' || event === 'unlink') {
+          webpackTask.watching.invalidate()
+        }
       }
-    }
-  })
+    })
 }
 
 function findFileInParentDirectory (filename, directory, stopSearchDirnames = []) {
@@ -104,10 +104,10 @@ module.exports = function (config) {
     touch = require('touch')
     watchAndDelete(config.copy, gulp.series('copy'), config.dest)
     watchAndDelete(config.watch.stylus, gulp.series('stylus'), config.dest)
-    .on('all', function (event, relativePath) {
-      checkForStylusPartial(relativePath, config)
-      checkForCssVariablesStyl(relativePath, config)
-    })
+      .on('all', function (event, relativePath) {
+        checkForStylusPartial(relativePath, config)
+        checkForCssVariablesStyl(relativePath, config)
+      })
     gulp.watch(config.watch.php, function () { browserSync.reload() })
     watchWebpack(config.webpack.entry)
   })

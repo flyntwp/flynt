@@ -1,5 +1,7 @@
 import 'file-loader?name=vendor/draggabilly.js!draggabilly/dist/draggabilly.pkgd.min'
-const $ = jQuery
+
+import $ from 'jquery'
+
 // admin
 if ($('body.wp-admin').length) {
   require('./admin')

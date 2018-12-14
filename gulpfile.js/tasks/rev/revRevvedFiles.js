@@ -7,12 +7,12 @@ module.exports = function (config) {
     const rev = require('gulp-rev')
     const revNapkin = require('gulp-rev-napkin')
     return gulp.src(config.rev.srcRevved)
-    .pipe(rev({
-      replaceInExtensions: config.rev.revvedFileExtensions
-    }))
-    .pipe(gulp.dest(config.dest))
-    .pipe(revNapkin({verbose: false}))
-    .pipe(rev.manifest({merge: true}))
-    .pipe(gulp.dest(config.dest))
+      .pipe(rev({
+        replaceInExtensions: config.rev.revvedFileExtensions
+      }))
+      .pipe(gulp.dest(config.dest))
+      .pipe(revNapkin({ verbose: false }))
+      .pipe(rev.manifest({ merge: true }))
+      .pipe(gulp.dest(config.dest))
   })
 }

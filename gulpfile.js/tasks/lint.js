@@ -21,14 +21,14 @@ module.exports = function (config) {
     const stylint = require('gulp-stylint')
     const changedInPlace = require('gulp-changed-in-place')
     const task = gulp.src(config.lint.stylus)
-    .pipe(changedInPlace({firstPass: true}))
-    .pipe(stylint())
-    .pipe(stylint.reporter())
+      .pipe(changedInPlace({ firstPass: true }))
+      .pipe(stylint())
+      .pipe(stylint.reporter())
     if (global.watchMode) {
       return task
     } else {
       return task
-      .pipe(stylint.reporter('fail', { failOnWarning: true }))
+        .pipe(stylint.reporter('fail', { failOnWarning: true }))
     }
   })
 
@@ -36,11 +36,10 @@ module.exports = function (config) {
     const eslint = require('gulp-eslint')
     const reporter = require('gulp-reporter')
     const changedInPlace = require('gulp-changed-in-place')
-    let opts = {}
     let task = gulp.src(config.lint.js)
-    .pipe(changedInPlace({firstPass: true}))
-    .pipe(eslint())
-    .pipe(reporter())
+      .pipe(changedInPlace({ firstPass: true }))
+      .pipe(eslint())
+      .pipe(reporter())
     if (!global.watchMode) {
       task = task.pipe(eslint.failAfterError())
     }
@@ -53,14 +52,14 @@ module.exports = function (config) {
       const changedInPlace = require('gulp-changed-in-place')
       config.lint.phpcs.bin = binaryPath
       const task = gulp.src(config.lint.php)
-      .pipe(changedInPlace({firstPass: true}))
-      .pipe(phpcs(config.lint.phpcs))
-      .pipe(phpcs.reporter('log'))
+        .pipe(changedInPlace({ firstPass: true }))
+        .pipe(phpcs(config.lint.phpcs))
+        .pipe(phpcs.reporter('log'))
       if (global.watchMode) {
         return task
       } else {
         return task
-        .pipe(phpcs.reporter('fail', {failOnFirst: false}))
+          .pipe(phpcs.reporter('fail', { failOnFirst: false }))
       }
     }
     cb()

@@ -37,4 +37,4 @@ class SliderImages extends window.HTMLDivElement {
   }
 }
 
-window.customElements.define('flynt-slider-images', SliderImages, {extends: 'div'})
+window.customElements.define('flynt-slider-images', SliderImages, { extends: 'div' })

@@ -5,8 +5,8 @@ module.exports = function (config) {
     const changed = require('gulp-changed')
     // const handleErrors = require('../utils/handleErrors')
     let task = gulp.src(config.copy)
-    .pipe(changed(config.dest))
-    .pipe(gulp.dest(config.dest))
+      .pipe(changed(config.dest))
+      .pipe(gulp.dest(config.dest))
     // .on('error', handleErrors)
     if (global.watchMode) {
       const browserSync = require('browser-sync')
