@@ -17,17 +17,6 @@ module.exports = function (config) {
     }
   }
 
-  if (phpCsAvailable) {
-    gulp.task('lint', ['lint:stylus', 'lint:js', 'lint:php'])
-  } else {
-    const log = require('fancy-log')
-    const colors = require('ansi-colors')
-    log(colors.yellow('PHPCS not found in PATH! Please install PHPCS to enable the php linter:'))
-    log(colors.yellow.underline('https://github.com/squizlabs/PHP_CodeSniffer'))
-
-    gulp.task('lint', ['lint:stylus', 'lint:js'])
-  }
-
   gulp.task('lint:stylus', function () {
     const stylint = require('gulp-stylint')
     const changedInPlace = require('gulp-changed-in-place')
@@ -77,4 +66,15 @@ module.exports = function (config) {
     }
     cb()
   })
+
+  if (phpCsAvailable) {
+    gulp.task('lint', gulp.parallel(['lint:stylus', 'lint:js', 'lint:php']))
+  } else {
+    const log = require('fancy-log')
+    const colors = require('ansi-colors')
+    log(colors.yellow('PHPCS not found in PATH! Please install PHPCS to enable the php linter:'))
+    log(colors.yellow.underline('https://github.com/squizlabs/PHP_CodeSniffer'))
+
+    gulp.task('lint', ['lint:stylus', 'lint:js'])
+  }
 }

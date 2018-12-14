@@ -1,32 +1,33 @@
 const gulp = require('gulp')
 const path = require('path')
 const fs = require('fs')
-let watch, touch, globby
+let touch, globby
 
 const extensionMappings = {
   '.styl': '.css'
 }
 
 function watchAndDelete (src, callback, dest) {
-  return watch(src, {
+  return gulp.watch(src, {
     events: ['add', 'change', 'unlink', 'unlinkDir']
   }, callback)
-  .on('data', function (file) {
-    if (file.event === 'unlink') {
-      const filePath = path.join(dest, file.relative)
+  .on('all', function (event, relativePath) {
+    if (event === 'unlink') {
+      const filePath = path.join(dest, relativePath)
       if (fs.existsSync(filePath)) {
         fs.unlinkSync(filePath)
       }
-      if (extensionMappings[file.extname]) {
+      const extname = path.extname(relativePath)
+      if (extensionMappings[extname]) {
         const relativeDest = path.dirname(filePath)
-        const mappedFilePath = path.join(relativeDest, file.stem + extensionMappings[file.extname])
+        const mappedFilePath = path.join(relativeDest, path.basename(relativePath, extname) + extensionMappings[extname])
         if (fs.existsSync(mappedFilePath)) {
           fs.unlinkSync(mappedFilePath)
         }
       }
     }
-    if (file.event === 'unlinkDir') {
-      const dirPath = path.join(dest, file.relative)
+    if (event === 'unlinkDir') {
+      const dirPath = path.join(dest, relativePath)
       if (fs.existsSync(dirPath)) {
         const del = require('del')
         return del(dirPath, {force: true})
@@ -36,11 +37,13 @@ function watchAndDelete (src, callback, dest) {
 }
 
 function watchWebpack (src) {
-  watch(src)
-  .on('data', function (file) {
+  gulp.watch(src, {
+    events: ['add', 'unlink']
+  })
+  .on('all', function (event) {
     const webpackTask = require('./webpack')
     if (webpackTask.watching) {
-      if (file.event === 'add' || file.event === 'unlink') {
+      if (event === 'add' || event === 'unlink') {
         webpackTask.watching.invalidate()
       }
     }
@@ -63,9 +66,9 @@ function findFileInParentDirectory (filename, directory, stopSearchDirnames = []
   return findFileInParentDirectory(filename, parent, stopSearchDirnames)
 }
 
-function checkForStylusPartial (file, config) {
-  if (file.basename[0] === config.watch.stylusPartials.partialCssFilenamePrefix) {
-    const fileDir = path.dirname(path.join(process.cwd(), file.relative))
+function checkForStylusPartial (relativePath, config) {
+  if (path.basename(relativePath)[0] === config.watch.stylusPartials.partialCssFilenamePrefix) {
+    const fileDir = path.dirname(path.join(process.cwd(), relativePath))
     const styleCssFilepath = findFileInParentDirectory(
       config.watch.stylusPartials.rootCssFilename,
       fileDir,
@@ -77,8 +80,8 @@ function checkForStylusPartial (file, config) {
   }
 }
 
-function checkForCssVariablesStyl (file, config) {
-  if (config.watch.hardReloadOnStylFiles.includes(file.relative)) {
+function checkForCssVariablesStyl (relativePath, config) {
+  if (config.watch.hardReloadOnStylFiles.includes(relativePath)) {
     globby(config.stylus, {}).then((files) => {
       Promise.all(
         files.map(function (file) {
@@ -99,22 +102,17 @@ module.exports = function (config) {
     const browserSync = require('browser-sync')
     globby = require('globby')
     touch = require('touch')
-    watch = require('gulp-watch')
-    watchAndDelete(config.copy, function () { gulp.start('copy') }, config.dest)
-    watchAndDelete(config.watch.stylus, function (file) {
-      checkForStylusPartial(file, config)
-      checkForCssVariablesStyl(file, config)
-      gulp.start('stylus')
-    }, config.dest)
-    watch(config.watch.php, function () { browserSync.reload() })
+    watchAndDelete(config.copy, gulp.series('copy'), config.dest)
+    watchAndDelete(config.watch.stylus, gulp.series('stylus'), config.dest)
+    .on('all', function (event, relativePath) {
+      checkForStylusPartial(relativePath, config)
+      checkForCssVariablesStyl(relativePath, config)
+    })
+    gulp.watch(config.watch.php, function () { browserSync.reload() })
     watchWebpack(config.webpack.entry)
   })
-  gulp.task('watch', function (cb) {
-    const runSequence = require('run-sequence')
-    runSequence(
-      ['webpack:watch', 'browserSync'],
-      'watch:files',
-      cb
-    )
-  })
+  gulp.task(
+    'watch',
+    gulp.parallel(['webpack:watch', 'browserSync', 'watch:files'])
+  )
 }

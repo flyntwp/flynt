@@ -6,7 +6,7 @@ module.exports = function (config) {
     const autoprefixer = require('autoprefixer-stylus')
     const changed = require('gulp-changed')
     const gulpIf = require('gulp-if')
-    const handleErrors = require('../utils/handleErrors')
+    // const handleErrors = require('../utils/handleErrors')
     const path = require('path')
     const rupture = require('rupture')
     const stylus = require('gulp-stylus')
@@ -26,10 +26,10 @@ module.exports = function (config) {
         path.resolve(__dirname, '../../Components/_variables.styl')
       ]
     }))
-    .on('error', handleErrors)
+    // .on('error', handleErrors)
     .pipe(gulpIf(!isProduction, sourcemaps.write(config.sourcemaps)))
     .pipe(gulp.dest(config.dest))
-    .on('error', handleErrors)
+    // .on('error', handleErrors)
     if (global.watchMode) {
       const browserSync = require('browser-sync')
       task = task.pipe(browserSync.stream())
