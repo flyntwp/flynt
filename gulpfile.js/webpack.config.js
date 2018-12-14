@@ -66,14 +66,13 @@ module.exports = function (config) {
         }
       })
     )
-    output.plugins.push(new webpack.optimize.UglifyJsPlugin({
-      sourceMap: false
-    }))
     output.plugins.push(new webpack.optimize.AggressiveMergingPlugin())
     output.optimization = {
       minimizer: [
         new UglifyJsPlugin({
-          sourceMap: false
+          sourceMap: false,
+          cache: true,
+          parallel: true
         })
       ]
     }
