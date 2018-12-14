@@ -33,19 +33,18 @@ module.exports = function (config) {
   })
 
   gulp.task('lint:js', function () {
-    const standard = require('gulp-standard')
+    const eslint = require('gulp-eslint')
+    const reporter = require('gulp-reporter')
     const changedInPlace = require('gulp-changed-in-place')
     let opts = {}
-    if (!global.watchMode) {
-      opts = {
-        breakOnError: true,
-        breakOnWarning: true
-      }
-    }
-    return gulp.src(config.lint.js)
+    let task = gulp.src(config.lint.js)
     .pipe(changedInPlace({firstPass: true}))
-    .pipe(standard())
-    .pipe(standard.reporter('default', opts))
+    .pipe(eslint())
+    .pipe(reporter())
+    if (!global.watchMode) {
+      task = task.pipe(eslint.failAfterError())
+    }
+    return task
   })
 
   gulp.task('lint:php', function (cb) {
