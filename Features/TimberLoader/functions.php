@@ -105,51 +105,16 @@ function convertToTimberPost($value)
 }
 
 add_action('timber/twig/filters', function ($twig) {
-    $twig->addFunction(new \Twig_SimpleFunction('transparentPng', function ($aspect, $r = 0, $g = 0, $b = 0, $a = 127) {
-        $ratio = aspectToRatio($aspect);
-        //create image with specified sizes
-        $image = imagecreatetruecolor($ratio['width'], $ratio['height']);
-        //saving all full alpha channel information
-        imagesavealpha($image, true);
-        //setting completely transparent color
-        $transparent = imagecolorallocatealpha($image, $r, $g, $b, $a);
-        //filling created image with transparent color
-        imagefill($image, 0, 0, $transparent);
-        ob_start(); // Let's start output buffering.
-        imagepng($image); //This will normally output the image, but because of ob_start(), it won't.
-        $contents = ob_get_contents(); //Instead, output above is saved to $contents
-        ob_end_clean(); //End the output buffer.
-
-        return "data:image/png;base64," . base64_encode($contents);
+    $twig->addFunction(new \Twig_SimpleFunction('placeholderImage', function ($width, $height, $color = null) {
+        $width = round($width);
+        $height = round($height);
+        $colorRect = $color ? "<rect width='{$width}' height='{$height}' style='fill:$color' />" : '';
+        $svg = "<svg width='{$width}' height='{$height}' xmlns='http://www.w3.org/2000/svg'>{$colorRect}</svg>";
+        return "data:image/svg+xml;base64," . base64_encode($svg);
     }));
 
     return $twig;
 });
-
-function aspectToRatio($n, $tolerance = 1.e-3)
-{
-    $h1 = 1;
-    $h2 = 0;
-    $k1 = 0;
-    $k2 = 1;
-    $b = 1 / $n;
-    do {
-        $b = 1/$b;
-        $a = floor($b);
-        $aux = $h1;
-        $h1 = $a * $h1 + $h2;
-        $h2 = $aux;
-        $aux = $k1;
-        $k1 = $a * $k1 + $k2;
-        $k2 = $aux;
-        $b = $b - $a;
-    } while (abs($n - $h1 / $k1) > $n * $tolerance);
-
-    return [
-        'width' => $h1,
-        'height' => $k1
-    ];
-}
 
 function generateToken($args)
 {

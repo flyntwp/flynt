@@ -1,7 +1,7 @@
 <figure class="figure">
   <img class="figure-image lazyload"
     src="{{ image.src|resize(1280, 720) }}"
-    srcset="{{ transparentPng(16/9) }}"
+    srcset="{{ placeholderImage(1280, 720) }}"
     data-srcset="
       {{ image.src|resize(1920, 1080) }} 1920w,
       {{ image.src|resize(1280, 720) }} 1280w,
