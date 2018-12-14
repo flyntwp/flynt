@@ -4,13 +4,13 @@ module.exports = function (config) {
   // 4) Update asset references in HTML
   gulp.task('revStaticFiles', function () {
     const path = require('path')
-    const revReplace = require('gulp-rev-replace')
+    const rewrite = require('gulp-rev-rewrite')
     var manifest = gulp.src(path.join(config.dest, '/rev-manifest.json'))
     return gulp.src(config.rev.srcStatic)
-      .pipe(revReplace({
+      .pipe(rewrite({
         manifest: manifest,
         replaceInExtensions: config.rev.staticFileExtensions
       }))
-      .pipe(gulp.dest(path.join(config.dest)))
+      .pipe(gulp.dest(config.dest))
   })
 }
