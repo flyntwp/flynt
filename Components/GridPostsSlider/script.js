@@ -27,7 +27,7 @@ class GridPostsSlider extends window.HTMLDivElement {
           settings: {
             slidesToShow: 2,
             slidesToScroll: 2,
-            arrows: true,
+            arrows: true
           }
         },
         {
