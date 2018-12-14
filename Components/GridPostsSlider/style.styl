@@ -20,8 +20,7 @@ $slideGutter = 10px
 
   .preContent
     margin: 0 auto 50px
-    max-width: $contentMaxWidth
-    text-align: center
+    padding: 0 $containerPadding
 
     > :first-child
       margin-top: 0
@@ -38,6 +37,10 @@ $slideGutter = 10px
 
   .gridPosts
     position: relative
+    padding: 0 $slideGutter
+
+    +below(1025px)
+      padding: 0
 
     .slick-prev
     .slick-next
@@ -70,6 +73,7 @@ $slideGutter = 10px
   .gridPosts-wrapper
     +below(1025px)
       padding: 0 20px
+      margin: 0 -$slideGutter
 
     .slick-list,
     .slick-track
@@ -79,6 +83,7 @@ $slideGutter = 10px
 
     .slick-dots
       text-align: center
+      padding: 0 $containerPadding
 
       li
         display: inline-block
