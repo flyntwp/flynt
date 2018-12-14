@@ -62,6 +62,3 @@ Flynt\registerFields('ListFacts', [
         ]
     ]
 ]);
-
-
-
