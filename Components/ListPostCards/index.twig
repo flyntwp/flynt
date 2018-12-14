@@ -12,7 +12,7 @@
                 <figure class="figure">
                   <img class="figure-image lazyload"
                     src="{{ post.thumbnail|resize(1280, 853) }}"
-                    srcset="{{ transparentPng(3/2) }}"
+                    srcset="{{ placeholderImage(3, 2) }}"
                     data-srcset="
                       {{ post.thumbnail|resize(1920, 1280) }} 1920w,
                       {{ post.thumbnail|resize(1280, 853) }} 1280w,

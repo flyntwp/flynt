@@ -9,7 +9,7 @@
                 <div class="component-previewImage component-previewImage--desktop">
                   <img class="lazyload"
                       src="{{ block.componentPreviewDesktopUrl|resize(600) }}"
-                      srcset="{{ transparentPng(0.5) }}"
+                      srcset="{{ placeholderImage(1, 2) }}"
                       data-srcset="
                         {{ block.componentPreviewDesktopUrl|resize(1800) }} 1800w,
                         {{ block.componentPreviewDesktopUrl|resize(1200) }} 1200w,
@@ -22,7 +22,7 @@
                   <div class="component-previewImage component-previewImage--mobile">
                     <img class="lazyload"
                         src="{{ block.componentPreviewMobileUrl|resize(120) }}"
-                        srcset="{{ transparentPng(2) }}"
+                        srcset="{{ placeholderImage(2, 1) }}"
                         data-srcset="
                           {{ block.componentPreviewMobileUrl|resize(670) }} 670w,
                           {{ block.componentPreviewMobileUrl|resize(360) }} 360w,

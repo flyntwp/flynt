@@ -24,7 +24,7 @@
             {% if item.image %}
               <img
                 class="download-image lazyload"
-                srcset="{{ transparentPng(2/3) }}"
+                srcset="{{ placeholderImage(2, 3) }}"
                 src="{{ item.image.src|resize(370, 555) }}"
                 data-srcset="
                 {{ item.image.src|resize(450, 675) }} 450w,
