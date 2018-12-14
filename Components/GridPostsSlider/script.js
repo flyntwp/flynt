@@ -11,10 +11,11 @@ class GridPostsSlider extends window.HTMLDivElement {
   }
 
   resolveElements () {
+    this.$gridPostsSlider = $('.gridPosts-wrapper', this)
   }
 
   connectedCallback () {
-    $('.gridPosts-wrapper').slick({
+    this.$gridPostsSlider.slick({
       infinite: true,
       slidesToShow: 3,
       slidesToScroll: 3,
@@ -26,9 +27,7 @@ class GridPostsSlider extends window.HTMLDivElement {
           settings: {
             slidesToShow: 2,
             slidesToScroll: 2,
-            infinite: true,
             arrows: true,
-            dots: true
           }
         },
         {

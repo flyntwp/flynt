@@ -20,8 +20,7 @@ $slideGutter = 10px
 
   .preContent
     margin: 0 auto 50px
-    max-width: $contentMaxWidth
-    text-align: center
+    padding: 0 $containerPadding
 
     > :first-child
       margin-top: 0
@@ -38,6 +37,10 @@ $slideGutter = 10px
 
   .gridPosts
     position: relative
+    padding: 0 $slideGutter
+
+    +below(1025px)
+      padding: 0
 
     .slick-prev
     .slick-next
@@ -70,9 +73,7 @@ $slideGutter = 10px
   .gridPosts-wrapper
     +below(1025px)
       padding: 0 20px
-
-    // > .slick-list
-    //   display: flex
+      margin: 0 -$slideGutter
 
     .slick-list,
     .slick-track
@@ -82,6 +83,7 @@ $slideGutter = 10px
 
     .slick-dots
       text-align: center
+      padding: 0 $containerPadding
 
       li
         display: inline-block
@@ -115,19 +117,19 @@ $slideGutter = 10px
     padding: 40px 0 0
 
   .post
-    display: flex
-    flex-direction: column
-    flex: 1 0 auto
     background-color: $colorBackground
     outline: 0
     margin: 0 $slideGutter
 
+    position: relative
+    display: block
+
     &-link
-      // display: flex
-      // flex-direction: column
-      // flex: 1 0 auto
-      // height: 100%
-      // justify-content: flex-end
+      display: flex
+      flex-direction: column
+      flex: 1 0 auto
+      height: 100%
+      justify-content: flex-end
       outline: 0
       text-decoration: none
       transition: background-color .3s cubic-bezier(.250, .460, .450, .940)
@@ -136,19 +138,13 @@ $slideGutter = 10px
         background-color: rgba(0, 0, 0, .03)
 
       .imagePlaceholder
-        align-items: center
         background: $colorBrand
-        color: #fff
-        // display: flex
-        // height: 100%
-        // justify-content: space-around
-
-        p
-          margin: 0
+        height: 100%
 
     .figure
       background-color: $colorText
       margin-bottom: 0
+      height: 100%
 
     .content
       padding: 10px
