@@ -8,12 +8,12 @@ module.exports = function (config) {
     const rev = require('gulp-rev')
     const revNapkin = require('gulp-rev-napkin')
     return gulp.src(config.rev.srcRevved)
-    .pipe(rev({
-      replaceInExtensions: config.rev.revvedFileExtensions
-    }))
-    .pipe(gulp.dest(config.dest))
-    .pipe(revNapkin({verbose: false}))
-    .pipe(rev.manifest(path.join(config.dest, 'rev-manifest.json'), {merge: true}))
-    .pipe(gulp.dest(''))
+      .pipe(rev({
+        replaceInExtensions: config.rev.revvedFileExtensions
+      }))
+      .pipe(gulp.dest(config.dest))
+      .pipe(revNapkin({ verbose: false }))
+      .pipe(rev.manifest(path.join(config.dest, 'rev-manifest.json'), { merge: true, base: config.dest }))
+      .pipe(gulp.dest(config.dest))
   })
 }

@@ -17,8 +17,3 @@ Flynt\registerFields('GridPostsSlider', [
         ]
     ]
 ]);
-
-
-
-
-

@@ -37,7 +37,7 @@ class ListFacts extends window.HTMLDivElement {
           const displayNumber = $number.data('number')
           const countNumber = $number.data('count-number') ? $number.data('count-number') : displayNumber
           const duration = Math.log(countNumber) / 3
-          const count = new CountUp(number, 0, displayNumber, 0, duration, {separator: '.'})
+          const count = new CountUp(number, 0, displayNumber, 0, duration, { separator: '.' })
           count.start()
         })
       }
@@ -45,4 +45,4 @@ class ListFacts extends window.HTMLDivElement {
   }
 }
 
-window.customElements.define('flynt-list-facts', ListFacts, {extends: 'div'})
+window.customElements.define('flynt-list-facts', ListFacts, { extends: 'div' })

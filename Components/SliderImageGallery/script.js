@@ -50,4 +50,4 @@ class SliderImageGallery extends window.HTMLDivElement {
   }
 }
 
-window.customElements.define('flynt-slider-image-gallery', SliderImageGallery, {extends: 'div'})
+window.customElements.define('flynt-slider-image-gallery', SliderImageGallery, { extends: 'div' })

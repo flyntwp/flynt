@@ -14,11 +14,6 @@ add_action('wp_enqueue_scripts', function () {
         'path' => 'vendor/babel-polyfill.js'
     ]);
     Asset::register([
-        'name' => 'document-register-element',
-        'type' => 'script',
-        'path' => 'vendor/document-register-element.js'
-    ]);
-    Asset::register([
         'name' => 'normalize',
         'path' => 'vendor/normalize.css',
         'type' => 'style'
@@ -30,8 +25,7 @@ add_action('wp_enqueue_scripts', function () {
         'dependencies' => [
             'jquery',
             'console-polyfill',
-            'babel-polyfill',
-            'document-register-element',
+            'babel-polyfill'
         ],
     ]);
     Asset::enqueue([

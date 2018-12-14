@@ -1,6 +1,7 @@
 /* globals wpData */
+import $ from 'jquery'
+
 const helper = require('./helper')
-const $ = jQuery
 const $body = $('body')
 const ajaxCache = {}
 // show component preview images
@@ -44,5 +45,5 @@ function getImage (image) {
 
 function hideComponentPreview ($wrapper) {
   $wrapper.find('.flyntComponentPreview-imageWrapper')
-  .remove()
+    .remove()
 }
