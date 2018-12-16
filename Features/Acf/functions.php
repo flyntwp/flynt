@@ -7,6 +7,7 @@ require_once __DIR__ . '/Loader.php';
 
 use Flynt\Features\Acf\Loader;
 use Flynt\Utils\Feature;
+use Flynt\Utils\Options;
 
 Loader::setup(Feature::getOption('Acf', 0));
 
@@ -28,3 +29,20 @@ add_filter('http_response', function ($response, $args, $url) {
     }
     return $response;
 }, 10, 3);
+
+Options::addGlobal('Acf', [
+    [
+        'name' => 'googleMapsTab',
+        'label' => 'Google Maps',
+        'type' => 'tab'
+    ],
+    [
+        'name' => 'googleMapsApiKey',
+        'label' => 'Google Maps Api Key',
+        'type' => 'text',
+        'maxlength' => 100,
+        'prepend' => '',
+        'append' => '',
+        'placeholder' => ''
+    ]
+]);

@@ -32,6 +32,9 @@ function loadFeatures()
 {
     $basePath = get_template_directory() . '/dist/Features';
 
+    global $flyntCurrentOptionCategory;
+    $flyntCurrentOptionCategory = 'feature';
+
     Feature::register('YoutubeNoCookieEmbed', $basePath);
 
     // initialize ACF Field Groups and Option Pages

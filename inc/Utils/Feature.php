@@ -74,7 +74,6 @@ class Feature
         if (!isset(self::$features[$featureName])) {
             $dir = implode('/', [$basePath, $featureName]);
             $file = implode('/', [$dir, self::$initialFile]);
-            $fieldsFile = implode('/', [$dir, 'fields.php']);
 
             if (is_file($file)) {
                 $options = (array) $options;
@@ -84,12 +83,6 @@ class Feature
                 'dir' => $dir,
                 'name' => $featureName
                 ];
-
-                if (is_file($fieldsFile)) {
-                    global $flyntCurrentOptionCategory;
-                    $flyntCurrentOptionCategory = 'feature';
-                    require_once $fieldsFile;
-                }
 
                 require_once $file;
 

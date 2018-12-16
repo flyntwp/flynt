@@ -14,7 +14,6 @@ class Defaults
     {
         add_filter('Flynt/renderComponent', ['Flynt\Defaults', 'renderComponent'], 999, 3);
         add_action('Flynt/registerComponent', ['Flynt\Defaults', 'loadFunctionsFile']);
-        // TODO: load fields.php
     }
 
     public static function renderComponent($output, $componentName, $componentData)
@@ -31,10 +30,6 @@ class Defaults
     public static function loadFunctionsFile($componentName)
     {
         $componentManager = ComponentManager::getInstance();
-        $fieldsFilePath = $componentManager->getComponentFilePath($componentName, 'fields.php');
-        if (false !== $fieldsFilePath) {
-            require_once $fieldsFilePath;
-        }
         $functionsFilePath = $componentManager->getComponentFilePath($componentName, 'functions.php');
         if (false !== $functionsFilePath) {
             require_once $functionsFilePath;
