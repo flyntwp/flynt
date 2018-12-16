@@ -5,6 +5,7 @@ use Flynt\Defaults;
 use Flynt\BuildConstructionPlan;
 use Flynt\Render;
 use Flynt\ComponentManager;
+use Dflydev\DotAccessData\Data;
 
 function initDefaults()
 {
@@ -60,16 +61,27 @@ add_filter('Flynt/addComponentData', function ($data, $componentName) {
     );
 }, 10, 2);
 
-function registerFields($scope, $fields, $type = null)
+function registerFields($scope, $fields, $fieldsId = null)
 {
-    if (empty($type)) {
-        global $flyntCurrentFieldType;
-        $type = $flyntCurrentFieldType ?? 'Components';
+    global $flyntFields;
+    $flyntFields = $flyntFields ?? [];
+    if (empty($fieldsId)) {
+        $flyntFields[$scope] = $fields;
+    } else {
+        $flyntFields[$scope] = $flyntFields[$scope] ?? [];
+        $flyntFields[$scope][$fieldsId] = $fields;
     }
-    foreach ($fields as $key => $fieldData) {
-        $key = ucfirst($key);
-        add_filter("Flynt/{$type}/{$scope}/Fields/{$key}", function () use ($fieldData) {
-            return $fieldData;
-        });
+    return $fields;
+}
+
+function loadFields($scope, $fieldPath = null)
+{
+    global $flyntFields;
+    $flyntFields = $flyntFields ?? [];
+    if (empty($fieldPath)) {
+        return $flyntFields[$scope];
+    } else {
+        $data = new Data($flyntFields[$scope]);
+        return $data->get($fieldPath);
     }
 }

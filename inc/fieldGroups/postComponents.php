@@ -2,7 +2,7 @@
 
 use ACFComposer\ACFComposer;
 
-add_action('acf/init', function () {
+add_action('Flynt/afterRegisterComponents', function () {
     ACFComposer::registerFieldGroup([
         'name' => 'postComponents',
         'title' => 'Post Components',
@@ -14,8 +14,8 @@ add_action('acf/init', function () {
                 'type' => 'flexible_content',
                 'button_label' => 'Add Component',
                 'layouts' => [
-                    'Flynt/Components/BlockImage/Fields/Layout',
-                    'Flynt/Components/BlockWysiwyg/Fields/Layout',
+                    Flynt\loadFields('BlockImage', 'layout'),
+                    Flynt\loadFields('BlockWysiwyg', 'layout'),
                 ],
             ],
         ],
