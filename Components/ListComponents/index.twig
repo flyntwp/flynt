@@ -3,32 +3,32 @@
     <ul class="components">
       {% for block in componentBlocks %}
         {% if block.readme %}
-          <li class="component{% if not block.componentPreviewDesktopUrl %} component--noImage{% endif %}">
-            {% if block.componentPreviewDesktopUrl %}
+          <li class="component{% if not block.componentPreviewDesktop %} component--noImage{% endif %}">
+            {% if block.componentPreviewDesktop %}
               <div class="component-previews">
                 <div class="component-previewImage component-previewImage--desktop">
                   <img class="lazyload"
-                      src="{{ block.componentPreviewDesktopUrl|resize(600) }}"
-                      srcset="{{ placeholderImage(600, 600 / image.aspect) }}"
+                      src="{{ block.componentPreviewDesktop.src|resize(600) }}"
+                      srcset="{{ placeholderImage(600, 600 / block.componentPreviewDesktop.aspect) }}"
                       data-srcset="
-                        {{ block.componentPreviewDesktopUrl|resize(1800) }} 1800w,
-                        {{ block.componentPreviewDesktopUrl|resize(1200) }} 1200w,
-                        {{ block.componentPreviewDesktopUrl|resize(600) }} 600w,
-                        {{ block.componentPreviewDesktopUrl|resize(300) }} 300w"
+                        {{ block.componentPreviewDesktop.src|resize(1800) }} 1800w,
+                        {{ block.componentPreviewDesktop.src|resize(1200) }} 1200w,
+                        {{ block.componentPreviewDesktop.src|resize(600) }} 600w,
+                        {{ block.componentPreviewDesktop.src|resize(300) }} 300w"
                       data-sizes="auto"
                       alt="{{ image.alt|e('html_attr') }}">
                 </div>
-                {% if block.componentPreviewMobileUrl %}
+                {% if block.componentPreviewMobile %}
                   <div class="component-previewImage component-previewImage--mobile">
                     <img class="lazyload"
-                        src="{{ block.componentPreviewMobileUrl|resize(120) }}"
-                        srcset="{{ placeholderImage(120, 120 / image.aspect) }}"
+                        src="{{ block.componentPreviewMobile.src|resize(120) }}"
+                        srcset="{{ placeholderImage(120, 120 / block.componentPreviewMobile.aspect) }}"
                         data-srcset="
-                          {{ block.componentPreviewMobileUrl|resize(670) }} 670w,
-                          {{ block.componentPreviewMobileUrl|resize(360) }} 360w,
-                          {{ block.componentPreviewMobileUrl|resize(240) }} 240w,
-                          {{ block.componentPreviewMobileUrl|resize(120) }} 120w,
-                          {{ block.componentPreviewMobileUrl|resize(60) }} 60w"
+                          {{ block.componentPreviewMobile.src|resize(670) }} 670w,
+                          {{ block.componentPreviewMobile.src|resize(360) }} 360w,
+                          {{ block.componentPreviewMobile.src|resize(240) }} 240w,
+                          {{ block.componentPreviewMobile.src|resize(120) }} 120w,
+                          {{ block.componentPreviewMobile.src|resize(60) }} 60w"
                         data-sizes="auto"
                         alt="{{ image.alt|e('html_attr') }}">
                   </div>

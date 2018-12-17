@@ -6,6 +6,7 @@ use Flynt\ComponentManager;
 use Flynt\Utils\Component;
 use Flynt\Utils\Asset;
 use Flynt;
+use Timber\Image;
 
 add_filter('Flynt/addComponentData?name=ListComponents', function ($data) {
     Component::enqueueAssets('ListComponents');
@@ -15,14 +16,26 @@ add_filter('Flynt/addComponentData?name=ListComponents', function ($data) {
             $componentPaths = explode('/', $block['component']);
             $block['component'] = implode('/', array_slice($componentPaths, count($componentPaths)-3, 3));
 
-            if (file_exists(Asset::requirePath($block['component']."preview-desktop.jpg"))) {
-                $block['componentPreviewDesktopUrl'] = Asset::requireUrl($block['component']."preview-desktop.jpg");
+            if (file_exists(Asset::requirePath($block['component'] . 'preview-desktop.jpg'))) {
+                $src = Asset::requireUrl($block['component'] . 'preview-desktop.jpg');
+                list($width, $height) = getimagesize(Asset::requirePath($block['component'] . 'preview-desktop.jpg'));
+
+                $block['componentPreviewDesktop'] = [
+                    'src' => $src,
+                    'aspect' => $width / $height
+                ];
             }
 
             if (file_exists(Asset::requirePath($block['component']."preview-mobile.jpg"))) {
-                $block['componentPreviewMobileUrl'] = Asset::requireUrl($block['component']."preview-mobile.jpg");
+                $src = Asset::requireUrl($block['component'] . 'preview-mobile.jpg');
+                list($width, $height) = getimagesize(Asset::requirePath($block['component'] . 'preview-mobile.jpg'));
+
+                $block['componentPreviewMobile'] = [
+                    'src' => $src,
+                    'aspect' => $width / $height
+                ];
             }
-            $readme = Asset::requirePath($block['component']."README.md");
+            $readme = Asset::requirePath($block['component'] . 'README.md');
 
             if (file_exists($readme)) {
                 $block['readme'] = parsePreviewContent(file_get_contents($readme));
