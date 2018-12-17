@@ -6,30 +6,22 @@ module.exports = function (config) {
     // const autoprefixer = require('autoprefixer-stylus')
     const changed = require('gulp-changed')
     const gulpIf = require('gulp-if')
-    const handleErrors = require('../utils/handleErrors')
-    const path = require('path')
-    const rupture = require('rupture')
+    // const handleErrors = require('../utils/handleErrors')
     const sass = require('gulp-sass')
+    sass.compiler = require('node-sass')
     const sourcemaps = require('gulp-sourcemaps')
+    const autoprefixer = require('gulp-autoprefixer')
     let task = gulp.src(config.sass)
       .pipe(changed(config.dest, { extension: '.css' }))
       .pipe(gulpIf(!isProduction, sourcemaps.init()))
       .pipe(sass({
-        'include css': true,
-        compress: isProduction,
-        use: [
-          rupture(),
-          // autoprefixer()
-        ],
-        import: [
-          path.resolve(__dirname, '../../node_modules/jeet/index.scss'),
-          path.resolve(__dirname, '../../Components/_variables.sass')
-        ]
-      }))
-      .on('error', handleErrors)
+        output: isProduction ? 'compressed' : 'expanded'
+      }).on('error', sass.logError))
+      .pipe(autoprefixer())
+      // .on('error', handleErrors)
       .pipe(gulpIf(!isProduction, sourcemaps.write(config.sourcemaps)))
       .pipe(gulp.dest(config.dest))
-      .on('error', handleErrors)
+      // .on('error', handleErrors)
     if (global.watchMode) {
       const browserSync = require('browser-sync')
       task = task.pipe(browserSync.stream())

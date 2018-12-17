@@ -18,17 +18,17 @@ module.exports = function (config) {
   }
 
   gulp.task('lint:sass', function () {
-    const stylint = require('gulp-stylint')
+    const sassLint = require('gulp-sass-lint')
     const changedInPlace = require('gulp-changed-in-place')
     const task = gulp.src(config.lint.sass)
       .pipe(changedInPlace({ firstPass: true }))
-      .pipe(stylint())
-      .pipe(stylint.reporter())
+      .pipe(sassLint())
+      .pipe(sassLint.format())
     if (global.watchMode) {
       return task
     } else {
       return task
-        .pipe(stylint.reporter('fail', { failOnWarning: true }))
+        .pipe(sassLint.failOnError())
     }
   })
 
