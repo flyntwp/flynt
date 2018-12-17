@@ -96,7 +96,7 @@ The `layout` area is then rendered in the `Components/DocumentDefault/index.twig
 
 ```twig
 <!DOCTYPE html>
-<html class="flyntComponent {{ body_class }}" lang="{{ site.language }}" dir="{{ dir }}" is="flynt-document-default">
+<html class="{{ body_class }}" lang="{{ site.language }}" dir="{{ dir }}">
   <head><!--...--></head>
   <body role="document">
     {{ area('layout') }}

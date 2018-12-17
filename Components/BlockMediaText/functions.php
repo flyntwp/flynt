@@ -2,14 +2,12 @@
 
 namespace Flynt\Components\BlockMediaText;
 
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Component;
 use Flynt\Utils\Oembed;
-
-add_action('wp_enqueue_scripts', function () {
-    Component::enqueueAssets('BlockMediaText');
-});
+use Flynt;
 
 add_filter('Flynt/addComponentData?name=BlockMediaText', function ($data) {
+    Component::enqueueAssets('BlockMediaText');
     if ($data['mediaType'] === 'oembedVideo') {
         $data['oembedLazyLoad'] = Oembed::setSrcAsDataAttribute(
             $data['oembed'],
@@ -20,3 +18,101 @@ add_filter('Flynt/addComponentData?name=BlockMediaText', function ($data) {
     }
     return $data;
 });
+
+Flynt\registerFields('BlockMediaText', [
+    'layout' => [
+        'name' => 'blockMediaText',
+        'label' => 'Block: Media Text',
+        'sub_fields' => [
+            [
+                'name' => 'contentTab',
+                'label' => 'Content',
+                'type' => 'tab'
+            ],
+            [
+                'name' => 'mediaType',
+                'label' => 'Media Type',
+                'type' => 'select',
+                'choices' => [
+                    'image' => 'Image',
+                    'oembedVideo' => 'Oembed Video'
+                ]
+            ],
+            [
+                'name' => 'image',
+                'label' => 'Image',
+                'type' => 'image',
+                'mime_types' => 'jpg,jpeg',
+                'instructions' => 'Image-Format: JPG.',
+                'required' => 1,
+                'conditional_logic' => [
+                    [
+                        [
+                            'fieldPath' => 'mediaType',
+                            'operator' => '==',
+                            'value' => 'image'
+                        ]
+                    ]
+                ]
+            ],
+            [
+                'name' => 'posterImage',
+                'label' => 'Poster Image',
+                'type' => 'image',
+                'mime_types' => 'jpg,jpeg',
+                'instructions' => 'Image-Format: JPG, Aspect Ratio 16/9.',
+                'required' => 1,
+                'conditional_logic' => [
+                    [
+                        [
+                            'fieldPath' => 'mediaType',
+                            'operator' => '==',
+                            'value' => 'oembedVideo'
+                        ]
+                    ]
+                ]
+            ],
+            [
+                'label' => 'Oembed',
+                'name' => 'oembed',
+                'type' => 'oembed',
+                'required' => 1,
+                'conditional_logic' => [
+                    [
+                        [
+                            'fieldPath' => 'mediaType',
+                            'operator' => '==',
+                            'value' => 'oembedVideo'
+                        ]
+                    ]
+                ]
+            ],
+            [
+                'name' => 'contentHTML',
+                'label' => 'Content',
+                'type' => 'wysiwyg',
+                'delay' => 1,
+                'toolbar' => 'full',
+                'media_upload' => 0,
+                'required' => 1,
+                'wrapper' => [
+                    'class' => 'autosize',
+                ],
+            ],
+            [
+                'name' => 'settingsTab',
+                'label' => 'Settings',
+                'type' => 'tab'
+            ],
+            [
+                'name' => 'mediaPosition',
+                'label' => 'Media Position',
+                'type' => 'select',
+                'choices' => [
+                    'mediaLeft' => 'Left',
+                    'mediaRight' => 'Right'
+                ]
+            ]
+        ]
+    ]
+]);

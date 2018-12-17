@@ -1,0 +1,87 @@
+<?php
+namespace Flynt;
+
+use Flynt\Defaults;
+use Flynt\BuildConstructionPlan;
+use Flynt\Render;
+use Flynt\ComponentManager;
+use Dflydev\DotAccessData\Data;
+
+function initDefaults()
+{
+    Defaults::init();
+}
+
+function registerComponent($componentName, $componentPath = null)
+{
+    $componentManager = ComponentManager::getInstance();
+    $componentManager->registerComponent($componentName, $componentPath);
+}
+
+function registerComponentsFromPath($componentBasePath)
+{
+    foreach (glob("{$componentBasePath}/*", GLOB_ONLYDIR) as $componentPath) {
+        $componentName = basename($componentPath);
+        registerComponent($componentName, $componentPath);
+    }
+}
+
+function renderComponent($componentName, $data)
+{
+    // var_dump($componentName, $data);die();
+    $data = apply_filters(
+        'Flynt/addComponentData',
+        $data,
+        $componentName
+    );
+    $output = apply_filters(
+        'Flynt/renderComponent',
+        null,
+        $componentName,
+        $data
+    );
+
+    return is_null($output) ? '' : $output;
+}
+
+add_filter('Flynt/renderComponent', function ($output, $componentName, $data) {
+    return apply_filters(
+        "Flynt/renderComponent?name={$componentName}",
+        $output,
+        $componentName,
+        $data
+    );
+}, 10, 3);
+
+add_filter('Flynt/addComponentData', function ($data, $componentName) {
+    return apply_filters(
+        "Flynt/addComponentData?name={$componentName}",
+        $data,
+        $componentName
+    );
+}, 10, 2);
+
+function registerFields($scope, $fields, $fieldsId = null)
+{
+    global $flyntFields;
+    $flyntFields = $flyntFields ?? [];
+    if (empty($fieldsId)) {
+        $flyntFields[$scope] = $fields;
+    } else {
+        $flyntFields[$scope] = $flyntFields[$scope] ?? [];
+        $flyntFields[$scope][$fieldsId] = $fields;
+    }
+    return $fields;
+}
+
+function loadFields($scope, $fieldPath = null)
+{
+    global $flyntFields;
+    $flyntFields = $flyntFields ?? [];
+    if (empty($fieldPath)) {
+        return $flyntFields[$scope];
+    } else {
+        $data = new Data($flyntFields[$scope]);
+        return $data->get($fieldPath);
+    }
+}

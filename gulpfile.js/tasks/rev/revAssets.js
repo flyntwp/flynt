@@ -8,10 +8,10 @@ module.exports = function (config) {
     const revNapkin = require('gulp-rev-napkin')
     // Ignore files that may reference assets. We'll rev them next.
     return gulp.src(config.rev.assetSrc)
-    .pipe(rev())
-    .pipe(gulp.dest(config.dest))
-    .pipe(revNapkin({verbose: false}))
-    .pipe(rev.manifest(path.join(config.dest, 'rev-manifest.json'), {merge: true}))
-    .pipe(gulp.dest(''))
+      .pipe(rev())
+      .pipe(gulp.dest(config.dest))
+      .pipe(revNapkin({ verbose: false }))
+      .pipe(rev.manifest(path.join(config.dest, 'rev-manifest.json'), { merge: true, base: config.dest }))
+      .pipe(gulp.dest(config.dest))
   })
 }

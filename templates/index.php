@@ -1,32 +1,9 @@
 <?php
 
-Flynt\echoHtmlFromConfig([
-    'name' => 'DocumentDefault',
-    'areas' => [
-        'layout' => [
-            [
-                'name' => 'LayoutMultiplePosts',
-                'areas' => [
-                    'mainHeader' => [
-                        [
-                            'name' => 'NavigationMain'
-                        ]
-                    ],
-                    'pageComponents' => [
-                        [
-                            'name' => 'GridPosts'
-                        ]
-                    ],
-                    'mainFooter' => [
-                        [
-                            'name' => 'NavigationFooter'
-                        ],
-                        [
-                            'name' => 'BlockCookieNotice'
-                        ]
-                    ]
-                ]
-            ]
-        ]
-    ]
-]);
+use Timber\Timber;
+use Timber\PostQuery;
+
+$context = Timber::get_context();
+$context['posts'] = new PostQuery();
+
+Timber::render('twig/index.twig', $context);

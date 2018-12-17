@@ -9,6 +9,7 @@ class BlockVideoOembed extends window.HTMLDivElement {
   }
 
   resolveElements () {
+    this.loadVideo = this.loadVideo.bind(this)
     this.$posterImage = $('.figure-image', this)
     this.$videoPlayer = $('.video-player', this)
     this.$iframe = $('iframe', this)
@@ -19,7 +20,7 @@ class BlockVideoOembed extends window.HTMLDivElement {
     this.$.one('click', this.$playBtn.selector, this.loadVideo.bind(this))
   }
 
-  loadVideo = () => {
+  loadVideo () {
     this.$iframe.one('load', this.videoIsLoaded.bind(this))
     this.$iframe.attr('src', this.$iframe.data('src'))
     this.$videoPlayer.addClass('video-player--isLoading')
@@ -32,4 +33,4 @@ class BlockVideoOembed extends window.HTMLDivElement {
   }
 }
 
-window.customElements.define('flynt-block-video-oembed', BlockVideoOembed, {extends: 'div'})
+window.customElements.define('flynt-block-video-oembed', BlockVideoOembed, { extends: 'div' })

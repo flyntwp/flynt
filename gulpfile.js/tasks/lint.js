@@ -17,46 +17,33 @@ module.exports = function (config) {
     }
   }
 
-  if (phpCsAvailable) {
-    gulp.task('lint', ['lint:stylus', 'lint:js', 'lint:php'])
-  } else {
-    const log = require('fancy-log')
-    const colors = require('ansi-colors')
-    log(colors.yellow('PHPCS not found in PATH! Please install PHPCS to enable the php linter:'))
-    log(colors.yellow.underline('https://github.com/squizlabs/PHP_CodeSniffer'))
-
-    gulp.task('lint', ['lint:stylus', 'lint:js'])
-  }
-
   gulp.task('lint:stylus', function () {
     const stylint = require('gulp-stylint')
     const changedInPlace = require('gulp-changed-in-place')
     const task = gulp.src(config.lint.stylus)
-    .pipe(changedInPlace({firstPass: true}))
-    .pipe(stylint())
-    .pipe(stylint.reporter())
+      .pipe(changedInPlace({ firstPass: true }))
+      .pipe(stylint())
+      .pipe(stylint.reporter())
     if (global.watchMode) {
       return task
     } else {
       return task
-      .pipe(stylint.reporter('fail', { failOnWarning: true }))
+        .pipe(stylint.reporter('fail', { failOnWarning: true }))
     }
   })
 
   gulp.task('lint:js', function () {
-    const standard = require('gulp-standard')
+    const eslint = require('gulp-eslint')
+    const reporter = require('gulp-reporter')
     const changedInPlace = require('gulp-changed-in-place')
-    let opts = {}
+    let task = gulp.src(config.lint.js)
+      .pipe(changedInPlace({ firstPass: true }))
+      .pipe(eslint())
+      .pipe(reporter())
     if (!global.watchMode) {
-      opts = {
-        breakOnError: true,
-        breakOnWarning: true
-      }
+      task = task.pipe(eslint.failAfterError())
     }
-    return gulp.src(config.lint.js)
-    .pipe(changedInPlace({firstPass: true}))
-    .pipe(standard())
-    .pipe(standard.reporter('default', opts))
+    return task
   })
 
   gulp.task('lint:php', function (cb) {
@@ -65,16 +52,27 @@ module.exports = function (config) {
       const changedInPlace = require('gulp-changed-in-place')
       config.lint.phpcs.bin = binaryPath
       const task = gulp.src(config.lint.php)
-      .pipe(changedInPlace({firstPass: true}))
-      .pipe(phpcs(config.lint.phpcs))
-      .pipe(phpcs.reporter('log'))
+        .pipe(changedInPlace({ firstPass: true }))
+        .pipe(phpcs(config.lint.phpcs))
+        .pipe(phpcs.reporter('log'))
       if (global.watchMode) {
         return task
       } else {
         return task
-        .pipe(phpcs.reporter('fail', {failOnFirst: false}))
+          .pipe(phpcs.reporter('fail', { failOnFirst: false }))
       }
     }
     cb()
   })
+
+  if (phpCsAvailable) {
+    gulp.task('lint', gulp.parallel(['lint:stylus', 'lint:js', 'lint:php']))
+  } else {
+    const log = require('fancy-log')
+    const colors = require('ansi-colors')
+    log(colors.yellow('PHPCS not found in PATH! Please install PHPCS to enable the php linter:'))
+    log(colors.yellow.underline('https://github.com/squizlabs/PHP_CodeSniffer'))
+
+    gulp.task('lint', ['lint:stylus', 'lint:js'])
+  }
 }

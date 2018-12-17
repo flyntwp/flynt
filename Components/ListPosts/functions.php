@@ -2,19 +2,51 @@
 
 namespace Flynt\Components\ListPosts;
 
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Component;
+use Flynt\Utils\Options;
+use Flynt;
 
-add_action('wp_enqueue_scripts', function () {
+add_filter('Flynt/addComponentData?name=ListPosts', function ($data) {
     Component::enqueueAssets('ListPosts');
-});
-
-add_filter('Flynt/addComponentData?name=ListPosts', function ($data, $parentData) {
     $data['isArchive'] = is_home() || is_archive();
 
-    $data['pagination'] = (isset($parentData['pagination'])) ? $parentData['pagination'] : null;
-    if (!isset($data['posts']) && isset($parentData['posts'])) {
-        $data['posts'] = $parentData['posts'];
-    }
-
     return $data;
-}, 10, 2);
+});
+
+Flynt\registerFields('ListPosts', [
+    'layout' => [
+        'name' => 'listPosts',
+        'label' => 'List Posts'
+    ]
+]);
+
+Options::addTranslatable('ListPosts', [
+    [
+        'name' => 'previousLabel',
+        'label' => 'Previous Label',
+        'type' => 'text',
+        'default_value' => 'Previous',
+        'required' => 1
+    ],
+    [
+        'name' => 'nextLabel',
+        'label' => 'Next Label',
+        'type' => 'text',
+        'default_value' => 'Next',
+        'required' => 1
+    ],
+    [
+        'name' => 'readMoreLabel',
+        'label' => 'Read More Label',
+        'type' => 'text',
+        'default_value' => 'Read More',
+        'required' => 1
+    ],
+    [
+        'name' => 'noPostsFoundText',
+        'label' => 'No Posts Found Text',
+        'type' => 'text',
+        'default_value' => 'No posts found.',
+        'required' => 1
+    ]
+]);

@@ -2,12 +2,41 @@
 
 namespace Flynt\Components\BlockWysiwyg;
 
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Component;
+use Flynt;
 
 add_filter('Flynt/addComponentData?name=BlockWysiwyg', function ($data) {
-    add_action('wp_enqueue_scripts', function () {
-        Component::enqueueAssets('BlockWysiwyg');
-    });
+    Component::enqueueAssets('BlockWysiwyg');
 
     return $data;
 });
+
+Flynt\registerFields('BlockWysiwyg', [
+    'layout' => [
+        'name' => 'blockWysiwyg',
+        'label' => 'Block: Wysiwyg',
+        'sub_fields' => [
+            [
+                'label' => 'Text Alignment',
+                'name' => 'textAlignment',
+                'type' => 'button_group',
+                'choices' => [
+                    'textLeft' => '<i class=\'dashicons dashicons-editor-alignleft\' title=\'Align text left\'></i>',
+                    'textCenter' => '<i class=\'dashicons dashicons-editor-aligncenter\' title=\'Align text center\'></i>'
+                ]
+            ],
+            [
+                'name' => 'contentHtml',
+                'label' => 'Content',
+                'type' => 'wysiwyg',
+                'delay' => 1,
+                'media_upload' => 0,
+                'toolbar' => 'full',
+                'required' => 1,
+                'wrapper' => [
+                    'class' => 'autosize',
+                ],
+            ]
+        ]
+    ]
+]);

@@ -1,27 +1,27 @@
-const $ = jQuery
+const $ = window.jQuery
 const $body = $('body')
 
 // collapse components
 $body
-.on('click', '.acf-label .collapse-all, .acf-th-flexible_content .collapse-all', e =>
-  $(e.currentTarget)
-  .closest('.acf-field')
-  .closestChild('.values')
-  .children('.layout:not(.-collapsed)')
-  .children('.acf-fc-layout-controls')
-  .find('[data-name="collapse-layout"]')
-  .click()
-)
+  .on('click', '.acf-label .collapse-all, .acf-th-flexible_content .collapse-all', e =>
+    $(e.currentTarget)
+      .closest('.acf-field')
+      .closestChild('.values')
+      .children('.layout:not(.-collapsed)')
+      .children('.acf-fc-layout-controls')
+      .find('[data-name="collapse-layout"]')
+      .click()
+  )
 // expand components
-.on('click', '.acf-label .expand-all, .acf-th-flexible_content .expand-all', e =>
-  $(e.currentTarget)
-  .closest('.acf-field')
-  .closestChild('.values')
-  .children('.layout.-collapsed')
-  .children('.acf-fc-layout-controls')
-  .find('[data-name="collapse-layout"]')
-  .click()
-)
+  .on('click', '.acf-label .expand-all, .acf-th-flexible_content .expand-all', e =>
+    $(e.currentTarget)
+      .closest('.acf-field')
+      .closestChild('.values')
+      .children('.layout.-collapsed')
+      .children('.acf-fc-layout-controls')
+      .find('[data-name="collapse-layout"]')
+      .click()
+  )
 
 $.fn.closestChild = function (selector) {
   let $children

@@ -43,4 +43,4 @@ class GridPostsSlider extends window.HTMLDivElement {
   }
 }
 
-window.customElements.define('flynt-grid-posts-slider', GridPostsSlider, {extends: 'div'})
+window.customElements.define('flynt-grid-posts-slider', GridPostsSlider, { extends: 'div' })

@@ -3,12 +3,11 @@
 namespace Flynt\Components\ListSocial;
 
 use Flynt\Utils\Asset;
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Component;
+use Flynt;
 
 add_filter('Flynt/addComponentData?name=ListSocial', function ($data) {
-    add_action('wp_enqueue_scripts', function () {
-        Component::enqueueAssets('ListSocial');
-    });
+    Component::enqueueAssets('ListSocial');
 
     if (!empty($data['social'])) {
         $data['social'] = array_map(function ($item) {
@@ -19,3 +18,57 @@ add_filter('Flynt/addComponentData?name=ListSocial', function ($data) {
 
     return $data;
 });
+
+Flynt\registerFields('ListSocial', [
+    'layout' => [
+        'name' => 'listSocial',
+        'label' => 'List: Social',
+        'sub_fields' => [
+            [
+                'label' => 'Content',
+                'name' => 'contentHtml',
+                'type' => 'wysiwyg',
+                'tabs' => 'visual,text',
+                'toolbar' => 'full',
+                'media_upload' => 0,
+                'delay' => 1,
+                'wrapper' => [
+                    'class' => 'autosize',
+                ],
+            ],
+            [
+                'label' => 'Social Platform',
+                'type' => 'repeater',
+                'name' => 'social',
+                'layout' => 'table',
+                'button_label' => 'Add Social Link',
+                'sub_fields' => [
+                    [
+                        'label' => 'Platform',
+                        'name' => 'platform',
+                        'type' => 'select',
+                        'allow_null' => 0,
+                        'multiple' => 0,
+                        'ui' => 1,
+                        'ajax' => 0,
+                        'choices' => [
+                            'facebook' => 'Facebook',
+                            'instagram' => 'Instagram',
+                            'twitter' => 'Twitter',
+                            'youtube' => 'Youtube',
+                            'mail' => 'E-Mail',
+                            'linkedin' => 'LinkedIn',
+                            'xing' => 'Xing'
+                        ]
+                    ],
+                    [
+                        'label' => 'Link',
+                        'name' => 'url',
+                        'type' => 'url',
+                        'required' => 1
+                    ]
+                ]
+            ]
+        ]
+    ]
+]);

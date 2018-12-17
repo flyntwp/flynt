@@ -2,12 +2,38 @@
 
 namespace Flynt\Components\HeroCta;
 
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Component;
+use Flynt;
 
 add_filter('Flynt/addComponentData?name=HeroCta', function ($data) {
-    add_action('wp_enqueue_scripts', function () {
-        Component::enqueueAssets('HeroCta');
-    });
+    Component::enqueueAssets('HeroCta');
 
     return $data;
 });
+
+Flynt\registerFields('HeroCta', [
+    'layout' => [
+        'name' => 'heroCta',
+        'label' => 'Hero: CTA',
+        'sub_fields' => [
+            [
+                'label' => 'Content',
+                'name' => 'contentHtml',
+                'type' => 'wysiwyg',
+                'tabs' => 'visual,text',
+                'toolbar' => 'full',
+                'media_upload' => 0,
+                'delay' => 1,
+                'wrapper' => [
+                    'class' => 'autosize',
+                ],
+            ],
+            [
+                'label' => 'Button Link',
+                'type' => 'link',
+                'name' => 'buttonLink',
+                'return_format' => 'array'
+            ]
+        ]
+    ]
+]);

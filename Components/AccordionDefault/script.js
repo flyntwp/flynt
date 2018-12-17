@@ -28,4 +28,4 @@ class AccordionDefault extends window.HTMLDivElement {
   }
 }
 
-window.customElements.define('flynt-accordion-default', AccordionDefault, {extends: 'div'})
+window.customElements.define('flynt-accordion-default', AccordionDefault, { extends: 'div' })

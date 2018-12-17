@@ -83,4 +83,4 @@ class ListComponents extends window.HTMLDivElement {
   }
 }
 
-window.customElements.define('flynt-list-components', ListComponents, {extends: 'div'})
+window.customElements.define('flynt-list-components', ListComponents, { extends: 'div' })

@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\NavigationMain;
 
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Component;
 use Timber\Menu;
 use Flynt\Utils\Asset;
 

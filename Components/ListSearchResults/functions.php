@@ -3,20 +3,18 @@
 namespace Flynt\Components\ListSearchResults;
 
 use Flynt\Utils\Asset;
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Component;
+use Flynt\Utils\Options;
 
-add_filter('Flynt/addComponentData?name=ListSearchResults', function ($data, $parentData) {
-    add_action('wp_enqueue_scripts', function () {
-        Component::enqueueAssets('ListSearchResults');
-    });
+add_filter('Flynt/addComponentData?name=ListSearchResults', function ($data) {
+    Component::enqueueAssets('ListSearchResults');
 
     global $wp_query;
-    $data['posts'] = $parentData['posts'];
     $data['posts_found'] = $wp_query->found_posts;
     $searchQuery = get_search_query();
     $data['searchTerm'] = $searchQuery;
 
-    if (!empty($parentData['posts'])) {
+    if (!empty($data['posts'])) {
         $data['searchResult'] = str_replace('%%resultCount%%', $data['posts_found'], $data['searchResult']);
         $data['searchResult'] = str_replace('%%resultTerm%%', $data['searchTerm'], $data['searchResult']);
     } else {
@@ -27,10 +25,55 @@ add_filter('Flynt/addComponentData?name=ListSearchResults', function ($data, $pa
         $data['searchTerm'] = $searchQuery;
     }
 
-    $data['pagination'] = (isset($parentData['pagination'])) ? $parentData['pagination'] : null;
     $data['prevIcon'] = Asset::getContents('Components/ListSearchResults/Assets/navigation-prev.svg');
     $data['nextIcon'] = Asset::getContents('Components/ListSearchResults/Assets/navigation-next.svg');
     $data['searchIcon'] = Asset::getContents('Components/ListSearchResults/Assets/search.svg');
 
     return $data;
-}, 10, 2);
+});
+
+Options::addTranslatable('ListSearchResults', [
+    [
+        'label' => 'Title Content',
+        'name' => 'searchTitleHtml',
+        'type' => 'wysiwyg',
+        'required' => 1,
+        'default_value' => 'Search Result ',
+        'instructions' => 'Title of the search Page.',
+        'media_upload' => 0,
+        'delay' => 1,
+        'wrapper' => [
+            'class' => 'autosize',
+        ],
+    ],
+    [
+        'label' => 'Search placholder text',
+        'name' => 'searchPlaceholder',
+        'type' => 'text',
+        'required' => 1,
+        'default_value' => 'Search...',
+        'instructions' => 'The text for the input field.'
+    ],
+    [
+        'label' => 'Successful search text',
+        'name' => 'searchResult',
+        'type' => 'wysiwyg',
+        'required' => 1,
+        'wrapper' => [
+            'class' => 'autosize',
+        ],
+        'default_value' => 'Es wurden %%resultCount%% Blogeinträge gefunden.',
+        'instructions' => 'Sentence for a successful search. The placeholder %%resultCount%% replace the counted results and %%resultTerm%% replace the searching phrase'
+    ],
+    [
+        'label' => 'Unsuccessful text',
+        'name' => 'noResults',
+        'type' => 'wysiwyg',
+        'required' => 1,
+        'wrapper' => [
+            'class' => 'autosize',
+        ],
+        'default_value' => 'No results found.',
+        'instructions' => 'Sentence for an unsuccessful search. The placeholder %%resultCount%% replace the counted results and %%resultTerm%% replace the searching phrase'
+    ]
+]);

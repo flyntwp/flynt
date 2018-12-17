@@ -6,16 +6,16 @@ let $container = null
 let $activeImage = {}
 
 $body
-.on('click', '#wp-admin-bar-toggleComponentPreviews', function (e) {
-  e.preventDefault()
-  const $target = $(e.currentTarget)
-  $target.toggleClass('active')
-  if ($target.hasClass('active')) {
-    showImages()
-  } else {
-    hideImages()
-  }
-})
+  .on('click', '#wp-admin-bar-toggleComponentPreviews', function (e) {
+    e.preventDefault()
+    const $target = $(e.currentTarget)
+    $target.toggleClass('active')
+    if ($target.hasClass('active')) {
+      showImages()
+    } else {
+      hideImages()
+    }
+  })
 
 function showImages () {
   if (($container = $('[is="flynt-component-preview"]')).length) {
@@ -58,18 +58,18 @@ function addComponentPreviews ($component, images) {
 function appendImage (image, offset, $component) {
   const $image = $(image)
   $image
-  .appendTo($container)
-  .css({
-    opacity: 0.7,
-    position: 'absolute',
-    zIndex: 9999,
-    top: offset.top,
-    left: offset.left
-  })
-  .data('component', $component)
-  .on('error', function () {
-    $image.remove()
-  })
+    .appendTo($container)
+    .css({
+      opacity: 0.7,
+      position: 'absolute',
+      zIndex: 9999,
+      top: offset.top,
+      left: offset.left
+    })
+    .data('component', $component)
+    .on('error', function () {
+      $image.remove()
+    })
 }
 
 function initComponentPreviewsDragEvents () {

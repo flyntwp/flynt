@@ -2,11 +2,11 @@ import $ from 'jquery'
 import 'file-loader?name=vendor/slick.js!slick-carousel/slick/slick.min'
 import 'file-loader?name=vendor/slick.css!csso-loader!slick-carousel/slick/slick.css'
 
+import slickConfiguration from './sliderConfiguration.js'
+
 function importSlickFonts (fontName) { // eslint-disable-line no-unused-vars
   require(`file-loader?name=vendor/slick/[name].[ext]!slick-carousel/slick/fonts/${fontName}`)
 }
-
-import slickConfiguration from './sliderConfiguration.js'
 
 class SliderMedia extends window.HTMLDivElement {
   constructor (self) {
@@ -19,6 +19,11 @@ class SliderMedia extends window.HTMLDivElement {
   }
 
   resolveElements () {
+    this.setupSlider = this.setupSlider.bind(this)
+    this.slickInit = this.slickInit.bind(this)
+    this.unsetIframeSrc = this.unsetIframeSrc.bind(this)
+    this.setIframeSrc = this.setIframeSrc.bind(this)
+    this.onIframeLoad = this.onIframeLoad.bind(this)
     this.$sliderMedia = $('.sliderMedia', this)
     this.$slideTitle = $('.slideTitle', this)
     this.$mediaSlides = $('.sliderMedia-slides', this)
@@ -33,7 +38,7 @@ class SliderMedia extends window.HTMLDivElement {
     this.$.on('click', this.$posterImage.selector, this.setIframeSrc)
   }
 
-  setupSlider = () => {
+  setupSlider () {
     if (this.$slides.length > 1) {
       this.$.on('init', this.$mediaSlides.selector, this.slickInit)
       this.$mediaSlides.slick(slickConfiguration)
@@ -43,23 +48,23 @@ class SliderMedia extends window.HTMLDivElement {
     }
   }
 
-  slickInit = () => {
+  slickInit () {
     this.$sliderMedia.removeClass('sliderMedia-isHidden')
   }
 
-  unsetIframeSrc = (e, slick, currentSlide, nextSlide) => {
+  unsetIframeSrc (e, slick, currentSlide, nextSlide) {
     const $currentSlide = $(slick.$slides[currentSlide])
     $currentSlide.find('iframe').attr('src', '')
   }
 
-  setIframeSrc = (e) => {
+  setIframeSrc (e) {
     const $oembedVideo = $(e.target).closest('.oembedVideo')
     const $iframe = $oembedVideo.find('iframe')
     const iframeSrc = $iframe.data('src')
     $iframe.attr('src', iframeSrc)
   }
 
-  onIframeLoad = (e) => {
+  onIframeLoad (e) {
     const $iframe = $(e.target)
     const $oembedVideo = $iframe.closest('.oembedVideo')
     const $video = $oembedVideo.find('.oembedVideo-video')
@@ -81,4 +86,4 @@ class SliderMedia extends window.HTMLDivElement {
   }
 }
 
-window.customElements.define('flynt-slider-media', SliderMedia, {extends: 'div'})
+window.customElements.define('flynt-slider-media', SliderMedia, { extends: 'div' })

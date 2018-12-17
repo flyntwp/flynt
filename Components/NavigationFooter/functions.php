@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\NavigationFooter;
 
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Component;
 use Timber\Menu;
 
 add_action('init', function () {
@@ -12,9 +12,7 @@ add_action('init', function () {
 });
 
 add_filter('Flynt/addComponentData?name=NavigationFooter', function ($data) {
-    add_action('wp_enqueue_scripts', function () {
-        Component::enqueueAssets('NavigationFooter');
-    });
+    Component::enqueueAssets('NavigationFooter');
 
     $data['maxLevel'] = 0;
     $data['menu'] = new Menu('navigation_footer');

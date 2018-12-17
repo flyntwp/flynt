@@ -219,10 +219,10 @@ add partial `Partials/AllPostsCta/*.*`
 
 namespace Flynt\Components\ListPosts;
 
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Component;
 use Timber\Timber;
 
-add_filter('Flynt/addComponentData?name=ListPosts', function ($data, $parentData) {
+add_filter('Flynt/addComponentData?name=ListPosts', function ($data) {
     if (isset($data['postType'])) {
         $args = [
             'post_status' => 'publish',
@@ -235,7 +235,7 @@ add_filter('Flynt/addComponentData?name=ListPosts', function ($data, $parentData
     }
 
     return $data;
-}, 10, 2);
+});
 
 function addDataToAllPosts($posts) {
     if (is_array($posts)) {
@@ -252,11 +252,7 @@ function addDataToAllPosts($posts) {
 `functions.php`
 ```php
 <?php
-add_filter('Flynt/addComponentData?name=ListPosts', function ($data, $parentData) {
-    $data['pagination'] = (isset($parentData['pagination'])) ? $parentData['pagination'] : null;
-    if (!isset($data['posts']) && isset($parentData['posts'])) {
-        $data['posts'] = $parentData['posts'];
-    }
+add_filter('Flynt/addComponentData?name=ListPosts', function ($data) {
     return $data;
 }, 10, 2);
 ```
