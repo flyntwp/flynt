@@ -1,24 +1,29 @@
-$colorBackground = lookup('$globalColorBackground') || #FFFFFF
-$colorBrand = lookup('$globalColorBrand') || #91C6C4
-$colorAccent = lookup('$globalColorAccent') || #F98928
-$colorHeadline = lookup('$globalColorHeadline') || #2A2A2A
-$colorText = lookup('$globalColorText') || #222222
+@import '../Components/_variables'
 
-$rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
-$rupture.scale = lookup('$globalRuptureScale') || (0 426px 576px 768px 992px 1200px)
+$breakpoints: (s: 425px, m: 575px, l: 767px, xl: 991px, hd: 1199px);
+
+$colorBackground: #ffffff !default
+$colorBrand: #91C6C4 !default
+$colorAccent: #F98928 !default
+$colorHeadline: #2A2A2A !default
+$colorText: #222222 !default
+
 
 // MIXINS
 // -------------------------------------------------------------
 
-fontFace($family, $file, $weight = 'normal', $style = 'normal', $woff2 = true, $basePath = '../../Components/DocumentDefault/Fonts/')
+@mixin fontFace($family, $file, $weight: 'normal', $style: 'normal', $woff2: true, $basePath: '../../Components/DocumentDefault/Fonts/')
   @font-face
     font-family: $family
-    if $woff2
+    @if $woff2
       src: url($basePath + $file + '.woff2') format('woff2'), url($basePath + $file + '.woff') format('woff')
-    else
+    @else
       src: url($basePath + $file + '.woff') format('woff')
     font-style: unquote($style)
     font-weight: unquote($weight)
+
+// ROOT
+// -------------------------------------------------------------
 
 html
   -moz-osx-font-smoothing: grayscale
@@ -31,7 +36,7 @@ html
   overflow-wrap: break-word
   word-wrap: break-word
 
-  +below('s')
+  @media (max-width: map-get($breakpoints, s))
     font-size: 16px
 
   &
@@ -108,7 +113,7 @@ h6, .h6
 a
   color: $colorAccent
 
-  +above('hd')
+  @media (min-width: map-get($breakpoints, hd) + 1)
     &:hover
       color: $colorAccent
 
@@ -221,7 +226,7 @@ button
     opacity: .65
     pointer-events: none
 
-  +above('hd')
+  @media (min-width: map-get($breakpoints, hd) + 1)
     &:hover,
     &:focus
       border-color: darken($colorAccent, 10)
@@ -233,7 +238,7 @@ button
     border-color: $colorAccent
     color: $colorBackground
 
-    +above('hd')
+    @media (min-width: map-get($breakpoints, hd) + 1)
       &:hover,
       &:focus
         background-color: darken($colorAccent, 10)
@@ -252,7 +257,7 @@ button
     color:  rgba(0, 0, 0, .3)
     cursor: default
 
-    +above('hd')
+    @media (min-width: map-get($breakpoints, hd) + 1)
       &:hover,
       &:focus
         border-color: rgba(0, 0, 0, .3)
@@ -298,7 +303,7 @@ textarea
   padding: 10px
 
 select
-  $colorTextRgb = red($colorText), green($colorText), blue($colorText)
+  $colorTextRgb: red($colorText), green($colorText), blue($colorText)
   background-image: url("data:image/svg+xml;utf8,<svg width='32' height='32' xmlns='http://www.w3.org/2000/svg'><polyline fill='none' stroke='rgb("$colorTextRgb")' stroke-width='3'  points='2,9 16,25 30,9 '/></svg>")
   background-position: calc(100% - 16px) center
   background-repeat: no-repeat

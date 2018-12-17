@@ -17,10 +17,10 @@ module.exports = function (config) {
     }
   }
 
-  gulp.task('lint:stylus', function () {
+  gulp.task('lint:sass', function () {
     const stylint = require('gulp-stylint')
     const changedInPlace = require('gulp-changed-in-place')
-    const task = gulp.src(config.lint.stylus)
+    const task = gulp.src(config.lint.sass)
       .pipe(changedInPlace({ firstPass: true }))
       .pipe(stylint())
       .pipe(stylint.reporter())
@@ -66,13 +66,13 @@ module.exports = function (config) {
   })
 
   if (phpCsAvailable) {
-    gulp.task('lint', gulp.parallel(['lint:stylus', 'lint:js', 'lint:php']))
+    gulp.task('lint', gulp.parallel(['lint:sass', 'lint:js', 'lint:php']))
   } else {
     const log = require('fancy-log')
     const colors = require('ansi-colors')
     log(colors.yellow('PHPCS not found in PATH! Please install PHPCS to enable the php linter:'))
     log(colors.yellow.underline('https://github.com/squizlabs/PHP_CodeSniffer'))
 
-    gulp.task('lint', ['lint:stylus', 'lint:js'])
+    gulp.task('lint', ['lint:sass', 'lint:js'])
   }
 }

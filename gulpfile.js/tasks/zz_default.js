@@ -8,7 +8,7 @@ module.exports = function (config) {
   gulp.task('default', gulp.series(
     'setWatchMode',
     'clean',
-    gulp.parallel(['copy', 'stylus']),
+    gulp.parallel(['copy', 'sass']),
     'watch'
   ))
 }

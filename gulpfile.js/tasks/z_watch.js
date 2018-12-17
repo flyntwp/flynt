@@ -66,13 +66,13 @@ function findFileInParentDirectory (filename, directory, stopSearchDirnames = []
   return findFileInParentDirectory(filename, parent, stopSearchDirnames)
 }
 
-function checkForStylusPartial (relativePath, config) {
-  if (path.basename(relativePath)[0] === config.watch.stylusPartials.partialCssFilenamePrefix) {
+function checkForSassPartial (relativePath, config) {
+  if (path.basename(relativePath)[0] === config.watch.sassPartials.partialCssFilenamePrefix) {
     const fileDir = path.dirname(path.join(process.cwd(), relativePath))
     const styleCssFilepath = findFileInParentDirectory(
-      config.watch.stylusPartials.rootCssFilename,
+      config.watch.sassPartials.rootCssFilename,
       fileDir,
-      config.watch.stylusPartials.stopSearchDirnames
+      config.watch.sassPartials.stopSearchDirnames
     )
     if (styleCssFilepath !== null && fs.existsSync(styleCssFilepath)) {
       touch.sync(styleCssFilepath)
@@ -80,9 +80,9 @@ function checkForStylusPartial (relativePath, config) {
   }
 }
 
-function checkForCssVariablesStyl (relativePath, config) {
-  if (config.watch.hardReloadOnStylFiles.includes(relativePath)) {
-    globby(config.stylus, {}).then((files) => {
+function checkForCssVariablesSass (relativePath, config) {
+  if (config.watch.hardReloadOnSassFiles.includes(relativePath)) {
+    globby(config.sass, {}).then((files) => {
       Promise.all(
         files.map(function (file) {
           return new Promise((resolve, reject) => {
@@ -103,10 +103,10 @@ module.exports = function (config) {
     globby = require('globby')
     touch = require('touch')
     watchAndDelete(config.copy, gulp.series('copy'), config.dest)
-    watchAndDelete(config.watch.stylus, gulp.series('stylus'), config.dest)
+    watchAndDelete(config.watch.sass, gulp.series('sass'), config.dest)
       .on('all', function (event, relativePath) {
-        checkForStylusPartial(relativePath, config)
-        checkForCssVariablesStyl(relativePath, config)
+        checkForSassPartial(relativePath, config)
+        checkForCssVariablesSass(relativePath, config)
       })
     gulp.watch(config.watch.php, function () { browserSync.reload() })
     watchWebpack(config.webpack.entry)
