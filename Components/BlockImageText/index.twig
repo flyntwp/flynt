@@ -1,7 +1,7 @@
 <div class="flyntComponent" is="flynt-block-image-text">
   <div class="container">
     <div class="box box--{{ imagePosition }}">
-      <div class="box-image">
+      <div class="box-inner box-inner--image">
         <figure class="figure">
           <img class="figure-image lazyload"
             src="{{ image.src|resize(750) }}"
@@ -18,7 +18,7 @@
           {% endif %}
         </figure>
       </div>
-      <div class="box-content">
+      <div class="box-inner box-inner--content">
         {{ contentHtml|e('wp_kses_post') }}
       </div>
     </div>
