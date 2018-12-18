@@ -15,7 +15,6 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'button_label' => 'Add Component',
                 'layouts' => [
                     Flynt\loadFields('AccordionDefault', 'layout'),
-                    Flynt\loadFields('AccordionDefault', 'layout'),
                     Flynt\loadFields('BlockImage', 'layout'),
                     Flynt\loadFields('BlockImageText', 'layout'),
                     Flynt\loadFields('BlockMediaText', 'layout'),

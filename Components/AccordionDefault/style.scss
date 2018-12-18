@@ -1,0 +1,72 @@
+@import '../_variables';
+
+[is=flynt-accordion-default] {
+  .container {
+    padding: 60px $container-padding;
+  }
+
+  .content {
+    margin: 0 auto;
+    max-width: $content-max-width;
+  }
+
+  .accordion {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .panel {
+    padding-bottom: 15px;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    &-trigger {
+      cursor: pointer;
+      outline: 0;
+      margin: 0;
+      padding: 15px 30px 15px 0;
+      position: relative;
+      width: 100%;
+    }
+
+    &-arrow {
+      $colorTextRgb: red($color-text), green($color-text), blue($color-text);
+
+      background-image: url("data:image/svg+xml;utf8,<svg width='32' height='32' xmlns='http://www.w3.org/2000/svg'><polyline fill='none' stroke='rgb(#{$colorTextRgb})' stroke-width='2'  points='2,9 16,25 30,9 '/></svg>");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      display: block;
+      height: 20px;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+      width: 30px;
+    }
+  }
+
+  [aria-expanded="true"] {
+    .panel-arrow {
+      transform: translateY(-50%) rotateX(180deg);
+    }
+  }
+
+  .panel-content {
+    display: none;
+
+    > :first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+}
