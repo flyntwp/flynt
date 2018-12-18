@@ -1,0 +1,140 @@
+@import '../_variables';
+
+[is=flynt-slider-image-gallery] {
+  .container {
+    margin: 60px auto;
+  }
+
+  .slide {
+    display: none;
+    outline: 0;
+    overflow: hidden;
+    position: relative;
+
+    &:first-child,
+    &.slick-slide {
+      display: block;
+    }
+
+    .figure {
+      margin-bottom: 0;
+    }
+  }
+
+  .slider-main {
+    background: rgba(0, 0, 0, 0.8);
+    height: 250px;
+    position: relative;
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      height: 385px;
+    }
+
+    @media (min-width: $breakpoint-tablet) {
+      height: 512px;
+    }
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      height: 650px;
+    }
+
+    .slick-list,
+    .slick-track {
+      height: 100%;
+    }
+
+    .slide {
+      height: 100%;
+
+      .figure {
+        height: 100%;
+
+        &-image {
+          height: 100%;
+          left: 50%;
+          max-width: none;
+          position: relative;
+          transform: translateX(-50%);
+          width: auto;
+        }
+
+        &-caption {
+          background: rgba(255, 255, 255, 0.5);
+          background-color: rgba(0, 0, 0, 0.3);
+          color: #fff;
+          bottom: 0;
+          display: inline-block;
+          font-size: 0.8rem;
+          padding: 0.25rem 0.5rem;
+          position: absolute;
+          right: 0;
+        }
+      }
+    }
+  }
+
+  .slider-thumb {
+    margin-top: 1rem;
+
+    .slide {
+      cursor: pointer;
+      opacity: 0.5;
+      padding: 0 5px;
+      transition: opacity 0.2s ease-out;
+
+      img {
+        height: 65px;
+        width: auto;
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      &.slick-current {
+        cursor: default;
+        opacity: 1;
+      }
+    }
+  }
+
+  // SLICK ARROWS
+  .slick-arrow {
+    cursor: pointer;
+    display: none;
+    height: 50px;
+    outline: 0;
+    position: absolute;
+    text-indent: -99999px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    z-index: 2;
+
+    &.slick-prev {
+      background: url('../../Components/SliderImages/Assets/arrow-left.svg') no-repeat center;
+      left: 10px;
+
+      @media (min-width: $breakpoint-tablet) {
+        left: 20px;
+      }
+    }
+
+    &.slick-next {
+      background: url('../../Components/SliderImages/Assets/arrow-right.svg') no-repeat center;
+      right: 10px;
+
+      @media (min-width: $breakpoint-tablet) {
+        right: 20px;
+      }
+    }
+
+    &.slick-disabled {
+      opacity: 0;
+      transition: opacity 0.2s ease-out, visibility 0s linear 0.2s;
+      visibility: hidden;
+    }
+  }
+}
