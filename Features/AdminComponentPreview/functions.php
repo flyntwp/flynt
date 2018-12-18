@@ -41,7 +41,7 @@ if (class_exists('acf')) {
             add_filter('acf/fields/flexible_content/layout_title', function ($title, $field, $layout, $i) {
                 $componentName = ucfirst($layout['name']);
                 $componentPath = "Components/{$componentName}";
-                $componentPreviewDesktopPath = Asset::requirePath("{$componentPath}/preview-desktop.jpg") ;
+                $componentPreviewDesktopPath = Asset::requirePath("{$componentPath}/preview-desktop.jpg");
                 $componentPreviewDesktopUrl = Asset::requireUrl("{$componentPath}/preview-desktop.jpg");
                 if (is_file($componentPreviewDesktopPath)) {
                     $newTitle = '<span class="flyntComponentPreview">';
@@ -56,7 +56,7 @@ if (class_exists('acf')) {
             add_action('wp_enqueue_scripts', NS . 'enqueueComponentScripts');
             // adds Component Previews button to admin bar on front-end when logged in
             add_action('admin_bar_menu', function ($wpAdminBar) {
-               $title = __('Component Previews', 'flynt-starter-theme');
+                $title = __('Component Previews', 'flynt-starter-theme');
                 $wpAdminBar->add_node([
                     'id' => 'toggleComponentPreviews',
                     'title' => $title,
