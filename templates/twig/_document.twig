@@ -16,8 +16,8 @@
             {% endblock %}
           </header>
           <main class="mainContent" role="main">
-            {% if passwordProtected %}
-              {{ passwordForm }}
+            {% if function('post_password_required') %}
+              {{ function('get_the_password_form') }}
             {% else %}
               {% block content %}
                 No <code>{{ '{% block components %}' }}</code> defined for this template.

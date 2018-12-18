@@ -26,7 +26,7 @@ class TwigExtensionFlynt extends Twig_Extension
     public function renderFlexibleContent(Twig_Environment $env, $context, $fields, $withContext = true, $ignoreMissing = false, $sandboxed = false)
     {
         $output = '';
-        foreach (($fields ?? []) as $field) {
+        foreach ((empty($fields) ? [] : $fields) as $field) {
             $output .= $this->renderComponent($env, $context, ucfirst($field['acf_fc_layout']), $field, $withContext, $ignoreMissing, $sandboxed);
         }
         return $output;
