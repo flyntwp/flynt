@@ -11,7 +11,7 @@
             {{ image.src|resize(750) }} 750w,
             {{ image.src|resize(375) }} 375w"
           data-sizes="auto"
-          alt="{{ image.alt|e('html_attr') }}">
+          alt="{{ image.alt|e }}">
         {% if image.caption %}
           <figcaption class="figure-caption">{{ image.caption|e }}</figcaption>
         {% endif %}

@@ -7,7 +7,7 @@
       	  {{ post.thumbnail.src | resize(720) }} 720w"
       	  src="{{ post.thumbnail.src | resize(356) }}"
       	  sizes="100vw"
-      	  alt="{{ post.thumbnail.alt|e('html_attr') }}">
+      	  alt="{{ post.thumbnail.alt|e }}">
       </a>
     </div>
   {% endif %}

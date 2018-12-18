@@ -16,7 +16,7 @@
                 {{ image.src|resize(0, 385) }} {{ (image.aspect * 385)|round }}w,
                 {{ image.src|resize(0, 250) }} {{ (image.aspect * 250)|round }}w"
               data-sizes="auto"
-              alt="{{ image.alt|e('html_attr') }}">
+              alt="{{ image.alt|e }}">
             {% if image.caption %}
               <figcaption class="figure-caption">{{ image.caption|e }}</figcaption>
             {% endif %}
@@ -32,7 +32,7 @@
               srcset="{{ placeholderImage(image.aspect * 65, 65) }}"
               src="{{ image.src|resize(0, 65) }}"
               data-srcset="{{ image.src|resize(0, 65) }}"
-              alt="{{ image.alt|e('html_attr') }}">
+              alt="{{ image.alt|e }}">
           </figure>
         </div>
       {% endfor %}

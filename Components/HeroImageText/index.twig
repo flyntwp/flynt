@@ -15,7 +15,7 @@
           {{ images.imageMobile.src | resize(750, 800) }} 750w"
         src="{{ images.mobileImage.src | resize(375, 400) }}"
         sizes="100vw"
-        alt="{{ images.imageDesktop.alt|e('html_attr') }}">
+        alt="{{ images.imageDesktop.alt|e }}">
       </picture>
       {% if contentHtml %}
         <div class="content">

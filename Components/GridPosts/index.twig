@@ -16,7 +16,7 @@
                       {{ post.thumbnail|resize(750, 500) }} 750w,
                       {{ post.thumbnail|resize(375, 250) }} 375w"
                     data-sizes="auto"
-                    alt="{{ post.thumbnail.alt|e('html_attr') }}">
+                    alt="{{ post.thumbnail.alt|e }}">
                 </figure>
               {% endif %}
               <div class="content">

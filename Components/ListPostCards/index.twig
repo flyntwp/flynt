@@ -19,7 +19,7 @@
                       {{ post.thumbnail|resize(750, 500) }} 750w,
                       {{ post.thumbnail|resize(375, 250) }} 375w"
                     data-sizes="auto"
-                    alt="{{ post.thumbnail.alt|e('html_attr') }}">
+                    alt="{{ post.thumbnail.alt|e }}">
                 </figure>
               {% endif %}
               <div class="content">
@@ -37,7 +37,7 @@
       {% if ctaButton %}
         <div class="postContent">
           <a class="btn btn--primary" href="{{ ctaButton.url|e('esc_url') }}"
-          target={% if ctaButton.target|e('html_attr') %}"{{ ctaButton.target|e('html_attr') }}" rel="noreferrer noopener"{% else %}"_self"{% endif %}>
+          target={% if ctaButton.target|e %}"{{ ctaButton.target|e }}" rel="noreferrer noopener"{% else %}"_self"{% endif %}>
           {{ ctaButton.title|e }}</a>
         </div>
       {% endif %}

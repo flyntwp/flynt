@@ -1,6 +1,0 @@
-<img class="image-imageElement" srcset="
-  {{ image.src | resize(550) }} 550w,
-  {{ image.src | resize(736) }} 736w"
-  src="{{ image.src | resize(736) }}"
-  sizes="(min-width: 1140px) 550px, (min-width: 767px) calc((100vw - 30px) * .4925), calc(100vw - 30px)"
-  alt="{{ image.alt|e('html_attr') }}">
