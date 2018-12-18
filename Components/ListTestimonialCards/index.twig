@@ -4,7 +4,7 @@
       <div class="preContent">{{ preContentHtml|e('wp_kses_post') }}</div>
     {% endif %}
     <ul class="testimonialsList">
-      {% for testimonial in testimonialsList %}
+      {% for testimonial in testimonials %}
         <li class="testimonial">
           <div class="content">
             {{- testimonial.contentHtml|e('wp_kses_post') -}}
