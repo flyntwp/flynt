@@ -132,11 +132,10 @@ $content-max-width: 800px;
         border-radius: 50%;
         border: 1px solid rgba(0, 0, 0, 0.8);
         cursor: pointer;
-        display: block;
         height: 8px;
-        outline: 0;
         pointer-events: all;
         text-indent: -99999px;
+        transition: background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         width: 8px;
       }
 

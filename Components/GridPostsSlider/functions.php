@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\GridPostsSlider;
 
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Component;
 use Flynt;
 
 add_filter('Flynt/addComponentData?name=GridPostsSlider', function ($data) {
