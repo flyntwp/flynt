@@ -18,18 +18,20 @@ module.exports = function (config) {
   }
 
   gulp.task('lint:sass', function () {
-    const sassLint = require('gulp-sass-lint')
+    const stylelint = require('gulp-stylelint')
     const changedInPlace = require('gulp-changed-in-place')
-    const task = gulp.src(config.lint.sass)
-      .pipe(changedInPlace({ firstPass: true }))
-      .pipe(sassLint())
-      .pipe(sassLint.format())
-    if (global.watchMode) {
-      return task
-    } else {
-      return task
-        .pipe(sassLint.failOnError())
+    const opts = {
+      reporters: [
+        { formatter: 'string', console: true }
+      ]
     }
+    if (!global.watchMode) {
+      opts.failAfterError = true
+      opts.maxWarning = 0
+    }
+    return gulp.src(config.lint.sass)
+      .pipe(changedInPlace({ firstPass: true }))
+      .pipe(stylelint(opts))
   })
 
   gulp.task('lint:js', function () {
