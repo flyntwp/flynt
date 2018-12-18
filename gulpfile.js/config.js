@@ -15,7 +15,7 @@ module.exports = {
   },
   copy: [
     './{Components,Features,assets}/**/*',
-    '!./{Components,Features,assets}/**/*.{js,styl,sass,less}'
+    '!./{Components,Features,assets}/**/*.{js,styl,scss,less}'
   ],
   dest: dest,
   rev: {
@@ -44,19 +44,19 @@ module.exports = {
     sourceRoot: '/app/themes/flynt-starter-theme/'
   },
   sass: [
-    './{Components,Features,assets}/**/*.sass',
-    '!./{Components,Features,assets}/**/_*.sass'
+    './{Components,Features,assets}/**/*.scss',
+    '!./{Components,Features,assets}/**/_*.scss'
   ],
   watch: {
-    sass: ['./{Components,Features,assets}/**/*.sass'],
+    sass: ['./{Components,Features,assets}/**/*.scss'],
     php: [
       './**/*.php',
       '!./{Components,Features,assets}/**/*.php'
     ],
-    hardReloadOnSassFiles: ['Components/_variables.sass'],
+    hardReloadOnSassFiles: ['Components/_variables.scss'],
     sassPartials: {
       partialCssFilenamePrefix: '_',
-      rootCssFilename: 'style.sass',
+      rootCssFilename: 'style.scss',
       stopSearchDirnames: ['Components', 'Features']
     }
   },
@@ -66,7 +66,7 @@ module.exports = {
     ]
   },
   lint: {
-    sass: ['./{Components,Features,assets}/**/*.sass'],
+    sass: ['./{Components,Features,assets}/**/*.scss'],
     js: ['./{Components,Features,assets,gulpfile.js}/**/*.js'],
     php: [
       './**/*.php',

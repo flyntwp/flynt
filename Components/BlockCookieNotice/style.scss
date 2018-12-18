@@ -1,0 +1,53 @@
+@import '../_variables';
+
+[is=flynt-block-cookie-notice] {
+  background-color: $color-background;
+  border-top: 1px solid $color-brand;
+  bottom: 0;
+  display: none;
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: 999;
+
+  .container {
+    padding: 1rem $container-padding;
+
+    @media (min-width: $breakpoint-tablet) {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      margin: 0 auto;
+      max-width: $container-max-width;
+    }
+  }
+
+  .content {
+    font-size: 0.8rem;
+    padding: 1rem 0;
+
+    > :first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  .btnClose {
+    margin-bottom: 1rem;
+    margin-left: 0;
+
+    @media (min-width: $breakpoint-tablet) {
+      margin-bottom: 0;
+      margin-left: 30px;
+    }
+  }
+
+  &.cookieNotice--isVisible {
+    display: block;
+  }
+}

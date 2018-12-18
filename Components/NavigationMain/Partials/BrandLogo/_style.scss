@@ -1,0 +1,14 @@
+.brandLogo {
+  float: left;
+
+  &-image {
+    display: block;
+    height: 42px;
+    max-width: inherit;
+    width: auto;
+
+    @media (min-width: $breakpoint-tablet) {
+      height: 50px;
+    }
+  }
+}

@@ -15,7 +15,7 @@ class NavigationMain extends window.HTMLElement {
     this.$navigation = $('.navigationMain', this)
     this.$body = $('body')
     this.$menu = $('.menu', this)
-    this.noTransitionClass = 'menu-hasNoTransition'
+    this.noTransitionClass = 'menu--hasNoTransition'
   }
 
   connectedCallback () {
@@ -37,8 +37,8 @@ class NavigationMain extends window.HTMLElement {
 
   triggerMenu (e) {
     e.preventDefault()
-    this.$navigation.toggleClass('navigationMain-isActive')
-    this.$body.toggleClass('navigationMain-isActive')
+    this.$navigation.toggleClass('navigationMain--isActive')
+    this.$body.toggleClass('navigationMain--isActive')
   }
 }
 

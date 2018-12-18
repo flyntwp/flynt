@@ -1,0 +1,56 @@
+@import '../_variables';
+
+$nav-height-mobile: 64px;
+
+body {
+  margin-top: $nav-height-mobile;
+
+  &.navigationMain--isActive {
+    overflow: hidden;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    margin-top: 0;
+
+    &.navigationMain--isActive {
+      overflow: auto;
+    }
+  }
+}
+
+[is=flynt-navigation-main] {
+  .navigationMain {
+    &-head {
+      background: $color-background;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.13);
+      display: block;
+      height: $nav-height-mobile;
+      left: 0;
+      padding: 10px $container-padding;
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 100%;
+      z-index: 998;
+    }
+
+    @media (min-width: $breakpoint-tablet) {
+      height: 1%;
+      margin: 0 auto;
+      max-width: $container-max-width;
+      padding: 40px $container-padding;
+      overflow: auto;
+
+      &-head {
+        box-shadow: none;
+        height: auto;
+        padding: 0;
+        position: relative;
+      }
+    }
+  }
+
+  @import 'Partials/BrandLogo/_style';
+  @import 'Partials/Hamburger/_style';
+  @import 'Partials/Menu/_style';
+}

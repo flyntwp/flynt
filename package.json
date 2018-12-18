@@ -61,6 +61,9 @@
     "lodash": "^4.17.10",
     "normalize.css": "^8.0.1",
     "plugin-error": "^1.0.1",
+    "prettier": "^1.15.3",
+    "prettier-eslint": "^8.8.2",
+    "prettier-stylelint": "^0.4.2",
     "replace-in-file": "^3.4.2",
     "require-dir": "^1.2.0",
     "rupture": "^0.7.1",
@@ -68,6 +71,7 @@
     "standard-version": "^4.2.0",
     "stylelint": "^9.9.0",
     "stylelint-config-standard": "^18.2.0",
+    "stylelint-scss": "^3.4.1",
     "touch": "^3.1.0",
     "uglify-js": "^3.4.9",
     "uglify-loader": "^3.0.0",
@@ -85,7 +89,14 @@
     "dist/**"
   ],
   "stylelint": {
-    "extends": "stylelint-config-standard"
+    "extends": "stylelint-config-standard",
+    "plugins": [
+      "stylelint-scss"
+    ],
+    "rules": {
+      "at-rule-no-unknown": null,
+      "scss/at-rule-no-unknown": true
+    }
   },
   "engines": {
     "node": ">=8.0.0"
