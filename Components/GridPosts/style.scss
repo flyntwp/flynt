@@ -1,0 +1,112 @@
+@import '../_variables';
+
+[is=flynt-grid-posts] {
+  background-color: rgba(0, 0, 0, 0.03);
+  padding: 60px 0;
+
+  .container {
+    margin: 0 auto;
+    padding: 0 $container-padding;
+    max-width: $container-max-width;
+  }
+
+  .preContent {
+    margin: 0 auto 50px;
+    max-width: $content-max-width;
+    text-align: center;
+
+    > :first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .gridPosts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    margin: 0 -10px;
+    padding: 0;
+  }
+
+  .noPosts {
+    padding: 40px 0 0;
+  }
+
+  .post {
+    padding: 0 10px 20px;
+    max-width: 360px;
+    width: 100%;
+
+    @media (min-width: $breakpoint-tablet) {
+      width: 50%;
+    }
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      width: 25%;
+    }
+
+    &-link {
+      background-color: $color-background;
+      display: block;
+      text-decoration: none;
+      transition: background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.03);
+      }
+    }
+
+    .figure {
+      background-color: $color-text;
+      margin-bottom: 0;
+    }
+
+    .content {
+      padding: 10px;
+    }
+
+    .title {
+      padding-top: 0.1rem;
+      margin-bottom: 0.1rem;
+    }
+
+    time {
+      font-size: 0.8rem;
+    }
+  }
+
+  .pagination {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 40px;
+
+    &-counter {
+      margin: 0 5px;
+    }
+
+    .btn {
+      margin-bottom: 0;
+
+      &--primary {
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+}
