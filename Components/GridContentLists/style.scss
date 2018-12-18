@@ -1,0 +1,95 @@
+@import '../_variables';
+
+[is=flynt-grid-content-lists] {
+  background-color: rgba(0, 0, 0, 0.03);
+  padding: 60px 0;
+
+  .container {
+    margin: 0 auto;
+    padding: 0 $container-padding;
+    max-width: $container-max-width;
+  }
+
+  .preContent {
+    margin: 0 auto 50px;
+    max-width: $content-max-width;
+    text-align: center;
+
+    > :first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .gridLinkList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: -20px -10px 0;
+
+    &-item {
+      max-width: 400px;
+      padding: 20px 10px 0;
+      width: 100%;
+
+      @media (min-width: $breakpoint-tablet) {
+        width: 50%;
+      }
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        width: 25%;
+      }
+    }
+  }
+
+  .content {
+    background-color: $color-background;
+    height: 100%;
+    padding: 25px 30px;
+
+    > :first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    ul > li {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      padding: 5px 0;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      > a {
+        color: $color-text;
+        position: relative;
+        text-decoration: none;
+        transition: color 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+
+        &::after {
+          content: "\00a0➟";
+        }
+
+        &:hover {
+          color: $color-accent;
+        }
+      }
+    }
+  }
+}
