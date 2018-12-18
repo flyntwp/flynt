@@ -16,7 +16,7 @@
                         {{ block.componentPreviewDesktop.src|resize(600) }} 600w,
                         {{ block.componentPreviewDesktop.src|resize(300) }} 300w"
                       data-sizes="auto"
-                      alt="{{ image.alt|e('html_attr') }}">
+                      alt="{{ image.alt|e }}">
                 </div>
                 {% if block.componentPreviewMobile %}
                   <div class="component-previewImage component-previewImage--mobile">
@@ -30,7 +30,7 @@
                           {{ block.componentPreviewMobile.src|resize(120) }} 120w,
                           {{ block.componentPreviewMobile.src|resize(60) }} 60w"
                         data-sizes="auto"
-                        alt="{{ image.alt|e('html_attr') }}">
+                        alt="{{ image.alt|e }}">
                   </div>
                 {% endif %}
               </div>
