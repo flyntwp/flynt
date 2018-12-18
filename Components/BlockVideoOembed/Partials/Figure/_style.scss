@@ -1,0 +1,15 @@
+.figure {
+  margin-bottom: 0;
+
+  &-image {
+    background: rgba(0, 0, 0, 0.03);
+
+    &--isHidden {
+      visibility: hidden;
+    }
+  }
+
+  &-caption {
+    position: absolute;
+  }
+}
