@@ -1,0 +1,14 @@
+@import '../variables';
+
+[is=flynt-block-not-found] {
+  .container {
+    margin: 60px auto;
+    max-width: $container-max-width;
+    padding: 0 $container-padding;
+  }
+
+  .content {
+    max-width: $content-max-width;
+    text-align: left;
+  }
+}
