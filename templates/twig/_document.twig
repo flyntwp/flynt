@@ -19,7 +19,7 @@
             {% if passwordProtected %}
               {{ passwordForm }}
             {% else %}
-              {% block components %}
+              {% block content %}
                 No <code>{{ '{% block components %}' }}</code> defined for this template.
               {% endblock %}
             {% endif %}

@@ -1,4 +1,16 @@
-<div class="flyntComponent" is="flynt-block-basestyle">
+{% extends 'twig/_document.twig' %}
+
+{% block content %}
+  <style>
+    .container {
+      padding: 0 20px;
+    }
+
+    .content {
+      margin: 0 auto;
+      max-width: 600px;
+    }
+  </style>
   <div class="container">
     <div class="content">
       <section>
@@ -182,4 +194,4 @@
       </section>
     </div>
   </div>
-</div>
+{% endblock %}
