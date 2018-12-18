@@ -8,13 +8,13 @@
           {{ images.imageDesktop.src | resize(1440, 400, 'center') }} 1280w,
           {{ images.imageDesktop.src | resize(900, 400, 'center') }} 900w,
           {{ images.imageDesktop.src | resize(768, 400, 'center') }} 768w"
-        media="(min-width: 576px)"
-        sizes="(min-width: 1280px) 1280px, 100vw">
+        media="(min-width: 600px)"
+        sizes="100vw">
         <img class="image" srcset="
           {{ images.imageMobile.src | resize(375, 400) }} 375w,
           {{ images.imageMobile.src | resize(750, 800) }} 750w"
         src="{{ images.mobileImage.src | resize(375, 400) }}"
-        sizes="(min-width: 1280px) 1280px, 100vw"
+        sizes="100vw"
         alt="{{ images.imageDesktop.alt|e('html_attr') }}">
       </picture>
       {% if contentHtml %}

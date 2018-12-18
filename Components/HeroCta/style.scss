@@ -1,5 +1,6 @@
 @import '../_variables';
-$headings: '.h1, .h2, .h3, .h4, .h5, .h6';
+
+$headings: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';
 
 [is=flynt-hero-cta] {
   background-color: $color-brand;
@@ -27,13 +28,9 @@ $headings: '.h1, .h2, .h3, .h4, .h5, .h6';
     }
   }
 
-  @media (max-width: $breakpoint-mobile-horizontal - 1px) {
+  @media (max-width: $content-max-width - 1px) {
     br {
-      content: '';
-
-      &::before {
-        content: '\00a0';
-      }
+      content: '\00a0';
     }
   }
 }
