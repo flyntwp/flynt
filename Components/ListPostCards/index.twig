@@ -4,7 +4,7 @@
       {% if preContentHtml %}
         <div class="preContent">{{ preContentHtml|e('wp_kses_post') }}</div>
       {% endif %}
-      <ul class="list">
+      <ul class="listPostCards">
         {% for post in posts %}
           <li class="post">
             <a class="post-link" href="{{ post.link }}" {{ post.target == '_blank' ? 'target="_blank" rel="noreferrer noopener"' }} title="{{ post.title|e }}">
@@ -24,9 +24,9 @@
               {% endif %}
               <div class="content">
                 {% if post.post_date %}
-                  <time class="date" datetime="{{ post.post_date }}">{{ post.post_date | date }}</time>
+                  <time class="content-date" datetime="{{ post.post_date }}">{{ post.post_date | date }}</time>
                 {% endif %}
-                <h3 class="h4 title">
+                <h3 class="content-title h4">
                   {{ post.title }}
                 </h3>
               </div>

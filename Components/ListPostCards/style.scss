@@ -29,13 +29,9 @@
     margin: 0 auto;
     max-width: $content-max-width;
     text-align: center;
-
-    .btn {
-      margin-bottom: 0;
-    }
   }
 
-  .list {
+  .listPostCards {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -46,10 +42,10 @@
 
   .post {
     padding: 0 10px 20px;
-    max-width: 360px;
+    max-width: 400px;
     width: 100%;
 
-    @media (min-width: $breakpoint-tablet) {
+    @media (min-width: $breakpoint-mobile-horizontal) {
       width: 50%;
     }
 
@@ -61,10 +57,13 @@
       background-color: $color-background;
       display: block;
       text-decoration: none;
-      transition: background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.03);
+      @media (min-width: $breakpoint-tablet) {
+        transition: background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.03);
+        }
       }
     }
 
@@ -75,15 +74,15 @@
 
     .content {
       padding: 10px;
-    }
 
-    .title {
-      padding-top: 0.1rem;
-      margin-bottom: 0.1rem;
-    }
+      &-title {
+        padding-top: 0.1rem;
+        margin-bottom: 0.1rem;
+      }
 
-    time {
-      font-size: 0.8rem;
+      &-date {
+        font-size: 0.8rem;
+      }
     }
   }
 }
