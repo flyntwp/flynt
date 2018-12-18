@@ -1,0 +1,39 @@
+@import '../_variables';
+$headings: '.h1, .h2, .h3, .h4, .h5, .h6';
+
+[is=flynt-hero-cta] {
+  background-color: $color-brand;
+  color: #fff;
+  padding: 80px 0;
+
+  #{$headings} {
+    color: inherit;
+  }
+
+  .container {
+    margin: 0 auto;
+    max-width: $container-max-width;
+    padding: 0 $container-padding;
+    text-align: center;
+
+    > :first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  @media (max-width: $breakpoint-mobile-horizontal - 1px) {
+    br {
+      content: '';
+
+      &::before {
+        content: '\00a0';
+      }
+    }
+  }
+}
