@@ -1,0 +1,82 @@
+@import '../../Components/_variables';
+
+/* Frontend Preview Images */
+[is=flynt-component-preview] {
+  height: 100%;
+  left: 50%;
+  max-width: 1280px;
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 10000;
+
+  .componentPreview {
+    &-imageDesktop {
+      display: none;
+
+      @media (min-width: 768px) {
+        display: block;
+      }
+    }
+
+    &-imageMobile {
+      @media (min-width: 768px) {
+        display: none;
+      }
+    }
+  }
+}
+
+/* Backend Preview Images */
+.flyntComponentPreview {
+  background-color: #fff;
+  border: 1px solid #e1e1e1;
+  bottom: 5px;
+  display: inline-block;
+  height: 36px;
+  margin-left: 5px;
+  padding: 2px;
+  position: absolute;
+
+  &-imageWrapper {
+    bottom: 0;
+    position: absolute;
+    right: 105%;
+  }
+
+  &-image {
+    background: #fff;
+    border-radius: 3px;
+    border: 3px solid #333739;
+    bottom: 0;
+    display: block;
+    max-width: 500px;
+    object-fit: contain;
+    position: absolute;
+
+    &--desktop {
+      height: 250px;
+      right: 30px;
+    }
+
+    &--mobile {
+      height: 150px;
+      right: 0;
+    }
+  }
+
+  &-imageElement {
+    display: block;
+    height: 100%;
+    width: auto;
+  }
+
+  &-label {
+    bottom: 4px;
+    left: 100%;
+    padding-left: 8px;
+    position: absolute;
+    white-space: nowrap;
+  }
+}
