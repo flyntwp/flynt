@@ -1,0 +1,15 @@
+@import '../variables';
+
+[is=flynt-block-video-oembed] {
+  .wrapper {
+    margin: 80px 0;
+  }
+
+  .container {
+    margin: 0 auto;
+    padding: 0 $container-padding;
+    max-width: $container-max-width;
+  }
+
+  @import 'Partials/Video/_style';
+}

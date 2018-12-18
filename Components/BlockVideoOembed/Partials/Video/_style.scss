@@ -1,0 +1,49 @@
+@import '../Figure/_style';
+@import '_playButton';
+@import '_loader';
+
+.video {
+  position: relative;
+
+  &-player {
+    height: 0;
+    padding-bottom: percentage(9 / 16);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+  }
+
+  iframe {
+    display: none;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.video-player--isLoading {
+  background: rgba(0, 0, 0, 0.5);
+  transition: background 0.2s ease-out;
+
+  .video-loader {
+    display: block;
+  }
+
+  .video-playBtn {
+    display: none;
+  }
+}
+
+.video-player--isLoaded {
+  .video-loader,
+  .video-playBtn {
+    display: none;
+  }
+
+  iframe {
+    display: block;
+  }
+}
