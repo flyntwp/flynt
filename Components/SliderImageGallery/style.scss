@@ -1,10 +1,6 @@
 @import '../_variables';
 
 [is=flynt-slider-image-gallery] {
-  .container {
-    margin: 60px auto;
-  }
-
   .slide {
     display: none;
     outline: 0;
@@ -74,7 +70,7 @@
   }
 
   .slider-thumb {
-    margin-top: 1rem;
+    margin: 1rem 0;
 
     .slide {
       cursor: pointer;
