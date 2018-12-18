@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\ListFacts;
 
-use Flynt\Features\Components\Component;
+use Flynt\Utils\Component;
 use Flynt;
 
 add_filter('Flynt/addComponentData?name=ListFacts', function ($data) {

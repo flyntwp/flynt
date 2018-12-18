@@ -1,0 +1,67 @@
+@import '../_variables';
+
+[is=flynt-list-facts] {
+  padding: 60px 0;
+
+  .container {
+    margin: 0 auto;
+    padding: 0 $container-padding;
+    max-width: $container-max-width;
+  }
+
+  .preContent {
+    margin: 0 auto 50px;
+    max-width: $content-max-width;
+    text-align: center;
+
+    > :first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  .listFacts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    margin: -20px -10px 0;
+    padding: 0;
+  }
+
+  .fact {
+    max-width: 400px;
+    padding: 20px 50px 0;
+    text-align: center;
+    width: 100%;
+
+    @media (min-width: $breakpoint-tablet) {
+      width: 33.33%;
+    }
+
+    .title {
+      color: $color-accent;
+      display: flex;
+      justify-content: center;
+      letter-spacing: 0.1rem;
+      padding-top: 0.8rem;
+    }
+  }
+
+  .content {
+    > :first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+}
