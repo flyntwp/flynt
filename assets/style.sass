@@ -1,24 +1,15 @@
 @import '../Components/_variables'
 
-$breakpoints: (s: 425px, m: 575px, l: 767px, xl: 991px, hd: 1199px);
-
-$colorBackground: #ffffff !default
-$colorBrand: #91C6C4 !default
-$colorAccent: #F98928 !default
-$colorHeadline: #2A2A2A !default
-$colorText: #222222 !default
-
-
 // MIXINS
 // -------------------------------------------------------------
 
-@mixin fontFace($family, $file, $weight: 'normal', $style: 'normal', $woff2: true, $basePath: '../../Components/DocumentDefault/Fonts/')
+@mixin fontFace($family, $file, $weight: 'normal', $style: 'normal', $woff2: true, $base-path: '../../Components/DocumentDefault/Fonts/')
   @font-face
     font-family: $family
     @if $woff2
-      src: url($basePath + $file + '.woff2') format('woff2'), url($basePath + $file + '.woff') format('woff')
+      src: url($base-path + $file + '.woff2') format('woff2'), url($base-path + $file + '.woff') format('woff')
     @else
-      src: url($basePath + $file + '.woff') format('woff')
+      src: url($base-path + $file + '.woff') format('woff')
     font-style: unquote($style)
     font-weight: unquote($weight)
 
@@ -28,16 +19,16 @@ $colorText: #222222 !default
 html
   -moz-osx-font-smoothing: grayscale
   -webkit-font-smoothing: antialiased
-  background-color: $colorBackground
-  color: $colorText
+  background-color: $color-background
+  color: $color-text
   font-family: Helvetica, Arial, sans-serif
-  font-size: 18px
+  font-size: 16px
   line-height: 1.5
   overflow-wrap: break-word
   word-wrap: break-word
 
-  @media (max-width: map-get($breakpoints, s))
-    font-size: 16px
+  @media (min-width: $breakpoint-tablet)
+    font-size: 18px
 
   &
     box-sizing: border-box
@@ -79,7 +70,7 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6
-  color: $colorHeadline
+  color: $color-headline
   font-weight: bold
   line-height: 1.3
   margin-bottom: .5rem
@@ -111,11 +102,11 @@ h6, .h6
   padding-top: .5rem
 
 a
-  color: $colorAccent
+  color: $color-accent
 
-  @media (min-width: map-get($breakpoints, hd) + 1)
+  @media (min-width: $breakpoint-desktop)
     &:hover
-      color: $colorAccent
+      color: $color-accent
 
 dt
   font-weight: bold
@@ -135,7 +126,7 @@ ul, ol // @stylint ignore
   padding-left: 1.5rem
 
 hr
-  background-color: $colorBrand
+  background-color: $color-brand
   border: 0
   display: block
   height: 1px
@@ -154,7 +145,7 @@ code
   padding: .1rem .3rem
 
 blockquote, .blockquote
-  border-left: 3px solid $colorBrand
+  border-left: 3px solid $color-brand
   font-size: 1.3rem
   font-style: italic
   line-height: 1.3
@@ -182,7 +173,7 @@ th
 
 thead
   th
-    border-bottom: 2px solid $colorBrand
+    border-bottom: 2px solid $color-brand
     vertical-align: bottom
     white-space: nowrap
 
@@ -205,10 +196,10 @@ button
 
 .btn
   appearance: none
-  background: $colorBackground
+  background: $color-background
   border-radius: 3px
-  border: 1px solid $colorAccent
-  color: $colorAccent
+  border: 1px solid $color-accent
+  color: $color-accent
   cursor: pointer
   display: inline-block
   font-family: inherit
@@ -226,23 +217,23 @@ button
     opacity: .65
     pointer-events: none
 
-  @media (min-width: map-get($breakpoints, hd) + 1)
+  @media (min-width: $breakpoint-desktop)
     &:hover,
     &:focus
-      border-color: darken($colorAccent, 10)
-      color: darken($colorAccent, 10)
+      border-color: darken($color-accent, 10)
+      color: darken($color-accent, 10)
 
 .btn
   &--primary
-    background-color: $colorAccent
-    border-color: $colorAccent
-    color: $colorBackground
+    background-color: $color-accent
+    border-color: $color-accent
+    color: $color-background
 
-    @media (min-width: map-get($breakpoints, hd) + 1)
+    @media (min-width: $breakpoint-desktop)
       &:hover,
       &:focus
-        background-color: darken($colorAccent, 10)
-        color: $colorBackground
+        background-color: darken($color-accent, 10)
+        color: $color-background
 
   &--block
     display: block
@@ -257,7 +248,7 @@ button
     color:  rgba(0, 0, 0, .3)
     cursor: default
 
-    @media (min-width: map-get($breakpoints, hd) + 1)
+    @media (min-width: $breakpoint-desktop)
       &:hover,
       &:focus
         border-color: rgba(0, 0, 0, .3)
@@ -290,7 +281,7 @@ label
 textarea,
 select
   appearance: none
-  background-color: $colorBackground
+  background-color: $color-background
   border: 1px solid rgba(0, 0, 0, .5)
   border-radius: 0
   color: inherit
@@ -303,8 +294,8 @@ textarea
   padding: 10px
 
 select
-  $colorTextRgb: red($colorText), green($colorText), blue($colorText)
-  background-image: url("data:image/svg+xml;utf8,<svg width='32' height='32' xmlns='http://www.w3.org/2000/svg'><polyline fill='none' stroke='rgb("$colorTextRgb")' stroke-width='3'  points='2,9 16,25 30,9 '/></svg>")
+  $color-text-rgb: red($color-text), green($color-text), blue($color-text)
+  background-image: url("data:image/svg+xml;utf8,<svg width='32' height='32' xmlns='http://www.w3.org/2000/svg'><polyline fill='none' stroke='rgb(#{$color-text-rgb})' stroke-width='3'  points='2,9 16,25 30,9 '/></svg>")
   background-position: calc(100% - 16px) center
   background-repeat: no-repeat
   background-size: 16px
