@@ -3,7 +3,6 @@ const gulp = require('gulp')
 module.exports = function (config) {
   const isProduction = process.env.NODE_ENV === 'production'
   gulp.task('sass', function () {
-    // const autoprefixer = require('autoprefixer-stylus')
     const changed = require('gulp-changed')
     const gulpIf = require('gulp-if')
     // const handleErrors = require('../utils/handleErrors')
