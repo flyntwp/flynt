@@ -1,4 +1,6 @@
 /* globals wpData */
+import 'file-loader?name=vendor/draggabilly.js!draggabilly/dist/draggabilly.pkgd.min'
+
 import $ from 'jquery'
 const helper = require('./helper')
 const $body = $('body')

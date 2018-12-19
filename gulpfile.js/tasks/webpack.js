@@ -1,27 +1,4 @@
-const path = require('path')
-const fs = require('fs')
 const gulp = require('gulp')
-
-let previousAssets = []
-let previousHash
-
-function removeUnusedAssets (stats) {
-  const basePath = path.join(
-    stats.compilation.options.context,
-    stats.compilation.outputOptions.path
-  )
-  const currentAssets = Object.keys(stats.compilation.assets)
-  const unusedAssets = previousAssets.filter(function (asset) {
-    return currentAssets.indexOf(asset) === -1
-  })
-  unusedAssets.forEach(function (asset) {
-    const assetPath = path.join(basePath, asset)
-    if (fs.existsSync(assetPath)) {
-      fs.unlinkSync(assetPath)
-    }
-  })
-  previousAssets = currentAssets
-}
 
 const webpackTask = function (callback) {
   const log = require('fancy-log')
@@ -40,26 +17,22 @@ const webpackTask = function (callback) {
       })
     }
 
-    if (previousHash !== stats.hash) {
-      previousHash = stats.hash
-      removeUnusedAssets(stats)
-      if (global.watchMode) {
-        const browserSync = require('browser-sync')
-        browserSync.reload()
-      }
-      log('[webpack:build] Completed\n' + stats.toString({
-        assets: false,
-        builtAt: false,
-        chunkModules: false,
-        chunks: false,
-        colors: true,
-        entrypoints: false,
-        hash: false,
-        modules: false,
-        timings: true,
-        version: false
-      }))
+    if (global.watchMode) {
+      const browserSync = require('browser-sync')
+      browserSync.reload()
     }
+    log('[webpack:build] Completed\n' + stats.toString({
+      assets: false,
+      builtAt: false,
+      chunkModules: false,
+      chunks: false,
+      colors: true,
+      entrypoints: false,
+      hash: false,
+      modules: false,
+      timings: true,
+      version: false
+    }))
     if (!initialCompile) {
       initialCompile = true
       callback()

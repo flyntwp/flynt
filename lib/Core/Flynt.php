@@ -3,6 +3,7 @@ namespace Flynt;
 
 use Flynt\Defaults;
 use Flynt\ComponentManager;
+use Flynt\Utils\Feature;
 use Dflydev\DotAccessData\Data;
 
 function initDefaults()
@@ -21,6 +22,14 @@ function registerComponentsFromPath($componentBasePath)
     foreach (glob("{$componentBasePath}/*", GLOB_ONLYDIR) as $componentPath) {
         $componentName = basename($componentPath);
         registerComponent($componentName, $componentPath);
+    }
+}
+
+function registerFeaturesFromPath($featureBasePath)
+{
+    foreach (glob("{$featureBasePath}/*", GLOB_ONLYDIR) as $featurePath) {
+        $featureName = basename($featurePath);
+        Feature::register($featureName, $featureBasePath);
     }
 }
 

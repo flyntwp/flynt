@@ -2,8 +2,44 @@
 
 namespace Flynt;
 
-class Bootstrap
+use Flynt;
+use Flynt\Utils\Asset;
+use Flynt\Utils\Feature;
+use Flynt\Utils\FileLoader;
+use Flynt\Utils\StringHelpers;
+use Timber\Timber;
+
+class Init
 {
+    public static function initTheme()
+    {
+        // initialize plugin defaults
+        Flynt\initDefaults();
+
+        // Set to true to load all assets from a CDN if there is one specified
+        Asset::loadFromCdn(false);
+
+        new Timber();
+    }
+
+    public static function loadFeatures()
+    {
+        $basePath = get_template_directory() . '/dist/Features';
+        global $flyntCurrentOptionCategory;
+        $flyntCurrentOptionCategory = 'feature';
+        Flynt\registerFeaturesFromPath($basePath);
+        do_action('Flynt/afterRegisterFeatures');
+    }
+
+    public static function loadComponents()
+    {
+        $basePath = get_template_directory() . '/dist/Components';
+        global $flyntCurrentOptionCategory;
+        $flyntCurrentOptionCategory = 'component';
+        Flynt\registerComponentsFromPath($basePath);
+        do_action('Flynt/afterRegisterComponents');
+    }
+
     public static function setTemplateDirectory()
     {
         add_action('after_switch_theme', function () {

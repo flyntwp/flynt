@@ -44,4 +44,35 @@ add_action('wp_enqueue_scripts', function () {
         'type' => 'script',
         'path' => 'vendor/lazysizes.js'
     ]);
+    if (is_user_logged_in()) {
+        Asset::enqueue([
+            'name' => 'Flynt/assets/auth',
+            'path' => 'assets/auth.js',
+            'type' => 'script',
+            'dependencies' => [
+                'jquery'
+            ],
+        ]);
+        Asset::enqueue([
+            'name' => 'Flynt/assets/auth',
+            'path' => 'assets/auth.css',
+            'type' => 'style'
+        ]);
+    }
+});
+
+add_action('admin_enqueue_scripts', function () {
+    Asset::enqueue([
+        'name' => 'Flynt/assets/admin',
+        'path' => 'assets/admin.js',
+        'type' => 'script',
+        'dependencies' => [
+            'jquery'
+        ],
+    ]);
+    Asset::enqueue([
+        'name' => 'Flynt/assets/admin',
+        'path' => 'assets/admin.css',
+        'type' => 'style'
+    ]);
 });

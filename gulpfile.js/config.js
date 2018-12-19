@@ -44,11 +44,14 @@ module.exports = {
     sourceRoot: '/app/themes/flynt-starter-theme/'
   },
   sass: [
-    './{Components,Features,assets}/**/*.scss',
-    '!./{Components,Features,assets}/**/_*.scss'
+    './assets/{style,admin,auth}.scss'
   ],
   watch: {
     sass: ['./{Components,Features,assets}/**/*.scss'],
+    // sass: [
+    //   './{Components,Features,assets}/**/*.scss',
+    //   '!./{Components,Features,assets}/**/_*.scss'
+    // ],
     php: [
       './**/*.php',
       '!./{Components,Features,assets}/**/*.php'
@@ -58,12 +61,15 @@ module.exports = {
       partialCssFilenamePrefix: '_',
       rootCssFilename: 'style.scss',
       stopSearchDirnames: ['Components', 'Features']
-    }
+    },
+    webpack: './{Components,Features,assets}/**/{script,admin,auth}.js'
   },
   webpack: {
-    entry: [
-      './{Components,Features,assets}/**/{script,admin,auth}.js'
-    ]
+    entry: {
+      'assets/script': './assets/script.js',
+      'assets/admin': './assets/admin.js',
+      'assets/auth': './assets/auth.js'
+    }
   },
   lint: {
     sass: ['./{Components,Features,assets}/**/*.scss'],

@@ -142,6 +142,27 @@ class Asset
         }
     }
 
+    public static function addDependencies($handle, $dependencies, $type = null)
+    {
+        if (empty($dependencies)) {
+            return;
+        }
+        if ($type === 'style') {
+            global $wp_styles;
+            $repo =& $wp_styles;
+        } else {
+            global $wp_scripts;
+            $repo =& $wp_scripts;
+        }
+
+        $asset = $repo->query($handle, 'registered');
+        if (!$asset) {
+            return false;
+        }
+        $asset->deps = array_unique(array_merge($asset->deps, $dependencies));
+        return true;
+    }
+
     protected static function get($returnType, $asset)
     {
         $distPath = get_template_directory() . '/dist';
@@ -163,7 +184,7 @@ class Asset
 
         if ('path' == $returnType) {
             return $distPath . '/' . $assetSuffix;
-        } else if ('url' == $returnType) {
+        } elseif ('url' == $returnType) {
             $distUrl = get_template_directory_uri() . '/dist';
             return $distUrl . '/' . $assetSuffix;
         }

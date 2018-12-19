@@ -1,6 +1,5 @@
 const path = require('path')
 const webpack = require('webpack')
-const glob = require('glob')
 const HardSourcePlugin = require('hard-source-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
@@ -15,6 +14,7 @@ module.exports = function (config) {
   const output = {
     mode: config.production ? 'production' : 'development',
     name: 'browser',
+    entry: config.entry,
     output: {
       path: path.join(__dirname, '../dist'),
       publicPath: 'http://localhost:3000/'
@@ -77,22 +77,5 @@ module.exports = function (config) {
       ]
     }
   }
-  output.entry = function () {
-    const entries = [].concat(config.entry)
-    return entries.reduce(function (carry, entry) {
-      glob.sync(entry).forEach(function (filePath) {
-        const chunkName = path.normalize(removeExtension(filePath))
-        carry[chunkName] = filePath
-      })
-      return carry
-    }, {})
-  }
   return output
-}
-
-function removeExtension (filePath) {
-  return path.join(
-    path.dirname(filePath),
-    path.basename(filePath, path.extname(filePath))
-  )
 }

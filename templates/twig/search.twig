@@ -1,5 +1,5 @@
 {% extends 'twig/_document.twig' %}
 
-{% block content %}
+{% set content %}
   {{ renderComponent('ListSearchResults', {posts: posts, pagination: pagination}) }}
-{% endblock %}
+{% endset %}

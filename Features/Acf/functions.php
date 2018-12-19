@@ -9,7 +9,10 @@ use Flynt\Features\Acf\Loader;
 use Flynt\Utils\Feature;
 use Flynt\Utils\Options;
 
-Loader::setup(Feature::getOption('Acf', 0));
+Loader::setup([
+    'FlexibleContentToggle',
+    'GoogleMaps',
+]);
 
 add_action('Flynt/afterRegisterFeatures', 'Flynt\Features\Acf\Loader::init');
 

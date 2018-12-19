@@ -2,6 +2,7 @@ const gulp = require('gulp')
 
 module.exports = function (config) {
   const isProduction = process.env.NODE_ENV === 'production'
+  console.log(isProduction)
   gulp.task('sass', function () {
     const changed = require('gulp-changed')
     const gulpIf = require('gulp-if')
@@ -10,16 +11,18 @@ module.exports = function (config) {
     sass.compiler = require('node-sass')
     const sourcemaps = require('gulp-sourcemaps')
     const autoprefixer = require('gulp-autoprefixer')
+    const globImporter = require('node-sass-glob-importer')
     let task = gulp.src(config.sass)
       .pipe(changed(config.dest, { extension: '.css' }))
       .pipe(gulpIf(!isProduction, sourcemaps.init()))
       .pipe(sass({
-        outputStyle: isProduction ? 'compressed' : 'expanded'
+        outputStyle: isProduction ? 'compressed' : 'expanded',
+        importer: globImporter()
       }).on('error', sass.logError))
       .pipe(autoprefixer())
       // .on('error', handleErrors)
       .pipe(gulpIf(!isProduction, sourcemaps.write(config.sourcemaps)))
-      .pipe(gulp.dest(config.dest))
+      .pipe(gulp.dest(config.dest + '/assets'))
       // .on('error', handleErrors)
     if (global.watchMode) {
       const browserSync = require('browser-sync')
