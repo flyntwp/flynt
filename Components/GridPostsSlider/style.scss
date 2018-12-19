@@ -20,7 +20,7 @@ $slideGutter: 20px;
     max-width: $content-max-width;
     text-align: center;
 
-    @media (min-width: $breakpoint-tablet) {
+    @media (min-width: $content-max-width) {
       padding: 0;
     }
 
@@ -52,19 +52,10 @@ $slideGutter: 20px;
     overflow: hidden;
     padding: 0 10px;
     position: relative;
-    width: 100%;
 
     &:first-child,
     &.slick-slide {
       display: block;
-    }
-
-    @media (min-width: $breakpoint-tablet) {
-      width: 50%;
-    }
-
-    @media (min-width: $breakpoint-tablet-horizontal) {
-      width: 25%;
     }
 
     &-link {
