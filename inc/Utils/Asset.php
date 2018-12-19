@@ -144,6 +144,9 @@ class Asset
 
     public static function addDependencies($handle, $dependencies, $type = null)
     {
+        if (empty($dependencies)) {
+            return;
+        }
         if ($type === 'style') {
             global $wp_styles;
             $repo =& $wp_styles;
