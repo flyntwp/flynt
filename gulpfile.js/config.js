@@ -44,7 +44,7 @@ module.exports = {
     sourceRoot: '/app/themes/flynt-starter-theme/'
   },
   sass: [
-    './assets/style.scss'
+    './assets/{style,admin,auth}.scss'
   ],
   watch: {
     sass: ['./{Components,Features,assets}/**/*.scss'],

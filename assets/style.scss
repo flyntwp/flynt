@@ -400,4 +400,5 @@ select {
   vertical-align: middle;
 }
 
-@import '../Components/**/style.scss'
+@import '../Components/*/style.scss';
+@import '../Features/*/style.scss';

@@ -53,6 +53,11 @@ add_action('wp_enqueue_scripts', function () {
                 'jquery'
             ],
         ]);
+        Asset::enqueue([
+            'name' => 'Flynt/assets/auth',
+            'path' => 'assets/auth.css',
+            'type' => 'style'
+        ]);
     }
 });
 
@@ -64,5 +69,10 @@ add_action('admin_enqueue_scripts', function () {
         'dependencies' => [
             'jquery'
         ],
+    ]);
+    Asset::enqueue([
+        'name' => 'Flynt/assets/admin',
+        'path' => 'assets/admin.css',
+        'type' => 'style'
     ]);
 });
