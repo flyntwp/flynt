@@ -93,7 +93,7 @@ class Feature
                 return true;
             }
 
-            trigger_error("{$feature}: Could not register feature! File not found: {$file}", E_USER_WARNING);
+            trigger_error("{$featureName}: Could not register feature! File not found: {$file}", E_USER_WARNING);
 
             return false;
         }

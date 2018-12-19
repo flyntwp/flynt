@@ -25,52 +25,9 @@ class Init
     public static function loadFeatures()
     {
         $basePath = get_template_directory() . '/dist/Features';
-
         global $flyntCurrentOptionCategory;
         $flyntCurrentOptionCategory = 'feature';
-
-        Feature::register('YoutubeNoCookieEmbed', $basePath);
-
-        // initialize ACF Field Groups and Option Pages
-        Feature::register('Acf', $basePath, [[
-            'FlexibleContentToggle',
-            'GoogleMaps'
-        ]]);
-
-        // enable admin notices
-        Feature::register('AdminNotices', $basePath);
-
-        // use timber rendering
-        Feature::register('TimberLoader', $basePath);
-
-        // load jQuery in footer by default
-        Feature::register('Jquery', $basePath);
-
-        // clean up some things
-        Feature::register('CleanHead', $basePath);
-        Feature::register('CleanRss', $basePath);
-        Feature::register('MimeTypes', $basePath);
-        Feature::register('RemoveEditor', $basePath);
-        Feature::register('TinyMce', $basePath);
-        Feature::register('BaseStyle', $basePath);
-
-        // add components previews
-        Feature::register('AdminComponentPreview', $basePath);
-
-        // google analytics
-        Feature::register('GoogleAnalytics', $basePath);
-
-        // hide protected posts
-        Feature::register('HideProtectedPosts', $basePath);
-
-        // move yoast seo plugin box to the bottom of the backend interface
-        Feature::register('YoastToBottom', $basePath);
-
-        Feature::register('PasswordForm', $basePath);
-        Feature::register('ExternalScriptLoader', $basePath);
-        Feature::register('Lodash', $basePath);
-        Feature::register('ComponentLogServer', $basePath);
-
+        Flynt\registerFeaturesFromPath($basePath);
         do_action('Flynt/afterRegisterFeatures');
     }
 
