@@ -2,8 +2,8 @@
 
 namespace Flynt\Components\ListFacts;
 
-use Flynt\Utils\Component;
 use Flynt;
+use Flynt\Utils\Component;
 
 add_filter('Flynt/addComponentData?name=ListFacts', function ($data) {
     Component::enqueueAssets('ListFacts', [

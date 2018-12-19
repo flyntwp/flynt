@@ -56,12 +56,6 @@ module.exports = {
       './**/*.php',
       '!./{Components,Features,assets}/**/*.php'
     ],
-    hardReloadOnSassFiles: ['Components/_variables.scss'],
-    sassPartials: {
-      partialCssFilenamePrefix: '_',
-      rootCssFilename: 'style.scss',
-      stopSearchDirnames: ['Components', 'Features']
-    },
     webpack: './{Components,Features,assets}/**/{script,admin,auth}.js'
   },
   webpack: {

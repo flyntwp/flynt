@@ -2,16 +2,11 @@
 
 namespace Flynt\Components\BlockNotFound;
 
-use Flynt\Utils\Component;
-use Flynt;
+use Flynt\Utils\Options;
 
 add_filter('Flynt/addComponentData?name=BlockNotFound', function ($data) {
-    Component::enqueueAssets('BlockNotFound');
-
     return $data;
 });
-
-use Flynt\Utils\Options;
 
 Options::addTranslatable('BlockNotFound', [
     [

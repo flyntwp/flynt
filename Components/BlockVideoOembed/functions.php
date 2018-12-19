@@ -2,13 +2,10 @@
 
 namespace Flynt\Components\BlockVideoOembed;
 
-use Flynt\Utils\Component;
-use Flynt\Utils\Oembed;
 use Flynt;
+use Flynt\Utils\Oembed;
 
 add_filter('Flynt/addComponentData?name=BlockVideoOembed', function ($data) {
-    Component::enqueueAssets('BlockVideoOembed');
-
     $data['video'] = Oembed::setSrcAsDataAttribute(
         $data['oembed'],
         [

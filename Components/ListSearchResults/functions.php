@@ -3,12 +3,9 @@
 namespace Flynt\Components\ListSearchResults;
 
 use Flynt\Utils\Asset;
-use Flynt\Utils\Component;
 use Flynt\Utils\Options;
 
 add_filter('Flynt/addComponentData?name=ListSearchResults', function ($data) {
-    Component::enqueueAssets('ListSearchResults');
-
     global $wp_query;
     $data['posts_found'] = $wp_query->found_posts;
     $searchQuery = get_search_query();

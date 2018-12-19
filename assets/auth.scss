@@ -1,3 +1,4 @@
-@import '../Components/_variables';
+@import 'styles/_variables';
+@import 'styles/_mixins';
 @import '../Components/*/auth.scss';
 @import '../Features/*/auth.scss';

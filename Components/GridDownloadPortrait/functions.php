@@ -2,12 +2,9 @@
 
 namespace Flynt\Components\GridDownloadPortrait;
 
-use Flynt\Utils\Component;
 use Flynt;
 
 add_filter('Flynt/addComponentData?name=GridDownloadPortrait', function ($data) {
-    Component::enqueueAssets('GridDownloadPortrait');
-
     if (!empty($data['items'])) {
         $data['items'] = array_map(function ($item) {
             if ($item['itemType'] === 'itemFile') {

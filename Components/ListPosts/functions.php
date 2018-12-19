@@ -2,13 +2,10 @@
 
 namespace Flynt\Components\ListPosts;
 
-use Flynt\Utils\Component;
-use Flynt\Utils\Options;
 use Flynt;
+use Flynt\Utils\Options;
 
 add_filter('Flynt/addComponentData?name=ListPosts', function ($data) {
-    Component::enqueueAssets('ListPosts');
-
     return $data;
 });
 

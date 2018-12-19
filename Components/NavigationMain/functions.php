@@ -2,13 +2,8 @@
 
 namespace Flynt\Components\NavigationMain;
 
-use Flynt\Utils\Component;
 use Timber\Menu;
 use Flynt\Utils\Asset;
-
-add_action('wp_enqueue_scripts', function () {
-    Component::enqueueAssets('NavigationMain');
-});
 
 add_action('init', function () {
     register_nav_menus([

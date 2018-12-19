@@ -2,13 +2,10 @@
 
 namespace Flynt\Components\ListSocial;
 
-use Flynt\Utils\Asset;
-use Flynt\Utils\Component;
 use Flynt;
+use Flynt\Utils\Asset;
 
 add_filter('Flynt/addComponentData?name=ListSocial', function ($data) {
-    Component::enqueueAssets('ListSocial');
-
     if (!empty($data['social'])) {
         $data['social'] = array_map(function ($item) {
             $item['icon'] = Asset::getContents("Components/ListSocial/Assets/{$item['platform']}.svg");

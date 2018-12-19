@@ -2,15 +2,11 @@
 
 namespace Flynt\Components\ListComponents;
 
-use Flynt\ComponentManager;
-use Flynt\Utils\Component;
-use Flynt\Utils\Asset;
 use Flynt;
-use Timber\Image;
+use Flynt\ComponentManager;
+use Flynt\Utils\Asset;
 
 add_filter('Flynt/addComponentData?name=ListComponents', function ($data) {
-    Component::enqueueAssets('ListComponents');
-
     if (!empty($data['componentBlocks'])) {
         $data['componentBlocks'] = array_map(function ($block) {
             $componentPaths = explode('/', $block['component']);

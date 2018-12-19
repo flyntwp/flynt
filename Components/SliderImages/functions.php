@@ -2,8 +2,8 @@
 
 namespace Flynt\Components\SliderImages;
 
-use Flynt\Utils\Component;
 use Flynt;
+use Flynt\Utils\Component;
 
 add_filter('Flynt/addComponentData?name=SliderImages', function ($data) {
     Component::enqueueAssets('SliderImages', [

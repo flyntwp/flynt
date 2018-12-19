@@ -2,12 +2,9 @@
 
 namespace Flynt\Components\ListTestimonialCards;
 
-use Flynt\Utils\Component;
 use Flynt;
 
 add_filter('Flynt/addComponentData?name=ListTestimonialCards', function ($data) {
-    Component::enqueueAssets('ListTestimonialCards');
-
     return $data;
 });
 
