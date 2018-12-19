@@ -1,0 +1,57 @@
+.searchPagination {
+  display: flex;
+  justify-content: space-around;
+  margin: 50px auto;
+
+  .navigation {
+    border-bottom: 1px solid $color-accent;
+    border-top: 1px solid $color-accent;
+    display: flex;
+
+    > * {
+      border-right: 1px solid $color-accent;
+
+      &:first-child {
+        border-left: 1px solid $color-accent;
+      }
+    }
+
+    &-item {
+      align-items: center;
+      display: flex;
+      height: 60px;
+      justify-content: space-around;
+      text-decoration: none;
+      width: 60px;
+
+      &--hide {
+        display: none;
+      }
+    }
+  }
+
+  a.navigation-item {
+    &:hover {
+      background-color: $color-accent;
+      color: #fff;
+
+      svg {
+        path {
+          fill: #fff;
+        }
+      }
+    }
+  }
+
+  .page-number {
+    &.current {
+      align-items: center;
+      background-color: $color-accent;
+      color: #fff;
+      display: flex;
+      height: 60px;
+      justify-content: space-around;
+      width: 60px;
+    }
+  }
+}

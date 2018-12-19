@@ -1,0 +1,25 @@
+.searchList {
+  ul {
+    list-style: none;
+    padding: 0;
+
+    .searchList-item {
+      padding: $container-padding;
+      border-bottom: 1px solid #9b9b9b;
+
+      .postLink {
+        text-decoration: none;
+
+        &:hover {
+          .postTitle {
+            color: $color-accent;
+          }
+        }
+      }
+
+      .excerpt {
+        color: #9b9b9b;
+      }
+    }
+  }
+}

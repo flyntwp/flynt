@@ -1,0 +1,13 @@
+@import '../_variables';
+
+[is=flynt-list-search-results] {
+  .container {
+    margin: 0 auto;
+    max-width: $container-max-width;
+    padding: 0 $container-padding;
+
+    @import 'Partials/SearchHead/_style';
+    @import 'Partials/SearchList/_style';
+    @import 'Partials/SearchPagination/_style';
+  }
+}

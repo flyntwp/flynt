@@ -1,0 +1,104 @@
+.searchHead {
+  .titleContent {
+    padding: $container-padding 0;
+
+    > :first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  .searchForm {
+    .label {
+      border: 0;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+    }
+
+    .field {
+      margin: 0;
+      position: relative;
+    }
+
+    .submit {
+      background-color: transparent;
+      border: 0;
+      cursor: pointer;
+      height: 80px;
+      line-height: 1;
+      outline: 0;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 0.275);
+      width: 80px;
+
+      svg {
+        position: relative;
+        right: -20px;
+        transform: scale(0.8);
+
+        g {
+          fill: $color-accent;
+          stroke: $color-accent;
+        }
+      }
+
+      &:hover {
+        background-color: $color-accent;
+
+        svg {
+          g {
+            fill: #fff;
+            stroke: #fff;
+          }
+        }
+      }
+    }
+
+    .input {
+      font-size: 30px;
+      height: 80px;
+      padding: 0 80px 0 20px;
+      background-color: #fff;
+      border: 2px solid $color-accent;
+      color: #9b9b9b;
+      font-weight: 800;
+      line-height: 2.3;
+      margin: 0;
+      width: 100%;
+      transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 0.275);
+
+      &:focus,
+      &:active {
+        outline: 0;
+        box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.3);
+
+        .submit {
+          svg {
+            &:hover {
+              background-color: $color-brand;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .counter {
+    padding: $container-padding 0;
+  }
+}
