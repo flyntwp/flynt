@@ -19,14 +19,14 @@ class TwigExtensionFlynt extends Twig_Extension
     {
         return array(
             new Twig_SimpleFunction('renderComponent', [$this, 'renderComponent'], array('needs_environment' => true, 'needs_context' => true, 'is_safe' => array('all'))),
-            new Twig_SimpleFunction('renderFlexibleContent', [$this, 'renderFlexibleContent'], array('needs_environment' => true, 'needs_context' => true, 'is_safe' => array('all'))),
+            new Twig_SimpleFunction('renderComponentsFromFlexibleContent', [$this, 'renderComponentsFromFlexibleContent'], array('needs_environment' => true, 'needs_context' => true, 'is_safe' => array('all'))),
         );
     }
 
-    public function renderFlexibleContent(Twig_Environment $env, $context, $fields, $withContext = true, $ignoreMissing = false, $sandboxed = false)
+    public function renderComponentsFromFlexibleContent(Twig_Environment $env, $context, $fields, $withContext = true, $ignoreMissing = false, $sandboxed = false)
     {
         $output = '';
-        foreach (($fields ?? []) as $field) {
+        foreach ((empty($fields) ? [] : $fields) as $field) {
             $output .= $this->renderComponent($env, $context, ucfirst($field['acf_fc_layout']), $field, $withContext, $ignoreMissing, $sandboxed);
         }
         return $output;

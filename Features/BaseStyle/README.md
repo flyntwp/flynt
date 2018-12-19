@@ -1,13 +1,13 @@
 # Base Style Loader
 
-Loads the construction plan given in `template.json` to render a Base Style component, if user is logged in as Administrator.
+Loads a `basestyle.php` template from the templates folder to render base style markup for proper base styling, if user is on non-production environment or has edit rights at least.
 
 
 ## Installation
 
 1. Drop this Folder in your Flynt `Features` directory.
-2. Enable feature in `lib/init.php` by adding `add_theme_support('flynt-base-style');`;
-3. Drop `BlockBaseStyle` component in your Flynt `Components` directory.
+2. Enable feature in `inc/Init.php` by adding `Feature::register('BaseStyle', $basePath);`;
+3. Add a `basestyle.php` template with base style markup in your templates folder.
 
 
 ## Usage

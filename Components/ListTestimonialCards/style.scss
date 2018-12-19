@@ -1,0 +1,74 @@
+@import '../_variables';
+
+[is=flynt-list-testimonial-cards] {
+  background-color: rgba(0, 0, 0, 0.03);
+  padding: 60px 0;
+
+  .container {
+    margin: 0 auto;
+    padding: 0 $container-padding;
+    max-width: $container-max-width;
+  }
+
+  .preContent {
+    margin: 0 auto 50px;
+    max-width: $content-max-width;
+    text-align: center;
+
+    > :first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  .testimonialsList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    margin: -20px -10px 0;
+    padding: 0;
+  }
+
+  .testimonial {
+    max-width: 400px;
+    padding: 20px 10px 0;
+    width: 100%;
+
+    @media (min-width: $breakpoint-tablet) {
+      width: 33.33%;
+    }
+  }
+
+  .content {
+    background-color: $color-background;
+    padding: 15px;
+
+    &::before {
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nODgnIGhlaWdodD0nMTUnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHBhdGggZD0nTTgwIDEybC00LjcwMiAyLjQ3Mi44OTgtNS4yMzYtMy44MDQtMy43MDggNS4yNTctLjc2NEw4MCAwbDIuMzUgNC43NjQgNS4yNTguNzY0LTMuODA0IDMuNzA4Ljg5OCA1LjIzNk02MiAxMmwtNC43MDIgMi40NzIuODk4LTUuMjM2LTMuODA0LTMuNzA4IDUuMjU3LS43NjRMNjIgMGwyLjM1IDQuNzY0IDUuMjU4Ljc2NC0zLjgwNCAzLjcwOC44OTggNS4yMzZNNDQgMTJsLTQuNzAyIDIuNDcyLjg5OC01LjIzNi0zLjgwNC0zLjcwOCA1LjI1Ny0uNzY0TDQ0IDBsMi4zNSA0Ljc2NCA1LjI1OC43NjQtMy44MDQgMy43MDguODk4IDUuMjM2TTI2IDEybC00LjcwMiAyLjQ3Mi44OTgtNS4yMzYtMy44MDQtMy43MDggNS4yNTctLjc2NEwyNiAwbDIuMzUgNC43NjQgNS4yNTguNzY0LTMuODA0IDMuNzA4Ljg5OCA1LjIzNk04IDEybC00LjcwMiAyLjQ3Mi44OTgtNS4yMzZMLjM5MiA1LjUyOGw1LjI1Ny0uNzY0TDggMGwyLjM1IDQuNzY0IDUuMjU4Ljc2NC0zLjgwNCAzLjcwOC44OTggNS4yMzYnIGZpbGw9JyNGOTMnLz48L3N2Zz4=");
+      background-repeat: no-repeat;
+      background-size: 120px auto;
+      content: '';
+      display: block;
+      height: 20px;
+      margin-bottom: 10px;
+      position: relative;
+      width: 100%;
+    }
+
+    > :first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+}

@@ -23,7 +23,7 @@ class SliderImageGallery extends window.HTMLDivElement {
       infinite: false,
       responsive: [
         {
-          breakpoint: 576,
+          breakpoint: 768,
           settings: {
             arrows: false
           }

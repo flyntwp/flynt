@@ -1,0 +1,70 @@
+@import '../variables';
+
+[is=flynt-block-image-text] {
+  .container {
+    margin: 60px auto;
+    max-width: $container-max-width;
+    padding: 0 $container-padding;
+  }
+
+  .box {
+    margin: 0 auto;
+    max-width: $content-max-width;
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      align-content: center;
+      display: flex;
+      margin: 0 -20px;
+      max-width: none;
+
+      &-inner {
+        padding: 0 20px;
+        width: 50%;
+      }
+
+      &--imageLeft {
+        flex-direction: row;
+      }
+
+      &--imageRight {
+        flex-direction: row-reverse;
+      }
+    }
+
+    &-inner {
+      &--content {
+        > :first-child {
+          margin-top: 0;
+          padding-top: 0;
+        }
+
+        > :last-child {
+          margin-bottom: 0;
+          padding-bottom: 0;
+        }
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        &--image {
+          width: 60%;
+        }
+
+        &--content {
+          width: 40%;
+        }
+      }
+    }
+  }
+
+  .figure {
+    font-size: 0.8rem;
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      margin-bottom: 0;
+
+      &-caption {
+        position: absolute;
+      }
+    }
+  }
+}

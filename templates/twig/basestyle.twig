@@ -1,0 +1,197 @@
+{% extends 'twig/_document.twig' %}
+
+{% block content %}
+  <style>
+    .container {
+      padding: 0 20px;
+    }
+
+    .content {
+      margin: 0 auto;
+      max-width: 600px;
+    }
+  </style>
+  <div class="container">
+    <div class="content">
+      <section>
+        <h1>Base Style</h1>
+        <p>This style guide exemplifies the base styles.</p>
+      </section>
+      <section>
+        <p class="h3"><strong>We support our portfolio companies</strong> not only with capital, but with real operations know-how, access to an international network and active fundraising support.</p>
+        <p>WordPress, the premier free open-source blogging utility, has gone through several upgrades in its life. Today it’s one of the most popular blogging tools on the Internet; it’s easy to use, powerful, and very versatile. It also has a very active base of skilled users who are eager to improve the product and to help out those who haven’t tried it before.</p>
+        <hr>
+        <p>Though the <a href="https://bleech.de">Strayhorn 1.5</a> version is the favorite for many, it is not as stable or as secure as the newest version 2.0.3. The best part of the new version is the security patch; the new “nonce” security key reduces the chances of a malicious hacker finding a way into your admin panel.</p>
+        <figure>
+          <img src="https://via.placeholder.com/770x513?text=3:2%20ratio" alt="Placeholder">
+          <figcaption>A caption for this image</figcaption>
+        </figure>
+        <p>Besides the security patch, though, several <b>minor bugs</b> have been <i>squashed</i> with this version. Though a major upgrade to 2.1 is due out soon, the 2.0.3 is something you should definitely download and install if only because of the security fixes, which were actually backported from the major upgrade files.</p>
+        <blockquote><p>Are you one of the thousands of Iphone owners who has no idea that they can get free games for their Iphone?</p></blockquote>
+        <p>In addition to the 2.0.3 install, you should be aware that some bugs have already been found, and that a plugin will need to be installed to repair those bugs. If you modify any of the files that this patch plugin fixes, you’ll need to either merge the changes with the new files or make those changes manually once again. You can find these issues by running a diff to locate changes; if the only changes you find are your own, then you’re fine, and otherwise you’ll need to merge them manually into the new files.</p>
+        <hr>
+        <form>
+          <fieldset>
+            <label for="textInput">Text Input</label><br>
+            <input id="textInput" type="text" name="text" placeholder="Placeholder"><br>
+            <label for="emailInput" >Email Input</label><br>
+            <input id="emailInput" type="email" name="email" placeholder="Placeholder"><br>
+            <label for="searchInput">Search Input</label><br>
+            <input id="searchInput" type="search" name="search" placeholder="Placeholder"><br>
+            <label for="passwordInput">Password Input</label><br>
+            <input id="passwordInput" type="password" name="password" placeholder="Placeholder"><br>
+            <label for="textarea">Your message</label><br>
+            <textarea id="textarea"></textarea><br>
+            <select name="select">
+              <option value="select-value-1">Select Option #1</option>
+              <option value="select-value-2">Select Option #2</option>
+              <option value="select-value-3">Select Option #3</option>
+            </select>
+          </fieldset>
+          <fieldset>
+            <legend>Checkbox Inputs</legend>
+            <label><input type="checkbox" name="checkbox" value="checkbox-value-1">Checkbox Label #1</label><br>
+            <label><input type="checkbox" name="checkbox" value="checkbox-value-2">Checkbox Label #2</label><br>
+            <label><input type="checkbox" name="checkbox" value="checkbox-value-3">Checkbox Label #3</label>
+          </fieldset>
+          <fieldset>
+            <legend>Radio Inputs</legend>
+            <label><input type="radio" name="radio" value="radio-value-1">Radio Label #1</label><br>
+            <label><input type="radio" name="radio" value="radio-value-2">Radio Label #2</label><br>
+            <label><input type="radio" name="radio" value="radio-value-3">Radio Label #3</label>
+          </fieldset>
+          <p><button>A &lt;button&gt;-element without a type-attribute has reset styles, so it can be used as a semantic tag on other interface elements.</button></p>
+          <p>
+            <button type="button" class="btn">Type Button</button>
+            <button type="button" class="btn btn--primary">Type Button Primary</button>
+          </p>
+          <p>
+            <button type="submit" class="btn">Type Submit Button</button>
+            <button type="submit" class="btn btn--primary">Type Submit Button Primary</button>
+          </p>
+          <p>
+            <button type="reset" class="btn">Type Reset Button</button>
+            <button type="reset" class="btn btn--primary">Type Reset Button Primary</button>
+          </p>
+          <p>
+            <a class="btn">Link Button</a>
+            <a class="btn btn--primary">Link Button Primary</a>
+          </p>
+          <p>
+            <button type="button" disabled class="btn">Button Disabled</button>
+            <button type="button" disabled class="btn btn--primary">Button Primary Disabled</button>
+          </p>
+          <p><button type="button" class="btn btn--block">Button Block</button></p>
+          <p><button type="button" class="btn btn--primary btn--block">Button Primary Block</button></p>
+        </form>
+        <hr>
+        <h2>The best part of the new version</h2>
+        <p>In addition to the 2.0.3 install, you should be aware that some bugs have already been found, and that a plugin will need to be installed to repair those bugs.</p>
+        <ul>
+          <li>premier free open-source blogging
+          <li>several upgrades in its life</li>
+          <li>definitely download and install</li>
+            <ol>
+              <li>premier free open-source blogging
+              <li>several upgrades in its life</li>
+              <li>definitely download and install</li>
+            </ol>
+          <li>free games for their Iphone</li>
+            <ul>
+              <li>premier free open-source blogging
+              <li>several upgrades in its life</li>
+              <li>definitely download and install</li>
+            </ul>
+          <li>modify any of the files</li>
+        </ul>
+        <p>If you modify any of the files that this patch plugin fixes, you’ll need to either merge the changes with the new files or make those changes manually once again. You can find these issues by running a diff to locate changes.</p>
+        <ol>
+          <li>premier free open-source blogging
+          <li>several upgrades in its life</li>
+          <li>definitely download and install</li>
+            <ol>
+              <li>premier free open-source blogging
+              <li>several upgrades in its life</li>
+              <li>definitely download and install</li>
+            </ol>
+          <li>free games for their Iphone</li>
+            <ul>
+              <li>premier free open-source blogging
+              <li>several upgrades in its life</li>
+              <li>definitely download and install</li>
+            </ul>
+          <li>modify any of the files</li>
+        </ol>
+        <p>Besides the security patch, though, several <strong>minor bugs</strong> have been <em>squashed</em> with this version. Though a major upgrade to 2.1 is due out soon, the 2.0.3 is something you should definitely download and install if only because of the security fixes.</p>
+        <dl>
+          <dt>Premier free open-source blogging</dt>
+          <dd>If you modify any of the files that this patch plugin fixes, you’ll need to either merge the changes with the new files or make those changes manually once again. You can find these issues by running a diff to locate changes.</dd>
+          <dt>Several upgrades in its life</dt>
+          <dd>If you modify any of the files that this patch plugin fixes, you’ll need to either merge the changes with the new files or make those changes manually once again. You can find these issues by running a diff to locate changes.</dd>
+          <dt>Definitely download and install</dt>
+          <dd>If you modify any of the files that this patch plugin fixes, you’ll need to either merge the changes with the new files or make those changes manually once again. You can find these issues by running a diff to locate changes.</dd>
+        </dl>
+        <h2>Headline H2</h2>
+        <p>WordPress, the premier free open-source blogging utility, has gone through several upgrades in its life. Today it’s one of the most popular blogging tools on the Internet; it’s easy to use, powerful, and very versatile. It also has a very active base of skilled users who are eager to improve the product and to help out those who haven’t tried it before.</p>
+        <h3>Headline H3</h3>
+        <p>WordPress, the premier free open-source blogging utility, has gone through several upgrades in its life. Today it’s one of the most popular blogging tools on the Internet; it’s easy to use, powerful, and very versatile. It also has a very active base of skilled users who are eager to improve the product and to help out those who haven’t tried it before.</p>
+        <h4>Headline H4</h4>
+        <p>WordPress, the premier free open-source blogging utility, has gone through several upgrades in its life. Today it’s one of the most popular blogging tools on the Internet; it’s easy to use, powerful, and very versatile. It also has a very active base of skilled users who are eager to improve the product and to help out those who haven’t tried it before.</p>
+        <h5>Headline H5</h5>
+        <p>WordPress, the premier free open-source blogging utility, has gone through several upgrades in its life. Today it’s one of the most popular blogging tools on the Internet; it’s easy to use, powerful, and very versatile. It also has a very active base of skilled users who are eager to improve the product and to help out those who haven’t tried it before.</p>
+        <h6>Headline H6</h6>
+        <p>WordPress, the premier free open-source blogging utility, has gone through several upgrades in its life. Today it’s one of the most popular blogging tools on the Internet; it’s easy to use, powerful, and very versatile. It also has a very active base of skilled users who are eager to improve the product and to help out those who haven’t tried it before.</p>
+        <div class="scrollableTableWrapper">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Ingredients</th>
+                <th scope="col">Serves 12</th>
+                <th scope="col">Serves 24</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>milk</td>
+                <td>1 quart</td>
+                <td>2 quart</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>cinnamon sticks</td>
+                <td>2</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>cloves</td>
+                <td>5</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>egg yolks</td>
+                <td>12</td>
+                <td>24</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>cups sugar</td>
+                <td>1 &frac12; cups</td>
+                <td>3 cups</td>
+              </tr>
+              <tr>
+                <th scope="row">6</th>
+                <td>dark rum</td>
+                <td>1 &frac12; cups</td>
+                <td>3 cups</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+{% endblock %}

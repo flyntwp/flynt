@@ -1,0 +1,25 @@
+.postTeaser {
+  padding-bottom: 40px;
+
+  @media (min-width: $breakpoint-tablet) {
+    display: flex;
+    margin: 0 -20px;
+
+    .thumbnail,
+    &-content {
+      padding: 0 20px;
+    }
+
+    .thumbnail {
+      width: 40%;
+    }
+
+    &-content {
+      width: 60%;
+    }
+  }
+
+  .read-more {
+    white-space: nowrap;
+  }
+}

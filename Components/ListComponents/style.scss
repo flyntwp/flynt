@@ -1,0 +1,92 @@
+@import '../variables';
+
+[is=flynt-list-components] {
+  .container {
+    display: flex;
+    justify-content: center;
+    margin: 60px auto;
+    max-width: $container-max-width;
+    padding: 0 $container-padding;
+  }
+
+  .components {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .component {
+    display: block;
+    padding-bottom: 100px;
+
+    &--noImage {
+      justify-content: center;
+    }
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      display: flex;
+    }
+
+    &-previews {
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        margin-right: 40px;
+        padding: 0 20px 20px 0;
+        position: relative;
+      }
+    }
+
+    &-previewImage {
+      background-color: $color-background;
+      box-shadow: 0 0 11px rgba(0, 0, 0, 0.15);
+      position: relative;
+      overflow: hidden;
+
+      img {
+        min-height: 100%;
+        object-fit: contain;
+        position: absolute;
+      }
+
+      &--desktop {
+        height: 0;
+        max-width: $content-max-width - 20px;
+        padding-bottom: percentage(800/1280);
+        width: 100%;
+
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          width: $content-max-width - 20px;
+        }
+      }
+
+      &--mobile {
+        display: none;
+
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          bottom: 0;
+          display: block;
+          height: 236px;
+          position: absolute;
+          right: 0;
+          width: 160px;
+        }
+      }
+    }
+
+    &-content {
+      max-width: $content-max-width;
+
+      > :first-child {
+        margin-top: 0;
+
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          padding-top: 0;
+        }
+      }
+
+      > :last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+    }
+  }
+}

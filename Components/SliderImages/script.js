@@ -22,7 +22,7 @@ class SliderImages extends window.HTMLDivElement {
       arrows: true,
       responsive: [
         {
-          breakpoint: 576,
+          breakpoint: 768,
           settings: {
             arrows: false,
             dots: true

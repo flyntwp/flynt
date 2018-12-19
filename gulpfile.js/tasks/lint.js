@@ -17,19 +17,21 @@ module.exports = function (config) {
     }
   }
 
-  gulp.task('lint:stylus', function () {
-    const stylint = require('gulp-stylint')
+  gulp.task('lint:sass', function () {
+    const stylelint = require('gulp-stylelint')
     const changedInPlace = require('gulp-changed-in-place')
-    const task = gulp.src(config.lint.stylus)
-      .pipe(changedInPlace({ firstPass: true }))
-      .pipe(stylint())
-      .pipe(stylint.reporter())
-    if (global.watchMode) {
-      return task
-    } else {
-      return task
-        .pipe(stylint.reporter('fail', { failOnWarning: true }))
+    const opts = {
+      reporters: [
+        { formatter: 'string', console: true }
+      ]
     }
+    if (!global.watchMode) {
+      opts.failAfterError = true
+      opts.maxWarning = 0
+    }
+    return gulp.src(config.lint.sass)
+      .pipe(changedInPlace({ firstPass: true }))
+      .pipe(stylelint(opts))
   })
 
   gulp.task('lint:js', function () {
@@ -66,13 +68,13 @@ module.exports = function (config) {
   })
 
   if (phpCsAvailable) {
-    gulp.task('lint', gulp.parallel(['lint:stylus', 'lint:js', 'lint:php']))
+    gulp.task('lint', gulp.parallel(['lint:sass', 'lint:js', 'lint:php']))
   } else {
     const log = require('fancy-log')
     const colors = require('ansi-colors')
     log(colors.yellow('PHPCS not found in PATH! Please install PHPCS to enable the php linter:'))
     log(colors.yellow.underline('https://github.com/squizlabs/PHP_CodeSniffer'))
 
-    gulp.task('lint', ['lint:stylus', 'lint:js'])
+    gulp.task('lint', ['lint:sass', 'lint:js'])
   }
 }

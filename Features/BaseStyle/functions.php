@@ -47,7 +47,7 @@ function templateInclude($template)
     global $wp_query;
 
     if (isset($wp_query->query_vars['BaseStyle'])) {
-        return __DIR__ . '/template.php';
+        return get_template_directory() . '/templates/basestyle.php';
     }
 
     return $template;

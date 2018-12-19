@@ -15,7 +15,7 @@ module.exports = {
   },
   copy: [
     './{Components,Features,assets}/**/*',
-    '!./{Components,Features,assets}/**/*.{js,styl,sass,less}'
+    '!./{Components,Features,assets}/**/*.{js,styl,scss,less}'
   ],
   dest: dest,
   rev: {
@@ -43,21 +43,20 @@ module.exports = {
   sourcemaps: {
     sourceRoot: '/app/themes/flynt-starter-theme/'
   },
-  stylus: [
-    './{Components,Features,assets}/**/*.styl',
-    '!./{Components,Features,assets}/**/_*.styl'
-
+  sass: [
+    './{Components,Features,assets}/**/*.scss',
+    '!./{Components,Features,assets}/**/_*.scss'
   ],
   watch: {
-    stylus: './{Components,Features,assets}/**/*.styl',
+    sass: ['./{Components,Features,assets}/**/*.scss'],
     php: [
       './**/*.php',
       '!./{Components,Features,assets}/**/*.php'
     ],
-    hardReloadOnStylFiles: ['Components/_variables.styl'],
-    stylusPartials: {
+    hardReloadOnSassFiles: ['Components/_variables.scss'],
+    sassPartials: {
       partialCssFilenamePrefix: '_',
-      rootCssFilename: 'style.styl',
+      rootCssFilename: 'style.scss',
       stopSearchDirnames: ['Components', 'Features']
     }
   },
@@ -67,10 +66,8 @@ module.exports = {
     ]
   },
   lint: {
-    stylus: './{Components,Features,assets}/**/*.styl',
-    js: [
-      './{Components,Features,assets,gulpfile.js}/**/*.js'
-    ],
+    sass: ['./{Components,Features,assets}/**/*.scss'],
+    js: ['./{Components,Features,assets,gulpfile.js}/**/*.js'],
     php: [
       './**/*.php',
       '!./dist/**/*.php',

@@ -30,14 +30,14 @@ Flynt\registerFields('ListTestimonialCards', [
                 ],
             ],
             [
-                'label' => 'Testimonial List',
+                'label' => 'Testimonials',
                 'type' => 'repeater',
-                'name' => 'testimorialsList',
+                'name' => 'testimonials',
                 'collapsed' => '',
                 'min' => 0,
                 'max' => 0,
                 'layout' => 'table',
-                'button_label' => 'Add Testimorial',
+                'button_label' => 'Add Testimonial',
                 'sub_fields' => [
                     [
                         'label' => 'Content',

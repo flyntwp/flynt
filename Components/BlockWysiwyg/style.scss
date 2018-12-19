@@ -1,0 +1,27 @@
+@import '../_variables';
+
+[is=flynt-block-wysiwyg] {
+  .container {
+    margin: 0 auto 60px;
+    padding: 0 $container-padding;
+  }
+
+  .content {
+    margin: 0 auto;
+    max-width: $content-max-width;
+    text-align: inherit;
+
+    &--textLeft {
+      text-align: left;
+    }
+
+    &--textCenter {
+      text-align: center;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+}

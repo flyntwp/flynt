@@ -1,0 +1,69 @@
+.hamburger {
+  cursor: pointer;
+  display: block;
+  height: 22px;
+  outline: 0;
+  position: fixed;
+  right: 20px;
+  top: 22px;
+  width: 30px;
+  z-index: 999;
+
+  @media (min-width: $breakpoint-tablet) {
+    display: none;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+  }
+
+  &::before,
+  &::after,
+  &-barPrimary,
+  &-barSecondary {
+    background: $color-accent;
+    display: block;
+    height: 2px;
+    left: 0;
+    position: absolute;
+    width: 30px;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out, background 0.2s ease-in-out;
+  }
+
+  &::before {
+    top: 0;
+  }
+
+  &-barPrimary,
+  &-barSecondary {
+    top: 10px;
+  }
+
+  &::after {
+    top: 20px;
+  }
+}
+
+.navigationMain--isActive .hamburger {
+  &::before,
+  &::after {
+    opacity: 0;
+  }
+
+  &::before {
+    transform: scale(0) translateY(10px);
+  }
+
+  &::after {
+    transform: scale(0) translateY(-10px);
+  }
+
+  &-barPrimary {
+    transform: rotate(45deg);
+  }
+
+  &-barSecondary {
+    transform: rotate(-45deg);
+  }
+}

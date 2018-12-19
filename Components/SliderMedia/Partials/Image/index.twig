@@ -1,8 +1,0 @@
-<img class="image" srcset="
-  {{ mediaSlide.image.src | resize(400, 225) }} 400w,
-  {{ mediaSlide.image.src | resize(800, 450) }} 800w,
-  {{ mediaSlide.image.src | resize(1110, 624) }} 1110w,
-  {{ mediaSlide.image.src | resize(1600, 900) }} 1600w"
-  src="{{ mediaSlide.image.src | resize(1110, 624) }}"
-  sizes="(min-width: 1140px) 1110px, calc(100vw - 30px)"
-  alt="{{ mediaSlide.image.alt|e('html_attr') }}">

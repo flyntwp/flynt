@@ -1,0 +1,13 @@
+@import '../_variables';
+
+[is=flynt-block-image] {
+  .container {
+    margin: 60px auto;
+    max-width: $container-max-width;
+    padding: 0 $container-padding;
+  }
+
+  .figure-caption {
+    position: absolute;
+  }
+}
