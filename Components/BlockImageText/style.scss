@@ -1,8 +1,8 @@
 [is=flynt-block-image-text] {
+  margin: $component-spacing 0;
+
   .container {
-    margin: 60px auto;
-    max-width: $container-max-width;
-    padding: 0 $container-padding;
+    @extend %centerMaxWidthContainer;
   }
 
   .box {
@@ -10,7 +10,7 @@
     max-width: $content-max-width;
 
     @media (min-width: $breakpoint-tablet-horizontal) {
-      align-content: center;
+      align-items: center;
       display: flex;
       margin: 0 -20px;
       max-width: none;
@@ -31,15 +31,7 @@
 
     &-inner {
       &--content {
-        > :first-child {
-          margin-top: 0;
-          padding-top: 0;
-        }
-
-        > :last-child {
-          margin-bottom: 0;
-          padding-bottom: 0;
-        }
+        @extend %resetContentMargins;
       }
 
       @media (min-width: $breakpoint-desktop) {

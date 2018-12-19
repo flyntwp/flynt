@@ -1,4 +1,4 @@
-/* Shorthands to help writing easier to understand code. */
+// Shorthands to help writing easier to understand code.
 
 @mixin fontFace($family, $file, $weight: 'normal', $style: 'normal', $woff2: true, $base-path: '../../Components/DocumentDefault/Fonts/') {
   @font-face {
@@ -17,13 +17,15 @@
   }
 }
 
-%container {
+%centerMaxWidthContainer {
   margin: 0 auto;
   max-width: $container-max-width;
-  padding: $container-padding;
+  overflow: visible;
+  padding: 0 $container-padding;
+  position: relative;
 }
 
-.contentReset {
+%resetContentMargins {
   > :first-child {
     margin-top: 0;
     padding-top: 0;

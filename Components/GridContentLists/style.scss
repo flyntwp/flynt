@@ -1,28 +1,18 @@
 
 [is=flynt-grid-content-lists] {
   background-color: rgba(0, 0, 0, 0.03);
-  padding: 60px 0;
+  padding: $component-spacing 0;
 
   .container {
-    margin: 0 auto;
-    padding: 0 $container-padding;
-    max-width: $container-max-width;
+    @extend %centerMaxWidthContainer;
   }
 
   .preContent {
+    @extend %resetContentMargins;
+
     margin: 0 auto 50px;
     max-width: $content-max-width;
     text-align: center;
-
-    > :first-child {
-      margin-top: 0;
-      padding-top: 0;
-    }
-
-    > :last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
   }
 
   ul {
@@ -53,19 +43,11 @@
   }
 
   .content {
+    @extend %resetContentMargins;
+
     background-color: $color-background;
     height: 100%;
     padding: 25px 30px;
-
-    > :first-child {
-      margin-top: 0;
-      padding-top: 0;
-    }
-
-    > :last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
 
     ul > li {
       border-bottom: 1px solid rgba(0, 0, 0, 0.06);

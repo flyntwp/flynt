@@ -1,8 +1,6 @@
 [is=flynt-navigation-footer] {
   .container {
-    margin: 0 auto;
-    max-width: $container-max-width;
-    padding: 0 $container-padding;
+    @extend %centerMaxWidthContainer;
   }
 
   .navigation {

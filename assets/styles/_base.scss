@@ -47,12 +47,14 @@ body,
 .mainContent {
   flex: 1 0 auto;
 
-  > .flyntComponent:first-child .container {
-    margin-top: 0;
-  }
+  > .flyntComponent {
+    &:first-child {
+      margin-top: 0;
+    }
 
-  > .flyntComponent:last-child .container {
-    margin-bottom: 0;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 

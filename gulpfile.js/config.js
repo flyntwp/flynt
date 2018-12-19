@@ -9,7 +9,6 @@ module.exports = {
     watchOptions: {
       ignoreInitial: true
     },
-    files: ['dist/{Components,Features,assets}/**/*.css'],
     injectChanges: true,
     reloadDebounce: 1000
   },

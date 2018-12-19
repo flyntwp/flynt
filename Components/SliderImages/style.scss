@@ -1,18 +1,15 @@
 $content-max-width: 800px;
 
 [is=flynt-slider-images] {
-  .container {
-    margin: 60px auto;
-    max-width: $container-max-width;
-    padding-bottom: 30px;
+  margin: $component-spacing 0;
 
-    @media (min-width: $breakpoint-tablet) {
-      padding: 0;
-    }
+  .container {
+    @extend %centerMaxWidthContainer;
   }
 
   .slider {
     background: rgba(0, 0, 0, 0.8);
+    margin-bottom: 30px;
     position: relative;
     height: 250px;
 
@@ -22,6 +19,7 @@ $content-max-width: 800px;
 
     @media (min-width: $breakpoint-tablet) {
       height: 512px;
+      margin-bottom: 0;
     }
 
     @media (min-width: $content-max-width) {

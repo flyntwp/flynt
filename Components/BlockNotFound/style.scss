@@ -1,8 +1,6 @@
 [is=flynt-block-not-found] {
   .container {
-    margin: 60px auto;
-    max-width: $container-max-width;
-    padding: 0 $container-padding;
+    @extend %centerMaxWidthContainer;
   }
 
   .content {

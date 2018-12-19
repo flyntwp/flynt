@@ -1,10 +1,11 @@
 [is=flynt-list-components] {
+  margin: $component-spacing 0;
+
   .container {
+    @extend %centerMaxWidthContainer;
+
     display: flex;
     justify-content: center;
-    margin: 60px auto;
-    max-width: $container-max-width;
-    padding: 0 $container-padding;
   }
 
   .components {
@@ -71,19 +72,13 @@
     }
 
     &-content {
+      @extend %resetContentMargins;
+
       max-width: $content-max-width;
+      padding-top: 20px;
 
-      > :first-child {
-        margin-top: 0;
-
-        @media (min-width: $breakpoint-tablet-horizontal) {
-          padding-top: 0;
-        }
-      }
-
-      > :last-child {
-        margin-bottom: 0;
-        padding-bottom: 0;
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        padding-top: 0;
       }
     }
   }

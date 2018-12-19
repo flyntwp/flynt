@@ -1,7 +1,8 @@
 [is=flynt-block-wysiwyg] {
+  margin-bottom: $component-spacing;
+
   .container {
-    margin: 0 auto 60px;
-    padding: 0 $container-padding;
+    @extend %centerMaxWidthContainer;
   }
 
   .content {

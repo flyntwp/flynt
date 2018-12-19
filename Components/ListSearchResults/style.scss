@@ -1,9 +1,8 @@
-
 [is=flynt-list-search-results] {
+  margin: $component-spacing 0;
+
   .container {
-    margin: 0 auto;
-    max-width: $container-max-width;
-    padding: 0 $container-padding;
+    @extend %centerMaxWidthContainer;
 
     @import 'Partials/SearchHead/_style';
     @import 'Partials/SearchList/_style';

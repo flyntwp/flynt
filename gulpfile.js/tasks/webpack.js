@@ -1,5 +1,7 @@
 const gulp = require('gulp')
 
+let previousHash
+
 const webpackTask = function (callback) {
   const log = require('fancy-log')
   const PluginError = require('plugin-error')
@@ -17,9 +19,10 @@ const webpackTask = function (callback) {
       })
     }
 
-    if (global.watchMode) {
+    if (global.watchMode && previousHash !== stats.hash) {
       const browserSync = require('browser-sync')
       browserSync.reload()
+      previousHash = stats.hash
     }
     log('[webpack:build] Completed\n' + stats.toString({
       assets: false,

@@ -9,34 +9,30 @@
   z-index: 999;
 
   .container {
-    padding: 1rem $container-padding;
+    @extend %centerMaxWidthContainer;
+
+    padding-bottom: $container-padding;
+    padding-top: $container-padding;
 
     @media (min-width: $breakpoint-tablet) {
       align-items: center;
       display: flex;
       justify-content: space-between;
-      margin: 0 auto;
-      max-width: $container-max-width;
     }
   }
 
   .content {
+    @extend %resetContentMargins;
+
     font-size: 0.8rem;
-    padding: 1rem 0;
+    padding-bottom: $container-padding;
 
-    > :first-child {
-      margin-top: 0;
-      padding-top: 0;
-    }
-
-    > :last-child {
-      margin-bottom: 0;
+    @media (min-width: $breakpoint-tablet) {
       padding-bottom: 0;
     }
   }
 
   .btnClose {
-    margin-bottom: 1rem;
     margin-left: 0;
 
     @media (min-width: $breakpoint-tablet) {

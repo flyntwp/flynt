@@ -1,9 +1,8 @@
-
 [is=flynt-list-posts] {
+  margin: $component-spacing 0;
+
   .listPosts {
-    margin: 0 auto;
-    max-width: $container-max-width;
-    padding: $container-padding;
+    @extend %centerMaxWidthContainer;
 
     &-list {
       list-style: none;

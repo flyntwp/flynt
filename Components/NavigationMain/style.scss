@@ -18,6 +18,8 @@ body {
 
 [is=flynt-navigation-main] {
   .navigationMain {
+    @extend %centerMaxWidthContainer;
+
     &-head {
       background: $color-background;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.13);
@@ -34,10 +36,9 @@ body {
 
     @media (min-width: $breakpoint-tablet) {
       height: 1%;
-      margin: 0 auto;
-      max-width: $container-max-width;
-      padding: 40px $container-padding;
       overflow: auto;
+      padding-bottom: 40px;
+      padding-top: 40px;
 
       &-head {
         box-shadow: none;

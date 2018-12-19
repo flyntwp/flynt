@@ -1,6 +1,6 @@
 [is=flynt-grid-posts-slider] {
   background-color: rgba(0, 0, 0, 0.03);
-  padding: 60px 0;
+  padding: $component-spacing 0;
 
   .container {
     margin: 0 auto;
@@ -12,6 +12,8 @@
   }
 
   .preContent {
+    @extend %resetContentMargins;
+
     margin: 0 auto 50px;
     padding: 0 $container-padding;
     max-width: $content-max-width;
@@ -19,16 +21,6 @@
 
     @media (min-width: $content-max-width) {
       padding: 0;
-    }
-
-    > :first-child {
-      margin-top: 0;
-      padding-top: 0;
-    }
-
-    > :last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
     }
   }
 
