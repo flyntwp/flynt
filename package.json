@@ -58,6 +58,7 @@
     "jeet": "^7.0.0",
     "lazysizes": "^4.1.4",
     "lodash": "^4.17.10",
+    "node-sass-glob-importer": "^5.2.0",
     "normalize.css": "^8.0.1",
     "plugin-error": "^1.0.1",
     "prettier": "^1.15.3",

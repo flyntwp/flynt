@@ -79,10 +79,3 @@ module.exports = function (config) {
   }
   return output
 }
-
-function removeExtension (filePath) {
-  return path.join(
-    path.dirname(filePath),
-    path.basename(filePath, path.extname(filePath))
-  )
-}

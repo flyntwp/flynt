@@ -44,11 +44,14 @@ module.exports = {
     sourceRoot: '/app/themes/flynt-starter-theme/'
   },
   sass: [
-    './{Components,Features,assets}/**/*.scss',
-    '!./{Components,Features,assets}/**/_*.scss'
+    './assets/style.scss'
   ],
   watch: {
     sass: ['./{Components,Features,assets}/**/*.scss'],
+    // sass: [
+    //   './{Components,Features,assets}/**/*.scss',
+    //   '!./{Components,Features,assets}/**/_*.scss'
+    // ],
     php: [
       './**/*.php',
       '!./{Components,Features,assets}/**/*.php'
