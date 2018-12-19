@@ -1,4 +1,3 @@
-@import '../_variables';
 $slideGutter: 20px;
 
 [is=flynt-grid-posts-slider] {
@@ -125,12 +124,12 @@ $slideGutter: 20px;
     z-index: 2;
 
     &.slick-prev {
-      background: url('../../Components/SliderImages/Assets/arrow-left.svg') no-repeat center;
+      background: url('../Components/SliderImages/Assets/arrow-left.svg') no-repeat center;
       left: 0;
     }
 
     &.slick-next {
-      background: url('../../Components/SliderImages/Assets/arrow-right.svg') no-repeat center;
+      background: url('../Components/SliderImages/Assets/arrow-right.svg') no-repeat center;
       right: 0;
     }
 
