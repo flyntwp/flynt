@@ -36,20 +36,6 @@ function watchAndDelete (src, callback, dest) {
     })
 }
 
-function watchWebpack (src) {
-  gulp.watch(src, {
-    events: ['add', 'unlink']
-  })
-    .on('all', function (event) {
-      const webpackTask = require('./webpack')
-      if (webpackTask.watching) {
-        if (event === 'add' || event === 'unlink') {
-          webpackTask.watching.invalidate()
-        }
-      }
-    })
-}
-
 function findFileInParentDirectory (filename, directory, stopSearchDirnames = []) {
   if (stopSearchDirnames.includes(directory)) { return null }
   if (!directory) {
@@ -109,7 +95,6 @@ module.exports = function (config) {
         checkForCssVariablesSass(relativePath, config)
       })
     gulp.watch(config.watch.php, function () { browserSync.reload() })
-    watchWebpack(config.webpack.entry)
   })
   gulp.task(
     'watch',

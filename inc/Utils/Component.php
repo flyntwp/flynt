@@ -18,17 +18,10 @@ class Component
                 array_push($list, $dependency['name']);
             }
             return $list;
-        }, ['jquery']); // jquery as a default dependency
+        }, []); // jquery as a default dependency
 
-        // Enqueue Component Scripts if they exist
-        $scriptAbsPath = Asset::requirePath("Components/{$componentName}/script.js");
-        if (is_file($scriptAbsPath)) {
-            Asset::enqueue([
-                'type' => 'script',
-                'name' => "Flynt/Components/{$componentName}",
-                'path' => "Components/{$componentName}/script.js",
-                'dependencies' => $scriptDeps
-            ]);
+        if (!empty($scriptDeps)) {
+            Asset::addDependencies('Flynt/assets', $scriptDeps);
         }
 
         // collect style dependencies
