@@ -3,7 +3,6 @@
 namespace Flynt;
 
 use Flynt\ComponentManager;
-use Flynt\Helpers;
 
 class Defaults
 {

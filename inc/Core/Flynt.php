@@ -2,8 +2,6 @@
 namespace Flynt;
 
 use Flynt\Defaults;
-use Flynt\BuildConstructionPlan;
-use Flynt\Render;
 use Flynt\ComponentManager;
 use Dflydev\DotAccessData\Data;
 
