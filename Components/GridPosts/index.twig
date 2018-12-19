@@ -34,6 +34,7 @@
         <p class="noPosts">{{ noPostsFoundText }}</p>
       {% endif %}
     </ul>
+    {% set pagination = posts.pagination %}
     {% if pagination.pages %}
       <div class="pagination">
         <div class="pagination-prevLink">

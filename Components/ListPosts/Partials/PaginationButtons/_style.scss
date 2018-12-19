@@ -1,0 +1,14 @@
+.paginationButtons {
+  margin: 0 auto;
+  max-width: $container-max-width;
+  padding: 0 $container-padding;
+
+  &-prevWrapper,
+  &-nextWrapper {
+    width: 100%;
+  }
+
+  &-nextWrapper {
+    text-align: right;
+  }
+}

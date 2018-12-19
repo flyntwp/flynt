@@ -1,5 +1,5 @@
 {% extends 'twig/_document.twig' %}
 
 {% block content %}
-  {{ renderComponent('GridPosts', {posts: posts, pagination: pagination}) }}
+  {{ renderComponent('ListPosts', { posts: posts }) }}
 {% endblock %}
