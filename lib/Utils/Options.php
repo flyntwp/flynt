@@ -96,7 +96,7 @@ class Options
 
                 if (!$isTranslatable && $isCurrentPage) {
                     // set acf field values to default language
-                    add_filter('acf/settings/current_language', 'Flynt\Features\Acf\OptionPages::getDefaultAcfLanguage', 101);
+                    add_filter('acf/settings/current_language', 'Flynt\Utils\Options::getDefaultAcfLanguage', 101);
 
                     // hide language selector in admin bar
                     add_action('wp_before_admin_bar_render', function () {
@@ -248,12 +248,12 @@ class Options
             // switch to default language to get global options
             $sitepress->switch_lang(acf_get_setting('default_language'));
 
-            add_filter('acf/settings/current_language', 'Flynt\Features\Acf\OptionPages::getDefaultAcfLanguage', 100);
+            add_filter('acf/settings/current_language', 'Flynt\Utils\Options::getDefaultAcfLanguage', 100);
 
             // get optios from cache with global namespace
             $options = self::getCachedOptionFields('global');
 
-            remove_filter('acf/settings/current_language', 'Flynt\Features\Acf\OptionPages::getDefaultAcfLanguage', 100);
+            remove_filter('acf/settings/current_language', 'Flynt\Utils\Options::getDefaultAcfLanguage', 100);
 
             $sitepress->switch_lang(ICL_LANGUAGE_CODE);
         }
@@ -291,5 +291,10 @@ class Options
             }
             return $carry;
         }, []);
+    }
+
+    public static function getDefaultAcfLanguage()
+    {
+        return acf_get_setting('default_language');
     }
 }
