@@ -24,7 +24,7 @@
                     alt="{{ post.thumbnail.alt|e }}">
                 </figure>
               {% else %}
-                <div class="imagePlaceholder"></div>
+                <div class="imagePlaceholder"><img src="{{ placeholderImage(1280, 853) }}" alt="{{ post.title|e }}" /></div>
               {% endif %}
               <div class="content">
                 {% if post.post_date %}
