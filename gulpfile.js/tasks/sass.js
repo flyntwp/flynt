@@ -14,7 +14,7 @@ module.exports = function (config) {
       .pipe(changed(config.dest, { extension: '.css' }))
       .pipe(gulpIf(!isProduction, sourcemaps.init()))
       .pipe(sass({
-        output: isProduction ? 'compressed' : 'expanded'
+        outputStyle: isProduction ? 'compressed' : 'expanded'
       }).on('error', sass.logError))
       .pipe(autoprefixer())
       // .on('error', handleErrors)
