@@ -58,6 +58,15 @@ body,
   }
 }
 
+.container--centerMaxWidthContainer {
+  @extend %centerMaxWidthContainer;
+}
+
+.content--centerContentMaxWidth {
+  margin: 0 auto;
+  max-width: $content-max-width;
+}
+
 /**
 * 3.0 Base Style
 *
