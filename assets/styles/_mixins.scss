@@ -1,6 +1,6 @@
 // Shorthands to help writing easier to understand code.
 
-@mixin fontFace($family, $file, $weight: 'normal', $style: 'normal', $woff2: true, $base-path: '../../Components/DocumentDefault/Fonts/') {
+@mixin font-face($family, $file, $weight: 'normal', $style: 'normal', $woff2: true, $base-path: 'fonts/') {
   @font-face {
     font-family: $family;
 
