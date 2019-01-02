@@ -24,6 +24,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Flynt\loadFields('GridPosts', 'layout'),
                     Flynt\loadFields('GridPostsSlider', 'layout'),
                     Flynt\loadFields('GridListSteps', 'layout'),
+                    Flynt\loadFields('GridTeaserTiles', 'layout'),
                     Flynt\loadFields('HeroCta', 'layout'),
                     Flynt\loadFields('HeroImageText', 'layout'),
                     Flynt\loadFields('ListComponents', 'layout'),
