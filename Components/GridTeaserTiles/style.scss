@@ -1,0 +1,90 @@
+[is=flynt-grid-teaser-tiles] {
+  margin: $component-spacing 0;
+
+  .container {
+    @extend %centerMaxWidthContainer;
+  }
+
+  .teaserGrid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .teaser-wrapper {
+    display: flex;
+    height: 100%;
+    position: relative;
+
+    .contentBig {
+      @extend %resetContentMargins;
+
+      align-self: center;
+      width: 50%;
+    }
+
+    .teaser-image {
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .teaser-item {
+    flex-grow: 1;
+    min-height: 300px;
+    padding: 2px;
+    width: 25%;
+
+    a {
+      text-decoration: none;
+    }
+
+    .content {
+      @extend %resetContentMargins;
+
+      align-self: flex-end;
+      padding: 20px;
+      z-index: 10;
+
+      h4 {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+
+    &.noImage {
+      .teaser-wrapper {
+        justify-content: space-around;
+
+        .content {
+          align-self: center;
+        }
+      }
+    }
+
+    &.halfWidth {
+      flex-grow: 2;
+      width: 50%;
+    }
+
+    &.fullWidth {
+      width: 100%;
+    }
+
+    @media (max-width: 991px) {
+      width: 50%;
+
+      .contentBig {
+        width: 90%;
+      }
+    }
+
+    @media (max-width: 575px) {
+      width: 100%;
+    }
+  }
+}
