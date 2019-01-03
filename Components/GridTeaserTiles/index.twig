@@ -15,7 +15,7 @@
                   {{ item.image.src|resize(306, 296) }} 306w,
                   {{ item.image.src|resize(240, 360) }} 240w"
                   sizes="auto"
-                alt="{{ item.image.alt|e }}">
+                alt="{{ item.image.alt|e }}" data-object-fit="cover" data-object-position="center center">
                 <div class="content">
                   <h4>{{ item.title|e }}</h4>
                 </div>

@@ -7,84 +7,86 @@
 
   .teaserGrid {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     list-style: none;
     padding-left: 0;
-  }
-
-  .teaser-wrapper {
-    display: flex;
-    height: 100%;
-    position: relative;
-
-    .contentBig {
-      @extend %resetContentMargins;
-
-      align-self: center;
-      width: 50%;
-    }
-
-    .teaser-image {
-      height: 100%;
-      position: absolute;
-      width: 100%;
-      object-fit: cover;
-    }
-  }
-
-  .teaser-item {
-    flex-grow: 1;
-    min-height: 300px;
-    padding: 2px;
-    width: 25%;
 
     a {
       text-decoration: none;
     }
 
-    .content {
-      @extend %resetContentMargins;
+    .teaser-item {
+      margin-top: 1%;
+      position: relative;
+      width: 32.6%;
 
-      align-self: flex-end;
-      padding: 20px;
-      z-index: 10;
-
-      h4 {
-        color: #fff;
-        text-decoration: none;
+      &:not(:nth-child(3n)) {
+        margin-right: 1%;
       }
-    }
 
-    &.noImage {
-      .teaser-wrapper {
-        justify-content: space-around;
+      @media (max-width: 48rem) {
+        width: 49.5%;
 
-        .content {
-          align-self: center;
+        &:not(:nth-child(3n)) {
+          margin-right: 0;
+        }
+
+        &:nth-child(odd) {
+          margin-right: 1%;
         }
       }
-    }
 
-    &.halfWidth {
-      flex-grow: 2;
-      width: 50%;
-    }
+      @media (max-width: 575px) {
+        width: 100%;
 
-    &.fullWidth {
-      width: 100%;
-    }
-
-    @media (max-width: 991px) {
-      width: 50%;
-
-      .contentBig {
-        width: 90%;
+        &:nth-child(odd) {
+          margin-right: 0;
+        }
       }
-    }
 
-    @media (max-width: 575px) {
-      width: 100%;
+      &::before {
+        content: '';
+        float: left;
+        padding-top: 100%;
+      }
+
+      .teaser-wrapper {
+        display: flex;
+        height: 100%;
+        width: 100%;
+      }
+
+      .content {
+        @extend %resetContentMargins;
+
+        align-self: flex-end;
+        padding: 20px;
+        z-index: 10;
+
+        h4 {
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+
+      .teaser-image {
+        /* stylelint-disable-next-line */
+        font-family: 'object-fit: cover; object-position: center center;';
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+        position: absolute;
+        width: 100%;
+      }
+
+      &.noImage {
+        .teaser-wrapper {
+          .contentBig {
+            align-self: center;
+            padding: 0 20px;
+          }
+        }
+      }
     }
   }
 }
