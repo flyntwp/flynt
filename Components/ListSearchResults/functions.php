@@ -56,6 +56,8 @@ Options::addTranslatable('ListSearchResults', [
         'name' => 'searchResult',
         'type' => 'wysiwyg',
         'required' => 1,
+        'media_upload' => 0,
+        'delay' => 1,
         'wrapper' => [
             'class' => 'autosize',
         ],
@@ -67,6 +69,8 @@ Options::addTranslatable('ListSearchResults', [
         'name' => 'noResults',
         'type' => 'wysiwyg',
         'required' => 1,
+        'media_upload' => 0,
+        'delay' => 1,
         'wrapper' => [
             'class' => 'autosize',
         ],

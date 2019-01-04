@@ -1,5 +1,6 @@
 .searchHead {
-  .titleContent {
+  .titleContent,
+  .counter {
     @extend %resetContentMargins;
 
     padding: $container-padding 0;
@@ -7,31 +8,22 @@
 
   .searchForm {
     .label {
-      border: 0;
-      clip: rect(0 0 0 0);
       height: 1px;
-      margin: -1px;
       overflow: hidden;
-      padding: 0;
       position: absolute;
-      white-space: nowrap;
       width: 1px;
     }
 
     .field {
-      margin: 0;
       position: relative;
     }
 
     .submit {
-      background-color: transparent;
-      border: 0;
       cursor: pointer;
       height: 80px;
       line-height: 1;
       outline: 0;
       overflow: hidden;
-      padding: 0;
       position: absolute;
       right: 0;
       top: 0;
@@ -69,7 +61,6 @@
       border: 2px solid $color-accent;
       color: #9b9b9b;
       font-weight: 800;
-      line-height: 2.3;
       margin: 0;
       width: 100%;
       transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 0.275);
@@ -88,9 +79,5 @@
         }
       }
     }
-  }
-
-  .counter {
-    padding: $container-padding 0;
   }
 }
