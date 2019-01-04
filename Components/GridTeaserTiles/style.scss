@@ -16,31 +16,27 @@
     }
 
     .teaser-item {
-      margin-top: 1%;
+      width: 100%;
       position: relative;
-      width: 32.6%;
+      margin-top: 1%;
 
-      &:not(:nth-child(3n)) {
-        margin-right: 1%;
-      }
-
-      @media (max-width: 48rem) {
+      @media (min-width: $breakpoint-mobile-horizontal) {
         width: 49.5%;
-
-        &:not(:nth-child(3n)) {
-          margin-right: 0;
-        }
 
         &:nth-child(odd) {
           margin-right: 1%;
         }
       }
 
-      @media (max-width: 575px) {
-        width: 100%;
+      @media (min-width: $breakpoint-tablet) {
+        width: 32.6%;
 
         &:nth-child(odd) {
-          margin-right: 0;
+          margin-right: 0%;
+        }
+
+        &:not(:nth-child(3n)) {
+          margin-right: 1%;
         }
       }
 

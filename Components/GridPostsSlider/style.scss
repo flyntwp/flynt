@@ -15,8 +15,8 @@
     @extend %resetContentMargins;
 
     margin: 0 auto 50px;
-    padding: 0 $container-padding;
     max-width: $content-max-width;
+    padding: 0 $container-padding;
     text-align: center;
 
     @media (min-width: $content-max-width) {
@@ -106,12 +106,20 @@
 
     &.slick-prev {
       background: url('../Components/GridPostsSlider/Assets/arrow-left.svg') no-repeat center;
-      left: 0;
+      left: -20px;
+
+      @media (min-width: 1300px) {
+        left: -25px;
+      }
     }
 
     &.slick-next {
       background: url('../Components/GridPostsSlider/Assets/arrow-right.svg') no-repeat center;
-      right: 0;
+      right: -20px;
+
+      @media (min-width: 1300px) {
+        right: -25px;
+      }
     }
 
     &.slick-disabled {
