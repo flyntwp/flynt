@@ -4,8 +4,10 @@
     padding: 0;
 
     .searchList-item {
-      padding: $container-padding;
+      padding: $container-padding 0;
       border-bottom: 1px solid #9b9b9b;
+      position: relative;
+      min-height: 190px;
 
       .postLink {
         text-decoration: none;
@@ -15,10 +17,33 @@
             color: $color-accent;
           }
         }
+
+        > *:first-child {
+          margin-top: 0;
+          padding-top: 0;
+        }
+      }
+
+      .preview-image {
+        max-height: 170px;
+        position: absolute;
+        right: 100%;
+        width: 100%;
+        height: auto;
+        max-width: 200px;
+        margin-right: 20px;
+
+        img {
+          max-height: 100%;
+          max-width: 100%;
+          width: auto;
+        }
       }
 
       .excerpt {
         color: #9b9b9b;
+        margin-bottom: 0;
+        padding-bottom: 0;
       }
     }
   }

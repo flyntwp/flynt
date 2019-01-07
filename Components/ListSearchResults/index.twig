@@ -6,10 +6,10 @@
     <div class="searchList">
       {% include 'Partials/SearchList/index.twig' %}
     </div>
-    <div class="searchPagination">
-      {% if pagination.pages %}
+    {% if pagination %}
+      <div class="searchPagination">
         {% include 'Partials/SearchPagination/index.twig' %}
-      {% endif %}
-    </div>
+      </div>
+    {% endif %}
   </div>
 </div>

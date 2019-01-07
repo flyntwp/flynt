@@ -1,8 +1,21 @@
 <ul>
   {% for post in posts  %}
     <li class="searchList-item">
-      <a class="postLink" href="{{ post.link }}"><h3 class="postTitle">{{ post.title }}</h3></a>
-      <p class="excerpt">{{ post.preview }}</p>
+      {% if post.thumbnail %}
+        <div class="preview-image">
+          <img src="{{ post.thumbnail.src }}">
+        </div>
+      {% endif %}
+      <div class="content">
+        <a class="postLink" href="{{ post.link }}">
+          <h3 class="postTitle">{{ post.title }}</h3>
+        </a>
+        {% if post.preview|length > 10 %}
+          <p class="excerpt">{{ post.preview.length(40) }}</p>
+        {% else %}
+          <a class="" href="{{ post.link }}"> Read More </a>
+        {% endif %}
+      </div>
     </li>
   {% endfor %}
 </ul>

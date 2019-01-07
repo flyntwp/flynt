@@ -3,6 +3,7 @@
 
   .container {
     @extend %centerMaxWidthContainer;
+    max-width: $content-max-width;
 
     @import 'Partials/SearchHead/_style';
     @import 'Partials/SearchList/_style';
