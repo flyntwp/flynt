@@ -1,7 +1,7 @@
 .searchHead {
   .titleContent,
   .counter {
-    @extend %resetContentMargins;
+    @include resetContentMargins;
 
     padding: $container-padding 0;
   }

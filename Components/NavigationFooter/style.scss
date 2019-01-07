@@ -1,6 +1,6 @@
 [is=flynt-navigation-footer] {
   .container {
-    @extend %centerMaxWidthContainer;
+    @include centerMaxWidthContainer;
   }
 
   .navigation {

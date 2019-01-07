@@ -18,7 +18,7 @@ body {
 
 [is=flynt-navigation-main] {
   .navigationMain {
-    @extend %centerMaxWidthContainer;
+    @include centerMaxWidthContainer;
 
     &-head {
       background: $color-background;

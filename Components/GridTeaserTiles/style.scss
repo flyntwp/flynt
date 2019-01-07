@@ -2,7 +2,7 @@
   margin: $component-spacing 0;
 
   .container {
-    @extend %centerMaxWidthContainer;
+    @include centerMaxWidthContainer;
   }
 
   .teaserGrid {
@@ -53,7 +53,7 @@
       }
 
       .content {
-        @extend %resetContentMargins;
+        @include resetContentMargins;
 
         align-self: flex-end;
         padding: 20px;

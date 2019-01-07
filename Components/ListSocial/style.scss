@@ -3,11 +3,11 @@
   padding: $component-spacing 0;
 
   .container {
-    @extend %centerMaxWidthContainer;
+    @include centerMaxWidthContainer;
   }
 
   .content {
-    @extend %resetContentMargins;
+    @include resetContentMargins;
 
     color: #fff;
     margin: 10px auto;

@@ -2,7 +2,7 @@
   margin: $component-spacing 0;
 
   .container {
-    @extend %centerMaxWidthContainer;
+    @include centerMaxWidthContainer;
   }
 
   .content {
@@ -57,7 +57,7 @@
   }
 
   .panel-content {
-    @extend %resetContentMargins;
+    @include resetContentMargins;
 
     display: none;
   }

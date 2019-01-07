@@ -1,6 +1,6 @@
 [is=flynt-block-not-found] {
   .container {
-    @extend %centerMaxWidthContainer;
+    @include centerMaxWidthContainer;
   }
 
   .content {
