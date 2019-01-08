@@ -5,6 +5,7 @@ namespace Flynt;
 use Flynt\Utils\FileLoader;
 use Flynt\Bootstrap;
 
+require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/lib/Init.php';
 
 // This needs to happen first.
