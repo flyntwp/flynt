@@ -2,7 +2,8 @@
   margin: $component-spacing 0;
 
   .container {
-    @include %centerMaxWidthContainer;
+    @include centerMaxWidthContainer;
+
     max-width: $content-max-width;
 
     @import 'Partials/SearchHead/_style';

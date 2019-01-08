@@ -6,9 +6,6 @@ use Flynt\Utils\Asset;
 use Flynt\Utils\Options;
 use Timber\Timber;
 
-
-
-
 add_filter('Flynt/addComponentData?name=ListSearchResults', function ($data) {
     global $wp_query;
     $searchQuery = get_search_query();
@@ -18,13 +15,11 @@ add_filter('Flynt/addComponentData?name=ListSearchResults', function ($data) {
         $data['searchTerm'] = $searchQuery;
     }
 
-
     $data['pagination'] = Timber::get_pagination();
     $data['prevIcon'] = Asset::getContents('Components/ListSearchResults/Assets/navigation-prev.svg');
     $data['nextIcon'] = Asset::getContents('Components/ListSearchResults/Assets/navigation-next.svg');
     $data['searchIcon'] = Asset::getContents('Components/ListSearchResults/Assets/search.svg');
 
-    // var_dump($data['featured_image']);
     return $data;
 });
 
