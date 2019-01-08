@@ -20,7 +20,7 @@ add_action('wp_enqueue_scripts', function () {
     wp_localize_script('Flynt/assets/auth', 'wpData', $data);
 });
 
-add_action('wp_admin_enqueue_scripts', function () {
+add_action('admin_enqueue_scripts', function () {
     $data = [
         'templateDirectoryUri' => get_template_directory_uri() . '/dist',
     ];

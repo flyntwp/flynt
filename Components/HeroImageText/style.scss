@@ -21,7 +21,7 @@
     width: 100%;
 
     &-inner {
-      @extend %resetContentMargins;
+      @include resetContentMargins;
 
       color: #fff;
       max-width: $content-max-width;

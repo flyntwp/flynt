@@ -9,7 +9,7 @@
   z-index: 999;
 
   .container {
-    @extend %centerMaxWidthContainer;
+    @include centerMaxWidthContainer;
 
     padding-bottom: $container-padding;
     padding-top: $container-padding;
@@ -22,7 +22,7 @@
   }
 
   .content {
-    @extend %resetContentMargins;
+    @include resetContentMargins;
 
     font-size: 0.8rem;
     padding-bottom: $container-padding;

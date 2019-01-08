@@ -8,8 +8,8 @@
   }
 
   .container {
-    @extend %centerMaxWidthContainer;
-    @extend %resetContentMargins;
+    @include centerMaxWidthContainer;
+    @include resetContentMargins;
 
     text-align: center;
   }

@@ -4,11 +4,11 @@
   padding: $component-spacing 0;
 
   .container {
-    @extend %centerMaxWidthContainer;
+    @include centerMaxWidthContainer;
   }
 
   .preContent {
-    @extend %resetContentMargins;
+    @include resetContentMargins;
 
     margin: 0 auto 50px;
     max-width: $content-max-width;
@@ -43,7 +43,7 @@
   }
 
   .content {
-    @extend %resetContentMargins;
+    @include resetContentMargins;
 
     background-color: $color-background;
     height: 100%;

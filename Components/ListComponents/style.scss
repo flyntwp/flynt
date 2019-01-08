@@ -2,7 +2,7 @@
   margin: $component-spacing 0;
 
   .container {
-    @extend %centerMaxWidthContainer;
+    @include centerMaxWidthContainer;
 
     display: flex;
     justify-content: center;
@@ -72,7 +72,7 @@
     }
 
     &-content {
-      @extend %resetContentMargins;
+      @include resetContentMargins;
 
       max-width: $content-max-width;
       padding-top: 20px;

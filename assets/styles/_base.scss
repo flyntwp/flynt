@@ -59,7 +59,7 @@ body,
 }
 
 .container--centerMaxWidthContainer {
-  @extend %centerMaxWidthContainer;
+  @include centerMaxWidthContainer;
 }
 
 .content--centerContentMaxWidth {

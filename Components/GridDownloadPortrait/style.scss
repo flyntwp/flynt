@@ -2,11 +2,11 @@
   margin: $component-spacing 0;
 
   .container {
-    @extend %centerMaxWidthContainer;
+    @include centerMaxWidthContainer;
   }
 
   .preContent {
-    @extend %resetContentMargins;
+    @include resetContentMargins;
 
     margin: 0 auto 1rem;
     max-width: $content-max-width;
