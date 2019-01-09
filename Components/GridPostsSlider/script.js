@@ -10,6 +10,9 @@ class GridPostsSlider extends window.HTMLDivElement {
     return self
   }
 
+  resolveElements () {
+  }
+
   connectedCallback () {
     $(window).on('load resize orientationchange', function () {
       $('.gridPosts').each(function () {
