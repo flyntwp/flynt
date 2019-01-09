@@ -3,7 +3,6 @@
 namespace Flynt\Components\ListFacts;
 
 use Flynt;
-use Flynt\Utils\Component;
 
 Flynt\registerFields('ListFacts', [
     'layout' => [

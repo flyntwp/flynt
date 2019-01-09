@@ -3,7 +3,6 @@
 namespace Flynt\Components\SliderImages;
 
 use Flynt;
-use Flynt\Utils\Component;
 
 Flynt\registerFields('SliderImages', [
     'layout' => [

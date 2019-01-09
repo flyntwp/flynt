@@ -4,7 +4,6 @@ namespace Flynt\Components\ListSearchResults;
 
 use Flynt\Utils\Asset;
 use Flynt\Utils\Options;
-use Flynt\Utils\Component;
 use Timber\Timber;
 
 add_filter('Flynt/addComponentData?name=ListSearchResults', function ($data) {

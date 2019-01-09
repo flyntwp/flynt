@@ -3,7 +3,6 @@
 namespace Flynt\Components\GridTeaserTiles;
 
 use Flynt;
-use Flynt\Utils\Component;
 
 Flynt\registerFields('GridTeaserTiles', [
     'layout' => [
