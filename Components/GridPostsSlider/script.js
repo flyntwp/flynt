@@ -11,47 +11,46 @@ class GridPostsSlider extends window.HTMLDivElement {
   }
 
   connectedCallback () {
-    $(window).on('load resize orientationchange', function() {
-        $('.gridPosts').each(function(){
-            var $carousel = $(this);
-            if ($(window).width() > 1100) {
-                if ($carousel.hasClass('slick-initialized')) {
-                    $carousel.slick('unslick');
+    $(window).on('load resize orientationchange', function () {
+      $('.gridPosts').each(function () {
+        var $carousel = $(this)
+        if ($(window).width() > 1100) {
+          if ($carousel.hasClass('slick-initialized')) {
+            $carousel.slick('unslick')
+          }
+        } else {
+          if (!$carousel.hasClass('slick-initialized')) {
+            $carousel.slick({
+              arrows: false,
+              dots: true,
+              mobileFirst: true,
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              responsive: [
+                {
+                  breakpoint: 600,
+                  settings: {
+                    slidesToShow: 1
+                  }
+                },
+                {
+                  breakpoint: 768,
+                  settings: {
+                    slidesToShow: 2
+                  }
+                },
+                {
+                  breakpoint: 991,
+                  settings: {
+                    slidesToShow: 3
+                  }
                 }
-            }
-            else{
-                if (!$carousel.hasClass('slick-initialized')) {
-                    $carousel.slick({
-                        arrows: false,
-                        dots: true,
-                        mobileFirst: true,
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        responsive: [
-                          {
-                            breakpoint: 600,
-                            settings: {
-                              slidesToShow: 1,
-                            }
-                          },
-                          {
-                            breakpoint: 768,
-                            settings: {
-                              slidesToShow: 2,
-                            }
-                          },
-                          {
-                            breakpoint: 991,
-                            settings: {
-                              slidesToShow: 3,
-                            }
-                          },
-                        ]
-                    });
-                }
-            }
-        });
-    });
+              ]
+            })
+          }
+        }
+      })
+    })
   }
 }
 

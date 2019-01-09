@@ -148,7 +148,7 @@
       padding: 0;
       position: relative;
 
-      &:after {
+      &::after {
         background: url('../Components/GridPostsSlider/Assets/arrow-right-btn.svg') no-repeat center;
         content: '';
         display: inline-block;
