@@ -9,7 +9,7 @@ module.exports = function (config) {
   const babelQuery = {
     presets: [
       ['@babel/preset-env', {
-        useBuiltIns: 'entry'
+        useBuiltIns: 'usage'
       }]
     ]
   }

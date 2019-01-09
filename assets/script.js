@@ -1,5 +1,4 @@
 import 'console-polyfill'
-import '@babel/polyfill'
 import 'normalize.css/normalize.css'
 
 import installCE from 'document-register-element/pony'
