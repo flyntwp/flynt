@@ -10,35 +10,48 @@ class GridPostsSlider extends window.HTMLDivElement {
     return self
   }
 
-  resolveElements () {
-    this.$gridPostsSlider = $('.gridPosts', this)
-  }
-
   connectedCallback () {
-    this.$gridPostsSlider.slick({
-      infinite: true,
-      slidesToShow: 4,
-      arrows: true,
-      dots: false,
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 2,
-            arrows: false,
-            dots: true
-          }
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1,
-            arrows: false,
-            dots: true
-          }
-        }
-      ]
-    })
+    $(window).on('load resize orientationchange', function() {
+        $('.gridPosts').each(function(){
+            var $carousel = $(this);
+            if ($(window).width() > 1100) {
+                if ($carousel.hasClass('slick-initialized')) {
+                    $carousel.slick('unslick');
+                }
+            }
+            else{
+                if (!$carousel.hasClass('slick-initialized')) {
+                    $carousel.slick({
+                        arrows: false,
+                        dots: true,
+                        mobileFirst: true,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        responsive: [
+                          {
+                            breakpoint: 600,
+                            settings: {
+                              slidesToShow: 1,
+                            }
+                          },
+                          {
+                            breakpoint: 768,
+                            settings: {
+                              slidesToShow: 2,
+                            }
+                          },
+                          {
+                            breakpoint: 991,
+                            settings: {
+                              slidesToShow: 3,
+                            }
+                          },
+                        ]
+                    });
+                }
+            }
+        });
+    });
   }
 }
 
