@@ -10,11 +10,6 @@ add_filter('Flynt/addComponentData?name=GridPostsSlider', function ($data) {
     Component::enqueueAssets('GridPostsSlider', [
         [
             'name' => 'slick-carousel',
-            'path' => 'vendor/slick.js',
-            'type' => 'script'
-        ],
-        [
-            'name' => 'slick-carousel',
             'path' => 'vendor/slick.css',
             'type' => 'style'
         ]

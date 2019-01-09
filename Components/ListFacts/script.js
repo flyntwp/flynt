@@ -1,8 +1,8 @@
 
 /* globals IntersectionObserver, CountUp */
 import $ from 'jquery'
-import 'file-loader?name=vendor/countup.js!countup.js/dist/countUp.min'
-import 'file-loader?name=vendor/intersection-observer.js!uglify-loader!intersection-observer/intersection-observer.js'
+import 'countup.js'
+import 'intersection-observer'
 
 class ListFacts extends window.HTMLDivElement {
   constructor (self) {

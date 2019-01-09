@@ -4,14 +4,9 @@ use Flynt\Utils\Asset;
 
 add_action('wp_enqueue_scripts', function () {
     Asset::register([
-        'name' => 'console-polyfill',
+        'name' => 'vendor',
         'type' => 'script',
-        'path' => 'vendor/console.js'
-    ]);
-    Asset::register([
-        'name' => 'babel-polyfill',
-        'type' => 'script',
-        'path' => 'vendor/babel-polyfill.js'
+        'path' => 'vendor/script.js'
     ]);
     Asset::register([
         'name' => 'normalize',
@@ -24,8 +19,7 @@ add_action('wp_enqueue_scripts', function () {
         'type' => 'script',
         'dependencies' => [
             'jquery',
-            'console-polyfill',
-            'babel-polyfill'
+            'vendor',
         ],
     ]);
     Asset::enqueue([
@@ -39,18 +33,19 @@ add_action('wp_enqueue_scripts', function () {
 
     // separately enqueued after components script.js to being able
     // to set global config variables before lazysizes is loaded
-    Asset::enqueue([
-        'name' => 'lazysizes',
-        'type' => 'script',
-        'path' => 'vendor/lazysizes.js'
-    ]);
     if (is_user_logged_in()) {
+        Asset::register([
+            'name' => 'vendorAuth',
+            'type' => 'script',
+            'path' => 'vendor/auth.js'
+        ]);
         Asset::enqueue([
             'name' => 'Flynt/assets/auth',
             'path' => 'assets/auth.js',
             'type' => 'script',
             'dependencies' => [
-                'jquery'
+                'jquery',
+                'vendorAuth',
             ],
         ]);
         Asset::enqueue([
@@ -62,12 +57,18 @@ add_action('wp_enqueue_scripts', function () {
 });
 
 add_action('admin_enqueue_scripts', function () {
+    Asset::register([
+        'name' => 'vendorAdmin',
+        'type' => 'script',
+        'path' => 'vendor/admin.js'
+    ]);
     Asset::enqueue([
         'name' => 'Flynt/assets/admin',
         'path' => 'assets/admin.js',
         'type' => 'script',
         'dependencies' => [
-            'jquery'
+            'jquery',
+            'vendorAdmin',
         ],
     ]);
     Asset::enqueue([

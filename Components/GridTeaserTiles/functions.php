@@ -5,17 +5,6 @@ namespace Flynt\Components\GridTeaserTiles;
 use Flynt;
 use Flynt\Utils\Component;
 
-add_filter('Flynt/addComponentData?name=GridTeaserTiles', function ($data) {
-    Component::enqueueAssets('GridTeaserTiles', [
-        [
-            'name' => 'objectFitPolyfill',
-            'type' => 'script',
-            'path' => 'vendor/objectFitPolyfill.js'
-        ]
-    ]);
-    return $data;
-});
-
 Flynt\registerFields('GridTeaserTiles', [
     'layout' => [
         'name' => 'GridTeaserTiles',

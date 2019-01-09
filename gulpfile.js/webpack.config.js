@@ -54,6 +54,37 @@ module.exports = function (config) {
     ],
     externals: {
       jquery: 'jQuery'
+    },
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          vendors: false,
+          vendor: {
+            test (module, chunks) {
+              return chunks[0].name === 'assets/script' && (module.context || '').match(/[\\/]node_modules[\\/]/)
+            },
+            chunks: 'all',
+            name: 'vendor/script',
+            priority: 1
+          },
+          vendorAdmin: {
+            test (module, chunks) {
+              return chunks[0].name === 'assets/admin' && (module.context || '').match(/[\\/]node_modules[\\/]/)
+            },
+            chunks: 'all',
+            name: 'vendor/admin',
+            priority: 1
+          },
+          vendorAuth: {
+            test (module, chunks) {
+              return chunks[0].name === 'assets/auth' && (module.context || '').match(/[\\/]node_modules[\\/]/)
+            },
+            chunks: 'all',
+            name: 'vendor/auth',
+            priority: 1
+          }
+        }
+      }
     }
   }
   if (config.production) {
@@ -67,15 +98,13 @@ module.exports = function (config) {
       })
     )
     output.plugins.push(new webpack.optimize.AggressiveMergingPlugin())
-    output.optimization = {
-      minimizer: [
-        new UglifyJsPlugin({
-          sourceMap: false,
-          cache: true,
-          parallel: true
-        })
-      ]
-    }
+    output.optimization.minimizer = [
+      new UglifyJsPlugin({
+        sourceMap: false,
+        cache: true,
+        parallel: true
+      })
+    ]
   }
   return output
 }
