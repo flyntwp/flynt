@@ -70,11 +70,12 @@ module.exports = {
     php: [
       './**/*.php',
       '!./dist/**/*.php',
-      '!./node_modules/**/*.php'
+      '!./node_modules/**/*.php',
+      '!./vendor/**/*.php'
     ],
     phpcs: {
       standard: 'phpcs.ruleset.xml',
-      binaryPath: '../../../../vendor/bin/phpcs'
+      binaryPath: './vendor/bin/phpcs'
     }
   },
   replaceVersion: {
