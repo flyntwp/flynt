@@ -4,9 +4,18 @@ namespace Flynt\Components\ListSearchResults;
 
 use Flynt\Utils\Asset;
 use Flynt\Utils\Options;
+use Flynt\Utils\Component;
 use Timber\Timber;
 
 add_filter('Flynt/addComponentData?name=ListSearchResults', function ($data) {
+    Component::enqueueAssets('ListSearchResults', [
+        [
+            'name' => 'objectFitPolyfill',
+            'type' => 'script',
+            'path' => 'vendor/objectFitPolyfill.js'
+        ]
+    ]);
+
     global $wp_query;
     $searchQuery = get_search_query();
     $data['searchTerm'] = $searchQuery;
@@ -44,5 +53,19 @@ Options::addTranslatable('ListSearchResults', [
         'required' => 1,
         'default_value' => 'Search...',
         'instructions' => 'The text for the input field.'
+    ],
+    [
+        'name' => 'previousLabel',
+        'label' => 'Previous Label',
+        'type' => 'text',
+        'default_value' => 'Previous',
+        'required' => 1
+    ],
+    [
+        'name' => 'nextLabel',
+        'label' => 'Next Label',
+        'type' => 'text',
+        'default_value' => 'Next',
+        'required' => 1
     ],
 ]);

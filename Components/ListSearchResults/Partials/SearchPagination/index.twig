@@ -1,24 +1,14 @@
-<nav class="navigation" role="navigation">
-  <div class="prev">
-    {% if pagination.prev.link %}
-      <a class="navigation-item" href="{{ pagination.prev.link }}" aria-label="{{ prevLabel }}">{{ prevIcon }}</a>
-    {% else %}
-      <span class="navigation-item navigation-item--hide" aria-label="{{ prevLabel }}">{{ prevIcon }}</span>
-    {% endif %}
+{% set pagination = posts.pagination %}
+{% if pagination.pages %}
+  <div class="pagination">
+    <div class="pagination-prevLink">
+      <a href="{% if pagination.prev %}{{ pagination.prev.link }}{% else %}javascript:void(0){% endif %}"
+        class="btn {% if pagination.prev %}btn--primary{% else %}btn--disabled{% endif %}">{{ previousLabel }}</a>
+    </div>
+    <div class="pagination-nextLink">
+      <a href="{% if pagination.next %}{{ pagination.next.link }}{% else %}javascript:void(0){% endif %}"
+        class="btn {% if pagination.next %}btn--primary{% else %}btn--disabled{% endif %}">{{ nextLabel }}</a>
+    </div>
   </div>
-  {% for page in pagination.pages %}
-    {% if page.current or page.link == false %}
-      <span class="navigation-item {{ page.class }}">{{ page.title }}</span>
-    {% else %}
-      <a href="{{ page.link }}" class="navigation-item {{ page.class }}">{{ page.title }}</a>
-    {% endif %}
-  {% endfor %}
-  <div class="next">
-    {% if pagination.next.link %}
-      <a class="navigation-item" href="{{ pagination.next.link }}" aria-label="{{ nextLabel }}">{{ nextIcon }}</a>
-    {% else %}
-      <span class="navigation-item navigation-item--hide" aria-label="{{ nextLabel }}">{{ nextIcon }}</span>
-    {% endif %}
-  </div>
-</nav>
+{% endif %}
 
