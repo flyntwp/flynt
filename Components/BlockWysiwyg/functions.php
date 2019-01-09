@@ -4,10 +4,6 @@ namespace Flynt\Components\BlockWysiwyg;
 
 use Flynt;
 
-add_filter('Flynt/addComponentData?name=BlockWysiwyg', function ($data) {
-    return $data;
-});
-
 Flynt\registerFields('BlockWysiwyg', [
     'layout' => [
         'name' => 'blockWysiwyg',

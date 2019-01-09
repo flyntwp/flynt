@@ -4,10 +4,6 @@ namespace Flynt\Components\GridListSteps;
 
 use Flynt;
 
-add_filter('Flynt/addComponentData?name=GridListSteps', function ($data) {
-    return $data;
-});
-
 Flynt\registerFields('GridListSteps', [
     'layout' => [
         'name' => 'gridListSteps',

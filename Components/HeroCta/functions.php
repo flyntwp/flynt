@@ -4,10 +4,6 @@ namespace Flynt\Components\HeroCta;
 
 use Flynt;
 
-add_filter('Flynt/addComponentData?name=HeroCta', function ($data) {
-    return $data;
-});
-
 Flynt\registerFields('HeroCta', [
     'layout' => [
         'name' => 'heroCta',

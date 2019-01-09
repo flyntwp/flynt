@@ -4,10 +4,6 @@ namespace Flynt\Components\BlockImageText;
 
 use Flynt;
 
-add_filter('Flynt/addComponentData?name=BlockImageText', function ($data) {
-    return $data;
-});
-
 Flynt\registerFields('BlockImageText', [
     'layout' => [
         'name' => 'blockImageText',

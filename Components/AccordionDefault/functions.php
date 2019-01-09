@@ -4,10 +4,6 @@ namespace Flynt\Components\AccordionDefault;
 
 use Flynt;
 
-add_filter('Flynt/addComponentData?name=AccordionDefault', function ($data) {
-    return $data;
-});
-
 Flynt\registerFields('AccordionDefault', [
     'layout' => [
         'name' => 'AccordionDefault',
