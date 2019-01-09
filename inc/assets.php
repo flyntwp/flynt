@@ -9,8 +9,8 @@ add_action('wp_enqueue_scripts', function () {
         'path' => 'vendor/script.js'
     ]);
     Asset::register([
-        'name' => 'normalize',
-        'path' => 'vendor/normalize.css',
+        'name' => 'vendor',
+        'path' => 'vendor/script.css',
         'type' => 'style'
     ]);
     Asset::enqueue([
@@ -27,7 +27,7 @@ add_action('wp_enqueue_scripts', function () {
         'path' => 'assets/style.css',
         'type' => 'style',
         'dependencies' => [
-            'normalize',
+            'vendor',
         ],
     ]);
 
@@ -48,10 +48,18 @@ add_action('wp_enqueue_scripts', function () {
                 'vendorAuth',
             ],
         ]);
+        Asset::register([
+            'name' => 'vendorAuth',
+            'path' => 'vendor/auth.css',
+            'type' => 'style'
+        ]);
         Asset::enqueue([
             'name' => 'Flynt/assets/auth',
             'path' => 'assets/auth.css',
-            'type' => 'style'
+            'type' => 'style',
+            'dependencies' => [
+                'vendorAuth',
+            ],
         ]);
     }
 });
@@ -71,9 +79,17 @@ add_action('admin_enqueue_scripts', function () {
             'vendorAdmin',
         ],
     ]);
+    Asset::register([
+        'name' => 'vendorAdmin',
+        'path' => 'vendor/admin.css',
+        'type' => 'style'
+    ]);
     Asset::enqueue([
         'name' => 'Flynt/assets/admin',
         'path' => 'assets/admin.css',
-        'type' => 'style'
+        'type' => 'style',
+        'dependencies' => [
+            'vendorAdmin',
+        ],
     ]);
 });

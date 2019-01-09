@@ -1,6 +1,6 @@
 import 'console-polyfill'
 import '@babel/polyfill'
-import 'file-loader?name=vendor/normalize.css!csso-loader!normalize.css/normalize.css'
+import 'normalize.css/normalize.css'
 
 import installCE from 'document-register-element/pony'
 

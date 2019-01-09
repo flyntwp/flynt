@@ -5,18 +5,6 @@ namespace Flynt\Components\SliderImageGallery;
 use Flynt;
 use Flynt\Utils\Component;
 
-add_filter('Flynt/addComponentData?name=SliderImageGallery', function ($data) {
-    Component::enqueueAssets('SliderImageGallery', [
-        [
-            'name' => 'slick-carousel',
-            'path' => 'vendor/slick.css',
-            'type' => 'style'
-        ]
-    ]);
-
-    return $data;
-});
-
 Flynt\registerFields('SliderImageGallery', [
     'layout' => [
         'name' => 'sliderImageGallery',

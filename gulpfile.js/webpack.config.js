@@ -2,6 +2,8 @@ const path = require('path')
 const webpack = require('webpack')
 const HardSourcePlugin = require('hard-source-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = function (config) {
   const babelQuery = {
@@ -29,6 +31,13 @@ module.exports = function (config) {
             loader: 'babel-loader',
             options: babelQuery
           }]
+        },
+        {
+          test: /\.css$/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader'
+          ]
         }
       ]
     },
@@ -47,10 +56,16 @@ module.exports = function (config) {
       }
     },
     plugins: [
+      new HardSourcePlugin(),
       new webpack.LoaderOptionsPlugin({
         debug: !config.production
       }),
-      new HardSourcePlugin()
+      new MiniCssExtractPlugin({
+        // Options similar to the same options in webpackOptions.output
+        // both options are optional
+        filename: '[name].css',
+        chunkFilename: '[name].css'
+      })
     ],
     externals: {
       jquery: 'jQuery'
@@ -59,6 +74,7 @@ module.exports = function (config) {
       splitChunks: {
         cacheGroups: {
           vendors: false,
+          default: false,
           vendor: {
             test (module, chunks) {
               return chunks[0].name === 'assets/script' && (module.context || '').match(/[\\/]node_modules[\\/]/)
@@ -103,7 +119,8 @@ module.exports = function (config) {
         sourceMap: false,
         cache: true,
         parallel: true
-      })
+      }),
+      new OptimizeCSSAssetsPlugin({})
     ]
   }
   return output
