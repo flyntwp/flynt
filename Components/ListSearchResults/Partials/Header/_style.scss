@@ -1,4 +1,4 @@
-.searchHead {
+.header {
   .titleContent {
     @include resetContentMargins;
 
@@ -42,21 +42,21 @@
     }
 
     .input {
-      font-size: 30px;
-      height: 80px;
-      padding: 0 80px 0 20px;
       background-color: #fff;
       border: 2px solid $color-accent;
       color: #9b9b9b;
+      font-size: 30px;
       font-weight: 800;
+      height: 80px;
       margin: 0;
-      width: 100%;
+      padding: 0 80px 0 20px;
       transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 0.275);
+      width: 100%;
 
       &:focus,
       &:active {
-        outline: 0;
         box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.3);
+        outline: 0;
 
         .submit {
           svg {
