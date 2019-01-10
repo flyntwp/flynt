@@ -4,18 +4,9 @@ namespace Flynt\Components\ListSearchResults;
 
 use Flynt\Utils\Asset;
 use Flynt\Utils\Options;
-use Flynt\Utils\Component;
 use Timber\Timber;
 
 add_filter('Flynt/addComponentData?name=ListSearchResults', function ($data) {
-    Component::enqueueAssets('ListSearchResults', [
-        [
-            'name' => 'objectFitPolyfill',
-            'type' => 'script',
-            'path' => 'vendor/objectFitPolyfill.js'
-        ]
-    ]);
-
     global $wp_query;
     $searchQuery = get_search_query();
     $data['searchTerm'] = $searchQuery;

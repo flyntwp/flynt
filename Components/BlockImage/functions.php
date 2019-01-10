@@ -4,10 +4,6 @@ namespace Flynt\Components\BlockImage;
 
 use Flynt;
 
-add_filter('Flynt/addComponentData?name=BlockImage', function ($data) {
-    return $data;
-});
-
 Flynt\registerFields('BlockImage', [
     'layout' => [
         'name' => 'BlockImage',

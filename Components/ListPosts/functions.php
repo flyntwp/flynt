@@ -5,10 +5,6 @@ namespace Flynt\Components\ListPosts;
 use Flynt;
 use Flynt\Utils\Options;
 
-add_filter('Flynt/addComponentData?name=ListPosts', function ($data) {
-    return $data;
-});
-
 Flynt\registerFields('ListPosts', [
     'layout' => [
         'name' => 'listPosts',

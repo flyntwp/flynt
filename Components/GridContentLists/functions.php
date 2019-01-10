@@ -4,10 +4,6 @@ namespace Flynt\Components\GridContentLists;
 
 use Flynt;
 
-add_filter('Flynt/addComponentData?name=GridContentLists', function ($data) {
-    return $data;
-});
-
 Flynt\registerFields('GridContentLists', [
     'layout' => [
         'name' => 'GridContentLists',

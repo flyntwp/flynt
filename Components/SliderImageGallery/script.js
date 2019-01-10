@@ -1,4 +1,6 @@
 import $ from 'jquery'
+import 'slick-carousel'
+import 'slick-carousel/slick/slick.css'
 
 class SliderImageGallery extends window.HTMLDivElement {
   constructor (self) {

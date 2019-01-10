@@ -5,10 +5,6 @@ namespace Flynt\Components\GridPosts;
 use Flynt;
 use Flynt\Utils\Options;
 
-add_filter('Flynt/addComponentData?name=GridPosts', function ($data) {
-    return $data;
-}, 10, 2);
-
 Flynt\registerFields('GridPosts', [
     'layout' => [
         'name' => 'gridPosts',

@@ -4,10 +4,6 @@ namespace Flynt\Components\HeroImageText;
 
 use Flynt;
 
-add_filter('Flynt/addComponentData?name=HeroImageText', function ($data) {
-    return $data;
-});
-
 Flynt\registerFields('HeroImageText', [
     'layout' => [
         'name' => 'heroImageText',

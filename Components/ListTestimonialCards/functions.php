@@ -4,10 +4,6 @@ namespace Flynt\Components\ListTestimonialCards;
 
 use Flynt;
 
-add_filter('Flynt/addComponentData?name=ListTestimonialCards', function ($data) {
-    return $data;
-});
-
 Flynt\registerFields('ListTestimonialCards', [
     'layout' => [
         'name' => 'listTestimonialCards',

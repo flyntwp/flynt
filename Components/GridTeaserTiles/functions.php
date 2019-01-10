@@ -4,10 +4,6 @@ namespace Flynt\Components\GridTeaserTiles;
 
 use Flynt;
 
-add_filter('Flynt/addComponentData?name=GridTeaserTiles', function ($data) {
-    return $data;
-});
-
 Flynt\registerFields('GridTeaserTiles', [
     'layout' => [
         'name' => 'GridTeaserTiles',

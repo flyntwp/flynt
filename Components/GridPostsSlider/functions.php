@@ -3,23 +3,9 @@
 namespace Flynt\Components\GridPostsSlider;
 
 use Flynt;
-use Flynt\Utils\Component;
 use Timber\Timber;
 
 add_filter('Flynt/addComponentData?name=GridPostsSlider', function ($data) {
-    Component::enqueueAssets('GridPostsSlider', [
-        [
-            'name' => 'slick-carousel',
-            'path' => 'vendor/slick.js',
-            'type' => 'script'
-        ],
-        [
-            'name' => 'slick-carousel',
-            'path' => 'vendor/slick.css',
-            'type' => 'style'
-        ]
-    ]);
-
     $posts = Timber::get_posts([
         'post_type'         => 'post',
         'posts_per_page'    => -1,
