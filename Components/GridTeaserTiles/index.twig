@@ -1,32 +1,38 @@
 <div class="flyntComponent" is="flynt-grid-teaser-tiles">
   <div class="container">
-    <ul class="teaserGrid">
+    <ul class="teaserList">
       {% for item in teaserItems %}
-        <li class="teaser-item{% if not item.image %} noImage{% endif %}">
-          {% if item.link %} <a href="{{ item.link.url }}">{% endif %}
-            <div class="teaser-wrapper">
-              {% if item.image %}
-                <img
-                  class="teaser-image lazyload"
-                  srcset="{{ placeholderImage(404, 404) }}"
-                  src="{{ item.image.src|resize(404, 404) }}"
-                  data-srcset="
-                  {{ item.image.src|resize(808, 808) }} 808w,
-                  {{ item.image.src|resize(404, 404) }} 404w,
-                  {{ item.image.src|resize(250, 250) }} 250w"
-                  sizes="auto"
-                alt="{{ item.image.alt|e }}" data-object-fit="cover" data-object-position="center center">
-                <div class="content">
-                  <h4>{{ item.title|e }}</h4>
-                </div>
-              {% endif %}
-              {% if not item.image %}
-                <div class="contentBig">
-                    {{ item.contentHtml }}
-                </div>
-              {% endif %}
+        {% set teaserContent %}
+          {% if item.itemType == 'wysiwyg' %}
+            <div class="content">
+              {{ item.contentHtml }}
             </div>
-          {% if item.link %}</a>{% endif %}
+          {% elseif item.itemType == 'box' %}
+            <img
+              class="teaser-image lazyload"
+              srcset="{{ placeholderImage(404, 404) }}"
+              src="{{ item.image.src|resize(404, 404) }}"
+              data-srcset="
+              {{ item.image.src|resize(808, 808) }} 808w,
+              {{ item.image.src|resize(404, 404) }} 404w,
+              {{ item.image.src|resize(250, 250) }} 250w"
+              sizes="auto"
+              alt="{{ item.image.alt|e }}"
+            >
+          {% elseif item.itemType == 'box' %}
+          {% endif %}
+        {% endset %}
+        <li class="teaser teaser-{{ item.itemType }}">
+          {% if item.itemType != 'wysiwyg' and item.link %}
+            <a href="{{ item.link.url|e('esc_url') }}">
+              {{ teaserContent }}
+              <div class="title">
+                <h4 class="h3">{{ item.link.title }}</h4>
+              </div>
+            </a>
+          {% else %}
+            {{ teaserContent }}
+          {% endif %}
         </li>
       {% endfor %}
     </ul>

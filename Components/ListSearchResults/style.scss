@@ -6,8 +6,8 @@
 
     max-width: $content-max-width;
 
-    @import 'Partials/SearchHead/_style';
-    @import 'Partials/SearchList/_style';
-    @import 'Partials/SearchPagination/_style';
+    @import 'Partials/Header/_style';
+    @import 'Partials/Pagination/_style';
+    @import 'Partials/Results/_style';
   }
 }
