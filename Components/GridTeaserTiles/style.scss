@@ -3,86 +3,157 @@
 
   .container {
     @include centerMaxWidthContainer;
+
+    max-width: $content-max-width;
+
+    @media (min-width: $breakpoint-desktop) {
+      max-width: $container-max-width;
+    }
   }
 
-  .teaserGrid {
+  .teaserList {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between;
     list-style: none;
     padding-left: 0;
 
     a {
+      display: block;
+      height: 100%;
       text-decoration: none;
+      width: 100%;
+    }
+  }
+
+  .teaser {
+    margin-bottom: 10px;
+    position: relative;
+    width: calc(100% - 5px);
+
+    @media (min-width: $breakpoint-tablet) {
+      width: calc(50% - 5px);
     }
 
-    .teaser-item {
-      width: 100%;
-      position: relative;
-      margin-top: 1%;
+    @media (min-width: $breakpoint-desktop) {
+      width: calc(25% - 5px);
+    }
 
-      @media (min-width: $breakpoint-mobile-horizontal) {
-        width: 49.5%;
-
-        &:nth-child(odd) {
-          margin-right: 1%;
-        }
-      }
+    &-wysiwyg {
+      display: flex;
+      justify-content: space-around;
+      width: calc(100% - 5px);
 
       @media (min-width: $breakpoint-tablet) {
-        width: 32.6%;
-
-        &:nth-child(odd) {
-          margin-right: 0%;
-        }
-
-        &:not(:nth-child(3n)) {
-          margin-right: 1%;
-        }
+        min-height: 275px;
       }
 
-      &::before {
-        content: '';
-        float: left;
-        padding-top: 100%;
+      @media (min-width: $breakpoint-desktop) {
+        min-height: auto;
+        width: calc(50% - 5px);
+      }
+    }
+
+    &-box {
+      background-color: #000;
+
+      img {
+        opacity: 0.6;
+        transition: opacity 0.3s;
+        -webkit-transition: opacity 0.3s;
+        -moz-transition: opacity 0.3s;
+        -ms-transition: opacity 0.3s;
+        -o-transition: opacity 0.3s;
       }
 
-      .teaser-wrapper {
-        display: flex;
-        height: 100%;
-        width: 100%;
-      }
-
-      .content {
+      .title {
         @include resetContentMargins;
 
-        align-self: flex-end;
-        padding: 20px;
-        z-index: 10;
+        bottom: 20px;
+        left: 20px;
+        position: absolute;
+        width: calc(100% - 40px);
+
+        @media (min-width: $breakpoint-desktop) {
+          width: calc(50% - 40px);
+        }
 
         h4 {
           color: #fff;
-          text-decoration: none;
         }
       }
 
-      .teaser-image {
-        /* stylelint-disable-next-line */
-        font-family: 'object-fit: cover; object-position: center center;';
-        height: 100%;
-        object-fit: cover;
-        object-position: center center;
-        position: absolute;
-        width: 100%;
-      }
-
-      &.noImage {
-        .teaser-wrapper {
-          .contentBig {
-            align-self: center;
-            padding: 0 20px;
+      &:hover {
+        a {
+          img {
+            opacity: 0.2;
           }
         }
       }
+    }
+
+    &-cta {
+      border: 2px solid $color-accent;
+      transition: border-color 0.3s;
+      -webkit-transition: border-color 0.3s;
+      -moz-transition: border-color 0.3s;
+      -ms-transition: border-color 0.3s;
+      -o-transition: border-color 0.3s;
+
+      .title {
+        @include resetContentMargins;
+
+        position: relative;
+        padding: 88% 20px 0;
+
+        @media (min-width: $breakpoint-tablet) {
+          bottom: 20px;
+          left: 20px;
+          padding: inherit;
+          position: absolute;
+          width: calc(100% - 40px);
+        }
+
+        @media (min-width: $breakpoint-desktop) {
+          width: calc(50% - 40px);
+        }
+
+        h4 {
+          color: $color-accent;
+          transition: color 0.3s;
+          -webkit-transition: color 0.3s;
+          -moz-transition: color 0.3s;
+          -ms-transition: color 0.3s;
+          -o-transition: color 0.3s;
+        }
+      }
+
+      &:hover {
+        border-color: $color-brand;
+
+        .title {
+          h4 {
+            color: $color-brand;
+          }
+        }
+      }
+    }
+  }
+
+  .content {
+    align-self: center;
+    padding: 50px 20px;
+    width: 100%;
+
+    #{$heading-selectors},
+    p {
+      color: $color-accent;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      padding: 20px;
+      width: 60%;
     }
   }
 }

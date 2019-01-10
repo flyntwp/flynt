@@ -3,16 +3,8 @@
 namespace Flynt\Components\GridTeaserTiles;
 
 use Flynt;
-use Flynt\Utils\Component;
 
 add_filter('Flynt/addComponentData?name=GridTeaserTiles', function ($data) {
-    Component::enqueueAssets('GridTeaserTiles', [
-        [
-            'name' => 'objectFitPolyfill',
-            'type' => 'script',
-            'path' => 'vendor/objectFitPolyfill.js'
-        ]
-    ]);
     return $data;
 });
 
@@ -30,11 +22,19 @@ Flynt\registerFields('GridTeaserTiles', [
                 'button_label' => 'Add Teaser Item',
                 'sub_fields' => [
                     [
-                        'label' => 'Only Text',
+                        'label' => 'Choose Format',
                         'name' => 'itemType',
-                        'type' => 'true_false',
+                        'type' => 'select',
+                        'allow_null' => false,
+                        'multiple' => false,
                         'ui' => true,
                         'ajax' => false,
+                        'choices' => [
+                            'wysiwyg' => 'WYSIWYG',
+                            'box' => 'BOX',
+                            'cta' => 'CTA',
+                        ],
+                        'default_value' => 'wysiwyg'
                     ],
                     [
                         'label' => 'Content',
@@ -42,8 +42,9 @@ Flynt\registerFields('GridTeaserTiles', [
                         'type' => 'wysiwyg',
                         'tabs' => 'visual,text',
                         'toolbar' => 'full',
-                        'media_upload' => false,
-                        'delay' => true,
+                        'media_upload' => 0,
+                        'delay' => 1,
+                        'required' => '1',
                         'wrapper' => [
                             'class' => 'autosize',
                         ],
@@ -51,51 +52,49 @@ Flynt\registerFields('GridTeaserTiles', [
                             [
                                 [
                                     'fieldPath' => 'itemType',
-                                    'operator' => '!=',
+                                    'operator' => '==',
+                                    'value' => 'wysiwyg',
                                 ]
                             ]
                         ]
                     ],
                     [
-                        'label' => 'Title',
-                        'name' => 'title',
-                        'type' => 'text',
+                        "label" => "Image",
+                        "name" => "image",
+                        "type" => "image",
+                        "return_format" => "array",
+                        "preview_size" => "thumbnail",
+                        "library" => "all",
+                        "mime_types" => "jpg,jpeg,png",
+                        'required' => '1',
                         'conditional_logic' => [
                             [
                                 [
                                     'fieldPath' => 'itemType',
                                     'operator' => '==',
+                                    'value' => 'box',
                                 ]
                             ]
                         ]
                     ],
                     [
-                        'label' => 'Image',
-                        'name' => 'image',
-                        'type' => 'image',
-                        'preview_size' => 'medium',
-                        'instructions' => '',
-                        'max_size' => 4,
-                        'mime_types' => 'gif,jpg,jpeg,png',
+                        "label" => "Link",
+                        "type" => "link",
+                        "name" => "link",
+                        "return_format" => "array",
                         'conditional_logic' => [
                             [
                                 [
                                     'fieldPath' => 'itemType',
                                     'operator' => '==',
+                                    'value' => 'box',
                                 ]
-                            ]
-                        ]
-                    ],
-                    [
-                        'label' => 'Link',
-                        'name' => 'link',
-                        'type' => 'link',
-                        'return_format' => 'array',
-                        'conditional_logic' => [
+                            ],
                             [
                                 [
                                     'fieldPath' => 'itemType',
                                     'operator' => '==',
+                                    'value' => 'cta',
                                 ]
                             ]
                         ]
