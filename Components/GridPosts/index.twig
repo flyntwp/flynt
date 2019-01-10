@@ -1,38 +1,36 @@
 <div class="flyntComponent" is="flynt-grid-posts">
   <div class="container">
     <ul class="gridPosts">
-      {% if posts %}
-        {% for post in posts %}
-          <li class="post">
-            <a class="post-link" href="{{ post.link }}" {{ post.target == '_blank' ? 'target="_blank" rel="noreferrer noopener"' }} title="{{ post.title|e }}">
-              {% if post.thumbnail %}
-                <figure class="figure">
-                  <img class="figure-image lazyload"
-                    src="{{ post.thumbnail|resize(1280, 853) }}"
-                    srcset="{{ placeholderImage(1280, 853) }}"
-                    data-srcset="
-                      {{ post.thumbnail|resize(1920, 1280) }} 1920w,
-                      {{ post.thumbnail|resize(1280, 853) }} 1280w,
-                      {{ post.thumbnail|resize(750, 500) }} 750w,
-                      {{ post.thumbnail|resize(375, 250) }} 375w"
-                    data-sizes="auto"
-                    alt="{{ post.thumbnail.alt|e }}">
-                </figure>
+      {% for post in posts %}
+        <li class="post">
+          <a class="post-link" href="{{ post.link }}"{% if post.target == '_blank' %} target="_blank" rel="noreferrer noopener"{% endif %} title="{{ post.title|e }}">
+            {% if post.thumbnail %}
+              <figure class="figure">
+                <img class="figure-image lazyload"
+                  src="{{ post.thumbnail|resize(1280, 853) }}"
+                  srcset="{{ placeholderImage(1280, 853) }}"
+                  data-srcset="
+                    {{ post.thumbnail|resize(1920, 1280) }} 1920w,
+                    {{ post.thumbnail|resize(1280, 853) }} 1280w,
+                    {{ post.thumbnail|resize(750, 500) }} 750w,
+                    {{ post.thumbnail|resize(375, 250) }} 375w"
+                  data-sizes="auto"
+                  alt="{{ post.thumbnail.alt|e }}">
+              </figure>
+            {% endif %}
+            <div class="content">
+              {% if post.post_date %}
+                <time class="date" datetime="{{ post.post_date }}">{{ post.post_date | date }}</time>
               {% endif %}
-              <div class="content">
-                {% if post.post_date %}
-                  <time class="date" datetime="{{ post.post_date }}">{{ post.post_date | date }}</time>
-                {% endif %}
-                <h3 class="h4 title">
-                  {{ post.title }}
-                </h3>
-              </div>
-            </a>
-          </li>
-        {% endfor %}
+              <h3 class="h4 title">
+                {{ post.title }}
+              </h3>
+            </div>
+          </a>
+        </li>
       {% else %}
         <p class="noPosts">{{ noPostsFoundText }}</p>
-      {% endif %}
+      {% endfor %}
     </ul>
     {% set pagination = posts.pagination %}
     {% if pagination.pages %}

@@ -8,6 +8,6 @@
         <p>We inform you that this site uses own, technical and third parties cookies to make sure our web page is user-friendly and to guarantee a high functionality of the webpage. By continuing to browse this website, you declare to accept the use of cookies.</p>
       {% endif %}
     </div>
-    <button type="button" class="btn btn--primary btnClose" aria-label="Close">{{ closeButtonLabel ? closeButtonLabel : 'Ok' }}</button>
+    <button type="button" class="btn btn--primary btnClose" aria-label="Close">{{ closeButtonLabel ?: 'Ok' }}</button>
   </div>
 </div>

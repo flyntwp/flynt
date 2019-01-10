@@ -7,15 +7,6 @@ use Flynt\Utils\Options;
 use Timber\Timber;
 
 add_filter('Flynt/addComponentData?name=ListSearchResults', function ($data) {
-    global $wp_query;
-    $searchQuery = get_search_query();
-    $data['searchTerm'] = $searchQuery;
-
-    if (!empty($searchQuery)) {
-        $data['searchTerm'] = $searchQuery;
-    }
-
-    $data['pagination'] = Timber::get_pagination();
     $data['prevIcon'] = Asset::getContents('Components/ListSearchResults/Assets/navigation-prev.svg');
     $data['nextIcon'] = Asset::getContents('Components/ListSearchResults/Assets/navigation-next.svg');
     $data['searchIcon'] = Asset::getContents('Components/ListSearchResults/Assets/search.svg');

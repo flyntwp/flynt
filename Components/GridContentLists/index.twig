@@ -4,10 +4,10 @@
       <div class="preContent">{{ preContentHtml|e('wp_kses_post') }}</div>
     {% endif %}
     <ul class="gridLinkList">
-      {% for block in blocks %}
+      {% for singleBlock in blocks %}
         <li class="gridLinkList-item">
           <div class="content">
-          {{ block.contentHtml|e('wp_kses_post') }}
+          {{ singleBlock.contentHtml|e('wp_kses_post') }}
           </div>
         </li>
       {% endfor %}
