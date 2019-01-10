@@ -19,7 +19,6 @@
               sizes="auto"
               alt="{{ item.image.alt|e }}"
             >
-          {% elseif item.itemType == 'box' %}
           {% endif %}
         {% endset %}
         <li class="teaser teaser-{{ item.itemType }}">

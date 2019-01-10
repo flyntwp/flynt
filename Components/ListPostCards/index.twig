@@ -7,7 +7,7 @@
       <ul class="listPostCards">
         {% for post in posts %}
           <li class="post">
-            <a class="post-link" href="{{ post.link }}" {{ post.target == '_blank' ? 'target="_blank" rel="noreferrer noopener"' }} title="{{ post.title|e }}">
+            <a class="post-link" href="{{ post.link }}"{% if post.target == '_blank' %} target="_blank" rel="noreferrer noopener"{% endif %} title="{{ post.title|e }}">
               {% if post.thumbnail %}
                 <figure class="figure">
                   <img class="figure-image lazyload"
@@ -36,9 +36,9 @@
       </ul>
       {% if ctaButton %}
         <div class="postContent">
-          <a class="btn btn--primary" href="{{ ctaButton.url|e('esc_url') }}"
-          target={% if ctaButton.target|e %}"{{ ctaButton.target|e }}" rel="noreferrer noopener"{% else %}"_self"{% endif %}>
-          {{ ctaButton.title|e }}</a>
+          <a class="btn btn--primary" href="{{ ctaButton.url|e('esc_url') }}"{% if ctaButton.target %} target="{{ ctaButton.target|e }}" rel="noreferrer noopener"{% endif %}>
+            {{ ctaButton.title|e }}
+          </a>
         </div>
       {% endif %}
     </div>

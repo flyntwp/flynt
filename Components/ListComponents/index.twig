@@ -1,34 +1,34 @@
 <div class="flyntComponent" is="flynt-list-components">
   <div class="container">
     <ul class="components">
-      {% for block in componentBlocks %}
-        {% if block.readme %}
-          <li class="component{% if not block.componentPreviewDesktop %} component--noImage{% endif %}">
-            {% if block.componentPreviewDesktop %}
+      {% for componentBlock in componentBlocks %}
+        {% if componentBlock.readme %}
+          <li class="component{% if not componentBlock.componentPreviewDesktop %} component--noImage{% endif %}">
+            {% if componentBlock.componentPreviewDesktop %}
               <div class="component-previews">
                 <div class="component-previewImage component-previewImage--desktop">
                   <img class="lazyload"
-                      src="{{ block.componentPreviewDesktop.src|resize(600) }}"
-                      srcset="{{ placeholderImage(600, 600 / block.componentPreviewDesktop.aspect) }}"
+                      src="{{ componentBlock.componentPreviewDesktop.src|resize(600) }}"
+                      srcset="{{ placeholderImage(600, 600 / componentBlock.componentPreviewDesktop.aspect) }}"
                       data-srcset="
-                        {{ block.componentPreviewDesktop.src|resize(1800) }} 1800w,
-                        {{ block.componentPreviewDesktop.src|resize(1200) }} 1200w,
-                        {{ block.componentPreviewDesktop.src|resize(600) }} 600w,
-                        {{ block.componentPreviewDesktop.src|resize(300) }} 300w"
+                        {{ componentBlock.componentPreviewDesktop.src|resize(1800) }} 1800w,
+                        {{ componentBlock.componentPreviewDesktop.src|resize(1200) }} 1200w,
+                        {{ componentBlock.componentPreviewDesktop.src|resize(600) }} 600w,
+                        {{ componentBlock.componentPreviewDesktop.src|resize(300) }} 300w"
                       data-sizes="auto"
                       alt="{{ image.alt|e }}">
                 </div>
-                {% if block.componentPreviewMobile %}
+                {% if componentBlock.componentPreviewMobile %}
                   <div class="component-previewImage component-previewImage--mobile">
                     <img class="lazyload"
-                        src="{{ block.componentPreviewMobile.src|resize(120) }}"
-                        srcset="{{ placeholderImage(120, 120 / block.componentPreviewMobile.aspect) }}"
+                        src="{{ componentBlock.componentPreviewMobile.src|resize(120) }}"
+                        srcset="{{ placeholderImage(120, 120 / componentBlock.componentPreviewMobile.aspect) }}"
                         data-srcset="
-                          {{ block.componentPreviewMobile.src|resize(670) }} 670w,
-                          {{ block.componentPreviewMobile.src|resize(360) }} 360w,
-                          {{ block.componentPreviewMobile.src|resize(240) }} 240w,
-                          {{ block.componentPreviewMobile.src|resize(120) }} 120w,
-                          {{ block.componentPreviewMobile.src|resize(60) }} 60w"
+                          {{ componentBlock.componentPreviewMobile.src|resize(670) }} 670w,
+                          {{ componentBlock.componentPreviewMobile.src|resize(360) }} 360w,
+                          {{ componentBlock.componentPreviewMobile.src|resize(240) }} 240w,
+                          {{ componentBlock.componentPreviewMobile.src|resize(120) }} 120w,
+                          {{ componentBlock.componentPreviewMobile.src|resize(60) }} 60w"
                         data-sizes="auto"
                         alt="{{ image.alt|e }}">
                   </div>
@@ -36,15 +36,15 @@
               </div>
             {% endif %}
             <div class="component-content">
-              <h2>{{ block.readme.title }}</h2>
-              {% if  block.readme.html %}
-                <p>{{ block.readme.html }}</p>
-              {% elseif block.readme.text %}
-                <p>{{ block.readme.text }}</p>
+              <h2>{{ componentBlock.readme.title }}</h2>
+              {% if componentBlock.readme.html %}
+                <p>{{ componentBlock.readme.html }}</p>
+              {% elseif componentBlock.readme.text %}
+                <p>{{ componentBlock.readme.text }}</p>
               {% endif %}
-              {% if block.ctas %}
+              {% if componentBlock.ctas %}
                 <p>
-                  {% for cta in block.ctas %}
+                  {% for cta in componentBlock.ctas %}
                     <a href="{{ cta.link.url }}" class="btn btn--{{ cta.buttonType }}">
                       {{ cta.link.title }}
                     </a>

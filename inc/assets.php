@@ -31,8 +31,6 @@ add_action('wp_enqueue_scripts', function () {
         ],
     ]);
 
-    // separately enqueued after components script.js to being able
-    // to set global config variables before lazysizes is loaded
     if (is_user_logged_in()) {
         Asset::register([
             'name' => 'vendorAuth',
