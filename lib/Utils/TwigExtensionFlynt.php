@@ -34,6 +34,7 @@ class TwigExtensionFlynt extends Twig_Extension
 
     public function renderComponent(Twig_Environment $env, $context, $componentName, $data = [], $withContext = true, $ignoreMissing = false, $sandboxed = false)
     {
+        $data = $data === false ? [] : $data;
         $data = $this->getComponentData($data, $componentName);
 
         $componentManager = Flynt\ComponentManager::getInstance();

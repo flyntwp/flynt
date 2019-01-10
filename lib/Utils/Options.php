@@ -42,6 +42,8 @@ class Options
 
     protected static $optionPages = [];
 
+    protected static $registeredOptions = [];
+
     protected static function createOptionPages()
     {
         if (static::$initialized) {
@@ -144,14 +146,20 @@ class Options
         }
 
         $prefix = implode('', [$optionType, $optionCategory, $subPageName, '_']);
-        $options = static::getOptionFields(static::OPTION_TYPES[$optionType]['translatable']);
-        $options = static::collectOptionsWithPrefix($options, $prefix);
-
-        if (isset($fieldName)) {
-            $fieldName = lcfirst($fieldName);
-            return array_key_exists($fieldName, $options) ? $options[$fieldName] : false;
+        $isTranslatable = static::OPTION_TYPES[$optionType]['translatable'];
+        if (empty($fieldName)) {
+            $optionNames = (((static::$registeredOptions[$optionType] ?? [])[lcfirst($optionCategory)] ?? [])[$subPageName] ?? []);
+            return array_combine(
+                $optionNames,
+                array_map(function ($optionName) use ($prefix, $isTranslatable) {
+                    $fieldKey = $prefix . $optionName;
+                    return static::getOptionField($fieldKey, $isTranslatable);
+                }, $optionNames)
+            );
+        } else {
+            $fieldKey = $prefix . $fieldName;
+            return static::getOptionField($fieldKey, $isTranslatable);
         }
-        return $options;
     }
 
     public static function addTranslatable($scope, $fields, $category = null)
@@ -178,6 +186,15 @@ class Options
         $optionsPageSlug = self::$optionPages[$type]['menu_slug'];
         $fieldGroupName = $type . ucfirst($category) . $scope;
         static::addOptionsFieldGroup($fieldGroupName, $fieldGroupTitle, $optionsPageSlug, $fields);
+        static::registerOptionNames($type, $category, $scope, $fields);
+    }
+
+    protected static function registerOptionNames($type, $category, $scope, $fields)
+    {
+        static::$registeredOptions[$type] = static::$registeredOptions[$type] ?? [];
+        static::$registeredOptions[$type][$category] = static::$registeredOptions[$type][$category] ?? [];
+        static::$registeredOptions[$type][$category][$scope] = array_column($fields, 'name');
+        return static::$registeredOptions;
     }
 
     protected static function addOptionsFieldGroup($name, $title, $optionsPageSlug, $fields)
@@ -235,15 +252,15 @@ class Options
         return true;
     }
 
-    protected static function getOptionFields($translatable)
+    protected static function getOptionField($key, $translatable)
     {
         global $sitepress;
 
         if (!isset($sitepress)) {
-            $options = self::getCachedOptionFields();
-        } else if ($translatable) {
+            $option = get_field('field_' . $key, 'option');
+        } elseif ($translatable) {
             // get options from cache with language namespace
-            $options = self::getCachedOptionFields(ICL_LANGUAGE_CODE);
+            $option = get_field('field_' . $key . '_' . ICL_LANGUAGE_CODE, 'option');
         } else {
             // switch to default language to get global options
             $sitepress->switch_lang(acf_get_setting('default_language'));
@@ -251,46 +268,14 @@ class Options
             add_filter('acf/settings/current_language', 'Flynt\Utils\Options::getDefaultAcfLanguage', 100);
 
             // get optios from cache with global namespace
-            $options = self::getCachedOptionFields('global');
+            $option = get_field('field_' . $key . '_global', 'option');
 
             remove_filter('acf/settings/current_language', 'Flynt\Utils\Options::getDefaultAcfLanguage', 100);
 
             $sitepress->switch_lang(ICL_LANGUAGE_CODE);
         }
 
-        return $options;
-    }
-
-    protected static function getCachedOptionFields($namespace = '')
-    {
-        // get cached options
-        $found = false;
-        $suffix = !empty($namespace) ? "_${namespace}" : '';
-        $cacheKey = "Features/Acf/OptionPages/ID=options${suffix}";
-
-        $options = wp_cache_get($cacheKey, 'flynt', null, $found);
-
-        if (!$found) {
-            $options = get_fields('options');
-            wp_cache_set($cacheKey, $options, 'flynt');
-        }
-
-        return $options;
-    }
-
-    // find and replace relevant keys, then return an array of all options for this Sub-Page
-    protected static function collectOptionsWithPrefix($options, $prefix)
-    {
-        $optionKeys = is_array($options) ? array_keys($options) : [];
-        return array_reduce($optionKeys, function ($carry, $key) use ($options, $prefix) {
-            $count = 0;
-            $option = $options[$key];
-            $key = str_replace($prefix, '', $key, $count);
-            if ($count > 0) {
-                $carry[$key] = $option;
-            }
-            return $carry;
-        }, []);
+        return $option;
     }
 
     public static function getDefaultAcfLanguage()
