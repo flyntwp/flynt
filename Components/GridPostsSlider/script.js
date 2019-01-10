@@ -17,7 +17,7 @@ class GridPostsSlider extends window.HTMLDivElement {
     $(window).on('load resize orientationchange', function () {
       $('.gridPosts').each(function () {
         var $carousel = $(this)
-        if ($(window).width() > 1100) {
+        if ($(window).width() > 1279) {
           if ($carousel.hasClass('slick-initialized')) {
             $carousel.slick('unslick')
           }

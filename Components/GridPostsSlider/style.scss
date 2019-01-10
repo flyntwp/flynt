@@ -1,10 +1,8 @@
-$breakpoint-grid: 1101px;
-
 [is=flynt-grid-posts-slider] {
   background-color: rgba(0, 0, 0, 0.03);
   padding: $component-spacing 0 90px;
 
-  @media (min-width: $breakpoint-grid) {
+  @media (min-width: $breakpoint-desktop) {
     padding: $component-spacing;
   }
 
@@ -15,7 +13,7 @@ $breakpoint-grid: 1101px;
   .preContent {
     @include resetContentMargins;
 
-    @media (min-width: $breakpoint-grid) {
+    @media (min-width: $breakpoint-desktop) {
       max-width: 80%;
       padding: 0;
     }
@@ -26,7 +24,7 @@ $breakpoint-grid: 1101px;
     margin-top: 20px;
     padding: 0 0 20px 0;
 
-    @media (min-width: $breakpoint-grid) {
+    @media (min-width: $breakpoint-desktop) {
       display: flex;
       flex-wrap: wrap;
       margin-right: -20px;
@@ -40,7 +38,7 @@ $breakpoint-grid: 1101px;
     overflow: hidden;
     position: relative;
 
-    @media (min-width: $breakpoint-grid) {
+    @media (min-width: $breakpoint-desktop) {
       display: block;
       margin-bottom: 20px;
       margin-right: 0;
@@ -136,7 +134,7 @@ $breakpoint-grid: 1101px;
     position: absolute;
     right: 40px;
 
-    @media (min-width: $breakpoint-grid) {
+    @media (min-width: $breakpoint-desktop) {
       bottom: inherit;
       right: 21px;
       top: 0;
