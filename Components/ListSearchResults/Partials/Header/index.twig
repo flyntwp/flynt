@@ -4,7 +4,7 @@
 <form class="searchForm" role="search" action="{{ bloginfo('url') }}">
   <label class="label" for="search-input">{{ searchLabel }}</label>
   <div class="field">
-    <input name="s" class="input" id="input" type="search" required min="1" placeholder="{{ searchPlaceholder }}"{% if searchTerm %} value="{{ searchTerm|e }}{% endif %}">
+    <input name="s" class="input" id="input" type="search" required min="1" placeholder="{{ searchPlaceholder }}"{% if searchQuery %} value="{{ searchQuery }}{% endif %}">
     <button class="submit" type="submit" aria-label="{{ searchButtonText }}">{{ searchIcon }}</button>
   </div>
 </form>

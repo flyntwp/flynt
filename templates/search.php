@@ -5,5 +5,6 @@ use Timber\PostQuery;
 
 $context = Timber::get_context();
 $context['posts'] = new PostQuery();
+$context['searchQuery'] = get_search_query();
 
 Timber::render('twig/search.twig', $context);
