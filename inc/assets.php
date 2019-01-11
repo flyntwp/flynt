@@ -24,7 +24,7 @@ add_action('wp_enqueue_scripts', function () {
     ]);
     Asset::enqueue([
         'name' => 'Flynt/assets',
-        'path' => 'assets/style.css',
+        'path' => 'assets/script.css',
         'type' => 'style',
         'dependencies' => [
             'vendor',

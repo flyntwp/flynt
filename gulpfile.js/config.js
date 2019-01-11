@@ -12,10 +12,6 @@ module.exports = {
     injectChanges: true,
     reloadDebounce: 1000
   },
-  copy: [
-    './{Components,Features,assets}/**/*',
-    '!./{Components,Features,assets}/**/*.{js,styl,scss,less}'
-  ],
   dest: dest,
   rev: {
     src: dest + '/**/*.*',
@@ -42,41 +38,17 @@ module.exports = {
   sourcemaps: {
     sourceRoot: '/app/themes/flynt-starter-theme/'
   },
-  sass: [
-    './assets/{style,admin,auth}.scss'
-  ],
-  watch: {
-    sass: ['./{Components,Features,assets}/**/*.scss'],
-    // sass: [
-    //   './{Components,Features,assets}/**/*.scss',
-    //   '!./{Components,Features,assets}/**/_*.scss'
-    // ],
-    php: [
-      './**/*.php',
-      '!./{Components,Features,assets}/**/*.php'
-    ],
-    webpack: './{Components,Features,assets}/**/{script,admin,auth}.js'
-  },
   webpack: {
     entry: {
       'assets/script': './assets/script.js',
       'assets/admin': './assets/admin.js',
       'assets/auth': './assets/auth.js'
-    }
-  },
-  lint: {
-    sass: ['./{Components,Features,assets}/**/*.scss'],
-    js: ['./{Components,Features,assets,gulpfile.js}/**/*.js'],
-    php: [
-      './**/*.php',
-      '!./dist/**/*.php',
-      '!./node_modules/**/*.php',
-      '!./vendor/**/*.php'
-    ],
-    phpcs: {
-      standard: 'phpcs.ruleset.xml',
-      binaryPath: './vendor/bin/phpcs'
-    }
+    },
+    copy: [{
+      from: './{Components,Features,assets}/**/*',
+      to: './',
+      ignore: ['*.js', '*.scss']
+    }],
   },
   replaceVersion: {
     wordpress: {

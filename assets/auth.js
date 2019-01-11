@@ -1,3 +1,5 @@
+import './auth.scss'
+
 function importAll (r) {
   r.keys().forEach(r)
 }
