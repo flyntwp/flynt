@@ -67,6 +67,14 @@ const webpackConfig = {
             }
           },
           {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [
+                require('autoprefixer')()
+              ]
+            }
+          },
+          {
             loader: 'sass-loader',
             options: {
               importer: globImporter()
