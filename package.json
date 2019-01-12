@@ -7,9 +7,9 @@
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf ./dist",
-    "start": "check-node-version --package -p && npm run clean && browser-sync start --config bs-config.js",
-    "build": "check-node-version --package -p && npm run clean && npm run lint && NODE_ENV=production webpack && gulp rev",
-    "lint": "npm run lint:scripts && npm run lint:styles && npm run lint:php",
+    "start": "check-node-version --package -p && $npm_execpath run clean && browser-sync start --config bs-config.js",
+    "build": "check-node-version --package -p && $npm_execpath run clean && $npm_execpath run lint && NODE_ENV=production webpack && gulp rev",
+    "lint": "$npm_execpath run lint:scripts && $npm_execpath run lint:styles && $npm_execpath run lint:php",
     "lint:scripts": "eslint Components/ Features/ assets/",
     "lint:styles": "stylelint \"Components/**/*.scss\" \"Features/**/*.scss\" \"assets/**/*.scss\"",
     "lint:php": "./vendor/bin/phpcs --standard=phpcs.ruleset.xml",
