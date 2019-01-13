@@ -6,16 +6,16 @@ add_action('wp_enqueue_scripts', function () {
     Asset::register([
         'name' => 'vendor',
         'type' => 'script',
-        'path' => 'vendor/script.js'
+        'path' => 'vendor/main.js'
     ]);
     Asset::register([
         'name' => 'vendor',
-        'path' => 'vendor/script.css',
+        'path' => 'vendor/main.css',
         'type' => 'style'
     ]);
     Asset::enqueue([
         'name' => 'Flynt/assets',
-        'path' => 'assets/script.js',
+        'path' => 'assets/main.js',
         'type' => 'script',
         'dependencies' => [
             'jquery',
@@ -24,7 +24,7 @@ add_action('wp_enqueue_scripts', function () {
     ]);
     Asset::enqueue([
         'name' => 'Flynt/assets',
-        'path' => 'assets/script.css',
+        'path' => 'assets/main.css',
         'type' => 'style',
         'dependencies' => [
             'vendor',

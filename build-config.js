@@ -4,7 +4,7 @@ const host = 'https://flynt-starter-theme.local.blee.ch'
 module.exports = {
   webpack: {
     entry: {
-      'assets/script': './assets/script.js',
+      'assets/main': './assets/main.js',
       'assets/admin': './assets/admin.js',
       'assets/auth': './assets/auth.js'
     },

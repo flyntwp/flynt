@@ -122,10 +122,10 @@ const webpackConfig = {
         default: false,
         vendor: {
           test (module, chunks) {
-            return chunks[0].name === 'assets/script' && (module.context || '').match(/[\\/]node_modules[\\/]/)
+            return chunks[0].name === 'assets/main' && (module.context || '').match(/[\\/]node_modules[\\/]/)
           },
           chunks: 'all',
-          name: 'vendor/script',
+          name: 'vendor/main',
           priority: 1
         },
         vendorAdmin: {
