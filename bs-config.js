@@ -22,9 +22,7 @@ const webpackHotMiddleware = require('webpack-hot-middleware')
  */
 const webpackConfig = require('./webpack.config')
 const bundler = webpack(webpackConfig)
-bundler.hot = true
-bundler.devServer = true
-// console.log(config.host)
+
 module.exports = Object.assign({
   middleware: [
     webpackDevMiddleware(bundler, Object.assign({

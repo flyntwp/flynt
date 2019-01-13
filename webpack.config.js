@@ -21,8 +21,7 @@ const babelQuery = {
 if (!production) {
   Object.keys(config.entry).forEach(function (entry) {
     config.entry[entry] = [
-      'webpack/hot/dev-server',
-      'webpack-hot-middleware/client',
+      'webpack-hot-middleware/client?reload=true&noInfo=true',
       config.entry[entry]
     ]
   })
