@@ -8,7 +8,7 @@
   "scripts": {
     "clean": "rm -rf ./dist",
     "start": "check-node-version --package -p && $npm_execpath run clean && browser-sync start --config bs-config.js",
-    "build": "check-node-version --package -p && $npm_execpath run clean && $npm_execpath run lint && NODE_ENV=production webpack && gulp rev",
+    "build": "check-node-version --package -p && $npm_execpath run clean && $npm_execpath run lint && NODE_ENV=production webpack --progress --display=minimal && gulp rev",
     "lint": "$npm_execpath run lint:scripts && $npm_execpath run lint:styles && $npm_execpath run lint:php",
     "lint:scripts": "eslint Components/ Features/ assets/",
     "lint:styles": "stylelint \"Components/**/*.scss\" \"Features/**/*.scss\" \"assets/**/*.scss\"",
@@ -46,17 +46,14 @@
     "gulp-rev": "^9.0.0",
     "gulp-rev-napkin": "^0.1.0",
     "gulp-rev-rewrite": "^1.1.3",
-    "gulp-sass": "^4.0.2",
-    "gulp-sourcemaps": "^2.2.0",
-    "gulp-stylelint": "^8.0.0",
-    "gulp-watch": "^5.0.1",
     "hard-source-webpack-plugin": "^0.13.1",
-    "hasbin": "^1.2.3",
     "intersection-observer": "^0.5.1",
     "lazysizes": "^4.1.4",
     "lodash": "^4.17.10",
+    "node-sass": "^4.11.0",
     "node-sass-glob-importer": "^5.2.0",
     "normalize.css": "^8.0.1",
+    "objectFitPolyfill": "^2.1.1",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "plugin-error": "^1.0.1",
     "postcss-loader": "^3.0.0",
@@ -70,7 +67,6 @@
     "stylelint": "^9.9.0",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-scss": "^3.4.1",
-    "touch": "^3.1.0",
     "uglify-js": "^3.4.9",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.27.1",
@@ -106,9 +102,7 @@
       "postbump": "gulp replaceVersion && git add ."
     }
   },
-  "dependencies": {
-    "objectFitPolyfill": "^2.1.1"
-  },
+  "dependencies": {},
   "browserslist": [
     "> 1%",
     "last 2 versions",
