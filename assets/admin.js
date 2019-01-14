@@ -1,3 +1,5 @@
+import './admin.scss'
+
 function importAll (r) {
   r.keys().forEach(r)
 }

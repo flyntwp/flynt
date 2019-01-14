@@ -15,8 +15,9 @@ cache:
 
 php:
   # - 5.6
-  - 7.0
+  # - 7.0
   # - 7.1
+  - 7.2
   # - nightly
 
 matrix:
@@ -28,11 +29,10 @@ before_script:
   - yarn
 
 install:
-  - composer global require "squizlabs/php_codesniffer=~3.1"
-  - export PATH="$HOME/.composer/vendor/bin:$PATH"
-  - nvm install 8
-  - nvm use 8
-  - npm i -g yarn gulp
+  - composer install
+  - nvm install 10
+  - nvm use 10
+  - npm i -g yarn
 
 script:
-  - gulp lint
+  - yarn lint

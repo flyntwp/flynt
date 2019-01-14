@@ -1,3 +1,4 @@
+import './main.scss'
 import 'console-polyfill'
 import 'normalize.css/normalize.css'
 
