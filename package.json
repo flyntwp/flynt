@@ -13,6 +13,9 @@
     "lint:scripts": "eslint Components/ Features/ assets/",
     "lint:styles": "stylelint \"Components/**/*.scss\" \"Features/**/*.scss\" \"assets/**/*.scss\"",
     "lint:php": "./vendor/bin/phpcs --standard=phpcs.ruleset.xml",
+    "lint:scripts:fix": "eslint Components/ Features/ assets/ --fix",
+    "lint:styles:fix": "stylelint \"Components/**/*.scss\" \"Features/**/*.scss\" \"assets/**/*.scss\" --fix",
+    "lint:php:fix": "./vendor/bin/phpcbf --standard=phpcs.ruleset.xml",
     "release": "standard-version -a",
     "releaseGithub": "conventional-github-releaser -p angular"
   },
