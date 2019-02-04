@@ -13,6 +13,7 @@ class Init
 {
     public static function initTheme()
     {
+        Flynt\registerHooks();
         // initialize plugin defaults
         Flynt\initDefaults();
 

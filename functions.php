@@ -6,7 +6,6 @@ use Flynt\Utils\FileLoader;
 use Flynt\Bootstrap;
 
 require_once __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/lib/Init.php';
 
 // This needs to happen first.
 // Reason:  In case the theme was just activated and the plugin is not active,
@@ -14,8 +13,6 @@ require_once __DIR__ . '/lib/Init.php';
 //          defined here.
 Init::setTemplateDirectory();
 
-require_once __DIR__ . '/lib/Utils/FileLoader.php';
-FileLoader::loadPhpFiles('lib');
 // Check if the required plugins are installed and activated.
 // If they aren't, this function redirects the template rendering to use
 // plugin-inactive.php instead and shows a warning in the admin backend.

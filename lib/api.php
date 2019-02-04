@@ -51,23 +51,6 @@ function renderComponent($componentName, $data)
     return is_null($output) ? '' : $output;
 }
 
-add_filter('Flynt/renderComponent', function ($output, $componentName, $data) {
-    return apply_filters(
-        "Flynt/renderComponent?name={$componentName}",
-        $output,
-        $componentName,
-        $data
-    );
-}, 10, 3);
-
-add_filter('Flynt/addComponentData', function ($data, $componentName) {
-    return apply_filters(
-        "Flynt/addComponentData?name={$componentName}",
-        $data,
-        $componentName
-    );
-}, 10, 2);
-
 function registerFields($scope, $fields, $fieldsId = null)
 {
     global $flyntFields;
@@ -91,4 +74,24 @@ function loadFields($scope, $fieldPath = null)
         $data = new Data($flyntFields[$scope]);
         return $data->get($fieldPath);
     }
+}
+
+function registerHooks()
+{
+    add_filter('Flynt/renderComponent', function ($output, $componentName, $data) {
+        return apply_filters(
+            "Flynt/renderComponent?name={$componentName}",
+            $output,
+            $componentName,
+            $data
+        );
+    }, 10, 3);
+
+    add_filter('Flynt/addComponentData', function ($data, $componentName) {
+        return apply_filters(
+            "Flynt/addComponentData?name={$componentName}",
+            $data,
+            $componentName
+        );
+    }, 10, 2);
 }
