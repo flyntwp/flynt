@@ -17,7 +17,10 @@ module.exports = {
   browserSync: {
     ghostMode: false,
     open: false,
-    proxy: host,
+    proxy: {
+      target: host,
+      ws: true
+    },
     watchOptions: {
       ignoreInitial: true
     },
