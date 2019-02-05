@@ -49,7 +49,6 @@
     "gulp-rev": "^9.0.0",
     "gulp-rev-napkin": "^0.1.0",
     "gulp-rev-rewrite": "^1.1.3",
-    "hard-source-webpack-plugin": "^0.13.1",
     "intersection-observer": "^0.5.1",
     "lazysizes": "^4.1.4",
     "lodash": "^4.17.10",
