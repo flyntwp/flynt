@@ -6,8 +6,7 @@ Loads a `basestyle.php` template from the templates folder to render base style 
 ## Installation
 
 1. Drop this Folder in your Flynt `Features` directory.
-2. Enable feature in `inc/Init.php` by adding `Feature::register('BaseStyle', $basePath);`;
-3. Add a `basestyle.php` template with base style markup in your templates folder.
+2. Add a `basestyle.php` template with base style markup in your templates folder.
 
 
 ## Usage
