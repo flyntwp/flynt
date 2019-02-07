@@ -6,14 +6,6 @@ use Flynt\Utils\Asset;
 define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
 
 add_action('wp_enqueue_scripts', function () {
-    if (is_user_logged_in()) {
-        Asset::register([
-            'type' => 'script',
-            'name' => 'draggabilly',
-            'path' => 'vendor/draggabilly.js'
-        ]);
-        Asset::addDependencies('Flynt/assets/auth', ['draggabilly']);
-    }
     $data = [
         'templateDirectoryUri' => get_template_directory_uri() . '/dist',
     ];
