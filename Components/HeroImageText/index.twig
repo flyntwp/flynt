@@ -11,7 +11,7 @@
     <img class="image" srcset="
       {{ images.imageMobile.src | resize(375, 400) }} 375w,
       {{ images.imageMobile.src | resize(750, 800) }} 750w"
-    src="{{ images.mobileImage.src | resize(375, 400) }}"
+    src="{{ images.imageMobile.src | resize(375, 400) }}"
     sizes="100vw"
     alt="{{ images.imageDesktop.alt|e }}">
   </picture>
