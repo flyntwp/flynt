@@ -33,7 +33,7 @@
     }
 
     &-arrow {
-      $colorTextRgb: red($color-text), green($color-text), blue($color-text);
+      $colorTextRgb: red($color-contrast), green($color-contrast), blue($color-contrast);
 
       background-image: url("data:image/svg+xml;utf8,<svg width='32' height='32' xmlns='http://www.w3.org/2000/svg'><polyline fill='none' stroke='rgb(#{$colorTextRgb})' stroke-width='2'  points='2,9 16,25 30,9 '/></svg>");
       background-position: center center;
