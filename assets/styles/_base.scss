@@ -34,19 +34,15 @@ html {
 */
 
 html,
-body,
-.pageWrapper {
-  height: 100%;
+body {
+  overflow-x: hidden;
 }
 
-.pageWrapper {
-  display: flex;
-  flex-direction: column;
+.flyntComponent {
+  position: relative;
 }
 
 .mainContent {
-  flex: 1 0 auto;
-
   > .flyntComponent {
     &:first-child {
       margin-top: 0;
