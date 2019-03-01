@@ -38,7 +38,7 @@
     }
 
     &-wrapper {
-      background: rgba(0, 0, 0, 0.8);
+      background: $color-contrast;
       position: relative;
     }
 
@@ -63,7 +63,7 @@
     }
 
     &-title {
-      color: #fff;
+      color: $color-background;
       margin-bottom: 0;
       padding-top: 0;
     }

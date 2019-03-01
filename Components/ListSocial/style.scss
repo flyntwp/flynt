@@ -1,5 +1,6 @@
 [is=flynt-list-social] {
   background-color: $color-brand;
+  color: #fff;
   padding: $component-spacing 0;
 
   .container {
@@ -9,7 +10,6 @@
   .content {
     @include resetContentMargins;
 
-    color: #fff;
     margin: 10px auto;
     max-width: $content-max-width;
     text-align: center;

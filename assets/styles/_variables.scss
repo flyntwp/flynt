@@ -9,10 +9,11 @@ $container-padding: 20px;
 $content-max-width: 600px;
 $component-spacing: 60px;
 
-$color-background: #fff;
 $color-brand: #91c6c4;
 $color-accent: #f98928;
-$color-headline: #2a2a2a;
-$color-text: #222;
+$color-background: #fff;
+$color-contrast: #222;
+$color-text: $color-contrast;
+$color-headline: lighten($color-contrast, 3%);
 
 $heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';

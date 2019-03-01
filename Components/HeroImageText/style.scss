@@ -3,6 +3,7 @@
 
   .image {
     background: rgba(0, 0, 0, 0.8);
+    background: $color-contrast;
     height: 400px;
     object-fit: cover;
     width: 100%;
@@ -23,7 +24,7 @@
     &-inner {
       @include resetContentMargins;
 
-      color: #fff;
+      color: $color-background;
       max-width: $content-max-width;
       text-align: center;
 
