@@ -1,13 +1,8 @@
 <div is="flynt-block-cookie-notice" class="flyntComponent">
   <div class="container">
     <div class="content">
-      {% if contentHtml %}
-        {{- contentHtml|e('wp_kses_post') -}}
-      {% else %}
-        <h4>This website uses cookies</h4>
-        <p>We inform you that this site uses own, technical and third parties cookies to make sure our web page is user-friendly and to guarantee a high functionality of the webpage. By continuing to browse this website, you declare to accept the use of cookies.</p>
-      {% endif %}
+      {{ contentHtml|e('wp_kses_post') }}
     </div>
-    <button type="button" class="btn btn--primary btnClose" aria-label="Close">{{ closeButtonLabel ?: 'Ok' }}</button>
+    <button type="button" class="btn btn--primary btnClose" aria-label="Close">{{ closeButtonLabel }}</button>
   </div>
 </div>
