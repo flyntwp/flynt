@@ -1,5 +1,5 @@
 {% extends 'twig/_document.twig' %}
 
-{% set content %}
+{% block content %}
   {{ renderComponent('ListPosts', { posts: posts }) }}
-{% endset %}
+{% endblock %}

@@ -19,11 +19,9 @@
             {% if function('post_password_required') %}
               {{ function('get_the_password_form') }}
             {% else %}
-              {% if content is defined %}
-                {{ content }}
-              {% else %}
+              {% block content %}
                 No <code>{{ '{% set content %}' }}</code> defined for this template.
-              {% endif %}
+              {% endblock %}
             {% endif %}
           </main>
           <footer class="mainFooter">
