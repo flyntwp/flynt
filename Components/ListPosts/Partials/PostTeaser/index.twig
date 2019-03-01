@@ -15,7 +15,7 @@
     {% if post.post_date %}
       <time class="postTeaser-date" datetime="{{ post.post_date }}">{{ post.post_date | date }}</time>
     {% endif %}
-    <h3 class="postTeaser-headline"><a href="{{ post.link }}" target="{{ post.target }}">{{ post.title }}</a></h3>
+    <h3 class="postTeaser-headline"><a href="{{ post.link }}">{{ post.title }}</a></h3>
     <p>{{ post.get_preview(50, false, readMoreLabel, true, '&hellip;') }}</p>
   </div>
 </li>
