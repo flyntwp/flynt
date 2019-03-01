@@ -58,11 +58,11 @@ body,
   }
 }
 
-.container--centerMaxWidthContainer {
+.centerMaxWidthContainer {
   @include centerMaxWidthContainer;
 }
 
-.content--centerContentMaxWidth {
+.centerContentMaxWidth {
   margin: 0 auto;
   max-width: $content-max-width;
 }
