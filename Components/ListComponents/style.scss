@@ -3,83 +3,56 @@
 
   .container {
     @include centerMaxWidthContainer;
-
-    display: flex;
-    justify-content: center;
   }
 
   .components {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    @include listReset;
+
+    margin: 0 auto;
+    max-width: $content-max-width;
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      max-width: none;
+    }
   }
 
   .component {
     display: block;
     padding-bottom: 100px;
 
-    &--noImage {
-      justify-content: center;
-    }
-
     @media (min-width: $breakpoint-tablet-horizontal) {
       display: flex;
+      margin-left: -40px;
     }
 
-    &-previews {
+    &-screenshot,
+    &-content {
       @media (min-width: $breakpoint-tablet-horizontal) {
-        margin-right: 40px;
-        padding: 0 20px 20px 0;
-        position: relative;
+        margin-left: 40px;
+        width: 50%;
       }
     }
 
-    &-previewImage {
+    &-screenshotWrapper {
       background-color: $color-background;
       box-shadow: 0 0 11px rgba(0, 0, 0, 0.15);
+      height: 0;
+      padding-bottom: percentage(800/1280);
       position: relative;
       overflow: hidden;
+      width: 100%;
 
       img {
         min-height: 100%;
         object-fit: contain;
         position: absolute;
       }
-
-      &--desktop {
-        height: 0;
-        max-width: $content-max-width - 20px;
-        padding-bottom: percentage(800/1280);
-        width: 100%;
-
-        @media (min-width: $breakpoint-tablet-horizontal) {
-          width: $content-max-width - 20px;
-        }
-      }
-
-      &--mobile {
-        display: none;
-
-        @media (min-width: $breakpoint-tablet-horizontal) {
-          bottom: 0;
-          display: block;
-          height: 236px;
-          position: absolute;
-          right: 0;
-          width: 160px;
-        }
-      }
     }
 
     &-content {
       @include resetContentMargins;
 
-      max-width: $content-max-width;
       padding-top: 20px;
-
-      @media (min-width: $breakpoint-tablet-horizontal) {
-        padding-top: 0;
-      }
     }
   }
 }

@@ -56,8 +56,7 @@ module.exports = {
         '!' + dest + '/favicon.png',
         '!' + dest + '/apple-touch-icon-180x180.png',
         '!' + dest + '/apple-touch-icon.png',
-        '!' + dest + '/**/preview-desktop.jpg',
-        '!' + dest + '/**/preview-mobile.jpg'
+        '!' + dest + '/**/screenshot.png'
       ],
       revvedFileExtensions: ['.js', '.css'],
       staticFileExtensions: ['.html', '.php', '.twig']

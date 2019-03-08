@@ -3,36 +3,16 @@
     <ul class="components">
       {% for componentBlock in componentBlocks %}
         {% if componentBlock.readme %}
-          <li class="component{% if not componentBlock.componentPreviewDesktop %} component--noImage{% endif %}">
-            {% if componentBlock.componentPreviewDesktop %}
-              <div class="component-previews">
-                <div class="component-previewImage component-previewImage--desktop">
+          <li class="component">
+            {% if componentBlock.componentScreenshot %}
+              <div class="component-screenshot">
+                <div class="component-screenshotWrapper">
                   <img class="lazyload"
-                      src="{{ componentBlock.componentPreviewDesktop.src|resize(600) }}"
-                      srcset="{{ placeholderImage(600, 600 / componentBlock.componentPreviewDesktop.aspect) }}"
-                      data-srcset="
-                        {{ componentBlock.componentPreviewDesktop.src|resize(1800) }} 1800w,
-                        {{ componentBlock.componentPreviewDesktop.src|resize(1200) }} 1200w,
-                        {{ componentBlock.componentPreviewDesktop.src|resize(600) }} 600w,
-                        {{ componentBlock.componentPreviewDesktop.src|resize(300) }} 300w"
+                      src="{{ placeholderImage(600, 600 / componentBlock.componentScreenshot.aspect) }}"
+                      data-src="{{ componentBlock.componentScreenshot.src }}"
                       data-sizes="auto"
-                      alt="{{ image.alt|e }}">
+                      alt="{{ componentBlock.readme.title|e }}">
                 </div>
-                {% if componentBlock.componentPreviewMobile %}
-                  <div class="component-previewImage component-previewImage--mobile">
-                    <img class="lazyload"
-                        src="{{ componentBlock.componentPreviewMobile.src|resize(120) }}"
-                        srcset="{{ placeholderImage(120, 120 / componentBlock.componentPreviewMobile.aspect) }}"
-                        data-srcset="
-                          {{ componentBlock.componentPreviewMobile.src|resize(670) }} 670w,
-                          {{ componentBlock.componentPreviewMobile.src|resize(360) }} 360w,
-                          {{ componentBlock.componentPreviewMobile.src|resize(240) }} 240w,
-                          {{ componentBlock.componentPreviewMobile.src|resize(120) }} 120w,
-                          {{ componentBlock.componentPreviewMobile.src|resize(60) }} 60w"
-                        data-sizes="auto"
-                        alt="{{ image.alt|e }}">
-                  </div>
-                {% endif %}
               </div>
             {% endif %}
             <div class="component-content">

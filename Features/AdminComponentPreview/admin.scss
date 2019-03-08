@@ -1,5 +1,5 @@
-/* Backend Preview Images */
-.flyntComponentPreview {
+/* Backend Component Screenshots */
+.flyntComponentScreenshot {
   background-color: #fff;
   border: 1px solid #e1e1e1;
   bottom: 5px;
@@ -21,19 +21,11 @@
     border: 3px solid #333739;
     bottom: 0;
     display: block;
+    height: 250px;
     max-width: 500px;
     object-fit: contain;
     position: absolute;
-
-    &--desktop {
-      height: 250px;
-      right: 30px;
-    }
-
-    &--mobile {
-      height: 150px;
-      right: 0;
-    }
+    right: 30px;
   }
 
   &-imageElement {

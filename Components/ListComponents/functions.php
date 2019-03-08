@@ -12,29 +12,20 @@ add_filter('Flynt/addComponentData?name=ListComponents', function ($data) {
             $componentPaths = explode('/', $block['component']);
             $block['component'] = implode('/', array_slice($componentPaths, count($componentPaths)-3, 3));
 
-            if (file_exists(Asset::requirePath($block['component'] . 'preview-desktop.jpg'))) {
-                $src = Asset::requireUrl($block['component'] . 'preview-desktop.jpg');
-                list($width, $height) = getimagesize(Asset::requirePath($block['component'] . 'preview-desktop.jpg'));
+            if (file_exists(Asset::requirePath($block['component'] . 'screenshot.png'))) {
+                $src = Asset::requireUrl($block['component'] . 'screenshot.png');
+                list($width, $height) = getimagesize(Asset::requirePath($block['component'] . 'screenshot.png'));
 
-                $block['componentPreviewDesktop'] = [
+                $block['componentScreenshot'] = [
                     'src' => $src,
                     'aspect' => $width / $height
                 ];
             }
 
-            if (file_exists(Asset::requirePath($block['component']."preview-mobile.jpg"))) {
-                $src = Asset::requireUrl($block['component'] . 'preview-mobile.jpg');
-                list($width, $height) = getimagesize(Asset::requirePath($block['component'] . 'preview-mobile.jpg'));
-
-                $block['componentPreviewMobile'] = [
-                    'src' => $src,
-                    'aspect' => $width / $height
-                ];
-            }
             $readme = Asset::requirePath($block['component'] . 'README.md');
 
             if (file_exists($readme)) {
-                $block['readme'] = parsePreviewContent(file_get_contents($readme));
+                $block['readme'] = parseComponentReadme(file_get_contents($readme));
             }
 
             return $block;
@@ -51,7 +42,7 @@ add_filter('acf/load_field/name=component', function ($field) {
     return $field;
 });
 
-function parsePreviewContent($file)
+function parseComponentReadme($file)
 {
     $content = [];
     $fields = preg_split('!\n---\s*\n*!', $file);
