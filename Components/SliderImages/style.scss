@@ -30,7 +30,8 @@ $content-max-width: 800px;
   }
 
   .slick-list,
-  .slick-track {
+  .slick-track,
+  .slick-slide > div {
     height: 100%;
   }
 
