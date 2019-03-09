@@ -1,14 +1,22 @@
 $nav-height-mobile: 64px;
 
-body {
-  margin-top: $nav-height-mobile;
+html {
+  .pageWrapper {
+    padding-top: $nav-height-mobile;
+  }
+
+  &.admin-bar .pageWrapper {
+    transform: translate3d(0, 0, 0);
+  }
 
   &.navigationMain--isActive {
     overflow: hidden;
   }
 
   @media (min-width: $breakpoint-tablet) {
-    margin-top: 0;
+    .pageWrapper {
+      padding-top: 0;
+    }
 
     &.navigationMain--isActive {
       overflow: auto;
