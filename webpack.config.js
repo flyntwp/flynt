@@ -172,6 +172,14 @@ if (production) {
   ]
 } else {
   webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin())
+  webpackConfig.plugins.push(
+    new webpack.DefinePlugin({
+      PRODUCTION: JSON.stringify(false),
+      'process.env': {
+        'NODE_ENV': JSON.stringify('development')
+      }
+    })
+  )
 }
 
 module.exports = webpackConfig
