@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const globImporter = require('node-sass-glob-importer')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -50,14 +50,16 @@ const webpackConfig = {
       {
         test: /\.css$/,
         use: [
-          ExtractCssChunks.loader,
+          'css-hot-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader'
         ]
       },
       {
         test: /\.scss$/,
         use: [
-          ExtractCssChunks.loader,
+          'css-hot-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -102,7 +104,7 @@ const webpackConfig = {
       debug: !config.production
     }),
     new CopyWebpackPlugin(config.copy),
-    new ExtractCssChunks({
+    new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
       filename: '[name].css',
