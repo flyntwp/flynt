@@ -5,6 +5,7 @@ const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const globImporter = require('node-sass-glob-importer')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const config = require('./build-config').webpack
 
 const production = process.env.NODE_ENV === 'production'
@@ -107,6 +108,9 @@ const webpackConfig = {
       filename: '[name].css',
       chunkFilename: '[name].css',
       hot: true
+    }),
+    new FriendlyErrorsWebpackPlugin({
+      clearConsole: false
     })
   ],
   externals: {

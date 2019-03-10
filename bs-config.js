@@ -26,8 +26,11 @@ const bundler = webpack(webpackConfig)
 module.exports = Object.assign({
   middleware: [
     webpackDevMiddleware(bundler, Object.assign({
-      publicPath: webpackConfig.output.publicPath
+      publicPath: webpackConfig.output.publicPath,
+      logLevel: 'silent'
     }, config.webpackDevMiddleware)),
-    webpackHotMiddleware(bundler)
+    webpackHotMiddleware(bundler, {
+      log: false
+    })
   ]
 }, config.browserSync)
