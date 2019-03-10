@@ -52,7 +52,7 @@ add_filter('acf/fields/wysiwyg/toolbars', function ($toolbars) {
 
 function getConfig()
 {
-    $filePath = Asset::requirePath('/Features/TinyMce/config.json');
+    $filePath = Asset::requirePath('/Components/FeatureTinyMce/config.json');
     if (file_exists($filePath)) {
         return json_decode(file_get_contents($filePath), true);
     } else {

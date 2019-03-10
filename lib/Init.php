@@ -19,15 +19,6 @@ class Init
         new Timber();
     }
 
-    public static function loadFeatures()
-    {
-        $basePath = get_template_directory() . '/dist/Features';
-        global $flyntCurrentOptionCategory;
-        $flyntCurrentOptionCategory = 'feature';
-        Api::registerFeaturesFromPath($basePath);
-        do_action('Flynt/afterRegisterFeatures');
-    }
-
     public static function loadComponents()
     {
         $basePath = get_template_directory() . '/dist/Components';

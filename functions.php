@@ -20,5 +20,4 @@ if (Init::checkRequiredPlugins()) {
 }
 
 add_action('after_setup_theme', ['Flynt\Init', 'initTheme']);
-add_action('after_setup_theme', ['Flynt\Init', 'loadFeatures'], 100);
 add_action('after_setup_theme', ['Flynt\Init', 'loadComponents'], 101);
