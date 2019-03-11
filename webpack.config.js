@@ -108,8 +108,7 @@ const webpackConfig = {
       // Options similar to the same options in webpackOptions.output
       // both options are optional
       filename: '[name].css',
-      chunkFilename: '[name].css',
-      hot: true
+      chunkFilename: '[name].css'
     }),
     new FriendlyErrorsWebpackPlugin({
       clearConsole: false

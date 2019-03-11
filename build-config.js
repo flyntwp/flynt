@@ -16,7 +16,7 @@ module.exports = {
       from: './{Components,Features,assets}/**/*',
       to: './',
       ignore: ['*.js', '*.scss']
-    }],
+    }]
   },
   browserSync: {
     ghostMode: false,
