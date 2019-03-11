@@ -1,8 +1,12 @@
-const dest = './dist'
 const host = 'https://flynt-starter-theme.local.blee.ch'
+const themeName = 'flynt-starter-theme'
+const dest = './dist'
+
+const path = require('path')
 
 module.exports = {
   webpack: {
+    publicPath: path.join(`/app/themes/${themeName}/`, dest, '/'),
     entry: {
       'assets/main': './assets/main.js',
       'assets/admin': './assets/admin.js',

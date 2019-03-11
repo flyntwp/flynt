@@ -34,7 +34,7 @@ const webpackConfig = {
   entry: config.entry,
   output: {
     path: path.join(__dirname, 'dist'),
-    publicPath: '/app/themes/flynt-starter-theme/dist/'
+    publicPath: config.publicPath
   },
   devtool: production ? false : 'inline-source-map',
   module: {
