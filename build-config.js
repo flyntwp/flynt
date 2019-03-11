@@ -32,9 +32,11 @@ module.exports = {
     reloadDebounce: 1000,
     ui: false,
     files: [
+      'templates/**/*',
       'dist/**/*',
       '!dist/**/*.js',
-      '!dist/**/*.css'
+      '!dist/**/*.css',
+      '!dist/assets/vendor/**/*'
     ],
     watch: true
   },
