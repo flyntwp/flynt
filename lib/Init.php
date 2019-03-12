@@ -4,9 +4,6 @@ namespace Flynt;
 
 use Flynt\Api;
 use Flynt\Utils\Asset;
-use Flynt\Utils\Feature;
-use Flynt\Utils\FileLoader;
-use Flynt\Utils\StringHelpers;
 use Timber\Timber;
 
 class Init

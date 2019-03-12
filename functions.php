@@ -3,7 +3,6 @@
 namespace Flynt;
 
 use Flynt\Utils\FileLoader;
-use Flynt\Bootstrap;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
