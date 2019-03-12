@@ -29,35 +29,6 @@ add_action('wp_enqueue_scripts', function () {
         'path' => 'assets/main.css',
         'type' => 'style',
     ]);
-
-    if (is_user_logged_in()) {
-        Asset::enqueue([
-            'name' => 'Flynt/assets/vendorAuth',
-            'type' => 'script',
-            'path' => 'vendor/auth.js',
-            'dependencies' => [
-                'jquery',
-            ],
-        ]);
-        Asset::enqueue([
-            'name' => 'Flynt/assets/auth',
-            'path' => 'assets/auth.js',
-            'type' => 'script',
-            'dependencies' => [
-                'jquery',
-            ],
-        ]);
-        Asset::enqueue([
-            'name' => 'Flynt/assets/vendorAuth',
-            'path' => 'vendor/auth.css',
-            'type' => 'style'
-        ]);
-        Asset::enqueue([
-            'name' => 'Flynt/assets/auth',
-            'path' => 'assets/auth.css',
-            'type' => 'style',
-        ]);
-    }
 });
 
 add_action('admin_enqueue_scripts', function () {

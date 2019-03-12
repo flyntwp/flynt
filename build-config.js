@@ -9,8 +9,7 @@ module.exports = {
     publicPath: path.join(`/app/themes/${themeName}/`, dest, '/'),
     entry: {
       'assets/main': './assets/main.js',
-      'assets/admin': './assets/admin.js',
-      'assets/auth': './assets/auth.js'
+      'assets/admin': './assets/admin.js'
     },
     copy: [{
       from: './{Components,Features,assets}/**/*',
