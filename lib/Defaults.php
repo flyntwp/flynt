@@ -20,7 +20,7 @@ class Defaults
         if (is_null($output)) {
             $componentManager = ComponentManager::getInstance();
             $filePath = $componentManager->getComponentFilePath($componentName);
-            $output = self::renderFile($componentData, $areaHtml, $filePath);
+            $output = self::renderFile($componentData, [], $filePath);
         }
         return $output;
     }
