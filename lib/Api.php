@@ -7,7 +7,8 @@ use Flynt\ComponentManager;
 use Flynt\Utils\Feature;
 use Dflydev\DotAccessData\Data;
 
-class Api {
+class Api
+{
     public static function initDefaults()
     {
         Defaults::init();
