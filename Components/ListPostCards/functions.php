@@ -1,7 +1,7 @@
 <?php
 namespace Flynt\Components\ListPostCards;
 
-use Flynt;
+use Flynt\Api;
 use Timber\Timber;
 
 add_filter('Flynt/addComponentData?name=ListPostCards', function ($data) {
@@ -16,7 +16,7 @@ add_filter('Flynt/addComponentData?name=ListPostCards', function ($data) {
     return $data;
 });
 
-Flynt\registerFields('ListPostCards', [
+Api::registerFields('ListPostCards', [
     'layout' => [
         'name' => 'listPostCards',
         'label' => 'List: Post Cards',

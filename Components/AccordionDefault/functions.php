@@ -2,9 +2,9 @@
 
 namespace Flynt\Components\AccordionDefault;
 
-use Flynt;
+use Flynt\Api;
 
-Flynt\registerFields('AccordionDefault', [
+Api::registerFields('AccordionDefault', [
     'layout' => [
         'name' => 'AccordionDefault',
         'label' => 'Accordion: Default',

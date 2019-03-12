@@ -2,9 +2,9 @@
 
 namespace Flynt\Components\BlockWysiwyg;
 
-use Flynt;
+use Flynt\Api;
 
-Flynt\registerFields('BlockWysiwyg', [
+Api::registerFields('BlockWysiwyg', [
     'layout' => [
         'name' => 'blockWysiwyg',
         'label' => 'Block: Wysiwyg',

@@ -2,9 +2,9 @@
 
 namespace Flynt\Components\HeroCta;
 
-use Flynt;
+use Flynt\Api;
 
-Flynt\registerFields('HeroCta', [
+Api::registerFields('HeroCta', [
     'layout' => [
         'name' => 'heroCta',
         'label' => 'Hero: CTA',

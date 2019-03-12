@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\BlockVideoOembed;
 
-use Flynt;
+use Flynt\Api;
 use Flynt\Utils\Oembed;
 
 add_filter('Flynt/addComponentData?name=BlockVideoOembed', function ($data) {
@@ -16,7 +16,7 @@ add_filter('Flynt/addComponentData?name=BlockVideoOembed', function ($data) {
     return $data;
 });
 
-Flynt\registerFields('BlockVideoOembed', [
+Api::registerFields('BlockVideoOembed', [
     'layout' => [
         'name' => 'blockVideoOembed',
         'label' => 'Block: Video Oembed',

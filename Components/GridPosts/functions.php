@@ -2,10 +2,10 @@
 
 namespace Flynt\Components\GridPosts;
 
-use Flynt;
+use Flynt\Api;
 use Flynt\Utils\Options;
 
-Flynt\registerFields('GridPosts', [
+Api::registerFields('GridPosts', [
     'layout' => [
         'name' => 'gridPosts',
         'label' => 'Grid: Posts',

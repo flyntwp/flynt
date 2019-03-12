@@ -2,7 +2,7 @@
 
 namespace Flynt;
 
-use Flynt;
+use Flynt\Api;
 use Flynt\Utils\Asset;
 use Flynt\Utils\Feature;
 use Flynt\Utils\FileLoader;
@@ -13,9 +13,8 @@ class Init
 {
     public static function initTheme()
     {
-        Flynt\registerHooks();
-        // initialize plugin defaults
-        Flynt\initDefaults();
+        Api::registerHooks();
+        Api::initDefaults();
 
         // Set to true to load all assets from a CDN if there is one specified
         Asset::loadFromCdn(false);
@@ -28,7 +27,7 @@ class Init
         $basePath = get_template_directory() . '/dist/Features';
         global $flyntCurrentOptionCategory;
         $flyntCurrentOptionCategory = 'feature';
-        Flynt\registerFeaturesFromPath($basePath);
+        Api::registerFeaturesFromPath($basePath);
         do_action('Flynt/afterRegisterFeatures');
     }
 
@@ -37,7 +36,7 @@ class Init
         $basePath = get_template_directory() . '/dist/Components';
         global $flyntCurrentOptionCategory;
         $flyntCurrentOptionCategory = 'component';
-        Flynt\registerComponentsFromPath($basePath);
+        Api::registerComponentsFromPath($basePath);
         do_action('Flynt/afterRegisterComponents');
     }
 

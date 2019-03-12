@@ -2,9 +2,9 @@
 
 namespace Flynt\Components\HeroImageText;
 
-use Flynt;
+use Flynt\Api;
 
-Flynt\registerFields('HeroImageText', [
+Api::registerFields('HeroImageText', [
     'layout' => [
         'name' => 'heroImageText',
         'label' => 'Hero: Image Text',

@@ -2,9 +2,9 @@
 
 namespace Flynt\Components\GridContentLists;
 
-use Flynt;
+use Flynt\Api;
 
-Flynt\registerFields('GridContentLists', [
+Api::registerFields('GridContentLists', [
     'layout' => [
         'name' => 'GridContentLists',
         'label' => 'List: Grid Content Lists',

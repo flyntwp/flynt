@@ -2,10 +2,10 @@
 
 namespace Flynt\Components\ListPosts;
 
-use Flynt;
+use Flynt\Api;
 use Flynt\Utils\Options;
 
-Flynt\registerFields('ListPosts', [
+Api::registerFields('ListPosts', [
     'layout' => [
         'name' => 'listPosts',
         'label' => 'List Posts'
