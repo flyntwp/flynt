@@ -1,4 +1,5 @@
 <?php
+
 namespace Flynt;
 
 use Flynt\Defaults;
