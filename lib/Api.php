@@ -6,7 +6,6 @@ use Flynt\ComponentManager;
 use Flynt\Utils\Feature;
 use Dflydev\DotAccessData\Data;
 
-
 class Api {
     public static function initDefaults()
     {
