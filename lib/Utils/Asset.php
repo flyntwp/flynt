@@ -215,7 +215,10 @@ class Asset
             && !(StringHelpers::startsWith('https://', $path))
             && !(StringHelpers::startsWith('//', $path))
         ) {
+            $fileExists = file_exists(self::requirePath($path));
             $path = Asset::requireUrl($path);
+        } else {
+            $fileExists = true;
         }
 
         if ('script' === $options['type']
@@ -244,7 +247,7 @@ class Asset
             }
         }
 
-        if (function_exists($funcName)) {
+        if (function_exists($funcName) && $fileExists) {
             $funcName(
                 $options['name'],
                 $path,
