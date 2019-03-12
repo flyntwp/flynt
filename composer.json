@@ -27,7 +27,8 @@
   },
   "autoload": {
     "psr-4": {
-      "Flynt\\": "lib/"
+      "Flynt\\": "lib/",
+      "ACFComposer\\": "vendor/flyntwp/acf-field-group-composer/lib/ACFComposer"
     },
     "files": [
       "lib/api.php"
