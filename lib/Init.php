@@ -54,18 +54,13 @@ class Init
 
     public static function checkRequiredPlugins()
     {
-        $flyntCoreActive = function_exists('\\Flynt\\renderComponent');
         $acfActive = class_exists('acf');
-
-        if (!$flyntCoreActive) {
-            self::notifyRequiredPluginIsMissing('Flynt Core');
-        }
 
         if (!$acfActive) {
             self::notifyRequiredPluginIsMissing('ACF');
         }
 
-        if (!$acfActive || !$flyntCoreActive) {
+        if (!$acfActive) {
             add_filter('template_include', function () {
                 die(
                     'One or more required plugins are not activated! Please <a href="'
@@ -75,7 +70,7 @@ class Init
             });
         }
 
-        return $acfActive && $flyntCoreActive;
+        return $acfActive;
     }
 
     protected static function notifyRequiredPluginIsMissing($pluginName)
