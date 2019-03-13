@@ -12,7 +12,7 @@ module.exports = {
       'assets/admin': './assets/admin.js'
     },
     copy: [{
-      from: './{Components,Features,assets}/**/*',
+      from: './{Components,assets}/**/*',
       to: './',
       ignore: ['*.js', '*.scss']
     }]
