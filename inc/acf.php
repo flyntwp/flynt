@@ -1,19 +1,7 @@
 <?php
-namespace Flynt\Components\FeatureAcf;
+namespace Flynt\Acf;
 
-require_once __DIR__ . '/FlexibleContentToggle.php';
-require_once __DIR__ . '/GoogleMaps.php';
-require_once __DIR__ . '/Loader.php';
-
-use Flynt\Components\FeatureAcf\Loader;
 use Flynt\Utils\Options;
-
-Loader::setup([
-    'FlexibleContentToggle',
-    'GoogleMaps',
-]);
-
-add_action('Flynt/afterRegisterComponents', 'Flynt\Components\FeatureAcf\Loader::init', 1);
 
 add_filter('pre_http_request', function ($preempt, $args, $url) {
     if (strpos($url, 'https://www.youtube.com/oembed') !== false || strpos($url, 'https://vimeo.com/api/oembed') !== false) {
@@ -31,6 +19,14 @@ add_filter('http_response', function ($response, $args, $url) {
     }
     return $response;
 }, 10, 3);
+
+add_filter('acf/fields/google_map/api', function ($api) {
+    $apiKey = Options::get('globalOptions', 'feature', 'Acf', 'googleMapsApiKey');
+    if ($apiKey) {
+        $api['key'] = $apiKey;
+    }
+    return $api;
+});
 
 Options::addGlobal('Acf', [
     [
