@@ -38,8 +38,8 @@ class TwigExtensionFlynt extends Twig_Extension
         $data = $this->getComponentData($data, $componentName);
 
         $componentManager = Flynt\ComponentManager::getInstance();
-        $templateFilename = apply_filters('Flynt/Features/TimberLoader/templateFilename', 'index.twig');
-        $templateFilename = apply_filters("Flynt/Features/TimberLoader/templateFilename?name=${componentName}", $templateFilename);
+        $templateFilename = apply_filters('Flynt/TimberLoader/templateFilename', 'index.twig');
+        $templateFilename = apply_filters("Flynt/TimberLoader/templateFilename?name=${componentName}", $templateFilename);
         $filePath = $componentManager->getComponentFilePath($componentName, $templateFilename);
         $relativeFilePath = ltrim(str_replace(get_template_directory(), '', $filePath), '/');
 
