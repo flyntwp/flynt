@@ -10,7 +10,7 @@
   }],
   "require": {
     "timber/timber": "^1.8",
-    "flyntwp/acf-field-group-composer": "^1.0",
+    "flyntwp/acf-field-group-composer": "^1.0.1",
     "dflydev/dot-access-data": "^2.0"
   },
   "require-dev": {
@@ -27,8 +27,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Flynt\\": "lib/",
-      "ACFComposer\\": "vendor/flyntwp/acf-field-group-composer/lib/ACFComposer"
+      "Flynt\\": "lib/"
     }
   }
 }

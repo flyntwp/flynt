@@ -2,7 +2,6 @@
 
 namespace Flynt\Features\TinyMce;
 
-use Flynt\Utils\Feature;
 use Flynt\Utils\Asset;
 
 // Load TinyMCE Settings from config file

@@ -55,7 +55,7 @@ class StringHelpers
             PREG_SPLIT_NO_EMPTY // don't return empty elements
             | PREG_SPLIT_DELIM_CAPTURE // don't strip anything from output array
         );
-        return implode($a, ' ');
+        return implode(' ', $a);
     }
 
     /**

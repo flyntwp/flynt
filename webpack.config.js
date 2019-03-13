@@ -137,14 +137,6 @@ const webpackConfig = {
           chunks: 'all',
           name: 'vendor/admin',
           priority: 1
-        },
-        vendorAuth: {
-          test (module, chunks) {
-            return chunks[0].name === 'assets/auth' && (module.context || '').match(/[\\/]node_modules[\\/]/)
-          },
-          chunks: 'all',
-          name: 'vendor/auth',
-          priority: 1
         }
       }
     }

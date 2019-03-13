@@ -3,7 +3,6 @@
 namespace Flynt\Features\Jquery;
 
 use Flynt\Utils\Asset;
-use Flynt\Utils\Feature;
 
 add_action('wp_enqueue_scripts', function () {
     $jqueryVersion = wp_scripts()->registered['jquery']->ver;
