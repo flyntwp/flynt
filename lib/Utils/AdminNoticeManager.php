@@ -1,9 +1,26 @@
 <?php
 
-namespace Flynt\Features\AdminNotices;
+namespace Flynt\Utils\AdminNotices;
 
-# TODO make strings translatable
+// # TODO make strings translatable
 
+/**
+ * AdminNoticeManager is to be used in other features to enable an easy-to-use interface for the display of admin notices.
+ *
+ * Example usage:
+ * use Flynt\Utils\AdminNotices\AdminNoticeManager;
+ * // get the singleton instance of the manager
+ * $manager = AdminNoticeManager::getInstance();
+ *
+ * // Prepare the admin notice
+ * $message = ['This notice will show up in the admin backend.'];
+ * $options = [
+ *   'type' => 'info',
+ *   'title' => 'Flynt Notice',
+ *   'dismissible' => true,
+ *   'filenames' => 'related-file.php, another.json'
+ * ];
+ */
 class AdminNoticeManager
 {
     protected static $instance = null;

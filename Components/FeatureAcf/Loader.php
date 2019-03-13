@@ -2,7 +2,7 @@
 
 namespace Flynt\Features\Acf;
 
-use Flynt\Features\AdminNotices\AdminNoticeManager;
+use Flynt\Utils\AdminNotices\AdminNoticeManager;
 use Flynt\Utils\ArrayHelpers;
 use Flynt\Utils\Asset;
 
@@ -31,7 +31,7 @@ class Loader
     {
         if (true === self::$requirementsMet) {
             self::initHelpers();
-        } elseif (class_exists('Flynt\Features\AdminNotices\AdminNoticeManager')) {
+        } elseif (class_exists('Flynt\Utils\AdminNotices\AdminNoticeManager')) {
             self::showAdminNotice();
         }
     }

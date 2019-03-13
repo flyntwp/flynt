@@ -1,7 +1,7 @@
 <?php
 namespace Flynt\Features\GoogleAnalytics;
 
-use Flynt\Features\AdminNotices\AdminNoticeManager;
+use Flynt\Utils\AdminNotices\AdminNoticeManager;
 use Timber\Timber;
 
 class GoogleAnalytics
