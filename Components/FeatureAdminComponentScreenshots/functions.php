@@ -1,5 +1,5 @@
 <?php
-namespace Flynt\Features\AdminComponentScreenshots;
+namespace Flynt\Components\AdminComponentScreenshots;
 
 use Flynt\Utils\Asset;
 
