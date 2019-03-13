@@ -1,4 +1,5 @@
-# ACF (Flynt Feature)
+<!-- TODO: adjust readme -->
+# Feature ACF
 
 ## Requirements
 - Advanced Custom Fields Plugin (preferably PRO)

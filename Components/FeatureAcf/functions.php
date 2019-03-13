@@ -1,12 +1,11 @@
 <?php
-namespace Flynt\Features\Acf;
+namespace Flynt\Components\FeatureAcf;
 
 require_once __DIR__ . '/FlexibleContentToggle.php';
 require_once __DIR__ . '/GoogleMaps.php';
 require_once __DIR__ . '/Loader.php';
 
-use Flynt\Features\Acf\Loader;
-use Flynt\Utils\Feature;
+use Flynt\Components\FeatureAcf\Loader;
 use Flynt\Utils\Options;
 
 Loader::setup([
@@ -14,7 +13,7 @@ Loader::setup([
     'GoogleMaps',
 ]);
 
-add_action('Flynt/afterRegisterFeatures', 'Flynt\Features\Acf\Loader::init');
+add_action('Flynt/afterRegisterComponents', 'Flynt\Components\FeatureAcf\Loader::init', 1);
 
 add_filter('pre_http_request', function ($preempt, $args, $url) {
     if (strpos($url, 'https://www.youtube.com/oembed') !== false || strpos($url, 'https://vimeo.com/api/oembed') !== false) {

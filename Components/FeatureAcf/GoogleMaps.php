@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Features\Acf;
+namespace Flynt\Components\FeatureAcf;
 
 use Flynt\Utils\Options;
 
