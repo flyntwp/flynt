@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Features\TinyMce;
+namespace Flynt\Components\FeatureTinyMce;
 
 use Flynt\Utils\Asset;
 
@@ -66,7 +66,7 @@ function getBlockFormats($blockFormats)
         $blockFormatStrings = array_map(function ($tag, $label) {
             return "${label}=${tag}";
         }, $blockFormats, array_keys($blockFormats));
-        return implode($blockFormatStrings, ';');
+        return implode(';', $blockFormatStrings);
     }
     return '';
 }
