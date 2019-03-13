@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Features\PasswordForm;
+namespace Flynt\Components\FeaturePasswordForm;
 
 use Timber\Timber;
 use Timber\Post;
