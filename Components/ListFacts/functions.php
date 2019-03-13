@@ -2,9 +2,9 @@
 
 namespace Flynt\Components\ListFacts;
 
-use Flynt;
+use Flynt\Api;
 
-Flynt\registerFields('ListFacts', [
+Api::registerFields('ListFacts', [
     'layout' => [
         'name' => 'listFacts',
         'label' => 'List: Facts',

@@ -1,4 +1,5 @@
 <?php
+
 namespace Flynt;
 
 class ComponentManager

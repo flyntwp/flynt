@@ -2,9 +2,9 @@
 
 namespace Flynt\Components\GridTeaserTiles;
 
-use Flynt;
+use Flynt\Api;
 
-Flynt\registerFields('GridTeaserTiles', [
+Api::registerFields('GridTeaserTiles', [
     'layout' => [
         'name' => 'GridTeaserTiles',
         'label' => 'Grid: TeaserTiles',

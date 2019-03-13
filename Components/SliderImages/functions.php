@@ -2,9 +2,9 @@
 
 namespace Flynt\Components\SliderImages;
 
-use Flynt;
+use Flynt\Api;
 
-Flynt\registerFields('SliderImages', [
+Api::registerFields('SliderImages', [
     'layout' => [
         'name' => 'sliderImages',
         'label' => 'Slider: Images',

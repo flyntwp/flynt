@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\GridPostsSlider;
 
-use Flynt;
+use Flynt\Api;
 use Timber\Timber;
 
 add_filter('Flynt/addComponentData?name=GridPostsSlider', function ($data) {
@@ -17,7 +17,7 @@ add_filter('Flynt/addComponentData?name=GridPostsSlider', function ($data) {
     return $data;
 });
 
-Flynt\registerFields('GridPostsSlider', [
+Api::registerFields('GridPostsSlider', [
     'layout' => [
         'name' => 'gridPostsSlider',
         'label' => 'Grid: Posts Slider',

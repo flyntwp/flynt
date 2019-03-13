@@ -2,9 +2,9 @@
 
 namespace Flynt\Components\ListTestimonialCards;
 
-use Flynt;
+use Flynt\Api;
 
-Flynt\registerFields('ListTestimonialCards', [
+Api::registerFields('ListTestimonialCards', [
     'layout' => [
         'name' => 'listTestimonialCards',
         'label' => 'List: TestimonialCards',

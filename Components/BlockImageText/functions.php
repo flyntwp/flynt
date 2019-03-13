@@ -2,9 +2,9 @@
 
 namespace Flynt\Components\BlockImageText;
 
-use Flynt;
+use Flynt\Api;
 
-Flynt\registerFields('BlockImageText', [
+Api::registerFields('BlockImageText', [
     'layout' => [
         'name' => 'blockImageText',
         'label' => 'Block: Image Text',

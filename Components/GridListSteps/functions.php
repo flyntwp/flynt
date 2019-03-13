@@ -2,9 +2,9 @@
 
 namespace Flynt\Components\GridListSteps;
 
-use Flynt;
+use Flynt\Api;
 
-Flynt\registerFields('GridListSteps', [
+Api::registerFields('GridListSteps', [
     'layout' => [
         'name' => 'gridListSteps',
         'label' => 'Grid: ListSteps',

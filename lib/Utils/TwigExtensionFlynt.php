@@ -45,7 +45,7 @@ class TwigExtensionFlynt extends Twig_Extension
 
         if (!is_file($filePath)) {
             trigger_error("Template not found: {$filePath}", E_USER_WARNING);
-            return $output;
+            return '';
         }
 
         $loader = $env->getLoader();

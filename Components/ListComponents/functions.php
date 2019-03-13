@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\ListComponents;
 
-use Flynt;
+use Flynt\Api;
 use Flynt\ComponentManager;
 use Flynt\Utils\Asset;
 
@@ -60,7 +60,7 @@ function parseComponentReadme($file)
     return $content;
 }
 
-Flynt\registerFields('ListComponents', [
+Api::registerFields('ListComponents', [
     'layout' => [
         'name' => 'listComponents',
         'label' => 'List: Components',

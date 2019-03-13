@@ -28,9 +28,6 @@
   "autoload": {
     "psr-4": {
       "Flynt\\": "lib/"
-    },
-    "files": [
-      "lib/api.php"
-    ]
+    }
   }
 }

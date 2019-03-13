@@ -2,20 +2,16 @@
 
 namespace Flynt;
 
-use Flynt;
+use Flynt\Api;
 use Flynt\Utils\Asset;
-use Flynt\Utils\Feature;
-use Flynt\Utils\FileLoader;
-use Flynt\Utils\StringHelpers;
 use Timber\Timber;
 
 class Init
 {
     public static function initTheme()
     {
-        Flynt\registerHooks();
-        // initialize plugin defaults
-        Flynt\initDefaults();
+        Api::registerHooks();
+        Api::initDefaults();
 
         // Set to true to load all assets from a CDN if there is one specified
         Asset::loadFromCdn(false);
@@ -28,7 +24,7 @@ class Init
         $basePath = get_template_directory() . '/dist/Features';
         global $flyntCurrentOptionCategory;
         $flyntCurrentOptionCategory = 'feature';
-        Flynt\registerFeaturesFromPath($basePath);
+        Api::registerFeaturesFromPath($basePath);
         do_action('Flynt/afterRegisterFeatures');
     }
 
@@ -37,7 +33,7 @@ class Init
         $basePath = get_template_directory() . '/dist/Components';
         global $flyntCurrentOptionCategory;
         $flyntCurrentOptionCategory = 'component';
-        Flynt\registerComponentsFromPath($basePath);
+        Api::registerComponentsFromPath($basePath);
         do_action('Flynt/afterRegisterComponents');
     }
 
@@ -58,18 +54,13 @@ class Init
 
     public static function checkRequiredPlugins()
     {
-        $flyntCoreActive = function_exists('\\Flynt\\renderComponent');
         $acfActive = class_exists('acf');
-
-        if (!$flyntCoreActive) {
-            self::notifyRequiredPluginIsMissing('Flynt Core');
-        }
 
         if (!$acfActive) {
             self::notifyRequiredPluginIsMissing('ACF');
         }
 
-        if (!$acfActive || !$flyntCoreActive) {
+        if (!$acfActive) {
             add_filter('template_include', function () {
                 die(
                     'One or more required plugins are not activated! Please <a href="'
@@ -79,7 +70,7 @@ class Init
             });
         }
 
-        return $acfActive && $flyntCoreActive;
+        return $acfActive;
     }
 
     protected static function notifyRequiredPluginIsMissing($pluginName)

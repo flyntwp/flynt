@@ -1,6 +1,7 @@
 <?php
 
 use ACFComposer\ACFComposer;
+use Flynt\Api;
 
 add_action('Flynt/afterRegisterComponents', function () {
     ACFComposer::registerFieldGroup([
@@ -14,8 +15,8 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'type' => 'flexible_content',
                 'button_label' => 'Add Component',
                 'layouts' => [
-                    Flynt\loadFields('BlockImage', 'layout'),
-                    Flynt\loadFields('BlockWysiwyg', 'layout'),
+                    Api::loadFields('BlockImage', 'layout'),
+                    Api::loadFields('BlockWysiwyg', 'layout'),
                 ],
             ],
         ],

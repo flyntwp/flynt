@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\ListSocial;
 
-use Flynt;
+use Flynt\Api;
 use Flynt\Utils\Asset;
 
 add_filter('Flynt/addComponentData?name=ListSocial', function ($data) {
@@ -16,7 +16,7 @@ add_filter('Flynt/addComponentData?name=ListSocial', function ($data) {
     return $data;
 });
 
-Flynt\registerFields('ListSocial', [
+Api::registerFields('ListSocial', [
     'layout' => [
         'name' => 'listSocial',
         'label' => 'List: Social',

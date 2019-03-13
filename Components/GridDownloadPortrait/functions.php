@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\GridDownloadPortrait;
 
-use Flynt;
+use Flynt\Api;
 
 add_filter('Flynt/addComponentData?name=GridDownloadPortrait', function ($data) {
     if (!empty($data['items'])) {
@@ -18,7 +18,7 @@ add_filter('Flynt/addComponentData?name=GridDownloadPortrait', function ($data) 
     return $data;
 });
 
-Flynt\registerFields('GridDownloadPortrait', [
+Api::registerFields('GridDownloadPortrait', [
     'layout' => [
         'name' => 'gridDownloadPortrait',
         'label' => 'Grid: Download Portrait',

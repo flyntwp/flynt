@@ -2,9 +2,9 @@
 
 namespace Flynt\Components\SliderImageGallery;
 
-use Flynt;
+use Flynt\Api;
 
-Flynt\registerFields('SliderImageGallery', [
+Api::registerFields('SliderImageGallery', [
     'layout' => [
         'name' => 'sliderImageGallery',
         'label' => 'Slider: Image Gallery',
