@@ -1,11 +1,13 @@
 <?php
-
-namespace Flynt\Features\YoutubeNoCookieEmbed;
+/**
+ * Changes oEmbed YouTube URLs from youtube.com to youtube-nocookie.com in favor of GDPR.
+ */
+namespace Flynt\YoutubeNoCookieEmbed;
 
 use Flynt\Utils\Oembed;
 
-add_action('oembed_result', 'Flynt\Features\YoutubeNoCookieEmbed\setNoCookieDomain', 10, 2);
-add_filter('embed_oembed_html', 'Flynt\Features\YoutubeNoCookieEmbed\setNoCookieDomain', 10, 2);
+add_action('oembed_result', 'Flynt\YoutubeNoCookieEmbed\setNoCookieDomain', 10, 2);
+add_filter('embed_oembed_html', 'Flynt\YoutubeNoCookieEmbed\setNoCookieDomain', 10, 2);
 
 function setNoCookieDomain($searchString, $url)
 {
