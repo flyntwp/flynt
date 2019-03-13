@@ -1,13 +1,18 @@
 <?php
 
-namespace Flynt\Features\BaseStyle;
+/**
+ * Loads a `basestyle.php` template from the templates folder to render base style markup for proper base styling, if user is on non-production environment or has edit rights at least.
+ *
+ * Example usage:
+ * 1. Log into your WordPress Backend with an Administrator account.
+ * 2. Navigate your browser to `/BaseStyle/`.
+ */
 
-use Timber\Timber;
-use Flynt\ComponentManager;
+namespace Flynt\BaseStyle;
 
 if (current_user_can('editor') || (WP_ENV !== 'production')) {
-    add_filter('init', 'Flynt\Features\BaseStyle\registerRewriteRule');
-    add_filter('template_include', 'Flynt\Features\BaseStyle\templateInclude');
+    add_filter('init', 'Flynt\BaseStyle\registerRewriteRule');
+    add_filter('template_include', 'Flynt\BaseStyle\templateInclude');
     disallowRobots();
 }
 
@@ -29,7 +34,9 @@ function disallowRobots()
 
 function registerRewriteRule()
 {
-    $routeName = \Flynt\Features\BaseStyle\ROUTENAME;
+    $routeName = ROUTENAME;
+
+    // die();
 
     add_rewrite_rule("{$routeName}/?(.*?)/?$", "index.php?{$routeName}=\$matches[1]", "top");
     add_rewrite_tag("%{$routeName}%", "([^&]+)");
@@ -43,8 +50,10 @@ function registerRewriteRule()
 
 function templateInclude($template)
 {
-    $routeName = \Flynt\Features\BaseStyle\ROUTENAME;
+    $routeName = ROUTENAME;
     global $wp_query;
+
+    // var_dump($wp_query->query_vars);die();
 
     if (isset($wp_query->query_vars['BaseStyle'])) {
         return get_template_directory() . '/templates/basestyle.php';
