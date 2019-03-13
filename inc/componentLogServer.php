@@ -1,6 +1,10 @@
 <?php
 
-namespace Flynt\Features\ComponentLogServer;
+/**
+ * Usage:
+ * Add get param `log` to url e.g. `http://localhost:3000/?log` and all the data will be output to via console.log in the dev tools in the browser.
+ */
+namespace Flynt\ComponentLogServer;
 
 use Flynt;
 
@@ -18,7 +22,7 @@ add_action('Flynt/afterRegisterComponents', function () {
 function addDebugInfo($data, $componentName)
 {
     if (!defined(__NAMESPACE__ . '\COMPONENT_WHITELIST') ||
-        in_array($componentName, Flynt\Features\ComponentLogServer\COMPONENT_WHITELIST)
+        in_array($componentName, Flynt\ComponentLogServer\COMPONENT_WHITELIST)
     ) {
         consoleDebug([
             'component' => $componentName,
