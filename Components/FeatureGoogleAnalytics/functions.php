@@ -1,13 +1,13 @@
 <?php
 
-namespace Flynt\Features\GoogleAnalytics;
+namespace Flynt\Components\FeatureGoogleAnalytics;
 
 require_once __DIR__ . '/GoogleAnalytics.php';
 
-use Flynt\Features\GoogleAnalytics\GoogleAnalytics;
+use Flynt\Components\FeatureGoogleAnalytics\GoogleAnalytics;
 use Flynt\Utils\Options;
 
-add_action('init', 'Flynt\Features\GoogleAnalytics\init');
+add_action('init', 'Flynt\Components\FeatureGoogleAnalytics\init');
 
 function init()
 {
