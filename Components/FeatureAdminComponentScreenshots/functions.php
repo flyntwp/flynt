@@ -1,9 +1,7 @@
 <?php
-namespace Flynt\Components\AdminComponentScreenshots;
+namespace Flynt\Components\FeatureAdminComponentScreenshots;
 
 use Flynt\Utils\Asset;
-
-define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
 
 add_action('admin_enqueue_scripts', function () {
     $data = [
