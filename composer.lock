@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2f1f6d70bcac31f31e879d0d1e2b55e9",
+    "content-hash": "1648c232b992a7f32bec4477eea1f7dd",
     "packages": [
         {
             "name": "altorouter/altorouter",
@@ -295,16 +295,16 @@
         },
         {
             "name": "flyntwp/acf-field-group-composer",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/flyntwp/acf-field-group-composer.git",
-                "reference": "3bb6404fca9b32df4b4a8a84926af64b25707ad9"
+                "reference": "600b1ae73c41842ab06b3d5e1f39dd411b788f25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/flyntwp/acf-field-group-composer/zipball/3bb6404fca9b32df4b4a8a84926af64b25707ad9",
-                "reference": "3bb6404fca9b32df4b4a8a84926af64b25707ad9",
+                "url": "https://api.github.com/repos/flyntwp/acf-field-group-composer/zipball/600b1ae73c41842ab06b3d5e1f39dd411b788f25",
+                "reference": "600b1ae73c41842ab06b3d5e1f39dd411b788f25",
                 "shasum": ""
             },
             "require": {
@@ -316,6 +316,11 @@
                 "squizlabs/php_codesniffer": "~2.0"
             },
             "type": "wordpress-plugin",
+            "autoload": {
+                "psr-4": {
+                    "ACFComposer\\": "lib/ACFComposer"
+                }
+            },
             "notification-url": "https://packagist.org/downloads/",
             "authors": [
                 {
@@ -323,7 +328,7 @@
                     "email": "hello@bleech.de"
                 }
             ],
-            "time": "2017-03-16T15:02:09+00:00"
+            "time": "2019-03-13T08:11:20+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
