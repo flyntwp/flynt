@@ -36,8 +36,6 @@ function registerRewriteRule()
 {
     $routeName = ROUTENAME;
 
-    // die();
-
     add_rewrite_rule("{$routeName}/?(.*?)/?$", "index.php?{$routeName}=\$matches[1]", "top");
     add_rewrite_tag("%{$routeName}%", "([^&]+)");
 
@@ -50,10 +48,7 @@ function registerRewriteRule()
 
 function templateInclude($template)
 {
-    $routeName = ROUTENAME;
     global $wp_query;
-
-    // var_dump($wp_query->query_vars);die();
 
     if (isset($wp_query->query_vars['BaseStyle'])) {
         return get_template_directory() . '/templates/basestyle.php';
