@@ -1,6 +1,6 @@
 # TinyMCE (Flynt Feature)
 
-Cleans up TinyMCE Buttons to show all relevant buttons on the first bar. Adds an easy to configure way to change these defaults (via JSON file).
+Cleans up TinyMCE Buttons to show all relevant buttons on the first bar. Adds an easy to configure way to change these defaults.
 
 ## Updating global TinyMce settings using the JSON config
 By updating the `Features/TinyMce/config.json` file you can easily add new **Block Formats**, **Style Formats** and **Toolbars** for all Wysiwyg editors in your project.
