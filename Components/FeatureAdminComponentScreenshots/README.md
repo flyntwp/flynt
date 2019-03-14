@@ -1,4 +1,4 @@
-# Admin Component Preview (Flynt Feature)
+# Feature Admin Component Screenshots
 
 Add a layout screenshot.png in a component folder to show a preview in the WordPress back end.
 
