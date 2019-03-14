@@ -1,6 +1,6 @@
-import './main.scss'
 import 'console-polyfill'
 import 'normalize.css/normalize.css'
+import './main.scss'
 
 import installCE from 'document-register-element/pony'
 
