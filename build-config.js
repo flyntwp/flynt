@@ -34,8 +34,7 @@ module.exports = {
       'templates/**/*',
       'dist/**/*',
       '!dist/**/*.js',
-      '!dist/**/*.css',
-      '!dist/assets/vendor/**/*'
+      '!dist/**/*.css'
     ],
     watch: true
   },
