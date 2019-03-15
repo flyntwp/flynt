@@ -6,6 +6,10 @@ use Flynt\Utils\FileLoader;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+if (!defined('WP_ENV')) {
+    define('WP_ENV', 'production');
+}
+
 // This needs to happen first.
 // Reason:  In case the theme was just activated and the plugin is not active,
 //          we still need to run the after_switch_theme action, which is
