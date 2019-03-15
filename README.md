@@ -29,7 +29,7 @@
 3. Navigate to the theme folder and run the following command in the in your  terminal:
 ```
 # wp-content/themes/flynt
-composer install && yarn && yarn build`
+composer install && yarn && yarn build
 ```
 4. Open the WordPress back-end and activate the Flynt theme.
 
