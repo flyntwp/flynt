@@ -1,188 +1,284 @@
-# flynt-starter-theme
+# Flynt
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 [![Build Status](https://travis-ci.org/flyntwp/flynt-starter-theme.svg?branch=master)](https://travis-ci.org/flyntwp/flynt-starter-theme)
 [![Code Quality](https://img.shields.io/scrutinizer/g/flyntwp/flynt-starter-theme.svg)](https://scrutinizer-ci.com/g/flyntwp/flynt-starter-theme/?branch=master)
 
-The starter theme for building [Flynt](https://flyntwp.com/) projects.
+## Short Description
+[Flynt](https://flyntwp.com/) is a WordPress theme for component-based development using [Timber](#page-templates) and [Advanced Custom Fields](#advanced-custom-fields).
+
+:construction: **This repository is a WORK IN PROGRESS. It is not yet ready for use in production. Feel free to try it out and give feedback using GitHub issues.**
 
 ## Table of Contents
-
-- [Background](#background)
-- [Install](#install)
-- [Usage](#usage)
-  - [Configuring Page Templates](#configuring-page-templates)
-  - [Components](#components)
-  - [Areas](#areas)
-  - [Features](#features)
-  - [Theme Structure](#theme-structure)
-- [Maintainers](#maintainers)
-- [Contribute](#contribute)
-- [License](#license)
-
-## Background
-
-Flynt is a sustainable approach to website development and content management with a component-based philosophy.
-
-Flynt Theme is a ready-to-go WordPress theme that implements all of Flynt's best practices.
+* [Install](#install)
+* [Usage](#usage)
+  * [Assets](#assets)
+  * [Lib & Inc](#lib--inc)
+  * [Page Templates](#page-templates)
+  * [Components](#components)
+  * [Advanced Custom Fields](#advanced-custom-fields)
+  * [Field Groups](#field-groups)
+* [Maintainers](#maintainers)
+* [Contributing](#contributing)
+* [License](#license)
 
 ## Install
-
 1. Install [Node](https://nodejs.org/en/).
 2. Install [Yarn](https://yarnpkg.com/lang/en/docs/install/).
-3. Create a new project folder and setup a new [WordPress](https://wordpress.org/download/) installation.
-4. Install and activate the following plugins:
-  - [Flynt Core](https://github.com/flyntwp/flynt-core)
-  - [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/)
-  - [ACF Field Group Composer](https://github.com/flyntwp/acf-field-group-composer)
-  - [Timber](https://wordpress.org/plugins/timber-library/)
-5. Clone the flynt-starter-theme repo to `<your-project>/wp-content/themes`.
-6. Change the host variable in `flynt-starter-theme/gulpfile.js/config.js` to match your host URL.
+3. Install [Composer](https://getcomposer.org/download/).
+4. Create a new project folder and setup a new [WordPress](https://wordpress.org/download/) installation.
+5. Install and activate [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/).
+6. Clone this repo to `<your-project>/wp-content/themes`.
+7. Change the host variable in `flynt-starter-theme/build-config.js` to match your host URL.
 ```js
-const host = 'your-host-url.test'
+const host = 'your-project.test'
 ```
-7. In your terminal, navigate to `<your-project>/wp-content/themes/flynt-starter-theme`. Run `yarn` and then `yarn build`.
-8. Go to the administrator back-end of your WordPress site and activate the `flynt-starter-theme` theme.
+8. In your terminal, navigate to `<your-project>/wp-content/themes/flynt-starter-theme`. Run `composer install && yarn && yarn build`.
+9. Open the WordPress back-end and activate the Flynt theme.
 
 ## Usage
+In your terminal, navigate to `<your-project>/wp-content/themes/flynt-starter-theme` and run `yarn start`. This will start a local server at `localhost:3000`.
 
-In your terminal, navigate to `<your-project>/wp-content/themes/flynt-starter-theme` and run `yarn start`. This will start a local server at  `localhost:3000`.
+All files in `assets`,  `Components` and `Features` will now be watched for changes and compiled to the `dist` folder. Happy coding!
 
-Changes to files made in `Components` and `Features` will now be watched for changes and compiled to the `dist` folder.
+### Assets
 
-### Configuring Page Templates
-All template files can be found under the theme root, in the `templates` directory.
+The `./assets` folder contains all SCSS, images, and font files for the theme. Files inside this folder are watched for changes and compile to `./dist`.
 
-The structure of each page within the theme is created using a nested JSON object. Each PHP template within the `templates` directory takes a simple JSON configuration file, and using the Flynt Core plugin, parses and renders this into HTML.
+The `main.scss` file is compiled to `./dist/assets/main.css` which is enqueued in the front-end.
 
-For example, take `templates/page.php`:
+The `admin.scss` file is compiled to `./dist/assets/admin.css` which is enqueued in the administrator back-end of WordPress, so styles added to this file will take effect only in the back-end.
 
-```php
-<?php
+### Lib & Inc
 
-Flynt\echoHtmlFromConfigFile('default.json');
-```
+All PHP files from `./lib` and './inc' are automatically required.
 
-The JSON template configuration files are found in `config/templates`. These configuration files define the [components](#components) and their [areas](#areas) which are loaded into the template.
+The `./lib` folder includes helper functions and basic setup logic. *You will most likely not need to modify any files inside `./lib`.*
 
-Take `config/templates/default.json` as an example. This template contains the `DocumentDefault` component, with one area within it: `layout`. The `layout` area contains the `LayoutSinglePost` component, which in turn has three nested [areas](#areas): `mainHeader`, `pageComponents`, and `mainFooter`. In addition, the `pageComponents` area contains the `ComponentLoaderFlexible` component.
+The `inc` folder is a more organised version of WordPress' `functions.php` and contains all custom theme logic.
 
-```json
-{
-  "name": "DocumentDefault",
-  "areas": {
-    "layout": [
-      {
-        "name": "LayoutSinglePost",
-        "areas": {
-          "mainHeader": [],
-          "pageComponents": [
-            {
-              "name": "ComponentLoaderFlexible",
-              "customData": {
-                "fieldGroup": "pageComponents"
-              }
-            }
-          ],
-          "mainFooter": []
-        }
-      }
-    ]
-  }
-}
-```
+For organisation, `./inc` has three subfolders. We recommend using these three folders to keep the theme well-structured:
 
-The `layout` area is then rendered in the `Components/DocumentDefault/index.twig` template:
+- `customPostTypes`<br> Use this folder to register custom WordPress post types.
+- `customTaxonomies`<br> Use this folder to register custom WordPress taxonomies.
+- `fieldGroups`<br> Use this folder to register Advanced Custom Fields field groups. (See [Field Groups](#field-groups) for more information.)
 
-```twig
-<!DOCTYPE html>
-<html class="{{ body_class }}" lang="{{ site.language }}" dir="{{ dir }}">
-  <head><!--...--></head>
-  <body role="document">
-    {{ area('layout') }}
-    {{ wp_footer }}
-  </body>
-</html>
-```
+After the files from './lib' and './inc' are loaded, all [components](#components) from the `./Components` folder are loaded.
+
+### Page Templates
+All template files can be found in the `./templates` directory. Flynt uses [Timber](https://www.upstatement.com/timber/) to structure its page templates and [Twig](https://twig.symfony.com/) for rendering them. [Timber's documentation](https://timber.github.io/docs/) is extensive and up to date, so be sure to get familiar with it.
+
+There are two Twig functions added in Flynt to render components into templates:
+* `renderComponent(componentName, data)` renders a single component. [For example, in the `index.twig` template](https://github.com/flyntwp/flynt/tree/master/templates/twig/index.twig).
+* `renderFlexibleContent(flexibleContentField)` renders all components passed from an Advanced Custom Fields *Flexible Content* field. [For example, in the `single.twig` template.](https://github.com/flyntwp/flynt/tree/master/templates/twig/single.twig)
+
+Besides the main document structure (in `./templates/twig/_document.twig`), everything else is a component.
 
 ### Components
-A component is a self-contained building-block. As such, each component is kept within its own folder which contains everything it requires; the layout, the ACF field setup, all necessary WordPress filter and hook logic, scripting, styles, and images.
+A component is a self-contained building-block. Each component contains its own layout, its ACF fields, PHP logic, scripts, and styles.
 
 ```
   ExampleComponent/
-  ├── assets/
-  |   ├── exampleImage.jpg
-  |   └── exampleIcon.svg
-  ├── fields.json
   ├── functions.php
   ├── index.twig
   ├── README.md
+  ├── screenshot.png
   ├── script.js
-  ├── style.styl
+  ├── style.scss
 ```
 
-Building components is a sustainable process, meaning every component you develop can be reused within a project, or in another; increasing your head-start with every new Flynt project.
+The `functions.php` file for every component in the `./Components` folder is executed during the WordPress action `after_setup_theme`. [This is run from the `./functions.php` file of the theme.](https://github.com/flyntwp/flynt/tree/master/functions.php)
 
-### Areas
-Since components are self-contained, areas provide a way to stack our building-blocks together. An area is simply a location within a component where it is possible to add other components.
+To render components into a template, see [Page Templates](#page-templates).
 
-### Features
-With WordPress, it is easy to create one large `functions.php` file, crammed full of all the custom logic your theme may need. This can get messy. In Flynt, we split each piece of functionality into smaller, self-contained **feature** bundles.
+### Advanced Custom Fields
+To define Advanced Custom Fields (ACF) for a component, use `Flynt\Api\registerFields`. This has 3 arguments:
 
-In most cases, features add global hooks and filters that affect the project on a global level. With this in mind, each feature is built with reusability in mind.
-
-Flynt comes with a core set of ready to go features, each with its own readme. To learn more, look through the [Features](https://github.com/flyntwp/flynt-starter-theme/tree/master/Features) directory.
-
-### Theme Structure
-
-```
-flynt-starter-theme/             # → Root of the theme
-├── Components/                  # → All base components
-├── config/                      # → WP/ACF Configuration
-│   ├── customPostTypes/         # → Configure custom post types
-│   ├── fieldGroups/             # → Configure ACF field groups
-│   ├── templates/               # → Page templates (JSON)
-├── dist/                        # → Built theme files (never edit)
-├── Features/                    # → All features
-├── gulpfile.js/                 # → Gulp tasks and setup
-│   ├── tasks/                   # → Individual gulp-tasks, e.g. webpack, stylus
-│   ├── config.js                # → Gulp config
-│   ├── index.js                 # → Load gulp tasks with config
-│   ├── webpack.config.js        # → Webpack config
-├── lib/                         # → Hold utils and setup features
-│   ├── Utils/                   # → Small utility functions
-│   ├── Bootstrap.php            # → Flynt Bootstrap
-│   ├── Init.php                 # → Setup theme, register features
-├── node_modules/                # → Node.js packages (never edit)
-├── templates/                   # → Page templates (PHP)
-├── .gitignore                   # → Files/Folders that will not be committed to Git.
-├── .stylintrc                   # → Define Stylus linting rules
-├── functions.php                # → Set template directory and load lib/Init.php
-├── index.php                    # → Theme entry point (never edit)
-├── package.json                 # → Node.js dependencies and scripts
-├── phpcs.ruleset.xml            # → Define PHP linting rules
-├── screenshot.png               # → Theme screenshot for WP admin
-├── style.css                    # → Required WordPress theme style file.
-├── yarn.lock                    # → Yarn lock file (never edit)
+```php
+Flynt\Api\registerFields($scope = 'ComponentName', $fields = [], $fieldId = null);
 ```
 
-[You can read the full documentation here.](https://docs.flyntwp.com)
+`$scope` is the name of the component, `$fields` are the ACF fields you want to register, and `$fieldsId` is an optional (rarely needed) parameter for registering multiple fields for a single scope.
+
+For example:
+
+```php
+use Flynt\Api;
+
+Api::registerFields('BlockWysiwyg', [
+    'layout' => [
+        'name' => 'blockWysiwyg',
+        'label' => 'Block: Wysiwyg',
+        'sub_fields' => [
+            [
+                'name' => 'contentHtml',
+                'label' => 'Content',
+                'type' => 'wysiwyg',
+                'required' => 1,
+            ]
+        ]
+    ]
+]);
+```
+
+In the example above, the `layout` array is required in order to load this component into an Advanced Custom Fields *Flexible Content* field.
+
+### Field Groups
+Field groups are needed to show registered fields in the WordPress back-end. All  field groups are created in the `./inc/fieldGroups` folder. Two field groups exist by default: [`pageComponents.php`](https://github.com/flyntwp/flynt/tree/master/inc/templates/pageComponents.php) and [`postComponents.php`](https://github.com/flyntwp/flynt/tree/master/inc/templates/postComponents.php).
+
+To include fields that have been registered with `Flynt\Api::registerFields`, use `ACFComposer::registerFieldGroup($config)` inside the Inside the `Flynt/afterRegisterComponents` action.
+
+Use `Flynt\Api::loadFields($scope, $fieldPath = null)` to load groups of fields into a field group. For example:
+
+```php
+use ACFComposer\ACFComposer;
+use Flynt\Api;
+
+add_action('Flynt/afterRegisterComponents', function () {
+    ACFComposer::registerFieldGroup([
+        'name' => 'pageComponents',
+        'title' => 'Page Components',
+        'style' => 'seamless',
+        'fields' => [
+            [
+                'name' => 'pageComponents',
+                'label' => 'Page Components',
+                'type' => 'flexible_content',
+                'button_label' => 'Add Component',
+                'layouts' => [
+                    Api::loadFields('BlockWysiwyg', 'layout'),
+                ],
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'page',
+                ],
+            ],
+        ],
+    ]);
+});
+```
+
+The `registerFieldGroup` function takes the same argument as Advanced Custom Fields's `acf_add_local_field_group` with two exceptions:
+
+1. The fields do not require field keys but are automatically generated.
+2. For conditional logic, instead for specifying a field key as reference, you can specify a field path. For example:
+
+```php
+[
+  'label' => 'Include Button',
+  'name' => 'includeButton',
+  'type' => 'true_false',
+],
+[
+    'label' => 'Button Text',
+    'name' => 'buttonText',
+    'type' => 'text',
+    'conditional_logic' => [
+        [
+            [
+                'fieldPath' => 'includeButton',
+                'operator' => '==',
+                'value' => 1'
+            ]
+        ]
+    ]
+]
+```
+
+Conditional logic can also target fields one level higher. This is useful when targetting fields inside of a repeater. For example:
+
+```php
+[
+    'label' => 'Include Buttons',
+    'name' => 'includeButtons',
+    'type' => 'true_false',
+],
+[
+    'label' => 'Items',
+    'type' => 'repeater',
+    'name' => 'items',
+    'sub_fields' => [
+        [
+            'label' => 'Button Text',
+            'name' => 'buttonText',
+            'type' => 'text',
+            'conditional_logic' => [
+                [
+                    [
+                        'fieldPath' => '../includeButtons',
+                        'operator' => '==',
+                        'value' => 1
+                    ]
+                ]
+            ]
+        ]
+    ]
+]
+
+
+```
+
+More information can be found in the [ACF Field Group Composer repository](https://github.com/flyntwp/acf-field-group-composer).
+
+Registered fields can also be used statically (not inside a flexible content field). To do this, we strongly suggest putting the fields for a component in an ACF group field, so that you are able to easily retrieve all the associated fields.
+
+For Example:
+
+```php
+use ACFComposer\ACFComposer;
+use Flynt\Api;
+
+add_action('Flynt/afterRegisterComponents', function () {
+    ACFComposer::registerFieldGroup([
+        'name' => 'pageComponents',
+        'title' => 'Page Components',
+        'style' => 'seamless',
+        'fields' => [
+            [
+                'name' => 'mainContent',
+                'label' => 'Main Content',
+                'type' => 'group',
+                'sub_fields' => [
+                    Api::loadFields('BlockWysiwyg', 'layout.sub_fields'),
+                ],
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'page',
+                ],
+            ],
+        ],
+    ]);
+});
+```
+
+### ACF Option Pages
+Flynt includes several utility functions for creating Advanced Custom Fields options pages. Briefly, these are:
+
+* `Flynt\Utils\Options::addTranslatable`<br> Adds fields into a new group inside the Translatable Options options page. When used with the WPML plugin, these fields will be returned in the current language.
+* `Flynt\Utils\Options::addGlobal`<br> Adds fields into a new group inside the Global Options options page. When used with WPML, these fields will always be returned from the primary language. In this way these fields are *global* and cannot be translated.
+* `Flynt\Utils\Options::get` <br> Used to retrieve options from Translatable or Global options.
 
 ## Maintainers
-
 This project is maintained by [bleech](https://github.com/bleech).
 
 The main people in charge of this repo are:
+* [Dominik Tränklein](https://github.com/domtra)
+* [Doğa Gürdal](https://github.com/Qakulukiam)
 
-- [Dominik Tränklein](https://github.com/domtra)
-- [Doğa Gürdal](https://github.com/Qakulukiam)
-
-## Contribute
-
-To contribute, please use GitHub [issues](https://github.com/flyntwp/flynt-starter-theme/issues). Pull requests are accepted. Please also take a moment to read the [Contributing Guidelines](https://github.com/flyntwp/guidelines/blob/master/CONTRIBUTING.md) and [Code of Conduct](https://github.com/flyntwp/guidelines/blob/master/CODE_OF_CONDUCT.md).
+## Contributing
+To contribute, please use GitHub [issues](https://github.com/flyntwp/flynt/issues). Pull requests are accepted. Please also take a moment to read the [Contributing Guidelines](https://github.com/flyntwp/guidelines/blob/master/CONTRIBUTING.md) and [Code of Conduct](https://github.com/flyntwp/guidelines/blob/master/CODE_OF_CONDUCT.md).
 
 If editing the README, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
 
 ## License
-
 MIT © [bleech](https://www.bleech.de)
