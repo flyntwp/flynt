@@ -52,7 +52,7 @@ class Options
             static::$initialized = true;
         }
         foreach (static::OPTION_TYPES as $optionType => $option) {
-            $title = _x($option['title'], 'title', 'flynt-starter-theme');
+            $title = _x($option['title'], 'title', 'flynt');
             $slug = ucfirst($optionType);
 
             acf_add_options_page([

@@ -72,7 +72,7 @@ class FileLoader
 
                 if (!locate_template($filePath, true, true)) {
                     trigger_error(
-                        sprintf(__('Error locating %s for inclusion', 'flynt-starter-theme'), $filePath),
+                        sprintf(__('Error locating %s for inclusion', 'flynt'), $filePath),
                         E_USER_ERROR
                     );
                 }
