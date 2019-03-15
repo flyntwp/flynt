@@ -23,21 +23,25 @@
 * [License](#license)
 
 ## Install
-1. Install [Node](https://nodejs.org/en/).
-2. Install [Yarn](https://yarnpkg.com/lang/en/docs/install/).
-3. Install [Composer](https://getcomposer.org/download/).
-4. Create a new project folder and setup a new [WordPress](https://wordpress.org/download/) installation.
-5. Install and activate [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/).
-6. Clone this repo to `<your-project>/wp-content/themes`.
-7. Change the host variable in `flynt/build-config.js` to match your host URL.
-```js
-const host = 'your-project.test'
+
+1. Clone this repo to `<your-project>/wp-content/themes`.
+2. Change the host variable in `flynt-starter-theme/build-config.js` to match your host URL: `const host = 'your-project.test'
+3. Navigate to the theme folder and run the following command in the in your  terminal:
 ```
-8. In your terminal, navigate to `<your-project>/wp-content/themes/flynt`. Run `composer install && yarn && yarn build`.
-9. Open the WordPress back-end and activate the Flynt theme.
+# wp-content/themes/flynt
+composer install && yarn && yarn build`
+```
+4. Open the WordPress back-end and activate the Flynt theme.
+
+### Dependencies
+* [WordPress](https://wordpress.org/) >= 5.0
+* [Node](https://nodejs.org/en/) = 10
+* [Yarn](https://yarnpkg.com/lang/en/docs/install/) >= 1.15
+* [Composer](https://getcomposer.org/download/) >= 1.8
+* [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/) >= 5.7
 
 ## Usage
-In your terminal, navigate to `<your-project>/wp-content/themes/flynt` and run `yarn start`. This will start a local server at `localhost:3000`.
+In your terminal, navigate to `<your-project>/wp-content/themes/flynt-starter-theme` and run `yarn start`. This will start a local server at `localhost:3000`.
 
 All files in `assets`,  `Components` and `Features` will now be watched for changes and compiled to the `dist` folder. Happy coding!
 
@@ -51,7 +55,7 @@ The `admin.scss` file is compiled to `./dist/assets/admin.css` which is enqueued
 
 ### Lib & Inc
 
-All PHP files from `./lib` and './inc' are automatically required.
+All PHP files from `./lib` and `./inc` are automatically required.
 
 The `./lib` folder includes helper functions and basic setup logic. *You will most likely not need to modify any files inside `./lib`.*
 
