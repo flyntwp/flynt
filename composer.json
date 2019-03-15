@@ -1,5 +1,6 @@
 {
-  "name": "flyntwp/flynt-starter-theme",
+  "name": "flyntwp/flynt",
+  "description": "Flynt is a WordPress theme for component-based development using Timber and Advanced Custom Fields.",
   "type": "wordpress-theme",
   "license": "MIT",
   "minimum-stability": "dev",
