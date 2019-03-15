@@ -21,7 +21,7 @@ const babelQuery = {
 if (!production) {
   Object.keys(config.entry).forEach(function (entry) {
     config.entry[entry] = [
-      'webpack-hot-middleware/client?reload=true&noInfo=true',
+      `webpack-hot-middleware/client?reload=true&noInfo=true&name=${entry}`,
       config.entry[entry]
     ]
   })
@@ -121,23 +121,7 @@ const webpackConfig = {
     splitChunks: {
       cacheGroups: {
         vendors: false,
-        default: false,
-        vendor: {
-          test (module, chunks) {
-            return chunks[0].name === 'assets/main' && (module.context || '').match(/[\\/]node_modules[\\/]/)
-          },
-          chunks: 'all',
-          name: 'vendor/main',
-          priority: 1
-        },
-        vendorAdmin: {
-          test (module, chunks) {
-            return chunks[0].name === 'assets/admin' && (module.context || '').match(/[\\/]node_modules[\\/]/)
-          },
-          chunks: 'all',
-          name: 'vendor/admin',
-          priority: 1
-        }
+        default: false
       }
     }
   }

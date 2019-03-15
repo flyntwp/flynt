@@ -28,14 +28,6 @@ class Api
         }
     }
 
-    public static function registerFeaturesFromPath($featureBasePath)
-    {
-        foreach (glob("{$featureBasePath}/*", GLOB_ONLYDIR) as $featurePath) {
-            $featureName = basename($featurePath);
-            Feature::register($featureName, $featureBasePath);
-        }
-    }
-
     public static function renderComponent($componentName, $data)
     {
         $data = apply_filters(

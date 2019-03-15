@@ -12,7 +12,7 @@ module.exports = {
       'assets/admin': './assets/admin.js'
     },
     copy: [{
-      from: './{Components,Features,assets}/**/*',
+      from: './{Components,assets}/**/*',
       to: './',
       ignore: ['*.js', '*.scss']
     }]
@@ -34,8 +34,7 @@ module.exports = {
       'templates/**/*',
       'dist/**/*',
       '!dist/**/*.js',
-      '!dist/**/*.css',
-      '!dist/assets/vendor/**/*'
+      '!dist/**/*.css'
     ],
     watch: true
   },

@@ -1,6 +1,6 @@
-import './main.scss'
 import 'console-polyfill'
 import 'normalize.css/normalize.css'
+import './main.scss'
 
 import installCE from 'document-register-element/pony'
 
@@ -17,5 +17,4 @@ function importAll (r) {
   r.keys().forEach(r)
 }
 
-importAll(require.context('../Features/', true, /script\.js$/))
 importAll(require.context('../Components/', true, /script\.js$/))
