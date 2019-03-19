@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf ./dist",
-    "start": "check-node-version --package -p && $npm_execpath run clean && browser-sync start --config bs-config.js",
+    "start": "check-node-version --package -p && $npm_execpath run clean && node bs-server.js",
     "build": "check-node-version --package -p && $npm_execpath run clean && $npm_execpath run lint && NODE_ENV=production webpack --progress --display=minimal && gulp rev",
     "lint": "$npm_execpath run lint:scripts && $npm_execpath run lint:styles && $npm_execpath run lint:php",
     "lint:scripts": "eslint Components/ assets/",
@@ -33,7 +33,6 @@
     "conventional-github-releaser": "^3.1.2",
     "copy-webpack-plugin": "^4.6.0",
     "countup.js": "^1.9.3",
-    "css-hot-loader": "^1.4.3",
     "css-loader": "^2.1.0",
     "document-register-element": "^1.13.1",
     "draggabilly": "^2.1.1",
@@ -75,8 +74,7 @@
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.2.1",
-    "webpack-dev-middleware": "^3.5.0",
-    "webpack-hot-middleware": "^2.24.3"
+    "webpack-dev-middleware": "^3.5.0"
   },
   "eslintConfig": {
     "extends": "eslint-config-standard",

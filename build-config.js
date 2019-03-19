@@ -27,14 +27,13 @@ module.exports = {
     watchOptions: {
       ignoreInitial: true
     },
-    injectChanges: false,
+    injectChanges: true,
     reloadDebounce: 1000,
     ui: false,
     files: [
       'templates/**/*',
-      'dist/**/*',
-      '!dist/**/*.js',
-      '!dist/**/*.css'
+      'lib/**/*',
+      'inc/**/*'
     ],
     watch: true
   },

@@ -18,15 +18,6 @@ const babelQuery = {
   ]
 }
 
-if (!production) {
-  Object.keys(config.entry).forEach(function (entry) {
-    config.entry[entry] = [
-      `webpack-hot-middleware/client?reload=true&noInfo=true&name=${entry}`,
-      config.entry[entry]
-    ]
-  })
-}
-
 // config.production = true
 const webpackConfig = {
   mode: production ? 'production' : 'development',
@@ -50,7 +41,6 @@ const webpackConfig = {
       {
         test: /\.css$/,
         use: [
-          'css-hot-loader',
           MiniCssExtractPlugin.loader,
           'css-loader'
         ]
@@ -58,7 +48,6 @@ const webpackConfig = {
       {
         test: /\.scss$/,
         use: [
-          'css-hot-loader',
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
@@ -146,7 +135,6 @@ if (production) {
     new OptimizeCSSAssetsPlugin({})
   ]
 } else {
-  webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin())
   webpackConfig.plugins.push(
     new webpack.DefinePlugin({
       PRODUCTION: JSON.stringify(false),
