@@ -1,6 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const globImporter = require('node-sass-glob-importer')
@@ -128,7 +128,7 @@ if (production) {
   )
   webpackConfig.plugins.push(new webpack.optimize.AggressiveMergingPlugin())
   webpackConfig.optimization.minimizer = [
-    new UglifyJsPlugin({
+    new TerserPlugin({
       sourceMap: false,
       cache: true,
       parallel: true

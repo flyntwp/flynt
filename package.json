@@ -72,8 +72,8 @@
     "stylelint": "^9.9.0",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-scss": "^3.4.1",
+    "terser-webpack-plugin": "^1.2.3",
     "uglify-js": "^3.4.9",
-    "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.2.1",
     "webpack-dev-middleware": "^3.5.0"
