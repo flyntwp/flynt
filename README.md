@@ -24,20 +24,19 @@
 
 ## Install
 1. Install [Node](https://nodejs.org/en/).
-2. Install [Yarn](https://yarnpkg.com/lang/en/docs/install/).
-3. Install [Composer](https://getcomposer.org/download/).
-4. Create a new project folder and setup a new [WordPress](https://wordpress.org/download/) installation.
-5. Install and activate [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/).
-6. Clone this repo to `<your-project>/wp-content/themes`.
-7. Change the host variable in `flynt/build-config.js` to match your host URL.
+2. Install [Composer](https://getcomposer.org/download/).
+3. Create a new project folder and setup a new [WordPress](https://wordpress.org/download/) installation.
+4. Install and activate [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/).
+5. Clone this repo to `<your-project>/wp-content/themes`.
+6. Change the host variable in `flynt/build-config.js` to match your host URL.
 ```js
 const host = 'your-project.test'
 ```
-8. In your terminal, navigate to `<your-project>/wp-content/themes/flynt`. Run `composer install && yarn && yarn build`.
-9. Open the WordPress back-end and activate the Flynt theme.
+7. In your terminal, navigate to `<your-project>/wp-content/themes/flynt`. Run `composer install && npm i && npm run build`.
+8. Open the WordPress back-end and activate the Flynt theme.
 
 ## Usage
-In your terminal, navigate to `<your-project>/wp-content/themes/flynt` and run `yarn start`. This will start a local server at `localhost:3000`.
+In your terminal, navigate to `<your-project>/wp-content/themes/flynt` and run `npm start`. This will start a local server at `localhost:3000`.
 
 All files in `assets`,  `Components` and `Features` will now be watched for changes and compiled to the `dist` folder. Happy coding!
 
