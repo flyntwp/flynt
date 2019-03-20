@@ -68,7 +68,7 @@
     "replace-in-file": "^3.4.2",
     "sass-loader": "^7.1.0",
     "slick-carousel": "^1.8.1",
-    "standard-version": "^4.2.0",
+    "standard-version": "^5.0.2",
     "stylelint": "^9.9.0",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-scss": "^3.4.1",
