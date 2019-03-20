@@ -22,7 +22,7 @@ module.exports = {
     open: false,
     proxy: {
       target: host,
-      ws: true
+      ws: false
     },
     watchOptions: {
       ignoreInitial: true
@@ -35,7 +35,8 @@ module.exports = {
       'lib/**/*',
       'inc/**/*'
     ],
-    watch: true
+    watch: true,
+    https: true
   },
   webpackDevMiddleware: {
     stats: false,
