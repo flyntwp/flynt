@@ -13,7 +13,8 @@ const production = process.env.NODE_ENV === 'production'
 const babelQuery = {
   presets: [
     ['@babel/preset-env', {
-      useBuiltIns: 'usage'
+      useBuiltIns: 'usage',
+      corejs: 'core-js@3'
     }]
   ],
   plugins: ['@babel/plugin-transform-runtime']
