@@ -2,7 +2,8 @@
 
 /**
  * Moves most relevant editor buttons to the first toolbar
- * & provides config for creating new toolbars, block formats, and style formats.
+ * and provides config for creating new toolbars, block formats, and style formats.
+ * See the TinyMce documentation for more information: https://www.tiny.cloud/docs/
  *
  */
 namespace Flynt\TinyMce;
