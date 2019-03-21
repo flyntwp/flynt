@@ -26,7 +26,7 @@
 
 1. Clone this repo to `<your-project>/wp-content/themes`.
 2. Change the host variable in `flynt/build-config.js` to match your host URL: `const host = 'your-project.test'`
-3. Navigate to the theme folder and run the following command in the in your  terminal:
+3. Navigate to the theme folder and run the following command in your terminal:
 ```
 # wp-content/themes/flynt
 composer install && yarn && yarn build
