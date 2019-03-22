@@ -11,7 +11,7 @@ notifications:
     on_failure: change
 
 cache:
-  yarn: true
+  npm: true
 
 php:
   # - 5.6
@@ -26,13 +26,12 @@ matrix:
   #   - php: nightly
 
 before_script:
-  - yarn
+  - npm i
 
 install:
   - composer install
   - nvm install 10
   - nvm use 10
-  - npm i -g yarn
 
 script:
-  - yarn lint
+  - npm run lint
