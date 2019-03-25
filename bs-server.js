@@ -45,7 +45,7 @@ bundler.plugin('done', function (stats) {
 browserSync.init(Object.assign({
   middleware: [
     webpackDevMiddleware(bundler, Object.assign({
-      publicPath: webpackConfig.output.publicPath,
+      publicPath: webpackConfig[0].output.publicPath,
       logLevel: 'silent'
     }, config.webpackDevMiddleware))
   ]

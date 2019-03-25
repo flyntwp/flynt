@@ -23,8 +23,6 @@ const babelQuery = {
 // config.production = true
 const webpackConfig = {
   mode: production ? 'production' : 'development',
-  name: 'browser',
-  entry: config.entry,
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: config.publicPath
@@ -98,8 +96,8 @@ const webpackConfig = {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: '[name].css',
-      chunkFilename: '[name].css'
+      filename: 'assets/[name].css',
+      chunkFilename: 'assets/[name].css'
     }),
     new FriendlyErrorsWebpackPlugin({
       clearConsole: false
@@ -147,4 +145,16 @@ if (production) {
   )
 }
 
-module.exports = webpackConfig
+const multiConfig = Object.keys(config.entry).map(entry => {
+  return {
+    ...webpackConfig,
+    entry: config.entry[entry],
+    name: config.entry[entry],
+    output: {
+      ...webpackConfig.output,
+      filename: `${entry}.js`
+    }
+  }
+})
+
+module.exports = multiConfig
