@@ -11,6 +11,7 @@
 
 ## Table of Contents
 * [Install](#install)
+  * [Dependencies](#dependencies)
 * [Usage](#usage)
   * [Assets](#assets)
   * [Lib & Inc](#lib--inc)
@@ -23,25 +24,23 @@
 * [License](#license)
 
 ## Install
-
 1. Clone this repo to `<your-project>/wp-content/themes`.
 2. Change the host variable in `flynt/build-config.js` to match your host URL: `const host = 'your-project.test'`
 3. Navigate to the theme folder and run the following command in your terminal:
 ```
 # wp-content/themes/flynt
-composer install && yarn && yarn build
+composer install && npm i && npm run build
 ```
 4. Open the WordPress back-end and activate the Flynt theme.
 
 ### Dependencies
 * [WordPress](https://wordpress.org/) >= 5.0
 * [Node](https://nodejs.org/en/) = 10
-* [Yarn](https://yarnpkg.com/lang/en/docs/install/) >= 1.15
 * [Composer](https://getcomposer.org/download/) >= 1.8
 * [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/) >= 5.7
 
 ## Usage
-In your terminal, navigate to `<your-project>/wp-content/themes/flynt` and run `yarn start`. This will start a local server at `localhost:3000`.
+In your terminal, navigate to `<your-project>/wp-content/themes/flynt` and run `npm start`. This will start a local server at `localhost:3000`.
 
 All files in `assets`,  `Components` and `Features` will now be watched for changes and compiled to the `dist` folder. Happy coding!
 

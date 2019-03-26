@@ -1,6 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const globImporter = require('node-sass-glob-importer')
@@ -13,25 +13,16 @@ const production = process.env.NODE_ENV === 'production'
 const babelQuery = {
   presets: [
     ['@babel/preset-env', {
-      useBuiltIns: 'usage'
+      useBuiltIns: 'usage',
+      corejs: 'core-js@3'
     }]
-  ]
-}
-
-if (!production) {
-  Object.keys(config.entry).forEach(function (entry) {
-    config.entry[entry] = [
-      `webpack-hot-middleware/client?reload=true&noInfo=true&name=${entry}`,
-      config.entry[entry]
-    ]
-  })
+  ],
+  plugins: ['@babel/plugin-transform-runtime']
 }
 
 // config.production = true
 const webpackConfig = {
   mode: production ? 'production' : 'development',
-  name: 'browser',
-  entry: config.entry,
   output: {
     path: path.join(__dirname, 'dist'),
     publicPath: config.publicPath
@@ -50,7 +41,6 @@ const webpackConfig = {
       {
         test: /\.css$/,
         use: [
-          'css-hot-loader',
           MiniCssExtractPlugin.loader,
           'css-loader'
         ]
@@ -58,7 +48,6 @@ const webpackConfig = {
       {
         test: /\.scss$/,
         use: [
-          'css-hot-loader',
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
@@ -107,8 +96,8 @@ const webpackConfig = {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: '[name].css',
-      chunkFilename: '[name].css'
+      filename: 'assets/[name].css',
+      chunkFilename: 'assets/[name].css'
     }),
     new FriendlyErrorsWebpackPlugin({
       clearConsole: false
@@ -138,7 +127,7 @@ if (production) {
   )
   webpackConfig.plugins.push(new webpack.optimize.AggressiveMergingPlugin())
   webpackConfig.optimization.minimizer = [
-    new UglifyJsPlugin({
+    new TerserPlugin({
       sourceMap: false,
       cache: true,
       parallel: true
@@ -146,7 +135,6 @@ if (production) {
     new OptimizeCSSAssetsPlugin({})
   ]
 } else {
-  webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin())
   webpackConfig.plugins.push(
     new webpack.DefinePlugin({
       PRODUCTION: JSON.stringify(false),
@@ -157,4 +145,16 @@ if (production) {
   )
 }
 
-module.exports = webpackConfig
+const multiConfig = Object.keys(config.entry).map(entry => {
+  return {
+    ...webpackConfig,
+    entry: config.entry[entry],
+    name: config.entry[entry],
+    output: {
+      ...webpackConfig.output,
+      filename: `${entry}.js`
+    }
+  }
+})
+
+module.exports = multiConfig

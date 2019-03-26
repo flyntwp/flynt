@@ -15,7 +15,6 @@ const config = require('./build-config')
 
 const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
-const webpackHotMiddleware = require('webpack-hot-middleware')
 
 /**
  * Require ./webpack.config.js and make a bundler from it
@@ -23,14 +22,31 @@ const webpackHotMiddleware = require('webpack-hot-middleware')
 const webpackConfig = require('./webpack.config')
 const bundler = webpack(webpackConfig)
 
-module.exports = Object.assign({
+const browserSync = require('browser-sync').create()
+
+const crypto = require('crypto')
+const fileHashes = {}
+bundler.plugin('done', function (stats) {
+  const changedFiles = Object.keys(stats.compilation.assets)
+    .filter(name => {
+      const asset = stats.compilation.assets[name]
+      const md5Hash = crypto.createHash('md5')
+      const hash = md5Hash.update(asset.children ? asset.children[0]._value : asset.source()).digest('hex')
+      if (fileHashes[name] !== hash) {
+        fileHashes[name] = hash
+        return true
+      } else {
+        return false
+      }
+    })
+  browserSync.reload(changedFiles.map(name => `dist/${name}`))
+})
+
+browserSync.init(Object.assign({
   middleware: [
     webpackDevMiddleware(bundler, Object.assign({
-      publicPath: webpackConfig.output.publicPath,
+      publicPath: webpackConfig[0].output.publicPath,
       logLevel: 'silent'
-    }, config.webpackDevMiddleware)),
-    webpackHotMiddleware(bundler, {
-      log: false
-    })
+    }, config.webpackDevMiddleware))
   ]
-}, config.browserSync)
+}, config.browserSync))

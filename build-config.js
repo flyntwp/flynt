@@ -22,21 +22,21 @@ module.exports = {
     open: false,
     proxy: {
       target: host,
-      ws: true
+      ws: false
     },
     watchOptions: {
       ignoreInitial: true
     },
-    injectChanges: false,
+    injectChanges: true,
     reloadDebounce: 1000,
     ui: false,
     files: [
       'templates/**/*',
-      'dist/**/*',
-      '!dist/**/*.js',
-      '!dist/**/*.css'
+      'lib/**/*',
+      'inc/**/*'
     ],
-    watch: true
+    watch: true,
+    https: true
   },
   webpackDevMiddleware: {
     stats: false,
