@@ -1,17 +1,10 @@
 <?php
 
 /**
- * Cleans up TinyMCE Buttons to show all relevant buttons on the first bar. Adds an easy to configure way to change these defaults.
+ * Moves most relevant editor buttons to the first toolbar
+ * and provides config for creating new toolbars, block formats, and style formats.
+ * See the TinyMce documentation for more information: https://www.tiny.cloud/docs/
  *
- *
- * ## Updating global TinyMce settings using the JSON config
- *
- * By updating the function `getConfig` you can easily add new **Block Formats**, **Style Formats** and **Toolbars** for all Wysiwyg editors in your project.
- *
- * ## Editor Toolbars
- *
- * The MCE Buttons that show up by default are specified by the `toolbars` section in the `getConfig` function.
- * You can modify the settings for all Wysiwyg toolbars (all over your project).
  */
 namespace Flynt\TinyMce;
 

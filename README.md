@@ -11,6 +11,7 @@
 
 ## Table of Contents
 * [Install](#install)
+  * [Dependencies](#dependencies)
 * [Usage](#usage)
   * [Assets](#assets)
   * [Lib & Inc](#lib--inc)
@@ -23,17 +24,20 @@
 * [License](#license)
 
 ## Install
-1. Install [Node](https://nodejs.org/en/).
-2. Install [Composer](https://getcomposer.org/download/).
-3. Create a new project folder and setup a new [WordPress](https://wordpress.org/download/) installation.
-4. Install and activate [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/).
-5. Clone this repo to `<your-project>/wp-content/themes`.
-6. Change the host variable in `flynt/build-config.js` to match your host URL.
-```js
-const host = 'your-project.test'
+1. Clone this repo to `<your-project>/wp-content/themes`.
+2. Change the host variable in `flynt/build-config.js` to match your host URL: `const host = 'your-project.test'`
+3. Navigate to the theme folder and run the following command in your terminal:
 ```
-7. In your terminal, navigate to `<your-project>/wp-content/themes/flynt`. Run `composer install && npm i && npm run build`.
-8. Open the WordPress back-end and activate the Flynt theme.
+# wp-content/themes/flynt
+composer install && npm i && npm run build
+```
+4. Open the WordPress back-end and activate the Flynt theme.
+
+### Dependencies
+* [WordPress](https://wordpress.org/) >= 5.0
+* [Node](https://nodejs.org/en/) = 10
+* [Composer](https://getcomposer.org/download/) >= 1.8
+* [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/) >= 5.7
 
 ## Usage
 In your terminal, navigate to `<your-project>/wp-content/themes/flynt` and run `npm start`. This will start a local server at `localhost:3000`.
@@ -50,7 +54,7 @@ The `admin.scss` file is compiled to `./dist/assets/admin.css` which is enqueued
 
 ### Lib & Inc
 
-All PHP files from `./lib` and './inc' are automatically required.
+All PHP files from `./lib` and `./inc` are automatically required.
 
 The `./lib` folder includes helper functions and basic setup logic. *You will most likely not need to modify any files inside `./lib`.*
 
