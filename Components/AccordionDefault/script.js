@@ -3,6 +3,7 @@ import $ from 'jquery'
 class AccordionDefault extends window.HTMLDivElement {
   constructor (self) {
     self = super(self)
+    self.$ = $(self)
     return self
   }
 
