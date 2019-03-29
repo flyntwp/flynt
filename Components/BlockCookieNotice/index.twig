@@ -3,6 +3,6 @@
     <div class="content">
       {{ contentHtml|e('wp_kses_post') }}
     </div>
-    <button type="button" class="btn btn--primary btnClose" aria-label="Close">{{ closeButtonLabel|e }}</button>
+    <button type="button" class="button button--primary button--close" aria-label="Close" data-close>{{ closeButtonLabel|e }}</button>
   </div>
 </div>

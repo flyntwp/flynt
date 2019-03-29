@@ -71,7 +71,7 @@ $play-button-triangle-size: (
   }
 }
 
-.video-playBtn {
+.video-playButton {
   @include playButton($color-gray, $background-opacity, $border-width, $color-white, $play-button-circle-diameter, $color-white, $play-button-triangle-size);
 
   cursor: pointer;

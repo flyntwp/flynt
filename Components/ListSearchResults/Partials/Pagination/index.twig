@@ -2,12 +2,11 @@
   <div class="pagination">
     <div class="pagination-prevLink">
       <a href="{% if pagination.prev %}{{ pagination.prev.link }}{% else %}javascript:void(0){% endif %}"
-        class="btn {% if pagination.prev %}btn--primary{% else %}btn--disabled{% endif %}">{{ previousLabel }}</a>
+        class="button {% if pagination.prev %}button--primary{% else %}button--disabled{% endif %}">{{ previousLabel }}</a>
     </div>
     <div class="pagination-nextLink">
       <a href="{% if pagination.next %}{{ pagination.next.link }}{% else %}javascript:void(0){% endif %}"
-        class="btn {% if pagination.next %}btn--primary{% else %}btn--disabled{% endif %}">{{ nextLabel }}</a>
+        class="button {% if pagination.next %}button--primary{% else %}button--disabled{% endif %}">{{ nextLabel }}</a>
     </div>
   </div>
 {% endif %}
-

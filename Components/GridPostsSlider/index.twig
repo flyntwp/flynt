@@ -7,7 +7,7 @@
     {% endif %}
     {% if ctaButton %}
       <div class="ctaButton">
-        <a class="btn btn--light" href="{{ ctaButton.url|e('esc_url') }}"{% if ctaButton.target %} target="{{ ctaButton.target|e }}" rel="noreferrer noopener"{% endif %}>
+        <a class="button button--light" href="{{ ctaButton.url|e('esc_url') }}"{% if ctaButton.target %} target="{{ ctaButton.target|e }}" rel="noreferrer noopener"{% endif %}>
           {{ ctaButton.title|e }}
         </a>
       </div>

@@ -82,12 +82,12 @@ function getConfig()
                 'items' => [
                     [
                         'title' => 'Button Primary',
-                        'classes' => 'btn btn--primary',
+                        'classes' => 'button button--primary',
                         'selector' => 'a'
                     ],
                     [
                         'title' => 'Button Primary Block',
-                        'classes' => 'btn btn--primary btn--block',
+                        'classes' => 'button button--primary button--block',
                         'selector' => 'a'
                     ]
                 ]

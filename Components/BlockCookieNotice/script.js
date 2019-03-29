@@ -14,12 +14,12 @@ class BlockCookieNotice extends window.HTMLDivElement {
   }
 
   resolveElements () {
-    this.$btnClose = $('.btnClose', this)
+    this.$closeButton = $('[data-close]', this)
   }
 
   connectedCallback () {
     this.showCookieNotice()
-    this.$.on('click', this.$btnClose.selector, this.hideCookieNotice.bind(this))
+    this.$.on('click', this.$closeButton.selector, this.hideCookieNotice.bind(this))
   }
 
   showCookieNotice () {

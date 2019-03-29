@@ -36,7 +36,7 @@
       </ul>
       {% if ctaButton %}
         <div class="postContent">
-          <a class="btn btn--primary" href="{{ ctaButton.url|e('esc_url') }}"{% if ctaButton.target %} target="{{ ctaButton.target|e }}" rel="noreferrer noopener"{% endif %}>
+          <a class="button button--primary" href="{{ ctaButton.url|e('esc_url') }}"{% if ctaButton.target %} target="{{ ctaButton.target|e }}" rel="noreferrer noopener"{% endif %}>
             {{ ctaButton.title|e }}
           </a>
         </div>
