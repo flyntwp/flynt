@@ -54,17 +54,17 @@
         }
       }
     }
-  }
 
-  // do not add margins or padding to this, it will break the layout
-  .panel-content {
-    display: none;
-    margin: 0;
-    padding: 0;
-  }
+    // do not add margins or padding to this, it will break the layout
+    &-content {
+      display: none;
+      margin: 0;
+      padding: 0;
+    }
 
-  // add custom paddings here
-  .content {
-    padding: 0;
+    // add custom paddings here
+    &-inner {
+      padding: 0;
+    }
   }
 }
