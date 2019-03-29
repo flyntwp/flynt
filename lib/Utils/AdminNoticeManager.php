@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Utils\AdminNotices;
+namespace Flynt\Utils;
 
 // # TODO make strings translatable
 
