@@ -230,7 +230,6 @@ class Options
                 'parent' => 'group_' . $optionsPageSlug,
             ]));
         }
-        // acf_add_local_field_group($fieldGroup);
     }
 
     protected static function prefixFields($fields, $prefix)
