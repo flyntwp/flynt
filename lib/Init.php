@@ -51,9 +51,6 @@ class Init
 
         if (!$acfActive) {
             self::notifyRequiredPluginIsMissing('ACF');
-        }
-
-        if (!$acfActive) {
             add_filter('template_include', function () {
                 die(
                     'One or more required plugins are not activated! Please <a href="'
