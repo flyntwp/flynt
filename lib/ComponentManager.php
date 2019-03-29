@@ -4,7 +4,6 @@ namespace Flynt;
 
 class ComponentManager
 {
-
     protected $components = [];
     protected static $instance = null;
 
@@ -16,20 +15,20 @@ class ComponentManager
         return self::$instance;
     }
 
-  /**
-   * clone
-   *
-   * Prevent cloning with 'protected' keyword
-  **/
+    /**
+     * clone
+     *
+     * Prevent cloning with 'protected' keyword
+     */
     protected function __clone()
     {
     }
 
-  /**
-   * constructor
-   *
-   * Prevent instantiation with 'protected' keyword
-  **/
+    /**
+     * constructor
+     *
+     * Prevent instantiation with 'protected' keyword
+     */
     protected function __construct()
     {
     }
