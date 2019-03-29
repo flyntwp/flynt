@@ -75,8 +75,6 @@ class AdminNoticeManager
         $cssClasses .= $options['dismissible'] ? ' is-dismissible' : '';
         $cssClasses .= !empty($options['type']) ? " notice-{$options['type']}" : '';
 
-        $files = !empty($options['filenames']) ? " ({$options['filenames']}) " : ' ';
-
         $msg = '';
 
         foreach ($messages as $message) {
@@ -84,7 +82,7 @@ class AdminNoticeManager
         }
 
         $msg .= '<p><i>To resolve this issue either follow the steps above'
-        . " or remove the Feature{$files}requiring this functionality in your theme.</i></p>";
+        . " or remove the code requiring this functionality in your theme.</i></p>";
         $msg = "<div class=\"{$cssClasses}\">"
         . "<p><strong>{$options['title']}</strong></p>"
         . $msg . '</div>';
