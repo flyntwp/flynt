@@ -56,9 +56,15 @@
     }
   }
 
+  // do not add margins or padding to this, it will break the layout
   .panel-content {
-    @include resetContentMargins;
-
     display: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  // add custom paddings here
+  .content {
+    padding: 0;
   }
 }
