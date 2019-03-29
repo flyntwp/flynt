@@ -2,18 +2,12 @@
 
 namespace Flynt;
 
-use Flynt\Defaults;
 use Flynt\ComponentManager;
 use Flynt\Utils\Feature;
 use Dflydev\DotAccessData\Data;
 
 class Api
 {
-    public static function initDefaults()
-    {
-        Defaults::init();
-    }
-
     public static function registerComponent($componentName, $componentPath = null)
     {
         $componentManager = ComponentManager::getInstance();
