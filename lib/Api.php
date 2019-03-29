@@ -3,7 +3,6 @@
 namespace Flynt;
 
 use Flynt\ComponentManager;
-use Flynt\Utils\Feature;
 use Dflydev\DotAccessData\Data;
 
 class Api
