@@ -10,6 +10,13 @@ Api::registerFields('AccordionDefault', [
         'label' => 'Accordion: Default',
         'sub_fields' => [
             [
+                'label' => 'Aria Label',
+                'name' => 'ariaLabel',
+                'type' => 'text',
+                'default_value' => 'Accordion Description',
+                'required' => true,
+            ],
+            [
                 'label' => 'Accordion Panels',
                 'name' => 'accordionPanels',
                 'type' => 'repeater',

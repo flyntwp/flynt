@@ -1,7 +1,7 @@
 <div class="flyntComponent" is="flynt-accordion-default">
   <div class="container">
     <div class="content">
-      <ul class="accordion" aria-label="Accordion Panel">
+      <ul class="accordion" aria-label="{{ ariaLabel }}">
         {% for panel in accordionPanels %}
           <li class="panel">
             <button class="panel-trigger h3" type="button" aria-expanded="false" aria-controls="content-{{ loop.index }}">
