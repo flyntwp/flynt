@@ -20,7 +20,7 @@ class Defaults
         if (is_null($output)) {
             $componentManager = ComponentManager::getInstance();
             $filePath = $componentManager->getComponentFilePath($componentName);
-            $output = self::renderFile($componentData, [], $filePath);
+            $output = self::renderFile($componentData, $filePath);
         }
         return $output;
     }
@@ -35,18 +35,12 @@ class Defaults
         }
     }
 
-    protected static function renderFile($componentData, $areaHtml, $filePath)
+    protected static function renderFile($componentData, $filePath)
     {
         if (!is_file($filePath)) {
             trigger_error("Template not found: {$filePath}", E_USER_WARNING);
             return '';
         }
-
-        $area = function ($areaName) use ($areaHtml) {
-            if (array_key_exists($areaName, $areaHtml)) {
-                return $areaHtml[$areaName];
-            }
-        };
 
         $data = function () use ($componentData) {
             $args = func_get_args();
