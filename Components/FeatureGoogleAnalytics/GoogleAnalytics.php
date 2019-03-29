@@ -32,7 +32,6 @@ class GoogleAnalytics
                 'type' => 'error',
                 'title' => 'Google Analytics Error',
                 'dismissible' => true,
-                'filenames' => 'functions.php'
             ];
             $manager->addNotice($message, $options);
         }
