@@ -13,13 +13,12 @@ namespace Flynt\Utils;
  * // get the singleton instance of the manager
  * $manager = AdminNoticeManager::getInstance();
  *
- * // Prepare the admin notice
+ * // Prepare the admin notice (each string in array will be a paragraph)
  * $message = ['This notice will show up in the admin backend.'];
  * $options = [
- *   'type' => 'info',
+ *   'type' => 'info', // possible values: 'error', 'warning', 'success', 'info'
  *   'title' => 'Flynt Notice',
  *   'dismissible' => true,
- *   'filenames' => 'related-file.php, another.json'
  * ];
  *
  * // Add the admin notice
@@ -49,7 +48,7 @@ class AdminNoticeManager
      * clone
      *
      * Prevent cloning with 'protected' keyword
-    **/
+     */
     protected function __clone()
     {
     }
@@ -58,7 +57,7 @@ class AdminNoticeManager
      * constructor
      *
      * Prevent instantiation with 'protected' keyword
-    **/
+     */
     protected function __construct()
     {
     }
