@@ -2,7 +2,7 @@
 
 namespace Flynt\Utils;
 
-use Flynt;
+use Flynt\ComponentManager;
 use Twig_Environment;
 use Twig_Extension;
 use Twig_SimpleFunction;
@@ -37,7 +37,7 @@ class TwigExtensionFlynt extends Twig_Extension
         $data = $data === false ? [] : $data;
         $data = $this->getComponentData($data, $componentName);
 
-        $componentManager = Flynt\ComponentManager::getInstance();
+        $componentManager = ComponentManager::getInstance();
         $templateFilename = apply_filters('Flynt/TimberLoader/templateFilename', 'index.twig');
         $templateFilename = apply_filters("Flynt/TimberLoader/templateFilename?name=${componentName}", $templateFilename);
         $filePath = $componentManager->getComponentFilePath($componentName, $templateFilename);

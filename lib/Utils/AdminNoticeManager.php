@@ -1,25 +1,28 @@
 <?php
 
-namespace Flynt\Utils\AdminNotices;
+namespace Flynt\Utils;
 
 // # TODO make strings translatable
 
 /**
- * AdminNoticeManager is to be used in other features to enable an easy-to-use interface for the display of admin notices.
+ * AdminNoticeManager provides an easy-to-use interface for the display of admin notices.
  *
  * Example usage:
- * use Flynt\Utils\AdminNotices\AdminNoticeManager;
+ * use Flynt\Utils\AdminNoticeManager;
+ *
  * // get the singleton instance of the manager
  * $manager = AdminNoticeManager::getInstance();
  *
- * // Prepare the admin notice
+ * // Prepare the admin notice (each string in array will be a paragraph)
  * $message = ['This notice will show up in the admin backend.'];
  * $options = [
- *   'type' => 'info',
+ *   'type' => 'info', // possible values: 'error', 'warning', 'success', 'info'
  *   'title' => 'Flynt Notice',
  *   'dismissible' => true,
- *   'filenames' => 'related-file.php, another.json'
  * ];
+ *
+ * // Add the admin notice
+ * $manager->addNotice($message, $options);
  */
 class AdminNoticeManager
 {
@@ -45,7 +48,7 @@ class AdminNoticeManager
      * clone
      *
      * Prevent cloning with 'protected' keyword
-    **/
+     */
     protected function __clone()
     {
     }
@@ -54,7 +57,7 @@ class AdminNoticeManager
      * constructor
      *
      * Prevent instantiation with 'protected' keyword
-    **/
+     */
     protected function __construct()
     {
     }
@@ -71,8 +74,6 @@ class AdminNoticeManager
         $cssClasses .= $options['dismissible'] ? ' is-dismissible' : '';
         $cssClasses .= !empty($options['type']) ? " notice-{$options['type']}" : '';
 
-        $files = !empty($options['filenames']) ? " ({$options['filenames']}) " : ' ';
-
         $msg = '';
 
         foreach ($messages as $message) {
@@ -80,7 +81,7 @@ class AdminNoticeManager
         }
 
         $msg .= '<p><i>To resolve this issue either follow the steps above'
-        . " or remove the Feature{$files}requiring this functionality in your theme.</i></p>";
+        . " or remove the code requiring this functionality in your theme.</i></p>";
         $msg = "<div class=\"{$cssClasses}\">"
         . "<p><strong>{$options['title']}</strong></p>"
         . $msg . '</div>';

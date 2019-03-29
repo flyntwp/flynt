@@ -1,7 +1,7 @@
 <?php
 namespace Flynt\Components\FeatureGoogleAnalytics;
 
-use Flynt\Utils\AdminNotices\AdminNoticeManager;
+use Flynt\Utils\AdminNoticeManager;
 use Timber\Timber;
 
 class GoogleAnalytics
@@ -32,7 +32,6 @@ class GoogleAnalytics
                 'type' => 'error',
                 'title' => 'Google Analytics Error',
                 'dismissible' => true,
-                'filenames' => 'functions.php'
             ];
             $manager->addNotice($message, $options);
         }

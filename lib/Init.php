@@ -3,6 +3,8 @@
 namespace Flynt;
 
 use Flynt\Api;
+use Flynt\Defaults;
+use Flynt\Utils\AdminNoticeManager;
 use Flynt\Utils\Asset;
 use Timber\Timber;
 
@@ -11,7 +13,7 @@ class Init
     public static function initTheme()
     {
         Api::registerHooks();
-        Api::initDefaults();
+        Defaults::init();
 
         // Set to true to load all assets from a CDN if there is one specified
         Asset::loadFromCdn(false);
@@ -49,9 +51,6 @@ class Init
 
         if (!$acfActive) {
             self::notifyRequiredPluginIsMissing('ACF');
-        }
-
-        if (!$acfActive) {
             add_filter('template_include', function () {
                 die(
                     'One or more required plugins are not activated! Please <a href="'
@@ -66,9 +65,16 @@ class Init
 
     protected static function notifyRequiredPluginIsMissing($pluginName)
     {
-        add_action('admin_notices', function () use ($pluginName) {
-            echo "<div class=\"error\"><p>${pluginName} Plugin not activated. Make sure you activate the plugin on the <a href=\""
-                . esc_url(admin_url('plugins.php')) . "\">plugin page</a>.</p></div>";
-        });
+        $manager = AdminNoticeManager::getInstance();
+
+        $pluginUrl = esc_url(admin_url('plugins.php'));
+        $message = ["${pluginName} Plugin not activated. Make sure you activate the plugin on the <a href=\"${pluginUrl}\">plugin page</a>."];
+        $options = [
+          'type' => 'error',
+          'title' => 'Flynt is missing a required plugin',
+          'dismissible' => false,
+        ];
+
+        $manager->addNotice($message, $options);
     }
 }
