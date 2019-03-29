@@ -6,9 +6,6 @@ use Flynt\ComponentManager;
 
 class Defaults
 {
-    const CONFIG_DIR = 'config';
-    const COMPONENT_DIR = 'Components';
-
     public static function init()
     {
         add_filter('Flynt/renderComponent', ['Flynt\Defaults', 'renderComponent'], 999, 3);
