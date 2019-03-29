@@ -4,6 +4,7 @@ namespace Flynt;
 
 use Flynt\Api;
 use Flynt\Defaults;
+use Flynt\Utils\AdminNoticeManager;
 use Flynt\Utils\Asset;
 use Timber\Timber;
 
@@ -67,9 +68,16 @@ class Init
 
     protected static function notifyRequiredPluginIsMissing($pluginName)
     {
-        add_action('admin_notices', function () use ($pluginName) {
-            echo "<div class=\"error\"><p>${pluginName} Plugin not activated. Make sure you activate the plugin on the <a href=\""
-                . esc_url(admin_url('plugins.php')) . "\">plugin page</a>.</p></div>";
-        });
+        $manager = AdminNoticeManager::getInstance();
+
+        $pluginUrl = esc_url(admin_url('plugins.php'));
+        $message = ["${pluginName} Plugin not activated. Make sure you activate the plugin on the <a href=\"${pluginUrl}\">plugin page</a>."];
+        $options = [
+          'type' => 'error',
+          'title' => 'Flynt is missing a required plugin',
+          'dismissible' => false,
+        ];
+
+        $manager->addNotice($message, $options);
     }
 }
