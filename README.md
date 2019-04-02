@@ -271,6 +271,23 @@ Flynt includes several utility functions for creating Advanced Custom Fields opt
 * `Flynt\Utils\Options::addGlobal`<br> Adds fields into a new group inside the Global Options options page. When used with WPML, these fields will always be returned from the primary language. In this way these fields are *global* and cannot be translated.
 * `Flynt\Utils\Options::get` <br> Used to retrieve options from Translatable or Global options.
 
+### WPML
+
+If you are using Flynt and [WPML](https://wpml.org/), you will need to create a Must-Use (MU) Plugin in order to load Twig from Timber before the WPML code is executed. This is because WPML includes an outdated version of Twig. 
+
+To do this, create /wp-content/mu-plugins/flynt.php and add this code:
+
+```php
+<?php
+$autoloadPath = get_template_directory() . '/vendor/autoload.php';
+if (file_exists($autoloadPath)) {
+    require_once $autoloadPath;
+    new \Timber\Timber();
+}
+```
+
+This will ensure Twig is loaded from Timber, not WPML.
+
 ## Maintainers
 This project is maintained by [bleech](https://github.com/bleech).
 
