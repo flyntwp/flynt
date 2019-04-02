@@ -19,6 +19,8 @@
   * [Components](#components)
   * [Advanced Custom Fields](#advanced-custom-fields)
   * [Field Groups](#field-groups)
+  * [ACF Option Pages](#acf-option-pages)
+  * [WPML](#wpml)
 * [Maintainers](#maintainers)
 * [Contributing](#contributing)
 * [License](#license)
