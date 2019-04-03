@@ -32,14 +32,14 @@
     display: block;
   }
 
-  .video-playBtn {
+  .video-playButton {
     display: none;
   }
 }
 
 .video-player--isLoaded {
   .video-loader,
-  .video-playBtn {
+  .video-playButton {
     display: none;
   }
 

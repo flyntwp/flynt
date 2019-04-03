@@ -141,23 +141,21 @@
     }
   }
 
-  .btn {
-    &--light {
-      background: transparent;
-      border: 0;
-      padding: 0;
-      position: relative;
+  .button--light {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    position: relative;
 
-      &::after {
-        background: url('../Components/GridPostsSlider/Assets/arrow-right-btn.svg') no-repeat center;
-        content: '';
-        display: inline-block;
-        height: 17px;
-        left: 6px;
-        position: relative;
-        top: 3px;
-        width: 17px;
-      }
+    &::after {
+      background: url('../Components/GridPostsSlider/Assets/arrow-right-button.svg') no-repeat center;
+      content: '';
+      display: inline-block;
+      height: 17px;
+      left: 6px;
+      position: relative;
+      top: 3px;
+      width: 17px;
     }
   }
 }

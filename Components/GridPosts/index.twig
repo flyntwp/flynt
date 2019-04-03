@@ -37,20 +37,20 @@
       <div class="pagination">
         <div class="pagination-prevLink">
           <a href="{% if pagination.prev %}{{ pagination.prev.link }}{% else %}javascript:void(0){% endif %}"
-            class="btn {% if pagination.prev %}btn--primary{% else %}btn--disabled{% endif %}">{{ previousLabel }}</a>
+            class="button {% if pagination.prev %}button--primary{% else %}button--disabled{% endif %}">{{ previousLabel }}</a>
         </div>
         <div class="pagination-counter">
           {% for page in pagination.pages %}
             {% if page.current %}
-              <span class="{{ page.class }} btn btn--disabled">{{ page.title }}</span>
+              <span class="{{ page.class }} button button--disabled">{{ page.title }}</span>
             {% else %}
-              <a href="{{ page.link }}" class="{{ page.class }} btn btn-primary">{{ page.title }}</a>
+              <a href="{{ page.link }}" class="{{ page.class }} button button-primary">{{ page.title }}</a>
             {% endif %}
           {% endfor %}
         </div>
         <div class="pagination-nextLink">
           <a href="{% if pagination.next %}{{ pagination.next.link }}{% else %}javascript:void(0){% endif %}"
-            class="btn {% if pagination.next %}btn--primary{% else %}btn--disabled{% endif %}">{{ nextLabel }}</a>
+            class="button {% if pagination.next %}button--primary{% else %}button--disabled{% endif %}">{{ nextLabel }}</a>
         </div>
       </div>
     {% endif %}

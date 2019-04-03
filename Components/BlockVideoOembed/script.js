@@ -13,11 +13,11 @@ class BlockVideoOembed extends window.HTMLDivElement {
     this.$posterImage = $('.figure-image', this)
     this.$videoPlayer = $('.video-player', this)
     this.$iframe = $('iframe', this)
-    this.$playBtn = $('.video-playBtn', this)
+    this.$playButton = $('.video-playButton', this)
   }
 
   connectedCallback () {
-    this.$.one('click', this.$playBtn.selector, this.loadVideo.bind(this))
+    this.$.one('click', this.$playButton.selector, this.loadVideo.bind(this))
   }
 
   loadVideo () {
