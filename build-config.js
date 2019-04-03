@@ -14,7 +14,7 @@ module.exports = {
     copy: [{
       from: './{Components,assets}/**/*',
       to: './',
-      ignore: ['*.js', '*.scss']
+      ignore: ['*.js', '*.scss', '*.php', '*.twig']
     }]
   },
   browserSync: {
