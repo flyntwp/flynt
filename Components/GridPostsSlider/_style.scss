@@ -121,8 +121,7 @@
         width: 8px;
       }
 
-      &.slick-active button {
-        // stylelint-disable-line
+      &.slick-active button { // stylelint-disable-line selector-no-qualifying-type
         background: rgba(0, 0, 0, 0.8);
       }
     }
