@@ -5,13 +5,13 @@
 */
 
 html {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
   background-color: $color-background;
   box-sizing: border-box;
   color: $color-text;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 16px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
   line-height: 1.5;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -55,7 +55,7 @@ body {
 }
 
 .centerMaxWidthContainer {
-  @include centerMaxWidthContainer;
+  @include center-max-width-container;
 }
 
 .centerContentMaxWidth {
@@ -237,10 +237,10 @@ tr:nth-child(even) {
 button {
   appearance: none;
   background-color: transparent;
-  color: inherit;
   border: 0;
-  font-size: inherit;
+  color: inherit;
   font-family: inherit;
+  font-size: inherit;
   line-height: inherit;
   padding: 0;
   text-align: inherit;
@@ -249,8 +249,8 @@ button {
 .button {
   appearance: none;
   background: $color-background;
-  border-radius: 3px;
   border: 1px solid $color-accent;
+  border-radius: 3px;
   color: $color-accent;
   cursor: pointer;
   display: inline-block;

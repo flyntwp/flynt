@@ -27,8 +27,8 @@
     height: 2px;
     left: 0;
     position: absolute;
-    width: 30px;
     transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out, background 0.2s ease-in-out;
+    width: 30px;
   }
 
   &::before {

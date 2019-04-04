@@ -1,4 +1,4 @@
-[is=flynt-hero-cta] {
+[is='flynt-hero-cta'] {
   background-color: $color-brand;
   color: #fff;
   padding: $component-spacing 0;
@@ -8,8 +8,8 @@
   }
 
   .container {
-    @include centerMaxWidthContainer;
-    @include resetContentMargins;
+    @include center-max-width-container;
+    @include reset-content-margins;
 
     text-align: center;
   }

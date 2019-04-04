@@ -31,9 +31,9 @@
 
 `style.scss`
 ```scss
-[is=flynt-list-posts] {
+[is='flynt-list-posts'] {
   .listPosts {
-    @import 'Partials/Tags/_style';
+    @import 'Partials/Tags/style';
   }
 }
 ```
@@ -73,9 +73,9 @@
 
 `style.scss`
 ```scss
-[is=flynt-list-posts] {
+[is='flynt-list-posts'] {
   .listPosts {
-    @import 'Partials/Categories/_style';
+    @import 'Partials/Categories/style';
   }
 }
 ```

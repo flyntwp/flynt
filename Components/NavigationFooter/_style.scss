@@ -1,0 +1,11 @@
+[is='flynt-navigation-footer'] {
+  .container {
+    @include center-max-width-container;
+  }
+
+  .navigation {
+    padding: 2rem 0;
+  }
+
+  @import 'Partials/Menu/style';
+}

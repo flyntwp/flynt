@@ -1,11 +1,12 @@
-<div class="titleContent">
-  {{ searchTitleHtml }}
-</div>
-<form class="searchForm" role="search" action="{{ bloginfo('url') }}">
-  <label class="label" for="search-input">{{ searchLabel }}</label>
-  <div class="field">
-    <input name="s" class="input" id="input" type="search" required min="1" placeholder="{{ searchPlaceholder }}"{% if searchQuery %} value="{{ searchQuery }}{% endif %}">
-    <button class="submit" type="submit" aria-label="{{ searchButtonText }}">{{ searchIcon }}</button>
+<div class="header">
+  <div class="header-title">
+    {{ searchTitleHtml }}
   </div>
-</form>
-
+  <form class="searchForm" role="search" action="{{ bloginfo('url') }}">
+    <label class="searchForm-label" for="search-input">{{ searchLabel }}</label>
+    <div class="searchForm-field">
+      <input name="s" class="searchForm-input" id="input" type="search" required min="1" placeholder="{{ searchPlaceholder }}"{% if searchQuery %} value="{{ searchQuery }}{% endif %}">
+      <button class="searchForm-submit" type="submit" aria-label="{{ searchButtonText }}">{{ searchIcon }}</button>
+    </div>
+  </form>
+</div>

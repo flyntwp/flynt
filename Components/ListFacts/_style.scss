@@ -1,12 +1,12 @@
-[is=flynt-list-facts] {
+[is='flynt-list-facts'] {
   padding: $component-spacing 0;
 
   .container {
-    @include centerMaxWidthContainer;
+    @include center-max-width-container;
   }
 
   .preContent {
-    @include resetContentMargins;
+    @include reset-content-margins;
 
     margin: 0 auto 50px;
     max-width: $content-max-width;
@@ -42,6 +42,6 @@
   }
 
   .content {
-    @include resetContentMargins;
+    @include reset-content-margins;
   }
 }

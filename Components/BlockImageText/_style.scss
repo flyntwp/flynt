@@ -1,8 +1,8 @@
-[is=flynt-block-image-text] {
+[is='flynt-block-image-text'] {
   margin: $component-spacing 0;
 
   .container {
-    @include centerMaxWidthContainer;
+    @include center-max-width-container;
   }
 
   .box {
@@ -31,7 +31,7 @@
 
     &-inner {
       &--content {
-        @include resetContentMargins;
+        @include reset-content-margins;
       }
 
       @media (min-width: $breakpoint-desktop) {

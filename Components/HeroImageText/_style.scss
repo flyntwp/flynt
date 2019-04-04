@@ -1,4 +1,4 @@
-[is=flynt-hero-image-text] {
+[is='flynt-hero-image-text'] {
   position: relative;
 
   .image {
@@ -10,8 +10,8 @@
   }
 
   .content {
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
     align-items: center;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
     display: flex;
     height: 100%;
     justify-content: center;
@@ -22,7 +22,7 @@
     width: 100%;
 
     &-inner {
-      @include resetContentMargins;
+      @include reset-content-margins;
 
       color: $color-background;
       max-width: $content-max-width;

@@ -1,59 +1,56 @@
 .searchList {
-  ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 
-    .searchList-item {
-      border-bottom: 1px solid #9b9b9b;
-      padding: $container-padding 0;
-      position: relative;
+  &-item {
+    border-bottom: 1px solid #9b9b9b;
+    padding: $container-padding 0;
+    position: relative;
 
-      @media (min-width: 1100px) {
-        min-height: 190px;
-      }
+    @media (min-width: 1100px) {
+      min-height: 190px;
+    }
+  }
 
-      .postLink {
-        text-decoration: none;
+  .postLink {
+    text-decoration: none;
 
-        &:hover {
-          .postTitle {
-            color: $color-accent;
-          }
-        }
-
-        > *:first-child {
-          margin-top: 0;
-          padding-top: 0;
-        }
-      }
-
-      .preview-image {
-        margin-bottom: 10px;
-
-        @media (min-width: 1100px) {
-          height: 150px;
-          margin-right: 20px;
-          max-width: 200px;
-          position: absolute;
-          right: 100%;
-          width: 200px;
-
-          img {
-            /* stylelint-disable-next-line */
-            font-family: 'object-fit: cover; object-position: center center;';
-            height: 100%;
-            object-fit: cover;
-            object-position: center center;
-            width: 100%;
-          }
-        }
-      }
-
-      .excerpt {
-        color: #9b9b9b;
-        margin-bottom: 0;
-        padding-bottom: 0;
+    &:hover {
+      .postTitle {
+        color: $color-accent;
       }
     }
+
+    > *:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+  }
+
+  .previewImage {
+    margin-bottom: 10px;
+
+    @media (min-width: 1100px) {
+      height: 150px;
+      margin-right: 20px;
+      max-width: 200px;
+      position: absolute;
+      right: 100%;
+      width: 200px;
+
+      img {
+        font-family: 'object-fit: cover; object-position: center center;';
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+        width: 100%;
+      }
+    }
+  }
+
+  .excerpt {
+    color: #9b9b9b;
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
 }

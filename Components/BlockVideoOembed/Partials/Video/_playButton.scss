@@ -23,7 +23,7 @@ $play-button-triangle-size: (
   transition: transform $transition-time $transition-easing;
 }
 
-@mixin playButton($color-play-button, $background-opacity, $border-width, $colorBorder, $play-button-circle-diameter, $color-triangle, $play-button-triangle-size) {
+@mixin play-button($color-play-button, $background-opacity, $border-width, $colorBorder, $play-button-circle-diameter, $color-triangle, $play-button-triangle-size) {
   &::before {
     @include pseudo-element-defaults();
 
@@ -31,14 +31,14 @@ $play-button-triangle-size: (
     border: $border-width solid $colorBorder;
     border-radius: 50%;
     height: map-get($play-button-circle-diameter, 'mobile');
-    margin-top: -(map-get($play-button-circle-diameter, 'mobile') / 2);
     margin-left: -(map-get($play-button-circle-diameter, 'mobile') / 2);
+    margin-top: -(map-get($play-button-circle-diameter, 'mobile') / 2);
     width: map-get($play-button-circle-diameter, 'mobile');
 
     @media (min-width: $breakpoint-tablet) {
       height: map-get($play-button-circle-diameter, 'desktop');
-      margin-top: -(map-get($play-button-circle-diameter, 'desktop') / 2);
       margin-left: -(map-get($play-button-circle-diameter, 'desktop') / 2);
+      margin-top: -(map-get($play-button-circle-diameter, 'desktop') / 2);
       width: map-get($play-button-circle-diameter, 'desktop');
     }
   }
@@ -50,16 +50,16 @@ $play-button-triangle-size: (
     border-left: map-get($play-button-triangle-size, 'mobile') solid $color-triangle;
     border-top: (map-get($play-button-triangle-size, 'mobile') / 2) solid transparent;
     height: 0;
-    margin-top: -(map-get($play-button-triangle-size, 'mobile') / 2);
     margin-left: -(map-get($play-button-triangle-size, 'mobile') / 2 * 0.9);
+    margin-top: -(map-get($play-button-triangle-size, 'mobile') / 2);
     width: 0;
 
     @media (min-width: $breakpoint-tablet) {
       border-bottom: (map-get($play-button-triangle-size, 'desktop') / 2) solid transparent;
       border-left: map-get($play-button-triangle-size, 'desktop') solid $color-triangle;
       border-top: (map-get($play-button-triangle-size, 'desktop') / 2) solid transparent;
-      margin-top: -(map-get($play-button-triangle-size, 'desktop') / 2);
       margin-left: -(map-get($play-button-triangle-size, 'desktop') / 2 * 0.9);
+      margin-top: -(map-get($play-button-triangle-size, 'desktop') / 2);
     }
   }
 
@@ -72,7 +72,7 @@ $play-button-triangle-size: (
 }
 
 .video-playButton {
-  @include playButton($color-gray, $background-opacity, $border-width, $color-white, $play-button-circle-diameter, $color-white, $play-button-triangle-size);
+  @include play-button($color-gray, $background-opacity, $border-width, $color-white, $play-button-circle-diameter, $color-white, $play-button-triangle-size);
 
   cursor: pointer;
   display: block;

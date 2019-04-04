@@ -1,6 +1,6 @@
 $nav-height-mobile: 64px;
 
-html {
+.html {
   .pageWrapper {
     padding-top: $nav-height-mobile;
   }
@@ -24,9 +24,9 @@ html {
   }
 }
 
-[is=flynt-navigation-main] {
+[is='flynt-navigation-main'] {
   .navigationMain {
-    @include centerMaxWidthContainer;
+    @include center-max-width-container;
 
     &-head {
       background: $color-background;
@@ -57,7 +57,7 @@ html {
     }
   }
 
-  @import 'Partials/BrandLogo/_style';
-  @import 'Partials/Hamburger/_style';
-  @import 'Partials/Menu/_style';
+  @import 'Partials/BrandLogo/style';
+  @import 'Partials/Hamburger/style';
+  @import 'Partials/Menu/style';
 }

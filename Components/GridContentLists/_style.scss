@@ -1,14 +1,14 @@
 
-[is=flynt-grid-content-lists] {
+[is='flynt-grid-content-lists'] {
   background-color: rgba(0, 0, 0, 0.03);
   padding: $component-spacing 0;
 
   .container {
-    @include centerMaxWidthContainer;
+    @include center-max-width-container;
   }
 
   .preContent {
-    @include resetContentMargins;
+    @include reset-content-margins;
 
     margin: 0 auto 50px;
     max-width: $content-max-width;
@@ -43,18 +43,18 @@
   }
 
   .content {
-    @include resetContentMargins;
+    @include reset-content-margins;
 
     background-color: $color-background;
     height: 100%;
     padding: 25px 30px;
 
-    ul > li {
+    li {
       border-bottom: 1px solid rgba(0, 0, 0, 0.06);
       padding: 5px 0;
 
       &:last-child {
-        border-bottom: none;
+        border-bottom: 0;
       }
 
       > a {
@@ -64,7 +64,7 @@
         transition: color 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 
         &::after {
-          content: "\00a0➟";
+          content: '\00a0➟';
         }
 
         &:hover {

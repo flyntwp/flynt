@@ -1,15 +1,9 @@
 <div class="flyntComponent" is="flynt-list-search-results">
   <div class="container">
-    <div class="header">
-      {% include 'Partials/Header/index.twig' %}
-    </div>
-    <div class="searchList">
-      {% include 'Partials/Results/index.twig' %}
-    </div>
+    {% include 'Partials/Header/index.twig' %}
+    {% include 'Partials/Results/index.twig' %}
     {% if pagination %}
-      <div class="pagination">
-        {% include 'Partials/Pagination/index.twig' %}
-      </div>
+      {% include 'Partials/Pagination/index.twig' %}
     {% endif %}
   </div>
 </div>

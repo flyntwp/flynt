@@ -4,10 +4,10 @@
   height: 100%;
   left: 0;
   margin: 0;
-  transform: translateX(100%);
   padding-top: $nav-height-mobile;
   position: fixed;
   top: 0;
+  transform: translateX(100%);
   transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
   width: 100%;
   z-index: 997;
@@ -18,9 +18,9 @@
 
   @media (min-width: $breakpoint-tablet) {
     background: inherit;
-    position: relative;
-    padding: 0;
     float: right;
+    padding: 0;
+    position: relative;
     transform: none;
     width: auto;
   }

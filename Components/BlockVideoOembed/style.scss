@@ -1,9 +1,0 @@
-[is=flynt-block-video-oembed] {
-  margin: $component-spacing 0;
-
-  .container {
-    @include centerMaxWidthContainer;
-  }
-
-  @import 'Partials/Video/_style';
-}
