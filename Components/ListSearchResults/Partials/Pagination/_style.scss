@@ -12,6 +12,12 @@
   }
 
   @media (min-width: 300px) {
+    &::after {
+      clear: both;
+      content: '';
+      display: table;
+    }
+
     &-prevLink {
       float: left;
     }
