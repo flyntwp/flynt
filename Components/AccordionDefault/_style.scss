@@ -30,35 +30,41 @@
       padding: 15px 30px 15px 0;
       position: relative;
       width: 100%;
+
+      &::after {
+        $color-text-rgb: red($color-contrast), green($color-contrast), blue($color-contrast);
+
+        background-image: url("data:image/svg+xml;utf8,<svg width='32' height='32' xmlns='http://www.w3.org/2000/svg'><polyline fill='none' stroke='rgb(#{$color-text-rgb})' stroke-width='2' points='2,9 16,25 30,9 '/></svg>");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        content: '';
+        display: block;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+        width: 30px;
+      }
+
+      &[aria-expanded='true'] {
+        &::after {
+          transform: rotateX(180deg);
+        }
+      }
     }
 
-    &-arrow {
-      $color-text-rgb: red($color-contrast), green($color-contrast), blue($color-contrast);
-
-      background-image: url("data:image/svg+xml;utf8,<svg width='32' height='32' xmlns='http://www.w3.org/2000/svg'><polyline fill='none' stroke='rgb(#{$color-text-rgb})' stroke-width='2'  points='2,9 16,25 30,9 '/></svg>");
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-size: 100%;
-      display: block;
-      height: 20px;
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      transition: transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
-      width: 30px;
+    // do not add margins or padding to this, it will break the layout
+    &-content {
+      display: none;
+      margin: 0;
+      padding: 0;
     }
-  }
 
-  [aria-expanded='true'] {
-    .panel-arrow {
-      transform: translateY(-50%) rotateX(180deg);
+    // add custom paddings here
+    &-inner {
+      padding: 0;
     }
-  }
-
-  .panel-content {
-    @include reset-content-margins;
-
-    display: none;
   }
 }
