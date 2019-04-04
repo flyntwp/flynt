@@ -1,6 +1,6 @@
 .header {
   .titleContent {
-    @include resetContentMargins;
+    @include reset-content-margins;
 
     padding: $container-padding 0;
   }

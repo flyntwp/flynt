@@ -1,8 +1,8 @@
-[is=flynt-grid-teaser-tiles] {
+[is='flynt-grid-teaser-tiles'] {
   margin: $component-spacing 0;
 
   .container {
-    @include centerMaxWidthContainer;
+    @include center-max-width-container;
 
     max-width: $content-max-width;
 
@@ -61,14 +61,10 @@
       img {
         opacity: 0.6;
         transition: opacity 0.3s;
-        -webkit-transition: opacity 0.3s;
-        -moz-transition: opacity 0.3s;
-        -ms-transition: opacity 0.3s;
-        -o-transition: opacity 0.3s;
       }
 
       .title {
-        @include resetContentMargins;
+        @include reset-content-margins;
 
         bottom: 20px;
         left: 20px;
@@ -96,16 +92,12 @@
     &-cta {
       border: 2px solid $color-accent;
       transition: border-color 0.3s;
-      -webkit-transition: border-color 0.3s;
-      -moz-transition: border-color 0.3s;
-      -ms-transition: border-color 0.3s;
-      -o-transition: border-color 0.3s;
 
       .title {
-        @include resetContentMargins;
+        @include reset-content-margins;
+        padding: 88% 20px 0;
 
         position: relative;
-        padding: 88% 20px 0;
 
         @media (min-width: $breakpoint-tablet) {
           bottom: 20px;
@@ -122,10 +114,6 @@
         h4 {
           color: $color-accent;
           transition: color 0.3s;
-          -webkit-transition: color 0.3s;
-          -moz-transition: color 0.3s;
-          -ms-transition: color 0.3s;
-          -o-transition: color 0.3s;
         }
       }
 

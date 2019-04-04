@@ -1,8 +1,8 @@
-[is=flynt-block-image] {
+[is='flynt-block-image'] {
   margin: $component-spacing 0;
 
   .container {
-    @include centerMaxWidthContainer;
+    @include center-max-width-container;
   }
 
   .figure-caption {

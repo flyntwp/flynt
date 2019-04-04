@@ -1,8 +1,8 @@
-[is=flynt-accordion-default] {
+[is='flynt-accordion-default'] {
   margin: $component-spacing 0;
 
   .container {
-    @include centerMaxWidthContainer;
+    @include center-max-width-container;
   }
 
   .content {
@@ -25,17 +25,17 @@
 
     &-trigger {
       cursor: pointer;
-      outline: 0;
       margin: 0;
+      outline: 0;
       padding: 15px 30px 15px 0;
       position: relative;
       width: 100%;
     }
 
     &-arrow {
-      $colorTextRgb: red($color-contrast), green($color-contrast), blue($color-contrast);
+      $color-text-rgb: red($color-contrast), green($color-contrast), blue($color-contrast);
 
-      background-image: url("data:image/svg+xml;utf8,<svg width='32' height='32' xmlns='http://www.w3.org/2000/svg'><polyline fill='none' stroke='rgb(#{$colorTextRgb})' stroke-width='2'  points='2,9 16,25 30,9 '/></svg>");
+      background-image: url("data:image/svg+xml;utf8,<svg width='32' height='32' xmlns='http://www.w3.org/2000/svg'><polyline fill='none' stroke='rgb(#{$color-text-rgb})' stroke-width='2'  points='2,9 16,25 30,9 '/></svg>");
       background-position: center center;
       background-repeat: no-repeat;
       background-size: 100%;
@@ -50,14 +50,14 @@
     }
   }
 
-  [aria-expanded="true"] {
+  [aria-expanded='true'] {
     .panel-arrow {
       transform: translateY(-50%) rotateX(180deg);
     }
   }
 
   .panel-content {
-    @include resetContentMargins;
+    @include reset-content-margins;
 
     display: none;
   }

@@ -1,0 +1,13 @@
+[is='flynt-list-search-results'] {
+  margin: $component-spacing 0;
+
+  .container {
+    @include center-max-width-container;
+
+    max-width: $content-max-width;
+
+    @import 'Partials/Header/style';
+    @import 'Partials/Pagination/style';
+    @import 'Partials/Results/style';
+  }
+}

@@ -1,17 +1,17 @@
 $content-max-width: 800px;
 
-[is=flynt-slider-images] {
+[is='flynt-slider-images'] {
   margin: $component-spacing 0;
 
   .container {
-    @include centerMaxWidthContainer;
+    @include center-max-width-container;
   }
 
   .slider {
     background: $color-contrast;
+    height: 250px;
     margin-bottom: 30px;
     position: relative;
-    height: 250px;
 
     @media (min-width: $breakpoint-mobile-horizontal) {
       height: 385px;
@@ -66,8 +66,8 @@ $content-max-width: 800px;
 
       &-caption {
         background: rgba(0, 0, 0, 0.3);
-        color: #fff;
         bottom: 0;
+        color: #fff;
         display: inline-block;
         font-size: 0.8rem;
         padding: 0.25rem 0.5rem;
@@ -125,8 +125,8 @@ $content-max-width: 800px;
 
       button {
         background: transparent;
-        border-radius: 50%;
         border: 1px solid rgba(0, 0, 0, 0.8);
+        border-radius: 50%;
         cursor: pointer;
         height: 8px;
         pointer-events: all;
@@ -135,10 +135,9 @@ $content-max-width: 800px;
         width: 8px;
       }
 
-      &.slick-active {
-        button {
-          background: rgba(0, 0, 0, 0.8);
-        }
+      &.slick-active button {
+        // stylelint-disable-line
+        background: rgba(0, 0, 0, 0.8);
       }
     }
   }

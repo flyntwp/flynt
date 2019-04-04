@@ -1,0 +1,16 @@
+[is='flynt-list-posts'] {
+  margin: $component-spacing 0;
+
+  .listPosts {
+    @include center-max-width-container;
+
+    &-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    @import 'Partials/PostTeaser/style';
+    @import 'Partials/PaginationButtons/style';
+  }
+}

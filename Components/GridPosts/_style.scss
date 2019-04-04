@@ -1,13 +1,13 @@
-[is=flynt-grid-posts] {
+[is='flynt-grid-posts'] {
   background-color: rgba(0, 0, 0, 0.03);
   padding: $component-spacing 0;
 
   .container {
-    @include centerMaxWidthContainer;
+    @include center-max-width-container;
   }
 
   .preContent {
-    @include resetContentMargins;
+    @include reset-content-margins;
 
     margin: 0 auto 50px;
     max-width: $content-max-width;
@@ -34,8 +34,8 @@
   }
 
   .post {
-    padding: 0 10px 20px;
     max-width: 360px;
+    padding: 0 10px 20px;
     width: 100%;
 
     @media (min-width: $breakpoint-tablet) {
@@ -67,8 +67,8 @@
     }
 
     .title {
-      padding-top: 0.1rem;
       margin-bottom: 0.1rem;
+      padding-top: 0.1rem;
     }
 
     time {

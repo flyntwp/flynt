@@ -1,4 +1,4 @@
-[is=flynt-block-cookie-notice] {
+[is='flynt-block-cookie-notice'] {
   background-color: $color-background;
   border-top: 1px solid $color-brand;
   bottom: 0;
@@ -9,7 +9,7 @@
   z-index: 999;
 
   .container {
-    @include centerMaxWidthContainer;
+    @include center-max-width-container;
 
     padding-bottom: $container-padding;
     padding-top: $container-padding;
@@ -22,7 +22,7 @@
   }
 
   .content {
-    @include resetContentMargins;
+    @include reset-content-margins;
 
     font-size: 0.8rem;
     padding-bottom: $container-padding;

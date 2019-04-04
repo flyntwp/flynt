@@ -1,4 +1,4 @@
-[is=flynt-grid-posts-slider] {
+[is='flynt-grid-posts-slider'] {
   background-color: rgba(0, 0, 0, 0.03);
   padding: $component-spacing 0 90px;
 
@@ -7,11 +7,11 @@
   }
 
   .container {
-    @include centerMaxWidthContainer;
+    @include center-max-width-container;
   }
 
   .preContent {
-    @include resetContentMargins;
+    @include reset-content-margins;
 
     @media (min-width: $breakpoint-desktop) {
       max-width: 80%;
@@ -22,7 +22,7 @@
   .gridPosts {
     list-style: none;
     margin-top: 20px;
-    padding: 0 0 20px 0;
+    padding: 0 0 20px;
 
     @media (min-width: $breakpoint-desktop) {
       display: flex;
@@ -110,8 +110,8 @@
 
       button {
         background: transparent;
-        border-radius: 50%;
         border: 1px solid rgba(0, 0, 0, 0.8);
+        border-radius: 50%;
         cursor: pointer;
         height: 8px;
         outline: 0;
@@ -121,10 +121,9 @@
         width: 8px;
       }
 
-      &.slick-active {
-        button {
-          background: rgba(0, 0, 0, 0.8);
-        }
+      &.slick-active button {
+        // stylelint-disable-line
+        background: rgba(0, 0, 0, 0.8);
       }
     }
   }

@@ -1,8 +1,8 @@
-[is=flynt-block-wysiwyg] {
+[is='flynt-block-wysiwyg'] {
   margin-bottom: $component-spacing;
 
   .container {
-    @include centerMaxWidthContainer;
+    @include center-max-width-container;
   }
 
   .content {

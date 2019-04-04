@@ -1,12 +1,12 @@
-[is=flynt-list-components] {
+[is='flynt-list-components'] {
   margin: $component-spacing 0;
 
   .container {
-    @include centerMaxWidthContainer;
+    @include center-max-width-container;
   }
 
   .components {
-    @include listReset;
+    @include list-reset;
 
     margin: 0 auto;
     max-width: $content-max-width;
@@ -37,9 +37,9 @@
       background-color: $color-background;
       box-shadow: 0 0 11px rgba(0, 0, 0, 0.15);
       height: 0;
+      overflow: hidden;
       padding-bottom: percentage(800/1280);
       position: relative;
-      overflow: hidden;
       width: 100%;
 
       img {
@@ -50,7 +50,7 @@
     }
 
     &-content {
-      @include resetContentMargins;
+      @include reset-content-margins;
 
       padding-top: 20px;
     }

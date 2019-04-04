@@ -1,12 +1,12 @@
-[is=flynt-grid-download-portrait] {
+[is='flynt-grid-download-portrait'] {
   margin: $component-spacing 0;
 
   .container {
-    @include centerMaxWidthContainer;
+    @include center-max-width-container;
   }
 
   .preContent {
-    @include resetContentMargins;
+    @include reset-content-margins;
 
     margin: 0 auto 1rem;
     max-width: $content-max-width;
@@ -15,9 +15,9 @@
 
   .downloadList {
     display: flex;
-    justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
     list-style: none;
     margin: -6px -3px 0;
     padding: 0;

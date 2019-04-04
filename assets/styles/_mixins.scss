@@ -4,6 +4,9 @@
   @font-face {
     font-family: $family;
 
+    font-style: unquote($style);
+    font-weight: unquote($weight);
+
     @if $woff2 {
       src: url($base-path + $file + '.woff2') format('woff2'), url($base-path + $file + '.woff') format('woff');
     }
@@ -11,13 +14,10 @@
     @else {
       src: url($base-path + $file + '.woff') format('woff');
     }
-
-    font-style: unquote($style);
-    font-weight: unquote($weight);
   }
 }
 
-@mixin centerMaxWidthContainer {
+@mixin center-max-width-container {
   margin: 0 auto;
   max-width: $container-max-width;
   overflow: visible;
@@ -25,7 +25,7 @@
   position: relative;
 }
 
-@mixin resetContentMargins {
+@mixin reset-content-margins {
   > :first-child {
     margin-top: 0;
     padding-top: 0;
@@ -37,7 +37,7 @@
   }
 }
 
-@mixin listReset {
+@mixin list-reset {
   display: block;
   list-style: none;
   margin: 0;

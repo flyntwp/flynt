@@ -1,13 +1,13 @@
-[is=flynt-grid-list-steps] {
+[is='flynt-grid-list-steps'] {
   background-color: rgba(0, 0, 0, 0.03);
   padding: $component-spacing 0;
 
   .container {
-    @include centerMaxWidthContainer;
+    @include center-max-width-container;
   }
 
   .preContent {
-    @include resetContentMargins;
+    @include reset-content-margins;
 
     margin: 0 auto 50px;
     max-width: $content-max-width;
@@ -15,18 +15,18 @@
   }
 
   .stepsList {
+    counter-reset: section;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     list-style: none;
     margin: -20px -10px 0;
     padding: 0;
-    counter-reset: section;
   }
 
   .step {
-    padding: 20px 10px 0;
     max-width: 400px;
+    padding: 20px 10px 0;
 
     @media (min-width: $breakpoint-tablet) {
       display: flex;
@@ -39,17 +39,17 @@
   }
 
   .content {
-    @include resetContentMargins;
+    @include reset-content-margins;
 
     background-color: $color-background;
     padding: 20px 15px 20px 60px;
     position: relative;
 
     &::before {
-      counter-increment: section;
-      content: counter(section);
-      border-radius: 50%;
       border: 2px solid $color-accent;
+      border-radius: 50%;
+      content: counter(section);
+      counter-increment: section;
       display: block;
       font-weight: bold;
       height: 35px;

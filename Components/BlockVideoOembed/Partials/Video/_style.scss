@@ -1,6 +1,6 @@
-@import '../Figure/_style';
-@import '_playButton';
-@import '_loader';
+@import '../Figure/style';
+@import 'playButton';
+@import 'loader';
 
 .video {
   position: relative;

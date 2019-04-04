@@ -1,4 +1,4 @@
-[is=flynt-slider-image-gallery] {
+[is='flynt-slider-image-gallery'] {
   .slide {
     display: none;
     outline: 0;
@@ -55,8 +55,8 @@
 
         &-caption {
           background: rgba(0, 0, 0, 0.3);
-          color: #fff;
           bottom: 0;
+          color: #fff;
           display: inline-block;
           font-size: 0.8rem;
           padding: 0.25rem 0.5rem;
