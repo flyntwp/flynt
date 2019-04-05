@@ -277,7 +277,7 @@ Flynt includes several utility functions for creating Advanced Custom Fields opt
 
 If you are using Flynt and [WPML](https://wpml.org/), you will need to create a Must-Use (MU) Plugin in order to load Twig from Timber before the WPML code is executed. This is because WPML includes an outdated version of Twig. 
 
-To do this, create /wp-content/mu-plugins/flynt.php and add this code:
+To do this, create `/wp-content/mu-plugins/flynt-wpml-compat.php` and add this code:
 
 ```php
 <?php
