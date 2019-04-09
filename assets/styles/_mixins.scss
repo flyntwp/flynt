@@ -26,15 +26,19 @@
   position: relative;
 }
 
-@mixin reset-content-margins {
-  > :first-child {
-    margin-top: 0;
-    padding-top: 0;
+@mixin reset-content-margins($direction: 'both') {
+  @if ($direction == 'both' or $direction == 'top') {
+    > :first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
   }
 
-  > :last-child {
-    margin-bottom: 0;
-    padding-bottom: 0;
+  @if ($direction == 'both' or $direction == 'bottom') {
+    > :last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
   }
 }
 
