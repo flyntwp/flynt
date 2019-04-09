@@ -55,7 +55,7 @@ body {
 }
 
 .centerMaxWidthContainer {
-  @include center-max-width-container;
+  @include center;
 }
 
 .centerContentMaxWidth {

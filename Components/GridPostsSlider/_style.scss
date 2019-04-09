@@ -7,7 +7,7 @@
   }
 
   .container {
-    @include center-max-width-container;
+    @include center;
   }
 
   .preContent {

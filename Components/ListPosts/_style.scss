@@ -2,7 +2,7 @@
   margin: $component-spacing 0;
 
   .listPosts {
-    @include center-max-width-container;
+    @include center;
 
     &-list {
       list-style: none;
