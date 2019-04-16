@@ -9,7 +9,7 @@
   z-index: 999;
 
   .container {
-    @include center-max-width-container;
+    @include center;
 
     padding-bottom: $container-padding;
     padding-top: $container-padding;

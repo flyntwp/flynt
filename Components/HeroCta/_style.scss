@@ -8,7 +8,7 @@
   }
 
   .container {
-    @include center-max-width-container;
+    @include center;
     @include reset-content-margins;
 
     text-align: center;

@@ -2,7 +2,7 @@
   margin-bottom: $component-spacing;
 
   .container {
-    @include center-max-width-container;
+    @include center;
   }
 
   .content {

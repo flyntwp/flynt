@@ -2,11 +2,11 @@
   margin: $component-spacing 0;
 
   .container {
-    @include center-max-width-container;
+    @include center;
   }
 
   .components {
-    @include list-reset;
+    @include reset-list;
 
     margin: 0 auto;
     max-width: $content-max-width;
