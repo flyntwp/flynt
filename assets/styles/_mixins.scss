@@ -24,7 +24,6 @@
   max-width: $max-width;
   padding-left: $padding;
   padding-right: $padding;
-  position: relative;
 }
 
 @mixin reset-content-margins($direction: 'both') {
