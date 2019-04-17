@@ -27,19 +27,21 @@ const browserSync = require('browser-sync').create()
 const crypto = require('crypto')
 const fileHashes = {}
 bundler.plugin('done', function (stats) {
-  const changedFiles = Object.keys(stats.compilation.assets)
-    .filter(name => {
-      const asset = stats.compilation.assets[name]
-      const md5Hash = crypto.createHash('md5')
-      const hash = md5Hash.update(asset.children ? asset.children[0]._value : asset.source()).digest('hex')
-      if (fileHashes[name] !== hash) {
-        fileHashes[name] = hash
-        return true
-      } else {
-        return false
-      }
-    })
-  browserSync.reload(changedFiles.map(name => `dist/${name}`))
+  try {
+    const changedFiles = Object.keys(stats.compilation.assets)
+      .filter(name => {
+        const asset = stats.compilation.assets[name]
+        const md5Hash = crypto.createHash('md5')
+        const hash = md5Hash.update(asset.children ? asset.children[0]._value : asset.source()).digest('hex')
+        if (fileHashes[name] !== hash) {
+          fileHashes[name] = hash
+          return true
+        } else {
+          return false
+        }
+      })
+    browserSync.reload(changedFiles.map(name => `dist/${name}`))
+  } catch (e) {}
 })
 
 browserSync.init(Object.assign({
