@@ -25,16 +25,23 @@ const bundler = webpack(webpackConfig)
 const browserSync = require('browser-sync').create()
 
 const crypto = require('crypto')
-const fileHashes = {}
-bundler.plugin('done', function (stats) {
+const fileHashes = []
+bundler.plugin('done', function (bundles) {
+  bundles.stats.forEach(function (stats, i) {
+    fileHashes[i] = fileHashes[i] || {}
+    checkAssets(stats, fileHashes[i])
+  })
+})
+
+function checkAssets(stats, bundleHashes) {
   try {
     const changedFiles = Object.keys(stats.compilation.assets)
       .filter(name => {
         const asset = stats.compilation.assets[name]
         const md5Hash = crypto.createHash('md5')
         const hash = md5Hash.update(asset.children ? asset.children[0]._value : asset.source()).digest('hex')
-        if (fileHashes[name] !== hash) {
-          fileHashes[name] = hash
+        if (bundleHashes[name] !== hash) {
+          bundleHashes[name] = hash
           return true
         } else {
           return false
@@ -42,7 +49,7 @@ bundler.plugin('done', function (stats) {
       })
     browserSync.reload(changedFiles.map(name => `dist/${name}`))
   } catch (e) {}
-})
+}
 
 browserSync.init(Object.assign({
   middleware: [
