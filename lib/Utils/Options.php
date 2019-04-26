@@ -93,8 +93,9 @@ class Options
                 $toplevelPageId = 'toplevel_page_' . $optionType;
                 $menuTitle = static::$optionPages[$optionType]['menu_title'];
                 $subPageId = sanitize_title($menuTitle) . '_page_' . $optionType;
-                $isCurrentPage = StringHelpers::startsWith($toplevelPageId, $currentScreen->id)
-                || StringHelpers::startsWith($subPageId, $currentScreen->id);
+                $currentScreenId = strtolower($currentScreen->id);
+                $isCurrentPage = StringHelpers::startsWith(strtolower($toplevelPageId), $currentScreenId)
+                || StringHelpers::startsWith(strtolower($subPageId), $currentScreenId);
 
                 if (!$isTranslatable && $isCurrentPage) {
                     // set acf field values to default language
@@ -253,25 +254,15 @@ class Options
 
     protected static function getOptionField($key, $translatable)
     {
-        global $sitepress;
-
-        if (!isset($sitepress)) {
+        if ($translatable) {
             $option = get_field('field_' . $key, 'option');
-        } elseif ($translatable) {
-            // get options from cache with language namespace
-            $option = get_field('field_' . $key . '_' . ICL_LANGUAGE_CODE, 'option');
         } else {
             // switch to default language to get global options
-            $sitepress->switch_lang(acf_get_setting('default_language'));
-
             add_filter('acf/settings/current_language', 'Flynt\Utils\Options::getDefaultAcfLanguage', 100);
 
-            // get optios from cache with global namespace
-            $option = get_field('field_' . $key . '_global', 'option');
+            $option = get_field('field_' . $key, 'option');
 
             remove_filter('acf/settings/current_language', 'Flynt\Utils\Options::getDefaultAcfLanguage', 100);
-
-            $sitepress->switch_lang(ICL_LANGUAGE_CODE);
         }
 
         return $option;
