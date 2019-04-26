@@ -93,12 +93,6 @@ const webpackConfig = {
       debug: !config.production
     }),
     new CopyWebpackPlugin(config.copy),
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: 'assets/[name].css',
-      chunkFilename: 'assets/[name].css'
-    }),
     new FriendlyErrorsWebpackPlugin({
       clearConsole: false
     })
@@ -153,7 +147,16 @@ const multiConfig = Object.keys(config.entry).map(entry => {
     output: {
       ...webpackConfig.output,
       filename: `${entry}.js`
-    }
+    },
+    plugins: [
+      ...webpackConfig.plugins,
+      new MiniCssExtractPlugin({
+        // Options similar to the same options in webpackOptions.output
+        // both options are optional
+        filename: `${entry}.css`,
+        chunkFilename: `${entry}.css`
+      }),
+    ]
   }
 })
 
