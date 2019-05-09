@@ -18,6 +18,9 @@ class Init
         // Set to true to load all assets from a CDN if there is one specified
         Asset::loadFromCdn(false);
 
+        // Set to true to use the new Gutenberg editor in combination with Flynt components
+        Defaults::useGutenberg(true);
+
         new Timber();
     }
 

@@ -2,6 +2,7 @@
 
 namespace Flynt;
 
+use ACFComposer\ACFComposer;
 use Flynt\ComponentManager;
 use Dflydev\DotAccessData\Data;
 
@@ -81,5 +82,11 @@ class Api
                 $componentName
             );
         }, 10, 2);
+    }
+
+    public static function registerBlocks($layouts)
+    {
+        // create block and field group for block
+
     }
 }

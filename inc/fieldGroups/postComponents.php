@@ -2,32 +2,39 @@
 
 use ACFComposer\ACFComposer;
 use Flynt\Api;
+use Flynt\Defaults;
 
 add_action('Flynt/afterRegisterComponents', function () {
-    ACFComposer::registerFieldGroup([
-        'name' => 'postComponents',
-        'title' => 'Post Components',
-        'style' => 'seamless',
-        'fields' => [
-            [
-                'name' => 'postComponents',
-                'label' => 'Post Components',
-                'type' => 'flexible_content',
-                'button_label' => 'Add Component',
-                'layouts' => [
-                    Api::loadFields('BlockImage', 'layout'),
-                    Api::loadFields('BlockWysiwyg', 'layout'),
-                ],
-            ],
-        ],
-        'location' => [
-            [
+    $layouts = [
+        Api::loadFields('BlockImage', 'layout'),
+        Api::loadFields('BlockWysiwyg', 'layout'),
+    ];
+
+    if (!Defaults::$useGutenberg) {
+        ACFComposer::registerFieldGroup([
+            'name' => 'postComponents',
+            'title' => 'Post Components',
+            'style' => 'seamless',
+            'fields' => [
                 [
-                    'param' => 'post_type',
-                    'operator' => '==',
-                    'value' => 'post',
+                    'name' => 'postComponents',
+                    'label' => 'Post Components',
+                    'type' => 'flexible_content',
+                    'button_label' => 'Add Component',
+                    'layouts' => $layouts,
                 ],
             ],
-        ],
-    ]);
+            'location' => [
+                [
+                    [
+                        'param' => 'post_type',
+                        'operator' => '==',
+                        'value' => 'post',
+                    ],
+                ],
+            ],
+        ]);
+    } else {
+        API::registerBlocks($layouts);
+    }
 });

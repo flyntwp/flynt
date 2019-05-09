@@ -6,6 +6,8 @@ use Flynt\ComponentManager;
 
 class Defaults
 {
+    public static $useGutenberg = false;
+
     public static function init()
     {
         add_filter('Flynt/renderComponent', ['Flynt\Defaults', 'renderComponent'], 999, 3);
@@ -51,5 +53,10 @@ class Defaults
         ob_get_clean();
 
         return $output;
+    }
+
+    public static function useGutenberg($state)
+    {
+        self::$useGutenberg = (bool) $state;
     }
 }

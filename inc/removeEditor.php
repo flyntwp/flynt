@@ -4,7 +4,11 @@
  */
 namespace Flynt\RemoveEditor;
 
+use Flynt\Defaults;
+
 add_action('init', function () {
-    remove_post_type_support('page', 'editor');
-    remove_post_type_support('post', 'editor');
+    if (!Defaults::$useGutenberg) {
+        remove_post_type_support('page', 'editor');
+        remove_post_type_support('post', 'editor');
+    }
 });
