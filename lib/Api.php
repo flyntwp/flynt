@@ -4,6 +4,7 @@ namespace Flynt;
 
 use ACFComposer\ACFComposer;
 use Flynt\ComponentManager;
+use Timber\Timber;
 use Dflydev\DotAccessData\Data;
 
 class Api
@@ -87,6 +88,59 @@ class Api
     public static function registerBlocks($layouts)
     {
         // create block and field group for block
+        if (!function_exists('acf_register_block_type')) return null;
 
+        foreach($layouts as $layout)
+        {
+            add_action('acf/init', function() use ($layout) {
+                acf_register_block_type([
+                    'name' => $layout['name'],
+                    'title' => $layout['label'],
+                    'description' => isset($layout['description']) ? $layout['description'] : null,
+                    'category' => isset($layout['category']) ? $layout['category'] : 'formatting',
+                    'icon' => isset($layout['icon']) ? $layout['icon'] : 'book-alt',
+                    'keywords' => isset($layout['keywords']) ? $layout['keywords'] : [],
+                    'align' => isset($layout['align']) ? $layout['align'] : 'full',
+                    'supports' => [
+                        'align' => false,
+                        'mode' => true,
+                        'multiple' => true,
+                    ],
+                    'render_callback' => function() use ($layout) {
+                        $componentManager = ComponentManager::getInstance();
+                        $componentName = ucfirst($layout['name']);
+                        $templateFilename = apply_filters('Flynt/TimberLoader/templateFilename', 'index.twig');
+                        $templateFilename = apply_filters("Flynt/TimberLoader/templateFilename?name=${componentName}", $templateFilename);
+                        $filePath = $componentManager->getComponentFilePath($componentName, $templateFilename);
+                        $relativeFilePath = ltrim(str_replace(get_template_directory(), '', $filePath), '/');
+
+                        $fields = get_fields();
+                        $data = apply_filters(
+                            'Flynt/addComponentData',
+                            $fields,
+                            $componentName
+                        );
+                        Timber::render($relativeFilePath, $data);
+                    }
+                ]);
+
+                $fieldGroupData = [
+                    'name' => 'flynt_fields__' . strtolower($layout['name']),
+                    'title' => 'Data',
+                    'fields' => $layout['sub_fields'],
+                    'location' => [
+                        [
+                            [
+                                'param' => 'block',
+                                'operator' => '==',
+                                'value' => 'acf/' . strtolower($layout['name'])
+                            ]
+                        ]
+                    ]
+                ];
+
+                ACFComposer::registerFieldGroup($fieldGroupData);
+            });
+        }
     }
 }

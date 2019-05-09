@@ -3,6 +3,7 @@
 namespace Flynt;
 
 use Flynt\ComponentManager;
+use Timber\Timber;
 
 class Defaults
 {
@@ -57,6 +58,10 @@ class Defaults
 
     public static function useGutenberg($state)
     {
+
         self::$useGutenberg = (bool) $state;
+        if ($state) {
+            Timber::$locations = get_template_directory();
+        }
     }
 }
