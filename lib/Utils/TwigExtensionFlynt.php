@@ -3,6 +3,7 @@
 namespace Flynt\Utils;
 
 use Flynt\ComponentManager;
+use Flynt\Defaults;
 use Twig_Environment;
 use Twig_Extension;
 use Twig_SimpleFunction;
@@ -25,11 +26,21 @@ class TwigExtensionFlynt extends Twig_Extension
 
     public function renderFlexibleContent(Twig_Environment $env, $context, $fields, $withContext = true, $ignoreMissing = false, $sandboxed = false)
     {
-        $output = '';
-        foreach ((empty($fields) ? [] : $fields) as $field) {
-            $output .= $this->renderComponent($env, $context, ucfirst($field['acf_fc_layout']), $field, $withContext, $ignoreMissing, $sandboxed);
+        if (!Defaults::$useGutenberg) {
+            $output = '';
+            foreach ((empty($fields) ? [] : $fields) as $field) {
+                $output .= $this->renderComponent($env, $context, ucfirst($field['acf_fc_layout']), $field, $withContext, $ignoreMissing, $sandboxed);
+            }
+            return $output;
+        } else {
+            $post = get_post();
+            $content = $post->post_content;
+            $content = str_replace(']]>', ']]&gt;', $content);
+            $content = apply_filters('the_content', $content);
+            return $content;
         }
-        return $output;
+
+        return '';
     }
 
     public function renderComponent(Twig_Environment $env, $context, $componentName, $data = [], $withContext = true, $ignoreMissing = false, $sandboxed = false)
