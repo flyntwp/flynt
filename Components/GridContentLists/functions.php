@@ -7,7 +7,7 @@ use Flynt\Api;
 Api::registerFields('GridContentLists', [
     'layout' => [
         'name' => 'GridContentLists',
-        'label' => 'List: Grid Content Lists',
+        'label' => 'Grid: Content Lists',
         'sub_fields' => [
             [
                 'label' => 'Pre-Content',
