@@ -43,7 +43,7 @@ namespace Flynt\CustomPostTypes;
 //         'label'                 => __('Post Type', 'flynt'),
 //         'description'           => __('Post Type Description', 'flynt'),
 //         'labels'                => $labels,
-//         'supports'              => ['title', 'editor'],
+//         'supports'              => ['title', 'editor', 'revisions'],
 //         'taxonomies'            => ['category', 'post_tag'],
 //         'hierarchical'          => false,
 //         'public'                => true,
