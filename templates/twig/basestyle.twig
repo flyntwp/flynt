@@ -11,7 +11,7 @@
         <p class="h3">Creating a well thought out base style for a new website is one of the most critical parts to ensure an overall successful project progression.</p>
         <p>The base style should contain all those basic HTML elements and their variations that will be needed within the website. May it be in standard formatted text, or within custom styled layout components.</p>
         <p>The goal is to abstract the element designs just to the right level, so that they can be used in any context without further modifications, but to keep them flexible enough for custom adjustments when needed, without having to overwrite many CSS attributes.</p>
-        <p>The following markup is a best practice starting point to help you focus on what's important. It does not include <em>all</em> HTML elements, but as the theme is using <code>normalize.css</code>, elements will still be recoginzably styled, only without further customization.</p>
+        <p>The following markup is a best practice starting point to help you focus on what's important. It does not include <em>all</em> HTML elements, but as the theme is using <em>normalize.css</em>, elements will still be recoginzably styled, only without further customization.</p>
         <hr>
         <p>One morning, when <a href="https://www.google.com/search?q=gregor+samsa" target="_blank">Gregor Samsa</a> woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections.</p>
         <figure>
@@ -25,7 +25,7 @@
         <p>He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering legs, and only stopped when he began to feel a mild, dull pain there that he had never felt before.</p>
         <hr>
         <form>
-          <p>Placing form elements on a page should just work without having to apply extra classes or custom wrapping elements. However, a <code>&lt;fieldset&gt;</code> element provides a nice opportunity to group multiple form elements.</p>
+          <p>Placing form elements on a page should just work without having to apply extra classes or custom wrapping elements. However, a <b>&lt;fieldset&gt;</b> element provides a nice opportunity to group multiple form elements.</p>
           <fieldset>
             <label for="textInput">Text Input</label><br>
             <input id="textInput" type="text" name="text" placeholder="Placeholder"><br>
@@ -36,27 +36,27 @@
             <label for="passwordInput">Password Input</label><br>
             <input id="passwordInput" type="password" name="password" placeholder="Placeholder"><br>
             <label for="textarea">Your message</label><br>
-            <textarea id="textarea"></textarea><br>
+            <textarea id="textarea" placeholder="Placeholder"></textarea><br>
             <select name="select">
               <option value="select-value-1">Select Option #1</option>
               <option value="select-value-2">Select Option #2</option>
               <option value="select-value-3">Select Option #3</option>
             </select>
           </fieldset>
-          <p>The user agent stylesheet typically has a very weird <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> styling. But hey: why not customize it to our needs?!</p>
+          <p>The user agent stylesheet typically has a very weird <b>&lt;fieldset&gt;</b> and <b>&lt;legend&gt;</b> styling. But hey: why not customize it to our needs?!</p>
           <fieldset>
             <legend>Checkbox Inputs</legend>
-            <label><input type="checkbox" name="checkbox" value="checkbox-value-1">Checkbox Label #1</label><br>
-            <label><input type="checkbox" name="checkbox" value="checkbox-value-2">Checkbox Label #2</label><br>
-            <label><input type="checkbox" name="checkbox" value="checkbox-value-3">Checkbox Label #3</label>
+            <label class="checkbox"><input type="checkbox" name="checkbox" value="checkbox-value-1"><span></span> Checkbox Label #1</label><br>
+            <label class="checkbox"><input type="checkbox" name="checkbox" value="checkbox-value-2"><span></span> Checkbox Label #2</label><br>
+            <label class="checkbox"><input type="checkbox" name="checkbox" value="checkbox-value-3"><span></span> Checkbox Label #3</label>
           </fieldset>
           <fieldset>
             <legend>Radio Inputs</legend>
-            <label><input type="radio" name="radio" value="radio-value-1">Radio Label #1</label><br>
-            <label><input type="radio" name="radio" value="radio-value-2">Radio Label #2</label><br>
-            <label><input type="radio" name="radio" value="radio-value-3">Radio Label #3</label>
+            <label class="radio"><input type="radio" name="radio" value="radio-value-1"><span></span> Radio Label #1</label><br>
+            <label class="radio"><input type="radio" name="radio" value="radio-value-2"><span></span> Radio Label #2</label><br>
+            <label class="radio"><input type="radio" name="radio" value="radio-value-3"><span></span> Radio Label #3</label>
           </fieldset>
-          <p><button type="button">A <code>&lt;button&gt;</code> element without a class should have its styles reset, so it can be used as a semantic tag on other interface elements, like the arrows of a slider, a closing &times; or a burger menu.</button></p>
+          <p><button type="button">A <b>&lt;button&gt;</b> element without a class should have its styles reset, so it can be used as a semantic tag on other interface elements, like the arrows of a slider, a closing &times; or a burger menu.</button></p>
           <p>
             <button type="button" class="button">Type Button</button>
             <button type="button" class="button button--primary">Type Button Primary</button>

@@ -8,16 +8,16 @@ html {
   background-color: $color-background;
   box-sizing: border-box;
   color: $color-text;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
   font-size: 16px;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  line-height: 1.5;
+  line-height: 1.625;
   overflow-wrap: break-word;
   word-wrap: break-word;
 
   @media (min-width: $breakpoint-tablet) {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   *,
@@ -37,6 +37,9 @@ html,
 body {
   overflow-x: hidden;
 }
+
+// .themeDark {}
+// .themeLight{}
 
 .flyntComponent {
   position: relative;
@@ -83,14 +86,16 @@ h6,
 .h6 {
   color: $color-headline;
   font-weight: bold;
-  line-height: 1.3;
-  margin-bottom: 0.5rem;
+  line-height: 1.45;
+  margin-bottom: 0.9rem;
   margin-top: 0;
 }
 
 h1,
 .h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
+  line-height: 1.25;
+  margin-bottom: 1rem;
   padding-top: 2rem;
 }
 
@@ -102,7 +107,7 @@ h2,
 
 h3,
 .h3 {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   padding-top: 0.8rem;
 }
 
@@ -147,7 +152,7 @@ dl,
 dd,
 table,
 figure {
-  margin: 0 0 1rem;
+  margin: 0 0 1.2rem;
 }
 
 ul,
@@ -161,11 +166,11 @@ ol {
 }
 
 hr {
-  background-color: $color-brand;
+  background-color: $color-border;
   border: 0;
   display: block;
   height: 1px;
-  margin: 2rem 0;
+  margin: 2.4rem 0;
 }
 
 img {
@@ -175,7 +180,8 @@ img {
 }
 
 figcaption {
-  margin-top: 0.4rem;
+  font-size: 0.875rem;
+  margin-top: 0.625rem;
 }
 
 code {
@@ -185,13 +191,15 @@ code {
 
 blockquote,
 .blockquote {
-  border-left: 3px solid $color-brand;
-  font-size: 1.3rem;
+  border-left: 4px solid $color-accent;
+  font-size: 1.125rem;
   font-style: italic;
-  line-height: 1.3;
-  margin: 2rem auto;
+  font-weight: 500;
+  letter-spacing: 0.16px;
+  line-height: 1.55;
+  margin: 2.4rem auto;
   max-width: 28rem;
-  padding: 0.5rem 1.5rem;
+  padding: 0.8rem 1.5rem;
 
   p:last-child {
     margin-bottom: 0;
@@ -250,17 +258,19 @@ button {
   appearance: none;
   background: $color-background;
   border: 1px solid $color-accent;
-  border-radius: 3px;
+  border-radius: 4px;
   color: $color-accent;
   cursor: pointer;
   display: inline-block;
   font-family: inherit;
-  font-size: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
   line-height: inherit;
   outline: 0;
-  padding: 0.5rem 1rem;
+  padding: 1.25rem 2.125rem;
   text-align: center;
   text-decoration: none;
+  text-transform: uppercase;
   transition: background 0.2s ease, border 0.2s ease, color 0.2s ease;
   user-select: none;
 
@@ -274,8 +284,8 @@ button {
   @media (min-width: $breakpoint-tablet) {
     &:hover,
     &:focus {
-      border-color: darken($color-accent, 10);
-      color: darken($color-accent, 10);
+      border-color: $color-background-dark;
+      color: $color-background-dark;
     }
   }
 
@@ -287,7 +297,7 @@ button {
     @media (min-width: $breakpoint-tablet) {
       &:hover,
       &:focus {
-        background-color: darken($color-accent, 10);
+        background-color: $color-background-dark;
         color: $color-background;
       }
     }
@@ -311,23 +321,109 @@ button {
 
 fieldset {
   border: 0;
-  margin: 0 0 1rem;
+  margin: 0 0 1.5rem;
   padding: 0;
 
   *:last-child {
     margin-bottom: 0;
+  }
+
+  input,
+  select,
+  textarea {
+    margin: 0 0 1.875rem;
   }
 }
 
 legend {
   display: inline-block;
   font-weight: bold;
-  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  margin-bottom: 0.9375rem;
 }
 
 label {
+  font-weight: 500;
   display: inline-block;
-  margin-bottom: 0.2rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.checkbox,
+.radio {
+
+  cursor: pointer;
+
+  input[type=checkbox],
+  input[type=radio] {
+    display: none
+  }
+
+  span {
+    display: block;
+    float: left;
+    width: 16px;
+    height: 16px;
+    border: 1px solid $color-border;
+    margin: 3px 10px 0 0;
+    position: relative;
+  }
+
+  input[type=checkbox] {
+    &  + span {
+      border-radius: 2px;
+    }
+
+    &:checked + span {
+      background: $color-accent;
+      border-color: $color-accent;
+
+      &:before,
+      &:after{
+        display: block;
+        content: '';
+        width: 2px;
+        height: 5px;
+        background: #fff;
+        border-radius: 1px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -1px 0 0 -4px;
+        transform: rotate(-45deg);
+      }
+
+      &:after{
+        height: 9px;
+        margin: -5px 0 0;
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  input[type=radio] {
+    & + span {
+      border-radius: 50%;
+    }
+
+    &:checked + span {
+      background: $color-accent;
+      border-color: $color-accent;
+
+      &:before{
+        display: block;
+        content: '';
+        width: 6px;
+        height: 6px;
+        background: #fff;
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -3px 0 0 -3px;
+      }
+    }
+  }
 }
 
 [type=text],
@@ -338,9 +434,11 @@ textarea,
 select {
   appearance: none;
   background-color: $color-background;
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(11, 16, 12, 1);
   border-radius: 0;
   color: inherit;
+  min-height: 50px;
+  font-size: inherit;
   font-family: inherit;
 }
 
@@ -348,17 +446,23 @@ input,
 select,
 textarea {
   margin: 0 0 1rem;
-  padding: 10px;
+  padding: 10px 20px;
+}
+
+textarea {
+  width: 100%;
+  min-height: 150px;
+  resize: vertical;
 }
 
 select {
   $color-text-rgb: red($color-contrast), green($color-contrast), blue($color-contrast);
 
-  background-image: url("data:image/svg+xml;utf8,<svg width='32' height='32' xmlns='http://www.w3.org/2000/svg'><polyline fill='none' stroke='rgb(#{$color-text-rgb})' stroke-width='3'  points='2,9 16,25 30,9 '/></svg>");
-  background-position: calc(100% - 16px) center;
+  background-image: url("data:image/svg+xml;utf8,<svg width='32' height='32' xmlns='http://www.w3.org/2000/svg'><polyline fill='none' stroke='rgb(#{$color-text-rgb})' stroke-width='5'  points='2,9 16,25 30,9 '/></svg>");
+  background-position: calc(100% - 18px) center;
   background-repeat: no-repeat;
-  background-size: 16px;
-  padding-right: 48px;
+  background-size: 9px;
+  padding-right: 45px;
 }
 
 [type=checkbox],

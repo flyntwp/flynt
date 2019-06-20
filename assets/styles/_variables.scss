@@ -4,16 +4,23 @@ $breakpoint-tablet-horizontal: 1024px;
 $breakpoint-desktop: 1280px;
 $breakpoint-desktop-wide: 1440px;
 
-$container-max-width: 1280px;
-$container-padding: 20px;
+$container-max-width: 1440px;
+$container-padding: 60px;
 $content-max-width: 600px;
 $component-spacing: 60px;
+$gutter-width: 24px;
 
-$color-brand: #91c6c4;
-$color-accent: #f98928;
+$color-brand: #0D8EFF;
+$color-accent: #f96417;
 $color-background: #fff;
-$color-contrast: #222;
+$color-contrast: #414751;
 $color-text: $color-contrast;
-$color-headline: lighten($color-contrast, 3%);
+$color-headline: #0B1016;
+$color-border: #d8d8d8;
+
+$color-background-light: #F2F6FE;
+$color-background-dark: #091a41;
+$color-background-hero: $color-brand;
+
 
 $heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';
