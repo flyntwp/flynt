@@ -89,7 +89,7 @@ h5,
 h6,
 .h6 {
   color: $color-headline;
-  font-weight: bold;
+  font-weight: 700;
   line-height: 1.45;
   margin-bottom: 0.9rem;
   margin-top: 0;
@@ -125,7 +125,7 @@ h4,
 h5,
 .h5 {
   font-size: 1rem;
-  font-weight: normal;
+  font-weight: 400;
   padding-top: 0.5rem;
 }
 
@@ -149,7 +149,7 @@ a {
 }
 
 dt {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 p,
@@ -202,7 +202,7 @@ blockquote,
   border-left: 4px solid $color-accent;
   font-size: 1.125rem;
   font-style: italic;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.16px;
   line-height: 1.55;
   margin: 2.4rem auto;
@@ -362,13 +362,13 @@ fieldset {
 legend {
   display: inline-block;
   font-size: 1.25rem;
-  font-weight: bold;
+  font-weight: 700;
   margin-bottom: 0.9375rem;
 }
 
 label {
   display: inline-block;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.5;
   margin-bottom: 0.5rem;
 }
