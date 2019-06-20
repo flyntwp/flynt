@@ -311,6 +311,21 @@ button {
     }
   }
 
+  &--secondary {
+    background-color: $color-background-dark;
+    border-color: $color-background-dark;
+    color: $color-background;
+
+    @media (min-width: $breakpoint-tablet) {
+      &:hover,
+      &:focus {
+        background-color: $color-accent;
+        border-color: $color-accent;
+        color: $color-background;
+      }
+    }
+  }
+
   &--block {
     display: block;
     margin-left: auto;
