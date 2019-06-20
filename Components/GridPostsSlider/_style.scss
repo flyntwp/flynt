@@ -1,9 +1,9 @@
 [is='flynt-grid-posts-slider'] {
   background-color: rgba(0, 0, 0, 0.03);
-  padding: $component-spacing 0 90px;
+  padding: $component-spacing-desktop 0 90px;
 
   @media (min-width: $breakpoint-desktop) {
-    padding: $component-spacing;
+    padding: $component-spacing-desktop;
   }
 
   .container {

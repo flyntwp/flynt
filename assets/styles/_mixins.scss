@@ -1,6 +1,13 @@
 // Shorthands to help writing easier to understand code.
 
-@mixin font-face($family, $file, $weight: 'normal', $style: 'normal', $woff2: true, $base-path: 'fonts/') {
+@mixin font-face(
+  $family,
+  $file,
+  $weight: 'normal',
+  $style: 'normal',
+  $woff2: true,
+  $base-path: 'fonts/'
+) {
   @font-face {
     font-family: $family;
 
@@ -8,16 +15,18 @@
     font-weight: unquote($weight);
 
     @if $woff2 {
-      src: url($base-path + $file + '.woff2') format('woff2'), url($base-path + $file + '.woff') format('woff');
-    }
-
-    @else {
-      src: url($base-path + $file + '.woff') format('woff');
+      src: url($base-path+$file+'.woff2') format('woff2'),
+        url($base-path+$file+'.woff') format('woff');
+    } @else {
+      src: url($base-path+$file+'.woff') format('woff');
     }
   }
 }
 
-@mixin center($max-width: $container-max-width, $padding: $container-padding) {
+@mixin center(
+  $max-width: $container-max-width,
+  $padding: $container-padding-mobile
+) {
   display: block;
   margin-left: auto;
   margin-right: auto;

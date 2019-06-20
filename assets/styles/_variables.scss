@@ -4,16 +4,25 @@ $breakpoint-tablet-horizontal: 1024px;
 $breakpoint-desktop: 1280px;
 $breakpoint-desktop-wide: 1440px;
 
-$container-max-width: 1280px;
-$container-padding: 20px;
+$container-max-width: 1440px;
+$container-padding-desktop: 60px;
+$container-padding-tablet: 40px;
+$container-padding-mobile: 15px;
 $content-max-width: 600px;
-$component-spacing: 60px;
+$component-spacing-desktop: 60px;
+$component-spacing-mobile: 40px;
+$gutter-width: 24px;
 
-$color-brand: #91c6c4;
-$color-accent: #f98928;
+$color-brand: #0d8eff;
+$color-accent: #f96417;
 $color-background: #fff;
-$color-contrast: #222;
+$color-contrast: #414751;
 $color-text: $color-contrast;
-$color-headline: lighten($color-contrast, 3%);
+$color-headline: #0b1016;
+$color-border: #d8d8d8;
+
+$color-background-light: #f2f6fe;
+$color-background-dark: #091a41;
+$color-background-hero: $color-brand;
 
 $heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';

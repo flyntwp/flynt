@@ -1,4 +1,4 @@
-const host = 'https://flynt.local.blee.ch'
+const host = 'https://flynt-components.local.blee.ch'
 const themeName = 'flynt'
 const dest = './dist'
 
