@@ -1,6 +1,6 @@
 [is='flynt-grid-list-steps'] {
   background-color: rgba(0, 0, 0, 0.03);
-  padding: $component-spacing 0;
+  padding: $component-spacing-desktop 0;
 
   .container {
     @include center;
@@ -51,7 +51,7 @@
       content: counter(section);
       counter-increment: section;
       display: block;
-      font-weight: bold;
+      font-weight: 700;
       height: 35px;
       left: 14px;
       line-height: 32px;

@@ -1,7 +1,7 @@
 [is='flynt-hero-cta'] {
   background-color: $color-brand;
   color: #fff;
-  padding: $component-spacing 0;
+  padding: $component-spacing-desktop 0;
 
   #{$heading-selectors} {
     color: inherit;

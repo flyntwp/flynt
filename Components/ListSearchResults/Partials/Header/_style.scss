@@ -2,7 +2,7 @@
   &-title {
     @include reset-content-margins;
 
-    padding: $container-padding 0;
+    padding: $container-padding-desktop 0;
   }
 }
 
@@ -23,7 +23,7 @@
     border: 2px solid $color-accent;
     color: #9b9b9b;
     font-size: 30px;
-    font-weight: 800;
+    font-weight: 700;
     height: 80px;
     margin: 0;
     padding: 0 80px 0 20px;
