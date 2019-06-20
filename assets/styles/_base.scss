@@ -59,6 +59,14 @@ body {
 
 .centerMaxWidthContainer {
   @include center;
+
+  @media (min-width: $breakpoint-tablet) {
+    @include center($padding: $container-padding-tablet);
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    @include center($padding: $container-padding-desktop);
+  }
 }
 
 .centerContentMaxWidth {
@@ -337,40 +345,39 @@ fieldset {
 
 legend {
   display: inline-block;
-  font-weight: bold;
   font-size: 1.25rem;
+  font-weight: bold;
   margin-bottom: 0.9375rem;
 }
 
 label {
-  font-weight: 500;
   display: inline-block;
+  font-weight: 500;
   line-height: 1.5;
   margin-bottom: 0.5rem;
 }
 
 .checkbox,
 .radio {
-
   cursor: pointer;
 
-  input[type=checkbox],
-  input[type=radio] {
-    display: none
+  input[type='checkbox'],
+  input[type='radio'] {
+    display: none;
   }
 
   span {
+    border: 1px solid $color-border;
     display: block;
     float: left;
-    width: 16px;
     height: 16px;
-    border: 1px solid $color-border;
     margin: 3px 10px 0 0;
     position: relative;
+    width: 16px;
   }
 
-  input[type=checkbox] {
-    &  + span {
+  input[type='checkbox'] {
+    & + span {
       border-radius: 2px;
     }
 
@@ -378,22 +385,22 @@ label {
       background: $color-accent;
       border-color: $color-accent;
 
-      &:before,
-      &:after{
-        display: block;
-        content: '';
-        width: 2px;
-        height: 5px;
+      &::before,
+      &::after {
         background: #fff;
         border-radius: 1px;
-        position: absolute;
+        content: '';
+        display: block;
+        height: 5px;
         left: 50%;
-        top: 50%;
         margin: -1px 0 0 -4px;
+        position: absolute;
+        top: 50%;
         transform: rotate(-45deg);
+        width: 2px;
       }
 
-      &:after{
+      &::after {
         height: 9px;
         margin: -5px 0 0;
         transform: rotate(45deg);
@@ -401,7 +408,7 @@ label {
     }
   }
 
-  input[type=radio] {
+  input[type='radio'] {
     & + span {
       border-radius: 50%;
     }
@@ -410,26 +417,26 @@ label {
       background: $color-accent;
       border-color: $color-accent;
 
-      &:before{
-        display: block;
-        content: '';
-        width: 6px;
-        height: 6px;
+      &::before {
         background: #fff;
         border-radius: 50%;
-        position: absolute;
+        content: '';
+        display: block;
+        height: 6px;
         left: 50%;
-        top: 50%;
         margin: -3px 0 0 -3px;
+        position: absolute;
+        top: 50%;
+        width: 6px;
       }
     }
   }
 }
 
-[type=text],
-[type=email],
-[type=search],
-[type=password],
+[type='text'],
+[type='email'],
+[type='search'],
+[type='password'],
 textarea,
 select {
   appearance: none;
@@ -437,9 +444,9 @@ select {
   border: 1px solid rgba(11, 16, 12, 1);
   border-radius: 0;
   color: inherit;
-  min-height: 50px;
-  font-size: inherit;
   font-family: inherit;
+  font-size: inherit;
+  min-height: 50px;
 }
 
 input,
@@ -450,13 +457,14 @@ textarea {
 }
 
 textarea {
-  width: 100%;
   min-height: 150px;
   resize: vertical;
+  width: 100%;
 }
 
 select {
-  $color-text-rgb: red($color-contrast), green($color-contrast), blue($color-contrast);
+  $color-text-rgb: red($color-contrast), green($color-contrast),
+    blue($color-contrast);
 
   background-image: url("data:image/svg+xml;utf8,<svg width='32' height='32' xmlns='http://www.w3.org/2000/svg'><polyline fill='none' stroke='rgb(#{$color-text-rgb})' stroke-width='5'  points='2,9 16,25 30,9 '/></svg>");
   background-position: calc(100% - 18px) center;
@@ -465,8 +473,8 @@ select {
   padding-right: 45px;
 }
 
-[type=checkbox],
-[type=radio] {
+[type='checkbox'],
+[type='radio'] {
   margin: 0 0.5rem 0 0;
   position: relative;
   top: -2px;

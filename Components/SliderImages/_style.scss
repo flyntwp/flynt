@@ -1,7 +1,7 @@
 $content-max-width: 800px;
 
 [is='flynt-slider-images'] {
-  margin: $component-spacing 0;
+  margin: $component-spacing-desktop 0;
 
   .container {
     @include center;
@@ -43,7 +43,7 @@ $content-max-width: 800px;
     position: relative;
 
     @media (min-width: $content-max-width) {
-      padding: 0 $container-padding;
+      padding: 0 $container-padding-desktop;
     }
 
     &:first-child,
