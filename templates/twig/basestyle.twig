@@ -46,15 +46,25 @@
           <p>The user agent stylesheet typically has a very weird <b>&lt;fieldset&gt;</b> and <b>&lt;legend&gt;</b> styling. But hey: why not customize it to our needs?!</p>
           <fieldset>
             <legend>Checkbox Inputs</legend>
-            <label class="checkbox"><input type="checkbox" name="checkbox" value="checkbox-value-1"><span></span> Checkbox Label #1</label><br>
-            <label class="checkbox"><input type="checkbox" name="checkbox" value="checkbox-value-2"><span></span> Checkbox Label #2</label><br>
-            <label class="checkbox"><input type="checkbox" name="checkbox" value="checkbox-value-3"><span></span> Checkbox Label #3</label>
+            <input type="checkbox" id="checkbox-1" required>
+            <label for="checkbox-1">Checkbox Label #1<sup>*</sup></label>
+            <br>
+            <input type="checkbox" id="checkbox-2">
+            <label for="checkbox-2">Checkbox Label #2</label>
+            <br>
+            <input type="checkbox" id="checkbox-3">
+            <label for="checkbox-3">Checkbox Label #3</label>
           </fieldset>
           <fieldset>
             <legend>Radio Inputs</legend>
-            <label class="radio"><input type="radio" name="radio" value="radio-value-1"><span></span> Radio Label #1</label><br>
-            <label class="radio"><input type="radio" name="radio" value="radio-value-2"><span></span> Radio Label #2</label><br>
-            <label class="radio"><input type="radio" name="radio" value="radio-value-3"><span></span> Radio Label #3</label>
+            <input type="radio" id="radio-1" name="radio-group">
+            <label for="radio-1">Radio Label #1</label>
+            <br>
+            <input type="radio" id="radio-2" name="radio-group">
+            <label for="radio-2">Radio Label #2</label>
+            <br>
+            <input type="radio" id="radio-3" name="radio-group">
+            <label for="radio-3">Radio Label #3</label>
           </fieldset>
           <p><button type="button">A <b>&lt;button&gt;</b> element without a class should have its styles reset, so it can be used as a semantic tag on other interface elements, like the arrows of a slider, a closing &times; or a burger menu.</button></p>
           <p>
