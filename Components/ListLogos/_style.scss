@@ -1,16 +1,8 @@
 [is='flynt-list-logos'] {
-  @at-root .themeDark#{&} {
-    background-color: #000;
-  }
-
-  margin: 64px 0 0;
-
-  @media (min-width: $breakpoint-mobile-horizontal) {
-    margin: 96px 0 0;
-  }
+  padding: $component-spacing-mobile 0;
 
   @media (min-width: $breakpoint-desktop) {
-    margin: 128px 0 0;
+    padding: $component-spacing-desktop 0;
   }
 
   .container {
@@ -23,13 +15,14 @@
     padding-bottom: 96px;
   }
 
-  .header {
+  .preContent {
+    @include reset-content-margins;
+
+    margin-bottom: 1.5rem;
     text-align: center;
 
-    @at-root .themeDark#{&} {
-      h2, p {
-        color: #fff;
-      }
+    @media (min-width: $breakpoint-desktop) {
+      margin-bottom: 3rem;
     }
   }
 
@@ -66,11 +59,6 @@
     height: 0;
     padding-bottom: 70%;
     position: relative;
-
-    @at-root .flyntComponent--card#{&} {
-      background-color: #fff;
-      padding-bottom: 100%;
-    }
   }
 
   .logo {
