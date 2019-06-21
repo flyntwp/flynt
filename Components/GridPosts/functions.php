@@ -30,7 +30,8 @@ add_filter('Flynt/addComponentData?name=GridPosts', function ($data) {
     return $data;
 });
 
-function loadFields($taxonomy = FILTER_BY_TAXONOMY) {
+function loadFields($taxonomy = FILTER_BY_TAXONOMY)
+{
     $fields = [];
     if (!empty($taxonomy)) {
         $fields = [
