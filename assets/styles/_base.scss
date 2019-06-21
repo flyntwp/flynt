@@ -349,6 +349,7 @@ button {
   &--link {
     $link-padding: 1.25rem;
 
+    background: none;
     border: 0;
     padding: $link-padding 0;
     position: relative;
