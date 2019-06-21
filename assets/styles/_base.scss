@@ -131,7 +131,7 @@ h5,
 
 h6,
 .h6 {
-  font-size: 0.9375rem;;
+  font-size: 0.9375rem;
   padding-top: 0.5rem;
 }
 
@@ -235,10 +235,10 @@ th {
 thead {
   th {
     border-bottom: 2px solid $color-accent;
-    vertical-align: bottom;
-    white-space: nowrap;
     color: $color-headline;
     padding-bottom: 10px;
+    vertical-align: bottom;
+    white-space: nowrap;
   }
 }
 
