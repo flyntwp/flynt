@@ -1,0 +1,70 @@
+[is='flynt-hero-image-cta'] {
+  // NOTE: decide on if you want to have the component spacing in there? set $component-spacing-desktop = 0 to remove it the component spacing
+  margin: $component-spacing-mobile 0;
+  // margin: 0;
+  position: relative;
+
+  @media (min-width: $breakpoint-tablet) {
+    // NOTE: remove the $gutter-width if you dont want to have a gutter on the left and right
+    // NOTE: set $component-spacing-desktop = 0 to remove it the component spacing
+    margin: $component-spacing-desktop 0;
+    // margin: $component-spacing-desktop $gutter-width;
+    // margin: 0;
+  }
+
+  .image {
+    height: 440px;
+    object-fit: cover;
+    width: 100%;
+
+    @media (min-width: $breakpoint-tablet) {
+      height: 640px;
+    }
+  }
+
+  .content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    padding: 0 $container-padding-mobile;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    @media (min-width: $breakpoint-desktop) {
+      padding: $container-padding-desktop;
+    }
+
+    &-html {
+      @include reset-content-margins();
+      color: $color-background;
+      max-width: $content-max-width;
+      text-align: center;
+
+      #{$heading-selectors} {
+        color: inherit;
+      }
+
+      &--hasButton {
+        margin-bottom: 20px;
+
+        @media (min-width: $breakpoint-tablet) {
+          margin-bottom: 45px;
+        }
+      }
+    }
+
+    &--hasCoverImageWithBackgroundColor {
+      background-color: adjust-color($color-contrast, $alpha: -0.4);
+    }
+  }
+
+  @media (max-width: $content-max-width - 1px) {
+    br {
+      content: '\00a0';
+    }
+  }
+}

@@ -1,0 +1,30 @@
+<div class="flyntComponent" is="flynt-hero-image-cta">
+  <img class="image lazyload"
+    src="{{ image.src|resize(1280) }}"
+    srcset="{{ placeholderImage(1280, 1280 / image.aspect) }}"
+    data-srcset="
+      {{ image.src|resize(1320, 640, 'center') }} 1320w,
+      {{ image.src|resize(1280, 640, 'center') }} 1280w,
+      {{ image.src|resize(1024, 640, 'center') }} 1024w,
+      {{ image.src|resize(720, 640, 'center') }} 720w,
+      {{ image.src|resize(375, 440, 'center') }} 375w,
+      {{ image.src|resize(320, 440, 'center') }} 320w,"
+    data-sizes="auto"
+    alt="{{ image.alt|e }}">
+  {% if contentHtml or buttonLink.url %}
+    <div class="content {% if coverImageWithBackgroundColor %}content--hasCoverImageWithBackgroundColor{% endif %}">
+      {% if contentHtml %}
+        <div class="content-html {{ buttonLink.url ? 'content-html--hasButton' }}">
+          {{ contentHtml|e('wp_kses_post') }}
+        </div>
+      {% endif %}
+      {% if buttonLink.url %}
+        <div class="content-cta">
+          <a href="{{ buttonLink.url }}"{% if buttonLink.target %} target="{{ buttonLink.target }}"{% endif %} {% if buttonLink.target == '_blank' %}rel="noreferrer noopener"{% endif %} class="button button--primary">
+            {{ buttonLink.title|e }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
