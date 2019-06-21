@@ -16,6 +16,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'button_label' => 'Add Component',
                 'layouts' => [
                     Api::loadFields('AccordionDefault', 'layout'),
+                    Api::loadFields('BlockCountUp', 'layout'),
                     Api::loadFields('BlockImage', 'layout'),
                     Api::loadFields('BlockImageText', 'layout'),
                     Api::loadFields('BlockTextImageCrop', 'layout'),
