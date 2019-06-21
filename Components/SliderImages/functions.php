@@ -6,8 +6,9 @@ use Flynt\Api;
 use Flynt\Utils\Options;
 
 add_filter('Flynt/addComponentData?name=SliderImages', function ($data) {
+    $translatableOptions = Options::get('translatableOptions', 'feature', 'SliderOptions');
     $data['jsonData'] = [
-        'sliderOptions' => Options::get('translatableOptions', 'feature', 'SliderOptions'),
+        'options' => array_merge($translatableOptions, $data['options']),
     ];
     return $data;
 });
@@ -63,11 +64,13 @@ Api::registerFields('SliderImages', [
                         'ui' => 1
                     ],
                     [
-                        'label' => 'Autoplay Speed',
+                        'label' => 'Autoplay Speed (in milliseconds)',
                         'name' => 'autoplaySpeed',
                         'type' => 'number',
                         'min' => 2000,
                         'step' => 1,
+                        'default_value' => 4000,
+                        'required' => 1,
                         'conditional_logic' => [
                             [
                                 [

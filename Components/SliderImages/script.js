@@ -34,15 +34,20 @@ class SliderImages extends window.HTMLDivElement {
   }
 
   initSlider () {
-    const { sliderOptions } = this.props
-
-    this.slider = new Swiper(this.$slider, {
+    const { options } = this.props
+    const config = {
       navigation: {
         nextEl: this.$buttonNext,
         prevEl: this.$buttonPrev
       },
-      a11y: sliderOptions.a11y
-    })
+      a11y: options.a11y
+    }
+    if (options.autoplay && options.autoplaySpeed) {
+      config['autoplay'] = {
+        delay: options.autoplaySpeed
+      }
+    }
+    this.slider = new Swiper(this.$slider, config)
   }
 }
 
