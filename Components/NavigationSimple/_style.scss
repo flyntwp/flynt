@@ -21,7 +21,13 @@ $navigation-height: 100px;
   }
 
   .logo {
-    width: auto;
+    display: block;
+    height: 100%;
+
+    &-image {
+      height: 100%;
+      width: auto;
+    }
   }
 
   .menu {

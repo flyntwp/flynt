@@ -1,7 +1,9 @@
 <nav is="flynt-navigation-simple" class="flyntComponent">
   <div class="wrapper">
     <div class="container centerMaxWidthContainer">
-      <img class="logo" src="{{ logo.src }}" alt="{{ logo.alt }}">
+      <a class="logo" href="{{ site.link }}">
+        <img class="logo-image" src="{{ logo.src }}" alt="{{ logo.alt }}">
+      </a>
       {% if menu %}
         <ul class="menu">
           {% for item in menu.items %}
