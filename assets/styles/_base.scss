@@ -347,8 +347,10 @@ button {
   }
 
   &--link {
+    $link-padding: 1.25rem;
+
     border: 0;
-    padding: 1.25rem 0;
+    padding: $link-padding 0;
     position: relative;
     text-transform: none;
     transition: color 0.2s ease-out;
@@ -367,7 +369,7 @@ button {
 
     &::before {
       background: $color-accent;
-      bottom: calc(50% - 0.5625rem);
+      bottom: $link-padding;
       content: '';
       height: 1px;
       left: 0;
