@@ -1,0 +1,5 @@
+{% extends 'twig/_document.twig' %}
+
+{% block content %}
+  {{ renderComponent('GridPosts', data.gridPosts|merge({ posts: posts })) }}
+{% endblock %}
