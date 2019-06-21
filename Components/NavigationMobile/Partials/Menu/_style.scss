@@ -4,9 +4,11 @@
   backface-visibility: hidden;
   background-color: $color-background;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.16);
-  height: 100%;
+  height: calc(100% - #{$navigation-height});
   left: 0;
   margin: 0;
+  overflow-y: auto;
+  padding-bottom: 30px;
   padding-top: 30px;
   position: fixed;
   top: $navigation-height;
