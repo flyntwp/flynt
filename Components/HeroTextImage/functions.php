@@ -10,6 +10,19 @@ Api::registerFields('HeroTextImage', [
         'label' => 'Hero: Text Image',
         'sub_fields' => [
             [
+                'label' => 'Content Alignment',
+                'name' => 'contentAlignment',
+                'type' => 'button_group',
+                'choices' => [
+                    'textLeft' =>
+                        '<i class=\'dashicons dashicons-editor-alignleft\' title=\'Align content left\'></i>',
+                    'textRight' =>
+                        '<i class=\'dashicons dashicons-editor-alignright\' title=\'Align content right\'></i>'
+                ],
+                'required' => 1,
+                'default_value' => 'textLeft'
+            ],
+            [
                 'label' => 'Content',
                 'name' => 'contentHtml',
                 'type' => 'wysiwyg',
@@ -29,13 +42,13 @@ Api::registerFields('HeroTextImage', [
                 'library' => 'all',
                 // 'min_width' => 0,
                 // 'max_width' => 0,
-                // 'min_height' => 0,
+                'min_height' => 600,
                 // 'max_height' => 0,
                 // 'min_size' => 0,
                 // 'max_size' => 0,
                 'mime_types' => 'jpg,jpeg',
                 'required' => 1
-            ]
+            ],
         ]
     ]
 ]);

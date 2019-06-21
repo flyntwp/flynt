@@ -7,6 +7,20 @@
       display: flex;
       justify-content: space-between;
     }
+
+    &--textLeft {
+      .column--content {
+        padding-right: $gutter-width;
+      }
+    }
+
+    &--textRight {
+      flex-direction: row-reverse;
+
+      .column--content {
+        padding-left: $gutter-width;
+      }
+    }
   }
 
   .column {
@@ -19,13 +33,46 @@
         flex-shrink: 0;
         margin: 0;
       }
+
+      .checkmark-list {
+        list-style: none;
+        padding: 0;
+
+        li {
+          margin-bottom: 10px;
+
+          &::before {
+            background-image: url('../../Components/HeroTextImage/Assets/check-circle.svg');
+            background-size: contain;
+            content: '';
+            display: inline-block;
+            height: 12px;
+            margin-right: 12px;
+            position: relative;
+            width: 12px;
+          }
+        }
+      }
+    }
+
+    &--image {
+      margin-top: 30px;
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        margin-top: 0;
+      }
     }
   }
 
   .image {
+    max-height: 530px;
+    object-fit: contain;
+
     @media (min-width: $breakpoint-tablet-horizontal) {
       height: 600px;
+      max-height: none;
       max-width: none;
+      object-fit: fill;
       width: auto;
     }
   }
