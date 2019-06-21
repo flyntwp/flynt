@@ -8,6 +8,7 @@
             srcset="{{ placeholderImage(720, 720 / image.aspect) }}"
             data-srcset="
               {{ image.src|resize(720) }} 720w,
+              {{ image.src|resize(600) }} 600w,
               {{ image.src|resize(375) }} 375w"
             data-sizes="auto"
             alt="{{ image.alt|e }}">

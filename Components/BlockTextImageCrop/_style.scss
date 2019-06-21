@@ -1,14 +1,18 @@
 [is='flynt-block-text-image-crop'] {
-  margin: $component-spacing-desktop 0;
+    margin: $component-spacing-mobile 0;
+
+  @media (min-width: $breakpoint-tablet-horizontal) {
+    margin: $component-spacing-desktop 0;
+  }
 
   .container {
-    @include center;
+    @include center($content-max-width, $container-padding-mobile);
 
     @media (min-width: $breakpoint-mobile-horizontal) {
-      @include center($content-max-width);
+      @include center($content-max-width + ($container-padding-mobile * 2));
     }
 
-    @media (min-width: $breakpoint-desktop) {
+    @media (min-width: $breakpoint-tablet-horizontal) {
       @include center($container-max-width, 0);
     }
   }
@@ -16,30 +20,38 @@
   .box {
     margin: 0 auto;
 
-    @media (min-width: $breakpoint-desktop) {
+    @media (min-width: $breakpoint-tablet-horizontal) {
       align-items: center;
       display: flex;
     }
 
     &--imageLeft {
-      @media (min-width: $breakpoint-desktop) {
+      @media (min-width: $breakpoint-tablet-horizontal) {
         flex-direction: row;
       }
     }
 
     &--imageRight {
-      @media (min-width: $breakpoint-desktop) {
+      @media (min-width: $breakpoint-tablet-horizontal) {
         flex-direction: row-reverse;
+
+        .figure {
+          margin-left: 0;
+
+          &-caption {
+            text-align: left;
+          }
+        }
       }
     }
 
     &-inner {
-      @media (min-width: $breakpoint-desktop) {
+      @media (min-width: $breakpoint-tablet-horizontal) {
         width: 50%;
       }
 
       &--content {
-        @media (min-width: $breakpoint-desktop) {
+        @media (min-width: $breakpoint-tablet-horizontal) {
           padding: 60px 60px 60px 112px;
         }
       }
@@ -48,9 +60,17 @@
 
   .figure {
     font-size: 0.8rem;
+    margin-left: -$container-padding-mobile;
+    width: 100vw;
 
-    @media (min-width: $breakpoint-desktop) {
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      margin-left: 0;
+      width: auto;
+    }
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
       margin-left: calc(50vw - 720px);
+      min-width: 720px;
     }
 
     @media (min-width: $breakpoint-desktop-wide) {
@@ -58,14 +78,7 @@
     }
 
     &-caption {
-
-      @media (min-width: $breakpoint-tablet-horizontal) {
-      }
-
-      @media (min-width: $breakpoint-desktop) {
-        margin-left: calc(720px - 50vw);
-        padding-left: $gutter-width;
-      }
+     text-align: right;
 
       @media (min-width: ($breakpoint-desktop-wide + $gutter-width + $gutter-width)) {
         margin-left: 0;

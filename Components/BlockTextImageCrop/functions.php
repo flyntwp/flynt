@@ -25,6 +25,7 @@ Api::registerFields('BlockTextImageCrop', [
                 'preview_size' => 'medium',
                 'instructions' => '',
                 'max_size' => 4,
+                'min_width' => 720,
                 'required' => true,
                 'mime_types' => 'gif,jpg,jpeg,png'
             ],
