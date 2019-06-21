@@ -35,10 +35,9 @@ class SliderImagesCentered extends window.HTMLDivElement {
   }
 
   initSlider () {
-    const { sliderOptions } = this.props
-
-    this.swiper = new Swiper(this.$slider, {
-      a11y: sliderOptions.a11y,
+    const { options } = this.props
+    const config = {
+      a11y: options.a11y,
       centeredSlides: true,
       loop: true,
       navigation: {
@@ -51,7 +50,15 @@ class SliderImagesCentered extends window.HTMLDivElement {
       },
       slidesPerView: 'auto',
       spaceBetween: 0
-    })
+    }
+
+    if (options.autoplay && options.autoplaySpeed) {
+      config['autoplay'] = {
+        delay: options.autoplaySpeed
+      }
+    }
+
+    this.swiper = new Swiper(this.$slider, config)
   }
 }
 
