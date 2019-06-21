@@ -1,49 +1,60 @@
 [is='flynt-block-text-image-crop'] {
   margin: $component-spacing-mobile 0;
 
-  @media (min-width: $breakpoint-tablet-horizontal) {
+  @include reset-content-margins;
+
+  @media (min-width: $breakpoint-desktop) {
     margin: $component-spacing-desktop 0;
-  }
-
-  .container {
-    @include center($content-max-width, $container-padding-mobile);
-
-    @media (min-width: $breakpoint-mobile-horizontal) {
-      @include center($content-max-width + ($container-padding-mobile * 2));
-    }
-
-    @media (min-width: $breakpoint-tablet-horizontal) {
-      @include center($container-max-width, 0);
-    }
   }
 
   .box {
     margin: 0 auto;
 
-    @media (min-width: $breakpoint-tablet-horizontal) {
-      align-items: center;
+    @media (min-width: $breakpoint-tablet) {
       display: flex;
     }
 
-    // box--imageLeft
+    //.box--imageLeft
     &--imageLeft {
       @media (min-width: $breakpoint-tablet-horizontal) {
         flex-direction: row;
       }
-      // box-
-      &-inner {
-        &--content {
-          @media (min-width: $breakpoint-tablet-horizontal) {
-            padding: 60px 112px 60px 60px;
-          }
+
+    }
+
+    //.box-inner
+    &-inner {
+
+      @media (min-width: $breakpoint-tablet) {
+        width: 50%;
+      }
+
+      //.box-inner--content
+      &--content {
+        margin-right: auto;
+        padding: 40px;
+
+        @media (min-width: $breakpoint-tablet) {
+          max-width: $container-max-width * 0.5;
         }
+
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          padding: 60px 112px;
+        }
+      }
+
+      //.box-inner--image
+      &--image {
+        position: relative;
       }
     }
 
+    //.box--imageRight
     &--imageRight {
       @media (min-width: $breakpoint-tablet-horizontal) {
         flex-direction: row-reverse;
 
+        //.box--imageRright .figure
         .figure {
           margin-left: 0;
 
@@ -56,38 +67,42 @@
           }
         }
       }
+    }
 
-      &-inner {
-        @media (min-width: $breakpoint-tablet-horizontal) {
-          width: 50%;
-        }
-
-        &--content {
-          @media (min-width: $breakpoint-tablet-horizontal) {
-            padding: 60px 60px 60px 112px;
-          }
-        }
+    //.box-inner
+    &-inner {
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        width: 50%;
       }
     }
   }
 
   .figure {
     font-size: 0.8rem;
-    margin-left: -$container-padding-mobile;
-    width: 100vw;
+    margin: 0;
 
-    @media (min-width: $breakpoint-mobile-horizontal) {
-      margin-left: 0;
-      width: auto;
+    @media (min-width: $breakpoint-tablet) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      min-width: 1280px;
     }
 
     @media (min-width: $breakpoint-tablet-horizontal) {
-      margin-left: calc(50vw - 720px);
-      min-width: 720px;
+      width: 50vw;
     }
 
     @media (min-width: $breakpoint-desktop-wide) {
       margin-left: 0;
+    }
+
+    &-image {
+      object-fit: cover;
+      font-family: 'object-fit: cover';
+      object-position: 0 50%;
+      width: 100%;
+      height: 100%;
     }
 
     &-caption {
