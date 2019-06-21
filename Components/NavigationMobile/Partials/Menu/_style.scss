@@ -1,0 +1,30 @@
+.menu {
+  @include reset-list;
+
+  backface-visibility: hidden;
+  background-color: $color-accent;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.16);
+  height: 100%;
+  left: 0;
+  margin: 0;
+  padding-top: 30px;
+  position: fixed;
+  top: $navigation-height;
+  transform: translateX(100%);
+  transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
+  width: 100%;
+  z-index: 99;
+
+  &-link {
+    color: $color-background;
+    display: block;
+    font-size: 1.25rem;
+    padding: 11px;
+    text-align: center;
+    text-decoration: none;
+  }
+}
+
+.container-isActive .menu {
+  transform: translateX(0);
+}
