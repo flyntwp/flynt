@@ -1,22 +1,14 @@
 $navigation-height: 75px;
 
-.html {
-  .pageWrapper {
-    padding-top: $navigation-height;
-  }
-
-  &.admin-bar .pageWrapper {
-    transform: translate3d(0, 0, 0);
-  }
-
-  &.navigationMobile-isActive {
-    overflow: hidden;
-  }
+.pageWrapper {
+  padding-top: $navigation-height;
 
   @media (min-width: $breakpoint-tablet-horizontal) {
-    .pageWrapper {
-      padding-top: 0;
-    }
+    padding-top: 0;
+  }
+
+  @at-root .admin-bar & {
+    transform: translate3d(0, 0, 0);
   }
 }
 
