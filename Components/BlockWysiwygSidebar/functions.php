@@ -28,8 +28,8 @@ Api::registerFields('BlockWysiwygSidebar', [
                 ],
             ],
             [
-                'name' => 'contentHtml',
                 'label' => 'Content',
+                'name' => 'contentHtml',
                 'type' => 'wysiwyg',
                 'media_upload' => 0,
                 'toolbar' => 'full',
