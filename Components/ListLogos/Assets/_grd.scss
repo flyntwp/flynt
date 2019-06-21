@@ -1,0 +1,29 @@
+// SIMPLE FLEXBOX GRID MIXIN
+@mixin grd() {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+@mixin grd-item ($columns: 4, $gutter: 15px, $verticalGutter: 15px) {
+  width: calc((#{100% / $columns}) - (#{$columns - 1}/#{$columns} * #{$gutter}));
+
+  &:nth-child(n) {
+    margin-right: $gutter;
+    margin-top: 0;
+  }
+
+  &:nth-child(1n+#{$columns + 1}) {
+    margin-top: $verticalGutter;
+  }
+
+  &:nth-child(#{$columns}n) {
+    margin-right: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+    // margin-right: auto;
+  }
+}
