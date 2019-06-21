@@ -32,7 +32,7 @@
     text-align: center;
     text-decoration: none;
 
-    @media (min-width: $container-padding-tablet) {
+    @media (min-width: $breakpoint-tablet) {
       padding-left: $container-padding-tablet;
       padding-right: $container-padding-tablet;
     }
