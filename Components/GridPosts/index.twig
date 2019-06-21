@@ -21,15 +21,13 @@
                   alt="{{ post.thumbnail.alt|e }}">
               </figure>
             {% endif %}
-            <div class="content">
-              {% if post.post_date %}
-                <time class="date" datetime="{{ post.post_date }}">{{ post.post_date | date }}</time>
-              {% endif %}
-              <h3 class="h4 title">
-                {{ post.title }}
-              </h3>
-            </div>
+            <h3 class="h3 title">
+              {{ post.title }}
+            </h3>
           </a>
+          <p>
+            {{ post.preview.length(18).force }}
+          </p>
         </li>
       {% else %}
         <p class="noPosts">{{ noPostsFoundText }}</p>
@@ -41,15 +39,6 @@
         <div class="pagination-prevLink">
           <a href="{% if pagination.prev %}{{ pagination.prev.link }}{% else %}javascript:void(0){% endif %}"
             class="button {% if pagination.prev %}button--primary{% else %}button--disabled{% endif %}">{{ previousLabel }}</a>
-        </div>
-        <div class="pagination-counter">
-          {% for page in pagination.pages %}
-            {% if page.current %}
-              <span class="{{ page.class }} button button--disabled">{{ page.title }}</span>
-            {% else %}
-              <a href="{{ page.link }}" class="{{ page.class }} button button-primary">{{ page.title }}</a>
-            {% endif %}
-          {% endfor %}
         </div>
         <div class="pagination-nextLink">
           <a href="{% if pagination.next %}{{ pagination.next.link }}{% else %}javascript:void(0){% endif %}"
