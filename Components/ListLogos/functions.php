@@ -18,7 +18,7 @@ Api::registerFields('ListLogos', [
             ],
             [
                 'label' => 'Title',
-                'name' => 'title',
+                'name' => 'preContent',
                 'type' => 'wysiwyg',
                 'tabs' => 'visual,text',
                 'toolbar' => 'full',
