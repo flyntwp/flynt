@@ -54,6 +54,10 @@ body {
   #{$heading-selectors} {
     color: $color-background;
   }
+
+  .feather {
+    color: $color-background;
+  }
 }
 
 .flyntComponent {
