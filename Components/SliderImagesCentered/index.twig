@@ -7,7 +7,7 @@
     <div class="slider swiper-container">
         <div class="swiper-wrapper">
           {% for image in images %}
-            <div class="swiper-slide">
+            <div class="slider-item swiper-slide">
               <figure class="figure">
                 <img class="figure-image lazyload"
                   src="{{ image.src|resize(0, 540) }}"

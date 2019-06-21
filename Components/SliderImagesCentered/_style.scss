@@ -6,17 +6,51 @@
   }
 
   .container {
-    @include center;
+    @include center($padding: 0);
   }
 
   .preContent {
     @include reset-content-margins;
 
-     margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
     text-align: center;
 
-     @media (min-width: $breakpoint-desktop) {
+    @media (min-width: $breakpoint-desktop) {
       margin-bottom: 3rem;
+    }
+  }
+
+  .swiper-slide {
+    max-width: 870px;
+  }
+
+  .slider {
+    &-pagination {
+      margin-top: 1.5rem;
+      text-align: center;
+
+      @media (min-width: $breakpoint-desktop) {
+        margin-top: 3rem;
+      }
+
+      .swiper-pagination-bullet {
+        background-color: rgba($color-background, 0.2);
+        height: 6px;
+        opacity: 1;
+        transition: width 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55), background-color 0.3s ease;
+        width: 6px;
+
+        &-active {
+          background-color: $color-background;
+          border-radius: 4px;
+          width: 20px;
+        }
+
+        &:hover,
+        &:focus {
+          background-color: $color-background;
+        }
+      }
     }
   }
 }

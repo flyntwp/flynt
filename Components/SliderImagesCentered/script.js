@@ -49,8 +49,8 @@ class SliderImagesCentered extends window.HTMLDivElement {
         el: this.$pagination,
         clickable: true,
       },
-      slidesPerView: 3,
-      spaceBetween: 40
+      slidesPerView: 'auto',
+      spaceBetween: 20
     })
   }
 }
