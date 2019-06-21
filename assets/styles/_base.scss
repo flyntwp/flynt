@@ -50,7 +50,7 @@ body {
 .themeHero {
   background-color: $color-background-hero;
 
-   &,
+  &,
   #{$heading-selectors} {
     color: $color-background;
   }
