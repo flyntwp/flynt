@@ -40,9 +40,44 @@ add_filter('Flynt/addComponentData?name=GridPosts', function ($data) {
 
 function loadFields($taxonomy = FILTER_BY_TAXONOMY)
 {
-    $fields = [];
+    $fields = [
+        [
+            'label' => 'General',
+            'name' => 'general',
+            'type' => 'tab',
+            'placement' => 'top',
+            'endpoint' => true,
+        ],
+        [
+            'label' => 'Pre-Content',
+            'name' => 'preContentHtml',
+            'type' => 'wysiwyg',
+            'instructions' => 'Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.',
+            'tabs' => 'visual,text',
+            'toolbar' => 'full',
+            'media_upload' => 0,
+            'delay' => 1,
+            'wrapper' => [
+                'class' => 'autosize',
+            ],
+        ],
+        [
+            'label' => 'Options',
+            'name' => 'options',
+            'type' => 'tab',
+            'placement' => 'top',
+            'endpoint' => false
+        ],
+        [
+            'label' => 'Load More Button?',
+            'name' => 'loadMore',
+            'type' => 'true_false',
+            'default_value' => 0,
+            'ui' => true
+        ],
+    ];
     if (!empty($taxonomy)) {
-        $fields = [
+        $fields = array_merge($fields, [
             [
                 'label' => 'Show Filters?',
                 'name' => 'showFilters',
@@ -71,30 +106,8 @@ function loadFields($taxonomy = FILTER_BY_TAXONOMY)
                     ],
                 ],
             ],
-        ];
+        ]);
     }
-    $fields = array_merge($fields, [
-        [
-            'label' => 'Pre-Content',
-            'name' => 'preContentHtml',
-            'type' => 'wysiwyg',
-            'instructions' => 'Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.',
-            'tabs' => 'visual,text',
-            'toolbar' => 'full',
-            'media_upload' => 0,
-            'delay' => 1,
-            'wrapper' => [
-                'class' => 'autosize',
-            ],
-        ],
-        [
-            'label' => 'Load More Button?',
-            'name' => 'loadMore',
-            'type' => 'true_false',
-            'default_value' => 0,
-            'ui' => true
-        ],
-    ]);
     return $fields;
 };
 
