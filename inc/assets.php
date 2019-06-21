@@ -18,7 +18,7 @@ add_action('wp_enqueue_scripts', function () {
         'name' => 'Flynt/font',
         'type' => 'style',
         'path' =>
-            'https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,700,700i&display=swap'
+            'https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i&display=swap'
     ]);
 });
 

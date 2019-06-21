@@ -38,24 +38,22 @@ body {
   background-color: $color-background-dark;
 
   &,
-  h1,
-  .h1,
-  h2,
-  .h2,
-  h3,
-  .h3,
-  h4,
-  .h4,
-  h5,
-  .h5,
-  h6,
-  .h6 {
+  #{$heading-selectors} {
     color: $color-background;
   }
 }
 
 .themeLight {
   background-color: $color-background-light;
+}
+
+.themeHero {
+  background-color: $color-background-hero;
+
+  &,
+  #{$heading-selectors} {
+    color: $color-background;
+  }
 }
 
 .flyntComponent {
@@ -97,18 +95,7 @@ body {
 * Styling all likely used HTML elements.
 */
 
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3,
-h4,
-.h4,
-h5,
-.h5,
-h6,
-.h6 {
+#{$heading-selectors} {
   color: $color-headline;
   font-weight: 700;
   line-height: 1.45;
@@ -432,7 +419,7 @@ select {
   background-repeat: no-repeat;
   background-size: 9px;
   padding-right: 45px;
-  
+
   &::-ms-expand {
     display: none;
   }
