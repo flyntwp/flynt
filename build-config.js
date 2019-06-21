@@ -1,5 +1,5 @@
 const host = 'https://flynt-components.local.blee.ch'
-const themeName = 'flynt'
+const themeName = 'flynt-components'
 const dest = './dist'
 
 const path = require('path')
