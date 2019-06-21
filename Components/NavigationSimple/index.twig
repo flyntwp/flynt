@@ -7,7 +7,7 @@
       {% if menu %}
         <ul class="menu">
           {% for item in menu.items %}
-            <li class="menu-item">
+            <li class="menu-item {{ item.current ? 'menu-item--current' }}">
               <a class="menu-link" href="{{ item.link }}">{{ item.title }}</a>
             </li>
           {% endfor %}
