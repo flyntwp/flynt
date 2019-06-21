@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 
 class NavigationMobile extends window.HTMLElement {
   constructor (...args) {
@@ -24,14 +25,18 @@ class NavigationMobile extends window.HTMLElement {
 
   resolveElements () {
     this.$container = $('.container', this)
-    this.$body = $('body')
+    this.$menu = $('.menu', this)
   }
 
   connectedCallback () {}
 
   triggerMenu (e) {
     this.$container.toggleClass('container-isActive')
-    this.$body.toggleClass('navigationMobile-isActive')
+    if (this.$container.hasClass('container-isActive')) {
+      disableBodyScroll(this.$menu.get(0))
+    } else {
+      enableBodyScroll(this.$menu.get(0))
+    }
   }
 }
 
