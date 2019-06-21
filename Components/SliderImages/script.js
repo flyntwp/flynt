@@ -1,39 +1,48 @@
 import $ from 'jquery'
-import 'slick-carousel'
-import 'slick-carousel/slick/slick.css'
+import Swiper from 'swiper'
+import 'swiper/dist/css/swiper.min.css'
 
 class SliderImages extends window.HTMLDivElement {
-  constructor (self) {
-    self = super(self)
-    self.$ = $(self)
-    self.resolveElements()
-    self.setOptions()
+  constructor (...args) {
+    const self = super(...args)
+    self.init()
     return self
+  }
+
+  init () {
+    this.$ = $(this)
+    this.props = this.getInitialProps()
+    this.resolveElements()
+  }
+
+  getInitialProps () {
+    let data = {}
+    try {
+      data = JSON.parse($('script[type="application/json"]', this).text())
+    } catch (e) {}
+    return data
   }
 
   resolveElements () {
     this.$slider = $('.slider', this)
-  }
-
-  setOptions () {
-    this.slickOptions = {
-      dots: false,
-      infinite: false,
-      arrows: true,
-      responsive: [
-        {
-          breakpoint: 768,
-          settings: {
-            arrows: false,
-            dots: true
-          }
-        }
-      ]
-    }
+    this.$buttonNext = $('.slider-buton--next', this)
+    this.$buttonPrev = $('.slider-buton--prev', this)
   }
 
   connectedCallback () {
-    this.$slider.not('.slick-initialized').slick(this.slickOptions)
+    this.initSlider()
+  }
+
+  initSlider () {
+    const { sliderOptions } = this.props
+
+    this.slider = new Swiper(this.$slider, {
+      navigation: {
+        nextEl: this.$buttonNext,
+        prevEl: this.$buttonPrev
+      },
+      a11y: sliderOptions.a11y
+    })
   }
 }
 

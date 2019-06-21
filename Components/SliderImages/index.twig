@@ -1,26 +1,35 @@
 <div class="flyntComponent" is="flynt-slider-images">
-  <div class="container">
-    <div class="slider">
-      {% for image in images %}
-        <div class="slide">
-          <figure class="figure">
-            <img class="figure-image lazyload"
-              src="{{ image.src|resize(0, 540) }}"
-              srcset="{{ placeholderImage(image.aspect * 540, 540) }}"
-              data-srcset="
-                {{ image.src|resize(0, 1080) }} {{ (image.aspect * 1080)|round }}w,
-                {{ image.src|resize(0, 750) }} {{ (image.aspect * 750)|round }}w,
-                {{ image.src|resize(0, 540) }} {{ (image.aspect * 540)|round }}w,
-                {{ image.src|resize(0, 385) }} {{ (image.aspect * 385)|round }}w,
-                {{ image.src|resize(0, 250) }} {{ (image.aspect * 250)|round }}w"
-              data-sizes="auto"
-              alt="{{ image.alt|e }}">
-            {% if image.caption %}
-              <figcaption class="figure-caption">{{ image.caption|e }}</figcaption>
-            {% endif %}
-          </figure>
-        </div>
-      {% endfor %}
+  <script type="application/json">{{ jsonData|json_encode }}</script>
+  <div class="centerMaxWidthContainer">
+    <div class="slider swiper-container">
+      <div class="swiper-wrapper">
+        {% for image in images %}
+          <div class="swiper-slide">
+            <figure class="figure">
+              <img class="figure-image lazyload"
+                src="{{ image.src|resize(0, 540) }}"
+                srcset="{{ placeholderImage(image.aspect * 540, 540) }}"
+                data-srcset="
+                  {{ image.src|resize(0, 1080) }} {{ (image.aspect * 1080)|round }}w,
+                  {{ image.src|resize(0, 750) }} {{ (image.aspect * 750)|round }}w,
+                  {{ image.src|resize(0, 540) }} {{ (image.aspect * 540)|round }}w,
+                  {{ image.src|resize(0, 385) }} {{ (image.aspect * 385)|round }}w,
+                  {{ image.src|resize(0, 250) }} {{ (image.aspect * 250)|round }}w"
+                data-sizes="auto"
+                alt="{{ image.alt|e }}">
+              {% if image.caption %}
+                <figcaption class="figure-caption">{{ image.caption|e }}</figcaption>
+              {% endif %}
+            </figure>
+          </div>
+        {% endfor %}
+      </div>
+      <button type="button" class="slider-button--next">
+        <i data-feather="arrow-right"></i>
+      </button>
+      <button type="button" class="slider-button--prev">
+        <i data-feather="arrow-left"></i>
+      </button>
     </div>
   </div>
 </div>

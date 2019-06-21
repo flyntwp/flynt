@@ -3,6 +3,7 @@
 namespace Flynt\Components\SliderImageGallery;
 
 use Flynt\Api;
+use Flynt\Utils\Options;
 
 Api::registerFields('SliderImageGallery', [
     'layout' => [
