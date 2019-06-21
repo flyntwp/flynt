@@ -43,14 +43,22 @@
     {% set pagination = posts.pagination %}
     {% if pagination.pages %}
       <div class="pagination">
-        <div class="pagination-prevLink">
-          <a href="{% if pagination.prev %}{{ pagination.prev.link }}{% else %}javascript:void(0){% endif %}"
-            class="button {% if pagination.prev %}button--primary{% else %}button--disabled{% endif %}">{{ labels.previous }}</a>
-        </div>
-        <div class="pagination-nextLink">
-          <a href="{% if pagination.next %}{{ pagination.next.link }}{% else %}javascript:void(0){% endif %}"
-            class="button {% if pagination.next %}button--primary{% else %}button--disabled{% endif %}">{{ labels.next }}</a>
-        </div>
+        {% if loadMore %}
+          {% if pagination.next%}
+            <div class="pagination-loadMore">
+              <a data-action="loadMore" href="{{ pagination.next.link }}" class="button button--primary">{{ labels.loadMore }}</a>
+            </div>
+          {% endif %}
+        {% else %}
+          <div class="pagination-prevLink">
+            <a href="{% if pagination.prev %}{{ pagination.prev.link }}{% else %}javascript:void(0){% endif %}"
+              class="button {% if pagination.prev %}button--primary{% else %}button--disabled{% endif %}">{{ labels.previous }}</a>
+          </div>
+          <div class="pagination-nextLink">
+            <a href="{% if pagination.next %}{{ pagination.next.link }}{% else %}javascript:void(0){% endif %}"
+              class="button {% if pagination.next %}button--primary{% else %}button--disabled{% endif %}">{{ labels.next }}</a>
+          </div>
+        {% endif %}
       </div>
     {% endif %}
   </div>

@@ -1,4 +1,4 @@
-{% extends 'twig/_document.twig' %}
+{% extends contentOnly ? 'twig/_contentOnly.twig' : 'twig/_document.twig' %}
 
 {% block content %}
   {{ renderComponent('GridPosts', data.gridPosts|merge({ posts: posts })) }}

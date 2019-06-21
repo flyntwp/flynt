@@ -8,6 +8,10 @@ use const Flynt\Archives\POST_TYPES;
 $context = Timber::get_context();
 $context['posts'] = new PostQuery();
 
+if (isset($_GET['contentOnly'])) {
+    $context['contentOnly'] = true;
+}
+
 if (is_archive() || is_home()) {
     global $wp_query;
     $postType = ($wp_query->query_vars['post_type'] ?? 'post') ?: 'post';
