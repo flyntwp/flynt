@@ -21,20 +21,41 @@
   }
 
   .swiper-slide {
-    max-width: 870px;
+    max-width: 380px;
+
+    @media (min-width: $breakpoint-tablet) {
+      max-width: 570px;
+    }
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      max-width: 870px;
+    }
 
     .figure {
+      backface-visibility: hidden;
+      margin: 0;
+      transform: scale(0.93);
       transition: transform 0.3s ease;
-      transform: scale(0.9);
 
       &::before {
-        background-color: rgba($color-headline, 0.3);
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
         content: '';
         height: 100%;
         opacity: 1;
         position: absolute;
         transition: opacity 0.3s ease;
         width: 100%;
+      }
+
+      &-caption {
+        background: rgba($color-background-dark, 0.4);
+        bottom: 0;
+        color: #fff;
+        display: inline-block;
+        font-size: 0.8rem;
+        padding: 0.25rem 0.5rem;
+        position: absolute;
+        right: 0;
       }
     }
 
@@ -52,6 +73,7 @@
   .slider {
     &-button {
       cursor: pointer;
+      display: none;
       height: 50px;
       position: absolute;
       top: 50%;
@@ -59,17 +81,30 @@
       width: 50px;
       z-index: 3;
 
-      > svg {
+      svg {
+        color: $color-background;
         height: auto;
         width: 100%;
       }
 
       &--prev {
-        left: 40px;
+        left: 10px;
+
+        @media (min-width: $breakpoint-desktop) {
+          left: 40px;
+        }
       }
 
       &--next {
-        right: 40px;
+        right: 10px;
+
+        @media (min-width: $breakpoint-desktop) {
+          right: 40px;
+        }
+      }
+
+      @media (min-width: $breakpoint-tablet) {
+        display: block;
       }
     }
 

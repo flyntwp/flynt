@@ -47,7 +47,7 @@ class SliderImagesCentered extends window.HTMLDivElement {
       },
       pagination: {
         el: this.$pagination,
-        clickable: true,
+        clickable: true
       },
       slidesPerView: 'auto',
       spaceBetween: 0
