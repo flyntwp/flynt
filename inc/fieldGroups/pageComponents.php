@@ -20,6 +20,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Api::loadFields('BlockImageText', 'layout'),
                     Api::loadFields('BlockVideoOembed', 'layout'),
                     Api::loadFields('BlockWysiwyg', 'layout'),
+                    Api::loadFields('BlockWysiwygSidebar', 'layout'),
                     Api::loadFields('GridContentLists', 'layout'),
                     Api::loadFields('GridDownloadPortrait', 'layout'),
                     Api::loadFields('GridPosts', 'layout'),

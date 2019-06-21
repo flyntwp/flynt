@@ -1,0 +1,36 @@
+[is='flynt-block-wysiwyg-sidebar'] {
+  padding: $component-spacing-mobile 0;
+
+  @media (min-width: $breakpoint-desktop) {
+    padding: $component-spacing-desktop 0;
+  }
+
+  .contentWrapper {
+    max-width: 800px;
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      display: flex;
+    }
+  }
+
+  .sidebar {
+    @include reset-content-margins;
+
+    flex-shrink: 0;
+    margin-bottom: 1.5rem;
+    text-align: left;
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      margin-bottom: 0;
+      padding-right: 15px;
+      width: 200px;
+    }
+  }
+
+  .content {
+    @include reset-content-margins;
+
+    max-width: $content-max-width;
+    text-align: left;
+  }
+}
