@@ -1,5 +1,9 @@
 [is='flynt-slider-images-centered'] {
-  margin: $component-spacing-desktop 0;
+  padding: $component-spacing-mobile 0;
+
+  @media (min-width: $breakpoint-mobile-horizontal) {
+    padding: $component-spacing-desktop 0;
+  }
 
   .container {
     @include center;

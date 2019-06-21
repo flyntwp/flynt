@@ -4,6 +4,10 @@ namespace Flynt\Components\SliderImagesCentered;
 
 use Flynt\Api;
 
+add_filter('Flynt/addComponentData?name=SliderImagesCentered', function ($data) {
+    return $data;
+});
+
 Api::registerFields('SliderImagesCentered', [
     'layout' => [
         'name' => 'sliderImagesCentered',
