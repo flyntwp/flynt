@@ -1,4 +1,4 @@
-<div class="flyntComponent" is="flynt-block-text-image-crop">
+<div is="flynt-block-text-image-crop" class="flyntComponent {{ options.theme }}">
   <div class="container">
     <div class="box box--{{ imagePosition }}">
       <div class="box-inner box-inner--image">
@@ -19,12 +19,6 @@
       </div>
       <div class="box-inner box-inner--content">
         {{ contentHtml|e('wp_kses_post') }}
-        {% if buttonLink %}
-          <a class="button-link" href="{{ buttonLink.url|e('esc_url') }}"{% if buttonLink.target %} target="{{ buttonLink.target|e }}" rel="noreferrer noopener"{% endif %}>
-            {{ buttonLink.title|e }}
-            <i data-feather="chevron-right" width="12" height="12" stroke-width="3"></i>
-          </a>
-      {% endif %}
       </div>
     </div>
   </div>
