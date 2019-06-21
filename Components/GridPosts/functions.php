@@ -121,7 +121,7 @@ Options::addTranslatable('GridPosts', [
                 'label' => 'Previous Label',
                 'name' => 'previous',
                 'type' => 'text',
-                'default_value' => 'Previous',
+                'default_value' => 'Prev',
                 'required' => 1,
             ],
             [

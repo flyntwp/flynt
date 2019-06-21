@@ -11,11 +11,11 @@
         <div class="pagination">
             <div class="pagination-prevLink">
                 <a href="{% if pagination.prev %}{{ pagination.prev.link }}{% else %}javascript:void(0){% endif %}"
-                    class="button button--primary button--small {% if not pagination.prev %}button--disabled{% endif %}"><i data-feather="arrow-left" class="pagination-arrow"></i> {{ labels.previous }}</a>
+                    class="button button--primary button--small {% if not pagination.prev %}button--disabled{% endif %}"><i data-feather="arrow-left" class="arrow"></i> {{ labels.previous }}</a>
             </div>
             <div class="pagination-nextLink">
                 <a href="{% if pagination.next %}{{ pagination.next.link }}{% else %}javascript:void(0){% endif %}"
-                    class="button button--primary button--small {% if not pagination.next %}button--disabled{% endif %}">{{ labels.next }} <i data-feather="arrow-right" class="pagination-arrow"></i></a>
+                    class="button button--primary button--small {% if not pagination.next %}button--disabled{% endif %}">{{ labels.next }} <i data-feather="arrow-right" class="arrow"></i></a>
             </div>
         </div>
     {% endif %}

@@ -1,7 +1,11 @@
 .filter {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -8px 62px;
+    margin: 0 -8px 32px;
+
+    @media (min-width: $breakpoint-desktop) {
+        margin-bottom: 62px;
+      }
 
     &-item {
         padding: 8px;

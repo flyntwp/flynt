@@ -41,9 +41,11 @@
 
   .post {
     width: 100%;
+    margin-bottom: 20px;
 
     @media (min-width: $breakpoint-tablet) {
       @include grid-item(2, $gutter-width);
+      margin-bottom: 0;
     }
 
     @media (min-width: $breakpoint-tablet-horizontal) {

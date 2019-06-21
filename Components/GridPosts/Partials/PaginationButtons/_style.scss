@@ -8,8 +8,30 @@
     &--center {
         justify-content: center
     }
-    
-    &-arrow {
-      color: $color-background;
+
+    .button {
+      white-space: nowrap;
     }
+
+    .arrow {
+      color: $color-background;
+      width: 16px;
+      height: 18px;
+    }
+
+    &-nextLink {
+
+       .arrow{
+         margin-left: 5px;
+       }
+
+    }
+
+    &-prevLink {
+
+      .arrow{
+        margin-right: 5px;
+      }
+
+   }
 }
