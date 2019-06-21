@@ -1,0 +1,32 @@
+[is='flynt-hero-text-image'] {
+  margin-bottom: $component-spacing-desktop;
+  overflow-x: hidden;
+
+  .container {
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .column {
+    &--content {
+      @include center($content-max-width, 0);
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        @include reset-content-margins;
+
+        flex-shrink: 0;
+        margin: 0;
+      }
+    }
+  }
+
+  .image {
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      height: 600px;
+      max-width: none;
+      width: auto;
+    }
+  }
+}
