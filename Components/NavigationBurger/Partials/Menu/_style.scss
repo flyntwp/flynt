@@ -3,7 +3,7 @@
 
   backface-visibility: hidden;
   background-color: $color-background;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.16);
+  box-shadow: inset $drop-shadow;
   height: calc(100% - #{$navigation-height});
   left: 0;
   margin: 0;
@@ -39,6 +39,6 @@
   }
 }
 
-.container-isActive .menu {
+.container-menuIsOpen .menu {
   transform: translateX(0);
 }

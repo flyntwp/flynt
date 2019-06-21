@@ -1,18 +1,14 @@
-$navigation-height: 75px;
-
-.pageWrapper {
-  padding-top: $navigation-height;
-
-  @media (min-width: $breakpoint-tablet-horizontal) {
-    padding-top: 0;
-  }
-
-  @at-root .admin-bar & {
-    transform: translate3d(0, 0, 0);
-  }
+// NOTE: disables sticky nav when logged in
+.admin-bar .pageWrapper {
+  transform: translate3d(0, 0, 0);
 }
 
-[is='flynt-navigation-mobile'] {
+[is='flynt-navigation-burger'] {
+  $navigation-height: 75px;
+  $drop-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
+
+  height: $navigation-height;
+
   @media (min-width: $breakpoint-tablet-horizontal) {
     display: none;
   }
@@ -20,7 +16,7 @@ $navigation-height: 75px;
   .container {
     align-items: center;
     background-color: $color-background;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
+    box-shadow: $drop-shadow;
     display: flex;
     height: $navigation-height;
     justify-content: space-between;

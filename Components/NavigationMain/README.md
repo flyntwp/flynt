@@ -6,8 +6,8 @@ Category: Navigation
 
 ---
 
-Tags: navigation, menu
+Tags: navigation, menu, desktop
 
 ---
 
-Text: A static brand logo and a simple list of links generated from a WordPress menu, to be easily extended into a more complex website navigation. Transforms into a sticky navigation with a burger menu on mobile.
+Text: A simple navigation used only on desktop.

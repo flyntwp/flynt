@@ -1,7 +1,7 @@
 import $ from 'jquery'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 
-class NavigationMobile extends window.HTMLElement {
+class NavigationBurger extends window.HTMLElement {
   constructor (...args) {
     const self = super(...args)
     self.init()
@@ -31,8 +31,8 @@ class NavigationMobile extends window.HTMLElement {
   connectedCallback () {}
 
   triggerMenu (e) {
-    this.$container.toggleClass('container-isActive')
-    if (this.$container.hasClass('container-isActive')) {
+    this.$container.toggleClass('container-menuIsOpen')
+    if (this.$container.hasClass('container-menuIsOpen')) {
       disableBodyScroll(this.$menu.get(0))
     } else {
       enableBodyScroll(this.$menu.get(0))
@@ -40,6 +40,6 @@ class NavigationMobile extends window.HTMLElement {
   }
 }
 
-window.customElements.define('flynt-navigation-mobile', NavigationMobile, {
+window.customElements.define('flynt-navigation-burger', NavigationBurger, {
   extends: 'nav'
 })
