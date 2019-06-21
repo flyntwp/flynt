@@ -1,13 +1,11 @@
-<div class="flyntComponent {{ options.theme.card ? 'flyntComponent--card'}} {{ options.theme.backgroundColor }}" is="flynt-list-logos">
+<div class="flyntComponent {{ options.card ? 'flyntComponent--card'}} {{ options.theme }}" is="flynt-list-logos">
   <div class="container">
     <div class="listLogos">
-      {% if general.title or general.intro %}
-        <header class="header">
-          <h2 class="title">{{ general.title }}</h2>
-          <p class="intro">{{ general.intro }}</p>
+      {% if title %}
+        <header class="title">
+          {{ title }}
         </header>
       {% endif %}
-
       <div class="content">
         <ul class="list">
           {% for item in items %}
@@ -27,7 +25,6 @@
           {% endfor %}
         </ul>
       </div>
-
     </div>
   </div>
 </div>

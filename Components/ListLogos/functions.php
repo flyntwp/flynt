@@ -17,27 +17,13 @@ Api::registerFields('ListLogos', [
                 'endpoint' => 0,
             ],
             [
-                'label' => '',
-                'name' => 'general',
-                'type' => 'group',
-                'layout' => 'row',
-                'sub_fields' => [
-                    [
-                        'label' => 'Title',
-                        'name' => 'title',
-                        'type' => 'text',
-                        'placeholder' => 'optional',
-                    ],
-                    [
-                        'label' => 'Intro',
-                        'name' => 'intro',
-                        'type' => 'textarea',
-                        'maxlength' => 240,
-                        'rows' => 3,
-                        'new_lines' => '',
-                        'placeholder' => 'optional',
-                    ],
-                ]
+                'label' => 'Title',
+                'name' => 'title',
+                'type' => 'wysiwyg',
+                'tabs' => 'visual,text',
+                'toolbar' => 'full',
+                'media_upload' => 0,
+                'delay' => 1,
             ],
             [
                 'label' => 'Logos',
@@ -72,7 +58,7 @@ Api::registerFields('ListLogos', [
                         'name' => 'image',
                         'type' => 'image',
                         'return_format' => 'array',
-                        'preview_size' => 'medium',
+                        'preview_size' => 'small',
                         'library' => 'all',
                         'min_width' => 384,
                         'min_height' => 216,
@@ -108,32 +94,24 @@ Api::registerFields('ListLogos', [
                     [
                         'label' => 'Theme',
                         'name' => 'theme',
-                        'type' => 'group',
-                        'layout' => 'row',
-                        'sub_fields' => [
-                            [
-                                'label' => 'Show as Cards',
-                                'name' => 'card',
-                                'type' => 'true_false',
-                                'default_value' => 0,
-                                'ui' => 1
-                            ],
-                            [
-                                'label' => 'Background',
-                                'name' => 'backgroundColor',
-                                'type' => 'select',
-                                'allow_null' => 0,
-                                'multiple' => 0,
-                                'ui' => 0,
-                                'ajax' => 0,
-                                'choices' => [
-                                    '' => 'Default',
-                                    'themeLight' => 'Light',
-                                    'themeDark' => 'Dark',
-                                    'themeHero' => 'Hero',
-                                ]
-                            ],
+                        'type' => 'select',
+                        'allow_null' => 0,
+                        'multiple' => 0,
+                        'ui' => 0,
+                        'ajax' => 0,
+                        'choices' => [
+                            '' => 'Default',
+                            'themeLight' => 'Light',
+                            'themeDark' => 'Dark',
+                            'themeHero' => 'Hero',
                         ]
+                    ],
+                    [
+                        'label' => 'Show as Card',
+                        'name' => 'card',
+                        'type' => 'true_false',
+                        'default_value' => 0,
+                        'ui' => 1
                     ],
                 ]
             ],
