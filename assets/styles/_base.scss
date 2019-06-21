@@ -38,24 +38,26 @@ body {
   background-color: $color-background-dark;
 
   &,
-  h1,
-  .h1,
-  h2,
-  .h2,
-  h3,
-  .h3,
-  h4,
-  .h4,
-  h5,
-  .h5,
-  h6,
-  .h6 {
+  #{$heading-selectors} {
     color: $color-background;
   }
 }
 
 .themeLight {
   background-color: $color-background-light;
+}
+
+.themeHero {
+  background-color: $color-background-hero;
+
+  &,
+  #{$heading-selectors} {
+    color: $color-background;
+  }
+
+  .feather {
+    color: $color-background;
+  }
 }
 
 .flyntComponent {
@@ -97,18 +99,7 @@ body {
 * Styling all likely used HTML elements.
 */
 
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3,
-h4,
-.h4,
-h5,
-.h5,
-h6,
-.h6 {
+#{$heading-selectors} {
   color: $color-headline;
   font-weight: 700;
   line-height: 1.45;
@@ -139,7 +130,7 @@ h3,
 
 h4,
 .h4 {
-  font-size: 1rem;
+  font-size: 1.125rem;
   padding-top: 0.5rem;
 }
 
@@ -152,7 +143,7 @@ h5,
 
 h6,
 .h6 {
-  font-size: 0.8rem;
+  font-size: 0.9375rem;
   padding-top: 0.5rem;
 }
 
@@ -248,21 +239,23 @@ table {
 
 td,
 th {
-  padding: 0.75rem;
+  padding: 1.25rem;
   text-align: inherit;
   vertical-align: top;
 }
 
 thead {
   th {
-    border-bottom: 2px solid $color-brand;
+    border-bottom: 2px solid $color-accent;
+    color: $color-headline;
+    padding-bottom: 10px;
     vertical-align: bottom;
     white-space: nowrap;
   }
 }
 
 tr:nth-child(even) {
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color: $color-background-light;
 }
 
 /**
@@ -432,7 +425,7 @@ select {
   background-repeat: no-repeat;
   background-size: 9px;
   padding-right: 45px;
-  
+
   &::-ms-expand {
     display: none;
   }
@@ -488,4 +481,17 @@ select {
   + label::before {
     border-radius: 50%;
   }
+}
+
+/**
+* 3.3 Icons
+*
+* Global icon set styling.
+*/
+
+.feather {
+  color: $color-accent;
+  position: relative;
+  top: -2px;
+  vertical-align: middle;
 }
