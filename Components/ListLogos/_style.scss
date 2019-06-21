@@ -1,11 +1,11 @@
 @import 'Assets/grd';
 
 [is='flynt-list-logos'] {
-  margin: 64px 0 0;
-
   @at-root .themeDark#{&} {
     background-color: #000;
   }
+
+  margin: 64px 0 0;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
     margin: 96px 0 0;

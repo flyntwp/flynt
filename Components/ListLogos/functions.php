@@ -112,6 +112,13 @@ Api::registerFields('ListLogos', [
                         'layout' => 'row',
                         'sub_fields' => [
                             [
+                                'label' => 'Show as Cards',
+                                'name' => 'card',
+                                'type' => 'true_false',
+                                'default_value' => 0,
+                                'ui' => 1
+                            ],
+                            [
                                 'label' => 'Background',
                                 'name' => 'backgroundColor',
                                 'type' => 'select',
@@ -125,13 +132,6 @@ Api::registerFields('ListLogos', [
                                     'themeDark' => 'Dark',
                                     'themeHero' => 'Hero',
                                 ]
-                            ],
-                            [
-                                'label' => 'Card',
-                                'name' => 'card',
-                                'type' => 'true_false',
-                                'default_value' => 0,
-                                'ui' => 1
                             ],
                         ]
                     ],
