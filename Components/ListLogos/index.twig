@@ -1,0 +1,26 @@
+<div class="flyntComponent" is="flynt-list-logos">
+  <div class="container">
+    <div class="listLogos">
+      {% if title %}
+        <h2 class="title">{{ title }}</h2>
+      {% endif %}
+      <ul class="list">
+        {% for item in items %}
+          <li class="list-item">
+            <div class="item">
+              {% if item.link %}
+                <a class="logo" href="{{ item.link.url|e('esc_url') }}" title="{{ item.link.title|e }}" {{ item.link.target == '_blank' ? 'target="_blank" rel="nofollow noreferrer noopener"' : 'rel="nofollow"' }}>
+                  {% include 'Partials/Image/index.twig' with {image: item.image, link: item.link} only %}
+                </a>
+              {% else %}
+                <div class="logo">
+                  {% include 'Partials/Image/index.twig' with {image: item.image, link: item.link} only %}
+                </div>
+              {% endif %}
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
