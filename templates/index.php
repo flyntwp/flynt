@@ -11,7 +11,7 @@ $context['posts'] = new PostQuery();
 if (is_archive() || is_home()) {
     global $wp_query;
     $postType = ($wp_query->query_vars['post_type'] ?? 'post') ?: 'post';
-    $context['data'] = Options::get('translatableOptions', 'feature', POST_TYPES[$postType] . 'Archive');
+    $context['data'] = Options::get('translatableOptions', 'feature', POST_TYPES[$postType]['label'] . 'Archive');
     $template = 'twig/archive.twig';
 } else {
     $template = 'twig/index.twig';

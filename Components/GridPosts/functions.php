@@ -12,10 +12,10 @@ const FILTER_BY_TAXONOMY = 'category';
 add_filter('Flynt/addComponentData?name=GridPosts', function ($data) {
     if ($data['showFilters']) {
         if ($data['visibleFilters']) {
-            $terms = $data['visibleterms'];
+            $terms = $data['visibleFilters'];
         } else {
             $terms = get_terms([
-                'taxonomy' => FILTER_BY_TAXONOMY,
+                'taxonomy' => $data['filterByTaxonomy'] ?? FILTER_BY_TAXONOMY,
                 'hide_empty' => true,
             ]);
         }
@@ -24,17 +24,16 @@ add_filter('Flynt/addComponentData?name=GridPosts', function ($data) {
         }, $terms);
 
 
-        $data['archiveUrl'] = get_post_type_archive_link(POST_TYPE);
+        $data['archiveUrl'] = get_post_type_archive_link($data['postType'] ?? POST_TYPE);
     }
 
     return $data;
 });
 
-Api::registerFields('GridPosts', [
-    'layout' => [
-        'name' => 'gridPosts',
-        'label' => 'Grid: Posts',
-        'sub_fields' => [
+function loadFields($taxonomy = FILTER_BY_TAXONOMY) {
+    $fields = [];
+    if (!empty($taxonomy)) {
+        $fields = [
             [
                 'label' => 'Show Filters?',
                 'name' => 'showFilters',
@@ -46,7 +45,7 @@ Api::registerFields('GridPosts', [
                 'label' => 'Visible Filters',
                 'name' => 'visibleFilters',
                 'type' => 'taxonomy',
-                'taxonomy' => FILTER_BY_TAXONOMY,
+                'taxonomy' => $taxonomy,
                 'field_type' => 'multi_select',
                 'allow_null' => true,
                 'multiple' => true,
@@ -63,22 +62,23 @@ Api::registerFields('GridPosts', [
                     ],
                 ],
             ],
-            [
-                'label' => 'Pre-Content',
-                'name' => 'preContentHtml',
-                'type' => 'wysiwyg',
-                'instructions' => 'Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.',
-                'tabs' => 'visual,text',
-                'toolbar' => 'full',
-                'media_upload' => 0,
-                'delay' => 1,
-                'wrapper' => [
-                    'class' => 'autosize',
-                ],
-            ]
-        ]
-    ]
-]);
+        ];
+    }
+    $fields[] = [
+        'label' => 'Pre-Content',
+        'name' => 'preContentHtml',
+        'type' => 'wysiwyg',
+        'instructions' => 'Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.',
+        'tabs' => 'visual,text',
+        'toolbar' => 'full',
+        'media_upload' => 0,
+        'delay' => 1,
+        'wrapper' => [
+            'class' => 'autosize',
+        ],
+    ];
+    return $fields;
+};
 
 Options::addTranslatable('GridPosts', [
     [
