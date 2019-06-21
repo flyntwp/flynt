@@ -1,0 +1,8 @@
+<nav is="flynt-navigation-simple" class="flyntComponent">
+  <div class="wrapper">
+    {% include 'Partials/Logo/index.twig' with { 'logo': logo } only %}
+    {% if menu %}
+      {% include 'Partials/Menu/index.twig' with { 'items': menu.items } only %}
+    {% endif %}
+  </div>
+</nav>
