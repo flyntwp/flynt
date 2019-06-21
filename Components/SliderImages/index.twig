@@ -1,17 +1,22 @@
 <div class="flyntComponent" is="flynt-slider-images">
   <script type="application/json">{{ jsonData|json_encode }}</script>
   <div class="centerMaxWidthContainer">
-    <div class="slider swiper-container">
+    {% if preContentHtml %}
+      <div class="preContent centerContentMaxWidth">
+        {{ preContentHtml|e('wp_kses_post') }}
+      </div>
+    {% endif %}
+    <div class="slider swiper-container themeLight">
       <div class="swiper-wrapper">
         {% for image in images %}
-          <div class="swiper-slide">
+          <div class="slider-item swiper-slide">
             <figure class="figure">
               <img class="figure-image lazyload"
                 src="{{ image.src|resize(0, 540) }}"
                 srcset="{{ placeholderImage(image.aspect * 540, 540) }}"
                 data-srcset="
                   {{ image.src|resize(0, 1080) }} {{ (image.aspect * 1080)|round }}w,
-                  {{ image.src|resize(0, 750) }} {{ (image.aspect * 750)|round }}w,
+                  {{ image.src|resize(0, 800) }} {{ (image.aspect * 800)|round }}w,
                   {{ image.src|resize(0, 540) }} {{ (image.aspect * 540)|round }}w,
                   {{ image.src|resize(0, 385) }} {{ (image.aspect * 385)|round }}w,
                   {{ image.src|resize(0, 250) }} {{ (image.aspect * 250)|round }}w"
@@ -24,11 +29,11 @@
           </div>
         {% endfor %}
       </div>
-      <button type="button" class="slider-button--next">
-        <i data-feather="arrow-right"></i>
-      </button>
-      <button type="button" class="slider-button--prev">
+      <button type="button" class="slider-button slider-button--prev">
         <i data-feather="arrow-left"></i>
+      </button>
+      <button type="button" class="slider-button slider-button--next">
+        <i data-feather="arrow-right"></i>
       </button>
     </div>
   </div>
