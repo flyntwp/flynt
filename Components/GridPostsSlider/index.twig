@@ -1,48 +1,47 @@
-<div class="flyntComponent" is="flynt-grid-posts-slider">
+<div class="flyntComponent themeDark" is="flynt-grid-posts-slider">
+  <script type="application/json">{{ jsonData|json_encode }}</script>
   <div class="container">
     {% if contentHtml %}
-      <div class="preContent">
+      <div class="preContent centerContentMaxWidth">
         {{ contentHtml|e('wp_kses_post')}}
       </div>
     {% endif %}
-    {% if ctaButton %}
-      <div class="ctaButton">
-        <a class="button button--light" href="{{ ctaButton.url|e('esc_url') }}"{% if ctaButton.target %} target="{{ ctaButton.target|e }}" rel="noreferrer noopener"{% endif %}>
-          {{ ctaButton.title|e }}
-        </a>
-      </div>
-    {% endif %}
-    <div class="gridPosts">
-      {% for post in posts %}
-        <div class="post">
-          <a class="post-link" href="{{ post.link }}" {{ post.target == '_blank' ? 'target="_blank" rel="noreferrer noopener"' }} title="{{ post.title|e }}">
-            {% if post.thumbnail %}
-              <figure class="figure">
-                <img class="image lazyload"
-                  src="{{ post.thumbnail|resize(300, 200) }}"
-                  srcset="{{ placeholderImage(300, 200) }}"
-                  data-srcset="
-                    {{ post.thumbnail|resize(912, 608) }} 608w,
-                    {{ post.thumbnail|resize(600, 400) }} 600w,
-                    {{ post.thumbnail|resize(456, 304) }} 456w,
-                    {{ post.thumbnail|resize(300, 200) }} 300w"
-                  data-sizes="auto"
-                  alt="{{ post.thumbnail.alt|e }}">
-              </figure>
-            {% endif %}
-            <div class="content">
-              {% if post.post_date %}
-                <time class="date" datetime="{{ post.post_date }}">{{ post.post_date | date }}</time>
+    <div class="gridPosts slider swiper-container">
+      <div class="swiper-wrapper">
+        {% for post in posts %}
+          <div class="post swiper-slide">
+            <a class="post-link" href="{{ post.link }}" {{ post.target == '_blank' ? 'target="_blank" rel="noreferrer noopener"' }} title="{{ post.title|e }}">
+              {% if post.thumbnail %}
+                <figure class="figure">
+                  <img class="image lazyload"
+                    src="{{ post.thumbnail|resize(300, 200) }}"
+                    srcset="{{ placeholderImage(300, 200) }}"
+                    data-srcset="
+                      {{ post.thumbnail|resize(912, 608) }} 608w,
+                      {{ post.thumbnail|resize(600, 400) }} 600w,
+                      {{ post.thumbnail|resize(456, 304) }} 456w,
+                      {{ post.thumbnail|resize(300, 200) }} 300w"
+                    data-sizes="auto"
+                    alt="{{ post.thumbnail.alt|e }}">
+                </figure>
               {% endif %}
-              <h3 class="h4 title">
-                {{ post.title }}
-              </h3>
-            </div>
-          </a>
-        </div>
-      {% else %}
-        <p class="noPosts">{{ noPostsFoundText }}</p>
-      {% endfor %}
+              <div class="content">
+                {% if post.post_date %}
+                  <time class="date" datetime="{{ post.post_date }}">{{ post.post_date | date }}</time>
+                {% endif %}
+                <h3 class="h4 title">
+                  {{ post.title }}
+                </h3>
+              </div>
+            </a>
+          </div>
+        {% else %}
+          <p class="noPosts">{{ noPostsFoundText }}</p>
+        {% endfor %}
+      </div>
+      {% if posts %}
+        <div class="slider-pagination"></div>
+      {% endif %}
     </div>
   </div>
 </div>
