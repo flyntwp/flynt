@@ -43,7 +43,7 @@
     .item {
       @include grid-item(2, 18px, 18px);
 
-      @media (min-width: $breakpoint-mobile) {
+      @media (min-width: 375px) {
         @include grid-item(3, 18px, 18px);
       }
 
