@@ -8,7 +8,7 @@
     @media (min-width: $breakpoint-tablet) {
       @include center($padding: $container-padding-tablet);
     }
-  
+
     @media (min-width: $breakpoint-desktop) {
       @include center($padding: $container-padding-desktop);
     }
@@ -72,21 +72,6 @@
 
   }
 
-  .pagination {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 40px;
-
-    .button {
-      margin-bottom: 0;
-
-      &--primary {
-        &:hover {
-          color: #fff;
-        }
-      }
-    }
-  }
+  @import 'Partials/Filter/style';
+  @import 'Partials/PaginationButtons/style';
 }

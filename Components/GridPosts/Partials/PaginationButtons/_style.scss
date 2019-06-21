@@ -1,0 +1,21 @@
+.pagination {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 40px;
+
+    &--center {
+        justify-content: center
+    }
+
+    .button {
+      margin-bottom: 0;
+
+      &--primary {
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }

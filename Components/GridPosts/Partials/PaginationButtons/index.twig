@@ -1,0 +1,21 @@
+
+    {% if loadMore %}
+        {% if pagination.next %}
+            <div class="pagination pagination--center">
+                <div class="pagination-loadMore">
+                <a data-action="loadMore" href="{{ pagination.next.link }}" class="button button--primary">{{ labels.loadMore }}</a>
+                </div>
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="pagination">
+            <div class="pagination-prevLink">
+                <a href="{% if pagination.prev %}{{ pagination.prev.link }}{% else %}javascript:void(0){% endif %}"
+                    class="button {% if pagination.prev %}button--primary{% else %}button--disabled{% endif %}"><i data-feather="arrow-left"></i> {{ labels.previous }}</a>
+            </div>
+            <div class="pagination-nextLink">
+                <a href="{% if pagination.next %}{{ pagination.next.link }}{% else %}javascript:void(0){% endif %}"
+                    class="button {% if pagination.next %}button--primary{% else %}button--disabled{% endif %}">{{ labels.next }} <i data-feather="arrow-right"></i></a>
+            </div>
+        </div>
+    {% endif %}

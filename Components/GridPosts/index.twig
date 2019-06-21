@@ -4,11 +4,7 @@
       <div class="preContent">{{ preContentHtml|e('wp_kses_post') }}</div>
     {% endif %}
     {% if terms %}
-      <ul>
-        {% for term in terms %}
-          <li><a href="{{ term.link }}" class="{{ term.isActive ? 'active' }}">{{ term.title }}</a></li>
-        {% endfor %}
-      </ul>
+       {% include 'Partials/Filter/index.twig' %}
     {% endif %}
     <ul class="gridPosts">
       {% for post in posts %}
@@ -33,8 +29,9 @@
             </h3>
           </a>
           <p>
-            {{ post.preview.length(18).force }}
+            {{ post.preview.read_more(false).length(18).force }}
           </p>
+          <a href="" class="button button--link">{{ labels.readMore }}</a>
         </li>
       {% else %}
         <p class="noPosts">{{ labels.noPostsFound }}</p>
@@ -42,24 +39,7 @@
     </ul>
     {% set pagination = posts.pagination %}
     {% if pagination.pages %}
-      <div class="pagination">
-        {% if loadMore %}
-          {% if pagination.next%}
-            <div class="pagination-loadMore">
-              <a data-action="loadMore" href="{{ pagination.next.link }}" class="button button--primary">{{ labels.loadMore }}</a>
-            </div>
-          {% endif %}
-        {% else %}
-          <div class="pagination-prevLink">
-            <a href="{% if pagination.prev %}{{ pagination.prev.link }}{% else %}javascript:void(0){% endif %}"
-              class="button {% if pagination.prev %}button--primary{% else %}button--disabled{% endif %}">{{ labels.previous }}</a>
-          </div>
-          <div class="pagination-nextLink">
-            <a href="{% if pagination.next %}{{ pagination.next.link }}{% else %}javascript:void(0){% endif %}"
-              class="button {% if pagination.next %}button--primary{% else %}button--disabled{% endif %}">{{ labels.next }}</a>
-          </div>
-        {% endif %}
-      </div>
+      {% include 'Partials/PaginationButtons/index.twig' %}
     {% endif %}
   </div>
 </div>

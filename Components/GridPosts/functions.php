@@ -152,6 +152,13 @@ Options::addTranslatable('GridPosts', [
                 'default_value' => 'All',
                 'required' => 1,
             ],
+            [
+                'label' => 'Read More Label',
+                'name' => 'readMore',
+                'type' => 'text',
+                'default_value' => 'Read More',
+                'required' => 1,
+            ]
         ],
     ],
 ]);
