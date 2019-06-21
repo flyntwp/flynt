@@ -1,6 +1,10 @@
 [is='flynt-list-logos'] {
   margin: 64px 0 0;
 
+  @at-root .themeDark#{&} {
+    background-color: #000;
+  }
+
   @media (min-width: $breakpoint-mobile-horizontal) {
     margin: 96px 0 0;
   }
@@ -15,44 +19,57 @@
 
   .listLogos {
     display: block;
+    padding-top: 80px;
+    padding-bottom: 96px;
+  }
+
+  .header {
+    text-align: center;
+
+    @at-root .themeDark#{&} {
+      h2, p {
+        color: #fff;
+      }
+    }
   }
 
   .list {
     @include grid;
+    justify-content: center;
     list-style: none;
     margin: 0;
     padding: 0;
 
-    .list-item {
+    .item {
       @include grid-item(2, 18px, 18px);
 
-      @media (min-width: $breakpoint-mobile-horizontal) {
+      @media (min-width: $breakpoint-mobile) {
         @include grid-item(3, 18px, 18px);
       }
 
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        @include grid-item(4, 18px, 18px);
+      }
+
       @media (min-width: $breakpoint-tablet) {
-        @include grid-item(3, $column-gutter, $column-gutter);
+        @include grid-item(6, $gutter-width, $gutter-width);
       }
 
       @media (min-width: $breakpoint-tablet-horizontal) {
-        @include grid-item(4, $column-gutter, $column-gutter);
+        @include grid-item(8, $gutter-width, $gutter-width);
       }
     }
   }
 
-  .item {
-    background-color: #fff;
+  .media {
     display: block;
     height: 0;
-    padding-bottom: 100%;
+    padding-bottom: 70%;
     position: relative;
 
-    @media (min-width: $breakpoint-mobile-horizontal) {
-      padding-bottom: 95%;
-    }
-
-    @media (min-width: $breakpoint-tablet) {
-      padding-bottom: 90%;
+    @at-root .flyntComponent--card#{&} {
+      background-color: #fff;
+      padding-bottom: 100%;
     }
   }
 
@@ -61,34 +78,10 @@
     display: flex;
     height: 100%;
     left: 0;
-    padding: 20px;
+    padding: 0;
     position: absolute;
     top: 0;
     width: 100%;
-
-    @media (min-width: 375px) {
-      padding: 24px;
-    }
-
-    @media (min-width: $breakpoint-mobile-horizontal) {
-      padding: 36px;
-    }
-
-    @media (min-width: 640px) {
-      padding: 40px;
-    }
-
-    @media (min-width: $breakpoint-tablet) {
-      padding: 44px;
-    }
-
-    @media (min-width: $breakpoint-tablet-horizontal) {
-      padding: 48px;
-    }
-
-    @media (min-width: $breakpoint-desktop) {
-      padding: 52px;
-    }
   }
 
   @import 'Partials/Image/style';
