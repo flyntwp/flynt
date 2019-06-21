@@ -50,7 +50,7 @@ class SliderImagesCentered extends window.HTMLDivElement {
         clickable: true,
       },
       slidesPerView: 'auto',
-      spaceBetween: 20
+      spaceBetween: 0
     })
   }
 }

@@ -22,9 +22,57 @@
 
   .swiper-slide {
     max-width: 870px;
+
+    .figure {
+      transition: transform 0.3s ease;
+      transform: scale(0.9);
+
+      &::before {
+        background-color: rgba($color-headline, 0.3);
+        content: '';
+        height: 100%;
+        opacity: 1;
+        position: absolute;
+        transition: opacity 0.3s ease;
+        width: 100%;
+      }
+    }
+
+    &-active {
+      .figure {
+        transform: scale(1);
+
+        &::before {
+          opacity: 0;
+        }
+      }
+    }
   }
 
   .slider {
+    &-button {
+      cursor: pointer;
+      height: 50px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      z-index: 3;
+
+      > svg {
+        height: auto;
+        width: 100%;
+      }
+
+      &--prev {
+        left: 40px;
+      }
+
+      &--next {
+        right: 40px;
+      }
+    }
+
     &-pagination {
       margin-top: 1.5rem;
       text-align: center;

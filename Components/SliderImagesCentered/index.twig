@@ -10,14 +10,13 @@
             <div class="slider-item swiper-slide">
               <figure class="figure">
                 <img class="figure-image lazyload"
-                  src="{{ image.src|resize(0, 540) }}"
-                  srcset="{{ placeholderImage(image.aspect * 540, 540) }}"
+                  src="{{ image.src|resize(870, 570) }}"
+                  srcset="{{ placeholderImage(870, 570) }}"
                   data-srcset="
-                    {{ image.src|resize(0, 1080) }} {{ (image.aspect * 1080)|round }}w,
-                    {{ image.src|resize(0, 750) }} {{ (image.aspect * 750)|round }}w,
-                    {{ image.src|resize(0, 540) }} {{ (image.aspect * 540)|round }}w,
-                    {{ image.src|resize(0, 385) }} {{ (image.aspect * 385)|round }}w,
-                    {{ image.src|resize(0, 250) }} {{ (image.aspect * 250)|round }}w"
+                    {{ image.src|resize(1740, 1140) }} 1140w,
+                    {{ image.src|resize(870, 570) }} 870w,
+                    {{ image.src|resize(570, 373) }} 570w,
+                    {{ image.src|resize(380, 250) }} 380w"
                   data-sizes="auto"
                   alt="{{ image.alt|e }}">
                 {% if image.caption %}
@@ -28,10 +27,10 @@
           {% endfor %}
         </div>
         <div class="slider-pagination"></div>
-        <button class="slider-button--prev">
+        <button class="slider-button slider-button--prev">
           <i data-feather="arrow-left"></i>
         </button>
-        <button class="slider-button--next">
+        <button class="slider-button slider-button--next">
           <i data-feather="arrow-right"></i>
         </button>
     </div>
