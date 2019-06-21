@@ -41,10 +41,10 @@ Api::registerFields('BlockTextImageCrop', [
                 ],
             ],
             [
-                'label' => 'Link',
+                'label' => 'Button Link',
                 'type' => 'link',
                 'instructions' => 'Here you can link to every page you like',
-                'name' => 'link',
+                'name' => 'buttonLink',
                 'return_format' => 'array'
             ]
         ]

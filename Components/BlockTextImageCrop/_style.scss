@@ -3,44 +3,44 @@
 
   .container {
     @include center;
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      @include center($content-max-width);
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      @include center($container-max-width, 0);
+    }
   }
 
   .box {
     margin: 0 auto;
-    max-width: $content-max-width;
 
-    @media (min-width: $breakpoint-tablet-horizontal) {
+    @media (min-width: $breakpoint-desktop) {
       align-items: center;
       display: flex;
-      margin: 0 -20px;
-      max-width: none;
+    }
 
-      &-inner {
-        padding: 0 20px;
-        width: 50%;
-      }
-
-      &--imageLeft {
+    &--imageLeft {
+      @media (min-width: $breakpoint-desktop) {
         flex-direction: row;
       }
+    }
 
-      &--imageRight {
+    &--imageRight {
+      @media (min-width: $breakpoint-desktop) {
         flex-direction: row-reverse;
       }
     }
 
     &-inner {
-      &--content {
-        @include reset-content-margins;
+      @media (min-width: $breakpoint-desktop) {
+        width: 50%;
       }
 
-      @media (min-width: $breakpoint-desktop) {
-        &--image {
-          width: 60%;
-        }
-
-        &--content {
-          width: 40%;
+      &--content {
+        @media (min-width: $breakpoint-desktop) {
+          padding: 60px 60px 60px 112px;
         }
       }
     }
@@ -49,11 +49,27 @@
   .figure {
     font-size: 0.8rem;
 
-    @media (min-width: $breakpoint-tablet-horizontal) {
-      margin-bottom: 0;
+    @media (min-width: $breakpoint-desktop) {
+      margin-left: calc(50vw - 720px);
+    }
 
-      &-caption {
-        position: absolute;
+    @media (min-width: $breakpoint-desktop-wide) {
+      margin-left: 0;
+    }
+
+    &-caption {
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        margin-left: calc(720px - 50vw);
+        padding-left: $gutter-width;
+      }
+
+      @media (min-width: ($breakpoint-desktop-wide + $gutter-width + $gutter-width)) {
+        margin-left: 0;
+        padding-left: 0;
       }
     }
   }

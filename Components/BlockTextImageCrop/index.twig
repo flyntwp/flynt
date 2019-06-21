@@ -4,12 +4,10 @@
       <div class="box-inner box-inner--image">
         <figure class="figure">
           <img class="figure-image lazyload"
-            src="{{ image.src|resize(750) }}"
-            srcset="{{ placeholderImage(750, 750 / image.aspect) }}"
+            src="{{ image.src|resize(720) }}"
+            srcset="{{ placeholderImage(720, 720 / image.aspect) }}"
             data-srcset="
-              {{ image.src|resize(1920) }} 1920w,
-              {{ image.src|resize(1280) }} 1280w,
-              {{ image.src|resize(750) }} 750w,
+              {{ image.src|resize(720) }} 720w,
               {{ image.src|resize(375) }} 375w"
             data-sizes="auto"
             alt="{{ image.alt|e }}">
@@ -20,9 +18,9 @@
       </div>
       <div class="box-inner box-inner--content">
         {{ contentHtml|e('wp_kses_post') }}
-        {% if link %}
-          <a class="link" href="{{ link.url|e('esc_url') }}"{% if link.target %} target="{{ link.target|e }}" rel="noreferrer noopener"{% endif %}>
-            {{ link.title|e }}
+        {% if buttonLink %}
+          <a class="button-link" href="{{ buttonLink.url|e('esc_url') }}"{% if buttonLink.target %} target="{{ buttonLink.target|e }}" rel="noreferrer noopener"{% endif %}>
+            {{ buttonLink.title|e }}
           </a>
       {% endif %}
       </div>
