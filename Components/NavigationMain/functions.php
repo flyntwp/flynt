@@ -7,7 +7,7 @@ use Flynt\Utils\Asset;
 
 add_action('init', function () {
     register_nav_menus([
-        'navigation_main' => __('Navigation Simple', 'flynt')
+        'navigation_main' => __('Navigation Main', 'flynt')
     ]);
 });
 
