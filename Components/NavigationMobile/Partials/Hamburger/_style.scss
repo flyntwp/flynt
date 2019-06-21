@@ -1,7 +1,7 @@
 .hamburger {
   cursor: pointer;
   display: block;
-  height: 22px;
+  height: 18px;
   outline: 0;
   position: relative;
   width: 30px;
@@ -31,11 +31,11 @@
 
   &-barPrimary,
   &-barSecondary {
-    top: 10px;
+    top: 8px;
   }
 
   &::after {
-    top: 20px;
+    top: 16px;
   }
 }
 
@@ -46,11 +46,11 @@
   }
 
   &::before {
-    transform: scale(0) translateY(10px);
+    transform: scale(0) translateY(8px);
   }
 
   &::after {
-    transform: scale(0) translateY(-10px);
+    transform: scale(0) translateY(-8px);
   }
 
   &-barPrimary {
