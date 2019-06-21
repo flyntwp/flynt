@@ -1,6 +1,6 @@
 <nav is="flynt-navigation-mobile" class="flyntComponent">
   <div class="container centerMaxWidthContainer">
-    {% include 'Partials/Logo/index.twig' with { 'logo': logo } only %}
+    {% include 'Partials/Logo/index.twig' with { 'logo': logo, 'site': site } only %}
     {% if menu %}
       {% include 'Partials/Hamburger/index.twig' %}
       {% include 'Partials/Menu/index.twig' with { 'items': menu.items } only %}
