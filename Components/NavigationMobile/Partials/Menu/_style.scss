@@ -2,7 +2,7 @@
   @include reset-list;
 
   backface-visibility: hidden;
-  background-color: $color-accent;
+  background-color: $color-background;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.16);
   height: 100%;
   left: 0;
@@ -15,13 +15,25 @@
   width: 100%;
   z-index: 99;
 
+  &-item--current {
+    .menu-link {
+      color: $color-accent;
+    }
+  }
+
   &-link {
-    color: $color-background;
+    color: $color-text;
     display: block;
-    font-size: 1.25rem;
-    padding: 11px;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 12px $container-padding-mobile;
     text-align: center;
     text-decoration: none;
+
+    @media (min-width: $container-padding-tablet) {
+      padding-left: $container-padding-tablet;
+      padding-right: $container-padding-tablet;
+    }
   }
 }
 
