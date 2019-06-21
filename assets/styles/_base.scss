@@ -348,12 +348,49 @@ button {
 }
 
 .button-link {
+  color: $color-accent;
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.1875rem;
   outline: none;
+  padding: 1.25rem 0;
+  position: relative;
   text-decoration: none;
-  border-bottom: 1px solid;
+  transition: color 0.2s ease-out;
 
-  .feather {
-    vertical-align: middle
+  &:hover {
+    color: $color-background-dark;
+
+    &::before {
+      background: $color-background-dark;
+    }
+
+    &::after {
+      background-position: right center;
+    }
+  }
+
+  &::before {
+    background: $color-accent;
+    bottom: calc(50% - 0.5625rem);
+    content: '';
+    height: 1px;
+    left: 0;
+    position: absolute;
+    transition: background-color 0.2s ease-out;
+    width: 100%;
+  }
+
+  &::after {
+    background: url('../assets/images/chevron-sprite.svg') left center no-repeat;
+    content: '';
+    display: inline-block;
+    height: 10px;
+    margin-left: 10px;
+    transition: background-position 0.2s ease-out;
+    vertical-align: baseline;
+    width: 6px;
   }
 }
 /**
