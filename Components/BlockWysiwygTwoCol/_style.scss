@@ -17,17 +17,14 @@
   }
 
   .content {
+    @include reset-content-margins;
+
     max-width: 800px;
     text-align: left;
 
     @media (min-width: $content-max-width + 2 * $container-padding-mobile) {
       column-count: 2;
       column-gap: 2rem;
-    }
-
-    > :last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
     }
   }
 }
