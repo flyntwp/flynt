@@ -1,6 +1,8 @@
 <?php
- use Flynt\Utils\Options;
- Options::addTranslatable('SliderOptions', [
+
+use Flynt\Utils\Options;
+
+Options::addTranslatable('SliderOptions', [
     [
         'label' => 'Accessibility',
         'name' => 'a11y',
@@ -45,6 +47,6 @@
                 'default_value' => 'Go to slide {{index}}',
                 'required' => 1,
             ],
-        ]
+        ],
     ],
 ], 'feature');
