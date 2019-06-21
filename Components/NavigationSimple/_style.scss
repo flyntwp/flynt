@@ -22,6 +22,7 @@ $navigation-height: 100px;
 
   .logo {
     display: block;
+    flex-shrink: 0;
     height: 100%;
 
     &-image {
@@ -36,6 +37,7 @@ $navigation-height: 100px;
     align-items: center;
     display: flex;
     margin-right: -18px;
+    padding-left: 36px;
 
     &-item--current {
       .menu-link {
@@ -45,6 +47,7 @@ $navigation-height: 100px;
 
     &-link {
       color: $color-text;
+      display: inline-block;
       font-weight: 700;
       padding: 7px 18px;
       text-decoration: none;
