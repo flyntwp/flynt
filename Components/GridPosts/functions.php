@@ -11,20 +11,28 @@ const FILTER_BY_TAXONOMY = 'category';
 
 add_filter('Flynt/addComponentData?name=GridPosts', function ($data) {
     if ($data['showFilters']) {
+        $postType = $data['postType'] ?? POST_TYPE;
+        $taxonomy = $data['filterByTaxonomy'] ?? FILTER_BY_TAXONOMY;
         if ($data['visibleFilters']) {
             $terms = $data['visibleFilters'];
         } else {
             $terms = get_terms([
-                'taxonomy' => $data['filterByTaxonomy'] ?? FILTER_BY_TAXONOMY,
+                'taxonomy' => $taxonomy,
                 'hide_empty' => true,
             ]);
         }
-        $data['terms'] = array_map(function ($term) {
-            return new Term($term);
+        $queriedObject = get_queried_object();
+        $data['terms'] = array_map(function ($term) use ($queriedObject) {
+            $timberTerm = new Term($term);
+            $timberTerm->isActive = $queriedObject->taxonomy === $term->taxonomy && $queriedObject->term_id === $term->term_id;
+            return $timberTerm;
         }, $terms);
-
-
-        $data['archiveUrl'] = get_post_type_archive_link($data['postType'] ?? POST_TYPE);
+        // Add item form all posts
+        array_unshift($data['terms'], [
+            'link' => get_post_type_archive_link($postType),
+            'title' => $data['labels']['allPosts'],
+            'isActive' => is_home() || is_post_type_archive($postType),
+        ]);
     }
 
     return $data;

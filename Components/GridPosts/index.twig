@@ -5,9 +5,8 @@
     {% endif %}
     {% if terms %}
       <ul>
-        <li><a href="{{ archiveUrl }}">{{ labels.allPosts }}</a></li>
         {% for term in terms %}
-          <li><a href="{{ term.link }}">{{ term.title }}</a></li>
+          <li><a href="{{ term.link }}" class="{{ term.isActive ? 'active' }}">{{ term.title }}</a></li>
         {% endfor %}
       </ul>
     {% endif %}
