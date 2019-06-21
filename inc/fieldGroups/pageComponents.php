@@ -34,6 +34,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Api::loadFields('ListSocial', 'layout'),
                     Api::loadFields('ListTestimonialCards', 'layout'),
                     Api::loadFields('SliderImages', 'layout'),
+                    Api::loadFields('SliderImagesCentered', 'layout'),
                     Api::loadFields('SliderImageGallery', 'layout'),
                 ],
             ],

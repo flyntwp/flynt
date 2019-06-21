@@ -1,0 +1,7 @@
+[is='flynt-slider-images-centered'] {
+  margin: $component-spacing-desktop 0;
+
+  .container {
+    @include center;
+  }
+}
