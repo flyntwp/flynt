@@ -32,6 +32,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Api::loadFields('GridTeaserTiles', 'layout'),
                     Api::loadFields('HeroCta', 'layout'),
                     Api::loadFields('HeroImageText', 'layout'),
+                    Api::loadFields('HeroTextImage', 'layout'),
                     Api::loadFields('ListComponents', 'layout'),
                     Api::loadFields('ListFacts', 'layout'),
                     Api::loadFields('ListPostCards', 'layout'),
@@ -39,23 +40,23 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Api::loadFields('ListTestimonialCards', 'layout'),
                     Api::loadFields('SliderImages', 'layout'),
                     Api::loadFields('SliderImagesCentered', 'layout'),
-                    Api::loadFields('SliderImageGallery', 'layout'),
-                ],
-            ],
+                    Api::loadFields('SliderImageGallery', 'layout')
+                ]
+            ]
         ],
         'location' => [
             [
                 [
                     'param' => 'post_type',
                     'operator' => '==',
-                    'value' => 'page',
+                    'value' => 'page'
                 ],
                 [
                     'param' => 'page_type',
                     'operator' => '!=',
-                    'value' => 'posts_page',
-                ],
-            ],
-        ],
+                    'value' => 'posts_page'
+                ]
+            ]
+        ]
     ]);
 });
