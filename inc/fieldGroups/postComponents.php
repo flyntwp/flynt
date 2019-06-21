@@ -17,7 +17,8 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'layouts' => [
                     Api::loadFields('BlockImage', 'layout'),
                     Api::loadFields('BlockWysiwyg', 'layout'),
-                    Api::loadFields('BlockWysiwygTwoCol', 'layout')
+                    Api::loadFields('BlockWysiwygTwoCol', 'layout'),
+                    Api::loadFields('BlockWysiwygSidebar', 'layout')
                 ],
             ],
         ],
