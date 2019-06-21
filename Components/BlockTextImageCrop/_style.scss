@@ -1,5 +1,5 @@
 [is='flynt-block-text-image-crop'] {
-    margin: $component-spacing-mobile 0;
+  margin: $component-spacing-mobile 0;
 
   @media (min-width: $breakpoint-tablet-horizontal) {
     margin: $component-spacing-desktop 0;
@@ -78,7 +78,7 @@
     }
 
     &-caption {
-     text-align: right;
+      text-align: right;
 
       @media (min-width: ($breakpoint-desktop-wide + $gutter-width + $gutter-width)) {
         margin-left: 0;
