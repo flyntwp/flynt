@@ -8,14 +8,8 @@
     &--center {
         justify-content: center
     }
-
-    .button {
-      margin-bottom: 0;
-
-      &--primary {
-        &:hover {
-          color: #fff;
-        }
-      }
+    
+    &-arrow {
+      color: $color-background;
     }
-  }
+}
