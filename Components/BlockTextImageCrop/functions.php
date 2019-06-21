@@ -32,10 +32,7 @@ Api::registerFields('BlockTextImageCrop', [
                 'preview_size' => 'medium',
                 'max_size' => 4,
                 'required' => true,
-                'mime_types' => 'gif,jpg,jpeg,png',
-                'wrapper' => [
-                    'width' => '50%',
-                ],
+                'mime_types' => 'gif,jpg,jpeg,png'
             ],
             [
                 'label' => 'Content',
@@ -44,10 +41,7 @@ Api::registerFields('BlockTextImageCrop', [
                 'delay' => 1,
                 'media_upload' => 0,
                 'toolbar' => 'custom',
-                'required' => true,
-                'wrapper' => [
-                    'width' => '50%',
-                ],
+                'required' => true
             ],
             [
                 'label' => 'Options',
