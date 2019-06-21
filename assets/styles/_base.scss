@@ -347,10 +347,10 @@ button {
   }
 
   &--link {
-    text-transform: none;
     border: none;
     padding: 1.25rem 0;
     position: relative;
+    text-transform: none;
     transition: color 0.2s ease-out;
 
     &:hover {
