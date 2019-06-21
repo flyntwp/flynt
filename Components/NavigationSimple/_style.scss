@@ -1,6 +1,6 @@
-$navigation-height: 100px;
-
 [is='flynt-navigation-simple'] {
+  $navigation-height: 100px;
+
   display: none;
 
   @media (min-width: $breakpoint-tablet-horizontal) {
