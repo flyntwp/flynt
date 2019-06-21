@@ -130,7 +130,7 @@ h3,
 
 h4,
 .h4 {
-  font-size: 1rem;
+  font-size: 1.125rem;
   padding-top: 0.5rem;
 }
 
@@ -143,7 +143,7 @@ h5,
 
 h6,
 .h6 {
-  font-size: 0.8rem;
+  font-size: 0.9375rem;
   padding-top: 0.5rem;
 }
 
@@ -239,21 +239,23 @@ table {
 
 td,
 th {
-  padding: 0.75rem;
+  padding: 1.25rem;
   text-align: inherit;
   vertical-align: top;
 }
 
 thead {
   th {
-    border-bottom: 2px solid $color-brand;
+    border-bottom: 2px solid $color-accent;
+    color: $color-headline;
+    padding-bottom: 10px;
     vertical-align: bottom;
     white-space: nowrap;
   }
 }
 
 tr:nth-child(even) {
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color: $color-background-light;
 }
 
 /**
