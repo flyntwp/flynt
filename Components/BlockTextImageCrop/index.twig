@@ -22,6 +22,7 @@
         {% if buttonLink %}
           <a class="button-link" href="{{ buttonLink.url|e('esc_url') }}"{% if buttonLink.target %} target="{{ buttonLink.target|e }}" rel="noreferrer noopener"{% endif %}>
             {{ buttonLink.title|e }}
+            <i data-feather="chevron-right" width="12" height="12" stroke-width="3"></i>
           </a>
       {% endif %}
       </div>

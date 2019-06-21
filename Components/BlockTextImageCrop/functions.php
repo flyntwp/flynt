@@ -23,15 +23,15 @@ Api::registerFields('BlockTextImageCrop', [
                 'name' => 'image',
                 'type' => 'image',
                 'preview_size' => 'medium',
-                'instructions' => '',
+                'instructions' => 'Recommended Size: Min-Width 720px.',
                 'max_size' => 4,
                 'min_width' => 720,
                 'required' => true,
                 'mime_types' => 'gif,jpg,jpeg,png'
             ],
             [
-                'name' => 'contentHtml',
                 'label' => 'Content',
+                'name' => 'contentHtml',
                 'type' => 'wysiwyg',
                 'delay' => 1,
                 'media_upload' => 0,
@@ -43,9 +43,9 @@ Api::registerFields('BlockTextImageCrop', [
             ],
             [
                 'label' => 'Button Link',
+                'name' => 'buttonLink',
                 'type' => 'link',
                 'instructions' => 'Here you can link to every page you like',
-                'name' => 'buttonLink',
                 'return_format' => 'array'
             ]
         ]
