@@ -11,7 +11,16 @@ class SliderImagesCentered extends window.HTMLDivElement {
 
   init () {
     this.$ = $(this)
+    this.props = this.getInitialProps()
     this.resolveElements()
+  }
+
+  getInitialProps () {
+    let data = {}
+    try {
+      data = JSON.parse($('script[type="application/json"]', this).text())
+    } catch (e) {}
+    return data
   }
 
   resolveElements () {
@@ -26,7 +35,10 @@ class SliderImagesCentered extends window.HTMLDivElement {
   }
 
   initSlider () {
+    const { sliderOptions } = this.props
+
     this.swiper = new Swiper(this.$slider, {
+      a11y: sliderOptions.a11y,
       centeredSlides: true,
       loop: true,
       navigation: {
