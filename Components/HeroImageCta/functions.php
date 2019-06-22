@@ -82,11 +82,17 @@ Api::registerFields('HeroImageCta', [
                 'ui' => 1,
                 'ajax' => 0,
                 'choices' => [
-                    'content-image--isCenterAlignDesktop' => 'Center',
-                    'content-image--isLeftAlignMobile' => 'Left',
-                    'content-image--isRightAlignMobile' => 'Right',
+                    'content-image--isCenterTopAlignMobile' => 'Center Top',
+                    'content-image--isCenterCenterAlignMobile' => 'Center Center',
+                    'content-image--isCenterBottomAlignMobile' => 'Center Bottom',
+                    'content-image--isLeftTopAlignMobile' => 'Left Top',
+                    'content-image--isLeftCenterAlignMobile' => 'Left Center',
+                    'content-image--isLeftBottomAlignMobile' => 'Left Bottom',
+                    'content-image--isRightTopAlignMobile' => 'Right Top',
+                    'content-image--isRightCenterAlignMobile' => 'Right Center',
+                    'content-image--isRightBottomAlignMobile' => 'Right Bottom',
                 ],
-                'default_value' => ''
+                'default_value' => 'content-image--isCenterCenterAlignMobile'
             ],
             [
                 'label' => 'Desktop Align Image',
@@ -97,11 +103,24 @@ Api::registerFields('HeroImageCta', [
                 'ui' => 1,
                 'ajax' => 0,
                 'choices' => [
-                    'content-image--isCenterAlignDesktop' => 'Center',
-                    'content-image--isLeftAlignDesktop' => 'Left',
-                    'content-image--isRightAlignDesktop' => 'Right',
+                    'content-image--isCenterTopAlignDesktop' => 'Center Top',
+                    'content-image--isCenterCenterAlignDesktop' => 'Center Center',
+                    'content-image--isCenterBottomAlignDesktop' => 'Center Bottom',
+                    'content-image--isLeftTopAlignDesktop' => 'Left Top',
+                    'content-image--isLeftCenterAlignDesktop' => 'Left Center',
+                    'content-image--isLeftBottomAlignDesktop' => 'Left Bottom',
+                    'content-image--isRightTopAlignDesktop' => 'Right Top',
+                    'content-image--isRightCenterAlignDesktop' => 'Right Center',
+                    'content-image--isRightBottomAlignDesktop' => 'Right Bottom',
                 ],
-                'default_value' => ''
+                'default_value' => 'content-image--isCenterCenterAlignDesktop'
+            ],
+            [
+                'label' => 'Full Width Image',
+                'name' => 'fullWidthImage',
+                'type' => 'true_false',
+                'default_value' => 0,
+                'ui' => 1
             ],
         ]
     ]

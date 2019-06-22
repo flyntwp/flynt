@@ -5,7 +5,7 @@
 
   // NOTE: remove container if image should go full width
   .container {
-    @include center;
+    @include center(100%, $padding: 0);
     position: relative;
     width: 100%;
 
@@ -24,7 +24,7 @@
     &,
     .content,
     .content-wrapper {
-      min-height: 640px;
+      min-height: 540px;
     }
   }
 
@@ -33,12 +33,12 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding: 50px $container-padding-mobile;
+    padding: 0 $container-padding-mobile;
     position: relative;
     width: 100%;
 
-    @media (min-width: $breakpoint-tablet) {
-      padding: 100px 0;
+    @media (min-width: $breakpoint-desktop) {
+      padding: 50px 0;
     }
 
     &-wrapper {
@@ -97,6 +97,11 @@
       }
     }
 
+    &-pictureWrapper--isFullWidth {
+      left: 0;
+      right: 0;
+    }
+
     &-image {
       font-family: 'object-fit: cover';
       height: 100%;
@@ -106,30 +111,78 @@
 
 
     @media (max-width: $breakpoint-tablet - 1) {
-      &-image--isCenterAlignMobile {
+      &-image--isCenterTopAlignMobile {
+        object-position: center top;
+      }
+
+      &-image--isCenterCenterAlignMobile {
         object-position: center center;
       }
 
-      &-image--isLeftAlignMobile {
+      &-image--isCenterBottomAlignMobile {
+        object-position: center bottom;
+      }
+
+      &-image--isLeftTopAlignMobile {
+        object-position: left top;
+      }
+
+      &-image--isLeftCenterAlignMobile {
         object-position: left center;
       }
 
-      &-image--isRightAlignMobile {
-        object-position: left center;
+      &-image--isLeftBottomAlignMobile {
+        object-position: left bottom;
+      }
+
+      &-image--isRightTopAlignMobile {
+        object-position: right top;
+      }
+
+      &-image--isRightCenterAlignMobile {
+        object-position: right center;
+      }
+
+      &-image--isRightBottomAlignMobile {
+        object-position: right bottom;
       }
     }
 
     @media (min-width: $breakpoint-tablet) {
-      &-image--isCenterAlignDesktop {
+      &-image--isCenterTopAlignDesktop {
+        object-position: center top;
+      }
+
+      &-image--isCenterCenterAlignDesktop {
         object-position: center center;
       }
 
-      &-image--isLeftAlignDesktop {
+      &-image--isCenterBottomAlignDesktop {
+        object-position: center bottom;
+      }
+
+      &-image--isLeftTopAlignDesktop {
+        object-position: left top;
+      }
+
+      &-image--isLeftCenterAlignDesktop {
         object-position: left center;
       }
 
-      &-image--isRightAlignDesktop {
-        object-position: left center;
+      &-image--isLeftBottomAlignDesktop {
+        object-position: left bottom;
+      }
+
+      &-image--isRightTopAlignDesktop {
+        object-position: right top;
+      }
+
+      &-image--isRightCenterAlignDesktop {
+        object-position: right center;
+      }
+
+      &-image--isRightBottomAlignDesktop {
+        object-position: right bottom;
       }
     }
   }
