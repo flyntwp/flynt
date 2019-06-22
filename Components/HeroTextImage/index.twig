@@ -22,8 +22,8 @@
             src="{{ image.src|resizeDynamic(0, 530) }}"
             srcset="{{ placeholderImage(image.aspect * 530, 530) }}"
             data-srcset="
-              {{ image.src|resizeDynamic(0, 530) }} 1x,
-              {{ image.src|resizeDynamic(0, 1060) }} 2x"
+              {{ image.src|resizeDynamic(0, 530) }} {{ (image.aspect * 530)|round }}w,
+              {{ image.src|resizeDynamic(0, 1060) }} {{ (image.aspect * 1060)|round }}w"
             media="(max-width: 1023px)">
         {% endif %}
         <img
@@ -31,8 +31,8 @@
           src="{{ image.src|resizeDynamic(0, 600) }}"
           srcset="{{ placeholderImage(image.aspect * 600, 600) }}"
           data-srcset="
-            {{ image.src|resizeDynamic(0, 600) }} 1x,
-            {{ image.src|resizeDynamic(0, 1200) }} 2x"
+            {{ image.src|resizeDynamic(0, 600) }} {{ (image.aspect * 600)|round }}w,
+            {{ image.src|resizeDynamic(0, 1200) }} {{ (image.aspect * 1200)|round }}w"
           alt="{{ image.alt|e }}"
           data-sizes="auto">
       </picture>
