@@ -39,39 +39,9 @@ Api::registerFields('HeroImageCta', [
                         'preview_size' => 'medium',
                         'library' => 'all',
                         'mime_types' => 'jpg,jpeg',
-                        'required' => 1,
                         'instructions' => 'Recommended resolution greater than 750 x 800 px.'
                     ]
                 ]
-            ],
-            [
-                'label' => 'Content',
-                'type' => 'tab',
-                'name' => 'accordionContent'
-            ],
-            [
-                'name' => 'contentHtml',
-                'label' => 'Content',
-                'type' => 'wysiwyg',
-                'tabs' => 'visual,text',
-                'toolbar' => 'full',
-                'media_upload' => 0,
-                'delay' => 1,
-                'wrapper' => [
-                    'class' => 'autosize',
-                ],
-                'instructions' => 'The content overlaying the image. Character Recommendations: Title: 30-100, Content: 80-250.'
-            ],
-            [
-                'label' => 'Button Link',
-                'type' => 'link',
-                'name' => 'buttonLink',
-                'return_format' => 'array'
-            ],
-            [
-                'label' => 'Options',
-                'type' => 'tab',
-                'name' => 'accordionOptions'
             ],
             [
                 'label' => 'Mobile Align Image',
@@ -121,6 +91,25 @@ Api::registerFields('HeroImageCta', [
                 'type' => 'true_false',
                 'default_value' => 0,
                 'ui' => 1
+            ],
+            [
+                'label' => 'Content',
+                'type' => 'tab',
+                'name' => 'accordionContent'
+            ],
+            [
+                'name' => 'contentHtml',
+                'label' => 'Content',
+                'type' => 'wysiwyg',
+                'tabs' => 'visual,text',
+                'toolbar' => 'full',
+                'media_upload' => 0,
+                'delay' => 1,
+                'required' => 1,
+                'wrapper' => [
+                    'class' => 'autosize',
+                ],
+                'instructions' => 'The content overlaying the image. Character Recommendations: Title: 30-100, Content: 80-250.'
             ],
         ]
     ]

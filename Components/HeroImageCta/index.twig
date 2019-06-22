@@ -2,19 +2,32 @@
   {% if not fullWidthImage %}<div class="container">{% endif %}
     <div class="content-pictureWrapper {% if fullWidthImage %}content-pictureWrapper--isFullWidth{% endif %}">
       <picture class="content-picture">
-        <source srcset="
-          {{ images.imageDesktop.src | resize(2560, 640, 'center') }} 2560w,
-          {{ images.imageDesktop.src | resize(2048, 640, 'center') }} 2048w,
-          {{ images.imageDesktop.src | resize(1320, 640, 'center') }} 1320w,
-          {{ images.imageDesktop.src | resize(1024, 640, 'center') }} 1024w,
-          {{ images.imageDesktop.src | resize(768, 640, 'center') }} 768w"
-        media="(min-width: 768px)">
-        <img class="content-image {{ mobileAlignImage }} {{ desktopAlignImage }} lazyload" srcset="
-          {{ images.imageMobile.src| resize(375, 420) }} 375w,
-          {{ images.imageMobile.src | resize(750, 420) }} 750w"
-        src="{{ images.imageDesktop.src | resize(375, 420) }}"
-        data-sizes="auto"
-        alt="{{ images.imageDesktop.alt|e }}">
+        {% if images.imageMobile %}
+          <source srcset="
+            {{ images.imageDesktop.src | resize(2560, 640, 'center') }} 2560w,
+            {{ images.imageDesktop.src | resize(2048, 640, 'center') }} 2048w,
+            {{ images.imageDesktop.src | resize(1320, 640, 'center') }} 1320w,
+            {{ images.imageDesktop.src | resize(1024, 640, 'center') }} 1024w,
+            {{ images.imageDesktop.src | resize(768, 640, 'center') }} 768w"
+            media="(min-width: 768px)">
+          <img class="content-image {{ mobileAlignImage }} {{ desktopAlignImage }} lazyload" srcset="
+            {{ images.imageMobile.src| resize(375, 420) }} 375w,
+            {{ images.imageMobile.src | resize(750, 420) }} 750w"
+            src="{{ images.imageDesktop.src | resize(375, 420) }}"
+            data-sizes="auto"
+            alt="{{ images.imageDesktop.alt|e }}">
+          {% else %}
+            <img class="content-image {{ mobileAlignImage }} {{ desktopAlignImage }} lazyload" srcset="
+              {{ images.imageDesktop.src | resize(2560, 640, 'center') }} 2560w,
+              {{ images.imageDesktop.src | resize(2048, 640, 'center') }} 2048w,
+              {{ images.imageDesktop.src | resize(1320, 640, 'center') }} 1320w,
+              {{ images.imageDesktop.src | resize(1024, 640, 'center') }} 1024w,
+              {{ images.imageDesktop.src | resize(768, 640, 'center') }} 768w,
+              {{ images.imageDesktop.src | resize(375, 640, 'center') }} 375w"
+              src="{{ images.imageDesktop.src | resize(375, 640) }}"
+              data-sizes="auto"
+              alt="{{ images.imageDesktop.alt|e }}">
+        {% endif %}
       </picture>
     </div>
     {% if contentHtml or buttonLink.url %}
@@ -23,13 +36,6 @@
           {% if contentHtml %}
             <div class="content-html {% if buttonLink.url %}content-html--hasCta{% endif %}">
               {{ contentHtml|e('wp_kses_post') }}
-            </div>
-          {% endif %}
-          {% if buttonLink.url %}
-            <div class="content-cta">
-              <a href="{{ buttonLink.url }}"{% if buttonLink.target %} target="{{ buttonLink.target }}"{% endif %} {% if buttonLink.target == '_blank' %}rel="noreferrer noopener"{% endif %} class="button button--primary">
-                {{ buttonLink.title|e }}
-              </a>
             </div>
           {% endif %}
         </div>
