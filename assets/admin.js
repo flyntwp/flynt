@@ -1,4 +1,5 @@
 import './admin.scss'
+import $ from 'jquery'
 
 $(document).ready(function () {
   setTimeout(() => {
