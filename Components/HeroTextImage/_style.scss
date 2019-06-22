@@ -1,0 +1,76 @@
+[is='flynt-hero-text-image'] {
+  margin-bottom: $component-spacing-mobile;
+  overflow-x: hidden;
+  padding-top: $component-spacing-mobile;
+
+  @media (min-width: $breakpoint-tablet) {
+    margin-bottom: $component-spacing-tablet;
+    padding-top: $component-spacing-tablet;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    margin-bottom: $component-spacing-desktop;
+    padding-top: $component-spacing-desktop;
+  }
+
+  .container {
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &--textLeft {
+      .column--content {
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          padding-right: $gutter-width;
+        }
+      }
+    }
+
+    &--textRight {
+      flex-direction: row-reverse;
+
+      .column--content {
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          padding-left: $gutter-width;
+        }
+      }
+    }
+  }
+
+  .column {
+    &--content {
+      @include center($content-max-width, 0);
+      @include reset-content-margins;
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        align-self: center;
+        flex-shrink: 0;
+        margin: 0;
+      }
+    }
+
+    &--image {
+      margin-top: 30px;
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .image {
+    font-family: 'object-fit: contain';
+    max-height: 530px;
+    object-fit: contain;
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      font-family: 'object-fit: fill';
+      height: 600px;
+      max-height: none;
+      max-width: none;
+      object-fit: fill;
+      width: auto;
+    }
+  }
+}
