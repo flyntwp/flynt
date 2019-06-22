@@ -1,0 +1,113 @@
+[is='flynt-block-text-image-crop'] {
+  @include reset-content-margins;
+
+  .box {
+    margin: 0 auto;
+
+    @media (min-width: $breakpoint-tablet) {
+      display: flex;
+    }
+
+    &--imageLeft {
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        flex-direction: row;
+      }
+
+    }
+
+    &-inner {
+
+      @media (min-width: $breakpoint-tablet) {
+        width: 50%;
+      }
+
+      &--content {
+        margin-right: auto;
+        padding: 40px;
+        padding: $container-padding-mobile;
+
+        @media (min-width: $breakpoint-tablet) {
+          max-width: $container-max-width * 0.5;
+          padding: $container-padding-tablet;
+        }
+
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          padding: 60px 112px;
+        }
+      }
+
+      &--image {
+        position: relative;
+      }
+    }
+
+    &--imageRight {
+      @media (min-width: $breakpoint-tablet) {
+        flex-direction: row-reverse;
+
+        .figure {
+          margin-left: 0;
+
+          &-caption {
+            text-align: left;
+
+            @media (min-width: $breakpoint-mobile-horizontal) {
+              padding: 0;
+            }
+          }
+        }
+      }
+    }
+
+    &-inner {
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        width: 50%;
+      }
+    }
+  }
+
+  .figure {
+    font-size: 0.8rem;
+    margin: 0;
+
+    @media (min-width: $breakpoint-tablet) {
+      bottom: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      width: 50vw;
+    }
+
+    @media (min-width: $breakpoint-desktop-wide) {
+      margin-left: 0;
+    }
+
+    &-image {
+      font-family: 'object-fit: cover';
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 50%;
+      width: 100%;
+    }
+
+    &-caption {
+      padding: 0 $container-padding-mobile;
+
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        padding: 0;
+      }
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        text-align: right;
+      }
+
+      @media (min-width: ($breakpoint-desktop-wide + $gutter-width + $gutter-width)) {
+        margin-left: 0;
+        padding-left: 0;
+      }
+    }
+  }
+}
