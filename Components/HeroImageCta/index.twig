@@ -1,37 +1,39 @@
 <div class="flyntComponent" is="flynt-hero-image-cta">
-  <div class="content-pictureWrapper">
-    <picture class="content-picture">
-      <source srcset="
-        {{ images.imageDesktop.src | resize(2560, 800, 'center') }} 2560w,
-        {{ images.imageDesktop.src | resize(2048, 800, 'center') }} 2048w,
-        {{ images.imageDesktop.src | resize(1440, 400, 'center') }} 1440w,
-        {{ images.imageDesktop.src | resize(900, 400, 'center') }} 900w,
-        {{ images.imageDesktop.src | resize(768, 400, 'center') }} 768w"
-      media="(min-width: 768px)">
-      <img class="content-image {{ mobileAlignImage }} {{ desktopAlignImage }} lazyload" srcset="
-        {{ images.imageMobile.src| resize(375, 400) }} 375w,
-        {{ images.imageMobile.src | resize(750, 800) }} 750w"
-      src="{{ images.imageMobile.src | resize(375, 400) }}"
-      data-sizes="auto"
-      alt="{{ images.imageDesktop.alt|e }}">
-    </picture>
-  </div>
-  {% if contentHtml or buttonLink.url %}
-    <div class="content">
-      <div class="content-wrapper">
-        {% if contentHtml %}
-          <div class="content-html {% if buttonLink.url %}content-html--hasCta{% endif %}">
-            {{ contentHtml|e('wp_kses_post') }}
-          </div>
-        {% endif %}
-        {% if buttonLink.url %}
-          <div class="content-cta">
-            <a href="{{ buttonLink.url }}"{% if buttonLink.target %} target="{{ buttonLink.target }}"{% endif %} {% if buttonLink.target == '_blank' %}rel="noreferrer noopener"{% endif %} class="button button--primary">
-              {{ buttonLink.title|e }}
-            </a>
-          </div>
-        {% endif %}
-      </div>
+  <div class="container">
+    <div class="content-pictureWrapper">
+      <picture class="content-picture">
+        <source srcset="
+          {{ images.imageDesktop.src | resize(2560, 800, 'center') }} 2560w,
+          {{ images.imageDesktop.src | resize(2048, 800, 'center') }} 2048w,
+          {{ images.imageDesktop.src | resize(1440, 400, 'center') }} 1440w,
+          {{ images.imageDesktop.src | resize(900, 400, 'center') }} 900w,
+          {{ images.imageDesktop.src | resize(768, 400, 'center') }} 768w"
+        media="(min-width: 768px)">
+        <img class="content-image {{ mobileAlignImage }} {{ desktopAlignImage }} lazyload" srcset="
+          {{ images.imageMobile.src| resize(375, 400) }} 375w,
+          {{ images.imageMobile.src | resize(750, 800) }} 750w"
+        src="{{ images.imageMobile.src | resize(375, 400) }}"
+        data-sizes="auto"
+        alt="{{ images.imageDesktop.alt|e }}">
+      </picture>
     </div>
-  {% endif %}
+    {% if contentHtml or buttonLink.url %}
+      <div class="content">
+        <div class="content-wrapper">
+          {% if contentHtml %}
+            <div class="content-html {% if buttonLink.url %}content-html--hasCta{% endif %}">
+              {{ contentHtml|e('wp_kses_post') }}
+            </div>
+          {% endif %}
+          {% if buttonLink.url %}
+            <div class="content-cta">
+              <a href="{{ buttonLink.url }}"{% if buttonLink.target %} target="{{ buttonLink.target }}"{% endif %} {% if buttonLink.target == '_blank' %}rel="noreferrer noopener"{% endif %} class="button button--primary">
+                {{ buttonLink.title|e }}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
 </div>
