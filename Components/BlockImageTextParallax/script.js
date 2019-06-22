@@ -1,7 +1,7 @@
-/* globals Rellax */
-
 import Rellax from 'rellax'
 import $ from 'jquery'
+
+let rellax
 
 class BlockImageTextParallax extends window.HTMLDivElement {
   constructor (self) {
@@ -12,14 +12,18 @@ class BlockImageTextParallax extends window.HTMLDivElement {
   }
 
   resolveElements () {
-
   }
 
   connectedCallback () {
-    var rellax = new Rellax('.rellax', {
-
-    })
+    if (!rellax) {
+      rellax = new Rellax('[data-parallax]', {
+        speed: 2,
+        center: true,
+        percentage: 0.5
+      })
+    }
   }
+
 }
 
 window.customElements.define('flynt-block-image-text-parallax', BlockImageTextParallax, { extends: 'div' })
