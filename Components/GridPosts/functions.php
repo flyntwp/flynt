@@ -32,6 +32,15 @@ add_filter('Flynt/addComponentData?name=GridPosts', function ($data) {
     return $data;
 });
 
+Options::addGlobal('GridPosts', [
+    [
+        'label' => 'Load More Button?',
+        'name' => 'loadMore',
+        'type' => 'true_false',
+        'default_value' => 0,
+        'ui' => true
+    ],
+]);
 Options::addTranslatable('GridPosts', [
     [
         'label' => 'General',
@@ -52,13 +61,6 @@ Options::addTranslatable('GridPosts', [
         'wrapper' => [
             'class' => 'autosize',
         ],
-    ],
-    [
-        'label' => 'Load More Button?',
-        'name' => 'loadMore',
-        'type' => 'true_false',
-        'default_value' => 0,
-        'ui' => true
     ],
     [
         'label' => 'Labels',
