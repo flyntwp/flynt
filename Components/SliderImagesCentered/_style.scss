@@ -1,4 +1,6 @@
 [is='flynt-slider-images-centered'] {
+  $ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+
   padding: $component-spacing-mobile 0;
 
   @media (min-width: $breakpoint-desktop) {
@@ -6,7 +8,7 @@
   }
 
   .container {
-    @include center();
+    @include center;
   }
 
   .preContent {
@@ -37,7 +39,7 @@
         margin: 0;
         overflow: hidden;
         transform: scale(0.9) translate3d(0, 0, 0);
-        transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+        transition: transform 0.3s $ease-out-cubic;
 
         &::before {
           background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
@@ -89,8 +91,8 @@
       z-index: 10;
 
       &.swiper-button-disabled {
-        pointer-events: none;
         opacity: 0.5;
+        pointer-events: none;
       }
 
       .feather {
@@ -138,7 +140,7 @@
         background-color: rgba($color-background, 0.2);
         height: 6px;
         opacity: 1;
-        transition: width 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55), background-color 0.3s ease;
+        transition: width 0.2s $ease-out-cubic, background-color 0.3s ease;
         width: 6px;
 
         &-active {
