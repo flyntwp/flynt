@@ -89,6 +89,7 @@
       z-index: 10;
 
       &.swiper-button-disabled {
+        pointer-events: none;
         opacity: 0.5;
       }
 
