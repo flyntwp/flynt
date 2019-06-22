@@ -3,7 +3,9 @@
     {% include 'Partials/Logo/index.twig' with { 'logo': logo, 'site': site } only %}
     {% if menu %}
       {% include 'Partials/Hamburger/index.twig' with { 'aria': aria } only %}
-      {% include 'Partials/Menu/index.twig' with { 'items': menu.items } only %}
     {% endif %}
   </div>
+  {% if menu %}
+    {% include 'Partials/Menu/index.twig' with { 'items': menu.items } only %}
+  {% endif %}
 </nav>
