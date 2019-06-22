@@ -21,7 +21,7 @@
                 {{ card.image.src|resize(480, 320) }} 480w,
                 {{ card.image.src|resize(312, 208) }} 312w"
               data-sizes="auto"
-              alt="{{ image.alt|e }}">
+              alt="{{ card.image.alt|e }}">
             <div class="content-inner">
               {{ card.contentHtml|e('wp_kses_post') }}
             </div>
