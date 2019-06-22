@@ -18,6 +18,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Api::loadFields('AccordionDefault', 'layout'),
                     Api::loadFields('BlockImage', 'layout'),
                     Api::loadFields('BlockImageText', 'layout'),
+                    Api::loadFields('BlockImageTextCta', 'layout'),
                     Api::loadFields('BlockTextImageCrop', 'layout'),
                     Api::loadFields('BlockVideoOembed', 'layout'),
                     Api::loadFields('BlockWysiwyg', 'layout'),

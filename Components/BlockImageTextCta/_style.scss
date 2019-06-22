@@ -1,0 +1,60 @@
+[is='flynt-block-image-text-cta'] {
+  margin: $component-spacing-desktop 0;
+
+  .container {
+    @include center;
+  }
+
+  .box {
+    margin: 0 auto;
+    max-width: $content-max-width;
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      align-items: center;
+      display: flex;
+      margin: 0 -20px;
+      max-width: none;
+
+      &-inner {
+        padding: 0 20px;
+        width: 50%;
+      }
+
+      &--imageLeft {
+        flex-direction: row;
+      }
+
+      &--imageRight {
+        flex-direction: row-reverse;
+      }
+    }
+
+    &-inner {
+      &--content {
+        @include reset-content-margins;
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        &--image {
+          width: 60%;
+        }
+
+        &--content {
+          width: 40%;
+        }
+      }
+    }
+  }
+
+  .figure {
+    font-size: 0.8rem;
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      margin-bottom: 0;
+
+      &-caption {
+        position: absolute;
+      }
+    }
+  }
+}
