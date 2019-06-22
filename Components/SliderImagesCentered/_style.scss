@@ -35,7 +35,7 @@
       backface-visibility: hidden;
       margin: 0;
       transform: scale(0.93);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
 
       &::before {
         background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
@@ -71,8 +71,6 @@
   }
 
   .slider {
-    @include center($padding: 0);
-
     &-button {
       cursor: pointer;
       display: none;
