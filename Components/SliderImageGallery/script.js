@@ -49,7 +49,7 @@ class SliderImageGallery extends window.HTMLDivElement {
       spaceBetween: 10,
       navigation: {
         nextEl: this.$buttonNext,
-        prevEl: this.$buttonPrev,
+        prevEl: this.$buttonPrev
       },
       a11y: options.a11y
     })
