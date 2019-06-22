@@ -4,11 +4,7 @@ Adds a new filter to twig to delay the generation of resized images and to gener
 
 ## Prerequisites
 
-For this feature to work, you have to be using `Timber` with `Twig`, `Upstatement/Routes` for the custom route to resize the images, and `Flyntwp/WP-Custom-Tables`, to easily create custom database tables within WordPress.
-
-```bash
-composer require twig/twig timber/timber upstatement/routes flyntwp/wp-custom-tables
-```
+For this feature to work, you have to be using `Timber` with `Twig` and `Upstatement/Routes` for the custom route to resize the images.
 
 Further more you have to adjust your webserver's configuration. For apache, add the following to your docroots `.htaccess` or the vhost settings:
 
