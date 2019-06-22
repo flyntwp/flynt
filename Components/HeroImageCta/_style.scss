@@ -19,16 +19,16 @@
 
   .content {
     align-content: center;
-    // background: red;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    // padding: 60px 20px;
+    padding: 50px $container-padding-mobile;
     position: relative;
     width: 100%;
 
     @media (min-width: $breakpoint-tablet) {
-      // padding: 210px 0;
+      padding-bottom: 100px;
+      padding-top: 100px;
     }
 
     &-wrapper {
@@ -80,12 +80,15 @@
       font-family: 'object-fit: cover';
       height: 100%;
       object-fit: cover;
-      object-position: center center;
       width: 100%;
     }
 
 
     @media (max-width: $breakpoint-tablet - 1) {
+      &-image--isCenterAlignMobile {
+        object-position: center center;
+      }
+
       &-image--isLeftAlignMobile {
         object-position: left center;
       }
@@ -96,6 +99,10 @@
     }
 
     @media (min-width: $breakpoint-tablet) {
+      &-image--isCenterAlignDesktop {
+        object-position: center center;
+      }
+
       &-image--isLeftAlignDesktop {
         object-position: left center;
       }
