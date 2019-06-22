@@ -32,8 +32,13 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    transition: opacity 0.2s ease;
     width: 40px;
     z-index: 10;
+
+    &.swiper-button-disabled {
+      opacity: 0.5;
+    }
 
     svg {
       color: $color-background;
