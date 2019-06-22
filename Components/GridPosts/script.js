@@ -51,7 +51,6 @@ class GridPosts extends window.HTMLDivElement {
         $target.removeClass('button--disabled')
       }
     )
-
   }
 }
 
