@@ -3,7 +3,6 @@
 
   backface-visibility: hidden;
   background-color: $color-background;
-  box-shadow: inset $drop-shadow;
   height: calc(100% - #{$navigation-height});
   left: 0;
   margin: 0;
@@ -15,7 +14,7 @@
   transform: translateX(100%);
   transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
   width: 100%;
-  z-index: 99;
+  z-index: 98;
 
   &-item--current {
     .menu-link {
@@ -31,6 +30,11 @@
     padding: 12px $container-padding-mobile;
     text-align: center;
     text-decoration: none;
+    transition: color 0.2s ease-out;
+
+    &:focus {
+      color: $color-accent;
+    }
 
     @media (min-width: $breakpoint-tablet) {
       padding-left: $container-padding-tablet;
@@ -39,6 +43,6 @@
   }
 }
 
-.container-menuIsOpen .menu {
+&.flyntComponent-menuIsOpen .menu {
   transform: translateX(0);
 }

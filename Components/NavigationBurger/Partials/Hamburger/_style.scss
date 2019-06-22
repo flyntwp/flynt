@@ -39,7 +39,7 @@
   }
 }
 
-.container-menuIsOpen .hamburger {
+&.flyntComponent-menuIsOpen .hamburger {
   &::before,
   &::after {
     opacity: 0;
