@@ -24,8 +24,8 @@ class GridPostsSlider extends window.HTMLDivElement {
   }
 
   resolveElements () {
-    this.$slider = $('.gridPosts', this)
-    this.$pagination = $('.slider-pagination', this)
+    this.$slider = $('[data-slider]', this)
+    this.$pagination = $('[data-slider-pagination]', this)
   }
 
   connectedCallback () {

@@ -6,7 +6,7 @@
         {{ contentHtml|e('wp_kses_post')}}
       </div>
     {% endif %}
-    <div class="gridPosts slider swiper-container">
+    <div data-slider class="gridPosts slider swiper-container">
       <div class="swiper-wrapper">
         {% for post in posts %}
           <div class="post swiper-slide">
@@ -40,7 +40,7 @@
         {% endfor %}
       </div>
       {% if posts %}
-        <div class="slider-pagination"></div>
+        <div class="slider-pagination" data-slider-pagination></div>
       {% endif %}
     </div>
   </div>
