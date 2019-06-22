@@ -10,7 +10,9 @@
 
     &--textLeft {
       .column--content {
-        padding-right: $gutter-width;
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          padding-right: $gutter-width;
+        }
       }
     }
 
@@ -18,7 +20,9 @@
       flex-direction: row-reverse;
 
       .column--content {
-        padding-left: $gutter-width;
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          padding-left: $gutter-width;
+        }
       }
     }
   }
