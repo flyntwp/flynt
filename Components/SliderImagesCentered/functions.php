@@ -49,6 +49,7 @@ Api::registerFields('SliderImagesCentered', [
                 'max_size' => 2.5,
                 'mime_types' => 'jpg,jpeg',
                 'required' => 1,
+                'instructions' => 'Recommended resolution greater than 870 x 580 px.'
             ],
             [
                 'label' => 'Options',
