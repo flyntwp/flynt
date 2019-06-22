@@ -21,10 +21,10 @@
   }
 
   .swiper-slide {
-    max-width: 380px;
+    max-width: 375px;
 
     @media (min-width: $breakpoint-tablet) {
-      max-width: 570px;
+      max-width: 580px;
     }
 
     @media (min-width: $breakpoint-tablet-horizontal) {
