@@ -13,7 +13,7 @@
             {{ slide.images.imageDesktop.src | resize(768, 400, 'center') }} 768w"
           media="(min-width: 768px)"
           sizes="100vw">
-          <img class="content-image {{ mobileAlignImage }} {{ desktopAlignImage }}" srcset="
+          <img class="content-image {{ slide.images.mobileAlignImage }} {{ slide.images.desktopAlignImage }}" srcset="
             {{ slide.images.imageMobile.src| resize(375, 400) }} 375w,
             {{ slide.images.imageMobile.src | resize(750, 800) }} 750w"
           src="{{ slide.images.imageMobile.src | resize(375, 400) }}"

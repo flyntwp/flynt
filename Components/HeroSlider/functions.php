@@ -47,7 +47,7 @@ Api::registerFields('HeroSlider', [
                         'label' => 'Images',
                         'type' => 'group',
                         'name' => 'images',
-                        'layout' => 'table',
+                        'layout' => 'block',
                         'sub_fields' => [
                             [
                                 'label' => 'Desktop Image',
@@ -61,6 +61,21 @@ Api::registerFields('HeroSlider', [
                                 'instructions' => 'Recommended resolution greater than 2048 x 800 px.'
                             ],
                             [
+                                'label' => 'Desktop Align Image',
+                                'name' => 'desktopAlignImage',
+                                'type' => 'select',
+                                'allow_null' => 0,
+                                'multiple' => 0,
+                                'ui' => 1,
+                                'ajax' => 0,
+                                'choices' => [
+                                    'content-image--isCentered' => 'Center',
+                                    'content-image--isLeftAlignDesktop' => 'Left',
+                                    'content-image--isRightAlignDesktop' => 'Right',
+                                ],
+                                'default_value' => 'content-image--isCentered'
+                            ],
+                            [
                                 'label' => 'Mobile Image',
                                 'name' => 'imageMobile',
                                 'type' => 'image',
@@ -70,8 +85,23 @@ Api::registerFields('HeroSlider', [
                                 'mime_types' => 'jpg,jpeg',
                                 'required' => 1,
                                 'instructions' => 'Recommended resolution greater than 750 x 800 px.'
-                            ]
-                        ]
+                            ],
+                            [
+                                'label' => 'Mobile Align Image',
+                                'name' => 'mobileAlignImage',
+                                'type' => 'select',
+                                'allow_null' => 0,
+                                'multiple' => 0,
+                                'ui' => 1,
+                                'ajax' => 0,
+                                'choices' => [
+                                    'content-image--isCentered' => 'Center',
+                                    'content-image--isLeftAlignMobile' => 'Left',
+                                    'content-image--isRightAlignMobile' => 'Right',
+                                ],
+                                'default_value' => 'content-image--isCentered'
+                            ],
+                        ],
                     ],
                     [
                         'label' => 'Content',
