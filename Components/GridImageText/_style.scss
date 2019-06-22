@@ -1,5 +1,5 @@
 
-[is='flynt-grid-cards-image-text'] {
+[is='flynt-grid-image-text'] {
   padding: $component-spacing-mobile 0;
 
   @media (min-width: $breakpoint-desktop) {
@@ -17,18 +17,18 @@
     }
   }
 
-  .cards {
+  .grid {
     @include reset-list;
 
     display: flex;
     flex-wrap: wrap;
-    margin: ($gutter-width * -1) 0 0 ($gutter-width * -1);
     justify-content: center;
+    margin: ($gutter-width * -1) 0 0 ($gutter-width * -1);
 
     &--length2,
     &--length3,
     &--length4 {
-      .card {
+      .grid-item {
         @media (min-width: $breakpoint-tablet) {
           width: 50%;
         }
@@ -48,15 +48,13 @@
     }
   }
 
-  .card {
+  .grid-item {
     max-width: 675px;
     padding: $gutter-width 0 0 $gutter-width;
     width: 100%;
   }
 
   .content {
-    background-color: $color-background;
-    box-shadow: 0 1px 26px 0 rgba(0,0,0,0.06);
     height: 100%;
 
     img {
@@ -66,15 +64,30 @@
     &-inner {
       @include reset-content-margins;
 
-      color: $color-text;
-      padding: 20px;
-
-      #{$heading-selectors} {
-        color: $color-headline;
-      }
+      padding-top: 20px;
 
       @media (min-width: $breakpoint-tablet-horizontal) {
-        padding: 30px;
+        padding-top: 30px;
+      }
+    }
+  }
+
+  &.layoutCard {
+    .content {
+      background-color: $color-background;
+      box-shadow: 0 1px 26px 0 rgba(0, 0, 0, 0.06);
+
+      &-inner {
+        color: $color-text;
+        padding: 20px;
+
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          padding: 30px;
+        }
+
+        #{$heading-selectors} {
+          color: $color-headline;
+        }
       }
     }
   }

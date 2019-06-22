@@ -1,13 +1,13 @@
 <?php
 
-namespace Flynt\Components\GridCardsImageText;
+namespace Flynt\Components\GridImageText;
 
 use Flynt\Api;
 
-Api::registerFields('GridCardsImageText', [
+Api::registerFields('GridImageText', [
     'layout' => [
-        'name' => 'GridCardsImageText',
-        'label' => 'Grid: Cards Image Text',
+        'name' => 'GridImageText',
+        'label' => 'Grid: Image Text',
         'sub_fields' => [
             [
                 'label' => 'General',
@@ -29,12 +29,12 @@ Api::registerFields('GridCardsImageText', [
                 ],
             ],
             [
-                'label' => 'Cards',
-                'name' => 'cards',
+                'label' => 'Items',
+                'name' => 'items',
                 'type' => 'repeater',
                 'collapsed' => '',
                 'layout' => 'block',
-                'button_label' => 'Add Card',
+                'button_label' => 'Add',
                 'max' => 4,
                 'sub_fields' => [
                     [
@@ -61,64 +61,41 @@ Api::registerFields('GridCardsImageText', [
                         ],
                     ]
                 ]
+            ],
+            [
+                'label' => 'Options',
+                'name' => 'optionsTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
+                'label' => '',
+                'name' => 'options',
+                'type' => 'group',
+                'layout' => 'row',
+                'sub_fields' => [
+                    [
+                        'label' => 'Theme',
+                        'name' => 'theme',
+                        'type' => 'select',
+                        'allow_null' => 0,
+                        'multiple' => 0,
+                        'ui' => 0,
+                        'ajax' => 0,
+                        'choices' => [
+                            '' => 'Default',
+                            'themeLight' => 'Light',
+                            'themeDark' => 'Dark',
+                            'themeHero' => 'Hero'
+                        ]
                     ],
-           [
-                'label' => 'Options',
-                'name' => 'optionsTab',
-                'type' => 'tab',
-                'placement' => 'top',
-                'endpoint' => 0
-            ],
-            [
-                'label' => '',
-                'name' => 'options',
-                'type' => 'group',
-                'layout' => 'row',
-                'sub_fields' => [
                     [
-                        'label' => 'Theme',
-                        'name' => 'theme',
-                        'type' => 'select',
-                        'allow_null' => 0,
-                        'multiple' => 0,
-                        'ui' => 0,
-                        'ajax' => 0,
-                        'choices' => [
-                            '' => 'Default',
-                            'themeLight' => 'Light',
-                            'themeDark' => 'Dark',
-                            'themeHero' => 'Hero'
-                        ]
-                    ]
-                ]
-            ],
-            [
-                'label' => 'Options',
-                'name' => 'optionsTab',
-                'type' => 'tab',
-                'placement' => 'top',
-                'endpoint' => 0
-            ],
-            [
-                'label' => '',
-                'name' => 'options',
-                'type' => 'group',
-                'layout' => 'row',
-                'sub_fields' => [
-                    [
-                        'label' => 'Theme',
-                        'name' => 'theme',
-                        'type' => 'select',
-                        'allow_null' => 0,
-                        'multiple' => 0,
-                        'ui' => 0,
-                        'ajax' => 0,
-                        'choices' => [
-                            '' => 'Default',
-                            'themeLight' => 'Light',
-                            'themeDark' => 'Dark',
-                            'themeHero' => 'Hero'
-                        ]
+                        'label' => 'Show as Card',
+                        'name' => 'card',
+                        'type' => 'true_false',
+                        'default_value' => 0,
+                        'ui' => 1
                     ]
                 ]
             ]
