@@ -40,12 +40,11 @@
   }
 
   .post {
+    margin-bottom: 25px;
     width: 100%;
-    margin-bottom: 20px;
 
     @media (min-width: $breakpoint-tablet) {
       @include grid-item(2, $gutter-width);
-      margin-bottom: 0;
     }
 
     @media (min-width: $breakpoint-tablet-horizontal) {
@@ -55,7 +54,6 @@
     &-link {
       display: block;
       text-decoration: none;
-      transition: background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .figure {

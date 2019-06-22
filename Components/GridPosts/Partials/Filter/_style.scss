@@ -1,42 +1,42 @@
 .filter {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 -8px 32px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -8px 32px;
 
-    @media (min-width: $breakpoint-desktop) {
-        margin-bottom: 62px;
-      }
+  @media (min-width: $breakpoint-tablet-horizontal) {
+    margin-bottom: 62px;
+  }
 
-    &-item {
-        padding: 8px;
+  &-item {
+    padding: 0 8px 15px;
+  }
+
+  &-button {
+    appearance: none;
+    background-color: $color-background-dark;
+    border-radius: 20px;
+    color: $color-background;
+    cursor: pointer;
+    display: block;
+    font-family: inherit;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    outline: 0;
+    padding: 0.1875rem 1.875rem;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease,
+      color 0.2s ease;
+    user-select: none;
+
+    &:hover,
+    &:focus {
+      background-color: rgba($color-background-dark, 0.88);
     }
 
-    &-button {
-        appearance: none;
-        background-color: $color-background-dark;
-        border-radius: 20px;
-        color: $color-background;
-        cursor: pointer;
-        display: block;
-        font-family: inherit;
-        font-size: 0.8125rem;
-        font-weight: 400;
-        line-height: 1.5rem;
-        outline: 0;
-        padding: 0.1875rem 1.875rem;
-        text-align: center;
-        text-decoration: none;
-        transition: background-color 0.2s ease, border-color 0.2s ease,
-            color 0.2s ease;
-        user-select: none;
-
-        &:hover,
-        &:focus {
-            background-color: rgba($color-background-dark, 0.88);
-        }
-
-        &.active {
-            background-color: $color-accent;
-        }
+    &.active {
+      background-color: $color-accent;
     }
+  }
 }
