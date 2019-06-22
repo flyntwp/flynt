@@ -6,33 +6,33 @@
     {% endif %}
   </div>
   <div class="slider swiper-container">
-        <div class="swiper-wrapper">
-          {% for image in images %}
-            <div class="slider-item swiper-slide">
-              <figure class="figure">
-                <img class="figure-image lazyload"
-                  src="{{ image.src|resize(870, 580) }}"
-                  srcset="{{ placeholderImage(870, 580) }}"
-                  data-srcset="
-                    {{ image.src|resize(1740, 1160) }} 1160w,
-                    {{ image.src|resize(870, 580) }} 870w,
-                    {{ image.src|resize(580, 385) }} 580w,
-                    {{ image.src|resize(375, 246) }} 380w"
-                  data-sizes="auto"
-                  alt="{{ image.alt|e }}">
-                {% if image.caption %}
-                  <figcaption class="figure-caption">{{ image.caption|e }}</figcaption>
-                {% endif %}
-              </figure>
-            </div>
-          {% endfor %}
-        </div>
-        <div class="slider-pagination"></div>
-        <button class="slider-button slider-button--prev">
-          <i data-feather="arrow-left"></i>
-        </button>
-        <button class="slider-button slider-button--next">
-          <i data-feather="arrow-right"></i>
-        </button>
+      <div class="swiper-wrapper">
+        {% for image in images %}
+          <div class="slider-item swiper-slide">
+            <figure class="figure">
+              <img class="figure-image lazyload"
+                src="{{ image.src|resize(870, 580) }}"
+                srcset="{{ placeholderImage(870, 580) }}"
+                data-srcset="
+                  {{ image.src|resize(1740, 1160) }} 1160w,
+                  {{ image.src|resize(870, 580) }} 870w,
+                  {{ image.src|resize(580, 385) }} 580w,
+                  {{ image.src|resize(375, 246) }} 380w"
+                data-sizes="auto"
+                alt="{{ image.alt|e }}">
+              {% if image.caption %}
+                <figcaption class="figure-caption">{{ image.caption|e }}</figcaption>
+              {% endif %}
+            </figure>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="slider-pagination"></div>
+      <button class="slider-button slider-button--prev">
+        <i data-feather="arrow-left"></i>
+      </button>
+      <button class="slider-button slider-button--next">
+        <i data-feather="arrow-right"></i>
+      </button>
   </div>
 </div>
