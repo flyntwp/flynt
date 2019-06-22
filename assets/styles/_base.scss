@@ -348,6 +348,59 @@ button {
     text-align: center;
     width: 100%;
   }
+
+  &--link {
+    $link-padding: 1.25rem;
+
+    background: none;
+    border: 0;
+    padding: $link-padding 0;
+    position: relative;
+    text-transform: none;
+    transition: color 0.2s ease-out;
+
+    &:hover {
+      color: $color-background-dark;
+
+      &::before {
+        background: $color-background-dark;
+      }
+
+      &::after {
+        background-position: right center;
+      }
+    }
+
+    &::before {
+      background: $color-accent;
+      bottom: $link-padding;
+      content: '';
+      height: 1px;
+      left: 0;
+      position: absolute;
+      transition: background-color 0.2s ease-out;
+      width: 100%;
+    }
+
+    &::after {
+      $color-accent-rgb: red($color-accent), green($color-accent), blue($color-accent);
+      $color-background-dark-rgb: red($color-background-dark), green($color-background-dark), blue($color-background-dark);
+
+      background: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.586 5L.293 8.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4A1 1 0 1 0 .293 1.707L3.586 5z' fill='rgb(#{$color-accent-rgb})'/%3E%3Cpath d='M13.586 5l-3.293 3.293a1 1 0 0 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4a1 1 0 0 0-1.414 1.414L13.586 5z' fill='rgb(#{$color-background-dark-rgb}'/%3E%3C/svg%3E") left center no-repeat;
+      content: '';
+      display: inline-block;
+      height: 10px;
+      margin-left: 10px;
+      transition: background-position 0.2s ease-out;
+      vertical-align: baseline;
+      width: 6px;
+    }
+  }
+
+  &--small {
+    font-size: 0.8125rem;
+    padding: 0.594rem 1.875rem;
+  }
 }
 
 /**
