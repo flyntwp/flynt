@@ -5,83 +5,95 @@
     padding: $component-spacing-desktop 0;
   }
 
+  figure {
+    margin-bottom: 0;
+  }
+
   .container {
-    @include center;
+    @include center($padding: $container-padding-mobile);
 
-    padding: 0 $component-spacing-mobile;
-
-    @media (min-width: $breakpoint-desktop) {
-      padding: 0 $component-spacing-desktop;
+    @media (min-width: $breakpoint-tablet) {
+      @include center($padding: $container-padding-tablet);
     }
 
-    .box {
-      margin: 0 auto;
-      max-width: $content-max-width;
-      position: relative;
+    @media (min-width: $breakpoint-desktop) {
+      @include center($padding: $container-padding-desktop);
+    }
+  }
 
-      .background {
-        bottom: 0;
-        height: 100%;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        z-index: -1;
-      }
+  .box {
+    @media (min-width: $breakpoint-tablet) {
+      display: flex;
+      align-items: center;
+    }
 
-      .columns {
-        padding-bottom: 85px;
-        padding-top: 60px;
+    &-inner {
+      &--content {
         position: relative;
-        width: 100%;
-      }
 
-      @media (min-width: $breakpoint-tablet-horizontal) {
-        align-items: center;
-        display: flex;
-        margin: 0 -20px;
-        max-width: none;
+        @media (min-width: $breakpoint-mobile-horizontal) {
+          padding: $container-padding-tablet;
+        }
 
-        &-inner {
-          padding: 0 20px;
+        @media (min-width: $breakpoint-tablet) {
           width: 50%;
         }
 
-        &--imageLeft {
-          flex-direction: row-reverse;
-
-          .background {
-            width: 83%;
-            right: 0;
-            left: auto;
-          }
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          width: 40%;
+          padding: ($container-padding-desktop * 2) $container-padding-desktop;
         }
 
-        &--imageRight {
-          flex-direction: row;
+        &::after {
+            display: block;
+            content: '';
+            position: absolute;
+            background-color: inherit;
+            left: -$container-padding-mobile;
+            right: -$container-padding-mobile;
+            top: 0;
+            bottom: -32vw;
+            z-index: -1;
 
-          .background {
-            width: 83%;
+          @media (min-width: $breakpoint-tablet) {
+            left: 100%;
+            top: 0;
+            width: 46%;
+            height: 100%;
+            bottom: auto;
           }
         }
-
       }
 
-      &-inner {
-        &--content {
-          @include reset-content-margins;
+      &--image {
+        position: relative;
+        z-index: 10;
+
+        @media (min-width: $breakpoint-tablet) {
+          width: 50%;
         }
 
-        @media (min-width: $breakpoint-desktop) {
-          &--image {
-            width: 60%;
-          }
-
-          &--content {
-            width: 40%;
-          }
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          width: 60%;
         }
       }
     }
-}
+
+    &--imageLeft {
+      flex-direction: row-reverse;
+
+      .box-inner--content {
+        &::after {
+          left: auto;
+          right: 100%;
+        }
+      }
+    }
+
+    &-copy {
+      @media (min-width: $breakpoint-tablet) {
+        max-width: 440px;
+      }
+    }
+  }
 }
