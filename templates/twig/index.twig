@@ -1,11 +1,5 @@
 {% extends contentOnly ? 'twig/_contentOnly.twig' : 'twig/_document.twig' %}
 
 {% block content %}
-  {% if title %}
-    <h1>{{ title }}</h1>
-  {% endif %}
-  {% if description %}
-    <p>{{ description }}</p>
-  {% endif %}
   {{ renderComponent('GridPosts', { posts: posts }) }}
 {% endblock %}

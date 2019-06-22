@@ -29,6 +29,15 @@ add_filter('Flynt/addComponentData?name=GridPosts', function ($data) {
         'isActive' => is_home() || is_post_type_archive($postType),
     ]);
 
+    if (is_home()) {
+        $data['isHome'] = true;
+        $data['title'] = $queriedObject->post_title;
+    } else {
+        $data['title'] =  get_the_archive_title();
+        $data['description'] = get_the_archive_description();
+    }
+
+
     return $data;
 });
 

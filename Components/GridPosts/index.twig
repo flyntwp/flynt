@@ -1,8 +1,10 @@
 <div class="flyntComponent" is="flynt-grid-posts">
   <div class="container">
-    {% if preContentHtml %}
-      <div class="preContent">{{ preContentHtml|e('wp_kses_post') }}</div>
-    {% endif %}
+    <div class="preContent">
+      <h1>{{ title }}</h1>
+      {% set html = isHome ? preContentHtml : description%}
+      {{ html|e('wp_kses_post') }}
+    </div>
     {% if terms %}
        {% include 'Partials/Filter/index.twig' %}
     {% endif %}
