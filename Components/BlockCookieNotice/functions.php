@@ -3,6 +3,45 @@ namespace Flynt\Components\BlockCookieNotice;
 
 use Flynt\Utils\Options;
 
+Options::addGlobal('BlockCookieNotice', [
+    [
+        'label' => 'Layout',
+        'name' => 'layout',
+        'type' => 'select',
+        'allow_null' => 0,
+        'multiple' => 0,
+        'ui' => 0,
+        'ajax' => 0,
+        'wrapper' => [
+            'width' => 50
+        ],
+        'default_value' => 'layoutFloating',
+        'choices' => [
+            'layoutFloating' => 'Floating',
+            'layoutBottom' => 'Bottom'
+        ]
+    ],
+    [
+        'label' => 'Theme',
+        'name' => 'theme',
+        'type' => 'select',
+        'allow_null' => 0,
+        'multiple' => 0,
+        'ui' => 0,
+        'ajax' => 0,
+        'wrapper' => [
+            'width' => 50
+        ],
+        'default_value' => 'themeDefault',
+        'choices' => [
+            'themeDefault' => 'Default',
+            'themeLight' => 'Light',
+            'themeDark' => 'Dark',
+            'themeHero' => 'Hero'
+        ]
+    ],
+]);
+
 Options::addTranslatable('BlockCookieNotice', [
     [
         'label' => 'Content',
