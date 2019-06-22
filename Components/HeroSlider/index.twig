@@ -1,30 +1,42 @@
 <div class="flyntComponent" is="flynt-hero-slider">
   <script type="application/json">{{ jsonData|json_encode }}</script>
-  <picture class="content-picture">
-    <source srcset="
-      {{ images.imageDesktop.src | resize(2560, 800, 'center') }} 2560w,
-      {{ images.imageDesktop.src | resize(2048, 800, 'center') }} 2048w,
-      {{ images.imageDesktop.src | resize(1440, 400, 'center') }} 1440w,
-      {{ images.imageDesktop.src | resize(900, 400, 'center') }} 900w,
-      {{ images.imageDesktop.src | resize(768, 400, 'center') }} 768w"
-    media="(min-width: 768px)"
-    sizes="100vw">
-    <img class="content-image {{ mobileAlignImage }} {{ desktopAlignImage }}" srcset="
-      {{ images.imageMobile.src| resize(375, 400) }} 375w,
-      {{ images.imageMobile.src | resize(750, 800) }} 750w"
-    src="{{ images.imageMobile.src | resize(375, 400) }}"
-    sizes="100vw"
-    alt="{{ images.imageDesktop.alt|e }}">
-  </picture>
-  {% if contentHtml %}
-    <div class="container">
-      <div class="content">
-        <div class="content-wrapper">
-            <div class="content-html">
-              {{ contentHtml|e('wp_kses_post') }}
+  <div class="slider swiper-container">
+    <div class="swiper-wrapper">
+      {% for slide in slides %}
+      <div class="swiper-slide">
+        <picture class="content-picture">
+          <source srcset="
+            {{ slide.images.imageDesktop.src | resize(2560, 800, 'center') }} 2560w,
+            {{ slide.images.imageDesktop.src | resize(2048, 800, 'center') }} 2048w,
+            {{ slide.images.imageDesktop.src | resize(1440, 400, 'center') }} 1440w,
+            {{ slide.images.imageDesktop.src | resize(900, 400, 'center') }} 900w,
+            {{ slide.images.imageDesktop.src | resize(768, 400, 'center') }} 768w"
+          media="(min-width: 768px)"
+          sizes="100vw">
+          <img class="content-image {{ mobileAlignImage }} {{ desktopAlignImage }}" srcset="
+            {{ slide.images.imageMobile.src| resize(375, 400) }} 375w,
+            {{ slide.images.imageMobile.src | resize(750, 800) }} 750w"
+          src="{{ slide.images.imageMobile.src | resize(375, 400) }}"
+          sizes="100vw"
+          alt="{{ slide.images.imageDesktop.alt|e }}">
+        </picture>
+        {% if slide.contentHtml %}
+          <div class="container">
+            <div class="content">
+              {{ slide.contentHtml|e('wp_kses_post') }}
             </div>
-        </div>
+          </div>
+        {% endif %}
       </div>
+      {% endfor %}
     </div>
-  {% endif %}
+    {% if slides|length > 1 %}
+      <button type="button" class="slider-button slider-button--prev">
+        <i data-feather="arrow-left"></i>
+      </button>
+      <button type="button" class="slider-button slider-button--next">
+        <i data-feather="arrow-right"></i>
+      </button>
+    {% endif %}
+  </div>
 </div>

@@ -25,13 +25,15 @@ class HeroSlider extends window.HTMLDivElement {
 
   resolveElements () {
     this.$slider = $('.slider', this)
+    this.$sliderItems = $('.swiper-slide', this)
     this.$buttonNext = $('.slider-button--next', this)
     this.$buttonPrev = $('.slider-button--prev', this)
-    this.$pagination = $('.slider-pagination', this)
   }
 
   connectedCallback () {
-    this.initSlider()
+    if (this.$sliderItems.length > 1) {
+      this.initSlider()
+    }
   }
 
   initSlider () {
@@ -42,11 +44,7 @@ class HeroSlider extends window.HTMLDivElement {
         nextEl: this.$buttonNext,
         prevEl: this.$buttonPrev
       },
-      pagination: {
-        el: this.$pagination,
-        clickable: true
-      },
-      slidesPerView: 1,
+      slidesPerView: 1
     }
 
     if (options.autoplay && options.autoplaySpeed) {

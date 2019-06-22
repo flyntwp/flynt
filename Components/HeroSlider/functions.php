@@ -20,58 +20,77 @@ Api::registerFields('HeroSlider', [
         'label' => 'Hero: Slider',
         'sub_fields' => [
             [
-                'label' => 'Images',
-                'name' => 'imagesTab',
+                'label' => 'Hero Slides',
+                'name' => 'slidesTab',
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0
             ],
             [
-                'label' => 'Images',
-                'type' => 'group',
-                'name' => 'images',
-                'layout' => 'table',
+                'label' => '',
+                'name' => 'slides',
+                'type' => 'repeater',
+                'collapsed' => '',
+                'min' => 1,
+                'max' => 0,
+                'layout' => 'row',
+                'button_label' => 'Add Slide',
                 'sub_fields' => [
                     [
-                        'label' => 'Desktop Image',
-                        'name' => 'imageDesktop',
-                        'type' => 'image',
-                        'return_format' => 'array',
-                        'preview_size' => 'medium',
-                        'library' => 'all',
-                        'mime_types' => 'jpg,jpeg',
-                        'required' => 1,
-                        'instructions' => 'Recommended resolution greater than 2048 x 800 px.'
+                        'label' => 'Images',
+                        'name' => 'imagesTab',
+                        'type' => 'tab',
+                        'placement' => 'top',
+                        'endpoint' => 0
                     ],
                     [
-                        'label' => 'Mobile Image',
-                        'name' => 'imageMobile',
-                        'type' => 'image',
-                        'return_format' => 'array',
-                        'preview_size' => 'medium',
-                        'library' => 'all',
-                        'mime_types' => 'jpg,jpeg',
-                        'required' => 1,
-                        'instructions' => 'Recommended resolution greater than 750 x 800 px.'
-                    ]
+                        'label' => 'Images',
+                        'type' => 'group',
+                        'name' => 'images',
+                        'layout' => 'table',
+                        'sub_fields' => [
+                            [
+                                'label' => 'Desktop Image',
+                                'name' => 'imageDesktop',
+                                'type' => 'image',
+                                'return_format' => 'array',
+                                'preview_size' => 'medium',
+                                'library' => 'all',
+                                'mime_types' => 'jpg,jpeg',
+                                'required' => 1,
+                                'instructions' => 'Recommended resolution greater than 2048 x 800 px.'
+                            ],
+                            [
+                                'label' => 'Mobile Image',
+                                'name' => 'imageMobile',
+                                'type' => 'image',
+                                'return_format' => 'array',
+                                'preview_size' => 'medium',
+                                'library' => 'all',
+                                'mime_types' => 'jpg,jpeg',
+                                'required' => 1,
+                                'instructions' => 'Recommended resolution greater than 750 x 800 px.'
+                            ]
+                        ]
+                    ],
+                    [
+                        'label' => 'Content',
+                        'name' => 'contentTab',
+                        'type' => 'tab',
+                        'placement' => 'top',
+                        'endpoint' => 0
+                    ],
+                    [
+                        'label' => 'Content',
+                        'name' => 'contentHtml',
+                        'type' => 'wysiwyg',
+                        'media_upload' => 0,
+                        'toolbar' => 'full',
+                        'wrapper' => [
+                            'class' => 'autosize',
+                        ],
+                    ],
                 ]
-            ],
-            [
-                'label' => 'Content',
-                'name' => 'contentTab',
-                'type' => 'tab',
-                'placement' => 'top',
-                'endpoint' => 0
-            ],
-            [
-                'label' => 'Content',
-                'name' => 'contentHtml',
-                'type' => 'wysiwyg',
-                'media_upload' => 0,
-                'toolbar' => 'full',
-                'wrapper' => [
-                    'class' => 'autosize',
-                ],
             ],
             [
                 'label' => 'Options',
