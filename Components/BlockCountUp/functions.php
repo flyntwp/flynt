@@ -10,6 +10,21 @@ Api::registerFields('BlockCountUp', [
         'label' => 'Block: Count Up',
         'sub_fields' => [
             [
+                'label' => 'Color Theme',
+                'name' => 'colorTheme',
+                'type' => 'select',
+                'allow_null' => 1,
+                'multiple' => 0,
+                'ui' => 1,
+                'ajax' => 0,
+                'choices' => [
+                    'themeDark' => 'Dark Theme',
+                    'themeLight' => 'Light Theme',
+                    'themeHero' => 'Hero Theme'
+                ],
+                'default_value' => 'themeDark'
+            ],
+            [
                 'label' => 'Pre Content HTML',
                 'name' => 'preContentHtml',
                 'type' => 'wysiwyg',

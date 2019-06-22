@@ -1,12 +1,46 @@
 [is='flynt-block-count-up'] {
-  background-color: #091A41;
+  padding: $component-spacing-desktop 0;
+  text-align: center;
 
   .container {
     @include center;
 
-    .contentHtml {
-      color: #fff;
+    @media (min-width: $breakpoint-tablet) {
+      @include center($padding: $container-padding-tablet);
     }
+
+    @media (min-width: $breakpoint-desktop) {
+      @include center($padding: $container-padding-desktop);
+    }
+  }
+
+  .preContent {
+    @include reset-content-margins;
+
+    margin: 0 auto 50px;
+    max-width: $content-max-width;
+    text-align: center;
+  }
+
+  .blockCountUp {
+    @include grid;
+
+    .item {
+      width: 100%;
+      margin-bottom: 20px;
+
+      @media (min-width: $breakpoint-tablet) {
+        @include grid-item(2, $gutter-width);
+        margin-bottom: 0;
+      }
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        @include grid-item(4, $gutter-width);
+      }
+    }
+
+  }
+
 //     &-text {
 //       font-weight: 100;
 //       text-align: center;
@@ -64,5 +98,4 @@
 //         }
 //       }
 //     }
-  }
 }
