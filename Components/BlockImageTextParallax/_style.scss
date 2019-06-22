@@ -22,15 +22,16 @@
   }
 
   .box {
+
     @media (min-width: $breakpoint-tablet) {
       display: flex;
       align-items: center;
     }
 
     &-inner {
-      &--content {
         position: relative;
 
+      &--content {
         @media (min-width: $breakpoint-mobile-horizontal) {
           padding: $container-padding-tablet;
         }
@@ -44,24 +45,25 @@
           padding: ($container-padding-desktop * 2) $container-padding-desktop;
         }
 
-        &::after {
-            display: block;
-            content: '';
-            position: absolute;
-            background-color: inherit;
-            left: -$container-padding-mobile;
-            right: -$container-padding-mobile;
-            top: 0;
-            bottom: -32vw;
-            z-index: -1;
+      }
 
-          @media (min-width: $breakpoint-tablet) {
-            left: 100%;
-            top: 0;
-            width: 46%;
-            height: 100%;
-            bottom: auto;
-          }
+      &::after {
+          display: block;
+          content: '';
+          position: absolute;
+          background-color: inherit;
+          left: -$container-padding-mobile;
+          right: -$container-padding-mobile;
+          top: 0;
+          bottom: -32vw;
+          z-index: -1;
+
+        @media (min-width: $breakpoint-tablet) {
+          left: 100%;
+          top: 0;
+          width: 46%;
+          height: 100%;
+          bottom: auto;
         }
       }
 
@@ -84,8 +86,10 @@
 
       .box-inner--content {
         &::after {
-          left: auto;
-          right: 100%;
+          @media (min-width: $breakpoint-tablet) {
+            left: auto;
+            right: 100%;
+          }
         }
       }
     }
