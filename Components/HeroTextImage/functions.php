@@ -10,17 +10,11 @@ Api::registerFields('HeroTextImage', [
         'label' => 'Hero: Text Image',
         'sub_fields' => [
             [
-                'label' => 'Content Alignment',
-                'name' => 'contentAlignment',
-                'type' => 'button_group',
-                'choices' => [
-                    'textLeft' =>
-                        '<i class=\'dashicons dashicons-editor-alignleft\' title=\'Align content left\'></i>',
-                    'textRight' =>
-                        '<i class=\'dashicons dashicons-editor-alignright\' title=\'Align content right\'></i>'
-                ],
-                'required' => 1,
-                'default_value' => 'textLeft'
+                'label' => 'General',
+                'name' => 'generalTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
             ],
             [
                 'label' => 'Content',
@@ -35,7 +29,7 @@ Api::registerFields('HeroTextImage', [
             [
                 'label' => 'Image',
                 'instructions' =>
-                    'Recommended Height: 1200px. Minimum Height: 600px.',
+                    'Recommended Height: 1200px. Minimum Height: 600px. Image Format: JPG.',
                 'name' => 'image',
                 'type' => 'image',
                 'return_format' => 'array',
@@ -44,6 +38,26 @@ Api::registerFields('HeroTextImage', [
                 'min_height' => 600,
                 'mime_types' => 'jpg,jpeg',
                 'required' => 1
+            ],
+            [
+                'label' => 'Options',
+                'name' => 'optionsTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
+                'label' => 'Content Alignment',
+                'name' => 'contentAlignment',
+                'type' => 'button_group',
+                'choices' => [
+                    'textLeft' =>
+                        '<i class=\'dashicons dashicons-editor-alignleft\' title=\'Align content left\'></i>',
+                    'textRight' =>
+                        '<i class=\'dashicons dashicons-editor-alignright\' title=\'Align content right\'></i>'
+                ],
+                'required' => 1,
+                'default_value' => 'textLeft'
             ]
         ]
     ]
