@@ -20,58 +20,58 @@
     }
   }
 
-  .swiper-slide {
-    max-width: 375px;
+  .slider {
+    &-item {
+      max-width: 375px;
 
-    @media (min-width: $breakpoint-tablet) {
-      max-width: 580px;
-    }
-
-    @media (min-width: $breakpoint-tablet-horizontal) {
-      max-width: 870px;
-    }
-
-    .figure {
-      backface-visibility: hidden;
-      margin: 0;
-      transform: scale(0.93);
-      transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
-
-      &::before {
-        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
-        content: '';
-        height: 100%;
-        opacity: 1;
-        position: absolute;
-        transition: opacity 0.3s ease;
-        width: 100%;
+      @media (min-width: $breakpoint-tablet) {
+        max-width: 580px;
       }
 
-      &-caption {
-        background: rgba($color-background-dark, 0.4);
-        bottom: 0;
-        color: #fff;
-        display: inline-block;
-        font-size: 0.8rem;
-        max-width: 400px;
-        padding: 0.25rem 0.5rem;
-        position: absolute;
-        right: 0;
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        max-width: 870px;
       }
-    }
 
-    &-active {
       .figure {
-        transform: scale(1);
+        backface-visibility: hidden;
+        margin: 0;
+        transform: scale(0.93);
+        transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
 
         &::before {
-          opacity: 0;
+          background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+          content: '';
+          height: 100%;
+          opacity: 1;
+          position: absolute;
+          transition: opacity 0.3s ease;
+          width: 100%;
+        }
+
+        &-caption {
+          background: rgba($color-background-dark, 0.4);
+          bottom: 0;
+          color: $color-background-light;
+          display: inline-block;
+          font-size: 0.8rem;
+          max-width: 400px;
+          padding: 0.25rem 0.5rem;
+          position: absolute;
+          right: 0;
+        }
+      }
+
+      &.swiper-slide-active {
+        .figure {
+          transform: scale(1);
+
+          &::before {
+            opacity: 0;
+          }
         }
       }
     }
-  }
 
-  .slider {
     &-button {
       cursor: pointer;
       display: none;
