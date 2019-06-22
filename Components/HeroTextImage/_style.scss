@@ -30,6 +30,7 @@
       @media (min-width: $breakpoint-tablet-horizontal) {
         @include reset-content-margins;
 
+        align-self: center;
         flex-shrink: 0;
         margin: 0;
       }
