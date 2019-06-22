@@ -33,6 +33,10 @@ body {
   overflow-x: hidden;
 }
 
+.themeDefault {
+  background-color: $color-background;
+}
+
 .themeDark {
   background-color: $color-background-dark;
 
