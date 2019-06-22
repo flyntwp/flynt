@@ -1,0 +1,133 @@
+
+[is='flynt-grid-posts-latest'] {
+  padding: $component-spacing-mobile 0;
+
+  @media (min-width: $breakpoint-desktop) {
+    padding: $component-spacing-desktop 0;
+  }
+
+  .preContent {
+    @include reset-content-margins;
+
+    margin-bottom: 1.5rem;
+    text-align: center;
+
+    @media (min-width: $breakpoint-desktop) {
+      margin-bottom: 3rem;
+    }
+  }
+
+  .grid {
+    @include reset-list;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: ($gutter-width * -1) 0 0 ($gutter-width * -1);
+
+    &--length2,
+    &--length3,
+    &--length4 {
+      .grid-item {
+        @media (min-width: $breakpoint-tablet) {
+          width: 50%;
+        }
+      }
+    }
+
+    &--length3 {
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        flex-wrap: nowrap;
+      }
+    }
+
+    &--length4 {
+      @media (min-width: $breakpoint-desktop) {
+        flex-wrap: nowrap;
+      }
+    }
+  }
+
+  .grid-item {
+    max-width: 675px;
+    padding: $gutter-width 0 0 $gutter-width;
+    width: 100%;
+  }
+
+  .content {
+    background-color: $color-background;
+    box-shadow: 0 1px 26px 0 rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+
+    img {
+      background: $color-contrast;
+    }
+
+    &-inner {
+      color: $color-text;
+
+      #{$heading-selectors} {
+        color: $color-headline;
+      }
+    }
+
+    &-inner {
+      @include reset-content-margins;
+
+      padding: 20px;
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        padding: 30px;
+      }
+    }
+
+    &-link {
+      text-decoration: none;
+    }
+
+    &-readingTime {
+      color: #7B838D;
+      font-size: 0.9rem;
+
+      .feather {
+        color: #7B838D;
+        height: auto;
+        margin-right: 2px;
+        width: 16px;
+      }
+    }
+
+    &-footer {
+      align-items: center;
+      align-self: flex-end;
+      border-top: 1px solid $color-border;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px;
+      width: 100%;
+
+      .content-readMore {
+        padding: 0.9rem 0 1.1rem;
+
+        &::before {
+          bottom: 1.1rem;
+        }
+      }
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        padding: 0 30px;
+      }
+    }
+  }
+
+  .allPostsLink {
+    padding-top: 1.5rem;
+    text-align: center;
+
+    @media (min-width: $breakpoint-desktop) {
+      padding-top: 3rem;
+    }
+  }
+}
