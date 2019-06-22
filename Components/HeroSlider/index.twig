@@ -1,0 +1,30 @@
+<div class="flyntComponent" is="flynt-hero-slider">
+  <script type="application/json">{{ jsonData|json_encode }}</script>
+  <picture class="content-picture">
+    <source srcset="
+      {{ images.imageDesktop.src | resize(2560, 800, 'center') }} 2560w,
+      {{ images.imageDesktop.src | resize(2048, 800, 'center') }} 2048w,
+      {{ images.imageDesktop.src | resize(1440, 400, 'center') }} 1440w,
+      {{ images.imageDesktop.src | resize(900, 400, 'center') }} 900w,
+      {{ images.imageDesktop.src | resize(768, 400, 'center') }} 768w"
+    media="(min-width: 768px)"
+    sizes="100vw">
+    <img class="content-image {{ mobileAlignImage }} {{ desktopAlignImage }}" srcset="
+      {{ images.imageMobile.src| resize(375, 400) }} 375w,
+      {{ images.imageMobile.src | resize(750, 800) }} 750w"
+    src="{{ images.imageMobile.src | resize(375, 400) }}"
+    sizes="100vw"
+    alt="{{ images.imageDesktop.alt|e }}">
+  </picture>
+  {% if contentHtml %}
+    <div class="container">
+      <div class="content">
+        <div class="content-wrapper">
+            <div class="content-html">
+              {{ contentHtml|e('wp_kses_post') }}
+            </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</div>

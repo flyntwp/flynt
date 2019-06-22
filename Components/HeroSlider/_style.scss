@@ -1,0 +1,80 @@
+[is='flynt-hero-slider'] {
+  $content-max-width: 800px;
+
+  display: flex;
+  min-height: 420px;
+
+  @media (min-width: $breakpoint-tablet) {
+    min-height: 640px;
+  }
+
+  .container {
+    @include center;
+
+    display: flex;
+    width: 100%;
+  }
+
+  .content {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 60px;
+
+    &-wrapper {
+      align-content: center;
+      display: flex;
+      flex-direction: column;
+      justify-items: flex-start;
+      max-width: $content-max-width;
+    }
+
+    &-html {
+      @include reset-content-margins;
+
+      color: $color-background;
+      position: relative;
+      width: 100%;
+
+      #{$heading-selectors} {
+        color: inherit;
+      }
+    }
+
+    &-picture {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    &-image {
+      font-family: 'object-fit: cover';
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      width: 100%;
+    }
+
+
+    @media (max-width: $breakpoint-tablet - 1) {
+      &-image--isLeftAlignMobile {
+        object-position: left center;
+      }
+
+      &-image--isRightAlignMobile {
+        object-position: left center;
+      }
+    }
+
+    @media (min-width: $breakpoint-tablet) {
+      &-image--isLeftAlignDesktop {
+        object-position: left center;
+      }
+
+      &-image--isRightAlignDesktop {
+        object-position: left center;
+      }
+    }
+  }
+}
