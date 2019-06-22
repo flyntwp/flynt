@@ -1,5 +1,5 @@
 
-/* globals IntersectionObserver, CountUp */
+/* globals IntersectionObserver */
 import $ from 'jquery'
 import 'intersection-observer'
 import { CountUp } from 'countup.js'
