@@ -1,9 +1,16 @@
 [is='flynt-hero-text-image'] {
   margin-bottom: $component-spacing-mobile;
   overflow-x: hidden;
+  padding-top: $component-spacing-mobile;
+
+  @media (min-width: $breakpoint-tablet) {
+    margin-bottom: $component-spacing-tablet;
+    padding-top: $component-spacing-tablet;
+  }
 
   @media (min-width: $breakpoint-desktop) {
     margin-bottom: $component-spacing-desktop;
+    padding-top: $component-spacing-desktop;
   }
 
   .container {
@@ -34,10 +41,9 @@
   .column {
     &--content {
       @include center($content-max-width, 0);
+      @include reset-content-margins;
 
       @media (min-width: $breakpoint-tablet-horizontal) {
-        @include reset-content-margins;
-
         align-self: center;
         flex-shrink: 0;
         margin: 0;
