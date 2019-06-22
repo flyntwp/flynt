@@ -11,8 +11,8 @@
   .container {
     @include center;
 
-    padding-bottom: $container-padding;
-    padding-top: $container-padding;
+    padding-bottom: $container-padding-desktop;
+    padding-top: $container-padding-desktop;
 
     @media (min-width: $breakpoint-tablet) {
       align-items: center;
@@ -25,7 +25,7 @@
     @include reset-content-margins;
 
     font-size: 0.8rem;
-    padding-bottom: $container-padding;
+    padding-bottom: $container-padding-desktop;
 
     @media (min-width: $breakpoint-tablet) {
       padding-bottom: 0;

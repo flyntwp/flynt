@@ -1,6 +1,13 @@
 // Shorthands to help writing easier to understand code.
 
-@mixin font-face($family, $file, $weight: 'normal', $style: 'normal', $woff2: true, $base-path: 'fonts/') {
+@mixin font-face(
+  $family,
+  $file,
+  $weight: 'normal',
+  $style: 'normal',
+  $woff2: true,
+  $base-path: 'fonts/'
+) {
   @font-face {
     font-family: $family;
 
@@ -8,16 +15,18 @@
     font-weight: unquote($weight);
 
     @if $woff2 {
-      src: url($base-path + $file + '.woff2') format('woff2'), url($base-path + $file + '.woff') format('woff');
-    }
-
-    @else {
-      src: url($base-path + $file + '.woff') format('woff');
+      src: url($base-path+$file+'.woff2') format('woff2'),
+        url($base-path+$file+'.woff') format('woff');
+    } @else {
+      src: url($base-path+$file+'.woff') format('woff');
     }
   }
 }
 
-@mixin center($max-width: $container-max-width, $padding: $container-padding) {
+@mixin center(
+  $max-width: $container-max-width,
+  $padding: $container-padding-mobile
+) {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -47,4 +56,33 @@
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+// SIMPLE FLEXBOX GRID MIXIN
+@mixin grid() {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+@mixin grid-item($columns: 4, $gutter: 15px) {
+  width: calc((#{100% / $columns}) - (#{$columns - 1}/#{$columns} * #{$gutter}));
+
+  &:nth-child(n) {
+    margin-right: $gutter;
+    margin-top: 0;
+  }
+
+  &:nth-child(1n + #{$columns + 1}) {
+    margin-top: $gutter;
+  }
+
+  &:nth-child(#{$columns}n) {
+    margin-right: 0;
+  }
+
+  &:last-child {
+    margin-right: auto;
+  }
 }
