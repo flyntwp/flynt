@@ -13,13 +13,13 @@
         <div class="swiper-slide sliderMain-item">
           <figure class="figure">
             <img class="figure-image lazyload"
-              src="{{ image.src|resize(0, 650) }}"
-              srcset="{{ placeholderImage(image.aspect * 650, 650) }}"
+              src="{{ image.src|resize(0, 683) }}"
+              srcset="{{ placeholderImage(image.aspect * 683, 683) }}"
               data-srcset="
                 {{ image.src|resize(0, 1300) }} {{ (image.aspect * 1300)|round }}w,
                 {{ image.src|resize(0, 1024) }} {{ (image.aspect * 1024)|round }}w,
                 {{ image.src|resize(0, 750) }} {{ (image.aspect * 750)|round }}w,
-                {{ image.src|resize(0, 650) }} {{ (image.aspect * 650)|round }}w,
+                {{ image.src|resize(0, 683) }} {{ (image.aspect * 683)|round }}w,
                 {{ image.src|resize(0, 512) }} {{ (image.aspect * 512)|round }}w,
                 {{ image.src|resize(0, 385) }} {{ (image.aspect * 385)|round }}w,
                 {{ image.src|resize(0, 250) }} {{ (image.aspect * 250)|round }}w"

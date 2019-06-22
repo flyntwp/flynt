@@ -18,24 +18,29 @@
 
   .sliderMain {
     background: $color-contrast;
-    height: 250px;
     position: relative;
 
-    @media (min-width: $breakpoint-mobile-horizontal) {
-      height: 385px;
-    }
-
-    @media (min-width: $breakpoint-tablet) {
-      height: 512px;
-    }
-
-    @media (min-width: $breakpoint-tablet-horizontal) {
-      height: 650px;
-    }
-
     &-item {
+      height: 0;
+      overflow: hidden;
+      padding-bottom: (2/3) * 100%;
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        height: (2/3) * $breakpoint-tablet-horizontal;
+        padding-bottom: 0;
+      }
+
       .figure {
+        bottom: 0;
         height: 100%;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          position: relative;
+        }
 
         &-image {
           height: 100%;
