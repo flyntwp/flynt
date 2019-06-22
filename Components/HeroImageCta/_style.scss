@@ -1,70 +1,92 @@
 [is='flynt-hero-image-cta'] {
-  // NOTE: decide on if you want to have the component spacing in there? set $component-spacing-desktop = 0 to remove it the component spacing
-  margin: $component-spacing-mobile 0;
-  // margin: 0;
-  position: relative;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 420px;
 
   @media (min-width: $breakpoint-tablet) {
-    // NOTE: remove the $gutter-width if you dont want to have a gutter on the left and right
-    // NOTE: set $component-spacing-desktop = 0 to remove it the component spacing
-    margin: $component-spacing-desktop 0;
-    // margin: $component-spacing-desktop $gutter-width;
-    // margin: 0;
-  }
-
-  .image {
-    height: 440px;
-    object-fit: cover;
-    width: 100%;
-
-    @media (min-width: $breakpoint-tablet) {
-      height: 640px;
-    }
+    min-height: 640px;
   }
 
   .content {
-    align-items: center;
     display: flex;
-    flex-direction: column;
-    height: 100%;
+    flex-direction: row;
     justify-content: center;
-    left: 0;
-    padding: 0 $container-padding-mobile;
-    position: absolute;
-    top: 0;
-    width: 100%;
+    padding: 60px 20px;
+    position: relative;
 
-    @media (min-width: $breakpoint-desktop) {
-      padding: $container-padding-desktop;
+    @media (min-width: $breakpoint-tablet) {
+      padding: 210px 0;
+    }
+
+    &-wrapper {
+      align-content: center;
+      display: flex;
+      flex-direction: column;
+      justify-items: center;
+      max-width: $content-max-width;
     }
 
     &-html {
-      @include reset-content-margins();
+      @include reset-content-margins;
+
       color: $color-background;
-      max-width: $content-max-width;
+      position: relative;
       text-align: center;
+      width: 100%;
 
       #{$heading-selectors} {
         color: inherit;
       }
+    }
 
-      &--hasButton {
-        margin-bottom: 20px;
+    &-html--hasCta {
+      margin-bottom: 20px;
 
-        @media (min-width: $breakpoint-tablet) {
-          margin-bottom: 45px;
-        }
+      @media (min-width: $breakpoint-tablet) {
+        margin-bottom: 40px;
       }
     }
 
-    &--hasCoverImageWithBackgroundColor {
-      background-color: adjust-color($color-contrast, $alpha: -0.4);
+    &-cta {
+      text-align: center;
     }
-  }
 
-  @media (max-width: $content-max-width - 1px) {
-    br {
-      content: '\00a0';
+    &-picture {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    &-image {
+      font-family: 'object-fit: cover';
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      width: 100%;
+    }
+
+
+    @media (max-width: $breakpoint-tablet - 1) {
+      &-image--isLeftAlignMobile {
+        object-position: left center;
+      }
+
+      &-image--isRightAlignMobile {
+        object-position: left center;
+      }
+    }
+
+    @media (min-width: $breakpoint-tablet) {
+      &-image--isLeftAlignDesktop {
+        object-position: left center;
+      }
+
+      &-image--isRightAlignDesktop {
+        object-position: left center;
+      }
     }
   }
 }
