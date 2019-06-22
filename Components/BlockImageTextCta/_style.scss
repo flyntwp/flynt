@@ -1,46 +1,42 @@
 [is='flynt-block-image-text-cta'] {
-  margin: $component-spacing-desktop 0;
-
-  .container {
-    @include center;
-  }
-
   .box {
     margin: 0 auto;
-    max-width: $content-max-width;
+    padding: $container-padding-tablet 0;
 
-    @media (min-width: $breakpoint-tablet-horizontal) {
-      align-items: center;
+    @media (min-width: $breakpoint-tablet) {
       display: flex;
       margin: 0 -20px;
       max-width: none;
+      padding: $container-padding-desktop 0;
 
       &-inner {
         padding: 0 20px;
-        width: 50%;
       }
 
       &--imageLeft {
-        flex-direction: row;
+        flex-direction: row-reverse;
       }
 
       &--imageRight {
-        flex-direction: row-reverse;
+        flex-direction: row;
       }
     }
 
     &-inner {
       &--content {
         @include reset-content-margins;
+
+        margin: $container-padding-tablet 0 1.5rem 0;
       }
 
-      @media (min-width: $breakpoint-desktop) {
+      @media (min-width: $breakpoint-tablet) {
         &--image {
-          width: 60%;
+          width: 70%;
         }
 
         &--content {
-          width: 40%;
+          flex-direction: row;
+          width: 30%;
         }
       }
     }
@@ -49,7 +45,7 @@
   .figure {
     font-size: 0.8rem;
 
-    @media (min-width: $breakpoint-tablet-horizontal) {
+    @media (min-width: $breakpoint-tablet) {
       margin-bottom: 0;
 
       &-caption {
