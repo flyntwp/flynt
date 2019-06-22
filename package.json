@@ -80,7 +80,8 @@
     "uglify-js": "^3.4.9",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.2.1",
-    "webpack-dev-middleware": "^3.5.0"
+    "webpack-dev-middleware": "^3.5.0",
+    "swiper": "^4.5.0"
   },
   "eslintConfig": {
     "extends": "eslint-config-standard",

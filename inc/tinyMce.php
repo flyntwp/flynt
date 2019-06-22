@@ -97,12 +97,12 @@ function getConfig()
                 ]
             ],
             [
-                'title' => 'Lists',
+                'title' => 'Icon Lists',
                 'icon' => '',
                 'items' => [
                     [
-                        'title' => 'Checklist',
-                        'classes' => 'list list--checkmark',
+                        'title' => 'Check Circle',
+                        'classes' => 'iconList iconList--checkCircle',
                         'selector' => 'ul,ol'
                     ]
                 ]
