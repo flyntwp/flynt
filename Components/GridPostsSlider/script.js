@@ -1,59 +1,67 @@
 import $ from 'jquery'
-import 'slick-carousel'
-import 'slick-carousel/slick/slick.css'
+import Swiper from 'swiper'
+import 'swiper/dist/css/swiper.min.css'
 
 class GridPostsSlider extends window.HTMLDivElement {
-  constructor (self) {
-    self = super(self)
-    self.$ = $(self)
-    self.resolveElements()
+  constructor (...args) {
+    const self = super(...args)
+    self.init()
     return self
   }
 
+  init () {
+    this.$ = $(this)
+    this.props = this.getInitialProps()
+    this.resolveElements()
+  }
+
+  getInitialProps () {
+    let data = {}
+    try {
+      data = JSON.parse($('script[type="application/json"]', this).text())
+    } catch (e) {}
+    return data
+  }
+
   resolveElements () {
+    this.$slider = $('[data-slider]', this)
+    this.$pagination = $('[data-slider-pagination]', this)
   }
 
   connectedCallback () {
-    $(window).on('load resize orientationchange', function () {
-      $('.gridPosts').each(function () {
-        var $carousel = $(this)
-        if ($(window).width() > 1279) {
-          if ($carousel.hasClass('slick-initialized')) {
-            $carousel.slick('unslick')
-          }
-        } else {
-          if (!$carousel.hasClass('slick-initialized')) {
-            $carousel.slick({
-              arrows: false,
-              dots: true,
-              mobileFirst: true,
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              responsive: [
-                {
-                  breakpoint: 600,
-                  settings: {
-                    slidesToShow: 1
-                  }
-                },
-                {
-                  breakpoint: 768,
-                  settings: {
-                    slidesToShow: 2
-                  }
-                },
-                {
-                  breakpoint: 991,
-                  settings: {
-                    slidesToShow: 3
-                  }
-                }
-              ]
-            })
-          }
+    this.initSlider()
+  }
+
+  initSlider () {
+    const { options } = this.props
+    const config = {
+      a11y: options.a11y,
+      spaceBetween: 23,
+      pagination: {
+        el: this.$pagination,
+        clickable: true
+      },
+      slidesPerView: 4,
+      breakpoints: {
+        480: {
+          slidesPerView: 1
+        },
+        768: {
+          slidesPerView: 2
+        },
+        1024: {
+          slidesPerView: 3
         }
-      })
-    })
+      }
+    }
+
+    if (options.autoplay && options.autoplaySpeed) {
+      config['autoplay'] = {
+        delay: options.autoplaySpeed
+      }
+    }
+
+    this.swiper = new Swiper(this.$slider, config)
   }
 }
 

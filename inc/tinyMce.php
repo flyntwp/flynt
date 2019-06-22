@@ -55,9 +55,13 @@ add_filter('acf/fields/wysiwyg/toolbars', function ($toolbars) {
 function getBlockFormats($blockFormats)
 {
     if (!empty($blockFormats)) {
-        $blockFormatStrings = array_map(function ($tag, $label) {
-            return "${label}=${tag}";
-        }, $blockFormats, array_keys($blockFormats));
+        $blockFormatStrings = array_map(
+            function ($tag, $label) {
+                return "${label}=${tag}";
+            },
+            $blockFormats,
+            array_keys($blockFormats)
+        );
         return implode(';', $blockFormatStrings);
     }
     return '';
@@ -89,6 +93,17 @@ function getConfig()
                         'title' => 'Button Primary Block',
                         'classes' => 'button button--primary button--block',
                         'selector' => 'a'
+                    ]
+                ]
+            ],
+            [
+                'title' => 'Icon Lists',
+                'icon' => '',
+                'items' => [
+                    [
+                        'title' => 'Check Circle',
+                        'classes' => 'iconList iconList--checkCircle',
+                        'selector' => 'ul,ol'
                     ]
                 ]
             ]

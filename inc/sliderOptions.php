@@ -47,6 +47,6 @@ Options::addTranslatable('SliderOptions', [
                 'default_value' => 'Go to slide {{index}}',
                 'required' => 1,
             ],
-        ]
+        ],
     ],
 ], 'feature');
