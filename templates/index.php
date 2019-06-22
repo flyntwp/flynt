@@ -12,13 +12,12 @@ if (isset($_GET['contentOnly'])) {
     $context['contentOnly'] = true;
 }
 
-if (is_archive() || is_home()) {
-    global $wp_query;
-    $postType = ($wp_query->query_vars['post_type'] ?? 'post') ?: 'post';
-    $context['data'] = Options::get('translatableOptions', 'feature', POST_TYPES[$postType]['label'] . 'Archive');
-    $template = 'twig/archive.twig';
+if (is_home()) {
+    $queriedPost = get_queried_object();
+    $context['title'] = $queriedPost->post_title;
 } else {
-    $template = 'twig/index.twig';
+    $context['title'] =  get_the_archive_title();
+    $context['description'] = get_the_archive_description();
 }
 
-Timber::render($template, $context);
+Timber::render('twig/index.twig', $context);

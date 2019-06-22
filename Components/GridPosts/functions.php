@@ -10,110 +10,65 @@ const POST_TYPE = 'post';
 const FILTER_BY_TAXONOMY = 'category';
 
 add_filter('Flynt/addComponentData?name=GridPosts', function ($data) {
-    if ($data['showFilters']) {
-        $postType = $data['postType'] ?? POST_TYPE;
-        $taxonomy = $data['filterByTaxonomy'] ?? FILTER_BY_TAXONOMY;
-        if ($data['visibleFilters']) {
-            $terms = $data['visibleFilters'];
-        } else {
-            $terms = get_terms([
-                'taxonomy' => $taxonomy,
-                'hide_empty' => true,
-            ]);
-        }
-        $queriedObject = get_queried_object();
-        $data['terms'] = array_map(function ($term) use ($queriedObject) {
-            $timberTerm = new Term($term);
-            $timberTerm->isActive = $queriedObject->taxonomy === $term->taxonomy && $queriedObject->term_id === $term->term_id;
-            return $timberTerm;
-        }, $terms);
-        // Add item form all posts
-        array_unshift($data['terms'], [
-            'link' => get_post_type_archive_link($postType),
-            'title' => $data['labels']['allPosts'],
-            'isActive' => is_home() || is_post_type_archive($postType),
-        ]);
-    }
+    $postType = POST_TYPE;
+    $taxonomy = FILTER_BY_TAXONOMY;
+    $terms = get_terms([
+        'taxonomy' => $taxonomy,
+        'hide_empty' => true,
+    ]);
+    $queriedObject = get_queried_object();
+    $data['terms'] = array_map(function ($term) use ($queriedObject) {
+        $timberTerm = new Term($term);
+        $timberTerm->isActive = $queriedObject->taxonomy === $term->taxonomy && $queriedObject->term_id === $term->term_id;
+        return $timberTerm;
+    }, $terms);
+    // Add item form all posts
+    array_unshift($data['terms'], [
+        'link' => get_post_type_archive_link($postType),
+        'title' => $data['labels']['allPosts'],
+        'isActive' => is_home() || is_post_type_archive($postType),
+    ]);
 
     return $data;
 });
 
-function loadFields($taxonomy = FILTER_BY_TAXONOMY)
-{
-    $fields = [
-        [
-            'label' => 'General',
-            'name' => 'general',
-            'type' => 'tab',
-            'placement' => 'top',
-            'endpoint' => true,
-        ],
-        [
-            'label' => 'Pre-Content',
-            'name' => 'preContentHtml',
-            'type' => 'wysiwyg',
-            'instructions' => 'Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.',
-            'tabs' => 'visual,text',
-            'toolbar' => 'full',
-            'media_upload' => 0,
-            'delay' => 1,
-            'wrapper' => [
-                'class' => 'autosize',
-            ],
-        ],
-        [
-            'label' => 'Options',
-            'name' => 'options',
-            'type' => 'tab',
-            'placement' => 'top',
-            'endpoint' => false
-        ],
-        [
-            'label' => 'Load More Button?',
-            'name' => 'loadMore',
-            'type' => 'true_false',
-            'default_value' => 0,
-            'ui' => true
-        ],
-    ];
-    if (!empty($taxonomy)) {
-        $fields = array_merge($fields, [
-            [
-                'label' => 'Show Filters?',
-                'name' => 'showFilters',
-                'type' => 'true_false',
-                'default_value' => 0,
-                'ui' => true
-            ],
-            [
-                'label' => 'Visible Filters',
-                'name' => 'visibleFilters',
-                'type' => 'taxonomy',
-                'taxonomy' => $taxonomy,
-                'field_type' => 'multi_select',
-                'allow_null' => true,
-                'multiple' => true,
-                'add_term' => false,
-                'return_format' => 'object',
-                'instructions' => 'Select none to show filters for all available terms.',
-                'conditional_logic' => [
-                    [
-                        [
-                            'fieldPath' => 'showFilters',
-                            'operator' => '==',
-                            'value' => 1,
-                        ],
-                    ],
-                ],
-            ],
-        ]);
-    }
-    return $fields;
-};
-
 Options::addTranslatable('GridPosts', [
     [
+        'label' => 'General',
+        'name' => 'general',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => true,
+    ],
+    [
+        'label' => 'Pre-Content',
+        'name' => 'preContentHtml',
+        'type' => 'wysiwyg',
+        'instructions' => 'Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.',
+        'tabs' => 'visual,text',
+        'toolbar' => 'full',
+        'media_upload' => 0,
+        'delay' => 1,
+        'wrapper' => [
+            'class' => 'autosize',
+        ],
+    ],
+    [
+        'label' => 'Load More Button?',
+        'name' => 'loadMore',
+        'type' => 'true_false',
+        'default_value' => 0,
+        'ui' => true
+    ],
+    [
         'label' => 'Labels',
+        'name' => 'labelsTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => false
+    ],
+    [
+        'label' => '',
         'name' => 'labels',
         'type' => 'group',
         'sub_fields' => [
