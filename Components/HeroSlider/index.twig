@@ -1,6 +1,6 @@
 <div class="flyntComponent" is="flynt-hero-slider">
   <script type="application/json">{{ jsonData|json_encode }}</script>
-  <div class="slider swiper-container">
+  <div data-slider class="slider swiper-container">
     <div class="swiper-wrapper">
       {% for slide in slides %}
       <div class="swiper-slide">
@@ -31,10 +31,10 @@
       {% endfor %}
     </div>
     {% if slides|length > 1 %}
-      <button type="button" class="slider-button slider-button--prev">
+      <button data-slider-button="prev" type="button" class="slider-button slider-button--prev">
         <i data-feather="arrow-left"></i>
       </button>
-      <button type="button" class="slider-button slider-button--next">
+      <button data-slider-button="next" type="button" class="slider-button slider-button--next">
         <i data-feather="arrow-right"></i>
       </button>
     {% endif %}

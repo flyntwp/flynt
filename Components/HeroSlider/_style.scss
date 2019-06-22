@@ -40,15 +40,16 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      transition: opacity 0.2s ease;
+      transition: opacity 0.2s ease, background-color 0.2s ease;
       width: 40px;
       z-index: 10;
 
       &.swiper-button-disabled {
         opacity: 0.5;
+        pointer-events: none;
       }
 
-      svg {
+      .feather {
         color: $color-background;
         height: auto;
         top: 0;
@@ -68,6 +69,13 @@
 
         @media (min-width: $breakpoint-tablet-horizontal) {
           right: 45px;
+        }
+      }
+
+      @media (min-width: $breakpoint-tablet) {
+        &:hover,
+        &:focus {
+          background-color: $color-accent;
         }
       }
     }
