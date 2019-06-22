@@ -17,17 +17,19 @@ add_filter('Flynt/addComponentData?name=GridPosts', function ($data) {
         'hide_empty' => true,
     ]);
     $queriedObject = get_queried_object();
-    $data['terms'] = array_map(function ($term) use ($queriedObject) {
-        $timberTerm = new Term($term);
-        $timberTerm->isActive = $queriedObject->taxonomy === $term->taxonomy && $queriedObject->term_id === $term->term_id;
-        return $timberTerm;
-    }, $terms);
-    // Add item for all posts
-    array_unshift($data['terms'], [
-        'link' => get_post_type_archive_link($postType),
-        'title' => $data['labels']['allPosts'],
-        'isActive' => is_home() || is_post_type_archive($postType),
-    ]);
+    if (count($terms) > 1) {
+        $data['terms'] = array_map(function ($term) use ($queriedObject) {
+            $timberTerm = new Term($term);
+            $timberTerm->isActive = $queriedObject->taxonomy === $term->taxonomy && $queriedObject->term_id === $term->term_id;
+            return $timberTerm;
+        }, $terms);
+        // Add item for all posts
+        array_unshift($data['terms'], [
+            'link' => get_post_type_archive_link($postType),
+            'title' => $data['labels']['allPosts'],
+            'isActive' => is_home() || is_post_type_archive($postType),
+        ]);
+    }
 
     if (is_home()) {
         $data['isHome'] = true;
