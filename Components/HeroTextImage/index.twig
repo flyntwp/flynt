@@ -7,32 +7,32 @@
       <picture>
         {% if image.aspect >= (16 / 9) %}
           <source
-            src="{{ image.src|resize(994) }}"
+            src="{{ image.src|resizeDynamic(994) }}"
             srcset="{{ placeholderImage(994, 994 / image.aspect) }}"
             data-srcset="
-              {{ image.src|resize(345) }} 345w,
-              {{ image.src|resize(510) }} 510w,
-              {{ image.src|resize(690) }} 690w,
-              {{ image.src|resize(994) }} 994w,
-              {{ image.src|resize(1020) }} 1020w,
-              {{ image.src|resize(1376) }} 1376w"
+              {{ image.src|resizeDynamic(345) }} 345w,
+              {{ image.src|resizeDynamic(510) }} 510w,
+              {{ image.src|resizeDynamic(690) }} 690w,
+              {{ image.src|resizeDynamic(994) }} 994w,
+              {{ image.src|resizeDynamic(1020) }} 1020w,
+              {{ image.src|resizeDynamic(1376) }} 1376w"
             media="(max-width: 1023px)">
         {% else %}
           <source
-            src="{{ image.src|resize(0, 530) }}"
+            src="{{ image.src|resizeDynamic(0, 530) }}"
             srcset="{{ placeholderImage(image.aspect * 530, 530) }}"
             data-srcset="
-              {{ image.src|resize(0, 530) }} 1x,
-              {{ image.src|resize(0, 1060) }} 2x"
+              {{ image.src|resizeDynamic(0, 530) }} 1x,
+              {{ image.src|resizeDynamic(0, 1060) }} 2x"
             media="(max-width: 1023px)">
         {% endif %}
         <img
           class="image lazyload"
-          src="{{ image.src|resize(0, 600) }}"
+          src="{{ image.src|resizeDynamic(0, 600) }}"
           srcset="{{ placeholderImage(image.aspect * 600, 600) }}"
           data-srcset="
-            {{ image.src|resize(0, 600) }} 1x,
-            {{ image.src|resize(0, 1200) }} 2x"
+            {{ image.src|resizeDynamic(0, 600) }} 1x,
+            {{ image.src|resizeDynamic(0, 1200) }} 2x"
           alt="{{ image.alt|e }}"
           data-sizes="auto">
       </picture>
