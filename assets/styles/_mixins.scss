@@ -84,11 +84,11 @@
         margin-top: 0;
       }
 
-      &:nth-child(1n + #{$num + 1}) {
+      &:nth-child(1n + #{$columns + 1}) {
         margin-top: $gutter-vertical;
       }
 
-      &:nth-child(#{$num}n) {
+      &:nth-child(#{$columns}n) {
         margin-right: 0;
       }
 
