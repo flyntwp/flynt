@@ -35,7 +35,7 @@
       .figure {
         backface-visibility: hidden;
         margin: 0;
-        transform: scale(0.93);
+        transform: scale(0.9) translate3d(0,0,0);
         transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
 
         &::before {
@@ -63,7 +63,7 @@
 
       &.swiper-slide-active {
         .figure {
-          transform: scale(1);
+          transform: scale(1) translate3d(0,0,0);
 
           &::before {
             opacity: 0;

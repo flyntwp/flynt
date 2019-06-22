@@ -41,7 +41,7 @@ Api::registerFields('SliderImagesCentered', [
                 'instructions' => '',
                 'name' => 'images',
                 'type' => 'gallery',
-                'min' => 1,
+                'min' => 2,
                 'preview_size' => 'medium',
                 'library' => 'all',
                 'min_width' => 0,
