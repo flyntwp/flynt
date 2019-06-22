@@ -9,8 +9,7 @@
   .preContent {
     @include reset-content-margins;
 
-    margin: 0 auto 1.5rem;
-    max-width: $content-max-width;
+    margin-bottom: 1.5rem;
     text-align: center;
 
     @media (min-width: $breakpoint-desktop) {

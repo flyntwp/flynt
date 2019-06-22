@@ -1,7 +1,7 @@
 <div class="flyntComponent {{ options.theme }}" is="flynt-grid-cards-image-text">
   <div class="container centerMaxWidthContainer">
     {% if preContentHtml %}
-      <div class="preContent">
+      <div class="preContent centerContentMaxWidth">
         {{ preContentHtml|e('wp_kses_post') }}
       </div>
     {% endif %}
