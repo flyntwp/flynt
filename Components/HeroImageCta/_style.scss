@@ -3,14 +3,25 @@
   display: flex;
   justify-content: center;
 
-  // NOTE: remove container if image should go full width
-  .container {
+  .container--hasContainerWidth {
     @include center(100%, $padding: 0);
     position: relative;
     width: 100%;
 
     @media (min-width: $breakpoint-tablet) {
       @include center($container-max-width, $padding: 0);
+    }
+
+    .content-picture {
+      @media (min-width: $breakpoint-tablet) {
+        left: $container-padding-tablet;
+        right: $container-padding-tablet;
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        left: $container-padding-desktop;
+        right: $container-padding-desktop;
+      }
     }
   }
 
@@ -33,7 +44,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding: 0 $container-padding-mobile;
+    padding: $component-spacing-mobile $container-padding-mobile;
     position: relative;
     width: 100%;
 
@@ -66,40 +77,13 @@
       }
     }
 
-    &-html--hasCta {
-      margin-bottom: 20px;
-
-      @media (min-width: $breakpoint-tablet) {
-        margin-bottom: 40px;
-      }
-    }
-
-    &-cta {
-      text-align: center;
-    }
-
-    &-pictureWrapper {
+    &-picture {
       bottom: 0;
+      left: 0;
       left: 0;
       position: absolute;
       right: 0;
       top: 0;
-
-
-      @media (min-width: $breakpoint-tablet) {
-        left: $container-padding-tablet;
-        right: $container-padding-tablet;
-      }
-
-      @media (min-width: $breakpoint-desktop) {
-        left: $container-padding-desktop;
-        right: $container-padding-desktop;
-      }
-    }
-
-    &-pictureWrapper--isFullWidth {
-      left: 0;
-      right: 0;
     }
 
     &-image {
@@ -109,43 +93,40 @@
       width: 100%;
     }
 
+    &-image--isCenterTopAlignMobile {
+      object-position: center top;
+    }
 
-    @media (max-width: $breakpoint-tablet - 1) {
-      &-image--isCenterTopAlignMobile {
-        object-position: center top;
-      }
+    &-image--isCenterCenterAlignMobile {
+      object-position: center center;
+    }
 
-      &-image--isCenterCenterAlignMobile {
-        object-position: center center;
-      }
+    &-image--isCenterBottomAlignMobile {
+      object-position: center bottom;
+    }
 
-      &-image--isCenterBottomAlignMobile {
-        object-position: center bottom;
-      }
+    &-image--isLeftTopAlignMobile {
+      object-position: left top;
+    }
 
-      &-image--isLeftTopAlignMobile {
-        object-position: left top;
-      }
+    &-image--isLeftCenterAlignMobile {
+      object-position: left center;
+    }
 
-      &-image--isLeftCenterAlignMobile {
-        object-position: left center;
-      }
+    &-image--isLeftBottomAlignMobile {
+      object-position: left bottom;
+    }
 
-      &-image--isLeftBottomAlignMobile {
-        object-position: left bottom;
-      }
+    &-image--isRightTopAlignMobile {
+      object-position: right top;
+    }
 
-      &-image--isRightTopAlignMobile {
-        object-position: right top;
-      }
+    &-image--isRightCenterAlignMobile {
+      object-position: right center;
+    }
 
-      &-image--isRightCenterAlignMobile {
-        object-position: right center;
-      }
-
-      &-image--isRightBottomAlignMobile {
-        object-position: right bottom;
-      }
+    &-image--isRightBottomAlignMobile {
+      object-position: right bottom;
     }
 
     @media (min-width: $breakpoint-tablet) {

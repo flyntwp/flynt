@@ -1,7 +1,7 @@
 <div class="flyntComponent" is="flynt-hero-image-cta">
-  {% if not fullWidthImage %}<div class="container">{% endif %}
-    <div class="content-pictureWrapper {% if fullWidthImage %}content-pictureWrapper--isFullWidth{% endif %}">
-      <picture class="content-picture">
+  <div class="container {% if hasContainerWidth %}container--hasContainerWidth{% endif %}">
+    <div class="content-picture">
+      <picture>
         {% if images.imageMobile %}
           <source srcset="
             {{ images.imageDesktop.src | resize(2560, 640, 'center') }} 2560w,
@@ -30,16 +30,12 @@
         {% endif %}
       </picture>
     </div>
-    {% if contentHtml or buttonLink.url %}
-      <div class="content">
-        <div class="content-wrapper">
-          {% if contentHtml %}
-            <div class="content-html {% if buttonLink.url %}content-html--hasCta{% endif %}">
-              {{ contentHtml|e('wp_kses_post') }}
-            </div>
-          {% endif %}
+    <div class="content">
+      <div class="content-wrapper">
+        <div class="content-html">
+          {{ contentHtml|e('wp_kses_post') }}
         </div>
       </div>
-    {% endif %}
-  {% if not fullWidthImage %}</div>{% endif %}
+    </div>
+  </div>
 </div>
