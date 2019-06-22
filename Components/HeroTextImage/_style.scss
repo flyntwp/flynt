@@ -33,26 +33,6 @@
         flex-shrink: 0;
         margin: 0;
       }
-
-      .checkmark-list {
-        list-style: none;
-        padding: 0;
-
-        li {
-          margin-bottom: 10px;
-
-          &::before {
-            background-image: url('../../Components/HeroTextImage/Assets/check-circle.svg');
-            background-size: contain;
-            content: '';
-            display: inline-block;
-            height: 12px;
-            margin-right: 12px;
-            position: relative;
-            width: 12px;
-          }
-        }
-      }
     }
 
     &--image {
