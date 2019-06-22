@@ -1,12 +1,6 @@
 [is='flynt-block-text-image-crop'] {
   @include reset-content-margins;
 
-  margin: $component-spacing-mobile 0;
-
-  @media (min-width: $breakpoint-desktop) {
-    margin: $component-spacing-desktop 0;
-  }
-
   .box {
     margin: 0 auto;
 
