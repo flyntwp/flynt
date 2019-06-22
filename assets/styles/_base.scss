@@ -563,23 +563,26 @@ select {
 * 3.4 Custom list styles
 */
 
-.list {
-  &--checkmark {
-    list-style-type: none;
-    padding: 0;
+.iconList {
+  list-style-type: none;
+  padding: 0;
 
-    li {
-      margin-bottom: 0.75em;
+  li {
+    margin-bottom: 0.75em;
 
-      &::before {
-        background-image: url('../assets/icons/check-circle.svg');
-        background-size: contain;
-        content: '';
-        display: inline-block;
-        height: 0.75em;
-        margin-right: 0.75em;
-        width: 0.75em;
-      }
+    &::before {
+      background-size: contain;
+      content: '';
+      display: inline-block;
+      height: 0.75em;
+      margin-right: 0.75em;
+      width: 0.75em;
+    }
+  }
+
+  &--checkCircle {
+    li::before {
+      background-image: url('../assets/icons/check-circle.svg');
     }
   }
 }
