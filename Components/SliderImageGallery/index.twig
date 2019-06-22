@@ -1,8 +1,16 @@
 <div class="flyntComponent" is="flynt-slider-image-gallery">
-  <div class="container">
-    <div class="slider slider-main">
+  <script type="application/json">{{ jsonData|json_encode }}</script>
+  {% if preContentHtml %}
+    <div class="centerMaxWidthContainer">
+      <div class="preContent centerContentMaxWidth">
+        {{ preContentHtml|e('wp_kses_post') }}
+      </div>
+    </div>
+  {% endif %}
+  <div class="swiper-container sliderMain">
+    <div class="swiper-wrapper">
       {% for image in images %}
-        <div class="slide">
+        <div class="swiper-slide sliderMain-item">
           <figure class="figure">
             <img class="figure-image lazyload"
               src="{{ image.src|resize(0, 650) }}"
@@ -24,9 +32,17 @@
         </div>
       {% endfor %}
     </div>
-    <div class="slider slider-thumb">
+    <button type="button" class="sliderMain-button sliderMain-button--prev">
+      <i data-feather="arrow-left"></i>
+    </button>
+    <button type="button" class="sliderMain-button sliderMain-button--next">
+      <i data-feather="arrow-right"></i>
+    </button>
+  </div>
+  <div class="swiper-container sliderThumb">
+    <div class="swiper-wrapper">
       {% for image in images %}
-        <div class="slide">
+        <div class="swiper-slide sliderThumb-item">
           <figure class="figure">
             <img class="figure-image lazyload"
               srcset="{{ placeholderImage(image.aspect * 65, 65) }}"

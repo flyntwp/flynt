@@ -1,54 +1,61 @@
 import $ from 'jquery'
-import 'slick-carousel'
-import 'slick-carousel/slick/slick.css'
+import Swiper from 'swiper'
+import 'swiper/dist/css/swiper.min.css'
 
 class SliderImageGallery extends window.HTMLDivElement {
-  constructor (self) {
-    self = super(self)
-    self.$ = $(self)
-    self.resolveElements()
-    self.setOptions()
+  constructor (...args) {
+    const self = super(...args)
+    self.init()
     return self
   }
 
-  resolveElements () {
-    this.$sliderMain = $('.slider-main', this)
-    this.$sliderThumb = $('.slider-thumb', this)
+  init () {
+    this.$ = $(this)
+    this.props = this.getInitialProps()
+    this.resolveElements()
   }
 
-  setOptions () {
-    this.slickMainOptions = {
-      arrows: true,
-      asNavFor: this.$sliderThumb.selector,
-      dots: false,
-      focusOnChange: false,
-      infinite: false,
-      responsive: [
-        {
-          breakpoint: 768,
-          settings: {
-            arrows: false
-          }
-        }
-      ]
-    }
-    this.slickThumbOptions = {
-      arrows: false,
-      asNavFor: this.$sliderMain.selector,
-      centerMode: true,
-      dots: false,
-      draggable: false,
-      focusOnChange: false,
-      focusOnSelect: true,
-      infinite: false,
-      swipeToSlide: true,
-      variableWidth: true
-    }
+  getInitialProps () {
+    let data = {}
+    try {
+      data = JSON.parse($('script[type="application/json"]', this).text())
+    } catch (e) {}
+    return data
+  }
+
+  resolveElements () {
+    this.$sliderMain = $('.sliderMain', this)
+    this.$sliderThumb = $('.sliderThumb', this)
+    this.$buttonNext = $('.sliderMain-button--next', this)
+    this.$buttonPrev = $('.sliderMain-button--prev', this)
   }
 
   connectedCallback () {
-    this.$sliderMain.not('.slick-initialized').slick(this.slickMainOptions)
-    this.$sliderThumb.not('.slick-initialized').slick(this.slickThumbOptions)
+    this.initSliders()
+  }
+
+  initSliders () {
+    const { options } = this.props
+
+    this.sliderThumb = new Swiper(this.$sliderThumb, {
+      slidesPerView: 'auto',
+      freeMode: true,
+      centeredSlides: true,
+      slideToClickedSlide: true,
+      a11y: options.a11y
+    })
+
+    this.sliderMain = new Swiper(this.$sliderMain, {
+      spaceBetween: 10,
+      navigation: {
+        nextEl: this.$buttonNext,
+        prevEl: this.$buttonPrev,
+      },
+      a11y: options.a11y
+    })
+
+    this.sliderMain.controller.control = this.sliderThumb
+    this.sliderThumb.controller.control = this.sliderMain
   }
 }
 
