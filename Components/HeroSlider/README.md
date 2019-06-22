@@ -1,4 +1,4 @@
-Title: Her Slider
+Title: Hero Slider
 
 ---
 
@@ -10,4 +10,4 @@ Tags: image, photo, gallery, content
 
 ---
 
-Text: Simply drop any images in the gallery field, order them by drag & drop.
+Text: Full width image slider with navigation arrows. Upload two versions of image, one for desktop one for mobile and optionaly add html content overflowing the image. This component uses swiper slider.
