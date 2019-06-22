@@ -4,7 +4,37 @@
       {{ contentHtml|e('wp_kses_post') }}
     </div>
     <div class="column column--image">
-      <img class="image" src="{{ image.src|resize(0, 600) }}" alt="{{ image.alt|e }}">
+      <picture>
+        {% if image.aspect >= (16 / 9) %}
+          {# TODO: optimize by width #}
+          <source
+            src="{{ image.src|resize(943) }}"
+            srcset="{{ placeholderImage(943, 943 / image.aspect) }}"
+            data-srcset="
+              {{ image.src|resize(943) }} 943w,
+              {{ image.src|resize(600) }} 600w"
+            media="(max-width: 1023px)">
+        {% else %}
+          {# TODO: optimize by 1x, 2x #}
+          <source
+            src="{{ image.src|resize(0, 530) }}"
+            srcset="{{ placeholderImage(image.aspect * 530, 530) }}"
+            data-srcset="
+              {{ image.src|resize(0, 530) }} 1x,
+              {{ image.src|resize(0, 1060) }} 2x"
+            media="(max-width: 1023px)">
+        {% endif %}
+        {# TODO: desktop only one image size? #}
+        <img
+          class="image lazyload"
+          src="{{ image.src|resize(0, 600) }}"
+          srcset="{{ placeholderImage(image.aspect * 600, 600) }}"
+          data-srcset="
+            {{ image.src|resize(0, 600) }} 1x,
+            {{ image.src|resize(0, 1200) }} 2x"
+          alt="{{ image.alt|e }}"
+          data-sizes="auto">
+      </picture>
     </div>
   </div>
 </div>

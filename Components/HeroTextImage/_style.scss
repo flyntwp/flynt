@@ -45,10 +45,12 @@
   }
 
   .image {
+    font-family: 'object-fit: contain';
     max-height: 530px;
     object-fit: contain;
 
     @media (min-width: $breakpoint-tablet-horizontal) {
+      font-family: 'object-fit: fill';
       height: 600px;
       max-height: none;
       max-width: none;
