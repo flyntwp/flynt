@@ -1,6 +1,10 @@
 [is='flynt-hero-text-image'] {
-  margin-bottom: $component-spacing-desktop;
+  margin-bottom: $component-spacing-mobile;
   overflow-x: hidden;
+
+  @media (min-width: $breakpoint-desktop) {
+    margin-bottom: $component-spacing-desktop;
+  }
 
   .container {
     @media (min-width: $breakpoint-tablet-horizontal) {
