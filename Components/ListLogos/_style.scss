@@ -16,7 +16,7 @@
   .preContent {
     @include reset-content-margins;
 
-    margin-bottom: 1.5rem;
+    margin-bottom: 24px;
     text-align: center;
 
     @media (min-width: $breakpoint-desktop) {
@@ -25,30 +25,26 @@
   }
 
   .list {
-    @include grd;
-    justify-content: center;
+    @include grid(2, 12px, 12px, center);
+    align-items: center;
     list-style: none;
     margin: 0;
     padding: 0;
 
-    .item {
-      @include grd-item(2, 18px, 18px);
+    @media (min-width: 375px) {
+      @include grid(3, 16px, 16px, center);
+    }
 
-      @media (min-width: 375px) {
-        @include grd-item(3, 18px, 18px);
-      }
+    @media (min-width: 576px) {
+      @include grid(4, 16px, 16px, center);
+    }
 
-      @media (min-width: $breakpoint-mobile-horizontal) {
-        @include grd-item(4, 18px, 18px);
-      }
+    @media (min-width: $breakpoint-tablet) {
+      @include grid(6, 16px, 16px, center);
+    }
 
-      @media (min-width: $breakpoint-tablet) {
-        @include grd-item(6, $gutter-width, $gutter-width);
-      }
-
-      @media (min-width: $breakpoint-tablet-horizontal) {
-        @include grd-item(8, $gutter-width, $gutter-width);
-      }
+    @media (min-width: $breakpoint-desktop) {
+      @include grid(8, 16px, 16px, center);
     }
   }
 
@@ -57,6 +53,32 @@
     height: 0;
     padding-bottom: 70%;
     position: relative;
+
+    @at-root .flyntComponent--card#{&} {
+      background-color: #fff;
+      padding-bottom: 100%;
+    }
+
+    &--svg {
+      height: auto;
+      padding-bottom: unset;
+
+      .logo {
+        position: static;
+
+        @at-root .flyntComponent--card#{&} {
+          position: absolute;
+        }
+      }
+
+      .image {
+        padding: 8px;
+
+        @media (min-width: 375px) {
+          padding: 12px;
+        }
+      }
+    }
   }
 
   .logo {
@@ -68,6 +90,10 @@
     position: absolute;
     top: 0;
     width: 100%;
+
+    @at-root .flyntComponent--card#{&} {
+      padding: 12px;
+    }
   }
 
   @import 'Partials/Image/style';

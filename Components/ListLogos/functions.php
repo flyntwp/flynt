@@ -4,6 +4,20 @@ namespace Flynt\Components\ListLogos;
 
 use Flynt\Api;
 
+add_filter('Flynt/addComponentData?name=ListLogos', function ($data) {
+
+    if (!empty($data['items'])) {
+        $data['items'] = array_map(function ($item) {
+            if (isset($item['image']->post_mime_type) && $item['image']->post_mime_type === 'image/svg+xml') {
+                $path = get_attached_file($item['image']->ID);
+                $item['image']->svg = file_get_contents($path);
+            }
+            return $item;
+        }, $data['items']);
+    }
+    return $data;
+});
+
 Api::registerFields('ListLogos', [
     'layout' => [
         'name' => 'listLogos',
@@ -63,7 +77,7 @@ Api::registerFields('ListLogos', [
                         'min_width' => 384,
                         'min_height' => 216,
                         'max_size' => 2.5,
-                        'mime_types' => 'png',
+                        'mime_types' => 'png,svg',
                         'required' => 1,
                         'wrapper' =>  [
                             'width' => '40'

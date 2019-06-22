@@ -1,17 +1,22 @@
 <figure class="image">
-  <img class="image-tag lazyload lazyload--fade"
-    src="{{ image.src|resize(384, 216) }}"
-    srcset="{{ placeholderImage(384, 216) }}"
-    data-srcset="
-      {{ image.src|resize(384, 216) }} 384w,
-      {{ image.src|resize(240, 135) }} 240w,
-      {{ image.src|resize(196, 110) }} 196w,
-      {{ image.src|resize(160, 90) }} 160w,
-      {{ image.src|resize(124, 70) }} 124w,
-      {{ image.src|resize(106, 60) }} 106w"
-    data-sizes="auto"
-    alt="{{ image.alt|e }}">
-  {% if item.title %}
-    <figcaption class="image-caption">{{ link.title|e }}</figcaption>
+  {% if not image.svg %}
+    <img class="image-tag lazyload lazyload--fade"
+      src="{{ image.src|resize(384, 216) }}"
+      srcset="{{ placeholderImage(384, 216) }}"
+      data-srcset="
+        {{ image.src|resize(384, 216) }} 384w,
+        {{ image.src|resize(240, 135) }} 240w,
+        {{ image.src|resize(206, 116) }} 206w,
+        {{ image.src|resize(170, 96) }} 170w,
+        {{ image.src|resize(164, 92) }} 164w,
+        {{ image.src|resize(128, 72) }} 128w,
+        {{ image.src|resize(114, 64) }} 114w"
+      data-sizes="auto"
+      alt="{{ image.alt|e }}">
+    {% if item.title %}
+      <figcaption class="image-caption">{{ link.title|e }}</figcaption>
+    {% endif %}
+  {% else %}
+    {{ image.svg }}
   {% endif %}
 </figure>
