@@ -39,9 +39,10 @@ Api::registerFields('SliderImages', [
                 'label' => 'Images',
                 'name' => 'images',
                 'type' => 'gallery',
-                'min' => 1,
+                'min' => 2,
                 'preview_size' => 'medium',
-                'mime_types' => 'jpg,jpeg'
+                'mime_types' => 'jpg,jpeg',
+                'required' => 1
             ],
             [
                 'label' => 'Options',

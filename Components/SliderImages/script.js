@@ -24,9 +24,9 @@ class SliderImages extends window.HTMLDivElement {
   }
 
   resolveElements () {
-    this.$slider = $('.slider', this)
-    this.$buttonNext = $('.slider-button--next', this)
-    this.$buttonPrev = $('.slider-button--prev', this)
+    this.$slider = $('[data-slider]', this)
+    this.$buttonNext = $('[data-slider-button="next"]', this)
+    this.$buttonPrev = $('[data-slider-button="prev"]', this)
   }
 
   connectedCallback () {
