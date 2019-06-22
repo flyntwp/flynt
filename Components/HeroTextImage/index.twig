@@ -6,16 +6,18 @@
     <div class="column column--image">
       <picture>
         {% if image.aspect >= (16 / 9) %}
-          {# TODO: optimize by width #}
           <source
-            src="{{ image.src|resize(943) }}"
-            srcset="{{ placeholderImage(943, 943 / image.aspect) }}"
+            src="{{ image.src|resize(994) }}"
+            srcset="{{ placeholderImage(994, 994 / image.aspect) }}"
             data-srcset="
-              {{ image.src|resize(943) }} 943w,
-              {{ image.src|resize(600) }} 600w"
+              {{ image.src|resize(345) }} 345w,
+              {{ image.src|resize(510) }} 510w,
+              {{ image.src|resize(690) }} 690w,
+              {{ image.src|resize(994) }} 994w,
+              {{ image.src|resize(1020) }} 1020w,
+              {{ image.src|resize(1376) }} 1376w"
             media="(max-width: 1023px)">
         {% else %}
-          {# TODO: optimize by 1x, 2x #}
           <source
             src="{{ image.src|resize(0, 530) }}"
             srcset="{{ placeholderImage(image.aspect * 530, 530) }}"
@@ -24,7 +26,6 @@
               {{ image.src|resize(0, 1060) }} 2x"
             media="(max-width: 1023px)">
         {% endif %}
-        {# TODO: desktop only one image size? #}
         <img
           class="image lazyload"
           src="{{ image.src|resize(0, 600) }}"
