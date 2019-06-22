@@ -97,9 +97,6 @@ const webpackConfig = {
       clearConsole: false
     })
   ],
-  externals: {
-    jquery: 'jQuery'
-  },
   optimization: {
     splitChunks: {
       cacheGroups: {
