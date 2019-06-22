@@ -1,54 +1,43 @@
 [is='flynt-grid-posts'] {
-  background-color: $color-background-light;
-  padding: $component-spacing-desktop 0;
+  padding: $component-spacing-mobile 0;
 
-  .container {
-    @include center;
-
-    @media (min-width: $breakpoint-tablet) {
-      @include center($padding: $container-padding-tablet);
-    }
-
-    @media (min-width: $breakpoint-desktop) {
-      @include center($padding: $container-padding-desktop);
-    }
+  @media (min-width: $breakpoint-desktop) {
+    padding: $component-spacing-desktop 0;
   }
 
   .preContent {
     @include reset-content-margins;
 
-    margin: 0 auto 50px;
-    max-width: $content-max-width;
+    margin-bottom: 1.5rem;
     text-align: center;
+
+    @media (min-width: $breakpoint-desktop) {
+      margin-bottom: 3rem;
+    }
   }
 
   ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    @include reset-list; }
+
+  .posts {
+    @media (min-width: $breakpoint-tablet) {
+      @include grid(2);
+    }
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      @include grid(3);
+    }
   }
 
-  .gridPosts {
-    @include grid;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .noPosts {
+  .posts-empty {
     padding: 40px 0 0;
   }
 
   .post {
     margin-bottom: 25px;
-    width: 100%;
 
     @media (min-width: $breakpoint-tablet) {
-      @include grid-item(2, $gutter-width);
-    }
-
-    @media (min-width: $breakpoint-tablet-horizontal) {
-      @include grid-item(3, $gutter-width);
+      margin-bottom: 0;
     }
 
     &-link {
@@ -61,12 +50,12 @@
       margin-bottom: 0;
     }
 
-    .title {
+    &-title {
       margin-bottom: 0.625rem;
       padding-top: 1.875rem;
     }
 
-    .preview {
+    &-preview {
       margin-bottom: 0;
     }
   }

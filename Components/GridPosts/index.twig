@@ -1,7 +1,7 @@
 
-<div class="flyntComponent" is="flynt-grid-posts">
-  <div class="container">
-    <div class="preContent">
+<div class="flyntComponent {{ options.theme }}" is="flynt-grid-posts">
+  <div class="container centerMaxWidthContainer">
+    <div class="preContent centerContentMaxWidth">
       <h1>{{ title }}</h1>
       {% set html = isHome ? preContentHtml : description%}
       {{ html|e('wp_kses_post') }}
@@ -16,12 +16,12 @@
             {% if post.thumbnail %}
               <figure class="figure">
                 <img class="figure-image lazyload"
-                  src="{{ post.thumbnail|resize(1280, 853) }}"
-                  srcset="{{ placeholderImage(1280, 853) }}"
+                  src="{{ post.thumbnail|resize(424, 283) }}"
+                  srcset="{{ placeholderImage(424, 283) }}"
                   data-srcset="
-                    {{ post.thumbnail|resize(1920, 1280) }} 1920w,
                     {{ post.thumbnail|resize(1280, 853) }} 1280w,
                     {{ post.thumbnail|resize(750, 500) }} 750w,
+                    {{ post.thumbnail|resize(424, 283) }} 424w,
                     {{ post.thumbnail|resize(375, 250) }} 375w"
                   data-sizes="auto"
                   alt="{{ post.thumbnail.alt|e }}">

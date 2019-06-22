@@ -9,6 +9,14 @@
     justify-content: center;
   }
 
+  &--prevDisabled {
+    justify-content: flex-end;
+  }
+
+  &--nextDisabled {
+    justify-content: flex-start;
+  }
+
   .button {
     white-space: nowrap;
   }

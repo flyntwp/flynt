@@ -8,7 +8,7 @@
             </div>
         {% endif %}
     {% else %}
-        <div class="pagination">
+        <div class="pagination {% if not pagination.prev %} pagination--prevDisabled{% elseif not pagination.next %} pagination--nextDisabled{% endif %}">
             {% if pagination.prev %}
             <div class="pagination-prevLink">
                 <a href="{% if pagination.prev %}{{ pagination.prev.link }}{% else %}javascript:void(0){% endif %}"
