@@ -36,9 +36,6 @@ Api::registerFields('GridCardsImageText', [
                 'layout' => 'block',
                 'button_label' => 'Add Card',
                 'max' => 4,
-                'wrapper' => [
-                    'width' => '100'
-                ],
                 'sub_fields' => [
                     [
                         'label' => 'Image',
