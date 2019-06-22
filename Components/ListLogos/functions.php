@@ -45,7 +45,7 @@ Api::registerFields('ListLogos', [
                 'type' => 'accordion',
                 'open' => 0,
                 'multi_expand' => 0,
-                'endpoint' => 0
+                'endpoint' => 0,
             ],
             [
                 'label' => '',
@@ -64,7 +64,7 @@ Api::registerFields('ListLogos', [
                         'type' => 'link',
                         'return_format' => 'array',
                         'wrapper' =>  [
-                            'width' => '60'
+                            'width' => '60',
                         ]
                     ],
                     [
@@ -80,7 +80,7 @@ Api::registerFields('ListLogos', [
                         'mime_types' => 'png,svg',
                         'required' => 1,
                         'wrapper' =>  [
-                            'width' => '40'
+                            'width' => '40',
                         ]
                     ]
                 ]
@@ -125,7 +125,7 @@ Api::registerFields('ListLogos', [
                         'name' => 'card',
                         'type' => 'true_false',
                         'default_value' => 0,
-                        'ui' => 1
+                        'ui' => 1,
                     ],
                 ]
             ],
