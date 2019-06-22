@@ -25,26 +25,26 @@
   }
 
   .list {
-    @include grid(2, 12px, 12px, center);
+    @include grid(2, center, 12px, 12px);
     align-items: center;
     list-style: none;
     margin: 0;
     padding: 0;
 
     @media (min-width: 375px) {
-      @include grid(3, 16px, 16px, center);
+      @include grid(3, center,16px, 16px);
     }
 
     @media (min-width: 576px) {
-      @include grid(4, 16px, 16px, center);
+      @include grid(4, center, 16px, 16px);
     }
 
     @media (min-width: $breakpoint-tablet) {
-      @include grid(6, 16px, 16px, center);
+      @include grid(6, center, 16px, 16px);
     }
 
     @media (min-width: $breakpoint-desktop) {
-      @include grid(8, 16px, 16px, center);
+      @include grid(8, center, 16px, 16px);
     }
   }
 
