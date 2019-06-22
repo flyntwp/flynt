@@ -16,6 +16,10 @@
     }
   }
 
+  .figure {
+    margin: 0;
+  }
+
   .sliderMain {
     background: $color-contrast;
     position: relative;
@@ -28,36 +32,6 @@
       @media (min-width: $breakpoint-tablet-horizontal) {
         height: (2/3) * $breakpoint-tablet-horizontal;
         padding-bottom: 0;
-      }
-
-      .figure {
-        bottom: 0;
-        height: 100%;
-        left: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
-
-        @media (min-width: $breakpoint-tablet-horizontal) {
-          position: relative;
-        }
-
-        &-image {
-          height: 100%;
-          margin: 0 auto;
-          width: auto;
-        }
-
-        &-caption {
-          background: rgba($color-background-dark, 0.5);
-          bottom: 0;
-          color: #fff;
-          display: inline-block;
-          font-size: 0.8rem;
-          padding: 0.25rem 0.5rem;
-          position: absolute;
-          right: 0;
-        }
       }
     }
 
@@ -72,19 +46,20 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      transition: opacity 0.2s ease;
+      transition: background-color 0.2s ease, opacity 0.2s ease;
       width: 40px;
       z-index: 10;
 
-      &.swiper-button-disabled {
-        opacity: 0.5;
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        &:hover,
+        &:focus {
+          background-color: $color-accent;
+        }
       }
 
-      svg {
-        color: $color-background;
-        height: auto;
-        top: 0;
-        width: 80%;
+      &.swiper-button-disabled {
+        opacity: 0.5;
+        pointer-events: none;
       }
 
       &--prev {
@@ -94,17 +69,54 @@
       &--next {
         right: 15px;
       }
+
+      .feather {
+        color: $color-background;
+        height: auto;
+        top: 0;
+        width: 80%;
+      }
+    }
+
+    .figure {
+      bottom: 0;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        position: relative;
+      }
+
+      &-image {
+        height: 100%;
+        margin: 0 auto;
+        width: auto;
+      }
+
+      &-caption {
+        background: rgba($color-background-dark, 0.5);
+        bottom: 0;
+        color: $color-background-light;
+        display: inline-block;
+        font-size: 0.8rem;
+        max-width: 450px;
+        padding: 0.25rem 0.5rem;
+        position: absolute;
+        right: 0;
+      }
     }
   }
 
   .sliderThumb {
-    margin: 1rem 0;
+    margin: 1rem 0 0;
 
     &-item {
       cursor: pointer;
       height: 65px;
       opacity: 0.5;
-      padding: 0 5px;
       transition: opacity 0.2s ease-out;
       width: auto;
 
@@ -118,11 +130,6 @@
       &.swiper-slide-active {
         cursor: default;
         opacity: 1;
-      }
-
-      img {
-        height: 100%;
-        width: auto;
       }
     }
   }

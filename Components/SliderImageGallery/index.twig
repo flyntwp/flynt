@@ -7,7 +7,7 @@
       </div>
     </div>
   {% endif %}
-  <div class="swiper-container sliderMain">
+  <div data-slider="main" class="swiper-container sliderMain">
     <div class="swiper-wrapper">
       {% for image in images %}
         <div class="swiper-slide sliderMain-item">
@@ -32,22 +32,24 @@
         </div>
       {% endfor %}
     </div>
-    <button type="button" class="sliderMain-button sliderMain-button--prev">
+    <button type="button" data-slider-button="prev" class="sliderMain-button sliderMain-button--prev">
       <i data-feather="arrow-left"></i>
     </button>
-    <button type="button" class="sliderMain-button sliderMain-button--next">
+    <button type="button" data-slider-button="next" class="sliderMain-button sliderMain-button--next">
       <i data-feather="arrow-right"></i>
     </button>
   </div>
-  <div class="swiper-container sliderThumb">
+  <div data-slider="thumb" class="swiper-container sliderThumb">
     <div class="swiper-wrapper">
       {% for image in images %}
-        <div class="swiper-slide sliderThumb-item">
+        <div class="swiper-slide sliderThumb-item" style="width: {{ (image.aspect * 65)|round }}px">
           <figure class="figure">
             <img class="figure-image lazyload"
               srcset="{{ placeholderImage(image.aspect * 65, 65) }}"
               src="{{ image.src|resize(0, 65) }}"
-              data-srcset="{{ image.src|resize(0, 65) }}"
+              data-srcset="
+                {{ image.src|resize(0, 65) }} {{ (image.aspect * 65)|round }}w,
+                {{ image.src|resize(0, 130) }} {{ (image.aspect * 130)|round }}w"
               alt="{{ image.alt|e }}">
           </figure>
         </div>

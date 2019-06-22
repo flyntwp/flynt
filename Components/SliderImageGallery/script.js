@@ -24,10 +24,10 @@ class SliderImageGallery extends window.HTMLDivElement {
   }
 
   resolveElements () {
-    this.$sliderMain = $('.sliderMain', this)
-    this.$sliderThumb = $('.sliderThumb', this)
-    this.$buttonNext = $('.sliderMain-button--next', this)
-    this.$buttonPrev = $('.sliderMain-button--prev', this)
+    this.$sliderMain = $('[data-slider="main"]', this)
+    this.$sliderThumb = $('[data-slider="thumb"]', this)
+    this.$buttonNext = $('[data-slider-button="next"]', this)
+    this.$buttonPrev = $('[data-slider-button="prev"]', this)
   }
 
   connectedCallback () {
@@ -38,6 +38,7 @@ class SliderImageGallery extends window.HTMLDivElement {
     const { options } = this.props
 
     this.sliderThumb = new Swiper(this.$sliderThumb, {
+      spaceBetween: 10,
       slidesPerView: 'auto',
       freeMode: true,
       centeredSlides: true,
@@ -46,15 +47,16 @@ class SliderImageGallery extends window.HTMLDivElement {
     })
 
     this.sliderMain = new Swiper(this.$sliderMain, {
-      spaceBetween: 10,
       navigation: {
         nextEl: this.$buttonNext,
         prevEl: this.$buttonPrev
       },
+      controller: {
+        control: this.sliderThumb
+      },
       a11y: options.a11y
     })
 
-    this.sliderMain.controller.control = this.sliderThumb
     this.sliderThumb.controller.control = this.sliderMain
   }
 }
