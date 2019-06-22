@@ -2,12 +2,14 @@
 
 use Flynt\Utils\Asset;
 
+add_action('wp_footer', function () {
+    $scriptUrl = Asset::requireUrl('assets/main.js');
+    $legacyScriptUrl = Asset::requireUrl('assets/main_legacy.js');
+    echo "<script type=\"module\" src=\"{$scriptUrl}\"></script>";
+    echo "<script nomodule src=\"{$legacyScriptUrl}\"></script>";
+});
+
 add_action('wp_enqueue_scripts', function () {
-    Asset::enqueue([
-        'name' => 'Flynt/assets',
-        'path' => 'assets/main.js',
-        'type' => 'script',
-    ]);
     Asset::enqueue([
         'name' => 'Flynt/icons',
         'type' => 'script',
