@@ -2,7 +2,7 @@
 /* globals IntersectionObserver, CountUp */
 import $ from 'jquery'
 import 'intersection-observer'
-import { CountUp } from 'countup.js';
+import { CountUp } from 'countup.js'
 
 class BlockCountUp extends window.HTMLDivElement {
   constructor (self) {

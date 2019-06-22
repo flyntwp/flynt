@@ -5,15 +5,15 @@ $(document).ready(function () {
     window.feather.replace()
   }, 4000)
 
-  $('.select2').on('select2:change', function(e) {
+  $('.select2').on('select2:change', function (e) {
     console.log('change')
   })
 
-  $('body').on('click', '.select2-container', function() {
+  $('body').on('click', '.select2-container', function () {
     window.feather.replace()
   })
 
-  $('body').on('change', '.select2-hidden-accessible', function() {
+  $('body').on('change', '.select2-hidden-accessible', function () {
     window.feather.replace()
   })
 })
