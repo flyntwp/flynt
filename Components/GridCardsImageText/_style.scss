@@ -1,0 +1,82 @@
+
+[is='flynt-grid-cards-image-text'] {
+  padding: $component-spacing-mobile 0;
+
+  @media (min-width: $breakpoint-desktop) {
+    padding: $component-spacing-desktop 0;
+  }
+
+  .preContent {
+    @include reset-content-margins;
+
+    margin: 0 auto 1.5rem;
+    max-width: $content-max-width;
+    text-align: center;
+
+    @media (min-width: $breakpoint-desktop) {
+      margin-bottom: 3rem;
+    }
+  }
+
+  .cards {
+    @include reset-list;
+
+    display: flex;
+    flex-wrap: wrap;
+    margin: ($gutter-width * -1) 0 0 ($gutter-width * -1);
+    justify-content: center;
+
+    &--length2,
+    &--length3,
+    &--length4 {
+      .card {
+        @media (min-width: $breakpoint-tablet) {
+          width: 50%;
+        }
+      }
+    }
+
+    &--length3 {
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        flex-wrap: nowrap;
+      }
+    }
+
+    &--length4 {
+      @media (min-width: $breakpoint-desktop) {
+        flex-wrap: nowrap;
+      }
+    }
+  }
+
+  .card {
+    max-width: 675px;
+    padding: $gutter-width 0 0 $gutter-width;
+    width: 100%;
+  }
+
+  .content {
+    background-color: $color-background;
+    box-shadow: 0 1px 26px 0 rgba(0,0,0,0.06);
+    height: 100%;
+
+    img {
+      background: $color-contrast;
+    }
+
+    &-inner {
+      @include reset-content-margins;
+
+      color: $color-text;
+      padding: 20px;
+
+      #{$heading-selectors} {
+        color: $color-headline;
+      }
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        padding: 30px;
+      }
+    }
+  }
+}

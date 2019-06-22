@@ -1,0 +1,33 @@
+<div class="flyntComponent {{ options.theme }}" is="flynt-grid-cards-image-text">
+  <div class="container centerMaxWidthContainer">
+    {% if preContentHtml %}
+      <div class="preContent">
+        {{ preContentHtml|e('wp_kses_post') }}
+      </div>
+    {% endif %}
+    <ul class="cards cards--length{{ cards|length }}">
+      {% for card in cards %}
+        <li class="card">
+          <div class="content">
+            <img class="content-image lazyload"
+              src="{{ card.image.src|resize(750, 500) }}"
+              srcset="{{ placeholderImage(3, 2) }}"
+              data-srcset="
+                {{ card.image.src|resize(1920, 1280) }} 1920w,
+                {{ card.image.src|resize(1280, 853) }} 1280w,
+                {{ card.image.src|resize(1050, 700) }} 1050w,
+                {{ card.image.src|resize(750, 500) }} 750w,
+                {{ card.image.src|resize(600, 400) }} 600w,
+                {{ card.image.src|resize(480, 320) }} 480w,
+                {{ card.image.src|resize(312, 208) }} 312w"
+              data-sizes="auto"
+              alt="{{ image.alt|e }}">
+            <div class="content-inner">
+              {{ card.contentHtml|e('wp_kses_post') }}
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
