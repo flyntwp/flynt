@@ -1,12 +1,16 @@
-<div class="flyntComponent" is="flynt-block-count-up">
+<div class="flyntComponent {{ colorTheme }}" is="flynt-block-count-up">
   <div class="container">
-    <div class="contentHtml">
-        {{ preContentHtml|e('wp_kses_post') }}
-    </div>
-    <div class="container-items">
+  <h2 class="h2 title">{{ post.title }}</h2>
+  {% if preContentHtml %}
+      <div class="preContent">
+        {{ preContentHtml|e('wp_kses_post')}}
+      </div>
+  {% endif %}
+
+    <div class="blockCountUp">
     {% for item in items %}
         <div class="item">
-            <div class="icon-wrapper">{{ item.icon }}</div>
+            <div class="item-icon">{{ item.icon }}</div>
             <div class="item-number">{{ item.number }}</div>
             <div class="item-subtitle">{{ item.subtitle }}</div>
         </div>
