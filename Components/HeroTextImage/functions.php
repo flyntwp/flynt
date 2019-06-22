@@ -34,21 +34,17 @@ Api::registerFields('HeroTextImage', [
             ],
             [
                 'label' => 'Image',
-                'instructions' => '',
+                'instructions' =>
+                    'Recommended Height: 1200px. Minimum Height: 600px.',
                 'name' => 'image',
                 'type' => 'image',
                 'return_format' => 'array',
                 'preview_size' => 'medium',
                 'library' => 'all',
-                // 'min_width' => 0,
-                // 'max_width' => 0,
                 'min_height' => 600,
-                // 'max_height' => 0,
-                // 'min_size' => 0,
-                // 'max_size' => 0,
                 'mime_types' => 'jpg,jpeg',
                 'required' => 1
-            ],
+            ]
         ]
     ]
 ]);
