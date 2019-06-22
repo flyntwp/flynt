@@ -15,9 +15,10 @@ Options::addGlobal('BlockCookieNotice', [
         'wrapper' => [
             'width' => 50
         ],
+        'default_value' => 'layoutFloating',
         'choices' => [
-            'layoutBottom' => 'Bottom',
-            'layoutFloating' => 'Floating'
+            'layoutFloating' => 'Floating',
+            'layoutBottom' => 'Bottom'
         ]
     ],
     [
@@ -31,6 +32,7 @@ Options::addGlobal('BlockCookieNotice', [
         'wrapper' => [
             'width' => 50
         ],
+        'default_value' => 'themeDefault',
         'choices' => [
             'themeDefault' => 'Default',
             'themeLight' => 'Light',
