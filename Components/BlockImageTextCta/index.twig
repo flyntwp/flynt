@@ -7,13 +7,13 @@
       <div class="box-inner box-inner--image">
         <figure class="figure">
           <img class="figure-image lazyload"
-            src="{{ image.src|resize(750) }}"
-            srcset="{{ placeholderImage(750, 750 / image.aspect) }}"
+            src="{{ image.src|resize(665) }}"
+            srcset="{{ placeholderImage(665, 665 / image.aspect) }}"
             data-srcset="
-              {{ image.src|resize(1920) }} 920w,
-              {{ image.src|resize(1280) }} 815w,
-              {{ image.src|resize(1280) }} 740w,
-              {{ image.src|resize(750) }} 665w,
+              {{ image.src|resize(920) }} 920w,
+              {{ image.src|resize(815) }} 815w,
+              {{ image.src|resize(740) }} 740w,
+              {{ image.src|resize(665) }} 665w,
               {{ image.src|resize(375) }} 375w"
             data-sizes="auto"
             alt="{{ image.alt|e }}">

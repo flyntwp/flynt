@@ -1,16 +1,21 @@
 [is='flynt-block-image-text-cta'] {
+  padding: $component-spacing-mobile 0;
+
+  @media (min-width: $breakpoint-desktop) {
+    padding: $component-spacing-desktop 0;
+  }
+
   .box {
     margin: 0 auto;
-    padding: $container-padding-tablet 0;
 
     @media (min-width: $breakpoint-tablet) {
       display: flex;
-      margin: 0 -20px;
+      margin-left: -($gutter-width);
+      margin-right: -($gutter-width);
       max-width: none;
-      padding: $container-padding-desktop 0;
 
       &-inner {
-        padding: 0 20px;
+        padding: 0 $gutter-width;
       }
 
       &--imageLeft {
@@ -26,7 +31,8 @@
       &--content {
         @include reset-content-margins;
 
-        margin: $container-padding-tablet 0 1.5rem 0;
+        margin: $container-padding-tablet 0 1.5rem;
+        max-width: $content-max-width;
       }
 
       @media (min-width: $breakpoint-tablet) {
@@ -48,10 +54,6 @@
 
     @media (min-width: $breakpoint-tablet) {
       margin-bottom: 0;
-
-      &-caption {
-        position: absolute;
-      }
     }
   }
 }
