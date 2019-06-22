@@ -7,7 +7,6 @@ add_action('wp_enqueue_scripts', function () {
         'name' => 'Flynt/assets',
         'path' => 'assets/main.js',
         'type' => 'script',
-        'dependencies' => ['jquery']
     ]);
     Asset::enqueue([
         'name' => 'Flynt/icons',
@@ -33,7 +32,6 @@ add_action('admin_enqueue_scripts', function () {
         'name' => 'Flynt/assets/admin',
         'path' => 'assets/admin.js',
         'type' => 'script',
-        'dependencies' => ['jquery']
     ]);
     Asset::enqueue([
         'name' => 'Flynt/assets/admin',
