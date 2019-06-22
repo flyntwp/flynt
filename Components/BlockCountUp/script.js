@@ -17,10 +17,9 @@ class BlockCountUp extends window.HTMLDivElement {
   }
 
   connectedCallback () {
-    let options = {
+    this.observer = new IntersectionObserver(this.triggerAnimation.bind(this), {
       threshold: 1.0
-    }
-    this.observer = new IntersectionObserver(this.triggerAnimation.bind(this), options)
+    })
     $.each(this.$items, (i, item) => {
       this.observer.observe(item)
     })
@@ -30,8 +29,8 @@ class BlockCountUp extends window.HTMLDivElement {
     entries.forEach(entry => {
       if (entry.intersectionRatio > 0) {
         this.observer.unobserve(entry.target)
-
         const $numbers = $(entry.target).find('.number')
+
         $.each($numbers, (i, number) => {
           const $number = $(number)
           const displayNumber = $number.data('number')

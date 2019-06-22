@@ -1,19 +1,18 @@
 <div class="flyntComponent {{ colorTheme }}" is="flynt-block-count-up">
   <div class="container centerMaxWidthContainer">
-  {% if preContentHtml %}
+    {% if preContentHtml %}
       <div class="preContent">
         {{ preContentHtml|e('wp_kses_post')}}
       </div>
-  {% endif %}
-
+    {% endif %}
     <div class="blockCountUp">
     {% for item in items %}
         <div class="item item-count-{{ loop.length }}">
-            <div class="icon"><i class="feather" data-feather="{{ item.icon }}"></i></div>
-            <div class="countValue">
-              <span class="number" data-number="{{ item.number }}" data-suffix="{{ item.numberSuffix }}" data-prefix="{{ item.numberPrefix }}">{{ item.number }}</span>
-            </div>
-            <div class="subtitle">{{ item.subtitle }}</div>
+          <div class="icon"><i class="feather" data-feather="{{ item.icon|e }}"></i></div>
+          <div class="countValue">
+            <span class="number" data-number="{{ item.number|e }}" data-suffix="{{ item.numberSuffix|e }}" data-prefix="{{ item.numberPrefix|e }}">{{ item.number|e }}</span>
+          </div>
+          <div class="subtitle">{{ item.subtitle }}</div>
         </div>
     {% endfor %}
     </div>

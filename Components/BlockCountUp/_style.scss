@@ -20,7 +20,6 @@
     margin: 0 (-$gutter-width/2);
     text-align: center;
 
-
     .item {
       padding: 0 $gutter-width/2;
       width: 50%;
@@ -30,14 +29,12 @@
       }
 
       &-count-4 {
-
         @media (min-width: $breakpoint-mobile-horizontal) {
           width: 50%;
         }
       }
 
       &-count-3 {
-
         @media (min-width: $breakpoint-mobile-horizontal) {
           width: 33.333%;
 
@@ -48,7 +45,6 @@
       }
 
       &-count-2 {
-
         @media (min-width: $breakpoint-mobile-horizontal) {
           width: 50%;
         }
