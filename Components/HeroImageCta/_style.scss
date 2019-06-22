@@ -2,29 +2,45 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  min-height: 420px;
+
+  &,
+  .content,
+  .content-wrapper {
+    min-height: 420px;
+  }
 
   @media (min-width: $breakpoint-tablet) {
-    min-height: 640px;
+    &,
+    .content,
+    .content-wrapper {
+      min-height: 640px;
+    }
   }
 
   .content {
+    align-content: center;
+    // background: red;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding: 60px 20px;
+    // padding: 60px 20px;
     position: relative;
+    width: 100%;
 
     @media (min-width: $breakpoint-tablet) {
-      padding: 210px 0;
+      // padding: 210px 0;
     }
 
     &-wrapper {
       align-content: center;
       display: flex;
       flex-direction: column;
+      flex-shrink: 0;
+      height: 100%;
+      justify-content: center;
       justify-items: center;
       max-width: $content-max-width;
+      width: 100%;
     }
 
     &-html {
@@ -52,7 +68,7 @@
       text-align: center;
     }
 
-    &-picture {
+    &-pictureWrapper {
       bottom: 0;
       left: 0;
       position: absolute;

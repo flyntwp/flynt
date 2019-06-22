@@ -82,7 +82,7 @@ Api::registerFields('HeroImageCta', [
                 'ui' => 1,
                 'ajax' => 0,
                 'choices' => [
-                    '' => 'Center',
+                    'content-image--isCenterAlignDesktop' => 'Center',
                     'content-image--isLeftAlignMobile' => 'Left',
                     'content-image--isRightAlignMobile' => 'Right',
                 ],
@@ -97,11 +97,11 @@ Api::registerFields('HeroImageCta', [
                 'ui' => 1,
                 'ajax' => 0,
                 'choices' => [
-                    '' => 'Center',
+                    'content-image--isCenterAlignDesktop' => 'Center',
                     'content-image--isLeftAlignDesktop' => 'Left',
                     'content-image--isRightAlignDesktop' => 'Right',
                 ],
-                'default_value' => 'center'
+                'default_value' => ''
             ],
         ]
     ]
