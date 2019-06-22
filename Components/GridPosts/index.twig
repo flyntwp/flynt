@@ -6,7 +6,7 @@
     {% if terms %}
        {% include 'Partials/Filter/index.twig' %}
     {% endif %}
-    <ul class="gridPosts">
+    <ul class="posts">
       {% for post in posts %}
         <li class="post">
           <a class="post-link" href="{{ post.link }}"{% if post.target == '_blank' %} target="_blank" rel="noreferrer noopener"{% endif %} title="{{ post.title|e }}">
@@ -24,17 +24,17 @@
                   alt="{{ post.thumbnail.alt|e }}">
               </figure>
             {% endif %}
-            <h3 class="h3 title">
+            <h3 class="h3 post-title">
               {{ post.title }}
             </h3>
           </a>
-          <p class="preview">
+          <p class="post-preview">
             {{ post.preview.read_more(false).length(18).force }}
           </p>
           <a href="" class="button button--link">{{ labels.readMore }}</a>
         </li>
       {% else %}
-        <p class="noPosts">{{ labels.noPostsFound }}</p>
+        <p class="posts-empty">{{ labels.noPostsFound }}</p>
       {% endfor %}
     </ul>
     {% set pagination = posts.pagination %}

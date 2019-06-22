@@ -22,7 +22,7 @@ add_filter('Flynt/addComponentData?name=GridPosts', function ($data) {
         $timberTerm->isActive = $queriedObject->taxonomy === $term->taxonomy && $queriedObject->term_id === $term->term_id;
         return $timberTerm;
     }, $terms);
-    // Add item form all posts
+    // Add item for all posts
     array_unshift($data['terms'], [
         'link' => get_post_type_archive_link($postType),
         'title' => $data['labels']['allPosts'],

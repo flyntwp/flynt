@@ -15,7 +15,7 @@ class GridPosts extends window.HTMLDivElement {
   }
 
   resolveElements () {
-    this.$gridPosts = $('.gridPosts', this)
+    this.$posts = $('.posts', this)
     this.$pagination = $('.pagination', this)
   }
 
@@ -40,11 +40,11 @@ class GridPosts extends window.HTMLDivElement {
     }).then(
       response => {
         const $html = $(response)
-        const $gridPosts = $('.gridPosts', $html)
+        const $posts = $('.posts', $html)
         const $pagination = $('.pagination', $html)
 
-        this.$gridPosts.append($gridPosts.html())
-        this.$pagination.html($pagination.html())
+        this.$posts.append($posts.html())
+        this.$pagination.html($pagination.html() || '')
       },
       response => {
         console.error(response)
