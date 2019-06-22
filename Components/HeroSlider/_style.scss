@@ -9,10 +9,9 @@
   }
 
   .container {
-    @include center;
+    @include center($padding: 0);
 
     display: flex;
-    width: 100%;
     height: 100%;
 
     &::before {
@@ -58,10 +57,18 @@
 
       &--prev {
         left: 15px;
+
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          left: 45px;
+        }
       }
 
       &--next {
         right: 15px;
+
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          right: 45px;
+        }
       }
     }
   }
@@ -74,10 +81,18 @@
     flex-direction: column;
     justify-content: flex-end;
     max-width: $content-max-width;
-    padding-bottom: 70px;
-    padding-left: 120px;
+    padding: $container-padding-mobile;
     position: relative;
     z-index: 1;
+
+    @media (min-width: $breakpoint-tablet) {
+      padding: $container-padding-tablet;
+    }
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      padding-bottom: $container-padding-desktop;
+      padding-left: $container-padding-desktop * 2;
+    }
 
     #{$heading-selectors} {
       color: inherit;

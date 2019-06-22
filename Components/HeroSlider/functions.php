@@ -5,7 +5,7 @@ namespace Flynt\Components\HeroSlider;
 use Flynt\Api;
 use Flynt\Utils\Options;
 
- add_filter('Flynt/addComponentData?name=HeroSlider', function ($data) {
+add_filter('Flynt/addComponentData?name=HeroSlider', function ($data) {
     $translatableOptions = Options::get('translatableOptions', 'feature', 'SliderOptions');
     $data['jsonData'] = [
         'options' => array_merge($translatableOptions, $data['options']),
