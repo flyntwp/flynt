@@ -1,0 +1,41 @@
+<div class="flyntComponent" is="flynt-hero-text-image">
+  <div class="container container--{{ contentAlignment }} centerMaxWidthContainer">
+    <div class="column column--content">
+      {{ contentHtml|e('wp_kses_post') }}
+    </div>
+    <div class="column column--image">
+      <picture>
+        {% if image.aspect >= (16 / 9) %}
+          <source
+            src="{{ image.src|resizeDynamic(994) }}"
+            srcset="{{ placeholderImage(994, 994 / image.aspect) }}"
+            data-srcset="
+              {{ image.src|resizeDynamic(345) }} 345w,
+              {{ image.src|resizeDynamic(510) }} 510w,
+              {{ image.src|resizeDynamic(690) }} 690w,
+              {{ image.src|resizeDynamic(994) }} 994w,
+              {{ image.src|resizeDynamic(1020) }} 1020w,
+              {{ image.src|resizeDynamic(1376) }} 1376w"
+            media="(max-width: 1023px)">
+        {% else %}
+          <source
+            src="{{ image.src|resizeDynamic(0, 530) }}"
+            srcset="{{ placeholderImage(image.aspect * 530, 530) }}"
+            data-srcset="
+              {{ image.src|resizeDynamic(0, 530) }} {{ (image.aspect * 530)|round }}w,
+              {{ image.src|resizeDynamic(0, 1060) }} {{ (image.aspect * 1060)|round }}w"
+            media="(max-width: 1023px)">
+        {% endif %}
+        <img
+          class="image lazyload"
+          src="{{ image.src|resizeDynamic(0, 600) }}"
+          srcset="{{ placeholderImage(image.aspect * 600, 600) }}"
+          data-srcset="
+            {{ image.src|resizeDynamic(0, 600) }} {{ (image.aspect * 600)|round }}w,
+            {{ image.src|resizeDynamic(0, 1200) }} {{ (image.aspect * 1200)|round }}w"
+          alt="{{ image.alt|e }}"
+          data-sizes="auto">
+      </picture>
+    </div>
+  </div>
+</div>
