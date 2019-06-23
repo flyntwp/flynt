@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Components\GridPosts;
+namespace Flynt\Components\GridPostsArchive;
 
 use Flynt\Api;
 use Flynt\Utils\Options;
@@ -9,7 +9,7 @@ use Timber\Term;
 const POST_TYPE = 'post';
 const FILTER_BY_TAXONOMY = 'category';
 
-add_filter('Flynt/addComponentData?name=GridPosts', function ($data) {
+add_filter('Flynt/addComponentData?name=GridPostsArchive', function ($data) {
     $postType = POST_TYPE;
     $taxonomy = FILTER_BY_TAXONOMY;
     $terms = get_terms([
@@ -43,7 +43,7 @@ add_filter('Flynt/addComponentData?name=GridPosts', function ($data) {
     return $data;
 });
 
-Options::addGlobal('GridPosts', [
+Options::addGlobal('GridPostsArchive', [
     [
         'label' => 'Load More Button?',
         'name' => 'loadMore',
@@ -52,7 +52,7 @@ Options::addGlobal('GridPosts', [
         'ui' => true
     ],
 ]);
-Options::addTranslatable('GridPosts', [
+Options::addTranslatable('GridPostsArchive', [
     [
         'label' => 'General',
         'name' => 'general',

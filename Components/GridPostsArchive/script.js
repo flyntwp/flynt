@@ -1,6 +1,6 @@
 import $ from 'jquery'
 
-class GridPosts extends window.HTMLDivElement {
+class GridPostsArchive extends window.HTMLDivElement {
   constructor (...args) {
     const self = super(...args)
     self.init()
@@ -54,4 +54,4 @@ class GridPosts extends window.HTMLDivElement {
   }
 }
 
-window.customElements.define('flynt-grid-posts', GridPosts, { extends: 'div' })
+window.customElements.define('flynt-grid-posts-archive', GridPostsArchive, { extends: 'div' })

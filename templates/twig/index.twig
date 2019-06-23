@@ -1,5 +1,5 @@
 {% extends contentOnly ? 'twig/_contentOnly.twig' : 'twig/_document.twig' %}
 
 {% block content %}
-  {{ renderComponent('GridPosts', { posts: posts }) }}
+  {{ renderComponent('GridPostsArchive', { posts: posts }) }}
 {% endblock %}
