@@ -64,7 +64,7 @@
 * Applies a flexbox grid to a container element. All direct children will be modified to create a column based grid.
 */
 @mixin grid(
-  $columns: 4,
+  $columns,
   $alignment: flex-start,
   $gutter-horizontal: $gutter-width,
   $gutter-vertical: $gutter-width
