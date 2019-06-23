@@ -2,7 +2,10 @@
 /* globals IntersectionObserver, CountUp */
 import $ from 'jquery'
 import 'countup.js'
-import 'intersection-observer'
+
+if (LEGACY) {
+  require('intersection-observer')
+}
 
 class ListFacts extends window.HTMLDivElement {
   constructor (self) {

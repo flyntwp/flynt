@@ -1,9 +1,15 @@
-import 'console-polyfill'
 import 'normalize.css/normalize.css'
 import './main.scss'
 import $ from 'jquery'
 
-import installCE from 'document-register-element/pony'
+if (LEGACY) {
+  require('console-polyfill')
+  const installCE = require('document-register-element/pony')
+  installCE(window, {
+    type: 'force',
+    noBuiltIn: true
+  })
+}
 
 window.lazySizesConfig = window.lazySizesConfig || {}
 window.lazySizesConfig.preloadAfterLoad = true
@@ -11,11 +17,6 @@ require('lazysizes')
 
 $(document).ready(function () {
   window.feather.replace()
-})
-
-installCE(window, {
-  type: 'force',
-  noBuiltIn: true
 })
 
 function importAll (r) {

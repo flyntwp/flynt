@@ -1,1 +1,3 @@
-import 'objectFitPolyfill'
+if (LEGACY) {
+  require('objectFitPolyfill')
+}

@@ -85,6 +85,9 @@
     "extends": "eslint-config-standard",
     "rules": {
       "import/no-webpack-loader-syntax": false
+    },
+    "globals": {
+      "LEGACY": "readonly"
     }
   },
   "eslintIgnore": [

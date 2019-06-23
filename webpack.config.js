@@ -27,7 +27,7 @@ function buildBabelConfig (legacy = true) {
 }
 
 // config.production = true
-function buildWebpackConfig (babelQuery) {
+function buildWebpackConfig (babelQuery, legacy = true) {
   const webpackConfig = {
     mode: production ? 'production' : 'development',
     output: {
@@ -117,6 +117,7 @@ function buildWebpackConfig (babelQuery) {
   if (production) {
     webpackConfig.plugins.push(
       new webpack.DefinePlugin({
+        LEGACY: JSON.stringify(legacy),
         PRODUCTION: JSON.stringify(true),
         'process.env': {
           'NODE_ENV': JSON.stringify('production')
@@ -146,7 +147,7 @@ function buildWebpackConfig (babelQuery) {
 }
 
 function buildEntryConfig (entry, legacy = true) {
-  const webpackConfig = buildWebpackConfig(buildBabelConfig(legacy))
+  const webpackConfig = buildWebpackConfig(buildBabelConfig(legacy), legacy)
   const basename = `${entry}${legacy ? '_legacy' : ''}`
   return {
     ...webpackConfig,
