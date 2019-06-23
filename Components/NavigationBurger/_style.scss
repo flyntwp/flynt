@@ -1,6 +1,10 @@
-// NOTE: disables sticky nav when logged in
+// NOTE: adjust to admin bar height
 .admin-bar .pageWrapper {
-  transform: translate3d(0, 0, 0);
+  padding-top: 46px;
+
+  @media (min-width: 783px) {
+    padding-top: 32px;
+  }
 }
 
 [is='flynt-navigation-burger'] {
@@ -27,6 +31,14 @@
     top: 0;
     width: 100%;
     z-index: 99;
+
+    .admin-bar & {
+      top: 46px;
+
+      @media (min-width: 783px) {
+        top: 32px;
+      }
+    }
   }
 
   @import 'Partials/Logo/style';

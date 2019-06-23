@@ -16,6 +16,14 @@
   width: 100%;
   z-index: 98;
 
+  .admin-bar & {
+    top: $navigation-height + 46px;
+
+    @media (min-width: 783px) {
+      top: $navigation-height + 32px;
+    }
+  }
+
   &-item--current {
     .menu-link {
       color: $color-accent;
