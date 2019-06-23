@@ -343,20 +343,28 @@ Api::registerFields('BlockCountUp', [
                         'default_value' => ''
                     ],
                     [
-                        'label' => 'Number',
-                        'name' => 'number',
-                        'type' => 'number',
-                        'required' => 1
-                    ],
-                    [
-                        'label' => 'Suffix',
-                        'name' => 'numberSuffix',
-                        'type' => 'text'
-                    ],
-                    [
-                        'label' => 'Prefix',
-                        'name' => 'numberPrefix',
-                        'type' => 'text'
+                        'label' => 'Count Value',
+                        'name' => 'numberGroup',
+                        'type' => 'group',
+                        'layout' => 'table',
+                        'sub_fields' => [
+                            [
+                                'label' => 'Prefix',
+                                'name' => 'numberPrefix',
+                                'type' => 'text'
+                            ],
+                            [
+                                'label' => 'Number',
+                                'name' => 'number',
+                                'type' => 'number',
+                                'required' => 1
+                            ],
+                            [
+                                'label' => 'Suffix',
+                                'name' => 'numberSuffix',
+                                'type' => 'text'
+                            ]
+                        ]
                     ],
                     [
                         'label' => 'Subtitle',

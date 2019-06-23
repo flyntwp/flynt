@@ -10,7 +10,7 @@
         <div class="item item-count-{{ loop.length }}">
           <div class="icon"><i class="feather" data-feather="{{ item.icon|e }}"></i></div>
           <div class="countValue">
-            <span class="number" data-number="{{ item.number|e }}" data-suffix="{{ item.numberSuffix|e }}" data-prefix="{{ item.numberPrefix|e }}">{{ item.number|e }}</span>
+            <span class="number" data-number="{{ item.numberGroup.number|e }}" data-suffix="{{ item.numberGroup.numberSuffix|e }}" data-prefix="{{ item.numberGroup.numberPrefix|e }}">{{ item.numberGroup.number|e }}</span>
           </div>
           <div class="subtitle">{{ item.subtitle }}</div>
         </div>
