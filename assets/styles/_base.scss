@@ -48,6 +48,55 @@ body {
   #{$heading-selectors} {
     color: $color-background;
   }
+
+  .button {
+    background: $color-background-dark;
+
+    &:hover {
+      border-color: $color-background-hero;
+      color: $color-background-hero;
+    }
+
+    &--primary {
+      background: $color-accent;
+
+      &:hover {
+        background: $color-background-hero;
+        border-color: $color-background-hero;
+        color: $color-background;
+      }
+    }
+
+    &--secondary {
+      background: $color-background-hero;
+      border-color: $color-background-hero;
+
+      &:hover {
+        background: $color-accent;
+        border-color: $color-accent;
+        color: $color-background;
+      }
+    }
+
+    &--link {
+      background: none;
+
+      &:hover {
+        color: $color-background;
+
+        &::before {
+          background: $color-background;
+        }
+      }
+
+      &::after {
+        $color-accent-rgb: red($color-accent), green($color-accent), blue($color-accent);
+        $color-background-rgb: red($color-background), green($color-background), blue($color-background);
+
+        background: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.586 5L.293 8.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4A1 1 0 1 0 .293 1.707L3.586 5z' fill='rgb(#{$color-accent-rgb})'/%3E%3Cpath d='M13.586 5l-3.293 3.293a1 1 0 0 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4a1 1 0 0 0-1.414 1.414L13.586 5z' fill='rgb(#{$color-background-rgb}'/%3E%3C/svg%3E") left center no-repeat;
+      }
+    }
+  }
 }
 
 .themeLight {
@@ -64,6 +113,62 @@ body {
 
   .feather {
     color: $color-background;
+  }
+
+  .button {
+    background: $color-background-hero;
+    border-color: $color-background;
+    color: $color-background;
+
+    &:hover {
+      border-color: $color-background-dark;
+      color: $color-background-dark;
+    }
+
+    &--primary {
+      background: $color-background;
+      color: $color-background-dark;
+
+      &:hover {
+        background: $color-background-dark;
+        border-color: $color-background-dark;
+        color: $color-background;
+      }
+    }
+
+    &--secondary {
+      background: $color-background-dark;
+      border-color: $color-background-dark;
+
+      &:hover {
+        background: $color-background;
+        border-color: $color-background;
+        color: $color-background-dark;
+      }
+    }
+
+    &--link {
+      background: none;
+
+      &::before {
+        background: $color-background;
+      }
+
+      &:hover {
+        color: $color-background-dark;
+
+        &::before {
+          background: $color-background-dark;
+        }
+      }
+
+      &::after {
+        $color-background-dark-rgb: red($color-background-dark), green($color-background-dark), blue($color-background-dark);
+        $color-background-rgb: red($color-background), green($color-background), blue($color-background);
+
+        background: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.586 5L.293 8.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4A1 1 0 1 0 .293 1.707L3.586 5z' fill='rgb(#{$color-background-rgb})'/%3E%3Cpath d='M13.586 5l-3.293 3.293a1 1 0 0 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4a1 1 0 0 0-1.414 1.414L13.586 5z' fill='rgb(#{$color-background-dark-rgb}'/%3E%3C/svg%3E") left center no-repeat;
+      }
+    }
   }
 }
 
