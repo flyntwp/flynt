@@ -8,8 +8,7 @@
   .preContent {
     @include reset-content-margins;
 
-    margin: 0 auto 70px;
-    max-width: $content-max-width;
+    margin-bottom: 70px;
     text-align: center;
   }
 
