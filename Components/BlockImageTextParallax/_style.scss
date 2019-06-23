@@ -1,5 +1,10 @@
 [is='flynt-block-image-text-parallax'] {
-  padding: $component-spacing-mobile 0;
+  overflow: hidden;
+  padding-bottom: $component-spacing-mobile;
+
+  @media (min-width: $breakpoint-tablet) {
+    padding: $component-spacing-mobile 0;
+  }
 
   @media (min-width: $breakpoint-desktop) {
     padding: $component-spacing-desktop 0;
@@ -9,61 +14,44 @@
     margin-bottom: 0;
   }
 
-  .container {
-    @include center($padding: $container-padding-mobile);
-
-    @media (min-width: $breakpoint-tablet) {
-      @include center($padding: $container-padding-tablet);
-    }
-
-    @media (min-width: $breakpoint-desktop) {
-      @include center($padding: $container-padding-desktop);
-    }
-  }
-
   .box {
-
     @media (min-width: $breakpoint-tablet) {
-      display: flex;
       align-items: center;
+      display: flex;
     }
 
     &-inner {
-        position: relative;
+      position: relative;
 
       &--content {
-        @media (min-width: $breakpoint-mobile-horizontal) {
-          padding: $container-padding-tablet;
-        }
-
         @media (min-width: $breakpoint-tablet) {
+          padding: $container-padding-tablet;
           width: 50%;
         }
 
         @media (min-width: $breakpoint-tablet-horizontal) {
-          width: 40%;
           padding: ($container-padding-desktop * 2) $container-padding-desktop;
+          width: 40%;
         }
-
       }
 
       &::after {
-          display: block;
-          content: '';
-          position: absolute;
-          background-color: inherit;
-          left: -$container-padding-mobile;
-          right: -$container-padding-mobile;
-          top: 0;
-          bottom: -32vw;
-          z-index: -1;
+        background-color: inherit;
+        bottom: -36vw;
+        content: '';
+        display: block;
+        left: -$container-padding-mobile;
+        position: absolute;
+        right: -$container-padding-mobile;
+        top: 0;
+        z-index: -1;
 
         @media (min-width: $breakpoint-tablet) {
+          bottom: auto;
+          height: 100%;
           left: 100%;
           top: 0;
-          width: 46%;
-          height: 100%;
-          bottom: auto;
+          width: 56%;
         }
       }
 
@@ -95,8 +83,13 @@
     }
 
     &-copy {
+      @include reset-content-margins;
+
+      padding: $container-padding-tablet 0;
+
       @media (min-width: $breakpoint-tablet) {
         max-width: 440px;
+        padding: 0;
       }
     }
   }
