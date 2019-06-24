@@ -15,7 +15,7 @@
   }
 
   .box {
-    @media (min-width: $breakpoint-tablet) {
+    @media (min-width: $breakpoint-tablet-horizontal) {
       align-items: center;
       display: flex;
     }
@@ -24,12 +24,21 @@
       position: relative;
 
       &--content {
+        @media (min-width: $breakpoint-mobile-horizontal) {
+        }
+
         @media (min-width: $breakpoint-tablet) {
-          padding: $container-padding-tablet;
-          width: 50%;
+          max-width: 600px;
+          margin-right: auto;
         }
 
         @media (min-width: $breakpoint-tablet-horizontal) {
+          padding: $container-padding-tablet;
+          width: 50%;
+          max-width: 100%;
+        }
+
+        @media (min-width: $breakpoint-desktop) {
           padding: ($container-padding-desktop * 2) $container-padding-desktop;
           width: 40%;
         }
@@ -47,6 +56,10 @@
         z-index: -1;
 
         @media (min-width: $breakpoint-tablet) {
+          bottom: -22vw;
+        }
+
+        @media (min-width: $breakpoint-tablet-horizontal) {
           bottom: auto;
           height: 100%;
           left: 100%;
@@ -58,12 +71,20 @@
       &--image {
         position: relative;
         z-index: 10;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
 
-        @media (min-width: $breakpoint-tablet) {
-          width: 50%;
-        }
+        // @media (min-width: $breakpoint-mobile-horizontal) {
+        //   transform: translateX($container-padding-mobile);
+        // }
 
         @media (min-width: $breakpoint-tablet-horizontal) {
+          width: 50%;
+          max-width: 100%;
+        }
+
+        @media (min-width: $breakpoint-desktop) {
           width: 60%;
         }
       }
@@ -85,9 +106,9 @@
     &-copy {
       @include reset-content-margins;
 
-      padding: $container-padding-tablet 0;
+      padding: $container-padding-tablet 0 $container-padding-tablet * 0.5 0;
 
-      @media (min-width: $breakpoint-tablet) {
+      @media (min-width: $breakpoint-tablet-horizontal) {
         max-width: 440px;
         padding: 0;
       }
