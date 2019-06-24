@@ -7,6 +7,14 @@
   }
 }
 
+// NOTE: overwriting wp defaults
+@media screen and (max-width: 600px) {
+  // stylelint-disable-next-line selector-max-id
+  #wpadminbar {
+    position: fixed;
+  }
+}
+
 [is='flynt-navigation-burger'] {
   $navigation-height: 75px;
 
