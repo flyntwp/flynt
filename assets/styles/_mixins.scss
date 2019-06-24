@@ -103,8 +103,8 @@
       width: auto;
 
       &:nth-child(n) {
-        margin-right: unset;
-        margin-top: unset;
+        margin-right: 0;
+        margin-top: 0;
       }
     }
   }
