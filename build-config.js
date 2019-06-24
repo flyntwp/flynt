@@ -11,11 +11,13 @@ module.exports = {
       'assets/main': './assets/main.js',
       'assets/admin': './assets/admin.js'
     },
-    copy: [{
-      from: './{Components,assets}/**/*',
-      to: './',
-      ignore: ['*.js', '*.scss', '*.php', '*.twig']
-    }]
+    copy: [
+      {
+        from: './{Components,assets}/**/*',
+        to: './',
+        ignore: ['*.js', '*.scss', '*.php', '*.twig']
+      }
+    ]
   },
   browserSync: {
     ghostMode: false,
@@ -33,7 +35,8 @@ module.exports = {
     files: [
       'templates/**/*',
       'lib/**/*',
-      'inc/**/*'
+      'inc/**/*',
+      './Components/**/*.{php,twig}'
     ],
     watch: true,
     https: true
@@ -46,10 +49,7 @@ module.exports = {
     dest: dest,
     rev: {
       src: dest + '/**/*.*',
-      srcRevved: [
-        dest + '/**/*.{js,css}',
-        '!' + dest + '/style.css'
-      ],
+      srcRevved: [dest + '/**/*.{js,css}', '!' + dest + '/style.css'],
       srcStatic: dest + '/**/*.{html,php,twig}',
       assetSrc: [
         dest + '/**/*',

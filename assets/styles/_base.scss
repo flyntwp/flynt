@@ -29,9 +29,16 @@ html {
 * Overall page layout.
 */
 
-html,
+html {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
 body {
   overflow-x: hidden;
+}
+
+.themeDefault {
+  background-color: $color-background;
 }
 
 .themeDark {
@@ -40,6 +47,55 @@ body {
   &,
   #{$heading-selectors} {
     color: $color-background;
+  }
+
+  .button {
+    background: $color-background-dark;
+
+    &:hover {
+      border-color: $color-background-hero;
+      color: $color-background-hero;
+    }
+
+    &--primary {
+      background: $color-accent;
+
+      &:hover {
+        background: $color-background-hero;
+        border-color: $color-background-hero;
+        color: $color-background;
+      }
+    }
+
+    &--secondary {
+      background: $color-background-hero;
+      border-color: $color-background-hero;
+
+      &:hover {
+        background: $color-accent;
+        border-color: $color-accent;
+        color: $color-background;
+      }
+    }
+
+    &--link {
+      background: none;
+
+      &:hover {
+        color: $color-background;
+
+        &::before {
+          background: $color-background;
+        }
+      }
+
+      &::after {
+        $color-accent-rgb: red($color-accent), green($color-accent), blue($color-accent);
+        $color-background-rgb: red($color-background), green($color-background), blue($color-background);
+
+        background: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.586 5L.293 8.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4A1 1 0 1 0 .293 1.707L3.586 5z' fill='rgb(#{$color-accent-rgb})'/%3E%3Cpath d='M13.586 5l-3.293 3.293a1 1 0 0 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4a1 1 0 0 0-1.414 1.414L13.586 5z' fill='rgb(#{$color-background-rgb}'/%3E%3C/svg%3E") left center no-repeat;
+      }
+    }
   }
 }
 
@@ -53,6 +109,66 @@ body {
   &,
   #{$heading-selectors} {
     color: $color-background;
+  }
+
+  .feather {
+    color: $color-background;
+  }
+
+  .button {
+    background: $color-background-hero;
+    border-color: $color-background;
+    color: $color-background;
+
+    &:hover {
+      border-color: $color-background-dark;
+      color: $color-background-dark;
+    }
+
+    &--primary {
+      background: $color-background;
+      color: $color-background-dark;
+
+      &:hover {
+        background: $color-background-dark;
+        border-color: $color-background-dark;
+        color: $color-background;
+      }
+    }
+
+    &--secondary {
+      background: $color-background-dark;
+      border-color: $color-background-dark;
+
+      &:hover {
+        background: $color-background;
+        border-color: $color-background;
+        color: $color-background-dark;
+      }
+    }
+
+    &--link {
+      background: none;
+
+      &::before {
+        background: $color-background;
+      }
+
+      &:hover {
+        color: $color-background-dark;
+
+        &::before {
+          background: $color-background-dark;
+        }
+      }
+
+      &::after {
+        $color-background-dark-rgb: red($color-background-dark), green($color-background-dark), blue($color-background-dark);
+        $color-background-rgb: red($color-background), green($color-background), blue($color-background);
+
+        background: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.586 5L.293 8.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4A1 1 0 1 0 .293 1.707L3.586 5z' fill='rgb(#{$color-background-rgb})'/%3E%3Cpath d='M13.586 5l-3.293 3.293a1 1 0 0 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4a1 1 0 0 0-1.414 1.414L13.586 5z' fill='rgb(#{$color-background-dark-rgb}'/%3E%3C/svg%3E") left center no-repeat;
+      }
+    }
   }
 }
 
@@ -126,7 +242,7 @@ h3,
 
 h4,
 .h4 {
-  font-size: 1rem;
+  font-size: 1.125rem;
   padding-top: 0.5rem;
 }
 
@@ -139,7 +255,7 @@ h5,
 
 h6,
 .h6 {
-  font-size: 0.8rem;
+  font-size: 0.9375rem;
   padding-top: 0.5rem;
 }
 
@@ -235,21 +351,23 @@ table {
 
 td,
 th {
-  padding: 0.75rem;
+  padding: 1.25rem;
   text-align: inherit;
   vertical-align: top;
 }
 
 thead {
   th {
-    border-bottom: 2px solid $color-brand;
+    border-bottom: 2px solid $color-accent;
+    color: $color-headline;
+    padding-bottom: 10px;
     vertical-align: bottom;
     white-space: nowrap;
   }
 }
 
 tr:nth-child(even) {
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color: $color-background-light;
 }
 
 /**
@@ -342,6 +460,62 @@ button {
     max-width: 400px;
     text-align: center;
     width: 100%;
+  }
+
+  &--link {
+    $link-padding: 1.25rem;
+
+    background: none;
+    border: 0;
+    padding: $link-padding 0;
+    position: relative;
+    text-transform: none;
+    transition: color 0.2s ease-out;
+
+    &:hover {
+      color: $color-background-dark;
+
+      &::before {
+        background: $color-background-dark;
+      }
+
+      &::after {
+        background-position: right center;
+      }
+    }
+
+    &::before {
+      background: $color-accent;
+      bottom: $link-padding;
+      content: '';
+      height: 1px;
+      left: 0;
+      position: absolute;
+      transition: background-color 0.2s ease-out;
+      width: 100%;
+    }
+
+    &::after {
+      $color-accent-rgb: red($color-accent), green($color-accent),
+        blue($color-accent);
+      $color-background-dark-rgb: red($color-background-dark),
+        green($color-background-dark), blue($color-background-dark);
+
+      background: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.586 5L.293 8.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4A1 1 0 1 0 .293 1.707L3.586 5z' fill='rgb(#{$color-accent-rgb})'/%3E%3Cpath d='M13.586 5l-3.293 3.293a1 1 0 0 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4a1 1 0 0 0-1.414 1.414L13.586 5z' fill='rgb(#{$color-background-dark-rgb}'/%3E%3C/svg%3E")
+        left center no-repeat;
+      content: '';
+      display: inline-block;
+      height: 10px;
+      margin-left: 10px;
+      transition: background-position 0.2s ease-out;
+      vertical-align: baseline;
+      width: 6px;
+    }
+  }
+
+  &--small {
+    font-size: 0.8125rem;
+    padding: 0.594rem 1.875rem;
   }
 }
 
@@ -474,5 +648,50 @@ select {
 [type='radio'] {
   + label::before {
     border-radius: 50%;
+  }
+}
+
+/**
+* 3.3 Icons
+*
+* Global icon set styling.
+*/
+
+.feather {
+  color: $color-accent;
+  position: relative;
+  top: -2px;
+  vertical-align: middle;
+}
+
+/**
+* 3.4 Custom list styles
+*/
+
+.iconList {
+  list-style-type: none;
+  padding: 0;
+
+  li {
+    margin-bottom: 0.75em;
+    padding-left: 1.625em;
+    position: relative;
+
+    &::before {
+      background-size: contain;
+      content: '';
+      display: block;
+      height: 0.875em;
+      left: 0;
+      position: absolute;
+      top: 0.375em;
+      width: 0.875em;
+    }
+  }
+
+  &--checkCircle {
+    li::before {
+      background-image: url('../assets/icons/check-circle.svg');
+    }
   }
 }

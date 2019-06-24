@@ -19,40 +19,45 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Api::loadFields('BlockImage', 'layout'),
                     Api::loadFields('BlockImageText', 'layout'),
                     Api::loadFields('BlockImageTextParallax', 'layout'),
+                    Api::loadFields('BlockImageTextCta', 'layout'),
                     Api::loadFields('BlockTextImageCrop', 'layout'),
                     Api::loadFields('BlockVideoOembed', 'layout'),
                     Api::loadFields('BlockWysiwyg', 'layout'),
+                    Api::loadFields('BlockWysiwygTwoCol', 'layout'),
+                    Api::loadFields('BlockWysiwygSidebar', 'layout'),
                     Api::loadFields('GridContentLists', 'layout'),
                     Api::loadFields('GridDownloadPortrait', 'layout'),
+                    Api::loadFields('GridImageText', 'layout'),
                     Api::loadFields('GridListSteps', 'layout'),
-                    Api::loadFields('GridPosts', 'layout'),
                     Api::loadFields('GridPostsSlider', 'layout'),
                     Api::loadFields('GridTeaserTiles', 'layout'),
                     Api::loadFields('HeroCta', 'layout'),
                     Api::loadFields('HeroImageText', 'layout'),
+                    Api::loadFields('HeroTextImage', 'layout'),
                     Api::loadFields('ListComponents', 'layout'),
                     Api::loadFields('ListFacts', 'layout'),
                     Api::loadFields('ListPostCards', 'layout'),
                     Api::loadFields('ListSocial', 'layout'),
                     Api::loadFields('ListTestimonialCards', 'layout'),
-                    Api::loadFields('SliderImageGallery', 'layout'),
                     Api::loadFields('SliderImages', 'layout'),
-                ],
-            ],
+                    Api::loadFields('SliderImagesCentered', 'layout'),
+                    Api::loadFields('SliderImageGallery', 'layout')
+                ]
+            ]
         ],
         'location' => [
             [
                 [
                     'param' => 'post_type',
                     'operator' => '==',
-                    'value' => 'page',
+                    'value' => 'page'
                 ],
                 [
                     'param' => 'page_type',
                     'operator' => '!=',
-                    'value' => 'posts_page',
-                ],
-            ],
-        ],
+                    'value' => 'posts_page'
+                ]
+            ]
+        ]
     ]);
 });

@@ -4,6 +4,7 @@ namespace Flynt\Components\GridPostsSlider;
 
 use Flynt\Api;
 use Timber\Timber;
+use Flynt\Utils\Options;
 
 add_filter('Flynt/addComponentData?name=GridPostsSlider', function ($data) {
     $posts = Timber::get_posts([
@@ -14,6 +15,11 @@ add_filter('Flynt/addComponentData?name=GridPostsSlider', function ($data) {
 
     $data['posts'] = $posts;
 
+    $translatableOptions = Options::get('translatableOptions', 'feature', 'SliderOptions');
+    $data['jsonData'] = [
+        'options' => array_merge($translatableOptions, $data['options']),
+    ];
+
     return $data;
 });
 
@@ -22,6 +28,13 @@ Api::registerFields('GridPostsSlider', [
         'name' => 'gridPostsSlider',
         'label' => 'Grid: Posts Slider',
         'sub_fields' => [
+            [
+                'label' => 'General',
+                'name' => 'generalTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
             [
                 "label" => "Content HTML",
                 "name" => "contentHtml",
@@ -46,12 +59,45 @@ Api::registerFields('GridPostsSlider', [
                 'return_format' => 'id'
             ],
             [
-                'label' => 'CTA Button',
-                'type' => 'link',
-                'instructions' => 'It may be helpfull to add a link to an archive page with all posts.',
-                'name' => 'ctaButton',
-                'return_format' => 'array'
-            ]
+                'label' => 'Options',
+                'name' => 'optionsTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
+                'label' => '',
+                'name' => 'options',
+                'type' => 'group',
+                'layout' => 'row',
+                'sub_fields' => [
+                    [
+                        'label' => 'Enable Autoplay',
+                        'name' => 'autoplay',
+                        'type' => 'true_false',
+                        'default_value' => 0,
+                        'ui' => 1
+                    ],
+                    [
+                        'label' => 'Autoplay Speed (in milliseconds)',
+                        'name' => 'autoplaySpeed',
+                        'type' => 'number',
+                        'min' => 2000,
+                        'default_value' => 4000,
+                        'required' => 1,
+                        'step' => 1,
+                        'conditional_logic' => [
+                            [
+                                [
+                                    'fieldPath' => 'autoplay',
+                                    'operator' => '==',
+                                    'value' => 1
+                                ]
+                            ]
+                        ],
+                    ],
+                ],
+            ],
         ]
     ]
 ]);
