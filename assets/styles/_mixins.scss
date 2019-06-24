@@ -69,43 +69,43 @@
   $gutter-horizontal: $gutter-width,
   $gutter-vertical: $gutter-width
 ) {
-  @if $columns != 'none' {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: $alignment;
-    width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: $alignment;
+  width: 100%;
 
-    > * {
-      width: calc((#{100% / $columns}) -
-      (#{$columns - 1} / #{$columns} * #{$gutter-horizontal}));
+  > * {
+    width: calc((#{100% / $columns}) -
+    (#{$columns - 1} / #{$columns} * #{$gutter-horizontal}));
 
-      &:nth-child(n) {
-        margin-right: $gutter-horizontal;
-        margin-top: 0;
-      }
-
-      &:nth-child(1n + #{$columns + 1}) {
-        margin-top: $gutter-vertical;
-      }
-
-      &:nth-child(#{$columns}n) {
-        margin-right: 0;
-      }
-
-      &:last-child {
-        margin-right: 0;
-      }
+    &:nth-child(n) {
+      margin-right: $gutter-horizontal;
+      margin-top: 0;
     }
-  } @else {
-    display: block;
 
-    > * {
-      width: auto;
+    &:nth-child(1n + #{$columns + 1}) {
+      margin-top: $gutter-vertical;
+    }
 
-      &:nth-child(n) {
-        margin-right: 0;
-        margin-top: 0;
-      }
+    &:nth-child(#{$columns}n) {
+      margin-right: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+@mixin reset-grid {
+  display: block;
+
+  > * {
+    width: auto;
+
+    &:nth-child(n) {
+      margin-right: 0;
+      margin-top: 0;
     }
   }
 }
