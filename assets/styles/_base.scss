@@ -43,37 +43,28 @@ body {
   }
 
   .button {
-    background: $color-background-dark;
+    &:not(.button--primary):not(.button--secondary):not(.button--link) {
+      background: $color-background-dark;
 
-    &:hover {
-      border-color: $color-background-hero;
-      color: $color-background-hero;
+      &:hover {
+        border-color: $color-background-hero;
+        color: $color-background-hero;
+      }
     }
 
     &--primary {
-      background: $color-accent;
-
       &:hover {
         background: $color-background-hero;
         border-color: $color-background-hero;
-        color: $color-background;
       }
     }
 
     &--secondary {
       background: $color-background-hero;
       border-color: $color-background-hero;
-
-      &:hover {
-        background: $color-accent;
-        border-color: $color-accent;
-        color: $color-background;
-      }
     }
 
     &--link {
-      background: none;
-
       &:hover {
         color: $color-background;
 
@@ -94,6 +85,12 @@ body {
 
 .themeLight {
   background-color: $color-background-light;
+
+  .button {
+    &:not(.button--primary):not(.button--secondary):not(.button--link) {
+      background: $color-background-light;
+    }
+  }
 }
 
 .themeHero {
@@ -105,17 +102,20 @@ body {
   }
 
   .button {
-    background: $color-background-hero;
-    border-color: $color-background;
-    color: $color-background;
+    &:not(.button--primary):not(.button--secondary):not(.button--link) {
+      background: $color-background-hero;
+      border-color: $color-background;
+      color: $color-background;
 
-    &:hover {
-      border-color: $color-background-dark;
-      color: $color-background-dark;
+      &:hover {
+        border-color: $color-background-dark;
+        color: $color-background-dark;
+      }
     }
 
     &--primary {
       background: $color-background;
+      border-color: $color-background;
       color: $color-background-dark;
 
       &:hover {
@@ -137,7 +137,7 @@ body {
     }
 
     &--link {
-      background: none;
+      color: $color-background;
 
       &::before {
         background: $color-background;
