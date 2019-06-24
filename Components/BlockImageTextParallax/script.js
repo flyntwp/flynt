@@ -45,7 +45,7 @@ function setParallax () {
 }
 
 function isMobile () {
-  return window.matchMedia('(max-width: 1023px)').matches
+  return window.matchMedia('(max-width: 767px)').matches
 }
 
 window.customElements.define('flynt-block-image-text-parallax', BlockImageTextParallax, { extends: 'div' })
