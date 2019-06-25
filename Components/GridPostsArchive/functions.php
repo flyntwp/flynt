@@ -20,7 +20,9 @@ add_filter('Flynt/addComponentData?name=GridPostsArchive', function ($data) {
     if (count($terms) > 1) {
         $data['terms'] = array_map(function ($term) use ($queriedObject) {
             $timberTerm = new Term($term);
-            $timberTerm->isActive = $queriedObject->taxonomy === $term->taxonomy && $queriedObject->term_id === $term->term_id;
+            if ($queriedObject) {
+                $timberTerm->isActive = $queriedObject->taxonomy === $term->taxonomy && $queriedObject->term_id === $term->term_id;
+            }
             return $timberTerm;
         }, $terms);
         // Add item for all posts
@@ -33,7 +35,7 @@ add_filter('Flynt/addComponentData?name=GridPostsArchive', function ($data) {
 
     if (is_home()) {
         $data['isHome'] = true;
-        $data['title'] = $queriedObject->post_title;
+        $data['title'] = $queriedObject->post_title ?? get_bloginfo('name');
     } else {
         $data['title'] =  get_the_archive_title();
         $data['description'] = get_the_archive_description();
