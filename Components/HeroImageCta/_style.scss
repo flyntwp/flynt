@@ -1,4 +1,6 @@
-$background-opacity: 0.5;
+@import 'mixins';
+
+$background-opacity: 0.4;
 
 [is='flynt-hero-image-cta'] {
   align-items: center;
@@ -155,78 +157,9 @@ $background-opacity: 0.5;
     }
   }
 
-  // TODO Make a mixin out of these helper css classes
-  .mobileHorizontalAlign--left.mobileVerticalAlign--top {
-    object-position: left top;
-  }
-
-  .mobileHorizontalAlign--center.mobileVerticalAlign--top {
-    object-position: center top;
-  }
-
-  .mobileHorizontalAlign--right.mobileVerticalAlign--top {
-    object-position: right top;
-  }
-
-  .mobileHorizontalAlign--left.mobileVerticalAlign--center {
-    object-position: left center;
-  }
-
-  .mobileHorizontalAlign--center.mobileVerticalAlign--center {
-    object-position: center center;
-  }
-
-  .mobileHorizontalAlign--right.mobileVerticalAlign--center {
-    object-position: right center;
-  }
-
-  .mobileHorizontalAlign--left.mobileVerticalAlign--bottom {
-    object-position: left bottom;
-  }
-
-  .mobileHorizontalAlign--center.mobileVerticalAlign--bottom {
-    object-position: center bottom;
-  }
-
-  .mobileHorizontalAlign--right.mobileVerticalAlign--bottom {
-    object-position: right bottom;
-  }
+  @include align-image('mobile');
 
   @media (min-width: $breakpoint-tablet) {
-    .desktopHorizontalAlign--left.desktopVerticalAlign--top {
-      object-position: left top;
-    }
-
-    .desktopHorizontalAlign--center.desktopVerticalAlign--top {
-      object-position: center top;
-    }
-
-    .desktopHorizontalAlign--right.desktopVerticalAlign--top {
-      object-position: right top;
-    }
-
-    .desktopHorizontalAlign--left.desktopVerticalAlign--center {
-      object-position: left center;
-    }
-
-    .desktopHorizontalAlign--center.desktopVerticalAlign--center {
-      object-position: center center;
-    }
-
-    .desktopHorizontalAlign--right.desktopVerticalAlign--center {
-      object-position: right center;
-    }
-
-    .desktopHorizontalAlign--left.desktopVerticalAlign--bottom {
-      object-position: left bottom;
-    }
-
-    .desktopHorizontalAlign--center.desktopVerticalAlign--bottom {
-      object-position: center bottom;
-    }
-
-    .desktopHorizontalAlign--right.desktopVerticalAlign--bottom {
-      object-position: right bottom;
-    }
+    @include align-image('desktop');
   }
 }
