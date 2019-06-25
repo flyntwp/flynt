@@ -1,26 +1,79 @@
+$background-opacity: 0.5;
+
 [is='flynt-hero-image-cta'] {
   align-items: center;
   display: flex;
   justify-content: center;
 
-  .container--hasContainerWidth {
-    @include center(100%, $padding: 0);
-    position: relative;
-    width: 100%;
+  .container {
+    &--hasContainerWidth {
+      @include center(100%, $padding: 0);
+      position: relative;
+      width: 100%;
 
-    @media (min-width: $breakpoint-tablet) {
-      @include center($container-max-width, $padding: 0);
-    }
-
-    .content-picture {
       @media (min-width: $breakpoint-tablet) {
-        left: $container-padding-tablet;
-        right: $container-padding-tablet;
+        @include center($container-max-width, $padding: 0);
       }
 
-      @media (min-width: $breakpoint-desktop) {
-        left: $container-padding-desktop;
-        right: $container-padding-desktop;
+      .content-picture {
+        @media (min-width: $breakpoint-tablet) {
+          left: $container-padding-tablet;
+          right: $container-padding-tablet;
+        }
+
+        @media (min-width: $breakpoint-desktop) {
+          left: $container-padding-desktop;
+          right: $container-padding-desktop;
+        }
+      }
+    }
+
+    &--themeDefault {
+      .content {
+        &-html {
+          color: $color-text;
+        }
+
+        &-background {
+          background-color: rgba($color-background, $background-opacity);
+        }
+      }
+    }
+
+    &--themeDark {
+      .content {
+        &-html {
+          color: $color-background;
+        }
+
+        &-background {
+          background-color: rgba($color-background-dark, $background-opacity);
+        }
+      }
+    }
+
+    &--themeHero {
+      .content {
+        &-html {
+          color: $color-background;
+        }
+
+        &-background {
+          background-color: rgba($color-background-hero, $background-opacity);
+        }
+      }
+
+    }
+
+    &--themeLight {
+      .content {
+        &-html {
+          color: $color-text;
+        }
+
+        &-background {
+          background-color: rgba($color-background-light, $background-opacity);
+        }
       }
     }
   }
@@ -86,85 +139,94 @@
       top: 0;
     }
 
+    &-background {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
     &-image {
       font-family: 'object-fit: cover';
       height: 100%;
       object-fit: cover;
       width: 100%;
     }
+  }
 
-    &-image--isCenterTopAlignMobile {
-      object-position: center top;
-    }
+  // TODO Make a mixin out of these helper css classes
+  .mobileHorizontalAlign--left.mobileVerticalAlign--top {
+    object-position: left top;
+  }
 
-    &-image--isCenterCenterAlignMobile {
-      object-position: center center;
-    }
+  .mobileHorizontalAlign--center.mobileVerticalAlign--top {
+    object-position: center top;
+  }
 
-    &-image--isCenterBottomAlignMobile {
-      object-position: center bottom;
-    }
+  .mobileHorizontalAlign--right.mobileVerticalAlign--top {
+    object-position: right top;
+  }
 
-    &-image--isLeftTopAlignMobile {
+  .mobileHorizontalAlign--left.mobileVerticalAlign--center {
+    object-position: left center;
+  }
+
+  .mobileHorizontalAlign--center.mobileVerticalAlign--center {
+    object-position: center center;
+  }
+
+  .mobileHorizontalAlign--right.mobileVerticalAlign--center {
+    object-position: right center;
+  }
+
+  .mobileHorizontalAlign--left.mobileVerticalAlign--bottom {
+    object-position: left bottom;
+  }
+
+  .mobileHorizontalAlign--center.mobileVerticalAlign--bottom {
+    object-position: center bottom;
+  }
+
+  .mobileHorizontalAlign--right.mobileVerticalAlign--bottom {
+    object-position: right bottom;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    .desktopHorizontalAlign--left.desktopVerticalAlign--top {
       object-position: left top;
     }
 
-    &-image--isLeftCenterAlignMobile {
-      object-position: left center;
+    .desktopHorizontalAlign--center.desktopVerticalAlign--top {
+      object-position: center top;
     }
 
-    &-image--isLeftBottomAlignMobile {
-      object-position: left bottom;
-    }
-
-    &-image--isRightTopAlignMobile {
+    .desktopHorizontalAlign--right.desktopVerticalAlign--top {
       object-position: right top;
     }
 
-    &-image--isRightCenterAlignMobile {
+    .desktopHorizontalAlign--left.desktopVerticalAlign--center {
+      object-position: left center;
+    }
+
+    .desktopHorizontalAlign--center.desktopVerticalAlign--center {
+      object-position: center center;
+    }
+
+    .desktopHorizontalAlign--right.desktopVerticalAlign--center {
       object-position: right center;
     }
 
-    &-image--isRightBottomAlignMobile {
-      object-position: right bottom;
+    .desktopHorizontalAlign--left.desktopVerticalAlign--bottom {
+      object-position: left bottom;
     }
 
-    @media (min-width: $breakpoint-tablet) {
-      &-image--isCenterTopAlignDesktop {
-        object-position: center top;
-      }
+    .desktopHorizontalAlign--center.desktopVerticalAlign--bottom {
+      object-position: center bottom;
+    }
 
-      &-image--isCenterCenterAlignDesktop {
-        object-position: center center;
-      }
-
-      &-image--isCenterBottomAlignDesktop {
-        object-position: center bottom;
-      }
-
-      &-image--isLeftTopAlignDesktop {
-        object-position: left top;
-      }
-
-      &-image--isLeftCenterAlignDesktop {
-        object-position: left center;
-      }
-
-      &-image--isLeftBottomAlignDesktop {
-        object-position: left bottom;
-      }
-
-      &-image--isRightTopAlignDesktop {
-        object-position: right top;
-      }
-
-      &-image--isRightCenterAlignDesktop {
-        object-position: right center;
-      }
-
-      &-image--isRightBottomAlignDesktop {
-        object-position: right bottom;
-      }
+    .desktopHorizontalAlign--right.desktopVerticalAlign--bottom {
+      object-position: right bottom;
     }
   }
 }

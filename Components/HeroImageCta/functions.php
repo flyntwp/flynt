@@ -44,48 +44,86 @@ Api::registerFields('HeroImageCta', [
                 ]
             ],
             [
-                'label' => 'Mobile Align Image',
-                'name' => 'mobileAlignImage',
-                'type' => 'select',
-                'allow_null' => 0,
-                'multiple' => 0,
-                'ui' => 1,
-                'ajax' => 0,
-                'choices' => [
-                    'content-image--isCenterTopAlignMobile' => 'Center - Top',
-                    'content-image--isCenterCenterAlignMobile' => 'Center - Center',
-                    'content-image--isCenterBottomAlignMobile' => 'Center - Bottom',
-                    'content-image--isLeftTopAlignMobile' => 'Left - Top',
-                    'content-image--isLeftCenterAlignMobile' => 'Left - Center',
-                    'content-image--isLeftBottomAlignMobile' => 'Left - Bottom',
-                    'content-image--isRightTopAlignMobile' => 'Right - Top',
-                    'content-image--isRightCenterAlignMobile' => 'Right - Center',
-                    'content-image--isRightBottomAlignMobile' => 'Right - Bottom',
-                ],
-                'default_value' => 'content-image--isCenterCenterAlignMobile',
-                'instructions' => 'Horizontal - Vertical'
-            ],
-            [
-                'label' => 'Desktop Align Image',
-                'name' => 'desktopAlignImage',
-                'type' => 'select',
-                'allow_null' => 0,
-                'multiple' => 0,
-                'ui' => 1,
-                'ajax' => 0,
-                'choices' => [
-                    'content-image--isCenterTopAlignDesktop' => 'Center - Top',
-                    'content-image--isCenterCenterAlignDesktop' => 'Center - Center',
-                    'content-image--isCenterBottomAlignDesktop' => 'Center - Bottom',
-                    'content-image--isLeftTopAlignDesktop' => 'Left - Top',
-                    'content-image--isLeftCenterAlignDesktop' => 'Left - Center',
-                    'content-image--isLeftBottomAlignDesktop' => 'Left - Bottom',
-                    'content-image--isRightTopAlignDesktop' => 'Right - Top',
-                    'content-image--isRightCenterAlignDesktop' => 'Right - Center',
-                    'content-image--isRightBottomAlignDesktop' => 'Right - Bottom',
-                ],
-                'default_value' => 'content-image--isCenterCenterAlignDesktop',
-                'instructions' => 'Horizontal - Vertical'
+                'label' => 'Align Image',
+                'name' => 'alignImage',
+                'type' => 'group',
+                'layout' => 'table',
+                'sub_fields' => [
+                    [
+                        'label' => 'Desktop',
+                        'name' => 'desktop',
+                        'type' => 'group',
+                        'sub_fields' => [
+                            [
+                                'label' => ' Horizontal',
+                                'name' => 'horizontal',
+                                'type' => 'select',
+                                'allow_null' => 0,
+                                'multiple' => 0,
+                                'ui' => 1,
+                                'ajax' => 0,
+                                'choices' => [
+                                    'desktopHorizontalAlign--left' => 'Left',
+                                    'desktopHorizontalAlign--center' => 'Center',
+                                    'desktopHorizontalAlign--right' => 'Right',
+                                ],
+                                'default_value' => 'desktopHorizontalAlign--center'
+                            ],
+                            [
+                                'label' => 'Vertical',
+                                'name' => 'vertical',
+                                'type' => 'select',
+                                'allow_null' => 0,
+                                'multiple' => 0,
+                                'ui' => 1,
+                                'ajax' => 0,
+                                'choices' => [
+                                    'desktopVerticalAlign--top' => 'Top',
+                                    'desktopVerticalAlign--center' => 'Center',
+                                    'desktopVerticalAlign--bottom' => 'Bottom',
+                                ],
+                                'default_value' => 'desktopVerticalAlign--center'
+                            ],
+                        ]
+                    ],
+                    [
+                        'label' => 'Mobile',
+                        'name' => 'mobile',
+                        'type' => 'group',
+                        'sub_fields' => [
+                            [
+                                'label' => ' Horizontal',
+                                'name' => 'horizontal',
+                                'type' => 'select',
+                                'allow_null' => 0,
+                                'multiple' => 0,
+                                'ui' => 1,
+                                'ajax' => 0,
+                                'choices' => [
+                                    'mobileHorizontalAlign--left' => 'Left',
+                                    'mobileHorizontalAlign--center' => 'Center',
+                                    'mobileHorizontalAlign--right' => 'Right',
+                                ],
+                                'default_value' => 'mobileHorizontalAlign--center'
+                            ],
+                            [
+                                'label' => 'Vertical',
+                                'name' => 'vertical',
+                                'type' => 'select',
+                                'allow_null' => 0,
+                                'multiple' => 0,
+                                'ui' => 1,
+                                'ajax' => 0,
+                                'choices' => [
+                                    'mobileVerticalAlign--top' => 'Top',
+                                    'mobileVerticalAlign--center' => 'Center',
+                                    'mobileVerticalAlign--bottom' => 'Bottom',
+                                ],
+                                'default_value' => 'mobileVerticalAlign--center'
+                            ],
+                        ]
+                    ],
+                ]
             ],
             [
                 'label' => 'Restrict image width to container',
@@ -93,6 +131,22 @@ Api::registerFields('HeroImageCta', [
                 'type' => 'true_false',
                 'default_value' => 0,
                 'ui' => 1
+            ],
+            [
+                'label' => 'Theme',
+                'name' => 'theme',
+                'type' => 'select',
+                'allow_null' => 0,
+                'multiple' => 0,
+                'ui' => 0,
+                'ajax' => 0,
+                'choices' => [
+                    'themeNoBackground' => 'No Background',
+                    'themeDefault' => 'Default',
+                    'themeLight' => 'Light',
+                    'themeDark' => 'Dark',
+                    'themeHero' => 'Hero'
+                ],
             ],
             [
                 'label' => 'Content',
