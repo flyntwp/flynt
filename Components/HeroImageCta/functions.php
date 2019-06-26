@@ -141,11 +141,11 @@ Api::registerFields('HeroImageCta', [
                 'ui' => 0,
                 'ajax' => 0,
                 'choices' => [
-                    'themeNoBackground' => 'No Background',
                     'themeDefault' => 'Default',
                     'themeLight' => 'Light',
                     'themeDark' => 'Dark',
-                    'themeHero' => 'Hero'
+                    'themeHero' => 'Hero',
+                    'themeNoBackground' => 'Disable'
                 ],
             ],
             [
