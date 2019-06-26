@@ -3,6 +3,8 @@
 $background-opacity: 0.4;
 
 [is='flynt-hero-image-cta'] {
+  @include align-image('mobile');
+
   align-items: center;
   display: flex;
   justify-content: center;
@@ -95,6 +97,7 @@ $background-opacity: 0.4;
   }
 
   .content {
+
     align-content: center;
     display: flex;
     flex-direction: row;
@@ -156,8 +159,6 @@ $background-opacity: 0.4;
       width: 100%;
     }
   }
-
-  @include align-image('mobile');
 
   @media (min-width: $breakpoint-tablet) {
     @include align-image('desktop');
