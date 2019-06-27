@@ -14,6 +14,7 @@ class BlockCountUp extends window.HTMLDivElement {
 
   resolveElements () {
     this.$items = $('.item', this)
+    this.$blockCountContainer = $('.blockCountUp', this)
   }
 
   connectedCallback () {
@@ -23,6 +24,19 @@ class BlockCountUp extends window.HTMLDivElement {
     $.each(this.$items, (i, item) => {
       this.observer.observe(item)
     })
+
+    this.separators = {
+      decimal: this.$blockCountContainer.data('separator-decimal'),
+      thousands: this.$blockCountContainer.data('separator-thousands')
+    }
+
+    if (!this.separators.decimal) {
+      this.separators.decimal = ','
+    }
+
+    if (!this.separators.thousands) {
+      this.separators.thousands = '.'
+    }
   }
 
   triggerAnimation (entries) {
@@ -41,7 +55,9 @@ class BlockCountUp extends window.HTMLDivElement {
             duration: duration,
             decimalPlaces: 0,
             prefix: displayPrefix,
-            suffix: displaySuffix
+            suffix: displaySuffix,
+            separator: this.separators.thousands,
+            decimal: this.separators.decimal
           })
           count.start()
         })
