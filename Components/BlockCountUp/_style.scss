@@ -8,8 +8,12 @@
   .preContent {
     @include reset-content-margins;
 
-    margin-bottom: 70px;
+    margin-bottom: 50px;
     text-align: center;
+
+    @media (min-width: $breakpoint-desktop) {
+      margin-bottom: 70px;
+    }
   }
 
   .blockCountUp {
@@ -23,15 +27,14 @@
       padding: 0 $gutter-width/2;
       width: 50%;
 
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        width: 40%;
+      }
+
       &:nth-child(n+3) {
         margin-top: 40px;
       }
 
-      &-count-4 {
-        @media (min-width: $breakpoint-mobile-horizontal) {
-          width: 40%;
-        }
-      }
 
       &-count-3 {
         @media (min-width: $breakpoint-mobile-horizontal) {
@@ -58,6 +61,16 @@
 
         &:nth-child(n+3) {
           margin-top: 0;
+        }
+
+        &:nth-child(n+5) {
+          margin-top: 40px;
+        }
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        &:nth-child(n+5) {
+          margin-top: 50px;
         }
       }
     }

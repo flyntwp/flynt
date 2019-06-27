@@ -3,6 +3,7 @@
 namespace Flynt\Components\BlockCountUp;
 
 use Flynt\Api;
+use Flynt\Utils\Options;
 
 Api::registerFields('BlockCountUp', [
     'layout' => [
@@ -33,7 +34,7 @@ Api::registerFields('BlockCountUp', [
                 ]
             ],
             [
-                'label' => 'Pre Content HTML',
+                'label' => 'Title',
                 'name' => 'preContentHtml',
                 'type' => 'wysiwyg',
                 'tabs' => 'visual,text',
@@ -375,4 +376,21 @@ Api::registerFields('BlockCountUp', [
             ],
         ]
     ]
+]);
+
+Options::addTranslatable('BlockCountUp', [
+    [
+        'label' => 'Decimal Separator',
+        'name' => 'decimalSeparator',
+        'type' => 'text',
+        'required' => 1,
+        'default_value' => ','
+      ],
+      [
+        'label' => 'Thousands Separator',
+        'name' => 'thousandsSeparator',
+        'type' => 'text',
+        'required' => 1,
+        'default_value' => '.'
+      ]
 ]);
