@@ -6,7 +6,7 @@ add_action('wp_enqueue_scripts', function () {
     Asset::enqueue([
         'name' => 'Flynt/assets',
         'path' => 'assets/main.js',
-        'type' => 'script',
+        'type' => 'script'
     ]);
     Asset::enqueue([
         'name' => 'Flynt/icons',

@@ -10,7 +10,9 @@ window.lazySizesConfig.preloadAfterLoad = true
 require('lazysizes')
 
 $(document).ready(function () {
-  window.feather.replace()
+  window.feather.replace({
+    'stroke-width': 1
+  })
 })
 
 installCE(window, {
