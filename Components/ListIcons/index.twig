@@ -1,4 +1,4 @@
-<div class="flyntComponent" is="flynt-list-icons">
+<div class="flyntComponent {{ options.theme }}" is="flynt-list-icons">
 <div class="container centerMaxWidthContainer">
   <div class="main">
     {% if preContentHtml %}
@@ -7,16 +7,16 @@
     </div>
     {% endif %}
   </div>
-  <div class="items">
+  <ul class="items">
     {% for item in items %}
-    <div class="item">
+    <li class="item">
       <div class="item-icon"><i class="feather" data-feather="{{ item.icon|e }}"></i></div>
       <h3 class="item-title">{{ item.title }}</h3>
       <p class="item-text">{{ item.subtitle }}</p>
       <div class="item-linkWrapper">
         <a href="{{ item.link.url }}" class="item-link button--link">{{ item.link.title }}</a>
       </div>
-    </div>
+    </li>
     {% endfor %}
     </div>
   </div>

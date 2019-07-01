@@ -25,11 +25,14 @@
   }
 
   .items {
+    @include reset-list;
+
     @include grid(1,
     $gutter-vertical: ($gutter-width * 2));
 
     @media (min-width: $breakpoint-mobile-horizontal) {
       @include grid(2,
+      center,
       $gutter-vertical: ($gutter-width * 2));
     }
 
@@ -41,6 +44,7 @@
     .item {
       display: flex;
       flex-direction: column;
+      max-width: 320px;
 
       &-icon {
         margin-bottom: 15px;

@@ -10,13 +10,20 @@ Api::registerFields('ListIcons', [
         'label' => 'List: Icons',
         'sub_fields' => [
             [
-                'label' => 'Pre Content HTML',
+                'label' => 'Title',
                 'name' => 'preContentHtml',
                 'type' => 'wysiwyg',
                 'tabs' => 'visual,text',
                 'toolbar' => 'full',
                 'media_upload' => 0,
                 'delay' => 1
+            ],
+            [
+                'label' => 'General',
+                'name' => 'generalTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
             ],
             [
                 'label' => 'Items',
@@ -334,6 +341,36 @@ Api::registerFields('ListIcons', [
                         'name' => 'link',
                         'type' => 'link',
                     ],
+                ]
+            ],
+            [
+                'label' => 'Options',
+                'name' => 'optionsTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
+                'label' => '',
+                'name' => 'options',
+                'type' => 'group',
+                'layout' => 'row',
+                'sub_fields' => [
+                    [
+                        'label' => 'Theme',
+                        'name' => 'theme',
+                        'type' => 'select',
+                        'allow_null' => 0,
+                        'multiple' => 0,
+                        'ui' => 0,
+                        'ajax' => 0,
+                        'choices' => [
+                            '' => 'Default',
+                            'themeLight' => 'Light',
+                            'themeDark' => 'Dark',
+                            'themeHero' => 'Hero'
+                        ]
+                    ]
                 ]
             ],
         ]
