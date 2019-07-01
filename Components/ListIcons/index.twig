@@ -7,17 +7,17 @@
     </div>
     {% endif %}
   </div>
-    <div class="items">
-      {% for item in items %}
-      <div class="item">
-        <div class="item-icon"><i class="feather" data-feather="{{ item.icon|e }}"></i></div>
-        <h3 class="item-title">{{ item.title }}</h3>
-        <p class="item-text">{{ item.subtitle }}</p>
-        <div class="item-linkWrapper">
-         <a href="{{ item.link.url }}" class="item-link button--link">{{ item.link.title }}</a>
-        </div>
+  <div class="items">
+    {% for item in items %}
+    <div class="item">
+      <div class="item-icon"><i class="feather" data-feather="{{ item.icon|e }}"></i></div>
+      <h3 class="item-title">{{ item.title }}</h3>
+      <p class="item-text">{{ item.subtitle }}</p>
+      <div class="item-linkWrapper">
+        <a href="{{ item.link.url }}" class="item-link button--link">{{ item.link.title }}</a>
       </div>
-      {% endfor %}
+    </div>
+    {% endfor %}
     </div>
   </div>
 </div>
