@@ -326,15 +326,13 @@ Api::registerFields('ListIcons', [
                         'default_value' => ''
                     ],
                     [
-                        'label' => 'Title',
-                        'name' => 'title',
-                        'type' => 'text',
-                        'required' => 1
-                    ],
-                    [
-                        'label' => 'Subtitle',
-                        'name' => 'subtitle',
-                        'type' => 'text'
+                        'label' => 'Text content',
+                        'name' => 'textContentHtml',
+                        'type' => 'wysiwyg',
+                        'tabs' => 'visual,text',
+                        'toolbar' => 'full',
+                        'media_upload' => 0,
+                        'delay' => 1
                     ],
                     [
                         'label' => 'Link',

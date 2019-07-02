@@ -55,14 +55,12 @@
         }
       }
 
-      &-title {
-        padding-top: 0;
-      }
-
-      &-linkWrapper {
-        align-items: flex-end;
-        display: flex;
+      &-content {
         flex-grow: 1;
+
+        #{$heading-selectors} {
+          padding-top: 0;
+        }
       }
 
       &-link {
