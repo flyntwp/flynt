@@ -1,0 +1,10 @@
+<ul class="menu">
+  {% for item in items %}
+  <li class="menu-item">
+    <h3>{{ item.title }}</h3>
+    {% for child in item.children %}
+    <a class="menu-item-link" href="{{ item.link }}" {% if item.target %} target="{{ item.target }}"{% endif %}>{{ child.title }}</a>
+    {% endfor %}
+  </li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,29 @@
+[is='flynt-navigation-footer-columns'] {
+  padding: $component-spacing-mobile 0;
+
+  @media (min-width: $breakpoint-desktop) {
+    padding: $component-spacing-desktop 0;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+
+    .wrapper {
+      display: flex;
+      flex-direction: column-reverse;
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        flex-direction: row;
+      }
+    }
+
+    .navigation {
+      width: 100%;
+    }
+  }
+
+  @import 'Partials/Bottom/style';
+  @import 'Partials/Menu/style';
+  @import 'Partials/Social/style';
+}

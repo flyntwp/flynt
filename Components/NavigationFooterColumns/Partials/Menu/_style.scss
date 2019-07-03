@@ -1,0 +1,43 @@
+.menu {
+  @include reset-list;
+  @include grid(2, center);
+
+  @media (min-width: $breakpoint-mobile-horizontal) {
+    @include grid(4);
+  }
+
+  &-item {
+    color: $color-contrast;
+    display: flex;
+    flex-direction: column;
+    max-width: 150px;
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      max-width: 200px;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      padding-top: 0;
+
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        margin-bottom: 34px;
+      }
+    }
+
+    &-link {
+      color: $color-contrast;
+      font-size: 14px;
+      padding-bottom: 7px;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &-link:nth-last-child(1) {
+      padding-bottom: 0;
+  }
+}
+}

@@ -1,0 +1,13 @@
+<div class="social">
+  <a class="logo" href="{{ site.link }}">
+    <img class="logo-image" src="{{ logo.src }}" alt="{{ logo.alt }}">
+  </a>
+  <p class="logo-text">{{ label }}</p>
+  <div class="icon">
+    {% for link in links %}
+    <a class="icon-item" href="{{ link.url }}">
+      <i style="width: 16px; height: 16px; vertical-align: middle; position: relative; top: -2px;margin-right: 5px" data-feather="{{ link.icon|e }}"></i>
+    </a>
+    {% endfor %}
+  </div>
+</div>
