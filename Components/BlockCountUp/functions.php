@@ -47,7 +47,6 @@ Api::registerFields('BlockCountUp', [
                 'name' => 'items',
                 'type' => 'repeater',
                 'min' => 1,
-                'max' => 4,
                 'layout' => 'row',
                 'button_label' => 'Add Item',
                 'sub_fields' => [

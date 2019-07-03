@@ -17,60 +17,23 @@
   }
 
   .blockCountUp {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 0 (-$gutter-width/2);
+    @include grid(2, $alignment: center, $gutter-vertical: 40px);
+
     text-align: center;
 
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      @include grid(2, $alignment: center, $gutter-vertical: 40px);
+    }
+
+    @media (min-width: $breakpoint-tablet) {
+      @include grid(4, $alignment: center, $gutter-vertical: 50px);
+    }
+
     .item {
-      padding: 0 $gutter-width/2;
-      width: 50%;
-
-      @media (min-width: $breakpoint-mobile-horizontal) {
-        width: 40%;
-      }
-
-      &:nth-child(n+3) {
-        margin-top: 40px;
-      }
-
-
       &-count-3 {
-        @media (min-width: $breakpoint-mobile-horizontal) {
+        @media (min-width: $breakpoint-mobile-horizontal) and (max-width: $breakpoint-tablet - 1) {
+          margin: 0;
           width: 33.333%;
-
-          &:nth-child(n+3) {
-            margin-top: 0;
-          }
-        }
-      }
-
-      &-count-2 {
-        @media (min-width: $breakpoint-mobile-horizontal) {
-          width: 50%;
-        }
-      }
-
-      &-count-1 {
-        width: 100%;
-      }
-
-      @media (min-width: $breakpoint-tablet) {
-        width: 25%;
-
-        &:nth-child(n+3) {
-          margin-top: 0;
-        }
-
-        &:nth-child(n+5) {
-          margin-top: 40px;
-        }
-      }
-
-      @media (min-width: $breakpoint-desktop) {
-        &:nth-child(n+5) {
-          margin-top: 50px;
         }
       }
     }
