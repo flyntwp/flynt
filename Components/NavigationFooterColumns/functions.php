@@ -25,19 +25,19 @@ add_filter('Flynt/addComponentData?name=NavigationFooterColumns', function ($dat
 
 Options::addTranslatable('NavigationFooterColumns', [
     [
-    'label' => 'Social media label',
+    'label' => 'Text - Social Media',
     'name' => 'socialMediaLabel',
     'type' => 'text',
     'default_value' => 'Follow us on social media'
     ],
     [
-    'label' => 'Social links',
+    'label' => 'Social Links',
     'name' => 'links',
     'type' => 'repeater',
     'min' => 0,
     'max' => 6,
     'layout' => 'row',
-    'button_label' => 'Add Item',
+    'button_label' => 'Add',
     'sub_fields' => [
         [
             'label' => 'Icon',

@@ -20,16 +20,20 @@
       margin-bottom: 10px;
       padding-top: 0;
 
-      @media (min-width: $breakpoint-mobile-horizontal) {
+      @media (min-width: $breakpoint-tablet) {
         margin-bottom: 34px;
       }
     }
 
     &-link {
       color: $color-contrast;
-      font-size: 14px;
+      font-size: 13px;
       padding-bottom: 7px;
       text-decoration: none;
+
+      @media (min-width: $breakpoint-tablet) {
+        font-size: 14px;
+      }
 
       &:hover {
         text-decoration: underline;

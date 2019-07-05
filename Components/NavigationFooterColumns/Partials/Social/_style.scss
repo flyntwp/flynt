@@ -31,7 +31,7 @@
     }
 
     &-text {
-      font-size: 14px;
+      font-size: 13px;
       margin: 0;
       padding-bottom: 7px;
       text-align: center;
@@ -40,12 +40,16 @@
       @media (min-width: $breakpoint-tablet-horizontal) {
         text-align: left;
       }
+
+      @media (min-width: $breakpoint-tablet) {
+        font-size: 14px;
+      }
     }
   }
 
   .icon {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     width: 100%;
 
     @media (min-width: $breakpoint-tablet-horizontal) {
@@ -55,6 +59,10 @@
     &-item {
       padding-right: 15px;
       text-decoration: none;
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        padding-right: 20px;
+      }
 
       .feather {
         color: $color-contrast;
