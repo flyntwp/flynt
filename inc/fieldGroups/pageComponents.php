@@ -31,6 +31,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Api::loadFields('GridImageText', 'layout'),
                     Api::loadFields('GridListSteps', 'layout'),
                     Api::loadFields('GridPostsSlider', 'layout'),
+                    Api::loadFields('GridPostsLatest', 'layout'),
                     Api::loadFields('GridTeaserTiles', 'layout'),
                     Api::loadFields('HeroCta', 'layout'),
                     Api::loadFields('HeroImageCta', 'layout'),
