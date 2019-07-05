@@ -53,14 +53,16 @@ body {
     &:not(.button--primary):not(.button--secondary):not(.button--link) {
       background: $color-background-dark;
 
-      &:hover {
+      &:hover,
+      &:focus {
         border-color: $color-background-hero;
         color: $color-background-hero;
       }
     }
 
     &--primary {
-      &:hover {
+      &:hover,
+      &:focus {
         background: $color-background-hero;
         border-color: $color-background-hero;
       }
@@ -72,7 +74,8 @@ body {
     }
 
     &--link {
-      &:hover {
+      &:hover,
+      &:focus {
         color: $color-background;
 
         &::before {
@@ -118,7 +121,8 @@ body {
       border-color: $color-background;
       color: $color-background;
 
-      &:hover {
+      &:hover,
+      &:focus {
         border-color: $color-background-dark;
         color: $color-background-dark;
       }
@@ -129,7 +133,8 @@ body {
       border-color: $color-background;
       color: $color-background-dark;
 
-      &:hover {
+      &:hover,
+      &:focus {
         background: $color-background-dark;
         border-color: $color-background-dark;
         color: $color-background;
@@ -140,7 +145,8 @@ body {
       background: $color-background-dark;
       border-color: $color-background-dark;
 
-      &:hover {
+      &:hover,
+      &:focus {
         background: $color-background;
         border-color: $color-background;
         color: $color-background-dark;
@@ -154,7 +160,8 @@ body {
         background: $color-background;
       }
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: $color-background-dark;
 
         &::before {
@@ -463,16 +470,15 @@ button {
   }
 
   &--link {
-    $link-padding: 1.25rem;
-
     background: none;
     border: 0;
-    padding: $link-padding 0;
+    padding: 0;
     position: relative;
     text-transform: none;
     transition: color 0.2s ease-out;
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: $color-background-dark;
 
       &::before {
@@ -486,7 +492,7 @@ button {
 
     &::before {
       background: $color-accent;
-      bottom: $link-padding;
+      bottom: 0;
       content: '';
       height: 1px;
       left: 0;
