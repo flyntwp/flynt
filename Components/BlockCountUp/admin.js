@@ -1,3 +1,5 @@
+import $ from 'jquery'
+
 $(document).ready(function () {
   var waitForEl = function (selector, callback) {
     if ($(selector).length) {
