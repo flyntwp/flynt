@@ -18,11 +18,7 @@ $(document).ready(function () {
     })
   }
 
-  $('body').on('click', '.select2-container', function () {
-    window.feather.replace()
-  })
-
-  $('body').on('change', '.select2-hidden-accessible', function () {
+  $('body').on('click focusin', '.select2-container', function () {
     window.feather.replace()
   })
 
