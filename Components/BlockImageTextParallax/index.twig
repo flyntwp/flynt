@@ -2,23 +2,20 @@
   <div class="container centerMaxWidthContainer">
     <div class="box box--{{ imagePosition }}">
       <div class="box-inner box-inner--content {{ options.theme }}">
-        <div class="box-copy">
+        <div class="box-copy" data-img-aspect-ratio="1.5">
           {{ contentHtml|e('wp_kses_post') }}
         </div>
       </div>
-      <div class="box-inner box-inner--image rellax" data-parallax data-rellax-speed="3" data-relax-percentage="0.5">
-        <figure class="figure">
-          <img class="figure-image lazyload"
-            src="{{ image.src|resize(750) }}"
-            srcset="{{ placeholderImage(750, 750 / image.aspect) }}"
-            data-srcset="
-              {{ image.src|resize(1920) }} 1920w,
-              {{ image.src|resize(1280) }} 1280w,
-              {{ image.src|resize(750) }} 750w,
-              {{ image.src|resize(375) }} 375w"
-            data-sizes="auto"
-            alt="{{ image.alt|e }}">
-        </figure>
+      <div class="box-inner box-inner--image rellax" data-parallax>
+        <img class="figure-image lazyload"
+          src="{{ image.src|resizeDynamic(792) }}"
+          srcset="{{ placeholderImage(792, 792 / 1.5) }}"
+          data-srcset="
+            {{ image.src|resizeDynamic(1584, 1584 / 1.5) }} 1584w,
+            {{ image.src|resizeDynamic(792, 792 / 1.5) }} 792w,
+            {{ image.src|resizeDynamic(375, 375 / 1.5) }} 375w"
+          data-sizes="auto"
+          alt="{{ image.alt|e }}">
       </div>
     </div>
   </div>

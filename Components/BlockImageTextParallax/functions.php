@@ -30,10 +30,11 @@ Api::registerFields('BlockImageTextParallax', [
                 'name' => 'image',
                 'type' => 'image',
                 'preview_size' => 'medium',
-                'instructions' => '',
+                'instructions' => 'Minimum width of the image should be 792px (recommended width: 1584px); the aspect ratio should be 3:2',
                 'max_size' => 4,
+                'min_width' => 792,
                 'required' => true,
-                'mime_types' => 'gif,jpg,jpeg,png'
+                'mime_types' => 'jpg,jpeg'
             ],
             [
                 'name' => 'contentHtml',
