@@ -4,11 +4,7 @@
   flex-direction: column;
   margin: 0 auto;
   max-width: 410px;
-  padding-bottom: 20px;
-
-  @media (min-width: $breakpoint-mobile-horizontal) {
-    padding-bottom: $component-spacing-mobile;
-  }
+  padding-bottom: $component-spacing-mobile;
 
   @media (min-width: $breakpoint-tablet-horizontal) {
     margin: 0;
@@ -73,7 +69,6 @@
     &-item:nth-last-child(1) {
       padding: 0;
     }
-
   }
 
 }
