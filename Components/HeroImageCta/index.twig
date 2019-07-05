@@ -1,0 +1,55 @@
+<div class="flyntComponent" is="flynt-hero-image-cta">
+  <div class="container {% if hasContainerWidth %}container--hasContainerWidth{% endif %} {% if theme %}container--{{ theme }}{% endif %}">
+    <div class="content-picture">
+      <div class="content-background"></div>
+      <picture>
+        {% if images.imageMobile %}
+          <source
+            srcset="
+              {{ images.imageDesktop.src | resize(2560) }} 2560w,
+              {{ images.imageDesktop.src | resize(2048) }} 2048w,
+              {{ images.imageDesktop.src | resize(1320) }} 1320w,
+              {{ images.imageDesktop.src | resize(1024) }} 1024w,
+              {{ images.imageDesktop.src | resize(768) }} 768w"
+            media="(min-width: 768px)">
+          <img
+            class="content-image lazyload
+              {{ alignImage.mobile.vertical }}
+              {{ alignImage.mobile.horizontal }}
+              {{ alignImage.desktop.vertical }}
+              {{ alignImage.desktop.horizontal }}"
+            srcset="
+              {{ images.imageMobile.src| resize(375) }} 375w,
+              {{ images.imageMobile.src | resize(750) }} 750w"
+            src="{{ images.imageDesktop.src | resize(375) }}"
+            data-sizes="auto"
+            alt="{{ images.imageDesktop.alt|e }}">
+          {% else %}
+            <img
+              class="content-image
+                {{ alignImage.mobile.vertical }}
+                {{ alignImage.mobile.horizontal }}
+                {{ alignImage.desktop.vertical }}
+                {{ alignImage.desktop.horizontal }}"
+              srcset="
+                {{ images.imageDesktop.src | resize(2560) }} 2560w,
+                {{ images.imageDesktop.src | resize(2048) }} 2048w,
+                {{ images.imageDesktop.src | resize(1320) }} 1320w,
+                {{ images.imageDesktop.src | resize(1024) }} 1024w,
+                {{ images.imageDesktop.src | resize(768) }} 768w,
+                {{ images.imageDesktop.src | resize(375) }} 375w"
+              src="{{ images.imageDesktop.src | resize(375) }}"
+              data-sizes="auto"
+              alt="{{ images.imageDesktop.alt|e }}">
+        {% endif %}
+      </picture>
+    </div>
+    <div class="content">
+      <div class="content-wrapper">
+        <div class="content-html">
+          {{ contentHtml|e('wp_kses_post') }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
