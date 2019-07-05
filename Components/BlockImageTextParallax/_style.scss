@@ -1,4 +1,6 @@
 [is='flynt-block-image-text-parallax'] {
+  $image-aspect-ratio: 3/2;
+
   overflow: hidden;
   padding-bottom: $component-spacing-mobile;
 
@@ -8,10 +10,6 @@
 
   @media (min-width: $breakpoint-desktop) {
     padding: $component-spacing-desktop 0;
-  }
-
-  figure {
-    margin-bottom: 0;
   }
 
   .box {
@@ -45,7 +43,7 @@
 
         &::after {
           background-color: inherit;
-          bottom: calc((50vw - #{$container-padding-mobile}) / (-1.5)); // image aspect ratio 3:2 (3/2 = 1.5);
+          bottom: calc((50vw - #{$container-padding-mobile}) / -#{$image-aspect-ratio}); // image aspect ratio 3:2 (3/2 = 1.5);
           content: '';
           display: block;
           left: -$container-padding-mobile;
@@ -54,7 +52,7 @@
           top: 0;
 
           @media (min-width: ($content-max-width + $container-padding-mobile * 2)) {
-            bottom: ($content-max-width * 0.5) / (-1.5);
+            bottom: ($content-max-width * 0.5) / -$image-aspect-ratio;
           }
 
           @media (min-width: $breakpoint-tablet) {
