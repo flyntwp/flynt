@@ -35,7 +35,7 @@
     "conventional-github-releaser": "^3.1.2",
     "copy-webpack-plugin": "^4.6.0",
     "core-js": "^3.0.0",
-    "countup.js": "^1.9.3",
+    "countup.js": "^2.0.4",
     "css-loader": "^2.1.0",
     "document-register-element": "^1.13.1",
     "draggabilly": "^2.1.1",
@@ -113,7 +113,9 @@
       "postbump": "gulp replaceVersion && git add ."
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "countup": "^2.0.4"
+  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
