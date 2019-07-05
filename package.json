@@ -113,9 +113,7 @@
       "postbump": "gulp replaceVersion && git add ."
     }
   },
-  "dependencies": {
-    "countup": "^2.0.4"
-  },
+  "dependencies": {},
   "browserslist": [
     "> 1%",
     "last 2 versions",
