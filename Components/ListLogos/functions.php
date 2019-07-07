@@ -77,7 +77,7 @@ Api::registerFields('ListLogos', [
                         'min_width' => 384,
                         'min_height' => 216,
                         'max_size' => 2.5,
-                        'mime_types' => 'png,svg',
+                        'mime_types' => 'png',
                         'required' => 1,
                         'wrapper' =>  [
                             'width' => '40',
