@@ -11,8 +11,8 @@
 
   .preContent {
     @include reset-content-margins;
-    max-width: $content-max-width;
     margin: 0 auto;
+    max-width: $content-max-width;
     text-align: center;
   }
 
