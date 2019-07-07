@@ -75,6 +75,10 @@
       background-color: #fff;
     }
 
+    @at-root .flyntComponent--card.themeHero#{&} {
+      background-color: #fff;
+    }
+
     &--svg {
       height: auto;
       padding-bottom: 0;
