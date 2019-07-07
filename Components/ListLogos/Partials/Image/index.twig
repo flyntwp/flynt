@@ -13,10 +13,10 @@
         {{ image.src|resize(114, 64) }} 114w"
       data-sizes="auto"
       alt="{{ image.alt|e }}">
-    {% if item.title %}
-      <figcaption class="image-caption">{{ link.title|e }}</figcaption>
-    {% endif %}
   {% else %}
     {{ image.svg }}
+  {% endif %}
+  {% if link.title  and type == 'card' %}
+    <figcaption class="caption">{{ link.title|e }}</figcaption>
   {% endif %}
 </figure>
