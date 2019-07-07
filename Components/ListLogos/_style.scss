@@ -9,10 +9,6 @@
     @include center;
   }
 
-  .listLogos {
-    display: block;
-  }
-
   .preContent {
     @include reset-content-margins;
     max-width: $content-max-width;
@@ -39,11 +35,9 @@
   }
 
   .list {
+    @include reset-list;
     @include grid(2, center, 12px, 12px);
     align-items: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
 
     @media (min-width: 375px) {
       @include grid(3, center, 16px, 16px);
