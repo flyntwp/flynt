@@ -3,7 +3,7 @@
     <div class="listLogos">
       {% if preContent %}
         <header class="preContent">
-          {{ preContent }}
+          {{ preContent|e('wp_kses_post') }}
         </header>
       {% endif %}
       <div class="content">
