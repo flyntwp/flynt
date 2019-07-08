@@ -68,6 +68,7 @@
     "prettier": "^1.15.3",
     "prettier-eslint": "^8.8.2",
     "prettier-stylelint": "^0.4.2",
+    "rellax": "^1.10.0",
     "replace-in-file": "^3.4.2",
     "sass-loader": "^7.1.0",
     "standard-version": "^5.0.2",
