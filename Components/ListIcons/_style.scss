@@ -1,0 +1,78 @@
+[is='flynt-list-icons'] {
+  padding: $component-spacing-mobile 0;
+
+  @media (min-width: $breakpoint-desktop) {
+    padding: $component-spacing-desktop 0;
+  }
+
+  .main {
+    @include reset-content-margins;
+
+    margin: 0 auto 50px;
+    max-width: $content-max-width;
+    text-align: center;
+
+    @media (min-width: $breakpoint-tablet) {
+      margin-bottom: 70px;
+    }
+
+    &-content {
+      *:first-child {
+        margin-bottom: 17px;
+        padding: 0;
+      }
+    }
+  }
+
+  .items {
+    @include reset-list;
+
+    @include grid(1,
+    $gutter-vertical: ($gutter-width * 2));
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      @include grid(2,
+      center,
+      $gutter-vertical: ($gutter-width * 2));
+    }
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      @include grid(4,
+      $gutter-vertical: ($gutter-width * 2));
+    }
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      max-width: 320px;
+
+      &-icon {
+        margin-bottom: 15px;
+
+        svg {
+          height: 45px;
+          width: 45px;
+        }
+      }
+
+      &-content {
+        flex-grow: 1;
+
+        #{$heading-selectors} {
+          padding-top: 0;
+        }
+      }
+
+      &-link {
+        padding-bottom: 0;
+        padding-top: 0;
+        text-decoration: none;
+
+        &::before {
+          bottom: 0;
+        }
+      }
+    }
+  }
+
+}
