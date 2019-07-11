@@ -1,5 +1,5 @@
 [is='flynt-grid-list-steps'] {
-  $step-spacing-vertical: 20px;
+  $step-gutter: 20px;
 
   background-color: rgba(0, 0, 0, 0.03);
   padding: $component-spacing-mobile 0;
@@ -36,7 +36,7 @@
       @include grid(
         $columns: 2,
         $alignment: center,
-        $gutter-horizontal: $step-spacing-vertical,
+        $gutter-horizontal: $step-gutter,
       );
 
       align-items: stretch;
@@ -47,7 +47,7 @@
       @include grid(
         $columns: 3,
         $alignment: center,
-        $gutter-horizontal: $step-spacing-vertical,
+        $gutter-horizontal: $step-gutter,
       );
     }
   }
