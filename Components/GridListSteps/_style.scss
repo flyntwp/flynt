@@ -33,22 +33,14 @@
     padding: 0;
 
     @media (min-width: $breakpoint-tablet) {
-      @include grid(
-        $columns: 2,
-        $alignment: center,
-        $gutter-horizontal: $step-gutter,
-      );
+      @include grid(2, center, $step-gutter, $step-gutter / 2);
 
       align-items: stretch;
       flex-direction: row;
     }
 
     @media (min-width: $breakpoint-tablet-horizontal) {
-      @include grid(
-        $columns: 3,
-        $alignment: center,
-        $gutter-horizontal: $step-gutter,
-      );
+      @include grid(3, center, $step-gutter, $step-gutter / 2);
     }
   }
 
