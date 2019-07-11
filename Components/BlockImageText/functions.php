@@ -23,10 +23,11 @@ Api::registerFields('BlockImageText', [
                 'name' => 'image',
                 'type' => 'image',
                 'preview_size' => 'medium',
-                'instructions' => '',
+                'instructions' => 'Minimum width of the image should be 1920px',
                 'max_size' => 4,
+                'min_width' => 1920,
                 'required' => true,
-                'mime_types' => 'gif,jpg,jpeg,png'
+                'mime_types' => 'jpg,jpeg,png'
             ],
             [
                 'name' => 'contentHtml',
