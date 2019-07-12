@@ -1,6 +1,17 @@
 [is='flynt-list-testimonial-cards'] {
+  $testimonial-list-spacing: 20px;
+  $testimonial-max-width: 380px;
+
   background-color: rgba(0, 0, 0, 0.03);
-  padding: $component-spacing-desktop 0;
+  padding: $component-spacing-mobile 0;
+
+  @media (min-width: $breakpoint-tablet) {
+    padding: $component-spacing-tablet 0;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    padding: $component-spacing-desktop 0;
+  }
 
   .container {
     @include center;
@@ -15,22 +26,34 @@
   }
 
   .testimonialsList {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    list-style: none;
-    margin: -20px -10px 0;
-    padding: 0;
+    @include reset-list;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: $testimonial-max-width;
+
+    > .testimonial {
+      + .testimonial {
+        @media (max-width: $breakpoint-tablet) {
+          padding-top: $testimonial-list-spacing;
+        }
+      }
+    }
+
+    @media (min-width: $breakpoint-tablet) {
+      @include grid(2, center, $testimonial-list-spacing, $testimonial-list-spacing);
+
+      max-width: 2 * $testimonial-max-width + $testimonial-list-spacing;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      @include grid(3, center, $testimonial-list-spacing, $testimonial-list-spacing);
+
+      max-width: $testimonial-max-width * 3 + $testimonial-list-spacing * 2;
+    }
   }
 
   .testimonial {
-    max-width: 400px;
-    padding: 20px 10px 0;
-    width: 100%;
-
-    @media (min-width: $breakpoint-tablet) {
-      width: 33.33%;
-    }
+    display: flex;
   }
 
   .content {
