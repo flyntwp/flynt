@@ -1,12 +1,12 @@
 [is='flynt-block-image-text'] {
-  padding: $component-spacing-mobile 0;
+  margin: $component-spacing-mobile 0;
 
   @media (min-width: $breakpoint-tablet) {
-    padding: $component-spacing-tablet 0;
+    margin: $component-spacing-tablet 0;
   }
 
   @media (min-width: $breakpoint-desktop) {
-    padding: $component-spacing-desktop 0;
+    margin: $component-spacing-desktop 0;
   }
 
   .container {
