@@ -27,12 +27,12 @@
   }
 
   ul {
-    @include reset-list();
+    @include reset-list;
   }
 
   .gridLinkList {
     @include grid(
-      $columns:1,
+      $columns: 1,
       $gutter-horizontal: 0,
       $gutter-vertical: $link-list-spacing
     );
