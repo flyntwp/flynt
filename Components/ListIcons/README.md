@@ -2,7 +2,7 @@ Title: List Icons
 
 ---
 
-Category: list
+Category: List
 
 ---
 
