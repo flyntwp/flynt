@@ -1,5 +1,5 @@
 [is='flynt-grid-list-steps'] {
-  $step-gutter: 20px;
+  $step-list-spacing: 20px;
 
   background-color: rgba(0, 0, 0, 0.03);
   padding: $component-spacing-mobile 0;
@@ -25,29 +25,33 @@
   }
 
   .stepsList {
+    @include grid(
+      $columns: 1,
+      $gutter-horizontal: $step-list-spacing,
+      $gutter-vertical: $step-list-spacing
+    );
+
     align-items: center;
     counter-reset: section;
-    display: flex;
     flex-direction: column;
     list-style: none;
     padding: 0;
 
     @media (min-width: $breakpoint-tablet) {
-      @include grid(2, center, $step-gutter, $step-gutter / 2);
+      @include grid(2, center, $step-list-spacing, $step-list-spacing);
 
       align-items: stretch;
       flex-direction: row;
     }
 
     @media (min-width: $breakpoint-tablet-horizontal) {
-      @include grid(3, center, $step-gutter, $step-gutter / 2);
+      @include grid(3, center, $step-list-spacing, 0);
     }
   }
 
   .step {
     display: flex;
     max-width: 380px;
-    padding-top: 10px;
   }
 
   .content {
