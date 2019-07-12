@@ -6,7 +6,7 @@ Category: list
 
 ---
 
-Tags: list, icons
+Tags: List, Icons
 
 ---
 
