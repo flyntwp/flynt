@@ -17,7 +17,7 @@ Api::registerFields('BlockImage', [
                 'instructions' => '',
                 'max_size' => 4,
                 'required' => true,
-                'mime_types' => 'jpg,jpeg,png'
+                'mime_types' => 'git,jpg,jpeg,png'
             ]
         ]
     ]
