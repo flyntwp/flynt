@@ -2,6 +2,7 @@
 namespace Flynt\Components\BlockCookieNotice;
 
 use Flynt\Utils\Options;
+use Flynt\FieldVariables;
 
 Options::addGlobal('BlockCookieNotice', [
     [
@@ -21,25 +22,11 @@ Options::addGlobal('BlockCookieNotice', [
             'layoutBottom' => 'Bottom'
         ]
     ],
-    [
-        'label' => 'Theme',
-        'name' => 'theme',
-        'type' => 'select',
-        'allow_null' => 0,
-        'multiple' => 0,
-        'ui' => 0,
-        'ajax' => 0,
+    array_merge(FieldVariables::$theme, array(
         'wrapper' => [
             'width' => 50
-        ],
-        'default_value' => 'themeDefault',
-        'choices' => [
-            'themeDefault' => 'Default',
-            'themeLight' => 'Light',
-            'themeDark' => 'Dark',
-            'themeHero' => 'Hero'
         ]
-    ],
+    ))
 ]);
 
 Options::addTranslatable('BlockCookieNotice', [

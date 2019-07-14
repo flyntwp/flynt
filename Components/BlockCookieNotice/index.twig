@@ -1,4 +1,4 @@
-<div is="flynt-block-cookie-notice" class="flyntComponent {{ layout }} {{ theme }}">
+<div is="flynt-block-cookie-notice" class="flyntComponent {{ layout }} {{ theme ? theme : 'themeDefault' }}">
   <div class="container centerMaxWidthContainer">
     <div class="content">
       {{ contentHtml|e('wp_kses_post') }}
