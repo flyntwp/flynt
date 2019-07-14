@@ -12,6 +12,10 @@
     padding: $component-spacing-desktop 0;
   }
 
+  .container {
+    overflow: visible;
+  }
+
   .box {
     @media (min-width: $breakpoint-tablet-horizontal) {
       align-items: center;
