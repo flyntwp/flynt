@@ -9,9 +9,5 @@
     margin: $component-spacing-desktop 0;
   }
 
-  .container {
-    @include center;
-  }
-
   @import 'Partials/Video/style';
 }
