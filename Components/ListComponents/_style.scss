@@ -1,10 +1,6 @@
 [is='flynt-list-components'] {
   margin: $component-spacing-desktop 0;
 
-  .container {
-    @include center;
-  }
-
   .components {
     @include reset-list;
 
@@ -17,20 +13,10 @@
   }
 
   .component {
-    display: block;
     padding-bottom: 100px;
 
     @media (min-width: $breakpoint-tablet-horizontal) {
-      display: flex;
-      margin-left: -40px;
-    }
-
-    &-screenshot,
-    &-content {
-      @media (min-width: $breakpoint-tablet-horizontal) {
-        margin-left: 40px;
-        width: 50%;
-      }
+      @include grid(2, $gutter-horizontal: 48px);
     }
 
     &-screenshotWrapper {
