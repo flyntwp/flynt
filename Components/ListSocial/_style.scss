@@ -1,10 +1,14 @@
 [is='flynt-list-social'] {
   background-color: $color-brand;
   color: #fff;
-  padding: $component-spacing-desktop 0;
+  padding: $component-spacing-mobile 0;
 
-  .container {
-    @include center;
+  @media (min-width: $breakpoint-tablet) {
+    padding: $component-spacing-tablet 0;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    padding: $component-spacing-desktop 0;
   }
 
   .content {
