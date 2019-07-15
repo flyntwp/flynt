@@ -1,8 +1,12 @@
 [is='flynt-block-image-text'] {
-  margin: $component-spacing-desktop 0;
+  margin: $component-spacing-mobile 0;
 
-  .container {
-    @include center;
+  @media (min-width: $breakpoint-tablet) {
+    margin: $component-spacing-tablet 0;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    margin: $component-spacing-desktop 0;
   }
 
   .box {
