@@ -9,10 +9,6 @@
     margin: $component-spacing-desktop 0;
   }
 
-  .container {
-    @include center;
-  }
-
   .figure-caption {
     position: absolute;
   }
