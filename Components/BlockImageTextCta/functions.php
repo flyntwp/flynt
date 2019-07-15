@@ -56,21 +56,7 @@ Api::registerFields('BlockImageTextCta', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    [
-                        'label' => 'Theme',
-                        'name' => 'theme',
-                        'type' => 'select',
-                        'allow_null' => 0,
-                        'multiple' => 0,
-                        'ui' => 0,
-                        'ajax' => 0,
-                        'choices' => [
-                            '' => 'Default',
-                            'themeLight' => 'Light',
-                            'themeDark' => 'Dark',
-                            'themeHero' => 'Hero'
-                        ]
-                    ]
+                    Api::loadFields('FieldVariables', 'theme')
                 ]
             ]
         ]
