@@ -1,21 +1,6 @@
 [is='flynt-grid-list-steps'] {
-  $step-list-spacing: 20px;
-  $step-list-max-width: 380px;
-
   background-color: rgba(0, 0, 0, 0.03);
-  padding: $component-spacing-mobile 0;
-
-  @media (min-width: $breakpoint-tablet) {
-    padding: $component-spacing-tablet 0;
-  }
-
-  @media (min-width: $breakpoint-desktop) {
-    padding: $component-spacing-desktop 0;
-  }
-
-  .container {
-    @include center;
-  }
+  padding: $component-spacing-desktop 0;
 
   .preContent {
     @include reset-content-margins;
@@ -26,38 +11,27 @@
   }
 
   .stepsList {
-    @include grid(
-      $columns: 1,
-      $gutter-horizontal: $step-list-spacing,
-      $gutter-vertical: $step-list-spacing
-    );
-    @include reset-list;
-
-    align-items: center;
     counter-reset: section;
-    flex-direction: column;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: $step-list-max-width;
-
-    @media (min-width: $breakpoint-tablet) {
-      @include grid(2, center, $step-list-spacing, $step-list-spacing);
-
-      align-items: stretch;
-      flex-direction: row;
-      max-width: $step-list-max-width * 2 + $step-list-spacing;
-
-    }
-
-    @media (min-width: $breakpoint-tablet-horizontal) {
-      @include grid(3, center, $step-list-spacing, 0);
-
-      max-width: $step-list-max-width * 3 + $step-list-spacing * 2;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    margin: -20px -10px 0;
+    padding: 0;
   }
 
   .step {
-    display: flex;
+    max-width: 400px;
+    padding: 20px 10px 0;
+
+    @media (min-width: $breakpoint-tablet) {
+      display: flex;
+      width: 50%;
+    }
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      width: 33.33%;
+    }
   }
 
   .content {
