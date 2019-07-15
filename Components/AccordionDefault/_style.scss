@@ -9,10 +9,6 @@
     margin: $component-spacing-desktop 0;
   }
 
-  .container {
-    @include center;
-  }
-
   .content {
     margin: 0 auto;
     max-width: $content-max-width;
