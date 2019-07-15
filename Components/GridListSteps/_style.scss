@@ -2,10 +2,6 @@
   background-color: rgba(0, 0, 0, 0.03);
   padding: $component-spacing-desktop 0;
 
-  .container {
-    @include center;
-  }
-
   .preContent {
     @include reset-content-margins;
 
