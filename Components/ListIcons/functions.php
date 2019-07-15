@@ -3,7 +3,6 @@
 namespace Flynt\Components\ListIcons;
 
 use Flynt\Api;
-use Flynt\FieldVariables;
 
 function createFeatherIconSelectChoices($iconKeys = [])
 {
@@ -365,7 +364,7 @@ Api::registerFields('ListIcons', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    FieldVariables::$theme
+                    Api::loadFields('FieldVariables', 'theme')
                 ]
             ],
         ]

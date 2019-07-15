@@ -2,11 +2,12 @@
 /**
  * Defines field variables to be used across multiple components.
  */
-namespace Flynt;
+namespace Flynt\FieldVariables;
 
-class FieldVariables
-{
-    public static $theme = [
+use Flynt\Api;
+
+Api::registerFields('FieldVariables', [
+    'theme' => [
         'label' => 'Theme',
         'name' => 'theme',
         'type' => 'select',
@@ -21,5 +22,5 @@ class FieldVariables
             'themeDark' => 'Dark',
             'themeHero' => 'Hero'
         ]
-    ];
-}
+    ]
+]);

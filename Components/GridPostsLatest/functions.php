@@ -4,7 +4,6 @@ namespace Flynt\Components\GridPostsLatest;
 
 use Flynt\Api;
 use Flynt\Utils\Options;
-use Flynt\FieldVariables;
 use Timber\Timber;
 
 const POST_TYPE = 'post';
@@ -76,7 +75,7 @@ Api::registerFields('GridPostsLatest', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    FieldVariables::$theme,
+                    Api::loadFields('FieldVariables', 'theme'),
                     [
                         'label' => 'Post Count',
                         'name' => 'postCount',

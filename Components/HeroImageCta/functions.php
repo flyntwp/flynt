@@ -3,7 +3,6 @@
 namespace Flynt\Components\HeroImageText;
 
 use Flynt\Api;
-use Flynt\FieldVariables;
 
 Api::registerFields('HeroImageCta', [
     'layout' => [
@@ -133,7 +132,7 @@ Api::registerFields('HeroImageCta', [
                 'default_value' => 0,
                 'ui' => 1
             ],
-            FieldVariables::$theme,
+            Api::loadFields('FieldVariables', 'theme'),
             [
                 'label' => 'Content',
                 'type' => 'tab',

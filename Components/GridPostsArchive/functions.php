@@ -4,7 +4,6 @@ namespace Flynt\Components\GridPostsArchive;
 
 use Flynt\Api;
 use Flynt\Utils\Options;
-use Flynt\FieldVariables;
 use Timber\Term;
 
 const POST_TYPE = 'post';
@@ -69,7 +68,7 @@ Options::addTranslatable('GridPostsArchive', [
         'type' => 'group',
         'layout' => 'row',
         'sub_fields' => [
-            FieldVariables::$theme
+            Api::loadFields('FieldVariables', 'theme')
         ]
     ],
     [
