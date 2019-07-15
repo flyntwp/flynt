@@ -1,14 +1,21 @@
 [is='flynt-hero-cta'] {
   background-color: $color-brand;
   color: #fff;
-  padding: $component-spacing-desktop 0;
+  padding: $component-spacing-mobile 0;
+
+  @media (min-width: $breakpoint-tablet) {
+    padding: $component-spacing-tablet 0;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    padding: $component-spacing-desktop 0;
+  }
 
   #{$heading-selectors} {
     color: inherit;
   }
 
   .container {
-    @include center;
     @include reset-content-margins;
 
     text-align: center;
