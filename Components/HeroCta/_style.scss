@@ -16,7 +16,6 @@
   }
 
   .container {
-    @include center;
     @include reset-content-margins;
 
     text-align: center;
