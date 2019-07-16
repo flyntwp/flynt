@@ -71,7 +71,7 @@ const webpackConfig = {
             }
           }
         ]
-      }
+      },
     ]
   },
   resolve: {
@@ -82,6 +82,9 @@ const webpackConfig = {
       'package.json'
     ],
     mainFields: ['main', 'browser']
+  },
+  performance: {
+    maxAssetSize: 328000
   },
   resolveLoader: {
     alias: {
