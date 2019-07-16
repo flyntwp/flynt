@@ -71,7 +71,7 @@ const webpackConfig = {
             }
           }
         ]
-      },
+      }
     ]
   },
   resolve: {
