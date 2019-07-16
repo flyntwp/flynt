@@ -1,59 +1,87 @@
+$search-form-spacing: 6px;
+
 .header {
   &-title {
-    @include reset-content-margins;
+    text-align: center;
 
-    padding: $container-padding-desktop 0;
+    > * {
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.25;
+      padding-top: 0;
+
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        margin-bottom: 0.8em;
+      }
+
+      @media (min-width: $breakpoint-tablet) {
+        margin-bottom: 1.75em;
+      }
+    }
   }
 }
 
 .searchForm {
+  position: relative;
+
   &-label {
-    height: 1px;
-    overflow: hidden;
+    left: 10px;
+    margin-bottom: 0;
     position: absolute;
-    width: 1px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+
+  &-icon {
+    color: $color-headline;
   }
 
   &-field {
+    background-color: #fff;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 26px 0 rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: $search-form-spacing;
+    position: relative;
+    width: 100%;
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      flex-direction: row;
+    }
+  }
+
+  &-box {
+    flex-grow: 1;
+    padding-left: 50px;
+    padding-right: $search-form-spacing;
     position: relative;
   }
 
   &-input {
-    background-color: #fff;
-    border: 2px solid $color-accent;
+    border: 0;
     color: #9b9b9b;
-    font-size: 30px;
-    font-weight: 700;
-    height: 80px;
+    flex-shrink: 1;
+    font-size: 0.875rem;
+    height: 100%;
+    line-height: 1.85;
     margin: 0;
-    padding: 0 80px 0 20px;
+    outline: none;
+    padding: 1.25rem 0;
     transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 0.275);
     width: 100%;
 
-    &:focus,
-    &:active {
-      box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.3);
-      outline: 0;
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      padding: 0;
     }
   }
 
   &-submit {
-    color: $color-accent;
     cursor: pointer;
-    height: 80px;
-    line-height: 1;
     outline: 0;
-    overflow: hidden;
-    position: absolute;
-    right: 0;
-    top: 0;
     transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 0.275);
-    width: 80px;
-
-    svg {
-      position: relative;
-      right: -25px;
-      transform: scale(0.8);
-    }
   }
 }
