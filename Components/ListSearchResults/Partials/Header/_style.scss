@@ -74,6 +74,17 @@ $search-form-spacing: 6px;
     transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 0.275);
     width: 100%;
 
+    // Remove auto-complete styles on Chrome
+    &:-webkit-autofill {
+      &,
+      &:hover,
+      &:focus,
+      &:active {
+        transition-delay: 9999s;
+        transition-property: background-color, color;
+      }
+    }
+
     @media (min-width: $breakpoint-mobile-horizontal) {
       padding: 0;
     }
