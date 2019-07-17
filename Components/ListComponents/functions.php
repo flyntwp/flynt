@@ -35,15 +35,13 @@ add_filter('Flynt/addComponentData?name=ListComponents', function ($data) {
     return $data;
 });
 
-
 add_filter('acf/load_field/name=component', function ($field) {
     $componentManager = ComponentManager::getInstance();
     $field['choices'] = array_flip($componentManager->getAll());
     return $field;
 });
 
-function parseComponentReadme($file)
-{
+function parseComponentReadme($file) {
     $content = [];
     $fields = preg_split('!\n---\s*\n*!', $file);
     foreach ($fields as $field) {
