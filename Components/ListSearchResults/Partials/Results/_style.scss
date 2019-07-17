@@ -1,5 +1,5 @@
 .searchList {
-  background-color: #fff;
+  background-color: $color-background;
   border-radius: 4px;
   box-shadow: 0 1px 26px 0 rgba(0, 0, 0, 0.06);
   list-style: none;
@@ -54,17 +54,33 @@
     }
   }
 
-  .excerpt {
-    font-size: 0.875rem;
+}
+
+.post {
+  &-title {
+    color: $color-headline;
+    display: inline-block;
+    font-weight: 700;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: $color-accent;
+    }
+  }
+
+  &-excerpt {
     margin-bottom: 0;
     padding-bottom: 0;
   }
-}
 
-.postTitle {
-  font-size: 1rem;
-}
+  &-excerpt,
+  &-footer {
+    font-size: 0.875rem;
+  }
 
-.postLink {
-  display: inline-block;
+  &-footer {
+    display: block;
+    margin-top: 0.71em;
+  }
 }

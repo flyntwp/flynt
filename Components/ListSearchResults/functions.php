@@ -61,5 +61,12 @@ Options::addTranslatable('ListSearchResults', [
         'type' => 'text',
         'default_value' => 'Search',
         'required' => 1
+    ],
+    [
+        'name' => 'readMore',
+        'label' => 'Read More',
+        'type' => 'text',
+        'default_value' => 'Read More',
+        'required' => 1
     ]
 ]);

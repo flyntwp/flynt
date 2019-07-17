@@ -1,6 +1,10 @@
 <div class="pagination">
-	<a class="pagination-link button button--primary {% if not pagination.prev %}button--disabled{% endif %}" href="{% if pagination.prev %}{{ pagination.prev.link }}{% else %}javascript:void(0){% endif %}"
-	  class="button {% if pagination.prev %}button--primary{% else %}button--disabled{% endif %}">{{ previousLabel }}</a>
-    <a class="pagination-link button button--primary {% if not pagination.next %}button--disabled{% endif %}" href="{% if pagination.next %}{{ pagination.next.link }}{% else %}javascript:void(0){% endif %}"
+	{% if pagination.prev %}
+  	<a class="pagination-nav pagination-nav--previous button button--primary" href="{{ pagination.prev.link }}"
+  	  class="button {% if pagination.prev %}button--primary{% else %}button--disabled{% endif %}">{{ previousLabel }}</a>
+	{% endif %}
+  {% if pagination.next %}
+    <a class="pagination-nav pagination-nav--next button button--primary" href="{{ pagination.next.link }}"
       class="button {% if pagination.next %}button--primary{% else %}button--disabled{% endif %}">{{ nextLabel }}</a>
+  {% endif %}
 </div>

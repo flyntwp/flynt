@@ -13,26 +13,6 @@
     @import 'Partials/Header/style';
     @import 'Partials/Pagination/style';
     @import 'Partials/Results/style';
-
-    max-width: $content-max-width + $container-padding-mobile *2;
-
-    @media (min-width: $breakpoint-tablet) {
-      max-width: $content-max-width + $container-padding-tablet *2;
-    }
-
-    @media (min-width: $breakpoint-desktop) {
-      max-width: $content-max-width + $container-padding-desktop *2;
-    }
-  }
-
-  &.themeDark {
-    .header {
-      &-title {
-        > * {
-          color: #fff;
-        }
-      }
-    }
   }
 
   &.themeDark,
@@ -46,6 +26,27 @@
 
     @media (min-width: $breakpoint-desktop) {
       padding: $component-spacing-desktop 0;
+    }
+
+    .post {
+      &-title {
+        color: $color-headline;
+      }
+    }
+  }
+
+  &.themeHero {
+    .searchForm {
+      &-submit {
+        background-color: $color-accent;
+        border: 0;
+        color: $color-background;
+
+        &:hover,
+        &:focus {
+          background-color: $color-background-dark;
+        }
+      }
     }
   }
 }

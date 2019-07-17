@@ -1,7 +1,40 @@
 .pagination {
-  display: flex;
-  justify-content: space-between;
   margin-top: 20px;
+
+  // Float clearfix
+  &::after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+
+  &-nav {
+    width: 100%;
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      width: auto;
+    }
+
+    + .pagination-nav {
+      margin-top: 20px;
+
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        margin-top: 0;
+      }
+    }
+
+    &--previous {
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        float: left;
+      }
+    }
+
+    &--next {
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        float: right;
+      }
+    }
+  }
 
   .button {
     margin-bottom: 0;
