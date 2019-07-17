@@ -1,0 +1,112 @@
+[is='flynt-form-contact'] {
+  padding: $component-spacing-mobile 0;
+
+  @media (min-width: $breakpoint-tablet) {
+    padding: $component-spacing-tablet 0;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    padding: $component-spacing-desktop 0;
+  }
+
+  .content {
+    @include reset-content-margins('top');
+
+    margin: 0 auto 1.875rem;
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      margin: 0 auto 4.375rem;
+    }
+
+    &--textLeft {
+      text-align: left;
+    }
+
+    &--textCenter {
+      text-align: center;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  .form {
+    @include reset-content-margins;
+
+    background: $color-background;
+    color: $color-headline;
+    font-weight: 500;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.25rem $container-padding-mobile;
+
+    @media (min-width: $content-max-width + 100) {
+      max-width: $content-max-width + 100;
+    }
+
+    @media (min-width: $breakpoint-tablet) {
+      padding: 3.125rem;
+    }
+
+    &-row {
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        @include grid(2, $gutter-horizontal: 1rem);
+      }
+
+      @media (min-width: $breakpoint-tablet) {
+        @include grid(2, $gutter-horizontal: 2rem);
+      }
+    }
+
+    &-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-label {
+      font-weight: 500;
+      margin-bottom: 1em;
+    }
+
+    &-input,
+    &-textarea {
+      margin-bottom: 1.25rem;
+
+      @media (min-width: $breakpoint-tablet) {
+        margin-bottom: 1.875rem;
+      }
+    }
+
+    &-textarea {
+      display: block; // Fix the bottom spacing issue - phantom margin
+    }
+
+    &-footer {
+      margin-top: 1.75rem;
+      text-align: center;
+
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        margin-top: 1.875rem;
+      }
+    }
+
+    &-link {
+      text-decoration: none;
+
+      &:hover,
+      &:active {
+        text-decoration: underline;
+      }
+    }
+
+    &-button {
+      width: 100%;
+
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        width: auto;
+      }
+    }
+  }
+}

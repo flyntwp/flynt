@@ -1,0 +1,40 @@
+<div is="flynt-form-contact" class="flyntComponent {{ options.theme }}">
+  <div class="container centerMaxWidthContainer">
+    <div class="content content--{{ textAlignment }} centerContentMaxWidth">
+      {{ contentHtml|e('wp_kses_post') }}
+    </div>
+    <form action="" class="form">
+    	<div class="form-row">
+	    	<div class="form-group">
+	    		<label for="input-name" class="form-label">First Name</label>
+	    		<input type="text" id="input-name" class="form-input">
+	    	</div>
+	    	<div class="form-group">
+	    		<label for="input-lastname" class="form-label">Last Name</label>
+	    		<input type="text" id="input-lastname" class="form-input">
+	    	</div>
+    	</div>
+    	<div class="form-group">
+    		<label for="input-email" class="form-label">Email</label>
+    		<input type="email" class="form-input" id="input-email">
+    	</div>
+    	<div class="form-row">
+	    	<div class="form-group">
+	    		<label for="input-tel" class="form-label">Mobile Phone</label>
+	    		<input type="tel" id="input-tel" class="form-input">
+	    	</div>
+	    	<div class="form-group">
+	    		<label for="input-company" class="form-label">Company</label>
+	    		<input type="text" id="input-company" class="form-input">
+	    	</div>
+    	</div>
+		<label for="textarea-message" class="form-label">Message</label>
+    	<textarea name="" id="textarea-message" cols="30" rows="10" class="form-textarea"></textarea>
+    	<button class="button button--primary form-button">Send Message</button>
+    	<p class="form-footer">
+    		Or Call Us Direclty <br>
+    		<a href="tel:+493044017947" class="form-link">030 4401 7947</a>
+    	</p>
+    </form>
+  </div>
+</div>
