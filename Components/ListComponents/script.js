@@ -1,11 +1,16 @@
 import $ from 'jquery'
 
 class ListComponents extends window.HTMLDivElement {
-  constructor (self) {
-    self = super(self)
-    self.$ = $(self)
-    self.resolveElements()
+  constructor (...args) {
+    const self = super(...args)
+    self.init()
     return self
+  }
+
+  init () {
+    this.$ = $(this)
+    this.resolveElements()
+    this.bindFunctions()
   }
 
   resolveElements () {
@@ -14,13 +19,19 @@ class ListComponents extends window.HTMLDivElement {
     this.$componentScreenshotImages = $('.component-screenshotWrapper img', this)
   }
 
+  bindFunctions () {
+    this.toggleHoverScroll = this.toggleHoverScroll.bind(this)
+    this.setParallaxConfig = this.setParallaxConfig.bind(this)
+    this.startParallaxScroll = this.startParallaxScroll.bind(this)
+  }
+
   connectedCallback () {
     if (this.$window.width() > 575) {
-      this.$.on('mouseenter mouseleave', this.$componentScreenshotWrappers.selector, this.toggleHoverScroll.bind(this))
+      this.$.on('mouseenter mouseleave', '.component-screenshotWrapper', this.toggleHoverScroll)
     } else {
-      this.$window.on('resize', this.setParallaxConfig.bind(this))
-      $(document).on('lazyloaded', this.setParallaxConfig.bind(this))
-      this.$window.on('scroll', this.startParallaxScroll.bind(this))
+      this.$window.on('resize', this.setParallaxConfig)
+      $(document).on('lazyloaded', this.setParallaxConfig)
+      this.$window.on('scroll', this.startParallaxScroll)
     }
   }
 
