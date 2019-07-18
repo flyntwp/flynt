@@ -107,12 +107,17 @@ body {
   background-color: $color-background-hero;
 
   &,
-  #{$heading-selectors} {
+  #{$heading-selectors},
+  a,
+  .feather {
     color: $color-background;
   }
 
-  .feather {
-    color: $color-background;
+  @media (min-width: $breakpoint-tablet) {
+    a:hover,
+    a:focus {
+      color: $color-background-dark;
+    }
   }
 
   .button {
