@@ -3,11 +3,11 @@
     <div class="thumbnail">
       <a class="thumbnail-link" href="{{ post.link }}">
         <img class="thumbnail-image" srcset="
-      	  {{ post.thumbnail.src | resize(356) }} 356w,
-      	  {{ post.thumbnail.src | resize(720) }} 720w"
-      	  src="{{ post.thumbnail.src | resize(356) }}"
-      	  sizes="100vw"
-      	  alt="{{ post.thumbnail.alt|e }}">
+          {{ post.thumbnail.src | resizeDynamic(356) }} 356w,
+          {{ post.thumbnail.src | resizeDynamic(720) }} 720w"
+          src="{{ post.thumbnail.src | resizeDynamic(356) }}"
+          sizes="100vw"
+          alt="{{ post.thumbnail.alt|e }}">
       </a>
     </div>
   {% endif %}
