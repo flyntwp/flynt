@@ -1,0 +1,76 @@
+[is='flynt-form-newsletter-mailchimp'] {
+  padding: $component-spacing-mobile 0;
+
+  @media (min-width: $breakpoint-tablet) {
+    padding: $component-spacing-tablet 0;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    padding: $component-spacing-desktop 0;
+  }
+
+  .content {
+    text-align: center;
+
+    &--header {
+      @include reset-content-margins();
+    }
+
+    &--footer {
+      @include reset-content-margins('bottom');
+
+      margin-top: 1.25rem;
+
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        margin-top: 1.875rem;
+      }
+    }
+  }
+
+  .formSubscribe {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1.875rem auto 0;
+    position: relative;
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      flex-direction: row;
+    }
+
+    @media (min-width: $content-max-width + 140) {
+      max-width: $content-max-width + 140;
+    }
+
+    &-input {
+      background-color: $color-background;
+      border-color: $color-background;
+      border-radius: 4px;
+      color: $color-headline;
+      flex-grow: 1;
+      margin-bottom: 1.25rem;
+      min-height: 3.625rem;
+      width: auto;
+
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        margin-bottom: 0;
+        margin-right: 1.25rem;
+      }
+    }
+
+    &-label {
+      position: absolute;
+      visibility: hidden;
+      z-index: 0;
+    }
+  }
+
+  &.themeLight,
+  &.themeDefault {
+    .formSubscribe {
+      &-input {
+        border-color: $color-background-dark;
+      }
+    }
+  }
+}
