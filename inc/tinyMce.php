@@ -85,14 +85,34 @@ function getConfig()
                 'icon' => '',
                 'items' => [
                     [
-                        'title' => 'Button Primary',
-                        'classes' => 'button button--primary',
-                        'selector' => 'a'
+                        'title' => 'Button',
+                        'classes' => 'button',
+                        'selector' => 'a,button'
                     ],
                     [
-                        'title' => 'Button Primary Block',
-                        'classes' => 'button button--primary button--block',
-                        'selector' => 'a'
+                        'title' => 'Button Primary',
+                        'classes' => 'button--primary',
+                        'selector' => '.button'
+                    ],
+                    [
+                        'title' => 'Button Secondary',
+                        'classes' => 'button--secondary',
+                        'selector' => '.button'
+                    ],
+                    [
+                        'title' => 'Button Block',
+                        'classes' => 'button--block',
+                        'selector' => '.button'
+                    ],
+                    [
+                        'title' => 'Button Small',
+                        'classes' => 'button--small',
+                        'selector' => '.button'
+                    ],
+                    [
+                        'title' => 'Button Link',
+                        'classes' => 'button--link',
+                        'selector' => '.button'
                     ]
                 ]
             ],
