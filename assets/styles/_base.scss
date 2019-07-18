@@ -217,6 +217,16 @@ body {
   max-width: $content-max-width;
 }
 
+.paddingBox {
+  @include reset-content-margins;
+
+  padding: 20px;
+
+  @media (min-width: $breakpoint-tablet-horizontal) {
+    padding: 30px;
+  }
+}
+
 /**
 * 3.0 Base Style
 *
