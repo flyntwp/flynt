@@ -1,0 +1,148 @@
+[is='flynt-grid-posts-teaser'] {
+  padding: $component-spacing-mobile 0;
+
+  @media (min-width: $breakpoint-tablet) {
+    padding: $component-spacing-tablet 0;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    padding: $component-spacing-desktop 0;
+  }
+
+  .preContent {
+    @include reset-content-margins;
+
+    margin-bottom: 4.375rem;
+    text-align: center;
+  }
+
+  .postContent {
+    margin-top: $container-padding-mobile + 10;
+    text-align: center;
+
+    @media (min-width: $breakpoint-tablet) {
+      margin-top: $container-padding-tablet + 10;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      margin-top: $container-padding-desktop + 10;
+    }
+  }
+
+  .grid {
+    @include reset-list;
+    @include grid(1, center);
+
+    @for $i from 2 through 4 {
+      &--length#{$i} {
+
+        @media (min-width: $breakpoint-tablet) {
+          @include grid(2, center);
+        }
+
+        @media (min-width: $breakpoint-desktop) {
+          @include grid($i, center);
+        }
+      }
+    }
+
+    &-item {
+      display: flex;
+      max-width: $content-max-width;
+    }
+  }
+
+  .content {
+    box-shadow: 0 1px 26px 0 rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-decoration: none;
+    width: 100%; // IE11 bug fix
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      transition: box-shadow 0.2s ease-in;
+    }
+
+    &:hover {
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        box-shadow: none;
+      }
+    }
+
+    &-image {
+      flex-shrink: 0; // IE11 bug fix
+    }
+
+    &-inner {
+      background-color: $color-background;
+      flex-grow: 1;
+      padding: 1.25rem;
+    }
+
+    &-title {
+      color: $color-headline;
+      padding-top: 0;
+    }
+
+    &-date {
+      align-items: center;
+      display: flex;
+      margin: 0;
+
+      dt,
+      dd {
+        color: #7b838d;
+        margin: 0;
+      }
+
+      dt {
+        display: inline-block;
+        line-height: 1rem;
+        margin-right: 0.375rem;
+
+        .feather {
+          color: inherit;
+          height: 1rem;
+          top: 0;
+          width: 1rem;
+        }
+      }
+    }
+
+    &-header {
+      @include reset-list;
+
+      align-items: center;
+      display: flex;
+      font-size: 0.8125rem;
+      justify-content: space-between;
+      margin-bottom: 0.625rem;
+    }
+
+    &-pill {
+      background-color: $color-background-dark;
+      border-radius: 2em;
+      color: $color-background;
+      display: inline-block;
+      overflow: hidden;
+      padding: 0.1rem 1rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &-block {
+      max-width: 55%; // Limit pill limit in case of long copy
+    }
+  }
+
+  &.themeDefault {
+    .content {
+      &:hover {
+        @media (min-width: $breakpoint-mobile-horizontal) {
+          box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.06);
+        }
+      }
+    }
+  }
+}
