@@ -27,7 +27,6 @@ Api::registerFields('ListPostCards', [
                 'type' => 'wysiwyg',
                 'instructions' => 'Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.',
                 'tabs' => 'visual,text',
-                'toolbar' => 'full',
                 'media_upload' => 0,
                 'delay' => 1,
                 'wrapper' => [

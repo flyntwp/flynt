@@ -305,7 +305,6 @@ Api::registerFields('ListIcons', [
                 'name' => 'preContentHtml',
                 'type' => 'wysiwyg',
                 'tabs' => 'visual,text',
-                'toolbar' => 'full',
                 'media_upload' => 0,
                 'delay' => 1
             ],
@@ -340,7 +339,6 @@ Api::registerFields('ListIcons', [
                         'name' => 'textContentHtml',
                         'type' => 'wysiwyg',
                         'tabs' => 'visual,text',
-                        'toolbar' => 'full',
                         'media_upload' => 0,
                         'delay' => 1
                     ],

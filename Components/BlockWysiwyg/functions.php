@@ -24,7 +24,6 @@ Api::registerFields('BlockWysiwyg', [
                 'type' => 'wysiwyg',
                 'delay' => 1,
                 'media_upload' => 0,
-                'toolbar' => 'full',
                 'required' => 1,
                 'wrapper' => [
                     'class' => 'autosize',

@@ -21,7 +21,6 @@ Api::registerFields('BlockWysiwygSidebar', [
                 'name' => 'sidebarHtml',
                 'type' => 'wysiwyg',
                 'media_upload' => 0,
-                'toolbar' => 'full',
                 'required' => 1,
                 'wrapper' => [
                     'class' => 'autosize',
@@ -32,7 +31,6 @@ Api::registerFields('BlockWysiwygSidebar', [
                 'name' => 'contentHtml',
                 'type' => 'wysiwyg',
                 'media_upload' => 0,
-                'toolbar' => 'full',
                 'required' => 1,
                 'wrapper' => [
                     'class' => 'autosize',
