@@ -15,6 +15,7 @@ class ListComponents extends window.HTMLDivElement {
 
   resolveElements () {
     this.$window = $(window)
+    this.$document = $(document)
     this.$componentScreenshotWrappers = $('.component-screenshotWrapper', this)
     this.$componentScreenshotImages = $('.component-screenshotWrapper img', this)
   }
@@ -30,7 +31,7 @@ class ListComponents extends window.HTMLDivElement {
       this.$.on('mouseenter mouseleave', '.component-screenshotWrapper', this.toggleHoverScroll)
     } else {
       this.$window.on('resize', this.setParallaxConfig)
-      $(document).on('lazyloaded', this.setParallaxConfig)
+      this.$document.on('lazyloaded', this.setParallaxConfig)
       this.$window.on('scroll', this.startParallaxScroll)
     }
   }
