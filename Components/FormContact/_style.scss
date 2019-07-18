@@ -84,11 +84,20 @@
     }
 
     &-footer {
+      @include reset-content-margins('bottom');
+
       margin-top: 1.75rem;
-      text-align: center;
 
       @media (min-width: $breakpoint-mobile-horizontal) {
         margin-top: 1.875rem;
+      }
+
+      &--textRight {
+        text-align: right;
+      }
+
+      &--textCenter {
+        text-align: center;
       }
     }
 

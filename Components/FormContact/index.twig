@@ -1,40 +1,41 @@
-<div is="flynt-form-contact" class="flyntComponent {{ options.theme }}">
+<div is="flynt-form-contact" class="flyntComponent {{ options.theme ?: 'themeDark' }}">
   <div class="container centerMaxWidthContainer">
-    <div class="content content--{{ textAlignment }} centerContentMaxWidth">
-      {{ contentHtml|e('wp_kses_post') }}
-    </div>
+    {% if contentHtml %}
+        <div class="content content--{{ textAlignment }} centerContentMaxWidth">
+          {{ contentHtml|e('wp_kses_post') }}
+        </div>
+    {% endif %}
     <form action="" class="form">
     	<div class="form-row">
 	    	<div class="form-group">
-	    		<label for="input-name" class="form-label">First Name</label>
+	    		<label for="input-name" class="form-label">{{ firstName}}</label>
 	    		<input type="text" id="input-name" class="form-input">
 	    	</div>
 	    	<div class="form-group">
-	    		<label for="input-lastname" class="form-label">Last Name</label>
+	    		<label for="input-lastname" class="form-label">{{ lastName}}</label>
 	    		<input type="text" id="input-lastname" class="form-input">
 	    	</div>
     	</div>
     	<div class="form-group">
-    		<label for="input-email" class="form-label">Email</label>
-    		<input type="email" class="form-input" id="input-email">
+    		<label for="input-email" class="form-label">{{ email}}</label>
+    		<input type="text" class="form-input" id="input-email">
     	</div>
     	<div class="form-row">
 	    	<div class="form-group">
-	    		<label for="input-tel" class="form-label">Mobile Phone</label>
-	    		<input type="tel" id="input-tel" class="form-input">
+	    		<label for="input-tel" class="form-label">{{ mobilePhone}}</label>
+	    		<input type="text" id="input-tel" class="form-input">
 	    	</div>
 	    	<div class="form-group">
-	    		<label for="input-company" class="form-label">Company</label>
+	    		<label for="input-company" class="form-label">{{ company }}</label>
 	    		<input type="text" id="input-company" class="form-input">
 	    	</div>
     	</div>
-		<label for="textarea-message" class="form-label">Message</label>
+		<label for="textarea-message" class="form-label">{{ message }}</label>
     	<textarea name="" id="textarea-message" cols="30" rows="10" class="form-textarea"></textarea>
-    	<button class="button button--primary form-button">Send Message</button>
-    	<p class="form-footer">
-    		Or Call Us Direclty <br>
-    		<a href="tel:+493044017947" class="form-link">030 4401 7947</a>
-    	</p>
+    	<button class="button button--primary form-button">{{ buttonText }}</button>
+    	<div class="form-footer form-footer--{{ textAlignmentFooter }}">
+            {{ footerHtml }}
+    	</div>
     </form>
   </div>
 </div>
