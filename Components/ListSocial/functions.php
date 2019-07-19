@@ -22,11 +22,17 @@ Api::registerFields('ListSocial', [
         'label' => 'List: Social',
         'sub_fields' => [
             [
+                'label' => 'General',
+                'name' => 'generalTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
                 'label' => 'Content',
                 'name' => 'contentHtml',
                 'type' => 'wysiwyg',
                 'tabs' => 'visual,text',
-                'toolbar' => 'full',
                 'media_upload' => 0,
                 'delay' => 1,
                 'wrapper' => [
@@ -65,6 +71,16 @@ Api::registerFields('ListSocial', [
                         'required' => 1
                     ]
                 ]
+            ],
+            [
+                'label' => 'Options',
+                'name' => 'optionsTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
+            ],
+            [
+                Api::loadFields('FieldVariables', 'theme')
             ]
         ]
     ]

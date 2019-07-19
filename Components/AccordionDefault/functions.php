@@ -27,7 +27,6 @@ Api::registerFields('AccordionDefault', [
                         'name' => 'panelContent',
                         'type' => 'wysiwyg',
                         'tabs' => 'visual,text',
-                        'toolbar' => 'full',
                         'media_upload' => false,
                         'delay' => true,
                         'wrapper' => [
