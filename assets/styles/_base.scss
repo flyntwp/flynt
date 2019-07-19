@@ -701,3 +701,21 @@ select {
     }
   }
 }
+
+/**
+* 3.4 Pills
+*
+* Pill-looking elements.
+*/
+
+.pill {
+  background-color: $color-background-dark;
+  border-radius: 2em;
+  color: $color-background;
+  display: inline-block;
+  overflow: hidden;
+  padding: 0.1rem 1rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+}
