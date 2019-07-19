@@ -1,9 +1,7 @@
 $search-form-spacing: 6px;
 
-.header {
-  &-title {
-    text-align: center;
-  }
+.preContent {
+  text-align: center;
 }
 
 .searchForm {
@@ -29,7 +27,6 @@ $search-form-spacing: 6px;
     box-shadow: 0 1px 26px 0 rgba(0, 0, 0, 0.06);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     padding: $search-form-spacing;
     position: relative;
     width: 100%;
@@ -42,15 +39,15 @@ $search-form-spacing: 6px;
   &-box {
     flex-grow: 1;
     padding-left: 50px;
-    padding-right: $search-form-spacing;
     position: relative;
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      padding-right: 1.25rem;
+    }
   }
 
   &-input {
     border: 0;
-    color: #9b9b9b;
-    flex-shrink: 1;
-    font-size: 0.875rem;
     height: 100%;
     line-height: 1.85;
     margin: 0;

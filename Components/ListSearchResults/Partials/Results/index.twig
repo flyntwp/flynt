@@ -1,21 +1,20 @@
-<ul class="searchList">
-  {% for post in posts  %}
-    <li class="searchList-item">
-      {% if post.thumbnail %}
-        <div class="previewImage">
-          <img src="{{ post.thumbnail.src }}" data-object-fit="cover" data-object-position="center center">
-        </div>
-      {% endif %}
-      <div class="post">
-        <a class="post-title" href="{{ post.link }}">{{ post.title }}</a>
-        {% if post.preview|length > 10 %}
-          <p class="post-excerpt">{{ post.preview.length(40) }}</p>
-        {% else %}
-          <div class="post-footer">
-            <a href="{{ post.link }}">{{ readMore }}</a>
+{% if posts %}
+  <ul class="searchList">
+    {% for post in posts  %}
+      <li class="searchList-item">
+        {% if post.thumbnail %}
+          <div class="previewImage">
+            <img src="{{ post.thumbnail.src }}" data-object-fit="cover" data-object-position="center center">
           </div>
         {% endif %}
-      </div>
-    </li>
-  {% endfor %}
-</ul>
+        <div class="post">
+          <a class="post-title" href="{{ post.link }}">
+            <h3>{{ post.title }}</h3>
+          </a>
+          <p class="post-excerpt">{{ post.preview.length(40).read_more(false)}}</p>
+          <a href="{{ post.link }}">{{ readMore }}</a>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

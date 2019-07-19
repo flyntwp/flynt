@@ -57,26 +57,15 @@
 }
 
 .post {
-  &-title {
-    color: $color-headline;
-    display: inline-block;
-    font-weight: 700;
-    text-decoration: none;
+  font-size: 0.875rem;
 
-    &:hover,
-    &:focus {
-      color: $color-accent;
-    }
+  &-title {
+    text-decoration: none;
   }
 
   &-excerpt {
     margin-bottom: 0;
     padding-bottom: 0;
-  }
-
-  &-excerpt,
-  &-footer {
-    font-size: 0.875rem;
   }
 
   &-footer {

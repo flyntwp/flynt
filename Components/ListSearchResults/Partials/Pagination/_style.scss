@@ -9,30 +9,12 @@
   }
 
   &-nav {
-    width: 100%;
-
-    @media (min-width: $breakpoint-mobile-horizontal) {
-      width: auto;
-    }
-
-    + .pagination-nav {
-      margin-top: 20px;
-
-      @media (min-width: $breakpoint-mobile-horizontal) {
-        margin-top: 0;
-      }
-    }
-
     &--previous {
-      @media (min-width: $breakpoint-mobile-horizontal) {
-        float: left;
-      }
+      float: left;
     }
 
     &--next {
-      @media (min-width: $breakpoint-mobile-horizontal) {
-        float: right;
-      }
+      float: right;
     }
   }
 
