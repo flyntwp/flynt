@@ -21,7 +21,6 @@ Api::registerFields('GridImageText', [
                 'name' => 'preContentHtml',
                 'type' => 'wysiwyg',
                 'tabs' => 'visual,text',
-                'toolbar' => 'full',
                 'media_upload' => 0,
                 'delay' => 1,
                 'wrapper' => [
@@ -55,7 +54,6 @@ Api::registerFields('GridImageText', [
                         'name' => 'contentHtml',
                         'type' => 'wysiwyg',
                         'tabs' => 'visual,text',
-                        'toolbar' => 'full',
                         'media_upload' => 0,
                         'delay' => 1,
                         'required' => true,
@@ -79,21 +77,7 @@ Api::registerFields('GridImageText', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    [
-                        'label' => 'Theme',
-                        'name' => 'theme',
-                        'type' => 'select',
-                        'allow_null' => 0,
-                        'multiple' => 0,
-                        'ui' => 0,
-                        'ajax' => 0,
-                        'choices' => [
-                            '' => 'Default',
-                            'themeLight' => 'Light',
-                            'themeDark' => 'Dark',
-                            'themeHero' => 'Hero'
-                        ]
-                    ],
+                    Api::loadFields('FieldVariables', 'theme'),
                     [
                         'label' => 'Show as Card',
                         'name' => 'card',

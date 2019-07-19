@@ -1,18 +1,29 @@
 import $ from 'jquery'
 
 class AccordionDefault extends window.HTMLDivElement {
-  constructor (self) {
-    self = super(self)
-    self.$ = $(self)
+  constructor (...args) {
+    const self = super(...args)
+    self.init()
     return self
   }
 
-  connectedCallback () {
+  init () {
+    this.$ = $(this)
+    this.bindFunctions()
+    this.bindEvents()
+  }
+
+  bindFunctions () {
+    this.togglePanel = this.togglePanel.bind(this)
+  }
+
+  bindEvents () {
     this.$.on('click', '[aria-controls]', this.togglePanel)
   }
 
-  togglePanel () {
-    const $panel = $(this)
+  togglePanel (e) {
+    const $panel = $(e.currentTarget)
+
     if ($panel.attr('aria-expanded') === 'true') {
       $panel.attr('aria-expanded', 'false')
       $panel.next().attr('aria-hidden', 'true').slideUp()

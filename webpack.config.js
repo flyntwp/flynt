@@ -83,6 +83,9 @@ const webpackConfig = {
     ],
     mainFields: ['main', 'browser']
   },
+  performance: {
+    maxAssetSize: 328000
+  },
   resolveLoader: {
     alias: {
       'with-babel': `babel-loader?${JSON.stringify(babelQuery)}`

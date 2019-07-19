@@ -2,6 +2,7 @@
 namespace Flynt\Components\BlockCookieNotice;
 
 use Flynt\Utils\Options;
+use Flynt\Api;
 
 Options::addGlobal('BlockCookieNotice', [
     [
@@ -21,25 +22,11 @@ Options::addGlobal('BlockCookieNotice', [
             'layoutBottom' => 'Bottom'
         ]
     ],
-    [
-        'label' => 'Theme',
-        'name' => 'theme',
-        'type' => 'select',
-        'allow_null' => 0,
-        'multiple' => 0,
-        'ui' => 0,
-        'ajax' => 0,
+    array_merge(Api::loadFields('FieldVariables', 'theme'), array(
         'wrapper' => [
             'width' => 50
-        ],
-        'default_value' => 'themeDefault',
-        'choices' => [
-            'themeDefault' => 'Default',
-            'themeLight' => 'Light',
-            'themeDark' => 'Dark',
-            'themeHero' => 'Hero'
         ]
-    ],
+    ))
 ]);
 
 Options::addTranslatable('BlockCookieNotice', [
@@ -48,7 +35,6 @@ Options::addTranslatable('BlockCookieNotice', [
         'name' => 'contentHtml',
         'type' => 'wysiwyg',
         'tabs' => 'visual,text',
-        'toolbar' => 'full',
         'default_value' => '<h4>This website uses cookies</h4><p>We inform you that this site uses own, technical and third parties cookies to make sure our web page is user-friendly and to guarantee a high functionality of the webpage. By continuing to browse this website, you declare to accept the use of cookies.</p>',
         'media_upload' => 0,
         'delay' => 1,

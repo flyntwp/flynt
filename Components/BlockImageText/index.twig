@@ -1,16 +1,16 @@
 <div class="flyntComponent" is="flynt-block-image-text">
-  <div class="container">
+  <div class="container centerMaxWidthContainer">
     <div class="box box--{{ imagePosition }}">
       <div class="box-inner box-inner--image">
         <figure class="figure">
           <img class="figure-image lazyload"
-            src="{{ image.src|resize(750) }}"
+            src="{{ image.src|resizeDynamic(750) }}"
             srcset="{{ placeholderImage(750, 750 / image.aspect) }}"
             data-srcset="
-              {{ image.src|resize(1920) }} 1920w,
-              {{ image.src|resize(1280) }} 1280w,
-              {{ image.src|resize(750) }} 750w,
-              {{ image.src|resize(375) }} 375w"
+              {{ image.src|resizeDynamic(1920) }} 1920w,
+              {{ image.src|resizeDynamic(1280) }} 1280w,
+              {{ image.src|resizeDynamic(750) }} 750w,
+              {{ image.src|resizeDynamic(375) }} 375w"
             data-sizes="auto"
             alt="{{ image.alt|e }}">
           {% if image.caption %}

@@ -132,22 +132,7 @@ Api::registerFields('HeroImageCta', [
                 'default_value' => 0,
                 'ui' => 1
             ],
-            [
-                'label' => 'Theme',
-                'name' => 'theme',
-                'type' => 'select',
-                'allow_null' => 0,
-                'multiple' => 0,
-                'ui' => 0,
-                'ajax' => 0,
-                'choices' => [
-                    'themeDefault' => 'Default',
-                    'themeLight' => 'Light',
-                    'themeDark' => 'Dark',
-                    'themeHero' => 'Hero',
-                    'themeNoBackground' => 'Disable'
-                ],
-            ],
+            Api::loadFields('FieldVariables', 'theme'),
             [
                 'label' => 'Content',
                 'type' => 'tab',
@@ -158,7 +143,6 @@ Api::registerFields('HeroImageCta', [
                 'label' => 'Content',
                 'type' => 'wysiwyg',
                 'tabs' => 'visual,text',
-                'toolbar' => 'full',
                 'media_upload' => 0,
                 'delay' => 1,
                 'required' => 1,

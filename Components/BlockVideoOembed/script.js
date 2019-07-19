@@ -1,23 +1,33 @@
 import $ from 'jquery'
 
 class BlockVideoOembed extends window.HTMLDivElement {
-  constructor (self) {
-    self = super(self)
-    self.$ = $(self)
-    self.resolveElements()
+  constructor (...args) {
+    const self = super(...args)
+    self.init()
     return self
   }
 
+  init () {
+    this.$ = $(this)
+    this.resolveElements()
+    this.bindFunctions()
+    this.bindEvents()
+  }
+
   resolveElements () {
-    this.loadVideo = this.loadVideo.bind(this)
     this.$posterImage = $('.figure-image', this)
     this.$videoPlayer = $('.video-player', this)
     this.$iframe = $('iframe', this)
     this.$playButton = $('.video-playButton', this)
   }
 
-  connectedCallback () {
-    this.$.one('click', this.$playButton.selector, this.loadVideo.bind(this))
+  bindFunctions () {
+    this.loadVideo = this.loadVideo.bind(this)
+    this.videoIsLoaded = this.videoIsLoaded.bind(this)
+  }
+
+  bindEvents () {
+    this.$.one('click', this.$playButton.selector, this.loadVideo)
   }
 
   loadVideo () {

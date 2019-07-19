@@ -41,7 +41,6 @@ Api::registerFields('GridPostsLatest', [
                 'name' => 'preContentHtml',
                 'type' => 'wysiwyg',
                 'tabs' => 'visual,text',
-                'toolbar' => 'full',
                 'media_upload' => 0,
                 'delay' => 1,
                 'wrapper' => [
@@ -75,24 +74,7 @@ Api::registerFields('GridPostsLatest', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    [
-                        'label' => 'Theme',
-                        'name' => 'theme',
-                        'type' => 'select',
-                        'allow_null' => 0,
-                        'multiple' => 0,
-                        'ui' => 0,
-                        'ajax' => 0,
-                        'choices' => [
-                            '' => 'Default',
-                            'themeLight' => 'Light',
-                            'themeDark' => 'Dark',
-                            'themeHero' => 'Hero'
-                        ],
-                        'wrapper' => [
-                            'width' => 50
-                        ]
-                        ],
+                    Api::loadFields('FieldVariables', 'theme'),
                     [
                         'label' => 'Post Count',
                         'name' => 'postCount',
@@ -100,10 +82,7 @@ Api::registerFields('GridPostsLatest', [
                         'default_value' => 3,
                         'min' => 1,
                         'max' => 4,
-                        'step' => 1,
-                        'wrapper' => [
-                            'width' => 50
-                        ]
+                        'step' => 1
                     ]
                 ]
             ],

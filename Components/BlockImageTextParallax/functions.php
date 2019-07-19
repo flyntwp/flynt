@@ -42,7 +42,6 @@ Api::registerFields('BlockImageTextParallax', [
                 'type' => 'wysiwyg',
                 'delay' => 1,
                 'media_upload' => 0,
-                'toolbar' => 'custom',
                 'required' => true,
                 'wrapper' => [
                     'class' => 'autosize',
@@ -61,21 +60,7 @@ Api::registerFields('BlockImageTextParallax', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    [
-                        'label' => 'Theme',
-                        'name' => 'theme',
-                        'type' => 'select',
-                        'allow_null' => 0,
-                        'multiple' => 0,
-                        'ui' => 0,
-                        'ajax' => 0,
-                        'choices' => [
-                            '' => 'Default',
-                            'themeLight' => 'Light',
-                            'themeDark' => 'Dark',
-                            'themeHero' => 'Hero'
-                        ]
-                    ]
+                    Api::loadFields('FieldVariables', 'theme')
                 ]
             ]
         ]
