@@ -18,21 +18,6 @@
     }
   }
 
-  .postLink {
-    text-decoration: none;
-
-    &:hover {
-      .postTitle {
-        color: $color-accent;
-      }
-    }
-
-    > *:first-child {
-      margin-top: 0;
-      padding-top: 0;
-    }
-  }
-
   .previewImage {
     margin-bottom: 10px;
 
@@ -53,7 +38,6 @@
       }
     }
   }
-
 }
 
 .post {
@@ -66,10 +50,5 @@
   &-excerpt {
     margin-bottom: 0;
     padding-bottom: 0;
-  }
-
-  &-footer {
-    display: block;
-    margin-top: 0.71em;
   }
 }
