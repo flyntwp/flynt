@@ -29,7 +29,6 @@ $search-form-spacing: 6px;
     flex-direction: column;
     padding: $search-form-spacing;
     position: relative;
-    width: 100%;
 
     @media (min-width: $breakpoint-mobile-horizontal) {
       flex-direction: row;
@@ -38,11 +37,10 @@ $search-form-spacing: 6px;
 
   &-box {
     flex-grow: 1;
-    padding-left: 50px;
     position: relative;
 
     @media (min-width: $breakpoint-mobile-horizontal) {
-      padding-right: 1.25rem;
+      margin-right: $search-form-spacing;
     }
   }
 
@@ -51,25 +49,11 @@ $search-form-spacing: 6px;
     height: 100%;
     line-height: 1.85;
     margin: 0;
+    min-height: 44px;
     outline: none;
-    padding: 1.25rem 0;
+    padding: 0 1.25rem 0 3.125rem;
     transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 0.275);
     width: 100%;
-
-    // Remove auto-complete styles on Chrome
-    &:-webkit-autofill {
-      &,
-      &:hover,
-      &:focus,
-      &:active {
-        transition-delay: 9999s;
-        transition-property: background-color, color;
-      }
-    }
-
-    @media (min-width: $breakpoint-mobile-horizontal) {
-      padding: 0;
-    }
   }
 
   &-submit {
