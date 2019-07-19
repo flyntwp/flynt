@@ -21,7 +21,6 @@ Api::registerFields('BlockWysiwygTwoCol', [
                 'name' => 'preContentHtml',
                 'type' => 'wysiwyg',
                 'media_upload' => 0,
-                'toolbar' => 'full',
                 'wrapper' => [
                     'class' => 'autosize',
                 ],
@@ -31,7 +30,6 @@ Api::registerFields('BlockWysiwygTwoCol', [
                 'name' => 'contentHtml',
                 'type' => 'wysiwyg',
                 'media_upload' => 0,
-                'toolbar' => 'full',
                 'required' => 1,
                 'wrapper' => [
                     'class' => 'autosize',

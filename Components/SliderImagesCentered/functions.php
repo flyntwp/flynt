@@ -31,7 +31,6 @@ Api::registerFields('SliderImagesCentered', [
                 'name' => 'preContentHtml',
                 'type' => 'wysiwyg',
                 'media_upload' => 0,
-                'toolbar' => 'full',
                 'wrapper' => [
                     'class' => 'autosize',
                 ],

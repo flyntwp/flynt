@@ -1,7 +1,6 @@
 [is='flynt-block-image-text-parallax'] {
   $image-aspect-ratio: 3/2;
 
-  overflow: hidden;
   padding-bottom: $component-spacing-mobile;
 
   @media (min-width: $breakpoint-tablet) {
@@ -10,10 +9,6 @@
 
   @media (min-width: $breakpoint-desktop) {
     padding: $component-spacing-desktop 0;
-  }
-
-  .container {
-    overflow: visible;
   }
 
   .box {

@@ -37,7 +37,6 @@ Api::registerFields('GridTeaserTiles', [
                         'name' => 'contentHtml',
                         'type' => 'wysiwyg',
                         'tabs' => 'visual,text',
-                        'toolbar' => 'full',
                         'media_upload' => 0,
                         'delay' => 1,
                         'required' => '1',
