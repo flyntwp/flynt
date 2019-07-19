@@ -1,12 +1,6 @@
 .pagination {
   margin-top: 20px;
-
-  // Float clearfix
-  &::after {
-    clear: both;
-    content: '';
-    display: table;
-  }
+  overflow: auto;
 
   &-nav {
     &--previous {
