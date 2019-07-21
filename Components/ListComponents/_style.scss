@@ -3,25 +3,26 @@
 
   .components {
     @include reset-list;
+    @include grid(1, center, $gutter-vertical: 48px);
 
-    margin: 0 auto;
-    max-width: $content-max-width;
+    @media (min-width: $breakpoint-tablet) {
+      @include grid(2, $gutter-vertical: 48px);
+    }
 
     @media (min-width: $breakpoint-tablet-horizontal) {
-      max-width: none;
+      @include grid(3, $gutter-vertical: 48px);
     }
   }
 
   .component {
-    padding-bottom: 100px;
+    background-color: $color-background;
+    box-shadow: 0 1px 26px 0 rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-wrap: wrap;
+    max-width: $content-max-width;
 
-    @media (min-width: $breakpoint-tablet-horizontal) {
-      @include grid(2, $gutter-horizontal: 48px);
-    }
-
-    &-screenshotWrapper {
+    &-imageWrapper {
       background-color: $color-background;
-      box-shadow: 0 0 11px rgba(0, 0, 0, 0.15);
       height: 0;
       overflow: hidden;
       padding-bottom: percentage(800/1280);
@@ -35,10 +36,66 @@
       }
     }
 
-    &-content {
+    &-link {
+      display: block;
+      text-decoration: none;
+      width: 100%;
+    }
+
+    &-description {
       @include reset-content-margins;
 
-      padding-top: 20px;
+      border-top: 1px solid $color-border;
+      color: $color-text;
+      padding: 20px;
+      position: relative;
+
+      #{$heading-selectors} {
+        color: $color-headline;
+      }
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        padding: 30px;
+      }
+    }
+
+    &-footer {
+      align-items: center;
+      align-self: flex-end;
+      border-top: 1px solid $color-border;
+      display: flex;
+      height: 56px;
+      justify-content: space-between;
+      padding: 0 20px;
+      width: 100%;
+
+      .component-ctaSecondary {
+        color: #7b838d;
+        text-decoration: none;
+
+        .feather {
+          color: inherit;
+          margin-right: 2px;
+        }
+
+        &:hover {
+          color: $color-accent;
+        }
+      }
+
+      .component-ctaPrimary {
+        float: right;
+        margin-left: auto;
+        padding: 0.9rem 0 1.1rem;
+
+        &::before {
+          bottom: 1.1rem;
+        }
+      }
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        padding: 0 30px;
+      }
     }
   }
 }

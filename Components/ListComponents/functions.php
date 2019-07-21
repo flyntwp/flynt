@@ -4,6 +4,7 @@ namespace Flynt\Components\ListComponents;
 
 use Flynt\Api;
 use Flynt\ComponentManager;
+use Flynt\Utils\Options;
 use Flynt\Utils\Asset;
 
 add_filter('Flynt/addComponentData?name=ListComponents', function ($data) {
@@ -34,7 +35,6 @@ add_filter('Flynt/addComponentData?name=ListComponents', function ($data) {
 
     return $data;
 });
-
 
 add_filter('acf/load_field/name=component', function ($field) {
     $componentManager = ComponentManager::getInstance();
@@ -71,7 +71,7 @@ Api::registerFields('ListComponents', [
                 'type' => 'repeater',
                 'collapsed' => 0,
                 'min' => 1,
-                'layout' => 'block',
+                'layout' => 'table',
                 'button_label' => 'Add Component Block',
                 'sub_fields' => [
                     [
@@ -80,43 +80,63 @@ Api::registerFields('ListComponents', [
                         'type' => 'select',
                         'ui' => 1,
                         'ajax' => 0,
-                        'choices' => []
+                        'choices' => [],
+                        'wrapper' => [
+                            'width' => 50
+                        ]
                     ],
                     [
                         'label' => 'Calls To Action',
                         'name' => 'ctas',
-                        'type' => 'repeater',
+                        'type' => 'group',
                         'collapsed' => 0,
-                        'layout' => 'table',
-                        'button_label' => 'Add Call To Action',
+                        'layout' => 'row',
                         'sub_fields' => [
                             [
-                                'label' => 'Link',
-                                'name' => 'link',
-                                'type' => 'link',
-                                'return_format' => 'array',
-                                'required' => 1,
-                                'wrapper' => [
-                                    'width' => 70
-                                ]
+                                'label' => 'Preview',
+                                'name' => 'primary',
+                                'type' => 'text'
                             ],
                             [
-                                'label' => 'Button Type',
-                                'name' => 'buttonType',
-                                'type' => 'button_group',
-                                'choices' => [
-                                    'primary' => 'Primary',
-                                    'secondary' => 'Secondary'
-                                ],
-                                'wrapper' => [
-                                    'width' => 30
-                                ],
-                                'ui' => 1
+                                'label' => 'GitHub',
+                                'name' => 'secondary',
+                                'type' => 'url'
                             ]
                         ]
                     ]
                 ]
             ]
         ]
+    ]
+]);
+
+Options::addTranslatable('ListComponents', [
+    [
+        'label' => 'Labels',
+        'name' => 'labelsTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => false
+    ],
+    [
+        'label' => '',
+        'name' => 'labels',
+        'type' => 'group',
+        'sub_fields' => [
+            [
+                'label' => 'Code',
+                'name' => 'code',
+                'type' => 'text',
+                'default_value' => 'Code',
+                'required' => 1,
+            ],
+            [
+                'label' => 'Preview',
+                'name' => 'preview',
+                'type' => 'text',
+                'default_value' => 'Preview',
+                'required' => 1,
+            ]
+        ],
     ]
 ]);
