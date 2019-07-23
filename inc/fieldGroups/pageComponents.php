@@ -39,7 +39,6 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Api::loadFields('HeroTextImage', 'layout'),
                     Api::loadFields('ListComponents', 'layout'),
                     Api::loadFields('ListLogos', 'layout'),
-                    Api::loadFields('ListFacts', 'layout'),
                     Api::loadFields('ListIcons', 'layout'),
                     Api::loadFields('ListPostCards', 'layout'),
                     Api::loadFields('ListSocial', 'layout'),
