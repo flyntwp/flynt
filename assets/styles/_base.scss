@@ -716,3 +716,39 @@ select {
     }
   }
 }
+
+/**
+* 4.0 Content
+*/
+
+.flyntComponent {
+  .preContent {
+    @include reset-content-margins;
+
+    margin: 0 auto 32px;
+    max-width: $content-max-width;
+    text-align: center;
+
+    @media (min-width: $breakpoint-tablet) {
+      margin-bottom: $container-padding-tablet;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      margin-bottom: $container-padding-desktop;
+    }
+  }
+
+  .postContent {
+    margin: 32px auto 0;
+    max-width: $content-max-width;
+    text-align: center;
+
+    @media (min-width: $breakpoint-tablet) {
+      margin-top: $container-padding-tablet;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      margin-top: $container-padding-desktop;
+    }
+  }
+}
