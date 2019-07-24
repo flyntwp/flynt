@@ -1,13 +1,13 @@
 [is='flynt-list-testimonial-cards'] {
   background-color: rgba(0, 0, 0, 0.03);
-  padding: $component-spacing-desktop 0;
+  padding: $component-spacing-mobile 0;
 
-  .preContent {
-    @include reset-content-margins;
+  @media (min-width: $breakpoint-tablet) {
+    padding: $component-spacing-tablet 0;
+  }
 
-    margin: 0 auto 50px;
-    max-width: $content-max-width;
-    text-align: center;
+  @media (min-width: $breakpoint-desktop) {
+    padding: $component-spacing-desktop 0;
   }
 
   .testimonialsList {
