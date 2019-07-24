@@ -38,7 +38,7 @@
     @include reset-content-margins;
 
     background-color: $color-background;
-    padding: 20px 15px 20px 60px;
+    padding-left: 60px;
     position: relative;
 
     &::before {
@@ -53,8 +53,12 @@
       line-height: 32px;
       position: absolute;
       text-align: center;
-      top: 20px;
+      top: 16px;
       width: 35px;
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        top: 25px;
+      }
     }
   }
 }

@@ -53,7 +53,6 @@
   }
 
   .content {
-    box-shadow: 0 1px 26px 0 rgba(0, 0, 0, 0.06);
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -133,16 +132,6 @@
 
     &-block {
       max-width: 55%; // Limit pill limit in case of long copy
-    }
-  }
-
-  &.themeDefault {
-    .content {
-      &:hover {
-        @media (min-width: $breakpoint-mobile-horizontal) {
-          box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.06);
-        }
-      }
     }
   }
 }

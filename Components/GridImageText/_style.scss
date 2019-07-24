@@ -74,16 +74,14 @@
 
   &.layoutCard {
     .content {
+      @extend .boxShadow;
+
       background-color: $color-background;
-      box-shadow: 0 1px 26px 0 rgba(0, 0, 0, 0.06);
 
       &-inner {
-        color: $color-text;
-        padding: 20px;
+        @extend .boxPadding;
 
-        @media (min-width: $breakpoint-tablet-horizontal) {
-          padding: 30px;
-        }
+        color: $color-text;
 
         #{$heading-selectors} {
           color: $color-headline;

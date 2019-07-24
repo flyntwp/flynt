@@ -12,9 +12,7 @@
   }
 
   ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    @include reset-list;
   }
 
   .gridLinkList {
@@ -43,7 +41,6 @@
 
     background-color: $color-background;
     height: 100%;
-    padding: 25px 30px;
 
     li {
       border-bottom: 1px solid rgba(0, 0, 0, 0.06);
