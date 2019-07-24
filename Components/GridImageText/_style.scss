@@ -74,13 +74,9 @@
 
   &.layoutCard {
     .content {
-      @extend .boxShadow;
-
       background-color: $color-background;
 
       &-inner {
-        @extend .boxPadding;
-
         color: $color-text;
 
         #{$heading-selectors} {
