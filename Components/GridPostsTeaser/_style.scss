@@ -9,26 +9,6 @@
     padding: $component-spacing-desktop 0;
   }
 
-  .preContent {
-    @include reset-content-margins;
-
-    margin-bottom: 4.375rem;
-    text-align: center;
-  }
-
-  .postContent {
-    margin-top: $container-padding-mobile + 10;
-    text-align: center;
-
-    @media (min-width: $breakpoint-tablet) {
-      margin-top: $container-padding-tablet + 10;
-    }
-
-    @media (min-width: $breakpoint-desktop) {
-      margin-top: $container-padding-desktop + 10;
-    }
-  }
-
   .grid {
     @include reset-list;
     @include grid(1, center);
