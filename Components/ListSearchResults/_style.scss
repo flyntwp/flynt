@@ -1,13 +1,52 @@
 [is='flynt-list-search-results'] {
-  margin: $component-spacing-desktop 0;
+  margin: $component-spacing-mobile 0;
+
+  @media (min-width: $breakpoint-tablet) {
+    margin: $component-spacing-tablet 0;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    margin: $component-spacing-desktop 0;
+  }
 
   .container {
-    @include center;
-
-    max-width: $content-max-width;
-
     @import 'Partials/Header/style';
     @import 'Partials/Pagination/style';
     @import 'Partials/Results/style';
+  }
+
+  &.themeDark,
+  &.themeHero,
+  &.themeLight {
+    padding: $component-spacing-mobile 0;
+
+    @media (min-width: $breakpoint-tablet) {
+      padding: $component-spacing-tablet 0;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      padding: $component-spacing-desktop 0;
+    }
+
+    .post {
+      &-title {
+        color: $color-headline;
+      }
+    }
+  }
+
+  &.themeHero {
+    .searchForm {
+      &-submit {
+        background-color: $color-accent;
+        border: 0;
+        color: $color-background;
+
+        &:hover,
+        &:focus {
+          background-color: $color-background-dark;
+        }
+      }
+    }
   }
 }

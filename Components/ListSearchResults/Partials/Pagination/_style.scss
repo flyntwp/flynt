@@ -1,28 +1,13 @@
 .pagination {
-  display: block;
-  margin-top: 40px;
+  margin-top: 20px;
+  overflow: auto;
 
-  div {
-    display: block;
-    margin: 10px 2px;
-
-    @media (min-width: 300px) {
-      margin: 0 2px;
-    }
-  }
-
-  @media (min-width: 300px) {
-    &::after {
-      clear: both;
-      content: '';
-      display: table;
-    }
-
-    &-prevLink {
+  &-nav {
+    &--previous {
       float: left;
     }
 
-    &-nextLink {
+    &--next {
       float: right;
     }
   }
