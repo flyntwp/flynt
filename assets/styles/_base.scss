@@ -728,9 +728,10 @@ select {
   border-radius: 2em;
   color: $color-background;
   display: inline-block;
+  max-width: 100%;
   overflow: hidden;
   padding: 0.1rem 1rem;
   text-overflow: ellipsis;
-  white-space: nowrap;
   vertical-align: middle;
+  white-space: nowrap;
 }
