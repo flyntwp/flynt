@@ -231,6 +231,38 @@ body {
   box-shadow: 0 1px 26px 0 rgba(0, 0, 0, 0.06);
 }
 
+.preContent {
+  @include reset-content-margins;
+
+  margin: 0 auto 32px;
+  max-width: $content-max-width;
+  text-align: center;
+
+  @media (min-width: $breakpoint-tablet) {
+    margin-bottom: $container-padding-tablet;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    margin-bottom: $container-padding-desktop;
+  }
+}
+
+.postContent {
+  @include reset-content-margins;
+
+  margin: 32px auto 0;
+  max-width: $content-max-width;
+  text-align: center;
+
+  @media (min-width: $breakpoint-tablet) {
+    margin-top: $container-padding-tablet;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    margin-top: $container-padding-desktop;
+  }
+}
+
 /**
 * 3.0 Base Style
 *

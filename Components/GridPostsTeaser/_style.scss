@@ -9,17 +9,6 @@
     padding: $component-spacing-desktop 0;
   }
 
-  .preContent {
-    @include reset-content-margins;
-
-    margin-bottom: 4.375rem;
-  }
-
-  .preContent,
-  .postContent {
-    text-align: center;
-  }
-
   .grid {
     @include reset-list;
     @include grid(1, center);

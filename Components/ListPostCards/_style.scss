@@ -10,20 +10,6 @@
     padding: $component-spacing-desktop 0;
   }
 
-  .preContent {
-    @include reset-content-margins;
-
-    margin: 0 auto 50px;
-    max-width: $content-max-width;
-    text-align: center;
-  }
-
-  .postContent {
-    margin: 0 auto;
-    max-width: $content-max-width;
-    text-align: center;
-  }
-
   .listPostCards {
     display: flex;
     flex-wrap: wrap;

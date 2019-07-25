@@ -32,7 +32,7 @@ Api::registerFields('ListLogos', [
             ],
             [
                 'label' => 'Title',
-                'name' => 'preContent',
+                'name' => 'preContentHtml',
                 'type' => 'wysiwyg',
                 'tabs' => 'visual,text',
                 'media_upload' => 0,

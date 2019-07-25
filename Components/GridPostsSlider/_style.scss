@@ -1,6 +1,10 @@
 [is='flynt-grid-posts-slider'] {
   padding: $component-spacing-mobile 0;
 
+  @media (min-width: $breakpoint-tablet) {
+    padding: $component-spacing-tablet 0;
+  }
+
   @media (min-width: $breakpoint-desktop) {
     padding: $component-spacing-desktop 0;
   }
@@ -9,17 +13,6 @@
     @include center;
 
     position: relative;
-  }
-
-  .preContent {
-    @include reset-content-margins;
-
-    margin-bottom: 1.5rem;
-    text-align: center;
-
-    @media (min-width: $breakpoint-desktop) {
-      margin-bottom: 3rem;
-    }
   }
 
   .gridPosts {
