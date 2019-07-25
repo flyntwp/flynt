@@ -23,19 +23,21 @@
               data-sizes="auto"
               alt="{{ item.thumbnail.alt|e }}">
             <div class="content-inner">
-              <ul class="content-header">
-              <li class="content-block">
-              <span class="content-pill">{{ item.category.name }}</span>
-              </li>
-              <li>
-              <dl class="content-date">
-              <dt>
-                  <i data-feather="clock"></i>
-              </dt>
-              <dd>{{ item.date }}</dd>
-              </dl>
-              </li>
-              </ul>
+              <header class="content-header">
+                <div class="content-block">
+                  <span class="pill">{{ item.category.name }}</span>
+                </div>
+                <div>
+                  <time class="time" datetime="{{ item.date|date("Y-m-d") }}">
+                    <span class="time-icon">
+                        <i data-feather="clock"></i>
+                    </span>
+                    <span class="time-main">
+                      {{ item.date }}
+                    </span>
+                  </time>
+                </div>
+              </header>
               <h3 class="content-title">{{ item.title }}</h3>
             </div>
           </a>
