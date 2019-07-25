@@ -8,7 +8,7 @@
     <ul class="stepsList">
       {% for step in stepList %}
         <li class="step">
-          <div class="content">
+          <div class="content boxPadding boxShadow">
             {{ step.contentHtml|e('wp_kses_post') }}
           </div>
         </li>

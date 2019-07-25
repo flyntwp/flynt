@@ -1,7 +1,6 @@
 .searchList {
   background-color: $color-background;
   border-radius: 4px;
-  box-shadow: 0 1px 26px 0 rgba(0, 0, 0, 0.06);
   list-style: none;
   margin-top: 20px;
   overflow: hidden;
@@ -10,7 +9,7 @@
   &-item {
     border-bottom: 1px solid #ececec;
     color: $color-contrast;
-    padding: 1.25rem;
+    padding: 20px;
     position: relative;
 
     &:last-child {
@@ -41,9 +40,13 @@
 }
 
 .post {
+  @include reset-content-margins;
+
   font-size: 0.875rem;
 
   &-title {
+    @include reset-content-margins('top');
+
     text-decoration: none;
   }
 

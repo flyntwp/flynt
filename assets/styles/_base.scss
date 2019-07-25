@@ -217,7 +217,7 @@ body {
   max-width: $content-max-width;
 }
 
-.paddingBox {
+.boxPadding {
   @include reset-content-margins;
 
   padding: 20px;
@@ -225,6 +225,10 @@ body {
   @media (min-width: $breakpoint-tablet-horizontal) {
     padding: 30px;
   }
+}
+
+.boxShadow {
+  box-shadow: 0 1px 26px 0 rgba(0, 0, 0, 0.06);
 }
 
 .preContent {
@@ -257,7 +261,6 @@ body {
   @media (min-width: $breakpoint-desktop) {
     margin-top: $container-padding-desktop;
   }
-}
 
 /**
 * 3.0 Base Style
@@ -747,4 +750,23 @@ select {
       background-image: url('../assets/icons/check-circle.svg');
     }
   }
+}
+
+/**
+* 3.4 Pills
+*
+* Pill-looking elements.
+*/
+
+.pill {
+  background-color: $color-background-dark;
+  border-radius: 2em;
+  color: $color-background;
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 0.1rem 1rem;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  white-space: nowrap;
 }

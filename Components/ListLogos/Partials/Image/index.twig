@@ -16,7 +16,7 @@
   {% else %}
     {{ image.svg }}
   {% endif %}
-  {% if link.title  and type == 'card' %}
+  {% if link.title and type == 'card' %}
     <figcaption class="caption">{{ link.title|e }}</figcaption>
   {% endif %}
 </figure>
