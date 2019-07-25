@@ -16,8 +16,8 @@ class ListComponents extends window.HTMLDivElement {
   resolveElements () {
     this.$window = $(window)
     this.$document = $(document)
-    this.$componentScreenshotWrappers = $('.component-screenshotWrapper', this)
-    this.$componentScreenshotImages = $('.component-screenshotWrapper img', this)
+    this.$componentimageWrappers = $('.component-imageWrapper', this)
+    this.$componentScreenshotImages = $('.component-imageWrapper img', this)
   }
 
   bindFunctions () {
@@ -27,8 +27,8 @@ class ListComponents extends window.HTMLDivElement {
   }
 
   connectedCallback () {
-    if (this.$window.width() > 575) {
-      this.$.on('mouseenter mouseleave', '.component-screenshotWrapper', this.toggleHoverScroll)
+    if (this.$window.width() >= 1280) {
+      this.$.on('mouseenter mouseleave', '.component-link', this.toggleHoverScroll)
     } else {
       this.$window.on('resize', this.setParallaxConfig)
       this.$document.on('lazyloaded', this.setParallaxConfig)
@@ -37,17 +37,17 @@ class ListComponents extends window.HTMLDivElement {
   }
 
   toggleHoverScroll (e) {
-    let $screenshotWrapper = $(e.currentTarget)
-    let $screenshotWrapperHeight = $screenshotWrapper.outerHeight()
-    let $image = $screenshotWrapper.find('img')
+    let $imageWrapper = $(e.currentTarget).find('.component-imageWrapper')
+    let $imageWrapperHeight = $imageWrapper.outerHeight()
+    let $image = $imageWrapper.find('img')
     let $imageHeight = $image.height()
 
-    if ($imageHeight > $screenshotWrapperHeight) {
+    if ($imageHeight > $imageWrapperHeight) {
       if (e.type === 'mouseenter') {
-        $image.css('transition', 'transform ' + (($imageHeight - $screenshotWrapperHeight) / $screenshotWrapperHeight) + 's cubic-bezier(0.215, 0.61, 0.355, 1)')
-        $image.css('transform', 'translateY(-' + ($imageHeight - $screenshotWrapperHeight) + 'px)')
+        $image.css('transition', 'transform ' + Math.max((($imageHeight - $imageWrapperHeight) / $imageWrapperHeight), 0.3) + 's cubic-bezier(0.215, 0.61, 0.355, 1)')
+        $image.css('transform', 'translateY(-' + ($imageHeight - $imageWrapperHeight) + 'px)')
       } else {
-        $image.css('transition', 'transform ' + (($imageHeight - $screenshotWrapperHeight) / $screenshotWrapperHeight) + 's cubic-bezier(0.23, 1, 0.32, 1)')
+        $image.css('transition', 'transform ' + Math.max((($imageHeight - $imageWrapperHeight) / $imageWrapperHeight), 0.3) + 's cubic-bezier(0.23, 1, 0.32, 1)')
         $image.css('transform', 'translateY(0)')
       }
     }
@@ -58,10 +58,10 @@ class ListComponents extends window.HTMLDivElement {
 
     this.$componentScreenshotImages.each((index, el) => {
       let $image = $(el)
-      let $screenshotWrapper = $image.parent()
+      let $imageWrapper = $image.parent()
 
-      let imageOverflow = $image.height() - $screenshotWrapper.outerHeight()
-      let topOffset = $screenshotWrapper.offset().top
+      let imageOverflow = $image.height() - $imageWrapper.outerHeight()
+      let topOffset = $imageWrapper.offset().top
       let startOffset = topOffset - windowHeight * 0.4
       let endOffset = topOffset - 100
 

@@ -2,6 +2,7 @@
 
 namespace Flynt\Components\ListSearchResults;
 
+use Flynt\Api;
 use Flynt\Utils\Asset;
 use Flynt\Utils\Options;
 use Timber\Timber;
@@ -13,6 +14,10 @@ add_filter('Flynt/addComponentData?name=ListSearchResults', function ($data) {
 
     return $data;
 });
+
+Options::addGlobal('ListSearchResults', [
+    Api::loadFields('FieldVariables', 'theme')
+]);
 
 Options::addTranslatable('ListSearchResults', [
     [
@@ -50,4 +55,18 @@ Options::addTranslatable('ListSearchResults', [
         'default_value' => 'Next',
         'required' => 1
     ],
+    [
+        'name' => 'search',
+        'label' => 'Search',
+        'type' => 'text',
+        'default_value' => 'Search',
+        'required' => 1
+    ],
+    [
+        'name' => 'readMore',
+        'label' => 'Read More',
+        'type' => 'text',
+        'default_value' => 'Read More',
+        'required' => 1
+    ]
 ]);
