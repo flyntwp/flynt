@@ -1,5 +1,9 @@
 .mainContent [is='flynt-slider-image-gallery'] {
   margin: 0;
+
+  &[class*='theme'] {
+    padding: 0;
+  }
 }
 
 [is='flynt-slider-image-gallery'] {
