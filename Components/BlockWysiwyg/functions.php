@@ -41,16 +41,17 @@ Api::registerFields('BlockWysiwyg', [
                 'name' => 'optionsTab',
                 'type' => 'tab',
                 'placement' => 'top',
-                'endpoint' => 0,
+                'endpoint' => 0
             ],
             [
                 'label' => '',
                 'name' => 'options',
                 'type' => 'group',
+                'layout' => 'row',
                 'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme'),
+                    Api::loadFields('FieldVariables', 'theme')
                 ]
-            ],
+            ]
         ]
     ]
 ]);

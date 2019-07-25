@@ -81,6 +81,7 @@ Api::registerFields('SliderImages', [
                             ]
                         ],
                     ],
+                    Api::loadFields('FieldVariables', 'theme')
                 ]
             ]
         ]

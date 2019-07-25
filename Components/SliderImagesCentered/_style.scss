@@ -1,19 +1,4 @@
 [is='flynt-slider-images-centered'] {
-  $ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
-  padding: $component-spacing-mobile 0;
-
-  @media (min-width: $breakpoint-tablet) {
-    padding: $component-spacing-tablet 0;
-  }
-
-  @media (min-width: $breakpoint-desktop) {
-    padding: $component-spacing-desktop 0;
-  }
-
-  .container {
-    @include center;
-  }
-
   .slider {
     &-item {
       max-width: 375px;

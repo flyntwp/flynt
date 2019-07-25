@@ -88,6 +88,7 @@ Api::registerFields('SliderImagesCentered', [
                             ]
                         ],
                     ],
+                    Api::loadFields('FieldVariables', 'theme')
                 ],
             ],
         ]

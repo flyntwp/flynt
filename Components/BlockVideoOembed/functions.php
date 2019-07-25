@@ -22,6 +22,13 @@ Api::registerFields('BlockVideoOembed', [
         'label' => 'Block: Video Oembed',
         'sub_fields' => [
             [
+                'label' => 'General',
+                'name' => 'generalTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
                 'name' => 'posterImage',
                 'label' => 'Poster Image',
                 'type' => 'image',
@@ -35,6 +42,22 @@ Api::registerFields('BlockVideoOembed', [
                 'name' => 'oembed',
                 'type' => 'oembed',
                 'required' => 1
+            ],
+            [
+                'label' => 'Options',
+                'name' => 'optionsTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
+                'label' => '',
+                'name' => 'options',
+                'type' => 'group',
+                'layout' => 'row',
+                'sub_fields' => [
+                    Api::loadFields('FieldVariables', 'theme')
+                ]
             ]
         ]
     ]

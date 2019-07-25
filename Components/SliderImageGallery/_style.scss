@@ -1,14 +1,8 @@
+.mainContent [is='flynt-slider-image-gallery'] {
+  margin: 0;
+}
+
 [is='flynt-slider-image-gallery'] {
-  padding: $component-spacing-mobile 0;
-
-  @media (min-width: $breakpoint-tablet) {
-    padding: $component-spacing-tablet 0;
-  }
-
-  @media (min-width: $breakpoint-desktop) {
-    padding: $component-spacing-desktop 0;
-  }
-
   .figure {
     margin: 0;
   }

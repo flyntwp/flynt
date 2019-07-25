@@ -7,18 +7,6 @@ use Flynt\Utils\Asset;
 use Flynt\Utils\Options;
 use Timber\Timber;
 
-add_filter('Flynt/addComponentData?name=ListSearchResults', function ($data) {
-    $data['prevIcon'] = Asset::getContents('Components/ListSearchResults/Assets/navigation-prev.svg');
-    $data['nextIcon'] = Asset::getContents('Components/ListSearchResults/Assets/navigation-next.svg');
-    $data['searchIcon'] = Asset::getContents('Components/ListSearchResults/Assets/search.svg');
-
-    return $data;
-});
-
-Options::addGlobal('ListSearchResults', [
-    Api::loadFields('FieldVariables', 'theme')
-]);
-
 Options::addTranslatable('ListSearchResults', [
     [
         'label' => 'Title',

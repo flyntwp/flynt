@@ -1,16 +1,7 @@
 [is='flynt-grid-posts-archive'] {
-  padding: $component-spacing-mobile 0;
-
-  @media (min-width: $breakpoint-tablet) {
-    padding: $component-spacing-tablet 0;
-  }
-
-  @media (min-width: $breakpoint-desktop) {
-    padding: $component-spacing-desktop 0;
-  }
-
   ul {
-    @include reset-list; }
+    @include reset-list;
+  }
 
   .posts {
     @media (min-width: $breakpoint-tablet) {

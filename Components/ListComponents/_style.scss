@@ -1,6 +1,4 @@
 [is='flynt-list-components'] {
-  margin: $component-spacing-desktop 0;
-
   .components {
     @include reset-list;
     @include grid(1, center, $gutter-vertical: 48px);

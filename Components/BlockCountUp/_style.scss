@@ -1,14 +1,4 @@
 [is='flynt-block-count-up'] {
-  padding: $component-spacing-mobile 0;
-
-  @media (min-width: $breakpoint-tablet) {
-    padding: $component-spacing-tablet 0;
-  }
-
-  @media (min-width: $breakpoint-desktop) {
-    padding: $component-spacing-desktop 0;
-  }
-
   .blockCountUp {
     @include grid(2, $alignment: center, $gutter-vertical: 40px);
 

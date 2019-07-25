@@ -1,14 +1,5 @@
 [is='flynt-list-social'] {
-  padding: $component-spacing-mobile 0;
   text-align: center;
-
-  @media (min-width: $breakpoint-tablet) {
-    padding: $component-spacing-tablet 0;
-  }
-
-  @media (min-width: $breakpoint-desktop) {
-    padding: $component-spacing-desktop 0;
-  }
 
   .socialList {
     @include reset-list;

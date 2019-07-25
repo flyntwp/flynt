@@ -1,16 +1,6 @@
 [is='flynt-block-image-text-parallax'] {
   $image-aspect-ratio: 3/2;
 
-  padding-bottom: $component-spacing-mobile;
-
-  @media (min-width: $breakpoint-tablet) {
-    padding: $component-spacing-tablet 0;
-  }
-
-  @media (min-width: $breakpoint-desktop) {
-    padding: $component-spacing-desktop 0;
-  }
-
   .box {
     @media (min-width: $breakpoint-tablet-horizontal) {
       align-items: center;

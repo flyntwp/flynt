@@ -2,6 +2,10 @@
 
 $background-opacity: 0.4;
 
+.mainContent [is='flynt-hero-image-cta'] {
+  margin: 0;
+}
+
 [is='flynt-hero-image-cta'] {
   @include align-image('mobile');
 
