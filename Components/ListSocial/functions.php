@@ -77,10 +77,16 @@ Api::registerFields('ListSocial', [
                 'name' => 'optionsTab',
                 'type' => 'tab',
                 'placement' => 'top',
-                'endpoint' => 0,
+                'endpoint' => 0
             ],
             [
-                Api::loadFields('FieldVariables', 'theme')
+                'label' => '',
+                'name' => 'options',
+                'type' => 'group',
+                'layout' => 'row',
+                'sub_fields' => [
+                    Api::loadFields('FieldVariables', 'theme')
+                ]
             ]
         ]
     ]
