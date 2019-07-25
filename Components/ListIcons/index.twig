@@ -1,12 +1,10 @@
 <div class="flyntComponent {{ options.theme }}" is="flynt-list-icons">
   <div class="container centerMaxWidthContainer">
-    <div class="main">
-      {% if preContentHtml %}
-      <div class="main-content">
+    {% if preContentHtml %}
+      <div class="preContent">
       {{ preContentHtml|e('wp_kses_post') }}
       </div>
-      {% endif %}
-    </div>
+    {% endif %}
     <ul class="items">
       {% for item in items %}
       <li class="item">

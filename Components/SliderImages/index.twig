@@ -2,7 +2,7 @@
   <script type="application/json">{{ jsonData|json_encode }}</script>
   <div class="centerMaxWidthContainer">
     {% if preContentHtml %}
-      <div class="preContent centerContentMaxWidth">
+      <div class="preContent">
         {{ preContentHtml|e('wp_kses_post') }}
       </div>
     {% endif %}

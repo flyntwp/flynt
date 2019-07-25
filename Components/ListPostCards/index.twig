@@ -2,7 +2,9 @@
   <div class="flyntComponent" is="flynt-list-post-cards">
     <div class="container centerMaxWidthContainer">
       {% if preContentHtml %}
-        <div class="preContent">{{ preContentHtml|e('wp_kses_post') }}</div>
+        <div class="preContent">
+          {{ preContentHtml|e('wp_kses_post') }}
+        </div>
       {% endif %}
       <ul class="listPostCards">
         {% for post in posts %}

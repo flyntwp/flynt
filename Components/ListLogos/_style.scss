@@ -13,31 +13,6 @@
     @include center;
   }
 
-  .preContent {
-    @include reset-content-margins;
-    margin: 0 auto;
-    max-width: $content-max-width;
-    text-align: center;
-  }
-
-  .content {
-    &:not(:first-child) {
-      margin-top: 32px;
-
-      @media (min-width: 375px) {
-        margin-top: 40px;
-      }
-
-      @media (min-width: $breakpoint-tablet) {
-        margin-top: 48px;
-      }
-
-      @media (min-width: $breakpoint-desktop) {
-        margin-top: 56px;
-      }
-    }
-  }
-
   .list {
     @include reset-list;
     @include grid(2, center, 12px, 12px);

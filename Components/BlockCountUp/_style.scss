@@ -1,19 +1,12 @@
 [is='flynt-block-count-up'] {
   padding: $component-spacing-mobile 0;
 
-  @media (min-width: $breakpoint-desktop) {
-    padding: $component-spacing-desktop 0;
+  @media (min-width: $breakpoint-tablet) {
+    padding: $component-spacing-tablet 0;
   }
 
-  .preContent {
-    @include reset-content-margins;
-
-    margin-bottom: 50px;
-    text-align: center;
-
-    @media (min-width: $breakpoint-desktop) {
-      margin-bottom: 70px;
-    }
+  @media (min-width: $breakpoint-desktop) {
+    padding: $component-spacing-desktop 0;
   }
 
   .blockCountUp {
@@ -37,7 +30,6 @@
         }
       }
     }
-
   }
 
   .icon {
@@ -85,5 +77,4 @@
   &.themeLight .feather {
     color: rgba($color-background-dark, 0.8);
   }
-
 }

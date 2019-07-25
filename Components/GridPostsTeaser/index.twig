@@ -1,7 +1,7 @@
 <div class="flyntComponent {{ options.theme ?: 'themeLight' }}" is="flynt-grid-posts-teaser">
   <div class="container centerMaxWidthContainer">
     {% if preContentHtml %}
-      <div class="preContent centerContentMaxWidth">
+      <div class="preContent">
         {{ preContentHtml|e('wp_kses_post') }}
       </div>
     {% endif %}
