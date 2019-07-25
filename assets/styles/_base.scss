@@ -200,7 +200,7 @@ body {
       margin: $component-spacing-desktop 0;
     }
 
-    &.flyntComponent[class*='theme'] {
+    &[class*='theme'] {
       margin: 0;
       padding: $component-spacing-mobile 0;
 
