@@ -3,7 +3,7 @@
     <ul class="components">
       {% for componentBlock in componentBlocks %}
         {% if componentBlock.readme %}
-          <li class="component">
+          <li class="component boxShadow">
             <a{% if componentBlock.ctas.primary %} href="{{ componentBlock.ctas.primary }}"{% endif %} class="component-link">
               {% if componentBlock.componentScreenshot %}
                 <div class="component-image">
@@ -16,7 +16,7 @@
                   </div>
                 </div>
               {% endif %}
-              <div class="component-description">
+              <div class="component-description boxPadding">
                 <h3>{{ componentBlock.readme.title }}</h3>
                 <p>{{ componentBlock.readme.html }}</p>
               </div>

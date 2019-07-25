@@ -56,7 +56,6 @@
 
   .content {
     background-color: $color-background;
-    box-shadow: 0 1px 26px 0 rgba(0, 0, 0, 0.06);
     display: flex;
     flex-wrap: wrap;
     height: 100%;
@@ -75,12 +74,6 @@
 
     &-inner {
       @include reset-content-margins;
-
-      padding: 20px;
-
-      @media (min-width: $breakpoint-tablet-horizontal) {
-        padding: 30px;
-      }
     }
 
     &-link {

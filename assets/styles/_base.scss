@@ -217,7 +217,7 @@ body {
   max-width: $content-max-width;
 }
 
-.paddingBox {
+.boxPadding {
   @include reset-content-margins;
 
   padding: 20px;
@@ -225,6 +225,10 @@ body {
   @media (min-width: $breakpoint-tablet-horizontal) {
     padding: 30px;
   }
+}
+
+.boxShadow {
+  box-shadow: 0 1px 26px 0 rgba(0, 0, 0, 0.06);
 }
 
 /**
