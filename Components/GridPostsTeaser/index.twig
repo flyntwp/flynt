@@ -5,7 +5,7 @@
         {{ preContentHtml|e('wp_kses_post') }}
       </div>
     {% endif %}
-    <ul class="grid grid--length{{ items|length }}">
+    <ul class="grid grid--length{{ options.postCount }}">
       {% for item in items %}
         <li class="grid-item">
           <a href="{{ item.link }}" class="content boxShadow">

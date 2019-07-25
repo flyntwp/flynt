@@ -51,7 +51,7 @@ Api::registerFields('GridPostsLatest', [
                 ],
             ],
             [
-                'label' => 'Category',
+                'label' => 'Categories',
                 'name' => 'taxonomies',
                 'type' => 'taxonomy',
                 'instructions' => 'Select 1 or more categories or leave empty to show from all posts.',
