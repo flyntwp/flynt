@@ -36,14 +36,18 @@
     }
 
     &--length3 {
-      @media (min-width: $breakpoint-tablet-horizontal) {
-        flex-wrap: nowrap;
+      .grid-item {
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          width: 33.33%;
+        }
       }
     }
 
     &--length4 {
-      @media (min-width: $breakpoint-desktop) {
-        flex-wrap: nowrap;
+      .grid-item {
+        @media (min-width: $breakpoint-desktop) {
+          width: 25%;
+        }
       }
     }
   }

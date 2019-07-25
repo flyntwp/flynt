@@ -2,4 +2,5 @@
 
 {% block content %}
   {{ renderFlexibleContent(post.meta('postComponents')) }}
+  {{ renderComponent('GridPostsLatest', {'taxonomies': post.categories(), 'options': {'theme': 'themeLight', 'postCount': 3}}) }}
 {% endblock %}
