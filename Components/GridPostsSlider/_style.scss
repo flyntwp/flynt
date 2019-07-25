@@ -81,18 +81,31 @@
     }
 
     .swiper-pagination-bullet {
-      background-color: rgba($color-background, 0.2);
+      background-color: rgba($color-contrast, 0.2);
       height: 6px;
       opacity: 1;
       transition: width 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55), background-color 0.3s ease;
       width: 6px;
 
       &-active {
-        background-color: $color-background;
+        background-color: $color-contrast;
         border-radius: 4px;
         width: 20px;
       }
 
+      &:hover,
+      &:focus {
+        background-color: $color-contrast;
+      }
+    }
+  }
+
+  &.themeDark,
+  &.themeHero {
+    .swiper-pagination-bullet {
+      background-color: rgba($color-background, 0.2);
+
+      &-active,
       &:hover,
       &:focus {
         background-color: $color-background;

@@ -1,36 +1,36 @@
-<div class="flyntComponent themeDark" is="flynt-grid-posts-slider">
+<div class="flyntComponent {{ options.theme }}" is="flynt-grid-posts-slider">
   <script type="application/json">{{ jsonData|json_encode }}</script>
   <div class="container">
-    {% if contentHtml %}
-      <div class="preContent">
-        {{ contentHtml|e('wp_kses_post')}}
+    {% if preContentHtml %}
+      <div class="preContent centerContentMaxWidth">
+        {{ preContentHtml|e('wp_kses_post')}}
       </div>
     {% endif %}
     <div data-slider class="gridPosts slider swiper-container">
       <div class="swiper-wrapper">
-        {% for post in posts %}
+        {% for item in items %}
           <div class="post swiper-slide">
-            <a class="post-link" href="{{ post.link }}" {{ post.target == '_blank' ? 'target="_blank" rel="noreferrer noopener"' }} title="{{ post.title|e }}">
-              {% if post.thumbnail %}
+            <a class="post-link" href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noreferrer noopener"' }} title="{{ item.title|e }}">
+              {% if item.thumbnail %}
                 <figure class="figure">
                   <img class="image lazyload"
-                    src="{{ post.thumbnail|resize(300, 200) }}"
+                    src="{{ item.thumbnail|resize(300, 200) }}"
                     srcset="{{ placeholderImage(300, 200) }}"
                     data-srcset="
-                      {{ post.thumbnail|resize(912, 608) }} 608w,
-                      {{ post.thumbnail|resize(600, 400) }} 600w,
-                      {{ post.thumbnail|resize(456, 304) }} 456w,
-                      {{ post.thumbnail|resize(300, 200) }} 300w"
+                      {{ item.thumbnail|resize(912, 608) }} 608w,
+                      {{ item.thumbnail|resize(600, 400) }} 600w,
+                      {{ item.thumbnail|resize(456, 304) }} 456w,
+                      {{ item.thumbnail|resize(300, 200) }} 300w"
                     data-sizes="auto"
-                    alt="{{ post.thumbnail.alt|e }}">
+                    alt="{{ item.thumbnail.alt|e }}">
                 </figure>
               {% endif %}
               <div class="content">
-                {% if post.post_date %}
-                  <time class="date" datetime="{{ post.post_date }}">{{ post.post_date | date }}</time>
+                {% if item.post_date %}
+                  <time class="date" datetime="{{ item.post_date }}">{{ item.post_date | date }}</time>
                 {% endif %}
                 <h3 class="h4 title">
-                  {{ post.title }}
+                  {{ item.title }}
                 </h3>
               </div>
             </a>
