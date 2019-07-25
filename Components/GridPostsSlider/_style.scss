@@ -1,14 +1,4 @@
 [is='flynt-grid-posts-slider'] {
-  padding: $component-spacing-mobile 0;
-
-  @media (min-width: $breakpoint-tablet) {
-    padding: $component-spacing-tablet 0;
-  }
-
-  @media (min-width: $breakpoint-desktop) {
-    padding: $component-spacing-desktop 0;
-  }
-
   .container {
     @include center;
 
@@ -24,6 +14,7 @@
   }
 
   .post {
+    color: $color-text;
     height: 100%;
     overflow: hidden;
     position: relative;
@@ -55,7 +46,7 @@
     }
 
     #{$heading-selectors} {
-      color: $color-text;
+      color: $color-headline;
     }
 
     .title {

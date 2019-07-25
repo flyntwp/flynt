@@ -1,16 +1,5 @@
 
 [is='flynt-grid-content-lists'] {
-  background-color: rgba(0, 0, 0, 0.03);
-  padding: $component-spacing-mobile 0;
-
-  @media (min-width: $breakpoint-tablet) {
-    padding: $component-spacing-tablet 0;
-  }
-
-  @media (min-width: $breakpoint-desktop) {
-    padding: $component-spacing-desktop 0;
-  }
-
   ul {
     @include reset-list;
   }
@@ -40,10 +29,16 @@
     @include reset-content-margins;
 
     background-color: $color-background;
+    color: $color-text;
     height: 100%;
+
+    #{$heading-selectors} {
+      color: $color-headline;
+    }
 
     li {
       border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      color: $color-text;
       padding: 5px 0;
 
       &:last-child {

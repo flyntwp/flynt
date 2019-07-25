@@ -2,7 +2,7 @@
   <div class="container centerMaxWidthContainer">
     {% if preContentHtml %}
       <div class="preContent">
-      {{ preContentHtml|e('wp_kses_post') }}
+        {{ preContentHtml|e('wp_kses_post') }}
       </div>
     {% endif %}
     <ul class="items">
@@ -20,6 +20,5 @@
       </li>
       {% endfor %}
     </ul>
-    </div>
   </div>
 </div>

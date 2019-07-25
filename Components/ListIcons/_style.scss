@@ -1,10 +1,4 @@
 [is='flynt-list-icons'] {
-  padding: $component-spacing-mobile 0;
-
-  @media (min-width: $breakpoint-desktop) {
-    padding: $component-spacing-desktop 0;
-  }
-
   .main {
     @include reset-content-margins;
 
@@ -56,11 +50,9 @@
       }
 
       &-content {
-        flex-grow: 1;
+        @include reset-content-margins;
 
-        #{$heading-selectors} {
-          padding-top: 0;
-        }
+        flex-grow: 1;
       }
 
       &-link {

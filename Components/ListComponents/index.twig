@@ -1,5 +1,10 @@
-<div class="flyntComponent" is="flynt-list-components">
+<div class="flyntComponent {{ options.theme }}" is="flynt-list-components">
   <div class="container centerMaxWidthContainer">
+    {% if preContentHtml %}
+      <div class="preContent">
+        {{ preContentHtml|e('wp_kses_post')}}
+      </div>
+    {% endif %}
     <ul class="components">
       {% for componentBlock in componentBlocks %}
         {% if componentBlock.readme %}

@@ -1,18 +1,4 @@
 [is='flynt-list-logos'] {
-  padding: $component-spacing-mobile 0;
-
-  @media (min-width: $breakpoint-tablet) {
-    padding: $component-spacing-tablet 0;
-  }
-
-  @media (min-width: $breakpoint-desktop) {
-    padding: $component-spacing-desktop 0;
-  }
-
-  .container {
-    @include center;
-  }
-
   .list {
     @include reset-list;
     @include grid(2, center, 12px, 12px);

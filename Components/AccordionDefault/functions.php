@@ -18,6 +18,13 @@ Api::registerFields('AccordionDefault', [
                 'button_label' => 'Add Accordion Panel',
                 'sub_fields' => [
                     [
+                        'label' => 'General',
+                        'name' => 'generalTab',
+                        'type' => 'tab',
+                        'placement' => 'top',
+                        'endpoint' => 0
+                    ],
+                    [
                         'label' => 'Panel Title',
                         'name' => 'panelTitle',
                         'type' => 'text'
@@ -33,6 +40,22 @@ Api::registerFields('AccordionDefault', [
                             'class' => 'autosize',
                         ],
                     ],
+                    [
+                        'label' => 'Options',
+                        'name' => 'optionsTab',
+                        'type' => 'tab',
+                        'placement' => 'top',
+                        'endpoint' => 0
+                    ],
+                    [
+                        'label' => '',
+                        'name' => 'options',
+                        'type' => 'group',
+                        'layout' => 'row',
+                        'sub_fields' => [
+                            Api::loadFields('FieldVariables', 'theme')
+                        ]
+                    ]
                 ],
             ],
         ],

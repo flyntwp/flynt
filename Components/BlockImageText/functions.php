@@ -10,6 +10,13 @@ Api::registerFields('BlockImageText', [
         'label' => 'Block: Image Text',
         'sub_fields' => [
             [
+                'label' => 'General',
+                'name' => 'generalTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
+            ],
+            [
                 'label' => 'Image Position',
                 'name' => 'imagePosition',
                 'type' => 'button_group',
@@ -38,6 +45,22 @@ Api::registerFields('BlockImageText', [
                 'wrapper' => [
                     'class' => 'autosize',
                 ],
+            ],
+            [
+                'label' => 'Options',
+                'name' => 'optionsTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
+                'label' => '',
+                'name' => 'options',
+                'type' => 'group',
+                'layout' => 'row',
+                'sub_fields' => [
+                    Api::loadFields('FieldVariables', 'theme')
+                ]
             ]
         ]
     ]
