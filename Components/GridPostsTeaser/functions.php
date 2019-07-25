@@ -112,26 +112,12 @@ Options::addTranslatable('GridPostsTeaser', [
         'type' => 'group',
         'sub_fields' => [
             [
-                'label' => 'Reading Time Label',
-                'name' => 'readingTime',
-                'type' => 'text',
-                'default_value' => 'min',
-                'required' => 1,
-            ],
-            [
                 'label' => 'All Posts Label',
                 'name' => 'allPosts',
                 'type' => 'text',
                 'default_value' => 'See More Posts',
                 'required' => 1,
-            ],
-            [
-                'label' => 'Read More Label',
-                'name' => 'readMore',
-                'type' => 'text',
-                'default_value' => 'Read More',
-                'required' => 1,
             ]
-        ],
+        ]
     ]
 ]);
