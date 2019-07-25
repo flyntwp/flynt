@@ -1,5 +1,26 @@
 [is='flynt-block-wysiwyg'] {
-  margin-bottom: $component-spacing-desktop;
+  margin: $component-spacing-mobile 0;
+
+  @media (min-width: $breakpoint-tablet) {
+    margin: $component-spacing-tablet 0;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    margin: $component-spacing-desktop 0;
+  }
+
+  @at-root .flyntComponent[class*='theme']#{&} {
+    margin: 0;
+    padding: $component-spacing-mobile 0;
+
+    @media (min-width: $breakpoint-tablet) {
+      padding: $component-spacing-tablet 0;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      padding: $component-spacing-desktop 0;
+    }
+  }
 
   .container {
     @include center;
