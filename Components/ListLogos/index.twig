@@ -1,10 +1,10 @@
 <div class="flyntComponent {{ options.card ? 'flyntComponent--card' }} {{ options.theme }}" is="flynt-list-logos">
   <div class="container">
     <div class="listLogos">
-      {% if preContent %}
-        <header class="preContent">
-          {{ preContent|e('wp_kses_post') }}
-        </header>
+      {% if preContentHtml %}
+        <div class="preContent">
+          {{ preContentHtml|e('wp_kses_post') }}
+        </div>
       {% endif %}
       <div class="content">
         <ul class="list">

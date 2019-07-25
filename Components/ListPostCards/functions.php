@@ -22,7 +22,7 @@ Api::registerFields('ListPostCards', [
         'label' => 'List: Post Cards',
         'sub_fields' => [
             [
-                'label' => 'Pre-Content',
+                'label' => 'Title',
                 'name' => 'preContentHtml',
                 'type' => 'wysiwyg',
                 'instructions' => 'Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.',
