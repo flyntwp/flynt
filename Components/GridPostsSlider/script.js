@@ -36,21 +36,22 @@ class GridPostsSlider extends window.HTMLDivElement {
     const { options } = this.props
     const config = {
       a11y: options.a11y,
-      spaceBetween: 23,
+      spaceBetween: 24, // $gutter-width
       pagination: {
         el: this.$pagination,
         clickable: true
       },
-      slidesPerView: 4,
+      slidesPerView: 1,
+      breakpointsInverse: true,
       breakpoints: {
         480: {
-          slidesPerView: 1
-        },
-        768: {
           slidesPerView: 2
         },
-        1024: {
+        768: {
           slidesPerView: 3
+        },
+        1280: {
+          slidesPerView: 4
         }
       }
     }
