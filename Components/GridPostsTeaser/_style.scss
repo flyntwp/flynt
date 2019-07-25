@@ -23,6 +23,7 @@
   .grid {
     @include reset-list;
     @include grid(1, center);
+
     margin-bottom: 4.375rem;
 
     @for $i from 2 through 4 {
@@ -76,19 +77,17 @@
     }
 
     &-block {
-      max-width: 55%; // Limit pill width in case of long copy
+      max-width: 55%; // Prevent overflow in case of long text
     }
   }
 
   .time {
     align-items: center;
     display: flex;
-    margin: 0;
 
     &-icon,
     &-main {
-      color: $color-background-dark;
-      margin: 0;
+      color: $color-contrast;
     }
 
     &-icon {
