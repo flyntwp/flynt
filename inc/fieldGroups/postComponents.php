@@ -15,6 +15,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'type' => 'flexible_content',
                 'button_label' => 'Add Component',
                 'layouts' => [
+                    Api::loadFields('BlockCollapse', 'layout'),
                     Api::loadFields('BlockImage', 'layout'),
                     Api::loadFields('BlockWysiwyg', 'layout'),
                     Api::loadFields('BlockWysiwygTwoCol', 'layout'),
