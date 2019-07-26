@@ -97,11 +97,9 @@ body {
     color: $color-background;
   }
 
-  @media (min-width: $breakpoint-tablet) {
-    a:hover,
-    a:focus {
-      color: $color-background-dark;
-    }
+  a:hover,
+  a:focus {
+    color: $color-background-dark;
   }
 
   .button {
@@ -166,11 +164,9 @@ body {
     color: $color-accent;
   }
 
-  @media (min-width: $breakpoint-tablet) {
-    a:hover,
-    a:focus {
-      color: darken($color-accent, 10%);
-    }
+  a:hover,
+  a:focus {
+    color: darken($color-accent, 10%);
   }
 
   .button {
@@ -178,13 +174,11 @@ body {
     border-color: $color-accent;
     color: $color-background;
 
-    @media (min-width: $breakpoint-tablet) {
-      &:hover,
-      &:focus {
-        background-color: $color-background-dark;
-        border-color: $color-background-dark;
-        color: $color-background;
-      }
+    &:hover,
+    &:focus {
+      background-color: $color-background-dark;
+      border-color: $color-background-dark;
+      color: $color-background;
     }
 
     &--ghost {
@@ -192,13 +186,11 @@ body {
       border-color: $color-accent;
       color: $color-accent;
 
-      @media (min-width: $breakpoint-tablet) {
-        &:hover,
-        &:focus {
-          background-color: transparent;
-          border-color: $color-background-dark;
-          color: $color-background-dark;
-        }
+      &:hover,
+      &:focus {
+        background-color: transparent;
+        border-color: $color-background-dark;
+        color: $color-background-dark;
       }
     }
 
@@ -380,14 +372,11 @@ h6,
 
 a {
   color: $color-accent;
+  transition: color 0.2s ease-out;
 
-  @media (min-width: $breakpoint-tablet) {
-    transition: color 0.2s ease-out;
-
-    &:hover,
-    &:focus {
-      color: darken($color-accent, 10%);
-    }
+  &:hover,
+  &:focus {
+    color: darken($color-accent, 10%);
   }
 }
 
@@ -534,13 +523,11 @@ button {
     pointer-events: none;
   }
 
-  @media (min-width: $breakpoint-tablet) {
-    &:hover,
-    &:focus {
-      background-color: $color-background-dark;
-      border-color: $color-background-dark;
-      color: $color-background;
-    }
+  &:hover,
+  &:focus {
+    background-color: $color-background-dark;
+    border-color: $color-background-dark;
+    color: $color-background;
   }
 
   &--ghost {
@@ -548,13 +535,11 @@ button {
     border-color: $color-accent;
     color: $color-accent;
 
-    @media (min-width: $breakpoint-tablet) {
-      &:hover,
-      &:focus {
-        background-color: transparent;
-        border-color: $color-background-dark;
-        color: $color-background-dark;
-      }
+    &:hover,
+    &:focus {
+      background-color: transparent;
+      border-color: $color-background-dark;
+      color: $color-background-dark;
     }
   }
 
