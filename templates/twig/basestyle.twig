@@ -24,63 +24,7 @@
         <p>Drops of rain could be heard hitting the pane, which made him feel quite sad. "How about if I sleep a little bit longer and forget all this <strong>nonsense</strong>", he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position. However hard he threw himself onto his right, he always rolled back to where he was.</p>
         <p>He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering legs, and only stopped when he began to feel a mild, dull pain there that he had never felt before.</p>
         <hr>
-        <div class="themeDefault boxPadding">
-          <h2>Default Theme</h2>
-          <p>Using the themeDefault class allows you to style a group of content with a default background and default text color.</p>
-           <p>
-            <a href="javascript:void(0)">Regular link</a><br><br>
-            <button type="button" class="button">Type Button</button><br><br>
-            <button type="button" class="button button--primary">Type Button Primary</button><br><br>
-            <button type="button" class="button button--secondary">Type Button Secondary</button>
-          </p>
-          <p>
-            <a class="button button--link" href="">Link Button Primary</a>
-            <button class="button button--link">Link Button Primary</button>
-          </p>
-        </div>
-        <div class="themeDark boxPadding">
-          <h2>Dark Theme</h2>
-          <p>Using the themeDark class allows you to style a group of content with a dark background and light text.</p>
-           <p>
-            <a href="javascript:void(0)">Regular link</a><br><br>
-            <button type="button" class="button">Type Button</button><br><br>
-            <button type="button" class="button button--primary">Type Button Primary</button><br><br>
-            <button type="button" class="button button--secondary">Type Button Secondary</button>
-          </p>
-          <p>
-            <a class="button button--link" href="">Link Button Primary</a>
-            <button class="button button--link">Link Button Primary</button>
-          </p>
-        </div>
-        <div class="themeLight boxPadding">
-          <h2>Light Theme</h2>
-          <p>Using the themeLight class allows you to style a group of content with a light background and dark text.</p>
-           <p>
-            <a href="javascript:void(0)">Regular link</a><br><br>
-            <button type="button" class="button">Type Button</button><br><br>
-            <button type="button" class="button button--primary">Type Button Primary</button><br><br>
-            <button type="button" class="button button--secondary">Type Button Secondary</button>
-          </p>
-          <p>
-            <a class="button button--link" href="">Link Button Primary</a>
-            <button class="button button--link">Link Button Primary</button>
-          </p>
-        </div>
-        <div class="themeHero boxPadding">
-          <h2>Hero Theme</h2>
-          <p>Using the themeHero class allows you to style a group of content with a hero background and dark text.</p>
-           <p>
-            <a href="javascript:void(0)">Regular link</a><br><br>
-            <button type="button" class="button">Type Button</button><br><br>
-            <button type="button" class="button button--primary">Type Button Primary</button><br><br>
-            <button type="button" class="button button--secondary">Type Button Secondary</button>
-          </p>
-          <p>
-            <a class="button button--link" href="">Link Button Primary</a>
-            <button class="button button--link">Link Button Primary</button>
-          </p>
-        </div>
-        <hr>
+        <h2>Form Elements</h2>
         <form>
           <p>Placing form elements on a page should just work without having to apply extra classes or custom wrapping elements. However, a <b>&lt;fieldset&gt;</b> element provides a nice opportunity to group multiple form elements.</p>
           <fieldset>
@@ -126,42 +70,89 @@
           <p><button type="button">A <b>&lt;button&gt;</b> element without a class should have its styles reset, so it can be used as a semantic tag on other interface elements, like the arrows of a slider, a closing &times; or a burger menu.</button></p>
           <p>
             <button type="button" class="button">Type Button</button>
-            <button type="button" class="button button--primary">Type Button Primary</button>
-            <button type="button" class="button button--secondary">Type Button Secondary</button>
+            <button type="button" class="button button--solid">Type Button Solid</button>
           </p>
           <p>
             <button type="submit" class="button">Type Submit Button</button>
-            <button type="submit" class="button button--primary">Type Submit Button Primary</button>
-            <button type="submit" class="button button--secondary">Type Submit Button Secondary</button>
+            <button type="submit" class="button button--solid">Type Submit Button Solid</button>
           </p>
           <p>
             <button type="reset" class="button">Type Reset Button</button>
-            <button type="reset" class="button button--primary">Type Reset Button Primary</button>
-            <button type="reset" class="button button--secondary">Type Reset Button Secondary</button>
+            <button type="reset" class="button button--solid">Type Reset Button Solid</button>
           </p>
           <p>
             <a class="button">Link Button</a>
-            <a class="button button--primary">Link Button Primary</a>
-            <a class="button button--secondary">Link Button Primary</a>
+            <a class="button button--solid">Link Button Solid</a>
           </p>
           <p>
             <button type="button" disabled class="button">Button Disabled</button>
-            <button type="button" disabled class="button button--primary">Button Primary Disabled</button>
-            <button type="button" disabled class="button button--secondary">Button Secondary Disabled</button>
+            <button type="button" disabled class="button button--solid">Button Solid Disabled</button>
           </p>
           <p>
-            <a class="button button--link" href="">Link Button Primary</a>
-            <button class="button button--link">Link Button Primary</button>
+            <a class="button button--small">Button Small</a>
+            <a class="button button--solid button--small">Button Solid Small</a>
           </p>
-          <p><button type="button" class="button button--block">Button Block</button></p>
-          <p><button type="button" class="button button--primary button--block">Button Primary Block</button></p>
-          <p><button type="button" class="button button--secondary button--block">Button Secondary Block</button></p>
           <p>
-            <a class="button button--small">Link Button Small</a>
-            <a class="button button--primary button--small">Link Button Primary Small</a>
-            <a class="button button--secondary button--small">Link Button Primary Small</a>
+            <a class="button button--link" href="">Button Link</a>
+            <button class="button button--link">Type Button Link</button>
           </p>
         </form>
+        <hr>
+        <h2>Helper Classes</h2>
+        <div class="boxPadding boxShadow">
+          <h3>Box Helpers</h3>
+          <p>Box helper classes can be used alone or in combination to ensure consistent styling across components.</p>
+          <ul>
+            <li>Using the <code>boxPadding</code> class allows you to style any content container as a responsive box.</li>
+            <li>Using the <code>boxShadow</code> class allows you to give any element a drop shadow.</li>
+          </ul>
+        </div>
+        <hr>
+        <h2>Themes</h2>
+        <div class="themeDark boxPadding">
+          <h3>Dark Theme</h3>
+          <p>Using the <code>themeDark</code> class allows you to style a group of content with a dark background and light text.</p>
+          <p>
+            <a href="javascript:void(0)">Regular link</a><br>
+            <a class="button button--link" href="javascript:void(0)">Button Link</a><br><br>
+            <button type="button" class="button">Button</button>
+            <button type="button" class="button button--solid">Button Solid</button>
+          </p>
+        </div>
+        <div class="themeLight boxPadding">
+          <h3>Light Theme</h3>
+          <p>Using the <code>themeLight</code> class allows you to style a group of content with a light background and dark text.</p>
+          <p>
+            <a href="javascript:void(0)">Regular link</a><br>
+            <a class="button button--link" href="javascript:void(0)">Button Link</a><br><br>
+            <button type="button" class="button">Button</button>
+            <button type="button" class="button button--solid">Button Solid</button>
+          </p>
+        </div>
+        <div class="themeHero boxPadding">
+          <h3>Hero Theme</h3>
+          <p>Using the <code>themeHero</code> class allows you to style a group of content with a hero background and dark text.</p>
+          <p>
+            <a href="javascript:void(0)">Regular link</a><br>
+            <a class="button button--link" href="javascript:void(0)">Button Link</a><br><br>
+            <button type="button" class="button">Button</button>
+            <button type="button" class="button button--solid">Button Solid</button>
+          </p>
+        </div>
+        <div class="themeHero boxPadding">
+          <hr>
+          <div class="themeReset boxPadding">
+            <h2>Reset Theme</h2>
+            <p>Using the <code>themeReset</code> class allows you to revert the styles of a parent theme back to the inital styles.</p>
+            <p>
+              <a href="javascript:void(0)">Regular link</a><br>
+              <a class="button button--link" href="javascript:void(0)">Button Link</a><br><br>
+              <button type="button" class="button">Button</button>
+              <button type="button" class="button button--solid">Button Solid</button>
+            </p>
+          </div>
+          <hr>
+        </div>
         <hr>
         <h2>Lists are very common and may be nested</h2>
         <p>Make sure you're not resetting all list elements, because that might come in handy for styling other layout elements, but remain their purpose for formatted text.</p>

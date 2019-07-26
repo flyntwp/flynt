@@ -16,7 +16,7 @@ Api::registerFields('FieldVariables', [
         'ui' => 0,
         'ajax' => 0,
         'choices' => [
-            '' => '-',
+            '' => '(none)',
             'themeDefault' => 'Default',
             'themeLight' => 'Light',
             'themeDark' => 'Dark',

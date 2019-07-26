@@ -9,7 +9,7 @@
     <div data-slider class="gridPosts slider swiper-container">
       <div class="swiper-wrapper">
         {% for item in items %}
-          <div class="post swiper-slide">
+          <div class="post themeReset swiper-slide">
             <a class="post-link" href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noreferrer noopener"' }} title="{{ item.title|e }}">
               {% if item.thumbnail %}
                 <figure class="figure">

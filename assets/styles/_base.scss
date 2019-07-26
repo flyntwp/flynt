@@ -37,10 +37,6 @@ body {
   overflow-x: hidden;
 }
 
-.themeDefault {
-  background-color: $color-background;
-}
-
 .themeDark {
   background-color: $color-background-dark;
 
@@ -50,27 +46,19 @@ body {
   }
 
   .button {
-    &:not(.button--primary):not(.button--secondary):not(.button--link) {
-      background: $color-background-dark;
-
-      &:hover,
-      &:focus {
-        border-color: $color-background-hero;
-        color: $color-background-hero;
-      }
+    &:hover,
+    &:focus {
+      border-color: $color-background-hero;
+      color: $color-background-hero;
     }
 
-    &--primary {
+    &--solid {
       &:hover,
       &:focus {
         background: $color-background-hero;
         border-color: $color-background-hero;
+        color: $color-background;
       }
-    }
-
-    &--secondary {
-      background: $color-background-hero;
-      border-color: $color-background-hero;
     }
 
     &--link {
@@ -95,12 +83,6 @@ body {
 
 .themeLight {
   background-color: $color-background-light;
-
-  .button {
-    &:not(.button--primary):not(.button--secondary):not(.button--link) {
-      background: $color-background-light;
-    }
-  }
 }
 
 .themeHero {
@@ -121,19 +103,16 @@ body {
   }
 
   .button {
-    &:not(.button--primary):not(.button--secondary):not(.button--link) {
-      background: $color-background-hero;
-      border-color: $color-background;
-      color: $color-background;
+    border-color: $color-background;
+    color: $color-background;
 
-      &:hover,
-      &:focus {
-        border-color: $color-background-dark;
-        color: $color-background-dark;
-      }
+    &:hover,
+    &:focus {
+      border-color: $color-background-dark;
+      color: $color-background-dark;
     }
 
-    &--primary {
+    &--solid {
       background: $color-background;
       border-color: $color-background;
       color: $color-background-dark;
@@ -143,18 +122,6 @@ body {
         background: $color-background-dark;
         border-color: $color-background-dark;
         color: $color-background;
-      }
-    }
-
-    &--secondary {
-      background: $color-background-dark;
-      border-color: $color-background-dark;
-
-      &:hover,
-      &:focus {
-        background: $color-background;
-        border-color: $color-background;
-        color: $color-background-dark;
       }
     }
 
@@ -179,6 +146,70 @@ body {
         $color-background-rgb: red($color-background), green($color-background), blue($color-background);
 
         background: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.586 5L.293 8.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4A1 1 0 1 0 .293 1.707L3.586 5z' fill='rgb(#{$color-background-rgb})'/%3E%3Cpath d='M13.586 5l-3.293 3.293a1 1 0 0 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4a1 1 0 0 0-1.414 1.414L13.586 5z' fill='rgb(#{$color-background-dark-rgb}'/%3E%3C/svg%3E") left center no-repeat;
+      }
+    }
+  }
+}
+
+.themeReset {
+  background-color: $color-background;
+  color: $color-text;
+
+  #{$heading-selectors} {
+    color: $color-headline;
+  }
+
+  a,
+  .feather {
+    color: $color-accent;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    a:hover,
+    a:focus {
+      color: darken($color-accent, 10%);
+    }
+  }
+
+  .button {
+    border-color: $color-accent;
+    color: $color-accent;
+
+    &--solid {
+      background-color: $color-accent;
+      border-color: $color-accent;
+      color: $color-background;
+
+      @media (min-width: $breakpoint-tablet) {
+        &:hover,
+        &:focus {
+          background-color: $color-background-dark;
+          color: $color-background;
+        }
+      }
+    }
+
+    &--link {
+      color: $color-accent;
+
+      &:hover,
+      &:focus {
+        color: $color-background-dark;
+
+        &::before {
+          background: $color-background-dark;
+        }
+      }
+
+      &::before {
+        background: $color-accent;
+      }
+
+      &::after {
+        $color-accent-rgb: red($color-accent), green($color-accent), blue($color-accent);
+        $color-background-dark-rgb: red($color-background-dark), green($color-background-dark), blue($color-background-dark);
+
+        background: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.586 5L.293 8.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4A1 1 0 1 0 .293 1.707L3.586 5z' fill='rgb(#{$color-accent-rgb})'/%3E%3Cpath d='M13.586 5l-3.293 3.293a1 1 0 0 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4a1 1 0 0 0-1.414 1.414L13.586 5z' fill='rgb(#{$color-background-dark-rgb}'/%3E%3C/svg%3E") left center no-repeat;
       }
     }
   }
@@ -463,7 +494,7 @@ button {
 
 .button {
   appearance: none;
-  background-color: $color-background;
+  background-color: transparent;
   border: 1px solid $color-accent;
   border-radius: 4px;
   color: $color-accent;
@@ -474,12 +505,11 @@ button {
   font-weight: 700;
   line-height: inherit;
   outline: 0;
-  padding: 1.25rem 2.125rem;
+  padding: 1rem 1.5rem;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  transition: background-color 0.2s ease, border-color 0.2s ease,
-    color 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   user-select: none;
 
   &:disabled,
@@ -497,7 +527,7 @@ button {
     }
   }
 
-  &--primary {
+  &--solid {
     background-color: $color-accent;
     border-color: $color-accent;
     color: $color-background;
@@ -511,32 +541,13 @@ button {
     }
   }
 
-  &--secondary {
-    background-color: $color-background-dark;
-    border-color: $color-background-dark;
-    color: $color-background;
-
-    @media (min-width: $breakpoint-tablet) {
-      &:hover,
-      &:focus {
-        background-color: $color-accent;
-        border-color: $color-accent;
-        color: $color-background;
-      }
-    }
-  }
-
-  &--block {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 400px;
-    text-align: center;
-    width: 100%;
+  &--small {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
   }
 
   &--link {
-    background: none;
+    background: transparent;
     border: 0;
     padding: 0;
     position: relative;
@@ -568,13 +579,10 @@ button {
     }
 
     &::after {
-      $color-accent-rgb: red($color-accent), green($color-accent),
-        blue($color-accent);
-      $color-background-dark-rgb: red($color-background-dark),
-        green($color-background-dark), blue($color-background-dark);
+      $color-accent-rgb: red($color-accent), green($color-accent), blue($color-accent);
+      $color-background-dark-rgb: red($color-background-dark), green($color-background-dark), blue($color-background-dark);
 
-      background: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.586 5L.293 8.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4A1 1 0 1 0 .293 1.707L3.586 5z' fill='rgb(#{$color-accent-rgb})'/%3E%3Cpath d='M13.586 5l-3.293 3.293a1 1 0 0 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4a1 1 0 0 0-1.414 1.414L13.586 5z' fill='rgb(#{$color-background-dark-rgb}'/%3E%3C/svg%3E")
-        left center no-repeat;
+      background: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.586 5L.293 8.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4A1 1 0 1 0 .293 1.707L3.586 5z' fill='rgb(#{$color-accent-rgb})'/%3E%3Cpath d='M13.586 5l-3.293 3.293a1 1 0 0 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4a1 1 0 0 0-1.414 1.414L13.586 5z' fill='rgb(#{$color-background-dark-rgb}'/%3E%3C/svg%3E") left center no-repeat;
       content: '';
       display: inline-block;
       height: 10px;
@@ -583,11 +591,6 @@ button {
       vertical-align: baseline;
       width: 6px;
     }
-  }
-
-  &--small {
-    font-size: 0.8125rem;
-    padding: 0.594rem 1.875rem;
   }
 }
 
