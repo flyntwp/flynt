@@ -1,47 +1,49 @@
-<div class="flyntComponent componentSpacing {{ options.theme }}" is="flynt-grid-posts-slider">
-  <script type="application/json">{{ jsonData|json_encode }}</script>
-  <div class="container">
-    {% if preContentHtml %}
-      <div class="preContent centerContentMaxWidth">
-        {{ preContentHtml|e('wp_kses_post')}}
-      </div>
-    {% endif %}
-    <div data-slider class="gridPosts slider swiper-container">
-      <div class="swiper-wrapper">
-        {% for item in items %}
-          <div class="post themeReset swiper-slide">
-            <a class="post-link" href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noreferrer noopener"' }} title="{{ item.title|e }}">
-              {% if item.thumbnail %}
-                <figure class="figure">
-                  <img class="image lazyload"
-                    src="{{ item.thumbnail|resize(300, 200) }}"
-                    srcset="{{ placeholderImage(300, 200) }}"
-                    data-srcset="
-                      {{ item.thumbnail|resize(912, 608) }} 608w,
-                      {{ item.thumbnail|resize(600, 400) }} 600w,
-                      {{ item.thumbnail|resize(456, 304) }} 456w,
-                      {{ item.thumbnail|resize(300, 200) }} 300w"
-                    data-sizes="auto"
-                    alt="{{ item.thumbnail.alt|e }}">
-                </figure>
-              {% endif %}
-              <div class="content">
-                {% if item.post_date %}
-                  <time class="date" datetime="{{ item.post_date }}">{{ item.post_date | date }}</time>
-                {% endif %}
-                <h3 class="h4 title">
-                  {{ item.title }}
-                </h3>
-              </div>
-            </a>
-          </div>
-        {% else %}
-          <p class="noPosts">{{ noPostsFoundText }}</p>
-        {% endfor %}
-      </div>
-      {% if posts %}
-        <div class="slider-pagination" data-slider-pagination></div>
+{% if items|length > 0 %}
+  <div class="flyntComponent componentSpacing {{ options.theme }}" is="flynt-grid-posts-slider">
+    <script type="application/json">{{ jsonData|json_encode }}</script>
+    <div class="container">
+      {% if preContentHtml %}
+        <div class="preContent centerContentMaxWidth">
+          {{ preContentHtml|e('wp_kses_post')}}
+        </div>
       {% endif %}
+      <div data-slider class="gridPosts slider swiper-container">
+        <div class="swiper-wrapper">
+          {% for item in items %}
+            <div class="post themeReset swiper-slide">
+              <a class="post-link" href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noreferrer noopener"' }} title="{{ item.title|e }}">
+                {% if item.thumbnail %}
+                  <figure class="figure">
+                    <img class="image lazyload"
+                      src="{{ item.thumbnail|resize(300, 200) }}"
+                      srcset="{{ placeholderImage(300, 200) }}"
+                      data-srcset="
+                        {{ item.thumbnail|resize(912, 608) }} 608w,
+                        {{ item.thumbnail|resize(600, 400) }} 600w,
+                        {{ item.thumbnail|resize(456, 304) }} 456w,
+                        {{ item.thumbnail|resize(300, 200) }} 300w"
+                      data-sizes="auto"
+                      alt="{{ item.thumbnail.alt|e }}">
+                  </figure>
+                {% endif %}
+                <div class="content">
+                  {% if item.post_date %}
+                    <time class="date" datetime="{{ item.post_date }}">{{ item.post_date | date }}</time>
+                  {% endif %}
+                  <h3 class="h4 title">
+                    {{ item.title }}
+                  </h3>
+                </div>
+              </a>
+            </div>
+          {% else %}
+            <p class="noPosts">{{ noPostsFoundText }}</p>
+          {% endfor %}
+        </div>
+        {% if posts %}
+          <div class="slider-pagination" data-slider-pagination></div>
+        {% endif %}
+      </div>
     </div>
   </div>
-</div>
+{% endif %}

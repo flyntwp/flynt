@@ -10,6 +10,7 @@ const POST_TYPE = 'post';
 
 add_filter('Flynt/addComponentData?name=GridPostsLatest', function ($data) {
     $postType = POST_TYPE;
+
     $data['taxonomies'] = $data['taxonomies'] ?: [];
 
     $data['items'] = Timber::get_posts([
@@ -19,7 +20,8 @@ add_filter('Flynt/addComponentData?name=GridPostsLatest', function ($data) {
             return $taxonomy->term_id;
         }, $data['taxonomies'])),
         'posts_per_page' => $data['options']['postCount'],
-        'ignore_sticky_posts' => 1
+        'ignore_sticky_posts' => 1,
+        'post__not_in' => array(get_the_ID())
     ]);
 
     $data['postTypeArchiveLink'] = get_post_type_archive_link($postType);

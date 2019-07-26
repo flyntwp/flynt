@@ -10,6 +10,7 @@ const POST_TYPE = 'post';
 
 add_filter('Flynt/addComponentData?name=GridPostsSlider', function ($data) {
     $postType = POST_TYPE;
+
     $data['taxonomies'] = $data['taxonomies'] ?: [];
 
     $data['items'] = Timber::get_posts([
@@ -18,8 +19,9 @@ add_filter('Flynt/addComponentData?name=GridPostsSlider', function ($data) {
         'category' => join(',', array_map(function ($taxonomy) {
             return $taxonomy->term_id;
         }, $data['taxonomies'])),
-        'posts_per_page'    => 12,
-        'ignore_sticky_posts' => 1
+        'posts_per_page' => 12,
+        'ignore_sticky_posts' => 1,
+        'post__not_in' => array(get_the_ID())
     ]);
 
     $translatableOptions = Options::get('translatableOptions', 'feature', 'SliderOptions');
