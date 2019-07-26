@@ -56,7 +56,7 @@ Api::registerFields('GridImageText', [
                         'tabs' => 'visual,text',
                         'media_upload' => 0,
                         'delay' => 1,
-                        'required' => true,
+                        'required' => false,
                         'wrapper' => [
                             'class' => 'autosize',
                             'width' => 60
