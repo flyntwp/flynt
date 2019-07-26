@@ -13,32 +13,42 @@
   }
 
   &.flyntComponent--sizeSmall {
-    .content {
-      max-width: 375px;
+    @at-root .single-post #{&} {
+      .content {
+        max-width: 375px;
+      }
     }
   }
 
   &.flyntComponent--sizeMedium {
-    .content {
-      max-width: $content-max-width;
+    @at-root .single-post #{&} {
+      .content {
+        max-width: $content-max-width;
+      }
     }
   }
 
   &.flyntComponent--sizeLarge {
-    .content {
-      max-width: 960px;
+    @at-root .single-post #{&} {
+      .content {
+        max-width: 960px;
+      }
     }
   }
 
   &.flyntComponent--sizeHuge {
-    .content {
-      max-width: $container-max-width;
+    @at-root .single-post #{&} {
+      .content {
+         max-width: $container-max-width;
+      }
     }
   }
 
   &.flyntComponent--sizeFull {
-    .content {
-      max-width: 100%;
+    @at-root .single-post #{&} {
+      .content {
+        max-width: 100%;
+      }
     }
   }
 
