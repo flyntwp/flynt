@@ -1,25 +1,19 @@
 
-    {% if loadMore %}
-        {% if pagination.next %}
-            <div class="pagination pagination--center">
-                <div class="pagination-loadMore">
-                <a data-action="loadMore" href="{{ pagination.next.link }}" class="button button--small">{{ labels.loadMore }}</a>
-                </div>
-            </div>
-        {% endif %}
-    {% else %}
-        <div class="pagination {% if not pagination.prev %} pagination--prevDisabled{% elseif not pagination.next %} pagination--nextDisabled{% endif %}">
-            {% if pagination.prev %}
-            <div class="pagination-prevLink">
-                <a href="{% if pagination.prev %}{{ pagination.prev.link }}{% else %}javascript:void(0){% endif %}"
-                    class="button button--small {% if not pagination.prev %}button--disabled{% endif %}"><i data-feather="arrow-left" class="arrow"></i> {{ labels.previous }}</a>
-            </div>
-            {% endif %}
-            {% if pagination.next %}
-            <div class="pagination-nextLink">
-                <a href="{% if pagination.next %}{{ pagination.next.link }}{% else %}javascript:void(0){% endif %}"
-                    class="button button--small {% if not pagination.next %}button--disabled{% endif %}">{{ labels.next }} <i data-feather="arrow-right" class="arrow"></i></a>
-            </div>
-            {% endif %}
-        </div>
+{% if loadMore %}
+  {% if pagination.next %}
+    <div class="pagination pagination--center">
+      <div class="pagination-loadMore">
+      <a data-action="loadMore" href="{{ pagination.next.link }}" class="button button--small">{{ labels.loadMore }}</a>
+      </div>
+    </div>
+  {% endif %}
+{% else %}
+  <div class="pagination {% if not pagination.prev %} pagination--prevDisabled{% endif %}">
+    {% if pagination.prev %}
+      <a href="{{ pagination.prev.link }}" class="pagination-prevLink button button--small"><i data-feather="arrow-left" class="arrow"></i> {{ labels.previous }}</a>
     {% endif %}
+    {% if pagination.next %}
+      <a href="{{ pagination.next.link }}" class="pagination-nextLink button button--small">{{ labels.next }} <i data-feather="arrow-right" class="arrow"></i></a>
+    {% endif %}
+  </div>
+{% endif %}
