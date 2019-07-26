@@ -10,6 +10,13 @@ Api::registerFields('GridTeaserTiles', [
         'label' => 'Grid: TeaserTiles',
         'sub_fields' => [
             [
+                'label' => 'General',
+                'name' => 'generalTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
                 'label' => 'Teaser Tiles',
                 'name' => 'teaserItems',
                 'type' => 'repeater',
@@ -96,6 +103,22 @@ Api::registerFields('GridTeaserTiles', [
                     ],
                 ],
             ],
+            [
+                'label' => 'Options',
+                'name' => 'optionsTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
+                'label' => '',
+                'name' => 'options',
+                'type' => 'group',
+                'layout' => 'row',
+                'sub_fields' => [
+                    Api::loadFields('FieldVariables', 'theme')
+                ]
+            ]
         ],
     ],
 ]);

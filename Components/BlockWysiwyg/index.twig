@@ -1,6 +1,6 @@
-<div is="flynt-block-wysiwyg" class="flyntComponent">
-  <div class="container">
-    <div class="content content--{{ textAlignment }}">
+<div class="flyntComponent {{ options.theme }}" is="flynt-block-wysiwyg">
+  <div class="container centerMaxWidthContainer">
+    <div class="content content--{{ textAlignment }} centerContentMaxWidth">
       {{ contentHtml|e('wp_kses_post') }}
     </div>
   </div>

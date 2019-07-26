@@ -1,21 +1,12 @@
+.mainContent [is='flynt-slider-image-gallery'] {
+  margin: 0;
+
+  &[class*='theme'] {
+    padding: 0;
+  }
+}
+
 [is='flynt-slider-image-gallery'] {
-  margin: $component-spacing-mobile 0;
-
-  @media (min-width: $breakpoint-desktop) {
-    margin: $component-spacing-desktop 0;
-  }
-
-  .preContent {
-    @include reset-content-margins;
-
-    margin-bottom: 1.5rem;
-    text-align: center;
-
-    @media (min-width: $breakpoint-desktop) {
-      margin-bottom: 3rem;
-    }
-  }
-
   .figure {
     margin: 0;
   }

@@ -1,6 +1,4 @@
 [is='flynt-list-components'] {
-  margin: $component-spacing-desktop 0;
-
   .components {
     @include reset-list;
     @include grid(1, center, $gutter-vertical: 48px);
@@ -16,7 +14,6 @@
 
   .component {
     background-color: $color-background;
-    box-shadow: 0 1px 26px 0 rgba(0, 0, 0, 0.06);
     display: flex;
     flex-wrap: wrap;
     max-width: $content-max-width;
@@ -47,15 +44,10 @@
 
       border-top: 1px solid $color-border;
       color: $color-text;
-      padding: 20px;
       position: relative;
 
       #{$heading-selectors} {
         color: $color-headline;
-      }
-
-      @media (min-width: $breakpoint-tablet-horizontal) {
-        padding: 30px;
       }
     }
 

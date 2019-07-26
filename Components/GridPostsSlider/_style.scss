@@ -13,17 +13,6 @@
     position: relative;
   }
 
-  .preContent {
-    @include reset-content-margins;
-
-    margin-bottom: 1.5rem;
-    text-align: center;
-
-    @media (min-width: $breakpoint-desktop) {
-      margin-bottom: 3rem;
-    }
-  }
-
   .gridPosts {
     display: flex;
     flex-wrap: wrap;
@@ -33,6 +22,7 @@
   }
 
   .post {
+    color: $color-text;
     height: 100%;
     overflow: hidden;
     position: relative;
@@ -64,7 +54,7 @@
     }
 
     #{$heading-selectors} {
-      color: $color-text;
+      color: $color-headline;
     }
 
     .title {
@@ -109,6 +99,19 @@
         &:focus {
           background-color: $color-background;
         }
+      }
+    }
+  }
+
+  &.themeDark,
+  &.themeHero {
+    .swiper-pagination-bullet {
+      background-color: rgba($color-background, 0.2);
+
+      &-active,
+      &:hover,
+      &:focus {
+        background-color: $color-background;
       }
     }
   }

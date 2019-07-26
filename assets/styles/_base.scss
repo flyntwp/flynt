@@ -190,12 +190,27 @@ body {
 
 .mainContent {
   > .flyntComponent {
-    &:first-child {
-      margin-top: 0;
+    margin: $component-spacing-mobile 0;
+
+    @media (min-width: $breakpoint-tablet) {
+      margin: $component-spacing-tablet 0;
     }
 
-    &:last-child {
-      margin-bottom: 0;
+    @media (min-width: $breakpoint-desktop) {
+      margin: $component-spacing-desktop 0;
+    }
+
+    &[class*='theme'] {
+      margin: 0;
+      padding: $component-spacing-mobile 0;
+
+      @media (min-width: $breakpoint-tablet) {
+        padding: $component-spacing-tablet 0;
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        padding: $component-spacing-desktop 0;
+      }
     }
   }
 }
@@ -217,13 +232,49 @@ body {
   max-width: $content-max-width;
 }
 
-.paddingBox {
+.boxPadding {
   @include reset-content-margins;
 
   padding: 20px;
 
   @media (min-width: $breakpoint-tablet-horizontal) {
     padding: 30px;
+  }
+}
+
+.boxShadow {
+  box-shadow: 0 1px 26px 0 rgba(0, 0, 0, 0.06);
+}
+
+.preContent {
+  @include reset-content-margins;
+
+  margin: 0 auto 32px;
+  max-width: $content-max-width;
+  text-align: center;
+
+  @media (min-width: $breakpoint-tablet) {
+    margin-bottom: $container-padding-tablet;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    margin-bottom: $container-padding-desktop;
+  }
+}
+
+.postContent {
+  @include reset-content-margins;
+
+  margin: 32px auto 0;
+  max-width: $content-max-width;
+  text-align: center;
+
+  @media (min-width: $breakpoint-tablet) {
+    margin-top: $container-padding-tablet;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    margin-top: $container-padding-desktop;
   }
 }
 
@@ -715,4 +766,23 @@ select {
       background-image: url('../assets/icons/check-circle.svg');
     }
   }
+}
+
+/**
+* 3.4 Pills
+*
+* Pill-looking elements.
+*/
+
+.pill {
+  background-color: $color-background-dark;
+  border-radius: 2em;
+  color: $color-background;
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 0.1rem 1rem;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  white-space: nowrap;
 }

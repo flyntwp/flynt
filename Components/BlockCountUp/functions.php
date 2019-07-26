@@ -11,13 +11,11 @@ Api::registerFields('BlockCountUp', [
         'label' => 'Block: Count Up',
         'sub_fields' => [
             [
-                'label' => '',
-                'name' => 'options',
-                'type' => 'group',
-                'layout' => 'row',
-                'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme')
-                ]
+                'label' => 'General',
+                'name' => 'generalTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
             ],
             [
                 'label' => 'Title',
@@ -356,8 +354,24 @@ Api::registerFields('BlockCountUp', [
                         'name' => 'subtitle',
                         'type' => 'text'
                     ],
-                ]
+                ],
             ],
+            [
+                'label' => 'Options',
+                'name' => 'optionsTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
+                'label' => '',
+                'name' => 'options',
+                'type' => 'group',
+                'layout' => 'row',
+                'sub_fields' => [
+                    Api::loadFields('FieldVariables', 'theme')
+                ]
+            ]
         ]
     ]
 ]);

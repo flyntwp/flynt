@@ -10,6 +10,21 @@ Api::registerFields('AccordionDefault', [
         'label' => 'Accordion: Default',
         'sub_fields' => [
             [
+                'label' => 'General',
+                'name' => 'generalTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
+                'label' => 'Title',
+                'name' => 'preContentHtml',
+                'type' => 'wysiwyg',
+                'tabs' => 'visual,text',
+                'media_upload' => 0,
+                'delay' => 1
+            ],
+            [
                 'label' => 'Accordion Panels',
                 'name' => 'accordionPanels',
                 'type' => 'repeater',
@@ -35,6 +50,22 @@ Api::registerFields('AccordionDefault', [
                     ],
                 ],
             ],
+            [
+                'label' => 'Options',
+                'name' => 'optionsTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
+                'label' => '',
+                'name' => 'options',
+                'type' => 'group',
+                'layout' => 'row',
+                'sub_fields' => [
+                    Api::loadFields('FieldVariables', 'theme')
+                ]
+            ]
         ],
     ],
 ]);

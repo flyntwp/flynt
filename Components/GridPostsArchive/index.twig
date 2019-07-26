@@ -1,7 +1,7 @@
 
 <div class="flyntComponent {{ options.theme }}" is="flynt-grid-posts-archive">
   <div class="container centerMaxWidthContainer">
-    <div class="preContent centerContentMaxWidth">
+    <div class="preContent">
       <h1>{{ title }}</h1>
       {% set html = isHome ? preContentHtml : description%}
       {{ html|e('wp_kses_post') }}

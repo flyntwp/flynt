@@ -10,21 +10,17 @@ const POST_TYPE = 'post';
 
 add_filter('Flynt/addComponentData?name=GridPostsTeaser', function ($data) {
     $postType = POST_TYPE;
+    $data['taxonomies'] = $data['taxonomies'] ?: [];
 
     $data['items'] = Timber::get_posts([
         'post_status' => 'publish',
         'post_type' => $postType,
-        'category' => $data['taxonomy'],
+        'category' => join(',', array_map(function ($taxonomy) {
+            return $taxonomy->term_id;
+        }, $data['taxonomies'])),
         'posts_per_page' => $data['options']['postCount'],
         'ignore_sticky_posts' => 1
     ]);
-
-    if (!empty($data['items'])) {
-        $data['items'] = array_map(function ($item) {
-            $item->category = get_the_category($item)[0];
-            return $item;
-        }, $data['items']);
-    }
 
     $data['postTypeArchiveLink'] = get_post_type_archive_link($postType);
 
@@ -56,14 +52,14 @@ Api::registerFields('GridPostsTeaser', [
                 ],
             ],
             [
-                'label' => 'Category',
-                'name' => 'taxonomy',
+                'label' => 'Categories',
+                'name' => 'taxonomies',
                 'type' => 'taxonomy',
-                'instructions' => 'Select a category or leave empty to show from all posts.',
+                'instructions' => 'Select 1 or more categories or leave empty to show from all posts.',
                 'taxonomy' => 'category',
-                'field_type' => 'select',
-                'allow_null' => 0,
-                'multiple' => 0,
+                'field_type' => 'multi_select',
+                'allow_null' => 1,
+                'multiple' => 1,
                 'add_term' => 0,
                 'save_terms' => 0,
                 'load_terms' => 0,
@@ -112,26 +108,12 @@ Options::addTranslatable('GridPostsTeaser', [
         'type' => 'group',
         'sub_fields' => [
             [
-                'label' => 'Reading Time Label',
-                'name' => 'readingTime',
-                'type' => 'text',
-                'default_value' => 'min',
-                'required' => 1,
-            ],
-            [
                 'label' => 'All Posts Label',
                 'name' => 'allPosts',
                 'type' => 'text',
                 'default_value' => 'See More Posts',
                 'required' => 1,
-            ],
-            [
-                'label' => 'Read More Label',
-                'name' => 'readMore',
-                'type' => 'text',
-                'default_value' => 'Read More',
-                'required' => 1,
             ]
-        ],
+        ]
     ]
 ]);

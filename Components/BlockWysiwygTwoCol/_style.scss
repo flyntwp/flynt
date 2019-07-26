@@ -1,21 +1,4 @@
 [is='flynt-block-wysiwyg-two-col'] {
-  padding: $component-spacing-mobile 0;
-
-  @media (min-width: $breakpoint-desktop) {
-    padding: $component-spacing-desktop 0;
-  }
-
-  .preContent {
-    @include reset-content-margins;
-
-    margin-bottom: 1.5rem;
-    text-align: center;
-
-    @media (min-width: $breakpoint-desktop) {
-      margin-bottom: 3rem;
-    }
-  }
-
   .content {
     @include reset-content-margins;
 

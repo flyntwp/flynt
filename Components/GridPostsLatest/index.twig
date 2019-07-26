@@ -1,14 +1,14 @@
 <div class="flyntComponent {{ options.theme }}" is="flynt-grid-posts-latest">
   <div class="container centerMaxWidthContainer">
     {% if preContentHtml %}
-      <div class="preContent centerContentMaxWidth">
+      <div class="preContent">
         {{ preContentHtml|e('wp_kses_post') }}
       </div>
     {% endif %}
-    <ul class="grid grid--length{{ items|length }}">
+    <ul class="grid grid--length{{ options.postCount }}">
       {% for item in items %}
         <li class="grid-item">
-          <div class="content">
+          <div class="content boxShadow">
             <a href="{{ item.link }}" class="content-link">
               <img class="content-image lazyload"
                 src="{{ item.thumbnail|resize(750, 500) }}"
@@ -23,7 +23,7 @@
                   {{ item.thumbnail|resize(312, 208) }} 312w"
                 data-sizes="auto"
                 alt="{{ item.thumbnail.alt|e }}">
-              <div class="content-inner">
+              <div class="content-inner boxPadding">
                 <h3 class="content-title">{{ item.title }}</h3>
                 <p class="content-excerpt">{{ item.preview.read_more(false).length(18) }}</p>
               </div>

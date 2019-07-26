@@ -17,6 +17,13 @@ Api::registerFields('BlockWysiwygTwoCol', [
                 'endpoint' => 0
             ],
             [
+                'label' => 'General',
+                'name' => 'generalTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
                 'label' => 'Title',
                 'name' => 'preContentHtml',
                 'type' => 'wysiwyg',

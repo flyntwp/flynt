@@ -10,6 +10,13 @@ Api::registerFields('ListTestimonialCards', [
         'label' => 'List: TestimonialCards',
         'sub_fields' => [
             [
+                'label' => 'General',
+                'name' => 'generalTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
                 'label' => 'Pre-Content',
                 'name' => 'preContentHtml',
                 'type' => 'wysiwyg',
@@ -42,6 +49,22 @@ Api::registerFields('ListTestimonialCards', [
                             'class' => 'autosize',
                         ],
                     ]
+                ]
+            ],
+            [
+                'label' => 'Options',
+                'name' => 'optionsTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
+                'label' => '',
+                'name' => 'options',
+                'type' => 'group',
+                'layout' => 'row',
+                'sub_fields' => [
+                    Api::loadFields('FieldVariables', 'theme')
                 ]
             ]
         ]

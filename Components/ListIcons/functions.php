@@ -301,19 +301,19 @@ Api::registerFields('ListIcons', [
         'label' => 'List: Icons',
         'sub_fields' => [
             [
+                'label' => 'General',
+                'name' => 'generalTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
                 'label' => 'Title',
                 'name' => 'preContentHtml',
                 'type' => 'wysiwyg',
                 'tabs' => 'visual,text',
                 'media_upload' => 0,
                 'delay' => 1
-            ],
-            [
-                'label' => 'General',
-                'name' => 'generalTab',
-                'type' => 'tab',
-                'placement' => 'top',
-                'endpoint' => 0
             ],
             [
                 'label' => 'Items',

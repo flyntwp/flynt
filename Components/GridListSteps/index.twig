@@ -1,12 +1,14 @@
-<div class="flyntComponent" is="flynt-grid-list-steps">
+<div class="flyntComponent {{ options.theme }}" is="flynt-grid-list-steps">
   <div class="container centerMaxWidthContainer">
     {% if preContentHtml %}
-      <div class="preContent">{{ preContentHtml|e('wp_kses_post') }}</div>
+      <div class="preContent">
+        {{ preContentHtml|e('wp_kses_post') }}
+      </div>
     {% endif %}
     <ul class="stepsList">
       {% for step in stepList %}
         <li class="step">
-          <div class="content">
+          <div class="content boxPadding boxShadow">
             {{ step.contentHtml|e('wp_kses_post') }}
           </div>
         </li>
