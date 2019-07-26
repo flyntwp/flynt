@@ -41,16 +41,23 @@ class GridPostsSlider extends window.HTMLDivElement {
         el: this.$pagination,
         clickable: true
       },
-      slidesPerView: 4,
+      slidesPerView: 1,
+      breakpointsInverse: true, // mobile first
       breakpoints: {
         480: {
-          slidesPerView: 1
-        },
-        768: {
           slidesPerView: 2
         },
-        1024: {
+        768: {
           slidesPerView: 3
+        },
+        1024: {
+          slidesPerView: 4
+        },
+        1440: {
+          slidesPerView: 5
+        },
+        1920: {
+          slidesPerView: 6
         }
       }
     }
