@@ -1,14 +1,17 @@
-<div class="flyntComponent componentSpacing {{ options.theme }}" is="flynt-block-image">
+<div class="flyntComponent componentSpacing {{ options.theme }} {% if options.size %}flyntComponent--{{ options.size }}{% endif %}" is="flynt-block-image">
   <div class="container">
-    <div class="content centerMaxWidthContainer">
+    <div class="content">
       <figure class="figure">
         <img class="figure-image lazyload"
-          src="{{ image.src|resizeDynamic(1280) }}"
-          srcset="{{ placeholderImage(1280, 1280 / image.aspect) }}"
+          src="{{ image.src|resizeDynamic(1440) }}"
+          srcset="{{ placeholderImage(1440, 1440 / image.aspect) }}"
           data-srcset="
-            {{ image.src|resizeDynamic(1920) }} 1920w,
+            {{ image.src|resizeDynamic(1440) }} 1440w,
             {{ image.src|resizeDynamic(1280) }} 1280w,
+            {{ image.src|resizeDynamic(980) }} 980w,
             {{ image.src|resizeDynamic(750) }} 750w,
+            {{ image.src|resizeDynamic(640) }} 640w,
+            {{ image.src|resizeDynamic(420) }} 420w,
             {{ image.src|resizeDynamic(375) }} 375w"
           data-sizes="auto"
           alt="{{ image.alt|e }}">
