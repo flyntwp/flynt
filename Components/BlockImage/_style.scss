@@ -39,7 +39,7 @@
   &.flyntComponent--sizeHuge {
     @at-root .single-post #{&} {
       .content {
-         max-width: $container-max-width;
+        max-width: $container-max-width;
       }
     }
   }
