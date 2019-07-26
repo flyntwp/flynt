@@ -13,12 +13,24 @@
   }
 
   .button {
-    margin-bottom: 0;
+    white-space: nowrap;
+  }
 
-    &--primary {
-      &:hover {
-        color: #fff;
-      }
+  .arrow {
+    color: $color-background;
+    height: 18px;
+    width: 16px;
+  }
+
+  &-nav--next {
+    .arrow {
+      margin-right: -5px;
+    }
+  }
+
+  &-nav--previous {
+    .arrow {
+      margin-left: -5px;
     }
   }
 }

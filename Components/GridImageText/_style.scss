@@ -54,18 +54,4 @@
       }
     }
   }
-
-  &.layoutCard {
-    .content {
-      background-color: $color-background;
-
-      &-inner {
-        color: $color-text;
-
-        #{$heading-selectors} {
-          color: $color-headline;
-        }
-      }
-    }
-  }
 }

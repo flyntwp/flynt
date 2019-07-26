@@ -1,11 +1,3 @@
-.mainContent [is='flynt-slider-image-gallery'] {
-  margin: 0;
-
-  &[class*='theme'] {
-    padding: 0;
-  }
-}
-
 [is='flynt-slider-image-gallery'] {
   .figure {
     margin: 0;
@@ -102,7 +94,7 @@
   }
 
   .sliderThumb {
-    margin: 1rem 0 0;
+    padding: 1rem 0;
 
     &-item {
       cursor: pointer;

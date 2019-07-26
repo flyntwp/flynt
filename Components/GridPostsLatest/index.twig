@@ -1,4 +1,4 @@
-<div class="flyntComponent {{ options.theme }}" is="flynt-grid-posts-latest">
+<div class="flyntComponent componentSpacing {{ options.theme }}" is="flynt-grid-posts-latest">
   <div class="container centerMaxWidthContainer">
     {% if preContentHtml %}
       <div class="preContent">
@@ -8,7 +8,7 @@
     <ul class="grid grid--length{{ options.postCount }}">
       {% for item in items %}
         <li class="grid-item">
-          <div class="content boxShadow">
+          <div class="content boxShadow themeReset">
             <a href="{{ item.link }}" class="content-link">
               <img class="content-image lazyload"
                 src="{{ item.thumbnail|resize(750, 500) }}"

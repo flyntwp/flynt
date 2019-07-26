@@ -13,10 +13,6 @@
     justify-content: flex-end;
   }
 
-  &--nextDisabled {
-    justify-content: flex-start;
-  }
-
   .button {
     white-space: nowrap;
   }
@@ -29,15 +25,13 @@
 
   &-nextLink {
     .arrow {
-      margin-left: 5px;
+      margin-right: -5px;
     }
-
   }
 
   &-prevLink {
     .arrow {
-      margin-right: 5px;
+      margin-left: -5px;
     }
-
   }
 }
