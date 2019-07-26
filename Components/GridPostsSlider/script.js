@@ -52,6 +52,12 @@ class GridPostsSlider extends window.HTMLDivElement {
         },
         1280: {
           slidesPerView: 4
+        },
+        1440: {
+          slidesPerView: 5
+        },
+        1920: {
+          slidesPerView: 6
         }
       }
     }
