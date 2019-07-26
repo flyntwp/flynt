@@ -90,8 +90,8 @@ function getConfig()
                         'selector' => 'a,button'
                     ],
                     [
-                        'title' => 'Button Solid',
-                        'classes' => 'button--solid',
+                        'title' => 'Button Ghost',
+                        'classes' => 'button--ghost',
                         'selector' => '.button'
                     ],
                     [

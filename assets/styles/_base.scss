@@ -37,6 +37,10 @@ body {
   overflow-x: hidden;
 }
 
+.themeLight {
+  background-color: $color-background-light;
+}
+
 .themeDark {
   background-color: $color-background-dark;
 
@@ -48,26 +52,28 @@ body {
   .button {
     &:hover,
     &:focus {
+      background-color: $color-background-hero;
       border-color: $color-background-hero;
-      color: $color-background-hero;
+      color: $color-background;
     }
 
-    &--solid {
+    &--ghost {
       &:hover,
       &:focus {
-        background: $color-background-hero;
+        background-color: transparent;
         border-color: $color-background-hero;
-        color: $color-background;
+        color: $color-background-hero;
       }
     }
 
     &--link {
       &:hover,
       &:focus {
+        background-color: transparent;
         color: $color-background;
 
         &::before {
-          background: $color-background;
+          background-color: $color-background;
         }
       }
 
@@ -79,10 +85,6 @@ body {
       }
     }
   }
-}
-
-.themeLight {
-  background-color: $color-background-light;
 }
 
 .themeHero {
@@ -103,33 +105,33 @@ body {
   }
 
   .button {
+    background-color: $color-background;
     border-color: $color-background;
-    color: $color-background;
+    color: $color-background-dark;
 
     &:hover,
     &:focus {
-      border-color: $color-background-dark;
-      color: $color-background-dark;
+      color: $color-background;
     }
 
-    &--solid {
-      background: $color-background;
+    &--ghost {
+      background-color: transparent;
       border-color: $color-background;
-      color: $color-background-dark;
+      color: $color-background;
 
       &:hover,
       &:focus {
-        background: $color-background-dark;
         border-color: $color-background-dark;
-        color: $color-background;
+        color: $color-background-dark;
       }
     }
 
     &--link {
+      background-color: transparent;
       color: $color-background;
 
       &::before {
-        background: $color-background;
+        background-color: $color-background;
       }
 
       &:hover,
@@ -137,7 +139,7 @@ body {
         color: $color-background-dark;
 
         &::before {
-          background: $color-background-dark;
+          background-color: $color-background-dark;
         }
       }
 
@@ -172,37 +174,50 @@ body {
   }
 
   .button {
+    background-color: $color-accent;
     border-color: $color-accent;
-    color: $color-accent;
+    color: $color-background;
 
-    &--solid {
-      background-color: $color-accent;
+    @media (min-width: $breakpoint-tablet) {
+      &:hover,
+      &:focus {
+        background-color: $color-background-dark;
+        border-color: $color-background-dark;
+        color: $color-background;
+      }
+    }
+
+    &--ghost {
+      background-color: transparent;
       border-color: $color-accent;
-      color: $color-background;
+      color: $color-accent;
 
       @media (min-width: $breakpoint-tablet) {
         &:hover,
         &:focus {
-          background-color: $color-background-dark;
-          color: $color-background;
+          background-color: transparent;
+          border-color: $color-background-dark;
+          color: $color-background-dark;
         }
       }
     }
 
     &--link {
+      background-color: transparent;
       color: $color-accent;
 
       &:hover,
       &:focus {
+        background-color: transparent;
         color: $color-background-dark;
 
         &::before {
-          background: $color-background-dark;
+          background-color: $color-background-dark;
         }
       }
 
       &::before {
-        background: $color-accent;
+        background-color: $color-accent;
       }
 
       &::after {
@@ -421,7 +436,7 @@ figcaption {
 }
 
 code {
-  background: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.05);
   padding: 0.1rem 0.3rem;
 }
 
@@ -494,10 +509,10 @@ button {
 
 .button {
   appearance: none;
-  background-color: transparent;
+  background-color: $color-accent;
   border: 1px solid $color-accent;
   border-radius: 4px;
-  color: $color-accent;
+  color: $color-background;
   cursor: pointer;
   display: inline-block;
   font-family: inherit;
@@ -522,21 +537,23 @@ button {
   @media (min-width: $breakpoint-tablet) {
     &:hover,
     &:focus {
+      background-color: $color-background-dark;
       border-color: $color-background-dark;
-      color: $color-background-dark;
+      color: $color-background;
     }
   }
 
-  &--solid {
-    background-color: $color-accent;
+  &--ghost {
+    background-color: transparent;
     border-color: $color-accent;
-    color: $color-background;
+    color: $color-accent;
 
     @media (min-width: $breakpoint-tablet) {
       &:hover,
       &:focus {
-        background-color: $color-background-dark;
-        color: $color-background;
+        background-color: transparent;
+        border-color: $color-background-dark;
+        color: $color-background-dark;
       }
     }
   }
@@ -547,8 +564,9 @@ button {
   }
 
   &--link {
-    background: transparent;
+    background-color: transparent;
     border: 0;
+    color: $color-accent;
     padding: 0;
     position: relative;
     text-transform: none;
@@ -556,10 +574,11 @@ button {
 
     &:hover,
     &:focus {
+      background-color: transparent;
       color: $color-background-dark;
 
       &::before {
-        background: $color-background-dark;
+        background-color: $color-background-dark;
       }
 
       &::after {
@@ -568,7 +587,7 @@ button {
     }
 
     &::before {
-      background: $color-accent;
+      background-color: $color-accent;
       bottom: 0;
       content: '';
       height: 1px;
@@ -695,7 +714,7 @@ select {
     width: 100%;
 
     &::before {
-      background: #fff;
+      background-color: #fff;
       border: 1px solid $color-border;
       border-radius: 2px;
       content: '';

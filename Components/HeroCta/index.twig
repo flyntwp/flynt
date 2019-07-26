@@ -5,7 +5,7 @@
     {% endif %}
     {% if buttonLink.url %}
       <p>
-        <a href="{{ buttonLink.url }}"{% if buttonLink.target %} target="{{ buttonLink.target }}" rel="noreferrer noopener"{% endif %} class="button button--solid">
+        <a href="{{ buttonLink.url }}"{% if buttonLink.target %} target="{{ buttonLink.target }}" rel="noreferrer noopener"{% endif %} class="button">
           {{ buttonLink.title|e }}
         </a>
       </p>
