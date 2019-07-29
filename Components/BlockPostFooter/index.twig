@@ -1,0 +1,30 @@
+<div class="flyntComponent" is="flynt-block-post-footer">
+  <div class="container">
+    <div class="blockPostFooter">
+      {% if post.terms('tag')  %}
+        <div class="blockPostFooter-tags">
+          <ul class="blockPostFooter-tagList">
+            {% for tag in post.terms('tag')  %}
+              <li class="blockPostFooter-tagItem"><a class="blockPostFooter-tagLink pill" href="{{ tag.link }}"><span itemprop="keywords">{{ tag }}</span></a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+      <div class="blockPostFooter-author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        {% if post.author.avatar %}
+          <a class="blockPostFooter-authorAvatar" href="{{ post.author.link|e('esc_url') }}" itemprop="url">
+            <img class="blockPostFooter-authorImage" src="{{ post.author.avatar }}" alt="{{ post.author.name|e }}" itemprop="image">
+          </a>
+        {% endif %}
+        <div class="blockPostFooter-authorInfo">
+          <a class="blockPostFooter-authorName" href="{{ post.author.link|e('esc_url') }}">
+            <span itemprop="name">{{ post.author.name|capitalize }}</span>
+          </a>
+          {% if post.author.description %}
+            <p class="blockPostFooter-authorDescription" itemprop="description">{{ post.author.description|e }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
