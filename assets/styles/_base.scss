@@ -135,45 +135,6 @@ body {
   }
 }
 
-.single-post {
-  .post {
-    &-header + .post-main {
-      margin: 1.375rem 0 0;
-
-      @media (min-width: $breakpoint-tablet) {
-        margin-top: 2rem;
-      }
-    }
-
-    &-main + .post-footer {
-      margin: 2.75rem 0 0;
-
-      @media (min-width: $breakpoint-tablet) {
-        margin-top: 3rem;
-      }
-    }
-
-    &-main,
-    &-related {
-      > .flyntComponent {
-        margin: 0;
-
-        &:not(:first-child) {
-          margin: 2rem 0 0;
-
-          @media (min-width: $breakpoint-tablet) {
-            margin-top: 2.5rem;
-          }
-
-          @media (min-width: $breakpoint-desktop) {
-            margin-top: 2.75rem;
-          }
-        }
-      }
-    }
-  }
-}
-
 /**
 * 3.0 Base Style
 *
