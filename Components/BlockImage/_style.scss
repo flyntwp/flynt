@@ -1,5 +1,52 @@
 [is='flynt-block-image'] {
-  .figure-caption {
-    position: absolute;
+  &.flyntComponent--sizeSmall,
+  &.flyntComponent--sizeMedium,
+  &.flyntComponent--sizeLarge,
+  &.flyntComponent--sizeHuge {
+    .container {
+      @include center;
+    }
+
+    .content {
+      margin: 0 auto;
+    }
+  }
+
+  &.flyntComponent--sizeSmall {
+    .content {
+      max-width: 375px;
+    }
+  }
+
+  &.flyntComponent--sizeMedium {
+    .content {
+      max-width: $content-max-width;
+    }
+  }
+
+  &.flyntComponent--sizeLarge {
+    .content {
+      max-width: 800px;
+    }
+  }
+
+  &.flyntComponent--sizeHuge {
+    .content {
+      max-width: $container-max-width;
+    }
+  }
+
+  &.flyntComponent--sizeFull {
+    .content {
+      max-width: 100%;
+    }
+  }
+
+  .figure {
+    margin: 0;
+
+    &-caption {
+      position: absolute;
+    }
   }
 }
