@@ -6,7 +6,7 @@
   // SPACING
   // -------------------------------------------------------------
 
-  .blockPostHeader {
+  .content {
     padding-top: 1.125rem;
 
     @media (min-width: $breakpoint-mobile-horizontal) {
@@ -56,7 +56,7 @@
       }
     }
 
-    &-meta + .blockPostHeader-intro {
+    &-meta + .content-intro {
       margin-top: 1rem;
 
       @media (min-width: $breakpoint-tablet) {
@@ -68,7 +68,7 @@
   // STYLE
   // -------------------------------------------------------------
 
-  .blockPostHeader {
+  .content {
     &-h1 {
       font-size: 2rem;
       line-height: 1.175;
