@@ -1,5 +1,5 @@
 <div class="flyntComponent" is="flynt-block-post-header">
-  <div class="container">
+  <div class="container centerMaxWidthContainer">
     <div class="blockPostHeader">
       <div class="blockPostHeader-title">
         <h1 class="blockPostHeader-h1">{{ post.title }}</h1>
@@ -7,17 +7,20 @@
       <div class="blockPostHeader-meta">
         {% if post.date %}
           <time class="blockPostHeader-date">{{ post.date|date }}</time> {{ generalTranslatable.authorDivider|e }}
+          <meta itemprop="dateModified" content="{{ post.dateModified|date('c') }}">
         {% endif %}
-        {{ generalTranslatable.postedByLabel|e }} <a class="blockPostHeader-author" href="{{ post.author.link|e('esc_url') }}">{{ post.author.name|capitalize }}</a>
+        {{ generalTranslatable.postedByLabel|e }} <a class="blockPostHeader-author" href="{{ post.author.link|e('esc_url') }}">{{ post.author.name }}</a>
         {{ generalTranslatable.postedInLabel|e }} <a class="blockPostHeader-category" href="{{ post.category.link|e('esc_url') }}">{{ post.category }}</a>
         {{ generalTranslatable.readingtimeDivider|e }} <span class="blockPostHeader-readingtime">{{ post.content|readingtime }} {{ generalTranslatable.readingtimeLabel|e }}</span>
       </div>
-      <div class="blockPostHeader-intro">
-        <p>{{ post.preview.read_more(false) }}</p>
-      </div>
+      {% if post.post_excerpt %}
+        <div class="blockPostHeader-intro">
+          <p class="h3">{{ post.post_excerpt }}</p>
+        </div>
+      {% endif %}
       {% if post.thumbnail %}
         <div class="blockPostHeader-media">
-          {% include 'Partials/Image/index.twig' with {image: post.thumbnail} only %}
+          {{ renderComponent('BlockImage', { image: post.thumbnail, options: { size: 'sizeLarge' } }) }}
         </div>
       {% endif %}
     </div>

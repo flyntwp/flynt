@@ -6,10 +6,6 @@
   // SPACING
   // -------------------------------------------------------------
 
-  .container {
-    @include center;
-  }
-
   .blockPostHeader {
     padding-top: 1.125rem;
 
@@ -22,12 +18,23 @@
     }
 
     &-meta,
-    &-media,
     &-intro {
       margin: 1.375rem 0 0;
 
       @media (min-width: $breakpoint-tablet) {
         margin-top: 1.625rem;
+      }
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    &-media {
+      margin: 1.25rem 0 0;
+
+      @media (min-width: $breakpoint-tablet) {
+        margin-top: 2.5rem;
       }
 
       &:first-child {
@@ -44,10 +51,8 @@
     }
 
     &-media {
-      .image {
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 800px;
+      [is='flynt-block-image'] {
+        margin-top: 0;
       }
     }
 
@@ -94,16 +99,18 @@
     }
 
     &-intro {
-      p {
-        font-size: 1.125rem;
-        margin: 0;
+      .h3 {
+        color: $color-text;
+        font-weight: 400;
 
-        @media (min-width: $breakpoint-tablet) {
-          font-size: 1.25rem;
+        &:first-child {
+          padding-top: 0;
+        }
+
+        &:only-child {
+          margin-bottom: 0;
         }
       }
     }
   }
-
-  @import 'Partials/Image/style';
 }
