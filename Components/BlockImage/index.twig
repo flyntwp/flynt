@@ -1,4 +1,4 @@
-<div class="flyntComponent flyntComponent--{{ options.size }} {{ options.theme }} componentSpacing" is="flynt-block-image">
+<div class="flyntComponent flyntComponent--{{ options.size }} {{ options.theme }} {{ noComponentSpacing == true ? '' : 'componentSpacing' }}" is="flynt-block-image">
   <div class="container{% if options.size != 'sizeFull' %} centerMaxWidthContainer{% endif %}">
     <figure class="figure">
       <img class="figure-image lazyload"

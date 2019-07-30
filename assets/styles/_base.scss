@@ -135,6 +135,12 @@ body {
   }
 }
 
+.post {
+  &-main {
+    @include reset-content-margins;
+  }
+}
+
 /**
 * 3.0 Base Style
 *
@@ -152,8 +158,8 @@ body {
 h1,
 .h1 {
   font-size: 2.25rem;
-  line-height: 1.125;
-  margin-bottom: 1rem;
+  line-height: 1.175;
+  margin-bottom: 1.5rem;
   padding-top: 2rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
@@ -175,7 +181,7 @@ h2,
 h3,
 .h3 {
   font-size: 1.125rem;
-  padding-top: 0.8rem;
+  padding-top: 1rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
     font-size: 1.25rem;
