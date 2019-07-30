@@ -1,0 +1,47 @@
+[is='flynt-block-post-footer'] {
+  .tags {
+    @include reset-list;
+
+    &-item {
+      display: inline-block;
+      margin-top: 5px;
+    }
+
+    &-itemLink {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.45rem 1.625rem;
+      text-decoration: none;
+    }
+  }
+
+  .author {
+    display: flex;
+    margin: 3rem 0;
+
+    &-avatarLink {
+      flex-shrink: 0;
+    }
+
+    &-avatarImage {
+      border-radius: 50%;
+      width: 80px;
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 1rem;
+
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        padding-left: 2rem;
+      }
+    }
+
+    &-description {
+      font-size: 14px;
+      margin: 0.5rem 0 0;
+    }
+  }
+}

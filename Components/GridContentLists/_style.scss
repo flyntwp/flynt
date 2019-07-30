@@ -1,20 +1,7 @@
 
 [is='flynt-grid-content-lists'] {
-  background-color: rgba(0, 0, 0, 0.03);
-  padding: $component-spacing-desktop 0;
-
-  .preContent {
-    @include reset-content-margins;
-
-    margin: 0 auto 50px;
-    max-width: $content-max-width;
-    text-align: center;
-  }
-
   ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    @include reset-list;
   }
 
   .gridLinkList {
@@ -42,11 +29,16 @@
     @include reset-content-margins;
 
     background-color: $color-background;
+    color: $color-text;
     height: 100%;
-    padding: 25px 30px;
+
+    #{$heading-selectors} {
+      color: $color-headline;
+    }
 
     li {
       border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      color: $color-text;
       padding: 5px 0;
 
       &:last-child {

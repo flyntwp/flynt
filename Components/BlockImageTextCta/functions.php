@@ -40,7 +40,6 @@ Api::registerFields('BlockImageTextCta', [
                 'type' => 'wysiwyg',
                 'delay' => 1,
                 'media_upload' => 0,
-                'toolbar' => 'custom',
                 'required' => true
             ],
             [

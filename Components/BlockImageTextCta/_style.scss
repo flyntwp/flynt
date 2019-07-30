@@ -1,10 +1,4 @@
 [is='flynt-block-image-text-cta'] {
-  padding: $component-spacing-mobile 0;
-
-  @media (min-width: $breakpoint-desktop) {
-    padding: $component-spacing-desktop 0;
-  }
-
   .box {
     margin: 0 auto;
 

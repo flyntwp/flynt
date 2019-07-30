@@ -1,10 +1,8 @@
-<div class="flyntComponent" is="flynt-slider-image-gallery">
+<div class="flyntComponent {{ options.theme }}" is="flynt-slider-image-gallery">
   <script type="application/json">{{ jsonData|json_encode }}</script>
   {% if preContentHtml %}
-    <div class="centerMaxWidthContainer">
-      <div class="preContent centerContentMaxWidth">
-        {{ preContentHtml|e('wp_kses_post') }}
-      </div>
+    <div class="preContent">
+      {{ preContentHtml|e('wp_kses_post') }}
     </div>
   {% endif %}
   <div data-slider="main" class="swiper-container sliderMain">

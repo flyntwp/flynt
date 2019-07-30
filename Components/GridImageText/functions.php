@@ -21,7 +21,6 @@ Api::registerFields('GridImageText', [
                 'name' => 'preContentHtml',
                 'type' => 'wysiwyg',
                 'tabs' => 'visual,text',
-                'toolbar' => 'full',
                 'media_upload' => 0,
                 'delay' => 1,
                 'wrapper' => [
@@ -55,10 +54,9 @@ Api::registerFields('GridImageText', [
                         'name' => 'contentHtml',
                         'type' => 'wysiwyg',
                         'tabs' => 'visual,text',
-                        'toolbar' => 'full',
                         'media_upload' => 0,
                         'delay' => 1,
-                        'required' => true,
+                        'required' => false,
                         'wrapper' => [
                             'class' => 'autosize',
                             'width' => 60

@@ -1,22 +1,5 @@
 
 [is='flynt-grid-posts-latest'] {
-  padding: $component-spacing-mobile 0;
-
-  @media (min-width: $breakpoint-desktop) {
-    padding: $component-spacing-desktop 0;
-  }
-
-  .preContent {
-    @include reset-content-margins;
-
-    margin-bottom: 1.5rem;
-    text-align: center;
-
-    @media (min-width: $breakpoint-desktop) {
-      margin-bottom: 3rem;
-    }
-  }
-
   .grid {
     @include reset-list;
 
@@ -36,14 +19,18 @@
     }
 
     &--length3 {
-      @media (min-width: $breakpoint-tablet-horizontal) {
-        flex-wrap: nowrap;
+      .grid-item {
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          width: 33.33%;
+        }
       }
     }
 
     &--length4 {
-      @media (min-width: $breakpoint-desktop) {
-        flex-wrap: nowrap;
+      .grid-item {
+        @media (min-width: $breakpoint-desktop) {
+          width: 25%;
+        }
       }
     }
   }
@@ -55,8 +42,6 @@
   }
 
   .content {
-    background-color: $color-background;
-    box-shadow: 0 1px 26px 0 rgba(0, 0, 0, 0.06);
     display: flex;
     flex-wrap: wrap;
     height: 100%;
@@ -75,12 +60,6 @@
 
     &-inner {
       @include reset-content-margins;
-
-      padding: 20px;
-
-      @media (min-width: $breakpoint-tablet-horizontal) {
-        padding: 30px;
-      }
     }
 
     &-link {

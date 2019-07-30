@@ -9,75 +9,28 @@ $background-opacity: 0.4;
   display: flex;
   justify-content: center;
 
-  .container {
-    &--hasContainerWidth {
-      @include center(100%, $padding: 0);
-      position: relative;
-      width: 100%;
+  &:not(.fullWidth) .container {
+    @include center(100%, $padding: 0);
+
+    position: relative;
+    width: 100%;
+
+    @media (min-width: $breakpoint-tablet) {
+      @include center($container-max-width, $padding: 0);
+    }
+
+    .content-picture {
+      left: $container-padding-mobile;
+      right: $container-padding-mobile;
 
       @media (min-width: $breakpoint-tablet) {
-        @include center($container-max-width, $padding: 0);
+        left: $container-padding-tablet;
+        right: $container-padding-tablet;
       }
 
-      .content-picture {
-        @media (min-width: $breakpoint-tablet) {
-          left: $container-padding-tablet;
-          right: $container-padding-tablet;
-        }
-
-        @media (min-width: $breakpoint-desktop) {
-          left: $container-padding-desktop;
-          right: $container-padding-desktop;
-        }
-      }
-    }
-
-    &--themeDefault {
-      .content {
-        &-html {
-          color: $color-text;
-        }
-
-        &-background {
-          background-color: rgba($color-background, $background-opacity);
-        }
-      }
-    }
-
-    &--themeDark {
-      .content {
-        &-html {
-          color: $color-background;
-        }
-
-        &-background {
-          background-color: rgba($color-background-dark, $background-opacity);
-        }
-      }
-    }
-
-    &--themeHero {
-      .content {
-        &-html {
-          color: $color-background;
-        }
-
-        &-background {
-          background-color: rgba($color-background-hero, $background-opacity);
-        }
-      }
-
-    }
-
-    &--themeLight {
-      .content {
-        &-html {
-          color: $color-text;
-        }
-
-        &-background {
-          background-color: rgba($color-background-light, $background-opacity);
-        }
+      @media (min-width: $breakpoint-desktop) {
+        left: $container-padding-desktop;
+        right: $container-padding-desktop;
       }
     }
   }
@@ -97,7 +50,6 @@ $background-opacity: 0.4;
   }
 
   .content {
-
     align-content: center;
     display: flex;
     flex-direction: row;
@@ -125,13 +77,16 @@ $background-opacity: 0.4;
     &-html {
       @include reset-content-margins;
 
-      color: $color-background;
       position: relative;
       text-align: center;
       width: 100%;
 
-      #{$heading-selectors} {
-        color: inherit;
+      &:not([class*='theme']) {
+        color: #fff;
+
+        #{$heading-selectors} {
+          color: inherit;
+        }
       }
     }
 

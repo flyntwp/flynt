@@ -1,6 +1,11 @@
-<div class="flyntComponent" is="flynt-accordion-default">
+<div class="flyntComponent componentSpacing {{ options.theme }}" is="flynt-accordion-default">
   <div class="container centerMaxWidthContainer">
-    <div class="content">
+    {% if preContentHtml %}
+      <div class="preContent">
+        {{ preContentHtml|e('wp_kses_post')}}
+      </div>
+    {% endif %}
+    <div class="content centerContentMaxWidth">
       <ul class="accordion">
         {% for panel in accordionPanels %}
           <li class="panel">

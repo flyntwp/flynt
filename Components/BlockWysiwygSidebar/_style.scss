@@ -1,10 +1,4 @@
 [is='flynt-block-wysiwyg-sidebar'] {
-  padding: $component-spacing-mobile 0;
-
-  @media (min-width: $breakpoint-desktop) {
-    padding: $component-spacing-desktop 0;
-  }
-
   .contentWrapper {
     max-width: 800px;
 

@@ -1,5 +1,5 @@
-<div class="flyntComponent" is="flynt-hero-image-cta">
-  <div class="container {% if hasContainerWidth %}container--hasContainerWidth{% endif %} {% if theme %}container--{{ theme }}{% endif %}">
+<div class="flyntComponent {{ options.fullWidth == false ? "componentSpacing #{options.theme}" : '' }} {{ options.fullWidth ? 'fullWidth' : '' }}" is="flynt-hero-image-cta">
+  <div class="container">
     <div class="content-picture">
       <div class="content-background"></div>
       <picture>
@@ -14,10 +14,10 @@
             media="(min-width: 768px)">
           <img
             class="content-image lazyload
-              {{ alignImage.mobile.vertical }}
-              {{ alignImage.mobile.horizontal }}
-              {{ alignImage.desktop.vertical }}
-              {{ alignImage.desktop.horizontal }}"
+              {{ options.alignImage.mobile.vertical }}
+              {{ options.alignImage.mobile.horizontal }}
+              {{ options.alignImage.desktop.vertical }}
+              {{ options.alignImage.desktop.horizontal }}"
             srcset="
               {{ images.imageMobile.src| resize(375) }} 375w,
               {{ images.imageMobile.src | resize(750) }} 750w"
@@ -27,10 +27,10 @@
           {% else %}
             <img
               class="content-image
-                {{ alignImage.mobile.vertical }}
-                {{ alignImage.mobile.horizontal }}
-                {{ alignImage.desktop.vertical }}
-                {{ alignImage.desktop.horizontal }}"
+                {{ options.alignImage.mobile.vertical }}
+                {{ options.alignImage.mobile.horizontal }}
+                {{ options.alignImage.desktop.vertical }}
+                {{ options.alignImage.desktop.horizontal }}"
               srcset="
                 {{ images.imageDesktop.src | resize(2560) }} 2560w,
                 {{ images.imageDesktop.src | resize(2048) }} 2048w,
@@ -46,7 +46,7 @@
     </div>
     <div class="content">
       <div class="content-wrapper">
-        <div class="content-html">
+        <div class="content-html boxPadding {{ options.fullWidth and options.theme ? "#{options.theme} boxShadow" : '' }}">
           {{ contentHtml|e('wp_kses_post') }}
         </div>
       </div>

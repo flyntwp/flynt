@@ -85,14 +85,24 @@ function getConfig()
                 'icon' => '',
                 'items' => [
                     [
-                        'title' => 'Button Primary',
-                        'classes' => 'button button--primary',
-                        'selector' => 'a'
+                        'title' => 'Button',
+                        'classes' => 'button',
+                        'selector' => 'a,button'
                     ],
                     [
-                        'title' => 'Button Primary Block',
-                        'classes' => 'button button--primary button--block',
-                        'selector' => 'a'
+                        'title' => 'Button Ghost',
+                        'classes' => 'button--ghost',
+                        'selector' => '.button'
+                    ],
+                    [
+                        'title' => 'Button Small',
+                        'classes' => 'button--small',
+                        'selector' => '.button'
+                    ],
+                    [
+                        'title' => 'Button Link',
+                        'classes' => 'button--link',
+                        'selector' => '.button'
                     ]
                 ]
             ],
@@ -115,31 +125,7 @@ function getConfig()
                     'styleselect',
                     'bold',
                     'italic',
-                    'underline',
                     'strikethrough',
-                    '|',
-                    'bullist',
-                    'numlist',
-                    '|',
-                    'link',
-                    'unlink',
-                    '|',
-                    'wp_more',
-                    'pastetext',
-                    'removeformat',
-                    '|',
-                    'undo',
-                    'redo',
-                    'fullscreen'
-                ]
-            ],
-            'full' => [
-                [
-                    'formatselect',
-                    'styleselect',
-                    'bold',
-                    'italic',
-                    'underline',
                     'blockquote',
                     '|',
                     'bullist',
@@ -160,17 +146,13 @@ function getConfig()
                 [
                     'bold',
                     'italic',
-                    'underline',
-                    'blockquote',
-                    'bullist',
-                    'numlist',
-                    'alignleft',
-                    'aligncenter',
-                    'alignright',
-                    'undo',
-                    'redo',
+                    'strikethrough',
+                    '|',
                     'link',
                     'unlink',
+                    '|',
+                    'undo',
+                    'redo',
                     'fullscreen'
                 ]
             ]

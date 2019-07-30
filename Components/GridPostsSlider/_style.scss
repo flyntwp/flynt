@@ -1,25 +1,6 @@
 [is='flynt-grid-posts-slider'] {
-  padding: $component-spacing-mobile 0;
-
-  @media (min-width: $breakpoint-desktop) {
-    padding: $component-spacing-desktop 0;
-  }
-
   .container {
-    @include center;
-
     position: relative;
-  }
-
-  .preContent {
-    @include reset-content-margins;
-
-    margin-bottom: 1.5rem;
-    text-align: center;
-
-    @media (min-width: $breakpoint-desktop) {
-      margin-bottom: 3rem;
-    }
   }
 
   .gridPosts {
@@ -31,6 +12,7 @@
   }
 
   .post {
+    color: $color-text;
     height: 100%;
     overflow: hidden;
     position: relative;
@@ -45,7 +27,6 @@
     }
 
     &-link {
-      background-color: $color-background;
       display: block;
       outline: 0;
       text-decoration: none;
@@ -62,7 +43,7 @@
     }
 
     #{$heading-selectors} {
-      color: $color-text;
+      color: $color-headline;
     }
 
     .title {
@@ -79,27 +60,44 @@
     padding: 40px 0 0;
   }
 
-  .slider-pagination {
-    margin-top: 1.5rem;
-    text-align: center;
+  .slider {
+    padding: 0 $gutter-width;
 
-    @media (min-width: $breakpoint-desktop) {
-      margin-top: 3rem;
-    }
+    &-pagination {
+      margin-top: 1.5rem;
+      text-align: center;
 
-    .swiper-pagination-bullet {
-      background-color: rgba($color-background, 0.2);
-      height: 6px;
-      opacity: 1;
-      transition: width 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55), background-color 0.3s ease;
-      width: 6px;
-
-      &-active {
-        background-color: $color-background;
-        border-radius: 4px;
-        width: 20px;
+      @media (min-width: $breakpoint-desktop) {
+        margin-top: 3rem;
       }
 
+      .swiper-pagination-bullet {
+        background-color: rgba($color-contrast, 0.2);
+        height: 6px;
+        opacity: 1;
+        transition: width 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55), background-color 0.3s ease;
+        width: 6px;
+
+        &-active {
+          background-color: $color-contrast;
+          border-radius: 4px;
+          width: 20px;
+        }
+
+        &:hover,
+        &:focus {
+          background-color: $color-contrast;
+        }
+      }
+    }
+  }
+
+  &.themeDark,
+  &.themeHero {
+    .swiper-pagination-bullet {
+      background-color: rgba($color-background, 0.2);
+
+      &-active,
       &:hover,
       &:focus {
         background-color: $color-background;

@@ -1,15 +1,4 @@
 [is='flynt-grid-list-steps'] {
-  background-color: rgba(0, 0, 0, 0.03);
-  padding: $component-spacing-desktop 0;
-
-  .preContent {
-    @include reset-content-margins;
-
-    margin: 0 auto 50px;
-    max-width: $content-max-width;
-    text-align: center;
-  }
-
   .stepsList {
     counter-reset: section;
     display: flex;
@@ -38,8 +27,13 @@
     @include reset-content-margins;
 
     background-color: $color-background;
-    padding: 20px 15px 20px 60px;
+    color: $color-text;
+    padding-left: 60px;
     position: relative;
+
+    #{$heading-selectors} {
+      color: $color-headline;
+    }
 
     &::before {
       border: 2px solid $color-accent;
@@ -53,8 +47,12 @@
       line-height: 32px;
       position: absolute;
       text-align: center;
-      top: 20px;
+      top: 16px;
       width: 35px;
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        top: 25px;
+      }
     }
   }
 }

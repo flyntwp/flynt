@@ -1,10 +1,7 @@
 [is='flynt-block-not-found'] {
-  .container {
-    @include center;
-  }
-
   .content {
-    max-width: $content-max-width;
-    text-align: left;
+    @include reset-content-margins;
+
+    text-align: center;
   }
 }

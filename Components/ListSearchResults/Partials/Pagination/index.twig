@@ -1,10 +1,8 @@
 <div class="pagination">
-  <div class="pagination-prevLink">
-    <a href="{% if pagination.prev %}{{ pagination.prev.link }}{% else %}javascript:void(0){% endif %}"
-      class="button {% if pagination.prev %}button--primary{% else %}button--disabled{% endif %}">{{ previousLabel }}</a>
-  </div>
-  <div class="pagination-nextLink">
-    <a href="{% if pagination.next %}{{ pagination.next.link }}{% else %}javascript:void(0){% endif %}"
-      class="button {% if pagination.next %}button--primary{% else %}button--disabled{% endif %}">{{ nextLabel }}</a>
-  </div>
+  {% if pagination.prev %}
+    <a class="pagination-nav pagination-nav--previous button button--small" href="{{ pagination.prev.link }}"><i data-feather="arrow-left" class="arrow"></i> {{ previousLabel }}</a>
+  {% endif %}
+  {% if pagination.next %}
+    <a class="pagination-nav pagination-nav--next button button--small" href="{{ pagination.next.link }}">{{ nextLabel }} <i data-feather="arrow-right" class="arrow"></i></a>
+  {% endif %}
 </div>

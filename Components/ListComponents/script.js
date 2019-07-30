@@ -1,41 +1,53 @@
 import $ from 'jquery'
 
 class ListComponents extends window.HTMLDivElement {
-  constructor (self) {
-    self = super(self)
-    self.$ = $(self)
-    self.resolveElements()
+  constructor (...args) {
+    const self = super(...args)
+    self.init()
     return self
+  }
+
+  init () {
+    this.$ = $(this)
+    this.resolveElements()
+    this.bindFunctions()
   }
 
   resolveElements () {
     this.$window = $(window)
-    this.$componentScreenshotWrappers = $('.component-screenshotWrapper', this)
-    this.$componentScreenshotImages = $('.component-screenshotWrapper img', this)
+    this.$document = $(document)
+    this.$componentimageWrappers = $('.component-imageWrapper', this)
+    this.$componentScreenshotImages = $('.component-imageWrapper img', this)
+  }
+
+  bindFunctions () {
+    this.toggleHoverScroll = this.toggleHoverScroll.bind(this)
+    this.setParallaxConfig = this.setParallaxConfig.bind(this)
+    this.startParallaxScroll = this.startParallaxScroll.bind(this)
   }
 
   connectedCallback () {
-    if (this.$window.width() > 575) {
-      this.$.on('mouseenter mouseleave', this.$componentScreenshotWrappers.selector, this.toggleHoverScroll.bind(this))
+    if (this.$window.width() >= 1280) {
+      this.$.on('mouseenter mouseleave', '.component-link', this.toggleHoverScroll)
     } else {
-      this.$window.on('resize', this.setParallaxConfig.bind(this))
-      $(document).on('lazyloaded', this.setParallaxConfig.bind(this))
-      this.$window.on('scroll', this.startParallaxScroll.bind(this))
+      this.$window.on('resize', this.setParallaxConfig)
+      this.$document.on('lazyloaded', this.setParallaxConfig)
+      this.$window.on('scroll', this.startParallaxScroll)
     }
   }
 
   toggleHoverScroll (e) {
-    let $screenshotWrapper = $(e.currentTarget)
-    let $screenshotWrapperHeight = $screenshotWrapper.outerHeight()
-    let $image = $screenshotWrapper.find('img')
+    let $imageWrapper = $(e.currentTarget).find('.component-imageWrapper')
+    let $imageWrapperHeight = $imageWrapper.outerHeight()
+    let $image = $imageWrapper.find('img')
     let $imageHeight = $image.height()
 
-    if ($imageHeight > $screenshotWrapperHeight) {
+    if ($imageHeight > $imageWrapperHeight) {
       if (e.type === 'mouseenter') {
-        $image.css('transition', 'transform ' + (($imageHeight - $screenshotWrapperHeight) / $screenshotWrapperHeight) + 's cubic-bezier(0.215, 0.61, 0.355, 1)')
-        $image.css('transform', 'translateY(-' + ($imageHeight - $screenshotWrapperHeight) + 'px)')
+        $image.css('transition', 'transform ' + Math.max((($imageHeight - $imageWrapperHeight) / $imageWrapperHeight), 0.3) + 's cubic-bezier(0.215, 0.61, 0.355, 1)')
+        $image.css('transform', 'translateY(-' + ($imageHeight - $imageWrapperHeight) + 'px)')
       } else {
-        $image.css('transition', 'transform ' + (($imageHeight - $screenshotWrapperHeight) / $screenshotWrapperHeight) + 's cubic-bezier(0.23, 1, 0.32, 1)')
+        $image.css('transition', 'transform ' + Math.max((($imageHeight - $imageWrapperHeight) / $imageWrapperHeight), 0.3) + 's cubic-bezier(0.23, 1, 0.32, 1)')
         $image.css('transform', 'translateY(0)')
       }
     }
@@ -46,10 +58,10 @@ class ListComponents extends window.HTMLDivElement {
 
     this.$componentScreenshotImages.each((index, el) => {
       let $image = $(el)
-      let $screenshotWrapper = $image.parent()
+      let $imageWrapper = $image.parent()
 
-      let imageOverflow = $image.height() - $screenshotWrapper.outerHeight()
-      let topOffset = $screenshotWrapper.offset().top
+      let imageOverflow = $image.height() - $imageWrapper.outerHeight()
+      let topOffset = $imageWrapper.offset().top
       let startOffset = topOffset - windowHeight * 0.4
       let endOffset = topOffset - 100
 

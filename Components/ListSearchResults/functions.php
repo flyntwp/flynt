@@ -2,22 +2,15 @@
 
 namespace Flynt\Components\ListSearchResults;
 
+use Flynt\Api;
 use Flynt\Utils\Asset;
 use Flynt\Utils\Options;
 use Timber\Timber;
 
-add_filter('Flynt/addComponentData?name=ListSearchResults', function ($data) {
-    $data['prevIcon'] = Asset::getContents('Components/ListSearchResults/Assets/navigation-prev.svg');
-    $data['nextIcon'] = Asset::getContents('Components/ListSearchResults/Assets/navigation-next.svg');
-    $data['searchIcon'] = Asset::getContents('Components/ListSearchResults/Assets/search.svg');
-
-    return $data;
-});
-
 Options::addTranslatable('ListSearchResults', [
     [
-        'label' => 'Title Content',
-        'name' => 'searchTitleHtml',
+        'label' => 'Title',
+        'name' => 'preContentHtml',
         'type' => 'wysiwyg',
         'required' => 1,
         'default_value' => 'Search Result ',
@@ -29,7 +22,7 @@ Options::addTranslatable('ListSearchResults', [
         ],
     ],
     [
-        'label' => 'Search placeholder text',
+        'label' => 'Placeholder - Search',
         'name' => 'searchPlaceholder',
         'type' => 'text',
         'required' => 1,
@@ -37,17 +30,31 @@ Options::addTranslatable('ListSearchResults', [
         'instructions' => 'The text for the input field.'
     ],
     [
+        'label' => 'Label - Previous',
         'name' => 'previousLabel',
-        'label' => 'Previous Label',
         'type' => 'text',
         'default_value' => 'Previous',
         'required' => 1
     ],
     [
+        'label' => 'Label - Next',
         'name' => 'nextLabel',
-        'label' => 'Next Label',
         'type' => 'text',
         'default_value' => 'Next',
         'required' => 1
     ],
+    [
+        'label' => 'Label - Search',
+        'name' => 'search',
+        'type' => 'text',
+        'default_value' => 'Search',
+        'required' => 1
+    ],
+    [
+        'label' => 'Label - Read More',
+        'name' => 'readMore',
+        'type' => 'text',
+        'default_value' => 'Read More',
+        'required' => 1
+    ]
 ]);

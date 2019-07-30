@@ -1,15 +1,29 @@
 [is='flynt-block-image'] {
-  margin: $component-spacing-mobile 0;
-
-  @media (min-width: $breakpoint-tablet) {
-    margin: $component-spacing-tablet 0;
+  &.flyntComponent--sizeSmall {
+    .figure {
+      max-width: 375px;
+    }
   }
 
-  @media (min-width: $breakpoint-desktop) {
-    margin: $component-spacing-desktop 0;
+  &.flyntComponent--sizeMedium {
+    .figure {
+      max-width: $content-max-width;
+    }
   }
 
-  .figure-caption {
-    position: absolute;
+  &.flyntComponent--sizeLarge {
+    .figure {
+      max-width: 800px;
+    }
+  }
+
+  &.flyntComponent--sizeFull {
+    .figure-caption {
+      margin-left: 0.625rem;
+    }
+  }
+
+  .figure {
+    margin: 0 auto;
   }
 }

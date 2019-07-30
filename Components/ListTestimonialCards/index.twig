@@ -1,12 +1,14 @@
-<div class="flyntComponent" is="flynt-list-testimonial-cards">
+<div class="flyntComponent componentSpacing {{ options.theme }}" is="flynt-list-testimonial-cards">
   <div class="container centerMaxWidthContainer">
     {% if preContentHtml %}
-      <div class="preContent">{{ preContentHtml|e('wp_kses_post') }}</div>
+      <div class="preContent">
+        {{ preContentHtml|e('wp_kses_post') }}
+      </div>
     {% endif %}
     <ul class="testimonialsList">
       {% for testimonial in testimonials %}
         <li class="testimonial">
-          <div class="content">
+          <div class="content boxPadding boxShadow themeReset">
             {{- testimonial.contentHtml|e('wp_kses_post') -}}
           </div>
         </li>

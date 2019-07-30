@@ -1,16 +1,6 @@
 [is='flynt-grid-download-portrait'] {
-  margin: $component-spacing-desktop 0;
-
   .container {
     @include center;
-  }
-
-  .preContent {
-    @include reset-content-margins;
-
-    margin: 0 auto 1rem;
-    max-width: $content-max-width;
-    text-align: center;
   }
 
   .downloadList {

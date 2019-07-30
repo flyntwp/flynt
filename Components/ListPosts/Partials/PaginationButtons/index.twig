@@ -2,12 +2,12 @@
 <div class="paginationButtons">
   <div class="paginationButtons-prevWrapper">
     {% if pagination.prev %}
-      <a href="{{ pagination.prev.link }}" class="button button-primary">{{ previousLabel }}</a>
+      <a href="{{ pagination.prev.link }}" class="button button--small">{{ previousLabel }}</a>
     {% endif %}
   </div>
   <div class="paginationButtons-nextWrapper">
     {% if pagination.next %}
-      <a href="{{ pagination.next.link }}" class="button button-primary">{{ nextLabel }}</a>
+      <a href="{{ pagination.next.link }}" class="button button--small">{{ nextLabel }}</a>
     {% endif %}
   </div>
 </div>
