@@ -49,12 +49,12 @@ Api::registerFields('BlockImage', [
                         'layout' => 'horizontal',
                         'choices' => [
                             'sizeSmall' => 'Small',
-                            'sizeMedium' => 'Medium (Default)',
-                            'sizeLarge' => 'Large',
+                            'sizeMedium' => 'Medium',
+                            'sizeLarge' => 'Large (Default)',
                             'sizeHuge' => 'Huge',
                             'sizeFull' => 'Full',
                         ],
-                        'default_value' => 'sizeMedium',
+                        'default_value' => 'sizeLarge',
                         'wrapper' =>  [
                             'width' => '100',
                         ],

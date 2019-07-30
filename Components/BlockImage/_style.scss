@@ -1,49 +1,30 @@
 [is='flynt-block-image'] {
-  &.flyntComponent--sizeSmall,
-  &.flyntComponent--sizeMedium,
-  &.flyntComponent--sizeLarge,
-  &.flyntComponent--sizeHuge {
-    .container {
-      @include center;
-    }
-
-    .content {
-      margin: 0 auto;
-    }
-  }
-
   &.flyntComponent--sizeSmall {
-    .content {
+    .figure {
       max-width: 375px;
     }
   }
 
   &.flyntComponent--sizeMedium {
-    .content {
+    .figure {
       max-width: $content-max-width;
     }
   }
 
   &.flyntComponent--sizeLarge {
-    .content {
+    .figure {
       max-width: 800px;
     }
   }
 
-  &.flyntComponent--sizeHuge {
-    .content {
-      max-width: $container-max-width;
-    }
-  }
-
   &.flyntComponent--sizeFull {
-    .content {
-      max-width: 100%;
+    .figure-caption {
+      margin-left: 0.625rem;
     }
   }
 
   .figure {
-    margin: 0;
+    margin: 0 auto;
 
     &-caption {
       position: absolute;
