@@ -1,170 +1,46 @@
 [is='flynt-block-post-footer'] {
+  .tags {
+    @include reset-list;
 
-  // ##BLOCK-POST-FOOTER
-  // =============================================================
-
-  .container {
-    @include center;
-
-    @media (min-width: $content-max-width + 30) {
-      padding-left: 0;
-      padding-right: 0;
-    }
-  }
-
-  .content {
-    border-top: 1px solid #dce0e9;
-    margin: 0 auto;
-
-    @media (min-width: $content-max-width) {
-      max-width: $content-max-width;
-    }
-  }
-
-  // TAGS - SPACING
-  // -------------------------------------------------------------
-
-  .content {
-    &-tags {
-      padding: 1.625rem 0 0;
-
-      @media (min-width: $breakpoint-mobile-horizontal) {
-        padding-top: 1.75rem;
-      }
-
-      @media (min-width: $breakpoint-tablet) {
-        padding-top: 1.875rem;;
-      }
-    }
-  }
-
-  // TAGS - STYLE
-  // -------------------------------------------------------------
-
-  .content {
-    &-tagList {
-      @include reset-list;
-      display: flex;
-      flex-wrap: wrap;
+    &-item {
+      display: inline-block;
     }
 
-    &-tagItem {
-      &:not(:last-child) {
-        margin: 0 8px 0 0;
-
-        @media (min-width: $breakpoint-tablet) {
-          margin-right: 12px;
-        }
-      }
-    }
-
-    &-tagLink {
-      appearance: none;
-      cursor: pointer;
+    &-itemLink {
       font-size: 0.75rem;
       font-weight: 700;
-      line-height: 1.0875;
-      outline: 0;
-      padding: 0.625rem 1.25rem;
-      text-align: center;
+      padding: 0.45rem 1.625rem;
       text-decoration: none;
-      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-      user-select: none;
-
-      @media (min-width: $breakpoint-mobile-horizontal) {
-        padding: 0.625rem 1.625rem;
-      }
     }
   }
 
-  // AUTHOR - SPACING
-  // -------------------------------------------------------------
+  .author {
+    display: flex;
+    padding: 3rem 0;
 
-  .content {
-    &-author {
-      padding: 2.75rem 0;
-
-      @media (min-width: $breakpoint-tablet) {
-        padding-bottom: 3.5rem;
-        padding-top: 3.5rem;
-      }
+    &-avatarLink {
+      flex-shrink: 0;
     }
 
-    &-authorAvatar {
-      + .content-authorInfo {
-        margin: 2.375rem 0 0;
-        padding-left: 0;
-
-        @media (min-width: $breakpoint-mobile-horizontal) {
-          margin-top: 0;
-          padding-left: 2.25rem;
-        }
-
-        @media (min-width: $breakpoint-desktop) {
-          padding-left: 2.5rem;
-        }
-      }
-    }
-
-    &-authorDescription {
-      margin: 0.5rem 0 0;
-
-      @media (min-width: $breakpoint-tablet) {
-        margin-top: 0.625rem;
-      }
-
-      &:first-child {
-        margin-top: 0;
-      }
-    }
-  }
-
-  // AUTHOR - STYLE
-  // -------------------------------------------------------------
-
-  .content {
-    &-author {
-      display: block;
-      text-align: center;
-
-      @media (min-width: $breakpoint-mobile-horizontal) {
-        display: flex;
-        text-align: left;
-      }
-    }
-
-    &-authorAvatar {
-      display: block;
-      height: auto;
-      margin: 0 auto;
-      width: 80px;
-
-      @media (min-width: $breakpoint-mobile-horizontal) {
-        flex: 0 0 80px;
-        margin: 0;
-      }
-    }
-
-    &-authorImage {
+    &-avatarImage {
       border-radius: 50%;
+      width: 80px;
     }
 
-    &-authorInfo {
-      position: relative;
-    }
+    &-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 1rem;
 
-    &-authorName {
-      &:only-child {
-        @media (min-width: $breakpoint-mobile-horizontal) {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-        }
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        padding-left: 2rem;
       }
     }
 
-    &-authorDescription {
+    &-description {
       font-size: 14px;
+      margin: 0.5rem 0 0;
     }
   }
 }
