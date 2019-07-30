@@ -21,7 +21,7 @@
             {{ function('get_the_password_form') }}
           {% else %}
             {% block content %}
-              No <code>{{ '{% set content %}' }}</code> defined for this template.
+              No <code>{{ '{% block content %}' }}</code> defined for this template.
             {% endblock %}
           {% endif %}
         </main>

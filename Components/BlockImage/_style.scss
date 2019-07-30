@@ -1,5 +1,29 @@
 [is='flynt-block-image'] {
-  .figure-caption {
-    position: absolute;
+  &.flyntComponent--sizeSmall {
+    .figure {
+      max-width: 375px;
+    }
+  }
+
+  &.flyntComponent--sizeMedium {
+    .figure {
+      max-width: $content-max-width;
+    }
+  }
+
+  &.flyntComponent--sizeLarge {
+    .figure {
+      max-width: 800px;
+    }
+  }
+
+  &.flyntComponent--sizeFull {
+    .figure-caption {
+      margin-left: 0.625rem;
+    }
+  }
+
+  .figure {
+    margin: 0 auto;
   }
 }

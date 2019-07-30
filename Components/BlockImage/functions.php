@@ -39,7 +39,26 @@ Api::registerFields('BlockImage', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme')
+                    Api::loadFields('FieldVariables', 'theme'),
+                    [
+                        'label' => 'Size',
+                        'name' => 'size',
+                        'type' => 'radio',
+                        'other_choice' => 0,
+                        'save_other_choice' => 0,
+                        'layout' => 'horizontal',
+                        'choices' => [
+                            'sizeSmall' => 'Small',
+                            'sizeMedium' => 'Medium',
+                            'sizeLarge' => 'Large (Default)',
+                            'sizeHuge' => 'Huge',
+                            'sizeFull' => 'Full',
+                        ],
+                        'default_value' => 'sizeLarge',
+                        'wrapper' =>  [
+                            'width' => '100',
+                        ],
+                    ],
                 ]
             ]
         ]
