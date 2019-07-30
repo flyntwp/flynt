@@ -1,17 +1,18 @@
-<div is="flynt-form-newsletter-mailchimp" class="flyntComponent {{ options.theme ?: 'themeHero' }}">
+<div is="flynt-form-newsletter-mailchimp" class="flyntComponent componentSpacing {{ options.theme }}">
   <div class="container centerMaxWidthContainer">
-    <div class="content content--header centerContentMaxWidth">
-      {{ contentHtml|e('wp_kses_post') }}
-    </div>
-    <form action="" class="formSubscribe">
-      <label for="input-email" class="formSubscribe-label">{{ emailLabel }}</label>
-      <input type="text" class="formSubscribe-input" id="input-email" {% if emailPlaceholder %}placeholder="{{ emailPlaceholder }}"{% endif %}>
-      <button class="button button--secondary">{{ submitButton }}</button>
+    {% if contentFooterHtml %}
+      <div class="preContent">
+        {{ contentHtml|e('wp_kses_post') }}
+      </div>
+    {% endif %}
+    <form action="" class="form centerContentMaxWidth">
+      <input type="text" class="form-input" placeholder="{{ emailPlaceholder }}">
+      <button type="submit" class="form-submit button">{{ submitButton }}</button>
     </form>
-    <div class="content content--footer centerContentMaxWidth">
-      {% if contentFooterHtml %}
+    {% if contentFooterHtml %}
+      <div class="postContent">
         {{ contentFooterHtml|e('wp_kses_post') }}
-      {% endif %}
-    </div>
+      </div>
+    {% endif %}
   </div>
 </div>

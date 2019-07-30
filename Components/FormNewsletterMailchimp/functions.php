@@ -63,24 +63,17 @@ Api::registerFields('FormNewsletterMailchimp', [
 
 Options::addTranslatable('FormNewsletterMailchimp', [
     [
-        'label' => 'Email Placeholder',
+        'label' => 'Label - Email Placeholder',
         'name' => 'emailPlaceholder',
         'type' => 'text',
-        'required' => 0,
+        'required' => 1,
         'default_value' => 'Enter your email'
     ],
     [
-        'label' => 'Email Label',
-        'name' => 'emailLabel',
-        'type' => 'text',
-        'required' => 1,
-        'default_value' => 'Email'
-    ],
-    [
-        'label' => 'Submit Button',
+        'label' => 'Label - Submit Button',
         'name' => 'submitButton',
         'type' => 'text',
         'required' => 1,
-        'default_value' => 'Submit'
+        'default_value' => 'Subscribe'
     ]
 ]);
