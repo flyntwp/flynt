@@ -46,7 +46,6 @@
     flex-direction: column;
     flex-wrap: wrap;
     height: 100%;
-    justify-content: space-between;
 
     img {
       background: $color-contrast;
@@ -71,7 +70,6 @@
       display: flex;
       flex-direction: column;
       flex-grow: 1;
-      justify-content: space-between;
       text-decoration: none;
     }
 
