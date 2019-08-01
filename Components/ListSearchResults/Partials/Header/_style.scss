@@ -21,8 +21,8 @@ $search-form-spacing: 6px;
   }
 
   &-field {
-    background-color: #fff;
-    border: 1px solid #fff;
+    background-color: $color-background;
+    border: 1px solid $color-background;
     border-radius: 4px;
     display: flex;
     flex-direction: column;
@@ -51,13 +51,6 @@ $search-form-spacing: 6px;
     min-height: 44px;
     outline: none;
     padding: 0 1.25rem 0 3.125rem;
-    transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 0.275);
     width: 100%;
-  }
-
-  &-submit {
-    cursor: pointer;
-    outline: 0;
-    transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 0.275);
   }
 }

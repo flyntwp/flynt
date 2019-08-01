@@ -153,6 +153,13 @@ body {
   line-height: 1.45;
   margin-bottom: 0.9rem;
   margin-top: 0;
+
+  a,
+  a:hover,
+  a:focus {
+    color: $color-headline;
+    text-decoration: none;
+  }
 }
 
 h1,

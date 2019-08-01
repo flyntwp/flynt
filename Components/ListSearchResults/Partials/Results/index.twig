@@ -3,11 +3,9 @@
     {% for post in posts  %}
       <li class="searchList-item boxPadding">
         <div class="post">
-          <a class="post-title" href="{{ post.link }}">
-            <h3>{{ post.title }}</h3>
-          </a>
-          <p class="post-excerpt">{{ post.preview.length(40).read_more(false)}}</p>
-          <a href="{{ post.link }}" class="post-footer">{{ readMore }}</a>
+          <h3 class="post-title"><a class="post-title" href="{{ post.link }}">{{ post.title }}</a></h3>
+          <p class="post-excerpt">{{ post.preview.length(40).read_more(false) }}</p>
+          <a href="{{ post.link }}">{{ readMore }}</a>
         </div>
       </li>
     {% endfor %}

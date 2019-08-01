@@ -40,20 +40,4 @@
 
 .post {
   @include reset-content-margins;
-
-  &-title {
-    @include reset-content-margins('top');
-
-    text-decoration: none;
-  }
-
-  &-excerpt {
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
-
-  &-footer {
-    display: inline-block;
-    padding-top: 1em;
-  }
 }
