@@ -4,12 +4,14 @@
       {{ images.imageDesktop.src | resize(2560, 400, 'center') }} 2560w,
       {{ images.imageDesktop.src | resize(1440, 400, 'center') }} 1440w,
       {{ images.imageDesktop.src | resize(900, 400, 'center') }} 900w,
-      {{ images.imageDesktop.src | resize(768, 400, 'center') }} 768w"
-    media="(min-width: 600px)"
+      {{ images.imageDesktop.src | resize(720, 400, 'center') }} 720w"
+    media="(min-width: 720px)"
     sizes="100vw">
     <img class="image"
       srcset="
+        {{ images.imageMobile.src | resize(1440, 800) }} 1440w,
         {{ images.imageMobile.src | resize(750, 800) }} 750w,
+        {{ images.imageMobile.src | resize(720, 400) }} 720w,
         {{ images.imageMobile.src | resize(375, 400) }} 375w"
       src="{{ images.imageMobile.src | resize(375, 400) }}"
       sizes="100vw"
