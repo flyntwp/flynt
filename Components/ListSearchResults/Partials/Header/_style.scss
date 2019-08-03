@@ -49,11 +49,11 @@ $search-form-spacing: 6px;
     margin: 0;
     min-height: 44px;
     outline: none;
-    padding: 0 1.25rem 0 (20px - 6); // .boxPadding (mobile) - $search-form-spacing
+    padding: 0 20px 0 (20px - $search-form-spacing); // .boxPadding (mobile) - $search-form-spacing
     width: 100%;
 
     @media (min-width: $breakpoint-tablet-horizontal) {
-      padding: 0 1.25rem 0 (30px - 6); // .boxPadding (desktop) - $search-form-spacing
+      padding: 0 20px 0 (30px - $search-form-spacing); // .boxPadding (desktop) - $search-form-spacing
     }
   }
 }
