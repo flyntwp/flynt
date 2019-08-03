@@ -2,11 +2,13 @@
   <ul class="searchList boxShadow">
     {% for post in posts  %}
       <li class="searchList-item boxPadding">
-        <div class="post">
+        <article class="post">
           <h3 class="post-title"><a class="post-title" href="{{ post.link }}">{{ post.title }}</a></h3>
           <p class="post-excerpt">{{ post.preview.length(40).read_more(false) }}</p>
-          <a href="{{ post.link }}">{{ readMore }}</a>
-        </div>
+          <footer class="post-footer">
+            <a href="{{ post.link }}">{{ readMore }}</a>
+          </footer>
+        </article>
       </li>
     {% endfor %}
   </ul>
