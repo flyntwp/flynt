@@ -7,14 +7,6 @@ $search-form-spacing: 6px;
 .searchForm {
   position: relative;
 
-  &-label {
-    font-size: 0;
-    left: 0;
-    position: absolute;
-    top: 0;
-    visibility: hidden;
-  }
-
   &-icon {
     color: $color-headline;
   }
@@ -49,11 +41,11 @@ $search-form-spacing: 6px;
     margin: 0;
     min-height: 44px;
     outline: none;
-    padding: 0 20px 0 (20px - $search-form-spacing); // .boxPadding (mobile) - $search-form-spacing
+    padding: 0 20px 0 (20px - $search-form-spacing); // 20px => .boxPadding (mobile)
     width: 100%;
 
     @media (min-width: $breakpoint-tablet-horizontal) {
-      padding: 0 20px 0 (30px - $search-form-spacing); // .boxPadding (desktop) - $search-form-spacing
+      padding: 0 20px 0 (30px - $search-form-spacing); // 30px => .boxPadding (desktop)
     }
   }
 }
