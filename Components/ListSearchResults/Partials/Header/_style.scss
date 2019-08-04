@@ -5,20 +5,12 @@ $search-form-spacing: 6px;
 }
 
 .searchForm {
-  position: relative;
-
-  &-icon {
-    color: $color-headline;
-  }
-
   &-field {
-    background-color: $color-background;
     border: 1px solid $color-background;
     border-radius: 4px;
     display: flex;
     flex-direction: column;
     padding: $search-form-spacing;
-    position: relative;
 
     @media (min-width: $breakpoint-mobile-horizontal) {
       flex-direction: row;
@@ -27,7 +19,6 @@ $search-form-spacing: 6px;
 
   &-box {
     flex-grow: 1;
-    position: relative;
 
     @media (min-width: $breakpoint-mobile-horizontal) {
       margin-right: $search-form-spacing;
