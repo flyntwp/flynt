@@ -7,8 +7,8 @@
           <time class="meta-date" datetime="{{ post.post_date }}">{{ post.date|date }}</time> {{ generalTranslatable.authorDivider|e }}
         {% endif %}
         {{ generalTranslatable.postedByLabel|e }} <a class="meta-author" href="{{ post.author.link|e('esc_url') }}">{{ post.author.name }}</a>
-        {{ generalTranslatable.postedInLabel|e }} <a class="content-category" href="{{ post.category.link|e('esc_url') }}">{{ post.category }}</a>
-        {{ generalTranslatable.readingtimeDivider|e }} <span class="content-readingtime">{{ post.content|readingtime }} {{ generalTranslatable.readingtimeLabel|e }}</span>
+        {{ generalTranslatable.postedInLabel|e }} <a class="meta-category" href="{{ post.category.link|e('esc_url') }}">{{ post.category }}</a>
+        {{ generalTranslatable.readingtimeDivider|e }} <span class="meta-readingtime">{{ post.content|readingtime }} {{ generalTranslatable.readingtimeLabel|e }}</span>
       </div>
       {% if post.post_excerpt %}
         <p class="excerpt h3">{{ post.post_excerpt }}</p>
