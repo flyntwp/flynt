@@ -1,0 +1,12 @@
+<div class="pagination">
+  <div class="pagination-previous">
+    {% if pagination.prev %}
+      <a href="{{ pagination.prev.link }}" class="button button--small">{{ generalTranslatable.previousLabel|e }}</a>
+    {% endif %}
+  </div>
+  <div class="pagination-next">
+    {% if pagination.next %}
+      <a href="{{ pagination.next.link }}" class="button button--small">{{ generalTranslatable.nextLabel|e }}</a>
+    {% endif %}
+  </div>
+</div>

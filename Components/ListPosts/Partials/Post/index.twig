@@ -1,0 +1,21 @@
+<div class="post {{ post.thumbnail ? 'post-hasMedia' }}">
+  {% if post.thumbnail %}
+    <div class="media">
+      <a class="media-link" href="{{ post.link|e('esc_url') }}" title="{{ post.link.title }}" {{ item.link.target == '_blank' ? 'target="_blank" rel="nofollow noreferrer noopener"' : 'rel="nofollow"' }}>
+        {% include 'Partials/Image/index.twig' with { image: post.thumbnail } only %}
+      </a>
+    </div>
+  {% endif %}
+  <div class="content">
+    <div class="meta">
+      {% if post.date %}
+        <time class="meta-date" datetime="{{ post.post_date }}">{{ post.date|date }}</time> {{ generalTranslatable.authorDivider|e }}
+      {% endif %}
+      {{ generalTranslatable.postedByLabel|e }} <a class="meta-author" href="{{ post.author.link|e('esc_url') }}">{{ post.author.name }}</a>
+      {{ generalTranslatable.postedInLabel|e }} <a class="meta-category" href="{{ post.category.link|e('esc_url') }}">{{ post.category }}</a>
+      {{ generalTranslatable.readingtimeDivider|e }} <span class="meta-readingtime">{{ post.content|readingtime }} {{ generalTranslatable.readingtimeLabel|e }}</span>
+    </div>
+    <h3 class="headline"><a href="{{ post.link|e('esc_url') }}">{{ post.title }}</a></h3>
+    <p class="excerpt">{{ post.preview.read_more(false) }}</p>
+  </div>
+</div>

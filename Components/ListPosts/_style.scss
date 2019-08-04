@@ -1,10 +1,40 @@
 [is='flynt-list-posts'] {
-  .listPosts {
-    &-list {
-      @include reset-list;
-    }
+  .list {
+    @include reset-list;
 
-    @import 'Partials/PostTeaser/style';
-    @import 'Partials/PaginationButtons/style';
+    &-item {
+      &:not(:first-child) {
+        border-bottom-width: 0;
+        border-color: $color-border;
+        border-left-width: 0;
+        border-right-width: 0;
+        border-style: solid;
+        border-top-width: 1px;
+        margin-top: 1.625rem;
+        padding-top: 1.625rem;
+
+        @media (min-width: $breakpoint-tablet) {
+          margin-top: 2.75rem;
+          padding-top: 2.75rem;
+        }
+
+        @media (min-width: $breakpoint-desktop) {
+          margin-top: 3.25rem;
+          padding-top: 3.25rem;
+        }
+      }
+    }
   }
+
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    margin: 3rem 0 0;
+
+    @media (min-width: $breakpoint-desktop) {
+      margin-top: 4rem;
+    }
+  }
+
+  @import 'Partials/Post/style';
 }

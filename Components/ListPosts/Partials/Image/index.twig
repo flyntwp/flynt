@@ -1,0 +1,10 @@
+<div class="image">
+  <img class="image-tag lazyload"
+    src="{{ image.src|resizeDynamic(330, 220, 'center') }}"
+    srcset="{{ placeholderImage(330, 220) }}"
+    data-srcset="
+    {{ image.src|resizeDynamic(330, 220, 'center') }} 330w,
+    {{ image.src|resizeDynamic(192, 128, 'center') }} 192w"
+    data-sizes="auto"
+    alt="{{ image.alt|e }}">
+</div>

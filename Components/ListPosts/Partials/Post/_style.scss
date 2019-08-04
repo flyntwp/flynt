@@ -1,0 +1,78 @@
+.post {
+  &-hasMedia {
+    @media (min-width: $breakpoint-tablet) {
+      display: flex;
+    }
+  }
+
+  .media {
+    display: none;
+
+    @media (min-width: $breakpoint-tablet) {
+      display: block;
+      flex-basis: 180px;
+      flex-shrink: 0;
+    }
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      flex-basis: 220px;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      flex-basis: 280px;
+    }
+
+    + .content {
+      @media (min-width: $breakpoint-tablet) {
+        padding: 0 0 0 8rem;
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        padding-left: 10rem;
+      }
+    }
+  }
+
+  .meta {
+    font-size: 0.75rem;
+    line-height: 1.425;
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      font-size: 0.8125rem;
+      line-height: 1;
+    }
+  }
+
+  .headline {
+    font-size: 1rem;
+    margin: 1.5rem 0 0.5rem;
+    padding: 0;
+
+    @media (min-width: $breakpoint-tablet) {
+      margin-top: 1.25rem;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      font-size: 1.125rem;
+      margin-bottom: 0.625rem;
+      margin-top: 1.625rem;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .excerpt {
+    display: inline;
+    font-size: 0.9375rem;
+
+    @media (min-width: $breakpoint-desktop) {
+      font-size: 1rem;
+    }
+  }
+}

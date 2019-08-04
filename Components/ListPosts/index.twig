@@ -1,14 +1,18 @@
-<div is="flynt-list-posts componentSpacing" class="flyntComponent">
-  <div class="listPosts centerMaxWidthContainer">
-    {% if posts %}
-      <ul class="listPosts-list">
-        {% for post in posts %}
-          {% include 'Partials/PostTeaser/index.twig' %}
-        {% endfor %}
-      </ul>
-      {% include 'Partials/PaginationButtons/index.twig' %}
-    {% else %}
-      <p class="listPosts-noPosts">{{ noPostsFoundText }}</p>
-    {% endif %}
+<div class="flyntComponent componentSpacing" is="flynt-list-posts">
+  <div class="container centerMaxWidthContainer">
+    <div class="content">
+      {% if posts %}
+        <ul class="list">
+          {% for post in posts %}
+            <li class="list-item">
+              {% include 'Partials/Post/index.twig' %}
+            </li>
+          {% endfor %}
+        </ul>
+        {% include 'Partials/Pagination/index.twig' with { pagination: posts.pagination, generalTranslatable: generalTranslatable } only %}
+      {% else %}
+        <p class="notice">{{ generalTranslatable.noPostsNotice|e }}</p>
+      {% endif %}
+    </div>
   </div>
 </div>
