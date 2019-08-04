@@ -774,6 +774,13 @@ select {
 
   #{$heading-selectors} {
     color: $color-headline;
+
+    a,
+    a:hover,
+    a:focus {
+      color: $color-headline;
+      text-decoration: none;
+    }
   }
 
   a,

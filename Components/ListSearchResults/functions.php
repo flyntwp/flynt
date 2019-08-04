@@ -56,5 +56,12 @@ Options::addTranslatable('ListSearchResults', [
         'type' => 'text',
         'default_value' => 'Read More',
         'required' => 1
+    ],
+    [
+        'label' => 'Label - No Results',
+        'name' => 'noResults',
+        'type' => 'text',
+        'default_value' => 'No results found.',
+        'required' => 1
     ]
 ]);
