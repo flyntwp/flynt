@@ -9,7 +9,6 @@
   &-item {
     border-bottom: 1px solid #ececec;
     color: $color-contrast;
-    padding: 20px;
     position: relative;
 
     &:last-child {
@@ -42,16 +41,7 @@
 .post {
   @include reset-content-margins;
 
-  font-size: 0.875rem;
-
-  &-title {
-    @include reset-content-margins('top');
-
-    text-decoration: none;
-  }
-
-  &-excerpt {
-    margin-bottom: 0;
-    padding-bottom: 0;
+  &-footer {
+    text-align: right;
   }
 }
