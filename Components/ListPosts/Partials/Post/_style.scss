@@ -10,9 +10,9 @@
 
     @media (min-width: $breakpoint-mobile-horizontal) {
       display: flex;
-      font-size: 1.125rem;
       flex-basis: 128px;
       flex-shrink: 0;
+      font-size: 1.125rem;
       order: 2;
       padding-top: 2.625rem;
     }
