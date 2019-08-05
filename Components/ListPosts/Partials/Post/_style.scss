@@ -1,6 +1,6 @@
 .post {
   &-hasMedia {
-    @media (min-width: $breakpoint-tablet) {
+    @media (min-width: $breakpoint-mobile-horizontal) {
       display: flex;
     }
   }
@@ -8,23 +8,57 @@
   .media {
     display: none;
 
-    @media (min-width: $breakpoint-tablet) {
-      display: block;
-      flex-basis: 180px;
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      display: flex;
+      font-size: 1.125rem;
+      flex-basis: 128px;
       flex-shrink: 0;
+      order: 2;
+      padding-top: 2.625rem;
+    }
+
+    @media (min-width: $breakpoint-tablet) {
+      align-items: center;
+      flex-basis: 160px;
+      padding-top: 0;
     }
 
     @media (min-width: $breakpoint-tablet-horizontal) {
+      display: block;
       flex-basis: 220px;
+      order: 1;
     }
 
     @media (min-width: $breakpoint-desktop) {
       flex-basis: 280px;
     }
 
-    + .content {
+    &-link {
+      display: block;
+    }
+  }
+
+  .content {
+    @media (min-width: $breakpoint-tablet) {
+      order: 1;
+    }
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      order: 2;
+    }
+
+    @at-root [is='flynt-list-posts'] .media + .content {
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        padding: 0 2.5rem 0 0;
+      }
+
       @media (min-width: $breakpoint-tablet) {
-        padding: 0 0 0 8rem;
+        padding-right: 4;
+      }
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        padding-left: 8rem;
+        padding-right: 0;
       }
 
       @media (min-width: $breakpoint-desktop) {
@@ -48,12 +82,16 @@
     margin: 1.5rem 0 0.5rem;
     padding: 0;
 
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      font-size: 1.125rem;
+    }
+
     @media (min-width: $breakpoint-tablet) {
       margin-top: 1.25rem;
     }
 
     @media (min-width: $breakpoint-desktop) {
-      font-size: 1.125rem;
+      font-size: 1.25rem;
       margin-bottom: 0.625rem;
       margin-top: 1.625rem;
     }
@@ -67,7 +105,7 @@
     }
   }
 
-  .excerpt {
+  .preview {
     display: inline;
     font-size: 0.9375rem;
 

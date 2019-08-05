@@ -1,7 +1,7 @@
 <div class="post {{ post.thumbnail ? 'post-hasMedia' }}">
   {% if post.thumbnail %}
     <div class="media">
-      <a class="media-link" href="{{ post.link|e('esc_url') }}" title="{{ post.link.title }}" {{ item.link.target == '_blank' ? 'target="_blank" rel="nofollow noreferrer noopener"' : 'rel="nofollow"' }}>
+      <a class="media-link" href="{{ post.link|e('esc_url') }}" title="{{ post.link.title }}" {{ post.link.target == '_blank' ? 'target="_blank" rel="nofollow noreferrer noopener"' : 'rel="nofollow"' }}>
         {% include 'Partials/Image/index.twig' with { image: post.thumbnail } only %}
       </a>
     </div>
@@ -16,6 +16,6 @@
       {{ generalTranslatable.readingtimeDivider|e }} <span class="meta-readingtime">{{ post.content|readingtime }} {{ generalTranslatable.readingtimeLabel|e }}</span>
     </div>
     <h3 class="headline"><a href="{{ post.link|e('esc_url') }}">{{ post.title }}</a></h3>
-    <p class="excerpt">{{ post.preview.read_more(false) }}</p>
+    <p class="preview">{{ post.preview.read_more(generalTranslatable.readMoreLabel|e) }}</p>
   </div>
 </div>
