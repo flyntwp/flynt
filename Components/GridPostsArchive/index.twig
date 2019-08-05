@@ -12,7 +12,7 @@
     <ul class="posts">
       {% for post in posts %}
         <li class="post">
-          <a class="post-link" href="{{ post.link }}" {{ post.link.target == '_blank' ? 'target="_blank" rel="nofollow noreferrer noopener"' : 'rel="nofollow"' }} title="{{ post.title|e }}">
+          <a class="post-link" href="{{ post.link }}" {{ post.link.target == '_blank' ? 'target="_blank" rel="nofollow noreferrer noopener"' : 'rel="nofollow"' }} title="{{ post.title }}">
             {% if post.thumbnail %}
               <figure class="figure">
                 <img class="figure-image lazyload"
@@ -34,7 +34,7 @@
           <p class="post-preview">
             {{ post.preview.read_more(false) }}
           </p>
-          <a class="button button--link" href="{{ post.link }}" {{ post.link.target == '_blank' ? 'target="_blank" rel="nofollow noreferrer noopener"' : 'rel="nofollow"' }} title="{{ post.title|e }}">{{ labels.readMore }}</a>
+          <a class="button button--link" href="{{ post.link }}" {{ post.link.target == '_blank' ? 'target="_blank" rel="nofollow noreferrer noopener"' : 'rel="nofollow"' }} title="{{ post.title }}">{{ labels.readMore }}</a>
         </li>
       {% else %}
         <p class="posts-empty">{{ labels.noPostsFound }}</p>
