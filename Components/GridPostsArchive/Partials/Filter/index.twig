@@ -1,5 +1,5 @@
  <ul class="filter">
-    {% for term in terms %}
-        <li class="filter-item"><a href="{{ term.link }}" class="badge badge--outline badge--pill {{ term.isActive ? 'badge-isActive' }}">{{ term.title }}</a></li>
-    {% endfor %}
+  {% for term in terms %}
+      <li class="filter-item"><a href="{{ term.link }}" class="badge badge--outline badge--pill {{ term.isActive ? 'badge-isActive' }}">{{ term.title }}</a></li>
+  {% endfor %}
 </ul>
