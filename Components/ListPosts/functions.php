@@ -4,6 +4,15 @@ namespace Flynt\Components\ListPosts;
 
 use Flynt\Utils\Options;
 
+add_filter('Flynt/addComponentData?name=ListPosts', function ($data) {
+
+    add_filter('timber/post/preview/read_more_class', function ($read_more) {
+        return $read_more = "button button--link";
+    });
+
+    return $data;
+});
+
 Options::addTranslatable('ListPosts', [
     [
         'label' => 'General',
@@ -33,6 +42,15 @@ Options::addTranslatable('ListPosts', [
                 'name' => 'readingtimeLabel',
                 'type' => 'text',
                 'default_value' => 'min',
+                'wrapper' => [
+                    'width' => '50',
+                ],
+            ],
+            [
+                'label' => 'Label - Read More',
+                'name' => 'readMoreLabel',
+                'type' => 'text',
+                'default_value' => 'Read More',
                 'wrapper' => [
                     'width' => '50',
                 ],
