@@ -5,7 +5,7 @@
       {% if post.terms('tag')  %}
         <ul class="tags">
           {% for tag in post.terms('tag')  %}
-            <li class="tags-item"><a class="tags-itemLink pill" href="{{ tag.link }}">{{ tag }}</a></li>
+            <li class="tags-item"><a class="tags-itemLink badge badge--solid badge--pill" href="{{ tag.link }}">{{ tag }}</a></li>
           {% endfor %}
         </ul>
       {% endif %}
