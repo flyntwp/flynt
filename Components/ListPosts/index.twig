@@ -5,7 +5,7 @@
         <ul class="list">
           {% for post in posts %}
             <li class="list-item">
-              {% include 'Partials/Post/index.twig' %}
+              {% include 'Partials/Post/index.twig' with { post: post, generalTranslatable: generalTranslatable } only %}
             </li>
           {% endfor %}
         </ul>

@@ -1,4 +1,6 @@
 .post {
+  $component: '[is='flynt-list-posts']';
+
   &-hasMedia {
     @media (min-width: $breakpoint-mobile-horizontal) {
       display: flex;
@@ -35,6 +37,7 @@
 
     &-link {
       display: block;
+      width: 100%;
     }
   }
 
@@ -47,22 +50,24 @@
       order: 2;
     }
 
-    @at-root [is='flynt-list-posts'] .media + .content {
-      @media (min-width: $breakpoint-mobile-horizontal) {
-        padding: 0 2.5rem 0 0;
-      }
+    @at-root {
+      #{$component} .media + .content {
+        @media (min-width: $breakpoint-mobile-horizontal) {
+          padding: 0 2.5rem 0 0;
+        }
 
-      @media (min-width: $breakpoint-tablet) {
-        padding-right: 4;
-      }
+        @media (min-width: $breakpoint-tablet) {
+          padding-right: 4;
+        }
 
-      @media (min-width: $breakpoint-tablet-horizontal) {
-        padding-left: 8rem;
-        padding-right: 0;
-      }
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          padding-left: 8rem;
+          padding-right: 0;
+        }
 
-      @media (min-width: $breakpoint-desktop) {
-        padding-left: 10rem;
+        @media (min-width: $breakpoint-desktop) {
+          padding-left: 10rem;
+        }
       }
     }
   }
