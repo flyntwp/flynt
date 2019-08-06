@@ -91,6 +91,18 @@ Options::addTranslatable('ListPosts', [
                     'width' => '50',
                 ],
             ],
+            [
+                'label' => 'Notice - No Posts',
+                'name' => 'noPostNotice',
+                'type' => 'textarea',
+                'default_value' => 'No posts found.',
+                'maxlength' => 0,
+                'rows' => 3,
+                'new_lines' => 'wpautop',
+                'wrapper' => [
+                    'width' => '100',
+                ],
+            ],
         ],
     ],
 ]);
