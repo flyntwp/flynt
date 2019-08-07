@@ -6,7 +6,7 @@ Adds a new filter to twig to delay the generation of resized images and to gener
 
 For this feature to work, you have to be using `Timber` with `Twig` and `Upstatement/Routes` for the custom route to resize the images.
 
-Further more you have to adjust your webserver's configuration. For apache, add the following to your docroots `.htaccess` or the vhost settings:
+This script will automatically add the following `.htaccess` rules. If you are not using apache or WordPress does not have write permissions to the file, you need to adjust your webserver's configuration manually:
 
 ```apache
 # BEGIN Dynamic images
