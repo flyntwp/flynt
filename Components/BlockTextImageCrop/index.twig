@@ -3,12 +3,12 @@
     <div class="box-inner box-inner--image">
       <figure class="figure imagecontainer">
         <img class="figure-image lazyload imagecontainer-img"
-          src="{{ image.src|resize(1280) }}"
+          src="{{ image.src|resizeDynamic(1280) }}"
           srcset="{{ placeholderImage(1280, 1280 / image.aspect) }}"
           data-srcset="
-            {{ image.src|resize(1280) }} 1280w,
-            {{ image.src|resize(768) }} 768w,
-            {{ image.src|resize(375) }} 375w"
+            {{ image.src|resizeDynamic(1280) }} 1280w,
+            {{ image.src|resizeDynamic(768) }} 768w,
+            {{ image.src|resizeDynamic(375) }} 375w"
           data-sizes="auto"
           alt="{{ image.alt|e }}">
         {% if image.caption %}
