@@ -12,16 +12,16 @@
             <div class="content boxShadow themeReset">
               <a href="{{ item.link }}" class="content-link">
                 <img class="content-image lazyload"
-                  src="{{ item.thumbnail|resize(750, 500) }}"
+                  src="{{ item.thumbnail.src|resizeDynamic(750, 500) }}"
                   srcset="{{ placeholderImage(3, 2) }}"
                   data-srcset="
-                    {{ item.thumbnail|resize(1920, 1280) }} 1920w,
-                    {{ item.thumbnail|resize(1280, 853) }} 1280w,
-                    {{ item.thumbnail|resize(1050, 700) }} 1050w,
-                    {{ item.thumbnail|resize(750, 500) }} 750w,
-                    {{ item.thumbnail|resize(600, 400) }} 600w,
-                    {{ item.thumbnail|resize(480, 320) }} 480w,
-                    {{ item.thumbnail|resize(312, 208) }} 312w"
+                    {{ item.thumbnail.src|resizeDynamic(1920, 1280) }} 1920w,
+                    {{ item.thumbnail.src|resizeDynamic(1280, 853) }} 1280w,
+                    {{ item.thumbnail.src|resizeDynamic(1050, 700) }} 1050w,
+                    {{ item.thumbnail.src|resizeDynamic(750, 500) }} 750w,
+                    {{ item.thumbnail.src|resizeDynamic(600, 400) }} 600w,
+                    {{ item.thumbnail.src|resizeDynamic(480, 320) }} 480w,
+                    {{ item.thumbnail.src|resizeDynamic(312, 208) }} 312w"
                   data-sizes="auto"
                   alt="{{ item.thumbnail.alt|e }}">
                 <div class="content-inner boxPadding">

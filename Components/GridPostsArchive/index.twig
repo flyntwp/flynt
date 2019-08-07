@@ -16,13 +16,13 @@
             {% if post.thumbnail %}
               <figure class="figure">
                 <img class="figure-image lazyload"
-                  src="{{ post.thumbnail|resize(424, 283) }}"
+                  src="{{ post.thumbnail.src|resizeDynamic(424, 283) }}"
                   srcset="{{ placeholderImage(424, 283) }}"
                   data-srcset="
-                    {{ post.thumbnail|resize(1280, 853) }} 1280w,
-                    {{ post.thumbnail|resize(750, 500) }} 750w,
-                    {{ post.thumbnail|resize(424, 283) }} 424w,
-                    {{ post.thumbnail|resize(375, 250) }} 375w"
+                    {{ post.thumbnail.src|resizeDynamic(1280, 853) }} 1280w,
+                    {{ post.thumbnail.src|resizeDynamic(750, 500) }} 750w,
+                    {{ post.thumbnail.src|resizeDynamic(424, 283) }} 424w,
+                    {{ post.thumbnail.src|resizeDynamic(375, 250) }} 375w"
                   data-sizes="auto"
                   alt="{{ post.thumbnail.alt|e }}">
               </figure>
