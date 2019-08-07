@@ -137,7 +137,13 @@ body {
 
 .post {
   &-main {
-    @include reset-content-margins;
+    > :first-child {
+      margin-top: 0;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
