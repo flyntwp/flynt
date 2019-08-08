@@ -3,7 +3,52 @@
 namespace Flynt\Components\FormContactForm7;
 
 use Flynt\Api;
-use Flynt\Utils\Options;
+
+add_filter('wpcf7_load_js', '__return_false');
+add_filter('wpcf7_load_css', '__return_false');
+
+add_filter('Flynt/addComponentData?name=FormContactForm7', function ($data) {
+    function_exists('wpcf7_enqueue_scripts') && enqueueWpcf7Scripts();
+    function_exists('wpcf7_enqueue_styles') && wpcf7_enqueue_styles();
+
+    return $data;
+});
+
+function enqueueWpcf7Scripts()
+{
+    $inFooter = true;
+
+    if ('header' === wpcf7_load_js()) {
+        $inFooter = false;
+    }
+
+    wp_enqueue_script(
+        'contact-form-7',
+        wpcf7_plugin_url('includes/js/scripts.js'),
+        ['Flynt/assets'],
+        WPCF7_VERSION,
+        $inFooter
+    );
+
+    $wpcf7 = [
+        'apiSettings' => [
+            'root' => esc_url_raw(rest_url('contact-form-7/v1')),
+            'namespace' => 'contact-form-7/v1',
+        ],
+    ];
+
+    if (defined('WP_CACHE') and WP_CACHE) {
+        $wpcf7['cached'] = 1;
+    }
+
+    if (wpcf7_support_html5_fallback()) {
+        $wpcf7['jqueryUi'] = 1;
+    }
+
+    wp_localize_script('contact-form-7', 'wpcf7', $wpcf7);
+
+    do_action('wpcf7_enqueue_scripts');
+}
 
 Api::registerFields('FormContactForm7', [
     'layout' => [
