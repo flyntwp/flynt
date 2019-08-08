@@ -1,10 +1,12 @@
-<ul class="menu">
-  {% for item in items %}
-  <li class="menu-item">
-    <h3>{{ item.title }}</h3>
-    {% for child in item.children %}
-    <a class="menu-item-link" href="{{ item.link }}" {% if item.target %} target="{{ item.target }}"{% endif %}>{{ child.title }}</a>
+<nav class="menu">
+  <ul class="list">
+    {% for item in items %}
+      <li class="list-item">
+        <h3>{{ item.title|e }}</h3>
+        {% for child in item.children %}
+          <a class="list-link" {% if child.url %} href="{{ child.url|e('esc_url') }}"{% endif %} {{ child.target == '_blank' ? 'target="_blank" rel="nofollow noreferrer noopener"' : 'rel="nofollow"' }}>{{ child.title|e }}</a>
+        {% endfor %}
+      </li>
     {% endfor %}
-  </li>
-  {% endfor %}
-</ul>
+  </ul>
+</nav>

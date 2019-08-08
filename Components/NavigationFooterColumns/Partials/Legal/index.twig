@@ -1,0 +1,14 @@
+<div class="legal">
+  <p class="legal-copyright">{{ generalTranslatable.copyrightInfo|e }}</p>
+  {% if items %}
+    <div class="legal-links">
+      <ul class="list">
+        {% for item in items %}
+          <li class="list-item">
+            <a class="list-link" href="{{ item.link.url|e('esc_url') }}" {{ item.link.target == '_blank' ? 'target="_blank" rel="nofollow noreferrer noopener"' : 'rel="nofollow"' }}>{{ item.link.title|e }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+</div>

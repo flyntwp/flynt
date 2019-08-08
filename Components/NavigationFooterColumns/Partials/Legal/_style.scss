@@ -1,0 +1,53 @@
+.legal {
+  align-items: flex-start;
+  color: $color-contrast;
+  display: flex;
+  flex-direction: column-reverse;
+  font-size: 0.8125rem;
+
+  @media (min-width: $breakpoint-tablet) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &-copyright {
+    margin: 0.125rem 0 0;
+
+    @media (min-width: $breakpoint-tablet) {
+      margin-top: 0;
+    }
+  }
+
+  &-links {
+    .list {
+      @include reset-list;
+      display: flex;
+      justify-content: space-between;
+
+      &-item {
+        margin: 0 0 0 1rem;
+
+        @media (min-width: $breakpoint-tablet) {
+          margin-left: 3rem;
+        }
+
+        @media (min-width: $breakpoint-desktop) {
+          margin-left: 4rem;
+        }
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+
+      &-link {
+        color: $color-contrast;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

@@ -1,17 +1,11 @@
 <div class="flyntComponent" is="flynt-navigation-footer-columns">
   <div class="container centerMaxWidthContainer">
-    <div class="wrapper">
-      <nav class="navigation">
-      {% if menu %}
-        {% include 'Partials/Menu/index.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel } only %}
-      {% endif %}
-      </nav>
-      {% if menu %}
-        {% include 'Partials/Social/index.twig' with { 'logo': logo, 'label': socialMediaLabel, 'links': links } only %}
-      {% endif %}
+    <div class="infos">
+      {% include 'Partials/Menu/index.twig' with { generalTranslatable: generalTranslatable, items: menu.items } only %}
+      {% include 'Partials/Info/index.twig' with { generalTranslatable: generalTranslatable, items: generalTranslatable.channelLinks, site: site } only %}
     </div>
-    {% if menu %}
-      {% include 'Partials/Bottom/index.twig' with { 'copyright': copyright } only %}
-    {% endif %}
+    <div class="corporate">
+      {% include 'Partials/Legal/index.twig' with { generalTranslatable: generalTranslatable, items: generalTranslatable.legalLinks } only %}
+    </div>
   </div>
 </div>

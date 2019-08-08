@@ -1,0 +1,15 @@
+<div class="info">
+  <a class="info-logo" href="{{ site.url|e('esc_url') }}" title="{{ site.title|e }}">{{ site.logo }}</a>
+  <p class="info-text">{{ generalTranslatable.channelInfo|e }}</p>
+  <div class="info-contact">
+    <ul class="list">
+      {% for item in items %}
+        <li class="list-item">
+          <a class="list-link" href="{{ item.link.url|e('esc_url') }}">
+            <i style="width: 16px; height: 16px; vertical-align: middle; position: relative; top: -2px;margin-right: 5px" data-feather="{{ item.channel|e }}"></i>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
