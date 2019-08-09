@@ -33,6 +33,7 @@ module.exports = {
     reloadDebounce: 1000,
     ui: false,
     files: [
+      '*.php',
       'templates/**/*',
       'lib/**/*',
       'inc/**/*',
