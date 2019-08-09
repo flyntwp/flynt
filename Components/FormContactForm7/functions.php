@@ -50,6 +50,34 @@ function enqueueWpcf7Scripts()
     do_action('wpcf7_enqueue_scripts');
 }
 
+remove_action('wpcf7_init', 'wpcf7_add_form_tag_submit', 10, 0);
+
+add_action('wpcf7_init', function () {
+    wpcf7_add_form_tag('submit', function ($tag) {
+        $class = wpcf7_form_controls_class($tag->type, 'button');
+
+        $atts = [];
+
+        $atts['class'] = $tag->get_class_option($class);
+        $atts['id'] = $tag->get_id_option();
+        $atts['tabindex'] = $tag->get_option('tabindex', 'signed_int', true);
+
+        $value = isset($tag->values[0]) ? $tag->values[0] : '';
+
+        if (empty($value)) {
+            $value = __('Send', 'contact-form-7');
+        }
+
+        $atts['type'] = 'submit';
+        $atts['value'] = $value;
+
+        $atts = wpcf7_format_atts($atts);
+
+        $html = sprintf('<button %1$s>%2$s</button>', $atts, $value);
+        return $html;
+    });
+}, 10, 0);
+
 Api::registerFields('FormContactForm7', [
     'layout' => [
         'name' => 'FormContactForm7',
