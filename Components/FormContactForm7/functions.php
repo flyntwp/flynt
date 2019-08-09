@@ -63,8 +63,8 @@ Api::registerFields('FormContactForm7', [
                 'endpoint' => 0
             ],
             [
-                'name' => 'contentHtml',
-                'label' => 'Content',
+                'name' => 'preContentHtml',
+                'label' => 'Pre-Content',
                 'type' => 'wysiwyg',
                 'delay' => 1,
                 'media_upload' => 0,
@@ -74,7 +74,7 @@ Api::registerFields('FormContactForm7', [
                 ]
             ],
             [
-                'label' => 'Form Id',
+                'label' => 'Contact Form 7 Form',
                 'name' => 'formId',
                 'type' => 'post_object',
                 'post_type' => [
@@ -85,6 +85,7 @@ Api::registerFields('FormContactForm7', [
                 'return_format' => 'id',
                 'ui' => 1,
                 'required' => 1,
+                'instructions' => 'If there is no form available, please first create a suitable one in the <a href="' . admin_url('admin.php?page=wpcf7') . '" target="_blank">Contact Form 7 admin page</a>.',
             ],
             [
                 'name' => 'contentFooterHtml',

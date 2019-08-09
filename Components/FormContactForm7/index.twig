@@ -1,8 +1,8 @@
 <div is="flynt-form-contact-form-7" class="flyntComponent componentSpacing {{ options.theme }}">
   <div class="container centerMaxWidthContainer">
-    {% if contentHtml %}
+    {% if preContentHtml %}
       <div class="preContent">
-        {{ contentHtml|e('wp_kses_post') }}
+        {{ preContentHtml|e('wp_kses_post') }}
       </div>
     {% endif %}
     {% set formShortcode = '[contact-form-7 id="' ~ formId ~ '"]' %}
