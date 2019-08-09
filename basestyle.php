@@ -24,4 +24,4 @@ use Timber\Timber;
 
 $context = Timber::get_context();
 
-Timber::render('twig/basestyle.twig', $context);
+Timber::render('templates/basestyle.twig', $context);

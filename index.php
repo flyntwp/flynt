@@ -1,7 +1,15 @@
 <?php
 
-if (defined('ABSPATH')) {
-    update_option('template', get_option('template') . '/templates');
+use Timber\Timber;
+use Timber\PostQuery;
+use Flynt\Utils\Options;
+use const Flynt\Archives\POST_TYPES;
+
+$context = Timber::get_context();
+$context['posts'] = new PostQuery();
+
+if (isset($_GET['contentOnly'])) {
+    $context['contentOnly'] = true;
 }
 
-die();
+Timber::render('templates/index.twig', $context);
