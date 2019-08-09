@@ -1,16 +1,16 @@
 <figure class="image">
   {% if not image.svg %}
     <img class="image-tag lazyload lazyload--fade"
-      src="{{ image.src|resize(384, 216) }}"
+      src="{{ image.src|resizeDynamic(384, 216) }}"
       srcset="{{ placeholderImage(384, 216) }}"
       data-srcset="
-        {{ image.src|resize(384, 216) }} 384w,
-        {{ image.src|resize(240, 135) }} 240w,
-        {{ image.src|resize(206, 116) }} 206w,
-        {{ image.src|resize(170, 96) }} 170w,
-        {{ image.src|resize(164, 92) }} 164w,
-        {{ image.src|resize(128, 72) }} 128w,
-        {{ image.src|resize(114, 64) }} 114w"
+        {{ image.src|resizeDynamic(384, 216) }} 384w,
+        {{ image.src|resizeDynamic(240, 135) }} 240w,
+        {{ image.src|resizeDynamic(206, 116) }} 206w,
+        {{ image.src|resizeDynamic(170, 96) }} 170w,
+        {{ image.src|resizeDynamic(164, 92) }} 164w,
+        {{ image.src|resizeDynamic(128, 72) }} 128w,
+        {{ image.src|resizeDynamic(114, 64) }} 114w"
       data-sizes="auto"
       alt="{{ image.alt|e }}">
   {% else %}

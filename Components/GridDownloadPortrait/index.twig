@@ -27,11 +27,11 @@
               <img
                 class="download-image lazyload"
                 srcset="{{ placeholderImage(370, 555) }}"
-                src="{{ item.image.src|resize(370, 555) }}"
+                src="{{ item.image.src|resizeDynamic(370, 555) }}"
                 data-srcset="
-                {{ item.image.src|resize(450, 675) }} 450w,
-                {{ item.image.src|resize(370, 555) }} 370w,
-                {{ item.image.src|resize(240, 360) }} 240w"
+                {{ item.image.src|resizeDynamic(450, 675) }} 450w,
+                {{ item.image.src|resizeDynamic(370, 555) }} 370w,
+                {{ item.image.src|resizeDynamic(240, 360) }} 240w"
                 sizes="auto"
                 alt="{{ item.image.alt|e }}">
             {% endif %}

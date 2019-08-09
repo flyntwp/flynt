@@ -11,11 +11,11 @@
             <img
               class="teaser-image lazyload"
               srcset="{{ placeholderImage(404, 404) }}"
-              src="{{ item.image.src|resize(404, 404) }}"
+              src="{{ item.image.src|resizeDynamic(404, 404) }}"
               data-srcset="
-              {{ item.image.src|resize(808, 808) }} 808w,
-              {{ item.image.src|resize(404, 404) }} 404w,
-              {{ item.image.src|resize(250, 250) }} 250w"
+              {{ item.image.src|resizeDynamic(808, 808) }} 808w,
+              {{ item.image.src|resizeDynamic(404, 404) }} 404w,
+              {{ item.image.src|resizeDynamic(250, 250) }} 250w"
               sizes="auto"
               alt="{{ item.image.alt|e }}"
             >

@@ -5,29 +5,12 @@ $search-form-spacing: 6px;
 }
 
 .searchForm {
-  position: relative;
-
-  &-label {
-    left: 10px;
-    margin-bottom: 0;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-  }
-
-  &-icon {
-    color: $color-headline;
-  }
-
   &-field {
-    background-color: #fff;
-    border: 1px solid #fff;
+    border: 1px solid $color-background;
     border-radius: 4px;
     display: flex;
     flex-direction: column;
     padding: $search-form-spacing;
-    position: relative;
 
     @media (min-width: $breakpoint-mobile-horizontal) {
       flex-direction: row;
@@ -36,7 +19,6 @@ $search-form-spacing: 6px;
 
   &-box {
     flex-grow: 1;
-    position: relative;
 
     @media (min-width: $breakpoint-mobile-horizontal) {
       margin-right: $search-form-spacing;
@@ -50,14 +32,11 @@ $search-form-spacing: 6px;
     margin: 0;
     min-height: 44px;
     outline: none;
-    padding: 0 1.25rem 0 3.125rem;
-    transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 0.275);
+    padding: 0 20px 0 (20px - $search-form-spacing); // 20px => .boxPadding (mobile)
     width: 100%;
-  }
 
-  &-submit {
-    cursor: pointer;
-    outline: 0;
-    transition: all 0.1s cubic-bezier(0.175, 0.885, 0.32, 0.275);
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      padding: 0 20px 0 (30px - $search-form-spacing); // 30px => .boxPadding (desktop)
+    }
   }
 }

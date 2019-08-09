@@ -17,5 +17,5 @@ add_shortcode('flyntTheContent', function ($attrs) {
     $postId = $attrs['id'];
     $context = Timber::get_context();
     $context['post'] = $post = new Post($postId);
-    return Timber::fetch('templates/twig/theContentFix.twig', $context);
+    return Timber::fetch('templates/theContentFix.twig', $context);
 });

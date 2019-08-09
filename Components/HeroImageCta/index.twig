@@ -6,11 +6,11 @@
         {% if images.imageMobile %}
           <source
             srcset="
-              {{ images.imageDesktop.src | resize(2560) }} 2560w,
-              {{ images.imageDesktop.src | resize(2048) }} 2048w,
-              {{ images.imageDesktop.src | resize(1320) }} 1320w,
-              {{ images.imageDesktop.src | resize(1024) }} 1024w,
-              {{ images.imageDesktop.src | resize(768) }} 768w"
+              {{ images.imageDesktop.src | resizeDynamic(2560) }} 2560w,
+              {{ images.imageDesktop.src | resizeDynamic(2048) }} 2048w,
+              {{ images.imageDesktop.src | resizeDynamic(1320) }} 1320w,
+              {{ images.imageDesktop.src | resizeDynamic(1024) }} 1024w,
+              {{ images.imageDesktop.src | resizeDynamic(768) }} 768w"
             media="(min-width: 768px)">
           <img
             class="content-image lazyload
@@ -19,9 +19,9 @@
               {{ options.alignImage.desktop.vertical }}
               {{ options.alignImage.desktop.horizontal }}"
             srcset="
-              {{ images.imageMobile.src| resize(375) }} 375w,
-              {{ images.imageMobile.src | resize(750) }} 750w"
-            src="{{ images.imageDesktop.src | resize(375) }}"
+              {{ images.imageMobile.src| resizeDynamic(375) }} 375w,
+              {{ images.imageMobile.src | resizeDynamic(750) }} 750w"
+            src="{{ images.imageDesktop.src | resizeDynamic(375) }}"
             data-sizes="auto"
             alt="{{ images.imageDesktop.alt|e }}">
           {% else %}
@@ -32,13 +32,13 @@
                 {{ options.alignImage.desktop.vertical }}
                 {{ options.alignImage.desktop.horizontal }}"
               srcset="
-                {{ images.imageDesktop.src | resize(2560) }} 2560w,
-                {{ images.imageDesktop.src | resize(2048) }} 2048w,
-                {{ images.imageDesktop.src | resize(1320) }} 1320w,
-                {{ images.imageDesktop.src | resize(1024) }} 1024w,
-                {{ images.imageDesktop.src | resize(768) }} 768w,
-                {{ images.imageDesktop.src | resize(375) }} 375w"
-              src="{{ images.imageDesktop.src | resize(375) }}"
+                {{ images.imageDesktop.src | resizeDynamic(2560) }} 2560w,
+                {{ images.imageDesktop.src | resizeDynamic(2048) }} 2048w,
+                {{ images.imageDesktop.src | resizeDynamic(1320) }} 1320w,
+                {{ images.imageDesktop.src | resizeDynamic(1024) }} 1024w,
+                {{ images.imageDesktop.src | resizeDynamic(768) }} 768w,
+                {{ images.imageDesktop.src | resizeDynamic(375) }} 375w"
+              src="{{ images.imageDesktop.src | resizeDynamic(375) }}"
               data-sizes="auto"
               alt="{{ images.imageDesktop.alt|e }}">
         {% endif %}

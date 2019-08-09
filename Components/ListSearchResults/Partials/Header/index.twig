@@ -1,16 +1,11 @@
-<div class="header">
-  <div class="preContent">
-    {{ preContentHtml }}
-  </div>
-  <form class="searchForm" role="search" action="{{ bloginfo('url') }}">
-    <div class="searchForm-field boxShadow">
-      <div class="searchForm-box">
-        <label class="searchForm-label" for="search-input">
-          <i data-feather="search" class="searchForm-icon"></i>
-        </label>
-        <input name="s" class="searchForm-input" id="search-input" type="search" required min="1" placeholder="{{ searchPlaceholder }}"{% if searchQuery %} value="{{ searchQuery }}{% endif %}">
-      </div>
-      <button class="searchForm-submit button" type="submit" aria-label="{{ searchButtonText }}">{{ search }}</button>
-    </div>
-  </form>
+<div class="preContent">
+  {{ preContentHtml }}
 </div>
+<form class="searchForm" role="search" action="{{ bloginfo('url') }}">
+  <div class="searchForm-field boxShadow themeReset">
+    <div class="searchForm-box">
+      <input name="s" class="searchForm-input" type="search" required min="1" placeholder="{{ searchPlaceholder }}" value="{{ searchQuery }}">
+    </div>
+    <button class="searchForm-submit button" type="submit" aria-label="{{ searchButtonText }}">{{ search }}</button>
+  </div>
+</form>

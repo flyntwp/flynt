@@ -1,17 +1,17 @@
 <div class="flyntComponent" is="flynt-hero-image-text">
   <picture>
     <source srcset="
-      {{ images.imageDesktop.src | resize(2560, 800, 'center') }} 2560w,
-      {{ images.imageDesktop.src | resize(2048, 800, 'center') }} 2048w,
-      {{ images.imageDesktop.src | resize(1440, 400, 'center') }} 1280w,
-      {{ images.imageDesktop.src | resize(900, 400, 'center') }} 900w,
-      {{ images.imageDesktop.src | resize(768, 400, 'center') }} 768w"
+      {{ images.imageDesktop.src | resizeDynamic(2560, 800, 'center') }} 2560w,
+      {{ images.imageDesktop.src | resizeDynamic(2048, 800, 'center') }} 2048w,
+      {{ images.imageDesktop.src | resizeDynamic(1440, 400, 'center') }} 1280w,
+      {{ images.imageDesktop.src | resizeDynamic(900, 400, 'center') }} 900w,
+      {{ images.imageDesktop.src | resizeDynamic(768, 400, 'center') }} 768w"
     media="(min-width: 600px)"
     sizes="100vw">
     <img class="image" srcset="
-      {{ images.imageMobile.src | resize(375, 400) }} 375w,
-      {{ images.imageMobile.src | resize(750, 800) }} 750w"
-    src="{{ images.imageMobile.src | resize(375, 400) }}"
+      {{ images.imageMobile.src | resizeDynamic(375, 400) }} 375w,
+      {{ images.imageMobile.src | resizeDynamic(750, 800) }} 750w"
+    src="{{ images.imageMobile.src | resizeDynamic(375, 400) }}"
     sizes="100vw"
     alt="{{ images.imageDesktop.alt|e }}">
   </picture>

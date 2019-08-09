@@ -15,13 +15,13 @@
                 {% if item.thumbnail %}
                   <figure class="figure">
                     <img class="image lazyload"
-                      src="{{ item.thumbnail|resize(300, 200) }}"
+                      src="{{ item.thumbnail.src|resizeDynamic(300, 200) }}"
                       srcset="{{ placeholderImage(300, 200) }}"
                       data-srcset="
-                        {{ item.thumbnail|resize(912, 608) }} 608w,
-                        {{ item.thumbnail|resize(600, 400) }} 600w,
-                        {{ item.thumbnail|resize(456, 304) }} 456w,
-                        {{ item.thumbnail|resize(300, 200) }} 300w"
+                        {{ item.thumbnail.src|resizeDynamic(912, 608) }} 608w,
+                        {{ item.thumbnail.src|resizeDynamic(600, 400) }} 600w,
+                        {{ item.thumbnail.src|resizeDynamic(456, 304) }} 456w,
+                        {{ item.thumbnail.src|resizeDynamic(300, 200) }} 300w"
                       data-sizes="auto"
                       alt="{{ item.thumbnail.alt|e }}">
                   </figure>
