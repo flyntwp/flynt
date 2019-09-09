@@ -33,7 +33,7 @@ bundler.plugin('done', function (bundles) {
   })
 })
 
-function checkAssets(stats, bundleHashes) {
+function checkAssets (stats, bundleHashes) {
   try {
     const changedFiles = Object.keys(stats.compilation.assets)
       .filter(name => {

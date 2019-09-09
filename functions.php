@@ -17,4 +17,7 @@ if (Init::checkRequiredPlugins()) {
     FileLoader::loadPhpFiles('inc');
     add_action('after_setup_theme', ['Flynt\Init', 'initTheme']);
     add_action('after_setup_theme', ['Flynt\Init', 'loadComponents'], 101);
+    if (file_exists(__DIR__ . '/flyntPremium/functions.php')) {
+        require_once __DIR__ . '/flyntPremium/functions.php';
+    }
 }

@@ -1,4 +1,5 @@
 const path = require('path')
+const fs = require('fs')
 const webpack = require('webpack')
 const TerserPlugin = require('terser-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -109,6 +110,7 @@ const webpackConfig = {
     }
   }
 }
+const premiumComponentsExist = fs.existsSync('flyntPremium/Components')
 webpackConfig.plugins = webpackConfig.plugins || []
 if (production) {
   webpackConfig.plugins.push(
@@ -116,7 +118,8 @@ if (production) {
       PRODUCTION: JSON.stringify(true),
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
-      }
+      },
+      PREMIUM_COMPONENTS_EXIST: JSON.stringify(premiumComponentsExist)
     })
   )
   webpackConfig.plugins.push(new webpack.optimize.AggressiveMergingPlugin())
@@ -134,7 +137,8 @@ if (production) {
       PRODUCTION: JSON.stringify(false),
       'process.env': {
         'NODE_ENV': JSON.stringify('development')
-      }
+      },
+      PREMIUM_COMPONENTS_EXIST: JSON.stringify(premiumComponentsExist)
     })
   )
 }
@@ -155,7 +159,7 @@ const multiConfig = Object.keys(config.entry).map(entry => {
         // both options are optional
         filename: `${entry}.css`,
         chunkFilename: `${entry}.css`
-      }),
+      })
     ]
   }
 })

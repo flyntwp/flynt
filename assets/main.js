@@ -1,3 +1,4 @@
+/* global PREMIUM_COMPONENTS_EXIST */
 import 'console-polyfill'
 import 'normalize.css/normalize.css'
 import './main.scss'
@@ -25,3 +26,6 @@ function importAll (r) {
 }
 
 importAll(require.context('../Components/', true, /script\.js$/))
+if (PREMIUM_COMPONENTS_EXIST) {
+  importAll(require.context('../FlyntPremium/Components/', true, /script\.js$/))
+}
