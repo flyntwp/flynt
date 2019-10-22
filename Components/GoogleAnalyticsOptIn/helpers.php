@@ -4,6 +4,8 @@ namespace Flynt\Components\GoogleAnalyticsOptIn;
 
 function isTrackingEnabled($gaId, $skippedUserRoles, $skippedIps)
 {
+    $skippedIps = explode(',', $skippedIps);
+    $skippedIps = array_map('trim', $skippedIps);
     if ($gaId && isValidId($gaId)) {
         $user = wp_get_current_user();
         $trackingEnabled = !($gaId === 'debug' // debug mode enabled
