@@ -1,0 +1,10 @@
+<div class="flyntComponent boxShadow {{ layout }} {{ theme ?: 'themeReset' }}" is="flynt-google-analytics-opt-in">
+  <script type="application/json">{{ jsonData }}</script>
+  <div class="container centerMaxWidthContainer">
+    <div class="content">
+      {{ contentHtml|e('wp_kses_post') }}
+    </div>
+    <button type="button" class="button button--small" aria-label="Close" data-decline>{{ declineButtonLabel|e }}</button>
+    <button type="button" class="button button--small" aria-label="Close" data-accept>{{ acceptButtonLabel|e }}</button>
+  </div>
+</div>

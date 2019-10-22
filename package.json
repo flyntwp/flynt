@@ -114,7 +114,9 @@
       "postbump": "gulp replaceVersion && git add ."
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "js-cookie": "^2.2.1"
+  },
   "browserslist": [
     "> 1%",
     "last 2 versions",

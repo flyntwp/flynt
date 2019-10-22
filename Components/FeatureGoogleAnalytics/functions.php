@@ -7,7 +7,7 @@ require_once __DIR__ . '/GoogleAnalytics.php';
 use Flynt\Components\FeatureGoogleAnalytics\GoogleAnalytics;
 use Flynt\Utils\Options;
 
-add_action('init', 'Flynt\Components\FeatureGoogleAnalytics\init');
+//add_action('init', 'Flynt\Components\FeatureGoogleAnalytics\init');
 
 function init()
 {
