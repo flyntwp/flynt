@@ -473,16 +473,10 @@ button {
   text-overflow: ellipsis;
   vertical-align: middle;
   white-space: nowrap;
-}
 
-a,
-button {
-  &.pill {
-    &:hover,
-    &:focus {
-      background-color: $color-accent;
-      color: $color-background;
-    }
+  &:hover,
+  &:focus {
+    color: $color-background;
   }
 }
 
@@ -790,13 +784,10 @@ select {
     }
   }
 
-  a,
-  button {
-    &.pill {
-      &:hover,
-      &:focus {
-        color: $color-background;
-      }
+  .pill {
+    &:hover,
+    &:focus {
+      color: $color-background;
     }
   }
 }
