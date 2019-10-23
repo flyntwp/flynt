@@ -28,15 +28,14 @@ class GoogleAnalyticsOptIn extends window.HTMLDivElement {
   resolveElements () {
     this.$acceptButton = $('[data-accept]', this)
     this.$declineButton = $('[data-decline]', this)
-    this.$optOutLink = $('.googleOptOutLink')
     this.gaId = this.isValidId(this.props.gaId) ? this.props.gaId : false
     this.disableStr = 'ga-disable-' + this.props.gaId
   }
 
   bindFunctions () {
-    this.addGTAGFunction = this.addGTAGFunction.bind(this)
-    this.addGTAGFunctionFallback = this.addGTAGFunctionFallback.bind(this)
-    this.addGTAGScript = this.addGTAGScript.bind(this)
+    this.addGTAGFunction = this.addGtagFunction.bind(this)
+    this.addGTAGFunctionFallback = this.addGtagFunctionFallback.bind(this)
+    this.addGTAGScript = this.addGtagScript.bind(this)
     this.acceptTracking = this.acceptTracking.bind(this)
     this.declineTracking = this.declineTracking.bind(this)
     this.showModal = this.showModal.bind(this)
@@ -46,41 +45,35 @@ class GoogleAnalyticsOptIn extends window.HTMLDivElement {
   bindEvents () {
     this.$acceptButton.on('click', this.acceptTracking)
     this.$declineButton.on('click', this.declineTracking)
-    this.$optOutLink.on('click', this.showModal)
+    $(document.body).on('click', '.googleOptOutLink', this.showModal)
   }
 
   connectedCallback () {
     this.checkOptState()
   }
 
-  addGTAGScript () {
+  addGtagScript () {
     const scriptUrl = `https://www.googletagmanager.com/gtag/js?id=${this.gaId}`
-    this.GTAGscriptElem = document.createElement('script')
-    this.GTAGscriptElem.async = true
-    this.GTAGscriptElem.type = 'text/javascript'
-    this.GTAGscriptElem.src = scriptUrl
-    document.head.appendChild(this.GTAGscriptElem)
+    this.GTAGscriptElement = document.createElement('script')
+    this.GTAGscriptElement.async = true
+    this.GTAGscriptElement.type = 'text/javascript'
+    this.GTAGscriptElement.src = scriptUrl
+    document.head.appendChild(this.GTAGscriptElement)
   }
 
-  addGTAGFunction () {
-    const scriptContent = `window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '${this.gaId}', { 'anonymize_ip': true });`
-    this.GTAGscriptElemFunction = document.createElement('script')
-    this.GTAGscriptElemFunction.type = 'text/javascript'
-    this.GTAGscriptElemFunction.text = scriptContent
-    document.head.appendChild(this.GTAGscriptElemFunction)
+  addGtagFunction () {
+    window.dataLayer = window.dataLayer || []
+    window.gtag = function () {
+      window.dataLayer.push(arguments)
+    }
+    window.gtag('js', new Date())
+    window.gtag('config', this.gaId, { anonymize_ip: true })
   }
 
-  addGTAGFunctionFallback () {
-    const scriptContent = `function gtag() {
-      console.log('GoogleAnalytics: ' + [].slice.call(arguments));
-    }`
-    this.GTAGscriptElemFunctionFallback = document.createElement('script')
-    this.GTAGscriptElemFunctionFallback.type = 'text/javascript'
-    this.GTAGscriptElemFunctionFallback.text = scriptContent
-    document.head.appendChild(this.GTAGscriptElemFunctionFallback)
+  addGtagFunctionFallback () {
+    window.gtag = function () {
+      console.log('GoogleAnalytics: ' + [].slice.call(arguments))
+    }
   }
 
   isValidId (gaId) {
@@ -92,9 +85,6 @@ class GoogleAnalyticsOptIn extends window.HTMLDivElement {
   }
 
   checkOptState () {
-    if (typeof this.GTAGscriptElemFunctionFallback === 'undefined') {
-      this.addGTAGFunctionFallback()
-    }
     if (typeof Cookies.get(this.cookieName) === 'undefined') {
       this.showModal()
     }
@@ -103,6 +93,7 @@ class GoogleAnalyticsOptIn extends window.HTMLDivElement {
       if (getCookieValue === 'false') {
         Cookies.set(this.disableStr, true)
         window[this.disableStr] = true
+        this.addGtagFunctionFallback()
       } else {
         this.acceptTracking()
         Cookies.remove(this.disableStr)
@@ -118,8 +109,10 @@ class GoogleAnalyticsOptIn extends window.HTMLDivElement {
       window[this.disableStr] = false
       Cookies.remove(this.disableStr)
       if (this.props.serverSideTrackingEnabled === true) {
-        this.addGTAGScript()
-        this.addGTAGFunction()
+        this.addGtagScript()
+        setTimeout(() => {
+          this.addGtagFunction()
+        }, 3000)
       }
     }
   }
@@ -130,13 +123,10 @@ class GoogleAnalyticsOptIn extends window.HTMLDivElement {
     if (this.gaId) {
       Cookies.set(this.disableStr, true)
       window[this.disableStr] = true
-      if (typeof this.GTAGscriptElem !== 'undefined') {
-        this.GTAGscriptElem.remove()
+      if (typeof this.GTAGscriptElement !== 'undefined') {
+        this.GTAGscriptElement.remove()
       }
-      if (typeof this.GTAGscriptElemFunction !== 'undefined') {
-        this.GTAGscriptElemFunction.remove()
-      }
-      this.addGTAGFunctionFallback()
+      this.addGtagFunctionFallback()
     }
   }
 
