@@ -12,11 +12,11 @@
             <div class="media {{- item.image.svg ? ' media--svg' }}">
               {% if item.link %}
                 <a class="logo" href="{{ item.link.url|e('esc_url') }}" title="{{ item.link.title|e }}" {{ item.link.target == '_blank' ? 'target="_blank" rel="nofollow noreferrer noopener"' : 'rel="nofollow"' }}>
-                  {% include 'Partials/Image/index.twig' with {image: item.image, link: item.link, type: options.card} only %}
+                  {% include 'Partials/_image.twig' with {image: item.image, link: item.link, type: options.card} only %}
                 </a>
               {% else %}
                 <div class="logo">
-                  {% include 'Partials/Image/index.twig' with {image: item.image, link: item.link, type: options.card} only %}
+                  {% include 'Partials/_image.twig' with {image: item.image, link: item.link, type: options.card} only %}
                 </div>
               {% endif %}
             </div>
