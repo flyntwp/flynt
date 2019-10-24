@@ -455,7 +455,33 @@ button {
 }
 
 /**
-* 3.2 Forms
+* 3.2 Pills
+*
+* Pill-looking elements.
+*/
+
+.pill {
+  background-color: $color-background-dark;
+  border-radius: 1rem;
+  color: $color-background;
+  display: inline-block;
+  font-size: 0.8rem;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 0.125rem 1rem;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    color: $color-background;
+  }
+}
+
+/**
+* 3.3 Forms
 *
 * Global form elements, including structering wrapper elements.
 */
@@ -587,7 +613,7 @@ select {
 }
 
 /**
-* 3.3 Icons
+* 3.4 Icons
 *
 * Global icon set styling.
 */
@@ -600,7 +626,7 @@ select {
 }
 
 /**
-* 3.4 Custom list styles
+* 3.5 Custom list styles
 */
 
 .iconList {
@@ -629,25 +655,6 @@ select {
       background-image: url('../assets/icons/check-circle.svg');
     }
   }
-}
-
-/**
-* 3.4 Pills
-*
-* Pill-looking elements.
-*/
-
-.pill {
-  background-color: $color-background-dark;
-  border-radius: 2em;
-  color: $color-background;
-  display: inline-block;
-  max-width: 100%;
-  overflow: hidden;
-  padding: 0.1rem 1rem;
-  text-overflow: ellipsis;
-  vertical-align: middle;
-  white-space: nowrap;
 }
 
 /**
@@ -703,6 +710,10 @@ select {
         background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.586 5L.293 8.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4A1 1 0 1 0 .293 1.707L3.586 5z' fill='rgb(#{$color-accent-rgb})'/%3E%3Cpath d='M13.586 5l-3.293 3.293a1 1 0 0 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4a1 1 0 0 0-1.414 1.414L13.586 5z' fill='rgb(#{$color-background-rgb}'/%3E%3C/svg%3E");
       }
     }
+  }
+
+  .pill {
+    background-color: $color-background-hero;
   }
 }
 
@@ -770,6 +781,13 @@ select {
 
         background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.586 5L.293 8.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4A1 1 0 1 0 .293 1.707L3.586 5z' fill='rgb(#{$color-background-rgb})'/%3E%3Cpath d='M13.586 5l-3.293 3.293a1 1 0 0 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4a1 1 0 0 0-1.414 1.414L13.586 5z' fill='rgb(#{$color-background-dark-rgb}'/%3E%3C/svg%3E");
       }
+    }
+  }
+
+  .pill {
+    &:hover,
+    &:focus {
+      color: $color-background;
     }
   }
 }
@@ -849,5 +867,9 @@ select {
         background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.586 5L.293 8.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4A1 1 0 1 0 .293 1.707L3.586 5z' fill='rgb(#{$color-accent-rgb})'/%3E%3Cpath d='M13.586 5l-3.293 3.293a1 1 0 0 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4a1 1 0 0 0-1.414 1.414L13.586 5z' fill='rgb(#{$color-background-dark-rgb}'/%3E%3C/svg%3E");
       }
     }
+  }
+
+  .pill {
+    color: $color-background;
   }
 }
