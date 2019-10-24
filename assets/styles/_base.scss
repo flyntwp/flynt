@@ -137,12 +137,39 @@ body {
 
 .post {
   &-main {
-    > :first-child {
-      margin-top: 0;
+    .componentSpacing {
+      margin: $component-spacing-mobile/2 0;
+
+      @media (min-width: $breakpoint-tablet) {
+        margin: $component-spacing-tablet/2 0;
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        margin: $component-spacing-desktop/2 0;
+      }
+
+      &[class*='theme'] {
+        margin: 0;
+        padding: $component-spacing-mobile/2 0;
+
+        @media (min-width: $breakpoint-tablet) {
+          padding: $component-spacing-tablet/2 0;
+        }
+
+        @media (min-width: $breakpoint-desktop) {
+          padding: $component-spacing-desktop/2 0;
+        }
+      }
     }
 
-    > :last-child {
-      margin-bottom: 0;
+    > .componentSpacing {
+      &:first-child {
+        margin-top: 0;
+      }
+
+      > :last-child {
+        margin-bottom: 0;
+      }
     }
   }
 }
