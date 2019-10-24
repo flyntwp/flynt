@@ -50,6 +50,7 @@ class GoogleAnalyticsOptIn extends window.HTMLDivElement {
 
   connectedCallback () {
     this.checkOptState()
+    window.showModalFromConsole = this.showModal
   }
 
   addGtagScript () {
@@ -110,9 +111,7 @@ class GoogleAnalyticsOptIn extends window.HTMLDivElement {
       Cookies.remove(this.disableStr)
       if (this.props.serverSideTrackingEnabled === true) {
         this.addGtagScript()
-        setTimeout(() => {
-          this.addGtagFunction()
-        }, 3000)
+        this.addGtagFunction()
       }
     }
   }
