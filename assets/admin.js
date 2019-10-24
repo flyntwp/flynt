@@ -1,4 +1,3 @@
-/* global PREMIUM_COMPONENTS_EXIST */
 import './admin.scss'
 
 function importAll (r) {
