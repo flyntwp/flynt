@@ -26,6 +26,3 @@ function importAll (r) {
 }
 
 importAll(require.context('../Components/', true, /script\.js$/))
-if (PREMIUM_COMPONENTS_EXIST) {
-  importAll(require.context('../FlyntPremium/Components/', true, /script\.js$/))
-}

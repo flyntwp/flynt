@@ -3,6 +3,4 @@
   'styles/mixins';
 
 // stylelint-disable-next-line scss/at-import-no-partial-leading-underscore, scss/at-import-partial-extension-blacklist
-@import '../Components/*/_admin.scss';
-// stylelint-disable-next-line scss/at-import-no-partial-leading-underscore, scss/at-import-partial-extension-blacklist
-@import '../FlyntPremium/Components/*/_admin.scss';
+@import '../Components/**/_admin.scss';
