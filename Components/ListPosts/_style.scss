@@ -4,7 +4,7 @@
       @include reset-list;
     }
 
-    @import 'Partials/PostTeaser/style';
-    @import 'Partials/PaginationButtons/style';
+    @import 'Partials/postTeaser';
+    @import 'Partials/paginationButtons';
   }
 }

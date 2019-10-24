@@ -3,10 +3,10 @@
     {% if posts %}
       <ul class="listPosts-list">
         {% for post in posts %}
-          {% include 'Partials/PostTeaser/index.twig' %}
+          {% include 'Partials/_postteaser.twig' %}
         {% endfor %}
       </ul>
-      {% include 'Partials/PaginationButtons/index.twig' %}
+      {% include 'Partials/_paginationbuttons.twig' %}
     {% else %}
       <p class="listPosts-noPosts">{{ noPostsFoundText }}</p>
     {% endif %}

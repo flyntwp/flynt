@@ -7,7 +7,7 @@
       {{ html|e('wp_kses_post') }}
     </div>
     {% if terms %}
-       {% include 'Partials/Filter/index.twig' %}
+       {% include 'Partials/_filter.twig' %}
     {% endif %}
     <ul class="posts">
       {% for post in posts %}
@@ -42,6 +42,6 @@
     </ul>
     {% set pagination = posts.pagination %}
     {% if pagination.pages %}
-      {% include 'Partials/PaginationButtons/index.twig' %}
+      {% include 'Partials/_paginationButtons.twig' %}
     {% endif %}
   </div>

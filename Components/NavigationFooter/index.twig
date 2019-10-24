@@ -2,7 +2,7 @@
   <div class="container centerMaxWidthContainer">
     <nav class="navigation">
       {% if menu %}
-        {% include 'Partials/Menu/index.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel } only %}
+        {% include 'Partials/_menu.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel } only %}
       {% endif %}
     </nav>
   </div>
