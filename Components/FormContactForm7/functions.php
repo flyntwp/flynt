@@ -140,9 +140,153 @@ Api::registerFields('FormContactForm7', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme')
+                    Api::loadFields('FieldVariables', 'theme'),
+                    [
+                        'label' => 'Show as Card',
+                        'name' => 'card',
+                        'type' => 'true_false',
+                        'default_value' => 1,
+                        'ui' => 1
+                    ]
                 ]
-            ]
+            ],
+            [
+                'label' => 'Template Samples',
+                'name' => 'templateTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
+                'label' => '',
+                'name' => 'template',
+                'type' => 'message',
+                'message' => '
+<pre>
+<h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Form Newsletter</h4> '.htmlspecialchars('
+<div class="form-flex">
+  <div class="form-flex-col">
+    [email* your-email placeholder "Enter your email"]
+  </div>
+  <div class="form-flex-col">
+    [submit "Submit"]
+  </div>
+</div>
+
+').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Simple field</h4> '.htmlspecialchars('
+<div class="form-group">
+    <label for="yourCompany">Company</label>
+    [text* your-company id:yourCompany placeholder "Bleech"]
+</div>
+
+').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Two columns row</h4> '.htmlspecialchars('
+<div class="form-row-2">
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        [text* first-name id:firstName placeholder "Dean"]
+    </div>
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        [text* last-name id:lastName placeholder "Winchester"]
+    </div>
+</div>
+
+').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Three columns row</h4> '.htmlspecialchars('
+<div class="form-row-3">
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        [text* first-name id:firstName placeholder "Dean"]
+    </div>
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        [text* last-name id:lastName placeholder "Winchester"]
+    </div>
+    <div class="form-group">
+        <label for="yourEmail">Email</label>
+        [email* your-email id:yourEmail placeholder "hello@flynt.com"]
+    </div>
+</div>
+
+').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Two columns row (left column bigger than right)</h4> '.htmlspecialchars('
+<div class="form-row-2-lg-left">
+    <div class="form-group">
+        <label for="yourAddress">Address</label>
+        [text address id:yourAddress placeholder "Panoramastraße 1A, 10178 Berlin"]
+    </div>
+    <div class="form-group">
+        <label for="zipCode">PLZ</label>
+        [number zipcode id:zipCode placeholder "12345"]
+    </div>
+</div>
+
+').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Two columns row (right column bigger than left)</h4> '.htmlspecialchars('
+<div class="form-row-2-lg-right">
+    <div class="form-group">
+        <label for="phoneCode">Code</label>
+        [select menu-phone-code id:phoneCode "+345" "+44" "+7" "+49"]
+    </div>
+    <div class="form-group">
+        <label for="mobilePhone">Phone Number</label>
+        [tel mobile-phone id:mobilePhone placeholder "767-3842"]
+    </div>
+</div>
+
+').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Textarea</h4> '.htmlspecialchars('
+<div class="form-group">
+    <label for="yourMessage">Your Message</label>
+    [textarea your-message id:yourMessage placeholder "Message here"]
+</div>
+
+').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">URL field</h4> '.htmlspecialchars('
+<div class="form-group">
+    <label for="yourWebsite">Website</label>
+    [url website id:yourWebsite placeholder "http://"]
+</div>
+
+').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Date field</h4> '.htmlspecialchars('
+<div class="form-group">
+    <label for="yourDate">Date</label>
+    [date date id:yourDate]
+</div>
+
+').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Checkbox</h4> '.htmlspecialchars('
+<div class="form-group">
+    [checkbox checkbox-555 use_label_element "some " "another" "else"]
+</div>
+
+').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Radio</h4> '.htmlspecialchars('
+<div class="form-group">
+    [radio radio-647 default:1 use_label_element "some " "else" "another"]
+</div>
+
+').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Acceptance</h4> '.htmlspecialchars('
+<div class="form-group">
+    [acceptance acceptance-782 use_label_element optional]
+        By default, an acceptance checkbox is a different mechanism than
+        general input validation, and it runs after all validation succeeds.
+    [/acceptance]
+</div>
+
+').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Quiz field</h4> '.htmlspecialchars('
+<div class="form-group label-wrap">
+    [quiz quiz-413 "1+1=?|1" "1+2=?|3" "1+3=?|4"]
+</div>
+
+').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">File field</h4> '.htmlspecialchars('
+<div class="form-group">
+    [file file-838]
+</div>
+
+').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Submit button</h4> '.htmlspecialchars('
+<div class="form-button">
+    [submit "Send Message"]
+</div>
+').'
+</pre>
+                ',
+                'new_lines' => 'wpautop',
+                'esc_html' => 0
+            ],
         ]
     ]
 ]);

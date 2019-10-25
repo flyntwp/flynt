@@ -5,12 +5,14 @@
         {{ preContentHtml|e('wp_kses_post') }}
       </div>
     {% endif %}
-    {% set formShortcode = '[contact-form-7 id="' ~ formId ~ '"]' %}
-    {{ formShortcode|shortcodes }}
-    {% if contentFooterHtml %}
-      <div class="postContent">
-        {{ contentFooterHtml|e('wp_kses_post') }}
-      </div>
-    {% endif %}
+    <div class="form {{ options.card ? 'themeReset layoutCard' }}">
+      {% set formShortcode = '[contact-form-7 id="' ~ formId ~ '"]' %}
+      {{ formShortcode|shortcodes }}
+      {% if contentFooterHtml %}
+        <div class="postContent">
+          {{ contentFooterHtml|e('wp_kses_post') }}
+        </div>
+      {% endif %}
+    </div>
   </div>
 </div>
