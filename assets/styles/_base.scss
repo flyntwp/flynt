@@ -517,6 +517,10 @@ button {
 * Global form elements, including structering wrapper elements.
 */
 
+form {
+  margin: 0;
+}
+
 fieldset {
   border: 0;
   margin: 0 0 1.5rem;
@@ -547,17 +551,12 @@ label {
   margin-bottom: 0.5rem;
 }
 
-[type='text'],
-[type='email'],
-[type='search'],
-[type='password'],
-textarea,
-select {
+#{$input-selectors} {
   appearance: none;
   background-color: $color-background;
   border: 1px solid rgba(11, 16, 12, 1);
   border-radius: 0;
-  color: inherit;
+  color: $color-headline;
   font-family: inherit;
   font-size: inherit;
   min-height: 50px;
@@ -763,27 +762,27 @@ select {
   }
 
   .button {
-    background-color: $color-background;
-    border-color: $color-background;
-    color: $color-background-dark;
+    background-color: $color-background-dark;
+    border-color: $color-background-dark;
+    color: $color-background;
 
     &:hover,
     &:focus {
-      background-color: $color-background-dark;
-      border-color: $color-background-dark;
-      color: $color-background;
+      background-color: $color-background;
+      border-color: $color-background;
+      color: $color-background-dark;
     }
 
     &--ghost {
       background-color: transparent;
-      border-color: $color-background;
-      color: $color-background;
+      border-color: $color-background-dark;
+      color: $color-background-dark;
 
       &:hover,
       &:focus {
         background-color: transparent;
-        border-color: $color-background-dark;
-        color: $color-background-dark;
+        border-color: $color-background;
+        color: $color-background;
       }
     }
 

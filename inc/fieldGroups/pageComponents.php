@@ -26,6 +26,8 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Api::loadFields('BlockWysiwyg', 'layout'),
                     Api::loadFields('BlockWysiwygTwoCol', 'layout'),
                     Api::loadFields('BlockWysiwygSidebar', 'layout'),
+                    Api::loadFields('FormContactForm7', 'layout'),
+                    Api::loadFields('FormNewsletter', 'layout'),
                     Api::loadFields('GridImageText', 'layout'),
                     Api::loadFields('GridPostsLatest', 'layout'),
                     Api::loadFields('HeroCta', 'layout'),
