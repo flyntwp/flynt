@@ -21,7 +21,6 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Api::loadFields('BlockImage', 'layout'),
                     Api::loadFields('BlockImageText', 'layout'),
                     Api::loadFields('BlockImageTextParallax', 'layout'),
-                    Api::loadFields('BlockImageTextCta', 'layout'),
                     Api::loadFields('BlockTextImageCrop', 'layout'),
                     Api::loadFields('BlockVideoOembed', 'layout'),
                     Api::loadFields('BlockWysiwyg', 'layout'),
@@ -29,14 +28,8 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Api::loadFields('BlockWysiwygSidebar', 'layout'),
                     Api::loadFields('FormContactForm7', 'layout'),
                     Api::loadFields('FormNewsletter', 'layout'),
-                    Api::loadFields('GridContentLists', 'layout'),
-                    Api::loadFields('GridDownloadPortrait', 'layout'),
                     Api::loadFields('GridImageText', 'layout'),
-                    Api::loadFields('GridListSteps', 'layout'),
-                    Api::loadFields('GridPostsSlider', 'layout'),
                     Api::loadFields('GridPostsLatest', 'layout'),
-                    Api::loadFields('GridPostsTeaser', 'layout'),
-                    Api::loadFields('GridTeaserTiles', 'layout'),
                     Api::loadFields('HeroCta', 'layout'),
                     Api::loadFields('HeroImageCta', 'layout'),
                     Api::loadFields('HeroImageText', 'layout'),
@@ -45,10 +38,8 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Api::loadFields('ListLogos', 'layout'),
                     Api::loadFields('ListIcons', 'layout'),
                     Api::loadFields('ListSocial', 'layout'),
-                    Api::loadFields('ListTestimonialCards', 'layout'),
                     Api::loadFields('SliderImages', 'layout'),
                     Api::loadFields('SliderImagesCentered', 'layout'),
-                    Api::loadFields('SliderImageGallery', 'layout')
                 ]
             ]
         ],

@@ -89,20 +89,6 @@ body {
   max-width: $content-max-width;
 }
 
-.boxPadding {
-  @include reset-content-margins;
-
-  padding: 20px;
-
-  @media (min-width: $breakpoint-tablet-horizontal) {
-    padding: 30px;
-  }
-}
-
-.boxShadow {
-  box-shadow: 0 1px 26px 0 rgba(0, 0, 0, 0.06);
-}
-
 .preContent {
   @include reset-content-margins;
 
@@ -135,14 +121,64 @@ body {
   }
 }
 
+.scrollableTableWrapper {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+}
+
+/* Box Helpers */
+
+.boxPadding {
+  @include reset-content-margins;
+
+  padding: 20px;
+
+  @media (min-width: $breakpoint-tablet-horizontal) {
+    padding: 30px;
+  }
+}
+
+.boxShadow {
+  box-shadow: 0 1px 26px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Custom styling for single post layouts */
+
 .post {
   &-main {
-    > :first-child {
-      margin-top: 0;
+    .componentSpacing {
+      margin: $component-spacing-mobile/2 0;
+
+      @media (min-width: $breakpoint-tablet) {
+        margin: $component-spacing-tablet/2 0;
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        margin: $component-spacing-desktop/2 0;
+      }
+
+      &[class*='theme'] {
+        margin: 0;
+        padding: $component-spacing-mobile/2 0;
+
+        @media (min-width: $breakpoint-tablet) {
+          padding: $component-spacing-tablet/2 0;
+        }
+
+        @media (min-width: $breakpoint-desktop) {
+          padding: $component-spacing-desktop/2 0;
+        }
+      }
     }
 
-    > :last-child {
-      margin-bottom: 0;
+    > .componentSpacing {
+      &:first-child {
+        margin-top: 0;
+      }
+
+      > :last-child {
+        margin-bottom: 0;
+      }
     }
   }
 }
@@ -300,11 +336,6 @@ blockquote,
   }
 }
 
-.scrollableTableWrapper {
-  -webkit-overflow-scrolling: touch;
-  overflow-x: auto;
-}
-
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -455,7 +486,33 @@ button {
 }
 
 /**
-* 3.2 Forms
+* 3.2 Pills
+*
+* Pill-looking elements.
+*/
+
+.pill {
+  background-color: $color-background-dark;
+  border-radius: 1rem;
+  color: $color-background;
+  display: inline-block;
+  font-size: 0.8rem;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 0.125rem 1rem;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    color: $color-background;
+  }
+}
+
+/**
+* 3.3 Forms
 *
 * Global form elements, including structering wrapper elements.
 */
@@ -586,7 +643,7 @@ select {
 }
 
 /**
-* 3.3 Icons
+* 3.4 Icons
 *
 * Global icon set styling.
 */
@@ -599,27 +656,26 @@ select {
 }
 
 /**
-* 3.4 Custom list styles
+* 3.5 Custom list styles
 */
 
 .iconList {
-  list-style-type: none;
-  padding: 0;
+  @include reset-list;
 
   li {
-    margin-bottom: 0.75em;
-    padding-left: 1.625em;
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
     position: relative;
 
     &::before {
       background-size: contain;
       content: '';
       display: block;
-      height: 0.875em;
+      height: 1rem;
       left: 0;
       position: absolute;
-      top: 0.375em;
-      width: 0.875em;
+      top: 0.25rem;
+      width: 1rem;
     }
   }
 
@@ -628,25 +684,6 @@ select {
       background-image: url('../assets/icons/check-circle.svg');
     }
   }
-}
-
-/**
-* 3.4 Pills
-*
-* Pill-looking elements.
-*/
-
-.pill {
-  background-color: $color-background-dark;
-  border-radius: 2em;
-  color: $color-background;
-  display: inline-block;
-  max-width: 100%;
-  overflow: hidden;
-  padding: 0.1rem 1rem;
-  text-overflow: ellipsis;
-  vertical-align: middle;
-  white-space: nowrap;
 }
 
 /**
@@ -702,6 +739,10 @@ select {
         background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.586 5L.293 8.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4A1 1 0 1 0 .293 1.707L3.586 5z' fill='rgb(#{$color-accent-rgb})'/%3E%3Cpath d='M13.586 5l-3.293 3.293a1 1 0 0 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4a1 1 0 0 0-1.414 1.414L13.586 5z' fill='rgb(#{$color-background-rgb}'/%3E%3C/svg%3E");
       }
     }
+  }
+
+  .pill {
+    background-color: $color-background-hero;
   }
 }
 
@@ -769,6 +810,13 @@ select {
 
         background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.586 5L.293 8.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4A1 1 0 1 0 .293 1.707L3.586 5z' fill='rgb(#{$color-background-rgb})'/%3E%3Cpath d='M13.586 5l-3.293 3.293a1 1 0 0 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4a1 1 0 0 0-1.414 1.414L13.586 5z' fill='rgb(#{$color-background-dark-rgb}'/%3E%3C/svg%3E");
       }
+    }
+  }
+
+  .pill {
+    &:hover,
+    &:focus {
+      color: $color-background;
     }
   }
 }
@@ -848,5 +896,9 @@ select {
         background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.586 5L.293 8.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4A1 1 0 1 0 .293 1.707L3.586 5z' fill='rgb(#{$color-accent-rgb})'/%3E%3Cpath d='M13.586 5l-3.293 3.293a1 1 0 0 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4a1 1 0 0 0-1.414 1.414L13.586 5z' fill='rgb(#{$color-background-dark-rgb}'/%3E%3C/svg%3E");
       }
     }
+  }
+
+  .pill {
+    color: $color-background;
   }
 }

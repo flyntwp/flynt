@@ -7,7 +7,7 @@
       {{ html|e('wp_kses_post') }}
     </div>
     {% if terms %}
-       {% include 'Partials/Filter/index.twig' %}
+       {% include 'Partials/_filter.twig' %}
     {% endif %}
     <ul class="posts">
       {% for post in posts %}
@@ -27,14 +27,12 @@
                   alt="{{ post.thumbnail.alt|e }}">
               </figure>
             {% endif %}
-            <h3 class="h3 post-title">
-              {{ post.title }}
-            </h3>
           </a>
-          <p class="post-preview">
-            {{ post.preview.read_more(false) }}
+          <div class="post-inner">
+            <h3 class="h3 post-title">{{ post.title }}</h3>
+            <p class="post-excerpt">{{ post.preview.read_more(false) }}</p>
+            <a class="button button--link" href="{{ post.link }}" title="{{ post.title }}">{{ labels.readMore }}</a>
           </p>
-          <a class="button button--link" href="{{ post.link }}" title="{{ post.title }}">{{ labels.readMore }}</a>
         </li>
       {% else %}
         <p class="posts-empty">{{ labels.noPostsFound }}</p>
@@ -42,6 +40,6 @@
     </ul>
     {% set pagination = posts.pagination %}
     {% if pagination.pages %}
-      {% include 'Partials/PaginationButtons/index.twig' %}
+      {% include 'Partials/_paginationButtons.twig' %}
     {% endif %}
   </div>

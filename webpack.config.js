@@ -109,6 +109,7 @@ const webpackConfig = {
     }
   }
 }
+
 webpackConfig.plugins = webpackConfig.plugins || []
 if (production) {
   webpackConfig.plugins.push(
@@ -155,7 +156,7 @@ const multiConfig = Object.keys(config.entry).map(entry => {
         // both options are optional
         filename: `${entry}.css`,
         chunkFilename: `${entry}.css`
-      }),
+      })
     ]
   }
 })
