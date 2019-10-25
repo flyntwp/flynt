@@ -140,7 +140,9 @@ Api::registerFields('FormContactForm7', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme'),
+                    array_merge(Api::loadFields('FieldVariables', 'theme'), array(
+                        'default_value' => 'themeDark'
+                    )),
                     [
                         'label' => 'Show as Card',
                         'name' => 'card',
@@ -151,7 +153,7 @@ Api::registerFields('FormContactForm7', [
                 ]
             ],
             [
-                'label' => 'Template Samples',
+                'label' => 'Form Examples',
                 'name' => 'templateTab',
                 'type' => 'tab',
                 'placement' => 'top',
@@ -172,13 +174,11 @@ Api::registerFields('FormContactForm7', [
     [submit "Submit"]
   </div>
 </div>
-
 ').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Simple field</h4> '.htmlspecialchars('
 <div class="form-group">
     <label for="yourCompany">Company</label>
-    [text* your-company id:yourCompany placeholder "Bleech"]
+    [text* your-company id:yourCompany placeholder "bleech"]
 </div>
-
 ').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Two columns row</h4> '.htmlspecialchars('
 <div class="form-row-2">
     <div class="form-group">
@@ -190,7 +190,6 @@ Api::registerFields('FormContactForm7', [
         [text* last-name id:lastName placeholder "Winchester"]
     </div>
 </div>
-
 ').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Three columns row</h4> '.htmlspecialchars('
 <div class="form-row-3">
     <div class="form-group">
@@ -203,22 +202,20 @@ Api::registerFields('FormContactForm7', [
     </div>
     <div class="form-group">
         <label for="yourEmail">Email</label>
-        [email* your-email id:yourEmail placeholder "hello@flynt.com"]
+        [email* your-email id:yourEmail placeholder "flynt@bleech.de"]
     </div>
 </div>
-
 ').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Two columns row (left column bigger than right)</h4> '.htmlspecialchars('
 <div class="form-row-2-lg-left">
     <div class="form-group">
         <label for="yourAddress">Address</label>
-        [text address id:yourAddress placeholder "Panoramastraße 1A, 10178 Berlin"]
+        [text address id:yourAddress placeholder "Panoramastraße 1A"]
     </div>
     <div class="form-group">
         <label for="zipCode">PLZ</label>
-        [number zipcode id:zipCode placeholder "12345"]
+        [number zipcode id:zipCode placeholder "10178"]
     </div>
 </div>
-
 ').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Two columns row (right column bigger than left)</h4> '.htmlspecialchars('
 <div class="form-row-2-lg-right">
     <div class="form-group">
@@ -230,35 +227,29 @@ Api::registerFields('FormContactForm7', [
         [tel mobile-phone id:mobilePhone placeholder "767-3842"]
     </div>
 </div>
-
 ').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Textarea</h4> '.htmlspecialchars('
 <div class="form-group">
     <label for="yourMessage">Your Message</label>
     [textarea your-message id:yourMessage placeholder "Message here"]
 </div>
-
 ').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">URL field</h4> '.htmlspecialchars('
 <div class="form-group">
     <label for="yourWebsite">Website</label>
     [url website id:yourWebsite placeholder "http://"]
 </div>
-
 ').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Date field</h4> '.htmlspecialchars('
 <div class="form-group">
     <label for="yourDate">Date</label>
     [date date id:yourDate]
 </div>
-
 ').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Checkbox</h4> '.htmlspecialchars('
 <div class="form-group">
     [checkbox checkbox-555 use_label_element "some " "another" "else"]
 </div>
-
 ').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Radio</h4> '.htmlspecialchars('
 <div class="form-group">
     [radio radio-647 default:1 use_label_element "some " "else" "another"]
 </div>
-
 ').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Acceptance</h4> '.htmlspecialchars('
 <div class="form-group">
     [acceptance acceptance-782 use_label_element optional]
@@ -266,17 +257,14 @@ Api::registerFields('FormContactForm7', [
         general input validation, and it runs after all validation succeeds.
     [/acceptance]
 </div>
-
 ').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Quiz field</h4> '.htmlspecialchars('
 <div class="form-group label-wrap">
     [quiz quiz-413 "1+1=?|1" "1+2=?|3" "1+3=?|4"]
 </div>
-
 ').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">File field</h4> '.htmlspecialchars('
 <div class="form-group">
     [file file-838]
 </div>
-
 ').' <h4 style="color: #ca4a1f;margin-bottom:0;font-size: 14px;">Submit button</h4> '.htmlspecialchars('
 <div class="form-button">
     [submit "Send Message"]

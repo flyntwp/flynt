@@ -9,6 +9,7 @@
 
   .form {
     @include reset-content-margins;
+
     margin-left: auto;
     margin-right: auto;
 
@@ -16,11 +17,9 @@
       max-width: $content-max-width + 100;
     }
 
-    &.layoutCard {
-      padding: 1.25rem $container-padding-mobile;
-
+    &.boxPadding {
       @media (min-width: $breakpoint-tablet) {
-        padding: 3.125rem;
+        padding: 50px;
       }
     }
 

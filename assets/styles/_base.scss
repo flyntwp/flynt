@@ -460,6 +460,10 @@ button {
 * Global form elements, including structering wrapper elements.
 */
 
+form {
+  margin: 0;
+}
+
 fieldset {
   border: 0;
   margin: 0 0 1.5rem;
