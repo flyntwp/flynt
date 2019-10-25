@@ -661,23 +661,22 @@ select {
 */
 
 .iconList {
-  list-style-type: none;
-  padding: 0;
+  @include reset-list;
 
   li {
-    margin-bottom: 0.75em;
-    padding-left: 1.625em;
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
     position: relative;
 
     &::before {
       background-size: contain;
       content: '';
       display: block;
-      height: 0.875em;
+      height: 1rem;
       left: 0;
       position: absolute;
-      top: 0.375em;
-      width: 0.875em;
+      top: 0.25rem;
+      width: 1rem;
     }
   }
 
