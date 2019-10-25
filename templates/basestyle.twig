@@ -24,6 +24,27 @@
         <p>Drops of rain could be heard hitting the pane, which made him feel quite sad. "How about if I sleep a little bit longer and forget all this <strong>nonsense</strong>", he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position. However hard he threw himself onto his right, he always rolled back to where he was.</p>
         <p>He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering legs, and only stopped when he began to feel a mild, dull pain there that he had never felt before.</p>
         <hr>
+        <h2>Helper Classes</h2>
+        <p>The BaseStyle includes some global CSS layout classes which help ensure a consistent appearance across components:<p>
+        <ul>
+          <li><code>.flyntComponent</code><br>Wraps all components.</li>
+          <li><code>.componentSpacing</code><br>Ensures consistent component top and bottom spacing.</li>
+          <li><code>.centerMaxWidthContainer</code><br>Ensures consistent left and right padding and website max width.</li>
+          <li><code>.centerContentMaxWidth</code><br>Ensures text content doesn't flow wider than 80 characters per line.</li>
+          <li><code>.preContent</code><br>Ensures consistent positioning of content preceding the main section of a component.</li>
+          <li><code>.postContent</code><br>Ensures consistent positioning of content following the main section of a component.</li>
+          <li><code>.scrollableTableWrapper</code><br>Wrapping a table with a container element with this class makes the table scrollable on smaller screen sizes.</li>
+        </ul>
+        <p>Other helper classes are:</p>
+        <div class="boxPadding boxShadow">
+          <h3>Box Helpers</h3>
+          <p>Box helper classes can be used alone or in combination to ensure consistent styling across components.</p>
+          <ul>
+            <li>Using the <code>boxPadding</code> class allows you to consistently style any content container as a responsive padding box.</li>
+            <li>Using the <code>boxShadow</code> class allows you to give elements a drop shadow with consistent appearance.</li>
+          </ul>
+        </div>
+        <hr>
         <h2>Form Elements</h2>
         <form>
           <p>Placing form elements on a page should just work without having to apply extra classes or custom wrapping elements. However, a <b>&lt;fieldset&gt;</b> element provides a nice opportunity to group multiple form elements.</p>
@@ -102,26 +123,6 @@
             <button class="pill">Pill Button</button>
           </p>
         </form>
-        <hr>
-        <h2>Helper Classes</h2>
-        <p>The BaseStyle includes some global CSS layout classes which help ensure a consistent appearance across components:<p>
-        <ul>
-          <li><code>.flyntComponent</code><br>Wraps all components.</li>
-          <li><code>.componentSpacing</code><br>Ensures consistent component top and bottom spacing.</li>
-          <li><code>.centerMaxWidthContainer</code><br>Ensures consistent left and right padding and website max width.</li>
-          <li><code>.centerContentMaxWidth</code><br>Ensures text content doesn't flow wider than 80 characters per line.</li>
-          <li><code>.preContent</code><br>Ensures consistent positioning of content preceding the main section of a component.</li>
-          <li><code>.postContent</code><br>Ensures consistent positioning of content following the main section of a component.</li>
-        </ul>
-        <p>Other helper classes are:</p>
-        <div class="boxPadding boxShadow">
-          <h3>Box Helpers</h3>
-          <p>Box helper classes can be used alone or in combination to ensure consistent styling across components.</p>
-          <ul>
-            <li>Using the <code>boxPadding</code> class allows you to consistently style any content container as a responsive padding box.</li>
-            <li>Using the <code>boxShadow</code> class allows you to give elements a drop shadow with consistent appearance.</li>
-          </ul>
-        </div>
         <hr>
         <h2>Themes</h2>
         <div class="themeLight boxPadding">

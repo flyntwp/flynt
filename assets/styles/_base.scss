@@ -89,20 +89,6 @@ body {
   max-width: $content-max-width;
 }
 
-.boxPadding {
-  @include reset-content-margins;
-
-  padding: 20px;
-
-  @media (min-width: $breakpoint-tablet-horizontal) {
-    padding: 30px;
-  }
-}
-
-.boxShadow {
-  box-shadow: 0 1px 26px 0 rgba(0, 0, 0, 0.06);
-}
-
 .preContent {
   @include reset-content-margins;
 
@@ -134,6 +120,29 @@ body {
     margin-top: $container-padding-desktop;
   }
 }
+
+.scrollableTableWrapper {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+}
+
+/* Box Helpers */
+
+.boxPadding {
+  @include reset-content-margins;
+
+  padding: 20px;
+
+  @media (min-width: $breakpoint-tablet-horizontal) {
+    padding: 30px;
+  }
+}
+
+.boxShadow {
+  box-shadow: 0 1px 26px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Custom styling for single post layouts */
 
 .post {
   &-main {
@@ -325,11 +334,6 @@ blockquote,
   p:last-child {
     margin-bottom: 0;
   }
-}
-
-.scrollableTableWrapper {
-  -webkit-overflow-scrolling: touch;
-  overflow-x: auto;
 }
 
 table {
