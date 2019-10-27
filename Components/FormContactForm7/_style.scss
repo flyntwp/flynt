@@ -1,6 +1,12 @@
 [is='flynt-form-contact-form-7'] {
   $color-error: #ef3f45;
 
+  .preContent {
+    @media (min-width: $breakpoint-desktop) {
+      margin-bottom: 40px;
+    }
+  }
+
   .postContent {
     @media (min-width: $breakpoint-desktop) {
       margin-top: 40px;
@@ -8,14 +14,8 @@
   }
 
   .form {
-    @include reset-content-margins;
-
-    margin-left: auto;
-    margin-right: auto;
-
-    @media (min-width: $breakpoint-tablet) {
-      max-width: $content-max-width + 100;
-    }
+    margin: 0 auto;
+    max-width: $content-max-width + 100px;
 
     &.boxPadding {
       @media (min-width: $breakpoint-tablet) {

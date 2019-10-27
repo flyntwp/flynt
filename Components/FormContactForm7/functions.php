@@ -212,7 +212,7 @@ Api::registerFields('FormContactForm7', [
         [text address id:yourAddress placeholder "Panoramastraße 1A"]
     </div>
     <div class="form-group">
-        <label for="zipCode">PLZ</label>
+        <label for="zipCode">Zip Code</label>
         [number zipcode id:zipCode placeholder "10178"]
     </div>
 </div>

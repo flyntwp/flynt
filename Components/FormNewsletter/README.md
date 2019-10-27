@@ -10,4 +10,4 @@ Tags: form, newsletter
 
 ---
 
-Text: A simple but customized AJAX newsletter subscription form component with Pre-Content and solid background color. Can be placed between any other components
+Text: Displays a predefined newsletter form that can be configured via the translatable options. Is dependent on the FormContactForm7 component.
