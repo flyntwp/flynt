@@ -10,4 +10,4 @@ Tags: form, newsletter
 
 ---
 
-Text: A simple Contact Form 7 wrapper component with Pre-Content and solid background color. Can be placed between any other components.
+Text: A Contact Form 7 wrapper with customization to only load scripts when needed, specific form styles with grid helper classes and theme options.
