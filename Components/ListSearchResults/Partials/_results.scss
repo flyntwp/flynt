@@ -1,0 +1,28 @@
+.searchList {
+  @include reset-list;
+
+  border-radius: 4px;
+  margin-top: 20px;
+
+  &-item {
+    border-bottom: 1px solid #ececec;
+    position: relative;
+
+    &:last-child {
+      border: 0;
+    }
+  }
+}
+
+.post {
+  @include reset-content-margins;
+
+  &-footer {
+    text-align: right;
+  }
+}
+
+.noResults {
+  margin-top: 20px;
+  text-align: center;
+}

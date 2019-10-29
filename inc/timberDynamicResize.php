@@ -137,3 +137,54 @@ Routes::map(IMAGE_ROUTE, function () {
     header("Location: {$url}", true, 301);
     exit();
 });
+
+function addRewriteRule($rules)
+{
+    $dynamicImageRule = <<<EOD
+\n# BEGIN Flynt dynamic images
+RewriteEngine On
+RewriteCond %{REQUEST_URI} ^/app/uploads/dynamic
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /dynamic-images?src=$1 [L,R]
+
+<IfModule mod_setenvif.c>
+# Vary: Accept for all the requests to jpeg and png
+SetEnvIf Request_URI "\.(jpe?g|png)$" REQUEST_image
+</IfModule>
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Check if browser supports WebP images
+RewriteCond %{HTTP_ACCEPT} image/webp
+
+# Check if WebP replacement image exists
+RewriteCond %{DOCUMENT_ROOT}/$1.webp -f
+
+# Serve WebP image instead
+RewriteRule (.+)\.(jpe?g|png)$ $1.webp [T=image/webp]
+</IfModule>
+
+<IfModule mod_headers.c>
+Header append Vary Accept env=REQUEST_image
+</IfModule>
+
+<IfModule mod_mime.c>
+AddType image/webp .webp
+</IfModule>
+# END Flynt dynamic images\n\n
+EOD;
+    return $dynamicImageRule . $rules;
+}
+
+add_filter('mod_rewrite_rules', 'Flynt\\TimberDynamicResize\\addRewriteRule');
+
+add_action('after_switch_theme', function () {
+    add_action('shutdown', 'flush_rewrite_rules');
+});
+
+add_action('switch_theme', function () {
+    remove_filter('mod_rewrite_rules', 'Flynt\\TimberDynamicResize\\addRewriteRule');
+    flush_rewrite_rules();
+});

@@ -5,6 +5,8 @@ import $ from 'jquery'
 
 import installCE from 'document-register-element/pony'
 
+window.jQuery = $
+
 window.lazySizesConfig = window.lazySizesConfig || {}
 window.lazySizesConfig.preloadAfterLoad = true
 require('lazysizes')

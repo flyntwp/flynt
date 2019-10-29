@@ -18,7 +18,7 @@
   }
 
   .post {
-    margin-bottom: 25px;
+    margin-bottom: $gutter-width;
 
     @media (min-width: $breakpoint-tablet) {
       margin-bottom: 0;
@@ -34,16 +34,17 @@
       margin-bottom: 0;
     }
 
-    &-title {
-      margin-bottom: 0.625rem;
-      padding-top: 1.875rem;
+    &-inner {
+      @include reset-content-margins;
+
+      padding: $gutter-width 0;
     }
 
-    &-preview {
-      margin-bottom: 0;
+    &-excerpt {
+      margin-bottom: 0.75rem;
     }
   }
 
-  @import 'Partials/Filter/style';
-  @import 'Partials/PaginationButtons/style';
+  @import 'Partials/filter';
+  @import 'Partials/paginationButtons';
 }

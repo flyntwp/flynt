@@ -10,11 +10,11 @@
     "start": "check-node-version --package -p && $npm_execpath run clean && node bs-server.js",
     "build": "check-node-version --package -p && $npm_execpath run clean && $npm_execpath run lint && NODE_ENV=production webpack --progress --display=minimal && gulp rev",
     "lint": "$npm_execpath run lint:scripts && $npm_execpath run lint:styles && $npm_execpath run lint:php",
-    "lint:scripts": "eslint Components/ assets/",
-    "lint:styles": "stylelint \"Components/**/*.scss\" \"assets/**/*.scss\"",
+    "lint:scripts": "eslint '**/*.js'",
+    "lint:styles": "stylelint '**/*.scss'",
     "lint:php": "./vendor/bin/phpcs --standard=phpcs.ruleset.xml",
-    "lint:scripts:fix": "eslint Components/ assets/ --fix",
-    "lint:styles:fix": "stylelint \"Components/**/*.scss\" \"assets/**/*.scss\" --fix",
+    "lint:scripts:fix": "eslint '**/*.js' --fix",
+    "lint:styles:fix": "stylelint '**/*.scss' --fix",
     "lint:php:fix": "./vendor/bin/phpcbf --standard=phpcs.ruleset.xml",
     "release": "standard-version -a",
     "releaseGithub": "conventional-github-releaser -p angular"
@@ -104,7 +104,11 @@
       "selector-class-pattern": null,
       "max-nesting-depth": null,
       "selector-max-compound-selectors": 4
-    }
+    },
+    "ignoreFiles": [
+      "dist/**",
+      "vendor/**"
+    ]
   },
   "engines": {
     "node": ">=8.0.0"
