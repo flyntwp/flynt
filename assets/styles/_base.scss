@@ -661,7 +661,8 @@ select {
 */
 
 .iconList {
-  @include reset-list;
+  list-style: none;
+  padding: 0;
 
   li {
     margin-bottom: 0.5rem;
