@@ -1,6 +1,6 @@
 import $ from 'jquery'
 import Swiper from 'swiper'
-import 'swiper/dist/css/swiper.min.css'
+import 'swiper/css/swiper.min.css'
 
 class SliderImages extends window.HTMLDivElement {
   constructor (...args) {
@@ -43,7 +43,7 @@ class SliderImages extends window.HTMLDivElement {
       a11y: options.a11y
     }
     if (options.autoplay && options.autoplaySpeed) {
-      config['autoplay'] = {
+      config.autoplay = {
         delay: options.autoplaySpeed
       }
     }

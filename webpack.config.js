@@ -67,7 +67,9 @@ const webpackConfig = {
           {
             loader: 'sass-loader',
             options: {
-              importer: globImporter()
+              sassOptions: {
+                importer: globImporter()
+              }
             }
           }
         ]
@@ -116,7 +118,7 @@ if (production) {
     new webpack.DefinePlugin({
       PRODUCTION: JSON.stringify(true),
       'process.env': {
-        'NODE_ENV': JSON.stringify('production')
+        NODE_ENV: JSON.stringify('production')
       }
     })
   )
@@ -134,7 +136,7 @@ if (production) {
     new webpack.DefinePlugin({
       PRODUCTION: JSON.stringify(false),
       'process.env': {
-        'NODE_ENV': JSON.stringify('development')
+        NODE_ENV: JSON.stringify('development')
       }
     })
   )
