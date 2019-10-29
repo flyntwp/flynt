@@ -78,7 +78,6 @@
     "stylelint-scss": "^3.12.0",
     "swiper": "^5.2.0",
     "terser-webpack-plugin": "^2.2.1",
-    "uglify-js": "^3.6.4",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
     "webpack-dev-middleware": "^3.7.2"
@@ -86,7 +85,7 @@
   "eslintConfig": {
     "extends": "eslint-config-standard",
     "rules": {
-      "import/no-webpack-loader-syntax": false
+      "import/no-webpack-loader-syntax": 0
     }
   },
   "eslintIgnore": [

@@ -51,7 +51,7 @@ class BlockCountUp extends window.HTMLDivElement {
           const displaySuffix = $number.data('suffix')
           const displayPrefix = $number.data('prefix')
           const duration = 2
-          let count = new CountUp(number, displayNumber, {
+          const count = new CountUp(number, displayNumber, {
             duration: duration,
             decimalPlaces: 0,
             prefix: displayPrefix,

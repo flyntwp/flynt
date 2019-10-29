@@ -37,10 +37,10 @@ class ListComponents extends window.HTMLDivElement {
   }
 
   toggleHoverScroll (e) {
-    let $imageWrapper = $(e.currentTarget).find('.component-imageWrapper')
-    let $imageWrapperHeight = $imageWrapper.outerHeight()
-    let $image = $imageWrapper.find('img')
-    let $imageHeight = $image.height()
+    const $imageWrapper = $(e.currentTarget).find('.component-imageWrapper')
+    const $imageWrapperHeight = $imageWrapper.outerHeight()
+    const $image = $imageWrapper.find('img')
+    const $imageHeight = $image.height()
 
     if ($imageHeight > $imageWrapperHeight) {
       if (e.type === 'mouseenter') {
@@ -54,16 +54,16 @@ class ListComponents extends window.HTMLDivElement {
   }
 
   setParallaxConfig () {
-    let windowHeight = this.$window.height()
+    const windowHeight = this.$window.height()
 
     this.$componentScreenshotImages.each((index, el) => {
-      let $image = $(el)
-      let $imageWrapper = $image.parent()
+      const $image = $(el)
+      const $imageWrapper = $image.parent()
 
-      let imageOverflow = $image.height() - $imageWrapper.outerHeight()
-      let topOffset = $imageWrapper.offset().top
-      let startOffset = topOffset - windowHeight * 0.4
-      let endOffset = topOffset - 100
+      const imageOverflow = $image.height() - $imageWrapper.outerHeight()
+      const topOffset = $imageWrapper.offset().top
+      const startOffset = topOffset - windowHeight * 0.4
+      const endOffset = topOffset - 100
 
       $image.data('parallaxConfig', {
         imageOverflow: imageOverflow,
@@ -76,16 +76,16 @@ class ListComponents extends window.HTMLDivElement {
   }
 
   startParallaxScroll (e) {
-    let scrollTop = this.$window.scrollTop()
+    const scrollTop = this.$window.scrollTop()
 
     this.$componentScreenshotImages.each((index, el) => {
-      let $image = $(el)
-      let parallaxConfig = $image.data('parallaxConfig')
+      const $image = $(el)
+      const parallaxConfig = $image.data('parallaxConfig')
 
       if (parallaxConfig && parallaxConfig.imageOverflow > 0) {
         let scrollPercentage = (scrollTop - parallaxConfig.startOffset) / (parallaxConfig.endOffset - parallaxConfig.startOffset)
         scrollPercentage = Math.min(Math.max(scrollPercentage, 0), 1)
-        let move = (scrollPercentage * parallaxConfig.imageOverflow) * -1
+        const move = (scrollPercentage * parallaxConfig.imageOverflow) * -1
         if (!e || (scrollTop >= parallaxConfig.startOffset && scrollTop < parallaxConfig.endOffset)) {
           $image.css('transform', 'translateY(' + move + 'px)')
         }
