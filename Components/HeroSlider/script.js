@@ -53,7 +53,7 @@ class HeroSlider extends window.HTMLDivElement {
     }
 
     if (options.autoplay && options.autoplaySpeed) {
-      config['autoplay'] = {
+      config.autoplay = {
         delay: options.autoplaySpeed
       }
     }
