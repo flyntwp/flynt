@@ -61,7 +61,7 @@ Api::registerFields('HeroSlider', [
                                 'instructions' => 'Recommended resolution greater than 2048 x 800 px.'
                             ],
                             [
-                                'label' => 'Desktop Align Image',
+                                'label' => 'Desktop Image Alignment',
                                 'name' => 'desktopAlignImage',
                                 'type' => 'select',
                                 'allow_null' => 0,
@@ -86,7 +86,7 @@ Api::registerFields('HeroSlider', [
                                 'instructions' => 'Recommended resolution greater than 750 x 800 px.'
                             ],
                             [
-                                'label' => 'Mobile Align Image',
+                                'label' => 'Mobile Image Alignment',
                                 'name' => 'mobileAlignImage',
                                 'type' => 'select',
                                 'allow_null' => 0,
