@@ -156,21 +156,21 @@
       width: 100%;
     }
 
-    &-image--isLeftAlignMobile {
+    &-image--leftAlignMobile {
       object-position: left center;
     }
 
-    &-image--isRightAlignMobile {
-      object-position: left center;
+    &-image--rightAlignMobile {
+      object-position: right center;
     }
 
     @media (min-width: $breakpoint-tablet) {
-      &-image--isLeftAlignDesktop {
+      &-image--leftAlignDesktop {
         object-position: left center;
       }
 
-      &-image--isRightAlignDesktop {
-        object-position: left center;
+      &-image--rightAlignDesktop {
+        object-position: right center;
       }
     }
   }
