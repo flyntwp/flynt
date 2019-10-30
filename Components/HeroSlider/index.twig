@@ -6,18 +6,18 @@
       <div class="swiper-slide">
         <picture class="content-picture">
           <source srcset="
-            {{ slide.images.imageDesktop.src | resize(2560, 800, 'center') }} 2560w,
-            {{ slide.images.imageDesktop.src | resize(2048, 800, 'center') }} 2048w,
-            {{ slide.images.imageDesktop.src | resize(1440, 400, 'center') }} 1440w,
-            {{ slide.images.imageDesktop.src | resize(900, 400, 'center') }} 900w,
-            {{ slide.images.imageDesktop.src | resize(768, 400, 'center') }} 768w"
+            {{ slide.images.imageDesktop.src | resizeDynamic(2560, 800, 'center') }} 2560w,
+            {{ slide.images.imageDesktop.src | resizeDynamic(2048, 800, 'center') }} 2048w,
+            {{ slide.images.imageDesktop.src | resizeDynamic(1440, 400, 'center') }} 1440w,
+            {{ slide.images.imageDesktop.src | resizeDynamic(900, 400, 'center') }} 900w,
+            {{ slide.images.imageDesktop.src | resizeDynamic(768, 400, 'center') }} 768w"
           media="(min-width: 768px)"
           sizes="100vw">
           {% set mobileImage = slide.images.imageMobile ? slide.images.imageMobile : slide.images.imageDesktop %}
           <img class="content-image {{ slide.images.mobileAlignImage }} {{ slide.images.desktopAlignImage }}" srcset="
-            {{ mobileImage.src| resize(375, 400) }} 375w,
-            {{ mobileImage.src | resize(750, 800) }} 750w"
-          src="{{ mobileImage.src | resize(375, 400) }}"
+            {{ mobileImage.src| resizeDynamic(375, 400) }} 375w,
+            {{ mobileImage.src | resizeDynamic(750, 800) }} 750w"
+          src="{{ mobileImage.src | resizeDynamic(375, 400) }}"
           sizes="100vw"
           alt="{{ slide.images.imageDesktop.alt|e }}">
         </picture>
