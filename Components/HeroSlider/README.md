@@ -10,4 +10,4 @@ Tags: image, photo, gallery, content
 
 ---
 
-Text: Full width image slider with navigation arrows. Upload two versions of image, one for desktop one for mobile and optionaly add html content overflowing the image. This component uses swiper slider.
+Text: A full width image slider with a separate mobile image upload for each slide to optimize the crop. Optional formatted text is shown as an overlay.
