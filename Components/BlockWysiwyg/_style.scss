@@ -1,13 +1,7 @@
 [is='flynt-block-wysiwyg'] {
-  margin-bottom: $component-spacing-desktop;
-
-  .container {
-    @include center;
-  }
-
   .content {
-    margin: 0 auto;
-    max-width: $content-max-width;
+    @include reset-content-margins;
+
     text-align: inherit;
 
     &--textLeft {

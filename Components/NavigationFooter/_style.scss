@@ -1,11 +1,7 @@
 [is='flynt-navigation-footer'] {
-  .container {
-    @include center;
-  }
-
   .navigation {
-    padding: 2rem 0;
+    padding: $component-spacing-mobile 0;
   }
 
-  @import 'Partials/Menu/style';
+  @import 'Partials/menu';
 }

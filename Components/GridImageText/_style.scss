@@ -1,0 +1,57 @@
+
+[is='flynt-grid-image-text'] {
+  .grid {
+    @include reset-list;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: ($gutter-width * -1) 0 0 ($gutter-width * -1);
+
+    &--length2,
+    &--length3,
+    &--length4 {
+      .grid-item {
+        @media (min-width: $breakpoint-tablet) {
+          width: 50%;
+        }
+      }
+    }
+
+    &--length3 {
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        flex-wrap: nowrap;
+      }
+    }
+
+    &--length4 {
+      @media (min-width: $breakpoint-desktop) {
+        flex-wrap: nowrap;
+      }
+    }
+  }
+
+  .grid-item {
+    max-width: 675px;
+    padding: $gutter-width 0 0 $gutter-width;
+    width: 100%;
+  }
+
+  .content {
+    height: 100%;
+
+    img {
+      background: $color-contrast;
+    }
+
+    &-inner {
+      @include reset-content-margins;
+
+      padding-top: 20px;
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        padding-top: 30px;
+      }
+    }
+  }
+}

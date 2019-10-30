@@ -6,8 +6,7 @@ add_action('wp_enqueue_scripts', function () {
     Asset::enqueue([
         'name' => 'Flynt/assets',
         'path' => 'assets/main.js',
-        'type' => 'script',
-        'dependencies' => ['jquery']
+        'type' => 'script'
     ]);
     Asset::enqueue([
         'name' => 'Flynt/icons',
@@ -33,11 +32,16 @@ add_action('admin_enqueue_scripts', function () {
         'name' => 'Flynt/assets/admin',
         'path' => 'assets/admin.js',
         'type' => 'script',
-        'dependencies' => ['jquery']
     ]);
     Asset::enqueue([
         'name' => 'Flynt/assets/admin',
         'path' => 'assets/admin.css',
         'type' => 'style'
+    ]);
+    Asset::enqueue([
+        'name' => 'Flynt/icons',
+        'type' => 'script',
+        'path' =>
+            'https://unpkg.com/feather-icons'
     ]);
 });

@@ -1,0 +1,37 @@
+.pagination {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 25px;
+
+  &--center {
+    justify-content: center;
+  }
+
+  &--prevDisabled {
+    justify-content: flex-end;
+  }
+
+  .button {
+    white-space: nowrap;
+  }
+
+  .arrow {
+    color: $color-background;
+    height: 18px;
+    width: 16px;
+  }
+
+  &-nextLink {
+    .arrow {
+      margin-right: -5px;
+    }
+  }
+
+  &-prevLink {
+    .arrow {
+      margin-left: -5px;
+    }
+  }
+}

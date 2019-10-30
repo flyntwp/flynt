@@ -5,12 +5,16 @@ import $ from 'jquery'
 
 import installCE from 'document-register-element/pony'
 
+window.jQuery = $
+
 window.lazySizesConfig = window.lazySizesConfig || {}
 window.lazySizesConfig.preloadAfterLoad = true
 require('lazysizes')
 
 $(document).ready(function () {
-  window.feather.replace()
+  window.feather.replace({
+    'stroke-width': 1
+  })
 })
 
 installCE(window, {

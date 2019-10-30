@@ -1,0 +1,40 @@
+<div class="flyntComponent componentSpacing {{ options.theme }}" is="flynt-slider-images-centered">
+  <script type="application/json">{{ jsonData|json_encode }}</script>
+  <div class="container centerContentMaxWidth">
+    {% if preContentHtml %}
+      <div class="preContent">
+        {{ preContentHtml|e('wp_kses_post') }}
+      </div>
+    {% endif %}
+  </div>
+  <div data-slider class="slider swiper-container">
+      <div class="swiper-wrapper">
+        {% for image in images %}
+          <div class="slider-item swiper-slide">
+            <figure class="figure">
+              <img class="figure-image lazyload"
+                src="{{ image.src|resizeDynamic(870, 580) }}"
+                srcset="{{ placeholderImage(870, 580) }}"
+                data-srcset="
+                  {{ image.src|resizeDynamic(1740, 1160) }} 1160w,
+                  {{ image.src|resizeDynamic(870, 580) }} 870w,
+                  {{ image.src|resizeDynamic(580, 385) }} 580w,
+                  {{ image.src|resizeDynamic(375, 246) }} 375w"
+                data-sizes="auto"
+                alt="{{ image.alt|e }}">
+              {% if image.caption %}
+                <figcaption class="figure-caption">{{ image.caption|e }}</figcaption>
+              {% endif %}
+            </figure>
+          </div>
+        {% endfor %}
+      </div>
+      <div data-slider-pagination class="slider-pagination"></div>
+      <button data-slider-button="prev" class="slider-button slider-button--prev">
+        <i data-feather="arrow-left"></i>
+      </button>
+      <button data-slider-button="next" class="slider-button slider-button--next">
+        <i data-feather="arrow-right"></i>
+      </button>
+  </div>
+</div>

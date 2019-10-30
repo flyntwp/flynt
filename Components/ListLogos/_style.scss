@@ -1,0 +1,140 @@
+[is='flynt-list-logos'] {
+  .list {
+    @include reset-list;
+    @include grid(2, center, 12px, 12px);
+    align-items: center;
+
+    @media (min-width: 375px) {
+      @include grid(3, center, 16px, 16px);
+    }
+
+    @media (min-width: 575px) {
+      @include grid(4, center, 16px, 16px);
+    }
+
+    @media (min-width: $breakpoint-tablet) {
+      @include grid(6, center, 16px, 16px);
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      @include grid(8, center, 16px, 16px);
+    }
+  }
+
+  .media {
+    display: block;
+    height: 0;
+    padding-bottom: 70%;
+    position: relative;
+
+    @at-root .flyntComponent--card#{&} {
+      background-color: $color-background-light;
+      padding-bottom: 100%;
+    }
+
+    @at-root .flyntComponent--card.themeLight#{&} {
+      background-color: #fff;
+    }
+
+    @at-root .flyntComponent--card.themeDark#{&} {
+      background-color: #fff;
+    }
+
+    @at-root .flyntComponent--card.themeHero#{&} {
+      background-color: #fff;
+    }
+
+    &--svg {
+      height: auto;
+      padding-bottom: 0;
+
+      .logo {
+        position: static;
+
+        @at-root .flyntComponent--card#{&} {
+          position: absolute;
+        }
+      }
+    }
+  }
+
+  .logo {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    left: 0;
+    padding: 12px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    @media (min-width: 375px) {
+      padding: 16px;
+    }
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      padding: 24px;
+    }
+
+    @at-root .flyntComponent--card#{&} {
+      padding: 16px;
+
+      @media (min-width: 375px) {
+        padding: 20px;
+      }
+
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        padding: 28px;
+      }
+
+      @media (min-width: 575px) {
+        padding: 24px;
+      }
+
+      @media (min-width: $breakpoint-tablet) {
+        padding: 20px;
+      }
+
+      @media (min-width: 1200px) {
+        padding: 36px;
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        padding: 24px;
+      }
+
+      &:hover {
+        .caption {
+          color: #fff;
+          display: block;
+          opacity: 1;
+          transition: opacity 600ms;
+          visibility: visible;
+        }
+      }
+    }
+  }
+
+  .caption {
+    background-color: $color-accent;
+    bottom: 0;
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    left: 0;
+    line-height: 1.15;
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: opacity 600ms, visibility 0s linear 600ms;
+    visibility: visible;
+
+    @at-root .flyntComponent--card#{&} {
+      padding: 10px;
+    }
+  }
+
+  @import 'Partials/image';
+}

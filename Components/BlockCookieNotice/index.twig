@@ -1,8 +1,8 @@
-<div is="flynt-block-cookie-notice" class="flyntComponent">
-  <div class="container">
+<div is="flynt-block-cookie-notice" class="flyntComponent boxShadow {{ layout }} {{ theme ?: 'themeReset' }}">
+  <div class="container centerMaxWidthContainer">
     <div class="content">
       {{ contentHtml|e('wp_kses_post') }}
     </div>
-    <button type="button" class="button button--primary button--close" aria-label="Close" data-close>{{ closeButtonLabel|e }}</button>
+    <button type="button" class="button button--small" aria-label="Close" data-close>{{ closeButtonLabel|e }}</button>
   </div>
 </div>

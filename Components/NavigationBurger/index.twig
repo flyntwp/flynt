@@ -1,9 +1,11 @@
 <nav is="flynt-navigation-burger" class="flyntComponent">
   <div class="container centerMaxWidthContainer">
-    {% include 'Partials/Logo/index.twig' with { 'logo': logo, 'site': site } only %}
+    {% include 'Partials/_logo.twig' with { 'logo': logo, 'site': site } only %}
     {% if menu %}
-      {% include 'Partials/Hamburger/index.twig' with { 'aria': aria } only %}
-      {% include 'Partials/Menu/index.twig' with { 'items': menu.items } only %}
+      {% include 'Partials/_hamburger.twig' with { 'aria': aria } only %}
     {% endif %}
   </div>
+  {% if menu %}
+    {% include 'Partials/_menu.twig' with { 'items': menu.items } only %}
+  {% endif %}
 </nav>

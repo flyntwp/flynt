@@ -1,0 +1,45 @@
+
+<div class="flyntComponent componentSpacing {{ options.theme }}" is="flynt-grid-posts-archive">
+  <div class="container centerMaxWidthContainer">
+    <div class="preContent">
+      <h1>{{ title }}</h1>
+      {% set html = isHome ? preContentHtml : description %}
+      {{ html|e('wp_kses_post') }}
+    </div>
+    {% if terms %}
+       {% include 'Partials/_filter.twig' %}
+    {% endif %}
+    <ul class="posts">
+      {% for post in posts %}
+        <li class="post">
+          <a class="post-link" href="{{ post.link }}" title="{{ post.title }}">
+            {% if post.thumbnail %}
+              <figure class="figure">
+                <img class="figure-image lazyload"
+                  src="{{ post.thumbnail.src|resizeDynamic(424, 283) }}"
+                  srcset="{{ placeholderImage(424, 283) }}"
+                  data-srcset="
+                    {{ post.thumbnail.src|resizeDynamic(1280, 853) }} 1280w,
+                    {{ post.thumbnail.src|resizeDynamic(750, 500) }} 750w,
+                    {{ post.thumbnail.src|resizeDynamic(424, 283) }} 424w,
+                    {{ post.thumbnail.src|resizeDynamic(375, 250) }} 375w"
+                  data-sizes="auto"
+                  alt="{{ post.thumbnail.alt|e }}">
+              </figure>
+            {% endif %}
+          </a>
+          <div class="post-inner">
+            <h3 class="h3 post-title">{{ post.title }}</h3>
+            <p class="post-excerpt">{{ post.preview.read_more(false) }}</p>
+            <a class="button button--link" href="{{ post.link }}" title="{{ post.title }}">{{ labels.readMore }}</a>
+          </p>
+        </li>
+      {% else %}
+        <p class="posts-empty">{{ labels.noPostsFound }}</p>
+      {% endfor %}
+    </ul>
+    {% set pagination = posts.pagination %}
+    {% if pagination.pages %}
+      {% include 'Partials/_paginationButtons.twig' %}
+    {% endif %}
+  </div>

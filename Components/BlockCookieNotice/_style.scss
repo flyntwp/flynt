@@ -1,6 +1,4 @@
 [is='flynt-block-cookie-notice'] {
-  background-color: $color-background;
-  border-top: 1px solid $color-brand;
   bottom: 0;
   display: none;
   left: 0;
@@ -9,39 +7,48 @@
   z-index: 999;
 
   .container {
-    @include center;
-
-    padding-bottom: $container-padding-desktop;
-    padding-top: $container-padding-desktop;
-
-    @media (min-width: $breakpoint-tablet) {
-      align-items: center;
-      display: flex;
-      justify-content: space-between;
-    }
+    padding-bottom: $container-padding-mobile;
+    padding-top: $container-padding-mobile;
   }
 
   .content {
     @include reset-content-margins;
 
     font-size: 0.8rem;
-    padding-bottom: $container-padding-desktop;
-
-    @media (min-width: $breakpoint-tablet) {
-      padding-bottom: 0;
-    }
-  }
-
-  .button--close {
-    margin-left: 0;
-
-    @media (min-width: $breakpoint-tablet) {
-      margin-bottom: 0;
-      margin-left: 30px;
-    }
+    padding-bottom: $container-padding-mobile;
   }
 
   &.cookieNotice--isVisible {
     display: block;
+  }
+
+  &.layoutBottom {
+    @media (min-width: $breakpoint-tablet) {
+      .container {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 30px;
+        padding-top: 30px;
+      }
+
+      .content {
+        padding-bottom: 0;
+        padding-right: 30px;
+      }
+    }
+  }
+
+  &.layoutFloating {
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      bottom: $container-padding-mobile;
+      left: $container-padding-mobile;
+      max-width: 380px;
+      width: calc(100% - (#{$container-padding-mobile} * 2));
+
+      .container {
+        padding: 30px;
+      }
+    }
   }
 }

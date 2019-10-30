@@ -1,9 +1,3 @@
 [is='flynt-block-video-oembed'] {
-  margin: $component-spacing-desktop 0;
-
-  .container {
-    @include center;
-  }
-
-  @import 'Partials/Video/style';
+  @import 'Partials/video';
 }

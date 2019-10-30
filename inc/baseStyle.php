@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Loads a `basestyle.php` template from the templates folder to render base style markup for proper base styling, if user is on non-production environment or has edit rights at least.
+ * Loads a `basestyle.php` template to render base style markup for proper base styling, if user is on non-production environment or has edit rights at least.
  *
  * Example usage:
  * 1. Log into your WordPress Backend with an Administrator account.
@@ -51,7 +51,7 @@ function templateInclude($template)
     global $wp_query;
 
     if (isset($wp_query->query_vars['BaseStyle'])) {
-        return get_template_directory() . '/templates/basestyle.php';
+        return get_template_directory() . '/basestyle.php';
     }
 
     return $template;

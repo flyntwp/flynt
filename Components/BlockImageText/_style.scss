@@ -1,14 +1,5 @@
 [is='flynt-block-image-text'] {
-  margin: $component-spacing-desktop 0;
-
-  .container {
-    @include center;
-  }
-
   .box {
-    margin: 0 auto;
-    max-width: $content-max-width;
-
     @media (min-width: $breakpoint-tablet-horizontal) {
       align-items: center;
       display: flex;

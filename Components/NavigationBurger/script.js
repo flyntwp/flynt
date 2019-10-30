@@ -24,15 +24,14 @@ class NavigationBurger extends window.HTMLElement {
   }
 
   resolveElements () {
-    this.$container = $('.container', this)
     this.$menu = $('.menu', this)
   }
 
   connectedCallback () {}
 
   triggerMenu (e) {
-    this.$container.toggleClass('container-menuIsOpen')
-    if (this.$container.hasClass('container-menuIsOpen')) {
+    this.$.toggleClass('flyntComponent-menuIsOpen')
+    if (this.$.hasClass('flyntComponent-menuIsOpen')) {
       disableBodyScroll(this.$menu.get(0))
     } else {
       enableBodyScroll(this.$menu.get(0))

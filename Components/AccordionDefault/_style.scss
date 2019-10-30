@@ -1,19 +1,6 @@
 [is='flynt-accordion-default'] {
-  margin: $component-spacing-desktop 0;
-
-  .container {
-    @include center;
-  }
-
-  .content {
-    margin: 0 auto;
-    max-width: $content-max-width;
-  }
-
   .accordion {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    @include reset-list;
   }
 
   .panel {

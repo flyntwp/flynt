@@ -1,0 +1,9 @@
+@mixin align-image($device-name, $horizontal-list: left center right, $vertical-list: top center bottom) {
+  @each $horizontal in $horizontal-list {
+    @each $vertical in $vertical-list {
+      .#{$device-name}HorizontalAlign--#{$horizontal}.#{$device-name}VerticalAlign--#{$vertical} {
+        object-position: $horizontal $vertical;
+      }
+    }
+  }
+}

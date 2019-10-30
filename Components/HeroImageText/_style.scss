@@ -2,7 +2,6 @@
   position: relative;
 
   .image {
-    background: rgba(0, 0, 0, 0.8);
     background: $color-contrast;
     height: 400px;
     object-fit: cover;
@@ -16,7 +15,7 @@
     height: 100%;
     justify-content: center;
     left: 0;
-    padding: 0 $container-padding-desktop;
+    padding: 0 $container-padding-mobile;
     position: absolute;
     top: 0;
     width: 100%;

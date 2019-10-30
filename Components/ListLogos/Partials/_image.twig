@@ -1,0 +1,22 @@
+<figure class="image">
+  {% if not image.svg %}
+    <img class="image-tag lazyload lazyload--fade"
+      src="{{ image.src|resizeDynamic(384, 216) }}"
+      srcset="{{ placeholderImage(384, 216) }}"
+      data-srcset="
+        {{ image.src|resizeDynamic(384, 216) }} 384w,
+        {{ image.src|resizeDynamic(240, 135) }} 240w,
+        {{ image.src|resizeDynamic(206, 116) }} 206w,
+        {{ image.src|resizeDynamic(170, 96) }} 170w,
+        {{ image.src|resizeDynamic(164, 92) }} 164w,
+        {{ image.src|resizeDynamic(128, 72) }} 128w,
+        {{ image.src|resizeDynamic(114, 64) }} 114w"
+      data-sizes="auto"
+      alt="{{ image.alt|e }}">
+  {% else %}
+    {{ image.svg }}
+  {% endif %}
+  {% if link.title and type == 'card' %}
+    <figcaption class="caption">{{ link.title|e }}</figcaption>
+  {% endif %}
+</figure>

@@ -1,0 +1,8 @@
+<div class="video">
+  {% include 'Partials/_figure.twig' ignore missing with {image: image} only %}
+  <div class="video-player">
+    {{ video }}
+    <div class="video-loader"></div>
+    <button class="video-playButton" type="button" aria-label="Play Video"></button>
+  </div>
+</div>

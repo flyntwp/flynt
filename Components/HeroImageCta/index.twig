@@ -1,0 +1,55 @@
+<div class="flyntComponent {{ options.fullWidth == false ? "componentSpacing #{options.theme}" : '' }} {{ options.fullWidth ? 'fullWidth' : '' }}" is="flynt-hero-image-cta">
+  <div class="container">
+    <div class="content-picture">
+      <div class="content-background"></div>
+      <picture>
+        {% if images.imageMobile %}
+          <source
+            srcset="
+              {{ images.imageDesktop.src | resizeDynamic(2560) }} 2560w,
+              {{ images.imageDesktop.src | resizeDynamic(2048) }} 2048w,
+              {{ images.imageDesktop.src | resizeDynamic(1320) }} 1320w,
+              {{ images.imageDesktop.src | resizeDynamic(1024) }} 1024w,
+              {{ images.imageDesktop.src | resizeDynamic(768) }} 768w"
+            media="(min-width: 768px)">
+          <img
+            class="content-image lazyload
+              {{ options.alignImage.mobile.vertical }}
+              {{ options.alignImage.mobile.horizontal }}
+              {{ options.alignImage.desktop.vertical }}
+              {{ options.alignImage.desktop.horizontal }}"
+            srcset="
+              {{ images.imageMobile.src| resizeDynamic(375) }} 375w,
+              {{ images.imageMobile.src | resizeDynamic(750) }} 750w"
+            src="{{ images.imageDesktop.src | resizeDynamic(375) }}"
+            data-sizes="auto"
+            alt="{{ images.imageDesktop.alt|e }}">
+          {% else %}
+            <img
+              class="content-image
+                {{ options.alignImage.mobile.vertical }}
+                {{ options.alignImage.mobile.horizontal }}
+                {{ options.alignImage.desktop.vertical }}
+                {{ options.alignImage.desktop.horizontal }}"
+              srcset="
+                {{ images.imageDesktop.src | resizeDynamic(2560) }} 2560w,
+                {{ images.imageDesktop.src | resizeDynamic(2048) }} 2048w,
+                {{ images.imageDesktop.src | resizeDynamic(1320) }} 1320w,
+                {{ images.imageDesktop.src | resizeDynamic(1024) }} 1024w,
+                {{ images.imageDesktop.src | resizeDynamic(768) }} 768w,
+                {{ images.imageDesktop.src | resizeDynamic(375) }} 375w"
+              src="{{ images.imageDesktop.src | resizeDynamic(375) }}"
+              data-sizes="auto"
+              alt="{{ images.imageDesktop.alt|e }}">
+        {% endif %}
+      </picture>
+    </div>
+    <div class="content">
+      <div class="content-wrapper">
+        <div class="content-html boxPadding {{ options.fullWidth and options.theme ? "#{options.theme} boxShadow" : '' }}">
+          {{ contentHtml|e('wp_kses_post') }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

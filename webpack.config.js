@@ -67,7 +67,9 @@ const webpackConfig = {
           {
             loader: 'sass-loader',
             options: {
-              importer: globImporter()
+              sassOptions: {
+                importer: globImporter()
+              }
             }
           }
         ]
@@ -83,6 +85,9 @@ const webpackConfig = {
     ],
     mainFields: ['main', 'browser']
   },
+  performance: {
+    maxAssetSize: 328000
+  },
   resolveLoader: {
     alias: {
       'with-babel': `babel-loader?${JSON.stringify(babelQuery)}`
@@ -97,9 +102,6 @@ const webpackConfig = {
       clearConsole: false
     })
   ],
-  externals: {
-    jquery: 'jQuery'
-  },
   optimization: {
     splitChunks: {
       cacheGroups: {
@@ -109,13 +111,14 @@ const webpackConfig = {
     }
   }
 }
+
 webpackConfig.plugins = webpackConfig.plugins || []
 if (production) {
   webpackConfig.plugins.push(
     new webpack.DefinePlugin({
       PRODUCTION: JSON.stringify(true),
       'process.env': {
-        'NODE_ENV': JSON.stringify('production')
+        NODE_ENV: JSON.stringify('production')
       }
     })
   )
@@ -133,7 +136,7 @@ if (production) {
     new webpack.DefinePlugin({
       PRODUCTION: JSON.stringify(false),
       'process.env': {
-        'NODE_ENV': JSON.stringify('development')
+        NODE_ENV: JSON.stringify('development')
       }
     })
   )
@@ -155,7 +158,7 @@ const multiConfig = Object.keys(config.entry).map(entry => {
         // both options are optional
         filename: `${entry}.css`,
         chunkFilename: `${entry}.css`
-      }),
+      })
     ]
   }
 })

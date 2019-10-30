@@ -1,16 +1,20 @@
-<div class="flyntComponent" is="flynt-list-social">
-  <div class="container">
-    {% if contentHtml %}
-      <div class="content">{{ contentHtml|e('wp_kses_post') }}</div>
-    {% endif %}
-    <ul class="socialList">
-      {% for socials in social %}
-        <li class="socialList-item">
-          <a class="socialList-link" href="{{ socials.url }}" target="_blank" rel="noopener noreferrer">
-            {{- socials.icon -}}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
+<div class="flyntComponent componentSpacing {{ options.theme }}" is="flynt-list-social">
+  <div class="container centerMaxWidthContainer">
+    <div class="centerContentMaxWidth">
+      {% if contentHtml %}
+        {{ contentHtml|e('wp_kses_post') }}
+      {% endif %}
+      {% if social %}
+        <ul class="socialList">
+          {% for socials in social %}
+            <li>
+              <a class="socialList-link" href="{{ socials.url }}" target="_blank" rel="noopener noreferrer">
+                {{- socials.icon -}}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
   </div>
 </div>

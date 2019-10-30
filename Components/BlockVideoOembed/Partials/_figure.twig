@@ -1,0 +1,14 @@
+<figure class="figure">
+  <img class="figure-image lazyload"
+    src="{{ image.src|resizeDynamic(1280, 720) }}"
+    srcset="{{ placeholderImage(1280, 720) }}"
+    data-srcset="
+      {{ image.src|resizeDynamic(1920, 1080) }} 1920w,
+      {{ image.src|resizeDynamic(1280, 720) }} 1280w,
+      {{ image.src|resizeDynamic(750, 422) }} 750w"
+    data-sizes="auto"
+    alt="{{ image.alt|e }}">
+  {% if image.caption %}
+    <figcaption class="figure-caption">{{ image.caption|e }}</figcaption>
+  {% endif %}
+</figure>

@@ -1,0 +1,120 @@
+@import 'mixins';
+
+$background-opacity: 0.4;
+
+[is='flynt-hero-image-cta'] {
+  @include align-image('mobile');
+
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  &:not(.fullWidth) .container {
+    @include center(100%, $padding: 0);
+
+    position: relative;
+    width: 100%;
+
+    @media (min-width: $breakpoint-tablet) {
+      @include center($container-max-width, $padding: 0);
+    }
+
+    .content-picture {
+      left: $container-padding-mobile;
+      right: $container-padding-mobile;
+
+      @media (min-width: $breakpoint-tablet) {
+        left: $container-padding-tablet;
+        right: $container-padding-tablet;
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        left: $container-padding-desktop;
+        right: $container-padding-desktop;
+      }
+    }
+  }
+
+  &,
+  .content,
+  .content-wrapper {
+    min-height: 420px;
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    &,
+    .content,
+    .content-wrapper {
+      min-height: 540px;
+    }
+  }
+
+  .content {
+    align-content: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: $component-spacing-mobile $container-padding-mobile;
+    position: relative;
+    width: 100%;
+
+    @media (min-width: $breakpoint-desktop) {
+      padding: 50px 0;
+    }
+
+    &-wrapper {
+      align-content: center;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      height: 100%;
+      justify-content: center;
+      justify-items: center;
+      max-width: $content-max-width;
+      width: 100%;
+    }
+
+    &-html {
+      @include reset-content-margins;
+
+      position: relative;
+      text-align: center;
+      width: 100%;
+
+      &:not([class*='theme']) {
+        color: #fff;
+
+        #{$heading-selectors} {
+          color: inherit;
+        }
+      }
+    }
+
+    &-picture {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    &-background {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    &-image {
+      font-family: 'object-fit: cover';
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    @include align-image('desktop');
+  }
+}

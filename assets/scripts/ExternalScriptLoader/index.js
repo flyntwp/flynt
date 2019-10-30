@@ -1,4 +1,4 @@
-let providers = {}
+const providers = {}
 
 // load all files from ./Providers folder into providers variable
 function importAll (moduleRequire) {

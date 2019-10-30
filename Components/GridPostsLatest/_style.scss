@@ -1,0 +1,119 @@
+
+[is='flynt-grid-posts-latest'] {
+  .grid {
+    @include reset-list;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: ($gutter-width * -1) 0 0 ($gutter-width * -1);
+
+    &--length2,
+    &--length3,
+    &--length4 {
+      .grid-item {
+        @media (min-width: $breakpoint-tablet) {
+          width: 50%;
+        }
+      }
+    }
+
+    &--length3 {
+      .grid-item {
+        @media (min-width: $breakpoint-tablet-horizontal) {
+          width: 33.33%;
+        }
+      }
+    }
+
+    &--length4 {
+      .grid-item {
+        @media (min-width: $breakpoint-desktop) {
+          width: 25%;
+        }
+      }
+    }
+  }
+
+  .grid-item {
+    max-width: 675px;
+    padding: $gutter-width 0 0 $gutter-width;
+    width: 100%;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+
+    img {
+      background: $color-contrast;
+      flex-shrink: 0; // IE11 bug fix (prevent image from stretchin')
+    }
+
+    &-inner {
+      color: $color-text;
+
+      #{$heading-selectors} {
+        color: $color-headline;
+      }
+    }
+
+    &-inner {
+      @include reset-content-margins;
+
+      flex-grow: 1;
+    }
+
+    &-link {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      text-decoration: none;
+    }
+
+    &-readingTime {
+      color: #7b838d;
+      font-size: 0.9rem;
+
+      .feather {
+        color: #7b838d;
+        height: 1rem;
+        margin-right: 2px;
+        width: 1rem;
+      }
+    }
+
+    &-footer {
+      align-items: center;
+      align-self: flex-end;
+      border-top: 1px solid $color-border;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px;
+      width: 100%;
+
+      .content-readMore {
+        padding: 0.9rem 0 1.1rem;
+
+        &::before {
+          bottom: 1.1rem;
+        }
+      }
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        padding: 0 30px;
+      }
+    }
+  }
+
+  .allPostsLink {
+    padding-top: 1.5rem;
+    text-align: center;
+
+    @media (min-width: $breakpoint-desktop) {
+      padding-top: 3rem;
+    }
+  }
+}

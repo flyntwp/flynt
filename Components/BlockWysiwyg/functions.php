@@ -10,6 +10,13 @@ Api::registerFields('BlockWysiwyg', [
         'label' => 'Block: Wysiwyg',
         'sub_fields' => [
             [
+                'label' => 'General',
+                'name' => 'generalTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
+            ],
+            [
                 'label' => 'Text Alignment',
                 'name' => 'textAlignment',
                 'type' => 'button_group',
@@ -24,11 +31,26 @@ Api::registerFields('BlockWysiwyg', [
                 'type' => 'wysiwyg',
                 'delay' => 1,
                 'media_upload' => 0,
-                'toolbar' => 'full',
                 'required' => 1,
                 'wrapper' => [
                     'class' => 'autosize',
                 ],
+            ],
+            [
+                'label' => 'Options',
+                'name' => 'optionsTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0
+            ],
+            [
+                'label' => '',
+                'name' => 'options',
+                'type' => 'group',
+                'layout' => 'row',
+                'sub_fields' => [
+                    Api::loadFields('FieldVariables', 'theme')
+                ]
             ]
         ]
     ]

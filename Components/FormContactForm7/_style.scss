@@ -1,0 +1,340 @@
+[is='flynt-form-contact-form-7'] {
+  $color-error: #ef3f45;
+
+  .preContent {
+    @media (min-width: $breakpoint-desktop) {
+      margin-bottom: 40px;
+    }
+  }
+
+  .postContent {
+    @media (min-width: $breakpoint-desktop) {
+      margin-top: 40px;
+    }
+  }
+
+  .form {
+    margin: 0 auto;
+    max-width: $content-max-width + 100px;
+
+    &.boxPadding {
+      @media (min-width: $breakpoint-tablet) {
+        padding: 50px;
+      }
+    }
+
+    &-row-2 {
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        @include grid(2, $gutter-horizontal: 1rem);
+      }
+
+      @media (min-width: $breakpoint-tablet) {
+        @include grid(2, $gutter-horizontal: 2rem);
+      }
+    }
+
+    &-row-3 {
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        @include grid(3, $gutter-horizontal: 1rem);
+      }
+
+      @media (min-width: $breakpoint-tablet) {
+        @include grid(3, $gutter-horizontal: 2rem);
+      }
+    }
+
+    &-row-2-lg-left {
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        @include grid(2, $gutter-horizontal: 1rem);
+
+        > *:first-child {
+          width: calc((66.66666%) - (1 / 3 * 1rem));
+        }
+
+        > *:last-child {
+          width: calc((33.33333%) - (2 / 3 * 1rem));
+        }
+      }
+
+      @media (min-width: $breakpoint-tablet) {
+        @include grid(2, $gutter-horizontal: 2rem);
+
+        > *:first-child {
+          width: calc((66.66666%) - (1 / 3 * 2rem));
+        }
+
+        > *:last-child {
+          width: calc((33.33333%) - (2 / 3 * 2rem));
+        }
+      }
+    }
+
+    &-row-2-lg-right {
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        @include grid(2, $gutter-horizontal: 1rem);
+
+        > *:first-child {
+          width: calc((33.33333%) - (2 / 3 * 1rem));
+        }
+
+        > *:last-child {
+          width: calc((66.66666%) - (1 / 3 * 1rem));
+        }
+      }
+
+      @media (min-width: $breakpoint-tablet) {
+        @include grid(2, $gutter-horizontal: 2rem);
+
+        > *:first-child {
+          width: calc((33.33333%) - (2 / 3 * 2rem));
+        }
+
+        > *:last-child {
+          width: calc((66.66666%) - (1 / 3 * 2rem));
+        }
+      }
+    }
+
+    &-flex {
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        align-items: flex-start;
+        display: flex;
+      }
+
+      #{$input-selectors} {
+        border-radius: 4px;
+        height: 56px;
+      }
+
+      + .wpcf7-validation-errors {
+        display: none !important;
+      }
+    }
+
+    &-flex-col {
+      margin: 0 0 1rem;
+
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        flex-grow: 1;
+        margin: 0 1rem 0 0;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
+      .ajax-loader {
+        display: none !important;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+
+    &-group {
+      margin: 0 0 1rem;
+
+      @media (min-width: $breakpoint-tablet) {
+        margin: 0 0 1.875rem;
+      }
+    }
+
+    &-button {
+      .ajax-loader {
+        background-image: url('../assets/icons/spinner.svg');
+        background-size: 20px 20px;
+        height: 20px;
+        margin: 0 0 0 10px;
+        width: 20px;
+      }
+
+      @media (max-width: $breakpoint-mobile-horizontal - 1) {
+        text-align: center;
+
+        .button {
+          width: 100%;
+        }
+
+        .ajax-loader {
+          display: none;
+          margin: 15px 0 0;
+
+          &.is-active {
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+
+  .wpcf7 {
+    &-form {
+      #{$input-selectors} {
+        width: 100%;
+      }
+
+      textarea {
+        display: block;
+      }
+    }
+
+    &-form-control-wrap {
+      display: block;
+
+      input,
+      textarea,
+      select {
+        margin-bottom: 0;
+      }
+    }
+
+    &-list-item {
+      margin: 0 2rem 0 0;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &-not-valid {
+      border-color: $color-error;
+    }
+
+    &-not-valid-tip {
+      color: $color-error;
+      font-size: 0.88rem;
+      margin-top: 5px;
+    }
+
+    &-response-output {
+      border: 0;
+      color: $color-error;
+      margin: 32px 0 0;
+      padding: 0;
+      text-align: center;
+
+      @media (min-width: $breakpoint-tablet) {
+        margin-top: 40px;
+      }
+    }
+
+    &-validation-errors,
+    &-acceptance-missing,
+    &-spam-blocked,
+    &-mail-sent-ng,
+    &-aborted {
+      color: $color-error;
+    }
+
+    &-mail-sent-ok {
+      color: $color-headline;
+    }
+
+    &-quiz-label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    label {
+      width: 100%;
+    }
+
+    .label-wrap {
+      label {
+        margin-bottom: 0;
+      }
+    }
+
+    [type='file'] {
+      max-width: 100%;
+      padding: 0;
+    }
+
+    [type='checkbox'],
+    [type='radio'] {
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      width: 1px;
+
+      &,
+      &:hover,
+      &:focus {
+        border-color: $color-border;
+        outline: 0;
+      }
+
+      + span {
+        display: inline-block;
+        padding-left: 1.875rem;
+        position: relative;
+        width: 100%;
+
+        &::before {
+          background-color: #fff;
+          border: 1px solid $color-border;
+          border-radius: 2px;
+          content: '';
+          display: block;
+          height: 15px;
+          left: 0;
+          margin: 0;
+          padding: 0;
+          position: absolute;
+          top: 4px;
+          transition: border-color 0.2s ease, background-color 0.2s ease;
+          width: 15px;
+        }
+      }
+
+      &:checked {
+        + span::before {
+          background-color: $color-accent;
+          border-color: $color-accent;
+          box-shadow: inset 0 0 0 2px #fff;
+        }
+      }
+    }
+
+    [type='radio'] {
+      + span::before {
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &.themeHero,
+  &.themeDark {
+    .form:not(.themeReset) {
+      #{$input-selectors} {
+        border: 0;
+        outline: none;
+      }
+    }
+  }
+
+  &.themeHero {
+    .form:not(.themeReset) {
+      .button {
+        &:hover,
+        &:focus {
+          background-color: $color-accent;
+          border-color: $color-accent;
+          color: $color-background;
+        }
+      }
+
+      .wpcf7 {
+        &-not-valid-tip,
+        &-validation-errors,
+        &-acceptance-missing,
+        &-spam-blocked,
+        &-mail-sent-ng,
+        &-aborted {
+          color: $color-background-dark;
+        }
+      }
+    }
+  }
+}

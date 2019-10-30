@@ -1,7 +1,9 @@
+@import '../node_modules/easings-css/easings';
+
 @import
   'styles/variables',
   'styles/mixins',
   'styles/base';
 
 // stylelint-disable-next-line scss/at-import-no-partial-leading-underscore, scss/at-import-partial-extension-blacklist
-@import '../Components/*/_style.scss';
+@import '../Components/**/_style.scss';

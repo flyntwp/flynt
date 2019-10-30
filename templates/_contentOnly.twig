@@ -1,0 +1,7 @@
+{% if function('post_password_required') %}
+  {{ function('get_the_password_form') }}
+{% else %}
+  {% block content %}
+    No <code>{{ '{% set content %}' }}</code> defined for this template.
+  {% endblock %}
+{% endif %}

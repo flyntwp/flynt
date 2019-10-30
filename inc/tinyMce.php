@@ -55,9 +55,13 @@ add_filter('acf/fields/wysiwyg/toolbars', function ($toolbars) {
 function getBlockFormats($blockFormats)
 {
     if (!empty($blockFormats)) {
-        $blockFormatStrings = array_map(function ($tag, $label) {
-            return "${label}=${tag}";
-        }, $blockFormats, array_keys($blockFormats));
+        $blockFormatStrings = array_map(
+            function ($tag, $label) {
+                return "${label}=${tag}";
+            },
+            $blockFormats,
+            array_keys($blockFormats)
+        );
         return implode(';', $blockFormatStrings);
     }
     return '';
@@ -81,14 +85,35 @@ function getConfig()
                 'icon' => '',
                 'items' => [
                     [
-                        'title' => 'Button Primary',
-                        'classes' => 'button button--primary',
-                        'selector' => 'a'
+                        'title' => 'Button',
+                        'classes' => 'button',
+                        'selector' => 'a,button'
                     ],
                     [
-                        'title' => 'Button Primary Block',
-                        'classes' => 'button button--primary button--block',
-                        'selector' => 'a'
+                        'title' => 'Button Ghost',
+                        'classes' => 'button--ghost',
+                        'selector' => '.button'
+                    ],
+                    [
+                        'title' => 'Button Small',
+                        'classes' => 'button--small',
+                        'selector' => '.button'
+                    ],
+                    [
+                        'title' => 'Button Link',
+                        'classes' => 'button--link',
+                        'selector' => '.button'
+                    ]
+                ]
+            ],
+            [
+                'title' => 'Icon Lists',
+                'icon' => '',
+                'items' => [
+                    [
+                        'title' => 'Check Circle',
+                        'classes' => 'iconList iconList--checkCircle',
+                        'selector' => 'ul,ol'
                     ]
                 ]
             ]
@@ -100,31 +125,7 @@ function getConfig()
                     'styleselect',
                     'bold',
                     'italic',
-                    'underline',
                     'strikethrough',
-                    '|',
-                    'bullist',
-                    'numlist',
-                    '|',
-                    'link',
-                    'unlink',
-                    '|',
-                    'wp_more',
-                    'pastetext',
-                    'removeformat',
-                    '|',
-                    'undo',
-                    'redo',
-                    'fullscreen'
-                ]
-            ],
-            'full' => [
-                [
-                    'formatselect',
-                    'styleselect',
-                    'bold',
-                    'italic',
-                    'underline',
                     'blockquote',
                     '|',
                     'bullist',
@@ -145,17 +146,13 @@ function getConfig()
                 [
                     'bold',
                     'italic',
-                    'underline',
-                    'blockquote',
-                    'bullist',
-                    'numlist',
-                    'alignleft',
-                    'aligncenter',
-                    'alignright',
-                    'undo',
-                    'redo',
+                    'strikethrough',
+                    '|',
                     'link',
                     'unlink',
+                    '|',
+                    'undo',
+                    'redo',
                     'fullscreen'
                 ]
             ]

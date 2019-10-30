@@ -15,10 +15,16 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'type' => 'flexible_content',
                 'button_label' => 'Add Component',
                 'layouts' => [
+                    Api::loadFields('AccordionDefault', 'layout'),
+                    Api::loadFields('BlockCollapse', 'layout'),
                     Api::loadFields('BlockImage', 'layout'),
+                    Api::loadFields('BlockImageText', 'layout'),
+                    Api::loadFields('BlockVideoOembed', 'layout'),
                     Api::loadFields('BlockWysiwyg', 'layout'),
                     Api::loadFields('BlockWysiwygTwoCol', 'layout'),
-                    Api::loadFields('BlockWysiwygSidebar', 'layout')
+                    Api::loadFields('BlockWysiwygSidebar', 'layout'),
+                    Api::loadFields('SliderImages', 'layout'),
+                    Api::loadFields('SliderImagesCentered', 'layout')
                 ],
             ],
         ],

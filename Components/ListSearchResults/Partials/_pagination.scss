@@ -1,0 +1,36 @@
+.pagination {
+  margin-top: 20px;
+  overflow: auto;
+
+  &-nav {
+    &--previous {
+      float: left;
+    }
+
+    &--next {
+      float: right;
+    }
+  }
+
+  .button {
+    white-space: nowrap;
+  }
+
+  .arrow {
+    color: $color-background;
+    height: 18px;
+    width: 16px;
+  }
+
+  &-nav--next {
+    .arrow {
+      margin-right: -5px;
+    }
+  }
+
+  &-nav--previous {
+    .arrow {
+      margin-left: -5px;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+<div class="flyntComponent componentSpacing {{ options.card ? 'flyntComponent--card' }} {{ options.theme }}" is="flynt-list-logos">
+  <div class="container centerMaxWidthContainer">
+    {% if preContentHtml %}
+      <div class="preContent">
+        {{ preContentHtml|e('wp_kses_post') }}
+      </div>
+    {% endif %}
+    <div class="content">
+      <ul class="list">
+        {% for item in items %}
+          <li class="item">
+            <div class="media {{- item.image.svg ? ' media--svg' }}">
+              {% if item.link %}
+                <a class="logo" href="{{ item.link.url|e('esc_url') }}" title="{{ item.link.title|e }}" {{ item.link.target == '_blank' ? 'target="_blank" rel="nofollow noreferrer noopener"' : 'rel="nofollow"' }}>
+                  {% include 'Partials/_image.twig' with {image: item.image, link: item.link, type: options.card} only %}
+                </a>
+              {% else %}
+                <div class="logo">
+                  {% include 'Partials/_image.twig' with {image: item.image, link: item.link, type: options.card} only %}
+                </div>
+              {% endif %}
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>

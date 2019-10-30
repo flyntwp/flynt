@@ -10,6 +10,7 @@ $container-padding-tablet: 40px;
 $container-padding-mobile: 15px;
 $content-max-width: 600px;
 $component-spacing-desktop: 120px;
+$component-spacing-tablet: 80px;
 $component-spacing-mobile: 40px;
 $gutter-width: 24px;
 
@@ -26,3 +27,4 @@ $color-background-dark: #091a41;
 $color-background-hero: $color-brand;
 
 $heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';
+$input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [type="email"], [type="search"], [type="number"], [type="password"], textarea, select';

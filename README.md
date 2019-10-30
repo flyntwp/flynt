@@ -71,13 +71,13 @@ For organisation, `./inc` has three subfolders. We recommend using these three f
 After the files from './lib' and './inc' are loaded, all [components](#components) from the `./Components` folder are loaded.
 
 ### Page Templates
-All template files can be found in the `./templates` directory. Flynt uses [Timber](https://www.upstatement.com/timber/) to structure its page templates and [Twig](https://twig.symfony.com/) for rendering them. [Timber's documentation](https://timber.github.io/docs/) is extensive and up to date, so be sure to get familiar with it.
+Flynt uses [Timber](https://www.upstatement.com/timber/) to structure its page templates and [Twig](https://twig.symfony.com/) for rendering them. [Timber's documentation](https://timber.github.io/docs/) is extensive and up to date, so be sure to get familiar with it.
 
 There are two Twig functions added in Flynt to render components into templates:
-* `renderComponent(componentName, data)` renders a single component. [For example, in the `index.twig` template](https://github.com/flyntwp/flynt/tree/master/templates/twig/index.twig).
-* `renderFlexibleContent(flexibleContentField)` renders all components passed from an Advanced Custom Fields *Flexible Content* field. [For example, in the `single.twig` template.](https://github.com/flyntwp/flynt/tree/master/templates/twig/single.twig)
+* `renderComponent(componentName, data)` renders a single component. [For example, in the `index.twig` template](https://github.com/flyntwp/flynt/tree/master/templates/index.twig).
+* `renderFlexibleContent(flexibleContentField)` renders all components passed from an Advanced Custom Fields *Flexible Content* field. [For example, in the `single.twig` template.](https://github.com/flyntwp/flynt/tree/master/templates/single.twig)
 
-Besides the main document structure (in `./templates/twig/_document.twig`), everything else is a component.
+Besides the main document structure (in `./templates/_document.twig`), everything else is a component.
 
 ### Components
 A component is a self-contained building-block. Each component contains its own layout, its ACF fields, PHP logic, scripts, and styles.
@@ -275,7 +275,7 @@ Flynt includes several utility functions for creating Advanced Custom Fields opt
 
 ### WPML
 
-If you are using Flynt and [WPML](https://wpml.org/), you will need to create a Must-Use (MU) Plugin in order to load Twig from Timber before the WPML code is executed. This is because WPML includes an outdated version of Twig. 
+If you are using Flynt and [WPML](https://wpml.org/), you will need to create a Must-Use (MU) Plugin in order to load Twig from Timber before the WPML code is executed. This is because WPML includes an outdated version of Twig.
 
 To do this, create `/wp-content/mu-plugins/flynt-wpml-compat.php` and add this code:
 
