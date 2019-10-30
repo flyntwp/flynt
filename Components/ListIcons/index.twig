@@ -15,8 +15,8 @@
         </div>
         {% endif %}
         <div class="item-linkWrapper">
-          <a href="{{ item.link.url }}" class="item-link button--link">
-            {{ item.link.title ? item.link.title : item.link.url }}
+          <a href="{{ item.link.url }}" {{ item.link.target ? "target='#{item.link.target}'" }} class="item-link button button--link">
+            {{ item.link.title ?: item.link.url }}
           </a>
         </div>
       </li>
