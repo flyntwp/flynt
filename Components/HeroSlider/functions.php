@@ -69,11 +69,11 @@ Api::registerFields('HeroSlider', [
                                 'ui' => 1,
                                 'ajax' => 0,
                                 'choices' => [
-                                    'content-image--center' => 'Center',
-                                    'content-image--leftAlignDesktop' => 'Left',
-                                    'content-image--rightAlignDesktop' => 'Right',
+                                    'picture-imageEl--centerAlignDesktop' => 'Center',
+                                    'picture-imageEl--leftAlignDesktop' => 'Left',
+                                    'picture-imageEl--rightAlignDesktop' => 'Right',
                                 ],
-                                'default_value' => 'content-image--center'
+                                'default_value' => 'picture-imageEl--centerAlignDesktop'
                             ],
                             [
                                 'label' => 'Mobile Image',
@@ -94,11 +94,11 @@ Api::registerFields('HeroSlider', [
                                 'ui' => 1,
                                 'ajax' => 0,
                                 'choices' => [
-                                    'content-image--center' => 'Center',
-                                    'content-image--leftAlignMobile' => 'Left',
-                                    'content-image--rightAlignMobile' => 'Right',
+                                    'picture-imageEl--centerAlignMobile' => 'Center',
+                                    'picture-imageEl--leftAlignMobile' => 'Left',
+                                    'picture-imageEl--rightAlignMobile' => 'Right',
                                 ],
-                                'default_value' => 'content-image--center'
+                                'default_value' => 'picture-imageEl--centerAlignMobile'
                             ],
                         ],
                     ],

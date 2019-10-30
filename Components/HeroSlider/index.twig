@@ -4,7 +4,7 @@
     <div class="swiper-wrapper">
       {% for slide in slides %}
       <div class="swiper-slide">
-        <picture class="content-picture">
+        <picture class="picture">
           <source srcset="
             {{ slide.images.imageDesktop.src | resizeDynamic(2560, 800, 'center') }} 2560w,
             {{ slide.images.imageDesktop.src | resizeDynamic(2048, 800, 'center') }} 2048w,
@@ -14,7 +14,7 @@
           media="(min-width: 768px)"
           sizes="100vw">
           {% set mobileImage = slide.images.imageMobile ? slide.images.imageMobile : slide.images.imageDesktop %}
-          <img class="content-image {{ slide.images.mobileAlignImage }} {{ slide.images.desktopAlignImage }}" srcset="
+          <img class="picture-imageEl {{ slide.images.mobileAlignImage }} {{ slide.images.desktopAlignImage }}" srcset="
             {{ mobileImage.src| resizeDynamic(375, 400) }} 375w,
             {{ mobileImage.src | resizeDynamic(750, 800) }} 750w"
           src="{{ mobileImage.src | resizeDynamic(375, 400) }}"

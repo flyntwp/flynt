@@ -139,38 +139,46 @@
       padding-bottom: $container-padding-desktop;
       padding-left: $container-padding-desktop * 2;
     }
+  }
 
-    &-picture {
-      bottom: 0;
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
+  .picture {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
 
-    &-image {
+    &-imageEl {
       font-family: 'object-fit: cover';
       height: 100%;
       object-fit: cover;
       object-position: center center;
       width: 100%;
-    }
 
-    &-image--leftAlignMobile {
-      object-position: left center;
-    }
-
-    &-image--rightAlignMobile {
-      object-position: right center;
-    }
-
-    @media (min-width: $breakpoint-tablet) {
-      &-image--leftAlignDesktop {
+      &--leftAlignMobile {
         object-position: left center;
       }
 
-      &-image--rightAlignDesktop {
+      &--rightAlignMobile {
         object-position: right center;
+      }
+
+      &--centerAlignMobile {
+        object-position: center center;
+      }
+
+      @media (min-width: $breakpoint-tablet) {
+        &--leftAlignDesktop {
+          object-position: left center;
+        }
+
+        &--rightAlignDesktop {
+          object-position: right center;
+        }
+
+        &--centerAlignDesktop {
+          object-position: center center;
+        }
       }
     }
   }
