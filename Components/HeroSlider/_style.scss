@@ -34,7 +34,7 @@
       background-color: rgba($color-background-dark, 0.5);
       border-radius: 50%;
       cursor: pointer;
-      display: flex;
+      display: none;
       height: 40px;
       justify-content: center;
       position: absolute;
@@ -47,6 +47,10 @@
       &.swiper-button-disabled {
         opacity: 0.5;
         pointer-events: none;
+      }
+
+      @media (min-width: $breakpoint-tablet) {
+        display: flex;
       }
 
       .feather {
@@ -79,6 +83,40 @@
         }
       }
     }
+
+    &-pagination {
+      bottom: 10px;
+      display: block;
+      left: 0;
+      margin-top: 0;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      z-index: 1;
+
+      @media (min-width: $breakpoint-tablet) {
+        display: none;
+      }
+
+      .swiper-pagination-bullet {
+        background-color: rgba($color-background, 0.2);
+        height: 6px;
+        opacity: 1;
+        transition: width 0.2s $ease-out-cubic, background-color 0.3s ease;
+        width: 6px;
+
+        &-active {
+          background-color: $color-background;
+          border-radius: 4px;
+          width: 20px;
+        }
+
+        &:hover,
+        &:focus {
+          background-color: $color-background;
+        }
+      }
+    }
   }
 
   .content {
@@ -89,21 +127,17 @@
     flex-direction: column;
     justify-content: flex-end;
     max-width: $content-max-width;
-    padding: $container-padding-mobile;
+    padding: $container-padding-tablet $container-padding-mobile;
     position: relative;
     z-index: 1;
 
     @media (min-width: $breakpoint-tablet) {
-      padding: $container-padding-tablet;
+      padding: $container-padding-tablet $container-padding-tablet * 2;
     }
 
     @media (min-width: $breakpoint-tablet-horizontal) {
       padding-bottom: $container-padding-desktop;
       padding-left: $container-padding-desktop * 2;
-    }
-
-    #{$heading-selectors} {
-      color: inherit;
     }
 
     &-picture {

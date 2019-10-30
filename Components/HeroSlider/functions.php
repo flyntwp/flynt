@@ -20,8 +20,8 @@ Api::registerFields('HeroSlider', [
         'label' => 'Hero: Slider',
         'sub_fields' => [
             [
-                'label' => 'Hero Slides',
-                'name' => 'slidesTab',
+                'label' => 'General',
+                'name' => 'generalTab',
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0
@@ -83,7 +83,6 @@ Api::registerFields('HeroSlider', [
                                 'preview_size' => 'medium',
                                 'library' => 'all',
                                 'mime_types' => 'jpg,jpeg',
-                                'required' => 1,
                                 'instructions' => 'Recommended resolution greater than 750 x 800 px.'
                             ],
                             [

@@ -1,6 +1,6 @@
 import $ from 'jquery'
 import Swiper from 'swiper'
-import 'swiper/dist/css/swiper.min.css'
+import 'swiper/css/swiper.min.css'
 
 class HeroSlider extends window.HTMLDivElement {
   constructor (...args) {
@@ -28,6 +28,7 @@ class HeroSlider extends window.HTMLDivElement {
     this.$sliderItems = $('.swiper-slide', this)
     this.$buttonNext = $('[data-slider-button="next"]', this)
     this.$buttonPrev = $('[data-slider-button="prev"]', this)
+    this.$pagination = $('[data-slider-pagination]', this)
   }
 
   connectedCallback () {
@@ -44,7 +45,11 @@ class HeroSlider extends window.HTMLDivElement {
         nextEl: this.$buttonNext,
         prevEl: this.$buttonPrev
       },
-      slidesPerView: 1
+      slidesPerView: 1,
+      pagination: {
+        el: this.$pagination,
+        clickable: true
+      }
     }
 
     if (options.autoplay && options.autoplaySpeed) {

@@ -1,4 +1,4 @@
-<div class="flyntComponent" is="flynt-hero-slider">
+<div class="flyntComponent themeDark" is="flynt-hero-slider">
   <script type="application/json">{{ jsonData|json_encode }}</script>
   <div data-slider class="slider swiper-container">
     <div class="swiper-wrapper">
@@ -13,10 +13,11 @@
             {{ slide.images.imageDesktop.src | resize(768, 400, 'center') }} 768w"
           media="(min-width: 768px)"
           sizes="100vw">
+          {% set mobileImage = slide.images.imageMobile ? slide.images.imageMobile : slide.images.imageDesktop %}
           <img class="content-image {{ slide.images.mobileAlignImage }} {{ slide.images.desktopAlignImage }}" srcset="
-            {{ slide.images.imageMobile.src| resize(375, 400) }} 375w,
-            {{ slide.images.imageMobile.src | resize(750, 800) }} 750w"
-          src="{{ slide.images.imageMobile.src | resize(375, 400) }}"
+            {{ mobileImage.src| resize(375, 400) }} 375w,
+            {{ mobileImage.src | resize(750, 800) }} 750w"
+          src="{{ mobileImage.src | resize(375, 400) }}"
           sizes="100vw"
           alt="{{ slide.images.imageDesktop.alt|e }}">
         </picture>
@@ -31,6 +32,7 @@
       {% endfor %}
     </div>
     {% if slides|length > 1 %}
+      <div data-slider-pagination class="slider-pagination"></div>
       <button data-slider-button="prev" type="button" class="slider-button slider-button--prev">
         <i data-feather="arrow-left"></i>
       </button>
