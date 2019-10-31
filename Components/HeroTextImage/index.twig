@@ -4,7 +4,6 @@
       {{ contentHtml|e('wp_kses_post') }}
     </div>
     <div class="column column--image">
-    {# {{ dump(image) }} #}
       {% if image.post_mime_type == 'image/svg+xml' %}
         <img class="image" src="{{ image.src }}" alt="{{ image.alt|e }}">
       {% else %}
