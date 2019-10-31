@@ -86,7 +86,7 @@ const webpackConfig = {
     mainFields: ['main', 'browser']
   },
   performance: {
-    maxAssetSize: 328000
+    hints: false
   },
   resolveLoader: {
     alias: {
