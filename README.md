@@ -7,8 +7,6 @@
 ## Short Description
 [Flynt](https://flyntwp.com/) is a WordPress theme for component-based development using [Timber](#page-templates) and [Advanced Custom Fields](#advanced-custom-fields).
 
-:construction: **This repository is a WORK IN PROGRESS. It is not yet ready for use in production. Feel free to try it out and give feedback using GitHub issues.**
-
 ## Table of Contents
 * [Install](#install)
   * [Dependencies](#dependencies)
