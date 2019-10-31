@@ -97,10 +97,7 @@ const webpackConfig = {
     new webpack.LoaderOptionsPlugin({
       debug: !config.production
     }),
-    new CopyWebpackPlugin(config.copy),
-    new FriendlyErrorsWebpackPlugin({
-      clearConsole: false
-    })
+    new CopyWebpackPlugin(config.copy)
   ],
   optimization: {
     splitChunks: {
@@ -138,6 +135,9 @@ if (production) {
       'process.env': {
         NODE_ENV: JSON.stringify('development')
       }
+    }),
+    new FriendlyErrorsWebpackPlugin({
+      clearConsole: false
     })
   )
 }
