@@ -3,6 +3,7 @@
 namespace Flynt\Components\HeroCta;
 
 use Flynt\Api;
+use Flynt\FieldVariables;
 
 Api::registerFields('HeroCta', [
     'layout' => [
@@ -46,7 +47,7 @@ Api::registerFields('HeroCta', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme')
+                    FieldVariables::get('theme')
                 ]
             ]
         ]

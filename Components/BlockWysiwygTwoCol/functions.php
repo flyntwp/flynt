@@ -3,6 +3,7 @@
 namespace Flynt\Components\BlockWysiwygTwoCol;
 
 use Flynt\Api;
+use Flynt\FieldVariables;
 
 Api::registerFields('BlockWysiwygTwoCol', [
     'layout' => [
@@ -55,7 +56,7 @@ Api::registerFields('BlockWysiwygTwoCol', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme')
+                    FieldVariables::get('theme')
                 ]
             ]
         ]

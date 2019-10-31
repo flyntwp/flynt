@@ -3,6 +3,7 @@
 namespace Flynt\Components\BlockImageTextParallax;
 
 use Flynt\Api;
+use Flynt\FieldVariables;
 
 Api::registerFields('BlockImageTextParallax', [
     'layout' => [
@@ -60,7 +61,7 @@ Api::registerFields('BlockImageTextParallax', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme')
+                    FieldVariables::get('theme')
                 ]
             ]
         ]

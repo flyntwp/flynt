@@ -3,6 +3,7 @@
 namespace Flynt\Components\ListLogos;
 
 use Flynt\Api;
+use Flynt\FieldVariables;
 
 add_filter('Flynt/addComponentData?name=ListLogos', function ($data) {
 
@@ -104,7 +105,7 @@ Api::registerFields('ListLogos', [
                 'name' => 'options',
                 'type' => 'group',
                 'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme'),
+                    FieldVariables::get('theme'),
                     [
                         'label' => 'Show as Card',
                         'name' => 'card',

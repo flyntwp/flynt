@@ -3,6 +3,7 @@
 namespace Flynt\Components\BlockImage;
 
 use Flynt\Api;
+use Flynt\FieldVariables;
 
 Api::registerFields('BlockImage', [
     'layout' => [
@@ -39,7 +40,7 @@ Api::registerFields('BlockImage', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme'),
+                    FieldVariables::get('theme'),
                     [
                         'label' => 'Size',
                         'name' => 'size',

@@ -3,6 +3,7 @@
 namespace Flynt\Components\HeroImageText;
 
 use Flynt\Api;
+use Flynt\FieldVariables;
 
 Api::registerFields('HeroImageCta', [
     'layout' => [
@@ -71,7 +72,7 @@ Api::registerFields('HeroImageCta', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme'),
+                    FieldVariables::get('theme'),
                     [
                         'label' => 'Align Image',
                         'name' => 'alignImage',

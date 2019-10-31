@@ -3,6 +3,7 @@
 namespace Flynt\Components\BlockWysiwygSidebar;
 
 use Flynt\Api;
+use Flynt\FieldVariables;
 
 Api::registerFields('BlockWysiwygSidebar', [
     'layout' => [
@@ -49,7 +50,7 @@ Api::registerFields('BlockWysiwygSidebar', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme')
+                    FieldVariables::get('theme')
                 ]
             ]
         ]

@@ -3,6 +3,7 @@
 namespace Flynt\Components\HeroTextImage;
 
 use Flynt\Api;
+use Flynt\FieldVariables;
 
 Api::registerFields('HeroTextImage', [
     'layout' => [
@@ -64,7 +65,7 @@ Api::registerFields('HeroTextImage', [
                         'required' => 1,
                         'default_value' => 'textLeft'
                     ],
-                    Api::loadFields('FieldVariables', 'theme')
+                    FieldVariables::get('theme')
                 ]
             ],
         ]

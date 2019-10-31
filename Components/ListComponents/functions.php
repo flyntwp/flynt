@@ -4,6 +4,7 @@ namespace Flynt\Components\ListComponents;
 
 use Flynt\Api;
 use Flynt\ComponentManager;
+use Flynt\FieldVariables;
 use Flynt\Utils\Options;
 use Flynt\Utils\Asset;
 
@@ -134,7 +135,7 @@ Api::registerFields('ListComponents', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme')
+                    FieldVariables::get('theme')
                 ]
             ]
         ]

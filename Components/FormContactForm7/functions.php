@@ -3,6 +3,7 @@
 namespace Flynt\Components\FormContactForm7;
 
 use Flynt\Api;
+use Flynt\FieldVariables;
 
 add_filter('wpcf7_load_js', '__return_false');
 add_filter('wpcf7_load_css', '__return_false');
@@ -140,7 +141,7 @@ Api::registerFields('FormContactForm7', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    array_merge(Api::loadFields('FieldVariables', 'theme'), array(
+                    array_merge(FieldVariables::get('theme'), array(
                         'default_value' => 'themeDark'
                     )),
                     [

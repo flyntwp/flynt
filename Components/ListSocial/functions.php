@@ -3,6 +3,7 @@
 namespace Flynt\Components\ListSocial;
 
 use Flynt\Api;
+use Flynt\FieldVariables;
 use Flynt\Utils\Asset;
 
 add_filter('Flynt/addComponentData?name=ListSocial', function ($data) {
@@ -85,7 +86,7 @@ Api::registerFields('ListSocial', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme')
+                    FieldVariables::get('theme')
                 ]
             ]
         ]

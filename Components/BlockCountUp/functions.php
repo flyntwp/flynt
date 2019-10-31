@@ -4,6 +4,7 @@ namespace Flynt\Components\BlockCountUp;
 
 use Flynt\Api;
 use Flynt\Utils\Options;
+use Flynt\FieldVariables;
 
 Api::registerFields('BlockCountUp', [
     'layout' => [
@@ -369,7 +370,7 @@ Api::registerFields('BlockCountUp', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme')
+                    FieldVariables::get('theme')
                 ]
             ]
         ]

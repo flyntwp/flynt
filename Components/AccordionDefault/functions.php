@@ -3,6 +3,7 @@
 namespace Flynt\Components\AccordionDefault;
 
 use Flynt\Api;
+use Flynt\FieldVariables;
 
 Api::registerFields('AccordionDefault', [
     'layout' => [
@@ -63,7 +64,7 @@ Api::registerFields('AccordionDefault', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme')
+                    FieldVariables::get('theme')
                 ]
             ]
         ],

@@ -3,6 +3,7 @@
 namespace Flynt\Components\BlockImageText;
 
 use Flynt\Api;
+use Flynt\FieldVariables;
 
 Api::registerFields('BlockImageText', [
     'layout' => [
@@ -59,7 +60,7 @@ Api::registerFields('BlockImageText', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme')
+                    FieldVariables::get('theme')
                 ]
             ]
         ]
