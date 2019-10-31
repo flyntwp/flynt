@@ -29,27 +29,20 @@
   .column {
     &--content {
       @include center($content-max-width, 0);
-      @include reset-content-margins;
 
       @media (min-width: $breakpoint-tablet-horizontal) {
+        @include reset-content-margins;
+
         align-self: center;
         flex-shrink: 0;
         margin: 0;
-      }
-    }
-
-    &--image {
-      margin-top: 30px;
-
-      @media (min-width: $breakpoint-tablet-horizontal) {
-        margin-top: 0;
       }
     }
   }
 
   .image {
     font-family: 'object-fit: contain';
-    max-height: 530px;
+    max-height: 400px;
     object-fit: contain;
 
     @media (min-width: $breakpoint-tablet-horizontal) {
