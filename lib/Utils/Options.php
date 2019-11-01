@@ -146,7 +146,7 @@ class Options
             return false;
         }
 
-        $prefix = implode('', [$optionType, $optionCategory, $subPageName, '_']);
+        $prefix = implode('_', [$optionType, $optionCategory, $subPageName, '_']);
         $isTranslatable = static::OPTION_TYPES[$optionType]['translatable'];
         if (empty($fieldName)) {
             $optionNames = (((static::$registeredOptions[$optionType] ?? [])[lcfirst($optionCategory)] ?? [])[$subPageName] ?? []);
@@ -185,7 +185,7 @@ class Options
         $prettyScope = StringHelpers::splitCamelCase($scope);
         $fieldGroupTitle = "<span class='{$iconClasses}'>{$prettyScope}</span>";
         $optionsPageSlug = self::$optionPages[$type]['menu_slug'];
-        $fieldGroupName = $type . ucfirst($category) . $scope;
+        $fieldGroupName = implode('_', [$type, ucfirst($category), $scope]);
         static::addOptionsFieldGroup($fieldGroupName, $fieldGroupTitle, $optionsPageSlug, $fields);
         static::registerOptionNames($type, $category, $scope, $fields);
     }
