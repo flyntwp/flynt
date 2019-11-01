@@ -7,12 +7,12 @@ use ACFComposer;
 class Options
 {
     const OPTION_TYPES = [
-        'translatableOptions' => [
+        'translatable' => [
             'title' => 'Translatable Options',
             'icon' => 'dashicons-translation',
             'translatable' => true
         ],
-        'globalOptions' => [
+        'global' => [
             'title' => 'Global Options',
             'icon' => 'dashicons-admin-site',
             'translatable' => false
@@ -53,7 +53,7 @@ class Options
         }
         foreach (static::OPTION_TYPES as $optionType => $option) {
             $title = _x($option['title'], 'title', 'flynt');
-            $slug = ucfirst($optionType);
+            $slug = ucfirst($optionType) . 'Options ';
 
             acf_add_options_page([
                 'page_title'  => $title,
@@ -115,6 +115,15 @@ class Options
     // ============
     // PUBLIC API
     // ============
+    public static function getTranslatable($optionCategory, $subPageName, $fieldName = null)
+    {
+        return self::get('translatable', $optionCategory, $subPageName, $fieldName);
+    }
+
+    public static function getGlobal($optionCategory, $subPageName, $fieldName = null)
+    {
+        return self::get('global', $optionCategory, $subPageName, $fieldName);
+    }
 
     /**
      * Get option(s) from a sub page.
@@ -125,7 +134,7 @@ class Options
      * @since 0.2.0 introduced as a replacement for OptionPages::getOption and OptionPages::getOptions
      * @since 0.2.2 added check for required hooks to have run to alert of timing issues when used incorrectly
      *
-     * @param string $optionType Type of option page. Either globalOptions or translatableOptions.
+     * @param string $optionType Type of option page. Either global or translatable.
      * @param string $optionCategory Category of option page. One of these three values: component, feature, customPostType.
      * @param string $subPageName Name of the sub page.
      * @param string $fieldName (optional) Name of the field to get.
@@ -165,12 +174,12 @@ class Options
 
     public static function addTranslatable($scope, $fields, $category = null)
     {
-        static::addOptions($scope, $fields, 'translatableOptions', $category);
+        static::addOptions($scope, $fields, 'translatable', $category);
     }
 
     public static function addGlobal($scope, $fields, $category = null)
     {
-        static::addOptions($scope, $fields, 'globalOptions', $category);
+        static::addOptions($scope, $fields, 'global', $category);
     }
 
     public static function addOptions($scope, $fields, $type, $category = null)
