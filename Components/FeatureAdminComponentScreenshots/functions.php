@@ -1,6 +1,7 @@
 <?php
 namespace Flynt\Components\FeatureAdminComponentScreenshots;
 
+use Flynt\ComponentManager;
 use Flynt\Utils\Asset;
 
 add_action('admin_enqueue_scripts', function () {
@@ -14,8 +15,10 @@ if (class_exists('acf')) {
     if (is_admin()) {
         // add image to the flexible content component name
         add_filter('acf/fields/flexible_content/layout_title', function ($title, $field, $layout, $i) {
+            $componentManager = ComponentManager::getInstance();
             $componentName = ucfirst($layout['name']);
-            $componentPath = "Components/{$componentName}";
+            $componentPathFull = $componentManager->getComponentDirPath($componentName);
+            $componentPath = str_replace(get_template_directory(), '', $componentPathFull);
             $componentScreenshotPath = Asset::requirePath("{$componentPath}/screenshot.png");
             $componentScreenshotUrl = Asset::requireUrl("{$componentPath}/screenshot.png");
             if (is_file($componentScreenshotPath)) {
