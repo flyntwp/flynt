@@ -33,7 +33,7 @@ Api::registerFields('BlockImageText', [
                 'instructions' => '',
                 'max_size' => 4,
                 'required' => true,
-                'mime_types' => 'gif,jpg,jpeg,png'
+                'mime_types' => 'gif,jpg,jpeg,png,svg'
             ],
             [
                 'name' => 'contentHtml',
