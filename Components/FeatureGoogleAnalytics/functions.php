@@ -11,7 +11,7 @@ add_action('init', 'Flynt\Components\FeatureGoogleAnalytics\init');
 
 function init()
 {
-    $googleAnalyticsOptions = Options::get('globalOptions', 'component', 'GoogleAnalytics');
+    $googleAnalyticsOptions = Options::get('globalOptions', 'feature', 'GoogleAnalytics');
     if ($googleAnalyticsOptions) {
         new GoogleAnalytics($googleAnalyticsOptions);
     }
@@ -60,4 +60,4 @@ Options::addGlobal('GoogleAnalytics', [
         'maxlength' => 500,
         'placeholder' => 'Separate IP addresses with commas'
     ]
-]);
+], 'feature');
