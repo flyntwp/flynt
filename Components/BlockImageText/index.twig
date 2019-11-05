@@ -3,16 +3,24 @@
     <div class="box box--{{ imagePosition }} centerContentMaxWidth">
       <div class="box-inner box-inner--image">
         <figure class="figure">
-          <img class="figure-image lazyload"
-            src="{{ image.src|resizeDynamic(750) }}"
-            srcset="{{ placeholderImage(750, 750 / image.aspect) }}"
-            data-srcset="
-              {{ image.src|resizeDynamic(1920) }} 1920w,
-              {{ image.src|resizeDynamic(1280) }} 1280w,
-              {{ image.src|resizeDynamic(750) }} 750w,
-              {{ image.src|resizeDynamic(375) }} 375w"
-            data-sizes="auto"
-            alt="{{ image.alt|e }}">
+          {% if image.post_mime_type == 'image/svg+xml' %}
+            <img
+              class="image lazyload"
+              src="{{ placeholderImage(750, (750 * 0.75)|round) }}"
+              data-src="{{ image.src }}"
+              alt="{{ image.alt|e }}">
+          {% else %}
+            <img class="figure-image lazyload"
+              src="{{ image.src|resizeDynamic(750) }}"
+              srcset="{{ placeholderImage(750, 750 / image.aspect) }}"
+              data-srcset="
+                {{ image.src|resizeDynamic(1920) }} 1920w,
+                {{ image.src|resizeDynamic(1280) }} 1280w,
+                {{ image.src|resizeDynamic(750) }} 750w,
+                {{ image.src|resizeDynamic(375) }} 375w"
+              data-sizes="auto"
+              alt="{{ image.alt|e }}">
+            {% endif %}
           {% if image.caption %}
             <figcaption class="figure-caption">{{ image.caption|e }}</figcaption>
           {% endif %}
