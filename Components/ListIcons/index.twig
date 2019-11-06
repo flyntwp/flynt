@@ -14,11 +14,13 @@
         {{ item.textContentHtml|e('wp_kses_post') }}
         </div>
         {% endif %}
-        <div class="item-linkWrapper">
-          <a href="{{ item.link.url }}" {{ item.link.target ? "target='#{item.link.target}' rel='noopener noreferrer'" }} class="item-link button button--link">
-            {{ item.link.title ?: item.link.url }}
-          </a>
-        </div>
+        {% if item.link %}
+          <div class="item-linkWrapper">
+            <a href="{{ item.link.url }}" {{ item.link.target ? "target='#{item.link.target}' rel='noopener noreferrer'" }} class="item-link button button--link">
+              {{ item.link.title ?: item.link.url }}
+            </a>
+          </div>
+        {% endif %}
       </li>
       {% endfor %}
     </ul>
