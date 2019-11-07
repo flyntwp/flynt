@@ -32,6 +32,7 @@
 composer install && npm i && npm run build
 ```
 4. Open the WordPress back-end and activate the Flynt theme.
+5. Run `npm run start` and start developing. Your local server is available at `localhost:3000`.
 
 ### Dependencies
 * [WordPress](https://wordpress.org/) >= 5.0
@@ -42,11 +43,11 @@ composer install && npm i && npm run build
 ## Usage
 In your terminal, navigate to `<your-project>/wp-content/themes/flynt` and run `npm start`. This will start a local server at `localhost:3000`.
 
-All files in `assets`,  `Components` and `Features` will now be watched for changes and compiled to the `dist` folder. Happy coding!
+All files in `assets` and `Components` will now be watched for changes and compiled to the `dist` folder. Happy coding!
 
 ### Assets
 
-The `./assets` folder contains all SCSS, images, and font files for the theme. Files inside this folder are watched for changes and compile to `./dist`.
+The `./assets` folder contains all JavaScript, SCSS, images, and font files for the theme. Files inside this folder are watched for changes and compile to `./dist`.
 
 The `main.scss` file is compiled to `./dist/assets/main.css` which is enqueued in the front-end.
 
@@ -275,8 +276,10 @@ Flynt includes several utility functions for creating Advanced Custom Fields opt
 This project is maintained by [bleech](https://github.com/bleech).
 
 The main people in charge of this repo are:
+* [Steffen Bewersdorff](https://github.com/steffenbew)
 * [Dominik Tränklein](https://github.com/domtra)
 * [Doğa Gürdal](https://github.com/Qakulukiam)
+* [Michael Carruthers](https://github.com/emcarru)
 
 ## Contributing
 To contribute, please use GitHub [issues](https://github.com/flyntwp/flynt/issues). Pull requests are accepted. Please also take a moment to read the [Contributing Guidelines](https://github.com/flyntwp/guidelines/blob/master/CONTRIBUTING.md) and [Code of Conduct](https://github.com/flyntwp/guidelines/blob/master/CODE_OF_CONDUCT.md).
