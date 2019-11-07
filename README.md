@@ -32,6 +32,7 @@
 composer install && npm i && npm run build
 ```
 4. Open the WordPress back-end and activate the Flynt theme.
+5. Run `npm run start` and start developing. Your local server is available at `localhost:3000`.
 
 ### Dependencies
 * [WordPress](https://wordpress.org/) >= 5.0
@@ -42,11 +43,11 @@ composer install && npm i && npm run build
 ## Usage
 In your terminal, navigate to `<your-project>/wp-content/themes/flynt` and run `npm start`. This will start a local server at `localhost:3000`.
 
-All files in `assets`,  `Components` and `Features` will now be watched for changes and compiled to the `dist` folder. Happy coding!
+All files in `assets` and `Components` will now be watched for changes and compiled to the `dist` folder. Happy coding!
 
 ### Assets
 
-The `./assets` folder contains all SCSS, images, and font files for the theme. Files inside this folder are watched for changes and compile to `./dist`.
+The `./assets` folder contains all JavaScript, SCSS, images, and font files for the theme. Files inside this folder are watched for changes and compile to `./dist`.
 
 The `main.scss` file is compiled to `./dist/assets/main.css` which is enqueued in the front-end.
 
@@ -127,9 +128,9 @@ Api::registerFields('BlockWysiwyg', [
 In the example above, the `layout` array is required in order to load this component into an Advanced Custom Fields *Flexible Content* field.
 
 ### Field Groups
-Field groups are needed to show registered fields in the WordPress back-end. All  field groups are created in the `./inc/fieldGroups` folder. Two field groups exist by default: [`pageComponents.php`](https://github.com/flyntwp/flynt/tree/master/inc/templates/pageComponents.php) and [`postComponents.php`](https://github.com/flyntwp/flynt/tree/master/inc/templates/postComponents.php).
+Field groups are needed to show registered fields in the WordPress back-end. All field groups are created in the `./inc/fieldGroups` folder. Two field groups exist by default: [`pageComponents.php`](https://github.com/flyntwp/flynt/tree/master/inc/templates/pageComponents.php) and [`postComponents.php`](https://github.com/flyntwp/flynt/tree/master/inc/templates/postComponents.php).
 
-To include fields that have been registered with `Flynt\Api::registerFields`, use `ACFComposer::registerFieldGroup($config)` inside the Inside the `Flynt/afterRegisterComponents` action.
+To include fields that have been registered with `Flynt\Api::registerFields`, use `ACFComposer::registerFieldGroup($config)` inside the `Flynt/afterRegisterComponents` action.
 
 Use `Flynt\Api::loadFields($scope, $fieldPath = null)` to load groups of fields into a field group. For example:
 
@@ -166,103 +167,7 @@ add_action('Flynt/afterRegisterComponents', function () {
 });
 ```
 
-The `registerFieldGroup` function takes the same argument as Advanced Custom Fields's `acf_add_local_field_group` with two exceptions:
-
-1. The fields do not require field keys but are automatically generated.
-2. For conditional logic, instead for specifying a field key as reference, you can specify a field path. For example:
-
-```php
-[
-  'label' => 'Include Button',
-  'name' => 'includeButton',
-  'type' => 'true_false',
-],
-[
-    'label' => 'Button Text',
-    'name' => 'buttonText',
-    'type' => 'text',
-    'conditional_logic' => [
-        [
-            [
-                'fieldPath' => 'includeButton',
-                'operator' => '==',
-                'value' => 1'
-            ]
-        ]
-    ]
-]
-```
-
-Conditional logic can also target fields one level higher. This is useful when targetting fields inside of a repeater. For example:
-
-```php
-[
-    'label' => 'Include Buttons',
-    'name' => 'includeButtons',
-    'type' => 'true_false',
-],
-[
-    'label' => 'Items',
-    'type' => 'repeater',
-    'name' => 'items',
-    'sub_fields' => [
-        [
-            'label' => 'Button Text',
-            'name' => 'buttonText',
-            'type' => 'text',
-            'conditional_logic' => [
-                [
-                    [
-                        'fieldPath' => '../includeButtons',
-                        'operator' => '==',
-                        'value' => 1
-                    ]
-                ]
-            ]
-        ]
-    ]
-]
-
-
-```
-
-More information can be found in the [ACF Field Group Composer repository](https://github.com/flyntwp/acf-field-group-composer).
-
-Registered fields can also be used statically (not inside a flexible content field). To do this, we strongly suggest putting the fields for a component in an ACF group field, so that you are able to easily retrieve all the associated fields.
-
-For Example:
-
-```php
-use ACFComposer\ACFComposer;
-use Flynt\Api;
-
-add_action('Flynt/afterRegisterComponents', function () {
-    ACFComposer::registerFieldGroup([
-        'name' => 'pageComponents',
-        'title' => 'Page Components',
-        'style' => 'seamless',
-        'fields' => [
-            [
-                'name' => 'mainContent',
-                'label' => 'Main Content',
-                'type' => 'group',
-                'sub_fields' => [
-                    Api::loadFields('BlockWysiwyg', 'layout.sub_fields'),
-                ],
-            ],
-        ],
-        'location' => [
-            [
-                [
-                    'param' => 'post_type',
-                    'operator' => '==',
-                    'value' => 'page',
-                ],
-            ],
-        ],
-    ]);
-});
-```
+More information on field groups can be found in the [ACF Field Group Composer repository](https://github.com/flyntwp/acf-field-group-composer).
 
 ### ACF Option Pages
 Flynt includes several utility functions for creating Advanced Custom Fields options pages. Briefly, these are:
@@ -275,8 +180,10 @@ Flynt includes several utility functions for creating Advanced Custom Fields opt
 This project is maintained by [bleech](https://github.com/bleech).
 
 The main people in charge of this repo are:
+* [Steffen Bewersdorff](https://github.com/steffenbew)
 * [Dominik Tränklein](https://github.com/domtra)
 * [Doğa Gürdal](https://github.com/Qakulukiam)
+* [Michael Carruthers](https://github.com/emcarru)
 
 ## Contributing
 To contribute, please use GitHub [issues](https://github.com/flyntwp/flynt/issues). Pull requests are accepted. Please also take a moment to read the [Contributing Guidelines](https://github.com/flyntwp/guidelines/blob/master/CONTRIBUTING.md) and [Code of Conduct](https://github.com/flyntwp/guidelines/blob/master/CODE_OF_CONDUCT.md).
