@@ -26,7 +26,7 @@ Api::registerFields('FieldVariables', [
         'label' => 'Icon',
         'name' => 'icon',
         'type' => 'text',
-        'instructions' => 'Enter a valid icon name from Feather Icons (e.g. `check-circle`). Visit https://feathericons.com/ to see the all icons with their corresponding names.',
+        'instructions' => 'Enter a valid icon name from <a href="https://feathericons.com">Feather Icons</a> (e.g. `check-circle`).',
         'required' => 1
     ],
 ]);
