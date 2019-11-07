@@ -7,7 +7,7 @@
     {% endif %}
     <ul class="items">
       {% for item in items %}
-      <li class="item">
+      <li class="item item--{{ options.align }}">
         <div class="item-icon"><i class="feather" data-feather="{{ item.icon|e }}"></i></div>
         {% if item.textContentHtml %}
         <div class="item-content">

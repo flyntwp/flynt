@@ -362,7 +362,17 @@ Api::registerFields('ListIcons', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme')
+                    Api::loadFields('FieldVariables', 'theme'),
+                    [
+                        'label' => 'Item Alignment',
+                        'name' => 'align',
+                        'type' => 'button_group',
+                        'choices' => [
+                            'left' => 'Left',
+                            'centered' => 'Centered'
+                        ],
+                        'default_value' => 'left'
+                    ],
                 ]
             ],
         ]
