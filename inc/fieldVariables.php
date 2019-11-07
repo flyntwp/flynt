@@ -21,5 +21,12 @@ Api::registerFields('FieldVariables', [
             'themeDark' => 'Dark',
             'themeHero' => 'Hero'
         ]
-    ]
+    ],
+    'icon' => [
+        'label' => 'Icon',
+        'name' => 'icon',
+        'type' => 'text',
+        'instructions' => 'Enter a valid icon name from Feather Icons (e.g. `check-circle`). Visit https://feathericons.com/ to see the all icons with their corresponding names.',
+        'required' => 1
+    ],
 ]);
