@@ -1,4 +1,8 @@
 [is='flynt-block-image-text'] {
+  .centerMaxWidthContainer {
+    max-width: 1200px;
+  }
+
   .box {
     @media (min-width: $breakpoint-tablet-horizontal) {
       align-items: center;
@@ -17,6 +21,14 @@
 
       &--imageRight {
         flex-direction: row-reverse;
+      }
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      margin: 0 -40px;
+
+      &-inner {
+        padding: 0 40px;
       }
     }
 
