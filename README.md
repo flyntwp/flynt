@@ -130,7 +130,7 @@ In the example above, the `layout` array is required in order to load this compo
 ### Field Groups
 Field groups are needed to show registered fields in the WordPress back-end. All  field groups are created in the `./inc/fieldGroups` folder. Two field groups exist by default: [`pageComponents.php`](https://github.com/flyntwp/flynt/tree/master/inc/templates/pageComponents.php) and [`postComponents.php`](https://github.com/flyntwp/flynt/tree/master/inc/templates/postComponents.php).
 
-To include fields that have been registered with `Flynt\Api::registerFields`, use `ACFComposer::registerFieldGroup($config)` inside the Inside the `Flynt/afterRegisterComponents` action.
+To include fields that have been registered with `Flynt\Api::registerFields`, use `ACFComposer::registerFieldGroup($config)` inside the `Flynt/afterRegisterComponents` action.
 
 Use `Flynt\Api::loadFields($scope, $fieldPath = null)` to load groups of fields into a field group. For example:
 
