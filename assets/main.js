@@ -2,6 +2,7 @@ import 'console-polyfill'
 import 'normalize.css/normalize.css'
 import './main.scss'
 import $ from 'jquery'
+import './scripts/pubsub'
 
 import installCE from 'document-register-element/pony'
 
