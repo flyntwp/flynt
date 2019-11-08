@@ -1,2 +1,6 @@
-{{ renderFlexibleContent(post.meta('pageComponents')) }}
-{{ renderFlexibleContent(post.meta('postComponents')) }}
+{% for component in post.meta('pageComponents') %}
+  {{ renderComponent(component) }}
+{% endfor %}
+{% for component in post.meta('postComponents') %}
+  {{ renderComponent(component) }}
+{% endfor %}
