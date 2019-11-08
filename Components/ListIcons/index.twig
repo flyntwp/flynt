@@ -5,9 +5,9 @@
         {{ preContentHtml|e('wp_kses_post') }}
       </div>
     {% endif %}
-    <ul class="items">
+    <ul class="items items--{{ options.align }}">
       {% for item in items %}
-      <li class="item item--{{ options.align }}">
+      <li class="item">
         <div class="item-icon"><i class="feather" data-feather="{{ item.icon|e }}"></i></div>
         {% if item.textContentHtml %}
         <div class="item-content">
