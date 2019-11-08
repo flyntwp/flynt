@@ -70,14 +70,13 @@ add_action('timber/twig/filters', function ($twig) {
                 'force' => $force
             ];
 
-            global $wpdb;
-            $tableName = getTableName();
-            $wpdb->query(
-                $wpdb->prepare("REPLACE INTO {$tableName} VALUES (%s, %s)", [
-                    $resizedUrl,
-                    json_encode($arguments)
-                ])
-            );
+            global $flyntResizedImages;
+            if (empty($flyntResizedImages)) {
+                add_action('shutdown', function () {
+                    storeResizedUrls();
+                }, -1);
+            }
+            $flyntResizedImages[$resizedUrl] = json_encode($arguments);
 
             $uploadDirRelative = getRelativeUploadDir();
 
@@ -200,3 +199,34 @@ add_action('switch_theme', function () {
     remove_filter('mod_rewrite_rules', 'Flynt\\TimberDynamicResize\\addRewriteRule');
     flush_rewrite_rules();
 });
+
+global $flyntResizedImages;
+$flyntResizedImages = [];
+
+function storeResizedUrls()
+{
+    global $wpdb, $flyntResizedImages;
+    $tableName = getTableName();
+    $urls = array_keys($flyntResizedImages);
+    $deletePlaceholders = array_fill(0, count($urls), '%s');
+    $deletePlaceholdersString = '(' . implode(', ', $deletePlaceholders) . ')';
+    $wpdb->query(
+        $wpdb->prepare(
+            "DELETE FROM {$tableName} WHERE url IN {$deletePlaceholdersString}",
+            $urls
+        )
+    );
+    $insertPlaceholders = array_fill(0, count($urls), '(%s, %s)');
+    $insertPlaceholdersString = implode(', ', $insertPlaceholders);
+    $insertValues = [];
+    foreach ($urls as $url) {
+        $insertValues[] = $url;
+        $insertValues[] = $flyntResizedImages[$url];
+    }
+    $wpdb->query(
+        $wpdb->prepare(
+            "INSERT INTO {$tableName} (url, arguments) VALUES {$insertPlaceholdersString}",
+            $insertValues
+        )
+    );
+}
