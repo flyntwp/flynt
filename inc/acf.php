@@ -21,7 +21,7 @@ add_filter('http_response', function ($response, $args, $url) {
 }, 10, 3);
 
 add_filter('acf/fields/google_map/api', function ($api) {
-    $apiKey = Options::getGlobal('component', 'Acf', 'googleMapsApiKey');
+    $apiKey = Options::getGlobal('Acf', 'googleMapsApiKey');
     if ($apiKey) {
         $api['key'] = $apiKey;
     }
