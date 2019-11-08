@@ -13,6 +13,7 @@ class BlockCookieNotice extends window.HTMLDivElement {
 
   setOptions () {
     this.cookieName = 'acceptedTracking'
+    this.exipiryDays = 99
   }
 
   resolveElements () {
@@ -37,9 +38,6 @@ class BlockCookieNotice extends window.HTMLDivElement {
   }
 
   connectedCallback () {
-    console.log(this.$declineButton)
-    console.log('connectedcallback')
-    //console.log(Cookies.get(this.cookieName))
     if (typeof Cookies.get(this.cookieName) === 'undefined') {
       this.showCookieNotice()
     }
@@ -60,7 +58,7 @@ class BlockCookieNotice extends window.HTMLDivElement {
   }
 
   acceptTracking () {
-    Cookies.set(this.cookieName, true, { expires: Number(this.props.expiryDays), path: window.location.pathname })
+    Cookies.set(this.cookieName, true, { expires: Number(this.exipiryDays), path: window.location.pathname })
     this.hideCookieNotice()
     $.publish('trackingChanged', { accepted: true })
 
@@ -75,7 +73,7 @@ class BlockCookieNotice extends window.HTMLDivElement {
   }
 
   declineTracking () {
-    Cookies.set(this.cookieName, false, { expires: Number(this.props.expiryDays), path: window.location.pathname })
+    Cookies.set(this.cookieName, false, { expires: Number(this.exipiryDays), path: window.location.pathname })
     this.hideModal()
     $.publish('trackingChanged', { accepted: false })
 
