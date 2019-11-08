@@ -40,6 +40,12 @@ call_user_func(function () {
     }
 });
 
+function getRelativeUploadDir()
+{
+    $uploadDir = wp_upload_dir();
+    return $uploadDir['relative'];
+}
+
 add_action('timber/twig/filters', function ($twig) {
     $twig->addFilter(
         new Twig_SimpleFilter('resizeDynamic', function (
@@ -73,9 +79,11 @@ add_action('timber/twig/filters', function ($twig) {
                 ])
             );
 
+            $uploadDirRelative = getRelativeUploadDir();
+
             return str_replace(
-                '/app/uploads/',
-                '/app/uploads/' . IMAGE_PATH_SEPARATOR . '/',
+                $uploadDirRelative,
+                trailingslashit($uploadDirRelative) . IMAGE_PATH_SEPARATOR,
                 $resizedUrl
             );
         })
@@ -85,9 +93,10 @@ add_action('timber/twig/filters', function ($twig) {
 });
 
 Routes::map(IMAGE_ROUTE, function () {
+    $uploadDirRelative = getRelativeUploadDir();
     $src = str_replace(
-        '/app/uploads/' . IMAGE_PATH_SEPARATOR . '/',
-        '/app/uploads/',
+        trailingslashit($uploadDirRelative) . IMAGE_PATH_SEPARATOR,
+        $uploadDirRelative,
         home_url($_GET['src'] ?? '')
     );
 
@@ -107,10 +116,10 @@ Routes::map(IMAGE_ROUTE, function () {
     if ($localDev) {
         $src = http_build_url($homeUrl, ['path' => $urlParts['path']]);
     }
-    $moveImageFunction = function ($location) {
+    $moveImageFunction = function ($location) use ($uploadDirRelative) {
         return str_replace(
-            '/app/uploads/',
-            '/app/uploads/' . IMAGE_PATH_SEPARATOR . '/',
+            $uploadDirRelative,
+            trailingslashit($uploadDirRelative) . IMAGE_PATH_SEPARATOR,
             $location
         );
     };
@@ -140,13 +149,16 @@ Routes::map(IMAGE_ROUTE, function () {
 
 function addRewriteRule($rules)
 {
+    $imageRoute = IMAGE_ROUTE;
+    $uploadDirRelative = trailingslashit(getRelativeUploadDir());
+    $dynamicImageDir = trailingslashit($uploadDirRelative . IMAGE_PATH_SEPARATOR);
     $dynamicImageRule = <<<EOD
 \n# BEGIN Flynt dynamic images
 RewriteEngine On
-RewriteCond %{REQUEST_URI} ^/app/uploads/dynamic
+RewriteCond %{REQUEST_URI} ^{$dynamicImageDir}
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /dynamic-images?src=$1 [L,R]
+RewriteRule ^(.*)$ /{$imageRoute}?src=$1 [L,R]
 
 <IfModule mod_setenvif.c>
 # Vary: Accept for all the requests to jpeg and png
