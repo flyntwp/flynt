@@ -1,48 +1,43 @@
 [is='flynt-block-image-text'] {
-  .box {
-    @media (min-width: $breakpoint-tablet-horizontal) {
+  .container {
+    @include center(500px + 2 * $container-padding-mobile);
+  }
+
+  .box-inner {
+    @include reset-content-margins('top');
+  }
+
+  @media (max-width: $breakpoint-tablet-horizontal - 1) {
+    margin: $component-spacing-tablet 0;
+  }
+
+  @media (min-width: $breakpoint-tablet-horizontal) {
+    .container {
+      @include center(1080px + 2 * $container-padding-tablet, $container-padding-tablet);
+    }
+
+    .box {
       align-items: center;
       display: flex;
-      margin: 0 -20px;
-      max-width: none;
+      margin: 0 $container-padding-tablet * -1;
 
       &-inner {
-        padding: 0 20px;
+        @include reset-content-margins('both');
+
+        padding: 0 $container-padding-tablet;
         width: 50%;
       }
 
-      &--imageLeft {
+      &--imageRight {
         flex-direction: row;
       }
 
-      &--imageRight {
+      &--imageLeft {
         flex-direction: row-reverse;
       }
     }
 
-    &-inner {
-      &--content {
-        @include reset-content-margins;
-      }
-
-      @media (min-width: $breakpoint-desktop) {
-        &--image {
-          width: 60%;
-        }
-
-        &--content {
-          width: 40%;
-        }
-      }
-    }
-  }
-
-  .figure {
-    font-size: 0.8rem;
-
-    @media (min-width: $breakpoint-tablet-horizontal) {
-      margin-bottom: 0;
-
+    .figure-caption {
       &-caption {
         position: absolute;
       }
