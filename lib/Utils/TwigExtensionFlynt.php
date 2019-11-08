@@ -5,7 +5,7 @@ namespace Flynt\Utils;
 use Flynt\ComponentManager;
 use Twig_Environment;
 use Twig_Extension;
-use Twig_SimpleFunction;
+use Twig\TwigFunction;
 
 class TwigExtensionFlynt extends Twig_Extension
 {
@@ -18,7 +18,7 @@ class TwigExtensionFlynt extends Twig_Extension
     public function getFunctions()
     {
         return [
-            new Twig_SimpleFunction('renderComponent', [$this, 'renderComponent'], array('needs_environment' => true, 'needs_context' => true, 'is_safe' => array('all'))),
+            new TwigFunction('renderComponent', [$this, 'renderComponent'], array('needs_environment' => true, 'needs_context' => true, 'is_safe' => array('all'))),
         ];
     }
 

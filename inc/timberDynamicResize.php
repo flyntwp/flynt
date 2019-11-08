@@ -2,7 +2,7 @@
 
 namespace Flynt\TimberDynamicResize;
 
-use Twig_SimpleFilter;
+use Twig\TwigFilter;
 use Timber;
 use Routes;
 
@@ -48,7 +48,7 @@ function getRelativeUploadDir()
 
 add_action('timber/twig/filters', function ($twig) {
     $twig->addFilter(
-        new Twig_SimpleFilter('resizeDynamic', function (
+        new TwigFilter('resizeDynamic', function (
             $src,
             $w,
             $h = 0,
