@@ -7,12 +7,12 @@ use ACFComposer;
 class Options
 {
     const OPTION_TYPES = [
-        'translatableOptions' => [
+        'translatable' => [
             'title' => 'Translatable Options',
             'icon' => 'dashicons-translation',
             'translatable' => true
         ],
-        'globalOptions' => [
+        'global' => [
             'title' => 'Global Options',
             'icon' => 'dashicons-admin-site',
             'translatable' => false
@@ -53,7 +53,7 @@ class Options
         }
         foreach (static::OPTION_TYPES as $optionType => $option) {
             $title = _x($option['title'], 'title', 'flynt');
-            $slug = ucfirst($optionType);
+            $slug = ucfirst($optionType) . 'Options';
 
             acf_add_options_page([
                 'page_title'  => $title,
@@ -115,6 +115,15 @@ class Options
     // ============
     // PUBLIC API
     // ============
+    public static function getTranslatable($scope, $fieldName = null)
+    {
+        return self::get('translatable', $scope, $fieldName);
+    }
+
+    public static function getGlobal($scope, $fieldName = null)
+    {
+        return self::get('global', $scope, $fieldName);
+    }
 
     /**
      * Get option(s) from a sub page.
@@ -125,31 +134,30 @@ class Options
      * @since 0.2.0 introduced as a replacement for OptionPages::getOption and OptionPages::getOptions
      * @since 0.2.2 added check for required hooks to have run to alert of timing issues when used incorrectly
      *
-     * @param string $optionType Type of option page. Either globalOptions or translatableOptions.
+     * @param string $optionType Type of option page. Either global or translatable.
      * @param string $optionCategory Category of option page. One of these three values: component, feature, customPostType.
      * @param string $subPageName Name of the sub page.
      * @param string $fieldName (optional) Name of the field to get.
      * @return mixed The value of the option or array of options. False if subpage doesn't exist or no option was found.
      **/
-    public static function get($optionType, $optionCategory, $subPageName, $fieldName = null)
+    public static function get($optionType, $scope, $fieldName = null)
     {
-        if (!static::checkRequiredHooks($optionType, $optionCategory, $subPageName, $fieldName)) {
+        if (!static::checkRequiredHooks($optionType, $scope, $fieldName)) {
             return false;
         }
 
         // convert parameters
         $optionType = lcfirst($optionType);
-        $optionCategory = ucfirst($optionCategory);
-        $subPageName = ucfirst($subPageName);
+        $scope = ucfirst($scope);
 
         if (!isset(static::OPTION_TYPES[$optionType])) {
             return false;
         }
 
-        $prefix = implode('', [$optionType, $optionCategory, $subPageName, '_']);
+        $prefix = implode('_', [$optionType, $scope, '']);
         $isTranslatable = static::OPTION_TYPES[$optionType]['translatable'];
         if (empty($fieldName)) {
-            $optionNames = (((static::$registeredOptions[$optionType] ?? [])[lcfirst($optionCategory)] ?? [])[$subPageName] ?? []);
+            $optionNames = ((static::$registeredOptions[$optionType] ?? [])[$scope] ?? []);
             return array_combine(
                 $optionNames,
                 array_map(function ($optionName) use ($prefix, $isTranslatable) {
@@ -165,12 +173,12 @@ class Options
 
     public static function addTranslatable($scope, $fields, $category = null)
     {
-        static::addOptions($scope, $fields, 'translatableOptions', $category);
+        static::addOptions($scope, $fields, 'translatable', $category);
     }
 
     public static function addGlobal($scope, $fields, $category = null)
     {
-        static::addOptions($scope, $fields, 'globalOptions', $category);
+        static::addOptions($scope, $fields, 'global', $category);
     }
 
     public static function addOptions($scope, $fields, $type, $category = null)
@@ -185,16 +193,16 @@ class Options
         $prettyScope = StringHelpers::splitCamelCase($scope);
         $fieldGroupTitle = "<span class='{$iconClasses}'>{$prettyScope}</span>";
         $optionsPageSlug = self::$optionPages[$type]['menu_slug'];
-        $fieldGroupName = $type . ucfirst($category) . $scope;
+        $fieldGroupName = implode('_', [$type, $scope]);
         static::addOptionsFieldGroup($fieldGroupName, $fieldGroupTitle, $optionsPageSlug, $fields);
-        static::registerOptionNames($type, $category, $scope, $fields);
+        static::registerOptionNames($type, $scope, $fields);
     }
 
-    protected static function registerOptionNames($type, $category, $scope, $fields)
+    protected static function registerOptionNames($type, $scope, $fields)
     {
         static::$registeredOptions[$type] = static::$registeredOptions[$type] ?? [];
-        static::$registeredOptions[$type][$category] = static::$registeredOptions[$type][$category] ?? [];
-        static::$registeredOptions[$type][$category][$scope] = array_column($fields, 'name');
+        static::$registeredOptions[$type] = static::$registeredOptions[$type] ?? [];
+        static::$registeredOptions[$type][$scope] = array_column($fields, 'name');
         return static::$registeredOptions;
     }
 
@@ -241,10 +249,10 @@ class Options
         }, $fields);
     }
 
-    protected static function checkRequiredHooks($optionType, $optionCategory, $subPageName, $fieldName)
+    protected static function checkRequiredHooks($optionType, $scope, $fieldName)
     {
         if (did_action('acf/init') < 1) {
-            $parameters = "${optionType}, ${optionCategory}, ${subPageName}, ";
+            $parameters = "${optionType}, ${scope}, ";
             $parameters .= isset($fieldName) ? $fieldName : 'NULL';
             trigger_error("Could not get option/s for [${parameters}]. Required hooks have not yet been executed! Please make sure to run `Options::get()` after the `acf/init` action is finished.", E_USER_WARNING);
             return false;

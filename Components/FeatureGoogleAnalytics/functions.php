@@ -11,7 +11,7 @@ add_action('init', 'Flynt\Components\FeatureGoogleAnalytics\init');
 
 function init()
 {
-    $googleAnalyticsOptions = Options::get('globalOptions', 'component', 'GoogleAnalytics');
+    $googleAnalyticsOptions = Options::getGlobal('GoogleAnalytics');
     if ($googleAnalyticsOptions) {
         new GoogleAnalytics($googleAnalyticsOptions);
     }

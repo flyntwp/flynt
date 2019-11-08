@@ -6,7 +6,7 @@ use Flynt\Api;
 use Flynt\Utils\Options;
 
 add_filter('Flynt/addComponentData?name=SliderImagesCentered', function ($data) {
-    $translatableOptions = Options::get('translatableOptions', 'feature', 'SliderOptions');
+    $translatableOptions = Options::getTranslatable('SliderOptions');
     $data['jsonData'] = [
         'options' => array_merge($translatableOptions, $data['options']),
     ];
