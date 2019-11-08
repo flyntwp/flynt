@@ -17,24 +17,19 @@ class TwigExtensionFlynt extends Twig_Extension
 
     public function getFunctions()
     {
-        return array(
+        return [
             new Twig_SimpleFunction('renderComponent', [$this, 'renderComponent'], array('needs_environment' => true, 'needs_context' => true, 'is_safe' => array('all'))),
-            new Twig_SimpleFunction('renderFlexibleContent', [$this, 'renderFlexibleContent'], array('needs_environment' => true, 'needs_context' => true, 'is_safe' => array('all'))),
-        );
-    }
-
-    public function renderFlexibleContent(Twig_Environment $env, $context, $fields, $withContext = true, $ignoreMissing = false, $sandboxed = false)
-    {
-        $output = '';
-        foreach ((empty($fields) ? [] : $fields) as $field) {
-            $output .= $this->renderComponent($env, $context, ucfirst($field['acf_fc_layout']), $field, $withContext, $ignoreMissing, $sandboxed);
-        }
-        return $output;
+        ];
     }
 
     public function renderComponent(Twig_Environment $env, $context, $componentName, $data = [], $withContext = true, $ignoreMissing = false, $sandboxed = false)
     {
         $data = $data === false ? [] : $data;
+
+        if (is_array($componentName)) {
+            $data = array_merge($componentName, $data);
+            $componentName = ucfirst($data['acf_fc_layout']);
+        }
         $data = $this->getComponentData($data, $componentName);
 
         $componentManager = ComponentManager::getInstance();
