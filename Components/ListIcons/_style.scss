@@ -34,39 +34,72 @@
       @include grid(4,
       $gutter-vertical: ($gutter-width * 2));
     }
+  }
 
-    .item {
-      display: flex;
-      flex-direction: column;
-      max-width: 320px;
+  .feather {
+    height: auto;
+    width: 100%;
+  }
 
-      &-icon {
-        height: 45px;
-        margin-bottom: 15px;
-        width: 45px;
+  .item {
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
 
-        svg {
-          height: auto;
-          width: 100%;
-        }
-      }
+    &-icon {
+      height: 45px;
+      margin-bottom: 15px;
+      width: 45px;
+    }
 
-      &-content {
-        @include reset-content-margins;
+    &-content {
+      @include reset-content-margins;
 
-        flex-grow: 1;
-      }
+      flex-grow: 1;
+    }
 
-      &-link {
-        padding-bottom: 0;
-        padding-top: 0;
-        text-decoration: none;
+    &-link {
+      padding-bottom: 0;
+      padding-top: 0;
+      text-decoration: none;
 
-        &::before {
-          bottom: 0;
-        }
+      &::before {
+        bottom: 0;
       }
     }
   }
 
+  .items--centered {
+    justify-content: center;
+    text-align: center;
+
+    .item {
+      align-items: center;
+
+      &-icon {
+        align-items: center;
+        background-color: $color-background-hero;
+        border-radius: 50%;
+        display: flex;
+        height: 80px;
+        width: 80px;
+      }
+    }
+
+    .feather {
+      color: $color-background-light;
+      height: auto;
+      margin: 0 auto;
+      top: 0;
+      width: 40px;
+    }
+  }
+
+  &.themeHero {
+    .item--centered {
+      .item-icon {
+        background-color: $color-background-dark;
+      }
+    }
+  }
 }

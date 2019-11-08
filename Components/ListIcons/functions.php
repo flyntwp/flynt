@@ -61,7 +61,17 @@ Api::registerFields('ListIcons', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme')
+                    Api::loadFields('FieldVariables', 'theme'),
+                    [
+                        'label' => 'Item Alignment',
+                        'name' => 'align',
+                        'type' => 'button_group',
+                        'choices' => [
+                            'left' => '<i class=\'dashicons dashicons-align-left\'></i>Left',
+                            'centered' => '<i class=\'dashicons dashicons-align-center\'></i>Center'
+                        ],
+                        'default_value' => 'left'
+                    ],
                 ]
             ],
         ]
