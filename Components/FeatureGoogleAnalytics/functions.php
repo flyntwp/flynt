@@ -2,20 +2,24 @@
 
 namespace Flynt\Components\FeatureGoogleAnalytics;
 
-require_once __DIR__ . '/GoogleAnalytics.php';
+require_once __DIR__ . '/helpers.php';
 
-use Flynt\Components\FeatureGoogleAnalytics\GoogleAnalytics;
 use Flynt\Utils\Options;
 
-add_action('init', 'Flynt\Components\FeatureGoogleAnalytics\init');
 
-function init()
-{
+add_filter('Flynt/addComponentData?name=FeatureGoogleAnalytics', function ($data) {
+
     $googleAnalyticsOptions = Options::getGlobal('GoogleAnalytics');
+
     if ($googleAnalyticsOptions) {
-        new GoogleAnalytics($googleAnalyticsOptions);
+        $data['jsonData'] = json_encode([
+            'gaId' => $googleAnalyticsOptions['gaId'],
+            'serverSideTrackingEnabled' => isTrackingEnabled($googleAnalyticsOptions['gaId'], $googleAnalyticsOptions['skippedUserRoles'], $googleAnalyticsOptions['skippedIps'])
+        ]);
     }
-}
+
+    return $data;
+});
 
 Options::addGlobal('GoogleAnalytics', [
     [
