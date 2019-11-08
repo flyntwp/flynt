@@ -19,39 +19,58 @@ class Options
         ]
     ];
 
-    const OPTION_CATEGORIES = [
-        'component' => [
-            'title' => 'Component',
-            'icon' => 'dashicons-editor-table',
-            'showType' => true
-        ],
-        'customPostType' => [
-            'title' => 'Custom Post Type',
-            'icon' => 'dashicons-palmtree',
-            'showType' => true
-            // 'label' => [ 'labels', 'menu_item' ], // TODO add this functionality
-        ],
-        'feature' => [
-            'title' => 'Feature',
-            'icon' => 'dashicons-carrot',
-            'showType' => true
-        ]
-    ];
-
     protected static $initialized = false;
 
     protected static $optionPages = [];
 
     protected static $registeredOptions = [];
 
-    protected static function createOptionPages()
+    protected static function init()
     {
         if (static::$initialized) {
             return;
         } else {
             static::$initialized = true;
         }
-        foreach (static::OPTION_TYPES as $optionType => $option) {
+
+        add_action('current_screen', function ($currentScreen) {
+            $currentScreenId = strtolower($currentScreen->id);
+            foreach (static::OPTION_TYPES as $optionType => $option) {
+                $isTranslatable = $option['translatable'];
+                // NOTE: because the first subpage starts with toplevel instead (there is no overview page)
+                $toplevelPageId = strtolower('toplevel_page_' . $optionType);
+                $menuTitle = static::$optionPages[$optionType]['menu_title'];
+                // NOTE: all other subpages have the parent menu-title in front instead
+                $subPageId = strtolower(
+                    sanitize_title($menuTitle) . '_page_' . $optionType
+                );
+                $isCurrentPage =
+                    StringHelpers::startsWith(
+                        $toplevelPageId,
+                        $currentScreenId
+                    ) ||
+                    StringHelpers::startsWith($subPageId, $currentScreenId);
+                if (!$isTranslatable && $isCurrentPage) {
+                    // set acf field values to default language
+                    add_filter(
+                        'acf/settings/current_language',
+                        'Flynt\Utils\Options::getDefaultAcfLanguage',
+                        101
+                    );
+                    // hide language selector in admin bar
+                    add_action('wp_before_admin_bar_render', function () {
+                        $adminBar = $GLOBALS['wp_admin_bar'];
+                        $adminBar->remove_menu('WPML_ALS');
+                    });
+                }
+            }
+        });
+    }
+
+    protected static function createOptionPage($optionType)
+    {
+        if (empty(static::$optionPages[$optionType])) {
+            $option = static::OPTION_TYPES[$optionType];
             $title = _x($option['title'], 'title', 'flynt');
             $slug = ucfirst($optionType) . 'Options';
 
@@ -67,48 +86,47 @@ class Options
                 'menu_slug' => $slug,
                 'menu_title' => $title
             ];
-            $fieldGroup = ACFComposer\ResolveConfig::forFieldGroup(
-                [
-                    'name' => $slug,
-                    'title' => $title,
-                    'style' => 'seamless',
-                    'fields' => [],
-                    'location' => [
+        }
+        return static::$optionPages[$optionType];
+    }
+
+    protected static function createOptionSubPage($optionType, $optionCategory = "Default")
+    {
+        if (empty(static::$optionPages[$optionType]['sub_pages'][$optionCategory])) {
+            $optionPage = static::createOptionPage($optionType);
+            $categoryTitle = _x($optionCategory, 'title', 'flynt');
+            $categorySlug = implode('-', [$optionPage['menu_slug'], $optionCategory]);
+            $pageConfig = [
+                'page_title' => $optionPage['menu_title'] . ': ' . $categoryTitle,
+                'menu_title' => $categoryTitle,
+                'redirect' => true,
+                'menu_slug' => $categorySlug,
+                'parent_slug' => $optionPage['menu_slug']
+            ];
+            acf_add_options_page($pageConfig);
+            static::$optionPages[$optionType]['sub_pages'][
+                $optionCategory
+            ] = [
+                'menu_slug' => $categorySlug,
+                'menu_title' => $categoryTitle
+            ];
+            $fieldGroup = ACFComposer\ResolveConfig::forFieldGroup([
+                'name' => $categorySlug,
+                'title' => $categoryTitle,
+                'style' => 'seamless',
+                'fields' => [],
+                'location' => [
+                    [
                         [
-                            [
-                                'param' => 'options_page',
-                                'operator' => '==',
-                                'value' => $slug
-                            ]
+                            'param' => 'options_page',
+                            'operator' => '==',
+                            'value' => $categorySlug
                         ]
                     ]
                 ]
-            );
+            ]);
             acf_add_local_field_group($fieldGroup);
         }
-
-        add_action('current_screen', function ($currentScreen) {
-            foreach (static::OPTION_TYPES as $optionType => $option) {
-                $isTranslatable = $option['translatable'];
-                $toplevelPageId = 'toplevel_page_' . $optionType;
-                $menuTitle = static::$optionPages[$optionType]['menu_title'];
-                $subPageId = sanitize_title($menuTitle) . '_page_' . $optionType;
-                $currentScreenId = strtolower($currentScreen->id);
-                $isCurrentPage = StringHelpers::startsWith(strtolower($toplevelPageId), $currentScreenId)
-                || StringHelpers::startsWith(strtolower($subPageId), $currentScreenId);
-
-                if (!$isTranslatable && $isCurrentPage) {
-                    // set acf field values to default language
-                    add_filter('acf/settings/current_language', 'Flynt\Utils\Options::getDefaultAcfLanguage', 101);
-
-                    // hide language selector in admin bar
-                    add_action('wp_before_admin_bar_render', function () {
-                        $adminBar = $GLOBALS['wp_admin_bar'];
-                        $adminBar->remove_menu('WPML_ALS');
-                    });
-                }
-            }
-        });
     }
 
 
@@ -171,30 +189,28 @@ class Options
         }
     }
 
-    public static function addTranslatable($scope, $fields, $category = null)
+    public static function addTranslatable($scope, $fields, $category = 'Default')
     {
         static::addOptions($scope, $fields, 'translatable', $category);
     }
 
-    public static function addGlobal($scope, $fields, $category = null)
+    public static function addGlobal($scope, $fields, $category = 'Default')
     {
         static::addOptions($scope, $fields, 'global', $category);
     }
 
-    public static function addOptions($scope, $fields, $type, $category = null)
+    public static function addOptions($scope, $fields, $type, $category = 'Default')
     {
-        static::createOptionPages();
-        if (empty($category)) {
-            global $flyntCurrentOptionCategory;
-            $category = $flyntCurrentOptionCategory ?? 'component';
-        }
-        $optionCategorySettings = static::OPTION_CATEGORIES[$category];
-        $iconClasses = 'flynt-submenu-item dashicons-before ' . $optionCategorySettings['icon'];
-        $prettyScope = StringHelpers::splitCamelCase($scope);
-        $fieldGroupTitle = "<span class='{$iconClasses}'>{$prettyScope}</span>";
-        $optionsPageSlug = self::$optionPages[$type]['menu_slug'];
+        static::createOptionSubPage($type, $category);
+        $fieldGroupTitle = StringHelpers::splitCamelCase($scope);
+        $optionsPageSlug = self::$optionPages[$type]['sub_pages'][$category]['menu_slug'];
         $fieldGroupName = implode('_', [$type, $scope]);
-        static::addOptionsFieldGroup($fieldGroupName, $fieldGroupTitle, $optionsPageSlug, $fields);
+        static::addOptionsFieldGroup(
+            $fieldGroupName,
+            $fieldGroupTitle,
+            $optionsPageSlug,
+            $fields
+        );
         static::registerOptionNames($type, $scope, $fields);
     }
 
