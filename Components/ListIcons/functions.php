@@ -368,8 +368,8 @@ Api::registerFields('ListIcons', [
                         'name' => 'align',
                         'type' => 'button_group',
                         'choices' => [
-                            'left' => 'Left',
-                            'centered' => 'Centered'
+                            'left' => '<i class=\'dashicons dashicons-align-left\'></i>Left',
+                            'centered' => '<i class=\'dashicons dashicons-align-center\'></i>Center'
                         ],
                         'default_value' => 'left'
                     ],
