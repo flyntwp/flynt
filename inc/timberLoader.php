@@ -11,7 +11,7 @@ use Flynt;
 use Timber\Image;
 use Timber\Post;
 use Timber\Timber;
-use Twig_SimpleFunction;
+use Twig\TwigFunction;
 
 define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
 
@@ -68,7 +68,7 @@ function convertToTimberPost($value)
 }
 
 add_action('timber/twig/filters', function ($twig) {
-    $twig->addFunction(new \Twig_SimpleFunction('placeholderImage', function ($width, $height, $color = null) {
+    $twig->addFunction(new TwigFunction('placeholderImage', function ($width, $height, $color = null) {
         $width = round($width);
         $height = round($height);
         $colorRect = $color ? "<rect width='{$width}' height='{$height}' style='fill:$color' />" : '';

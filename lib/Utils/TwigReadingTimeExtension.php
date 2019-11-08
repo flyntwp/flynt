@@ -3,7 +3,7 @@
 namespace Flynt\Utils;
 
 use Twig_Extension;
-use Twig_SimpleFilter;
+use Twig\TwigFilter;
 
 class TwigReadingTimeExtension extends Twig_Extension
 {
@@ -15,7 +15,7 @@ class TwigReadingTimeExtension extends Twig_Extension
     public function getFilters()
     {
         return [
-            new Twig_SimpleFilter('readingtime', [$this, 'readingtimeFilter'])
+            new TwigFilter('readingtime', [$this, 'readingtimeFilter'])
         ];
     }
 
