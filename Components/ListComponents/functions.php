@@ -10,7 +10,7 @@ use Flynt\Utils\Asset;
 add_filter('Flynt/addComponentData?name=ListComponents', function ($data) {
     if (!empty($data['componentBlocks'])) {
         $data['componentBlocks'] = array_map(function ($block) {
-            $block['component'] = substr($block['component'], strpos($block['component'], '/Components/'));
+            $block['component'] = substr($block['component'], strpos($block['component'], 'Components/'));
 
             if (file_exists(Asset::requirePath($block['component'] . 'screenshot.png'))) {
                 $src = Asset::requireUrl($block['component'] . 'screenshot.png');
