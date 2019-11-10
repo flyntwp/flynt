@@ -6,6 +6,7 @@ use Flynt\Api;
 use Flynt\ComponentManager;
 use Flynt\Utils\Options;
 use Flynt\Utils\Asset;
+use Parsedown;
 
 add_filter('Flynt/addComponentData?name=ListComponents', function ($data) {
     if (!empty($data['componentBlocks'])) {
@@ -25,7 +26,11 @@ add_filter('Flynt/addComponentData?name=ListComponents', function ($data) {
             $readme = Asset::requirePath($block['component'] . 'README.md');
 
             if (file_exists($readme)) {
-                $block['readme'] = parseComponentReadme(file_get_contents($readme));
+                $readmeLines = explode(PHP_EOL, Parsedown::instance()->setUrlsLinked(false)->text(file_get_contents($readme)));
+                $block['readme'] = [
+                    'title' => strip_tags($readmeLines[0]),
+                    'description' => implode(PHP_EOL, array_slice($readmeLines, 1))
+                ];
             }
 
             return $block;

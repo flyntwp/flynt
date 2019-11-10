@@ -12,7 +12,8 @@
   "require": {
     "timber/timber": "^1.8",
     "flyntwp/acf-field-group-composer": "^1.0.1",
-    "dflydev/dot-access-data": "^2.0"
+    "dflydev/dot-access-data": "^2.0",
+    "erusev/parsedown": "^1.7"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.4"
