@@ -46,24 +46,6 @@ add_filter('acf/load_field/name=component', function ($field) {
     return $field;
 });
 
-function parseComponentReadme($file)
-{
-    $content = [];
-    $fields = preg_split('!\n---\s*\n*!', $file);
-    foreach ($fields as $field) {
-        $pos = strpos($field, ':');
-        $key = str_replace(['-', ' '], '_', strtolower(trim(substr($field, 0, $pos))));
-        if (empty($key)) {
-            continue;
-        }
-        $content[$key] = trim(substr($field, $pos + 1));
-        if ($key === 'text') {
-            $content['html'] = $content[$key];
-        }
-    }
-    return $content;
-}
-
 Api::registerFields('ListComponents', [
     'layout' => [
         'name' => 'listComponents',
