@@ -1,13 +1,3 @@
-Title: List Search Results
+# List Search Results
 
----
-
-Category: List
-
----
-
-Tags: list, search, post, page, pagination
-
----
-
-Text: Using standard wordpress search.php, where you can input a search term and it will show you a list of your results.
+Uses the standard WordPress search functionality. Shows a a search input on top of the paginated results list.

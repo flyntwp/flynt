@@ -6,6 +6,7 @@ use Flynt\Api;
 use Flynt\ComponentManager;
 use Flynt\Utils\Options;
 use Flynt\Utils\Asset;
+use Parsedown;
 
 add_filter('Flynt/addComponentData?name=ListComponents', function ($data) {
     if (!empty($data['componentBlocks'])) {
@@ -25,7 +26,11 @@ add_filter('Flynt/addComponentData?name=ListComponents', function ($data) {
             $readme = Asset::requirePath($block['component'] . 'README.md');
 
             if (file_exists($readme)) {
-                $block['readme'] = parseComponentReadme(file_get_contents($readme));
+                $readmeLines = explode(PHP_EOL, Parsedown::instance()->setUrlsLinked(false)->text(file_get_contents($readme)));
+                $block['readme'] = [
+                    'title' => strip_tags($readmeLines[0]),
+                    'description' => implode(PHP_EOL, array_slice($readmeLines, 1))
+                ];
             }
 
             return $block;
@@ -40,24 +45,6 @@ add_filter('acf/load_field/name=component', function ($field) {
     $field['choices'] = array_flip($componentManager->getAll());
     return $field;
 });
-
-function parseComponentReadme($file)
-{
-    $content = [];
-    $fields = preg_split('!\n---\s*\n*!', $file);
-    foreach ($fields as $field) {
-        $pos = strpos($field, ':');
-        $key = str_replace(['-', ' '], '_', strtolower(trim(substr($field, 0, $pos))));
-        if (empty($key)) {
-            continue;
-        }
-        $content[$key] = trim(substr($field, $pos + 1));
-        if ($key === 'text') {
-            $content['html'] = $content[$key];
-        }
-    }
-    return $content;
-}
 
 Api::registerFields('ListComponents', [
     'layout' => [

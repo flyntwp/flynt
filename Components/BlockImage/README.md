@@ -1,13 +1,3 @@
-Title: Block Image
+# Block Image
 
----
-
-Category: Block
-
----
-
-Tags: block, image
-
----
-
-Text: Simple full width image with optional caption.
+Image with optional caption, multiple size options and optimized responsive image sizes.

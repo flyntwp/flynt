@@ -20,6 +20,7 @@
 
     &-imageWrapper {
       background-color: $color-background;
+      border-bottom: 1px solid $color-border;
       height: 0;
       overflow: hidden;
       padding-bottom: percentage(800/1280);
@@ -42,7 +43,6 @@
     &-description {
       @include reset-content-margins;
 
-      border-top: 1px solid $color-border;
       color: $color-text;
       position: relative;
 
