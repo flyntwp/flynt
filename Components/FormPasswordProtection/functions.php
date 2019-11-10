@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Components\FeaturePasswordForm;
+namespace Flynt\Components\FormPasswordProtection;
 
 use Timber\Timber;
 use Timber\Post;
