@@ -1,10 +1,20 @@
 <?php
+
 namespace Flynt\Components\BlockCookieNotice;
 
 use Flynt\Utils\Options;
 use Flynt\Api;
 
 Options::addGlobal('BlockCookieNotice', [
+    [
+        'label' => 'Cookie notice is enabled',
+        'name' => 'cookieNoticeIsEnabled',
+        'type' => 'true_false',
+        'default_value' => 1,
+        'ui' => 1,
+        'ui_on_text' => 'Is Enabled',
+        'ui_off_text' => 'Isn\'t Enabled',
+    ],
     [
         'label' => 'Layout',
         'name' => 'layout',

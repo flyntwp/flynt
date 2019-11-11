@@ -1,3 +1,4 @@
+{% if cookieNoticeIsEnabled %}
 <div is="flynt-block-cookie-notice" class="flyntComponent boxShadow {{ layout }} {{ theme ?: 'themeReset' }}">
   <div class="container centerMaxWidthContainer">
     <div class="content">
@@ -6,3 +7,4 @@
     <button type="button" class="button button--small" aria-label="Close" data-close>{{ closeButtonLabel|e }}</button>
   </div>
 </div>
+{% endif %}
