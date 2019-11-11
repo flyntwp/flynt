@@ -4,7 +4,7 @@ import Cookies from 'js-cookie'
 const $document = $(document)
 
 class FeatureGoogleAnalytics extends window.HTMLDivElement {
-  constructor(self){
+  constructor (self) {
     window.$ = window.jQuery
     self = super(self)
     self.$ = window.$(self)
@@ -44,7 +44,7 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
       $document.on('trackingChanged', this.trackingChanged)
       this.addGTAGFunctionFallback()
     } else {
-      if(!this.GTAGscriptElement){
+      if (!this.GTAGscriptElement) {
         this.addGTAGScript()
       }
       this.addGTAGFunction()
@@ -52,23 +52,22 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
   }
 
   trackingChanged (event, trackingObject) {
-    if(typeof trackingObject.GA_accept !== 'undefined' && trackingObject.GA_accept && this.gaId && this.serverSideTrackingEnabled){
+    if (typeof trackingObject.GA_accept !== 'undefined' && trackingObject.GA_accept && this.gaId && this.serverSideTrackingEnabled) {
       window[this.disableStr] = false
       Cookies.remove(this.disableStr)
-      if(!this.GTAGscriptElement){
+      if (!this.GTAGscriptElement) {
         this.addGTAGScript()
       }
       this.addGTAGFunction()
-    }else{
+    } else {
       window[this.disableStr] = true
       Cookies.set(this.disableStr, true)
-      if(this.GTAGscriptElement){
+      if (this.GTAGscriptElement) {
         this.GTAGscriptElement.remove()
       }
       this.addGTAGFunctionFallback()
     }
   }
-
 
   addGTAGScript () {
     const scriptUrl = `https://www.googletagmanager.com/gtag/js?id=${this.gaId}`
