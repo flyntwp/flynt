@@ -2,20 +2,61 @@
 
 namespace Flynt\Components\FeatureGoogleAnalytics;
 
-require_once __DIR__ . '/GoogleAnalytics.php';
+require_once __DIR__ . '/helpers.php';
 
-use Flynt\Components\FeatureGoogleAnalytics\GoogleAnalytics;
 use Flynt\Utils\Options;
+use Timber\Loader;
+use Flynt\Utils\TwigExtensionFlynt;
+use Timber\Timber;
 
-add_action('init', 'Flynt\Components\FeatureGoogleAnalytics\init');
-
-function init()
-{
+add_filter('Flynt/addComponentData?name=FeatureGoogleAnalytics', function ($data) {
     $googleAnalyticsOptions = Options::getGlobal('GoogleAnalytics');
+
     if ($googleAnalyticsOptions) {
-        new GoogleAnalytics($googleAnalyticsOptions);
+        $data['jsonData'] = json_encode([
+            'gaId' => $googleAnalyticsOptions['gaId'],
+            'serverSideTrackingEnabled' => isTrackingEnabled($googleAnalyticsOptions['gaId']),
+            'isOptInComponentRegistered' => apply_filters('Flynt/BlockCookieOptIn', false),
+        ]);
     }
+
+    return $data;
+});
+
+$isActive = apply_filters('Flynt/BlockCookieOptIn', false);
+
+if ($isActive) {
+    Options::addTranslatable('GoogleAnalytics', [
+        [
+            'label' => 'Accept Google Analytics label',
+            'name' => 'acceptGoogleAnalyticsLabel',
+            'type' => 'text',
+            'default_value' => 'Google Analytics Cookies',
+            'required' => 1,
+        ],
+    ]);
 }
+
+add_action('wp_footer', function () {
+    $loader = new Loader();
+    $env = $loader->get_twig();
+    $twig = new TwigExtensionFlynt();
+    $context = Timber::get_context();
+    echo $twig->renderComponent($env, $context, 'FeatureGoogleAnalytics');
+});
+
+add_filter('Flynt/thirdPartyCookies', function ($features) {
+    $googleAnalyticsTranslatableOptions = Options::getTranslatable('GoogleAnalytics');
+
+    $features = array_merge($features, [
+        [
+            'id' => 'GA_accept',
+            'name' => 'GA_accept',
+            'label' => $googleAnalyticsTranslatableOptions['acceptGoogleAnalyticsLabel'],
+        ]
+    ]);
+    return $features;
+});
 
 Options::addGlobal('GoogleAnalytics', [
     [
@@ -26,38 +67,15 @@ Options::addGlobal('GoogleAnalytics', [
         'prepend' => '',
         'append' => '',
         'placeholder' => 'XX-XXXXXXXX-X',
-        'instructions' => 'You can enter \'debug\' to activate debug mode. It will only log to console and overwrite all other settings.'
     ],
     [
         'name' => 'anonymizeIp',
         'label' => 'Anonymize IP',
         'type' => 'true_false',
         'ui' => 'no',
-        'ui_on_text' => '',
-        'ui_off_text' => '',
+        'default' => 1,
+        'ui_on_text' => 'Yes',
+        'ui_off_text' => 'No',
         'message' => ''
     ],
-    [
-        'name' => 'skippedUserRoles',
-        'label' => 'Skipped User Roles',
-        'type' => 'checkbox',
-        'choices' => [
-            'administrator' => 'Administrator',
-            'editor' => 'Editor',
-            'author' => 'Author',
-            'contributor' => 'Contributor',
-            'subscriber' => 'Subscriber'
-        ],
-        'toggle' => 'All',
-        'allow_custom' => 0,
-        'save_custom' => 0,
-        'layout' => 'vertical'
-    ],
-    [
-        'name' => 'skippedIps',
-        'label' => 'Skipped IPs',
-        'type' => 'textarea',
-        'maxlength' => 500,
-        'placeholder' => 'Separate IP addresses with commas'
-    ]
 ]);
