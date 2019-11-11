@@ -15,6 +15,7 @@ add_filter('Flynt/addComponentData?name=FeatureGoogleAnalytics', function ($data
     if ($googleAnalyticsOptions) {
         $data['jsonData'] = json_encode([
             'gaId' => $googleAnalyticsOptions['gaId'],
+            'anonymizeIp' => $googleAnalyticsOptions['anonymizeIp'],
             'serverSideTrackingEnabled' => isTrackingEnabled($googleAnalyticsOptions['gaId']),
             'isOptInComponentRegistered' => apply_filters('Flynt/BlockCookieOptIn', false),
         ]);

@@ -85,7 +85,7 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
       window.dataLayer.push(arguments)
     }
     window.gtag('js', new Date())
-    window.gtag('config', this.gaId, { anonymize_ip: true })
+    window.gtag('config', this.gaId, { anonymize_ip: this.props.anonymizeIp })
   }
 
   addGTAGFunctionFallback () {
