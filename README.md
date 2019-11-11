@@ -29,7 +29,9 @@
 3. Navigate to the theme folder and run the following command in your terminal:
 ```
 # wp-content/themes/flynt
-composer install && npm i && npm run build
+composer install
+npm i
+npm run build
 ```
 4. Open the WordPress back-end and activate the Flynt theme.
 5. Run `npm run start` and start developing. Your local server is available at `localhost:3000`.
@@ -45,9 +47,11 @@ In your terminal, navigate to `<your-project>/wp-content/themes/flynt` and run `
 
 All files in `assets` and `Components` will now be watched for changes and compiled to the `dist` folder. Happy coding!
 
+Flynt comes with a ready to use Base Style built according to our best practices for building simple, maintainable components. Go to `localhost:3000/BaseStyle` to see it in action.
+
 ### Assets
 
-The `./assets` folder contains all JavaScript, SCSS, images, and font files for the theme. Files inside this folder are watched for changes and compile to `./dist`.
+The `./assets` folder contains all global JavaScript, SCSS, images, and font files for the theme. Files inside this folder are watched for changes and compile to `./dist`.
 
 The `main.scss` file is compiled to `./dist/assets/main.css` which is enqueued in the front-end.
 
@@ -55,11 +59,9 @@ The `admin.scss` file is compiled to `./dist/assets/admin.css` which is enqueued
 
 ### Lib & Inc
 
-All PHP files from `./lib` and `./inc` are automatically required.
+The `./lib` folder includes helper functions and basic setup logic. *You will most likely not need to modify any files inside `./lib`.* All files in the `./lib` folder are autoloaded via PSR-4.
 
-The `./lib` folder includes helper functions and basic setup logic. *You will most likely not need to modify any files inside `./lib`.*
-
-The `inc` folder is a more organised version of WordPress' `functions.php` and contains all custom theme logic.
+The `./inc` folder is a more organised version of WordPress' `functions.php` and contains all custom theme logic. All files in the `./inc` folder are automatically required.
 
 For organisation, `./inc` has three subfolders. We recommend using these three folders to keep the theme well-structured:
 
@@ -67,7 +69,7 @@ For organisation, `./inc` has three subfolders. We recommend using these three f
 - `customTaxonomies`<br> Use this folder to register custom WordPress taxonomies.
 - `fieldGroups`<br> Use this folder to register Advanced Custom Fields field groups. (See [Field Groups](#field-groups) for more information.)
 
-After the files from './lib' and './inc' are loaded, all [components](#components) from the `./Components` folder are loaded.
+After the files from `./lib` and `./inc` are loaded, all [components](#components) from the `./Components` folder are loaded.
 
 ### Page Templates
 Flynt uses [Timber](https://www.upstatement.com/timber/) to structure its page templates and [Twig](https://twig.symfony.com/) for rendering them. [Timber's documentation](https://timber.github.io/docs/) is extensive and up to date, so be sure to get familiar with it.
