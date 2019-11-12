@@ -38,10 +38,4 @@ add_action('admin_enqueue_scripts', function () {
         'path' => 'assets/admin.css',
         'type' => 'style'
     ]);
-    Asset::enqueue([
-        'name' => 'Flynt/icons',
-        'type' => 'script',
-        'path' =>
-            'https://unpkg.com/feather-icons'
-    ]);
 });
