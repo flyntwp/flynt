@@ -26,7 +26,7 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
 
   resolveElements () {
     this.gaId = this.props.gaId ? this.props.gaId : false
-    this.serverSideTrackingEnabled = this.props.serverSideTrackingEnabled ? this.props.serverSideTrackingEnabled : false
+    this.isTrackingEnabled = this.props.isTrackingEnabled ? this.props.isTrackingEnabled : false
     this.disableStr = 'ga-disable-' + this.props.gaId
   }
 
@@ -50,7 +50,7 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
   }
 
   trackingChanged (event, trackingObject) {
-    if (typeof trackingObject.GA_accept !== 'undefined' && trackingObject.GA_accept && this.gaId && this.serverSideTrackingEnabled) {
+    if (typeof trackingObject.GA_accept !== 'undefined' && trackingObject.GA_accept && this.gaId && this.isTrackingEnabled) {
       window[this.disableStr] = false
       Cookies.remove(this.disableStr)
       if (!this.GTAGscriptElement) {

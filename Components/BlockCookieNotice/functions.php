@@ -7,13 +7,13 @@ use Flynt\Api;
 
 Options::addGlobal('BlockCookieNotice', [
     [
-        'label' => 'Cookie notice is enabled',
+        'label' => 'Component Status',
         'name' => 'cookieNoticeIsEnabled',
         'type' => 'true_false',
         'default_value' => 1,
         'ui' => 1,
-        'ui_on_text' => 'Is Enabled',
-        'ui_off_text' => 'Isn\'t Enabled',
+        'ui_on_text' => 'Activated',
+        'ui_off_text' => 'Deactivated',
     ],
     [
         'label' => 'Layout',
