@@ -35,35 +35,57 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
     this.addGTAGFunctionFallback = this.addGTAGFunctionFallback.bind(this)
     this.addGTAGScript = this.addGTAGScript.bind(this)
     this.trackingChanged = this.trackingChanged.bind(this)
+    this.addFunctions = this.addFunctions.bind(this)
+    this.removeFunctionsAndAddFallback = this.removeFunctionsAndAddFallback.bind(this)
+    this.checkIfAlreadyAccepted = this.checkIfAlreadyAccepted.bind(this)
   }
 
   connectedCallback () {
-    if (this.props.isOptInComponentRegistered) {
-      $document.on('trackingChanged', this.trackingChanged)
-      this.addGTAGFunctionFallback()
-    } else {
-      if (!this.GTAGscriptElement) {
-        this.addGTAGScript()
+    const alreadyAccepted = this.checkIfAlreadyAccepted()
+    if(!alreadyAccepted){
+      if (this.props.isOptInComponentRegistered) { 
+        $document.on('trackingChanged', this.trackingChanged)
+      } else { 
+        this.addFunctions()
       }
-      this.addGTAGFunction()
     }
   }
 
-  trackingChanged (event, trackingObject) {
-    if (typeof trackingObject.GA_accept !== 'undefined' && trackingObject.GA_accept && this.gaId && this.isTrackingEnabled) {
-      window[this.disableStr] = false
-      Cookies.remove(this.disableStr)
-      if (!this.GTAGscriptElement) {
-        this.addGTAGScript()
-      }
+  addFunctions() {
+    if (!this.GTAGscriptElement) {
+      this.addGTAGScript()
+    }
+    if(this.gaId === 'debug'){
+      this.addGTAGFunctionFallback()
+    }
+    else{
       this.addGTAGFunction()
+    }
+  }
+  removeFunctionsAndAddFallback() {
+    if (this.GTAGscriptElement) {
+      this.GTAGscriptElement.remove()
+    }
+    this.addGTAGFunctionFallback()
+  }
+
+  checkIfAlreadyAccepted () {
+    if(this.gaId === 'debug' || Cookies.get(this.disableStr) === 'false'){
+      this.addFunctions()
+      return true
+    }
+    return false
+  }
+
+  trackingChanged (event, trackingObject) {
+    if (this.gaId === 'debug' || (typeof trackingObject.GA_accept !== 'undefined' && trackingObject.GA_accept && this.gaId && this.isTrackingEnabled)) {
+      window[this.disableStr] = false
+      Cookies.set(this.disableStr, false)
+      this.addFunctions()
     } else {
       window[this.disableStr] = true
       Cookies.set(this.disableStr, true)
-      if (this.GTAGscriptElement) {
-        this.GTAGscriptElement.remove()
-      }
-      this.addGTAGFunctionFallback()
+      this.removeFunctionsAndAddFallback()
     }
   }
 
@@ -89,6 +111,8 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
     window.gtag = function () {
       console.log('GoogleAnalytics: ' + [].slice.call(arguments))
     }
+    window.gtag('js', new Date())
+    window.gtag('config', this.gaId, { anonymize_ip: this.props.anonymizeIp })
   }
 }
 
