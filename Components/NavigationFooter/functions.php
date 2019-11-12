@@ -2,6 +2,7 @@
 
 namespace Flynt\Components\NavigationFooter;
 
+use Flynt\Utils\Options;
 use Timber\Menu;
 
 add_action('init', function () {
@@ -16,3 +17,12 @@ add_filter('Flynt/addComponentData?name=NavigationFooter', function ($data) {
 
     return $data;
 });
+
+Options::addTranslatable('NavigationFooter', [
+    [
+        'label' => 'Copyright Text',
+        'name' => 'copyrightText',
+        'type' => 'text',
+        'default_value' => 'Copyright © 2019. All rights reserved'
+    ],
+]);

@@ -8,4 +8,14 @@
   &-item {
     margin: 0 1rem;
   }
+
+  &-link {
+    color: currentColor;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: $color-accent;
+    }
+  }
 }

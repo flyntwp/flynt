@@ -1,9 +1,12 @@
-<div class="flyntComponent" is="flynt-navigation-footer">
+<div class="flyntComponent themeLight" is="flynt-navigation-footer">
   <div class="container centerMaxWidthContainer">
-    <nav class="navigation">
-      {% if menu %}
+    {% if menu %}
+      <nav class="navigation">
         {% include 'Partials/_menu.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel } only %}
-      {% endif %}
-    </nav>
+      </nav>
+    {% endif %}
+    {% if copyrightText %}
+      <p class="copyright">{{ copyrightText|e }}</p>
+    {% endif %}
   </div>
 </div>
