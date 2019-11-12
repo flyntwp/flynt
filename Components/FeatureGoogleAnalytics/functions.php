@@ -68,6 +68,7 @@ Options::addGlobal('GoogleAnalytics', [
         'prepend' => '',
         'append' => '',
         'placeholder' => 'XX-XXXXXXXX-X',
+        'instructions' => 'You can enter \'debug\' to activate debug mode. It will only log to console and overwrite all other settings.'
     ],
     [
         'name' => 'anonymizeIp',
