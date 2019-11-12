@@ -49,4 +49,4 @@ Options::addTranslatable('SliderOptions', [
             ],
         ],
     ],
-], 'feature');
+]);
