@@ -5,8 +5,13 @@ use Flynt\ComponentManager;
 use Flynt\Utils\Asset;
 
 add_action('admin_enqueue_scripts', function () {
+    $componentManager = ComponentManager::getInstance();
+    $templateDirectory = get_template_directory();
     $data = [
-        'templateDirectoryUri' => get_template_directory_uri() . '/dist',
+        'templateDirectoryUri' => get_template_directory_uri(),
+        'components' => array_map(function ($componentPath) use ($templateDirectory) {
+            return str_replace($templateDirectory, '', $componentPath);
+        }, $componentManager->getAll()),
     ];
     wp_localize_script('Flynt/assets/admin', 'wpData', $data);
 });
@@ -19,8 +24,9 @@ if (class_exists('acf')) {
             $componentName = ucfirst($layout['name']);
             $componentPathFull = $componentManager->getComponentDirPath($componentName);
             $componentPath = str_replace(get_template_directory(), '', $componentPathFull);
-            $componentScreenshotPath = Asset::requirePath("{$componentPath}/screenshot.png");
-            $componentScreenshotUrl = Asset::requireUrl("{$componentPath}/screenshot.png");
+            $templateDirectoryUri = get_template_directory_uri();
+            $componentScreenshotPath = "{$componentPathFull}/screenshot.png";
+            $componentScreenshotUrl = "{$templateDirectoryUri}/{$componentPath}/screenshot.png";
             if (is_file($componentScreenshotPath)) {
                 $newTitle = '<span class="flyntComponentScreenshot">';
                 $newTitle .= '<img class="flyntComponentScreenshot-imageElement" src="' . $componentScreenshotUrl . '" height="36px">';

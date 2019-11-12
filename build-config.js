@@ -15,7 +15,7 @@ module.exports = {
       {
         from: './{Components,assets}/**/*',
         to: './',
-        ignore: ['*.js', '*.scss', '*.php', '*.twig']
+        ignore: ['*.js', '*.scss', '*.php', '*.twig', 'screenshot.png', 'README.md']
       }
     ]
   },
