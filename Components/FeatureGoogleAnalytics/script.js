@@ -25,8 +25,6 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
   }
 
   resolveElements () {
-    this.$acceptButton = $('[data-accept]', this)
-    this.$declineButton = $('[data-decline]', this)
     this.gaId = this.props.gaId ? this.props.gaId : false
     this.serverSideTrackingEnabled = this.props.serverSideTrackingEnabled ? this.props.serverSideTrackingEnabled : false
     this.disableStr = 'ga-disable-' + this.props.gaId
