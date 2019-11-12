@@ -42,27 +42,27 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
 
   connectedCallback () {
     const alreadyAccepted = this.checkIfAlreadyAccepted()
-    if(!alreadyAccepted){
-      if (this.props.isOptInComponentRegistered) { 
+    if (!alreadyAccepted) {
+      if (this.props.isOptInComponentRegistered) {
         $document.on('trackingChanged', this.trackingChanged)
-      } else { 
+      } else {
         this.addFunctions()
       }
     }
   }
 
-  addFunctions() {
+  addFunctions () {
     if (!this.GTAGscriptElement) {
       this.addGTAGScript()
     }
-    if(this.gaId === 'debug'){
+    if (this.gaId === 'debug') {
       this.addGTAGFunctionFallback()
-    }
-    else{
+    } else {
       this.addGTAGFunction()
     }
   }
-  removeFunctionsAndAddFallback() {
+
+  removeFunctionsAndAddFallback () {
     if (this.GTAGscriptElement) {
       this.GTAGscriptElement.remove()
     }
@@ -70,7 +70,7 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
   }
 
   checkIfAlreadyAccepted () {
-    if(this.gaId === 'debug' || Cookies.get(this.disableStr) === 'false'){
+    if (this.gaId === 'debug' || Cookies.get(this.disableStr) === 'false') {
       this.addFunctions()
       return true
     }
