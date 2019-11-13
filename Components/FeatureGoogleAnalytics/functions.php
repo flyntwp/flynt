@@ -2,31 +2,36 @@
 
 namespace Flynt\Components\FeatureGoogleAnalytics;
 
-require_once __DIR__ . '/helpers.php';
-
 use Flynt\Utils\Options;
-use Timber\Loader;
-use Flynt\Utils\TwigExtensionFlynt;
 use Timber\Timber;
+
+function isTrackingEnabled($gaId)
+{
+    if ($gaId) {
+        $user = wp_get_current_user();
+        $trackingEnabled = $gaId === 'debug' || !in_array('administator', $user->roles);
+        return $trackingEnabled;
+    }
+    return false;
+}
 
 add_filter('Flynt/addComponentData?name=FeatureGoogleAnalytics', function ($data) {
     $googleAnalyticsOptions = Options::getGlobal('GoogleAnalytics');
 
     if ($googleAnalyticsOptions) {
+        $isTrackingEnabled = isTrackingEnabled($googleAnalyticsOptions['gaId']);
         $data['jsonData'] = json_encode([
             'gaId' => $googleAnalyticsOptions['gaId'],
             'anonymizeIp' => $googleAnalyticsOptions['anonymizeIp'],
-            'isTrackingEnabled' => isTrackingEnabled($googleAnalyticsOptions['gaId']),
-            'isOptInComponentRegistered' => apply_filters('Flynt/BlockCookieOptIn', false),
+            'isOptInComponentRegistered' => did_action('Flynt/thirdPartyCookies/initializeOptions'),
         ]);
+        $data['isTrackingEnabled'] = $isTrackingEnabled;
     }
 
     return $data;
 });
 
-$isActive = apply_filters('Flynt/BlockCookieOptIn', false);
-
-if ($isActive) {
+add_action('Flynt/thirdPartyCookies/initializeOptions', function () {
     Options::addTranslatable('GoogleAnalytics', [
         [
             'label' => 'Accept Google Analytics label',
@@ -36,14 +41,11 @@ if ($isActive) {
             'required' => 1,
         ],
     ]);
-}
+});
 
 add_action('wp_footer', function () {
-    $loader = new Loader();
-    $env = $loader->get_twig();
-    $twig = new TwigExtensionFlynt();
     $context = Timber::get_context();
-    echo $twig->renderComponent($env, $context, 'FeatureGoogleAnalytics');
+    Timber::render_string('{{ renderComponent("FeatureGoogleAnalytics") }}', $context);
 });
 
 add_filter('Flynt/thirdPartyCookies', function ($features) {

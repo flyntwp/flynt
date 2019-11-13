@@ -1,3 +1,5 @@
-<div class="flyntComponent" is="flynt-google-analytics">
-  <script type="application/json">{{ jsonData }}</script>
-</div>
+{% if isTrackingEnabled %}
+  <div class="flyntComponent" is="flynt-google-analytics">
+    <script type="application/json">{{ jsonData }}</script>
+  </div>
+{% endif %}

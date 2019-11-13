@@ -31,13 +31,7 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
   }
 
   bindFunctions () {
-    this.addGTAGFunction = this.addGTAGFunction.bind(this)
-    this.addGTAGFunctionFallback = this.addGTAGFunctionFallback.bind(this)
-    this.addGTAGScript = this.addGTAGScript.bind(this)
     this.trackingChanged = this.trackingChanged.bind(this)
-    this.addFunctions = this.addFunctions.bind(this)
-    this.removeFunctionsAndAddFallback = this.removeFunctionsAndAddFallback.bind(this)
-    this.checkIfAlreadyAccepted = this.checkIfAlreadyAccepted.bind(this)
   }
 
   connectedCallback () {
@@ -52,9 +46,7 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
   }
 
   addFunctions () {
-    if (!this.GTAGscriptElement) {
-      this.addGTAGScript()
-    }
+    this.addGTAGScript()
     if (this.gaId === 'debug') {
       this.addGTAGFunctionFallback()
     } else {
@@ -63,9 +55,6 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
   }
 
   removeFunctionsAndAddFallback () {
-    if (this.GTAGscriptElement) {
-      this.GTAGscriptElement.remove()
-    }
     this.addGTAGFunctionFallback()
   }
 
@@ -77,8 +66,8 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
     return false
   }
 
-  trackingChanged (event, trackingObject) {
-    if (this.gaId === 'debug' || (typeof trackingObject.GA_accept !== 'undefined' && trackingObject.GA_accept && this.gaId && this.isTrackingEnabled)) {
+  trackingChanged (event, trackingObject = {}) {
+    if (this.gaId === 'debug' || (trackingObject.GA_accept && this.gaId)) {
       window[this.disableStr] = false
       Cookies.set(this.disableStr, false)
       this.addFunctions()
@@ -90,12 +79,16 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
   }
 
   addGTAGScript () {
+    if (this.scriptLoaded) {
+      return
+    }
+    this.scriptLoaded = true
     const scriptUrl = `https://www.googletagmanager.com/gtag/js?id=${this.gaId}`
-    this.GTAGscriptElement = document.createElement('script')
-    this.GTAGscriptElement.async = true
-    this.GTAGscriptElement.type = 'text/javascript'
-    this.GTAGscriptElement.src = scriptUrl
-    document.head.appendChild(this.GTAGscriptElement)
+    const GTAGscriptElement = document.createElement('script')
+    GTAGscriptElement.async = true
+    GTAGscriptElement.type = 'text/javascript'
+    GTAGscriptElement.src = scriptUrl
+    document.head.appendChild(GTAGscriptElement)
   }
 
   addGTAGFunction () {
