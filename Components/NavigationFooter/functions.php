@@ -20,9 +20,14 @@ add_filter('Flynt/addComponentData?name=NavigationFooter', function ($data) {
 
 Options::addTranslatable('NavigationFooter', [
     [
-        'label' => 'Copyright Text',
-        'name' => 'copyrightText',
-        'type' => 'text',
-        'default_value' => 'Copyright © 2019. All rights reserved'
+        'label' => 'Content',
+        'name' => 'contentHtml',
+        'type' => 'wysiwyg',
+        'media_upload' => 0,
+        'delay' => 1,
+        'toolbar' => 'basic',
+        'wrapper' => [
+            'class' => 'autosize'
+        ]
     ],
 ]);

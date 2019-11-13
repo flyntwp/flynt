@@ -5,8 +5,8 @@
         {% include 'Partials/_menu.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel } only %}
       </nav>
     {% endif %}
-    {% if copyrightText %}
-      <p class="copyright">{{ copyrightText|e }}</p>
+    {% if contentHtml %}
+      <div class="content">{{ contentHtml|e('wp_kses_post') }}</div>
     {% endif %}
   </div>
 </div>

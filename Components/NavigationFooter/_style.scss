@@ -13,7 +13,8 @@
     }
   }
 
-  .copyright {
+  .content {
+    @include reset-content-margins;
     margin: 10px 0 0;
 
     @media (min-width: $breakpoint-tablet) {
