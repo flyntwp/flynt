@@ -4,6 +4,12 @@ namespace Flynt\Components\BlockCookieNotice;
 
 use Flynt\Utils\Options;
 use Flynt\Api;
+use Timber\Timber;
+
+add_action('wp_footer', function () {
+    $context = Timber::get_context();
+    Timber::render_string('{{ renderComponent("BlockCookieNotice") }}', $context);
+});
 
 Options::addGlobal('BlockCookieNotice', [
     [
