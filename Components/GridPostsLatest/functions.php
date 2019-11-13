@@ -2,7 +2,6 @@
 
 namespace Flynt\Components\GridPostsLatest;
 
-use Flynt\Api;
 use Flynt\FieldVariables;
 use Flynt\Utils\Options;
 use Timber\Timber;
@@ -30,8 +29,9 @@ add_filter('Flynt/addComponentData?name=GridPostsLatest', function ($data) {
     return $data;
 });
 
-Api::registerFields('GridPostsLatest', [
-    'layout' => [
+function getLayout()
+{
+    return [
         'name' => 'GridPostsLatest',
         'label' => 'Grid: Posts Latest',
         'sub_fields' => [
@@ -93,8 +93,8 @@ Api::registerFields('GridPostsLatest', [
                 ]
             ],
         ]
-    ]
-]);
+    ];
+}
 
 Options::addTranslatable('GridPostsLatest', [
     [

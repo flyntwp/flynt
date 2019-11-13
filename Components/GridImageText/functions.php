@@ -2,11 +2,11 @@
 
 namespace Flynt\Components\GridImageText;
 
-use Flynt\Api;
 use Flynt\FieldVariables;
 
-Api::registerFields('GridImageText', [
-    'layout' => [
+function getLayout()
+{
+    return [
         'name' => 'GridImageText',
         'label' => 'Grid: Image Text',
         'sub_fields' => [
@@ -89,5 +89,5 @@ Api::registerFields('GridImageText', [
                 ]
             ]
         ]
-    ]
-]);
+    ];
+}

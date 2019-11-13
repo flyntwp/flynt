@@ -2,11 +2,11 @@
 
 namespace Flynt\Components\BlockImage;
 
-use Flynt\Api;
 use Flynt\FieldVariables;
 
-Api::registerFields('BlockImage', [
-    'layout' => [
+function getLayout()
+{
+    return [
         'name' => 'BlockImage',
         'label' => 'Block: Image',
         'sub_fields' => [
@@ -63,5 +63,5 @@ Api::registerFields('BlockImage', [
                 ]
             ]
         ]
-    ]
-]);
+    ];
+}

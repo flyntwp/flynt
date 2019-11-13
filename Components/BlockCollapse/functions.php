@@ -2,10 +2,9 @@
 
 namespace Flynt\Components\BlockCollapse;
 
-use Flynt\Api;
-
-Api::registerFields('BlockCollapse', [
-    'layout' => [
+function getLayout()
+{
+    return [
         'name' => 'BlockCollapse',
         'label' => 'Block: Collapse',
         'sub_fields' => [
@@ -20,5 +19,5 @@ Api::registerFields('BlockCollapse', [
                 ]
             ],
         ]
-    ]
-]);
+    ];
+}
