@@ -3,7 +3,6 @@
 namespace Flynt;
 
 use Flynt\ComponentManager;
-use Dflydev\DotAccessData\Data;
 
 class Api
 {
@@ -36,31 +35,6 @@ class Api
         );
 
         return is_null($output) ? '' : $output;
-    }
-
-    public static function registerFields($scope, $fields, $fieldsId = null)
-    {
-        global $flyntFields;
-        $flyntFields = $flyntFields ?? [];
-        if (empty($fieldsId)) {
-            $flyntFields[$scope] = $fields;
-        } else {
-            $flyntFields[$scope] = $flyntFields[$scope] ?? [];
-            $flyntFields[$scope][$fieldsId] = $fields;
-        }
-        return $fields;
-    }
-
-    public static function loadFields($scope, $fieldPath = null)
-    {
-        global $flyntFields;
-        $flyntFields = $flyntFields ?? [];
-        if (empty($fieldPath)) {
-            return $flyntFields[$scope];
-        } else {
-            $data = new Data($flyntFields[$scope]);
-            return $data->get($fieldPath);
-        }
     }
 
     public static function registerHooks()

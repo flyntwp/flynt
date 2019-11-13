@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\ListComponents;
 
-use Flynt\Api;
+use Flynt\FieldVariables;
 use Flynt\ComponentManager;
 use Flynt\Utils\Options;
 use Flynt\Utils\Asset;
@@ -51,8 +51,9 @@ add_filter('acf/load_field/name=component', function ($field) {
     return $field;
 });
 
-Api::registerFields('ListComponents', [
-    'layout' => [
+function getACFLayout()
+{
+    return [
         'name' => 'listComponents',
         'label' => 'List: Components',
         'sub_fields' => [
@@ -125,12 +126,12 @@ Api::registerFields('ListComponents', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme')
+                    FieldVariables\getTheme()
                 ]
             ]
         ]
-    ]
-]);
+    ];
+}
 
 Options::addTranslatable('ListComponents', [
     [

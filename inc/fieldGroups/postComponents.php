@@ -1,7 +1,7 @@
 <?php
 
 use ACFComposer\ACFComposer;
-use Flynt\Api;
+use Flynt\Components;
 
 add_action('Flynt/afterRegisterComponents', function () {
     ACFComposer::registerFieldGroup([
@@ -15,12 +15,12 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'type' => 'flexible_content',
                 'button_label' => 'Add Component',
                 'layouts' => [
-                    Api::loadFields('BlockCollapse', 'layout'),
-                    Api::loadFields('BlockImage', 'layout'),
-                    Api::loadFields('BlockImageText', 'layout'),
-                    Api::loadFields('BlockVideoOembed', 'layout'),
-                    Api::loadFields('BlockWysiwyg', 'layout'),
-                    Api::loadFields('SliderImages', 'layout'),
+                    Components\BlockCollapse\getACFLayout(),
+                    Components\BlockImage\getACFLayout(),
+                    Components\BlockImageText\getACFLayout(),
+                    Components\BlockVideoOembed\getACFLayout(),
+                    Components\BlockWysiwyg\getACFLayout(),
+                    Components\SliderImages\getACFLayout(),
                 ],
             ],
         ],

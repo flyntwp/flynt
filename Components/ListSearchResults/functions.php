@@ -2,10 +2,7 @@
 
 namespace Flynt\Components\ListSearchResults;
 
-use Flynt\Api;
-use Flynt\Utils\Asset;
 use Flynt\Utils\Options;
-use Timber\Timber;
 
 Options::addTranslatable('ListSearchResults', [
     [
