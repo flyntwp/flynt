@@ -4,7 +4,7 @@ namespace Flynt\Components\GridImageText;
 
 use Flynt\FieldVariables;
 
-function getLayout()
+function getACFLayout()
 {
     return [
         'name' => 'GridImageText',

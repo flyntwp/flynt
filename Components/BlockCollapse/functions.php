@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\BlockCollapse;
 
-function getLayout()
+function getACFLayout()
 {
     return [
         'name' => 'BlockCollapse',

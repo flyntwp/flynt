@@ -4,7 +4,7 @@ namespace Flynt\Components\BlockWysiwyg;
 
 use Flynt\FieldVariables;
 
-function getLayout()
+function getACFLayout()
 {
     return [
         'name' => 'blockWysiwyg',

@@ -4,7 +4,7 @@ namespace Flynt\Components\BlockImageText;
 
 use Flynt\FieldVariables;
 
-function getLayout()
+function getACFLayout()
 {
     return [
         'name' => 'blockImageText',

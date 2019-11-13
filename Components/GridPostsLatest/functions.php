@@ -29,7 +29,7 @@ add_filter('Flynt/addComponentData?name=GridPostsLatest', function ($data) {
     return $data;
 });
 
-function getLayout()
+function getACFLayout()
 {
     return [
         'name' => 'GridPostsLatest',

@@ -13,7 +13,7 @@ add_filter('Flynt/addComponentData?name=SliderImages', function ($data) {
     return $data;
 });
 
-function getLayout()
+function getACFLayout()
 {
     return [
         'name' => 'sliderImages',
