@@ -6,7 +6,9 @@
   padding: 0;
 
   &-item {
-    margin: 0 1rem;
+    &:not(:first-child) {
+      margin-left: 2rem;
+    }
   }
 
   &-link {
