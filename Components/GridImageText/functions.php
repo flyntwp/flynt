@@ -3,6 +3,7 @@
 namespace Flynt\Components\GridImageText;
 
 use Flynt\Api;
+use Flynt\FieldVariables;
 
 Api::registerFields('GridImageText', [
     'layout' => [
@@ -77,7 +78,7 @@ Api::registerFields('GridImageText', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme'),
+                    FieldVariables\getTheme(),
                     [
                         'label' => 'Show as Card',
                         'name' => 'card',

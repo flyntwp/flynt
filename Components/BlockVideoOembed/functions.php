@@ -3,6 +3,7 @@
 namespace Flynt\Components\BlockVideoOembed;
 
 use Flynt\Api;
+use Flynt\FieldVariables;
 use Flynt\Utils\Oembed;
 
 add_filter('Flynt/addComponentData?name=BlockVideoOembed', function ($data) {
@@ -56,7 +57,7 @@ Api::registerFields('BlockVideoOembed', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme')
+                    FieldVariables\getTheme()
                 ]
             ]
         ]

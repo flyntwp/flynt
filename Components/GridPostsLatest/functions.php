@@ -3,6 +3,7 @@
 namespace Flynt\Components\GridPostsLatest;
 
 use Flynt\Api;
+use Flynt\FieldVariables;
 use Flynt\Utils\Options;
 use Timber\Timber;
 
@@ -79,7 +80,7 @@ Api::registerFields('GridPostsLatest', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme'),
+                    FieldVariables\getTheme(),
                     [
                         'label' => 'Post Count',
                         'name' => 'postCount',
