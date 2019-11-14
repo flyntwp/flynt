@@ -2,10 +2,11 @@
 
 namespace Flynt\Components\BlockImage;
 
-use Flynt\Api;
+use Flynt\FieldVariables;
 
-Api::registerFields('BlockImage', [
-    'layout' => [
+function getACFLayout()
+{
+    return [
         'name' => 'BlockImage',
         'label' => 'Block: Image',
         'sub_fields' => [
@@ -39,7 +40,7 @@ Api::registerFields('BlockImage', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme'),
+                    FieldVariables\getTheme(),
                     [
                         'label' => 'Size',
                         'name' => 'size',
@@ -62,5 +63,5 @@ Api::registerFields('BlockImage', [
                 ]
             ]
         ]
-    ]
-]);
+    ];
+}

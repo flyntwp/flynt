@@ -1,6 +1,25 @@
 [is='flynt-navigation-footer'] {
-  .navigation {
-    padding: $component-spacing-mobile 0;
+  font-size: 0.8rem;
+
+  .container {
+    padding-bottom: $component-spacing-mobile;
+    padding-top: $component-spacing-mobile;
+    text-align: center;
+
+    @media (min-width: $breakpoint-tablet) {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+    }
+  }
+
+  .content {
+    @include reset-content-margins;
+    margin: 10px 0 0;
+
+    @media (min-width: $breakpoint-tablet) {
+      margin: 0;
+    }
   }
 
   @import 'Partials/menu';

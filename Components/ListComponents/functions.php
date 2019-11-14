@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\ListComponents;
 
-use Flynt\Api;
+use Flynt\FieldVariables;
 use Flynt\ComponentManager;
 use Flynt\Utils\Options;
 use Flynt\Utils\Asset;
@@ -10,12 +10,17 @@ use Parsedown;
 
 add_filter('Flynt/addComponentData?name=ListComponents', function ($data) {
     if (!empty($data['componentBlocks'])) {
-        $data['componentBlocks'] = array_map(function ($block) {
+        $templatePaths = [
+            'dir' => trailingslashit(get_template_directory()),
+            'uri' => trailingslashit(get_template_directory_uri()),
+        ];
+        $data['componentBlocks'] = array_map(function ($block) use ($templatePaths) {
             $block['component'] = substr($block['component'], strpos($block['component'], 'Components/'));
 
-            if (file_exists(Asset::requirePath($block['component'] . 'screenshot.png'))) {
-                $src = Asset::requireUrl($block['component'] . 'screenshot.png');
-                list($width, $height) = getimagesize(Asset::requirePath($block['component'] . 'screenshot.png'));
+            $imagePath = $templatePaths['dir'] . $block['component'] . 'screenshot.png';
+            if (file_exists($imagePath)) {
+                $src = $templatePaths['uri'] . $block['component'] . 'screenshot.png';
+                list($width, $height) = getimagesize($imagePath);
 
                 $block['componentScreenshot'] = [
                     'src' => $src,
@@ -23,7 +28,7 @@ add_filter('Flynt/addComponentData?name=ListComponents', function ($data) {
                 ];
             }
 
-            $readme = Asset::requirePath($block['component'] . 'README.md');
+            $readme = $templatePaths['dir'] . $block['component'] . 'README.md';
 
             if (file_exists($readme)) {
                 $readmeLines = explode(PHP_EOL, Parsedown::instance()->setUrlsLinked(false)->text(file_get_contents($readme)));
@@ -46,8 +51,9 @@ add_filter('acf/load_field/name=component', function ($field) {
     return $field;
 });
 
-Api::registerFields('ListComponents', [
-    'layout' => [
+function getACFLayout()
+{
+    return [
         'name' => 'listComponents',
         'label' => 'List: Components',
         'sub_fields' => [
@@ -120,12 +126,12 @@ Api::registerFields('ListComponents', [
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    Api::loadFields('FieldVariables', 'theme')
+                    FieldVariables\getTheme()
                 ]
             ]
         ]
-    ]
-]);
+    ];
+}
 
 Options::addTranslatable('ListComponents', [
     [

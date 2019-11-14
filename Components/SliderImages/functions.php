@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\SliderImages;
 
-use Flynt\Api;
+use Flynt\FieldVariables;
 use Flynt\Utils\Options;
 
 add_filter('Flynt/addComponentData?name=SliderImages', function ($data) {
@@ -13,8 +13,9 @@ add_filter('Flynt/addComponentData?name=SliderImages', function ($data) {
     return $data;
 });
 
-Api::registerFields('SliderImages', [
-    'layout' => [
+function getACFLayout()
+{
+    return [
         'name' => 'sliderImages',
         'label' => 'Slider: Images',
         'sub_fields' => [
@@ -81,9 +82,9 @@ Api::registerFields('SliderImages', [
                             ]
                         ],
                     ],
-                    Api::loadFields('FieldVariables', 'theme')
+                    FieldVariables\getTheme()
                 ]
             ]
         ]
-    ]
-]);
+    ];
+}

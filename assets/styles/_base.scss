@@ -1,5 +1,5 @@
 /**
-* 1.0 Root
+* 0.0 Root
 *
 * Top level styles every element should inherit.
 */
@@ -9,10 +9,10 @@ html {
   box-sizing: border-box;
   color: $color-text;
   font-family: 'Montserrat', Helvetica, Arial, sans-serif;
-  font-size: 16px;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   line-height: 1.625;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
   overflow-wrap: break-word;
   word-wrap: break-word;
 
@@ -23,22 +23,508 @@ html {
   }
 }
 
-/**
-* 2.0 Layout
-*
-* Overall page layout.
-*/
-
-html {
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-}
-
 body {
   overflow-x: hidden;
 }
 
 /**
-* 2.1 Helpers
+* 1.0 Typography
+*
+* Styling all likely used content flow elements.
+*/
+
+#{$heading-selectors} {
+  color: $color-headline;
+  font-weight: 700;
+  line-height: 1.45;
+  margin-bottom: 0.9rem;
+  margin-top: 0;
+
+  a,
+  a:hover,
+  a:focus {
+    color: $color-headline;
+    text-decoration: none;
+  }
+}
+
+h1,
+.h1 {
+  font-size: 2.25rem;
+  line-height: 1.175;
+  margin-bottom: 1.5rem;
+  padding-top: 2rem;
+
+  @media (min-width: $breakpoint-mobile-horizontal) {
+    font-size: 2.75rem;
+  }
+}
+
+h2,
+.h2 {
+  font-size: 1.5rem;
+  line-height: 1.25;
+  padding-top: 1rem;
+
+  @media (min-width: $breakpoint-mobile-horizontal) {
+    font-size: 2.5rem;
+  }
+}
+
+h3,
+.h3 {
+  font-size: 1.125rem;
+  padding-top: 1rem;
+
+  @media (min-width: $breakpoint-mobile-horizontal) {
+    font-size: 1.25rem;
+  }
+}
+
+h4,
+.h4 {
+  font-size: 1rem;
+  padding-top: 0.5rem;
+
+  @media (min-width: $breakpoint-mobile-horizontal) {
+    font-size: 1.125rem;
+  }
+}
+
+h5,
+.h5 {
+  font-size: 1rem;
+  font-weight: 400;
+  padding-top: 0.5rem;
+}
+
+h6,
+.h6 {
+  font-size: 1rem;
+  padding-top: 0.5rem;
+}
+
+a {
+  color: $color-accent;
+  transition: color 0.2s ease-out;
+
+  &:hover,
+  &:focus {
+    color: darken($color-accent, 10%);
+  }
+}
+
+p,
+.paragraph,
+table,
+figure {
+  margin: 0 0 1.2rem;
+}
+
+hr {
+  background-color: $color-border;
+  border: 0;
+  display: block;
+  height: 1px;
+  margin: 2.4rem 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+}
+
+figcaption {
+  font-size: 0.875rem;
+  margin-top: 0.625rem;
+}
+
+code {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 0.1rem 0.3rem;
+}
+
+blockquote,
+.blockquote {
+  border-left: 4px solid $color-accent;
+  font-size: 1.125rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.16px;
+  line-height: 1.55;
+  margin: 2.4rem auto;
+  max-width: 28rem;
+  padding: 0.8rem 1.5rem;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/**
+* 1.1 Lists & Tables
+*
+* Default and custom styled list and table elements.
+*/
+
+ul,
+ol {
+  margin: 0 0 1.2rem;
+  padding-left: 1.5rem;
+
+  ul,
+  ol {
+    margin-bottom: 0;
+  }
+}
+
+/* Icon Lists */
+
+.iconList {
+  list-style: none;
+  padding: 0;
+
+  li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+
+    &::before {
+      background-size: contain;
+      content: '';
+      display: block;
+      height: 1rem;
+      left: 0;
+      position: absolute;
+      top: 0.25rem;
+      width: 1rem;
+    }
+  }
+
+  &--checkCircle {
+    li::before {
+      background-image: url('../assets/icons/check-circle.svg');
+    }
+  }
+}
+
+/* Tables */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  max-width: 100%;
+}
+
+td,
+th {
+  padding: 1.25rem;
+  text-align: inherit;
+  vertical-align: top;
+}
+
+thead {
+  th {
+    border-bottom: 2px solid $color-accent;
+    color: $color-headline;
+    padding-bottom: 10px;
+    vertical-align: bottom;
+    white-space: nowrap;
+  }
+}
+
+tr:nth-child(even) {
+  background-color: $color-background-light;
+}
+
+/**
+* 1.2 Buttons
+*
+* Global button elements, including reset on standard button element.
+*/
+
+button {
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  padding: 0;
+  text-align: inherit;
+}
+
+.button {
+  appearance: none;
+  background-color: $color-accent;
+  border: 1px solid $color-accent;
+  border-radius: 4px;
+  color: $color-background;
+  cursor: pointer;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: inherit;
+  outline: 0;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  user-select: none;
+
+  &:disabled,
+  &--disabled {
+    cursor: default;
+    opacity: 0.65;
+    pointer-events: none;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $color-background-dark;
+    border-color: $color-background-dark;
+    color: $color-background;
+  }
+
+  &--ghost {
+    background-color: transparent;
+    border-color: $color-accent;
+    color: $color-accent;
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+      border-color: $color-background-dark;
+      color: $color-background-dark;
+    }
+  }
+
+  &--small {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+  }
+
+  &--link {
+    background-color: transparent;
+    border: 0;
+    color: $color-accent;
+    padding: 0;
+    position: relative;
+    text-transform: none;
+    transition: color 0.2s ease-out;
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+      color: $color-background-dark;
+
+      &::before {
+        background-color: $color-background-dark;
+      }
+
+      &::after {
+        background-position: right center;
+      }
+    }
+
+    &::before {
+      background-color: $color-accent;
+      bottom: 0;
+      content: '';
+      height: 1px;
+      left: 0;
+      position: absolute;
+      transition: background-color 0.2s ease-out;
+      width: 100%;
+    }
+
+    &::after {
+      $color-accent-rgb: red($color-accent), green($color-accent), blue($color-accent);
+      $color-background-dark-rgb: red($color-background-dark), green($color-background-dark), blue($color-background-dark);
+
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.586 5L.293 8.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4A1 1 0 1 0 .293 1.707L3.586 5z' fill='rgb(#{$color-accent-rgb})'/%3E%3Cpath d='M13.586 5l-3.293 3.293a1 1 0 0 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4a1 1 0 0 0-1.414 1.414L13.586 5z' fill='rgb(#{$color-background-dark-rgb}'/%3E%3C/svg%3E");
+      background-position: left center;
+      background-repeat: no-repeat;
+      content: '';
+      display: inline-block;
+      height: 10px;
+      margin-left: 10px;
+      transition: background-position 0.2s ease-out;
+      vertical-align: baseline;
+      width: 6px;
+    }
+  }
+}
+
+/* Pills */
+
+.pill {
+  background-color: $color-background-dark;
+  border-radius: 1rem;
+  color: $color-background;
+  display: inline-block;
+  font-size: 0.8rem;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 0.125rem 1rem;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    color: $color-background;
+  }
+}
+
+/* Icons */
+
+.feather {
+  color: $color-accent;
+  position: relative;
+  top: -2px;
+  vertical-align: middle;
+}
+
+/**
+* 1.3 Forms
+*
+* Global form elements, including structering wrapper elements.
+*/
+
+form {
+  margin: 0;
+}
+
+fieldset {
+  border: 0;
+  margin: 0 0 1.5rem;
+  padding: 0;
+
+  *:last-child {
+    margin-bottom: 0;
+  }
+
+  input,
+  select,
+  textarea {
+    margin: 0 0 1.875rem;
+  }
+}
+
+legend {
+  display: inline-block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.9375rem;
+}
+
+label {
+  display: inline-block;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+#{$input-selectors} {
+  appearance: none;
+  background-color: $color-background;
+  border: 1px solid rgba(11, 16, 12, 1);
+  border-radius: 0;
+  color: $color-headline;
+  font-family: inherit;
+  font-size: inherit;
+  min-height: 50px;
+}
+
+input,
+select,
+textarea {
+  margin: 0 0 1rem;
+  padding: 10px 20px;
+}
+
+textarea {
+  min-height: 150px;
+  padding: 20px;
+  resize: vertical;
+  width: 100%;
+}
+
+select {
+  $color-text-rgb: red($color-contrast), green($color-contrast),
+    blue($color-contrast);
+
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='32' height='32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline fill='none' stroke='rgb(#{$color-text-rgb})' stroke-width='5'  points='2,9 16,25 30,9 '/%3E%3C/svg%3E");
+  background-position: calc(100% - 18px) center;
+  background-repeat: no-repeat;
+  background-size: 9px;
+  padding-right: 45px;
+
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+[type='checkbox'],
+[type='radio'] {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  width: 1px;
+
+  &,
+  &:hover,
+  &:focus {
+    border-color: $color-border;
+    outline: 0;
+  }
+
+  + label {
+    display: inline-block;
+    padding-left: 1.875rem;
+    position: relative;
+    width: 100%;
+
+    &::before {
+      background-color: #fff;
+      border: 1px solid $color-border;
+      border-radius: 2px;
+      content: '';
+      display: block;
+      height: 15px;
+      left: 0;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      top: 4px;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
+      width: 15px;
+    }
+  }
+
+  &:checked {
+    + label::before {
+      background-color: $color-accent;
+      border-color: $color-accent;
+      box-shadow: inset 0 0 0 2px #fff;
+    }
+  }
+}
+
+[type='radio'] {
+  + label::before {
+    border-radius: 50%;
+  }
+}
+
+/**
+* 2.0 Helpers
 *
 * Global layout classes for a consistent appearance.
 */
@@ -176,7 +662,7 @@ body {
         margin-top: 0;
       }
 
-      > :last-child {
+      &:last-child {
         margin-bottom: 0;
       }
     }
@@ -184,512 +670,7 @@ body {
 }
 
 /**
-* 3.0 Base Style
-*
-* Styling all likely used HTML elements.
-*/
-
-#{$heading-selectors} {
-  color: $color-headline;
-  font-weight: 700;
-  line-height: 1.45;
-  margin-bottom: 0.9rem;
-  margin-top: 0;
-
-  a,
-  a:hover,
-  a:focus {
-    color: $color-headline;
-    text-decoration: none;
-  }
-}
-
-h1,
-.h1 {
-  font-size: 2.25rem;
-  line-height: 1.175;
-  margin-bottom: 1.5rem;
-  padding-top: 2rem;
-
-  @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 2.75rem;
-  }
-}
-
-h2,
-.h2 {
-  font-size: 1.5rem;
-  line-height: 1.25;
-  padding-top: 1rem;
-
-  @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 2.5rem;
-  }
-}
-
-h3,
-.h3 {
-  font-size: 1.125rem;
-  padding-top: 1rem;
-
-  @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.25rem;
-  }
-}
-
-h4,
-.h4 {
-  font-size: 1rem;
-  padding-top: 0.5rem;
-
-  @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.125rem;
-  }
-}
-
-h5,
-.h5 {
-  font-size: 1rem;
-  font-weight: 400;
-  padding-top: 0.5rem;
-}
-
-h6,
-.h6 {
-  font-size: 1rem;
-  padding-top: 0.5rem;
-}
-
-a {
-  color: $color-accent;
-  transition: color 0.2s ease-out;
-
-  &:hover,
-  &:focus {
-    color: darken($color-accent, 10%);
-  }
-}
-
-dt {
-  font-weight: 700;
-}
-
-p,
-.paragraph,
-ul,
-ol,
-dl,
-dd,
-table,
-figure {
-  margin: 0 0 1.2rem;
-}
-
-ul,
-ol {
-  padding-left: 1.5rem;
-
-  ul,
-  ol {
-    margin-bottom: 0;
-  }
-}
-
-hr {
-  background-color: $color-border;
-  border: 0;
-  display: block;
-  height: 1px;
-  margin: 2.4rem 0;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-  width: 100%;
-}
-
-figcaption {
-  font-size: 0.875rem;
-  margin-top: 0.625rem;
-}
-
-code {
-  background-color: rgba(0, 0, 0, 0.05);
-  padding: 0.1rem 0.3rem;
-}
-
-blockquote,
-.blockquote {
-  border-left: 4px solid $color-accent;
-  font-size: 1.125rem;
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: 0.16px;
-  line-height: 1.55;
-  margin: 2.4rem auto;
-  max-width: 28rem;
-  padding: 0.8rem 1.5rem;
-
-  p:last-child {
-    margin-bottom: 0;
-  }
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  max-width: 100%;
-}
-
-td,
-th {
-  padding: 1.25rem;
-  text-align: inherit;
-  vertical-align: top;
-}
-
-thead {
-  th {
-    border-bottom: 2px solid $color-accent;
-    color: $color-headline;
-    padding-bottom: 10px;
-    vertical-align: bottom;
-    white-space: nowrap;
-  }
-}
-
-tr:nth-child(even) {
-  background-color: $color-background-light;
-}
-
-/**
-* 3.1 Buttons
-*
-* Global button elements, including reset on standard button element.
-*/
-
-button {
-  appearance: none;
-  background-color: transparent;
-  border: 0;
-  color: inherit;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  padding: 0;
-  text-align: inherit;
-}
-
-.button {
-  appearance: none;
-  background-color: $color-accent;
-  border: 1px solid $color-accent;
-  border-radius: 4px;
-  color: $color-background;
-  cursor: pointer;
-  display: inline-block;
-  font-family: inherit;
-  font-size: 0.875rem;
-  font-weight: 700;
-  line-height: inherit;
-  outline: 0;
-  padding: 1rem 1.5rem;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-  user-select: none;
-
-  &:disabled,
-  &--disabled {
-    cursor: default;
-    opacity: 0.65;
-    pointer-events: none;
-  }
-
-  &:hover,
-  &:focus {
-    background-color: $color-background-dark;
-    border-color: $color-background-dark;
-    color: $color-background;
-  }
-
-  &--ghost {
-    background-color: transparent;
-    border-color: $color-accent;
-    color: $color-accent;
-
-    &:hover,
-    &:focus {
-      background-color: transparent;
-      border-color: $color-background-dark;
-      color: $color-background-dark;
-    }
-  }
-
-  &--small {
-    font-size: 0.8rem;
-    padding: 0.5rem 1rem;
-  }
-
-  &--link {
-    background-color: transparent;
-    border: 0;
-    color: $color-accent;
-    padding: 0;
-    position: relative;
-    text-transform: none;
-    transition: color 0.2s ease-out;
-
-    &:hover,
-    &:focus {
-      background-color: transparent;
-      color: $color-background-dark;
-
-      &::before {
-        background-color: $color-background-dark;
-      }
-
-      &::after {
-        background-position: right center;
-      }
-    }
-
-    &::before {
-      background-color: $color-accent;
-      bottom: 0;
-      content: '';
-      height: 1px;
-      left: 0;
-      position: absolute;
-      transition: background-color 0.2s ease-out;
-      width: 100%;
-    }
-
-    &::after {
-      $color-accent-rgb: red($color-accent), green($color-accent), blue($color-accent);
-      $color-background-dark-rgb: red($color-background-dark), green($color-background-dark), blue($color-background-dark);
-
-      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.586 5L.293 8.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4A1 1 0 1 0 .293 1.707L3.586 5z' fill='rgb(#{$color-accent-rgb})'/%3E%3Cpath d='M13.586 5l-3.293 3.293a1 1 0 0 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4a1 1 0 0 0-1.414 1.414L13.586 5z' fill='rgb(#{$color-background-dark-rgb}'/%3E%3C/svg%3E");
-      background-position: left center;
-      background-repeat: no-repeat;
-      content: '';
-      display: inline-block;
-      height: 10px;
-      margin-left: 10px;
-      transition: background-position 0.2s ease-out;
-      vertical-align: baseline;
-      width: 6px;
-    }
-  }
-}
-
-/**
-* 3.2 Pills
-*
-* Pill-looking elements.
-*/
-
-.pill {
-  background-color: $color-background-dark;
-  border-radius: 1rem;
-  color: $color-background;
-  display: inline-block;
-  font-size: 0.8rem;
-  max-width: 100%;
-  overflow: hidden;
-  padding: 0.125rem 1rem;
-  text-decoration: none;
-  text-overflow: ellipsis;
-  vertical-align: middle;
-  white-space: nowrap;
-
-  &:hover,
-  &:focus {
-    color: $color-background;
-  }
-}
-
-/**
-* 3.3 Forms
-*
-* Global form elements, including structering wrapper elements.
-*/
-
-form {
-  margin: 0;
-}
-
-fieldset {
-  border: 0;
-  margin: 0 0 1.5rem;
-  padding: 0;
-
-  *:last-child {
-    margin-bottom: 0;
-  }
-
-  input,
-  select,
-  textarea {
-    margin: 0 0 1.875rem;
-  }
-}
-
-legend {
-  display: inline-block;
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 0.9375rem;
-}
-
-label {
-  display: inline-block;
-  font-weight: 700;
-  line-height: 1.5;
-  margin-bottom: 0.5rem;
-}
-
-#{$input-selectors} {
-  appearance: none;
-  background-color: $color-background;
-  border: 1px solid rgba(11, 16, 12, 1);
-  border-radius: 0;
-  color: $color-headline;
-  font-family: inherit;
-  font-size: inherit;
-  min-height: 50px;
-}
-
-input,
-select,
-textarea {
-  margin: 0 0 1rem;
-  padding: 10px 20px;
-}
-
-textarea {
-  min-height: 150px;
-  padding: 20px;
-  resize: vertical;
-  width: 100%;
-}
-
-select {
-  $color-text-rgb: red($color-contrast), green($color-contrast),
-    blue($color-contrast);
-
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='32' height='32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline fill='none' stroke='rgb(#{$color-text-rgb})' stroke-width='5'  points='2,9 16,25 30,9 '/%3E%3C/svg%3E");
-  background-position: calc(100% - 18px) center;
-  background-repeat: no-repeat;
-  background-size: 9px;
-  padding-right: 45px;
-
-  &::-ms-expand {
-    display: none;
-  }
-}
-
-[type='checkbox'],
-[type='radio'] {
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-  width: 1px;
-
-  &,
-  &:hover,
-  &:focus {
-    border-color: $color-border;
-    outline: 0;
-  }
-
-  + label {
-    display: inline-block;
-    padding-left: 1.875rem;
-    position: relative;
-    width: 100%;
-
-    &::before {
-      background-color: #fff;
-      border: 1px solid $color-border;
-      border-radius: 2px;
-      content: '';
-      display: block;
-      height: 15px;
-      left: 0;
-      margin: 0;
-      padding: 0;
-      position: absolute;
-      top: 4px;
-      transition: border-color 0.2s ease, background-color 0.2s ease;
-      width: 15px;
-    }
-  }
-
-  &:checked {
-    + label::before {
-      background-color: $color-accent;
-      border-color: $color-accent;
-      box-shadow: inset 0 0 0 2px #fff;
-    }
-  }
-}
-
-[type='radio'] {
-  + label::before {
-    border-radius: 50%;
-  }
-}
-
-/**
-* 3.4 Icons
-*
-* Global icon set styling.
-*/
-
-.feather {
-  color: $color-accent;
-  position: relative;
-  top: -2px;
-  vertical-align: middle;
-}
-
-/**
-* 3.5 Custom list styles
-*/
-
-.iconList {
-  list-style: none;
-  padding: 0;
-
-  li {
-    margin-bottom: 0.5rem;
-    padding-left: 1.5rem;
-    position: relative;
-
-    &::before {
-      background-size: contain;
-      content: '';
-      display: block;
-      height: 1rem;
-      left: 0;
-      position: absolute;
-      top: 0.25rem;
-      width: 1rem;
-    }
-  }
-
-  &--checkCircle {
-    li::before {
-      background-image: url('../assets/icons/check-circle.svg');
-    }
-  }
-}
-
-/**
-* 4.0 Themes
+* 3.0 Themes
 *
 * Color themes for backgrounds and content elements.
 */

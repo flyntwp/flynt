@@ -24,8 +24,6 @@ class Init
     public static function loadComponents()
     {
         $basePath = get_template_directory() . '/Components';
-        global $flyntCurrentOptionCategory;
-        $flyntCurrentOptionCategory = 'component';
         Api::registerComponentsFromPath($basePath);
         do_action('Flynt/afterRegisterComponents');
     }
