@@ -18,7 +18,6 @@
   * [Advanced Custom Fields](#advanced-custom-fields)
   * [Field Groups](#field-groups)
   * [ACF Option Pages](#acf-option-pages)
-  * [WPML](#wpml)
 * [Maintainers](#maintainers)
 * [Contributing](#contributing)
 * [License](#license)
@@ -74,9 +73,8 @@ After the files from `./lib` and `./inc` are loaded, all [components](#component
 ### Page Templates
 Flynt uses [Timber](https://www.upstatement.com/timber/) to structure its page templates and [Twig](https://twig.symfony.com/) for rendering them. [Timber's documentation](https://timber.github.io/docs/) is extensive and up to date, so be sure to get familiar with it.
 
-There are two Twig functions added in Flynt to render components into templates:
+There is one Twig function added in Flynt to render components into templates:
 * `renderComponent(componentName, data)` renders a single component. [For example, in the `index.twig` template](https://github.com/flyntwp/flynt/tree/master/templates/index.twig).
-* `renderFlexibleContent(flexibleContentField)` renders all components passed from an Advanced Custom Fields *Flexible Content* field. [For example, in the `single.twig` template.](https://github.com/flyntwp/flynt/tree/master/templates/single.twig)
 
 Besides the main document structure (in `./templates/_document.twig`), everything else is a component.
 
@@ -98,21 +96,18 @@ The `functions.php` file for every component in the `./Components` folder is exe
 To render components into a template, see [Page Templates](#page-templates).
 
 ### Advanced Custom Fields
-To define Advanced Custom Fields (ACF) for a component, use `Flynt\Api\registerFields`. This has 3 arguments:
-
-```php
-Flynt\Api\registerFields($scope = 'ComponentName', $fields = [], $fieldId = null);
-```
-
-`$scope` is the name of the component, `$fields` are the ACF fields you want to register, and `$fieldsId` is an optional (rarely needed) parameter for registering multiple fields for a single scope.
+Defining Advanced Custom Fields (ACF) can be done in `functions.php` for each component. As a best practise, we recommend defining your fields inside a function named `getACFLayout()` which you can then call in a [field group](#field-groups).
 
 For example:
 
 ```php
-use Flynt\Api;
+namespace Flynt\Components\BlockWysiwyg;
 
-Api::registerFields('BlockWysiwyg', [
-    'layout' => [
+use Flynt\FieldVariables;
+
+function getACFLayout()
+{
+    return [
         'name' => 'blockWysiwyg',
         'label' => 'Block: Wysiwyg',
         'sub_fields' => [
@@ -120,25 +115,28 @@ Api::registerFields('BlockWysiwyg', [
                 'name' => 'contentHtml',
                 'label' => 'Content',
                 'type' => 'wysiwyg',
+                'delay' => 1,
+                'media_upload' => 0,
                 'required' => 1,
-            ]
+                'wrapper' => [
+                    'class' => 'autosize',
+                ],
+            ],
         ]
-    ]
-]);
+    ];
+}
 ```
 
-In the example above, the `layout` array is required in order to load this component into an Advanced Custom Fields *Flexible Content* field.
-
 ### Field Groups
-Field groups are needed to show registered fields in the WordPress back-end. All field groups are created in the `./inc/fieldGroups` folder. Two field groups exist by default: [`pageComponents.php`](https://github.com/flyntwp/flynt/tree/master/inc/templates/pageComponents.php) and [`postComponents.php`](https://github.com/flyntwp/flynt/tree/master/inc/templates/postComponents.php).
+Field groups are needed to show registered fields in the WordPress back-end. All field groups are created in the `./inc/fieldGroups` folder. Two field groups exist by default: [`pageComponents.php`](https://github.com/flyntwp/flynt/tree/master/inc/fieldGroups/pageComponents.php) and [`postComponents.php`](https://github.com/flyntwp/flynt/tree/master/inc/fieldGroups/postComponents.php).
 
-To include fields that have been registered with `Flynt\Api::registerFields`, use `ACFComposer::registerFieldGroup($config)` inside the `Flynt/afterRegisterComponents` action.
+We call the function `getACFLayout()` defined in the `functions.php` file of each component to load fields into a field group. 
 
-Use `Flynt\Api::loadFields($scope, $fieldPath = null)` to load groups of fields into a field group. For example:
+For example:
 
 ```php
 use ACFComposer\ACFComposer;
-use Flynt\Api;
+use Flynt\Components;
 
 add_action('Flynt/afterRegisterComponents', function () {
     ACFComposer::registerFieldGroup([
@@ -152,31 +150,37 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'type' => 'flexible_content',
                 'button_label' => 'Add Component',
                 'layouts' => [
-                    Api::loadFields('BlockWysiwyg', 'layout'),
-                ],
-            ],
+                    Components\BlockWysiwyg\getACFLayout(),
+                ] 
+            ]
         ],
         'location' => [
             [
                 [
                     'param' => 'post_type',
                     'operator' => '==',
-                    'value' => 'page',
+                    'value' => 'page'
                 ],
-            ],
-        ],
+                [
+                    'param' => 'page_type',
+                    'operator' => '!=',
+                    'value' => 'posts_page'
+                ]
+            ]
+        ]
     ]);
 });
 ```
 
-More information on field groups can be found in the [ACF Field Group Composer repository](https://github.com/flyntwp/acf-field-group-composer).
+Here we use the [ACF Field Group Composer](https://github.com/flyntwp/acf-field-group-composer) plugin, which provides the advantage that all fields automatically get a unique key.
 
 ### ACF Option Pages
 Flynt includes several utility functions for creating Advanced Custom Fields options pages. Briefly, these are:
 
 * `Flynt\Utils\Options::addTranslatable`<br> Adds fields into a new group inside the Translatable Options options page. When used with the WPML plugin, these fields will be returned in the current language.
 * `Flynt\Utils\Options::addGlobal`<br> Adds fields into a new group inside the Global Options options page. When used with WPML, these fields will always be returned from the primary language. In this way these fields are *global* and cannot be translated.
-* `Flynt\Utils\Options::get` <br> Used to retrieve options from Translatable or Global options.
+* `Flynt\Utils\Options::getTranslatable` <br> Retrieve a translatable option.
+* `Flynt\Utils\Options::getGlobal` <br> Retrieve a global option.
 
 ## Maintainers
 This project is maintained by [bleech](https://github.com/bleech).
