@@ -43,7 +43,6 @@ function getACFLayout()
                         'preview_size' => 'medium',
                         'instructions' => '',
                         'max_size' => 4,
-                        'required' => 0,
                         'mime_types' => 'gif,jpg,jpeg,png',
                         'wrapper' => [
                             'width' => 40
@@ -56,7 +55,6 @@ function getACFLayout()
                         'tabs' => 'visual,text',
                         'media_upload' => 0,
                         'delay' => 1,
-                        'required' => 0,
                         'wrapper' => [
                             'class' => 'autosize',
                             'width' => 60
