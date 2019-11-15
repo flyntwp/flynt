@@ -4,6 +4,21 @@ const dest = './dist'
 
 const path = require('path')
 
+function getCopyConfig (source) {
+  return {
+    from: source,
+    to: './',
+    ignore: [
+      '*.js',
+      '*.scss',
+      '*.php',
+      '*.twig',
+      'screenshot.png',
+      'README.md'
+    ]
+  }
+}
+
 module.exports = {
   webpack: {
     publicPath: path.join(`/app/themes/${themeName}/`, dest, '/'),
@@ -12,11 +27,8 @@ module.exports = {
       'assets/admin': './assets/admin.js'
     },
     copy: [
-      {
-        from: './{Components,assets}/**/*',
-        to: './',
-        ignore: ['*.js', '*.scss', '*.php', '*.twig', 'screenshot.png', 'README.md']
-      }
+      getCopyConfig('./Components/**/*'),
+      getCopyConfig('./assets/**/*')
     ]
   },
   browserSync: {
