@@ -7,11 +7,16 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
   constructor (self) {
     window.$ = window.jQuery
     self = super(self)
-    self.$ = window.$(self)
-    self.props = self.getInitialProps()
-    self.resolveElements()
-    self.bindFunctions()
+    self.init()
     return self
+  }
+
+  init () {
+    this.$ = window.$(this)
+    this.props = this.getInitialProps()
+    this.resolveElements()
+    this.bindFunctions()
+    this.bindEvents()
   }
 
   getInitialProps () {
@@ -26,31 +31,23 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
 
   resolveElements () {
     this.gaId = this.props.gaId ? this.props.gaId : false
-    this.isTrackingEnabled = this.props.isTrackingEnabled ? this.props.isTrackingEnabled : false
     this.disableStr = 'ga-disable-' + this.props.gaId
   }
 
   bindFunctions () {
     this.trackingChanged = this.trackingChanged.bind(this)
+    this.onOptOut = this.onOptOut.bind(this)
+  }
+
+  bindEvents () {
+    $('body').on('click', '[data-action="gaOptOut"]', this.trackingChanged)
   }
 
   connectedCallback () {
-    const alreadyAccepted = this.checkIfAlreadyAccepted()
-    if (!alreadyAccepted) {
-      if (this.props.isOptInComponentRegistered) {
-        $document.on('trackingChanged', this.trackingChanged)
-      } else {
-        this.addFunctions()
-      }
-    }
-  }
-
-  addFunctions () {
-    this.addGTAGScript()
-    if (this.gaId === 'debug') {
-      this.addGTAGFunctionFallback()
+    if (this.props.isOptInComponentRegistered) {
+      $document.on('trackingChanged', this.trackingChanged)
     } else {
-      this.addGTAGFunction()
+      this.defineGlobalGAFunction()
     }
   }
 
@@ -58,54 +55,68 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
     this.addGTAGFunctionFallback()
   }
 
-  checkIfAlreadyAccepted () {
-    if (this.gaId === 'debug' || Cookies.get(this.disableStr) === 'false') {
-      this.addFunctions()
-      return true
-    }
-    return false
+  isOptedOut () {
+    return !!Cookies.get(this.disableStr)
+  }
+
+  setStatus (status) {
+    window[this.disableStr] = status
+    Cookies.set(this.disableStr, status)
+    this.defineGlobalGAFunction()
   }
 
   trackingChanged (event, trackingObject = {}) {
-    if (this.gaId === 'debug' || (trackingObject.GA_accept && this.gaId)) {
-      window[this.disableStr] = false
-      Cookies.set(this.disableStr, false)
-      this.addFunctions()
+    const status = !!trackingObject.GA_accept
+    this.setStatus(status)
+  }
+
+  loagGAScript () {
+    if (!this.scriptLoaded) {
+      this.scriptLoaded = true
+      const scriptUrl = `https://www.googletagmanager.com/gtag/js?id=${this.gaId}`
+      $.getScript(scriptUrl)
+    }
+  }
+
+  defineGlobalGAFunction () {
+    let gtag
+    if (this.isOptedOut()) {
+      gtag = function () {}
+    } else if (this.gaId === 'debug') {
+      gtag = function () {
+        console.log('GoogleAnalytics', [].slice.call(arguments))
+      }
     } else {
-      window[this.disableStr] = true
-      Cookies.set(this.disableStr, true)
-      this.removeFunctionsAndAddFallback()
+      this.loadGAScript()
+      window.dataLayer = window.dataLayer || []
+      gtag = function () {
+        window.dataLayer.push(arguments)
+      }
+    }
+    window.gtag = gtag
+    this.initGA()
+  }
+
+  loadGAScript () {
+    if (!this.gaLoaded) {
+      this.gaLoaded = true
+      const scriptUrl = `https://www.googletagmanager.com/gtag/js?id=${this.gaId}`
+      $.getScript(scriptUrl)
     }
   }
 
-  addGTAGScript () {
-    if (this.scriptLoaded) {
-      return
+  initGA () {
+    if (!this.gaInitialized) {
+      this.gaInitialized = true
+      const { gtag } = window
+      gtag('js', new Date())
+      gtag('config', this.gaId, { anonymize_ip: this.props.anonymizeIp })
     }
-    this.scriptLoaded = true
-    const scriptUrl = `https://www.googletagmanager.com/gtag/js?id=${this.gaId}`
-    const GTAGscriptElement = document.createElement('script')
-    GTAGscriptElement.async = true
-    GTAGscriptElement.type = 'text/javascript'
-    GTAGscriptElement.src = scriptUrl
-    document.head.appendChild(GTAGscriptElement)
   }
 
-  addGTAGFunction () {
-    window.dataLayer = window.dataLayer || []
-    window.gtag = function () {
-      window.dataLayer.push(arguments)
-    }
-    window.gtag('js', new Date())
-    window.gtag('config', this.gaId, { anonymize_ip: this.props.anonymizeIp })
-  }
-
-  addGTAGFunctionFallback () {
-    window.gtag = function () {
-      console.log('GoogleAnalytics: ' + [].slice.call(arguments))
-    }
-    window.gtag('js', new Date())
-    window.gtag('config', this.gaId, { anonymize_ip: this.props.anonymizeIp })
+  onOptOut (e) {
+    e.preventDefault()
+    this.setStatus(false)
   }
 }
 
