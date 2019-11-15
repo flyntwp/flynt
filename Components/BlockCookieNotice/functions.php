@@ -1,10 +1,26 @@
 <?php
+
 namespace Flynt\Components\BlockCookieNotice;
 
 use Flynt\Utils\Options;
 use Flynt\FieldVariables;
+use Timber\Timber;
+
+add_action('wp_footer', function () {
+    $context = Timber::get_context();
+    Timber::render_string('{{ renderComponent("BlockCookieNotice") }}', $context);
+});
 
 Options::addGlobal('BlockCookieNotice', [
+    [
+        'label' => 'Component Status',
+        'name' => 'cookieNoticeIsEnabled',
+        'type' => 'true_false',
+        'default_value' => 1,
+        'ui' => 1,
+        'ui_on_text' => 'Activated',
+        'ui_off_text' => 'Deactivated',
+    ],
     [
         'label' => 'Layout',
         'name' => 'layout',

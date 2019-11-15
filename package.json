@@ -60,6 +60,7 @@
     "gulp-rev-rewrite": "^2.0.0",
     "intersection-observer": "^0.7.0",
     "jquery": "^3.4.1",
+    "js-cookie": "^2.2.1",
     "lazysizes": "^5.1.2",
     "lodash": "^4.17.15",
     "mini-css-extract-plugin": "^0.8.0",
