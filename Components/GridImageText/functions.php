@@ -35,7 +35,6 @@ function getACFLayout()
                 'collapsed' => '',
                 'layout' => 'block',
                 'button_label' => 'Add',
-                'max' => 4,
                 'sub_fields' => [
                     [
                         'label' => 'Image',
@@ -44,7 +43,6 @@ function getACFLayout()
                         'preview_size' => 'medium',
                         'instructions' => '',
                         'max_size' => 4,
-                        'required' => true,
                         'mime_types' => 'gif,jpg,jpeg,png',
                         'wrapper' => [
                             'width' => 40
@@ -57,7 +55,6 @@ function getACFLayout()
                         'tabs' => 'visual,text',
                         'media_upload' => 0,
                         'delay' => 1,
-                        'required' => false,
                         'wrapper' => [
                             'class' => 'autosize',
                             'width' => 60
@@ -79,6 +76,15 @@ function getACFLayout()
                 'layout' => 'row',
                 'sub_fields' => [
                     FieldVariables\getTheme(),
+                    [
+                        'label' => 'Columns',
+                        'name' => 'columns',
+                        'type' => 'number',
+                        'default_value' => 3,
+                        'min' => 1,
+                        'max' => 4,
+                        'step' => 1
+                    ],
                     [
                         'label' => 'Show as Card',
                         'name' => 'card',
