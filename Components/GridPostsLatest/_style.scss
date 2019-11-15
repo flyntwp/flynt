@@ -7,9 +7,9 @@
     justify-content: center;
     margin: ($gutter-width * -1) 0 0 ($gutter-width * -1);
 
-    &--length2,
-    &--length3,
-    &--length4 {
+    &--columns2,
+    &--columns3,
+    &--columns4 {
       .grid-item {
         @media (min-width: $breakpoint-tablet) {
           width: 50%;
@@ -17,7 +17,7 @@
       }
     }
 
-    &--length3 {
+    &--columns3 {
       .grid-item {
         @media (min-width: $breakpoint-tablet-horizontal) {
           width: 33.33%;
@@ -25,8 +25,11 @@
       }
     }
 
-    &--length4 {
+    &--columns4 {
       .grid-item {
+        /* ensure 2 columns stacking up until $breakpoint-desktop */
+        max-width: ($breakpoint-desktop - $container-padding-tablet * 2 + $gutter-width) / 3 + 1;
+
         @media (min-width: $breakpoint-desktop) {
           width: 25%;
         }

@@ -6,7 +6,7 @@
           {{ preContentHtml|e('wp_kses_post') }}
         </div>
       {% endif %}
-      <ul class="grid grid--length{{ options.columns }}">
+      <ul class="grid grid--columns{{ options.columns }}">
         {% for item in items %}
           <li class="grid-item">
             <div class="content boxShadow themeReset">
