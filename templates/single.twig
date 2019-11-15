@@ -15,7 +15,7 @@
         {{ renderComponent('BlockPostFooter', { post: post }) }}
       </section>
       <section class="post-related">
-        {{ renderComponent('GridPostsLatest', {'taxonomies': post.categories(), 'options': {'theme': 'themeLight', 'postCount': 3}}) }}
+        {{ renderComponent('GridPostsLatest', {'taxonomies': post.categories(), 'options': {'theme': 'themeLight', 'columns': 3}}) }}
       </section>
     </footer>
   </article>
