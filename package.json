@@ -1,6 +1,6 @@
 {
   "name": "flynt",
-  "version": "1.0.0-rc1",
+  "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:flyntwp/flynt.git",
   "author": "bleech <hello@bleech.de>",
