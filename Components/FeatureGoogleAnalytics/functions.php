@@ -9,7 +9,7 @@ function isTrackingEnabled($gaId)
 {
     if ($gaId) {
         $user = wp_get_current_user();
-        $trackingEnabled = $gaId === 'debug' || !in_array('administator', $user->roles);
+        $trackingEnabled = $gaId === 'debug' || !in_array('administrator', $user->roles);
         return $trackingEnabled;
     }
     return false;
