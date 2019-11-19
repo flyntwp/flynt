@@ -17,7 +17,8 @@ php:
   # - 5.6
   # - 7.0
   # - 7.1
-  - 7.2
+  # - 7.2
+  - 7.3
   # - nightly
 
 matrix:
@@ -30,8 +31,8 @@ before_script:
 
 install:
   - composer install
-  - nvm install 10
-  - nvm use 10
+  - nvm install 12
+  - nvm use 12
 
 script:
   - npm run lint
