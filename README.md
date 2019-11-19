@@ -1,8 +1,8 @@
 # Flynt
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
-[![Build Status](https://travis-ci.org/flyntwp/flynt-starter-theme.svg?branch=master)](https://travis-ci.org/flyntwp/flynt-starter-theme)
-[![Code Quality](https://img.shields.io/scrutinizer/g/flyntwp/flynt-starter-theme.svg)](https://scrutinizer-ci.com/g/flyntwp/flynt-starter-theme/?branch=master)
+[![Build Status](https://travis-ci.org/flyntwp/flynt.svg?branch=master)](https://travis-ci.org/flyntwp/flynt)
+[![Code Quality](https://img.shields.io/scrutinizer/g/flyntwp/flynt.svg)](https://scrutinizer-ci.com/g/flyntwp/flynt/?branch=master)
 
 ## Short Description
 [Flynt](https://flyntwp.com/) is a WordPress theme for component-based development using [Timber](#page-templates) and [Advanced Custom Fields](#advanced-custom-fields).
@@ -130,7 +130,7 @@ function getACFLayout()
 ### Field Groups
 Field groups are needed to show registered fields in the WordPress back-end. All field groups are created in the `./inc/fieldGroups` folder. Two field groups exist by default: [`pageComponents.php`](https://github.com/flyntwp/flynt/tree/master/inc/fieldGroups/pageComponents.php) and [`postComponents.php`](https://github.com/flyntwp/flynt/tree/master/inc/fieldGroups/postComponents.php).
 
-We call the function `getACFLayout()` defined in the `functions.php` file of each component to load fields into a field group. 
+We call the function `getACFLayout()` defined in the `functions.php` file of each component to load fields into a field group.
 
 For example:
 
@@ -151,7 +151,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'button_label' => 'Add Component',
                 'layouts' => [
                     Components\BlockWysiwyg\getACFLayout(),
-                ] 
+                ]
             ]
         ],
         'location' => [
