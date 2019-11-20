@@ -12,7 +12,7 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
   }
 
   init () {
-    this.$ = window.$(this)
+    this.$ = $(this)
     this.props = this.getInitialProps()
     this.resolveElements()
     this.bindFunctions()
@@ -56,12 +56,12 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
   }
 
   isOptedOut () {
-    return !!Cookies.get(this.disableStr)
+    return Cookies.get(this.disableStr) === true
   }
 
   setStatus (status) {
-    window[this.disableStr] = status
-    Cookies.set(this.disableStr, status)
+    window[this.disableStr] = !status
+    Cookies.set(this.disableStr, !status)
     this.defineGlobalGAFunction()
   }
 
@@ -70,18 +70,10 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
     this.setStatus(status)
   }
 
-  loagGAScript () {
-    if (!this.scriptLoaded) {
-      this.scriptLoaded = true
-      const scriptUrl = `https://www.googletagmanager.com/gtag/js?id=${this.gaId}`
-      $.getScript(scriptUrl)
-    }
-  }
-
   defineGlobalGAFunction () {
     let gtag
     if (this.isOptedOut()) {
-      gtag = function () {}
+      gtag = function () { }
     } else if (this.gaId === 'debug') {
       gtag = function () {
         console.log('GoogleAnalytics', [].slice.call(arguments))
