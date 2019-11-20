@@ -6,7 +6,7 @@
   $weight: 'normal',
   $style: 'normal',
   $woff2: true,
-  $base-path: 'fonts/'
+  $base-path: '../assets/fonts/'
 ) {
   @font-face {
     font-family: $family;
