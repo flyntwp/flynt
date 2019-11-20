@@ -1,4 +1,4 @@
-const host = 'https://flynt-components.local.blee.ch'
+const host = 'https://flynt.test'
 const dest = './dist'
 
 function getCopyConfig (source) {
