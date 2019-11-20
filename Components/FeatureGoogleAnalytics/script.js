@@ -56,7 +56,7 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
   }
 
   isOptedOut () {
-    return Cookies.get(this.disableStr) === true
+    return Cookies.get(this.disableStr) === false
   }
 
   setStatus (status) {
