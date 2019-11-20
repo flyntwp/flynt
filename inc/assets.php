@@ -19,12 +19,6 @@ add_action('wp_enqueue_scripts', function () {
         'path' => 'assets/main.css',
         'type' => 'style'
     ]);
-    Asset::enqueue([
-        'name' => 'Flynt/font',
-        'type' => 'style',
-        'path' =>
-            'https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i&display=swap'
-    ]);
 });
 
 add_action('admin_enqueue_scripts', function () {

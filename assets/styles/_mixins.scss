@@ -9,11 +9,10 @@
   $base-path: '../assets/fonts/'
 ) {
   @font-face {
+    font-display: swap;
     font-family: $family;
-
     font-style: unquote($style);
     font-weight: unquote($weight);
-
     @if $woff2 {
       src: url($base-path+$file+'.woff2') format('woff2'),
         url($base-path+$file+'.woff') format('woff');

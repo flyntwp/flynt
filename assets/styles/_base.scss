@@ -4,6 +4,11 @@
 * Top level styles every element should inherit.
 */
 
+@include font-face('Montserrat', 'montserrat-v14-latin-regular', '400', 'normal');
+@include font-face('Montserrat', 'montserrat-v14-latin-italic', '400', 'italic');
+@include font-face('Montserrat', 'montserrat-v14-latin-700', '700', 'normal');
+@include font-face('Montserrat', 'montserrat-v14-latin-700italic', '700', 'italic');
+
 html {
   background-color: $color-background;
   box-sizing: border-box;
