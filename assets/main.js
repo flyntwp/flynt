@@ -2,6 +2,7 @@ import 'console-polyfill'
 import 'normalize.css/normalize.css'
 import './main.scss'
 import $ from 'jquery'
+import feather from 'feather-icons'
 
 import installCE from 'document-register-element/pony'
 
@@ -12,7 +13,7 @@ window.lazySizesConfig.preloadAfterLoad = true
 require('lazysizes')
 
 $(document).ready(function () {
-  window.feather.replace({
+  feather.replace({
     'stroke-width': 1
   })
 })
