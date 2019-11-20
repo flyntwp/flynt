@@ -1,8 +1,5 @@
 const host = 'https://flynt-components.local.blee.ch'
-const themeName = 'flynt-components'
 const dest = './dist'
-
-const path = require('path')
 
 function getCopyConfig (source) {
   return {
@@ -21,7 +18,6 @@ function getCopyConfig (source) {
 
 module.exports = {
   webpack: {
-    publicPath: path.join(`/app/themes/${themeName}/`, dest, '/'),
     entry: {
       'assets/main': './assets/main.js',
       'assets/admin': './assets/admin.js'
