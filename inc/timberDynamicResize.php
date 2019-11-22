@@ -4,12 +4,13 @@ namespace Flynt\TimberDynamicResize;
 
 use Twig\TwigFilter;
 use Timber;
-use Routes;
 
 const DB_VERSION = '1.1';
 const TABLE_NAME = 'resized_images';
 const IMAGE_ROUTE = 'dynamic-images';
 const IMAGE_PATH_SEPARATOR = 'dynamic';
+
+add_filter('init', 'Flynt\TimberDynamicResize\registerRewriteRule');
 
 function getTableName()
 {
@@ -91,7 +92,22 @@ add_action('timber/twig/filters', function ($twig) {
     return $twig;
 });
 
-Routes::map(IMAGE_ROUTE, function () {
+function registerRewriteRule()
+{
+    $routeName = IMAGE_ROUTE;
+
+    add_rewrite_rule("{$routeName}/?(.*?)/?$", "index.php?{$routeName}=\$matches[1]", "top");
+    add_rewrite_tag("%{$routeName}%", "([^&]+)");
+}
+
+add_action('parse_request', function ($wp) {
+    if (isset($wp->query_vars[IMAGE_ROUTE])) {
+        generateImage();
+    }
+});
+
+function generateImage()
+{
     $uploadDirRelative = getRelativeUploadDir();
     $src = str_replace(
         trailingslashit($uploadDirRelative) . IMAGE_PATH_SEPARATOR,
@@ -142,9 +158,9 @@ Routes::map(IMAGE_ROUTE, function () {
         unset($urlParts['path']);
         $url = http_build_url($url, $urlParts);
     }
-    header("Location: {$url}", true, 301);
+    header("Location: {$url}", true, 302);
     exit();
-});
+}
 
 function addRewriteRule($rules)
 {
