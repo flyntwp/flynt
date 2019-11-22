@@ -14,15 +14,10 @@ const ROUTENAME = 'BaseStyle';
 function registerRewriteRule()
 {
     $routeName = ROUTENAME;
+    $routeString = "{$routeName}/?(.*?)/?$";
 
-    add_rewrite_rule("{$routeName}/?(.*?)/?$", "index.php?{$routeName}=\$matches[1]", "top");
+    add_rewrite_rule($routeString, "index.php?{$routeName}=\$matches[1]", "top");
     add_rewrite_tag("%{$routeName}%", "([^&]+)");
-
-    $rules = get_option('rewrite_rules');
-
-    if (! isset($rules["{$routeName}/(.*?)/?$"])) {
-        flush_rewrite_rules();
-    }
 }
 
 function disallowRobots()
@@ -43,7 +38,7 @@ function templateInclude($template)
 {
     global $wp_query;
 
-    if (isset($wp_query->query_vars['BaseStyle'])) {
+    if (isset($wp_query->query_vars[ROUTENAME])) {
         disallowRobots();
         return get_template_directory() . '/basestyle.php';
     }
