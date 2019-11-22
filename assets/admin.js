@@ -1,3 +1,4 @@
+import './scripts/publicPath'
 import './admin.scss'
 
 function importAll (r) {
