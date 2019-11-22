@@ -4,7 +4,7 @@ Adds a new filter to twig to delay the generation of resized images and to gener
 
 ## Prerequisites
 
-For this feature to work, you have to be using `Timber` with `Twig` and `Upstatement/Routes` for the custom route to resize the images.
+For this feature to work, you have to be using `Timber` with `Twig`.
 
 This script will automatically add the following `.htaccess` rules. If you are not using apache or WordPress does not have write permissions to the file, you need to adjust your webserver's configuration manually:
 
