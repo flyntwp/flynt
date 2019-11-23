@@ -14,9 +14,8 @@ const ROUTENAME = 'BaseStyle';
 function registerRewriteRule()
 {
     $routeName = ROUTENAME;
-    $routeString = "{$routeName}/?(.*?)/?$";
 
-    add_rewrite_rule($routeString, "index.php?{$routeName}=\$matches[1]", "top");
+    add_rewrite_rule("{$routeName}/?$", "index.php?{$routeName}", "top");
     add_rewrite_tag("%{$routeName}%", "([^&]+)");
 }
 
