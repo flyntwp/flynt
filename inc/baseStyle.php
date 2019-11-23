@@ -20,26 +20,12 @@ function registerRewriteRule()
     add_rewrite_tag("%{$routeName}%", "([^&]+)");
 }
 
-function disallowRobots()
-{
-    if (defined('WPSEO_VERSION')) {
-        add_filter('wpseo_robots', function () {
-            return "noindex,nofollow";
-        });
-    } else {
-        remove_action('wp_head', 'noindex', 1);
-        add_action('wp_head', function () {
-            echo "<meta name='robots' content='noindex,nofollow' />\n";
-        });
-    }
-}
-
 function templateInclude($template)
 {
     global $wp_query;
 
     if (isset($wp_query->query_vars[ROUTENAME])) {
-        disallowRobots();
+        add_action('wp_head', 'wp_no_robots');
         return get_template_directory() . '/basestyle.php';
     }
 
