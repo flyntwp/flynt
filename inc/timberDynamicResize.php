@@ -125,12 +125,6 @@ function generateImage()
         header("HTTP/1.0 404 Not Found");
         exit();
     }
-    $urlParts = wp_parse_url($src);
-    $homeUrl = home_url();
-    $localDev = parse_url($homeUrl)['host'] !== $urlParts['host'];
-    if ($localDev) {
-        $src = http_build_url($homeUrl, ['path' => $urlParts['path']]);
-    }
     $moveImageFunction = function ($location) use ($uploadDirRelative) {
         return str_replace(
             $uploadDirRelative,
@@ -154,10 +148,6 @@ function generateImage()
 
     Timber\ImageHelper::img_to_webp($url);
 
-    if ($localDev) {
-        unset($urlParts['path']);
-        $url = http_build_url($url, $urlParts);
-    }
     header("Location: {$url}", true, 302);
     exit();
 }
