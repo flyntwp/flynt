@@ -44,7 +44,21 @@ call_user_func(function () {
 function getRelativeUploadDir()
 {
     $uploadDir = wp_upload_dir();
-    return $uploadDir['relative'];
+    $homeUrl = getCleanHomeUrl();
+    $relative = str_replace($homeUrl, '', $uploadDir['baseurl']);
+    return $relative;
+}
+
+function getCleanHomeUrl($slug = '')
+{
+    $homeUrl = home_url();
+    if (defined('ICL_LANGUAGE_CODE')) {
+        $url = preg_replace('/\/' . ICL_LANGUAGE_CODE . '/', '', $homeUrl);
+    }
+    if (!empty($slug)) {
+        $url = trailingslashit($url) . $slug;
+    }
+    return $url;
 }
 
 add_action('timber/twig/filters', function ($twig) {
@@ -112,7 +126,7 @@ function generateImage()
     $src = str_replace(
         trailingslashit($uploadDirRelative) . IMAGE_PATH_SEPARATOR,
         $uploadDirRelative,
-        home_url($_GET['src'] ?? '')
+        getCleanHomeUrl($_GET['src'] ?? '')
     );
 
     global $wpdb;
