@@ -58,7 +58,7 @@ function replaceUpdateValueGroupField($groupField)
                 $values[$subField['key']] = $value[$subField['_name']];
             }
         }
-        return json_encode($values);
+        return safeJsonEncode($values);
     }, 10, 3);
 }
 
@@ -111,7 +111,7 @@ function replaceUpdateValueRepeaterField($repeaterField)
             }
         }
 
-        return json_encode($values);
+        return safeJsonEncode($values);
     }, 10, 3);
 }
 
@@ -167,6 +167,18 @@ function replaceUpdateValueFlexibleContentField($flexibleContentField)
                 }
             }
         }
-        return json_encode($values);
+        return safeJsonEncode($values);
     }, 10, 3);
+}
+
+function safeJsonEncode($obj)
+{
+    $json = json_encode($obj, JSON_HEX_APOS | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_LINE_TERMINATORS);
+    return strtr($json, [
+        '\n' => '\\\\n',
+        '\r' => '\\\\r',
+        '\t' => '\\\\t',
+        '\f' => '\\\\f',
+        '\d' => '\\\\d',
+    ]);
 }
