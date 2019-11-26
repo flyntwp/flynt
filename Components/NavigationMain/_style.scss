@@ -54,7 +54,7 @@
       transition: color 0.2s ease-out;
 
       &:hover,
-      &:focus {
+      &:active {
         color: $color-accent;
       }
     }

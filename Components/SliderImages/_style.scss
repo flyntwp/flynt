@@ -27,7 +27,7 @@
 
       @media (min-width: $breakpoint-tablet-horizontal) {
         &:hover,
-        &:focus {
+        &:active {
           background-color: $color-accent;
         }
       }
