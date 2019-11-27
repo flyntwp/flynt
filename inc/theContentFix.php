@@ -24,6 +24,7 @@ add_filter('wp_insert_post_data', function ($data, $postArr) {
     ], $postArr['post_type'])) {
         return $data;
     }
+    // check if no content was saved before, or if there is a flyntTheContent shortcode but the id does not match the post id
     if (empty($data['post_content']) || isShortcodeAndDoesNotMatchId($data['post_content'], $postArr['ID'])) {
         $data['post_content'] = "[flyntTheContent id=\"{$postArr['ID']}\"]";
     }
@@ -32,6 +33,7 @@ add_filter('wp_insert_post_data', function ($data, $postArr) {
 
 add_shortcode('flyntTheContent', function ($attrs) {
     $postId = $attrs['id'];
+    // in case the post id was not set correctly and is 0
     if (!empty($postId)) {
         $context = Timber::get_context();
         $context['post'] = new Post($postId);
