@@ -17,7 +17,7 @@
               {% if componentBlock.componentScreenshot %}
                 <div class="component-image">
                   <div class="component-imageWrapper">
-                    <img class="lazyload"
+                    <img class="lazyload image {{ componentBlock.componentScreenshot.aspect > (1280/800) ? 'image--isSmallerThanWrapper' }} "
                         src="{{ placeholderImage(600, 600 / componentBlock.componentScreenshot.aspect) }}"
                         data-src="{{ componentBlock.componentScreenshot.src }}"
                         data-sizes="auto"
