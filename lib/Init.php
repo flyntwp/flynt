@@ -33,7 +33,7 @@ class Init
         $acfActive = class_exists('acf');
 
         if (!$acfActive) {
-            self::notifyRequiredPluginIsMissing('ACF');
+            self::notifyRequiredPluginIsMissing('<a href="https://www.advancedcustomfields.com/pro/">Advanced Custom Fields PRO</a>');
             add_filter('template_include', function () {
                 die(
                     'One or more required plugins are not activated! Please <a href="'
@@ -51,7 +51,7 @@ class Init
         $manager = AdminNoticeManager::getInstance();
 
         $pluginUrl = esc_url(admin_url('plugins.php'));
-        $message = ["${pluginName} Plugin not activated. Make sure you activate the plugin on the <a href=\"${pluginUrl}\">plugin page</a>."];
+        $message = ["${pluginName} plugin not activated. Make sure you activate the plugin on the <a href=\"${pluginUrl}\">plugin page</a>."];
         $options = [
           'type' => 'error',
           'title' => 'Flynt is missing a required plugin',
