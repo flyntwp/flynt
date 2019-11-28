@@ -103,8 +103,6 @@ For example:
 ```php
 namespace Flynt\Components\BlockWysiwyg;
 
-use Flynt\FieldVariables;
-
 function getACFLayout()
 {
     return [
