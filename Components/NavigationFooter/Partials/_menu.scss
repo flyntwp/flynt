@@ -16,7 +16,7 @@
     text-decoration: none;
 
     &:hover,
-    &:active {
+    &:focus {
       color: $color-accent;
     }
   }

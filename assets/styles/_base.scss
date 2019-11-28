@@ -47,7 +47,7 @@ body {
 
   a,
   a:hover,
-  a:active {
+  a:focus {
     color: $color-headline;
     text-decoration: none;
   }
@@ -114,7 +114,7 @@ a {
   transition: color 0.2s ease-out;
 
   &:hover,
-  &:active {
+  &:focus {
     color: darken($color-accent, 10%);
   }
 }
@@ -290,7 +290,7 @@ button {
   }
 
   &:hover,
-  &:active {
+  &:focus {
     background-color: $color-background-dark;
     border-color: $color-background-dark;
     color: $color-background;
@@ -302,7 +302,7 @@ button {
     color: $color-accent;
 
     &:hover,
-    &:active {
+    &:focus {
       background-color: transparent;
       border-color: $color-background-dark;
       color: $color-background-dark;
@@ -324,7 +324,7 @@ button {
     transition: color 0.2s ease-out;
 
     &:hover,
-    &:active {
+    &:focus {
       background-color: transparent;
       color: $color-background-dark;
 
@@ -383,7 +383,7 @@ button {
   white-space: nowrap;
 
   &:hover,
-  &:active {
+  &:focus {
     color: $color-background;
   }
 }
@@ -487,7 +487,7 @@ select {
 
   &,
   &:hover,
-  &:active {
+  &:focus {
     border-color: $color-border;
     outline: 0;
   }
@@ -696,7 +696,7 @@ select {
 
   .button {
     &:hover,
-    &:active {
+    &:focus {
       background-color: $color-background-hero;
       border-color: $color-background-hero;
       color: $color-background;
@@ -704,7 +704,7 @@ select {
 
     &--ghost {
       &:hover,
-      &:active {
+      &:focus {
         background-color: transparent;
         border-color: $color-background-hero;
         color: $color-background-hero;
@@ -713,7 +713,7 @@ select {
 
     &--link {
       &:hover,
-      &:active {
+      &:focus {
         background-color: transparent;
         color: $color-background;
 
@@ -747,7 +747,7 @@ select {
   }
 
   a:hover,
-  a:active {
+  a:focus {
     color: $color-background-dark;
   }
 
@@ -757,7 +757,7 @@ select {
     color: $color-background;
 
     &:hover,
-    &:active {
+    &:focus {
       background-color: $color-background;
       border-color: $color-background;
       color: $color-background-dark;
@@ -769,7 +769,7 @@ select {
       color: $color-background-dark;
 
       &:hover,
-      &:active {
+      &:focus {
         background-color: transparent;
         border-color: $color-background;
         color: $color-background;
@@ -785,7 +785,7 @@ select {
       }
 
       &:hover,
-      &:active {
+      &:focus {
         background-color: transparent;
         color: $color-background-dark;
 
@@ -805,7 +805,7 @@ select {
 
   .pill {
     &:hover,
-    &:active {
+    &:focus {
       color: $color-background;
     }
   }
@@ -820,7 +820,7 @@ select {
 
     a,
     a:hover,
-    a:active {
+    a:focus {
       color: $color-headline;
       text-decoration: none;
     }
@@ -832,7 +832,7 @@ select {
   }
 
   a:hover,
-  a:active {
+  a:focus {
     color: darken($color-accent, 10%);
   }
 
@@ -842,7 +842,7 @@ select {
     color: $color-background;
 
     &:hover,
-    &:active {
+    &:focus {
       background-color: $color-background-dark;
       border-color: $color-background-dark;
       color: $color-background;
@@ -854,7 +854,7 @@ select {
       color: $color-accent;
 
       &:hover,
-      &:active {
+      &:focus {
         background-color: transparent;
         border-color: $color-background-dark;
         color: $color-background-dark;
@@ -866,7 +866,7 @@ select {
       color: $color-accent;
 
       &:hover,
-      &:active {
+      &:focus {
         background-color: transparent;
         color: $color-background-dark;
 
