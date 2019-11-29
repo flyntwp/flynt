@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/flyntwp/flynt/compare/v1.1.0...v1.1.1) (2019-11-29)
+
+
+### Bug Fixes
+
+* **AdminComponentScreenshots:** execute on document ready ([aa93a59](https://github.com/flyntwp/flynt/commit/aa93a59699647119072c4f5b109cd02b0dc8acc7))
+* **publicPath:** pass via wp_localize_data ([bfb2435](https://github.com/flyntwp/flynt/commit/bfb2435cc13e3045a7e34a5c34c9a5185156d29d))
+* **theContentFix:** correctly call in_array ([fe5039f](https://github.com/flyntwp/flynt/commit/fe5039fe6bc85644f1e7b471040d549116a39a13))
+
 ## [1.1.0](https://github.com/flyntwp/flynt/compare/v1.0.0...v1.1.0) (2019-11-28)
 
 
