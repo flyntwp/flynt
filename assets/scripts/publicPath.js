@@ -1,2 +1,2 @@
-const themeUrl = document.querySelector("meta[name='themeUrl']").getAttribute('content')
+const themeUrl = window.FlyntData.templateDirectoryUri
 __webpack_public_path__ = `${themeUrl}/dist/` // eslint-disable-line

@@ -1,4 +1,4 @@
-/* globals wpData */
+/* globals FlyntData, FlyntComponentScreenshots */
 import $ from 'jquery'
 
 const $body = $('body')
@@ -17,7 +17,7 @@ $body.on('mouseleave', 'a[data-layout]', function (e) {
 
 function showComponentScreenshot (layout, $wrapper) {
   const componentName = firstToUpperCase(layout)
-  const image = `${wpData.templateDirectoryUri}/${wpData.components[componentName]}/screenshot.png`
+  const image = `${FlyntData.templateDirectoryUri}/${FlyntComponentScreenshots.components[componentName]}/screenshot.png`
   const $wrapperContainer = $("<div class='flyntComponentScreenshot-imageWrapper'>").appendTo($wrapper)
 
   getImage(image).done(function () {

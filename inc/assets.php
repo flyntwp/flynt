@@ -16,6 +16,10 @@ add_action('wp_enqueue_scripts', function () {
         'inFooter' => false,
     ]);
     wp_script_add_data('Flynt/assets', 'defer', true);
+    $data = [
+        'templateDirectoryUri' => get_template_directory_uri(),
+    ];
+    wp_localize_script('Flynt/assets', 'FlyntData', $data);
     Asset::enqueue([
         'name' => 'Flynt/assets',
         'path' => 'assets/main.css',
@@ -31,6 +35,10 @@ add_action('admin_enqueue_scripts', function () {
         'inFooter' => false,
     ]);
     wp_script_add_data('Flynt/assets/admin', 'defer', true);
+    $data = [
+        'templateDirectoryUri' => get_template_directory_uri(),
+    ];
+    wp_localize_script('Flynt/assets/admin', 'FlyntData', $data);
     Asset::enqueue([
         'name' => 'Flynt/assets/admin',
         'path' => 'assets/admin.css',
