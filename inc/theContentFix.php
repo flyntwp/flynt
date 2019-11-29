@@ -16,12 +16,15 @@ function isShortcodeAndDoesNotMatchId($postContent, $postId)
 }
 
 add_filter('wp_insert_post_data', function ($data, $postArr) {
-    if (in_array([
-        'revision',
-        'nav_menu_item',
-        'attachment',
-        'customize_changeset'
-    ], $postArr['post_type'])) {
+    if (in_array(
+        $postArr['post_type'],
+        [
+            'revision',
+            'nav_menu_item',
+            'attachment',
+            'customize_changeset'
+        ]
+    )) {
         return $data;
     }
     if (empty($data['post_content']) || isShortcodeAndDoesNotMatchId($data['post_content'], $postArr['ID'])) {
