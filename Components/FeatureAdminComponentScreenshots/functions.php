@@ -13,7 +13,7 @@ add_action('admin_enqueue_scripts', function () {
             return str_replace($templateDirectory, '', $componentPath);
         }, $componentManager->getAll()),
     ];
-    wp_localize_script('Flynt/assets/admin', 'wpData', $data);
+    wp_localize_script('Flynt/assets/admin', 'FlyntComponentScreenshots', $data);
 });
 
 if (class_exists('acf')) {
