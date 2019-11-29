@@ -1,19 +1,22 @@
 /* globals FlyntData, FlyntComponentScreenshots */
 import $ from 'jquery'
 
-const $body = $('body')
 const ajaxCache = {}
 
-$body.on('mouseenter', 'a[data-layout]', function (e) {
-  const $target = $(e.currentTarget)
-  const layout = $target.data('layout')
-  showComponentScreenshot(layout, $target.closest('.acf-fc-popup'))
-})
+function init () {
+  const $body = $('body')
 
-$body.on('mouseleave', 'a[data-layout]', function (e) {
-  const $target = $(e.currentTarget)
-  hideComponentScreenshot($target.closest('.acf-fc-popup'))
-})
+  $body.on('mouseenter', 'a[data-layout]', function (e) {
+    const $target = $(e.currentTarget)
+    const layout = $target.data('layout')
+    showComponentScreenshot(layout, $target.closest('.acf-fc-popup'))
+  })
+
+  $body.on('mouseleave', 'a[data-layout]', function (e) {
+    const $target = $(e.currentTarget)
+    hideComponentScreenshot($target.closest('.acf-fc-popup'))
+  })
+}
 
 function showComponentScreenshot (layout, $wrapper) {
   const componentName = firstToUpperCase(layout)
@@ -42,3 +45,5 @@ function getImage (image) {
   }
   return ajaxCache[image]
 }
+
+$(init)
