@@ -56,31 +56,19 @@ add_action('init', function () {
 });
 
 /**
- * cleanStyleTag
- *
- * Clean up output of stylesheet <link> tags
+ * Remove id, class and media attributes from <link> tags.
+ * Remove type attribute if WordPress is lower than 5.3.
  */
-add_filter('style_loader_tag', function ($input) {
-    preg_match_all(
-        "!<link rel='stylesheet'\s?(id='[^']+')?\s+href='(.*)' type='text/css' media='(.*)' />!",
-        $input,
-        $matches
-    );
-    if (empty($matches[2])) {
-        return $input;
-    }
-    // Only display media if it is meaningful
-    $media = $matches[3][0] !== '' && $matches[3][0] !== 'all' ? ' media="' . $matches[3][0] . '"' : '';
-    return '<link rel="stylesheet" href="' . $matches[2][0] . '"' . $media . '>' . "\n";
+\add_filter('style_loader_tag', function ($input) {
+    return \preg_replace( array( "#\s(id|class|type|media)='[^']+'#", '/\s{2,}/') , array('', ' ') , $input );
 });
 
 /**
- * cleanScriptTag
- *
- * Clean up output of <script> tags
- * TODO: fix or remove (broken on wp > 5.0.0)
+ * Remove type attribute from <script> tags if WordPress is lower than 5.3.
  */
-// add_filter('script_loader_tag', function ($input) {
-//     $input = str_replace("type='text/javascript' ", '', $input);
-//     return str_replace("'", '"', $input);
-// });
+global $wp_version;
+if ( \version_compare( $wp_version, '5.3', '<' ) ) {
+    \add_filter('script_loader_tag', function ($input) {
+        return \preg_replace( array( "#\s(type)='[^']+'#", '/\s{2,}/') , array('', ' ') , $input );
+    });
+}
