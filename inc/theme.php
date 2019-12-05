@@ -5,7 +5,7 @@ add_action('after_setup_theme', function () {
     add_theme_support('post-thumbnails');
 
     /**
-     * Remove type attributes from link and script tags..
+     * Remove type attribute from link and script tags.
      */
     global $wp_version;
     if ( version_compare( $wp_version, '5.3', '>=' ) ) {
