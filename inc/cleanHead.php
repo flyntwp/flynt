@@ -56,18 +56,18 @@ add_action('init', function () {
 });
 
 /**
- * Remove id, class, type and media attributes from <link> tags.
+ * Remove id, class, type and media attributes from link tags.
  */
 \add_filter('style_loader_tag', function ($input) {
-    return \preg_replace( array( "#\s(id|class|type|media)='[^']+'#", '/\s{2,}/') , array('', ' ') , $input );
+    return \preg_replace(array( "#\s(id|class|type|media)='[^']+'#", '/\s{2,}/'), array('', ' '), $input);
 });
 
 /**
  * Remove type attribute from script tags if WordPress is lower than 5.3.
  */
 global $wp_version;
-if ( \version_compare($wp_version, '5.3', '<')) {
+if (\version_compare($wp_version, '5.3', '<')) {
     \add_filter('script_loader_tag', function ($input) {
-        return \preg_replace( array("#\s(type)='[^']+'#", '/\s{2,}/') , array('', ' ') , $input );
+        return \preg_replace(array("#\s(type)='[^']+'#", '/\s{2,}/'), array('', ' '), $input);
     });
 }
