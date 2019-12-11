@@ -180,6 +180,32 @@ Flynt includes several utility functions for creating Advanced Custom Fields opt
 * `Flynt\Utils\Options::getTranslatable` <br> Retrieve a translatable option.
 * `Flynt\Utils\Options::getGlobal` <br> Retrieve a global option.
 
+### Timber Dynamic Resize
+
+Timber provides a twig filter to resize images to any size. When working with responsive images, this function is really useful. However, having many images in many different sizes on a single page, can lead to a timeout when generating the images the first time this page is rendered.
+To deal with this issue, Flynt has its own twig filter `resizeDynamic`. Instead of resizing all images on first page render, this will generate images only if a particular size is requested.
+The generated images are for convenience also stored in a subfolder of WordPress' upload folder. This way you can easily delete all dynamically created images and generate them again, if, for example, you want to change the quality of the generated images.
+Additionaly, `resizeDynamic` can create a separate WebP file of every resized image. It also adds a rewrite rule to the `.htaccess` so that Apache will serve the WebP version to browsers that support it.
+
+#### Caveats
+
+To make `resizeDynamic` work correctly, Flynt needs to know the root relative url of WordPress' uploads folder. Unfortunately this is not always straight forward, especially if you have a non-standard WordPress folder sturcture, or if you use a plugin that manipulates `home_url` (WPML does this for example).
+If for some reason images do not load in your Flynt theme, try manually setting the relative uploads directory like this and refresh the permalink settings in wp-admin (`/app/uploads` is just an example for Bedrock installs):
+
+```php
+add_filter('Flynt/TimberDynamicResize/relativeUploadDir', function () {
+    return '/app/uploads';
+});
+```
+
+If this does not work either, you can disable `resizeDynamic` completely by adding
+
+```php
+add_filter('Flynt/TimberDynamicResize/disable', __return_true);
+```
+
+to your theme. Then it will fall back to the regular Timber `resize` functionality.
+
 ## Maintainers
 This project is maintained by [bleech](https://github.com/bleech).
 
