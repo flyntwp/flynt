@@ -164,7 +164,6 @@ class TimberDynamicResize
             header("HTTP/1.0 404 Not Found");
             exit();
         }
-        // var_dump($resizedImage);die();
 
         add_filter('timber/image/new_url', [$this, 'addImageSeparatorToUploadUrl']);
         add_filter('timber/image/new_path', [$this, 'addImageSeparatorToUploadPath']);
