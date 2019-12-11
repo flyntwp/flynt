@@ -18,6 +18,7 @@
   * [Advanced Custom Fields](#advanced-custom-fields)
   * [Field Groups](#field-groups)
   * [ACF Option Pages](#acf-option-pages)
+  * [Resize Dynamic](#resize-dynamic)
 * [Maintainers](#maintainers)
 * [Contributing](#contributing)
 * [License](#license)
@@ -180,31 +181,37 @@ Flynt includes several utility functions for creating Advanced Custom Fields opt
 * `Flynt\Utils\Options::getTranslatable` <br> Retrieve a translatable option.
 * `Flynt\Utils\Options::getGlobal` <br> Retrieve a global option.
 
-### Timber Dynamic Resize
+### Resize Dynamic
 
-Timber provides a twig filter to resize images to any size. When working with responsive images, this function is really useful. However, having many images in many different sizes on a single page, can lead to a timeout when generating the images the first time this page is rendered.
-To deal with this issue, Flynt has its own twig filter `resizeDynamic`. Instead of resizing all images on first page render, this will generate images only if a particular size is requested.
-The generated images are for convenience also stored in a subfolder of WordPress' upload folder. This way you can easily delete all dynamically created images and generate them again, if, for example, you want to change the quality of the generated images.
-Additionaly, `resizeDynamic` can create a separate WebP file of every resized image. It also adds a rewrite rule to the `.htaccess` so that Apache will serve the WebP version to browsers that support it.
+Timber provides [a `resize` filter to resize images](https://timber.github.io/docs/reference/timber-imagehelper/#resize). This filter creates all images on the page when it's loaded for the first time. If there are many images on one page then this can lead to a very slow load time, or even a complete timeout.
 
-#### Caveats
+Flynt solves this with the `resizeDynamic` filter. This filter only generates images when the image is requested, rather than when the page is loaded.
 
-To make `resizeDynamic` work correctly, Flynt needs to know the root relative url of WordPress' uploads folder. Unfortunately this is not always straight forward, especially if you have a non-standard WordPress folder sturcture, or if you use a plugin that manipulates `home_url` (WPML does this for example).
-If for some reason images do not load in your Flynt theme, try manually setting the relative uploads directory like this and refresh the permalink settings in wp-admin (`/app/uploads` is just an example for Bedrock installs):
+All of the generated images are stored in `uploads/dynamic`. If you want to manually regenarate all of these images you can delete this folder and the next time an image is requested it will be regenerated.
+
+#### WebP Support
+
+`resizeDynamic` creates a WebP file of each image it creates. For this to work, it adds a rewrite rule to `.htaccess` so that Apache will automatically serve the WebP version to all browsers that support it.
+
+#### Troubleshooting
+
+In order for `resizeDynamic` to work, Flynt needs to know the root relative url of the uploads folder. If you have a non-standard WordPress folder structure, or if you use a plugin that manipulates `home_url` (for example, [WPML](https://wpml.org/)) this can cause problems when using `resizeDynamic`.
+
+If your images do not load, try manually setting the relative uploads directory and refreshing the permalink settings in the back-end:
 
 ```php
 add_filter('Flynt/TimberDynamicResize/relativeUploadDir', function () {
-    return '/app/uploads';
+    return '/app/uploads'; // Example for Bedrock installs.
 });
 ```
 
-If this does not work either, you can disable `resizeDynamic` completely by adding
+#### Disable `resizeDynamic`
+
+To disable `resizeDynamic` completely, add this filter to your theme. Then it will fallback to the regular Timber `resize` functionality.
 
 ```php
 add_filter('Flynt/TimberDynamicResize/disable', __return_true);
 ```
-
-to your theme. Then it will fall back to the regular Timber `resize` functionality.
 
 ## Maintainers
 This project is maintained by [bleech](https://github.com/bleech).
