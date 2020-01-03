@@ -24,23 +24,12 @@ add_filter('Flynt/addComponentData?name=FeatureGoogleAnalytics', function ($data
             'gaId' => $googleAnalyticsOptions['gaId'],
             'anonymizeIp' => $googleAnalyticsOptions['anonymizeIp'],
             'isOptInComponentRegistered' => did_action('Flynt/thirdPartyCookies/initializeOptions'),
+            'cookieType' => 'statistics',
         ]);
         $data['isTrackingEnabled'] = $isTrackingEnabled;
     }
 
     return $data;
-});
-
-add_action('Flynt/thirdPartyCookies/initializeOptions', function () {
-    Options::addTranslatable('GoogleAnalytics', [
-        [
-            'label' => 'Accept Google Analytics label',
-            'name' => 'acceptGoogleAnalyticsLabel',
-            'type' => 'text',
-            'default_value' => 'Google Analytics Cookies',
-            'required' => 1,
-        ],
-    ]);
 });
 
 add_action('wp_footer', function () {
@@ -49,14 +38,12 @@ add_action('wp_footer', function () {
 });
 
 add_filter('Flynt/thirdPartyCookies', function ($features) {
-    $googleAnalyticsTranslatableOptions = Options::getTranslatable('GoogleAnalytics');
-
     $features = array_merge($features, [
-        [
-            'id' => 'GA_accept',
-            'name' => 'GA_accept',
-            'label' => $googleAnalyticsTranslatableOptions['acceptGoogleAnalyticsLabel'],
-        ]
+        'statistics' => [
+            'id' => 'statistics',
+            'label' => 'Statistics',
+            'name' => 'statistics',
+        ],
     ]);
     return $features;
 });

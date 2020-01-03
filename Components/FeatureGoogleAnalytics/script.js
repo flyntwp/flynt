@@ -16,7 +16,6 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
     this.props = this.getInitialProps()
     this.resolveElements()
     this.bindFunctions()
-    this.bindEvents()
   }
 
   getInitialProps () {
@@ -37,10 +36,6 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
   bindFunctions () {
     this.trackingChanged = this.trackingChanged.bind(this)
     this.onOptOut = this.onOptOut.bind(this)
-  }
-
-  bindEvents () {
-    $('body').on('click', '[data-action="gaOptOut"]', this.trackingChanged)
   }
 
   connectedCallback () {
@@ -67,7 +62,7 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
   }
 
   trackingChanged (event, trackingObject = {}) {
-    const optedOut = !trackingObject.GA_accept
+    const optedOut = !trackingObject[this.props.cookieType]
     this.setOptedOut(optedOut)
   }
 
