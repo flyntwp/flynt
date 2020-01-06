@@ -38,13 +38,7 @@ add_action('wp_footer', function () {
 });
 
 add_filter('Flynt/thirdPartyCookies', function ($features) {
-    $features = array_merge($features, [
-        'statistics' => [
-            'id' => 'statistics',
-            'label' => 'Statistics',
-            'name' => 'statistics',
-        ],
-    ]);
+    $features = array_merge($features, ['statistics' => 'statistics']);
     return $features;
 });
 
