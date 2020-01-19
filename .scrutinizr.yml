@@ -31,5 +31,5 @@ tools:
 checks:
   php:
     custom_coding_standard:
-      ruleset_path: phpcs.ruleset.xml
+      ruleset_path: phpcs.xml.dist
   javascript: true
