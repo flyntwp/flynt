@@ -281,7 +281,7 @@ RewriteRule (.+)\.(jpe?g|png)$ $1.webp [T=image/webp]
 </IfModule>
 
 <IfModule mod_headers.c>
-Header append Vary Accept env=REQUEST_image
+Header merge Vary Accept env=REQUEST_image
 </IfModule>
 
 <IfModule mod_mime.c>
