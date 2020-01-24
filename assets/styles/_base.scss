@@ -536,6 +536,12 @@ select {
 * Global layout classes for a consistent appearance.
 */
 
+.pageWrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .flyntComponent {
   position: relative;
 }
@@ -617,6 +623,10 @@ select {
 .scrollableTableWrapper {
   -webkit-overflow-scrolling: touch;
   overflow-x: auto;
+}
+
+.mainFooter {
+  margin-top: auto;
 }
 
 /* Box Helpers */
