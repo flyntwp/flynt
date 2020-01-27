@@ -540,6 +540,22 @@ select {
   position: relative;
 }
 
+.mainContent {
+  min-height: calc(100vh - 240px);
+
+  @media (min-width: $breakpoint-tablet) {
+    min-height: calc(100vh - 255px);
+  }
+
+  @media (min-width: $breakpoint-tablet-horizontal) {
+    min-height: calc(100vh - 280px);
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    min-height: calc(100vh - 320px);
+  }
+}
+
 .componentSpacing {
   margin: $component-spacing-mobile 0;
 
