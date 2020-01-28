@@ -309,6 +309,13 @@ button {
     }
   }
 
+  &--icon {
+    .feather {
+      color: unset;
+    }
+  }
+
+
   &--small {
     font-size: 0.8rem;
     padding: 0.5rem 1rem;
@@ -711,6 +718,11 @@ select {
       }
     }
 
+    // &--icon {
+    //    color: white;
+
+    // }
+
     &--link {
       &:hover,
       &:focus {
@@ -858,6 +870,16 @@ select {
         background-color: transparent;
         border-color: $color-background-dark;
         color: $color-background-dark;
+      }
+
+      .feather {
+
+        &:hover,
+        &:focus {
+          background-color: transparent;
+        border-color: $color-background-dark;
+        color: $color-background-dark;
+        }
       }
     }
 
