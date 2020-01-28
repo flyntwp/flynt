@@ -49,6 +49,12 @@ function getACFLayout()
                         ],
                     ],
                     [
+                        'label' => 'Link',
+                        'name' => 'link',
+                        'type' => 'link',
+                        'return_format' => 'array'
+                    ],
+                    [
                         'label' => 'Content',
                         'name' => 'contentHtml',
                         'type' => 'wysiwyg',

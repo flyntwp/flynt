@@ -30,6 +30,9 @@
                   {{ item.contentHtml|e('wp_kses_post') }}
                 </div>
               {% endif %}
+              {% if item.link %}
+                <a class="button button--link {% if options.card == 'layoutCard' %} link-has-margin {% endif %}" href="{{ item.link.url }}" title="{{ item.link.title }}">{{ item.link.title }}</a>
+              {% endif %}
             </div>
           </li>
         {% endif %}

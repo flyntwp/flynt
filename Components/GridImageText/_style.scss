@@ -58,4 +58,13 @@
       }
     }
   }
+
+  .link-has-margin {
+    margin: 0 0 30px 20px;
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      margin-left: 30px;
+
+    }
+  }
 }
