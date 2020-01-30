@@ -18,3 +18,8 @@ if (Init::checkRequiredPlugins()) {
     add_action('after_setup_theme', ['Flynt\Init', 'initTheme']);
     add_action('after_setup_theme', ['Flynt\Init', 'loadComponents'], 101);
 }
+
+// Admin Bar.This line disables the admin-bar CSS from pushing the site down. Instead
+// padding was added to the .pageWrapper in base.scss
+add_theme_support( 'admin-bar', array( 'callback' => '__return_false' ) );
+

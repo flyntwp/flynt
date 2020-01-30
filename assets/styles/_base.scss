@@ -17,9 +17,11 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   line-height: 1.625;
+  min-height: 100%;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   overflow-wrap: break-word;
   word-wrap: break-word;
+
 
   *,
   *::before,
@@ -29,6 +31,7 @@ html {
 }
 
 body {
+  height: 100vh;
   overflow-x: hidden;
 }
 
@@ -536,18 +539,23 @@ select {
 * Global layout classes for a consistent appearance.
 */
 
+
 .pageWrapper {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100%;
 
   .admin-bar & {
-    min-height: calc(100vh - 46px);
+    padding-top: 46px;
 
-    @media (min-width: 782px) {
-      min-height: calc(100vh - 32px);
+    @media (min-width: $breakpoint-tablet + 14) {
+      padding-top: 32px;
     }
   }
+}
+
+.mainContent {
+  flex: 1 0 auto;
 }
 
 .flyntComponent {
@@ -633,9 +641,7 @@ select {
   overflow-x: auto;
 }
 
-.mainFooter {
-  margin-top: auto;
-}
+
 
 /* Box Helpers */
 
