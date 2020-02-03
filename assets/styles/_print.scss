@@ -1,0 +1,61 @@
+@media print {
+  [is='flynt-navigation-main'],
+  [is='flynt-navigation-burger'],
+  [is='flynt-navigation-footer'],
+  [is="flynt-block-cookie-notice"],
+  .button,
+   {
+    display: none !important;
+  }
+
+  a:after {
+    content: "( "attr(href)" )"
+  }
+
+  * ,
+  ul,
+  .themeLight,
+  .themeHero,
+  .themeReset
+  {
+    color: #000 !important;
+    background-color: #fff;
+    box-shadow: none;
+
+  }
+
+  h2 {
+    break-before: page;
+  }
+
+  [is='flynt-block-text-image-crop'] .box-inner--content {
+    width: unset;
+  }
+
+  [is='flynt-block-text-image-crop'] .box-inner--image {
+    width: unset;
+  }
+
+  [is='flynt-block-text-image-crop'] .figure {
+    position: static;
+  }
+
+  [is='flynt-block-text-image-crop'] .box {
+    display: block;
+  }
+
+  [is='flynt-block-text-image-crop'] .box-contentWrapper {
+    margin: 0 auto;
+  }
+
+
+
+  [is='flynt-block-text-image-crop']  {
+    .figure-image {
+      width: 50%;
+      margin: 0 auto;
+    }
+
+  }
+}
+
