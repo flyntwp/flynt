@@ -1,3 +1,5 @@
+
+// Printstyles for Front-Page
 @media print {
   [is='flynt-navigation-main'],
   [is='flynt-navigation-burger'],
@@ -8,9 +10,8 @@
     display: none !important;
   }
 
-  a:after {
-    content: "( "attr(href)" )";
-
+  a {
+    text-decoration: none;
   }
 
   * ,
@@ -19,9 +20,9 @@
   .themeHero,
   .themeReset
   {
-    color: #000 !important;
     background-color: #fff;
     box-shadow: none;
+    color: #000 !important;
 
   }
 
@@ -31,30 +32,6 @@
     }
   }
 
-  [is='flynt-block-text-image-crop'] {
-
-    .box-inner--content,
-    .box-inner--image {
-      width: unset;
-    }
-
-    .figure {
-      position: static;
-    }
-
-    .box {
-      display: block;
-    }
-
-    .box-contentWrapper {
-      margin: 0 auto;
-    }
-
-    .figure-image {
-      width: 50%;
-      margin: 0 auto;
-    }
-  }
 
   [is="flynt-block-image-text"] {
     .container {
@@ -68,7 +45,6 @@
   }
 
   [is='flynt-grid-image-text'] {
-
     .grid {
       flex-wrap: unset;
 
@@ -103,6 +79,39 @@
           }
         }
       }
+    }
+  }
+
+  [is='flynt-block-text-image-crop'] {
+    .box-inner--content,
+    .box-inner--image {
+      width: unset;
+    }
+
+    .box-contentWrapper {
+      max-width: 100%;
+      padding: 0 40px;
+    }
+
+    .figure {
+      display: none;
+    }
+
+  }
+
+  // Printstyle for Base//Components Page
+
+  [is='flynt-list-components'] {
+   .components {
+    display: inline-block;
+    // width:30%;
+  }
+
+  .component {
+    // display: inline-block;
+    float: left;
+    width: 200px;
+    height: 300px;
     }
   }
 }
