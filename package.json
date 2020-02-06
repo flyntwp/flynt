@@ -5,6 +5,10 @@
   "repository": "git@github.com:flyntwp/flynt.git",
   "author": "bleech <hello@bleech.de>",
   "license": "MIT",
+  "config": {
+    "rsyncSrc": "./",
+    "rsyncDest": "sshUser@server.de:/pathToRemoteWordPressThemeFolderWithThemeName/"
+  },
   "scripts": {
     "checkVersion": "check-node-version --package -p",
     "clean": "rimraf ./dist",
@@ -13,6 +17,8 @@
     "build": "run-s --silent checkVersion clean lint build:production build:rev",
     "build:production": "cross-env NODE_ENV=production webpack --progress --display=minimal",
     "build:rev": "gulp rev",
+    "publish": "run-s --silent build publish:rsync",
+    "publish:rsync": "rsync -avz --prune-empty-dirs --delete --delete-excluded --include={'/dist/**','/vendor/**'} --include='/Components/*/*/**.'{php,twig,png} --exclude={'.*','.*/','*.json','*.lock','*.md','*.scss','*.js','*.xml','node_modules','/assets','/Components/*/*/**'} $npm_package_config_rsyncSrc $npm_package_config_rsyncDest",
     "lint": "run-p --silent lint:*",
     "lint:scripts": "cross-env eslint '**/*.js'",
     "lint:styles": "cross-env stylelint '**/*.scss'",
