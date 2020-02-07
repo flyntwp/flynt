@@ -99,19 +99,41 @@
 
   }
 
-  // Printstyle for Base//Components Page
+  // Printstyle for Base Components Page
 
   [is='flynt-list-components'] {
    .components {
-    display: inline-block;
-    // width:30%;
+    display: block;
+    border: 2px solid red;
+    width: 100%;
+
+
+
+    // &::before,
+    // &::after {
+    //   content: " ";
+    //   clear: both;
+    //   display: table;
+    // }
+
   }
 
   .component {
-    // display: inline-block;
-    float: left;
-    width: 200px;
-    height: 300px;
+    display: inline-block;
+    // float: left;
+    width: 300px;
+
+
+      // &::before,
+      // &::after {
+      //   content: " ";
+      //   clear: both;
+      //   display: table;
+      // }
+
+      &-footer {
+        display: inline-block;
+      }
     }
   }
 }
