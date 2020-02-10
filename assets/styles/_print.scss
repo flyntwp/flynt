@@ -26,37 +26,12 @@
   }
 
   // FRONT-PAGE STYLING
-  .page-id-963 {
-    // [is='flynt-navigation-main'],
-    // [is='flynt-navigation-burger'],
-    // [is='flynt-navigation-footer'],
-    // [is="flynt-block-cookie-notice"],
-    // .button {
-    //   display: none !important;
-    // }
-
-    // a {
-    //   text-decoration: none;
-    // }
-
-    // * ,
-    // ul,
-    // .themeLight,
-    // .themeHero,
-    // .themeReset
-    // {
-    //   background-color: #fff;
-    //   box-shadow: none;
-    //   color: #000 !important;
-
-    // }
-
+  .page-id-963  {
     [is="flynt-list-icons"] {
       h2 {
         break-before: page;
       }
     }
-
 
     [is="flynt-block-image-text"] {
       .container {
@@ -124,9 +99,9 @@
     }
   }
 
-  // Printstyle for Base Components Page
-  .page-id-5 {
-
+  // Printstyle for Base Components Page(5) & Premium Component Page(1089)
+  .page-id-5,
+  .page-id-1089 {
     [is='flynt-list-components'] {
       .preContent {
         margin-bottom: 0px;
@@ -146,13 +121,13 @@
         display: block;
         width: 100%;
 
-          li:nth-child(odd) {
-            margin-right: 90px;
-          }
+        li:nth-child(odd) {
+          margin-right: 90px;
+        }
 
-          li:nth-child(2) {
-            margin-top: 0px;
-          }
+        li:nth-child(2) {
+          margin-top: 0px;
+        }
       }
 
     .component {
@@ -165,9 +140,8 @@
       }
 
       &-imageWrapper {
-          border: 1px solid rgb(160, 158, 158);
-          border-radius: 4px;
-
+        border: 1px solid rgb(160, 158, 158);
+        border-radius: 4px;
       }
 
       &-description {
@@ -191,11 +165,14 @@
     }
   }
 
-  [is="flynt-hero-cta"] {
-    display: none;
+    [is="flynt-hero-cta"] {
+      display: none;
+    }
   }
-  }
-}
+
+
+
+}  //closes Media Print
 
 
 
