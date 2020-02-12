@@ -9,7 +9,7 @@
       {% for item in items %}
         {% if item.image or item.contentHtml %}
           <li class="grid-item">
-            <div class="content {{ options.card == 'layoutCard' ? 'boxShadow themeReset' }}">
+            <div class="content grid-card {{ options.card == 'layoutCard' ? 'boxShadow themeReset' }}">
               {% if item.image %}
                 <img class="content-image lazyload"
                   src="{{ item.image.src|resizeDynamic(750, 500) }}"
