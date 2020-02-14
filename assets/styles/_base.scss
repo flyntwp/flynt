@@ -872,8 +872,8 @@ select {
         &:hover,
         &:focus {
           background-color: transparent;
-        border-color: $color-background-dark;
-        color: $color-background-dark;
+          border-color: $color-background-dark;
+          color: $color-background-dark;
         }
       }
     }
