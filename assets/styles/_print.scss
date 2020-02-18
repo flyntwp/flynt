@@ -1,177 +1,84 @@
-
-// Printstyles for Front-Page
-
 @media print {
-  //General Page Styling
+  *,
+  *:before,
+  *:after {
+    background: transparent !important;
+    color: #000 !important;
+    /* Black prints faster */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
   [is='flynt-navigation-main'],
   [is='flynt-navigation-burger'],
   [is='flynt-navigation-footer'],
   [is="flynt-block-cookie-notice"],
-  .button {
+  .button,
+  footer {
     display: none !important;
   }
 
   a {
-    text-decoration: none;
+    text-decoration: underline;
+    font-weight: bold;
   }
 
-  * ,
-  ul,
-  .themeLight,
-  .themeHero,
-  .themeReset {
-    background-color: #fff;
-    box-shadow: none;
-    color: #000 !important;
+  a[href]:after {
+    content: " (" attr(href) ")";
   }
 
-  // FRONT-PAGE STYLING
-  .page-id-963  {
-    [is="flynt-list-icons"] {
-      h2 {
-        break-before: page;
-      }
-    }
+  a[href^="/"]:after {
+    content: "";
+ }
 
-    [is="flynt-block-image-text"] {
-      .container {
-        max-width: inherit;
-        padding: 0 40px;
-      }
-
-      .box-inner--image {
-        display: none;
-      }
-    }
-
-    [is='flynt-grid-image-text'] {
-      .grid {
-        flex-wrap: unset;
-
-        &--columns1 {
-          display: block;
-        }
-
-        &--columns3 {
-          text-align: center;
-
-          .content-image {
-          margin: 0 auto;
-          max-width: 85%;
-          }
-
-          .content-inner {
-            margin: 0 auto;
-            width: 100%;
-          }
-        }
-
-        &--columns4 {
-          .content {
-            display: inline-block;
-            text-align: center;
-            width: 100%;
-
-            .iconList{
-              li {
-                padding-left: 0rem;
-              }
-            }
-          }
-        }
-      }
-    }
-
-    [is='flynt-block-text-image-crop'] {
-      .box-inner--content,
-      .box-inner--image {
-        width: unset;
-      }
-
-      .box-contentWrapper {
-        max-width: 100%;
-        padding: 0 40px;
-      }
-
-      .figure {
-        display: none;
-      }
-    }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
   }
 
-  // Printstyle for Base Components Page(5) & Premium Component Page(1089)
-  .page-id-5,
-  .page-id-1089 {
-    [is='flynt-list-components'] {
-      .preContent {
-        margin-bottom: 0px;
+  /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
 
-        h1 {
-          font-size: 1.25rem;
-          margin-bottom: 0px;
-        }
-
-        p {
-          font-size: .8rem;
-          margin-bottom: 20px;
-        }
-      }
-
-      .components {
-        display: block;
-        width: 100%;
-
-        li:nth-child(odd) {
-          margin-right: 90px;
-        }
-
-        li:nth-child(2) {
-          margin-top: 0px;
-        }
-      }
-
-    .component {
-      display: inline-block;
-      vertical-align: top;
-      width: 42%;
-
-      &-image {
-        width: 100%;
-      }
-
-      &-imageWrapper {
-        border: 1px solid rgb(160, 158, 158);
-        border-radius: 4px;
-      }
-
-      &-description {
-        h3 {
-          font-size: 1rem ;
-        }
-
-        p {
-          font-size: .9rem;
-          line-height: 1.2;
-        }
-      }
-
-      &-footer {
-        display: none;
-      }
-    }
-
-    .boxShadow {
-      box-shadow: none;
-    }
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
   }
 
-    [is="flynt-hero-cta"] {
-      display: none;
-    }
+  pre {
+    white-space: pre-wrap !important;
   }
-}  //closes Media Print
 
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
 
+  /*
+     * Printing Tables:
+     * https://web.archive.org/web/20180815150934/http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
 
+  thead {
+    display: table-header-group;
+  }
 
+  tr,
+  img,
+  ul {
+    page-break-inside: avoid;
+  }
 
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
