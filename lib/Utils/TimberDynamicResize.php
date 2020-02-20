@@ -8,7 +8,7 @@ use Timber\Image\Operation\Resize;
 
 class TimberDynamicResize
 {
-    const DB_VERSION = '1.1';
+    const DB_VERSION = '2.0';
     const TABLE_NAME = 'resized_images';
     const IMAGE_QUERY_VAR = 'dynamic-images';
     const IMAGE_PATH_SEPARATOR = 'dynamic';
@@ -34,12 +34,17 @@ class TimberDynamicResize
             $charsetCollate = $wpdb->get_charset_collate();
 
             $sql = "CREATE TABLE $tableName (
-            url varchar(511),
-            arguments text
-        ) $charsetCollate;";
+                width int(11) NOT NULL,
+                height int(11) NOT NULL,
+                crop varchar(32) NOT NULL
+            ) $charsetCollate;";
 
             require_once ABSPATH . 'wp-admin/includes/upgrade.php';
             dbDelta($sql);
+
+            if (version_compare($installedVersion, '2.0', '<=')) {
+                $wpdb->query("ALTER TABLE {$tableName} ADD PRIMARY KEY(`width`, `height`, `crop`);");
+            }
 
             update_option($optionName, static::DB_VERSION);
         }
@@ -118,18 +123,10 @@ class TimberDynamicResize
             $fileinfo['extension']
         );
 
-        $arguments = [
-            'src' => $src,
-            'w' => $w,
-            'h' => $h,
-            'crop' => $crop,
-            'force' => $force
-        ];
-
         if (empty($this->flyntResizedImages)) {
             add_action('shutdown', [$this, 'storeResizedUrls'], -1);
         }
-        $this->flyntResizedImages[$resizedUrl] = json_encode($arguments);
+        $this->flyntResizedImages[$w . '-' . $h . '-' . $crop] = [$w, $h, $crop];
 
         return $this->addImageSeparatorToUploadUrl($resizedUrl);
     }
@@ -151,14 +148,31 @@ class TimberDynamicResize
         add_rewrite_tag("%{$routeName}%", "([^&]+)");
     }
 
-    public function generateImage($src)
+    public function generateImage($relativePath)
     {
-        $src = trailingslashit($this->getUploadsBaseurl()) . $src;
-        global $wpdb;
-        $tableName = $this->getTableName();
-        $resizedImage = $wpdb->get_row(
-            $wpdb->prepare("SELECT * FROM {$tableName} WHERE url = %s", $src)
-        );
+        $matched = preg_match('/(.+)-(\d+)x(\d+)-c-(.+)(\..*)$/', $relativePath, $matchedSrc);
+        $exists = false;
+        if ($matched) {
+            $originalRelativePath = $matchedSrc[1] . $matchedSrc[5];
+            $originalPath = trailingslashit($this->getUploadsBasedir()) . $originalRelativePath;
+            $originalUrl = trailingslashit($this->getUploadsBaseurl()) . $originalRelativePath;
+            $exists = file_exists($originalPath);
+            $w = (int) $matchedSrc[2];
+            $h = (int) $matchedSrc[3];
+            $crop = $matchedSrc[4];
+        }
+
+        if ($exists) {
+            global $wpdb;
+            $tableName = $this->getTableName();
+            $resizedImage = $wpdb->get_row(
+                $wpdb->prepare("SELECT * FROM {$tableName} WHERE width = %d AND height = %d AND crop = %s", [
+                    $w,
+                    $h,
+                    $crop,
+                ])
+            );
+        }
 
         if (empty($resizedImage)) {
             header("HTTP/1.0 404 Not Found");
@@ -168,12 +182,11 @@ class TimberDynamicResize
         add_filter('timber/image/new_url', [$this, 'addImageSeparatorToUploadUrl']);
         add_filter('timber/image/new_path', [$this, 'addImageSeparatorToUploadPath']);
 
-        $arguments = json_decode($resizedImage->arguments, true);
-        $url = ImageHelper::resize(
-            $arguments['src'],
-            (int) $arguments['w'],
-            (int) $arguments['h'],
-            $arguments['crop'],
+        $resizedUrl = ImageHelper::resize(
+            $originalUrl,
+            $w,
+            $h,
+            $crop,
             false
         );
 
@@ -181,10 +194,10 @@ class TimberDynamicResize
         remove_filter('timber/image/new_path', [$this, 'addImageSeparatorToUploadPath']);
 
         if (!apply_filters('Flynt/TimberDynamicResize/disableWebP', false)) {
-            ImageHelper::img_to_webp($url);
+            ImageHelper::img_to_webp($resizedUrl);
         }
 
-        header("Location: {$url}", true, 302);
+        header("Location: {$resizedUrl}", true, 302);
         exit();
     }
 
@@ -250,26 +263,13 @@ EOD;
     {
         global $wpdb;
         $tableName = $this->getTableName();
-        $urls = array_keys($this->flyntResizedImages);
-        $deletePlaceholders = array_fill(0, count($urls), '%s');
-        $deletePlaceholdersString = '(' . implode(', ', $deletePlaceholders) . ')';
+        $values = array_values($this->flyntResizedImages);
+        $placeholders = array_fill(0, count($values), '(%d, %d, %s)');
+        $placeholdersString = implode(', ', $placeholders);
         $wpdb->query(
             $wpdb->prepare(
-                "DELETE FROM {$tableName} WHERE url IN {$deletePlaceholdersString}",
-                $urls
-            )
-        );
-        $insertPlaceholders = array_fill(0, count($urls), '(%s, %s)');
-        $insertPlaceholdersString = implode(', ', $insertPlaceholders);
-        $insertValues = [];
-        foreach ($urls as $url) {
-            $insertValues[] = $url;
-            $insertValues[] = $this->flyntResizedImages[$url];
-        }
-        $wpdb->query(
-            $wpdb->prepare(
-                "INSERT INTO {$tableName} (url, arguments) VALUES {$insertPlaceholdersString}",
-                $insertValues
+                "INSERT IGNORE INTO {$tableName} (width, height, crop) VALUES {$placeholdersString}",
+                call_user_func_array('array_merge', $values)
             )
         );
     }
