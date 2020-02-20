@@ -15,13 +15,24 @@ class TimberDynamicResize
 
     public $flyntResizedImages = [];
 
+    protected $enabled = false;
+    protected $htaccessDisabled = false;
+    protected $webpDisabled = false;
+
     public function __construct()
     {
-        $this->createTable();
-        $this->addHooks();
+        $this->enabled = apply_filters('Flynt/TimberDynamicResize/enable', false);
+        $this->htaccessDisabled = apply_filters('Flynt/TimberDynamicResize/disableHtaccess', false);
+        $this->webpDisabled = apply_filters('Flynt/TimberDynamicResize/disableWebP', false);
+        if ($this->enabled) {
+            $this->createTable();
+            $this->addDynamicHooks();
+        } else {
+            $this->addHooks();
+        }
     }
 
-    private function createTable()
+    protected function createTable()
     {
         $optionName = static::TABLE_NAME . '_db_version';
 
@@ -50,32 +61,37 @@ class TimberDynamicResize
         }
     }
 
-    private function addHooks()
+    protected function addDynamicHooks()
     {
         add_filter('init', [$this, 'addRewriteTag']);
         add_action('generate_rewrite_rules', [$this, 'registerRewriteRule']);
         add_action('parse_request', function ($wp) {
             if (isset($wp->query_vars[static::IMAGE_QUERY_VAR])) {
-                $this->generateImage($wp->query_vars[static::IMAGE_QUERY_VAR]);
+                $this->checkAndGenerateImage($wp->query_vars[static::IMAGE_QUERY_VAR]);
             }
         });
-        if (!apply_filters('Flynt/TimberDynamicResize/disableHtaccess', false)) {
-            add_filter('mod_rewrite_rules', [$this, 'addRewriteRule']);
-        }
+    }
 
-        add_action('after_switch_theme', function () {
-            add_action('shutdown', 'flush_rewrite_rules');
-        });
-        add_action('switch_theme', function () {
-            remove_filter('mod_rewrite_rules', [$this, 'addRewriteRule']);
-            flush_rewrite_rules();
-        });
+    protected function addHooks()
+    {
         add_action('timber/twig/filters', function ($twig) {
             $twig->addFilter(
                 new TwigFilter('resizeDynamic', [$this, 'resizeDynamic'])
             );
             return $twig;
         });
+        if (!$this->htaccessDisabled) {
+            add_filter('mod_rewrite_rules', [$this, 'addRewriteRule']);
+        }
+        if ($this->enabled || !$this->htaccessDisabled) {
+            add_action('after_switch_theme', function () {
+                add_action('shutdown', 'flush_rewrite_rules');
+            });
+            add_action('switch_theme', function () {
+                remove_filter('mod_rewrite_rules', [$this, 'addRewriteRule']);
+                flush_rewrite_rules();
+            });
+        }
     }
 
     public function getTableName()
@@ -116,19 +132,23 @@ class TimberDynamicResize
         $crop = 'default',
         $force = false
     ) {
-        $resizeOp = new Resize($w, $h, $crop);
-        $fileinfo = pathinfo($src);
-        $resizedUrl = $resizeOp->filename(
-            $fileinfo['dirname'] . '/' . $fileinfo['filename'],
-            $fileinfo['extension']
-        );
+        if ($this->enabled) {
+            $resizeOp = new Resize($w, $h, $crop);
+            $fileinfo = pathinfo($src);
+            $resizedUrl = $resizeOp->filename(
+                $fileinfo['dirname'] . '/' . $fileinfo['filename'],
+                $fileinfo['extension']
+            );
 
-        if (empty($this->flyntResizedImages)) {
-            add_action('shutdown', [$this, 'storeResizedUrls'], -1);
+            if (empty($this->flyntResizedImages)) {
+                add_action('shutdown', [$this, 'storeResizedUrls'], -1);
+            }
+            $this->flyntResizedImages[$w . '-' . $h . '-' . $crop] = [$w, $h, $crop];
+
+            return $this->addImageSeparatorToUploadUrl($resizedUrl);
+        } else {
+            return $this->generateImage($src, $w, $h, $crop, $force);
         }
-        $this->flyntResizedImages[$w . '-' . $h . '-' . $crop] = [$w, $h, $crop];
-
-        return $this->addImageSeparatorToUploadUrl($resizedUrl);
     }
 
     public function registerRewriteRule($wpRewrite)
@@ -148,7 +168,7 @@ class TimberDynamicResize
         add_rewrite_tag("%{$routeName}%", "([^&]+)");
     }
 
-    public function generateImage($relativePath)
+    public function checkAndGenerateImage($relativePath)
     {
         $matched = preg_match('/(.+)-(\d+)x(\d+)-c-(.+)(\..*)$/', $relativePath, $matchedSrc);
         $exists = false;
@@ -179,26 +199,33 @@ class TimberDynamicResize
             exit();
         }
 
+        $resizedUrl = $this->generateImage($originalUrl, $w, $h, $crop);
+
+        header("Location: {$resizedUrl}", true, 302);
+        exit();
+    }
+
+    protected function generateImage($url, $w, $h, $crop, $force = false)
+    {
         add_filter('timber/image/new_url', [$this, 'addImageSeparatorToUploadUrl']);
         add_filter('timber/image/new_path', [$this, 'addImageSeparatorToUploadPath']);
 
         $resizedUrl = ImageHelper::resize(
-            $originalUrl,
+            $url,
             $w,
             $h,
             $crop,
-            false
+            $force
         );
 
         remove_filter('timber/image/new_url', [$this, 'addImageSeparatorToUploadUrl']);
         remove_filter('timber/image/new_path', [$this, 'addImageSeparatorToUploadPath']);
 
-        if (!apply_filters('Flynt/TimberDynamicResize/disableWebP', false)) {
+        if (!$this->webpDisabled) {
             ImageHelper::img_to_webp($resizedUrl);
         }
 
-        header("Location: {$resizedUrl}", true, 302);
-        exit();
+        return $resizedUrl;
     }
 
     public function addImageSeparatorToUploadUrl($url)

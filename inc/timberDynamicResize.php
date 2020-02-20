@@ -32,15 +32,4 @@ use Twig\TwigFilter;
 //     return '/app/uploads';
 // });
 
-call_user_func(function () {
-    if (apply_filters('Flynt/TimberDynamicResize/disable', false)) {
-        add_action('timber/twig/filters', function ($twig) {
-            $twig->addFilter(
-                new TwigFilter('resizeDynamic', ['Timber\ImageHelper', 'resize'])
-            );
-            return $twig;
-        });
-    } else {
-        new TimberDynamicResize();
-    }
-});
+new TimberDynamicResize();
