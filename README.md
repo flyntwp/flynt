@@ -42,6 +42,32 @@ npm run build
 * [Composer](https://getcomposer.org/download/) >= 1.8
 * [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/) >= 5.7
 
+## Troubleshooting
+
+In some setups images may not show up, returning a 404 by the server.
+
+The most common reason for this is that you are using nginx and your server is not set up in the default way. You can see that this is the case, if an image url return a 404 from nginx, not from WordPress itself.
+
+In this case, please add something like
+
+```nginx
+location ~ "^(.*)/wp-content/uploads/(.*)$" {
+  try_files $uri $uri/ /index.php$is_args$args;
+}
+```
+
+to your site config.
+
+Other issues might come from Flynt not being able to determine the relative url of your uploads folder. If you have a non-standard WordPress folder structure, or if you use a plugin that manipulates `home_url` (for example, [WPML](https://wpml.org/)) this can cause problems when using `resizeDynamic`.
+
+In this care try to set the relative upload path manually and refresh the permalink settings in the back-end:
+
+```php
+add_filter('Flynt/TimberDynamicResize/relativeUploadDir', function () {
+    return '/app/uploads'; // Example for Bedrock installs.
+});
+```
+
 ## Usage
 In your terminal, navigate to `<your-project>/wp-content/themes/flynt` and run `npm start`. This will start a local server at `localhost:3000`.
 
@@ -181,7 +207,7 @@ Flynt includes several utility functions for creating Advanced Custom Fields opt
 * `Flynt\Utils\Options::getTranslatable` <br> Retrieve a translatable option.
 * `Flynt\Utils\Options::getGlobal` <br> Retrieve a global option.
 
-### Resize Dynamic
+### Dynamic Resize & WebP Generation
 
 Timber provides [a `resize` filter to resize images](https://timber.github.io/docs/reference/timber-imagehelper/#resize). This filter creates all images on the page when it's loaded for the first time. If there are many images on one page then this can lead to a very slow load time, or even a complete timeout.
 
@@ -189,29 +215,9 @@ Flynt solves this with the `resizeDynamic` filter. This filter only generates im
 
 All of the generated images are stored in `uploads/dynamic`. If you want to manually regenarate all of these images you can delete this folder and the next time an image is requested it will be regenerated.
 
-#### WebP Support
+`resizeDynamic` also creates a WebP file of each image it resizes. For this to work, it adds a rewrite rule to `.htaccess` so that Apache will automatically serve the WebP version to all browsers that support it.
 
-`resizeDynamic` creates a WebP file of each image it creates. For this to work, it adds a rewrite rule to `.htaccess` so that Apache will automatically serve the WebP version to all browsers that support it.
-
-#### Troubleshooting
-
-In order for `resizeDynamic` to work, Flynt needs to know the root relative url of the uploads folder. If you have a non-standard WordPress folder structure, or if you use a plugin that manipulates `home_url` (for example, [WPML](https://wpml.org/)) this can cause problems when using `resizeDynamic`.
-
-If your images do not load, try manually setting the relative uploads directory and refreshing the permalink settings in the back-end:
-
-```php
-add_filter('Flynt/TimberDynamicResize/relativeUploadDir', function () {
-    return '/app/uploads'; // Example for Bedrock installs.
-});
-```
-
-#### Disable `resizeDynamic`
-
-To disable `resizeDynamic` completely, add this filter to your theme. Then it will fallback to the regular Timber `resize` functionality.
-
-```php
-add_filter('Flynt/TimberDynamicResize/disable', __return_true);
-```
+You can disable the dynamic resize functionality and WebP generation by using the filters `Flynt/TimberDynamicResize/disableDynamic` and `Flynt/TimberDynamicResize/disableWebp`. If you change the enable dynamic resizing again, make sure to flush your permalinks.
 
 ## Maintainers
 This project is maintained by [bleech](https://github.com/bleech).
