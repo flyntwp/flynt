@@ -16,20 +16,17 @@ class TimberDynamicResize
     public $flyntResizedImages = [];
 
     protected $enabled = false;
-    protected $htaccessDisabled = false;
-    protected $webpDisabled = false;
+    protected $webpEnabled = false;
 
     public function __construct()
     {
-        $this->enabled = apply_filters('Flynt/TimberDynamicResize/enable', false);
-        $this->htaccessDisabled = apply_filters('Flynt/TimberDynamicResize/disableHtaccess', false);
-        $this->webpDisabled = apply_filters('Flynt/TimberDynamicResize/disableWebP', false);
+        $this->enabled = !(apply_filters('Flynt/TimberDynamicResize/disableDynamic', false));
+        $this->webpEnabled = !(apply_filters('Flynt/TimberDynamicResize/disableWebp', false));
         if ($this->enabled) {
             $this->createTable();
             $this->addDynamicHooks();
-        } else {
-            $this->addHooks();
         }
+        $this->addHooks();
     }
 
     protected function createTable()
@@ -80,15 +77,15 @@ class TimberDynamicResize
             );
             return $twig;
         });
-        if (!$this->htaccessDisabled) {
-            add_filter('mod_rewrite_rules', [$this, 'addRewriteRule']);
+        if ($this->webpEnabled) {
+            add_filter('mod_rewrite_rules', [$this, 'addWebpRewriteRule']);
         }
-        if ($this->enabled || !$this->htaccessDisabled) {
+        if ($this->enabled || $this->webpEnabled) {
             add_action('after_switch_theme', function () {
                 add_action('shutdown', 'flush_rewrite_rules');
             });
             add_action('switch_theme', function () {
-                remove_filter('mod_rewrite_rules', [$this, 'addRewriteRule']);
+                remove_filter('mod_rewrite_rules', [$this, 'addWebpRewriteRule']);
                 flush_rewrite_rules();
             });
         }
@@ -221,8 +218,15 @@ class TimberDynamicResize
         remove_filter('timber/image/new_url', [$this, 'addImageSeparatorToUploadUrl']);
         remove_filter('timber/image/new_path', [$this, 'addImageSeparatorToUploadPath']);
 
-        if (!$this->webpDisabled) {
-            ImageHelper::img_to_webp($resizedUrl);
+        if ($this->webpEnabled) {
+            $fileinfo = pathinfo($resizedUrl);
+            if (in_array($fileinfo['extension'], [
+                'jpeg',
+                'jpg',
+                'png',
+            ])) {
+                ImageHelper::img_to_webp($resizedUrl);
+            }
         }
 
         return $resizedUrl;
@@ -248,10 +252,9 @@ class TimberDynamicResize
         );
     }
 
-    public function addRewriteRule($rules)
+    public function addWebpRewriteRule($rules)
     {
-        if (!apply_filters('Flynt/TimberDynamicResize/disableWebP', false)) {
-            $dynamicImageRule = <<<EOD
+        $dynamicImageRule = <<<EOD
 \n# BEGIN Flynt dynamic images
 <IfModule mod_setenvif.c>
 # Vary: Accept for all the requests to jpeg and png
@@ -280,9 +283,6 @@ AddType image/webp .webp
 </IfModule>\n
 # END Flynt dynamic images\n\n
 EOD;
-        } else {
-            $dynamicImageRule = '';
-        }
         return $dynamicImageRule . $rules;
     }
 

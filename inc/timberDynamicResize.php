@@ -3,23 +3,17 @@
 namespace Flynt\TimberDynamicResize;
 
 use Flynt\Utils\TimberDynamicResize;
-use Twig\TwigFilter;
 
 /**
- * Disable dynamic images and fall back to regular
- * Timber resize filter
+ * Disable dynamic image generation and fall back
+ * to regular timber resize functionality.
  */
-// add_filter('Flynt/TimberDynamicResize/disable', __return_true);
+// add_filter('Flynt/TimberDynamicResize/disableDynamic', '__return_true');
 
 /**
  * Disable WebP generation
  */
-// add_filter('Flynt/TimberDynamicResize/disableWebP', __return_true);
-
-/**
- * Disable adding of rewrite rules to htaccess
- */
-// add_filter('Flynt/TimberDynamicResize/disableHtaccess', __return_true);
+// add_filter('Flynt/TimberDynamicResize/disableWebp', '__return_true');
 
 /**
  * Set upload directory relative to web root.
