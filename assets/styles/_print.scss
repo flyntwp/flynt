@@ -1,48 +1,46 @@
 @media print {
   *,
-  *:before,
-  *:after {
+  *::before,
+  *::after {
     background: transparent !important;
+    box-shadow: none !important;
     color: #000 !important;
     /* Black prints faster */
-    box-shadow: none !important;
     text-shadow: none !important;
   }
 
   [is='flynt-navigation-main'],
   [is='flynt-navigation-burger'],
   [is='flynt-navigation-footer'],
-  [is="flynt-block-cookie-notice"],
+  [is='flynt-block-cookie-notice'],
   .button,
   footer {
     display: none !important;
   }
 
   a {
-    text-decoration: underline;
     font-weight: bold;
+    text-decoration: underline;
   }
 
-  a[href]:after {
-    content: " (" attr(href) ")";
+  [href]::after {
+    content: '('attr(href)')';
   }
 
-  a[href^="/"]:after {
-    content: "";
- }
-
-  abbr[title]:after {
-    content: " (" attr(title) ")";
+  /* stylelint-disable selector-no-qualifying-type */
+  abbr[title]::after {
+    content: '('attr(title)')';
   }
+  /* stylelint-enable selector-no-qualifying-type */
 
   /*
      * Don't show links that are fragment identifiers,
      * or use the `javascript:` pseudo protocol
      */
 
-  a[href^="#"]:after,
-  a[href^="javascript:"]:after {
-    content: "";
+  [href^='#']::after,
+  [href^='javascript:']::after {
+    content: '';
   }
 
   pre {
