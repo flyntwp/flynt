@@ -22,7 +22,8 @@ add_filter('wp_insert_post_data', function ($data, $postArr) {
             'revision',
             'nav_menu_item',
             'attachment',
-            'customize_changeset'
+            'customize_changeset',
+            'custom_css'
         ]
     )) {
         return $data;
