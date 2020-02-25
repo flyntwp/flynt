@@ -213,7 +213,7 @@ Timber provides [a `resize` filter to resize images](https://timber.github.io/do
 
 Flynt solves this with the `resizeDynamic` filter. This filter only generates images when the image is requested, rather than when the page is loaded.
 
-All of the generated images are stored in `uploads/dynamic`. If you want to manually regenarate all of these images you can delete this folder and the next time an image is requested it will be regenerated.
+All of the generated images are stored in `uploads/dynamic`. If you want to manually regenerate all of these images you can delete this folder and the next time an image is requested it will be regenerated.
 
 `resizeDynamic` also creates a WebP file of each image it resizes. For this to work, it adds a rewrite rule to `.htaccess` so that Apache will automatically serve the WebP version to all browsers that support it.
 
