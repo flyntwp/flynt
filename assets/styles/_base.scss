@@ -16,8 +16,8 @@ html {
   font-family: 'Montserrat', Helvetica, Arial, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  height: 100%;
   line-height: 1.625;
-  min-height: 100%;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -31,7 +31,7 @@ html {
 }
 
 body {
-  height: 100vh;
+  height: 100%;
   overflow-x: hidden;
 }
 
