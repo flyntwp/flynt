@@ -73,13 +73,3 @@ add_filter('style_loader_tag', function ($input) {
     $media = $matches[3][0] !== '' && $matches[3][0] !== 'all' ? ' media="' . $matches[3][0] . '"' : '';
     return '<link rel="stylesheet" href="' . $matches[2][0] . '"' . $media . '>' . "\n";
 });
-
-/**
- * Remove type attribute from script tags if WordPress is lower than 5.3.
- */
-global $wp_version;
-if (version_compare($wp_version, '5.3', '<')) {
-    add_filter('script_loader_tag', function ($input) {
-        return preg_replace(["#\s(type)='[^']+'#", '/\s{2,}/'], ['', ' '], $input);
-    });
-}

@@ -7,10 +7,7 @@ add_action('after_setup_theme', function () {
     /**
      * Remove type attribute from link and script tags.
      */
-    global $wp_version;
-    if (version_compare($wp_version, '5.3', '>=')) {
-        add_theme_support('html5', ['script', 'style']);
-    }
+    add_theme_support('html5', ['script', 'style']);
 });
 
 add_filter('big_image_size_threshold', '__return_false');
