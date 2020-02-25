@@ -13,20 +13,25 @@ class GridImageText extends window.HTMLDivElement {
   }
 
   resolveElements () {
-    this.$gridCard = $('.grid-card', this)
+    this.$items = $('.content', this)
   }
 
   connectedCallback () {
-    this.$gridCard.each((i, el)=>{
-      if ($(el).find('.button--link').length) {
-        let down, up, link = $(el).find('.button--link')
-        $(el).css('cursor', 'pointer')
-        $(el).on('mousedown', () => down = +new Date())
-        $(el).on('mouseup', () => {
-              up = +new Date();
-              if ((up - down) < 200) {
-                link.get(0).click()
-              }
+    this.$items.each((i, el) => {
+      const $el = $(el)
+      const $link = $el.find('.content-link')
+      if ($link.length) {
+        let down = 0
+        let up = 0
+        $el.css('cursor', 'pointer')
+        $el.on('mousedown', () => {
+          down = +new Date()
+        })
+        $el.on('mouseup', () => {
+          up = +new Date()
+          if ((up - down) < 200) {
+            $link.get(0).click()
+          }
         })
       }
     })

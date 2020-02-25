@@ -9,7 +9,7 @@
       {% for item in items %}
         {% if item.image or item.contentHtml %}
           <li class="grid-item">
-            <div class="content grid-card {{ options.card == 'layoutCard' ? 'boxShadow themeReset' }}">
+            <div class="content {{ options.card == 'layoutCard' ? 'boxShadow themeReset' }}">
               {% if item.image %}
                 <img class="content-image lazyload"
                   src="{{ item.image.src|resizeDynamic(750, 500) }}"
@@ -28,10 +28,10 @@
               {% if item.contentHtml %}
                 <div class="content-inner {{ options.card == 'layoutCard' ? 'boxPadding' }}">
                   {{ item.contentHtml|e('wp_kses_post') }}
+                  {% if item.link %}
+                    <a class="content-link button button--link" href="{{ item.link.url }}"{% if item.link.target %} target="{{ item.link.target }}" rel="noreferrer noopener"{% endif %}>{{ item.link.title|e }}</a>
+                  {% endif %}
                 </div>
-              {% endif %}
-              {% if item.link %}
-                <a class="button button--link {% if options.card == 'layoutCard' %} link-has-margin {% endif %}" href="{{ item.link.url }}" title="{{ item.link.title }}">{{ item.link.title }}</a>
               {% endif %}
             </div>
           </li>

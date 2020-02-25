@@ -49,12 +49,6 @@ function getACFLayout()
                         ],
                     ],
                     [
-                        'label' => 'Link',
-                        'name' => 'link',
-                        'type' => 'link',
-                        'return_format' => 'array'
-                    ],
-                    [
                         'label' => 'Content',
                         'name' => 'contentHtml',
                         'type' => 'wysiwyg',
@@ -65,6 +59,12 @@ function getACFLayout()
                             'class' => 'autosize',
                             'width' => 60
                         ],
+                    ],
+                    [
+                        'label' => 'Link',
+                        'name' => 'link',
+                        'type' => 'link',
+                        'return_format' => 'array'
                     ]
                 ]
             ],
