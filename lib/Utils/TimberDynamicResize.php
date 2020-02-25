@@ -192,14 +192,19 @@ class TimberDynamicResize
         }
 
         if (empty($resizedImage)) {
-            header("HTTP/1.0 404 Not Found");
+            global $wp_query;
+            $wp_query->set_404();
+            status_header(404);
+            nocache_headers();
+            include get_404_template();
+            exit();
+        } else {
+            $resizedUrl = $this->generateImage($originalUrl, $w, $h, $crop);
+
+            wp_redirect($resizedUrl);
             exit();
         }
 
-        $resizedUrl = $this->generateImage($originalUrl, $w, $h, $crop);
-
-        header("Location: {$resizedUrl}", true, 302);
-        exit();
     }
 
     protected function generateImage($url, $w, $h, $crop, $force = false)
