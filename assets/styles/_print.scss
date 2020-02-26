@@ -36,12 +36,10 @@
     max-width: 100%;
   }
 
-  /* stylelint-disable selector-no-qualifying-type */
-  abbr[title]::after {
+  abbr[title]::after { /* stylelint-disable-line selector-no-qualifying-type */
     content: '('attr(title)')';
     display: inline;
   }
-  /* stylelint-enable selector-no-qualifying-type */
 
   /**
   * Don't show links that are fragment identifiers,
