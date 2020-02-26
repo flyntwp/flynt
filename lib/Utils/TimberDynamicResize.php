@@ -204,7 +204,6 @@ class TimberDynamicResize
             wp_redirect($resizedUrl);
             exit();
         }
-
     }
 
     protected function generateImage($url, $w, $h, $crop, $force = false)
