@@ -27,7 +27,6 @@
 
   abbr[title]::after { /* stylelint-disable-line selector-no-qualifying-type */
     content: '('attr(title)')';
-    display: inline;
   }
 
   /**
