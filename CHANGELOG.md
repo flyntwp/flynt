@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/flyntwp/flynt/compare/v1.1.1...v1.2.0) (2020-02-26)
+
+
+### Features
+
+* **BaseStyle:** add print styles ([fc37b44](https://github.com/flyntwp/flynt/commit/fc37b440bd4c0503ad29814e4c4419734fcc1838)), closes [#236](https://github.com/flyntwp/flynt/issues/236)
+* **BaseStyle:** implement sticky footer concept ([19918b3](https://github.com/flyntwp/flynt/commit/19918b3caff4208ad40c0194e96ee2f32302874a)), closes [#227](https://github.com/flyntwp/flynt/issues/227)
+* **HTML5:** remove type for script and link tags  ([9f08d95](https://github.com/flyntwp/flynt/commit/9f08d95b8f71a4d94be053189dbf3541e7fe3f48)), closes [#210](https://github.com/flyntwp/flynt/issues/210)
+* **TimberDynamicResize:** always store in dynamic folder ([7e0d931](https://github.com/flyntwp/flynt/commit/7e0d93138465bb305e31e719d6d3fa184e4deb27))
+* **TimberDynamicResize:** change db structure ([d85f4e8](https://github.com/flyntwp/flynt/commit/d85f4e8605a73999a6ed0099d53ed6a6d3efff8f))
+* **TimberDynamicResize:** clean up filters ([9ed45c0](https://github.com/flyntwp/flynt/commit/9ed45c0c4f276ea60fadf92aaebf9810a4c714dc))
+* **TimberDynamicResize:** merge header instead of append ([631222b](https://github.com/flyntwp/flynt/commit/631222ba46509a68b3d21ab87396bbcb8a15df0f)), closes [#224](https://github.com/flyntwp/flynt/issues/224)
+* **TimberDynamicResize:** use wp functions for 404 and redirect ([b50dc00](https://github.com/flyntwp/flynt/commit/b50dc00dda09ce77482523f53f6a5a1cb5bfdfce))
+* **TimberDynamicResize:** use wp rewrites ([0ede66b](https://github.com/flyntwp/flynt/commit/0ede66b2653b7644cc6ad94a46fc40f2f5a79cce))
+
+
+### Bug Fixes
+
+* **assets:** only import script.js and admin.js ([c9d1c25](https://github.com/flyntwp/flynt/commit/c9d1c25fef7ee58737341cdbcda9b5e7a367438a))
+* **BaseStyle:** change Reset Theme headline from h2 to h3 ([e29813e](https://github.com/flyntwp/flynt/commit/e29813e6c80f3991aa029af1ef5ffe4269ce2836))
+* **Oembed:** check if $iframeTagHtml exists ([61debe5](https://github.com/flyntwp/flynt/commit/61debe5ecc716ab7d3473ed7d9c4dbb815d38129))
+* **theContentFix:** don't add shortcode to custom css ([43272e4](https://github.com/flyntwp/flynt/commit/43272e4728a790937d2a00f96a05fadef3c8359b))
+
 ### [1.1.1](https://github.com/flyntwp/flynt/compare/v1.1.0...v1.1.1) (2019-11-29)
 
 
