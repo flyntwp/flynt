@@ -23,7 +23,6 @@
   [href]::after {
     content: '('attr(href)')';
     display: inline;
-    max-width: 100%;
   }
 
   abbr[title]::after { /* stylelint-disable-line selector-no-qualifying-type */
