@@ -18,3 +18,7 @@ if (Init::checkRequiredPlugins()) {
     add_action('after_setup_theme', ['Flynt\Init', 'initTheme']);
     add_action('after_setup_theme', ['Flynt\Init', 'loadComponents'], 101);
 }
+
+// Remove the admin-bar inline-CSS as it isn't compatible with the sticky footer CSS.
+// This prevents unintended scrolling on pages with few content, when logged in.
+add_theme_support('admin-bar', array('callback' => '__return_false'));
