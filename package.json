@@ -20,8 +20,7 @@
     "lint:scripts:fix": "cross-env eslint '**/*.js' --fix",
     "lint:styles:fix": "cross-env stylelint '**/*.scss' --fix",
     "lint:php:fix": "cross-env ./vendor/bin/phpcbf",
-    "release": "standard-version -a",
-    "releaseGithub": "conventional-github-releaser -p angular"
+    "release": "standard-version -a"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
@@ -36,7 +35,6 @@
     "browser-sync": "^2.26.7",
     "check-node-version": "^4.0.1",
     "console-polyfill": "^0.3.0",
-    "conventional-github-releaser": "^3.1.3",
     "copy-webpack-plugin": "^5.0.4",
     "core-js": "^3.3.4",
     "countup.js": "^2.0.4",
