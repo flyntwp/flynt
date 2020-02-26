@@ -44,6 +44,8 @@ npm run build
 
 ## Troubleshooting
 
+### Images
+
 In some setups images may not show up, returning a 404 by the server.
 
 The most common reason for this is that you are using nginx and your server is not set up in the default way. You can see that this is the case, if an image url return a 404 from nginx, not from WordPress itself.
@@ -67,6 +69,10 @@ add_filter('Flynt/TimberDynamicResize/relativeUploadDir', function () {
     return '/app/uploads'; // Example for Bedrock installs.
 });
 ```
+
+### Browsersync
+
+In some cases, browsersync may be not working. Usually this is related to WordPress not running on https. In order to fix this issue, change the `browsersync.https` value to `false` in the file `build-config.js`.
 
 ## Usage
 In your terminal, navigate to `<your-project>/wp-content/themes/flynt` and run `npm start`. This will start a local server at `localhost:3000`.
