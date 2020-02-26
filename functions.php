@@ -19,6 +19,7 @@ if (Init::checkRequiredPlugins()) {
     add_action('after_setup_theme', ['Flynt\Init', 'loadComponents'], 101);
 }
 
-// Admin Bar.This line disables the admin-bar CSS from pushing the site down. Instead
-// padding was added to the .pageWrapper in base.scss
+// The admin-bar-CSS will add additional height to the site which in some cases will interfere the layout.
+// For example, the sticky footer won't be sticky, even if the site has no content.
+// This line prevents that.
 add_theme_support('admin-bar', array('callback' => '__return_false'));
