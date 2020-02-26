@@ -16,5 +16,5 @@
   <!-- Exclude Warnings -->
   <arg value="n"/>
 
-  <rule ref="PSR2"/>
+  <rule ref="PSR12"/>
 </ruleset>

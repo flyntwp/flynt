@@ -1,12 +1,12 @@
 <?php
 
-namespace Flynt\CustomPostTypes;
-
 /**
  * This is an example file showcasing how you can add custom post types to your Flynt theme.
  *
  * For a full list of parameters see https://developer.wordpress.org/reference/functions/register_post_type/ or use https://generatewp.com/post-type/ to generate the code for you.
  */
+
+namespace Flynt\CustomPostTypes;
 
 // function registerExamplePostType()
 // {

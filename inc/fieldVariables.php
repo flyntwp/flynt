@@ -1,7 +1,9 @@
 <?php
+
 /**
  * Defines field variables to be used across multiple components.
  */
+
 namespace Flynt\FieldVariables;
 
 function getTheme()

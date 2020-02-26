@@ -6,6 +6,7 @@
  * See the TinyMce documentation for more information: https://www.tiny.cloud/docs/
  *
  */
+
 namespace Flynt\TinyMce;
 
 // First Toolbar

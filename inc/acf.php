@@ -1,4 +1,5 @@
 <?php
+
 namespace Flynt\Acf;
 
 use Flynt\Utils\Options;

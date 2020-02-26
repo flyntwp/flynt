@@ -16,16 +16,18 @@ function isShortcodeAndDoesNotMatchId($postContent, $postId)
 }
 
 add_filter('wp_insert_post_data', function ($data, $postArr) {
-    if (in_array(
-        $postArr['post_type'],
-        [
+    if (
+        in_array(
+            $postArr['post_type'],
+            [
             'revision',
             'nav_menu_item',
             'attachment',
             'customize_changeset',
-            'custom_css'
-        ]
-    )) {
+            'custom_css',
+            ]
+        )
+    ) {
         return $data;
     }
     // check if no content was saved before, or if there is a flyntTheContent shortcode but the id does not match the post id
