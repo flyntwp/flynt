@@ -26,13 +26,16 @@ matrix:
   # allow_failures:
   #   - php: nightly
 
-before_script:
-  - npm i
+before_install:
+  - composer validate --strict
 
 install:
   - composer install
   - nvm install 12
   - nvm use 12
+
+before_script:
+  - npm i
 
 script:
   - npm run lint
