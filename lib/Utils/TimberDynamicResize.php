@@ -224,11 +224,13 @@ class TimberDynamicResize
 
         if ($this->webpEnabled) {
             $fileinfo = pathinfo($resizedUrl);
-            if (in_array($fileinfo['extension'], [
+            if (
+                in_array($fileinfo['extension'], [
                 'jpeg',
                 'jpg',
                 'png',
-            ])) {
+                ])
+            ) {
                 ImageHelper::img_to_webp($resizedUrl);
             }
         }

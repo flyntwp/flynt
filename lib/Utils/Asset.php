@@ -211,7 +211,8 @@ class Asset
 
         // allow external urls
         $path = $options['path'];
-        if (!(StringHelpers::startsWith('http://', $path))
+        if (
+            !(StringHelpers::startsWith('http://', $path))
             && !(StringHelpers::startsWith('https://', $path))
             && !(StringHelpers::startsWith('//', $path))
         ) {
@@ -221,14 +222,16 @@ class Asset
             $fileExists = true;
         }
 
-        if ('script' === $options['type']
+        if (
+            'script' === $options['type']
             && true === self::$loadFromCdn
             && !empty($options['cdn'])
             && !empty($options['cdn']['check'])
             && !empty($options['cdn']['url'])
         ) {
             // if the script isn't registered or enqueued yet
-            if (!wp_script_is($options['name'], 'registered')
+            if (
+                !wp_script_is($options['name'], 'registered')
                 && !wp_script_is($options['name'], 'enqueued')
             ) {
                 $localPath = $path;

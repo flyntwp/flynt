@@ -1,4 +1,5 @@
 <?php
+
 namespace Flynt\Components\FeatureAdminComponentScreenshots;
 
 use Flynt\ComponentManager;

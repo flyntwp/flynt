@@ -66,7 +66,7 @@ class Log
     public static function consoleDebug($data, $postpone = true, $title = 'PHP', $logType = 'log')
     {
         if (in_array($logType, ['log', 'error', 'trace'])) {
-            $title .= '(' . self::getCallerFile(2) .'):';
+            $title .= '(' . self::getCallerFile(2) . '):';
             $type = gettype($data);
             $output = json_encode($data);
             $result =  "<script>console.{$logType}('{$title}', '({$type})', {$output});</script>\n";

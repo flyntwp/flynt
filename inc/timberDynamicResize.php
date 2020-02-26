@@ -1,5 +1,7 @@
 <?php
 
+/** */
+
 namespace Flynt\TimberDynamicResize;
 
 use Flynt\Utils\TimberDynamicResize;
