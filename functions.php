@@ -19,7 +19,6 @@ if (Init::checkRequiredPlugins()) {
     add_action('after_setup_theme', ['Flynt\Init', 'loadComponents'], 101);
 }
 
-// The admin-bar-CSS will add additional height to the site which in some cases will interfere the layout.
-// For example, the sticky footer won't be sticky, even if the site has no content.
-// This line prevents that.
+// Remove the admin-bar inline-CSS as it isn't compatible with the sticky footer CSS.
+// This prevents unintended scrolling on pages with few content, when logged in.
 add_theme_support('admin-bar', array('callback' => '__return_false'));
