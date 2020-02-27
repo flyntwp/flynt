@@ -121,7 +121,7 @@
   },
   "standard-version": {
     "scripts": {
-      "postbump": "gulp replaceVersion && git add ."
+      "postbump": "gulp replaceVersion && composer config --unset version && composer update nothing && git add . && composer validate --strict"
     }
   },
   "dependencies": {},
