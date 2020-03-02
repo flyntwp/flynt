@@ -1,6 +1,6 @@
 {
   "name": "flynt",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "index.js",
   "repository": "git@github.com:flyntwp/flynt.git",
   "author": "bleech <hello@bleech.de>",
@@ -121,7 +121,7 @@
   },
   "standard-version": {
     "scripts": {
-      "postbump": "gulp replaceVersion && composer config --unset version && composer update nothing && git add . && composer validate --strict"
+      "postbump": "gulp replaceVersion && composer config --unset version && composer update nothing && git diff && git add . && composer validate --strict"
     }
   },
   "dependencies": {},

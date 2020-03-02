@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/flyntwp/flynt/compare/v1.2.0...v1.2.1) (2020-03-02)
+
+
+### Bug Fixes
+
+* **build:** update and validate composer.json on release ([0b44209](https://github.com/flyntwp/flynt/commit/0b44209e3ac71ab32f8af07e8eab5f72d8be9918))
+
 ## [1.2.0](https://github.com/flyntwp/flynt/compare/v1.1.1...v1.2.0) (2020-02-26)
 
 
