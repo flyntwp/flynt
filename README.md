@@ -44,32 +44,6 @@ npm run build
 
 ## Troubleshooting
 
-### Images
-
-In some setups images may not show up, returning a 404 by the server.
-
-The most common reason for this is that you are using nginx and your server is not set up in the default way. You can see that this is the case, if an image url return a 404 from nginx, not from WordPress itself.
-
-In this case, please add something like
-
-```nginx
-location ~ "^(.*)/wp-content/uploads/(.*)$" {
-  try_files $uri $uri/ /index.php$is_args$args;
-}
-```
-
-to your site config.
-
-Other issues might come from Flynt not being able to determine the relative url of your uploads folder. If you have a non-standard WordPress folder structure, or if you use a plugin that manipulates `home_url` (for example, [WPML](https://wpml.org/)) this can cause problems when using `resizeDynamic`.
-
-In this care try to set the relative upload path manually and refresh the permalink settings in the back-end:
-
-```php
-add_filter('Flynt/TimberDynamicResize/relativeUploadDir', function () {
-    return '/app/uploads'; // Example for Bedrock installs.
-});
-```
-
 ### Browsersync
 
 In some cases, browsersync may be not working. Usually this is related to WordPress not running on https. In order to fix this issue, change the `browsersync.https` value to `false` in the file `build-config.js`.
@@ -223,7 +197,24 @@ All of the generated images are stored in `uploads/dynamic`. If you want to manu
 
 `resizeDynamic` also creates a WebP file of each image it resizes. For this to work, it adds a rewrite rule to `.htaccess` so that Apache will automatically serve the WebP version to all browsers that support it.
 
-You can disable the dynamic resize functionality and WebP generation by using the filters `Flynt/TimberDynamicResize/disableDynamic` and `Flynt/TimberDynamicResize/disableWebp`. If you change the enable dynamic resizing again, make sure to flush your permalinks.
+Because of various issues on different setups, the dynamic (on-the-fly) generation of the images is disabled by default. You can enable it by setting _Timber Dynamic Resize -> Dynamic Image Generation_ in the global options in wp-admin to true.
+
+#### Troubleshooting
+
+In some setups images may not show up, returning a 404 by the server.
+
+The most common reason for this is that you are using nginx and your server is not set up in the default way. You can see that this is the case, if an image url return a 404 from nginx, not from WordPress itself.
+
+In this case, please add something like
+
+location ~ "^(.*)/wp-content/uploads/(.*)$" {
+  try_files $uri $uri/ /index.php$is_args$args;
+}
+to your site config.
+
+Other issues might come from Flynt not being able to determine the relative url of your uploads folder. If you have a non-standard WordPress folder structure, or if you use a plugin that manipulates home_url (for example, WPML) this can cause problems when using resizeDynamic.
+
+In this case try to set the relative upload path manually in the global options in wp-admin. In Bedrock installs with WPML, for example, you might have to set it to `app/uploads`.
 
 ## Maintainers
 This project is maintained by [bleech](https://github.com/bleech).

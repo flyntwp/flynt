@@ -20,8 +20,8 @@ class TimberDynamicResize
 
     public function __construct()
     {
-        $this->enabled = !(apply_filters('Flynt/TimberDynamicResize/disableDynamic', false));
-        $this->webpEnabled = !(apply_filters('Flynt/TimberDynamicResize/disableWebp', false));
+        $this->enabled = get_field('field_global_TimberDynamicResize_dynamicImageGeneration', 'option');
+        $this->webpEnabled = get_field('field_global_TimberDynamicResize_webpSupport', 'option');
         if ($this->enabled) {
             $this->createTable();
             $this->addDynamicHooks();
@@ -97,7 +97,7 @@ class TimberDynamicResize
         return $wpdb->prefix . static::TABLE_NAME;
     }
 
-    public function getRelativeUploadDir()
+    public static function getDefaultRelativeUploadDir()
     {
         require_once(ABSPATH . 'wp-admin/includes/file.php');
         $uploadDir = wp_upload_dir();
@@ -107,7 +107,17 @@ class TimberDynamicResize
         } else {
             $relativeUploadDir = $uploadDir['relative'];
         }
-        return apply_filters('Flynt/TimberDynamicResize/relativeUploadDir', $relativeUploadDir);
+        return $relativeUploadDir;
+    }
+
+    public function getRelativeUploadDir()
+    {
+        $relativeUploadPath = get_field('field_global_TimberDynamicResize_relativeUploadPath', 'option');
+        if (empty($relativeUploadPath)) {
+            return static::getDefaultRelativeUploadDir();
+        } else {
+            return $relativeUploadPath;
+        }
     }
 
     public function getUploadsBaseurl()
