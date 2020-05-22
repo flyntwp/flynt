@@ -29,12 +29,9 @@ class StringHelpers
      *
      * @return string
      */
-    public static function trimStrip($str, $length = 25)
+    public static function trimStrip($str = '', $length = 25)
     {
-        if (isset($str)) {
-            return wp_trim_words(wp_strip_all_tags($str), $length, '&hellip;');
-        }
-        return $str;
+        return wp_trim_words(wp_strip_all_tags($str), $length, '&hellip;');
     }
 
     /**
