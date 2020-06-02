@@ -26,5 +26,10 @@ $color-background-light: #f2f6fe;
 $color-background-dark: #091a41;
 $color-background-hero: $color-brand;
 
+$color-text-rgb: red($color-contrast), green($color-contrast), blue($color-contrast);
+$color-accent-rgb: red($color-accent), green($color-accent), blue($color-accent);
+$color-background-dark-rgb: red($color-background-dark), green($color-background-dark), blue($color-background-dark);
+$color-background-rgb: red($color-background), green($color-background), blue($color-background);
+
 $heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';
 $input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [type="email"], [type="search"], [type="number"], [type="password"], textarea, select';
