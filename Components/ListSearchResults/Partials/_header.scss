@@ -6,7 +6,7 @@ $search-form-spacing: 6px;
 
 .searchForm {
   &-field {
-    border: 1px solid $color-background;
+    border: 1px solid var(--color-background);
     border-radius: 4px;
     display: flex;
     flex-direction: column;

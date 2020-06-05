@@ -8,7 +8,7 @@
   }
 
   .wrapper {
-    background-color: $color-background;
+    background-color: var(--color-background);
     height: $navigation-height;
   }
 
@@ -41,12 +41,12 @@
 
     &-item--current {
       .menu-link {
-        color: $color-accent;
+        color: var(--color-accent);
       }
     }
 
     &-link {
-      color: $color-text;
+      color: var(--color-text);
       display: inline-block;
       font-weight: 700;
       padding: 7px 18px;
@@ -55,7 +55,7 @@
 
       &:hover,
       &:focus {
-        color: $color-accent;
+        color: var(--color-accent);
       }
     }
   }

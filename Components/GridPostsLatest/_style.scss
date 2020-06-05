@@ -50,15 +50,15 @@
     height: 100%;
 
     img {
-      background: $color-contrast;
+      background: var(--color-contrast);
       flex-shrink: 0; // IE11 bug fix (prevent image from stretchin')
     }
 
     &-inner {
-      color: $color-text;
+      color: var(--color-text);
 
       #{$heading-selectors} {
-        color: $color-headline;
+        color: var(--color-headline);
       }
     }
 
@@ -76,11 +76,12 @@
     }
 
     &-readingTime {
-      color: #7b838d;
+      color: var(--color-text);
       font-size: 0.9rem;
+      opacity: 0.5;
 
       .feather {
-        color: #7b838d;
+        color: currentColor;
         height: 1rem;
         margin-right: 2px;
         width: 1rem;
@@ -90,7 +91,7 @@
     &-footer {
       align-items: center;
       align-self: flex-end;
-      border-top: 1px solid $color-border;
+      border-top: 1px solid var(--color-border);
       display: flex;
       justify-content: space-between;
       padding: 0 20px;

@@ -17,7 +17,7 @@
 
     &:hover,
     &:focus {
-      color: $color-accent;
+      color: var(--color-accent);
     }
   }
 }

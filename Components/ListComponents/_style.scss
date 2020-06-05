@@ -13,14 +13,14 @@
   }
 
   .component {
-    background-color: $color-background;
+    background-color: var(--color-background);
     display: flex;
     flex-wrap: wrap;
     max-width: $content-max-width;
 
     &-imageWrapper {
-      background-color: $color-background;
-      border-bottom: 1px solid $color-border;
+      background-color: var(--color-background);
+      border-bottom: 1px solid var(--color-border);
       height: 0;
       overflow: hidden;
       padding-bottom: percentage(800/1280);
@@ -43,18 +43,18 @@
     &-description {
       @include reset-content-margins;
 
-      color: $color-text;
+      color: var(--color-text);
       position: relative;
 
       #{$heading-selectors} {
-        color: $color-headline;
+        color: var(--color-headline);
       }
     }
 
     &-footer {
       align-items: center;
       align-self: flex-end;
-      border-top: 1px solid $color-border;
+      border-top: 1px solid var(--color-border);
       display: flex;
       height: 56px;
       justify-content: space-between;
@@ -71,7 +71,7 @@
         }
 
         &:hover {
-          color: $color-accent;
+          color: var(--color-accent);
         }
       }
 

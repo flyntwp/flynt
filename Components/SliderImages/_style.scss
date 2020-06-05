@@ -46,7 +46,7 @@
       }
 
       .feather {
-        color: $color-background;
+        color: var(--color-background);
         height: auto;
         top: 0;
         width: 80%;
@@ -71,7 +71,7 @@
     &-caption {
       background: rgba($color-background-dark, 0.5);
       bottom: 0;
-      color: $color-background-light;
+      color: var(--color-background-light);
       display: inline-block;
       font-size: 0.8rem;
       max-width: 450px;

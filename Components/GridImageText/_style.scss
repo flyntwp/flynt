@@ -47,7 +47,7 @@
     height: 100%;
 
     img {
-      background: $color-contrast;
+      background: var(--color-contrast);
     }
 
     &-inner {

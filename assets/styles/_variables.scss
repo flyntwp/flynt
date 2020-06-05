@@ -26,5 +26,29 @@ $color-background-light: #f2f6fe;
 $color-background-dark: #091a41;
 $color-background-hero: $color-brand;
 
+:root {
+  --color-brand: #{$color-brand};
+  --color-accent: #{$color-accent};
+  --color-accent-dark: #{darken($color-accent, 10%)};
+  --color-background: #{$color-background};
+  --color-contrast: #{$color-contrast};
+  --color-text: var(--color-contrast);
+  --color-headline: #{$color-headline};
+  --color-border: #{$color-border};
+  --color-background-light: #{$color-background-light};
+  --color-background-dark: #{$color-background-dark};
+  --color-background-hero: var(--color-brand);
+
+  --theme-button-background: var(--color-accent);
+  --theme-button-background-hover: var(--color-background-dark);
+  --theme-button-color: var(--color-background);
+  --theme-button-color-hover: var(--color-background);
+  --theme-button-link-color-hover: var(--color-background-dark);
+  --theme-link-color: var(--color-accent);
+  --theme-link-color-hover: var(--color-accent-dark);
+  --theme-pill-background: var(--color-background-dark);
+  --theme-title-color: var(--color-headline);
+}
+
 $heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';
 $input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [type="email"], [type="search"], [type="number"], [type="password"], textarea, select';

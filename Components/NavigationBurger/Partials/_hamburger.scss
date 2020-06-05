@@ -15,7 +15,7 @@
   &::after,
   &-barPrimary,
   &-barSecondary {
-    background-color: $color-accent;
+    background-color: var(--color-accent);
     display: block;
     height: 2px;
     left: 0;

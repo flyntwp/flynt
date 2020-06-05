@@ -5,9 +5,9 @@
 */
 
 html {
-  background-color: $color-background;
+  background-color: var(--color-background);
   box-sizing: border-box;
-  color: $color-text;
+  color: var(--color-text);
   font-family: 'Montserrat', Helvetica, Arial, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -34,7 +34,7 @@ body {
 */
 
 #{$heading-selectors} {
-  color: $color-headline;
+  color: var(--theme-title-color);
   font-weight: 700;
   line-height: 1.45;
   margin-bottom: 0.9rem;
@@ -43,7 +43,7 @@ body {
   a,
   a:hover,
   a:focus {
-    color: $color-headline;
+    color: var(--theme-title-color);
     text-decoration: none;
   }
 }
@@ -105,12 +105,12 @@ h6,
 }
 
 a {
-  color: $color-accent;
+  color: var(--theme-link-color);
   transition: color 0.2s ease-out;
 
   &:hover,
   &:focus {
-    color: darken($color-accent, 10%);
+    color: var(--theme-link-color-hover);
   }
 }
 
@@ -122,7 +122,7 @@ figure {
 }
 
 hr {
-  background-color: $color-border;
+  background-color: var(--color-border);
   border: 0;
   display: block;
   height: 1px;
@@ -148,7 +148,7 @@ code {
 
 blockquote,
 .blockquote {
-  border-left: 4px solid $color-accent;
+  border-left: 4px solid var(--color-accent);
   font-size: 1.125rem;
   font-style: italic;
   font-weight: 400;
@@ -227,8 +227,8 @@ th {
 
 thead {
   th {
-    border-bottom: 2px solid $color-accent;
-    color: $color-headline;
+    border-bottom: 2px solid var(--color-accent);
+    color: var(--theme-title-color);
     padding-bottom: 10px;
     vertical-align: bottom;
     white-space: nowrap;
@@ -236,7 +236,7 @@ thead {
 }
 
 tr:nth-child(even) {
-  background-color: $color-background-light;
+  background-color: var(--color-background-light);
 }
 
 /**
@@ -259,10 +259,10 @@ button {
 
 .button {
   appearance: none;
-  background-color: $color-accent;
-  border: 1px solid $color-accent;
+  background-color: var(--theme-button-background);
+  border: 1px solid var(--theme-button-background);
   border-radius: 4px;
-  color: $color-background;
+  color: var(--theme-button-color);
   cursor: pointer;
   display: inline-block;
   font-family: inherit;
@@ -286,21 +286,21 @@ button {
 
   &:hover,
   &:focus {
-    background-color: $color-background-dark;
-    border-color: $color-background-dark;
-    color: $color-background;
+    background-color: var(--theme-button-background-hover);
+    border-color: var(--theme-button-background-hover);
+    color: var(--theme-button-color-hover);
   }
 
   &--ghost {
     background-color: transparent;
-    border-color: $color-accent;
-    color: $color-accent;
+    border-color: var(--theme-button-background);
+    color: var(--theme-button-background);
 
     &:hover,
     &:focus {
       background-color: transparent;
-      border-color: $color-background-dark;
-      color: $color-background-dark;
+      border-color: var(--theme-button-background-hover);
+      color: var(--theme-button-background-hover);
     }
   }
 
@@ -312,7 +312,7 @@ button {
   &--link {
     background-color: transparent;
     border: 0;
-    color: $color-accent;
+    color: var(--theme-link-color);
     padding: 0;
     position: relative;
     text-transform: none;
@@ -321,42 +321,31 @@ button {
     &:hover,
     &:focus {
       background-color: transparent;
-      color: $color-background-dark;
-
-      &::before {
-        background-color: $color-background-dark;
-      }
-
-      &::after {
-        background-position: right center;
-      }
+      color: var(--theme-button-link-color-hover);
     }
 
     &::before {
-      background-color: $color-accent;
+      background-color: currentColor;
       bottom: 0;
       content: '';
       height: 1px;
       left: 0;
       position: absolute;
-      transition: background-color 0.2s ease-out;
       width: 100%;
     }
 
     &::after {
-      $color-accent-rgb: red($color-accent), green($color-accent), blue($color-accent);
-      $color-background-dark-rgb: red($color-background-dark), green($color-background-dark), blue($color-background-dark);
-
-      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.586 5L.293 8.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4A1 1 0 1 0 .293 1.707L3.586 5z' fill='rgb(#{$color-accent-rgb})'/%3E%3Cpath d='M13.586 5l-3.293 3.293a1 1 0 0 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4a1 1 0 0 0-1.414 1.414L13.586 5z' fill='rgb(#{$color-background-dark-rgb}'/%3E%3C/svg%3E");
-      background-position: left center;
-      background-repeat: no-repeat;
+      border-right: 2px solid currentColor;
+      border-top: 2px solid currentColor;
       content: '';
       display: inline-block;
-      height: 10px;
-      margin-left: 10px;
-      transition: background-position 0.2s ease-out;
+      height: 7px;
+      margin-bottom: 1px;
+      margin-left: 7px;
+      margin-right: 2px;
+      transform: rotate(45deg);
       vertical-align: baseline;
-      width: 6px;
+      width: 7px;
     }
   }
 }
@@ -364,9 +353,9 @@ button {
 /* Pills */
 
 .pill {
-  background-color: $color-background-dark;
+  background-color: var(--theme-pill-background);
   border-radius: 1rem;
-  color: $color-background;
+  color: var(--color-background);
   display: inline-block;
   font-size: 0.8rem;
   max-width: 100%;
@@ -379,14 +368,14 @@ button {
 
   &:hover,
   &:focus {
-    color: $color-background;
+    color: var(--color-background);
   }
 }
 
 /* Icons */
 
 .feather {
-  color: $color-accent;
+  color: var(--theme-link-color);
   position: relative;
   top: -2px;
   vertical-align: middle;
@@ -434,10 +423,10 @@ label {
 
 #{$input-selectors} {
   appearance: none;
-  background-color: $color-background;
-  border: 1px solid rgba(11, 16, 12, 1);
+  background-color: var(--color-background);
+  border: 1px solid var(--theme-title-color);
   border-radius: 0;
-  color: $color-headline;
+  color: var(--color-headline);
   font-family: inherit;
   font-size: inherit;
   min-height: 50px;
@@ -482,7 +471,7 @@ select {
   &,
   &:hover,
   &:focus {
-    border-color: $color-border;
+    border-color: var(--color-border);
     outline: 0;
   }
 
@@ -494,7 +483,7 @@ select {
 
     &::before {
       background-color: #fff;
-      border: 1px solid $color-border;
+      border: 1px solid var(--color-border);
       border-radius: 2px;
       content: '';
       display: block;
@@ -511,8 +500,8 @@ select {
 
   &:checked {
     + label::before {
-      background-color: $color-accent;
-      border-color: $color-accent;
+      background-color: var(--color-accent);
+      border-color: var(--color-accent);
       box-shadow: inset 0 0 0 2px #fff;
     }
   }
@@ -537,14 +526,6 @@ select {
 .componentSpacing {
   margin: $component-spacing-mobile 0;
 
-  @media (min-width: $breakpoint-tablet) {
-    margin: $component-spacing-tablet 0;
-  }
-
-  @media (min-width: $breakpoint-desktop) {
-    margin: $component-spacing-desktop 0;
-  }
-
   &[class*='theme'] {
     margin: 0;
     padding: $component-spacing-mobile 0;
@@ -556,6 +537,14 @@ select {
     @media (min-width: $breakpoint-desktop) {
       padding: $component-spacing-desktop 0;
     }
+  }
+
+  @media (min-width: $breakpoint-tablet) {
+    margin: $component-spacing-tablet 0;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    margin: $component-spacing-desktop 0;
   }
 }
 
@@ -636,14 +625,6 @@ select {
     .componentSpacing {
       margin: $component-spacing-mobile/2 0;
 
-      @media (min-width: $breakpoint-tablet) {
-        margin: $component-spacing-tablet/2 0;
-      }
-
-      @media (min-width: $breakpoint-desktop) {
-        margin: $component-spacing-desktop/2 0;
-      }
-
       &[class*='theme'] {
         margin: 0;
         padding: $component-spacing-mobile/2 0;
@@ -655,6 +636,14 @@ select {
         @media (min-width: $breakpoint-desktop) {
           padding: $component-spacing-desktop/2 0;
         }
+      }
+
+      @media (min-width: $breakpoint-tablet) {
+        margin: $component-spacing-tablet/2 0;
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        margin: $component-spacing-desktop/2 0;
       }
     }
 
@@ -677,212 +666,41 @@ select {
 */
 
 .themeLight {
-  background-color: $color-background-light;
+  background-color: var(--color-background-light);
 }
 
 .themeDark {
-  background-color: $color-background-dark;
-
-  &,
-  #{$heading-selectors} {
-    color: $color-background;
-  }
-
-  .button {
-    &:hover,
-    &:focus {
-      background-color: $color-background-hero;
-      border-color: $color-background-hero;
-      color: $color-background;
-    }
-
-    &--ghost {
-      &:hover,
-      &:focus {
-        background-color: transparent;
-        border-color: $color-background-hero;
-        color: $color-background-hero;
-      }
-    }
-
-    &--link {
-      &:hover,
-      &:focus {
-        background-color: transparent;
-        color: $color-background;
-
-        &::before {
-          background-color: $color-background;
-        }
-      }
-
-      &::after {
-        $color-accent-rgb: red($color-accent), green($color-accent), blue($color-accent);
-        $color-background-rgb: red($color-background), green($color-background), blue($color-background);
-
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.586 5L.293 8.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4A1 1 0 1 0 .293 1.707L3.586 5z' fill='rgb(#{$color-accent-rgb})'/%3E%3Cpath d='M13.586 5l-3.293 3.293a1 1 0 0 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4a1 1 0 0 0-1.414 1.414L13.586 5z' fill='rgb(#{$color-background-rgb}'/%3E%3C/svg%3E");
-      }
-    }
-  }
-
-  .pill {
-    background-color: $color-background-hero;
-  }
+  --theme-title-color: var(--color-background);
+  --theme-button-background-hover: var(--color-brand);
+  --theme-link-color-hover: var(--color-background);
+  --theme-button-link-color-hover: var(--color-background);
+  --theme-pill-background: var(--color-brand);
+  background-color: var(--color-background-dark);
+  color: var(--color-background);
 }
 
 .themeHero {
-  background-color: $color-background-hero;
-
-  &,
-  #{$heading-selectors},
-  a,
-  .feather {
-    color: $color-background;
-  }
-
-  a:hover,
-  a:focus {
-    color: $color-background-dark;
-  }
-
-  .button {
-    background-color: $color-background-dark;
-    border-color: $color-background-dark;
-    color: $color-background;
-
-    &:hover,
-    &:focus {
-      background-color: $color-background;
-      border-color: $color-background;
-      color: $color-background-dark;
-    }
-
-    &--ghost {
-      background-color: transparent;
-      border-color: $color-background-dark;
-      color: $color-background-dark;
-
-      &:hover,
-      &:focus {
-        background-color: transparent;
-        border-color: $color-background;
-        color: $color-background;
-      }
-    }
-
-    &--link {
-      background-color: transparent;
-      color: $color-background;
-
-      &::before {
-        background-color: $color-background;
-      }
-
-      &:hover,
-      &:focus {
-        background-color: transparent;
-        color: $color-background-dark;
-
-        &::before {
-          background-color: $color-background-dark;
-        }
-      }
-
-      &::after {
-        $color-background-dark-rgb: red($color-background-dark), green($color-background-dark), blue($color-background-dark);
-        $color-background-rgb: red($color-background), green($color-background), blue($color-background);
-
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.586 5L.293 8.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4A1 1 0 1 0 .293 1.707L3.586 5z' fill='rgb(#{$color-background-rgb})'/%3E%3Cpath d='M13.586 5l-3.293 3.293a1 1 0 0 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4a1 1 0 0 0-1.414 1.414L13.586 5z' fill='rgb(#{$color-background-dark-rgb}'/%3E%3C/svg%3E");
-      }
-    }
-  }
-
-  .pill {
-    &:hover,
-    &:focus {
-      color: $color-background;
-    }
-  }
+  --theme-title-color: var(--color-background);
+  --theme-button-background: var(--color-background-dark);
+  --theme-button-background-hover: var(--color-background);
+  --theme-link-color: var(--color-background);
+  --theme-link-color-hover: var(--color-background-dark);
+  --theme-button-link-color-hover: var(--color-background-dark);
+  --theme-button-color-hover: var(--color-background-dark);
+  background-color: var(--color-background-hero);
+  color: var(--color-background);
 }
 
 .themeReset {
-  background-color: $color-background;
-  color: $color-text;
-
-  #{$heading-selectors} {
-    color: $color-headline;
-
-    a,
-    a:hover,
-    a:focus {
-      color: $color-headline;
-      text-decoration: none;
-    }
-  }
-
-  a,
-  .feather {
-    color: $color-accent;
-  }
-
-  a:hover,
-  a:focus {
-    color: darken($color-accent, 10%);
-  }
-
-  .button {
-    background-color: $color-accent;
-    border-color: $color-accent;
-    color: $color-background;
-
-    &:hover,
-    &:focus {
-      background-color: $color-background-dark;
-      border-color: $color-background-dark;
-      color: $color-background;
-    }
-
-    &--ghost {
-      background-color: transparent;
-      border-color: $color-accent;
-      color: $color-accent;
-
-      &:hover,
-      &:focus {
-        background-color: transparent;
-        border-color: $color-background-dark;
-        color: $color-background-dark;
-      }
-    }
-
-    &--link {
-      background-color: transparent;
-      color: $color-accent;
-
-      &:hover,
-      &:focus {
-        background-color: transparent;
-        color: $color-background-dark;
-
-        &::before {
-          background-color: $color-background-dark;
-        }
-      }
-
-      &::before {
-        background-color: $color-accent;
-      }
-
-      &::after {
-        $color-accent-rgb: red($color-accent), green($color-accent), blue($color-accent);
-        $color-background-dark-rgb: red($color-background-dark), green($color-background-dark), blue($color-background-dark);
-
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.586 5L.293 8.293a1 1 0 1 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4A1 1 0 1 0 .293 1.707L3.586 5z' fill='rgb(#{$color-accent-rgb})'/%3E%3Cpath d='M13.586 5l-3.293 3.293a1 1 0 0 0 1.414 1.414l4-4a1 1 0 0 0 0-1.414l-4-4a1 1 0 0 0-1.414 1.414L13.586 5z' fill='rgb(#{$color-background-dark-rgb}'/%3E%3C/svg%3E");
-      }
-    }
-  }
-
-  .pill {
-    color: $color-background;
-  }
+  --theme-button-background: var(--color-accent);
+  --theme-button-background-hover: var(--color-background-dark);
+  --theme-button-color: var(--color-background);
+  --theme-button-color-hover: var(--color-background);
+  --theme-link-color: var(--color-accent);
+  --theme-link-color-hover: var(--color-accent-dark);
+  --theme-button-link-color-hover: var(--color-background-dark);
+  --theme-pill-background: var(--color-background-dark);
+  --theme-title-color: var(--color-headline);
+  background-color: var(--color-background);
+  color: var(--color-text);
 }
