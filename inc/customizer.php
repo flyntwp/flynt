@@ -15,7 +15,7 @@ add_action('customize_register', function ($wp_customize) {
         ]
     );
 
-    $wp_customize->add_control (new WP_Customize_Image_Control (
+    $wp_customize->add_control(new WP_Customize_Image_Control(
         $wp_customize,
         'custom_header_logo',
         [
