@@ -205,7 +205,14 @@ ol {
 
   &--checkCircle {
     li::before {
-      background-image: url('../assets/icons/check-circle.svg');
+      background-color: var(--color-accent);
+      mask-image: url('../assets/icons/check-circle.svg');
+      mask-size: cover;
+
+      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        background: url('../assets/icons/check-circle.svg');
+        background-size: cover;
+      }
     }
   }
 }
