@@ -5,10 +5,12 @@
   "license": "MIT",
   "minimum-stability": "dev",
   "prefer-stable": true,
-  "authors": [{
-    "name": "bleech",
-    "email": "flynt@bleech.de"
-  }],
+  "authors": [
+    {
+      "name": "bleech",
+      "email": "flynt@bleech.de"
+    }
+  ],
   "require": {
     "timber/timber": "^1.8",
     "flyntwp/acf-field-group-composer": "^1.0.1",

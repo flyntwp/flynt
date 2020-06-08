@@ -1,0 +1,82 @@
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #000 !important;
+    /* Black prints faster */
+    text-shadow: none !important;
+  }
+
+  .mainHeader,
+  .mainFooter,
+  .wpFooter {
+    display: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  [href]::after {
+    content: '('attr(href)')';
+    display: inline;
+  }
+
+  /* prevent link overflowing parent elements */
+  .button[href] {
+    max-width: 100%;
+  }
+
+  abbr[title]::after { /* stylelint-disable-line selector-no-qualifying-type */
+    content: '('attr(title)')';
+  }
+
+  /**
+  * Don't show links that are fragment identifiers,
+  * or use the `javascript:` pseudo protocol
+  */
+
+  [href^='#']::after,
+  [href^='javascript:']::after {
+    content: '';
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  /**
+  * Printing Tables:
+  * https://web.archive.org/web/20180815150934/http://css-discuss.incutio.com/wiki/Printing_Tables
+  */
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}

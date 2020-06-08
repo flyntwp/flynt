@@ -73,14 +73,3 @@ add_filter('style_loader_tag', function ($input) {
     $media = $matches[3][0] !== '' && $matches[3][0] !== 'all' ? ' media="' . $matches[3][0] . '"' : '';
     return '<link rel="stylesheet" href="' . $matches[2][0] . '"' . $media . '>' . "\n";
 });
-
-/**
- * cleanScriptTag
- *
- * Clean up output of <script> tags
- * TODO: fix or remove (broken on wp > 5.0.0)
- */
-// add_filter('script_loader_tag', function ($input) {
-//     $input = str_replace("type='text/javascript' ", '', $input);
-//     return str_replace("'", '"', $input);
-// });

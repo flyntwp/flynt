@@ -6,7 +6,7 @@ function replaceVersion (config) {
     const log = require('fancy-log')
     const colors = require('ansi-colors')
     const PluginError = require('plugin-error')
-    const pjson = require('../../package.json')
+    const pjson = require('./package.json')
     const replace = require('replace-in-file')
     try {
       // read current version from package.json

@@ -27,10 +27,14 @@
       position: relative;
       width: 100%;
 
-      img {
-        min-height: 100%;
-        object-fit: contain;
+      .image {
         position: absolute;
+
+        &--isSmallerThanWrapper {
+          font-family: 'object-fit: contain';
+          height: 100%;
+          object-fit: contain;
+        }
       }
     }
 

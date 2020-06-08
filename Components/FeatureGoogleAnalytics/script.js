@@ -12,7 +12,7 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
   }
 
   init () {
-    this.$ = window.$(this)
+    this.$ = $(this)
     this.props = this.getInitialProps()
     this.resolveElements()
     this.bindFunctions()
@@ -44,6 +44,7 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
   }
 
   connectedCallback () {
+    window[this.disableStr] = this.isOptedOut()
     if (this.props.isOptInComponentRegistered) {
       $document.on('trackingChanged', this.trackingChanged)
     } else {
@@ -56,32 +57,24 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
   }
 
   isOptedOut () {
-    return !!Cookies.get(this.disableStr)
+    return Cookies.get(this.disableStr) === 'true'
   }
 
-  setStatus (status) {
-    window[this.disableStr] = status
-    Cookies.set(this.disableStr, status)
+  setOptedOut (optedOut) {
+    window[this.disableStr] = optedOut
+    Cookies.set(this.disableStr, optedOut)
     this.defineGlobalGAFunction()
   }
 
   trackingChanged (event, trackingObject = {}) {
-    const status = !!trackingObject.GA_accept
-    this.setStatus(status)
-  }
-
-  loagGAScript () {
-    if (!this.scriptLoaded) {
-      this.scriptLoaded = true
-      const scriptUrl = `https://www.googletagmanager.com/gtag/js?id=${this.gaId}`
-      $.getScript(scriptUrl)
-    }
+    const optedOut = !trackingObject.GA_accept
+    this.setOptedOut(optedOut)
   }
 
   defineGlobalGAFunction () {
     let gtag
     if (this.isOptedOut()) {
-      gtag = function () {}
+      gtag = function () { }
     } else if (this.gaId === 'debug') {
       gtag = function () {
         console.log('GoogleAnalytics', [].slice.call(arguments))
@@ -116,7 +109,7 @@ class FeatureGoogleAnalytics extends window.HTMLDivElement {
 
   onOptOut (e) {
     e.preventDefault()
-    this.setStatus(false)
+    this.setOptedOut(true)
   }
 }
 

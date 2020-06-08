@@ -1,6 +1,6 @@
 {
   "name": "flynt",
-  "version": "1.0.0-rc1",
+  "version": "1.2.1",
   "main": "index.js",
   "repository": "git@github.com:flyntwp/flynt.git",
   "author": "bleech <hello@bleech.de>",
@@ -16,17 +16,16 @@
     "lint": "run-p --silent lint:*",
     "lint:scripts": "cross-env eslint '**/*.js'",
     "lint:styles": "cross-env stylelint '**/*.scss'",
-    "lint:php": "cross-env ./vendor/bin/phpcs --standard=phpcs.ruleset.xml",
+    "lint:php": "cross-env ./vendor/bin/phpcs",
     "lint:scripts:fix": "cross-env eslint '**/*.js' --fix",
     "lint:styles:fix": "cross-env stylelint '**/*.scss' --fix",
-    "lint:php:fix": "cross-env ./vendor/bin/phpcbf --standard=phpcs.ruleset.xml",
-    "release": "standard-version -a",
-    "releaseGithub": "conventional-github-releaser -p angular"
+    "lint:php:fix": "cross-env ./vendor/bin/phpcbf",
+    "release": "standard-version -a"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.4",
+    "@babel/core": "^7.8.6",
     "@babel/plugin-transform-runtime": "^7.6.2",
-    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-env": "^7.8.6",
     "@babel/runtime": "^7.6.3",
     "ansi-colors": "^4.1.1",
     "autoprefixer": "^9.7.0",
@@ -36,8 +35,7 @@
     "browser-sync": "^2.26.7",
     "check-node-version": "^4.0.1",
     "console-polyfill": "^0.3.0",
-    "conventional-github-releaser": "^3.1.3",
-    "copy-webpack-plugin": "^5.0.4",
+    "copy-webpack-plugin": "^5.1.1",
     "core-js": "^3.3.4",
     "countup.js": "^2.0.4",
     "cross-env": "^6.0.3",
@@ -52,6 +50,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "fancy-log": "^1.3.3",
+    "feather-icons": "^4.24.1",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "gulp": "^4.0.2",
     "gulp-notify": "^3.2.0",
@@ -65,7 +64,7 @@
     "lazysizes": "^5.1.2",
     "lodash": "^4.17.15",
     "mini-css-extract-plugin": "^0.8.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "node-sass-glob-importer": "^5.3.2",
     "normalize.css": "^8.0.1",
     "npm-run-all": "^4.1.5",
@@ -85,9 +84,9 @@
     "stylelint-config-sass-guidelines": "^6.1.0",
     "stylelint-config-standard": "^19.0.0",
     "stylelint-scss": "^3.12.0",
-    "swiper": "^5.2.0",
+    "swiper": "^5.3.6",
     "terser-webpack-plugin": "^2.2.1",
-    "webpack": "^4.41.2",
+    "webpack": "^4.42.0",
     "webpack-cli": "^3.3.9",
     "webpack-dev-middleware": "^3.7.2"
   },
@@ -123,7 +122,7 @@
   },
   "standard-version": {
     "scripts": {
-      "postbump": "gulp replaceVersion && git add ."
+      "postbump": "gulp replaceVersion && composer config --unset version && composer update nothing && git diff && git add . && composer validate --strict"
     }
   },
   "dependencies": {},

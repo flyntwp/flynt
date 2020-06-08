@@ -15,36 +15,31 @@ function registerRewriteRule()
 {
     $routeName = ROUTENAME;
 
-    add_rewrite_rule("{$routeName}/?(.*?)/?$", "index.php?{$routeName}=\$matches[1]", "top");
+    add_rewrite_rule("{$routeName}/?$", "index.php?{$routeName}", "top");
     add_rewrite_tag("%{$routeName}%", "([^&]+)");
-
-    $rules = get_option('rewrite_rules');
-
-    if (! isset($rules["{$routeName}/(.*?)/?$"])) {
-        flush_rewrite_rules();
-    }
 }
 
-function disallowRobots()
+function setDocumentTitle()
 {
-    if (defined('WPSEO_VERSION')) {
-        add_filter('wpseo_robots', function () {
-            return "noindex,nofollow";
-        });
-    } else {
-        remove_action('wp_head', 'noindex', 1);
-        add_action('wp_head', function () {
-            echo "<meta name='robots' content='noindex,nofollow' />\n";
-        });
-    }
+    // prevent yoast overwriting the title
+    add_filter('pre_get_document_title', function ($title) {
+        return '';
+    }, 99);
+
+    // set custom title and keep the default separator and site name
+    add_filter('document_title_parts', function ($title) {
+        $title['title'] = 'Base Style';
+        return $title;
+    }, 99);
 }
 
 function templateInclude($template)
 {
     global $wp_query;
 
-    if (isset($wp_query->query_vars['BaseStyle'])) {
-        disallowRobots();
+    if (isset($wp_query->query_vars[ROUTENAME])) {
+        setDocumentTitle();
+        add_action('wp_head', 'wp_no_robots');
         return get_template_directory() . '/basestyle.php';
     }
 

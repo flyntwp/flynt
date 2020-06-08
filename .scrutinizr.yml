@@ -13,7 +13,7 @@ tools:
   php_code_sniffer:
     enabled: true
     config:
-      ruleset: ./phpcs.ruleset.xml
+      ruleset: ./phpcs.xml.dist
       standard: custom
     filter:
       paths: [./*]
@@ -31,5 +31,5 @@ tools:
 checks:
   php:
     custom_coding_standard:
-      ruleset_path: phpcs.ruleset.xml
+      ruleset_path: phpcs.xml.dist
   javascript: true

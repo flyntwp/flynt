@@ -1,7 +1,9 @@
 <?php
+
 /**
  * Removes `the_content` area (editor) from the Wordpress backend, since Flynt uses ACF.
  */
+
 namespace Flynt\RemoveEditor;
 
 add_action('init', function () {

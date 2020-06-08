@@ -1,8 +1,8 @@
 # Flynt
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
-[![Build Status](https://travis-ci.org/flyntwp/flynt-starter-theme.svg?branch=master)](https://travis-ci.org/flyntwp/flynt-starter-theme)
-[![Code Quality](https://img.shields.io/scrutinizer/g/flyntwp/flynt-starter-theme.svg)](https://scrutinizer-ci.com/g/flyntwp/flynt-starter-theme/?branch=master)
+[![Build Status](https://travis-ci.org/flyntwp/flynt.svg?branch=master)](https://travis-ci.org/flyntwp/flynt)
+[![Code Quality](https://img.shields.io/scrutinizer/g/flyntwp/flynt.svg)](https://scrutinizer-ci.com/g/flyntwp/flynt/?branch=master)
 
 ## Short Description
 [Flynt](https://flyntwp.com/) is a WordPress theme for component-based development using [Timber](#page-templates) and [Advanced Custom Fields](#advanced-custom-fields).
@@ -18,6 +18,7 @@
   * [Advanced Custom Fields](#advanced-custom-fields)
   * [Field Groups](#field-groups)
   * [ACF Option Pages](#acf-option-pages)
+  * [Resize Dynamic](#resize-dynamic)
 * [Maintainers](#maintainers)
 * [Contributing](#contributing)
 * [License](#license)
@@ -40,6 +41,38 @@ npm run build
 * [Node](https://nodejs.org/en/) = 12
 * [Composer](https://getcomposer.org/download/) >= 1.8
 * [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/) >= 5.7
+
+## Troubleshooting
+
+### Images
+
+In some setups images may not show up, returning a 404 by the server.
+
+The most common reason for this is that you are using nginx and your server is not set up in the default way. You can see that this is the case, if an image url return a 404 from nginx, not from WordPress itself.
+
+In this case, please add something like
+
+```nginx
+location ~ "^(.*)/wp-content/uploads/(.*)$" {
+  try_files $uri $uri/ /index.php$is_args$args;
+}
+```
+
+to your site config.
+
+Other issues might come from Flynt not being able to determine the relative url of your uploads folder. If you have a non-standard WordPress folder structure, or if you use a plugin that manipulates `home_url` (for example, [WPML](https://wpml.org/)) this can cause problems when using `resizeDynamic`.
+
+In this care try to set the relative upload path manually and refresh the permalink settings in the back-end:
+
+```php
+add_filter('Flynt/TimberDynamicResize/relativeUploadDir', function () {
+    return '/app/uploads'; // Example for Bedrock installs.
+});
+```
+
+### Browsersync
+
+In some cases, browsersync may be not working. Usually this is related to WordPress not running on https. In order to fix this issue, change the `browsersync.https` value to `false` in the file `build-config.js`.
 
 ## Usage
 In your terminal, navigate to `<your-project>/wp-content/themes/flynt` and run `npm start`. This will start a local server at `localhost:3000`.
@@ -103,8 +136,6 @@ For example:
 ```php
 namespace Flynt\Components\BlockWysiwyg;
 
-use Flynt\FieldVariables;
-
 function getACFLayout()
 {
     return [
@@ -130,7 +161,7 @@ function getACFLayout()
 ### Field Groups
 Field groups are needed to show registered fields in the WordPress back-end. All field groups are created in the `./inc/fieldGroups` folder. Two field groups exist by default: [`pageComponents.php`](https://github.com/flyntwp/flynt/tree/master/inc/fieldGroups/pageComponents.php) and [`postComponents.php`](https://github.com/flyntwp/flynt/tree/master/inc/fieldGroups/postComponents.php).
 
-We call the function `getACFLayout()` defined in the `functions.php` file of each component to load fields into a field group. 
+We call the function `getACFLayout()` defined in the `functions.php` file of each component to load fields into a field group.
 
 For example:
 
@@ -151,7 +182,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'button_label' => 'Add Component',
                 'layouts' => [
                     Components\BlockWysiwyg\getACFLayout(),
-                ] 
+                ]
             ]
         ],
         'location' => [
@@ -181,6 +212,18 @@ Flynt includes several utility functions for creating Advanced Custom Fields opt
 * `Flynt\Utils\Options::addGlobal`<br> Adds fields into a new group inside the Global Options options page. When used with WPML, these fields will always be returned from the primary language. In this way these fields are *global* and cannot be translated.
 * `Flynt\Utils\Options::getTranslatable` <br> Retrieve a translatable option.
 * `Flynt\Utils\Options::getGlobal` <br> Retrieve a global option.
+
+### Dynamic Resize & WebP Generation
+
+Timber provides [a `resize` filter to resize images](https://timber.github.io/docs/reference/timber-imagehelper/#resize). This filter creates all images on the page when it's loaded for the first time. If there are many images on one page then this can lead to a very slow load time, or even a complete timeout.
+
+Flynt solves this with the `resizeDynamic` filter. This filter only generates images when the image is requested, rather than when the page is loaded.
+
+All of the generated images are stored in `uploads/dynamic`. If you want to manually regenerate all of these images you can delete this folder and the next time an image is requested it will be regenerated.
+
+`resizeDynamic` also creates a WebP file of each image it resizes. For this to work, it adds a rewrite rule to `.htaccess` so that Apache will automatically serve the WebP version to all browsers that support it.
+
+You can disable the dynamic resize functionality and WebP generation by using the filters `Flynt/TimberDynamicResize/disableDynamic` and `Flynt/TimberDynamicResize/disableWebp`. If you change the enable dynamic resizing again, make sure to flush your permalinks.
 
 ## Maintainers
 This project is maintained by [bleech](https://github.com/bleech).

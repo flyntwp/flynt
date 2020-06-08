@@ -1,12 +1,12 @@
 <?php
 
-namespace Flynt\CustomTaxonomies;
-
 /**
  * This is an example file showcasing how you can add custom taxonomies to your Flynt theme.
  *
  * For a full list of parameters see https://developer.wordpress.org/reference/functions/register_taxonomy/ or use https://generatewp.com/taxonomy/ to generate the code for you.
  */
+
+namespace Flynt\CustomTaxonomies;
 
 // function registerExampleTaxonomy()
 // {

@@ -17,7 +17,8 @@ php:
   # - 5.6
   # - 7.0
   # - 7.1
-  - 7.2
+  # - 7.2
+  - 7.3
   # - nightly
 
 matrix:
@@ -25,13 +26,17 @@ matrix:
   # allow_failures:
   #   - php: nightly
 
-before_script:
-  - npm i
+before_install:
+  - composer validate --strict
 
 install:
   - composer install
-  - nvm install 10
-  - nvm use 10
+  - nvm install 12
+  - nvm use 12
+
+before_script:
+  - npm i
 
 script:
+  - find . -type f -not -path './node_modules/*' -not -path './vendor/*' -not -path './dist/*' -name '*.php' -print0|xargs -0 -L1 -P4 -- php -l
   - npm run lint

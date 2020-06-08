@@ -32,7 +32,7 @@
             <h3 class="h3 post-title">{{ post.title }}</h3>
             <p class="post-excerpt">{{ post.preview.read_more(false) }}</p>
             <a class="button button--link" href="{{ post.link }}" title="{{ post.title }}">{{ labels.readMore }}</a>
-          </p>
+          </div>
         </li>
       {% else %}
         <p class="posts-empty">{{ labels.noPostsFound }}</p>
@@ -43,3 +43,4 @@
       {% include 'Partials/_paginationButtons.twig' %}
     {% endif %}
   </div>
+</div>
