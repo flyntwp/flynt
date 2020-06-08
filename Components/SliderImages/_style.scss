@@ -12,8 +12,7 @@
 
     &-button {
       align-items: center;
-      background-color: rgba($color-background-dark, 0.5);
-      border-radius: 50%;
+      color: var(--color-background);
       cursor: pointer;
       display: flex;
       height: 40px;
@@ -21,14 +20,29 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      transition: opacity 0.2s ease-out;
       width: 40px;
       z-index: 10;
+
+      &::before {
+        background-color: var(--color-background-dark);
+        border-radius: 50%;
+        content: '';
+        height: 100%;
+        left: 0;
+        opacity: 0.5;
+        position: absolute;
+        top: 0;
+        transition: opacity 0.2s ease-out, background-color 0.2s ease-out;
+        width: 100%;
+      }
 
       @media (min-width: $breakpoint-tablet-horizontal) {
         &:hover,
         &:focus {
-          background-color: $color-accent;
+          &::before {
+            background-color: var(--color-accent);
+            opacity: 1;
+          }
         }
       }
 
@@ -46,7 +60,7 @@
       }
 
       .feather {
-        color: var(--color-background);
+        color: currentColor;
         height: auto;
         top: 0;
         width: 80%;

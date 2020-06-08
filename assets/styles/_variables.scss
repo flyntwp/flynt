@@ -48,6 +48,7 @@ $color-background-hero: $color-brand;
   --theme-link-color-hover: var(--color-accent-dark);
   --theme-pill-background: var(--color-background-dark);
   --theme-title-color: var(--color-headline);
+  --theme-transparent: transparent; // needs for ie11-custom-propertiess polyfill to work properly with .themeReset
 }
 
 $heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';

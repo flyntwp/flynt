@@ -24,7 +24,8 @@ module.exports = {
     publicPath: path.join(`/app/themes/${themeName}/`, dest, '/'),
     entry: {
       'assets/main': './assets/main.js',
-      'assets/admin': './assets/admin.js'
+      'assets/admin': './assets/admin.js',
+      'assets/ie11Polyfills': './assets/ie11Polyfills.js'
     },
     copy: [
       getCopyConfig('./Components/**/*'),

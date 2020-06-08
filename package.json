@@ -58,6 +58,7 @@
     "gulp-rev": "^9.0.0",
     "gulp-rev-napkin": "^0.1.0",
     "gulp-rev-rewrite": "^2.0.0",
+    "ie11-custom-properties": "^3.1.0",
     "intersection-observer": "^0.7.0",
     "jquery": "^3.4.1",
     "js-cookie": "^2.2.1",

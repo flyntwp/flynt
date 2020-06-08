@@ -8,6 +8,7 @@ namespace Flynt\TimberLoader;
 
 use Flynt\Utils\TwigExtensionFlynt;
 use Flynt;
+use Flynt\Utils\Asset;
 use Timber\Image;
 use Timber\Post;
 use Timber\Timber;
@@ -74,6 +75,10 @@ add_action('timber/twig/filters', function ($twig) {
         $colorRect = $color ? "<rect width='{$width}' height='{$height}' style='fill:$color' />" : '';
         $svg = "<svg width='{$width}' height='{$height}' xmlns='http://www.w3.org/2000/svg'>{$colorRect}</svg>";
         return "data:image/svg+xml;base64," . base64_encode($svg);
+    }));
+
+    $twig->addFunction(new TwigFunction('requireUrl', function ($asset) {
+        return Asset::requireUrl($asset);
     }));
 
     return $twig;
