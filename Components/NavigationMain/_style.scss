@@ -22,11 +22,11 @@
 
   .logo {
     display: block;
-    flex-shrink: 0;
     height: 100%;
 
     &-image {
-      max-width: 130px;
+      height: 100%;
+      width: auto;
     }
   }
 
