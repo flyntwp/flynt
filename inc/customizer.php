@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Adding logo and theme options to customizer
+ * Add theme options to customizer
  */
 
 add_action('customize_register', function ($wp_customize) {
