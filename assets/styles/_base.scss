@@ -336,7 +336,7 @@ button {
     &:hover,
     &:focus {
       background-color: var(--theme-transparent);
-      color: var(--theme-button-link-color-hover);
+      color: var(--theme-link-color-hover);
     }
 
     &::before {
@@ -709,7 +709,6 @@ select {
 
 .themeDark {
   --theme-button-background-hover: var(--color-brand);
-  --theme-button-link-color-hover: var(--color-background);
   --theme-link-color-hover: var(--color-background);
   --theme-pill-background: var(--color-brand);
   --theme-title-color: var(--color-background);
@@ -721,7 +720,6 @@ select {
   --theme-button-background: var(--color-background-dark);
   --theme-button-background-hover: var(--color-background);
   --theme-button-color-hover: var(--color-background-dark);
-  --theme-button-link-color-hover: var(--color-background-dark);
   --theme-link-color: var(--color-background);
   --theme-link-color-hover: var(--color-background-dark);
   --theme-title-color: var(--color-background);
@@ -734,9 +732,8 @@ select {
   --theme-button-background-hover: var(--color-background-dark);
   --theme-button-color: var(--color-background);
   --theme-button-color-hover: var(--color-background);
-  --theme-button-link-color-hover: var(--color-background-dark);
   --theme-link-color: var(--color-accent);
-  --theme-link-color-hover: var(--color-accent-dark);
+  --theme-link-color-hover: var(--color-background-dark);
   --theme-pill-background: var(--color-background-dark);
   --theme-title-color: var(--color-headline);
   background-color: var(--color-background);

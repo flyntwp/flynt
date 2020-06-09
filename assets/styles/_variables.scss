@@ -27,7 +27,6 @@ $color-background-dark: #091a41;
 $color-background-hero: $color-brand;
 
 :root {
-  --color-accent-dark: #{darken($color-accent, 10%)}; // TODO: Make this work or change it
   --color-border: #{$color-border}; // TODO: Add this on customizer?
   --color-background: #{$color-background};
   --color-contrast: #{$color-contrast};
@@ -46,9 +45,8 @@ $color-background-hero: $color-brand;
   --theme-button-background-hover: var(--color-background-dark);
   --theme-button-color: var(--color-background);
   --theme-button-color-hover: var(--color-background);
-  --theme-button-link-color-hover: var(--color-background-dark);
   --theme-link-color: var(--color-accent);
-  --theme-link-color-hover: var(--color-accent-dark);
+  --theme-link-color-hover: var(--color-background-dark);
   --theme-pill-background: var(--color-background-dark);
   --theme-title-color: var(--color-headline);
   --theme-transparent: transparent; // needs for ie11-custom-propertiess polyfill to work properly with .themeReset
