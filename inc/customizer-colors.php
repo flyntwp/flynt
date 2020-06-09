@@ -132,9 +132,9 @@ add_action('wp_head', function () {
                 <?php echo (get_theme_mod('theme_colors_brand') !== '') ? '--color-brand: ' . get_theme_mod('theme_colors_brand') . ';' : null ?>
                 <?php echo (get_theme_mod('theme_colors_accent') !== '') ? '--color-accent: ' . get_theme_mod('theme_colors_accent') . ';' : null ?>
                 <?php echo (get_theme_mod('theme_colors_text') !== '') ? ' --color-text: ' . get_theme_mod('theme_colors_text') . ';' : null ?>
-                <?php echo (get_theme_mod('theme_colors_headline') !== '') ? ' --color-headline: ' . get_theme_mod('theme_colors_headlines') . ';' : null ?>
-                <?php echo (get_theme_mod('theme_colors_light_theme') !== '') ? '--color-background-light: ' . get_theme_mod('theme_colors_theme_light') . ';' : null ?>
-                <?php echo (get_theme_mod('theme_colors_dark_theme') !== '') ? '--color-background-dark: ' . get_theme_mod('theme_colors_theme_dark') . ';' : null ?>
+                <?php echo (get_theme_mod('theme_colors_headline') !== '') ? ' --color-headline: ' . get_theme_mod('theme_colors_headline') . ';' : null ?>
+                <?php echo (get_theme_mod('theme_colors_light_theme') !== '') ? '--color-background-light: ' . get_theme_mod('theme_colors_light_theme') . ';' : null ?>
+                <?php echo (get_theme_mod('theme_colors_dark_theme') !== '') ? '--color-background-dark: ' . get_theme_mod('theme_colors_dark_theme') . ';' : null ?>
             }
         </style>
     <?php
