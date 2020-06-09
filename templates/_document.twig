@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }} {{ __('Feed', 'flynt') }}" href="{{ site.rss2 | e('esc_url') }}">
     <script>
-    // Only load IE polyfils for IE
-    !function(){var i=window.CSS&&window.CSS.supports.bind(window.CSS)||window.supportsCSS;!!i&&(i("--f:0")||i("--f",0))||document.write('<script src="{{ requireUrl('assets/ie11Polyfills.js') }}"><\/script>')}();
+    window.MSInputMethodContext && document.documentMode && document.write('<script src="{{ requireUrl('assets/ie11Polyfills.js') }}"><\x2fscript>');
     </script>
     {{ function('wp_head') }}
   </head>

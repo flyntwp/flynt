@@ -5,21 +5,11 @@
  */
 
 add_action('customize_register', function ($wp_customize) {
-    // Add theme color options
-    // $wp_customize->add_panel(
-    //     'theme',
-    //     [
-    //         'priority'       => 30,
-    //         'title'          => 'Theme',
-    //     ]
-    // );
-
     $wp_customize->add_section(
         'theme_colors',
         [
             'title'      => __('Colors', 'flynt'),
             'priority'   => 20,
-            // 'panel'      => 'theme',
         ]
     );
 
@@ -134,15 +124,15 @@ add_action('customize_register', function ($wp_customize) {
 
 add_action('wp_head', function () {
     ?>
-         <style type="text/css">
+        <style type="text/css">
             :root.html {
-                --color-text: <?php echo get_theme_mod('theme_colors_text'); ?>;
-                --color-headline: <?php echo get_theme_mod('theme_colors_headlines'); ?>;
-                --color-brand: <?php echo get_theme_mod('theme_colors_brand'); ?>;
-                --color-accent: <?php echo get_theme_mod('theme_colors_accent'); ?>;
-                --color-background-light: <?php echo get_theme_mod('theme_colors_theme_light'); ?>;
-                --color-background-dark: <?php echo get_theme_mod('theme_colors_theme_dark'); ?>;
+                <?php echo (get_theme_mod('theme_colors_text') !== '') ? ' --color-text: ' . get_theme_mod('theme_colors_text') . ';' : null ?>
+                <?php echo (get_theme_mod('theme_colors_headlines') !== '') ? ' --color-headline: ' . get_theme_mod('theme_colors_headlines') . ';' : null ?>
+                <?php echo (get_theme_mod('theme_colors_brand') !== '') ? '--color-brand: ' . get_theme_mod('theme_colors_brand') . ';' : null ?>
+                <?php echo (get_theme_mod('theme_colors_accent') !== '') ? '--color-accent: ' . get_theme_mod('theme_colors_accent') . ';' : null ?>
+                <?php echo (get_theme_mod('theme_colors_theme_light') !== '') ? '--color-background-light: ' . get_theme_mod('theme_colors_theme_light') . ';' : null ?>
+                <?php echo (get_theme_mod('theme_colors_theme_dark') !== '') ? '--color-background-dark: ' . get_theme_mod('theme_colors_theme_dark') . ';' : null ?>
             }
-         </style>
+        </style>
     <?php
 });
