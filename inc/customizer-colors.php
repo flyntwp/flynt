@@ -125,6 +125,7 @@ add_action('customize_register', function ($wp_customize) {
 add_action('wp_head', function () {
     ?>
         <style type="text/css">
+            /* TODO: Remove this if there are no colors selected? */
             :root.html {
                 <?php echo (get_theme_mod('theme_colors_brand') !== '') ? '--color-brand: ' . get_theme_mod('theme_colors_brand') . ';' : null ?>
                 <?php echo (get_theme_mod('theme_colors_accent') !== '') ? '--color-accent: ' . get_theme_mod('theme_colors_accent') . ';' : null ?>

@@ -27,20 +27,20 @@ $color-background-dark: #091a41;
 $color-background-hero: $color-brand;
 
 :root {
+  --color-accent-dark: #{darken($color-accent, 10%)}; // TODO: Make this work or change it
+  --color-border: #{$color-border}; // TODO: Add this on customizer?
+  --color-background: #{$color-background};
+  --color-contrast: #{$color-contrast};
+  --color-background-hero: var(--color-brand);
+
   // editable colors for WP Customizer
   --color-brand: #{$color-brand};
   --color-accent: #{$color-accent};
-  --color-text: #{$color-contrast};
+  --color-text: #{$color-text};
   --color-headline: #{$color-headline};
   --color-background-light: #{$color-background-light};
   --color-background-dark: #{$color-background-dark};
   // end of editable colors
-
-  --color-accent-dark: #{darken($color-accent, 10%)}; // TODO: Make this work or change it
-  --color-border: #{$color-border}; // TODO: Add this on customizer?
-  --color-background: #{$color-background};
-  --color-background-hero: var(--color-brand);
-  --color-contrast: var(--color-contrast);
 
   --theme-button-background: var(--color-accent);
   --theme-button-background-hover: var(--color-background-dark);
