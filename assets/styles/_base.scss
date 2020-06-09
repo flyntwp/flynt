@@ -445,6 +445,10 @@ label {
   font-family: inherit;
   font-size: inherit;
   min-height: 50px;
+
+  &::placeholder {
+    color: var(--color-text);
+  }
 }
 
 input,
