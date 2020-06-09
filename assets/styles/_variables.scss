@@ -31,16 +31,16 @@ $color-background-hero: $color-brand;
   --color-brand: #{$color-brand};
   --color-accent: #{$color-accent};
   --color-accent-dark: #{darken($color-accent, 10%)};
-  --color-contrast: #{$color-contrast};
+  --color-text: #{$color-contrast};
   --color-headline: #{$color-headline};
   --color-border: #{$color-border};
   --color-background-light: #{$color-background-light};
   --color-background-dark: #{$color-background-dark};
   // end of editable colors
 
-  --color-background: #{$color-background}; // TODO: should it be editable color?
+  --color-background: #{$color-background};
   --color-background-hero: var(--color-brand);
-  --color-text: var(--color-contrast);
+  --color-contrast: var(--color-contrast);
 
   --theme-button-background: var(--color-accent);
   --theme-button-background-hover: var(--color-background-dark);
