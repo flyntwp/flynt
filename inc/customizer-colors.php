@@ -137,13 +137,15 @@ add_action('wp_head', function () {
                 <?php echo (get_theme_mod('theme_colors_dark_theme') !== '') ? '--color-background-dark: ' . get_theme_mod('theme_colors_dark_theme') . ';' : null ?>
             }
             <?php if (get_theme_mod('theme_colors_accent')) : ?>
+                .themeReset .iconList--checkCircle li::before,
                 .iconList--checkCircle li::before {
                     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='%23<?php echo substr(get_theme_mod('theme_colors_accent'), 1); ?>' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-check-circle'%3E%3Cpath d='M22 11.08V12a10 10 0 1 1-5.93-9.14'/%3E%3Cpath d='M22 4L12 14.01l-3-3'/%3E%3C/svg%3E%0A");
                 }
             <?php endif;?>
             <?php if (get_theme_mod('theme_colors_text')) : ?>
+                .themeReset select,
                 select {
-                    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='32' height='32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline fill='none' stroke='%23<?php echo substr(get_theme_mod('theme_colors_text'), 1); ?>' stroke-width='5'  points='2,9 16,25 30,9 '/%3E%3C/svg%3E");
+                    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='32' height='32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline fill='none' stroke='%23<?php echo substr(get_theme_mod('theme_colors_headline'), 1); ?>' stroke-width='5'  points='2,9 16,25 30,9 '/%3E%3C/svg%3E");
                 }
             <?php endif;?>
         </style>
