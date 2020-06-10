@@ -3,6 +3,7 @@
 
   backface-visibility: hidden;
   background-color: $color-background;
+  display: none;
   height: calc(100% - #{$navigation-height});
   left: 0;
   margin: 0;
@@ -52,5 +53,6 @@
 }
 
 &.flyntComponent-menuIsOpen .menu {
+  display: block;
   transform: translateX(0);
 }
