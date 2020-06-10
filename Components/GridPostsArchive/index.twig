@@ -12,7 +12,7 @@
     <ul class="posts">
       {% for post in posts %}
         <li class="post">
-          <a class="post-link" href="{{ post.link }}" title="{{ post.title }}">
+          <a class="post-link" href="{{ post.link }}" title="{{ post.title }}" aria-hidden="true" tabindex="-1">
             {% if post.thumbnail %}
               <figure class="figure">
                 <img class="figure-image lazyload"
@@ -31,7 +31,10 @@
           <div class="post-inner">
             <h3 class="h3 post-title">{{ post.title }}</h3>
             <p class="post-excerpt">{{ post.preview.read_more(false) }}</p>
-            <a class="button button--link" href="{{ post.link }}" title="{{ post.title }}">{{ labels.readMore }}</a>
+            <a class="button button--link" href="{{ post.link }}" title="{{ post.title }}">
+              {{ labels.readMore }}
+              <span class="visuallyHidden">{{ post.title }}</span>
+            </a>
           </div>
         </li>
       {% else %}
