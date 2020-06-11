@@ -28,9 +28,16 @@ Options::addTranslatable('NavigationBurger', [
     [
         'label' => 'Accessibility',
         'instructions' => 'Text labels for screen readers.',
-        'name' => 'aria',
+        'name' => 'a11y',
         'type' => 'group',
         'sub_fields' => [
+            [
+                'label' => 'Aria Label for Menu',
+                'name' => 'labelMenu',
+                'type' => 'text',
+                'default_value' => 'Main',
+                'required' => 1,
+            ],
             [
                 'label' => 'Toggle Menu Button',
                 'name' => 'toggleMenuButton',
