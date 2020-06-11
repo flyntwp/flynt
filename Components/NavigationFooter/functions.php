@@ -30,4 +30,18 @@ Options::addTranslatable('NavigationFooter', [
             'class' => 'autosize'
         ]
     ],
+    [
+        'label' => 'Accessibility',
+        'name' => 'a11y',
+        'type' => 'group',
+        'sub_fields' => [
+            [
+                'label' => 'Aria Label for Menu',
+                'name' => 'labelMenu',
+                'type' => 'text',
+                'default_value' => 'Footer',
+                'required' => 1,
+            ]
+        ],
+    ],
 ]);
