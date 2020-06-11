@@ -87,7 +87,7 @@ add_action('customize_register', function ($wp_customize) {
         [
             'section' => 'theme_colors',
             'label'   => esc_html__('Headline', 'flynt'),
-            'description' => 'Changes color for all headlines.'
+            'description' => 'Changes color for all headlines and form elements.'
         ]
     ));
 
