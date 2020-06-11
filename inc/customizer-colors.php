@@ -29,6 +29,7 @@ add_action('customize_register', function ($wp_customize) {
         [
             'section' => 'theme_colors',
             'label'   => esc_html__('Brand', 'flynt'),
+            'description' => 'Changes color used in hero theme background and pill elements in dark background.'
         ]
     ));
 
@@ -47,6 +48,7 @@ add_action('customize_register', function ($wp_customize) {
         [
             'section' => 'theme_colors',
             'label'   => esc_html__('Accent', 'flynt'),
+            'description' => 'Changes color used in buttons, icons, links, blockquote border and table head border.'
         ]
     ));
 
@@ -66,6 +68,7 @@ add_action('customize_register', function ($wp_customize) {
         [
             'section' => 'theme_colors',
             'label'   => esc_html__('Text', 'flynt'),
+            'description' => 'Changes color for all running text.'
         ]
     ));
 
@@ -84,6 +87,7 @@ add_action('customize_register', function ($wp_customize) {
         [
             'section' => 'theme_colors',
             'label'   => esc_html__('Headline', 'flynt'),
+            'description' => 'Changes color for all headlines.'
         ]
     ));
 
@@ -102,6 +106,7 @@ add_action('customize_register', function ($wp_customize) {
         [
             'section' => 'theme_colors',
             'label'   => esc_html__('Light Theme Background', 'flynt'),
+            'description' => 'Changes light theme background color, table row and caption background.'
         ]
     ));
 
@@ -118,8 +123,9 @@ add_action('customize_register', function ($wp_customize) {
         $wp_customize,
         'theme_colors_dark_theme',
         [
-            'section' => 'theme_colors',
-            'label'   => esc_html__('Dark Theme Background', 'flynt'),
+            'section'     => 'theme_colors',
+            'label'       => esc_html__('Dark Theme Background', 'flynt'),
+            'description' => 'Changes dark theme background color and button hover color.'
         ]
     ));
 });
