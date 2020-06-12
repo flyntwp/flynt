@@ -14,25 +14,6 @@ add_action('customize_register', function ($wp_customize) {
         ]
     );
 
-    // Brand color
-    $wp_customize->add_setting(
-        'theme_colors_brand',
-        [
-            'default'   => '#0d8eff',
-            'transport' => 'refresh',
-        ]
-    );
-
-    $wp_customize->add_control(new WP_Customize_Color_Control(
-        $wp_customize,
-        'theme_colors_brand',
-        [
-            'section' => 'theme_colors',
-            'label'   => esc_html__('Brand', 'flynt'),
-            'description' => 'Changes color used in hero theme background and pill elements in dark background.'
-        ]
-    ));
-
     // Accent color
     $wp_customize->add_setting(
         'theme_colors_accent',
@@ -48,7 +29,7 @@ add_action('customize_register', function ($wp_customize) {
         [
             'section' => 'theme_colors',
             'label'   => esc_html__('Accent', 'flynt'),
-            'description' => 'Changes color used in buttons, icons, links, blockquote border and table head border.'
+            'description' => 'Changes color of buttons, icons, links, blockquote border and table head border.'
         ]
     ));
 
@@ -68,7 +49,7 @@ add_action('customize_register', function ($wp_customize) {
         [
             'section' => 'theme_colors',
             'label'   => esc_html__('Text', 'flynt'),
-            'description' => 'Changes color for all running text.'
+            'description' => 'Changes color of all running text.'
         ]
     ));
 
@@ -87,7 +68,26 @@ add_action('customize_register', function ($wp_customize) {
         [
             'section' => 'theme_colors',
             'label'   => esc_html__('Headline', 'flynt'),
-            'description' => 'Changes color for all headlines and form elements.'
+            'description' => 'Changes color of all headlines and form elements.'
+        ]
+    ));
+
+    // Theme Hero color
+    $wp_customize->add_setting(
+        'theme_colors_brand',
+        [
+            'default'   => '#0d8eff',
+            'transport' => 'refresh',
+        ]
+    );
+
+    $wp_customize->add_control(new WP_Customize_Color_Control(
+        $wp_customize,
+        'theme_colors_brand',
+        [
+            'section' => 'theme_colors',
+            'label'   => esc_html__('Hero Theme', 'flynt'),
+            'description' => 'Changes color of hero theme background pill element and button hover in dark background.'
         ]
     ));
 
@@ -105,7 +105,7 @@ add_action('customize_register', function ($wp_customize) {
         'theme_colors_light_theme',
         [
             'section' => 'theme_colors',
-            'label'   => esc_html__('Light Theme Background', 'flynt'),
+            'label'   => esc_html__('Light Theme', 'flynt'),
             'description' => 'Changes light theme background color, table row and caption background.'
         ]
     ));
@@ -124,7 +124,7 @@ add_action('customize_register', function ($wp_customize) {
         'theme_colors_dark_theme',
         [
             'section'     => 'theme_colors',
-            'label'       => esc_html__('Dark Theme Background', 'flynt'),
+            'label'       => esc_html__('Dark Theme', 'flynt'),
             'description' => 'Changes dark theme background color and button hover color.'
         ]
     ));
