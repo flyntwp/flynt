@@ -87,7 +87,7 @@ add_action('customize_register', function ($wp_customize) {
         [
             'section' => 'theme_colors',
             'label'   => esc_html__('Hero Theme', 'flynt'),
-            'description' => 'Changes color of hero theme background pill element and button hover in dark background.'
+            'description' => 'Changes color of hero theme background, pill element and button hover in dark background.'
         ]
     ));
 
