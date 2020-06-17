@@ -4,6 +4,8 @@
  * Add theme options to customizer
  */
 
+use Flynt\Utils\Asset;
+
 add_action('customize_register', function ($wp_customize) {
     // TODO: Optimise this and get default colors.
     $wp_customize->add_section(
@@ -19,7 +21,7 @@ add_action('customize_register', function ($wp_customize) {
         'theme_colors_accent',
         [
             'default'   => '#f96417',
-            'transport' => 'refresh',
+            'transport' => 'postMessage',
         ]
     );
 
@@ -39,7 +41,7 @@ add_action('customize_register', function ($wp_customize) {
         'theme_colors_text',
         [
             'default'   => '#414751',
-            'transport' => 'refresh',
+            'transport' => 'postMessage',
         ]
     );
 
@@ -58,7 +60,7 @@ add_action('customize_register', function ($wp_customize) {
         'theme_colors_headline',
         [
             'default'   => '#0b1016',
-            'transport' => 'refresh',
+            'transport' => 'postMessage',
         ]
     );
 
@@ -77,7 +79,7 @@ add_action('customize_register', function ($wp_customize) {
         'theme_colors_brand',
         [
             'default'   => '#0d8eff',
-            'transport' => 'refresh',
+            'transport' => 'postMessage',
         ]
     );
 
@@ -96,7 +98,7 @@ add_action('customize_register', function ($wp_customize) {
         'theme_colors_light_theme',
         [
             'default'   => '#f2f6fe',
-            'transport' => 'refresh',
+            'transport' => 'postMessage',
         ]
     );
 
@@ -115,7 +117,7 @@ add_action('customize_register', function ($wp_customize) {
         'theme_colors_dark_theme',
         [
             'default'   => '#091a41',
-            'transport' => 'refresh',
+            'transport' => 'postMessage',
         ]
     );
 
@@ -130,15 +132,25 @@ add_action('customize_register', function ($wp_customize) {
     ));
 });
 
+add_action('customize_preview_init', function () {
+    wp_enqueue_script(
+        'customizer-colors',
+        Asset::requireUrl('assets/customizer-colors.js'),
+        array('jquery','customize-preview'),
+        '',
+        true
+    );
+});
+
 add_action('wp_head', function () {
     ?>
         <style type="text/css">
             /* TODO: Remove this if there are no colors selected? */
             :root.html {
-                <?php echo (get_theme_mod('theme_colors_brand') !== '') ? '--color-brand: ' . get_theme_mod('theme_colors_brand') . ';' : null ?>
                 <?php echo (get_theme_mod('theme_colors_accent') !== '') ? '--color-accent: ' . get_theme_mod('theme_colors_accent') . ';' : null ?>
                 <?php echo (get_theme_mod('theme_colors_text') !== '') ? ' --color-text: ' . get_theme_mod('theme_colors_text') . ';' : null ?>
                 <?php echo (get_theme_mod('theme_colors_headline') !== '') ? ' --color-headline: ' . get_theme_mod('theme_colors_headline') . ';' : null ?>
+                <?php echo (get_theme_mod('theme_colors_brand') !== '') ? '--color-brand: ' . get_theme_mod('theme_colors_brand') . ';' : null ?>
                 <?php echo (get_theme_mod('theme_colors_light_theme') !== '') ? '--color-background-light: ' . get_theme_mod('theme_colors_light_theme') . ';' : null ?>
                 <?php echo (get_theme_mod('theme_colors_dark_theme') !== '') ? '--color-background-dark: ' . get_theme_mod('theme_colors_dark_theme') . ';' : null ?>
             }
