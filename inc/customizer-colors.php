@@ -6,7 +6,40 @@
 
 use Flynt\Utils\Asset;
 
-add_action('customize_register', function ($wp_customize) {
+$colors = [
+    'accent' => [
+        'label'       => 'Accent',
+        'default'     => '#f96417',
+        'description' => 'Changes color of buttons, icons, links, blockquote border and table head border.',
+    ],
+    'text' => [
+        'label'       => 'Text',
+        'default'     => '#414751',
+        'description' => 'Changes color of all running text.',
+    ],
+    'headline' => [
+        'label'       => 'Headline',
+        'default'     => '#0b1016',
+        'description' => 'Changes color of all headlines and form elements.',
+    ],
+    'brand' => [
+        'label'       => 'Hero Theme',
+        'default'     => '#0d8eff',
+        'description' => 'Changes color of hero theme background, pill element and button hover in dark background.',
+    ],
+    'background-light' => [
+        'label'       => 'Light Theme',
+        'default'     => '#f2f6fe',
+        'description' => 'Changes light theme background color, table row and caption background.',
+    ],
+    'background-dark' => [
+        'label'       => 'Dark Theme',
+        'default'     => '#091a41',
+        'description' => 'Changes dark theme background color and button hover color.',
+    ],
+];
+
+add_action('customize_register', function ($wp_customize) use ($colors) {
     $wp_customize->add_section(
         'theme_colors',
         [
@@ -15,120 +48,29 @@ add_action('customize_register', function ($wp_customize) {
         ]
     );
 
-    // Accent color
-    $wp_customize->add_setting(
-        'theme_colors_accent',
-        [
-            'default'   => '#f96417',
-            'transport' => 'postMessage',
-        ]
-    );
+    foreach ($colors as $name => $color) {
+        // Settings
+        $wp_customize->add_setting(
+            'theme_colors_' . $name,
+            [
+                'default'   => $color['default'],
+                'transport' => 'postMessage',
+            ]
+        );
 
-    $wp_customize->add_control(new WP_Customize_Color_Control(
-        $wp_customize,
-        'theme_colors_accent',
-        [
-            'section'     => 'theme_colors',
-            'label'       => esc_html__('Accent', 'flynt'),
-            'description' => 'Changes color of buttons, icons, links, blockquote border and table head border.'
-        ]
-    ));
-
-
-    // Text color
-    $wp_customize->add_setting(
-        'theme_colors_text',
-        [
-            'default'   => '#414751',
-            'transport' => 'postMessage',
-        ]
-    );
-
-    $wp_customize->add_control(new WP_Customize_Color_Control(
-        $wp_customize,
-        'theme_colors_text',
-        [
-            'section'     => 'theme_colors',
-            'label'       => esc_html__('Text', 'flynt'),
-            'description' => 'Changes color of all running text.'
-        ]
-    ));
-
-    // Headlines color
-    $wp_customize->add_setting(
-        'theme_colors_headline',
-        [
-            'default'   => '#0b1016',
-            'transport' => 'postMessage',
-        ]
-    );
-
-    $wp_customize->add_control(new WP_Customize_Color_Control(
-        $wp_customize,
-        'theme_colors_headline',
-        [
-            'section'     => 'theme_colors',
-            'label'       => esc_html__('Headline', 'flynt'),
-            'description' => 'Changes color of all headlines and form elements.'
-        ]
-    ));
-
-    // Theme hero color
-    $wp_customize->add_setting(
-        'theme_colors_brand',
-        [
-            'default'   => '#0d8eff',
-            'transport' => 'postMessage',
-        ]
-    );
-
-    $wp_customize->add_control(new WP_Customize_Color_Control(
-        $wp_customize,
-        'theme_colors_brand',
-        [
-            'section'     => 'theme_colors',
-            'label'       => esc_html__('Hero Theme', 'flynt'),
-            'description' => 'Changes color of hero theme background, pill element and button hover in dark background.'
-        ]
-    ));
-
-    // Theme light color
-    $wp_customize->add_setting(
-        'theme_colors_light_theme',
-        [
-            'default'   => '#f2f6fe',
-            'transport' => 'postMessage',
-        ]
-    );
-
-    $wp_customize->add_control(new WP_Customize_Color_Control(
-        $wp_customize,
-        'theme_colors_light_theme',
-        [
-            'section'     => 'theme_colors',
-            'label'       => esc_html__('Light Theme', 'flynt'),
-            'description' => 'Changes light theme background color, table row and caption background.'
-        ]
-    ));
-
-    // Theme dark color
-    $wp_customize->add_setting(
-        'theme_colors_dark_theme',
-        [
-            'default'   => '#091a41',
-            'transport' => 'postMessage',
-        ]
-    );
-
-    $wp_customize->add_control(new WP_Customize_Color_Control(
-        $wp_customize,
-        'theme_colors_dark_theme',
-        [
-            'section'     => 'theme_colors',
-            'label'       => esc_html__('Dark Theme', 'flynt'),
-            'description' => 'Changes dark theme background color and button hover color.'
-        ]
-    ));
+        // Controls
+        $wp_customize->add_control(
+            new WP_Customize_Color_Control(
+                $wp_customize,
+                'theme_colors_' . $name,
+                [
+                    'section'     => 'theme_colors',
+                    'label'       => __($color['label']),
+                    'description' => __($color['description']),
+                ]
+            )
+        );
+    }
 });
 
 add_action('customize_preview_init', function () {
@@ -141,18 +83,20 @@ add_action('customize_preview_init', function () {
     );
 });
 
-add_action('wp_head', function () {
-    ?>
+add_action('wp_head', function () use ($colors) {
+    $hasChanged = array_filter($colors, function ($color, $name) {
+        $value = get_theme_mod('theme_colors_' . $name, $color['default']);
+        return $value !== $color['default'];
+    }, ARRAY_FILTER_USE_BOTH);
+
+    if ($hasChanged) { ?>
         <style type="text/css">
-            /* TODO: Remove this if there are no colors selected? */
             :root.html {
-                <?php echo (get_theme_mod('theme_colors_accent') !== '') ? '--color-accent: ' . get_theme_mod('theme_colors_accent') . ';' : null ?>
-                <?php echo (get_theme_mod('theme_colors_text') !== '') ? ' --color-text: ' . get_theme_mod('theme_colors_text') . ';' : null ?>
-                <?php echo (get_theme_mod('theme_colors_headline') !== '') ? ' --color-headline: ' . get_theme_mod('theme_colors_headline') . ';' : null ?>
-                <?php echo (get_theme_mod('theme_colors_brand') !== '') ? '--color-brand: ' . get_theme_mod('theme_colors_brand') . ';' : null ?>
-                <?php echo (get_theme_mod('theme_colors_light_theme') !== '') ? '--color-background-light: ' . get_theme_mod('theme_colors_light_theme') . ';' : null ?>
-                <?php echo (get_theme_mod('theme_colors_dark_theme') !== '') ? '--color-background-dark: ' . get_theme_mod('theme_colors_dark_theme') . ';' : null ?>
+                <?php foreach ($colors as $name => $color) {
+                    echo (get_theme_mod('theme_colors_' . $name)) ? '--color-' . $name . ': ' . get_theme_mod('theme_colors_' . $name) . ';' : null;
+                } ?>
             }
+
             <?php if (get_theme_mod('theme_colors_accent')) : ?>
                 .themeReset .iconList--checkCircle li::before,
                 .iconList--checkCircle li::before {
@@ -166,5 +110,5 @@ add_action('wp_head', function () {
                 }
             <?php endif;?>
         </style>
-    <?php
+    <?php }
 });

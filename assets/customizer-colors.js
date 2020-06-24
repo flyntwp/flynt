@@ -28,13 +28,13 @@ $(document).ready(function () {
     })
   })
 
-  wp.customize('theme_colors_light_theme', function (value) {
+  wp.customize('theme_colors_background-light', function (value) {
     value.bind(function (newval) {
       $(':root.html').css('--color-background-light', newval)
     })
   })
 
-  wp.customize('theme_colors_dark_theme', function (value) {
+  wp.customize('theme_colors_background-dark', function (value) {
     value.bind(function (newval) {
       $(':root.html').css('--color-background-dark', newval)
     })
