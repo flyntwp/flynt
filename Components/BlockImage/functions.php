@@ -22,8 +22,7 @@ function getACFLayout()
                 'name' => 'image',
                 'type' => 'image',
                 'preview_size' => 'medium',
-                'instructions' => '',
-                'max_size' => 4,
+                'instructions' => 'Image-Format: JPG, PNG, GIF.',
                 'required' => true,
                 'mime_types' => 'gif,jpg,jpeg,png'
             ],
