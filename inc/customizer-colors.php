@@ -7,7 +7,6 @@
 use Flynt\Utils\Asset;
 
 add_action('customize_register', function ($wp_customize) {
-    // TODO: Optimise this and get default colors.
     $wp_customize->add_section(
         'theme_colors',
         [
@@ -29,8 +28,8 @@ add_action('customize_register', function ($wp_customize) {
         $wp_customize,
         'theme_colors_accent',
         [
-            'section' => 'theme_colors',
-            'label'   => esc_html__('Accent', 'flynt'),
+            'section'     => 'theme_colors',
+            'label'       => esc_html__('Accent', 'flynt'),
             'description' => 'Changes color of buttons, icons, links, blockquote border and table head border.'
         ]
     ));
@@ -49,8 +48,8 @@ add_action('customize_register', function ($wp_customize) {
         $wp_customize,
         'theme_colors_text',
         [
-            'section' => 'theme_colors',
-            'label'   => esc_html__('Text', 'flynt'),
+            'section'     => 'theme_colors',
+            'label'       => esc_html__('Text', 'flynt'),
             'description' => 'Changes color of all running text.'
         ]
     ));
@@ -68,13 +67,13 @@ add_action('customize_register', function ($wp_customize) {
         $wp_customize,
         'theme_colors_headline',
         [
-            'section' => 'theme_colors',
-            'label'   => esc_html__('Headline', 'flynt'),
+            'section'     => 'theme_colors',
+            'label'       => esc_html__('Headline', 'flynt'),
             'description' => 'Changes color of all headlines and form elements.'
         ]
     ));
 
-    // Theme Hero color
+    // Theme hero color
     $wp_customize->add_setting(
         'theme_colors_brand',
         [
@@ -87,8 +86,8 @@ add_action('customize_register', function ($wp_customize) {
         $wp_customize,
         'theme_colors_brand',
         [
-            'section' => 'theme_colors',
-            'label'   => esc_html__('Hero Theme', 'flynt'),
+            'section'     => 'theme_colors',
+            'label'       => esc_html__('Hero Theme', 'flynt'),
             'description' => 'Changes color of hero theme background, pill element and button hover in dark background.'
         ]
     ));
@@ -106,13 +105,13 @@ add_action('customize_register', function ($wp_customize) {
         $wp_customize,
         'theme_colors_light_theme',
         [
-            'section' => 'theme_colors',
-            'label'   => esc_html__('Light Theme', 'flynt'),
+            'section'     => 'theme_colors',
+            'label'       => esc_html__('Light Theme', 'flynt'),
             'description' => 'Changes light theme background color, table row and caption background.'
         ]
     ));
 
-    // Theme Dark color
+    // Theme dark color
     $wp_customize->add_setting(
         'theme_colors_dark_theme',
         [
