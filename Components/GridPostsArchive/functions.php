@@ -79,9 +79,6 @@ Options::addTranslatable('GridPostsArchive', [
         'tabs' => 'visual,text',
         'media_upload' => 0,
         'delay' => 1,
-        'wrapper' => [
-            'class' => 'autosize',
-        ],
     ],
     [
         'label' => 'Labels',
