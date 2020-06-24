@@ -34,8 +34,8 @@ function getACFLayout()
                 'label' => 'Poster Image',
                 'type' => 'image',
                 'preview_size' => 'medium',
-                'mime_types' => 'jpg,jpeg',
-                'instructions' => 'Recommended Size: Min-Width 1200px; Min-Height: 675px; Image-Format: JPG, Aspect Ratio 16/9.',
+                'mime_types' => 'jpg,jpeg,png',
+                'instructions' => 'Recommended Size: Min-Width 1200px; Min-Height: 675px; Image-Format: JPG, PNG. Aspect Ratio 16/9.',
                 'required' => 1
             ],
             [
