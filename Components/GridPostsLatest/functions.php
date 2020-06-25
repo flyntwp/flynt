@@ -50,7 +50,6 @@ function getACFLayout()
                 'media_upload' => 0,
                 'delay' => 1,
                 'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
-                'wrapper' => [
             ],
             [
                 'label' => __('Categories', 'flynt'),
