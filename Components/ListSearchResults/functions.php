@@ -18,7 +18,7 @@ Options::addTranslatable('ListSearchResults', [
         'type' => 'wysiwyg',
         'required' => 1,
         'default_value' => 'Search Result ',
-        'instructions' => 'Pre-Content of the search Page.',
+        'instructions' => 'Title of the search Page.',
         'media_upload' => 0,
         'delay' => 1,
         'wrapper' => [
