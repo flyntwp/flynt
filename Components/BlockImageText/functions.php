@@ -33,16 +33,16 @@ function getACFLayout()
                 'preview_size' => 'medium',
                 'instructions' => '',
                 'max_size' => 4,
-                'required' => true,
+                'required' => 1,
                 'mime_types' => 'gif,jpg,jpeg,png,svg'
             ],
             [
-                'name' => 'contentHtml',
                 'label' => 'Content',
+                'name' => 'contentHtml',
                 'type' => 'wysiwyg',
                 'delay' => 1,
                 'media_upload' => 0,
-                'required' => true,
+                'required' => 1,
                 'wrapper' => [
                     'class' => 'autosize',
                 ],

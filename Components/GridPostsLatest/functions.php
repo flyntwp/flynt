@@ -49,6 +49,7 @@ function getACFLayout()
                 'tabs' => 'visual,text',
                 'media_upload' => 0,
                 'delay' => 1,
+                'instructions' => 'Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.',
                 'wrapper' => [
                     'class' => 'autosize',
                 ],
@@ -102,7 +103,7 @@ Options::addTranslatable('GridPostsLatest', [
         'name' => 'labelsTab',
         'type' => 'tab',
         'placement' => 'top',
-        'endpoint' => false
+        'endpoint' => 0
     ],
     [
         'label' => '',
@@ -110,25 +111,34 @@ Options::addTranslatable('GridPostsLatest', [
         'type' => 'group',
         'sub_fields' => [
             [
-                'label' => 'Reading Time Label',
+                'label' => 'Reading Time',
                 'name' => 'readingTime',
                 'type' => 'text',
                 'default_value' => 'min',
                 'required' => 1,
+                'wrapper' => [
+                    'width' => 50
+                ],
             ],
             [
-                'label' => 'All Posts Label',
+                'label' => 'All Posts',
                 'name' => 'allPosts',
                 'type' => 'text',
                 'default_value' => 'See More Posts',
                 'required' => 1,
+                'wrapper' => [
+                    'width' => 50
+                ],
             ],
             [
-                'label' => 'Read More Label',
+                'label' => 'Read More',
                 'name' => 'readMore',
                 'type' => 'text',
                 'default_value' => 'Read More',
                 'required' => 1,
+                'wrapper' => [
+                    'width' => 50
+                ],
             ]
         ],
     ]

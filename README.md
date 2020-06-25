@@ -143,8 +143,8 @@ function getACFLayout()
         'label' => 'Block: Wysiwyg',
         'sub_fields' => [
             [
-                'name' => 'contentHtml',
                 'label' => 'Content',
+                'name' => 'contentHtml',
                 'type' => 'wysiwyg',
                 'delay' => 1,
                 'media_upload' => 0,

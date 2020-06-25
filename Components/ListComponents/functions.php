@@ -70,7 +70,8 @@ function getACFLayout()
                 'type' => 'wysiwyg',
                 'tabs' => 'visual,text',
                 'media_upload' => 0,
-                'delay' => 1
+                'delay' => 1,
+                'instructions' => 'Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.',
             ],
             [
                 'label' => 'Component Blocks',
@@ -90,7 +91,7 @@ function getACFLayout()
                         'choices' => [],
                         'wrapper' => [
                             'width' => 50
-                        ]
+                        ],
                     ],
                     [
                         'label' => 'Calls To Action',
@@ -108,9 +109,9 @@ function getACFLayout()
                                 'label' => 'GitHub',
                                 'name' => 'secondary',
                                 'type' => 'url'
-                            ]
-                        ]
-                    ]
+                            ],
+                        ],
+                    ],
                 ],
             ],
             [
@@ -126,8 +127,8 @@ function getACFLayout()
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    FieldVariables\getTheme()
-                ]
+                    FieldVariables\getTheme(),
+                ],
             ]
         ]
     ];
@@ -139,7 +140,7 @@ Options::addTranslatable('ListComponents', [
         'name' => 'labelsTab',
         'type' => 'tab',
         'placement' => 'top',
-        'endpoint' => false
+        'endpoint' => 0
     ],
     [
         'label' => '',
@@ -152,6 +153,9 @@ Options::addTranslatable('ListComponents', [
                 'type' => 'text',
                 'default_value' => 'Code',
                 'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
             ],
             [
                 'label' => 'Preview',
@@ -159,7 +163,10 @@ Options::addTranslatable('ListComponents', [
                 'type' => 'text',
                 'default_value' => 'Preview',
                 'required' => 1,
-            ]
+                'wrapper' => [
+                    'width' => '50',
+                ],
+            ],
         ],
     ]
 ]);

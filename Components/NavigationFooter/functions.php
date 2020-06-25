@@ -20,6 +20,13 @@ add_filter('Flynt/addComponentData?name=NavigationFooter', function ($data) {
 
 Options::addTranslatable('NavigationFooter', [
     [
+        'label' => 'General',
+        'name' => 'generalTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
         'label' => 'Content',
         'name' => 'contentHtml',
         'type' => 'wysiwyg',

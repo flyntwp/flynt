@@ -23,6 +23,7 @@ function getACFLayout()
                 'type' => 'wysiwyg',
                 'tabs' => 'visual,text',
                 'media_upload' => 0,
+                'instructions' => 'Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.',
                 'delay' => 1,
                 'wrapper' => [
                     'class' => 'autosize',

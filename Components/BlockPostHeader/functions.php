@@ -11,12 +11,19 @@ add_filter('Flynt/addComponentData?name=BlockPostHeader', function ($data) {
 
 Options::addTranslatable('BlockPostHeader', [
     [
-        'label' => 'General',
-        'name' => 'generalTranslatable',
+        'label' => 'Labels',
+        'name' => 'labelsTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => '',
+        'name' => 'labels',
         'type' => 'group',
         'sub_fields' => [
             [
-                'label' => 'Label - Posted by',
+                'label' => 'Posted by',
                 'name' => 'postedByLabel',
                 'type' => 'text',
                 'default_value' => 'Posted by',
@@ -25,7 +32,7 @@ Options::addTranslatable('BlockPostHeader', [
                 ],
             ],
             [
-                'label' => 'Label - (Posted) in',
+                'label' => '(Posted) in',
                 'name' => 'postedInLabel',
                 'type' => 'text',
                 'default_value' => 'in',
@@ -34,7 +41,7 @@ Options::addTranslatable('BlockPostHeader', [
                 ],
             ],
             [
-                'label' => 'Label - Reading Time - (20) min read',
+                'label' => 'Reading Time - (20) min read',
                 'name' => 'readingtimeLabel',
                 'type' => 'text',
                 'default_value' => 'min read',
@@ -42,8 +49,22 @@ Options::addTranslatable('BlockPostHeader', [
                     'width' => '50',
                 ],
             ],
+        ],
+    ],
+    [
+        'label' => 'Dividers',
+        'name' => 'dividersTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => '',
+        'name' => 'dividers',
+        'type' => 'group',
+        'sub_fields' => [
             [
-                'label' => 'Divider - Datetime | Author',
+                'label' => 'Datetime | Author',
                 'name' => 'authorDivider',
                 'type' => 'text',
                 'default_value' => '-',
@@ -52,7 +73,7 @@ Options::addTranslatable('BlockPostHeader', [
                 ],
             ],
             [
-                'label' => 'Divider - Author | Reading Time',
+                'label' => 'Author | Reading Time',
                 'name' => 'readingtimeDivider',
                 'type' => 'text',
                 'default_value' => '|',

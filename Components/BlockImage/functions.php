@@ -24,7 +24,7 @@ function getACFLayout()
                 'preview_size' => 'medium',
                 'instructions' => '',
                 'max_size' => 4,
-                'required' => true,
+                'required' => 1,
                 'mime_types' => 'gif,jpg,jpeg,png'
             ],
             [

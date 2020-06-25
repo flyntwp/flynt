@@ -27,8 +27,8 @@ function getACFLayout()
                 ]
             ],
             [
-                'name' => 'contentHtml',
                 'label' => 'Content',
+                'name' => 'contentHtml',
                 'type' => 'wysiwyg',
                 'delay' => 1,
                 'media_upload' => 0,

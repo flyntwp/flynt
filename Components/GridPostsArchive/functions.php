@@ -51,7 +51,7 @@ Options::addGlobal('GridPostsArchive', [
         'name' => 'loadMore',
         'type' => 'true_false',
         'default_value' => 0,
-        'ui' => true
+        'ui' => 1
     ],
 ]);
 Options::addTranslatable('GridPostsArchive', [
@@ -60,19 +60,10 @@ Options::addTranslatable('GridPostsArchive', [
         'name' => 'general',
         'type' => 'tab',
         'placement' => 'top',
-        'endpoint' => true,
+        'endpoint' => 0,
     ],
     [
-        'label' => '',
-        'name' => 'options',
-        'type' => 'group',
-        'layout' => 'row',
-        'sub_fields' => [
-            FieldVariables\getTheme()
-        ]
-    ],
-    [
-        'label' => 'Pre-Content',
+        'label' => 'Title',
         'name' => 'preContentHtml',
         'type' => 'wysiwyg',
         'instructions' => 'Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.',
@@ -88,7 +79,7 @@ Options::addTranslatable('GridPostsArchive', [
         'name' => 'labelsTab',
         'type' => 'tab',
         'placement' => 'top',
-        'endpoint' => false
+        'endpoint' => 0
     ],
     [
         'label' => '',
@@ -96,25 +87,34 @@ Options::addTranslatable('GridPostsArchive', [
         'type' => 'group',
         'sub_fields' => [
             [
-                'label' => 'Previous Label',
+                'label' => 'Previous',
                 'name' => 'previous',
                 'type' => 'text',
                 'default_value' => 'Prev',
                 'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
             ],
             [
-                'label' => 'Next Label',
+                'label' => 'Next',
                 'name' => 'next',
                 'type' => 'text',
                 'default_value' => 'Next',
                 'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
             ],
             [
-                'label' => 'Load More Label',
+                'label' => 'Load More',
                 'name' => 'loadMore',
                 'type' => 'text',
                 'default_value' => 'Load more',
                 'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
             ],
             [
                 'label' => 'No Posts Found Text',
@@ -122,21 +122,46 @@ Options::addTranslatable('GridPostsArchive', [
                 'type' => 'text',
                 'default_value' => 'No posts found.',
                 'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
             ],
             [
-                'label' => 'All Posts Label',
+                'label' => 'All Posts',
                 'name' => 'allPosts',
                 'type' => 'text',
                 'default_value' => 'All',
                 'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
             ],
             [
-                'label' => 'Read More Label',
+                'label' => 'Read More',
                 'name' => 'readMore',
                 'type' => 'text',
                 'default_value' => 'Read More',
                 'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
             ]
         ],
+    ],
+    [
+        'label' => 'Options',
+        'name' => 'optionsTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => '',
+        'name' => 'options',
+        'type' => 'group',
+        'layout' => 'row',
+        'sub_fields' => [
+            FieldVariables\getTheme()
+        ]
     ],
 ]);

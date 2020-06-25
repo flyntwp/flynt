@@ -30,8 +30,8 @@ function getACFLayout()
                 'endpoint' => 0
             ],
             [
-                'name' => 'posterImage',
                 'label' => 'Poster Image',
+                'name' => 'posterImage',
                 'type' => 'image',
                 'preview_size' => 'medium',
                 'mime_types' => 'jpg,jpeg',

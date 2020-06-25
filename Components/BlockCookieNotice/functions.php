@@ -47,6 +47,13 @@ Options::addGlobal('BlockCookieNotice', [
 
 Options::addTranslatable('BlockCookieNotice', [
     [
+        'label' => 'General',
+        'name' => 'general',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0,
+    ],
+    [
         'label' => 'Content',
         'name' => 'contentHtml',
         'type' => 'wysiwyg',

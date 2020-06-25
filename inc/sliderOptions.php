@@ -14,14 +14,20 @@ Options::addTranslatable('SliderOptions', [
                 'name' => 'nextSlideMessage',
                 'type' => 'text',
                 'default_value' => 'Next Slide',
-                'required' => 1
+                'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
             ],
             [
                 'label' => 'Previous Slide Button Text',
                 'name' => 'prevSlideMessage',
                 'type' => 'text',
                 'default_value' => 'Previous Slide',
-                'required' => 1
+                'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
             ],
             [
                 'label' => 'First Slide Text',
@@ -29,7 +35,10 @@ Options::addTranslatable('SliderOptions', [
                 'type' => 'text',
                 'instructions' => 'Text for previous button when swiper is on first slide.',
                 'default_value' => 'This is the first slide',
-                'required' => 1
+                'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
             ],
             [
                 'label' => 'Last Slide Text',
@@ -37,7 +46,10 @@ Options::addTranslatable('SliderOptions', [
                 'type' => 'text',
                 'instructions' => 'Text for previous button when swiper is on last slide.',
                 'default_value' => 'This is the last slide',
-                'required' => 1
+                'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
             ],
             [
                 'label' => 'Pagination Bullet Message',
@@ -46,6 +58,9 @@ Options::addTranslatable('SliderOptions', [
                 'instructions' => '`{{index}}` will be replaced for the slide number.',
                 'default_value' => 'Go to slide {{index}}',
                 'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
             ],
         ],
     ],
