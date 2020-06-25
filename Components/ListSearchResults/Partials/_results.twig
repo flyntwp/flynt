@@ -3,7 +3,7 @@
     {% for post in posts  %}
       <li class="searchList-item boxPadding">
         <article class="post">
-          <h2><a href="{{ post.link }}" aria-hidden="true" tabindex="-1">{{ post.title }}</a></h2>
+          <h2 class="h3"><a href="{{ post.link }}" aria-hidden="true" tabindex="-1">{{ post.title }}</a></h2>
           <p>{{ post.preview.length(40).read_more(false) }}</p>
           <footer class="post-footer">
             <a href="{{ post.link }}" class="button button--link">{{ readMore }}<span class="visuallyHidden"> {{ post.title }}</span></a>
