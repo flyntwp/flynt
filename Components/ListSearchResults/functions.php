@@ -14,9 +14,6 @@ Options::addTranslatable('ListSearchResults', [
         'instructions' => 'Title of the search Page.',
         'media_upload' => 0,
         'delay' => 1,
-        'wrapper' => [
-            'class' => 'autosize',
-        ],
     ],
     [
         'label' => 'Placeholder - Search',

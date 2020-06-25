@@ -31,9 +31,6 @@ function getACFLayout()
                 'name' => 'preContentHtml',
                 'type' => 'wysiwyg',
                 'media_upload' => 0,
-                'wrapper' => [
-                    'class' => 'autosize',
-                ],
             ],
             [
                 'label' => 'Images',
