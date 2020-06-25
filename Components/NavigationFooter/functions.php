@@ -33,8 +33,5 @@ Options::addTranslatable('NavigationFooter', [
         'media_upload' => 0,
         'delay' => 1,
         'toolbar' => 'basic',
-        'wrapper' => [
-            'class' => 'autosize'
-        ]
     ],
 ]);

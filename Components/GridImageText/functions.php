@@ -25,9 +25,6 @@ function getACFLayout()
                 'media_upload' => 0,
                 'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
                 'delay' => 1,
-                'wrapper' => [
-                    'class' => 'autosize',
-                ],
             ],
             [
                 'label' => __('Items', 'flynt'),
@@ -57,7 +54,6 @@ function getACFLayout()
                         'media_upload' => 0,
                         'delay' => 1,
                         'wrapper' => [
-                            'class' => 'autosize',
                             'width' => 60
                         ],
                     ]

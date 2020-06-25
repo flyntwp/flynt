@@ -21,9 +21,6 @@ Options::addTranslatable('ListSearchResults', [
         'instructions' => __('Title of the search Page.', 'flynt'),
         'media_upload' => 0,
         'delay' => 1,
-        'wrapper' => [
-            'class' => 'autosize',
-        ],
     ],
     [
         'label' => __('Labels', 'flynt'),

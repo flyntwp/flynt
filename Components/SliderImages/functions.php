@@ -32,9 +32,6 @@ function getACFLayout()
                 'type' => 'wysiwyg',
                 'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
                 'media_upload' => 0,
-                'wrapper' => [
-                    'class' => 'autosize',
-                ],
             ],
             [
                 'label' => __('Images', 'flynt'),

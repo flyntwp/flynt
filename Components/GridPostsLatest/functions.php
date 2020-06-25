@@ -51,8 +51,6 @@ function getACFLayout()
                 'delay' => 1,
                 'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
                 'wrapper' => [
-                    'class' => 'autosize',
-                ],
             ],
             [
                 'label' => __('Categories', 'flynt'),

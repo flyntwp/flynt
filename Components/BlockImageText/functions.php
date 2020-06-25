@@ -43,9 +43,6 @@ function getACFLayout()
                 'delay' => 1,
                 'media_upload' => 0,
                 'required' => 1,
-                'wrapper' => [
-                    'class' => 'autosize',
-                ],
             ],
             [
                 'label' => __('Options', 'flynt'),
