@@ -23,29 +23,29 @@ function getACFLayout()
         'label' => 'Block: Video Oembed',
         'sub_fields' => [
             [
-                'label' => 'General',
+                'label' => __('General', 'flynt'),
                 'name' => 'generalTab',
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0
             ],
             [
+                'label' => __('Poster Image', 'flynt'),
                 'name' => 'posterImage',
-                'label' => 'Poster Image',
                 'type' => 'image',
                 'preview_size' => 'medium',
                 'mime_types' => 'jpg,jpeg,png',
-                'instructions' => 'Recommended Size: Min-Width 1200px; Min-Height: 675px; Image-Format: JPG, PNG. Aspect Ratio 16/9.',
+                'instructions' => __('Recommended Size: Min-Width 1200px; Min-Height: 675px; Image-Format: JPG, PNG. Aspect Ratio 16/9.', 'flynt'),
                 'required' => 1
             ],
             [
-                'label' => 'Video',
+                'label' => __('Video', 'flynt'),
                 'name' => 'oembed',
                 'type' => 'oembed',
                 'required' => 1
             ],
             [
-                'label' => 'Options',
+                'label' => __('Options', 'flynt'),
                 'name' => 'optionsTab',
                 'type' => 'tab',
                 'placement' => 'top',

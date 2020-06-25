@@ -34,7 +34,7 @@ add_filter('Flynt/addComponentData?name=FeatureGoogleAnalytics', function ($data
 add_action('Flynt/thirdPartyCookies/initializeOptions', function () {
     Options::addTranslatable('GoogleAnalytics', [
         [
-            'label' => 'Accept Google Analytics label',
+            'label' => __('Accept Google Analytics label', 'flynt'),
             'name' => 'acceptGoogleAnalyticsLabel',
             'type' => 'text',
             'default_value' => 'Google Analytics Cookies',
@@ -64,22 +64,22 @@ add_filter('Flynt/thirdPartyCookies', function ($features) {
 Options::addGlobal('GoogleAnalytics', [
     [
         'name' => 'gaId',
-        'label' => 'Google Analytics ID',
+        'label' => __('Google Analytics ID', 'flynt'),
         'type' => 'text',
         'maxlength' => 20,
         'prepend' => '',
         'append' => '',
         'placeholder' => 'XX-XXXXXXXX-X',
-        'instructions' => 'You can enter \'debug\' to activate debug mode. It will only log to console and overwrite all other settings.'
+        'instructions' => __('You can enter \'debug\' to activate debug mode. It will only log to console and overwrite all other settings.', 'flynt'),
     ],
     [
         'name' => 'anonymizeIp',
-        'label' => 'Anonymize IP',
+        'label' => __('Anonymize IP', 'flynt'),
         'type' => 'true_false',
         'ui' => 'no',
         'default' => 1,
-        'ui_on_text' => 'Yes',
-        'ui_off_text' => 'No',
+        'ui_on_text' => __('Yes', 'flynt'),
+        'ui_off_text' => __('No', 'flynt'),
         'message' => ''
     ],
 ]);
