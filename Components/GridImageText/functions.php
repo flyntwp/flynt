@@ -11,25 +11,23 @@ function getACFLayout()
         'label' => 'Grid: Image Text',
         'sub_fields' => [
             [
-                'label' => 'General',
+                'label' => __('General', 'flynt'),
                 'name' => 'generalTab',
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0
             ],
             [
-                'label' => 'Title',
+                'label' => __('Title', 'flynt'),
                 'name' => 'preContentHtml',
                 'type' => 'wysiwyg',
                 'tabs' => 'visual,text',
                 'media_upload' => 0,
+                'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
                 'delay' => 1,
-                'wrapper' => [
-                    'class' => 'autosize',
-                ],
             ],
             [
-                'label' => 'Items',
+                'label' => __('Items', 'flynt'),
                 'name' => 'items',
                 'type' => 'repeater',
                 'collapsed' => '',
@@ -37,7 +35,7 @@ function getACFLayout()
                 'button_label' => 'Add',
                 'sub_fields' => [
                     [
-                        'label' => 'Image',
+                        'label' => __('Image', 'flynt'),
                         'name' => 'image',
                         'type' => 'image',
                         'preview_size' => 'medium',
@@ -49,21 +47,20 @@ function getACFLayout()
                         ],
                     ],
                     [
-                        'label' => 'Content',
+                        'label' => __('Content', 'flynt'),
                         'name' => 'contentHtml',
                         'type' => 'wysiwyg',
                         'tabs' => 'visual,text',
                         'media_upload' => 0,
                         'delay' => 1,
                         'wrapper' => [
-                            'class' => 'autosize',
                             'width' => 60
                         ],
                     ]
                 ]
             ],
             [
-                'label' => 'Options',
+                'label' => __('Options', 'flynt'),
                 'name' => 'optionsTab',
                 'type' => 'tab',
                 'placement' => 'top',
@@ -77,7 +74,7 @@ function getACFLayout()
                 'sub_fields' => [
                     FieldVariables\getTheme(),
                     [
-                        'label' => 'Columns',
+                        'label' => __('Columns', 'flynt'),
                         'name' => 'columns',
                         'type' => 'number',
                         'default_value' => 3,
@@ -86,7 +83,7 @@ function getACFLayout()
                         'step' => 1
                     ],
                     [
-                        'label' => 'Show as Card',
+                        'label' => __('Show as Card', 'flynt'),
                         'name' => 'card',
                         'type' => 'true_false',
                         'default_value' => 0,
