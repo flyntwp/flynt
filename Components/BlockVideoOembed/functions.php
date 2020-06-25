@@ -35,7 +35,7 @@ function getACFLayout()
                 'type' => 'image',
                 'preview_size' => 'medium',
                 'mime_types' => 'jpg,jpeg',
-                'instructions' => 'Recommended Size: Min-Width 1200px; Min-Height: 675px; Image-Format: JPG, Aspect Ratio 16/9.',
+                'instructions' => 'Recommended Size: Min-Width 1920px; Min-Height: 1080px; Image-Format: JPG, Aspect Ratio 16/9.',
                 'required' => 1
             ],
             [
@@ -57,7 +57,26 @@ function getACFLayout()
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    FieldVariables\getTheme()
+                    FieldVariables\getTheme(),
+                    [
+                        'label' => 'Size',
+                        'name' => 'size',
+                        'type' => 'radio',
+                        'other_choice' => 0,
+                        'save_other_choice' => 0,
+                        'layout' => 'horizontal',
+                        'choices' => [
+                            'sizeSmall' => 'Small',
+                            'sizeMedium' => 'Medium',
+                            'sizeLarge' => 'Large (Default)',
+                            'sizeHuge' => 'Huge',
+                            'sizeFull' => 'Full',
+                        ],
+                        'default_value' => 'sizeLarge',
+                        'wrapper' =>  [
+                            'width' => '100',
+                        ],
+                    ],
                 ]
             ]
         ]

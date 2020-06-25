@@ -3,6 +3,7 @@
 @import 'videoLoader';
 
 .video {
+  margin: 0 auto;
   position: relative;
 
   &-player {

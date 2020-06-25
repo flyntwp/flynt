@@ -3,9 +3,13 @@
     src="{{ image.src|resizeDynamic(1280, 720) }}"
     srcset="{{ placeholderImage(1280, 720) }}"
     data-srcset="
+      {{ image.src|resizeDynamic(2048, 1152) }} 2048w,
       {{ image.src|resizeDynamic(1920, 1080) }} 1920w,
-      {{ image.src|resizeDynamic(1280, 720) }} 1280w,
-      {{ image.src|resizeDynamic(750, 422) }} 750w"
+      {{ image.src|resizeDynamic(1440, 810) }} 1440w,
+      {{ image.src|resizeDynamic(1320, 743) }} 1320w,
+      {{ image.src|resizeDynamic(800, 450) }} 800w,
+      {{ image.src|resizeDynamic(600, 338) }} 600w,
+      {{ image.src|resizeDynamic(375, 211) }} 375w"
     data-sizes="auto"
     alt="{{ image.alt|e }}">
   {% if image.caption %}
