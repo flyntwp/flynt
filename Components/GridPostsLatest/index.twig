@@ -33,7 +33,7 @@
                 <span class="content-readingTime">
                   <i data-feather="clock"></i> {{ item.content | readingtime }} {{ labels.readingTime }}
                 </span>
-                <a href="{{ item.link }}" class="button button--link content-readMore">{{ labels.readMore }}</a>
+                <a href="{{ item.link }}" class="button button--link content-readMore" aria-hidden="true" tabindex="-1">{{ labels.readMore }}</a>
               </footer>
             </div>
           </li>
