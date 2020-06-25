@@ -40,7 +40,7 @@ function getACFLayout()
                 'min' => 2,
                 'preview_size' => 'medium',
                 'mime_types' => 'jpg,jpeg,png',
-                'instructions' => 'Image-Format: JPG, PNG.',
+                'instructions' => __('Image-Format: JPG, PNG.', 'flynt'),
                 'required' => 1
             ],
             [
