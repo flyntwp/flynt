@@ -11,14 +11,14 @@ function getACFLayout()
         'label' => 'Block: Image Text',
         'sub_fields' => [
             [
-                'label' => 'General',
+                'label' => __('General', 'flynt'),
                 'name' => 'generalTab',
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0,
             ],
             [
-                'label' => 'Image Position',
+                'label' => __('Image Position', 'flynt'),
                 'name' => 'imagePosition',
                 'type' => 'button_group',
                 'choices' => [
@@ -27,7 +27,7 @@ function getACFLayout()
                 ]
             ],
             [
-                'label' => 'Image',
+                'label' => __('Image', 'flynt'),
                 'name' => 'image',
                 'type' => 'image',
                 'preview_size' => 'medium',
@@ -37,7 +37,7 @@ function getACFLayout()
                 'mime_types' => 'gif,jpg,jpeg,png,svg'
             ],
             [
-                'label' => 'Content',
+                'label' => __('Content', 'flynt'),
                 'name' => 'contentHtml',
                 'type' => 'wysiwyg',
                 'delay' => 1,
@@ -48,7 +48,7 @@ function getACFLayout()
                 ],
             ],
             [
-                'label' => 'Options',
+                'label' => __('Options', 'flynt'),
                 'name' => 'optionsTab',
                 'type' => 'tab',
                 'placement' => 'top',

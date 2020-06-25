@@ -6,19 +6,19 @@ use Flynt\Utils\Options;
 
 Options::addTranslatable('ListSearchResults', [
     [
-        'label' => 'General',
+        'label' => __('General', 'flynt'),
         'name' => 'generalTab',
         'type' => 'tab',
         'placement' => 'top',
         'endpoint' => 0
     ],
     [
-        'label' => 'Title',
+        'label' => __('Title', 'flynt'),
         'name' => 'preContentHtml',
         'type' => 'wysiwyg',
         'required' => 1,
         'default_value' => 'Search Result ',
-        'instructions' => 'Title of the search Page.',
+        'instructions' => __('Title of the search Page.', 'flynt'),
         'media_upload' => 0,
         'delay' => 1,
         'wrapper' => [
@@ -26,7 +26,7 @@ Options::addTranslatable('ListSearchResults', [
         ],
     ],
     [
-        'label' => 'Labels',
+        'label' => __('Labels', 'flynt'),
         'name' => 'labelsTab',
         'type' => 'tab',
         'placement' => 'top',
@@ -38,7 +38,7 @@ Options::addTranslatable('ListSearchResults', [
         'type' => 'group',
         'sub_fields' => [
             [
-                'label' => 'Previous',
+                'label' => __('Previous', 'flynt'),
                 'name' => 'previousLabel',
                 'type' => 'text',
                 'default_value' => 'Previous',
@@ -48,7 +48,7 @@ Options::addTranslatable('ListSearchResults', [
                 ],
             ],
             [
-                'label' => 'Next',
+                'label' => __('Next', 'flynt'),
                 'name' => 'nextLabel',
                 'type' => 'text',
                 'default_value' => 'Next',
@@ -58,7 +58,7 @@ Options::addTranslatable('ListSearchResults', [
                 ],
             ],
             [
-                'label' => 'Placeholder - Search',
+                'label' => __('Placeholder - Search', 'flynt'),
                 'name' => 'searchPlaceholder',
                 'type' => 'text',
                 'required' => 1,
@@ -69,7 +69,7 @@ Options::addTranslatable('ListSearchResults', [
                 ],
             ],
             [
-                'label' => 'Button - Search',
+                'label' => __('Button - Search', 'flynt'),
                 'name' => 'search',
                 'type' => 'text',
                 'default_value' => 'Search',
@@ -80,7 +80,7 @@ Options::addTranslatable('ListSearchResults', [
                 ],
             ],
             [
-                'label' => 'Read More',
+                'label' => __('Read More', 'flynt'),
                 'name' => 'readMore',
                 'type' => 'text',
                 'default_value' => 'Read More',
@@ -90,7 +90,7 @@ Options::addTranslatable('ListSearchResults', [
                 ],
             ],
             [
-                'label' => 'No Results',
+                'label' => __('No Results', 'flynt'),
                 'name' => 'noResults',
                 'type' => 'text',
                 'default_value' => 'No results found.',

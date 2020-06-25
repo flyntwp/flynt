@@ -26,13 +26,13 @@ add_filter('Flynt/addComponentData?name=NavigationBurger', function ($data) {
 
 Options::addTranslatable('NavigationBurger', [
     [
-        'label' => 'Accessibility',
-        'instructions' => 'Text labels for screen readers.',
+        'label' => __('Accessibility', 'flynt'),
+        'instructions' => __('Text labels for screen readers.', 'flynt'),
         'name' => 'aria',
         'type' => 'group',
         'sub_fields' => [
             [
-                'label' => 'Toggle Menu Button',
+                'label' => __('Toggle Menu Button', 'flynt'),
                 'name' => 'toggleMenuButton',
                 'type' => 'text',
                 'required' => 1,

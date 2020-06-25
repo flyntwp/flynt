@@ -4,13 +4,13 @@ use Flynt\Utils\Options;
 
 Options::addTranslatable('SliderOptions', [
     [
-        'label' => 'Accessibility',
+        'label' => __('Accessibility', 'flynt'),
         'name' => 'a11y',
         'type' => 'group',
-        'instructions' => 'Text labels for screen readers.',
+        'instructions' => __('Text labels for screen readers.', 'flynt'),
         'sub_fields' => [
             [
-                'label' => 'Next Slide Button Text',
+                'label' => __('Next Slide Button Text', 'flynt'),
                 'name' => 'nextSlideMessage',
                 'type' => 'text',
                 'default_value' => 'Next Slide',
@@ -20,7 +20,7 @@ Options::addTranslatable('SliderOptions', [
                 ],
             ],
             [
-                'label' => 'Previous Slide Button Text',
+                'label' => __('Previous Slide Button Text', 'flynt'),
                 'name' => 'prevSlideMessage',
                 'type' => 'text',
                 'default_value' => 'Previous Slide',
@@ -30,10 +30,10 @@ Options::addTranslatable('SliderOptions', [
                 ],
             ],
             [
-                'label' => 'First Slide Text',
+                'label' => __('First Slide Text', 'flynt'),
                 'name' => 'firstSlideMessage',
                 'type' => 'text',
-                'instructions' => 'Text for previous button when swiper is on first slide.',
+                'instructions' => __('Text for previous button when swiper is on first slide.', 'flynt'),
                 'default_value' => 'This is the first slide',
                 'required' => 1,
                 'wrapper' => [
@@ -41,10 +41,10 @@ Options::addTranslatable('SliderOptions', [
                 ],
             ],
             [
-                'label' => 'Last Slide Text',
+                'label' => __('Last Slide Text', 'flynt'),
                 'name' => 'lastSlideMessage',
                 'type' => 'text',
-                'instructions' => 'Text for previous button when swiper is on last slide.',
+                'instructions' => __('Text for previous button when swiper is on last slide.', 'flynt'),
                 'default_value' => 'This is the last slide',
                 'required' => 1,
                 'wrapper' => [
@@ -52,7 +52,7 @@ Options::addTranslatable('SliderOptions', [
                 ],
             ],
             [
-                'label' => 'Pagination Bullet Message',
+                'label' => __('Pagination Bullet Message', 'flynt'),
                 'name' => 'paginationBulletMessage',
                 'type' => 'text',
                 'instructions' => '`{{index}}` will be replaced for the slide number.',

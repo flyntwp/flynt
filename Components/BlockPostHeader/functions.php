@@ -11,7 +11,7 @@ add_filter('Flynt/addComponentData?name=BlockPostHeader', function ($data) {
 
 Options::addTranslatable('BlockPostHeader', [
     [
-        'label' => 'Labels',
+        'label' => __('Labels', 'flynt'),
         'name' => 'labelsTab',
         'type' => 'tab',
         'placement' => 'top',
@@ -23,7 +23,7 @@ Options::addTranslatable('BlockPostHeader', [
         'type' => 'group',
         'sub_fields' => [
             [
-                'label' => 'Posted by',
+                'label' => __('Posted by', 'flynt'),
                 'name' => 'postedByLabel',
                 'type' => 'text',
                 'default_value' => 'Posted by',
@@ -32,7 +32,7 @@ Options::addTranslatable('BlockPostHeader', [
                 ],
             ],
             [
-                'label' => '(Posted) in',
+                'label' => __('(Posted) in', 'flynt'),
                 'name' => 'postedInLabel',
                 'type' => 'text',
                 'default_value' => 'in',
@@ -41,7 +41,7 @@ Options::addTranslatable('BlockPostHeader', [
                 ],
             ],
             [
-                'label' => 'Reading Time - (20) min read',
+                'label' => __('Reading Time - (20) min read', 'flynt'),
                 'name' => 'readingtimeLabel',
                 'type' => 'text',
                 'default_value' => 'min read',
@@ -52,7 +52,7 @@ Options::addTranslatable('BlockPostHeader', [
         ],
     ],
     [
-        'label' => 'Dividers',
+        'label' => __('Dividers', 'flynt'),
         'name' => 'dividersTab',
         'type' => 'tab',
         'placement' => 'top',
@@ -64,7 +64,7 @@ Options::addTranslatable('BlockPostHeader', [
         'type' => 'group',
         'sub_fields' => [
             [
-                'label' => 'Datetime | Author',
+                'label' => __('Datetime | Author', 'flynt'),
                 'name' => 'authorDivider',
                 'type' => 'text',
                 'default_value' => '-',
@@ -73,7 +73,7 @@ Options::addTranslatable('BlockPostHeader', [
                 ],
             ],
             [
-                'label' => 'Author | Reading Time',
+                'label' => __('Author | Reading Time', 'flynt'),
                 'name' => 'readingtimeDivider',
                 'type' => 'text',
                 'default_value' => '|',

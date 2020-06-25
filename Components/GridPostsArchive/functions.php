@@ -47,7 +47,7 @@ add_filter('Flynt/addComponentData?name=GridPostsArchive', function ($data) {
 
 Options::addGlobal('GridPostsArchive', [
     [
-        'label' => 'Load More Button?',
+        'label' => __('Load More Button?', 'flynt'),
         'name' => 'loadMore',
         'type' => 'true_false',
         'default_value' => 0,
@@ -56,17 +56,17 @@ Options::addGlobal('GridPostsArchive', [
 ]);
 Options::addTranslatable('GridPostsArchive', [
     [
-        'label' => 'General',
+        'label' => __('General', 'flynt'),
         'name' => 'general',
         'type' => 'tab',
         'placement' => 'top',
         'endpoint' => 0,
     ],
     [
-        'label' => 'Title',
+        'label' => __('Title', 'flynt'),
         'name' => 'preContentHtml',
         'type' => 'wysiwyg',
-        'instructions' => 'Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.',
+        'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
         'tabs' => 'visual,text',
         'media_upload' => 0,
         'delay' => 1,
@@ -75,7 +75,7 @@ Options::addTranslatable('GridPostsArchive', [
         ],
     ],
     [
-        'label' => 'Labels',
+        'label' => __('Labels', 'flynt'),
         'name' => 'labelsTab',
         'type' => 'tab',
         'placement' => 'top',
@@ -87,7 +87,7 @@ Options::addTranslatable('GridPostsArchive', [
         'type' => 'group',
         'sub_fields' => [
             [
-                'label' => 'Previous',
+                'label' => __('Previous', 'flynt'),
                 'name' => 'previous',
                 'type' => 'text',
                 'default_value' => 'Prev',
@@ -97,7 +97,7 @@ Options::addTranslatable('GridPostsArchive', [
                 ],
             ],
             [
-                'label' => 'Next',
+                'label' => __('Next', 'flynt'),
                 'name' => 'next',
                 'type' => 'text',
                 'default_value' => 'Next',
@@ -107,7 +107,7 @@ Options::addTranslatable('GridPostsArchive', [
                 ],
             ],
             [
-                'label' => 'Load More',
+                'label' => __('Load More', 'flynt'),
                 'name' => 'loadMore',
                 'type' => 'text',
                 'default_value' => 'Load more',
@@ -117,7 +117,7 @@ Options::addTranslatable('GridPostsArchive', [
                 ],
             ],
             [
-                'label' => 'No Posts Found Text',
+                'label' => __('No Posts Found Text', 'flynt'),
                 'name' => 'noPostsFound',
                 'type' => 'text',
                 'default_value' => 'No posts found.',
@@ -127,7 +127,7 @@ Options::addTranslatable('GridPostsArchive', [
                 ],
             ],
             [
-                'label' => 'All Posts',
+                'label' => __('All Posts', 'flynt'),
                 'name' => 'allPosts',
                 'type' => 'text',
                 'default_value' => 'All',
@@ -137,7 +137,7 @@ Options::addTranslatable('GridPostsArchive', [
                 ],
             ],
             [
-                'label' => 'Read More',
+                'label' => __('Read More', 'flynt'),
                 'name' => 'readMore',
                 'type' => 'text',
                 'default_value' => 'Read More',
@@ -149,7 +149,7 @@ Options::addTranslatable('GridPostsArchive', [
         ],
     ],
     [
-        'label' => 'Options',
+        'label' => __('Options', 'flynt'),
         'name' => 'optionsTab',
         'type' => 'tab',
         'placement' => 'top',

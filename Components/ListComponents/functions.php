@@ -58,32 +58,32 @@ function getACFLayout()
         'label' => 'List: Components',
         'sub_fields' => [
             [
-                'label' => 'General',
+                'label' => __('General', 'flynt'),
                 'name' => 'generalTab',
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0
             ],
             [
-                'label' => 'Title',
+                'label' => __('Title', 'flynt'),
                 'name' => 'preContentHtml',
                 'type' => 'wysiwyg',
                 'tabs' => 'visual,text',
                 'media_upload' => 0,
                 'delay' => 1,
-                'instructions' => 'Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.',
+                'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
             ],
             [
-                'label' => 'Component Blocks',
+                'label' => __('Component Blocks', 'flynt'),
                 'name' => 'componentBlocks',
                 'type' => 'repeater',
                 'collapsed' => 0,
                 'min' => 1,
                 'layout' => 'table',
-                'button_label' => 'Add Component Block',
+                'button_label' => __('Add Component Block', 'flynt'),
                 'sub_fields' => [
                     [
-                        'label' => 'Component',
+                        'label' => __('Component', 'flynt'),
                         'name' => 'component',
                         'type' => 'select',
                         'ui' => 1,
@@ -94,19 +94,19 @@ function getACFLayout()
                         ],
                     ],
                     [
-                        'label' => 'Calls To Action',
+                        'label' => __('Calls To Action', 'flynt'),
                         'name' => 'ctas',
                         'type' => 'group',
                         'collapsed' => 0,
                         'layout' => 'row',
                         'sub_fields' => [
                             [
-                                'label' => 'Preview',
+                                'label' => __('Preview', 'flynt'),
                                 'name' => 'primary',
                                 'type' => 'text'
                             ],
                             [
-                                'label' => 'GitHub',
+                                'label' => __('GitHub', 'flynt'),
                                 'name' => 'secondary',
                                 'type' => 'url'
                             ],
@@ -115,7 +115,7 @@ function getACFLayout()
                 ],
             ],
             [
-                'label' => 'Options',
+                'label' => __('Options', 'flynt'),
                 'name' => 'optionsTab',
                 'type' => 'tab',
                 'placement' => 'top',
@@ -136,7 +136,7 @@ function getACFLayout()
 
 Options::addTranslatable('ListComponents', [
     [
-        'label' => 'Labels',
+        'label' => __('Labels', 'flynt'),
         'name' => 'labelsTab',
         'type' => 'tab',
         'placement' => 'top',
@@ -148,7 +148,7 @@ Options::addTranslatable('ListComponents', [
         'type' => 'group',
         'sub_fields' => [
             [
-                'label' => 'Code',
+                'label' => __('Code', 'flynt'),
                 'name' => 'code',
                 'type' => 'text',
                 'default_value' => 'Code',
@@ -158,7 +158,7 @@ Options::addTranslatable('ListComponents', [
                 ],
             ],
             [
-                'label' => 'Preview',
+                'label' => __('Preview', 'flynt'),
                 'name' => 'preview',
                 'type' => 'text',
                 'default_value' => 'Preview',
