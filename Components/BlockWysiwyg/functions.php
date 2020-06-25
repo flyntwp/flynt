@@ -11,14 +11,14 @@ function getACFLayout()
         'label' => 'Block: Wysiwyg',
         'sub_fields' => [
             [
-                'label' => 'General',
+                'label' => __('General', 'flynt'),
                 'name' => 'generalTab',
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0,
             ],
             [
-                'label' => 'Text Alignment',
+                'label' => __('Text Alignment', 'flynt'),
                 'name' => 'textAlignment',
                 'type' => 'button_group',
                 'choices' => [
@@ -27,15 +27,15 @@ function getACFLayout()
                 ]
             ],
             [
+                'label' => __('Content', 'flynt'),
                 'name' => 'contentHtml',
-                'label' => 'Content',
                 'type' => 'wysiwyg',
                 'delay' => 1,
                 'media_upload' => 0,
                 'required' => 1,
             ],
             [
-                'label' => 'Options',
+                'label' => __('Options', 'flynt'),
                 'name' => 'optionsTab',
                 'type' => 'tab',
                 'placement' => 'top',

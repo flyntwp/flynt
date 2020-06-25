@@ -143,8 +143,8 @@ function getACFLayout()
         'label' => 'Block: Wysiwyg',
         'sub_fields' => [
             [
+                'label' => __('Content', 'flynt'),
                 'name' => 'contentHtml',
-                'label' => 'Content',
                 'type' => 'wysiwyg',
                 'delay' => 1,
                 'media_upload' => 0,
@@ -174,7 +174,7 @@ add_action('Flynt/afterRegisterComponents', function () {
         'fields' => [
             [
                 'name' => 'pageComponents',
-                'label' => 'Page Components',
+                'label' => __('Page Components', 'flynt'),
                 'type' => 'flexible_content',
                 'button_label' => 'Add Component',
                 'layouts' => [
