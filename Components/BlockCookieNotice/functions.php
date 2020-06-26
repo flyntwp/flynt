@@ -13,16 +13,16 @@ add_action('wp_footer', function () {
 
 Options::addGlobal('BlockCookieNotice', [
     [
-        'label' => 'Component Status',
+        'label' => __('Component Status', 'flynt'),
         'name' => 'cookieNoticeIsEnabled',
         'type' => 'true_false',
         'default_value' => 1,
         'ui' => 1,
-        'ui_on_text' => 'Activated',
-        'ui_off_text' => 'Deactivated',
+        'ui_on_text' => __('Activated', 'flynt'),
+        'ui_off_text' => __('Deactivated', 'flynt'),
     ],
     [
-        'label' => 'Layout',
+        'label' => __('Layout', 'flynt'),
         'name' => 'layout',
         'type' => 'select',
         'allow_null' => 0,
@@ -34,8 +34,8 @@ Options::addGlobal('BlockCookieNotice', [
         ],
         'default_value' => 'layoutFloating',
         'choices' => [
-            'layoutFloating' => 'Floating',
-            'layoutBottom' => 'Bottom'
+            'layoutFloating' => __('Floating', 'flynt'),
+            'layoutBottom' => __('Bottom', 'flynt'),
         ]
     ],
     array_merge(FieldVariables\getTheme(), [
@@ -47,7 +47,14 @@ Options::addGlobal('BlockCookieNotice', [
 
 Options::addTranslatable('BlockCookieNotice', [
     [
-        'label' => 'Content',
+        'label' => __('General', 'flynt'),
+        'name' => 'general',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0,
+    ],
+    [
+        'label' => __('Content', 'flynt'),
         'name' => 'contentHtml',
         'type' => 'wysiwyg',
         'tabs' => 'visual,text',
@@ -55,12 +62,9 @@ Options::addTranslatable('BlockCookieNotice', [
         'media_upload' => 0,
         'delay' => 1,
         'required' => 1,
-        'wrapper' => [
-            'class' => 'autosize',
-        ],
     ],
     [
-        'label' => 'Close Button Label',
+        'label' => __('Close Button Label', 'flynt'),
         'name' => 'closeButtonLabel',
         'type' => 'text',
         'default_value' => 'Ok',

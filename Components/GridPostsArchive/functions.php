@@ -47,20 +47,110 @@ add_filter('Flynt/addComponentData?name=GridPostsArchive', function ($data) {
 
 Options::addGlobal('GridPostsArchive', [
     [
-        'label' => 'Load More Button?',
+        'label' => __('Load More Button?', 'flynt'),
         'name' => 'loadMore',
         'type' => 'true_false',
         'default_value' => 0,
-        'ui' => true
+        'ui' => 1
     ],
 ]);
 Options::addTranslatable('GridPostsArchive', [
     [
-        'label' => 'General',
+        'label' => __('General', 'flynt'),
         'name' => 'general',
         'type' => 'tab',
         'placement' => 'top',
-        'endpoint' => true,
+        'endpoint' => 0,
+    ],
+    [
+        'label' => __('Title', 'flynt'),
+        'name' => 'preContentHtml',
+        'type' => 'wysiwyg',
+        'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
+        'tabs' => 'visual,text',
+        'media_upload' => 0,
+        'delay' => 1,
+    ],
+    [
+        'label' => __('Labels', 'flynt'),
+        'name' => 'labelsTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => '',
+        'name' => 'labels',
+        'type' => 'group',
+        'sub_fields' => [
+            [
+                'label' => __('Previous', 'flynt'),
+                'name' => 'previous',
+                'type' => 'text',
+                'default_value' => 'Prev',
+                'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
+            ],
+            [
+                'label' => __('Next', 'flynt'),
+                'name' => 'next',
+                'type' => 'text',
+                'default_value' => 'Next',
+                'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
+            ],
+            [
+                'label' => __('Load More', 'flynt'),
+                'name' => 'loadMore',
+                'type' => 'text',
+                'default_value' => 'Load more',
+                'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
+            ],
+            [
+                'label' => __('No Posts Found Text', 'flynt'),
+                'name' => 'noPostsFound',
+                'type' => 'text',
+                'default_value' => 'No posts found.',
+                'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
+            ],
+            [
+                'label' => __('All Posts', 'flynt'),
+                'name' => 'allPosts',
+                'type' => 'text',
+                'default_value' => 'All',
+                'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
+            ],
+            [
+                'label' => __('Read More', 'flynt'),
+                'name' => 'readMore',
+                'type' => 'text',
+                'default_value' => 'Read More',
+                'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
+            ]
+        ],
+    ],
+    [
+        'label' => __('Options', 'flynt'),
+        'name' => 'optionsTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
     ],
     [
         'label' => '',
@@ -71,72 +161,4 @@ Options::addTranslatable('GridPostsArchive', [
             FieldVariables\getTheme()
         ]
     ],
-    [
-        'label' => 'Pre-Content',
-        'name' => 'preContentHtml',
-        'type' => 'wysiwyg',
-        'instructions' => 'Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.',
-        'tabs' => 'visual,text',
-        'media_upload' => 0,
-        'delay' => 1,
-        'wrapper' => [
-            'class' => 'autosize',
-        ],
-    ],
-    [
-        'label' => 'Labels',
-        'name' => 'labelsTab',
-        'type' => 'tab',
-        'placement' => 'top',
-        'endpoint' => false
-    ],
-    [
-        'label' => '',
-        'name' => 'labels',
-        'type' => 'group',
-        'sub_fields' => [
-            [
-                'label' => 'Previous Label',
-                'name' => 'previous',
-                'type' => 'text',
-                'default_value' => 'Prev',
-                'required' => 1,
-            ],
-            [
-                'label' => 'Next Label',
-                'name' => 'next',
-                'type' => 'text',
-                'default_value' => 'Next',
-                'required' => 1,
-            ],
-            [
-                'label' => 'Load More Label',
-                'name' => 'loadMore',
-                'type' => 'text',
-                'default_value' => 'Load more',
-                'required' => 1,
-            ],
-            [
-                'label' => 'No Posts Found Text',
-                'name' => 'noPostsFound',
-                'type' => 'text',
-                'default_value' => 'No posts found.',
-                'required' => 1,
-            ],
-            [
-                'label' => 'All Posts Label',
-                'name' => 'allPosts',
-                'type' => 'text',
-                'default_value' => 'All',
-                'required' => 1,
-            ],
-            [
-                'label' => 'Read More Label',
-                'name' => 'readMore',
-                'type' => 'text',
-                'default_value' => 'Read More',
-                'required' => 1,
-            ]
-        ],
-    ]
 ]);
