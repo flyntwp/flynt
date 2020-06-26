@@ -2,7 +2,7 @@
     {% for term in terms %}
         <li class="filter-item">
             <a href="{{ term.link }}" class="filter-button button button--small {{ term.isActive ?: 'button--ghost' }}">
-                <span class="visuallyHidden">{{ a11y.filter }}</span>{{ term.title }}
+                <span class="visuallyHidden">{{ __("Filter by", "flynt") }}</span>{{ term.title }}
             </a>
         </li>
     {% endfor %}

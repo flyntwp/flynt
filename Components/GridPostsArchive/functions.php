@@ -138,19 +138,5 @@ Options::addTranslatable('GridPostsArchive', [
                 'required' => 1,
             ]
         ],
-    ],
-    [
-        'label' => '',
-        'name' => 'a11y',
-        'type' => 'group',
-        'sub_fields' => [
-            [
-                'label' => 'Filter by Category Screenreader Label',
-                'name' => 'filter',
-                'type' => 'text',
-                'default_value' => 'Filter by',
-                'required' => 1,
-            ]
-        ],
-    ],
+    ]
 ]);
