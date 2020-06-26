@@ -83,15 +83,27 @@
     }
 
     &-caption {
-      background: rgba($color-background-dark, 0.5);
       bottom: 0;
-      color: var(--color-background-light);
+      color: var(--color-background);
       display: inline-block;
       font-size: 0.8rem;
       max-width: 450px;
       padding: 0.25rem 0.5rem;
       position: absolute;
       right: 0;
+      z-index: 2;
+
+      &::before {
+        background-color: var(--color-background-dark);
+        content: '';
+        height: 100%;
+        left: 0;
+        opacity: 0.5;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: -1;
+      }
     }
   }
 }

@@ -14,32 +14,20 @@ $component-spacing-tablet: 80px;
 $component-spacing-mobile: 40px;
 $gutter-width: 24px;
 
-$color-brand: #0d8eff;
-$color-accent: #f96417;
-$color-background: #fff;
-$color-contrast: #414751;
-$color-text: $color-contrast;
-$color-headline: #0b1016;
-$color-border: #d8d8d8;
-
-$color-background-light: #f2f6fe;
-$color-background-dark: #091a41;
-$color-background-hero: $color-brand;
-
 :root {
-  --color-border: #{$color-border}; // TODO: Add this on customizer?
-  --color-background: #{$color-background};
-  --color-contrast: #{$color-contrast};
+  --color-border: #d8d8d8; // TODO: Add this on customizer?
+  --color-background: #fff;
+  --color-contrast: #414751;
   --color-background-hero: var(--color-brand);
   --color-error: #ef3f45;
 
   // editable colors for WP Customizer
-  --color-brand: #{$color-brand};
-  --color-accent: #{$color-accent};
-  --color-text: #{$color-text};
-  --color-headline: #{$color-headline};
-  --color-background-light: #{$color-background-light};
-  --color-background-dark: #{$color-background-dark};
+  --color-brand: #0d8eff;
+  --color-accent: #f96417;
+  --color-text: var(--color-contrast);
+  --color-headline: #0b1016;
+  --color-background-light: #f2f6fe;
+  --color-background-dark: #091a41;
   // end of editable colors
 
   --theme-button-background: var(--color-accent);
