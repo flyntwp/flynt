@@ -13,6 +13,10 @@ window.lazySizesConfig = window.lazySizesConfig || {}
 window.lazySizesConfig.preloadAfterLoad = true
 require('lazysizes')
 
+if ($('.iconList--checkCircle').length) {
+  $('.iconList--checkCircle li').prepend('<i data-feather=check-circle></i>')
+}
+
 $(document).ready(function () {
   feather.replace({
     'stroke-width': 1
