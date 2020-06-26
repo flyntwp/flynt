@@ -1,9 +1,10 @@
 <div class="flyntComponent flyntComponent--{{ options.size }} {{ options.theme }} {{ noComponentSpacing == true ? '' : 'componentSpacing' }}" is="flynt-block-image">
   <div class="container{% if options.size != 'sizeFull' %} centerMaxWidthContainer{% endif %}">
     <figure class="figure">
-      <img class="figure-image {{ image.post_mime_type != 'image/gif' ? 'lazyload' }}"
-        src="{{ image.post_mime_type != 'image/gif' ? image.src|resizeDynamic(800) : image.src }}"
-        {% if image.post_mime_type != 'image/gif' %}
+      {% set gif = image.post_mime_type == 'image/gif' %}
+      <img class="figure-image {{ not gif ? 'lazyload' }}"
+        src="{{ not gif ? image.src|resizeDynamic(800) : image.src }}"
+        {% if not gif %}
           srcset="{{ placeholderImage(800, 800 / image.aspect) }}"
           data-srcset="
             {{ image.src|resizeDynamic(1920) }} 1920w,
