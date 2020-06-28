@@ -30,3 +30,14 @@ add_action('after_setup_theme', function () {
      */
     load_theme_textdomain('flynt', get_template_directory() . '/languages');
 });
+
+
+// Add rules to .htaccess to restrict access to .twig files on theme setup.
+add_action('after_setup_theme', function () {
+    add_filter('mod_rewrite_rules', ['Flynt\Init', 'addTwigRestrictionRules']);
+});
+// Remove twig restriction rules from .htaccess on theme switch.
+add_action('switch_theme', function () {
+    remove_filter('mod_rewrite_rules', ['Flynt\Init', 'addTwigRestrictionRules']);
+    flush_rewrite_rules();
+});

@@ -28,6 +28,26 @@ class Init
         do_action('Flynt/afterRegisterComponents');
     }
 
+    public static function addTwigRestrictionRules($rules)
+    {
+        $twig_rules = <<<EOD
+\n# BEGIN Twig Restriction
+<FilesMatch ".+\.twig$">
+\t<IfModule mod_authz_core.c>
+\t\t# Apache 2.4
+\t\tRequire all denied
+\t</IfModule>
+\t<IfModule !mod_authz_core.c>
+\t\t# Apache 2.2
+\t\tOrder deny,allow
+\t\tDeny from all
+\t</IfModule>
+</FilesMatch>
+# END Twig Restriction\n\n
+EOD;
+        return $twig_rules . $rules;
+    }
+
     public static function checkRequiredPlugins()
     {
         $acfActive = class_exists('acf');
