@@ -40,7 +40,8 @@ class SliderImages extends window.HTMLDivElement {
         nextEl: this.$buttonNext,
         prevEl: this.$buttonPrev
       },
-      a11y: options.a11y
+      a11y: options.a11y,
+      keyboard: true,
     }
     if (options.autoplay && options.autoplaySpeed) {
       config.autoplay = {
