@@ -39,7 +39,8 @@ function getACFLayout()
                 'type' => 'gallery',
                 'min' => 2,
                 'preview_size' => 'medium',
-                'mime_types' => 'jpg,jpeg',
+                'mime_types' => 'jpg,jpeg,png',
+                'instructions' => __('Image-Format: JPG, PNG.', 'flynt'),
                 'required' => 1
             ],
             [
