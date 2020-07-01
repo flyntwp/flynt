@@ -34,8 +34,8 @@ function getACFLayout()
                 'name' => 'posterImage',
                 'type' => 'image',
                 'preview_size' => 'medium',
-                'mime_types' => 'jpg,jpeg',
-                'instructions' => __('Recommended Size: Min-Width 1920px; Min-Height: 1080px; Image-Format: JPG. Aspect Ratio 16/9.', 'flynt'),
+                'mime_types' => 'jpg,jpeg,png',
+                'instructions' => __('Recommended Size: Min-Width 1920px; Min-Height: 1080px; Image-Format: JPG, PNG. Aspect Ratio 16/9.', 'flynt'),
                 'required' => 1
             ],
             [
@@ -59,23 +59,20 @@ function getACFLayout()
                 'sub_fields' => [
                     FieldVariables\getTheme(),
                     [
-                        'label' => 'Size',
+                        'label' => __('Size', 'flynt'),
                         'name' => 'size',
                         'type' => 'radio',
                         'other_choice' => 0,
                         'save_other_choice' => 0,
                         'layout' => 'horizontal',
                         'choices' => [
-                            'sizeSmall' => 'Small',
-                            'sizeMedium' => 'Medium',
-                            'sizeLarge' => 'Large (Default)',
-                            'sizeHuge' => 'Huge',
-                            'sizeFull' => 'Full',
+                            'sizeSmall' => __('Small', 'flynt'),
+                            'sizeMedium' => __('Medium', 'flynt'),
+                            'sizeLarge' => __('Large (Default)', 'flynt'),
+                            'sizeHuge' => __('Huge', 'flynt'),
+                            'sizeFull' => __('Full', 'flynt'),
                         ],
                         'default_value' => 'sizeLarge',
-                        'wrapper' =>  [
-                            'width' => '100',
-                        ],
                     ],
                 ]
             ]
