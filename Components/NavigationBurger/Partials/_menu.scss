@@ -1,6 +1,5 @@
 .menu {
   @include reset-list;
-
   backface-visibility: hidden;
   background-color: $color-background;
   height: calc(100% - #{$navigation-height});

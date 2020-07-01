@@ -23,7 +23,6 @@
 
       &-inner {
         @include reset-content-margins('both');
-
         padding: 0 $container-padding-tablet;
         width: 50%;
       }

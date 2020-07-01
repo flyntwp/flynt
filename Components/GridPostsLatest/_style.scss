@@ -1,7 +1,6 @@
 [is='flynt-grid-posts-latest'] {
   .grid {
     @include reset-list;
-
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -64,7 +63,6 @@
 
     &-inner {
       @include reset-content-margins;
-
       flex-grow: 1;
     }
 
