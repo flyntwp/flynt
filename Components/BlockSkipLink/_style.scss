@@ -1,0 +1,11 @@
+[is='flynt-block-skip-link'] {
+  .blockSkipLink {
+    position: fixed;
+    top: -100px;
+    z-index: 999;
+
+    &:focus {
+      top: 0;
+    }
+  }
+}

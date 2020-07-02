@@ -8,6 +8,7 @@
     {{ function('wp_head') }}
   </head>
   <body>
+    {{ renderComponent('BlockSkipLink') }}
     {% block layout %}
       <div class="pageWrapper">
         <header class="mainHeader">
@@ -16,7 +17,7 @@
             {{ renderComponent('NavigationBurger') }}
           {% endblock %}
         </header>
-        <main class="mainContent" aria-label="{{ __('Content', 'flynt') }}">
+        <main id="mainContent" class="mainContent" aria-label="{{ __('Content', 'flynt') }}">
           {% if function('post_password_required') %}
             {{ function('get_the_password_form') }}
           {% else %}
