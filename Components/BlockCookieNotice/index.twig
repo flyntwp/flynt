@@ -1,10 +1,10 @@
 {% if cookieNoticeIsEnabled %}
-<div is="flynt-block-cookie-notice" class="flyntComponent boxShadow {{ layout }} {{ theme ?: 'themeReset' }}">
+<div is="flynt-block-cookie-notice" class="flyntComponent boxShadow {{ layout }} {{ theme ?: 'themeReset' }}" role="dialog">
   <div class="container centerMaxWidthContainer">
     <div class="content">
       {{ contentHtml|e('wp_kses_post') }}
     </div>
-    <button type="button" class="button button--small" aria-label="Close" data-close tabindex="1">{{ closeButtonLabel|e }}</button>
+    <button type="button" class="button button--small" aria-label="Close" data-close>{{ closeButtonLabel|e }}</button>
   </div>
 </div>
 {% endif %}
