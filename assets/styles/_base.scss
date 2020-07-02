@@ -639,6 +639,8 @@ select {
   overflow-x: auto;
 }
 
+/* Class for text that should only be visible to screen readers */
+
 .visuallyHidden {
   clip: rect(1px, 1px, 1px, 1px);
   height: 1px;
