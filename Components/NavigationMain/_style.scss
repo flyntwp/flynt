@@ -7,16 +7,6 @@
     display: block;
   }
 
-  .skipLink {
-    position: fixed;
-    top: -100px;
-    z-index: 999;
-
-    &:focus {
-      top: 0;
-    }
-  }
-
   .wrapper {
     background-color: $color-background;
     height: $navigation-height;

@@ -8,6 +8,9 @@
     {{ function('wp_head') }}
   </head>
   <body>
+    <a href="#mainContent" class="skipLink">
+      {{ __("Jump to main content", "flynt") }}
+    </a>
     {% block layout %}
       <div class="pageWrapper">
         <header class="mainHeader">
