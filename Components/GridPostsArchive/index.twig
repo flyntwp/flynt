@@ -33,9 +33,11 @@
             {% endif %}
           </a>
           <div class="post-inner">
-            <h3 class="h3 post-title">{{ post.title }}</h3>
+            <h2 class="h3 post-title">{{ post.title }}</h2>
             <p class="post-excerpt">{{ post.preview.read_more(false) }}</p>
-            <a class="button button--link" href="{{ post.link }}" title="{{ post.title }}">{{ labels.readMore }}</a>
+            <a class="button button--link" href="{{ post.link }}" title="{{ post.title }}" aria-hidden="true" tabindex="-1">
+              {{ labels.readMore }}
+            </a>
           </div>
         </li>
       {% else %}

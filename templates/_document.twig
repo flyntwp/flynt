@@ -8,6 +8,9 @@
     {{ function('wp_head') }}
   </head>
   <body>
+    <a href="#mainContent" class="skipLink">
+      {{ __("Jump to main content", "flynt") }}
+    </a>
     {% block layout %}
       <div class="pageWrapper">
         <header class="mainHeader">
@@ -16,7 +19,7 @@
             {{ renderComponent('NavigationBurger') }}
           {% endblock %}
         </header>
-        <main class="mainContent">
+        <main id="mainContent" class="mainContent" aria-label="{{ __('Content', 'flynt') }}">
           {% if function('post_password_required') %}
             {{ function('get_the_password_form') }}
           {% else %}
