@@ -50,7 +50,7 @@
     height: 100%;
 
     img {
-      background: var(--color-contrast);
+      background: var(--color-text);
       flex-shrink: 0; // IE11 bug fix (prevent image from stretchin')
     }
 
@@ -91,7 +91,7 @@
     &-footer {
       align-items: center;
       align-self: flex-end;
-      border-top: 1px solid var(--color-border);
+      border-top: 1px solid var(--theme-border-color);
       display: flex;
       justify-content: space-between;
       padding: 0 20px;

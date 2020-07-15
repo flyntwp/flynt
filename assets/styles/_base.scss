@@ -130,7 +130,7 @@ figure {
 }
 
 hr {
-  background-color: var(--color-border);
+  background-color: var(--theme-border-color);
   border: 0;
   display: block;
   height: 1px;
@@ -424,7 +424,7 @@ label {
 #{$input-selectors} {
   appearance: none;
   background-color: transparent;
-  border: 1px solid var(--theme-title-color);
+  border: 1px solid var(--theme-border-color);
   border-radius: 0;
   color: var(--theme-title-color);
   font-family: inherit;
@@ -721,6 +721,7 @@ select {
   --theme-link-color-hover: var(--color-background);
   --theme-pill-background: var(--color-brand);
   --theme-title-color: var(--color-background);
+  --theme-border-color: var(--color-background);
   background-color: var(--color-background-dark);
   color: var(--color-background);
 }
@@ -732,6 +733,7 @@ select {
   --theme-link-color: var(--color-background);
   --theme-link-color-hover: var(--color-background-dark);
   --theme-title-color: var(--color-background);
+  --theme-border-color: var(--color-background);
   background-color: var(--color-background-hero);
   color: var(--color-background);
 }
@@ -745,6 +747,7 @@ select {
   --theme-link-color-hover: var(--color-background-dark);
   --theme-pill-background: var(--color-background-dark);
   --theme-title-color: var(--color-headline);
+  --theme-border-color: var(--color-border);
   background-color: var(--color-background);
   color: var(--color-text);
 }

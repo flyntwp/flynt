@@ -20,7 +20,7 @@
 
     &-imageWrapper {
       background-color: var(--color-background);
-      border-bottom: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--theme-border-color);
       height: 0;
       overflow: hidden;
       padding-bottom: percentage(800/1280);
@@ -58,7 +58,7 @@
     &-footer {
       align-items: center;
       align-self: flex-end;
-      border-top: 1px solid var(--color-border);
+      border-top: 1px solid var(--theme-border-color);
       display: flex;
       height: 56px;
       justify-content: space-between;
