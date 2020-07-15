@@ -7,28 +7,27 @@ use Flynt\FieldVariables;
 function getACFLayout()
 {
     return [
-        'name' => 'BlockImage',
+        'name' => 'blockImage',
         'label' => 'Block: Image',
         'sub_fields' => [
             [
-                'label' => 'General',
+                'label' => __('General', 'flynt'),
                 'name' => 'generalTab',
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0,
             ],
             [
-                'label' => 'Image',
+                'label' => __('Image', 'flynt'),
                 'name' => 'image',
                 'type' => 'image',
                 'preview_size' => 'medium',
-                'instructions' => '',
-                'max_size' => 4,
-                'required' => true,
+                'instructions' => __('Image-Format: JPG, PNG, GIF.', 'flynt'),
+                'required' => 1,
                 'mime_types' => 'gif,jpg,jpeg,png'
             ],
             [
-                'label' => 'Options',
+                'label' => __('Options', 'flynt'),
                 'name' => 'optionsTab',
                 'type' => 'tab',
                 'placement' => 'top',
@@ -42,18 +41,18 @@ function getACFLayout()
                 'sub_fields' => [
                     FieldVariables\getTheme(),
                     [
-                        'label' => 'Size',
+                        'label' => __('Size', 'flynt'),
                         'name' => 'size',
                         'type' => 'radio',
                         'other_choice' => 0,
                         'save_other_choice' => 0,
                         'layout' => 'horizontal',
                         'choices' => [
-                            'sizeSmall' => 'Small',
-                            'sizeMedium' => 'Medium',
-                            'sizeLarge' => 'Large (Default)',
-                            'sizeHuge' => 'Huge',
-                            'sizeFull' => 'Full',
+                            'sizeSmall' => __('Small', 'flynt'),
+                            'sizeMedium' => __('Medium', 'flynt'),
+                            'sizeLarge' => __('Large (Default)', 'flynt)'),
+                            'sizeHuge' => __('Huge', 'flynt'),
+                            'sizeFull' => __('Full', 'flynt'),
                         ],
                         'default_value' => 'sizeLarge',
                         'wrapper' =>  [

@@ -73,7 +73,6 @@ $play-button-triangle-size: (
 
 .video-playButton {
   @include play-button($color-gray, $background-opacity, $border-width, $color-white, $play-button-circle-diameter, $color-white, $play-button-triangle-size);
-
   cursor: pointer;
   display: block;
   height: 100%;
@@ -83,4 +82,28 @@ $play-button-triangle-size: (
   top: 0;
   width: 100%;
   z-index: 2;
+}
+
+&.flyntComponent--sizeSmall {
+  $play-button-small-circle-diameter: (
+    'desktop': 60px,
+    'mobile': 40px
+  );
+
+  $play-button-small-triangle-size: (
+    'desktop': 20px,
+    'mobile': 10px
+  );
+
+  .video-playButton {
+    @include play-button(
+      $color-gray,
+      $background-opacity,
+      $border-width,
+      $color-white,
+      $play-button-small-circle-diameter,
+      $color-white,
+      $play-button-small-triangle-size
+    );
+  }
 }

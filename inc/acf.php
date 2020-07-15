@@ -32,12 +32,12 @@ add_filter('acf/fields/google_map/api', function ($api) {
 Options::addGlobal('Acf', [
     [
         'name' => 'googleMapsTab',
-        'label' => 'Google Maps',
+        'label' => __('Google Maps', 'flynt'),
         'type' => 'tab'
     ],
     [
         'name' => 'googleMapsApiKey',
-        'label' => 'Google Maps Api Key',
+        'label' => __('Google Maps Api Key', 'flynt'),
         'type' => 'text',
         'maxlength' => 100,
         'prepend' => '',

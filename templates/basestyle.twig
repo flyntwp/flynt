@@ -188,7 +188,8 @@
             <label for="textarea">Your message</label><br>
             <textarea id="textarea" placeholder="Placeholder"></textarea><br>
             <span class="select">
-              <select name="select">
+              <label class="visuallyHidden" for="selectInput">Select Input</label>
+              <select name="select" id="selectInput">
                 <option value="select-value-1">Select Option #1</option>
                 <option value="select-value-2">Select Option #2</option>
                 <option value="select-value-3">Select Option #3</option>
@@ -230,6 +231,7 @@
           <li><code>.preContent</code><br>Ensures consistent positioning of content preceding the main section of a component.</li>
           <li><code>.postContent</code><br>Ensures consistent positioning of content following the main section of a component.</li>
           <li><code>.scrollableTableWrapper</code><br>Wrapping a table with a container element with this class makes the table scrollable on smaller screen sizes.</li>
+          <li><code>.visuallyHidden</code><br>Visually hides text in a way that screen readers will still read it.</li>
         </ul>
         <p>Other helper classes are:</p>
         <div class="boxPadding boxShadow">

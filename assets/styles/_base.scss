@@ -269,7 +269,6 @@ button {
   font-size: 0.875rem;
   font-weight: 700;
   line-height: inherit;
-  outline: 0;
   padding: 1rem 1.5rem;
   text-align: center;
   text-decoration: none;
@@ -511,7 +510,7 @@ select {
     width: 100%;
 
     &::before {
-      background-color: #fff;
+      background-color: var(--color-background);
       border: 1px solid var(--color-border);
       border-radius: 2px;
       content: '';
@@ -531,7 +530,7 @@ select {
     + label::before {
       background-color: var(--color-accent);
       border-color: var(--color-accent);
-      box-shadow: inset 0 0 0 2px #fff;
+      box-shadow: inset 0 0 0 2px var(--color-background);
     }
   }
 }
@@ -649,6 +648,17 @@ select {
   overflow-x: auto;
 }
 
+/* Class for text that should only be visible to screen readers */
+
+.visuallyHidden {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+  white-space: nowrap;
+  width: 1px;
+}
+
 /* Box Helpers */
 
 .boxPadding {
@@ -703,6 +713,18 @@ select {
         margin-bottom: 0;
       }
     }
+  }
+}
+
+/* Skip link behaviour */
+
+.skipLink {
+  position: fixed;
+  top: -100px;
+  z-index: 999;
+
+  &:focus {
+    top: 0;
   }
 }
 

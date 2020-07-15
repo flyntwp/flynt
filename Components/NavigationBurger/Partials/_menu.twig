@@ -1,4 +1,4 @@
-<ul class="menu">
+<ul class="menu" id="navigationBurger-menu">
   {% for item in items %}
     <li class="menu-item {{ item.current ? 'menu-item--current' }}">
       <a class="menu-link" href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noreferrer noopener"' }}>
