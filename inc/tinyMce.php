@@ -88,32 +88,32 @@ function getConfig()
                     [
                         'title' => 'Heading 1',
                         'classes' => 'h1',
-                        'selector' => 'h1,h2,h3,h4,h5,h6'
+                        'selector' => 'h1,h2,h3,h4,h5,h6,p'
                     ],
                     [
                         'title' => 'Heading 2',
                         'classes' => 'h2',
-                        'selector' => 'h1,h2,h3,h4,h5,h6'
+                        'selector' => 'h1,h2,h3,h4,h5,h6,p'
                     ],
                     [
                         'title' => 'Heading 3',
                         'classes' => 'h3',
-                        'selector' => 'h1,h2,h3,h4,h5,h6'
+                        'selector' => 'h1,h2,h3,h4,h5,h6,p'
                     ],
                     [
                         'title' => 'Heading 4',
                         'classes' => 'h4',
-                        'selector' => 'h1,h2,h3,h4,h5,h6'
+                        'selector' => 'h1,h2,h3,h4,h5,h6,p'
                     ],
                     [
                         'title' => 'Heading 5',
                         'classes' => 'h5',
-                        'selector' => 'h1,h2,h3,h4,h5,h6'
+                        'selector' => 'h1,h2,h3,h4,h5,h6,p'
                     ],
                     [
                         'title' => 'Heading 6',
                         'classes' => 'h6',
-                        'selector' => 'h1,h2,h3,h4,h5,h6'
+                        'selector' => 'h1,h2,h3,h4,h5,h6,p'
                     ],
                 ]
             ],
