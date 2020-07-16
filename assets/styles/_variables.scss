@@ -37,7 +37,7 @@ $gutter-width: 24px;
   --theme-pill-background: var(--color-background-dark);
   --theme-title-color: var(--color-headline);
   --theme-border-color: var(--color-border);
-  --theme-transparent: transparent; // needs for ie11-custom-propertiess polyfill to work properly with .themeReset
+  --theme-transparent: transparent; // needed for ie11-custom-properties polyfill to work properly with .themeReset
 }
 
 $heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';
