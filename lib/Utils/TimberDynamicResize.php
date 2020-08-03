@@ -62,11 +62,14 @@ class TimberDynamicResize
     {
         add_filter('init', [$this, 'addRewriteTag']);
         add_action('generate_rewrite_rules', [$this, 'registerRewriteRule']);
-        add_action('parse_request', function ($wp) {
+        add_action('parse_request', [$this, 'parseRequest']);
+    }
+
+    public function parseRequest($wp)
+    {
             if (isset($wp->query_vars[static::IMAGE_QUERY_VAR])) {
                 $this->checkAndGenerateImage($wp->query_vars[static::IMAGE_QUERY_VAR]);
             }
-        });
     }
 
     protected function addHooks()
@@ -85,8 +88,7 @@ class TimberDynamicResize
                 add_action('shutdown', 'flush_rewrite_rules');
             });
             add_action('switch_theme', function () {
-                remove_filter('mod_rewrite_rules', [$this, 'addWebpRewriteRule']);
-                flush_rewrite_rules();
+                flush_rewrite_rules(true);
             });
         }
     }
@@ -173,6 +175,12 @@ class TimberDynamicResize
     {
         $routeName = static::IMAGE_QUERY_VAR;
         add_rewrite_tag("%{$routeName}%", "([^&]+)");
+    }
+
+    public function removeRewriteTag()
+    {
+        $routeName = static::IMAGE_QUERY_VAR;
+        remove_rewrite_tag("%{$routeName}%");
     }
 
     public function checkAndGenerateImage($relativePath)
@@ -315,5 +323,40 @@ EOD;
                 call_user_func_array('array_merge', $values)
             )
         );
+    }
+
+    public function toggleDynamic($enable)
+    {
+        if ($enable) {
+            $this->addRewriteTag();
+            add_action('generate_rewrite_rules', [$this, 'registerRewriteRule']);
+            add_action('parse_request', [$this, 'parseRequest']);
+        } else {
+            $this->removeRewriteTag();
+            remove_action('generate_rewrite_rules', [$this, 'registerRewriteRule']);
+            remove_action('parse_request', [$this, 'parseRequest']);
+        }
+        add_action('shutdown', function () {
+            flush_rewrite_rules(false);
+        });
+    }
+
+    public function toggleWebp($enable)
+    {
+        if ($enable) {
+            add_filter('mod_rewrite_rules', [$this, 'addWebpRewriteRule']);
+        } else {
+            remove_filter('mod_rewrite_rules', [$this, 'addWebpRewriteRule']);
+        }
+        add_action('shutdown', function () {
+            flush_rewrite_rules(true);
+        });
+    }
+
+    public function changeRelativeUploadPath($relativeUploadPath)
+    {
+        add_action('shutdown', function () {
+            flush_rewrite_rules(false);
+        });
     }
 }
