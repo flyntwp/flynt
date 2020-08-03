@@ -10,8 +10,8 @@ class TimberDynamicResize
 {
     const DB_VERSION = '2.0';
     const TABLE_NAME = 'resized_images';
-    const IMAGE_QUERY_VAR = 'dynamic-images';
-    const IMAGE_PATH_SEPARATOR = 'dynamic';
+    const IMAGE_QUERY_VAR = 'resized-images';
+    const IMAGE_PATH_SEPARATOR = 'resized';
 
     public $flyntResizedImages = [];
 
@@ -67,9 +67,9 @@ class TimberDynamicResize
 
     public function parseRequest($wp)
     {
-            if (isset($wp->query_vars[static::IMAGE_QUERY_VAR])) {
-                $this->checkAndGenerateImage($wp->query_vars[static::IMAGE_QUERY_VAR]);
-            }
+        if (isset($wp->query_vars[static::IMAGE_QUERY_VAR])) {
+            $this->checkAndGenerateImage($wp->query_vars[static::IMAGE_QUERY_VAR]);
+        }
     }
 
     protected function addHooks()
