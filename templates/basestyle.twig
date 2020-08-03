@@ -8,7 +8,7 @@
         <p>This style guide exemplifies the base styles.</p>
       </section>
       <section>
-        <p class="h3">Creating a well thought out base style for a new website is one of the most critical parts to ensure an overall successful project progression.</p>
+        <p class="h4">Creating a well thought out base style for a new website is one of the most critical parts to ensure an overall successful project progression.</p>
         <p>The base style should contain all those basic HTML elements and their variations that will be needed within the website. May it be in standard formatted text, or within custom styled layout components.</p>
         <p>The goal is to abstract the element designs just to the right level, so that they can be used in any context without further modifications, but to keep them flexible enough for custom adjustments when needed, without having to overwrite many CSS attributes.</p>
         <p>The following markup is a best practice starting point to help you focus on what's important. It does not include <em>all</em> HTML elements, but as the theme is using <code>normalize.css</code>, elements will still be recoginzably styled, only without further customization.</p>
@@ -84,7 +84,7 @@
         </ul>
         <h3>Tables</h3>
         <div class="scrollableTableWrapper">
-          <table>
+          <table class="boxRadius">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -157,17 +157,12 @@
           <button type="button" disabled class="button button--ghost">Button Ghost Disabled</button>
         </p>
         <p>
-          <a class="button button--small">Button Small</a>
-          <a class="button button--ghost button--small">Button Ghost Small</a>
+          <button class="button button--small">Button Small</button>
+          <button class="button button--ghost button--small">Button Ghost Small</button>
         </p>
         <p>
           <a class="button button--link" href="">Button Link</a>
           <button class="button button--link">Type Button Link</button>
-        </p>
-        <p>
-          <span class="pill">Pill</span>
-          <a class="pill" href="javascript:void(0)">Pill Link</a>
-          <button class="pill">Pill Button</button>
         </p>
         <p>
           <i class="feather" data-feather="alert-circle"></i> Feather Icon
@@ -187,6 +182,7 @@
             <input id="passwordInput" type="password" name="password" placeholder="Placeholder"><br>
             <label for="textarea">Your message</label><br>
             <textarea id="textarea" placeholder="Placeholder"></textarea><br>
+            <p>Wrap the select element in a container with the class <code>.select</code> to make the select arrow themeable.</p>
             <span class="select">
               <label class="visuallyHidden" for="selectInput">Select Input</label>
               <select name="select" id="selectInput">
@@ -234,12 +230,20 @@
           <li><code>.visuallyHidden</code><br>Visually hides text in a way that screen readers will still read it.</li>
         </ul>
         <p>Other helper classes are:</p>
-        <div class="boxPadding boxShadow">
+        <div class="boxPadding boxBorder boxRadius">
           <h3>Box Helpers</h3>
           <p>Box helper classes can be used alone or in combination to ensure consistent styling across components.</p>
           <ul>
-            <li>Using the <code>boxPadding</code> class allows you to consistently style any content container as a responsive padding box.</li>
-            <li>Using the <code>boxShadow</code> class allows you to give elements a drop shadow with consistent appearance.</li>
+            <li>Using the <code>.boxPadding</code> class allows you to consistently style any content container as a responsive padding box.</li>
+            <li>Using the <code>.boxBorder</code> class allows you to give elements a border with consistent appearance.</li>
+            <li>Using the <code>.boxRadius</code> class allows you to give elements a border radius.</li>
+          </ul>
+        </div>
+        <br>
+        <div class="boxPadding boxBorder boxBorder--hover boxRadius">
+          <h3><code>.boxBorder</code> Modifier</h3>
+          <ul>
+            <li>Using the <code>.boxBorder--hover</code> modifier class allows you to give elements a nice hover effect. Useful for interactive elements.</li>
           </ul>
         </div>
         <hr>
@@ -247,11 +251,6 @@
         <div class="themeLight boxPadding">
           <h3>Light Theme</h3>
           <p>Using the <code>.themeLight</code> class allows you to style a group of content with a light background and dark text.</p>
-          <p>
-            <span class="pill">Pill</span>
-            <a class="pill" href="javascript:void(0)">Pill Link</a>
-            <button class="pill">Pill Button</button>
-          </p>
           <p>
             <i class="feather" data-feather="alert-circle"></i> Feather Icon
           </p>
@@ -266,11 +265,6 @@
           <h3>Dark Theme</h3>
           <p>Using the <code>.themeDark</code> class allows you to style a group of content with a dark background and light text.</p>
           <p>
-            <span class="pill">Pill</span>
-            <a class="pill" href="javascript:void(0)">Pill Link</a>
-            <button class="pill">Pill Button</button>
-          </p>
-          <p>
             <i class="feather" data-feather="alert-circle"></i> Feather Icon
           </p>
           <p>
@@ -283,11 +277,6 @@
         <div class="themeHero boxPadding">
           <h3>Hero Theme</h3>
           <p>Using the <code>.themeHero</code> class allows you to style a group of content with a hero background and dark text.</p>
-          <p>
-            <span class="pill">Pill</span>
-            <a class="pill" href="javascript:void(0)">Pill Link</a>
-            <button class="pill">Pill Button</button>
-          </p>
           <p>
             <i class="feather" data-feather="alert-circle"></i> Feather Icon
           </p>
@@ -303,11 +292,6 @@
           <div class="themeReset boxPadding">
             <h3>Reset Theme</h3>
             <p>Using the <code>.themeReset</code> class allows you to revert the styles of a parent theme back to the inital styles.</p>
-            <p>
-              <span class="pill">Pill</span>
-              <a class="pill" href="javascript:void(0)">Pill Link</a>
-              <button class="pill">Pill Button</button>
-            </p>
             <p>
               <i class="feather" data-feather="alert-circle"></i> Feather Icon
             </p>

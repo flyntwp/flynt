@@ -8,36 +8,75 @@ $container-max-width: 1440px;
 $container-padding-desktop: 60px;
 $container-padding-tablet: 40px;
 $container-padding-mobile: 15px;
-$content-max-width: 600px;
+$content-max-width: 760px;
 $component-spacing-desktop: 120px;
 $component-spacing-tablet: 80px;
 $component-spacing-mobile: 40px;
 $gutter-width: 24px;
 
-:root {
-  // editable colors for WP Customizer
-  --color-brand: #0d8eff;
-  --color-accent: #f96417;
-  --color-text: #414751;
-  --color-headline: #0b1016;
-  --color-background: #fff;
-  --color-background-light: #f2f6fe;
-  --color-background-dark: #091a41;
-  --color-background-hero: var(--color-brand);
-  --color-border: #a0a0a0;
-  --color-error: #ef3f45;
-  // end of editable colors
+$variables-accent: (
+  color-accent: #3620be,
+  color-accent-dark: #9d9bff,
+  color-accent-hero: #ffdc6d
+);
 
-  --theme-button-background: var(--color-accent);
-  --theme-button-background-hover: var(--color-background-dark);
-  --theme-button-color: var(--color-background);
-  --theme-button-color-hover: var(--color-background);
-  --theme-link-color: var(--color-accent);
-  --theme-link-color-hover: var(--color-background-dark);
-  --theme-pill-background: var(--color-background-dark);
-  --theme-title-color: var(--color-headline);
-  --theme-border-color: var(--color-border);
-  --theme-transparent: transparent; // needs for ie11-custom-propertiess polyfill to work properly with .themeReset
+// Editable colors for WP Customizer
+:root {
+  // Default
+  --color-brand: #14635f;
+  --color-headline: #212121;
+  --color-text: #424242;
+  --color-border: #d6d6d6;
+  --color-background: #fff;
+
+  // Theme Light
+  --color-accent-light: var(--color-accent);
+  --color-accent-light-alpha: var(--color-accent-alpha);
+  --color-accent-light-hover: var(--color-accent-hover);
+  --color-brand-light: var(--color-brand);
+  --color-headline-light: var(--color-headline);
+  --color-text-light: var(--color-text);
+  --color-border-light: var(--color-border);
+  --color-background-light: #fafafa;
+
+  // Theme Dark
+  --color-brand-dark: #91c6c4;
+  --color-headline-dark: #fafafa;
+  --color-text-dark: #eee;
+  --color-border-dark: #bdbdbd;
+  --color-background-dark: #181818;
+
+  // Theme Hero
+  --color-brand-hero: #91c6c4;
+  --color-headline-hero: #fff;
+  --color-text-hero: #d6e2e1;
+  --color-border-hero: #b8cdd6;
+  --color-background-hero: #630795;
+
+  // Validation colors
+  --color-error: #c0370e;
+  --color-success: #22710a;
+
+  // Generating accent colors
+  @each $varName, $varValue in $variables-accent {
+    $rgb: red($varValue) + ', ' + green($varValue) + ', ' + blue($varValue);
+    #{'--' + $varName}: #{$varValue};
+    #{'--' + $varName}-alpha: #{rgba($varValue, 0.4)};
+    #{'--' + $varName}-hover: #{darken($varValue, 5)};
+  }
+}
+
+// Theming variables
+:root {
+  --theme-color-brand: var(--color-brand);
+  --theme-color-headline: var(--color-headline);
+  --theme-color-text: var(--color-text);
+  --theme-color-border: var(--color-border);
+  --theme-color-background: var(--color-background);
+  --theme-color-accent: var(--color-accent);
+  --theme-color-accent-alpha: var(--color-accent-alpha);
+  --theme-color-accent-hover: var(--color-accent-hover);
+  --theme-transparent: transparent; // needs for ie11-custom-propertiess polyfill to work properly
 }
 
 $heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';

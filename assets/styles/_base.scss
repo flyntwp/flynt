@@ -4,20 +4,20 @@
 * Top level styles every element should inherit.
 */
 
-@include font-face('Montserrat', 'montserrat-v14-latin-regular', '400', 'normal');
-@include font-face('Montserrat', 'montserrat-v14-latin-italic', '400', 'italic');
-@include font-face('Montserrat', 'montserrat-v14-latin-700', '700', 'normal');
-@include font-face('Montserrat', 'montserrat-v14-latin-700italic', '700', 'italic');
+@include font-face('Inter', 'Inter-Regular', '400', 'normal');
+@include font-face('Inter', 'Inter-Italic', '400', 'italic');
+@include font-face('Inter', 'Inter-Bold', '700', 'normal');
+@include font-face('PT Serif', 'PT-Serif-Bold', '700', 'normal');
 
 html {
-  background-color: var(--color-background);
+  background-color: var(--theme-color-background);
   box-sizing: border-box;
-  color: var(--color-text);
-  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  color: var(--theme-color-text);
+  font-family: 'Inter', Helvetica, Arial, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   height: 100%;
-  line-height: 1.625;
+  line-height: 1.55;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -33,6 +33,10 @@ html {
 body {
   height: 100%;
   overflow-x: hidden;
+
+  @media (min-width: $breakpoint-mobile-horizontal) {
+    font-size: 1.13rem;
+  }
 }
 
 /**
@@ -42,16 +46,17 @@ body {
 */
 
 #{$heading-selectors} {
-  color: var(--theme-title-color);
+  color: var(--theme-color-headline);
+  font-family: 'PT Serif', serif;
   font-weight: 700;
   line-height: 1.45;
-  margin-bottom: 0.9rem;
+  margin-bottom: 1.2rem;
   margin-top: 0;
 
   a,
   a:hover,
   a:focus {
-    color: var(--theme-title-color);
+    color: var(--theme-color-headline);
     text-decoration: none;
   }
 }
@@ -59,12 +64,12 @@ body {
 h1,
 .h1 {
   font-size: 2.25rem;
-  line-height: 1.175;
+  line-height: 1.18;
   margin-bottom: 1.5rem;
   padding-top: 2rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 2.75rem;
+    font-size: 3.25rem;
   }
 }
 
@@ -72,30 +77,32 @@ h2,
 .h2 {
   font-size: 1.5rem;
   line-height: 1.25;
+  margin-bottom: 1.5rem;
   padding-top: 1rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
   }
 }
 
 h3,
 .h3 {
-  font-size: 1.125rem;
+  font-size: 1.31rem;
+  line-height: 1.18;
   padding-top: 1rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.25rem;
+    font-size: 1.75rem;
   }
 }
 
 h4,
 .h4 {
-  font-size: 1rem;
+  font-size: 1.13rem;
   padding-top: 0.5rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.125rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -104,21 +111,44 @@ h5,
   font-size: 1rem;
   font-weight: 400;
   padding-top: 0.5rem;
+
+  @media (min-width: $breakpoint-mobile-horizontal) {
+    font-size: 1.13rem;
+  }
 }
 
 h6,
 .h6 {
-  font-size: 1rem;
+  font-size: 0.88rem;
   padding-top: 0.5rem;
+
+  @media (min-width: $breakpoint-mobile-horizontal) {
+    font-size: 1rem;
+  }
 }
 
 a {
-  color: var(--theme-link-color);
+  color: var(--theme-color-accent);
   transition: color 0.2s ease-out;
 
   &:hover,
   &:focus {
-    color: var(--theme-link-color-hover);
+    color: var(--theme-color-accent-hover);
+  }
+
+  &:not(.button):not(.menu-link):not(.resetLink) {
+    background-image: linear-gradient(var(--theme-color-accent), var(--theme-color-accent));
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    text-decoration: none;
+    transition: background-size 0.3s ease;
+
+    &:hover,
+    &:focus {
+      background-size: 100% 1px;
+      color: var(--theme-color-accent);
+    }
   }
 }
 
@@ -130,7 +160,7 @@ figure {
 }
 
 hr {
-  background-color: var(--theme-border-color);
+  background-color: var(--theme-color-border);
   border: 0;
   display: block;
   height: 1px;
@@ -156,15 +186,15 @@ code {
 
 blockquote,
 .blockquote {
-  border-left: 4px solid var(--color-accent);
-  font-size: 1.125rem;
+  border-left: 8px solid var(--theme-color-brand);
+  color: var(--theme-color-brand);
+  font-size: 1.31rem;
   font-style: italic;
   font-weight: 400;
-  letter-spacing: 0.16px;
-  line-height: 1.55;
+  line-height: 1.45;
   margin: 2.4rem auto;
-  max-width: 28rem;
-  padding: 0.8rem 1.5rem;
+  max-width: 660px;
+  padding: 0 1.25rem;
 
   p:last-child {
     margin-bottom: 0;
@@ -196,16 +226,20 @@ ol {
 
   li {
     margin-bottom: 0.5rem;
-    padding-left: 1.5rem;
+    padding-left: 1.7rem;
     position: relative;
 
     .feather:first-child {
       display: block;
-      height: 1rem;
+      height: 20px;
       left: 0;
       position: absolute;
-      top: 0.25rem;
-      width: 1rem;
+      top: 2px;
+      width: 20px;
+
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        top: 5px;
+      }
     }
   }
 }
@@ -213,30 +247,52 @@ ol {
 /* Tables */
 
 table {
-  border-collapse: collapse;
+  border: 1px solid var(--theme-color-brand);
   border-spacing: 0;
   max-width: 100%;
+  width: 100%;
+}
+
+.boxRadius > thead {
+  th {
+    &:first-child {
+      border-top-left-radius: 6px;
+    }
+
+    &:last-child {
+      border-top-right-radius: 6px;
+    }
+  }
 }
 
 td,
 th {
-  padding: 1.25rem;
+  padding: 0.88rem 1.5rem;
   text-align: inherit;
   vertical-align: top;
 }
 
 thead {
   th {
-    border-bottom: 2px solid var(--color-accent);
-    color: var(--theme-title-color);
-    padding-bottom: 10px;
-    vertical-align: bottom;
+    background-color: var(--theme-color-brand);
+    color: var(--theme-color-background);
+    padding: 1.25rem 1.5rem;
+    vertical-align: middle;
     white-space: nowrap;
   }
 }
 
+tbody {
+  tr + tr {
+    td,
+    th {
+      border-top: 1px solid var(--theme-color-border);
+    }
+  }
+}
+
 tr:nth-child(even) {
-  background-color: var(--color-background-light);
+  background-color: rgba(144, 144, 144, 0.05);
 }
 
 /**
@@ -259,21 +315,22 @@ button {
 
 .button {
   appearance: none;
-  background-color: var(--theme-button-background);
-  border: 1px solid var(--theme-button-background);
+  background-color: var(--theme-color-accent);
+  border: 1px solid var(--theme-color-accent);
   border-radius: 4px;
-  color: var(--theme-button-color);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  color: var(--theme-color-background);
   cursor: pointer;
   display: inline-block;
   font-family: inherit;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 700;
   line-height: inherit;
-  padding: 1rem 1.5rem;
+  outline: none;
+  padding: 0.875rem 1.5rem;
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
   user-select: none;
 
   &:disabled,
@@ -283,23 +340,45 @@ button {
     pointer-events: none;
   }
 
-  &:hover,
+  &:hover {
+    background-color: var(--theme-color-accent-hover);
+    border-color: var(--theme-color-accent-hover);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    color: var(--theme-color-background);
+  }
+
   &:focus {
-    background-color: var(--theme-button-background-hover);
-    border-color: var(--theme-button-background-hover);
-    color: var(--theme-button-color-hover);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 0 0 3px var(--theme-color-accent-alpha);
+    color: var(--theme-color-background);
+  }
+
+  &:active {
+    box-shadow: none;
   }
 
   &--ghost {
     background-color: var(--theme-transparent);
-    border-color: var(--theme-button-background);
-    color: var(--theme-button-background);
+    border-color: var(--theme-color-accent);
+    box-shadow: none;
+    color: var(--theme-color-accent);
 
-    &:hover,
     &:focus {
       background-color: var(--theme-transparent);
-      border-color: var(--theme-button-background-hover);
-      color: var(--theme-button-background-hover);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 0 0 3px var(--theme-color-accent-alpha);
+      color: var(--theme-color-accent);
+    }
+
+    &:hover {
+      background-color: var(--theme-color-accent);
+      border-color: var(--theme-color-accent);
+      color: var(--theme-color-background);
+    }
+
+    &:active {
+      background-color: var(--theme-color-accent);
+      border-color: var(--theme-color-accent);
+      box-shadow: none;
+      color: var(--theme-color-background);
     }
   }
 
@@ -311,7 +390,8 @@ button {
   &--link {
     background-color: var(--theme-transparent);
     border: 0 solid var(--theme-transparent);
-    color: var(--theme-link-color);
+    box-shadow: none;
+    color: var(--theme-color-accent);
     padding: 0;
     position: relative;
     text-transform: none;
@@ -320,7 +400,8 @@ button {
     &:hover,
     &:focus {
       background-color: var(--theme-transparent);
-      color: var(--theme-link-color-hover);
+      box-shadow: none;
+      color: var(--theme-color-accent-hover);
     }
 
     &::before {
@@ -349,32 +430,10 @@ button {
   }
 }
 
-/* Pills */
-
-.pill {
-  background-color: var(--theme-pill-background);
-  border-radius: 1rem;
-  color: var(--color-background);
-  display: inline-block;
-  font-size: 0.8rem;
-  max-width: 100%;
-  overflow: hidden;
-  padding: 0.125rem 1rem;
-  text-decoration: none;
-  text-overflow: ellipsis;
-  vertical-align: middle;
-  white-space: nowrap;
-
-  &:hover,
-  &:focus {
-    color: var(--color-background);
-  }
-}
-
 /* Icons */
 
 .feather {
-  color: var(--theme-link-color);
+  color: var(--theme-color-brand);
   position: relative;
   top: -2px;
   vertical-align: middle;
@@ -415,23 +474,31 @@ legend {
 
 label {
   display: inline-block;
+  font-size: 0.88rem;
   font-weight: 700;
-  line-height: 1.5;
   margin-bottom: 0.5rem;
 }
 
 #{$input-selectors} {
   appearance: none;
   background-color: transparent;
-  border: 1px solid var(--theme-border-color);
-  border-radius: 0;
-  color: var(--theme-title-color);
+  border: 1px solid var(--theme-color-border);
+  border-radius: 4px;
+  color: var(--theme-color-headline);
   font-family: inherit;
-  font-size: inherit;
-  min-height: 50px;
+  font-size: 1rem;
+  min-height: 48px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
   &::placeholder {
-    color: var(--theme-title-color);
+    color: var(--theme-color-headline);
+    opacity: 0.7;
+  }
+
+  &:focus {
+    border-color: var(--theme-color-accent);
+    box-shadow: 0 0 0 3px var(--theme-color-accent-alpha);
   }
 }
 
@@ -439,12 +506,12 @@ input,
 select,
 textarea {
   margin: 0 0 1rem;
-  padding: 10px 20px;
+  padding: 8px 16px;
 }
 
 textarea {
   min-height: 150px;
-  padding: 20px;
+  padding: 16px;
   resize: vertical;
   vertical-align: top;
   width: 100%;
@@ -469,8 +536,8 @@ select {
   vertical-align: top;
 
   &::after {
-    border-bottom: 2px solid var(--theme-title-color);
-    border-left: 2px solid var(--theme-title-color);
+    border-bottom: 2px solid var(--theme-color-headline);
+    border-left: 2px solid var(--theme-color-headline);
     content: '';
     height: 8px;
     position: absolute;
@@ -482,8 +549,9 @@ select {
   }
 
   select {
-    // don't change backgound, if you need to change it use wrapper .select
+    // don't change backgound, if you need to change it - use wrapper .select
     background: none;
+    margin: 0;
     position: relative;
     z-index: 2;
   }
@@ -499,45 +567,87 @@ select {
   &,
   &:hover,
   &:focus {
-    border-color: var(--color-border);
+    border-color: var(--theme-color-border);
     outline: 0;
   }
 
   + label {
     display: inline-block;
-    padding-left: 1.875rem;
+    padding-left: 2rem;
     position: relative;
-    width: 100%;
 
     &::before {
-      background-color: var(--color-background);
-      border: 1px solid var(--color-border);
-      border-radius: 2px;
+      background-color: var(--theme-color-background);
+      border: 1px solid var(--theme-color-border);
+      border-radius: 4px;
       content: '';
       display: block;
-      height: 15px;
+      height: 24px;
       left: 0;
       margin: 0;
       padding: 0;
       position: absolute;
-      top: 4px;
-      transition: border-color 0.2s ease, background-color 0.2s ease;
-      width: 15px;
+      top: -1px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      width: 24px;
+    }
+
+    &::after {
+      border-bottom: 3px solid var(--theme-color-accent);
+      border-right: 3px solid var(--theme-color-accent);
+      content: '';
+      display: block;
+      height: 14px;
+      left: 8px;
+      opacity: 0;
+      position: absolute;
+      top: 2px;
+      transform: rotate(45deg);
+      transition: opacity 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+      visibility: hidden;
+      width: 8px;
     }
   }
 
   &:checked {
-    + label::before {
-      background-color: var(--color-accent);
-      border-color: var(--color-accent);
-      box-shadow: inset 0 0 0 2px var(--color-background);
+    + label {
+      &::before {
+        border-color: var(--theme-color-accent);
+      }
+
+      &::after {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  &:focus {
+    + label {
+      &::before {
+        border-color: var(--theme-color-accent);
+        box-shadow: 0 0 0 3px var(--theme-color-accent-alpha);
+      }
     }
   }
 }
 
 [type='radio'] {
-  + label::before {
-    border-radius: 50%;
+  + label {
+    &::before {
+      border-radius: 50%;
+    }
+
+    &::after {
+      background-color: var(--theme-color-accent);
+      border: 0;
+      border-radius: 50%;
+      height: 16px;
+      left: 4px;
+      top: 3px;
+      transform: none;
+      width: 16px;
+    }
   }
 }
 
@@ -671,8 +781,27 @@ select {
   }
 }
 
-.boxShadow {
-  box-shadow: 0 1px 26px 0 rgba(0, 0, 0, 0.06);
+.boxBorder {
+  border: 1px solid var(--theme-color-border);
+
+  &--hover {
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+
+    #{$heading-selectors} {
+      transition: color 0.2s ease;
+    }
+
+    &:hover {
+      --theme-color-headline: var(--theme-color-accent);
+      border-color: var(--theme-color-accent);
+      box-shadow: 0 16px 24px rgba(0, 0, 0, 0.15);
+    }
+  }
+}
+
+.boxRadius {
+  border-radius: 8px;
 }
 
 /* Custom styling for single post layouts */
@@ -734,42 +863,51 @@ select {
 * Color themes for backgrounds and content elements.
 */
 
+[class*='theme'] {
+  background-color: var(--theme-color-background);
+  color: var(--theme-color-text);
+}
+
 .themeLight {
-  background-color: var(--color-background-light);
+  --theme-color-background: var(--color-background-light);
+  --theme-color-headline: var(--color-headline-light);
+  --theme-color-text: var(--color-text-light);
+  --theme-color-brand: var(--color-brand-light);
+  --theme-color-border: var(--color-border-light);
+  --theme-color-accent: var(--color-accent-light);
+  --theme-color-accent-alpha: var(--color-accent-light-alpha);
+  --theme-color-accent-hover: var(--color-accent-light-hover);
 }
 
 .themeDark {
-  --theme-button-background-hover: var(--color-brand);
-  --theme-link-color-hover: var(--color-background);
-  --theme-pill-background: var(--color-brand);
-  --theme-title-color: var(--color-background);
-  --theme-border-color: var(--color-background);
-  background-color: var(--color-background-dark);
-  color: var(--color-background);
+  --theme-color-background: var(--color-background-dark);
+  --theme-color-headline: var(--color-headline-dark);
+  --theme-color-text: var(--color-text-dark);
+  --theme-color-brand: var(--color-brand-dark);
+  --theme-color-border: var(--color-border-dark);
+  --theme-color-accent: var(--color-accent-dark);
+  --theme-color-accent-alpha: var(--color-accent-dark-alpha);
+  --theme-color-accent-hover: var(--color-accent-dark-hover);
 }
 
 .themeHero {
-  --theme-button-background: var(--color-background-dark);
-  --theme-button-background-hover: var(--color-background);
-  --theme-button-color-hover: var(--color-background-dark);
-  --theme-link-color: var(--color-background);
-  --theme-link-color-hover: var(--color-background-dark);
-  --theme-title-color: var(--color-background);
-  --theme-border-color: var(--color-background);
-  background-color: var(--color-background-hero);
-  color: var(--color-background);
+  --theme-color-background: var(--color-background-hero);
+  --theme-color-headline: var(--color-headline-hero);
+  --theme-color-text: var(--color-text-hero);
+  --theme-color-brand: var(--color-brand-hero);
+  --theme-color-border: var(--color-border-hero);
+  --theme-color-accent: var(--color-accent-hero);
+  --theme-color-accent-alpha: var(--color-accent-hero-alpha);
+  --theme-color-accent-hover: var(--color-accent-hero-hover);
 }
 
 .themeReset {
-  --theme-button-background: var(--color-accent);
-  --theme-button-background-hover: var(--color-background-dark);
-  --theme-button-color: var(--color-background);
-  --theme-button-color-hover: var(--color-background);
-  --theme-link-color: var(--color-accent);
-  --theme-link-color-hover: var(--color-background-dark);
-  --theme-pill-background: var(--color-background-dark);
-  --theme-title-color: var(--color-headline);
-  --theme-border-color: var(--color-border);
-  background-color: var(--color-background);
-  color: var(--color-text);
+  --theme-color-background: var(--color-background);
+  --theme-color-headline: var(--color-headline);
+  --theme-color-text: var(--color-text);
+  --theme-color-brand: var(--color-brand);
+  --theme-color-border: var(--color-border);
+  --theme-color-accent: var(--color-accent);
+  --theme-color-accent-alpha: var(--color-accent-alpha);
+  --theme-color-accent-hover: var(--color-accent-hover);
 }
