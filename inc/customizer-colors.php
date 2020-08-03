@@ -5,6 +5,8 @@
  */
 
 use Flynt\Utils\Asset;
+use Flynt\Customizer\SeparatorControl;
+use Flynt\Customizer\InfoControl;
 
 $colorsDefault = [
     'accent' => [
@@ -153,30 +155,6 @@ add_action('customize_register', function ($wp_customize) use ($colorsDefault, $
         ]
     );
     
-    // phpcs:disable
-    class Separator_Custom_control extends WP_Customize_Control
-    {
-        public $type = 'separator';
-        public function render_content()
-        {
-            ?>
-            <p><hr></p>
-            <?php
-        }
-    }
-
-    class Info_Custom_control extends WP_Customize_Control
-    {
-        public $type = 'info';
-        public function render_content()
-        {
-            ?>
-            <h2 style="margin: 0 0 10px;" class="panel-title"><?php echo $this->label; ?></h2>
-            <?php
-        }
-    }
-    // phpcs:enable
-    
     /**
     Section Title - Default
     **/
@@ -186,7 +164,7 @@ add_action('customize_register', function ($wp_customize) use ($colorsDefault, $
 
     ));
 
-    $wp_customize->add_control(new Info_Custom_control($wp_customize, 'section_title_default', array(
+    $wp_customize->add_control(new InfoControl($wp_customize, 'section_title_default', array(
         'label'         => 'Default',
         'settings'      => 'section_title_default',
         'section'       => 'theme_colors',
@@ -225,7 +203,7 @@ add_action('customize_register', function ($wp_customize) use ($colorsDefault, $
         'sanitize_callback' => 'esc_html',
     ));
 
-    $wp_customize->add_control(new Separator_Custom_control(
+    $wp_customize->add_control(new SeparatorControl(
         $wp_customize,
         'separator_1',
         array(
@@ -242,7 +220,7 @@ add_action('customize_register', function ($wp_customize) use ($colorsDefault, $
         'sanitize_callback' => 'mytheme_text_sanitization',
 
     ));
-    $wp_customize->add_control(new Info_Custom_control($wp_customize, 'section_title_light', array(
+    $wp_customize->add_control(new InfoControl($wp_customize, 'section_title_light', array(
         'label'         => 'Theme Light',
         'settings'      => 'section_title_light',
         'section'       => 'theme_colors',
@@ -281,7 +259,7 @@ add_action('customize_register', function ($wp_customize) use ($colorsDefault, $
         'sanitize_callback' => 'esc_html',
     ));
 
-    $wp_customize->add_control(new Separator_Custom_control(
+    $wp_customize->add_control(new SeparatorControl(
         $wp_customize,
         'separator_2',
         array(
@@ -298,7 +276,7 @@ add_action('customize_register', function ($wp_customize) use ($colorsDefault, $
         'sanitize_callback' => 'mytheme_text_sanitization',
 
     ));
-    $wp_customize->add_control(new Info_Custom_control($wp_customize, 'section_title_dark', array(
+    $wp_customize->add_control(new InfoControl($wp_customize, 'section_title_dark', array(
         'label'         => 'Theme Dark',
         'settings'      => 'section_title_dark',
         'section'       => 'theme_colors',
@@ -337,7 +315,7 @@ add_action('customize_register', function ($wp_customize) use ($colorsDefault, $
         'sanitize_callback' => 'esc_html',
     ));
 
-    $wp_customize->add_control(new Separator_Custom_control(
+    $wp_customize->add_control(new SeparatorControl(
         $wp_customize,
         'separator_3',
         array(
@@ -354,7 +332,7 @@ add_action('customize_register', function ($wp_customize) use ($colorsDefault, $
         'sanitize_callback' => 'mytheme_text_sanitization',
 
     ));
-    $wp_customize->add_control(new Info_Custom_control($wp_customize, 'section_title_hero', array(
+    $wp_customize->add_control(new InfoControl($wp_customize, 'section_title_hero', array(
         'label'         => 'Theme Hero',
         'settings'      => 'section_title_hero',
         'section'       => 'theme_colors',
