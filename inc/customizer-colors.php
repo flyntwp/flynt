@@ -5,8 +5,8 @@
  */
 
 use Flynt\Utils\Asset;
-use Flynt\Customizer\SeparatorControl;
 use Flynt\Customizer\InfoControl;
+use Flynt\Customizer\SeparatorControl;
 
 $colorsDefault = [
     'accent' => [
@@ -35,7 +35,7 @@ $colorsDefault = [
     ],
     'border' => [
         'label'       => 'Border',
-        'default'     => '#d6d6d6',
+        'default'     => '#bdbdbd',
         'description' => ''
         // 'description' => 'Changes color of borders and separators.',
     ],
@@ -48,36 +48,36 @@ $colorsDefault = [
 ];
 
 $colorsLight = [
-    'accent-light' => [
-        'label'       => 'Accent',
-        'default'     => '#3620be',
-        'description' => ''
-    ],
-    'brand-light' => [
-        'label'       => 'Brand',
-        'default'     => '#14635f',
-        'description' => ''
-    ],
-    'headline-light' => [
-        'label'       => 'Headline',
-        'default'     => '#212121',
-        'description' => ''
-    ],
-    'text-light' => [
-        'label'       => 'Text',
-        'default'     => '#424242',
-        'description' => ''
-    ],
-    'border-light' => [
-        'label'       => 'Border',
-        'default'     => '#d6d6d6',
-        'description' => ''
-    ],
     'background-light' => [
         'label'       => 'Background',
         'default'     => '#fafafa',
         'description' => '',
     ],
+    'accent-light' => [
+        'label'       => 'Accent',
+        'default'     => '',
+        'description' => ''
+    ],
+    'brand-light' => [
+        'label'       => 'Brand',
+        'default'     => '',
+        'description' => ''
+    ],
+    'headline-light' => [
+        'label'       => 'Headline',
+        'default'     => '',
+        'description' => ''
+    ],
+    'text-light' => [
+        'label'       => 'Text',
+        'default'     => '',
+        'description' => ''
+    ],
+    'border-light' => [
+        'label'       => 'Border',
+        'default'     => '',
+        'description' => ''
+    ]
 ];
 
 $colorsDark = [
@@ -147,28 +147,50 @@ $colorsHero = [
 ];
 
 add_action('customize_register', function ($wp_customize) use ($colorsDefault, $colorsLight, $colorsDark, $colorsHero) {
-    $wp_customize->add_section(
-        'theme_colors',
+    $wp_customize->add_panel(
+        'theme_colors_panel',
         [
-            'title'      => __('Colors', 'flynt'),
+            'title' => __('Colors', 'flynt'),
+            'description' => 'description', // Include html tags such as <p>.
+            'priority' => 160, // Mixed with top-level-section hierarchy.
+         ]
+    );
+
+    $wp_customize->add_section(
+        'theme_colors_default',
+        [
+            'title'      => __('Default', 'flynt'),
             'priority'   => 20,
+            'panel' => 'theme_colors_panel'
         ]
     );
-    
-    /**
-    Section Title - Default
-    **/
-    $wp_customize->add_setting('section_title_default', array(
-        'default'           => '',
-        'sanitize_callback' => 'mytheme_text_sanitization',
 
-    ));
+    $wp_customize->add_section(
+        'theme_colors_light',
+        [
+            'title'      => __('Theme Light', 'flynt'),
+            'priority'   => 20,
+            'panel' => 'theme_colors_panel'
+        ]
+    );
 
-    $wp_customize->add_control(new InfoControl($wp_customize, 'section_title_default', array(
-        'label'         => 'Default',
-        'settings'      => 'section_title_default',
-        'section'       => 'theme_colors',
-    )));
+    $wp_customize->add_section(
+        'theme_colors_dark',
+        [
+            'title'      => __('Theme Dark', 'flynt'),
+            'priority'   => 20,
+            'panel' => 'theme_colors_panel'
+        ]
+    );
+
+    $wp_customize->add_section(
+        'theme_colors_hero',
+        [
+            'title'      => __('Theme Hero', 'flynt'),
+            'priority'   => 20,
+            'panel' => 'theme_colors_panel'
+        ]
+    );
 
     foreach ($colorsDefault as $name => $color) {
         // Settings
@@ -186,45 +208,13 @@ add_action('customize_register', function ($wp_customize) use ($colorsDefault, $
                 $wp_customize,
                 'theme_colors_' . $name,
                 [
-                    'section'     => 'theme_colors',
+                    'section'     => 'theme_colors_default',
                     'label'       => __($color['label']),
                     'description' => __($color['description']),
                 ]
             )
         );
     }
-
-    /**
-    Separator 1
-    **/
-
-    $wp_customize->add_setting('separator_1', array(
-        'default'           => '',
-        'sanitize_callback' => 'esc_html',
-    ));
-
-    $wp_customize->add_control(new SeparatorControl(
-        $wp_customize,
-        'separator_1',
-        array(
-        'settings'      => 'separator_1',
-        'section'       => 'theme_colors',
-        )
-    ));
-
-    /**
-    Section Title - Theme Light
-    **/
-    $wp_customize->add_setting('section_title_light', array(
-        'default'           => '',
-        'sanitize_callback' => 'mytheme_text_sanitization',
-
-    ));
-    $wp_customize->add_control(new InfoControl($wp_customize, 'section_title_light', array(
-        'label'         => 'Theme Light',
-        'settings'      => 'section_title_light',
-        'section'       => 'theme_colors',
-    )));
 
     foreach ($colorsLight as $name => $color) {
         // Settings
@@ -242,45 +232,47 @@ add_action('customize_register', function ($wp_customize) use ($colorsDefault, $
                 $wp_customize,
                 'theme_colors_' . $name,
                 [
-                    'section'     => 'theme_colors',
+                    'section'     => 'theme_colors_light',
                     'label'       => __($color['label']),
                     'description' => __($color['description']),
                 ]
             )
         );
+
+        if ($name == 'background-light') {
+            /**
+            Separator 1
+            **/
+
+            $wp_customize->add_setting('separator_1', array(
+                'default'           => '',
+                'sanitize_callback' => 'esc_html',
+            ));
+
+            $wp_customize->add_control(new SeparatorControl(
+                $wp_customize,
+                'separator_1',
+                array(
+                'settings'      => 'separator_1',
+                'section'       => 'theme_colors_light',
+                )
+            ));
+
+            /**
+            Section Title - Theme Light
+            **/
+            $wp_customize->add_setting('section_title_light', array(
+                'default'           => '',
+                'sanitize_callback' => 'flynt_text_sanitization',
+
+            ));
+            $wp_customize->add_control(new InfoControl($wp_customize, 'section_title_light', array(
+                'description' => 'Besides <b>Background</b> color, Theme Light uses <b>Default</b> colors. But you can also specify custom colors for this theme here:',
+                'settings'      => 'section_title_light',
+                'section'       => 'theme_colors_light',
+            )));
+        }
     }
-
-    /**
-    Separator 2
-    **/
-
-    $wp_customize->add_setting('separator_2', array(
-        'default'           => '',
-        'sanitize_callback' => 'esc_html',
-    ));
-
-    $wp_customize->add_control(new SeparatorControl(
-        $wp_customize,
-        'separator_2',
-        array(
-        'settings'      => 'separator_2',
-        'section'       => 'theme_colors',
-        )
-    ));
-
-    /**
-    Section Title - Theme Dark
-    **/
-    $wp_customize->add_setting('section_title_dark', array(
-        'default'           => '',
-        'sanitize_callback' => 'mytheme_text_sanitization',
-
-    ));
-    $wp_customize->add_control(new InfoControl($wp_customize, 'section_title_dark', array(
-        'label'         => 'Theme Dark',
-        'settings'      => 'section_title_dark',
-        'section'       => 'theme_colors',
-    )));
 
     foreach ($colorsDark as $name => $color) {
         // Settings
@@ -298,45 +290,13 @@ add_action('customize_register', function ($wp_customize) use ($colorsDefault, $
                 $wp_customize,
                 'theme_colors_' . $name,
                 [
-                    'section'     => 'theme_colors',
+                    'section'     => 'theme_colors_dark',
                     'label'       => __($color['label']),
                     'description' => __($color['description']),
                 ]
             )
         );
     }
-
-    /**
-    Separator 3
-    **/
-
-    $wp_customize->add_setting('separator_3', array(
-        'default'           => '',
-        'sanitize_callback' => 'esc_html',
-    ));
-
-    $wp_customize->add_control(new SeparatorControl(
-        $wp_customize,
-        'separator_3',
-        array(
-        'settings'      => 'separator_3',
-        'section'       => 'theme_colors',
-        )
-    ));
-
-    /**
-    Section Title - Theme Hero
-    **/
-    $wp_customize->add_setting('section_title_hero', array(
-        'default'           => '',
-        'sanitize_callback' => 'mytheme_text_sanitization',
-
-    ));
-    $wp_customize->add_control(new InfoControl($wp_customize, 'section_title_hero', array(
-        'label'         => 'Theme Hero',
-        'settings'      => 'section_title_hero',
-        'section'       => 'theme_colors',
-    )));
 
     foreach ($colorsHero as $name => $color) {
         // Settings
@@ -354,7 +314,7 @@ add_action('customize_register', function ($wp_customize) use ($colorsDefault, $
                 $wp_customize,
                 'theme_colors_' . $name,
                 [
-                    'section'     => 'theme_colors',
+                    'section'     => 'theme_colors_hero',
                     'label'       => __($color['label']),
                     'description' => __($color['description']),
                 ]

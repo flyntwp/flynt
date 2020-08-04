@@ -174,6 +174,12 @@
           <fieldset>
             <label for="textInput">Text Input</label><br>
             <input id="textInput" type="text" name="text" placeholder="Placeholder"><br>
+            <label for="textInput">Text Input Disabled</label><br>
+            <input id="textInput" type="text" name="text" placeholder="Placeholder" disabled><br>
+            <label for="textInput">Text Input Validation Error</label><br>
+            <input id="textInput" type="text" name="text" value="Test" placeholder="Placeholder" class="input-validation-error"><br>
+            <label for="textInput">Text Input Validation Success</label><br>
+            <input id="textInput" type="text" name="text" value="Test" placeholder="Placeholder" class="input-validation-success"><br>
             <label for="emailInput" >Email Input</label><br>
             <input id="emailInput" type="email" name="email" placeholder="Placeholder"><br>
             <label for="searchInput">Search Input</label><br>
@@ -259,7 +265,61 @@
             <a class="button button--link" href="javascript:void(0)">Button Link</a><br><br>
             <button type="button" class="button">Button</button>
             <button type="button" class="button button--ghost">Button Ghost</button>
+            <br><br>
+            <button type="button" class="button" disabled>Button Disabled</button>
+            <button type="button" class="button button--ghost" disabled>Button Ghost Disabled</button>
+            <br><br>
+            <label for="textInput">Text Input</label><br>
+            <input id="textInput" type="text" name="text" placeholder="Placeholder">
+            <br>
+            <span class="select">
+              <label class="visuallyHidden" for="selectInputLight">Select Input</label>
+              <select name="select" id="selectInputLight">
+                <option value="select-value-1">Select Option #1</option>
+                <option value="select-value-2">Select Option #2</option>
+                <option value="select-value-3">Select Option #3</option>
+              </select>
+            </span>
+            <fieldset>
+              <legend>Checkbox Input</legend>
+              <input type="checkbox" id="checkbox-light-1" required>
+              <label for="checkbox-light-1">Checkbox Label #1</label>
+            </fieldset>
+            <fieldset>
+              <legend>Radio Inputs</legend>
+              <input type="radio" id="radio-light-1" name="radio-group-light">
+              <label for="radio-light-1">Radio Label #1</label>
+              <br>
+              <input type="radio" id="radio-light-2" name="radio-group-light">
+              <label for="radio-light-2">Radio Label #2</label>
+            </fieldset>
           </p>
+          <div class="scrollableTableWrapper">
+            <table class="boxRadius">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Ingredients</th>
+                  <th scope="col">Serves 12</th>
+                  <th scope="col">Serves 24</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>milk</td>
+                  <td>1 quart</td>
+                  <td>2 quart</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>cinnamon sticks</td>
+                  <td>2</td>
+                  <td>1</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <div class="themeDark boxPadding">
           <h3>Dark Theme</h3>
@@ -272,7 +332,61 @@
             <a class="button button--link" href="javascript:void(0)">Button Link</a><br><br>
             <button type="button" class="button">Button</button>
             <button type="button" class="button button--ghost">Button Ghost</button>
+            <br><br>
+            <button type="button" class="button" disabled>Button Disabled</button>
+            <button type="button" class="button button--ghost" disabled>Button Ghost Disabled</button>
+            <br><br>
+            <label for="textInput">Text Input</label><br>
+            <input id="textInput" type="text" name="text" placeholder="Placeholder">
+            <br>
+            <span class="select">
+              <label class="visuallyHidden" for="selectInputDark">Select Input</label>
+              <select name="select" id="selectInputDark">
+                <option value="select-value-1">Select Option #1</option>
+                <option value="select-value-2">Select Option #2</option>
+                <option value="select-value-3">Select Option #3</option>
+              </select>
+            </span>
+            <fieldset>
+              <legend>Checkbox Input</legend>
+              <input type="checkbox" id="checkbox-dark-1" required>
+              <label for="checkbox-dark-1">Checkbox Label #1</label>
+            </fieldset>
+            <fieldset>
+              <legend>Radio Inputs</legend>
+              <input type="radio" id="radio-dark-1" name="radio-group-dark">
+              <label for="radio-dark-1">Radio Label #1</label>
+              <br>
+              <input type="radio" id="radio-dark-2" name="radio-group-dark">
+              <label for="radio-dark-2">Radio Label #2</label>
+            </fieldset>
           </p>
+          <div class="scrollableTableWrapper">
+            <table class="boxRadius">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Ingredients</th>
+                  <th scope="col">Serves 12</th>
+                  <th scope="col">Serves 24</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>milk</td>
+                  <td>1 quart</td>
+                  <td>2 quart</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>cinnamon sticks</td>
+                  <td>2</td>
+                  <td>1</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <div class="themeHero boxPadding">
           <h3>Hero Theme</h3>
@@ -285,7 +399,61 @@
             <a class="button button--link" href="javascript:void(0)">Button Link</a><br><br>
             <button type="button" class="button">Button</button>
             <button type="button" class="button button--ghost">Button Ghost</button>
+            <br><br>
+            <button type="button" class="button" disabled>Button Disabled</button>
+            <button type="button" class="button button--ghost" disabled>Button Ghost Disabled</button>
+            <br><br>
+            <label for="textInput">Text Input</label><br>
+            <input id="textInput" type="text" name="text" placeholder="Placeholder">
+            <br>
+            <span class="select">
+              <label class="visuallyHidden" for="selectInputHero">Select Input</label>
+              <select name="select" id="selectInputHero">
+                <option value="select-value-1">Select Option #1</option>
+                <option value="select-value-2">Select Option #2</option>
+                <option value="select-value-3">Select Option #3</option>
+              </select>
+            </span>
+            <fieldset>
+              <legend>Checkbox Input</legend>
+              <input type="checkbox" id="checkbox-hero-1" required>
+              <label for="checkbox-hero-1">Checkbox Label #1</label>
+            </fieldset>
+            <fieldset>
+              <legend>Radio Inputs</legend>
+              <input type="radio" id="radio-hero-1" name="radio-group-hero">
+              <label for="radio-hero-1">Radio Label #1</label>
+              <br>
+              <input type="radio" id="radio-hero-2" name="radio-group-hero">
+              <label for="radio-hero-2">Radio Label #2</label>
+            </fieldset>
           </p>
+          <div class="scrollableTableWrapper">
+            <table class="boxRadius">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Ingredients</th>
+                  <th scope="col">Serves 12</th>
+                  <th scope="col">Serves 24</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>milk</td>
+                  <td>1 quart</td>
+                  <td>2 quart</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>cinnamon sticks</td>
+                  <td>2</td>
+                  <td>1</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <div class="themeHero boxPadding">
           <hr>
@@ -300,7 +468,61 @@
               <a class="button button--link" href="javascript:void(0)">Button Link</a><br><br>
               <button type="button" class="button">Button</button>
               <button type="button" class="button button--ghost">Button Ghost</button>
+              <br><br>
+              <button type="button" class="button" disabled>Button Disabled</button>
+              <button type="button" class="button button--ghost" disabled>Button Ghost Disabled</button>
+              <br><br>
+              <label for="textInput">Text Input</label><br>
+              <input id="textInput" type="text" name="text" placeholder="Placeholder">
+              <br>
+              <span class="select">
+                <label class="visuallyHidden" for="selectInputReset">Select Input</label>
+                <select name="select" id="selectInputReset">
+                  <option value="select-value-1">Select Option #1</option>
+                  <option value="select-value-2">Select Option #2</option>
+                  <option value="select-value-3">Select Option #3</option>
+                </select>
+              </span>
+              <fieldset>
+                <legend>Checkbox Input</legend>
+                <input type="checkbox" id="checkbox-reset-1" required>
+                <label for="checkbox-reset-1">Checkbox Label #1</label>
+              </fieldset>
+              <fieldset>
+                <legend>Radio Inputs</legend>
+                <input type="radio" id="radio-reset-1" name="radio-group-reset">
+                <label for="radio-reset-1">Radio Label #1</label>
+                <br>
+                <input type="radio" id="radio-reset-2" name="radio-group-reset">
+                <label for="radio-reset-2">Radio Label #2</label>
+              </fieldset>
             </p>
+            <div class="scrollableTableWrapper">
+            <table class="boxRadius">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Ingredients</th>
+                  <th scope="col">Serves 12</th>
+                  <th scope="col">Serves 24</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>milk</td>
+                  <td>1 quart</td>
+                  <td>2 quart</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>cinnamon sticks</td>
+                  <td>2</td>
+                  <td>1</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           </div>
           <hr>
         </div>

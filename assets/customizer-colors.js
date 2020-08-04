@@ -93,8 +93,8 @@ $(document).ready(function () {
   wp.customize('theme_colors_accent-light', function (value) {
     value.bind(function (newval) {
       $(':root.html').css('--color-accent-light', newval)
-      $(':root.html').css('--color-accent-light-alpha', hexToRgbA(newval, alphaColorAmount))
-      $(':root.html').css('--color-accent-light-hover', lightenDarkenColor(newval, darkenColorAmount))
+      $(':root.html').css('--color-accent-light-alpha', newval ? hexToRgbA(newval, alphaColorAmount) : 'var(--color-accent-alpha)')
+      $(':root.html').css('--color-accent-light-hover', newval ? lightenDarkenColor(newval, darkenColorAmount) : 'var(--color-accent-hover)')
     })
   })
 

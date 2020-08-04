@@ -335,8 +335,11 @@ button {
 
   &:disabled,
   &--disabled {
+    background-color: var(--theme-color-border);
+    border-color: var(--theme-color-border);
+    box-shadow: none;
     cursor: default;
-    opacity: 0.65;
+    opacity: 0.5;
     pointer-events: none;
   }
 
@@ -379,6 +382,13 @@ button {
       border-color: var(--theme-color-accent);
       box-shadow: none;
       color: var(--theme-color-background);
+    }
+
+    &:disabled,
+    &--disabled {
+      background-color: var(--theme-transparent);
+      border-color: var(--theme-color-border);
+      color: var(--theme-color-border);
     }
   }
 
@@ -500,6 +510,23 @@ label {
     border-color: var(--theme-color-accent);
     box-shadow: 0 0 0 3px var(--theme-color-accent-alpha);
   }
+
+  &:disabled {
+    background-color: rgba(204, 204, 204, 0.15);
+    border-color: var(--theme-color-border);
+    color: var(--theme-color-border);
+    opacity: 0.75;
+  }
+}
+
+.input-validation-error {
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+
+.input-validation-success {
+  border-color: var(--color-success);
+  color: var(--color-success);
 }
 
 input,
@@ -549,8 +576,8 @@ select {
   }
 
   select {
-    // don't change backgound, if you need to change it - use wrapper .select
-    background: none;
+    // don't change backgound image, if you need to change it - use wrapper .select
+    background-image: none;
     margin: 0;
     position: relative;
     z-index: 2;
