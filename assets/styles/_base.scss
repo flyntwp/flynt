@@ -401,6 +401,11 @@ button {
       background-color: var(--theme-transparent);
       box-shadow: none;
       color: var(--theme-color-accent-hover);
+
+      &::after {
+        animation: arrowFly 0.35s 1;
+        transform: rotate(45deg);
+      }
     }
 
     &::before {
@@ -427,6 +432,20 @@ button {
       width: 7px;
     }
   }
+}
+
+@keyframes arrowFly {
+  0% {opacity: 1;
+    transform: rotate(45deg) translate(0, 0);}
+
+  50% {opacity: 0;
+    transform: rotate(45deg) translate(5px, -5px);}
+
+  51% {opacity: 0;
+    transform: rotate(45deg) translate(-5px, 5px);}
+
+  100% {opacity: 1;
+    transform: rotate(45deg) translate(0, 0);}
 }
 
 /* Icons */
