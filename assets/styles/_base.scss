@@ -130,14 +130,18 @@ h6,
 a {
   color: var(--theme-color-accent);
   text-decoration: underline;
-  transition: color 0.2s ease-out;
+  transition: color 0.2s ease;
 
-  &:hover {
+  &:hover,
+  &:focus {
     text-decoration: none;
   }
 
   &:focus {
+    box-shadow: 0 0 0 3px var(--theme-color-accent-alpha);
     color: var(--theme-color-accent-hover);
+    outline: none;
+    transition: color 0.2s ease, box-shadow 0.2s ease;
   }
 }
 
@@ -298,8 +302,14 @@ button {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  outline: none;
   padding: 0;
   text-align: inherit;
+  transition: box-shadow 0.2s ease;
+
+  &:focus {
+    box-shadow: 0 0 0 3px var(--theme-color-accent-alpha);
+  }
 }
 
 .button {
@@ -394,17 +404,25 @@ button {
     padding: 0;
     position: relative;
     text-transform: none;
-    transition: color 0.2s ease-out;
+    transition: color 0.2s ease;
 
     &:hover,
     &:focus {
       background-color: var(--theme-transparent);
       box-shadow: none;
       color: var(--theme-color-accent-hover);
+    }
 
+    &:hover {
       &::after {
         animation: arrowFly 0.35s 1;
         transform: rotate(45deg);
+      }
+    }
+
+    &:focus {
+      &::before {
+        box-shadow: 0 1px 0 var(--theme-color-accent-alpha), 0 2px 0 var(--theme-color-accent-alpha), 0 3px 0 var(--theme-color-accent-alpha);
       }
     }
 
@@ -415,6 +433,7 @@ button {
       height: 1px;
       left: 0;
       position: absolute;
+      transition: box-shadow 0.2s ease;
       width: 100%;
     }
 
