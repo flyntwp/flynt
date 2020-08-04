@@ -21,6 +21,7 @@
     &-imageWrapper {
       background-color: var(--color-background);
       border-bottom: 1px solid var(--theme-border-color);
+      border-radius: 8px 8px 0 0;
       height: 0;
       overflow: hidden;
       padding-bottom: percentage(800/1280);

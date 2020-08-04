@@ -129,26 +129,15 @@ h6,
 
 a {
   color: var(--theme-color-accent);
+  text-decoration: underline;
   transition: color 0.2s ease-out;
 
-  &:hover,
-  &:focus {
-    color: var(--theme-color-accent-hover);
+  &:hover {
+    text-decoration: none;
   }
 
-  &:not(.button):not(.menu-link):not(.resetLink) {
-    background-image: linear-gradient(var(--theme-color-accent), var(--theme-color-accent));
-    background-position: 0% 100%;
-    background-repeat: no-repeat;
-    background-size: 0% 1px;
-    text-decoration: none;
-    transition: background-size 0.3s ease;
-
-    &:hover,
-    &:focus {
-      background-size: 100% 1px;
-      color: var(--theme-color-accent);
-    }
+  &:focus {
+    color: var(--theme-color-accent-hover);
   }
 }
 
@@ -186,8 +175,8 @@ code {
 
 blockquote,
 .blockquote {
-  border-left: 8px solid var(--theme-color-brand);
-  color: var(--theme-color-brand);
+  border-left: 8px solid var(--theme-color-accent);
+  color: var(--theme-color-text);
   font-size: 1.31rem;
   font-style: italic;
   font-weight: 400;
@@ -247,7 +236,7 @@ ol {
 /* Tables */
 
 table {
-  border: 1px solid var(--theme-color-brand);
+  border: 1px solid var(--theme-color-text);
   border-spacing: 0;
   max-width: 100%;
   width: 100%;
@@ -274,7 +263,7 @@ th {
 
 thead {
   th {
-    background-color: var(--theme-color-brand);
+    background-color: var(--theme-color-text);
     color: var(--theme-color-background);
     padding: 1.25rem 1.5rem;
     vertical-align: middle;
@@ -443,7 +432,7 @@ button {
 /* Icons */
 
 .feather {
-  color: var(--theme-color-brand);
+  color: var(--theme-color-accent);
   position: relative;
   top: -2px;
   vertical-align: middle;
@@ -899,7 +888,6 @@ select {
   --theme-color-background: var(--color-background-light);
   --theme-color-headline: var(--color-headline-light);
   --theme-color-text: var(--color-text-light);
-  --theme-color-brand: var(--color-brand-light);
   --theme-color-border: var(--color-border-light);
   --theme-color-accent: var(--color-accent-light);
   --theme-color-accent-alpha: var(--color-accent-light-alpha);
@@ -910,7 +898,6 @@ select {
   --theme-color-background: var(--color-background-dark);
   --theme-color-headline: var(--color-headline-dark);
   --theme-color-text: var(--color-text-dark);
-  --theme-color-brand: var(--color-brand-dark);
   --theme-color-border: var(--color-border-dark);
   --theme-color-accent: var(--color-accent-dark);
   --theme-color-accent-alpha: var(--color-accent-dark-alpha);
@@ -921,7 +908,6 @@ select {
   --theme-color-background: var(--color-background-hero);
   --theme-color-headline: var(--color-headline-hero);
   --theme-color-text: var(--color-text-hero);
-  --theme-color-brand: var(--color-brand-hero);
   --theme-color-border: var(--color-border-hero);
   --theme-color-accent: var(--color-accent-hero);
   --theme-color-accent-alpha: var(--color-accent-hero-alpha);
@@ -932,7 +918,6 @@ select {
   --theme-color-background: var(--color-background);
   --theme-color-headline: var(--color-headline);
   --theme-color-text: var(--color-text);
-  --theme-color-brand: var(--color-brand);
   --theme-color-border: var(--color-border);
   --theme-color-accent: var(--color-accent);
   --theme-color-accent-alpha: var(--color-accent-alpha);

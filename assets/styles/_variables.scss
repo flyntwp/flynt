@@ -15,43 +15,39 @@ $component-spacing-mobile: 40px;
 $gutter-width: 24px;
 
 $variables-accent: (
-  color-accent: #3620be,
-  color-accent-dark: #9d9bff,
-  color-accent-hero: #ffdc6d
+  color-accent: #4045a1,
+  color-accent-dark: #fff,
+  color-accent-hero: #fff
 );
 
 // Editable colors for WP Customizer
 :root {
   // Default
-  --color-brand: #14635f;
   --color-headline: #212121;
-  --color-text: #424242;
-  --color-border: #bdbdbd;
+  --color-text: #383838;
+  --color-border: #8e8e8e;
   --color-background: #fff;
 
   // Theme Light
   --color-accent-light: var(--color-accent);
   --color-accent-light-alpha: var(--color-accent-alpha);
   --color-accent-light-hover: var(--color-accent-hover);
-  --color-brand-light: var(--color-brand);
   --color-headline-light: var(--color-headline);
   --color-text-light: var(--color-text);
   --color-border-light: var(--color-border);
   --color-background-light: #fafafa;
 
   // Theme Dark
-  --color-brand-dark: #91c6c4;
-  --color-headline-dark: #fafafa;
-  --color-text-dark: #eee;
-  --color-border-dark: #bdbdbd;
-  --color-background-dark: #181818;
+  --color-headline-dark: #fbfbfb;
+  --color-text-dark: #e9e9ec;
+  --color-border-dark: #7e7e8e;
+  --color-background-dark: #2b2c46;
 
   // Theme Hero
-  --color-brand-hero: #91c6c4;
-  --color-headline-hero: #fff;
-  --color-text-hero: #d6e2e1;
-  --color-border-hero: #b8cdd6;
-  --color-background-hero: #630795;
+  --color-headline-hero: #fbfcfc;
+  --color-text-hero: #d4dfe0;
+  --color-border-hero: #9cb6b5;
+  --color-background-hero: #28615e;
 
   // Validation colors
   --color-error: #c0370e;
@@ -68,7 +64,6 @@ $variables-accent: (
 
 // Theming variables
 :root {
-  --theme-color-brand: var(--color-brand);
   --theme-color-headline: var(--color-headline);
   --theme-color-text: var(--color-text);
   --theme-color-border: var(--color-border);

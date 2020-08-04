@@ -11,39 +11,28 @@ use Flynt\Customizer\SeparatorControl;
 $colorsDefault = [
     'accent' => [
         'label'       => 'Accent',
-        'default'     => '#3620be',
+        'default'     => '#4045A1',
         'description' => ''
-        // 'description' => 'Changes color of buttons, icons, links, blockquote border and table head border.',
-    ],
-    'brand' => [
-        'label'       => 'Brand',
-        'default'     => '#14635f',
-        'description' => ''
-        // 'description' => 'Changes color of pill element and button hover in dark background.',
     ],
     'headline' => [
         'label'       => 'Headline',
         'default'     => '#212121',
         'description' => ''
-        // 'description' => 'Changes color of all headlines and form elements.',
     ],
     'text' => [
         'label'       => 'Text',
-        'default'     => '#424242',
+        'default'     => '#383838',
         'description' => ''
-        // 'description' => 'Changes color of all running text.',
     ],
     'border' => [
         'label'       => 'Border',
-        'default'     => '#bdbdbd',
+        'default'     => '#8E8E8E',
         'description' => ''
-        // 'description' => 'Changes color of borders and separators.',
     ],
     'background' => [
         'label'       => 'Background',
         'default'     => '#ffffff',
         'description' => ''
-        // 'description' => 'Changes white background color and all white elements.',
     ],
 ];
 
@@ -55,11 +44,6 @@ $colorsLight = [
     ],
     'accent-light' => [
         'label'       => 'Accent',
-        'default'     => '',
-        'description' => ''
-    ],
-    'brand-light' => [
-        'label'       => 'Brand',
         'default'     => '',
         'description' => ''
     ],
@@ -83,32 +67,27 @@ $colorsLight = [
 $colorsDark = [
     'accent-dark' => [
         'label'       => 'Accent',
-        'default'     => '#9d9bff',
-        'description' => '',
-    ],
-    'brand-dark' => [
-        'label'       => 'Brand',
-        'default'     => '#91c6c4',
+        'default'     => '#ffffff',
         'description' => '',
     ],
     'headline-dark' => [
         'label'       => 'Headline',
-        'default'     => '#fafafa',
+        'default'     => '#FBFBFB',
         'description' => '',
     ],
     'text-dark' => [
         'label'       => 'Text',
-        'default'     => '#eeeeee',
+        'default'     => '#E9E9EC',
         'description' => '',
     ],
     'border-dark' => [
         'label'       => 'Border',
-        'default'     => '#bdbdbd',
+        'default'     => '#7E7E8E',
         'description' => '',
     ],
     'background-dark' => [
         'label'       => 'Background',
-        'default'     => '#181818',
+        'default'     => '#2B2C46',
         'description' => '',
     ],
 ];
@@ -116,32 +95,27 @@ $colorsDark = [
 $colorsHero = [
     'accent-hero' => [
         'label'       => 'Accent',
-        'default'     => '#ffdc6d',
-        'description' => '',
-    ],
-    'brand-hero' => [
-        'label'       => 'Brand',
-        'default'     => '#91c6c4',
+        'default'     => '#ffffff',
         'description' => '',
     ],
     'headline-hero' => [
         'label'       => 'Headline',
-        'default'     => '#ffffff',
+        'default'     => '#FBFCFC',
         'description' => '',
     ],
     'text-hero' => [
         'label'       => 'Text',
-        'default'     => '#d6e2e1',
+        'default'     => '#D4DFE0',
         'description' => '',
     ],
     'border-hero' => [
         'label'       => 'Border',
-        'default'     => '#b8cdd6',
+        'default'     => '#9CB6B5',
         'description' => '',
     ],
     'background-hero' => [
         'label'       => 'Background',
-        'default'     => '#630795',
+        'default'     => '#28615E',
         'description' => '',
     ],
 ];

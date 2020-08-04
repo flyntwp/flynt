@@ -71,12 +71,6 @@ $(document).ready(function () {
     })
   })
 
-  wp.customize('theme_colors_brand', function (value) {
-    value.bind(function (newval) {
-      $(':root.html').css('--color-brand', newval)
-    })
-  })
-
   wp.customize('theme_colors_border', function (value) {
     value.bind(function (newval) {
       $(':root.html').css('--color-border', newval)
@@ -107,12 +101,6 @@ $(document).ready(function () {
   wp.customize('theme_colors_headline-light', function (value) {
     value.bind(function (newval) {
       $(':root.html').css('--color-headline-light', newval)
-    })
-  })
-
-  wp.customize('theme_colors_brand-light', function (value) {
-    value.bind(function (newval) {
-      $(':root.html').css('--color-brand-light', newval)
     })
   })
 
@@ -149,12 +137,6 @@ $(document).ready(function () {
     })
   })
 
-  wp.customize('theme_colors_brand-dark', function (value) {
-    value.bind(function (newval) {
-      $(':root.html').css('--color-brand-dark', newval)
-    })
-  })
-
   wp.customize('theme_colors_border-dark', function (value) {
     value.bind(function (newval) {
       $(':root.html').css('--color-border-dark', newval)
@@ -185,12 +167,6 @@ $(document).ready(function () {
   wp.customize('theme_colors_headline-hero', function (value) {
     value.bind(function (newval) {
       $(':root.html').css('--color-headline-hero', newval)
-    })
-  })
-
-  wp.customize('theme_colors_brand-hero', function (value) {
-    value.bind(function (newval) {
-      $(':root.html').css('--color-brand-hero', newval)
     })
   })
 

@@ -8,7 +8,7 @@
     <ul class="components">
       {% for componentBlock in componentBlocks %}
         {% if componentBlock.readme %}
-          <li class="component boxShadow">
+          <li class="component boxBorder boxRadius">
             {% if componentBlock.ctas.primary %}
               <a href="{{ componentBlock.ctas.primary }}" class="component-link resetLink" aria-hidden="true" tabindex="-1">
             {% else %}
