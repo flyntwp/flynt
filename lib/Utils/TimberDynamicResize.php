@@ -266,13 +266,13 @@ class TimberDynamicResize
         );
     }
 
-    public function addImageSeparatorToUploadPath($path)
+    public function addImageSeparatorToUploadPath($path = '')
     {
         $basepath = $this->getUploadsBasedir();
         return str_replace(
             $basepath,
             trailingslashit($basepath) . static::IMAGE_PATH_SEPARATOR,
-            $path
+            empty($path) ? $basepath : $path
         );
     }
 
@@ -348,8 +348,11 @@ EOD;
         } else {
             remove_filter('mod_rewrite_rules', [$this, 'addWebpRewriteRule']);
         }
+
         add_action('shutdown', function () {
+            global $wp_filesystem;
             flush_rewrite_rules(true);
+            @$wp_filesystem->rmdir($this->addImageSeparatorToUploadPath(), true);
         });
     }
 
