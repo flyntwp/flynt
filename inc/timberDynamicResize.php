@@ -16,25 +16,34 @@ add_filter(
 );
 
 add_action(
-    'update_option_options_global_TimberDynamicResize_dynamicImageGeneration', function ($oldValue, $value) {
+    'update_option_options_global_TimberDynamicResize_dynamicImageGeneration',
+    function ($oldValue, $value) {
         global $timberDynamicResize;
         $timberDynamicResize->toggleDynamic($value === '1');
-    }
-, 10, 2);
+    },
+    10,
+    2
+);
 
 add_action(
-    'update_option_options_global_TimberDynamicResize_webpSupport', function ($oldValue, $value) {
+    'update_option_options_global_TimberDynamicResize_webpSupport',
+    function ($oldValue, $value) {
         global $timberDynamicResize;
         $timberDynamicResize->toggleWebp($value === '1');
-    }
-, 10, 2);
+    },
+    10,
+    2
+);
 
 add_action(
-    'update_option_options_global_TimberDynamicResize_relativeUploadPath', function ($oldValue, $value) {
+    'update_option_options_global_TimberDynamicResize_relativeUploadPath',
+    function ($oldValue, $value) {
         global $timberDynamicResize;
         $timberDynamicResize->changeRelativeUploadPath($value);
-    }
-, 10, 2);
+    },
+    10,
+    2
+);
 
 add_action('acf/init', function () {
     global $timberDynamicResize;
