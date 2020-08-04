@@ -83,3 +83,25 @@ Options::addGlobal('TimberDynamicResize', [
         'instructions' => 'Generate additional .webp images.',
     ],
 ]);
+
+# WPML REWRITE FIX
+add_filter('mod_rewrite_rules', function ($rules) {
+    $homeRoot = parse_url(home_url());
+    if (isset($homeRoot['path'])) {
+        $homeRoot = trailingslashit($homeRoot['path']);
+    } else {
+        $homeRoot = '/';
+    }
+
+    $wpmlRoot = parse_url(get_option('home'));
+    if (isset($wpmlRoot['path'])) {
+        $wpmlRoot = trailingslashit($wpmlRoot['path']);
+    } else {
+        $wpmlRoot = '/';
+    }
+
+    $rules = str_replace("RewriteBase $homeRoot", "RewriteBase $wpmlRoot", $rules);
+    $rules = str_replace("RewriteRule . $homeRoot", "RewriteRule . $wpmlRoot", $rules);
+
+    return $rules;
+});
