@@ -491,16 +491,16 @@
         },
         {
             "name": "timber/timber",
-            "version": "1.16.0",
+            "version": "1.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/timber/timber.git",
-                "reference": "cdae62c0108cd60c256e9bb00d634645eb0127c0"
+                "reference": "f4de5dad03d59afb8e6532374e152e3a1e250623"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timber/timber/zipball/cdae62c0108cd60c256e9bb00d634645eb0127c0",
-                "reference": "cdae62c0108cd60c256e9bb00d634645eb0127c0",
+                "url": "https://api.github.com/repos/timber/timber/zipball/f4de5dad03d59afb8e6532374e152e3a1e250623",
+                "reference": "f4de5dad03d59afb8e6532374e152e3a1e250623",
                 "shasum": ""
             },
             "require": {
@@ -552,7 +552,7 @@
                 "timber",
                 "twig"
             ],
-            "time": "2020-05-18T19:28:12+00:00"
+            "time": "2020-07-19T17:22:17+00:00"
         },
         {
             "name": "twig/twig",
