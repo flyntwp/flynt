@@ -12,7 +12,7 @@
     <ul class="posts">
       {% for post in posts %}
         <li class="post">
-          <a class="post-link" href="{{ post.link }}" title="{{ post.title }}">
+          <a class="post-link linkReset" href="{{ post.link }}" title="{{ post.title }}">
             {% if post.thumbnail %}
               <figure class="figure">
                 <img class="figure-image lazyload"

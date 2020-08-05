@@ -1,11 +1,10 @@
 .searchList {
   @include reset-list;
 
-  border-radius: 4px;
-  margin-top: 20px;
+  margin-top: 50px;
 
   &-item {
-    border-bottom: 1px solid #ececec;
+    border-bottom: 1px solid var(--theme-color-border);
     position: relative;
 
     &:last-child {

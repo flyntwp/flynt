@@ -12,7 +12,7 @@
 
     &-button {
       align-items: center;
-      color: var(--color-background);
+      color: var(--theme-color-background);
       cursor: pointer;
       display: flex;
       height: 40px;
@@ -24,7 +24,7 @@
       z-index: 10;
 
       &::before {
-        background-color: var(--color-background-dark);
+        background-color: var(--theme-color-accent);
         border-radius: 50%;
         content: '';
         height: 100%;
@@ -40,7 +40,7 @@
         &:hover,
         &:focus {
           &::before {
-            background-color: var(--color-accent);
+            background-color: var(--theme-color-accent);
             opacity: 1;
           }
         }
@@ -84,7 +84,7 @@
 
     &-caption {
       bottom: 0;
-      color: var(--color-background);
+      color: var(--theme-color-background);
       display: inline-block;
       font-size: 0.8rem;
       max-width: 450px;
@@ -94,7 +94,7 @@
       z-index: 2;
 
       &::before {
-        background-color: var(--color-background-dark);
+        background-color: var(--theme-color-accent);
         content: '';
         height: 100%;
         left: 0;

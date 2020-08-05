@@ -2,7 +2,7 @@
   @include reset-list;
 
   backface-visibility: hidden;
-  background-color: var(--color-background);
+  background-color: var(--theme-color-background);
   height: calc(100% - #{$navigation-height});
   left: 0;
   margin: 0;
@@ -27,12 +27,12 @@
 
   &-item--current {
     .menu-link {
-      color: var(--color-accent);
+      color: var(--theme-color-accent);
     }
   }
 
   &-link {
-    color: var(--color-text);
+    color: var(--theme-color-text);
     display: block;
     font-size: 1rem;
     font-weight: 700;
@@ -42,7 +42,7 @@
     transition: color 0.2s ease-out;
 
     &:focus {
-      color: var(--color-accent);
+      color: var(--theme-color-accent);
     }
 
     @media (min-width: $breakpoint-tablet) {

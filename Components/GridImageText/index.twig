@@ -9,9 +9,10 @@
       {% for item in items %}
         {% if item.image or item.contentHtml %}
           <li class="grid-item">
-            <div class="content {{ options.card == 'layoutCard' ? 'boxShadow themeReset' }}">
+            <div class="content {{ options.card == 'layoutCard' ? 'boxRadius themeReset' }}
+            {{ options.card == 'layoutCard' and options.theme != 'themeDark' and options.theme != 'themeHero' ? 'boxBorder' }}">
               {% if item.image %}
-                <img class="content-image lazyload"
+                <img class="content-image lazyload {{ options.card == 'layoutCard' ? 'boxRadiusTop' }}"
                   src="{{ item.image.src|resizeDynamic(424, 283) }}"
                   srcset="{{ placeholderImage(3, 2) }}"
                   data-srcset="

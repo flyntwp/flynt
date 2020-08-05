@@ -138,11 +138,14 @@ a {
   }
 
   &:focus {
-    box-shadow: 0 0 0 3px var(--theme-color-accent-alpha);
     color: var(--theme-color-accent-hover);
-    outline: none;
-    transition: color 0.2s ease, box-shadow 0.2s ease;
+    outline-color: var(--theme-color-accent-alpha);
+    transition: color 0.2s ease;
   }
+}
+
+.linkReset {
+  text-decoration: none;
 }
 
 p,
@@ -302,13 +305,11 @@ button {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-  outline: none;
   padding: 0;
   text-align: inherit;
-  transition: box-shadow 0.2s ease;
 
   &:focus {
-    box-shadow: 0 0 0 3px var(--theme-color-accent-alpha);
+    outline-color: var(--theme-color-accent-alpha);
   }
 }
 
@@ -856,6 +857,14 @@ select {
 
 .boxRadius {
   border-radius: 8px;
+}
+
+.boxRadiusTop {
+  border-radius: 8px 8px 0 0;
+}
+
+.boxRadiusBottom {
+  border-radius: 0 0 8px 8px;
 }
 
 /* Custom styling for single post layouts */
