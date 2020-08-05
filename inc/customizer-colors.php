@@ -5,8 +5,6 @@
  */
 
 use Flynt\Utils\Asset;
-use Flynt\Customizer\InfoControl;
-use Flynt\Customizer\SeparatorControl;
 
 $colorsDefault = [
     'accent' => [
@@ -37,31 +35,31 @@ $colorsDefault = [
 ];
 
 $colorsLight = [
-    'background-light' => [
-        'label'       => 'Background',
-        'default'     => '#fafafa',
-        'description' => '',
-    ],
     'accent-light' => [
         'label'       => 'Accent',
-        'default'     => '',
+        'default'     => '#4045A1',
         'description' => ''
     ],
     'headline-light' => [
         'label'       => 'Headline',
-        'default'     => '',
+        'default'     => '#212121',
         'description' => ''
     ],
     'text-light' => [
         'label'       => 'Text',
-        'default'     => '',
+        'default'     => '#383838',
         'description' => ''
     ],
     'border-light' => [
         'label'       => 'Border',
-        'default'     => '',
+        'default'     => '#8E8E8E',
         'description' => ''
-    ]
+    ],
+    'background-light' => [
+        'label'       => 'Background',
+        'default'     => '#fafafa',
+        'description' => ''
+    ],
 ];
 
 $colorsDark = [
@@ -212,40 +210,6 @@ add_action('customize_register', function ($wp_customize) use ($colorsDefault, $
                 ]
             )
         );
-
-        if ($name == 'background-light') {
-            /**
-            Separator 1
-            **/
-
-            $wp_customize->add_setting('separator_1', array(
-                'default'           => '',
-                'sanitize_callback' => 'esc_html',
-            ));
-
-            $wp_customize->add_control(new SeparatorControl(
-                $wp_customize,
-                'separator_1',
-                array(
-                'settings'      => 'separator_1',
-                'section'       => 'theme_colors_light',
-                )
-            ));
-
-            /**
-            Section Title - Theme Light
-            **/
-            $wp_customize->add_setting('section_title_light', array(
-                'default'           => '',
-                'sanitize_callback' => 'flynt_text_sanitization',
-
-            ));
-            $wp_customize->add_control(new InfoControl($wp_customize, 'section_title_light', array(
-                'description' => 'Besides <b>Background</b> color, Theme Light uses <b>Default</b> colors. But you can also specify custom colors for this theme here:',
-                'settings'      => 'section_title_light',
-                'section'       => 'theme_colors_light',
-            )));
-        }
     }
 
     foreach ($colorsDark as $name => $color) {

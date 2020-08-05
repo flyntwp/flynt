@@ -14,64 +14,57 @@ $component-spacing-tablet: 80px;
 $component-spacing-mobile: 40px;
 $gutter-width: 24px;
 
-$variables-accent: (
-  color-accent: #4045a1,
-  color-accent-dark: #fff,
-  color-accent-hero: #fff
-);
-
-// Editable colors for WP Customizer
-:root {
-  // Default
-  --color-headline: #212121;
-  --color-text: #383838;
-  --color-border: #8e8e8e;
-  --color-background: #fff;
-
-  // Theme Light
-  --color-accent-light: var(--color-accent);
-  --color-accent-light-alpha: var(--color-accent-alpha);
-  --color-accent-light-hover: var(--color-accent-hover);
-  --color-headline-light: var(--color-headline);
-  --color-text-light: var(--color-text);
-  --color-border-light: var(--color-border);
-  --color-background-light: #fafafa;
-
-  // Theme Dark
-  --color-headline-dark: #fbfbfb;
-  --color-text-dark: #e9e9ec;
-  --color-border-dark: #7e7e8e;
-  --color-background-dark: #2b2c46;
-
-  // Theme Hero
-  --color-headline-hero: #fbfcfc;
-  --color-text-hero: #d4dfe0;
-  --color-border-hero: #9cb6b5;
-  --color-background-hero: #28615e;
-
-  // Validation colors
-  --color-error: #c0370e;
-  --color-success: #22710a;
-
-  // Generating accent colors
-  @each $varName, $varValue in $variables-accent {
-    $rgb: red($varValue) + ', ' + green($varValue) + ', ' + blue($varValue);
-    #{'--' + $varName}: #{$varValue};
-    #{'--' + $varName}-alpha: #{rgba($varValue, 0.4)};
-    #{'--' + $varName}-hover: #{darken($varValue, 5)};
-  }
-}
-
 // Theming variables
 :root {
-  --theme-color-headline: var(--color-headline);
-  --theme-color-text: var(--color-text);
-  --theme-color-border: var(--color-border);
-  --theme-color-background: var(--color-background);
-  --theme-color-accent: var(--color-accent);
-  --theme-color-accent-alpha: var(--color-accent-alpha);
-  --theme-color-accent-hover: var(--color-accent-hover);
+  --theme-color-background: var(--color-background, #fff);
+  --theme-color-headline: var(--color-headline, #212121);
+  --theme-color-text: var(--color-text, #383838);
+  --theme-color-border: var(--color-border, #8e8e8e);
+  --theme-color-accent: var(--color-accent, #4045a1);
+  --theme-color-accent-alpha: var(--color-accent-alpha, #{rgba(#4045a1, 0.4)});
+  --theme-color-accent-hover: var(--color-accent-hover, #{darken(#4045a1, 5)});
   --theme-transparent: transparent; // needs for ie11-custom-propertiess polyfill to work properly
+  --color-error: #c0370e;
+}
+
+.themeLight {
+  --theme-color-background: var(--color-background-light, #fafafa);
+  --theme-color-headline: var(--color-headline-light, #212121);
+  --theme-color-text: var(--color-text-light, #383838);
+  --theme-color-border: var(--color-border-light, #8e8e8e);
+  --theme-color-accent: var(--color-accent-light, #4045a1);
+  --theme-color-accent-alpha: var(--color-accent-light-alpha, #{rgba(#4045a1, 0.4)});
+  --theme-color-accent-hover: var(--color-accent-light-hover, #{darken(#4045a1, 5)});
+}
+
+.themeDark {
+  --theme-color-background: var(--color-background-dark, #2b2c46);
+  --theme-color-headline: var(--color-headline-dark, #fbfbfb);
+  --theme-color-text: var(--color-text-dark, #e9e9ec);
+  --theme-color-border: var(--color-border-dark, #7e7e8e);
+  --theme-color-accent: var(--color-accent-dark, #fff);
+  --theme-color-accent-alpha: var(--color-accent-dark-alpha, #{rgba(#fff, 0.4)});
+  --theme-color-accent-hover: var(--color-accent-dark-hover, #{darken(#fff, 5)});
+}
+
+.themeHero {
+  --theme-color-background: var(--color-background-hero, #28615e);
+  --theme-color-headline: var(--color-headline-hero, #fbfcfc);
+  --theme-color-text: var(--color-text-hero, #d4dfe0);
+  --theme-color-border: var(--color-border-hero, #9cb6b5);
+  --theme-color-accent: var(--color-accent-hero, #fff);
+  --theme-color-accent-alpha: var(--color-accent-hero-alpha, #{rgba(#fff, 0.4)});
+  --theme-color-accent-hover: var(--color-accent-hero-hover, #{darken(#fff, 5)});
+}
+
+.themeReset {
+  --theme-color-background: var(--color-background, #fff);
+  --theme-color-headline: var(--color-headline, #212121);
+  --theme-color-text: var(--color-text, #383838);
+  --theme-color-border: var(--color-border, #8e8e8e);
+  --theme-color-accent: var(--color-accent, #4045a1);
+  --theme-color-accent-alpha: var(--color-accent-alpha, #{rgba(#4045a1, 0.4)});
+  --theme-color-accent-hover: var(--color-accent-hover, #{darken(#4045a1, 5)});
 }
 
 $heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';

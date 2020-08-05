@@ -251,6 +251,8 @@ table {
 
 .boxRadius > thead {
   th {
+    border: 1px solid  var(--theme-color-text); // fix IE border artifacts
+
     &:first-child {
       border-top-left-radius: 6px;
     }
@@ -609,6 +611,10 @@ select {
     margin: 0;
     position: relative;
     z-index: 2;
+
+    option {
+      color: #000;
+    }
   }
 }
 
@@ -620,8 +626,7 @@ select {
   width: 1px;
 
   &,
-  &:hover,
-  &:focus {
+  &:hover {
     border-color: var(--theme-color-border);
     outline: 0;
   }
@@ -632,7 +637,7 @@ select {
     position: relative;
 
     &::before {
-      background-color: var(--theme-color-background);
+      background: var(--theme-transparent);
       border: 1px solid var(--theme-color-border);
       border-radius: 4px;
       content: '';
@@ -664,24 +669,25 @@ select {
     }
   }
 
+  &:focus {
+    + label {
+      &::before {
+        border-color: var(--theme-color-accent);
+        box-shadow: 0 0 0 3px var(--theme-color-accent-alpha);
+      }
+    }
+  }
+
   &:checked {
     + label {
       &::before {
+        background-color: var(--theme-transparent);
         border-color: var(--theme-color-accent);
       }
 
       &::after {
         opacity: 1;
         visibility: visible;
-      }
-    }
-  }
-
-  &:focus {
-    + label {
-      &::before {
-        border-color: var(--theme-color-accent);
-        box-shadow: 0 0 0 3px var(--theme-color-accent-alpha);
       }
     }
   }
@@ -929,44 +935,4 @@ select {
 [class*='theme'] {
   background-color: var(--theme-color-background);
   color: var(--theme-color-text);
-}
-
-.themeLight {
-  --theme-color-background: var(--color-background-light);
-  --theme-color-headline: var(--color-headline-light);
-  --theme-color-text: var(--color-text-light);
-  --theme-color-border: var(--color-border-light);
-  --theme-color-accent: var(--color-accent-light);
-  --theme-color-accent-alpha: var(--color-accent-light-alpha);
-  --theme-color-accent-hover: var(--color-accent-light-hover);
-}
-
-.themeDark {
-  --theme-color-background: var(--color-background-dark);
-  --theme-color-headline: var(--color-headline-dark);
-  --theme-color-text: var(--color-text-dark);
-  --theme-color-border: var(--color-border-dark);
-  --theme-color-accent: var(--color-accent-dark);
-  --theme-color-accent-alpha: var(--color-accent-dark-alpha);
-  --theme-color-accent-hover: var(--color-accent-dark-hover);
-}
-
-.themeHero {
-  --theme-color-background: var(--color-background-hero);
-  --theme-color-headline: var(--color-headline-hero);
-  --theme-color-text: var(--color-text-hero);
-  --theme-color-border: var(--color-border-hero);
-  --theme-color-accent: var(--color-accent-hero);
-  --theme-color-accent-alpha: var(--color-accent-hero-alpha);
-  --theme-color-accent-hover: var(--color-accent-hero-hover);
-}
-
-.themeReset {
-  --theme-color-background: var(--color-background);
-  --theme-color-headline: var(--color-headline);
-  --theme-color-text: var(--color-text);
-  --theme-color-border: var(--color-border);
-  --theme-color-accent: var(--color-accent);
-  --theme-color-accent-alpha: var(--color-accent-alpha);
-  --theme-color-accent-hover: var(--color-accent-hover);
 }
