@@ -5,14 +5,16 @@ function getCopyConfig (source) {
   return {
     from: source,
     to: './',
-    ignore: [
-      '*.js',
-      '*.scss',
-      '*.php',
-      '*.twig',
-      'screenshot.png',
-      'README.md'
-    ]
+    globOptions: {
+      ignore: [
+        '**/*.js',
+        '**/*.scss',
+        '**/*.php',
+        '**/*.twig',
+        '**/screenshot.png',
+        '**/README.md'
+      ]
+    }
   }
 }
 
@@ -22,10 +24,12 @@ module.exports = {
       'assets/main': './assets/main.js',
       'assets/admin': './assets/admin.js'
     },
-    copy: [
-      getCopyConfig('./Components/**/*'),
-      getCopyConfig('./assets/**/*')
-    ]
+    copy: {
+      patterns: [
+        getCopyConfig('./Components/**/*'),
+        getCopyConfig('./assets/**/*')
+      ]
+    }
   },
   browserSync: {
     ghostMode: false,

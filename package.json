@@ -35,7 +35,7 @@
     "browser-sync": "^2.26.12",
     "check-node-version": "^4.0.3",
     "console-polyfill": "^0.3.0",
-    "copy-webpack-plugin": "^5.1.1",
+    "copy-webpack-plugin": "^6.0.3",
     "core-js": "^3.6.5",
     "countup.js": "^2.0.6",
     "cross-env": "^6.0.3",
