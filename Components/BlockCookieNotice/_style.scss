@@ -13,7 +13,6 @@
 
   .content {
     @include reset-content-margins;
-
     font-size: 0.8rem;
     padding-bottom: $container-padding-mobile;
   }

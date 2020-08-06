@@ -1,7 +1,6 @@
 [is='flynt-grid-image-text'] {
   .grid {
     @include reset-list;
-
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

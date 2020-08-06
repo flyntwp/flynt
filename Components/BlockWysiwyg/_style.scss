@@ -1,7 +1,6 @@
 [is='flynt-block-wysiwyg'] {
   .content {
     @include reset-content-margins;
-
     text-align: inherit;
 
     &--textLeft {
