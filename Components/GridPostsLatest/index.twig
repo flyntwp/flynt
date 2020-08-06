@@ -11,7 +11,7 @@
           <li class="grid-item">
             <div class="content {{ options.theme != 'themeDark' and options.theme != 'themeHero' ? 'boxBorder' }} boxRadius themeReset">
               <a href="{{ item.link }}" class="content-link" title="{{ item.title }}">
-                <img class="content-image lazyload boxRadiusTop"
+                <img class="content-image lazyload"
                   src="{{ item.thumbnail.src|resizeDynamic(424, 283) }}"
                   srcset="{{ placeholderImage(3, 2) }}"
                   data-srcset="

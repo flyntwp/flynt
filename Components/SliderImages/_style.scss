@@ -32,7 +32,7 @@
         opacity: 0.5;
         position: absolute;
         top: 0;
-        transition: opacity 0.2s ease-out, background-color 0.2s ease-out;
+        transition: opacity 0.2s ease;
         width: 100%;
       }
 
@@ -40,7 +40,6 @@
         &:hover,
         &:focus {
           &::before {
-            background-color: var(--theme-color-accent);
             opacity: 1;
           }
         }

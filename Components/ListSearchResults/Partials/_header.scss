@@ -13,7 +13,11 @@
   }
 
   &-col {
-    margin: 0 0 1rem;
+    margin-bottom: 1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
 
     @media (min-width: $breakpoint-mobile-horizontal) {
       flex-grow: 1;
@@ -32,7 +36,7 @@
   }
 
   &-input {
-    background-color: var(--color-background);
+    // background-color: var(--color-background);
     margin: 0;
     min-height: 54px;
     width: 100%;
