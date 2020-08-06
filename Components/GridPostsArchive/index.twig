@@ -7,7 +7,7 @@
       {{ html|e('wp_kses_post') }}
     </div>
     {% if terms %}
-       {% include 'Partials/_filter.twig' %}
+      {% include 'Partials/_filter.twig' %}
     {% endif %}
     <ul class="posts">
       {% for post in posts %}

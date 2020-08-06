@@ -2,35 +2,29 @@
   margin-top: 20px;
   overflow: auto;
 
-  &-nav {
-    &--previous {
-      float: left;
-    }
-
-    &--next {
-      float: right;
-    }
-  }
-
-  .button {
-    white-space: nowrap;
-  }
-
   .arrow {
     color: $color-background;
     height: 18px;
     width: 16px;
   }
 
-  &-nav--next {
+  &-previous {
+    float: left;
+
+    .arrow {
+      margin-left: -5px;
+    }
+  }
+
+  &-next {
+    float: right;
+
     .arrow {
       margin-right: -5px;
     }
   }
 
-  &-nav--previous {
-    .arrow {
-      margin-left: -5px;
-    }
+  .button {
+    white-space: nowrap;
   }
 }

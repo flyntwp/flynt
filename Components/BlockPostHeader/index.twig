@@ -6,7 +6,6 @@
         {% if post.date %}
           <time class="meta-date" datetime="{{ post.post_date }}">{{ post.date|date }}</time> {{ dividers.authorDivider|e }}
         {% endif %}
-
         {{ labels.postedByLabel|e }} <a class="meta-author" href="{{ post.author.link|e('esc_url') }}"><span class="visuallyHidden">{{ __("Author:", "flynt") }}</span> {{ post.author.name }}</a>
         {{ labels.postedInLabel|e }} <a class="meta-category" href="{{ post.category.link|e('esc_url') }}"><span class="visuallyHidden">{{ __("Category:", "flynt") }}</span> {{ post.category }}</a>
         {{ dividers.readingtimeDivider|e }} <span class="meta-readingtime">{{ post.content|readingtime }} {{ labels.readingtimeLabel|e }}</span>

@@ -48,22 +48,19 @@
     flex-wrap: wrap;
     height: 100%;
 
-    img {
+    &-image {
       background: $color-contrast;
       flex-shrink: 0; // IE11 bug fix (prevent image from stretchin')
     }
 
     &-inner {
+      @include reset-content-margins;
       color: $color-text;
+      flex-grow: 1;
 
       #{$heading-selectors} {
         color: $color-headline;
       }
-    }
-
-    &-inner {
-      @include reset-content-margins;
-      flex-grow: 1;
     }
 
     &-link {
