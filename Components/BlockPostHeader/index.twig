@@ -4,11 +4,11 @@
       <h1>{{ post.title }}</h1>
       <div class="meta">
         {% if post.date %}
-          <time class="meta-date" datetime="{{ post.post_date }}">{{ post.date|date }}</time> {{ generalTranslatable.authorDivider|e }}
+          <time class="meta-date" datetime="{{ post.post_date }}">{{ post.date|date }}</time> {{ dividers.authorDivider|e }}
         {% endif %}
-        {{ generalTranslatable.postedByLabel|e }} <a class="meta-author" href="{{ post.author.link|e('esc_url') }}">{{ post.author.name }}</a>
-        {{ generalTranslatable.postedInLabel|e }} <a class="meta-category" href="{{ post.category.link|e('esc_url') }}">{{ post.category }}</a>
-        {{ generalTranslatable.readingtimeDivider|e }} <span class="meta-readingtime">{{ post.content|readingtime }} {{ generalTranslatable.readingtimeLabel|e }}</span>
+        {{ labels.postedByLabel|e }} <a class="meta-author" href="{{ post.author.link|e('esc_url') }}"><span class="visuallyHidden">{{ __("Author:", "flynt") }}</span> {{ post.author.name }}</a>
+        {{ labels.postedInLabel|e }} <a class="meta-category" href="{{ post.category.link|e('esc_url') }}"><span class="visuallyHidden">{{ __("Category:", "flynt") }}</span> {{ post.category }}</a>
+        {{ dividers.readingtimeDivider|e }} <span class="meta-readingtime">{{ post.content|readingtime }} {{ labels.readingtimeLabel|e }}</span>
       </div>
       {% if post.post_excerpt %}
         <p class="excerpt h3">{{ post.post_excerpt }}</p>

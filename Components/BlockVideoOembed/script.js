@@ -18,7 +18,6 @@ class BlockVideoOembed extends window.HTMLDivElement {
     this.$posterImage = $('.figure-image', this)
     this.$videoPlayer = $('.video-player', this)
     this.$iframe = $('iframe', this)
-    this.$playButton = $('.video-playButton', this)
   }
 
   bindFunctions () {
@@ -27,7 +26,7 @@ class BlockVideoOembed extends window.HTMLDivElement {
   }
 
   bindEvents () {
-    this.$.one('click', this.$playButton.selector, this.loadVideo)
+    this.$.one('click', '.video-playButton', this.loadVideo)
   }
 
   loadVideo () {

@@ -1,7 +1,7 @@
 <div class="flyntComponent themeLight" is="flynt-navigation-footer">
   <div class="container centerMaxWidthContainer">
     {% if menu %}
-      <nav class="navigation">
+      <nav class="navigation" aria-label="{{ __("Footer", "flynt") }}">
         {% include 'Partials/_menu.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel } only %}
       </nav>
     {% endif %}

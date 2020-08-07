@@ -4,9 +4,9 @@ import Cookies from 'js-cookie'
 const $document = $(document)
 
 class FeatureGoogleAnalytics extends window.HTMLDivElement {
-  constructor (self) {
+  constructor (...args) {
     window.$ = window.jQuery
-    self = super(self)
+    const self = super(...args)
     self.init()
     return self
   }

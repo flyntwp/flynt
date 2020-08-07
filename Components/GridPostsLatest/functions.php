@@ -36,28 +36,26 @@ function getACFLayout()
         'label' => 'Grid: Posts Latest',
         'sub_fields' => [
             [
-                'label' => 'General',
+                'label' => __('General', 'flynt'),
                 'name' => 'generalTab',
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0
             ],
             [
-                'label' => 'Title',
+                'label' => __('Title', 'flynt'),
                 'name' => 'preContentHtml',
                 'type' => 'wysiwyg',
                 'tabs' => 'visual,text',
                 'media_upload' => 0,
                 'delay' => 1,
-                'wrapper' => [
-                    'class' => 'autosize',
-                ],
+                'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
             ],
             [
-                'label' => 'Categories',
+                'label' => __('Categories', 'flynt'),
                 'name' => 'taxonomies',
                 'type' => 'taxonomy',
-                'instructions' => 'Select 1 or more categories or leave empty to show from all posts.',
+                'instructions' => __('Select 1 or more categories or leave empty to show from all posts.', 'flynt'),
                 'taxonomy' => 'category',
                 'field_type' => 'multi_select',
                 'allow_null' => 1,
@@ -68,7 +66,7 @@ function getACFLayout()
                 'return_format' => 'object'
             ],
             [
-                'label' => 'Options',
+                'label' => __('Options', 'flynt'),
                 'name' => 'optionsTab',
                 'type' => 'tab',
                 'placement' => 'top',
@@ -82,7 +80,7 @@ function getACFLayout()
                 'sub_fields' => [
                     FieldVariables\getTheme(),
                     [
-                        'label' => 'Columns',
+                        'label' => __('Columns', 'flynt'),
                         'name' => 'columns',
                         'type' => 'number',
                         'default_value' => 3,
@@ -98,11 +96,11 @@ function getACFLayout()
 
 Options::addTranslatable('GridPostsLatest', [
     [
-        'label' => 'Labels',
+        'label' => __('Labels', 'flynt'),
         'name' => 'labelsTab',
         'type' => 'tab',
         'placement' => 'top',
-        'endpoint' => false
+        'endpoint' => 0
     ],
     [
         'label' => '',
@@ -110,25 +108,34 @@ Options::addTranslatable('GridPostsLatest', [
         'type' => 'group',
         'sub_fields' => [
             [
-                'label' => 'Reading Time Label',
+                'label' => __('Reading Time', 'flynt'),
                 'name' => 'readingTime',
                 'type' => 'text',
                 'default_value' => 'min',
                 'required' => 1,
+                'wrapper' => [
+                    'width' => 50
+                ],
             ],
             [
-                'label' => 'All Posts Label',
+                'label' => __('All Posts', 'flynt'),
                 'name' => 'allPosts',
                 'type' => 'text',
                 'default_value' => 'See More Posts',
                 'required' => 1,
+                'wrapper' => [
+                    'width' => 50
+                ],
             ],
             [
-                'label' => 'Read More Label',
+                'label' => __('Read More', 'flynt'),
                 'name' => 'readMore',
                 'type' => 'text',
                 'default_value' => 'Read More',
                 'required' => 1,
+                'wrapper' => [
+                    'width' => 50
+                ],
             ]
         ],
     ]

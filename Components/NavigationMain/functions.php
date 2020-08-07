@@ -14,7 +14,7 @@ add_action('init', function () {
 add_filter('Flynt/addComponentData?name=NavigationMain', function ($data) {
     $data['menu'] = new Timber\Menu('navigation_main');
     $data['logo'] = [
-        'src' => Asset::requireUrl('Components/NavigationMain/Assets/logo.svg'),
+        'src' => get_theme_mod('custom_header_logo') ? get_theme_mod('custom_header_logo') : Asset::requireUrl('Components/NavigationMain/Assets/logo.svg'),
         'alt' => get_bloginfo('name')
     ];
 

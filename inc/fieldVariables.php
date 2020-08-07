@@ -9,7 +9,7 @@ namespace Flynt\FieldVariables;
 function getTheme()
 {
     return [
-        'label' => 'Theme',
+        'label' => __('Theme', 'flynt'),
         'name' => 'theme',
         'type' => 'select',
         'allow_null' => 0,
@@ -17,10 +17,10 @@ function getTheme()
         'ui' => 0,
         'ajax' => 0,
         'choices' => [
-            '' => '(none)',
-            'themeLight' => 'Light',
-            'themeDark' => 'Dark',
-            'themeHero' => 'Hero'
+            '' => __('(none)', 'flynt'),
+            'themeLight' => __('Light', 'flynt'),
+            'themeDark' => __('Dark', 'flynt'),
+            'themeHero' => __('Hero', 'flynt'),
         ]
     ];
 }
@@ -28,10 +28,10 @@ function getTheme()
 function getIcon()
 {
     return [
-        'label' => 'Icon',
+        'label' => __('Icon', 'flynt'),
         'name' => 'icon',
         'type' => 'text',
-        'instructions' => 'Enter a valid icon name from <a href="https://feathericons.com">Feather Icons</a> (e.g. `check-circle`).',
+        'instructions' => __('Enter a valid icon name from <a href="https://feathericons.com">Feather Icons</a> (e.g. `check-circle`).', 'flynt'),
         'required' => 1
     ];
 }

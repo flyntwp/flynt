@@ -5,18 +5,18 @@
       {% if post.terms('tag')  %}
         <ul class="tags">
           {% for tag in post.terms('tag')  %}
-            <li class="tags-item"><a class="tags-itemLink pill" href="{{ tag.link }}">{{ tag }}</a></li>
+            <li class="tags-item"><a class="tags-itemLink pill" href="{{ tag.link }}"><span class="visuallyHidden">{{ __("Tag:", "flynt") }}</span> {{ tag }}</a></li>
           {% endfor %}
         </ul>
       {% endif %}
       <div class="author">
         {% if post.author.avatar %}
-          <a class="author-avatarLink" href="{{ post.author.link|e('esc_url') }}">
+          <a class="author-avatarLink" href="{{ post.author.link|e('esc_url') }}" aria-hidden="true" tabindex="-1">
             <img class="author-avatarImage" src="{{ post.author.avatar }}" alt="{{ post.author.name|e }}">
           </a>
         {% endif %}
         <div class="author-info">
-          <a class="author-name" href="{{ post.author.link|e('esc_url') }}">{{ post.author.name }}</a>
+          <a class="author-name" href="{{ post.author.link|e('esc_url') }}"><span class="visuallyHidden">{{ __("Author:", "flynt") }}</span> {{ post.author.name }}</a>
           {% if post.author.description %}
             <p class="author-description">{{ post.author.description|e }}</p>
           {% endif %}

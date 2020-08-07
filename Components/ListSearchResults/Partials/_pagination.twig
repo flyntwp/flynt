@@ -1,8 +1,8 @@
 <div class="pagination">
   {% if pagination.prev %}
-    <a class="pagination-nav pagination-nav--previous button button--small" href="{{ pagination.prev.link }}"><i data-feather="arrow-left" class="arrow"></i> {{ previousLabel }}</a>
+    <a class="pagination-previous button button--small" href="{{ pagination.prev.link }}"><i data-feather="arrow-left" class="arrow"></i> {{ labels.previousLabel }}</a>
   {% endif %}
   {% if pagination.next %}
-    <a class="pagination-nav pagination-nav--next button button--small" href="{{ pagination.next.link }}">{{ nextLabel }} <i data-feather="arrow-right" class="arrow"></i></a>
+    <a class="pagination-next button button--small" href="{{ pagination.next.link }}">{{ labels.nextLabel }} <i data-feather="arrow-right" class="arrow"></i></a>
   {% endif %}
 </div>

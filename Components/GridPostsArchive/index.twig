@@ -7,7 +7,7 @@
       {{ html|e('wp_kses_post') }}
     </div>
     {% if terms %}
-       {% include 'Partials/_filter.twig' %}
+      {% include 'Partials/_filter.twig' %}
     {% endif %}
     <ul class="posts">
       {% for post in posts %}
@@ -17,21 +17,27 @@
               <figure class="figure">
                 <img class="figure-image lazyload"
                   src="{{ post.thumbnail.src|resizeDynamic(424, 283) }}"
-                  srcset="{{ placeholderImage(424, 283) }}"
+                  srcset="{{ placeholderImage(3, 2) }}"
                   data-srcset="
+                    {{ post.thumbnail.src|resizeDynamic(1920, 1280) }} 1920w,
+                    {{ post.thumbnail.src|resizeDynamic(1320, 880) }} 1320w,
                     {{ post.thumbnail.src|resizeDynamic(1280, 853) }} 1280w,
+                    {{ post.thumbnail.src|resizeDynamic(1050, 700) }} 1050w,
                     {{ post.thumbnail.src|resizeDynamic(750, 500) }} 750w,
+                    {{ post.thumbnail.src|resizeDynamic(600, 400) }} 600w,
                     {{ post.thumbnail.src|resizeDynamic(424, 283) }} 424w,
-                    {{ post.thumbnail.src|resizeDynamic(375, 250) }} 375w"
+                    {{ post.thumbnail.src|resizeDynamic(312, 208) }} 312w"
                   data-sizes="auto"
                   alt="{{ post.thumbnail.alt|e }}">
               </figure>
             {% endif %}
           </a>
           <div class="post-inner">
-            <h3 class="h3 post-title">{{ post.title }}</h3>
+            <h2 class="h3 post-title">{{ post.title }}</h2>
             <p class="post-excerpt">{{ post.preview.read_more(false) }}</p>
-            <a class="button button--link" href="{{ post.link }}" title="{{ post.title }}">{{ labels.readMore }}</a>
+            <a class="button button--link" href="{{ post.link }}" title="{{ post.title }}" aria-hidden="true" tabindex="-1">
+              {{ labels.readMore }}
+            </a>
           </div>
         </li>
       {% else %}

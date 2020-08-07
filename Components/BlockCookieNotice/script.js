@@ -1,12 +1,16 @@
 import $ from 'jquery'
 
 class BlockCookieNotice extends window.HTMLDivElement {
-  constructor (self) {
-    self = super(self)
-    self.$ = $(self)
-    self.setOptions()
-    self.resolveElements()
+  constructor (...args) {
+    const self = super(...args)
+    self.init()
     return self
+  }
+
+  init () {
+    this.$ = $(this)
+    this.setOptions()
+    this.resolveElements()
   }
 
   setOptions () {
