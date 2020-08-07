@@ -348,8 +348,9 @@ EOD;
         } else {
             remove_filter('mod_rewrite_rules', [$this, 'addWebpRewriteRule']);
         }
-
         add_action('shutdown', function () {
+            require_once(ABSPATH . 'wp-admin/includes/file.php');
+            WP_Filesystem();
             global $wp_filesystem;
             flush_rewrite_rules(true);
             @$wp_filesystem->rmdir($this->addImageSeparatorToUploadPath(), true);
