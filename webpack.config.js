@@ -52,15 +52,15 @@ const webpackConfig = {
           {
             loader: 'css-loader',
             options: {
-              url: false,
-              import: false
+              url: false
             }
           },
           {
             loader: 'postcss-loader',
             options: {
+              ident: 'postcss',
               plugins: [
-                require('autoprefixer')()
+                require('autoprefixer')
               ]
             }
           },
