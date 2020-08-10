@@ -7,16 +7,6 @@
     display: block;
   }
 
-  &-nav {
-    &--previous {
-      float: left;
-    }
-
-    &--next {
-      float: right;
-    }
-  }
-
   .button {
     align-items: center;
     display: inline-flex;
@@ -33,17 +23,25 @@
     width: 18px;
   }
 
-  &-nav--next {
+  &-previous {
+    float: left;
+
+    .arrow {
+      margin-left: -5px;
+      margin-right: 5px;
+    }
+  }
+
+  &-next {
+    float: right;
+
     .arrow {
       margin-left: 5px;
       margin-right: -5px;
     }
   }
 
-  &-nav--previous {
-    .arrow {
-      margin-left: -5px;
-      margin-right: 5px;
-    }
+  .button {
+    white-space: nowrap;
   }
 }

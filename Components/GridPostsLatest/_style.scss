@@ -1,7 +1,6 @@
 [is='flynt-grid-posts-latest'] {
   .grid {
     @include reset-list;
-
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -49,23 +48,19 @@
     flex-wrap: wrap;
     height: 100%;
 
-    img {
+    &-image {
       background: var(--theme-color-text);
       flex-shrink: 0; // IE11 bug fix (prevent image from stretchin')
     }
 
     &-inner {
+      @include reset-content-margins;
       color: var(--theme-color-text);
+      flex-grow: 1;
 
       #{$heading-selectors} {
         color: var(--theme-color-headline);
       }
-    }
-
-    &-inner {
-      @include reset-content-margins;
-
-      flex-grow: 1;
     }
 
     &-link {

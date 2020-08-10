@@ -778,7 +778,6 @@ select {
 
 .preContent {
   @include reset-content-margins;
-
   margin: 0 auto 32px;
   max-width: $content-max-width;
   text-align: center;
@@ -794,7 +793,6 @@ select {
 
 .postContent {
   @include reset-content-margins;
-
   margin: 32px auto 0;
   max-width: $content-max-width;
   text-align: center;
@@ -828,7 +826,6 @@ select {
 
 .boxPadding {
   @include reset-content-margins;
-
   padding: 20px;
 
   @media (min-width: $breakpoint-tablet-horizontal) {

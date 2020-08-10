@@ -2,4 +2,7 @@
 
 {% block content %}
   {{ renderComponent('GridPostsArchive', { posts: posts }) }}
+  {% for component in post.meta('pageComponents') %}
+    {{ renderComponent(component) }}
+  {% endfor %}
 {% endblock %}
