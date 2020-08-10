@@ -15,7 +15,7 @@
 
   &.flyntComponent--sizeLarge {
     .video {
-      max-width: 800px;
+      max-width: $content-max-width-large;
     }
   }
 

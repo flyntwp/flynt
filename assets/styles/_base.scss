@@ -10,9 +10,9 @@
 @include font-face('PT Serif', 'PT-Serif-Bold', '700', 'normal');
 
 html {
-  background-color: var(--theme-color-background);
+  background-color: var(--color-background);
   box-sizing: border-box;
-  color: var(--theme-color-text);
+  color: var(--color-text);
   font-family: 'Inter', Helvetica, Arial, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -46,7 +46,7 @@ body {
 */
 
 #{$heading-selectors} {
-  color: var(--theme-color-headline);
+  color: var(--color-headline);
   font-family: 'PT Serif', serif;
   font-weight: 700;
   line-height: 1.45;
@@ -56,7 +56,7 @@ body {
   a,
   a:hover,
   a:focus {
-    color: var(--theme-color-headline);
+    color: var(--color-headline);
     text-decoration: none;
   }
 }
@@ -128,7 +128,7 @@ h6,
 }
 
 a {
-  color: var(--theme-color-accent);
+  color: var(--color-accent);
   text-decoration: underline;
   transition: color 0.2s ease;
 
@@ -138,8 +138,8 @@ a {
   }
 
   &:focus {
-    color: var(--theme-color-accent-hover);
-    outline-color: var(--theme-color-accent-alpha);
+    color: var(--color-accent-hover);
+    outline-color: var(--color-accent-alpha);
     transition: color 0.2s ease;
   }
 }
@@ -152,7 +152,7 @@ figure {
 }
 
 hr {
-  background-color: var(--theme-color-border);
+  background-color: var(--color-border);
   border: 0;
   display: block;
   height: 1px;
@@ -178,8 +178,8 @@ code {
 
 blockquote,
 .blockquote {
-  border-left: 8px solid var(--theme-color-accent);
-  color: var(--theme-color-text);
+  border-left: 8px solid var(--color-accent);
+  color: var(--color-text);
   font-size: 1.313rem;
   font-style: italic;
   font-weight: 400;
@@ -239,7 +239,7 @@ ol {
 /* Tables */
 
 table {
-  border: 1px solid var(--theme-color-text);
+  border: 1px solid var(--color-text);
   border-spacing: 0;
   max-width: 100%;
   width: 100%;
@@ -247,7 +247,7 @@ table {
 
 .boxRadius > thead {
   th {
-    border: 1px solid  var(--theme-color-text); // fix IE border artifacts
+    border: 1px solid  var(--color-text); // fix IE border artifacts
 
     &:first-child {
       border-top-left-radius: 6px;
@@ -268,8 +268,8 @@ th {
 
 thead {
   th {
-    background-color: var(--theme-color-text);
-    color: var(--theme-color-background);
+    background-color: var(--color-text);
+    color: var(--color-background);
     padding: 1.25rem 1.5rem;
     vertical-align: middle;
     white-space: nowrap;
@@ -280,7 +280,7 @@ tbody {
   tr + tr {
     td,
     th {
-      border-top: 1px solid var(--theme-color-border);
+      border-top: 1px solid var(--color-border);
     }
   }
 }
@@ -307,17 +307,17 @@ button {
   text-align: inherit;
 
   &:focus {
-    outline-color: var(--theme-color-accent-alpha);
+    outline-color: var(--color-accent-alpha);
   }
 }
 
 .button {
   appearance: none;
-  background-color: var(--theme-color-accent);
-  border: 1px solid var(--theme-color-accent);
+  background-color: var(--color-accent);
+  border: 1px solid var(--color-accent);
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-  color: var(--theme-color-background);
+  color: var(--color-background);
   cursor: pointer;
   display: inline-block;
   font-family: inherit;
@@ -333,8 +333,8 @@ button {
 
   &:disabled,
   &--disabled {
-    background-color: var(--theme-color-border);
-    border-color: var(--theme-color-border);
+    background-color: var(--color-border);
+    border-color: var(--color-border);
     box-shadow: none;
     cursor: default;
     opacity: 0.5;
@@ -342,15 +342,15 @@ button {
   }
 
   &:hover {
-    background-color: var(--theme-color-accent-hover);
-    border-color: var(--theme-color-accent-hover);
+    background-color: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
-    color: var(--theme-color-background);
+    color: var(--color-background);
   }
 
   &:focus {
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 0 0 3px var(--theme-color-accent-alpha);
-    color: var(--theme-color-background);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 0 0 3px var(--color-accent-alpha);
+    color: var(--color-background);
   }
 
   &:active {
@@ -358,35 +358,35 @@ button {
   }
 
   &--ghost {
-    background-color: var(--theme-transparent);
-    border-color: var(--theme-color-accent);
+    background-color: var(--transparent);
+    border-color: var(--color-accent);
     box-shadow: none;
-    color: var(--theme-color-accent);
+    color: var(--color-accent);
 
     &:focus {
-      background-color: var(--theme-transparent);
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 0 0 3px var(--theme-color-accent-alpha);
-      color: var(--theme-color-accent);
+      background-color: var(--transparent);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 0 0 3px var(--color-accent-alpha);
+      color: var(--color-accent);
     }
 
     &:hover {
-      background-color: var(--theme-color-accent);
-      border-color: var(--theme-color-accent);
-      color: var(--theme-color-background);
+      background-color: var(--color-accent);
+      border-color: var(--color-accent);
+      color: var(--color-background);
     }
 
     &:active {
-      background-color: var(--theme-color-accent);
-      border-color: var(--theme-color-accent);
+      background-color: var(--color-accent);
+      border-color: var(--color-accent);
       box-shadow: none;
-      color: var(--theme-color-background);
+      color: var(--color-background);
     }
 
     &:disabled,
     &--disabled {
-      background-color: var(--theme-transparent);
-      border-color: var(--theme-color-border);
-      color: var(--theme-color-border);
+      background-color: var(--transparent);
+      border-color: var(--color-border);
+      color: var(--color-border);
     }
   }
 
@@ -396,10 +396,10 @@ button {
   }
 
   &--link {
-    background-color: var(--theme-transparent);
-    border: 0 solid var(--theme-transparent);
+    background-color: var(--transparent);
+    border: 0 solid var(--transparent);
     box-shadow: none;
-    color: var(--theme-color-accent);
+    color: var(--color-accent);
     padding: 0;
     position: relative;
     text-transform: none;
@@ -407,9 +407,9 @@ button {
 
     &:hover,
     &:focus {
-      background-color: var(--theme-transparent);
+      background-color: var(--transparent);
       box-shadow: none;
-      color: var(--theme-color-accent-hover);
+      color: var(--color-accent-hover);
     }
 
     &:hover {
@@ -421,7 +421,7 @@ button {
 
     &:focus {
       &::before {
-        box-shadow: 0 1px 0 var(--theme-color-accent-alpha), 0 2px 0 var(--theme-color-accent-alpha), 0 3px 0 var(--theme-color-accent-alpha);
+        box-shadow: 0 1px 0 var(--color-accent-alpha), 0 2px 0 var(--color-accent-alpha), 0 3px 0 var(--color-accent-alpha);
       }
     }
 
@@ -469,7 +469,7 @@ button {
 /* Icons */
 
 .feather {
-  color: var(--theme-color-accent);
+  color: var(--color-accent);
   position: relative;
   top: -2px;
   vertical-align: middle;
@@ -518,9 +518,9 @@ label {
 #{$input-selectors} {
   appearance: none;
   background-color: transparent;
-  border: 1px solid var(--theme-color-border);
+  border: 1px solid var(--color-border);
   border-radius: 4px;
-  color: var(--theme-color-headline);
+  color: var(--color-headline);
   font-family: inherit;
   font-size: 1rem;
   min-height: 48px;
@@ -528,19 +528,19 @@ label {
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
   &::placeholder {
-    color: var(--theme-color-headline);
+    color: var(--color-headline);
     opacity: 0.7;
   }
 
   &:focus {
-    border-color: var(--theme-color-accent);
-    box-shadow: 0 0 0 3px var(--theme-color-accent-alpha);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-accent-alpha);
   }
 
   &:disabled {
     background-color: rgba(204, 204, 204, 0.15);
-    border-color: var(--theme-color-border);
-    color: var(--theme-color-border);
+    border-color: var(--color-border);
+    color: var(--color-border);
     opacity: 0.75;
   }
 }
@@ -583,8 +583,8 @@ select {
   vertical-align: top;
 
   &::after {
-    border-bottom: 2px solid var(--theme-color-headline);
-    border-left: 2px solid var(--theme-color-headline);
+    border-bottom: 2px solid var(--color-headline);
+    border-left: 2px solid var(--color-headline);
     content: '';
     height: 8px;
     position: absolute;
@@ -617,7 +617,7 @@ select {
 
   &,
   &:hover {
-    border-color: var(--theme-color-border);
+    border-color: var(--color-border);
     outline: 0;
   }
 
@@ -627,8 +627,8 @@ select {
     position: relative;
 
     &::before {
-      background: var(--theme-transparent);
-      border: 1px solid var(--theme-color-border);
+      background: var(--transparent);
+      border: 1px solid var(--color-border);
       border-radius: 4px;
       content: '';
       display: block;
@@ -643,8 +643,8 @@ select {
     }
 
     &::after {
-      border-bottom: 3px solid var(--theme-color-accent);
-      border-right: 3px solid var(--theme-color-accent);
+      border-bottom: 3px solid var(--color-accent);
+      border-right: 3px solid var(--color-accent);
       content: '';
       display: block;
       height: 14px;
@@ -662,8 +662,8 @@ select {
   &:focus {
     + label {
       &::before {
-        border-color: var(--theme-color-accent);
-        box-shadow: 0 0 0 3px var(--theme-color-accent-alpha);
+        border-color: var(--color-accent);
+        box-shadow: 0 0 0 3px var(--color-accent-alpha);
       }
     }
   }
@@ -671,8 +671,8 @@ select {
   &:checked {
     + label {
       &::before {
-        background-color: var(--theme-transparent);
-        border-color: var(--theme-color-accent);
+        background-color: var(--transparent);
+        border-color: var(--color-accent);
       }
 
       &::after {
@@ -690,7 +690,7 @@ select {
     }
 
     &::after {
-      background-color: var(--theme-color-accent);
+      background-color: var(--color-accent);
       border: 0;
       border-radius: 50%;
       height: 16px;
@@ -830,7 +830,7 @@ select {
 }
 
 .boxBorder {
-  border: 1px solid var(--theme-color-border);
+  border: 1px solid var(--color-border);
 
   &--hover {
     cursor: pointer;
@@ -841,8 +841,8 @@ select {
     }
 
     &:hover {
-      --theme-color-headline: var(--theme-color-accent);
-      border-color: var(--theme-color-accent);
+      --color-headline: var(--color-accent);
+      border-color: var(--color-accent);
       box-shadow: 0 16px 24px rgba(0, 0, 0, 0.15);
     }
   }
@@ -913,6 +913,6 @@ select {
 */
 
 [class*='theme'] {
-  background-color: var(--theme-color-background);
-  color: var(--theme-color-text);
+  background-color: var(--color-background);
+  color: var(--color-text);
 }

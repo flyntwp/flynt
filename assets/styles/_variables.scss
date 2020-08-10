@@ -9,6 +9,7 @@ $container-padding-desktop: 60px;
 $container-padding-tablet: 40px;
 $container-padding-mobile: 15px;
 $content-max-width: 760px;
+$content-max-width-large: 860px;
 $component-spacing-desktop: 120px;
 $component-spacing-tablet: 80px;
 $component-spacing-mobile: 40px;
@@ -17,45 +18,45 @@ $gutter-width: 24px;
 // Theming variables
 :root,
 .themeReset {
-  --theme-color-background: var(--color-background, #fff);
-  --theme-color-headline: var(--color-headline, #212121);
-  --theme-color-text: var(--color-text, #383838);
-  --theme-color-border: var(--color-border, #8e8e8e);
-  --theme-color-accent: var(--color-accent, #4045a1);
-  --theme-color-accent-alpha: var(--color-accent-alpha, #{rgba(#4045a1, 0.4)});
-  --theme-color-accent-hover: var(--color-accent-hover, #{darken(#4045a1, 5)});
-  --theme-transparent: transparent; // needs for ie11-custom-propertiess polyfill to work properly
+  --color-background: var(--theme-color-background-default, #fff);
+  --color-headline: var(--theme-color-headline-default, #212121);
+  --color-text: var(--theme-color-text-default, #383838);
+  --color-border: var(--theme-color-border-default, #8e8e8e);
+  --color-accent: var(--theme-color-accent-default, #4045a1);
+  --color-accent-alpha: var(--theme-color-accent-alpha-default, #{rgba(#4045a1, 0.4)});
+  --color-accent-hover: var(--theme-color-accent-hover-default, #{darken(#4045a1, 5)});
+  --color-transparent: transparent; // needs for ie11-custom-propertiess polyfill to work properly
   --color-error: #c0370e;
 }
 
 .themeLight {
-  --theme-color-background: var(--color-background-light, #fafafa);
-  --theme-color-headline: var(--color-headline-light, #212121);
-  --theme-color-text: var(--color-text-light, #383838);
-  --theme-color-border: var(--color-border-light, #8e8e8e);
-  --theme-color-accent: var(--color-accent-light, #4045a1);
-  --theme-color-accent-alpha: var(--color-accent-light-alpha, #{rgba(#4045a1, 0.4)});
-  --theme-color-accent-hover: var(--color-accent-light-hover, #{darken(#4045a1, 5)});
+  --color-background: var(--theme-color-background-light, #fafafa);
+  --color-headline: var(--theme-color-headline-light, #212121);
+  --color-text: var(--theme-color-text-light, #383838);
+  --color-border: var(--theme-color-border-light, #8e8e8e);
+  --color-accent: var(--theme-color-accent-light, #4045a1);
+  --color-accent-alpha: var(--theme-color-accent-alpha-light, #{rgba(#4045a1, 0.4)});
+  --color-accent-hover: var(--theme-color-accent-hover-light, #{darken(#4045a1, 5)});
 }
 
 .themeDark {
-  --theme-color-background: var(--color-background-dark, #2b2c46);
-  --theme-color-headline: var(--color-headline-dark, #fbfbfb);
-  --theme-color-text: var(--color-text-dark, #e9e9ec);
-  --theme-color-border: var(--color-border-dark, #7e7e8e);
-  --theme-color-accent: var(--color-accent-dark, #fff);
-  --theme-color-accent-alpha: var(--color-accent-dark-alpha, #{rgba(#fff, 0.4)});
-  --theme-color-accent-hover: var(--color-accent-dark-hover, #{darken(#fff, 5)});
+  --color-background: var(--theme-color-background-dark, #2b2c46);
+  --color-headline: var(--theme-color-headline-dark, #fbfbfb);
+  --color-text: var(--theme-color-text-dark, #e9e9ec);
+  --color-border: var(--theme-color-border-dark, #7e7e8e);
+  --color-accent: var(--theme-color-accent-dark, #fff);
+  --color-accent-alpha: var(--theme-color-accent-alpha-dark, #{rgba(#fff, 0.4)});
+  --color-accent-hover: var(--theme-color-accent-hover-dark, #{darken(#fff, 5)});
 }
 
 .themeHero {
-  --theme-color-background: var(--color-background-hero, #28615e);
-  --theme-color-headline: var(--color-headline-hero, #fbfcfc);
-  --theme-color-text: var(--color-text-hero, #d4dfe0);
-  --theme-color-border: var(--color-border-hero, #9cb6b5);
-  --theme-color-accent: var(--color-accent-hero, #fff);
-  --theme-color-accent-alpha: var(--color-accent-hero-alpha, #{rgba(#fff, 0.4)});
-  --theme-color-accent-hover: var(--color-accent-hero-hover, #{darken(#fff, 5)});
+  --color-background: var(--theme-color-background-hero, #28615e);
+  --color-headline: var(--theme-color-headline-hero, #fbfcfc);
+  --color-text: var(--theme-color-text-hero, #d4dfe0);
+  --color-border: var(--theme-color-border-hero, #9cb6b5);
+  --color-accent: var(--theme-color-accent-hero, #fff);
+  --color-accent-alpha: var(--theme-color-accent-alpha-hero, #{rgba(#fff, 0.4)});
+  --color-accent-hover: var(--theme-color-accent-hover-hero, #{darken(#fff, 5)});
 }
 
 $heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';

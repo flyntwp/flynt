@@ -3,16 +3,16 @@
     <figure class="figure">
       {% set gif = image.post_mime_type == 'image/gif' %}
       <img class="figure-image {{ not gif ? 'lazyload' }}"
-        src="{{ not gif ? image.src|resizeDynamic(800) : image.src }}"
+        src="{{ not gif ? image.src|resizeDynamic(760) : image.src }}"
         {% if not gif %}
-          srcset="{{ placeholderImage(800, 800 / image.aspect) }}"
+          srcset="{{ placeholderImage(760, 760 / image.aspect) }}"
           data-srcset="
             {{ image.src|resizeDynamic(1920) }} 1920w,
             {{ image.src|resizeDynamic(1440) }} 1440w,
             {{ image.src|resizeDynamic(1320) }} 1320w,
             {{ image.src|resizeDynamic(1024) }} 1024w,
-            {{ image.src|resizeDynamic(800) }} 800w,
-            {{ image.src|resizeDynamic(600) }} 600w,
+            {{ image.src|resizeDynamic(860) }} 860w,
+            {{ image.src|resizeDynamic(760) }} 760w,
             {{ image.src|resizeDynamic(375) }} 375w"
           data-sizes="auto"
         {% endif %}

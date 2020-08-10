@@ -50,135 +50,135 @@ const alphaColorAmount = 0.4
 const darkenColorAmount = -0.1 // -0.1 darken value approximately equals scss darken 5%
 
 $(document).ready(function () {
-  // default
-  wp.customize('theme_colors_accent', function (value) {
+  // Default / Theme Reset
+  wp.customize('theme_colors_accent-default', function (value) {
     value.bind(function (newval) {
-      $(':root.html').css('--color-accent', newval)
-      $(':root.html').css('--color-accent-alpha', hexToRgbA(newval, alphaColorAmount))
-      $(':root.html').css('--color-accent-hover', lightenDarkenColor(newval, darkenColorAmount))
+      $(':root.html').css('--theme-color-accent-default', newval)
+      $(':root.html').css('--theme-color-accent-alpha-default', hexToRgbA(newval, alphaColorAmount))
+      $(':root.html').css('--theme-color-accent-hover-default', lightenDarkenColor(newval, darkenColorAmount))
     })
   })
 
-  wp.customize('theme_colors_text', function (value) {
+  wp.customize('theme_colors_text-default', function (value) {
     value.bind(function (newval) {
-      $(':root.html').css('--color-text', newval)
+      $(':root.html').css('--theme-color-text', newval)
     })
   })
 
-  wp.customize('theme_colors_headline', function (value) {
+  wp.customize('theme_colors_headline-default', function (value) {
     value.bind(function (newval) {
-      $(':root.html').css('--color-headline', newval)
+      $(':root.html').css('--theme-color-headline', newval)
     })
   })
 
-  wp.customize('theme_colors_border', function (value) {
+  wp.customize('theme_colors_border-default', function (value) {
     value.bind(function (newval) {
-      $(':root.html').css('--color-border', newval)
+      $(':root.html').css('--theme-color-border', newval)
     })
   })
 
-  wp.customize('theme_colors_background', function (value) {
+  wp.customize('theme_colors_background-default', function (value) {
     value.bind(function (newval) {
-      $(':root.html').css('--color-background', newval)
+      $(':root.html').css('--theme-color-background', newval)
     })
   })
 
   // Theme Light
   wp.customize('theme_colors_accent-light', function (value) {
     value.bind(function (newval) {
-      $(':root.html').css('--color-accent-light', newval)
-      $(':root.html').css('--color-accent-light-alpha', newval ? hexToRgbA(newval, alphaColorAmount) : 'var(--color-accent-alpha)')
-      $(':root.html').css('--color-accent-light-hover', newval ? lightenDarkenColor(newval, darkenColorAmount) : 'var(--color-accent-hover)')
+      $(':root.html').css('--theme-color-accent-light', newval)
+      $(':root.html').css('--theme-color-accent-alpha-light', newval ? hexToRgbA(newval, alphaColorAmount) : 'var(--theme-color-accent-alpha-default)')
+      $(':root.html').css('--theme-color-accent-hover-light', newval ? lightenDarkenColor(newval, darkenColorAmount) : 'var(--theme-color-accent-hover-default)')
     })
   })
 
   wp.customize('theme_colors_text-light', function (value) {
     value.bind(function (newval) {
-      $(':root.html').css('--color-text-light', newval)
+      $(':root.html').css('--theme-color-text-light', newval)
     })
   })
 
   wp.customize('theme_colors_headline-light', function (value) {
     value.bind(function (newval) {
-      $(':root.html').css('--color-headline-light', newval)
+      $(':root.html').css('--theme-color-headline-light', newval)
     })
   })
 
   wp.customize('theme_colors_border-light', function (value) {
     value.bind(function (newval) {
-      $(':root.html').css('--color-border-light', newval)
+      $(':root.html').css('--theme-color-border-light', newval)
     })
   })
 
   wp.customize('theme_colors_background-light', function (value) {
     value.bind(function (newval) {
-      $(':root.html').css('--color-background-light', newval)
+      $(':root.html').css('--theme-color-background-light', newval)
     })
   })
 
   // Theme Dark
   wp.customize('theme_colors_accent-dark', function (value) {
     value.bind(function (newval) {
-      $(':root.html').css('--color-accent-dark', newval)
-      $(':root.html').css('--color-accent-dark-alpha', hexToRgbA(newval, alphaColorAmount))
-      $(':root.html').css('--color-accent-dark-hover', lightenDarkenColor(newval, darkenColorAmount))
+      $(':root.html').css('--theme-color-accent-dark', newval)
+      $(':root.html').css('--theme-color-accent-alpha-dark', hexToRgbA(newval, alphaColorAmount))
+      $(':root.html').css('--theme-color-accent-hover-dark', lightenDarkenColor(newval, darkenColorAmount))
     })
   })
 
   wp.customize('theme_colors_text-dark', function (value) {
     value.bind(function (newval) {
-      $(':root.html').css('--color-text-dark', newval)
+      $(':root.html').css('--theme-color-text-dark', newval)
     })
   })
 
   wp.customize('theme_colors_headline-dark', function (value) {
     value.bind(function (newval) {
-      $(':root.html').css('--color-headline-dark', newval)
+      $(':root.html').css('--theme-color-headline-dark', newval)
     })
   })
 
   wp.customize('theme_colors_border-dark', function (value) {
     value.bind(function (newval) {
-      $(':root.html').css('--color-border-dark', newval)
+      $(':root.html').css('--theme-color-border-dark', newval)
     })
   })
 
   wp.customize('theme_colors_background-dark', function (value) {
     value.bind(function (newval) {
-      $(':root.html').css('--color-background-dark', newval)
+      $(':root.html').css('--theme-color-background-dark', newval)
     })
   })
 
   // Theme Hero
   wp.customize('theme_colors_accent-hero', function (value) {
     value.bind(function (newval) {
-      $(':root.html').css('--color-accent-hero', newval)
-      $(':root.html').css('--color-accent-hero-alpha', hexToRgbA(newval, alphaColorAmount))
-      $(':root.html').css('--color-accent-hero-hover', lightenDarkenColor(newval, darkenColorAmount))
+      $(':root.html').css('--theme-color-accent-hero', newval)
+      $(':root.html').css('--theme-color-accent-alpha-hero', hexToRgbA(newval, alphaColorAmount))
+      $(':root.html').css('--theme-color-accent-hover-hero', lightenDarkenColor(newval, darkenColorAmount))
     })
   })
 
   wp.customize('theme_colors_text-hero', function (value) {
     value.bind(function (newval) {
-      $(':root.html').css('--color-text-hero', newval)
+      $(':root.html').css('--theme-color-text-hero', newval)
     })
   })
 
   wp.customize('theme_colors_headline-hero', function (value) {
     value.bind(function (newval) {
-      $(':root.html').css('--color-headline-hero', newval)
+      $(':root.html').css('--theme-color-headline-hero', newval)
     })
   })
 
   wp.customize('theme_colors_border-hero', function (value) {
     value.bind(function (newval) {
-      $(':root.html').css('--color-border-hero', newval)
+      $(':root.html').css('--theme-color-border-hero', newval)
     })
   })
 
   wp.customize('theme_colors_background-hero', function (value) {
     value.bind(function (newval) {
-      $(':root.html').css('--color-background-hero', newval)
+      $(':root.html').css('--theme-color-background-hero', newval)
     })
   })
 })

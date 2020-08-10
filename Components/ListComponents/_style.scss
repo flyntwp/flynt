@@ -13,14 +13,14 @@
   }
 
   .component {
-    background-color: var(--theme-color-background);
+    background-color: var(--color-background);
     display: flex;
     flex-wrap: wrap;
     max-width: $content-max-width;
 
     &-imageWrapper {
-      background-color: var(--theme-color-background);
-      border-bottom: 1px solid var(--theme-color-border);
+      background-color: var(--color-background);
+      border-bottom: 1px solid var(--color-border);
       height: 0;
       overflow: hidden;
       padding-bottom: percentage(800/1280);
@@ -46,7 +46,7 @@
 
     &-description {
       @include reset-content-margins;
-      color: var(--theme-color-text);
+      color: var(--color-text);
       position: relative;
     }
 
@@ -60,7 +60,7 @@
       width: 100%;
 
       .component-ctaSecondary {
-        color: var(--theme-color-text);
+        color: var(--color-text);
         opacity: 0.7;
         text-decoration: none;
         transition: color 0.2s ease-in-out, opacity 0.2s ease-in-out;
@@ -71,7 +71,7 @@
         }
 
         &:hover {
-          color: var(--theme-color-accent);
+          color: var(--color-accent);
           opacity: 1;
         }
       }

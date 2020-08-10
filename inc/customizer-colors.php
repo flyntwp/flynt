@@ -7,27 +7,27 @@
 use Flynt\Utils\Asset;
 
 $colorsDefault = [
-    'accent' => [
+    'accent-default' => [
         'label'       => 'Accent',
         'default'     => '#4045A1',
         'description' => ''
     ],
-    'headline' => [
+    'headline-default' => [
         'label'       => 'Headline',
         'default'     => '#212121',
         'description' => ''
     ],
-    'text' => [
+    'text-default' => [
         'label'       => 'Text',
         'default'     => '#383838',
         'description' => ''
     ],
-    'border' => [
+    'border-default' => [
         'label'       => 'Border',
         'default'     => '#8E8E8E',
         'description' => ''
     ],
-    'background' => [
+    'background-default' => [
         'label'       => 'Background',
         'default'     => '#ffffff',
         'description' => ''
@@ -381,31 +381,31 @@ add_action('wp_head', function () use ($colorsDefault, $colorsLight, $colorsDark
             :root.html {
                <?php if ($hasChangedDefault) {
                     foreach ($colorsDefault as $name => $color) {
-                        echo (get_theme_mod('theme_colors_' . $name)) ? '--color-' . $name . ': ' . get_theme_mod('theme_colors_' . $name) . ';' : null;
+                        echo (get_theme_mod('theme_colors_' . $name)) ? '--theme-color-' . $name . ': ' . get_theme_mod('theme_colors_' . $name) . ';' : null;
                     };
-                    echo (get_theme_mod('theme_colors_accent')) ? '--color-accent-alpha: ' . hex2rgba(get_theme_mod('theme_colors_accent'), $alphaColorAmount) . ';' : null;
-                    echo (get_theme_mod('theme_colors_accent')) ? '--color-accent-hover: ' . colorBrightness(get_theme_mod('theme_colors_accent'), $darkenColorAmount) . ';' : null;
+                    echo (get_theme_mod('theme_colors_accent-default')) ? '--theme-color-accent-alpha-default: ' . hex2rgba(get_theme_mod('theme_colors_accent-default'), $alphaColorAmount) . ';' : null;
+                    echo (get_theme_mod('theme_colors_accent-default')) ? '--theme-color-accent-hover-default: ' . colorBrightness(get_theme_mod('theme_colors_accent-default'), $darkenColorAmount) . ';' : null;
                } ?>
                <?php if ($hasChangedLight) {
                     foreach ($colorsLight as $name => $color) {
-                        echo (get_theme_mod('theme_colors_' . $name)) ? '--color-' . $name . ': ' . get_theme_mod('theme_colors_' . $name) . ';' : null;
+                        echo (get_theme_mod('theme_colors_' . $name)) ? '--theme-color-' . $name . ': ' . get_theme_mod('theme_colors_' . $name) . ';' : null;
                     };
-                    echo (get_theme_mod('theme_colors_accent-light')) ? '--color-accent-light-alpha: ' . hex2rgba(get_theme_mod('theme_colors_accent-light'), $alphaColorAmount) . ';' : null;
-                    echo (get_theme_mod('theme_colors_accent-light')) ? '--color-accent-light-hover: ' . colorBrightness(get_theme_mod('theme_colors_accent-light'), $darkenColorAmount) . ';' : null;
+                    echo (get_theme_mod('theme_colors_accent-light')) ? '--theme-color-accent-alpha-light: ' . hex2rgba(get_theme_mod('theme_colors_accent-light'), $alphaColorAmount) . ';' : null;
+                    echo (get_theme_mod('theme_colors_accent-light')) ? '--theme-color-accent-hover-light: ' . colorBrightness(get_theme_mod('theme_colors_accent-light'), $darkenColorAmount) . ';' : null;
                } ?>
                 <?php if ($hasChangedDark) {
                     foreach ($colorsDark as $name => $color) {
-                        echo (get_theme_mod('theme_colors_' . $name)) ? '--color-' . $name . ': ' . get_theme_mod('theme_colors_' . $name) . ';' : null;
+                        echo (get_theme_mod('theme_colors_' . $name)) ? '--theme-color-' . $name . ': ' . get_theme_mod('theme_colors_' . $name) . ';' : null;
                     };
-                    echo (get_theme_mod('theme_colors_accent-dark')) ? '--color-accent-dark-alpha: ' . hex2rgba(get_theme_mod('theme_colors_accent-dark'), $alphaColorAmount) . ';' : null;
-                    echo (get_theme_mod('theme_colors_accent-dark')) ? '--color-accent-dark-hover: ' . colorBrightness(get_theme_mod('theme_colors_accent-dark'), $darkenColorAmount) . ';' : null;
+                    echo (get_theme_mod('theme_colors_accent-dark')) ? '--theme-color-accent-alpha-dark: ' . hex2rgba(get_theme_mod('theme_colors_accent-dark'), $alphaColorAmount) . ';' : null;
+                    echo (get_theme_mod('theme_colors_accent-dark')) ? '--theme-color-accent-hover-dark: ' . colorBrightness(get_theme_mod('theme_colors_accent-dark'), $darkenColorAmount) . ';' : null;
                 } ?>
                 <?php if ($hasChangedHero) {
                     foreach ($colorsHero as $name => $color) {
-                        echo (get_theme_mod('theme_colors_' . $name)) ? '--color-' . $name . ': ' . get_theme_mod('theme_colors_' . $name) . ';' : null;
+                        echo (get_theme_mod('theme_colors_' . $name)) ? '--theme-color-' . $name . ': ' . get_theme_mod('theme_colors_' . $name) . ';' : null;
                     };
-                    echo (get_theme_mod('theme_colors_accent-hero')) ? '--color-accent-hero-alpha: ' . hex2rgba(get_theme_mod('theme_colors_accent-hero'), $alphaColorAmount) . ';' : null;
-                    echo (get_theme_mod('theme_colors_accent-hero')) ? '--color-accent-hero-hover: ' . colorBrightness(get_theme_mod('theme_colors_accent-hero'), $darkenColorAmount) . ';' : null;
+                    echo (get_theme_mod('theme_colors_accent-hero')) ? '--theme-color-accent-alpha-hero: ' . hex2rgba(get_theme_mod('theme_colors_accent-hero'), $alphaColorAmount) . ';' : null;
+                    echo (get_theme_mod('theme_colors_accent-hero')) ? '--theme-color-accent-hover-hero: ' . colorBrightness(get_theme_mod('theme_colors_accent-hero'), $darkenColorAmount) . ';' : null;
                 } ?>
             }
         </style>
