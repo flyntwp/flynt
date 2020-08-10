@@ -35,7 +35,7 @@ body {
   overflow-x: hidden;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.13rem;
+    font-size: 1.125rem;
   }
 }
 
@@ -85,7 +85,7 @@ h2,
 
 h3,
 .h3 {
-  font-size: 1.31rem;
+  font-size: 1.313rem;
   line-height: 1.18;
   padding-top: 1rem;
 
@@ -96,7 +96,7 @@ h3,
 
 h4,
 .h4 {
-  font-size: 1.13rem;
+  font-size: 1.125rem;
   padding-top: 0.5rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
@@ -108,18 +108,18 @@ h5,
 .h5 {
   font-size: 1rem;
   font-weight: 400;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.25rem;
   padding-top: 0.5rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.13rem;
+    font-size: 1.125rem;
   }
 }
 
 h6,
 .h6 {
-  font-size: 0.88rem;
-  margin-bottom: 1.2rem;
+  font-size: 0.875rem;
+  margin-bottom: 1.25rem;
   padding-top: 0.5rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
@@ -144,10 +144,6 @@ a {
   }
 }
 
-.linkReset {
-  text-decoration: none;
-}
-
 p,
 .paragraph,
 table,
@@ -160,7 +156,7 @@ hr {
   border: 0;
   display: block;
   height: 1px;
-  margin: 2.4rem 0;
+  margin: 2.375rem 0;
 }
 
 img {
@@ -177,18 +173,18 @@ figcaption {
 code {
   background-color: rgba(0, 0, 0, 0.05);
   display: inline-block;
-  padding: 0 0.3rem;
+  padding: 0 0.313rem;
 }
 
 blockquote,
 .blockquote {
   border-left: 8px solid var(--theme-color-accent);
   color: var(--theme-color-text);
-  font-size: 1.31rem;
+  font-size: 1.313rem;
   font-style: italic;
   font-weight: 400;
   line-height: 1.45;
-  margin: 2.4rem auto;
+  margin: 2.375rem auto;
   max-width: 660px;
   padding: 0 1.25rem;
 
@@ -222,7 +218,7 @@ ol {
 
   li {
     margin-bottom: 0.5rem;
-    padding-left: 1.7rem;
+    padding-left: 1.75rem;
     position: relative;
 
     .feather:first-child {
@@ -265,7 +261,7 @@ table {
 
 td,
 th {
-  padding: 0.88rem 1.5rem;
+  padding: 0.875rem 1.5rem;
   text-align: inherit;
   vertical-align: top;
 }
@@ -332,7 +328,7 @@ button {
   padding: 0.875rem 1.5rem;
   text-align: center;
   text-decoration: none;
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  transition: 0.2s ease;
   user-select: none;
 
   &:disabled,
@@ -395,7 +391,7 @@ button {
   }
 
   &--small {
-    font-size: 0.8rem;
+    font-size: 0.813rem;
     padding: 0.5rem 1rem;
   }
 
@@ -514,7 +510,7 @@ legend {
 
 label {
   display: inline-block;
-  font-size: 0.88rem;
+  font-size: 0.875rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
@@ -557,12 +553,12 @@ input,
 select,
 textarea {
   margin: 0 0 1rem;
-  padding: 8px 16px;
+  padding: 0.5rem 1rem;
 }
 
 textarea {
   min-height: 150px;
-  padding: 16px;
+  padding: 1rem;
   resize: vertical;
   vertical-align: top;
   width: 100%;

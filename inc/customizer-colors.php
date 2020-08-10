@@ -275,17 +275,17 @@ function hex2rgba($color, $opacity = false)
 {
     $default = 'rgb(0,0,0)';
 
-    //Return default if no color provided
+    // Return default if no color provided
     if (empty($color)) {
           return $default;
     }
 
-    //Sanitize $color if "#" is provided
+    // Sanitize $color if "#" is provided
     if ($color[0] == '#') {
         $color = substr($color, 1);
     }
 
-    //Check if color has 6 or 3 characters and get values
+    // Check if color has 6 or 3 characters and get values
     if (strlen($color) == 6) {
             $hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
     } elseif (strlen($color) == 3) {
@@ -294,10 +294,10 @@ function hex2rgba($color, $opacity = false)
             return $default;
     }
 
-    //Convert hexadec to rgb
+    // Convert hexadec to rgb
     $rgb =  array_map('hexdec', $hex);
 
-    //Check if opacity is set(rgba or rgb)
+    // Check if opacity is set(rgba or rgb)
     if ($opacity) {
         if (abs($opacity) > 1) {
             $opacity = 1.0;
@@ -307,7 +307,7 @@ function hex2rgba($color, $opacity = false)
         $output = 'rgb(' . implode(",", $rgb) . ')';
     }
 
-    //Return rgb(a) color string
+    // Return rgb(a) color string
     return $output;
 }
 
@@ -319,9 +319,9 @@ function colorBrightness($hex, $percent)
         $hex = str_replace('#', '', $hex);
         $hash = '#';
     }
-    /// HEX TO RGB
+    // HEX TO RGB
     $rgb = [hexdec(substr($hex, 0, 2)), hexdec(substr($hex, 2, 2)), hexdec(substr($hex, 4, 2))];
-    //// CALCULATE
+    // CALCULATE
     for ($i = 0; $i < 3; $i++) {
         // See if brighter or darker
         if ($percent > 0) {
@@ -337,7 +337,7 @@ function colorBrightness($hex, $percent)
             $rgb[$i] = 255;
         }
     }
-    //// RBG to Hex
+    // RBG to Hex
     $hex = '';
     for ($i = 0; $i < 3; $i++) {
         // Convert the decimal digit to hex

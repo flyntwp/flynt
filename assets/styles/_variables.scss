@@ -15,7 +15,8 @@ $component-spacing-mobile: 40px;
 $gutter-width: 24px;
 
 // Theming variables
-:root {
+:root,
+.themeReset {
   --theme-color-background: var(--color-background, #fff);
   --theme-color-headline: var(--color-headline, #212121);
   --theme-color-text: var(--color-text, #383838);
@@ -55,16 +56,6 @@ $gutter-width: 24px;
   --theme-color-accent: var(--color-accent-hero, #fff);
   --theme-color-accent-alpha: var(--color-accent-hero-alpha, #{rgba(#fff, 0.4)});
   --theme-color-accent-hover: var(--color-accent-hero-hover, #{darken(#fff, 5)});
-}
-
-.themeReset {
-  --theme-color-background: var(--color-background, #fff);
-  --theme-color-headline: var(--color-headline, #212121);
-  --theme-color-text: var(--color-text, #383838);
-  --theme-color-border: var(--color-border, #8e8e8e);
-  --theme-color-accent: var(--color-accent, #4045a1);
-  --theme-color-accent-alpha: var(--color-accent-alpha, #{rgba(#4045a1, 0.4)});
-  --theme-color-accent-hover: var(--color-accent-hover, #{darken(#4045a1, 5)});
 }
 
 $heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';
