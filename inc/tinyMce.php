@@ -82,6 +82,42 @@ function getConfig()
         ],
         'styleformats' => [
             [
+                'title' => 'Headings',
+                'icon' => '',
+                'items' => [
+                    [
+                        'title' => 'Heading 1',
+                        'classes' => 'h1',
+                        'selector' => '*'
+                    ],
+                    [
+                        'title' => 'Heading 2',
+                        'classes' => 'h2',
+                        'selector' => '*'
+                    ],
+                    [
+                        'title' => 'Heading 3',
+                        'classes' => 'h3',
+                        'selector' => '*'
+                    ],
+                    [
+                        'title' => 'Heading 4',
+                        'classes' => 'h4',
+                        'selector' => '*'
+                    ],
+                    [
+                        'title' => 'Heading 5',
+                        'classes' => 'h5',
+                        'selector' => '*'
+                    ],
+                    [
+                        'title' => 'Heading 6',
+                        'classes' => 'h6',
+                        'selector' => '*'
+                    ],
+                ]
+            ],
+            [
                 'title' => 'Buttons',
                 'icon' => '',
                 'items' => [
