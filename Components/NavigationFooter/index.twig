@@ -7,6 +7,8 @@
     {% endif %}
     {% if contentHtml %}
       <div class="content">{{ contentHtml|e('wp_kses_post') }}</div>
+    {% else %}
+       <div class="content">&copy;&nbsp;{{ "now"|date("Y") }} {{ site.name }}</div>
     {% endif %}
   </div>
 </div>
