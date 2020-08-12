@@ -6,6 +6,7 @@
 namespace Flynt\CustomizerColors;
 
 use Flynt\Utils\Asset;
+use Flynt\Utils\Options;
 use WP_Customize_Color_Control;
 
 function getConfig()
@@ -133,85 +134,102 @@ function getConfig()
     ];
 }
 
-
-add_action('customize_register', function ($wp_customize) use ($colorsDefault, $colorsLight, $colorsDark, $colorsHero) {
-    $config = getConfig();
-    $wp_customize->add_panel(
-        'theme_colors_panel',
-        [
-            'title' => __('Colors', 'flynt'),
-            // 'description' => 'description', // Include html tags such as <p>.
-            'priority' => 160, // Mixed with top-level-section hierarchy.
-        ]
-    );
-    foreach (($config['sections'] ?? []) as $key => $title) {
-        $wp_customize->add_section(
-            $key,
-            [
-                'title'      => $title,
-                'priority'   => 20,
-                'panel' => 'theme_colors_panel'
-            ]
-        );
-    }
-    foreach (($config['colors'] ?? []) as $theme => $colors) {
-        foreach ($colors as $colorName => $colorConfig) {
-            // Settings
-            $wp_customize->add_setting(
-                'theme_colors_' . $colorName,
+add_action('acf/init', function () {
+    $options = Options::getGlobal('CustomizerColors');
+    if ($options['enabled']) {
+        add_action('customize_register', function ($wp_customize) use ($colorsDefault, $colorsLight, $colorsDark, $colorsHero) {
+            $config = getConfig();
+            $wp_customize->add_panel(
+                'theme_colors_panel',
                 [
-                    'default'   => $colorConfig['default'],
-                    'transport' => 'postMessage',
+                    'title' => __('Colors', 'flynt'),
+                    // 'description' => 'description', // Include html tags such as <p>.
+                    'priority' => 160, // Mixed with top-level-section hierarchy.
                 ]
             );
-            // Controls
-            $wp_customize->add_control(
-                new WP_Customize_Color_Control(
-                    $wp_customize,
-                    'theme_colors_' . $colorName,
+            foreach (($config['sections'] ?? []) as $key => $title) {
+                $wp_customize->add_section(
+                    $key,
                     [
-                        'section'     => 'theme_colors_' . $theme,
-                        'label'       => __($colorConfig['label']),
-                        'description' => __($colorConfig['description']),
+                        'title'      => $title,
+                        'priority'   => 20,
+                        'panel' => 'theme_colors_panel'
                     ]
-                )
+                );
+            }
+            foreach (($config['colors'] ?? []) as $theme => $colors) {
+                foreach ($colors as $colorName => $colorConfig) {
+                    // Settings
+                    $wp_customize->add_setting(
+                        'theme_colors_' . $colorName,
+                        [
+                            'default'   => $colorConfig['default'],
+                            'transport' => 'postMessage',
+                        ]
+                    );
+                    // Controls
+                    $wp_customize->add_control(
+                        new WP_Customize_Color_Control(
+                            $wp_customize,
+                            'theme_colors_' . $colorName,
+                            [
+                                'section'     => 'theme_colors_' . $theme,
+                                'label'       => __($colorConfig['label']),
+                                'description' => __($colorConfig['description']),
+                            ]
+                        )
+                    );
+                }
+            }
+        });
+
+        add_action('customize_preview_init', function () {
+            wp_enqueue_script(
+                'customizer-colors',
+                Asset::requireUrl('assets/customizer-colors.js'),
+                array('jquery','customize-preview'),
+                '',
+                true
             );
-        }
+        });
+
+        add_action('wp_head', function () {
+            $config = getConfig();
+
+            $alphaColorAmount = 0.4;
+            $darkenColorAmount = -0.1; // -0.1 darken value approximately equals scss darken 5%
+            ?>
+            <style type="text/css">
+                :root.html {
+                    <?php foreach (($config['colors'] ?? []) as $theme => $colors) {
+                        foreach ($colors as $colorName => $colorConfig) {
+                            $colorValue = get_theme_mod("theme_colors_{$colorName}", $colorConfig['default']);
+                            echo "--theme-color-{$colorName}: {$colorValue};";
+                        }
+                        $accentColorValue = get_theme_mod("theme_colors_accent-{$theme}", $colors["accent-{$theme}"]);
+                        $rgbaValue = hex2rgba($accentColorValue, $alphaColorAmount);
+                        $darkenedValue = colorBrightness($accentColorValue, $darkenColorAmount);
+                        echo "--theme-color-accent-alpha-{$theme}: {$rgbaValue};";
+                        echo "--theme-color-accent-hover-{$theme}: {$darkenedValue};";
+                    } ?>
+            </style>
+            <?php
+        });
     }
 });
 
-add_action('customize_preview_init', function () {
-    wp_enqueue_script(
-        'customizer-colors',
-        Asset::requireUrl('assets/customizer-colors.js'),
-        array('jquery','customize-preview'),
-        '',
-        true
-    );
-});
+Options::addGlobal('CustomizerColors', [
+    [
+        'label' => __('Status', 'flynt'),
+        'name' => 'enabled',
+        'type' => 'true_false',
+        'ui' => 1,
+        'ui_on_text' => 'Enabled',
+        'ui_off_text' => 'Disabled',
+        'default_value' => true,
+    ],
+]);
 
-add_action('wp_head', function () {
-    $config = getConfig();
-
-    $alphaColorAmount = 0.4;
-    $darkenColorAmount = -0.1; // -0.1 darken value approximately equals scss darken 5%
-    ?>
-    <style type="text/css">
-        :root.html {
-            <?php foreach (($config['colors'] ?? []) as $theme => $colors) {
-                foreach ($colors as $colorName => $colorConfig) {
-                    $colorValue = get_theme_mod("theme_colors_{$colorName}", $colorConfig['default']);
-                    echo "--theme-color-{$colorName}: {$colorValue};";
-                }
-                $accentColorValue = get_theme_mod("theme_colors_accent-{$theme}", $colors["accent-{$theme}"]);
-                $rgbaValue = hex2rgba($accentColorValue, $alphaColorAmount);
-                $darkenedValue = colorBrightness($accentColorValue, $darkenColorAmount);
-                echo "--theme-color-accent-alpha-{$theme}: {$rgbaValue};";
-                echo "--theme-color-accent-hover-{$theme}: {$darkenedValue};";
-            } ?>
-    </style>
-    <?php
-});
 
 function hex2rgba($color, $opacity = false)
 {
