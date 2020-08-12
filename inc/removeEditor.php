@@ -6,7 +6,7 @@
 
 namespace Flynt\RemoveEditor;
 
-add_action('init', function (): void {
+add_action('init', function () {
     remove_post_type_support('page', 'editor');
     remove_post_type_support('post', 'editor');
 });
@@ -14,7 +14,7 @@ add_action('init', function (): void {
 /**
  * Removes Gutenberg default styles on front-end
  */
-add_action('wp_print_styles', function (): void {
+add_action('wp_print_styles', function () {
     wp_dequeue_style('wp-block-library');
     wp_dequeue_style('wp-block-library-theme');
 });
