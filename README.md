@@ -18,7 +18,7 @@
   * [Advanced Custom Fields](#advanced-custom-fields)
   * [Field Groups](#field-groups)
   * [ACF Option Pages](#acf-option-pages)
-  * [Resize Dynamic](#resize-dynamic)
+  * [Timber Dynamic Resize](#dynamic-resize--webp-generation)
 * [Maintainers](#maintainers)
 * [Contributing](#contributing)
 * [License](#license)
@@ -186,30 +186,31 @@ Flynt includes several utility functions for creating Advanced Custom Fields opt
 
 ### Dynamic Resize & WebP Generation
 
-Timber provides [a `resize` filter to resize images](https://timber.github.io/docs/reference/timber-imagehelper/#resize). This filter creates all images on the page when it's loaded for the first time. If there are many images on one page then this can lead to a very slow load time, or even a complete timeout.
+Timber provides [a `resize` filter to resize images](https://timber.github.io/docs/reference/timber-imagehelper/#resize). This filter creates all images on the page when it's loaded for the first time. If there are many images on one page this can lead to a very slow load time, or even a complete timeout.
 
-Flynt solves this with the `resizeDynamic` filter. This filter only generates images when the image is requested, rather than when the page is loaded.
+Flynt includes an alternative `resizeDynamic` filter. This filter can generates images upon first request and also supports the generation of WebP images.
 
-All of the generated images are stored in `uploads/resized`. If you want to manually regenerate all of these images you can delete this folder and the next time an image is requested it will be regenerated.
+All of the generated images are stored in `uploads/resized`. To manually regenerate all of these images, delete this folder and the next time an image is requested it will be regenerated.
 
-`resizeDynamic` also creates a WebP file of each image it resizes. For this to work, it adds a rewrite rule to `.htaccess` so that Apache will automatically serve the WebP version to all browsers that support it.
+For serving WebP images to supported browsers, you will most likely need to adjust the config of your web server. For Apache, Flynt adds specific rules to the `.htaccess` automatically.
 
-Because of various issues on different setups, the dynamic (on-the-fly) generation of the images is disabled by default. You can enable it by setting _Timber Dynamic Resize -> Dynamic Image Generation_ in the global options in wp-admin to true.
+To toggle these functionalities, you can use the settings under **Timber Dynamic Resize** in the global options in wp-admin.
 
 #### Troubleshooting
 
-In some setups images may not show up, returning a 404 by the server.
-
-The most common reason for this is that you are using nginx and your server is not set up in the default way. You can see that this is the case, if an image url return a 404 from nginx, not from WordPress itself.
+1. Some configurations for nginx differ from the suggested WordPress config. This might lead to 404 error for the dynamic images. You can see that this is the case, if an image url returns a 404 from nginx, not from WordPress itself.
 
 In this case, please add something like
 
+```nginx
 location ~ "^(.*)/wp-content/uploads/(.*)$" {
   try_files $uri $uri/ /index.php$is_args$args;
 }
+```
+
 to your site config.
 
-Other issues might come from Flynt not being able to determine the relative url of your uploads folder. If you have a non-standard WordPress folder structure, or if you use a plugin that manipulates home_url (for example, WPML) this can cause problems when using resizeDynamic.
+2. Some plugins manipulate the `home_url` in such a way that is causes issues with resizeDynamic (for example WPML).
 
 In this case try to set the relative upload path manually in the global options in wp-admin. In Bedrock installs with WPML, for example, you might have to set it to `app/uploads`.
 
