@@ -3,6 +3,7 @@
 /**
  * Add theme options to customizer
  */
+
 namespace Flynt\CustomizerColors;
 
 use Flynt\Utils\Asset;

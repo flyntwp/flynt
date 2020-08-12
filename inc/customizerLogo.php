@@ -3,6 +3,7 @@
 /**
  * Add theme options to customizer
  */
+
 namespace Flynt\CustomizerLogo;
 
 use WP_Customize_Image_Control;
