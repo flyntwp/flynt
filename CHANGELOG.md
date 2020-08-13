@@ -71,3 +71,7 @@ All notable changes to this project will be documented in this file. See [standa
 * **theContentFix:** replace shortcode if post id changed ([92b4cfc](https://github.com/flyntwp/flynt/commit/92b4cfc326947c5964182e7b5bf42bde765ef56a))
 * **theme:** disable big image size threshold ([283f072](https://github.com/flyntwp/flynt/commit/283f072e8c0db57f37417adf86fa623329d68cb0))
 * **webpack:** set publicPath dynamically ([265c935](https://github.com/flyntwp/flynt/commit/265c935e6d8a81fdab6513882ce1f5a60ab6348f))
+
+## [1.0.0](https://github.com/flyntwp/flynt/releases/tag/v1.0.0) (2019-11-28)
+
+Initial release
