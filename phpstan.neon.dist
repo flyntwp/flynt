@@ -1,0 +1,71 @@
+#$ composer require --dev szepeviktor/phpstan-wordpress php-stubs/acf-pro-stubs
+#$ vendor/bin/phpstan analyze
+
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+parameters:
+    #level: max
+    level: 5
+    inferPrivatePropertyTypeFromConstructor: true
+    dynamicConstantNames:
+        - WP_ENV
+    paths:
+        - inc/
+        - lib/
+        - Components/
+    scanFiles:
+        - vendor/paulthewalton/acf-pro-stubs/acf-pro-stubs.php
+        # Includes
+        - inc/acf.php
+        - inc/assets.php
+        - inc/baseStyle.php
+        - inc/cleanHead.php
+        - inc/cleanRss.php
+        - inc/componentLogServer.php
+        - inc/customizer-logo.php
+        - inc/customPostTypes/example.php
+        - inc/customPostTypes/.gitkeep
+        - inc/customTaxonomies/example.php
+        - inc/customTaxonomies/.gitkeep
+        - inc/fieldGroups/.gitkeep
+        - inc/fieldGroups/pageComponents.php
+        - inc/fieldGroups/postComponents.php
+        - inc/fieldVariables.php
+        - inc/hideProtectedPosts.php
+        - inc/jquery.php
+        - inc/mimeTypes.php
+        - inc/options.php
+        - inc/removeEditor.php
+        - inc/sliderOptions.php
+        - inc/theContentFix.php
+        - inc/theme.php
+        - inc/timberDynamicResize.php
+        - inc/timberLoader.php
+        - inc/tinyMce.php
+        - inc/twigReadingTime.php
+        - inc/yoastToBottom.php
+        - inc/youtubeNoCookieEmbed.php
+        # Components
+        - Components/BlockCollapse/functions.php
+        - Components/BlockCookieNotice/functions.php
+        - Components/BlockImage/functions.php
+        - Components/BlockImageText/functions.php
+        - Components/BlockNotFound/functions.php
+        - Components/BlockPostHeader/functions.php
+        - Components/BlockVideoOembed/functions.php
+        - Components/BlockWysiwyg/functions.php
+        - Components/FeatureAdminComponentScreenshots/functions.php
+        - Components/FeatureGoogleAnalytics/functions.php
+        - Components/FormPasswordProtection/functions.php
+        - Components/GridImageText/functions.php
+        - Components/GridPostsArchive/functions.php
+        - Components/GridPostsLatest/functions.php
+        - Components/ListComponents/functions.php
+        - Components/ListSearchResults/functions.php
+        - Components/NavigationBurger/functions.php
+        - Components/NavigationFooter/functions.php
+        - Components/NavigationMain/functions.php
+        - Components/SliderImages/functions.php
+    ignoreErrors:
+        # Uses func_get_args()
+        - '#^Function apply_filters(_ref_array)? invoked with [34567] parameters, 2 required\.$#'
