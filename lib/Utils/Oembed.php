@@ -12,8 +12,8 @@ class Oembed
      *
      * @since 0.2.0
      *
-     * @param $iframeTagHtml string The oembed iframe HTML tag.
-     * @param $additionalGetParams array Associative array of key/values of additional query variables to append to the url.
+     * @param string $iframeTagHtml The oembed iframe HTML tag.
+     * @param array $additionalGetParams Associative array of key/values of additional query variables to append to the url.
      *
      * @return string The modified oembed iframe HTML tag.
      */
