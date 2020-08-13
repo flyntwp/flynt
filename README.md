@@ -42,12 +42,6 @@ npm run build
 * [Composer](https://getcomposer.org/download/) >= 1.8
 * [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/) >= 5.7
 
-## Troubleshooting
-
-### Browsersync
-
-In some cases, browsersync may be not working. Usually this is related to WordPress not running on https. In order to fix this issue, change the `browsersync.https` value to `false` in the file `build-config.js`.
-
 ## Usage
 In your terminal, navigate to `<your-project>/wp-content/themes/flynt` and run `npm start`. This will start a local server at `localhost:3000`.
 
@@ -208,14 +202,44 @@ location ~ "^(.*)/wp-content/uploads/(.*)$" {
 
 2. Some plugins (like WPML) manipulate the `home_url` in such a way that `resizeDynamic` cannot resolve the path to images correctly. In that case, set the relative upload path manually in **Global Options -> Timber Dynamic Resize**. Example: The relative upload path in Bedrock installs with WPML needs to bet set to `app/uploads`.
 
+## Troubleshooting
+
+### Images
+
+In some setups images may not show up, returning a 404 by the server.
+
+The most common reason for this is that you are using nginx and your server is not set up in the default way. You can see that this is the case, if an image url return a 404 from nginx, not from WordPress itself.
+
+In this case, please add something like
+
+```nginx
+location ~ "^(.*)/wp-content/uploads/(.*)$" {
+  try_files $uri $uri/ /index.php$is_args$args;
+}
+```
+
+to your site config.
+
+Other issues might come from Flynt not being able to determine the relative url of your uploads folder. If you have a non-standard WordPress folder structure, or if you use a plugin that manipulates `home_url` (for example, [WPML](https://wpml.org/)) this can cause problems when using `resizeDynamic`.
+
+In this care try to set the relative upload path manually and refresh the permalink settings in the back-end:
+
+```php
+add_filter('Flynt/TimberDynamicResize/relativeUploadDir', function () {
+    return '/app/uploads'; // Example for Bedrock installs.
+});
+```
+
+### Browsersync
+
+If browsersync is not working and you are not serving WordPress on https, try changing the `browsersync.https` value to `false` in the file `build-config.js`.
+
 ## Maintainers
 This project is maintained by [bleech](https://github.com/bleech).
 
 The main people in charge of this repo are:
 * [Steffen Bewersdorff](https://github.com/steffenbew)
 * [Dominik Tränklein](https://github.com/domtra)
-* [Doğa Gürdal](https://github.com/Qakulukiam)
-* [Michael Carruthers](https://github.com/emcarru)
 
 ## Contributing
 To contribute, please use GitHub [issues](https://github.com/flyntwp/flynt/issues). Pull requests are accepted. Please also take a moment to read the [Contributing Guidelines](https://github.com/flyntwp/guidelines/blob/master/CONTRIBUTING.md) and [Code of Conduct](https://github.com/flyntwp/guidelines/blob/master/CODE_OF_CONDUCT.md).
