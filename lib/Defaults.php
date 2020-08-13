@@ -39,12 +39,6 @@ class Defaults
             return '';
         }
 
-        $data = function () use ($componentData) {
-            $args = func_get_args();
-            array_unshift($args, $componentData);
-            return Helpers::extractNestedDataFromArray($args);
-        };
-
         ob_start();
         require $filePath;
         $output = ob_get_contents();
