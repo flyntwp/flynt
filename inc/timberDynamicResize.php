@@ -24,7 +24,7 @@ Options::addGlobal('TimberDynamicResize', [
         'label' => 'Relative Upload Path',
         'name' => 'relativeUploadPath',
         'type' => 'text',
-        'instructions' => 'If Flynt cannot determine the path of your uploads directory relative to the docroot, use this to set it manually. This will not change the URL of the images, but rather help to fix 404 errors.',
+        'instructions' => 'If Timber Dynamic Resize cannot resolve the path to images correctly, set the relative upload path manually.',
         'conditional_logic' => [
             [
                 [
