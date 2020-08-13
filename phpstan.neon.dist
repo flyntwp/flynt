@@ -15,6 +15,7 @@ parameters:
         - Components/
     scanFiles:
         - vendor/paulthewalton/acf-pro-stubs/acf-pro-stubs.php
+        - vendor/twig/twig/src/Extension/CoreExtension.php
         # Includes
         - inc/acf.php
         - inc/assets.php
