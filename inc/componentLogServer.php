@@ -12,7 +12,7 @@ use Flynt;
 define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
 
 add_action('Flynt/afterRegisterComponents', function () {
-    if ((WP_ENV === 'development' || current_user_can('editor') || current_user_can('administrator')) && isset($_GET['log'])) {
+    if (((defined('WP_ENV') && WP_ENV === 'development') || current_user_can('editor') || current_user_can('administrator')) && isset($_GET['log'])) {
         if (isset($_GET['component']) && !empty($_GET['component'])) {
             define(__NAMESPACE__ . '\COMPONENT_WHITELIST', explode(',', $_GET['component']));
         }
