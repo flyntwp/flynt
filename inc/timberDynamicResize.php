@@ -39,7 +39,7 @@ Options::addGlobal('TimberDynamicResize', [
         'label' => 'WebP Support',
         'name' => 'webpSupport',
         'type' => 'true_false',
-        'default_value' => 1,
+        'default_value' => 0,
         'ui' => true,
         'instructions' => 'Generate additional .webp images. Changing this will delete the "uploads/resize" folder.',
     ],
