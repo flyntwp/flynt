@@ -10,8 +10,8 @@ class TimberDynamicResize
 {
     const DB_VERSION = '2.0';
     const TABLE_NAME = 'resized_images';
-    const IMAGE_QUERY_VAR = 'dynamic-images';
-    const IMAGE_PATH_SEPARATOR = 'dynamic';
+    const IMAGE_QUERY_VAR = 'resized-images';
+    const IMAGE_PATH_SEPARATOR = 'resized';
 
     public $flyntResizedImages = [];
 
@@ -20,8 +20,8 @@ class TimberDynamicResize
 
     public function __construct()
     {
-        $this->enabled = !(apply_filters('Flynt/TimberDynamicResize/disableDynamic', false));
-        $this->webpEnabled = !(apply_filters('Flynt/TimberDynamicResize/disableWebp', false));
+        $this->enabled = get_field('field_global_TimberDynamicResize_dynamicImageGeneration', 'option');
+        $this->webpEnabled = get_field('field_global_TimberDynamicResize_webpSupport', 'option');
         if ($this->enabled) {
             $this->createTable();
             $this->addDynamicHooks();
@@ -62,11 +62,14 @@ class TimberDynamicResize
     {
         add_filter('init', [$this, 'addRewriteTag']);
         add_action('generate_rewrite_rules', [$this, 'registerRewriteRule']);
-        add_action('parse_request', function ($wp) {
-            if (isset($wp->query_vars[static::IMAGE_QUERY_VAR])) {
-                $this->checkAndGenerateImage($wp->query_vars[static::IMAGE_QUERY_VAR]);
-            }
-        });
+        add_action('parse_request', [$this, 'parseRequest']);
+    }
+
+    public function parseRequest($wp)
+    {
+        if (isset($wp->query_vars[static::IMAGE_QUERY_VAR])) {
+            $this->checkAndGenerateImage($wp->query_vars[static::IMAGE_QUERY_VAR]);
+        }
     }
 
     protected function addHooks()
@@ -85,8 +88,7 @@ class TimberDynamicResize
                 add_action('shutdown', 'flush_rewrite_rules');
             });
             add_action('switch_theme', function () {
-                remove_filter('mod_rewrite_rules', [$this, 'addWebpRewriteRule']);
-                flush_rewrite_rules();
+                flush_rewrite_rules(true);
             });
         }
     }
@@ -97,7 +99,7 @@ class TimberDynamicResize
         return $wpdb->prefix . static::TABLE_NAME;
     }
 
-    public function getRelativeUploadDir()
+    public static function getDefaultRelativeUploadDir()
     {
         require_once(ABSPATH . 'wp-admin/includes/file.php');
         $uploadDir = wp_upload_dir();
@@ -107,7 +109,17 @@ class TimberDynamicResize
         } else {
             $relativeUploadDir = $uploadDir['relative'];
         }
-        return apply_filters('Flynt/TimberDynamicResize/relativeUploadDir', $relativeUploadDir);
+        return $relativeUploadDir;
+    }
+
+    public function getRelativeUploadDir()
+    {
+        $relativeUploadPath = get_field('field_global_TimberDynamicResize_relativeUploadPath', 'option');
+        if (empty($relativeUploadPath)) {
+            return static::getDefaultRelativeUploadDir();
+        } else {
+            return $relativeUploadPath;
+        }
     }
 
     public function getUploadsBaseurl()
@@ -163,6 +175,12 @@ class TimberDynamicResize
     {
         $routeName = static::IMAGE_QUERY_VAR;
         add_rewrite_tag("%{$routeName}%", "([^&]+)");
+    }
+
+    public function removeRewriteTag()
+    {
+        $routeName = static::IMAGE_QUERY_VAR;
+        remove_rewrite_tag("%{$routeName}%");
     }
 
     public function checkAndGenerateImage($relativePath)
@@ -248,13 +266,13 @@ class TimberDynamicResize
         );
     }
 
-    public function addImageSeparatorToUploadPath($path)
+    public function addImageSeparatorToUploadPath($path = '')
     {
         $basepath = $this->getUploadsBasedir();
         return str_replace(
             $basepath,
             trailingslashit($basepath) . static::IMAGE_PATH_SEPARATOR,
-            $path
+            empty($path) ? $basepath : $path
         );
     }
 
@@ -305,5 +323,44 @@ EOD;
                 call_user_func_array('array_merge', $values)
             )
         );
+    }
+
+    public function toggleDynamic($enable)
+    {
+        if ($enable) {
+            $this->addRewriteTag();
+            add_action('generate_rewrite_rules', [$this, 'registerRewriteRule']);
+            add_action('parse_request', [$this, 'parseRequest']);
+        } else {
+            $this->removeRewriteTag();
+            remove_action('generate_rewrite_rules', [$this, 'registerRewriteRule']);
+            remove_action('parse_request', [$this, 'parseRequest']);
+        }
+        add_action('shutdown', function () {
+            flush_rewrite_rules(false);
+        });
+    }
+
+    public function toggleWebp($enable)
+    {
+        if ($enable) {
+            add_filter('mod_rewrite_rules', [$this, 'addWebpRewriteRule']);
+        } else {
+            remove_filter('mod_rewrite_rules', [$this, 'addWebpRewriteRule']);
+        }
+        add_action('shutdown', function () {
+            require_once(ABSPATH . 'wp-admin/includes/file.php');
+            WP_Filesystem();
+            global $wp_filesystem;
+            flush_rewrite_rules(true);
+            @$wp_filesystem->rmdir($this->addImageSeparatorToUploadPath(), true);
+        });
+    }
+
+    public function changeRelativeUploadPath($relativeUploadPath)
+    {
+        add_action('shutdown', function () {
+            flush_rewrite_rules(false);
+        });
     }
 }
