@@ -4,6 +4,7 @@ namespace Flynt\TimberDynamicResize;
 
 use Flynt\Utils\Options;
 use Flynt\Utils\TimberDynamicResize;
+use acf_field_message;
 
 add_action('acf/init', function () {
     global $timberDynamicResize;
@@ -56,6 +57,8 @@ add_filter(
     'acf/load_field/key=field_global_TimberDynamicResize_webpSupport',
     function ($field) {
         if (!function_exists('imagewebp')) {
+            $messageField = new acf_field_message();
+            $field = array_merge($messageField->defaults, $field);
             $field['type'] = 'message';
             $field['instructions'] = 'Your PHP Version does not support WebP generation. The function `imagewebp` does not exist.';
         }
