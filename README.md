@@ -18,7 +18,7 @@
   * [Advanced Custom Fields](#advanced-custom-fields)
   * [Field Groups](#field-groups)
   * [ACF Option Pages](#acf-option-pages)
-  * [Timber Dynamic Resize](#dynamic-resize--webp-generation)
+  * [Timber Dynamic Resize](#timber-dynamic-resize--webp-generation)
 * [Maintainers](#maintainers)
 * [Contributing](#contributing)
 * [License](#license)
@@ -184,23 +184,21 @@ Flynt includes several utility functions for creating Advanced Custom Fields opt
 * `Flynt\Utils\Options::getTranslatable` <br> Retrieve a translatable option.
 * `Flynt\Utils\Options::getGlobal` <br> Retrieve a global option.
 
-### Dynamic Resize & WebP Generation
-
-Timber provides [a `resize` filter to resize images](https://timber.github.io/docs/reference/timber-imagehelper/#resize). This filter creates all images on the page when it's loaded for the first time. If there are many images on one page this can lead to a very slow load time, or even a complete timeout.
-
-Flynt includes an alternative `resizeDynamic` filter. This filter can generates images upon first request and also supports the generation of WebP images.
-
-All of the generated images are stored in `uploads/resized`. To manually regenerate all of these images, delete this folder and the next time an image is requested it will be regenerated.
-
-For serving WebP images to supported browsers, you will most likely need to adjust the config of your web server. For Apache, Flynt adds specific rules to the `.htaccess` automatically.
-
-To toggle these functionalities, you can use the settings under **Timber Dynamic Resize** in the global options in wp-admin.
-
+### Timber Dynamic Resize & WebP Generation
+​
+Timber provides [a `resize` filter to resize images](https://timber.github.io/docs/reference/timber-imagehelper/#resize) on first page load. Resizing many images at the same time can result in a server timeout.
+​
+That's why Flynt provides a `resizeDynamic` filter, that resizes images asynchronously upon first request of the image itself. The filter optionally generates additional WebP file versions for faster loading times.
+​
+Resized images are stored in `uploads/resized`. To regenerate all image sizes and file versions, delete the folder.
+​
+To enable Dynamic Resize and WebP Support, go to **Global Options -> Timber Dynamic Resize**.
+​
 #### Troubleshooting
-
-1. Some configurations for nginx differ from the suggested WordPress config. This might lead to 404 error for the dynamic images. You can see that this is the case, if an image url returns a 404 from nginx, not from WordPress itself.
-
-In this case, please add something like
+​
+If `resizedDynamic` is enabled and image requests result in 404 errors, try the following solutions:
+​
+1. If you're using nginx and the server (not WordPress) responds with a 404 error, check your server configuration against [the recommended standard](https://wordpress.org/support/article/nginx/#general-wordpress-rules). If the standard configuration cannot be used, resolve the image requests correctly by adding the following rule to your configuration:
 
 ```nginx
 location ~ "^(.*)/wp-content/uploads/(.*)$" {
@@ -208,11 +206,7 @@ location ~ "^(.*)/wp-content/uploads/(.*)$" {
 }
 ```
 
-to your site config.
-
-2. Some plugins manipulate the `home_url` in such a way that is causes issues with resizeDynamic (for example WPML).
-
-In this case try to set the relative upload path manually in the global options in wp-admin. In Bedrock installs with WPML, for example, you might have to set it to `app/uploads`.
+2. Some plugins (like WPML) manipulate the `home_url` in such a way that `resizeDynamic` cannot resolve the path to images correctly. In that case, set the relative upload path manually in **Global Options -> Timber Dynamic Resize**. Example: The relative upload path in Bedrock installs with WPML needs to bet set to `app/uploads`.
 
 ## Maintainers
 This project is maintained by [bleech](https://github.com/bleech).
