@@ -7,7 +7,7 @@
 		{% endif %}
 		{% if contentHtml or contentOptionalHtml %}
 			<div class="content">
-				{{ contentOptionalHtml|e }}
+				{{ contentOptionalHtml }}
 				{{ contentHtml|e('wp_kses_post') }}
 			</div>
 		{% endif %}
