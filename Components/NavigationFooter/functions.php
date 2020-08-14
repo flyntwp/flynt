@@ -44,7 +44,7 @@ Options::addTranslatable('NavigationFooter', [
     [
         'label' => __('Optional content', 'flynt'),
         'name' => 'contentOptional',
-        'instructions' => __('Display optional content inside the footer. The Copyright Notice reflects the current year automatically. The Site Title can be changed at <a href="%s" target="_blank">Settings > General</a>.', 'flynt', admin_url('options-general.php')),
+        'instructions' => sprintf(__('Display optional content inside the footer. The Copyright Notice reflects the current year automatically. The Site Title can be changed at <a href="%s" target="_blank">Settings > General</a>.', 'flynt'), admin_url('options-general.php')),
         'type' => 'select',
         'allow_null' => 0,
         'multiple' => 0,
