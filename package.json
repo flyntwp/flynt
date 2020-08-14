@@ -2,8 +2,8 @@
   "name": "flynt",
   "version": "1.3.0",
   "main": "index.js",
-  "repository": "git@github.com:flyntwp/flynt.git",
-  "author": "bleech <hello@bleech.de>",
+  "repository": "git@github.com:pixelsaft/flynt.git",
+  "author": "Pixelsaft GbR <info@pixelsaft.de>",
   "license": "MIT",
   "scripts": {
     "checkVersion": "check-node-version --package -p",
