@@ -15,6 +15,13 @@ add_filter('Flynt/addComponentData?name=NavigationFooter', function ($data) {
     $data['maxLevel'] = 0;
     $data['menu'] = new Menu('navigation_footer');
 
+    if ($data['contentOptional'] == 'siteName') {
+        $data['contentOptionalHtml'] = sprintf('%s', get_bloginfo(false, 'name'));
+    } elseif ($data['contentOptional'] == 'copyrightNotice') {
+        $data['contentOptionalHtml'] = sprintf('&copy;&nbsp;%d', date('Y'));
+    } elseif ($data['contentOptional'] == 'copyrightNoticeAndSiteName') {
+        $data['contentOptionalHtml'] = sprintf('&copy;&nbsp;%d %s', date('Y'), get_bloginfo(false, 'name'));
+    }
     return $data;
 });
 
@@ -35,26 +42,19 @@ Options::addTranslatable('NavigationFooter', [
         'toolbar' => 'basic'
     ],
     [
-        'label' => __('Options', 'flynt'),
-        'name' => 'generalOptions',
-        'type' => 'tab',
-        'placement' => 'top',
-        'endpoint' => 0
-    ],
-    [
-        'label' => __('Copyright Notice', 'flynt'),
-        'name' => 'copyrightNotice',
-        'instructions' => __('Display a Copyright Notice (consisting of the copyright sign [©] sign followed by the current year) in the footer.', 'flynt'),
-        'type' => 'true_false',
-        'default_value' => 1,
-        'ui' => 1,
-    ],
-    [
-        'label' => __('Site Title', 'flynt'),
-        'name' => 'siteName',
-        'instructions' => __('Display the Site Title inside the footer. The Site Title can be changed at <a href="%s" target="_blank">Settings > General</a>', 'flynt', admin_url('options-general.php')),
-        'type' => 'true_false',
-        'default_value' => 1,
-        'ui' => 1,
-    ],
+        'label' => __('Optional content', 'flynt'),
+        'name' => 'contentOptional',
+        'instructions' => __('Display optional content inside the footer. The Copyright Notice reflects the current year automatically. The Site Title can be changed at <a href="%s" target="_blank">Settings > General</a>.', 'flynt', admin_url('options-general.php')),
+        'type' => 'select',
+        'allow_null' => 0,
+        'multiple' => 0,
+        'ui' => 0,
+        'ajax' => 0,
+        'choices' => [
+            '' => __('(none)', 'flynt'),
+            'siteName' => sprintf('%s (%s)', get_bloginfo(false, 'name'), __('Site Title', 'flynt')),
+            'copyrightNotice' => sprintf('&copy;&nbsp;%d (%s)', date('Y'), __('Copyright Notice', 'flynt')),
+            'copyrightNoticeAndSiteName' => sprintf('&copy;&nbsp;%d %s (%s)', date('Y'), get_bloginfo(false, 'name'), __('Copyright Notice and Site Title', 'flynt')),
+        ]
+    ]
 ]);
