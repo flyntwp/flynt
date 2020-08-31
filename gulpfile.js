@@ -91,7 +91,7 @@ function revUpdateReferences (config) {
     const rewrite = require('gulp-rev-rewrite')
     var manifest = gulp.src(path.join(config.dest, 'rev-manifest.json'))
 
-    return gulp.src(path.join(config.dest, '/**/**.{css,js}'))
+    return gulp.src(config.rev.srcRevved)
       .pipe(rewrite({ manifest: manifest }))
       .pipe(gulp.dest(config.dest))
   })
