@@ -105,7 +105,8 @@ class TimberDynamicResize
         $uploadDir = wp_upload_dir();
         $homePath = get_home_path();
         if (!empty($homePath) && $homePath !== '/') {
-            $relativeUploadDir = str_replace($homePath, '', $uploadDir['basedir']);
+            $baseDir = str_replace('\\', '/', $uploadDir['basedir']);
+            $relativeUploadDir = str_replace($homePath, '', $baseDir);
         } else {
             $relativeUploadDir = $uploadDir['relative'];
         }

@@ -179,13 +179,13 @@ Flynt includes several utility functions for creating Advanced Custom Fields opt
 * `Flynt\Utils\Options::getGlobal` <br> Retrieve a global option.
 
 ### Timber Dynamic Resize & WebP Generation
-​
+
 Timber provides [a `resize` filter to resize images](https://timber.github.io/docs/reference/timber-imagehelper/#resize) on first page load. Resizing many images at the same time can result in a server timeout.
-​
+
 That's why Flynt provides a `resizeDynamic` filter, that resizes images asynchronously upon first request of the image itself. The filter optionally generates additional WebP file versions for faster loading times.
-​
+
 Resized images are stored in `uploads/resized`. To regenerate all image sizes and file versions, delete the folder.
-​
+
 To enable Dynamic Resize and WebP Support, go to **Global Options -> Timber Dynamic Resize**.
 ​
 #### Troubleshooting

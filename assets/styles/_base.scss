@@ -641,11 +641,11 @@ select {
 
 .visuallyHidden {
   clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
+  height: 1px !important;
   overflow: hidden;
   position: absolute !important;
   white-space: nowrap;
-  width: 1px;
+  width: 1px !important;
 }
 
 /* Box Helpers */
