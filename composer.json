@@ -12,6 +12,7 @@
     }
   ],
   "require": {
+    "php": ">=7.0.0",
     "timber/timber": "^1.8",
     "flyntwp/acf-field-group-composer": "^1.0.1",
     "erusev/parsedown": "^1.7"
