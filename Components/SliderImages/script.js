@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import 'core-js/es/number'
 import Swiper from 'swiper/bundle'
 import 'swiper/swiper-bundle.css'
 
