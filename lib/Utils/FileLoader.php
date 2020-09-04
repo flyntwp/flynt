@@ -12,8 +12,8 @@ class FileLoader
      *
      * @since 0.1.0
      *
-     * @param $dir string Absolute path to the directory.
-     * @param $callback callable The callback function.
+     * @param string $dir Absolute path to the directory.
+     * @param callable $callback The callback function.
      *
      * @return array An array of the callback results.
      */
