@@ -53,7 +53,7 @@ Options::addTranslatable('NavigationFooter', [
                 'label' => sprintf(__('© %s Website Name', 'flynt'), date_i18n('Y')),
                 'name' => 'messageShortcodeCopyrightYearWebsiteName',
                 'type' => 'message',
-                'message' => '<pre>©' . htmlspecialchars('&nbsp;') . '[year] [sitetitle]</pre>',
+                'message' => '<code>©' . htmlspecialchars('&nbsp;') . '[year] [sitetitle]</code>',
                 'new_lines' => 'wpautop',
                 'esc_html' => 0,
                 'wrapper' => [
@@ -64,7 +64,7 @@ Options::addTranslatable('NavigationFooter', [
                 'label' => sprintf(__('© %s Website Name — Subtitle', 'flynt'), date_i18n('Y')),
                 'name' => 'messageShortcodeCopyrightYearWebsiteNameTagLine',
                 'type' => 'message',
-                'message' => '<pre>©' . htmlspecialchars('&nbsp;') . '[year] [sitetitle]' . htmlspecialchars('&mdash;') . ' [tagline]</pre>',
+                'message' => '<code>©' . htmlspecialchars('&nbsp;') . '[year] [sitetitle]' . htmlspecialchars('&mdash;') . ' [tagline]</code>',
                 'new_lines' => 'wpautop',
                 'esc_html' => 0,
                 'wrapper' => [

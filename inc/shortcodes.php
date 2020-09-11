@@ -45,7 +45,7 @@ function getShortcodeReference()
                 'label' => __('Site Title (Website Name)', 'flynt'),
                 'name' => 'messageShortcodeSiteTitle',
                 'type' => 'message',
-                'message' => '<pre>[sitetitle]</pre>',
+                'message' => '<code>[sitetitle]</code>',
                 'new_lines' => 'wpautop',
                 'esc_html' => 0,
                 'wrapper' => [
@@ -56,7 +56,7 @@ function getShortcodeReference()
                 'label' => __('Tagline (Subtitle)', 'flynt'),
                 'name' => 'messageShortcodeTagline',
                 'type' => 'message',
-                'message' => '<pre>[tagline]</pre>',
+                'message' => '<code>[tagline]</code>',
                 'new_lines' => 'wpautop',
                 'esc_html' => 0,
                 'wrapper' => [
@@ -67,7 +67,7 @@ function getShortcodeReference()
                 'label' => __('Current Year', 'flynt'),
                 'name' => 'messageShortcodeCurrentYear',
                 'type' => 'message',
-                'message' => '<pre>[year]</pre>',
+                'message' => '<code>[year]</code>',
                 'new_lines' => 'wpautop',
                 'esc_html' => 0,
                 'wrapper' => [
