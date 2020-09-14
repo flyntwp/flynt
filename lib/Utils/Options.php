@@ -153,9 +153,8 @@ class Options
      * @since 0.2.2 added check for required hooks to have run to alert of timing issues when used incorrectly
      *
      * @param string $optionType Type of option page. Either global or translatable.
-     * @param string $optionCategory Category of option page. One of these three values: component, feature, customPostType.
-     * @param string $subPageName Name of the sub page.
-     * @param string $fieldName (optional) Name of the field to get.
+     * @param string $scope Scope of the option.
+     * @param string|null $fieldName (optional) Name of the field to get.
      * @return mixed The value of the option or array of options. False if subpage doesn't exist or no option was found.
      **/
     public static function get($optionType, $scope, $fieldName = null)

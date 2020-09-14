@@ -5,14 +5,16 @@ function getCopyConfig (source) {
   return {
     from: source,
     to: './',
-    ignore: [
-      '*.js',
-      '*.scss',
-      '*.php',
-      '*.twig',
-      'screenshot.png',
-      'README.md'
-    ]
+    globOptions: {
+      ignore: [
+        '**/*.js',
+        '**/*.scss',
+        '**/*.php',
+        '**/*.twig',
+        '**/screenshot.png',
+        '**/README.md'
+      ]
+    }
   }
 }
 
@@ -24,10 +26,12 @@ module.exports = {
       'assets/ie11Polyfills': './assets/ie11Polyfills.js',
       'assets/customizer-colors': './assets/customizer-colors.js'
     },
-    copy: [
-      getCopyConfig('./Components/**/*'),
-      getCopyConfig('./assets/**/*')
-    ]
+    copy: {
+      patterns: [
+        getCopyConfig('./Components/**/*'),
+        getCopyConfig('./assets/**/*')
+      ]
+    }
   },
   browserSync: {
     ghostMode: false,

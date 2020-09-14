@@ -2,6 +2,7 @@
   <div class="centerMaxWidthContainer">
     <div class="centerContentMaxWidth boxPadding boxShadow themeReset">
       <form action="{{ form.url }}" class="post-password-form" method="post">
+        <h1 class="h4">{{ __('Enter Password') }}</h1>
         <p>{{ __('This content is password protected. To view it please enter your password below:') }}</p>
         <input name="post_password" type="password" size="20" maxlength="20" aria-label="{{ __('Password') }}" /><br>
         <button class="button" type="submit" name="Submit">{{ _x( 'Enter', 'post password form' ) }}</button>

@@ -18,7 +18,7 @@
   * [Advanced Custom Fields](#advanced-custom-fields)
   * [Field Groups](#field-groups)
   * [ACF Option Pages](#acf-option-pages)
-  * [Resize Dynamic](#resize-dynamic)
+  * [Timber Dynamic Resize](#timber-dynamic-resize--webp-generation)
 * [Maintainers](#maintainers)
 * [Contributing](#contributing)
 * [License](#license)
@@ -41,38 +41,6 @@ npm run build
 * [Node](https://nodejs.org/en/) = 12
 * [Composer](https://getcomposer.org/download/) >= 1.8
 * [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/) >= 5.7
-
-## Troubleshooting
-
-### Images
-
-In some setups images may not show up, returning a 404 by the server.
-
-The most common reason for this is that you are using nginx and your server is not set up in the default way. You can see that this is the case, if an image url return a 404 from nginx, not from WordPress itself.
-
-In this case, please add something like
-
-```nginx
-location ~ "^(.*)/wp-content/uploads/(.*)$" {
-  try_files $uri $uri/ /index.php$is_args$args;
-}
-```
-
-to your site config.
-
-Other issues might come from Flynt not being able to determine the relative url of your uploads folder. If you have a non-standard WordPress folder structure, or if you use a plugin that manipulates `home_url` (for example, [WPML](https://wpml.org/)) this can cause problems when using `resizeDynamic`.
-
-In this care try to set the relative upload path manually and refresh the permalink settings in the back-end:
-
-```php
-add_filter('Flynt/TimberDynamicResize/relativeUploadDir', function () {
-    return '/app/uploads'; // Example for Bedrock installs.
-});
-```
-
-### Browsersync
-
-In some cases, browsersync may be not working. Usually this is related to WordPress not running on https. In order to fix this issue, change the `browsersync.https` value to `false` in the file `build-config.js`.
 
 ## Usage
 In your terminal, navigate to `<your-project>/wp-content/themes/flynt` and run `npm start`. This will start a local server at `localhost:3000`.
@@ -210,17 +178,61 @@ Flynt includes several utility functions for creating Advanced Custom Fields opt
 * `Flynt\Utils\Options::getTranslatable` <br> Retrieve a translatable option.
 * `Flynt\Utils\Options::getGlobal` <br> Retrieve a global option.
 
-### Dynamic Resize & WebP Generation
+### Timber Dynamic Resize & WebP Generation
 
-Timber provides [a `resize` filter to resize images](https://timber.github.io/docs/reference/timber-imagehelper/#resize). This filter creates all images on the page when it's loaded for the first time. If there are many images on one page then this can lead to a very slow load time, or even a complete timeout.
+Timber provides [a `resize` filter to resize images](https://timber.github.io/docs/reference/timber-imagehelper/#resize) on first page load. Resizing many images at the same time can result in a server timeout.
 
-Flynt solves this with the `resizeDynamic` filter. This filter only generates images when the image is requested, rather than when the page is loaded.
+That's why Flynt provides a `resizeDynamic` filter, that resizes images asynchronously upon first request of the image itself. The filter optionally generates additional WebP file versions for faster loading times.
 
-All of the generated images are stored in `uploads/dynamic`. If you want to manually regenerate all of these images you can delete this folder and the next time an image is requested it will be regenerated.
+Resized images are stored in `uploads/resized`. To regenerate all image sizes and file versions, delete the folder.
 
-`resizeDynamic` also creates a WebP file of each image it resizes. For this to work, it adds a rewrite rule to `.htaccess` so that Apache will automatically serve the WebP version to all browsers that support it.
+To enable Dynamic Resize and WebP Support, go to **Global Options -> Timber Dynamic Resize**.
+​
+#### Troubleshooting
+​
+If `resizedDynamic` is enabled and image requests result in 404 errors, try the following solutions:
+​
+1. If you're using nginx and the server (not WordPress) responds with a 404 error, check your server configuration against [the recommended standard](https://wordpress.org/support/article/nginx/#general-wordpress-rules). If the standard configuration cannot be used, resolve the image requests correctly by adding the following rule to your configuration:
 
-You can disable the dynamic resize functionality and WebP generation by using the filters `Flynt/TimberDynamicResize/disableDynamic` and `Flynt/TimberDynamicResize/disableWebp`. If you change the enable dynamic resizing again, make sure to flush your permalinks.
+```nginx
+location ~ "^(.*)/wp-content/uploads/(.*)$" {
+  try_files $uri $uri/ /index.php$is_args$args;
+}
+```
+
+2. Some plugins (like WPML) manipulate the `home_url` in such a way that `resizeDynamic` cannot resolve the path to images correctly. In that case, set the relative upload path manually in **Global Options -> Timber Dynamic Resize**. Example: The relative upload path in Bedrock installs with WPML needs to bet set to `app/uploads`.
+
+## Troubleshooting
+
+### Images
+
+In some setups images may not show up, returning a 404 by the server.
+
+The most common reason for this is that you are using nginx and your server is not set up in the default way. You can see that this is the case, if an image url return a 404 from nginx, not from WordPress itself.
+
+In this case, please add something like
+
+```nginx
+location ~ "^(.*)/wp-content/uploads/(.*)$" {
+  try_files $uri $uri/ /index.php$is_args$args;
+}
+```
+
+to your site config.
+
+Other issues might come from Flynt not being able to determine the relative url of your uploads folder. If you have a non-standard WordPress folder structure, or if you use a plugin that manipulates `home_url` (for example, [WPML](https://wpml.org/)) this can cause problems when using `resizeDynamic`.
+
+In this care try to set the relative upload path manually and refresh the permalink settings in the back-end:
+
+```php
+add_filter('Flynt/TimberDynamicResize/relativeUploadDir', function () {
+    return '/app/uploads'; // Example for Bedrock installs.
+});
+```
+
+### Browsersync
+
+If browsersync is not working and you are not serving WordPress on https, try changing the `browsersync.https` value to `false` in the file `build-config.js`.
 
 ## Maintainers
 This project is maintained by [bleech](https://github.com/bleech).
@@ -228,8 +240,6 @@ This project is maintained by [bleech](https://github.com/bleech).
 The main people in charge of this repo are:
 * [Steffen Bewersdorff](https://github.com/steffenbew)
 * [Dominik Tränklein](https://github.com/domtra)
-* [Doğa Gürdal](https://github.com/Qakulukiam)
-* [Michael Carruthers](https://github.com/emcarru)
 
 ## Contributing
 To contribute, please use GitHub [issues](https://github.com/flyntwp/flynt/issues). Pull requests are accepted. Please also take a moment to read the [Contributing Guidelines](https://github.com/flyntwp/guidelines/blob/master/CONTRIBUTING.md) and [Code of Conduct](https://github.com/flyntwp/guidelines/blob/master/CODE_OF_CONDUCT.md).

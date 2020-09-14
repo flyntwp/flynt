@@ -1,6 +1,7 @@
 import $ from 'jquery'
-import Swiper from 'swiper'
-import 'swiper/css/swiper.min.css'
+import 'core-js/es/number'
+import Swiper from 'swiper/bundle'
+import 'swiper/swiper-bundle.css'
 
 class SliderImages extends window.HTMLDivElement {
   constructor (...args) {
@@ -37,8 +38,8 @@ class SliderImages extends window.HTMLDivElement {
     const { options } = this.props
     const config = {
       navigation: {
-        nextEl: this.$buttonNext,
-        prevEl: this.$buttonPrev
+        nextEl: this.$buttonNext.get(0),
+        prevEl: this.$buttonPrev.get(0)
       },
       a11y: options.a11y
     }
@@ -47,7 +48,7 @@ class SliderImages extends window.HTMLDivElement {
         delay: options.autoplaySpeed
       }
     }
-    this.slider = new Swiper(this.$slider, config)
+    this.slider = new Swiper(this.$slider.get(0), config)
   }
 }
 
