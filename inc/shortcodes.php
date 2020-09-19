@@ -18,7 +18,7 @@ add_shortcode('year', function () {
  * Site Title
  */
 add_shortcode('sitetitle', function () {
-    $blogname = get_bloginfo(false, 'name');
+    $blogname = get_bloginfo('name');
     return $blogname;
 });
 
@@ -26,7 +26,7 @@ add_shortcode('sitetitle', function () {
  * Tagline
  */
 add_shortcode('tagline', function () {
-    $tagline = get_bloginfo(false, 'description');
+    $tagline = get_bloginfo('description');
     return $tagline;
 });
 
