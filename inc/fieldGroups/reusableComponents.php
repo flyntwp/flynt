@@ -5,28 +5,27 @@ use Flynt\SetComponents;
 
 add_action('Flynt/afterRegisterComponents', function () {
     ACFComposer::registerFieldGroup([
-        'name' => 'postComponents',
-        'title' => 'Post Components',
+        'name' => 'reusableComponents',
+        'title' => 'Reusable Components',
         'style' => 'seamless',
+        'menu_order' => 1,
         'fields' => [
             [
-                'name' => 'postComponents',
-                'label' => __('Post Components', 'flynt'),
+                'name' => 'reusableComponents',
+                'label' => 'Reusable Components',
                 'type' => 'flexible_content',
-                'button_label' => __('Add Component', 'flynt'),
-                'layouts' => [
-                    SetComponents\getPostComponents()
-                ],
-            ],
+                'button_label' => 'Add Component',
+                'layouts' => SetComponents\getReusableComponents(),
+            ]
         ],
         'location' => [
             [
                 [
                     'param' => 'post_type',
                     'operator' => '==',
-                    'value' => 'post',
+                    'value' => 'reusable-component'
                 ],
-            ],
-        ],
+            ]
+        ]
     ]);
 });
