@@ -33,7 +33,7 @@ function registerReusableComponentPostType()
         'public'                => false,
         'show_ui'               => true,
         'show_in_menu'          => true,
-        'menu_position'         => 90,
+        'menu_position'         => 5,
         'menu_icon'             => 'dashicons-controls-repeat',
         'show_in_admin_bar'     => true,
         'show_in_nav_menus'     => false,
