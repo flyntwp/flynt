@@ -19,10 +19,10 @@ function getACFLayout()
 {
     return [
         'name' => 'reusableComponents',
-        'label' => 'Reusable: Components',
+        'label' => '<i class="dashicons dashicons-controls-repeat"></i> Reusable Components',
         'sub_fields' => [
             [
-                'label' => __('Components', 'flynt'),
+                'label' => __('Select Component Set', 'flynt'),
                 'name' => 'ids',
                 'type' => 'post_object',
                 'post_type' => [
@@ -33,7 +33,7 @@ function getACFLayout()
                 'ui' => 1,
                 'required' => 1,
                 'return_format' => 'id',
-                'instructions' => 'Select reusable components. Manage <a href="/wp/wp-admin/edit.php?post_type=reusable-component">reusable components</a>.'
+                'instructions' => 'Add or edit <a href="/wp/wp-admin/edit.php?post_type=reusable-component">reusable components</a>.'
             ],
         ]
     ];
