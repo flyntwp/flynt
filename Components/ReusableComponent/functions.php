@@ -15,7 +15,7 @@ function getACFLayout()
 {
     return [
         'name' => 'ReusableComponent',
-        'label' => '<i class="dashicons dashicons-controls-repeat"></i> Reusable Component',
+        'label' => '<i class="dashicons dashicons-controls-repeat"></i> Reusable',
         'sub_fields' => [
             [
                 'label' => __('Select Component Set', 'flynt'),
