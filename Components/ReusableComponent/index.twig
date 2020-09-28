@@ -1,0 +1,5 @@
+{% if post %}
+  {% for component in post.meta('reusableComponents') %}
+    {{ renderComponent(component) }}
+  {% endfor %}
+{% endif %}

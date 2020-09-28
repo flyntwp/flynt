@@ -1,16 +1,12 @@
 <?php
 
-namespace Flynt\Components\ReusableComponents;
+namespace Flynt\Components\ReusableComponent;
 
 use Timber\Timber;
 
-add_filter('Flynt/addComponentData?name=ReusableComponents', function ($data) {
-    if (!empty($data['ids'])) {
-        $data['posts'] = Timber::get_posts([
-            'post_type' => 'reusable-component',
-            'post__in' => $data['ids'],
-            'orderby' => 'post__in',
-        ]);
+add_filter('Flynt/addComponentData?name=ReusableComponent', function ($data) {
+    if (!empty($data['id'])) {
+        $data['post'] = Timber::get_post($data['id']);
     }
     return $data;
 });
@@ -18,18 +14,18 @@ add_filter('Flynt/addComponentData?name=ReusableComponents', function ($data) {
 function getACFLayout()
 {
     return [
-        'name' => 'reusableComponents',
-        'label' => '<i class="dashicons dashicons-controls-repeat"></i> Reusable Components',
+        'name' => 'ReusableComponent',
+        'label' => '<i class="dashicons dashicons-controls-repeat"></i> Reusable Component',
         'sub_fields' => [
             [
                 'label' => __('Select Component Set', 'flynt'),
-                'name' => 'ids',
+                'name' => 'id',
                 'type' => 'post_object',
                 'post_type' => [
                     'reusable-component'
                 ],
                 'allow_null' => 0,
-                'multiple' => 1,
+                'multiple' => 0,
                 'ui' => 1,
                 'required' => 1,
                 'return_format' => 'id',
