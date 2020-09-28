@@ -20,7 +20,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\BlockImage\getACFLayout(),
                     Components\BlockVideoOembed\getACFLayout(),
                     Components\BlockWysiwyg\getACFLayout(),
-                    Components\ReusableComponents\getACFLayout(),
+                    Components\ReusableComponent\getACFLayout(),
                     Components\SliderImages\getACFLayout(),
                 ],
             ],
