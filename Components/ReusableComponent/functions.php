@@ -5,9 +5,10 @@ namespace Flynt\Components\ReusableComponent;
 use Timber\Timber;
 
 add_filter('Flynt/addComponentData?name=ReusableComponent', function ($data) {
-    if (!empty($data['id'])) {
-        $data['post'] = Timber::get_post($data['id']);
+    if (!empty($data['reusableId'])) {
+        $data['post'] = Timber::get_post($data['reusableId']);
     }
+
     return $data;
 });
 
@@ -19,7 +20,7 @@ function getACFLayout()
         'sub_fields' => [
             [
                 'label' => __('Select Component Set', 'flynt'),
-                'name' => 'id',
+                'name' => 'reusableId',
                 'type' => 'post_object',
                 'post_type' => [
                     'reusable-component'
@@ -31,6 +32,17 @@ function getACFLayout()
                 'return_format' => 'id',
                 'instructions' => 'Add or edit <a href="/wp/wp-admin/edit.php?post_type=reusable-component">reusable components</a>.'
             ],
-        ]
+        ],
     ];
 }
+
+add_filter('acf/prepare_field/name=reusableId', function ($field) {
+    // Update instructions with selected post link
+    if ($field['value']) {
+        $postTitle = get_the_title($field['value']);
+        $instructions = $field['instructions'];
+        $instructions = 'Edit <a class="reusable-postLink" href="/wp/wp-admin/post.php?post=' . $field['value'] . '&action=edit&classic-editor" target="_blank" rel="noopener noreferrer">' . $postTitle . '</a>.';
+        $field['instructions'] = $instructions;
+    }
+    return $field;
+});
