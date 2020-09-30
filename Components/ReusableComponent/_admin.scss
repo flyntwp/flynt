@@ -1,0 +1,11 @@
+/* style dashicon on flexible component dropdown */
+.acf-fc-popup a {
+  &[data-layout='ReusableComponent'] {
+    align-items: center;
+    display: flex;
+
+    i {
+      margin-left: 5px;
+    }
+  }
+}
