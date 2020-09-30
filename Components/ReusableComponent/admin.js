@@ -16,7 +16,5 @@ acf.addAction('select2_init', function ($select, args, settings, field) {
     $postLink.text(postTitle)
     $postLink.attr('data-postId', postId)
     $postLink.attr('href', href.replace(oldPostId, postId))
-    console.log(href)
-    console.log(postId)
   })
 })
