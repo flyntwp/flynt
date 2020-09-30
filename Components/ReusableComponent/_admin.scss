@@ -1,4 +1,5 @@
 /* style dashicon on flexible component dropdown */
+// stylelint-disable selector-no-qualifying-type
 .acf-fc-popup a {
   &[data-layout='ReusableComponent'] {
     align-items: center;
