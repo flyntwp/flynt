@@ -124,7 +124,9 @@
       "postbump": "gulp replaceVersion && composer config --unset version && composer update nothing && git diff && git add . && composer validate --strict"
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "jquery.easing": "^1.4.1"
+  },
   "browserslist": [
     "> 1%",
     "last 2 versions",

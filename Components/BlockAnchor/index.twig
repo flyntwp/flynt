@@ -1,1 +1,2 @@
-<div class="flyntComponent" is="flynt-block-anchor"></div>
+{% set anchorId = anchor|lower|replace({' ': '-'}) %}
+<div class="flyntComponent" is="flynt-block-anchor" {{ anchorId ? 'id="' ~ anchorId ~ '"' }}></div>
