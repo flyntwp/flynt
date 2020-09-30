@@ -7,14 +7,16 @@ acf.addAction('select2_init', function ($select, args, settings, field) {
   $select.on('change', { $fieldEl: $fieldEl }, function () {
     const postId = $(this).val()
     const postTitle = $(this).find('option:selected').text()
-    const postLink = `/wp/wp-admin/post.php?post=${postId}&action=edit&classic-editor`
     const $postLink = $fieldEl.find('.reusable-postLink')
+    const oldPostId = $postLink.attr('data-postId')
+    const $hiddenEl = $fieldEl.find('[hidden]')
+    const href = $postLink.attr('href')
 
-    if ($postLink.length > 0) {
-      $postLink.text(postTitle)
-      $postLink.attr('href', postLink)
-    } else {
-      $fieldEl.find('.description').html(`Edit <a class="reusable-postLink" href="${postLink}" target="_blank" rel="noopener noreferrer">${postTitle}</a>.`)
-    }
+    $hiddenEl.removeAttr('hidden')
+    $postLink.text(postTitle)
+    $postLink.attr('data-postId', postId)
+    $postLink.attr('href', href.replace(oldPostId, postId))
+    console.log(href)
+    console.log(postId)
   })
 })

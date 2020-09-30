@@ -30,19 +30,27 @@ function getACFLayout()
                 'ui' => 1,
                 'required' => 1,
                 'return_format' => 'id',
-                'instructions' => 'Add or edit <a href="/wp/wp-admin/edit.php?post_type=reusable-component">reusable components</a>.'
             ],
         ],
     ];
 }
 
 add_filter('acf/prepare_field/name=reusableId', function ($field) {
-    // Update instructions with selected post link
+    // Set initial instructions and update with selected post link
+    $reusableAdminLink = admin_url('edit.php?post_type=reusable-component');
+    $postEditLink = get_edit_post_link($field['value']);
+    $postTitle = get_the_title($field['value']);
+    $postId = $field['value'] ? $field['value'] : get_the_ID();
+
+    $instructions = '<br>' . sprintf(_x('Add or edit %sreusable components%s.', '%s: start and end of <a> tag', 'flynt'), "<a href=\"${reusableAdminLink}\" target=\"_blank\" rel=\"noopener noreferrer\">", "</a>");
+    $editLink = sprintf(_x('Edit %s.', '%s: Link and title of selected reusable-post', 'flynt'), "<a class=\"reusable-postLink\" data-postId=\"${postId}\" href=\"${postEditLink}\" target=\"_blank\" rel=\"noopener noreferrer\">${postTitle}</a>");
+
     if ($field['value']) {
-        $postTitle = get_the_title($field['value']);
-        $instructions = $field['instructions'];
-        $instructions = 'Edit <a class="reusable-postLink" href="/wp/wp-admin/post.php?post=' . $field['value'] . '&action=edit&classic-editor" target="_blank" rel="noopener noreferrer">' . $postTitle . '</a>.';
-        $field['instructions'] = $instructions;
+        $instructions .= $editLink;
+    } else {
+        $instructions .= "<span hidden>${editLink}</span>";
     }
+
+    $field['instructions'] = $instructions;
     return $field;
-});
+}, 1);
