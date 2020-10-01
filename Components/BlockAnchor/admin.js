@@ -27,7 +27,7 @@
       const $anchorLinkInput = $anchorLink.find('input[type="text"]')
       const href = $anchorLinkInput.data('href')
       const link = `${href}#${val}`
-      $anchorLinkInput.val(link)
+      $anchorLinkInput.val(link.toLowerCase())
     }
   }
 

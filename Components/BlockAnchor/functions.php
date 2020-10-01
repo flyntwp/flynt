@@ -26,7 +26,7 @@ function getACFLayout()
                     'name' => 'anchor',
                     'type' => 'text',
                     'required' => 1,
-                    'instructions' => 'Use latin characters and add a unique name to create an anchor link.'
+                    'instructions' => 'Add a unique name to create an anchor link. Use [A-Z a-z] characters.'
                 ],
                 [
                     'label' => 'Your unique anchor link: (select & copy)',
@@ -40,6 +40,21 @@ function getACFLayout()
         ]
     ];
 }
+
+$fieldValidationMessage = 'Only [A-Z a-z] characters are allowed';
+
+add_filter('acf/validate_value/name=anchor', function ($valid, $value, $field, $input_name) use ($fieldValidationMessage) {
+    // Bail early if value is already invalid.
+    if ($valid !== true) {
+        return $valid;
+    }
+
+    if (preg_match('/[^a-z]/i', $value)) {
+        return __($fieldValidationMessage);
+    }
+
+    return $valid;
+}, 10, 4);
 
 add_filter('acf/load_field/name=anchorLinkCopy', function ($field) {
     global $post;
