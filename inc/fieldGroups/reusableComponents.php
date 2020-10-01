@@ -33,7 +33,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                 [
                     'param' => 'post_type',
                     'operator' => '==',
-                    'value' => 'reusable-component'
+                    'value' => 'reusable-components'
                 ],
             ]
         ]

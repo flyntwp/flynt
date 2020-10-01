@@ -13,7 +13,7 @@ function getACFLayout()
                 'name' => 'reusablePost',
                 'type' => 'post_object',
                 'post_type' => [
-                    'reusable-component'
+                    'reusable-components'
                 ],
                 'allow_null' => 0,
                 'multiple' => 0,
