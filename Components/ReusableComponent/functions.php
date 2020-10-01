@@ -2,16 +2,6 @@
 
 namespace Flynt\Components\ReusableComponent;
 
-use Timber\Timber;
-
-add_filter('Flynt/addComponentData?name=ReusableComponent', function ($data) {
-    if (!empty($data['reusableId'])) {
-        $data['post'] = Timber::get_post($data['reusableId']);
-    }
-
-    return $data;
-});
-
 function getACFLayout()
 {
     return [
@@ -20,7 +10,7 @@ function getACFLayout()
         'sub_fields' => [
             [
                 'label' => __('Select Reusable Components', 'flynt'),
-                'name' => 'reusableId',
+                'name' => 'reusablePost',
                 'type' => 'post_object',
                 'post_type' => [
                     'reusable-component'
@@ -29,13 +19,13 @@ function getACFLayout()
                 'multiple' => 0,
                 'ui' => 1,
                 'required' => 1,
-                'return_format' => 'id',
+                'return_format' => 'object',
             ],
         ],
     ];
 }
 
-add_filter('acf/prepare_field/name=reusableId', function ($field) {
+add_filter('acf/prepare_field/name=reusablePost', function ($field) {
     // Set initial instructions and update with selected post link
     $reusableAdminLink = admin_url('edit.php?post_type=reusable-component');
     $postEditLink = get_edit_post_link($field['value']);
