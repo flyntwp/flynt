@@ -1,0 +1,37 @@
+.acf-field {
+  .flyntAnchorLinkCopy {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    // stylelint-disable selector-no-qualifying-type
+    input[type='text'] {
+      color: inherit;
+      user-select: all;
+      width: 90%;
+    }
+
+    &-button {
+      align-items: center;
+      display: flex;
+      width: 10%;
+    }
+
+    [data-copy-anchor-link] {
+      align-items: center;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      display: flex;
+      height: 30px;
+      margin-left: 10px;
+      padding: 0;
+      width: 20px;
+
+      svg {
+        width: 100%;
+      }
+    }
+  }
+}

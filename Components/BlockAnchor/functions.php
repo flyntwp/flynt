@@ -2,10 +2,15 @@
 
 namespace Flynt\Components\BlockAnchor;
 
+use Flynt\Utils\Asset;
+use Timber\Timber;
+use Timber\Post;
+
 add_filter('Flynt/addComponentData?name=BlockAnchor', function ($data) {
     if (isset($data['anchor'])) {
         $data['anchor'] = sanitize_title($data['anchor']);
     }
+
     return $data;
 });
 
@@ -25,34 +30,47 @@ function getACFLayout()
                 ],
                 [
                     'label' => 'Your unique anchor link: (select & copy)',
-                    'name' => 'anchorLink',
-                    'type' => 'text',
-                    'readonly' => 1,
-                    'wrapper' => [
-                        'width' => '80',
-                    ],
+                    'name' => 'anchorLinkCopy',
+                    'type' => 'message',
+                    'message' => 'Copy',
+                    'new_lines' => '',
+                    'esc_html' => 0,
                 ],
-                // [
-                //     'label' => 'Your unique anchor link: (select & copy)',
-                //     'name' => 'anchorLinkMessage',
-                //     'type' => 'message',
-                //     'message' => '<button class="dashicons dashicons-thumbs-up" data-copy></button>',
-                //     'new_lines' => '',
-                //     'esc_html' => 0
-                // ],
             ],
         ]
     ];
 }
 
-add_filter('acf/prepare_field/name=anchorLink', function($field) {
-    $anchor = get_field('anchor', get_the_ID());
-    $url = get_page_link(get_the_ID());
-    var_dump($anchor);
-    // var_dump($url);
-    // var_dump($field);
-    $field['value'] = $url . '#';
-    // $field['readonly'] = 1;
+add_filter('acf/load_field/name=anchorLinkCopy', function ($field) {
+    global $post;
+    $post = new \Timber\Post($post);
+    $message = $field['message'];
+    $context = Timber::get_context();
+    $context['post'] = new Post($post);
 
+    if (isset($_GET['contentOnly'])) {
+        $context['contentOnly'] = true;
+    }
+
+    $context['href'] = $post->link;
+
+    $templateDir = get_template_directory();
+    $componentPath = $templateDir . '/Components/BlockAnchor';
+
+    $copyIcon = [
+        'copyIcon' => Asset::getContents('../assets/icons/copy.svg')
+    ];
+
+    $content = array_merge($copyIcon, $context);
+
+    $html = Timber::compile(
+        $componentPath . '/Partials/anchorLinkCopy.twig',
+        $content
+    );
+
+    // Note: overrides whats in the original field config written
+    $message = $html;
+
+    $field['message'] = $message;
     return $field;
 });
