@@ -50,7 +50,7 @@ add_filter('acf/validate_value/name=anchor', function ($valid, $value, $field, $
     }
 
     if (preg_match('/[^a-z]/i', $value)) {
-        return __($fieldValidationMessage);
+        return __($fieldValidationMessage, 'flynt');
     }
 
     return $valid;
