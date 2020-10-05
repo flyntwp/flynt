@@ -4,20 +4,20 @@
 * Top level styles every element should inherit.
 */
 
-@include font-face('Inter', 'Inter-Regular', '400', 'normal');
-@include font-face('Inter', 'Inter-Italic', '400', 'italic');
-@include font-face('Inter', 'Inter-Bold', '700', 'normal');
-@include font-face('PT Serif', 'PT-Serif-Bold', '700', 'normal');
+@include font-face('Encode Sans Semi Condensed', 'EncodeSansSemiCondensed-ExtraBold', '800', 'normal');
+@include font-face('Roboto', 'Roboto-Bold', '700', 'normal');
+@include font-face('Roboto', 'Roboto-Medium', '500', 'normal');
+@include font-face('Roboto', 'Roboto-Regular', '400', 'normal');
 
 html {
   background-color: var(--color-background);
   box-sizing: border-box;
   color: var(--color-text);
-  font-family: 'Inter', Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   height: 100%;
-  line-height: 1.55;
+  line-height: 1.66;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -47,8 +47,8 @@ body {
 
 #{$heading-selectors} {
   color: var(--color-headline);
-  font-family: 'PT Serif', serif;
-  font-weight: 700;
+  font-family: 'Encode Sans Semi Condensed', Helvetica, Arial, sans-serif;
+  font-weight: 800;
   line-height: 1.45;
   margin-bottom: 1.5rem;
   margin-top: 0;
@@ -106,8 +106,9 @@ h4,
 
 h5,
 .h5 {
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 500;
   margin-bottom: 1.25rem;
   padding-top: 0.5rem;
 
@@ -118,7 +119,9 @@ h5,
 
 h6,
 .h6 {
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
   font-size: 0.875rem;
+  font-weight: 500;
   margin-bottom: 1.25rem;
   padding-top: 0.5rem;
 
@@ -239,7 +242,7 @@ ol {
 /* Tables */
 
 table {
-  border: 1px solid var(--color-text);
+  border: 1px solid var(--color-border);
   border-spacing: 0;
   max-width: 100%;
   width: 100%;
@@ -247,7 +250,7 @@ table {
 
 .boxRadius > thead {
   th {
-    border: 1px solid  var(--color-text); // fix IE border artifacts
+    border: 1px solid  var(--color-border); // fix IE border artifacts
 
     &:first-child {
       border-top-left-radius: 6px;
@@ -268,7 +271,7 @@ th {
 
 thead {
   th {
-    background-color: var(--color-text);
+    background-color: var(--color-border);
     color: var(--color-background);
     padding: 1.25rem 1.5rem;
     vertical-align: middle;
@@ -314,8 +317,8 @@ button {
 .button {
   appearance: none;
   background-color: var(--color-accent);
-  border: 1px solid var(--color-accent);
-  border-radius: 4px;
+  border: 2px solid var(--color-accent);
+  border-radius: 30px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
   color: var(--color-background);
   cursor: pointer;
@@ -323,13 +326,17 @@ button {
   font-family: inherit;
   font-size: 1rem;
   font-weight: 700;
-  line-height: inherit;
+  line-height: 1.6;
   outline: none;
-  padding: 0.875rem 1.5rem;
+  padding: 0.75rem 2rem;
   text-align: center;
   text-decoration: none;
   transition: 0.2s ease;
   user-select: none;
+
+  @media (min-width: $breakpoint-mobile-horizontal) {
+    font-size: 1.125rem;
+  }
 
   &:disabled,
   &--disabled {
@@ -518,12 +525,12 @@ label {
 #{$input-selectors} {
   appearance: none;
   background-color: transparent;
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
   color: var(--color-headline);
   font-family: inherit;
   font-size: 1rem;
-  min-height: 48px;
+  min-height: 56px;
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
@@ -553,7 +560,7 @@ input,
 select,
 textarea {
   margin: 0 0 1rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.25rem;
 }
 
 textarea {
@@ -628,7 +635,7 @@ select {
 
     &::before {
       background: var(--transparent);
-      border: 1px solid var(--color-border);
+      border: 2px solid var(--color-border);
       border-radius: 4px;
       content: '';
       display: block;
@@ -637,7 +644,7 @@ select {
       margin: 0;
       padding: 0;
       position: absolute;
-      top: -1px;
+      top: -2px;
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
       width: 24px;
     }
@@ -651,7 +658,7 @@ select {
       left: 8px;
       opacity: 0;
       position: absolute;
-      top: 2px;
+      top: 1px;
       transform: rotate(45deg);
       transition: opacity 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
       visibility: hidden;
@@ -693,11 +700,11 @@ select {
       background-color: var(--color-accent);
       border: 0;
       border-radius: 50%;
-      height: 16px;
-      left: 4px;
+      height: 14px;
+      left: 5px;
       top: 3px;
       transform: none;
-      width: 16px;
+      width: 14px;
     }
   }
 }

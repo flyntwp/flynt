@@ -9,7 +9,7 @@ use Flynt\Utils\Asset;
 $colorsDefault = [
     'accent-default' => [
         'label'       => 'Accent',
-        'default'     => '#4045A1',
+        'default'     => '#2b44df',
         'description' => ''
     ],
     'headline-default' => [
@@ -24,7 +24,7 @@ $colorsDefault = [
     ],
     'border-default' => [
         'label'       => 'Border',
-        'default'     => '#8E8E8E',
+        'default'     => '#636E98',
         'description' => ''
     ],
     'background-default' => [
@@ -37,7 +37,7 @@ $colorsDefault = [
 $colorsLight = [
     'accent-light' => [
         'label'       => 'Accent',
-        'default'     => '#4045A1',
+        'default'     => '#2b44df',
         'description' => ''
     ],
     'headline-light' => [
@@ -52,12 +52,12 @@ $colorsLight = [
     ],
     'border-light' => [
         'label'       => 'Border',
-        'default'     => '#8E8E8E',
+        'default'     => '#636E98',
         'description' => ''
     ],
     'background-light' => [
         'label'       => 'Background',
-        'default'     => '#fafafa',
+        'default'     => '#F8F9FD',
         'description' => ''
     ],
 ];
@@ -85,7 +85,7 @@ $colorsDark = [
     ],
     'background-dark' => [
         'label'       => 'Background',
-        'default'     => '#2B2C46',
+        'default'     => '#10205A',
         'description' => '',
     ],
 ];
@@ -113,7 +113,7 @@ $colorsHero = [
     ],
     'background-hero' => [
         'label'       => 'Background',
-        'default'     => '#28615E',
+        'default'     => '#2B44DF',
         'description' => '',
     ],
 ];

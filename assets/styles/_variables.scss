@@ -8,11 +8,11 @@ $container-max-width: 1440px;
 $container-padding-desktop: 60px;
 $container-padding-tablet: 40px;
 $container-padding-mobile: 15px;
-$content-max-width: 760px;
+$content-max-width: 720px;
 $content-max-width-large: 860px;
-$component-spacing-desktop: 120px;
-$component-spacing-tablet: 80px;
-$component-spacing-mobile: 40px;
+$component-spacing-desktop: 128px;
+$component-spacing-tablet: 96px;
+$component-spacing-mobile: 48px;
 $gutter-width: 24px;
 
 // Theming variables
@@ -21,26 +21,26 @@ $gutter-width: 24px;
   --color-background: var(--theme-color-background-default, #fff);
   --color-headline: var(--theme-color-headline-default, #212121);
   --color-text: var(--theme-color-text-default, #383838);
-  --color-border: var(--theme-color-border-default, #8e8e8e);
-  --color-accent: var(--theme-color-accent-default, #4045a1);
-  --color-accent-alpha: var(--theme-color-accent-alpha-default, #{rgba(#4045a1, 0.4)});
-  --color-accent-hover: var(--theme-color-accent-hover-default, #{darken(#4045a1, 5)});
+  --color-border: var(--theme-color-border-default, #636e98);
+  --color-accent: var(--theme-color-accent-default, #2b44df);
+  --color-accent-alpha: var(--theme-color-accent-alpha-default, #{rgba(#2b44df, 0.4)});
+  --color-accent-hover: var(--theme-color-accent-hover-default, #{darken(#2b44df, 5)});
   --color-transparent: transparent; // needs for ie11-custom-propertiess polyfill to work properly
-  --color-error: #c0370e;
+  --color-error: #e80242;
 }
 
 .themeLight {
-  --color-background: var(--theme-color-background-light, #fafafa);
+  --color-background: var(--theme-color-background-light, #f8f9fd);
   --color-headline: var(--theme-color-headline-light, #212121);
   --color-text: var(--theme-color-text-light, #383838);
-  --color-border: var(--theme-color-border-light, #8e8e8e);
-  --color-accent: var(--theme-color-accent-light, #4045a1);
-  --color-accent-alpha: var(--theme-color-accent-alpha-light, #{rgba(#4045a1, 0.4)});
-  --color-accent-hover: var(--theme-color-accent-hover-light, #{darken(#4045a1, 5)});
+  --color-border: var(--theme-color-border-light, #636e98);
+  --color-accent: var(--theme-color-accent-light, #2b44df);
+  --color-accent-alpha: var(--theme-color-accent-alpha-light, #{rgba(#2b44df, 0.4)});
+  --color-accent-hover: var(--theme-color-accent-hover-light, #{darken(#2b44df, 5)});
 }
 
 .themeDark {
-  --color-background: var(--theme-color-background-dark, #2b2c46);
+  --color-background: var(--theme-color-background-dark, #10205a);
   --color-headline: var(--theme-color-headline-dark, #fbfbfb);
   --color-text: var(--theme-color-text-dark, #e9e9ec);
   --color-border: var(--theme-color-border-dark, #7e7e8e);
@@ -50,7 +50,7 @@ $gutter-width: 24px;
 }
 
 .themeHero {
-  --color-background: var(--theme-color-background-hero, #28615e);
+  --color-background: var(--theme-color-background-hero, #2b44df);
   --color-headline: var(--theme-color-headline-hero, #fbfcfc);
   --color-text: var(--theme-color-text-hero, #d4dfe0);
   --color-border: var(--theme-color-border-hero, #9cb6b5);
