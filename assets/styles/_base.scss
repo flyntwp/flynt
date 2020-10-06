@@ -86,6 +86,7 @@ h3,
 .h3 {
   font-size: 1.375rem;
   line-height: 1.18;
+  letter-spacing: 1px;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
     font-size: 2.25rem;
@@ -96,6 +97,7 @@ h3,
 h4,
 .h4 {
   font-size: 1.125rem;
+  letter-spacing: 1px;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
     font-size: 1.75rem;
@@ -152,11 +154,11 @@ figure {
 }
 
 hr {
-  background-color: var(--color-border);
+  background-color: var(--color-accent);
   border: 0;
   display: block;
-  height: 1px;
-  margin: 2.375rem 0;
+  height: 2px;
+  margin: 3rem 0;
 }
 
 img {
@@ -167,7 +169,8 @@ img {
 
 figcaption {
   font-size: 0.875rem;
-  margin-top: 0.625rem;
+  line-height: 1.4;
+  margin-top: 1rem;
 }
 
 code {
@@ -179,11 +182,34 @@ code {
 blockquote,
 .blockquote {
   color: var(--color-accent);
-  font-size: 1.75rem;
+  font-size: 1.125rem;
   font-weight: 700;
   line-height: 1.35;
-  margin: 3rem auto;
-  max-width: 550px;
+  margin: 3rem 0;
+  max-width: 600px;
+  padding-left: 2rem;
+  position: relative;
+
+  @media (min-width: $breakpoint-mobile-horizontal) {
+    font-size: 1.75rem;
+    padding-left: 3.75rem;
+  }
+
+  &::before {
+    content: '“';
+    font-family: 'Encode Sans Semi Condensed', Helvetica, Arial, sans-serif;
+    font-weight: 800;
+    font-size: 2.5rem;
+    line-height: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      font-size: 4rem;
+      line-height: 1;
+    }
+  }
 
   p:last-child {
     margin-bottom: 0;
@@ -511,8 +537,10 @@ legend {
 
 label {
   display: inline-block;
-  font-size: 0.875rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  line-height: 1.25;
   margin-bottom: 0.5rem;
 }
 
@@ -524,13 +552,14 @@ label {
   color: var(--color-headline);
   font-family: inherit;
   font-size: 1rem;
+  letter-spacing: 0.5px;
+  line-height: 1.25;
   min-height: 56px;
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
   &::placeholder {
-    color: var(--color-headline);
-    opacity: 0.7;
+    color: var(--color-border);
   }
 
   &:focus {
@@ -539,7 +568,7 @@ label {
   }
 
   &:disabled {
-    background-color: rgba(204, 204, 204, 0.15);
+    background-color: rgba(148, 158, 193, 0.2);
     border-color: var(--color-border);
     color: var(--color-border);
     opacity: 0.75;
@@ -624,6 +653,8 @@ select {
 
   + label {
     display: inline-block;
+    font-size: 400;
+    letter-spacing: 0.2px;
     padding-left: 2rem;
     position: relative;
 
@@ -672,11 +703,12 @@ select {
   &:checked {
     + label {
       &::before {
-        background-color: var(--transparent);
+        background-color: var(--color-accent);
         border-color: var(--color-accent);
       }
 
       &::after {
+        border-color: var(--color-background);
         opacity: 1;
         visibility: visible;
       }
@@ -699,6 +731,14 @@ select {
       top: 3px;
       transform: none;
       width: 14px;
+    }
+  }
+
+  &:checked {
+    + label {
+      &::before {
+        background-color: var(--color-background);
+      }
     }
   }
 }
