@@ -132,7 +132,7 @@ h6,
 a {
   color: var(--color-accent);
   font-weight: 500;
-  text-decoration: none;
+  text-decoration: underline;
   transition: color 0.2s ease;
 
   &:hover,
@@ -144,6 +144,20 @@ a {
     color: var(--color-accent-hover);
     outline-color: var(--color-accent-alpha);
     transition: color 0.2s ease;
+  }
+}
+
+.underlineLink {
+  background-image: linear-gradient(to bottom,var(--color-accent-alpha) 0%,var(--color-accent-alpha) 100%);
+  background-position: 0 0.85rem;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  text-decoration: none;
+  transition: background-position 0.2s ease;
+
+  &:hover,
+  &:focus {
+    background-position: 0 0;
   }
 }
 
