@@ -201,13 +201,12 @@ blockquote,
     font-size: 2.5rem;
     font-weight: 800;
     left: 0;
-    line-height: 1;
+    line-height: 1.1;
     position: absolute;
     top: 0;
 
     @media (min-width: $breakpoint-mobile-horizontal) {
       font-size: 4rem;
-      line-height: 1;
     }
   }
 
