@@ -253,11 +253,11 @@ table {
     border: 1px solid  var(--color-border); // fix IE border artifacts
 
     &:first-child {
-      border-top-left-radius: 6px;
+      border-top-left-radius: 14px;
     }
 
     &:last-child {
-      border-top-right-radius: 6px;
+      border-top-right-radius: 14px;
     }
   }
 }
@@ -398,8 +398,8 @@ button {
   }
 
   &--small {
-    font-size: 0.813rem;
-    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    padding: 0.5rem 1.25rem;
   }
 
   &--link {
@@ -856,8 +856,12 @@ select {
 }
 
 .boxRadius {
-  border-radius: 8px;
+  border-radius: 16px;
   overflow: hidden;
+}
+
+.boxShadow {
+  box-shadow: 0 10px 35px -10px rgba(0, 0, 0, 0.1);
 }
 
 /* Custom styling for single post layouts */

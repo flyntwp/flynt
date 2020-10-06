@@ -80,7 +80,7 @@ $colorsDark = [
     ],
     'border-dark' => [
         'label'       => 'Border',
-        'default'     => '#7E7E8E',
+        'default'     => '#FFFFFF',
         'description' => '',
     ],
     'background-dark' => [
@@ -103,12 +103,12 @@ $colorsHero = [
     ],
     'text-hero' => [
         'label'       => 'Text',
-        'default'     => '#D4DFE0',
+        'default'     => '#E9E9EC',
         'description' => '',
     ],
     'border-hero' => [
         'label'       => 'Border',
-        'default'     => '#9CB6B5',
+        'default'     => '#FFFFFF',
         'description' => '',
     ],
     'background-hero' => [
