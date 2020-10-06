@@ -224,12 +224,18 @@ blockquote,
 
 ul,
 ol {
+  @include reset-content-margins;
   margin: 0 0 1.5rem;
   padding-left: 1.5rem;
 
   ul,
   ol {
     margin-bottom: 0;
+  }
+
+  li {
+    line-height: 2;
+    margin-bottom: 0.5rem;
   }
 }
 
