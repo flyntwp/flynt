@@ -1,16 +1,22 @@
 [is='flynt-block-post-footer'] {
+  margin: 64px 0;
+
   .tags {
     @include reset-list;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 0 -#{$gutter-width};
 
     &-item {
       display: inline-block;
-      margin-top: 5px;
+      margin-left: $gutter-width;
     }
   }
 
   .author {
+    align-items: center;
     display: flex;
-    margin: 3rem 0;
+    margin: 2rem 0;
 
     &-avatarLink {
       flex-shrink: 0;
@@ -18,10 +24,15 @@
 
     &-avatarImage {
       border-radius: 50%;
-      width: 80px;
+      width: 66px;
+
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        width: 96px;
+      }
     }
 
     &-info {
+      @include reset-content-margins;
       display: flex;
       flex: 1;
       flex-direction: column;
@@ -29,13 +40,12 @@
       padding-left: 1rem;
 
       @media (min-width: $breakpoint-mobile-horizontal) {
-        padding-left: 2rem;
+        padding-left: $gutter-width;
       }
     }
 
     &-description {
       font-size: 0.875rem;
-      margin: 0.5rem 0 0;
     }
   }
 }

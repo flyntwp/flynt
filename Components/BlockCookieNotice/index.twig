@@ -1,5 +1,5 @@
 {% if cookieNoticeIsEnabled %}
-<div is="flynt-block-cookie-notice" class="flyntComponent boxRadius boxBorder {{ layout }} {{ theme ?: 'themeReset' }}" role="dialog">
+<div is="flynt-block-cookie-notice" class="flyntComponent boxRadius {{ layout }} {{ theme ?: 'themeReset' }}" role="dialog">
   <div class="container centerMaxWidthContainer">
     <div class="content">
       {{ contentHtml|e('wp_kses_post') }}

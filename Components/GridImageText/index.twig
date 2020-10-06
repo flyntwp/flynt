@@ -10,7 +10,7 @@
         {% if item.image or item.contentHtml %}
           <li class="grid-item">
             <div class="content {{ options.card == 'layoutCard' ? 'boxRadius themeReset' }}
-            {{ options.card == 'layoutCard' and options.theme != 'themeDark' and options.theme != 'themeHero' ? 'boxBorder' }}">
+            {{ options.card == 'layoutCard' and options.theme != 'themeDark' }}">
               {% if item.image %}
                 <img class="content-image lazyload"
                   src="{{ item.image.src|resizeDynamic(424, 283) }}"

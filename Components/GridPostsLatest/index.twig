@@ -9,7 +9,7 @@
       <ul class="grid grid--columns{{ options.columns }}">
         {% for item in items %}
           <li class="grid-item">
-            <div class="content {{ options.theme != 'themeDark' and options.theme != 'themeHero' ? 'boxBorder' }} boxRadius themeReset">
+            <div class="content {{ options.theme != 'themeDark' }} boxRadius themeReset">
               <a href="{{ item.link }}" class="content-link" title="{{ item.title }}">
                 <img class="content-image lazyload"
                   src="{{ item.thumbnail.src|resizeDynamic(424, 283) }}"

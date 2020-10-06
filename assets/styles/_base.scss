@@ -131,7 +131,8 @@ h6,
 
 a {
   color: var(--color-accent);
-  text-decoration: underline;
+  font-weight: 500;
+  text-decoration: none;
   transition: color 0.2s ease;
 
   &:hover,
@@ -873,25 +874,6 @@ select {
 
   @media (min-width: $breakpoint-tablet-horizontal) {
     padding: 30px;
-  }
-}
-
-.boxBorder {
-  border: 1px solid var(--color-border);
-
-  &--hover {
-    cursor: pointer;
-    transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-
-    #{$heading-selectors} {
-      transition: color 0.2s ease;
-    }
-
-    &:hover {
-      --color-headline: var(--color-accent);
-      border-color: var(--color-accent);
-      box-shadow: 0 16px 24px rgba(0, 0, 0, 0.15);
-    }
   }
 }
 
