@@ -467,31 +467,14 @@ button {
       }
     }
 
-    &:focus {
-      &::before {
-        box-shadow: 0 1px 0 var(--color-accent-alpha), 0 2px 0 var(--color-accent-alpha), 0 3px 0 var(--color-accent-alpha);
-      }
-    }
-
-    &::before {
-      background-color: currentColor;
-      bottom: 0;
-      content: '';
-      height: 1px;
-      left: 0;
-      position: absolute;
-      transition: box-shadow 0.2s ease;
-      width: 100%;
-    }
-
     &::after {
       border-right: 2px solid currentColor;
       border-top: 2px solid currentColor;
       content: '';
       display: inline-block;
       height: 7px;
-      margin-bottom: 1px;
-      margin-left: 7px;
+      margin-bottom: 2px;
+      margin-left: 5px;
       margin-right: 2px;
       transform: rotate(45deg);
       vertical-align: baseline;
