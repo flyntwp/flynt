@@ -572,7 +572,7 @@ label {
   }
 
   &:disabled {
-    background-color: rgba(148, 158, 193, 0.2);
+    background-color: rgba(144, 144, 144, 0.1);
     border-color: var(--color-border);
     color: var(--color-border);
     opacity: 0.75;
