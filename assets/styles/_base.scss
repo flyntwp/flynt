@@ -406,13 +406,13 @@ button {
   }
 
   &--ghost {
-    background-color: var(--transparent);
+    background-color: var(--color-transparent);
     border-color: var(--color-accent);
     box-shadow: none;
     color: var(--color-accent);
 
     &:focus {
-      background-color: var(--transparent);
+      background-color: var(--color-transparent);
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 0 0 3px var(--color-accent-alpha);
       color: var(--color-accent);
     }
@@ -432,7 +432,7 @@ button {
 
     &:disabled,
     &--disabled {
-      background-color: var(--transparent);
+      background-color: var(--color-transparent);
       border-color: var(--color-border);
       color: var(--color-border);
     }
@@ -444,18 +444,19 @@ button {
   }
 
   &--link {
-    background-color: var(--transparent);
-    border: 0 solid var(--transparent);
+    background-color: var(--color-transparent);
+    border: 0 solid var(--color-transparent);
     box-shadow: none;
     color: var(--color-accent);
     padding: 0;
     position: relative;
+    text-decoration: none;
     text-transform: none;
     transition: color 0.2s ease;
 
     &:hover,
     &:focus {
-      background-color: var(--transparent);
+      background-color: var(--color-transparent);
       box-shadow: none;
       color: var(--color-accent-hover);
     }
@@ -680,7 +681,7 @@ select {
     position: relative;
 
     &::before {
-      background: var(--transparent);
+      background: var(--color-transparent);
       border: 2px solid var(--color-border);
       border-radius: 4px;
       content: '';
