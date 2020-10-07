@@ -11,33 +11,4 @@
       flex-direction: row;
     }
   }
-
-  &-col {
-    margin-bottom: 1rem;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-
-    @media (min-width: $breakpoint-mobile-horizontal) {
-      flex-grow: 1;
-      margin: 0 16px 0 0;
-
-      &:last-child {
-        flex: 0 1 auto;
-        margin-right: 0;
-        min-width: 150px;
-      }
-    }
-
-    .button {
-      width: 100%;
-    }
-  }
-
-  &-input {
-    margin: 0;
-    min-height: 54px;
-    width: 100%;
-  }
 }
