@@ -223,6 +223,21 @@
               <label for="radio-3">Radio Label #3</label>
             </div>
           </fieldset>
+          <fieldset>
+            <legend>One Input Forms</legend>
+            <p>Uses screen reader visible labels.</p>
+            <p>Wrap the select element in a container with the class <code>.oneInputForm</code> to style single forms.</p>
+            <div class="oneInputForm">
+              <label class="visuallyHidden" for="searchInputSingle">Search</label>
+              <input class="oneInputForm-input" type="search" id="searchInputSingle" placeholder="Enter search term...">
+              <button class="button oneInputForm-button">Search</button>
+            </div>
+            <div class="oneInputForm">
+              <label class="visuallyHidden" for="emailInputSingle">Subscribe</label>
+              <input class="oneInputForm-input" type="email" id="emailInputSingle" placeholder="Email address">
+              <button class="button oneInputForm-button">Subscribe</button>
+            </div>
+          </fieldset>
         </form>
         <hr>
         <h2>2.0 Helpers</h2>

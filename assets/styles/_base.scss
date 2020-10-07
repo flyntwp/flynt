@@ -148,7 +148,7 @@ a {
 }
 
 .underlineLink {
-  background-image: linear-gradient(to bottom,var(--color-accent-alpha) 0%,var(--color-accent-alpha) 100%);
+  background-image: linear-gradient(to bottom, var(--color-accent-alpha) 0%, var(--color-accent-alpha) 100%);
   background-position: 0 0.85rem;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -761,6 +761,37 @@ select {
         background-color: var(--color-background);
       }
     }
+  }
+}
+
+.oneInputForm {
+  align-items: center;
+  border: 2px solid var(--color-border);
+  border-radius: 50px;
+  display: flex;
+  margin: 0 0 1.875rem;
+  min-height: 64px;
+  padding: 2px;
+  position: relative;
+  width: 100%;
+
+  &:focus-within {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-accent-alpha);
+  }
+
+  &-input {
+    border: 0;
+    margin: 0;
+    width: 100%;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  &-button {
+    flex-shrink: 0;
   }
 }
 
