@@ -14,7 +14,7 @@ jobs:
     - name: Use Node.js v12
       uses: actions/setup-node@v1
       with:
-        version: 12.x
+        node-version: 12.x
     - uses: actions/cache@v2
       with:
         path: ./node_modules
@@ -36,7 +36,7 @@ jobs:
     - name: Install composer optimized
       run: php7.3 $(which composer) install --no-dev --no-progress --no-suggest --optimize-autoloader
     - name: Create archive
-      run: zip -r flynt-${{ github.event.release.tag_name || github.sha }}.zip ./ -x './node_modules/*' './**/.git/*'
+      run: zip -r flynt-${{ github.event.release.tag_name || 'theme' }}.zip ./ -x './node_modules/*' './**/.git/*'
     - name: Create download
       if: ${{ github.event.release.upload_url }}
       uses: actions/upload-release-asset@v1
@@ -51,5 +51,5 @@ jobs:
       if: ${{ !github.event.release.upload_url }}
       uses: actions/upload-artifact@v2
       with:
-        name: flynt-${{ github.sha }}
-        path: ./flynt-${{ github.sha }}.zip
+        name: flynt-theme
+        path: ./flynt-theme.zip
