@@ -36,7 +36,7 @@ jobs:
     - name: Install composer optimized
       run: php7.3 $(which composer) install --no-dev --no-progress --no-suggest --optimize-autoloader
     - name: Create archive
-      run: zip -r flynt-${{ github.ref }}.zip ./ -x './node_modules/*' './**/.git/*'
+      run: zip -r flynt-${{ github.event.release.tag_name || github.sha }}.zip ./ -x './node_modules/*' './**/.git/*'
     - name: Create download
       if: ${{ github.event.release.upload_url }}
       uses: actions/upload-release-asset@v1
@@ -44,12 +44,12 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ github.event.release.upload_url }}
-        asset_path: ./flynt-${{ github.ref }}.zip
-        asset_name: flynt-${{ github.ref }}.zip
+        asset_path: ./flynt-${{ github.event.release.tag_name }}.zip
+        asset_name: flynt-${{ github.event.release.tag_name }}.zip
         asset_content_type: application/zip
     - name: Create download
       if: ${{ !github.event.release.upload_url }}
       uses: actions/upload-artifact@v2
       with:
-        name: flynt-${{ github.ref }}
-        path: ./flynt-${{ github.ref }}.zip
+        name: flynt-${{ github.sha }}
+        path: ./flynt-${{ github.sha }}.zip
