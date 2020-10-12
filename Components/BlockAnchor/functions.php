@@ -22,14 +22,14 @@ function getACFLayout()
         'sub_fields' => [
             [
                 [
-                    'label' => 'Enter unique name',
+                    'label' => __('Enter unique name', 'flynt'),
                     'name' => 'anchor',
                     'type' => 'text',
                     'required' => 1,
-                    'instructions' => 'Add a unique name to create an anchor link. Use [a-z] characters.'
+                    'instructions' => __('Add a unique name to create an anchor link. Copy the link and use it anywhere in the page to scroll to BlockAnchor position.<br>Allowed characters: [a-z].', 'flynt'),
                 ],
                 [
-                    'label' => 'Your unique anchor link: (select & copy)',
+                    'label' => __('Your unique anchor link: (select & copy)', 'flynt'),
                     'name' => 'anchorLinkCopy',
                     'type' => 'message',
                     'message' => 'Copy',

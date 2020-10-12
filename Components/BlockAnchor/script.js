@@ -21,6 +21,7 @@ class BlockAnchor extends window.HTMLDivElement {
 
   bindFunctions () {
     this.scrollToAnchor = this.scrollToAnchor.bind(this)
+    this.blockJump = this.blockJump.bind(this)
   }
 
   bindEvents () {
@@ -28,35 +29,19 @@ class BlockAnchor extends window.HTMLDivElement {
   }
 
   connectedCallback () {
-    this.$window.on('load', () => {
-      this.scrollToHash()
-    })
+    if (window.location.hash) {
+      this.$window.on('load', this.scrollToAnchor)
+    }
+  }
+
+  blockJump () {
+    return setTimeout(() => window.scrollTo(0, 0), 1)
   }
 
   scrollToAnchor (e) {
-    e.preventDefault()
-    const href = $(e.target).attr('href')
-
-    if (href) {
-      const hash = href.split('#')[1]
-      if (hash) {
-        this.scrollTo(hash)
-      }
-    }
-  }
-
-  scrollToHash () {
-    const hash = window.location.hash.substring(1)
-    if (hash) {
-      setTimeout(() => {
-        this.scrollTo(hash)
-      }, 500)
-    }
-  }
-
-  scrollTo (target) {
-    const $target = $(`#${target}`)
-    if ($target.length) {
+    const $target = window.location.hash ? $(window.location.hash) : $(e.target).attr('href')
+    if ($target.length > 0) {
+      this.blockJump()
       $('html, body').animate({
         scrollTop: $target.offset().top
       }, 500, 'easeOutQuad')
