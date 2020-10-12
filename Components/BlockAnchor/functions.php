@@ -26,7 +26,7 @@ function getACFLayout()
                     'name' => 'anchor',
                     'type' => 'text',
                     'required' => 1,
-                    'instructions' => 'Add a unique name to create an anchor link. Use [A-Z a-z] characters.'
+                    'instructions' => 'Add a unique name to create an anchor link. Use [a-z] characters.'
                 ],
                 [
                     'label' => 'Your unique anchor link: (select & copy)',
@@ -41,7 +41,7 @@ function getACFLayout()
     ];
 }
 
-$fieldValidationMessage = 'Only [A-Z a-z] characters are allowed';
+$fieldValidationMessage = __('Only [a-z] characters are allowed', 'flynt');
 
 add_filter('acf/validate_value/name=anchor', function ($valid, $value, $field, $input_name) use ($fieldValidationMessage) {
     // Bail early if value is already invalid.
