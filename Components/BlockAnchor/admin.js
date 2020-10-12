@@ -58,7 +58,7 @@
   const initAcfEvents = function () {
     return new acf.Model({
       events: {
-        'keyup input[type="text"]': 'onChangeText',
+        'keyup input[name*=field_pageComponents_pageComponents_blockAnchor_anchor]': 'onChangeText',
         'click [data-copy-anchor-link]': 'copyToClipboard'
       },
       onChangeText,
