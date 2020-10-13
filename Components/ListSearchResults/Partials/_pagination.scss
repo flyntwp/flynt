@@ -1,5 +1,5 @@
 .pagination {
-  margin-top: 30px;
+  margin-top: 32px;
 
   &::after {
     clear: both;
@@ -19,7 +19,7 @@
     color: var(--color-background);
     height: 18px;
     stroke-width: 2px;
-    top: 0;
+    top: -1px;
     width: 18px;
   }
 

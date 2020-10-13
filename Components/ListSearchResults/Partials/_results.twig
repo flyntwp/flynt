@@ -1,7 +1,7 @@
 {% if posts|length > 0 %}
-  <ul class="searchList boxRadius themeReset">
+  <ul class="searchList">
     {% for post in posts  %}
-      <li class="searchList-item boxPadding">
+      <li class="searchList-item boxRadius boxShadow themeReset boxPadding">
         <article class="post">
           <h2 class="h4"><a href="{{ post.link }}">{{ post.title }}</a></h2>
           <p>{{ post.preview.length(40).read_more(false) }}</p>

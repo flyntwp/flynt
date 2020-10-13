@@ -5,9 +5,9 @@ $breakpoint-desktop: 1280px;
 $breakpoint-desktop-wide: 1440px;
 
 $container-max-width: 1440px;
-$container-padding-desktop: 60px;
-$container-padding-tablet: 40px;
-$container-padding-mobile: 15px;
+$container-padding-desktop: 64px;
+$container-padding-tablet: 32px;
+$container-padding-mobile: 16px;
 $content-max-width: 720px;
 $content-max-width-large: 860px;
 $component-spacing-desktop: 128px;
@@ -19,9 +19,9 @@ $gutter-width: 24px;
 :root,
 .themeReset {
   --color-background: var(--theme-color-background-default, #fff);
-  --color-headline: var(--theme-color-headline-default, #212121);
+  --color-headline: var(--theme-color-headline-default, #252525);
   --color-text: var(--theme-color-text-default, #383838);
-  --color-border: var(--theme-color-border-default, #636e98);
+  --color-border: var(--theme-color-border-default, #8791ba);
   --color-accent: var(--theme-color-accent-default, #2b44df);
   --color-accent-alpha: var(--theme-color-accent-alpha-default, #{rgba(#2b44df, 0.4)});
   --color-accent-hover: var(--theme-color-accent-hover-default, #{darken(#2b44df, 5)});
@@ -31,9 +31,9 @@ $gutter-width: 24px;
 
 .themeLight {
   --color-background: var(--theme-color-background-light, #f8f9fd);
-  --color-headline: var(--theme-color-headline-light, #212121);
+  --color-headline: var(--theme-color-headline-light, #252525);
   --color-text: var(--theme-color-text-light, #383838);
-  --color-border: var(--theme-color-border-light, #636e98);
+  --color-border: var(--theme-color-border-light, #8791ba);
   --color-accent: var(--theme-color-accent-light, #2b44df);
   --color-accent-alpha: var(--theme-color-accent-alpha-light, #{rgba(#2b44df, 0.4)});
   --color-accent-hover: var(--theme-color-accent-hover-light, #{darken(#2b44df, 5)});
@@ -43,7 +43,7 @@ $gutter-width: 24px;
   --color-background: var(--theme-color-background-dark, #10205a);
   --color-headline: var(--theme-color-headline-dark, #fbfbfb);
   --color-text: var(--theme-color-text-dark, #e9e9ec);
-  --color-border: var(--theme-color-border-dark, #fff);
+  --color-border: var(--theme-color-border-dark, #c3c4f7);
   --color-accent: var(--theme-color-accent-dark, #fff);
   --color-accent-alpha: var(--theme-color-accent-alpha-dark, #{rgba(#fff, 0.4)});
   --color-accent-hover: var(--theme-color-accent-hover-dark, #{darken(#fff, 5)});
@@ -53,7 +53,7 @@ $gutter-width: 24px;
   --color-background: var(--theme-color-background-hero, #2b44df);
   --color-headline: var(--theme-color-headline-hero, #fbfbfb);
   --color-text: var(--theme-color-text-hero, #e9e9ec);
-  --color-border: var(--theme-color-border-hero, #fff);
+  --color-border: var(--theme-color-border-hero, #cdd5fd);
   --color-accent: var(--theme-color-accent-hero, #fff);
   --color-accent-alpha: var(--theme-color-accent-alpha-hero, #{rgba(#fff, 0.4)});
   --color-accent-hover: var(--theme-color-accent-hover-hero, #{darken(#fff, 5)});

@@ -1,10 +1,9 @@
 .searchList {
   @include reset-list;
-
-  margin-top: 50px;
+  margin-top: 4rem;
 
   &-item {
-    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 2rem;
     position: relative;
 
     &:last-child {
@@ -22,6 +21,6 @@
 }
 
 .noResults {
-  margin-top: 20px;
+  margin-top: 2rem;
   text-align: center;
 }

@@ -5,11 +5,11 @@
     @include reset-list;
     display: flex;
     flex-wrap: wrap;
-    margin: 0 0 0 -#{$gutter-width};
+    margin: 0 0 2rem;
 
     &-item {
       display: inline-block;
-      margin-left: $gutter-width;
+      margin-right: 1rem;
     }
   }
 
@@ -42,6 +42,10 @@
       @media (min-width: $breakpoint-mobile-horizontal) {
         padding-left: $gutter-width;
       }
+    }
+
+    &-name {
+      margin-bottom: 0.5rem;
     }
 
     &-description {

@@ -14,17 +14,17 @@ $colorsDefault = [
     ],
     'headline-default' => [
         'label'       => 'Headline',
-        'default'     => '#212121',
+        'default'     => '#252525',
         'description' => ''
     ],
     'text-default' => [
         'label'       => 'Text',
-        'default'     => '#383838',
+        'default'     => '#252525',
         'description' => ''
     ],
     'border-default' => [
         'label'       => 'Border',
-        'default'     => '#636E98',
+        'default'     => '#8791BA',
         'description' => ''
     ],
     'background-default' => [
@@ -42,17 +42,17 @@ $colorsLight = [
     ],
     'headline-light' => [
         'label'       => 'Headline',
-        'default'     => '#212121',
+        'default'     => '#252525',
         'description' => ''
     ],
     'text-light' => [
         'label'       => 'Text',
-        'default'     => '#383838',
+        'default'     => '#252525',
         'description' => ''
     ],
     'border-light' => [
         'label'       => 'Border',
-        'default'     => '#636E98',
+        'default'     => '#8791BA',
         'description' => ''
     ],
     'background-light' => [
@@ -80,7 +80,7 @@ $colorsDark = [
     ],
     'border-dark' => [
         'label'       => 'Border',
-        'default'     => '#FFFFFF',
+        'default'     => '#C3C4F7',
         'description' => '',
     ],
     'background-dark' => [
@@ -98,7 +98,7 @@ $colorsHero = [
     ],
     'headline-hero' => [
         'label'       => 'Headline',
-        'default'     => '#FBFCFC',
+        'default'     => '#FBFBFB',
         'description' => '',
     ],
     'text-hero' => [
@@ -108,7 +108,7 @@ $colorsHero = [
     ],
     'border-hero' => [
         'label'       => 'Border',
-        'default'     => '#FFFFFF',
+        'default'     => '#CDD5FD',
         'description' => '',
     ],
     'background-hero' => [

@@ -5,10 +5,10 @@
         {{ preContentHtml|e('wp_kses_post')}}
       </div>
     {% endif %}
-    <ul class="components">
+    <ul class="components grid">
       {% for componentBlock in componentBlocks %}
         {% if componentBlock.readme %}
-          <li class="component boxRadius">
+          <li class="component boxRadius boxShadow themeReset">
             {% if componentBlock.ctas.primary %}
               <a href="{{ componentBlock.ctas.primary }}" class="component-link" aria-hidden="true" tabindex="-1">
             {% else %}
@@ -26,7 +26,7 @@
                 </div>
               {% endif %}
               <div class="component-description boxPadding">
-                <h2 class="h4">{{ componentBlock.readme.title }}</h2>
+                <h3>{{ componentBlock.readme.title }}</h3>
                 {{ componentBlock.readme.description }}
               </div>
             {% if componentBlock.ctas.primary %}

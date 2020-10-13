@@ -26,6 +26,7 @@
 
     &-link {
       display: block;
+      font-weight: 400;
       text-decoration: none;
     }
 
@@ -37,10 +38,10 @@
     &-inner {
       @include reset-content-margins;
       padding: $gutter-width 0;
-    }
 
-    &-excerpt {
-      margin-bottom: 0.75rem;
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        padding: $gutter-width 1rem $gutter-width 0;
+      }
     }
   }
 

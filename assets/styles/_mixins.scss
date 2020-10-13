@@ -56,9 +56,11 @@
   margin: 0;
   padding: 0;
 
-  li {
-    line-height: inherit;
-    margin-bottom: inherit;
+  &:not(.grid):not(.searchList) {
+    > li {
+      line-height: inherit;
+      margin-top: inherit;
+    }
   }
 }
 

@@ -4,7 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: ($gutter-width * -1) 0 0 ($gutter-width * -1);
+    margin: -#{$gutter-width} 0 0 -#{$gutter-width};
 
     &--columns2,
     &--columns3,
@@ -26,9 +26,6 @@
 
     &--columns4 {
       .grid-item {
-        /* ensure 2 columns stacking up until $breakpoint-desktop */
-        max-width: ($breakpoint-desktop - $container-padding-tablet * 2 + $gutter-width) / 3 + 1;
-
         @media (min-width: $breakpoint-desktop) {
           width: 25%;
         }
@@ -46,7 +43,7 @@
     height: 100%;
 
     img {
-      background: var(--color-text);
+      background: var(--color-border);
     }
 
     &-inner {
@@ -54,6 +51,10 @@
 
       &:not(.boxPadding) {
         padding: $gutter-width 0;
+
+        @media (min-width: $breakpoint-mobile-horizontal) {
+          padding: $gutter-width 1rem $gutter-width 0;
+        }
       }
     }
   }

@@ -1,11 +1,60 @@
 [is='flynt-block-post-header'] {
+  padding: $component-spacing-mobile/2 0 0;
+
+  @media (min-width: $breakpoint-tablet) {
+    padding: $component-spacing-tablet/2 0 0;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    padding: $component-spacing-desktop/2 0 0;
+  }
+
+  .content {
+    @include reset-content-margins;
+  }
+
   .meta {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
     font-size: 0.875rem;
+
+    > * {
+      margin-right: 0.5rem;
+    }
+
+    &-author {
+      align-items: center;
+      color: var(--color-text);
+      display: flex;
+      text-decoration: none;
+    }
+
+    &-avatar {
+      display: none;
+      margin-right: 0.5rem;
+
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        display: block;
+      }
+    }
+
+    &-avatarImage {
+      border-radius: 50px;
+      height: 32px;
+      width: 32px;
+    }
+
+    &-divider,
+    &-label {
+      opacity: 0.5;
+    }
   }
 
   .excerpt {
     color: var(--color-text);
     font-weight: normal;
+    margin-top: 1.5rem;
   }
 
   .featuredImage {
