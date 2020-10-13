@@ -3,6 +3,7 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
+    position: relative;
     width: 100%;
 
     // stylelint-disable selector-no-qualifying-type
@@ -10,13 +11,12 @@
       color: inherit;
       flex-shrink: 0;
       user-select: all;
-      width: 90%;
+      width: calc(100% - 30px);
     }
 
     &-button {
       align-items: center;
       display: flex;
-      width: 10%;
     }
 
     [data-copy-anchor-link] {
@@ -38,6 +38,9 @@
     &-message {
       color: #008000;
       display: none;
+      position: absolute;
+      right: 0px;
+      top: -25px;
     }
   }
 }

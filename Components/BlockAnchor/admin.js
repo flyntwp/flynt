@@ -53,7 +53,7 @@
       const $copyMessage = $anchorField.find('.flyntAnchorLinkCopy-message')
       $anchorLinkInput.select()
       document.execCommand('copy')
-      $copyMessage.show().delay(4000).hide()
+      $copyMessage.show().delay(5000).hide('fast')
     }
   }
 
