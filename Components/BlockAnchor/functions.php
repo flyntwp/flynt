@@ -3,6 +3,7 @@
 namespace Flynt\Components\BlockAnchor;
 
 use Flynt\Utils\Asset;
+use Flynt\Utils\Options;
 use Timber\Timber;
 use Timber\Post;
 
@@ -76,7 +77,9 @@ add_filter('acf/load_field/name=anchorLinkCopy', function ($field) {
         'copyIcon' => Asset::getContents('../assets/icons/copy.svg')
     ];
 
-    $content = array_merge($copyIcon, $context);
+    $translatableOptions = Options::getTranslatable('BlockAnchor');
+
+    $content = array_merge($copyIcon, $translatableOptions, $context);
 
     $html = Timber::compile(
         $componentPath . '/Partials/anchorLinkCopy.twig',
@@ -89,3 +92,12 @@ add_filter('acf/load_field/name=anchorLinkCopy', function ($field) {
     $field['message'] = $message;
     return $field;
 });
+
+Options::addTranslatable('BlockAnchor', [
+    [
+        'label' => 'Copied Message',
+        'name' => 'copiedMessage',
+        'type' => 'text',
+        'default_value' => 'Copied!'
+    ],
+]);

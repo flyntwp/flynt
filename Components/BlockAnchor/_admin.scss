@@ -8,6 +8,7 @@
     // stylelint-disable selector-no-qualifying-type
     input[type='text'] {
       color: inherit;
+      flex-shrink: 0;
       user-select: all;
       width: 90%;
     }
@@ -32,6 +33,11 @@
       svg {
         width: 100%;
       }
+    }
+
+    &-message {
+      color: #008000;
+      display: none;
     }
   }
 }

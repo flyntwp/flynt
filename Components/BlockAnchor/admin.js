@@ -50,8 +50,10 @@
     const $anchorField = $el.closest('[data-layout="blockAnchor"]:not(.acf-clone)')
     if ($anchorField.length > 0) {
       const $anchorLinkInput = $anchorField.find('.flyntAnchorLinkCopy-input')
+      const $copyMessage = $anchorField.find('.flyntAnchorLinkCopy-message')
       $anchorLinkInput.select()
       document.execCommand('copy')
+      $copyMessage.show().delay(4000).hide()
     }
   }
 
