@@ -39,7 +39,8 @@ class BlockAnchor extends window.HTMLDivElement {
   }
 
   scrollToAnchor (e) {
-    const $target = window.location.hash ? $(window.location.hash) : $(e.target).attr('href')
+    const hrefHash = $(e.target).attr('href') ? $(e.target).attr('href').split('#')[1] : ''
+    const $target = window.location.hash ? $(window.location.hash) : $(`#${hrefHash}`)
     if ($target.length > 0) {
       this.blockJump()
       $('html, body').animate({

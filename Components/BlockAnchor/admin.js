@@ -7,7 +7,7 @@
       initialize: function () {
         const $blockAnchor = $('[data-layout="blockAnchor"]:not(.acf-clone)')
         if ($blockAnchor.length > 0) {
-          $blockAnchor.find('input[name*=field_pageComponents_pageComponents_blockAnchor_anchor]').each(function (i, el) {
+          $blockAnchor.find('input[name*=blockAnchor_anchor]').each(function (i, el) {
             const $el = $(el)
             const val = sanitiseText($el.val())
             $el.val(val)
@@ -58,7 +58,7 @@
   const initAcfEvents = function () {
     return new acf.Model({
       events: {
-        'keyup input[name*=field_pageComponents_pageComponents_blockAnchor_anchor]': 'onChangeText',
+        'keyup input[name*=blockAnchor_anchor]': 'onChangeText',
         'click [data-copy-anchor-link]': 'copyToClipboard'
       },
       onChangeText,
