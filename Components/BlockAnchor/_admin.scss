@@ -1,10 +1,18 @@
 .acf-field {
   .flyntAnchorLinkCopy {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    width: 100%;
+    margin-top: -10px;
+
+    &-description {
+      margin-bottom: 10px;
+    }
+
+    &-container {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      width: 100%;
+    }
 
     // stylelint-disable selector-no-qualifying-type
     input[type='text'] {
@@ -39,7 +47,7 @@
       color: #008000;
       display: none;
       position: absolute;
-      right: 0px;
+      right: 0;
       top: -25px;
     }
   }

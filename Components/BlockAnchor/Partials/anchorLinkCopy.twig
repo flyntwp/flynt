@@ -1,7 +1,10 @@
 <div class="flyntAnchorLinkCopy">
-  <input type="text" class="flyntAnchorLinkCopy-input" data-href="{{ href|e }}" readonly value="{{ href|e }}#">
-  <div class="flyntAnchorLinkCopy-button">
-    <button data-copy-anchor-link aria-label="{{ __("Copy to clipboard", "flynt") }}" title="{{ __("Copy to clipboard", "flynt") }}">{{ copyIcon }}</button>
+  <p class="flyntAnchorLinkCopy-description">{{ anchorCopyInstructions }}</p>
+  <div class="flyntAnchorLinkCopy-container">
+    <input type="text" class="flyntAnchorLinkCopy-input" data-href="{{ href|e }}" readonly value="{{ href|e }}#">
+    <div class="flyntAnchorLinkCopy-button">
+      <button data-copy-anchor-link aria-label="{{ __("Copy to clipboard", "flynt") }}" title="{{ __("Copy to clipboard", "flynt") }}">{{ copyIcon }}</button>
+    </div>
+    <span class="flyntAnchorLinkCopy-message" data-copy-message>{{ copiedMessage }}</span>
   </div>
-  <span class="flyntAnchorLinkCopy-message" data-copy-message>{{ copiedMessage }}</span>
 </div>

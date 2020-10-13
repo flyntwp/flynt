@@ -27,13 +27,13 @@ function getACFLayout()
                     'name' => 'anchor',
                     'type' => 'text',
                     'required' => 1,
-                    'instructions' => __('Add a unique name to create an anchor link. <br>Copy the link generated bellow and use it anywhere in the page to scroll to BlockAnchor position.<br>Allowed characters: [a-z].', 'flynt'),
+                    'instructions' => __('Add a unique name to create an anchor link.<br>Allowed characters: [a-z].', 'flynt'),
                 ],
                 [
-                    'label' => __('Your unique anchor link:', 'flynt'),
+                    'label' => __('Instructions', 'flynt'),
                     'name' => 'anchorLinkCopy',
                     'type' => 'message',
-                    'message' => 'Copy',
+                    'message' => __('', 'flynt'),
                     'new_lines' => '',
                     'esc_html' => 0,
                 ],
@@ -94,6 +94,12 @@ add_filter('acf/load_field/name=anchorLinkCopy', function ($field) {
 });
 
 Options::addTranslatable('BlockAnchor', [
+    [
+        'label' => 'Anchor Link Copy Instructions',
+        'name' => 'anchorCopyInstructions',
+        'type' => 'text',
+        'default_value' => __('Copy the link below and use it anywhere on the page to scroll to BlockAnchor position.', 'flynt'),
+    ],
     [
         'label' => 'Copied Message',
         'name' => 'copiedMessage',
