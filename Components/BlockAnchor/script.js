@@ -28,11 +28,12 @@ class BlockAnchor extends window.HTMLDivElement {
   }
 
   bindEvents () {
-    $('body').on('click', 'a[href*="#"]', this.checkScrollToLink)
+    $('body').off('click').on('click', 'a[href*="#"]', this.checkScrollToLink)
   }
 
   connectedCallback () {
-    if (window.location.hash) {
+    if (window.location.hash && !(this.$body.hasClass('scrolledToHash'))) {
+      this.$body.addClass('scrolledToHash')
       this.$window.on('load', this.checkScrollToHash)
     }
   }
