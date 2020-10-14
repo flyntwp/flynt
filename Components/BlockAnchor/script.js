@@ -44,10 +44,9 @@ class BlockAnchor extends window.HTMLDivElement {
     if (location.hostname === $el.prop('hostname') || !$el.prop('hostname').length) {
       /* detect hash in link */
       if (href.indexOf('#') !== -1) {
-        if (e) {
-          e.preventDefault()
-        }
-
+        // if (e) {
+        //   e.preventDefault()
+        // }
         this.smoothScrollTo(href.substr(href.indexOf('#')))
       }
     }
@@ -67,7 +66,7 @@ class BlockAnchor extends window.HTMLDivElement {
     if ($target.length) {
       let offsetTop = $target.offset().top
       const maxScrollOffsetTop = this.$document.height() - this.$window.height()
-      offsetTop = ($target.offset().top + $target.outerHeight() / 2) - (this.$window.height() / 2)
+      offsetTop = $target.offset().top
       offsetTop = offsetTop >= maxScrollOffsetTop ? maxScrollOffsetTop : offsetTop
       $('html, body').animate({
         scrollTop: offsetTop
