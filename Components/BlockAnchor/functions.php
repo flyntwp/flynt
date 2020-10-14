@@ -98,7 +98,7 @@ Options::addTranslatable('BlockAnchor', [
         'label' => 'Anchor Link Copy Instructions',
         'name' => 'anchorCopyInstructions',
         'type' => 'text',
-        'default_value' => __('Copy the link below and use it anywhere on the page to scroll to Block: Anchor position.', 'flynt'),
+        'default_value' => __('Copy the link below and use it anywhere on the page to scroll to this position.', 'flynt'),
     ],
     [
         'label' => 'Copied Message',
