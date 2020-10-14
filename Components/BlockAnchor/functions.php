@@ -9,7 +9,7 @@ use Timber\Post;
 
 add_filter('Flynt/addComponentData?name=BlockAnchor', function ($data) {
     if (isset($data['anchor'])) {
-        $data['anchor'] = sanitize_title($data['anchor']);
+        $data['anchor'] = urlencode($data['anchor']);
     }
 
     return $data;
@@ -27,10 +27,10 @@ function getACFLayout()
                     'name' => 'anchor',
                     'type' => 'text',
                     'required' => 1,
-                    'instructions' => __('Add a unique name to create an anchor link.<br>Allowed characters: [a-z].', 'flynt'),
+                    'instructions' => __('Enter a unique name to create an anchor link.<br>Copy the link below and use it anywhere on the page to scroll to this position.', 'flynt'),
                 ],
                 [
-                    'label' => __('Instructions', 'flynt'),
+                    'label' => __('', 'flynt'),
                     'name' => 'anchorLinkCopy',
                     'type' => 'message',
                     'message' => __('', 'flynt'),
@@ -41,21 +41,6 @@ function getACFLayout()
         ]
     ];
 }
-
-$fieldValidationMessage = __('Only [a-z] characters are allowed', 'flynt');
-
-add_filter('acf/validate_value/name=anchor', function ($valid, $value, $field, $input_name) use ($fieldValidationMessage) {
-    // Bail early if value is already invalid.
-    if ($valid !== true) {
-        return $valid;
-    }
-
-    if (preg_match('/[^a-z]/i', $value)) {
-        return __($fieldValidationMessage, 'flynt');
-    }
-
-    return $valid;
-}, 10, 4);
 
 add_filter('acf/load_field/name=anchorLinkCopy', function ($field) {
     global $post;
@@ -77,9 +62,11 @@ add_filter('acf/load_field/name=anchorLinkCopy', function ($field) {
         'copyIcon' => Asset::getContents('../assets/icons/copy.svg')
     ];
 
-    $translatableOptions = Options::getTranslatable('BlockAnchor');
+    $content = [
+        'copiedMessage' => __('Copied!', 'flynt'),
+    ];
 
-    $content = array_merge($copyIcon, $translatableOptions, $context);
+    $content = array_merge($copyIcon, $content, $context);
 
     $html = Timber::compile(
         $componentPath . '/Partials/anchorLinkCopy.twig',
@@ -94,12 +81,6 @@ add_filter('acf/load_field/name=anchorLinkCopy', function ($field) {
 });
 
 Options::addTranslatable('BlockAnchor', [
-    [
-        'label' => 'Anchor Link Copy Instructions',
-        'name' => 'anchorCopyInstructions',
-        'type' => 'text',
-        'default_value' => __('Copy the link below and use it anywhere on the page to scroll to this position.', 'flynt'),
-    ],
     [
         'label' => 'Copied Message',
         'name' => 'copiedMessage',

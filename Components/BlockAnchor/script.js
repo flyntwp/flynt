@@ -44,9 +44,6 @@ class BlockAnchor extends window.HTMLDivElement {
     if (location.hostname === $el.prop('hostname') || !$el.prop('hostname').length) {
       /* detect hash in link */
       if (href.indexOf('#') !== -1) {
-        // if (e) {
-        //   e.preventDefault()
-        // }
         this.smoothScrollTo(href.substr(href.indexOf('#')))
       }
     }

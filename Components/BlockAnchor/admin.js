@@ -9,9 +9,7 @@
         if ($blockAnchor.length > 0) {
           $blockAnchor.find('input[name*=blockAnchor_anchor]').each(function (i, el) {
             const $el = $(el)
-            const val = sanitiseText($el.val())
-            $el.val(val)
-            changeText($el, val)
+            changeText($el, $el.val())
           })
         }
       }
@@ -21,9 +19,7 @@
   const onChangeText = function (e, $el) {
     const $blockAnchor = $el.closest('[data-layout="blockAnchor"]:not(.acf-clone)')
     if ($blockAnchor.length > 0) {
-      const val = sanitiseText($el.val())
-      $el.val(val)
-      changeText($(e.currentTarget), val)
+      changeText($(e.currentTarget), $el.val())
     }
   }
 
@@ -34,6 +30,7 @@
       const $anchorLinkInput = $anchorLink.find('input[type="text"]')
       $anchorLinkInput.attr('tabindex', '-1')
       const href = $anchorLinkInput.data('href')
+      val = sanitiseText(val)
       const link = `${href}#${val}`
       $anchorLinkInput.val(link)
     }
@@ -43,6 +40,10 @@
     value = value.replace(/[^a-z]/g, '')
 
     return value
+  }
+
+  const selectText = function (e, $el) {
+    $el.select()
   }
 
   const copyToClipboard = function (e, $el) {
@@ -61,10 +62,12 @@
     return new acf.Model({
       events: {
         'keyup input[name*=blockAnchor_anchor]': 'onChangeText',
-        'click [data-copy-anchor-link]': 'copyToClipboard'
+        'click [data-copy-anchor-link]': 'copyToClipboard',
+        'focus .flyntAnchorLinkCopy-input': 'selectText'
       },
       onChangeText,
-      copyToClipboard
+      copyToClipboard,
+      selectText
     })
   }
 
