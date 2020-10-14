@@ -261,10 +261,6 @@ ol {
     margin-bottom: 0;
     margin-top: 0;
   }
-
-  li {
-    margin-top: 0.5rem;
-  }
 }
 
 /* Icon Lists */
@@ -780,6 +776,16 @@ select {
     }
   }
 
+  &.themeReset {
+    @media (max-width: $breakpoint-mobile-horizontal - 1) {
+      background: none;
+
+      .oneInputForm-input {
+        background-color: var(--color-background);
+      }
+    }
+  }
+
   &-input {
     border-radius: 30px;
     margin: 0 0 1rem;
@@ -792,10 +798,10 @@ select {
       margin: 0;
       padding-left: 2rem;
       padding-right: 2rem;
+    }
 
-      &:focus {
-        box-shadow: none;
-      }
+    &:focus {
+      box-shadow: none;
     }
   }
 
@@ -806,6 +812,27 @@ select {
       box-shadow: none;
       flex-shrink: 0;
       width: auto;
+    }
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .themeDark &,
+  .themeHero & {
+    border: 0;
+
+    &:focus-within {
+      box-shadow: none;
+    }
+
+    .oneInputForm-input {
+      border: 0;
+
+      &:focus {
+        box-shadow: none;
+      }
     }
   }
 }

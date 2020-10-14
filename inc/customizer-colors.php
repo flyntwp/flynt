@@ -108,7 +108,7 @@ $colorsHero = [
     ],
     'border-hero' => [
         'label'       => 'Border',
-        'default'     => '#CDD5FD',
+        'default'     => '#CDE2FD',
         'description' => '',
     ],
     'background-hero' => [

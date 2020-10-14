@@ -18,6 +18,16 @@ function getACFLayout()
                     'esc_html' => 1
                 ]
             ],
+            [
+                'label' => __('Collapse Level', 'flynt'),
+                'name' => 'collapseLevel',
+                'type' => 'button_group',
+                'choices' => [
+                    'collapseHalf' => '50%',
+                    'collapseFull' => '100%',
+                ],
+                'default_value' => 'collapseHalf'
+            ],
         ]
     ];
 }

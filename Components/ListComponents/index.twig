@@ -5,7 +5,7 @@
         {{ preContentHtml|e('wp_kses_post')}}
       </div>
     {% endif %}
-    <ul class="components grid">
+    <ul class="components">
       {% for componentBlock in componentBlocks %}
         {% if componentBlock.readme %}
           <li class="component boxRadius boxShadow themeReset">

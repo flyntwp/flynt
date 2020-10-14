@@ -8,4 +8,16 @@
   @media (min-width: $breakpoint-desktop) {
     margin-top: -$component-spacing-desktop;
   }
+
+  &.collapseHalf {
+    margin-top: -$component-spacing-mobile / 2;
+
+    @media (min-width: $breakpoint-tablet) {
+      margin-top: -$component-spacing-tablet / 2;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      margin-top: -$component-spacing-desktop / 2;
+    }
+  }
 }
