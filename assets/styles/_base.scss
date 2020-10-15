@@ -890,6 +890,34 @@ select {
   }
 }
 
+// Reduce top spacing in half for first component in mainContent
+.mainContent {
+  > .componentSpacing:first-child {
+    margin-top: $component-spacing-mobile / 2;
+
+    &[class*='theme'] {
+      margin: 0;
+      padding-top: $component-spacing-mobile / 2;
+
+      @media (min-width: $breakpoint-tablet) {
+        padding-top: $component-spacing-tablet / 2;
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        padding-top: $component-spacing-desktop / 2;
+      }
+    }
+
+    @media (min-width: $breakpoint-tablet) {
+      margin-top: $component-spacing-tablet / 2;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      margin-top: $component-spacing-desktop / 2;
+    }
+  }
+}
+
 .centerMaxWidthContainer {
   @include center;
 
