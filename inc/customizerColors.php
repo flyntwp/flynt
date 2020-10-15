@@ -16,22 +16,22 @@ function getConfig()
         'default' => [
             'accent' => [
                 'label'       => 'Accent',
-                'default'     => '#4045A1',
+                'default'     => '#2b44df',
                 'description' => ''
             ],
             'headline' => [
                 'label'       => 'Headline',
-                'default'     => '#212121',
+                'default'     => '#252525',
                 'description' => ''
             ],
             'text' => [
                 'label'       => 'Text',
-                'default'     => '#383838',
+                'default'     => '#353535',
                 'description' => ''
             ],
             'border' => [
                 'label'       => 'Border',
-                'default'     => '#8E8E8E',
+                'default'     => '#8791BA',
                 'description' => ''
             ],
             'background' => [
@@ -43,27 +43,27 @@ function getConfig()
         'light' => [
             'accent' => [
                 'label'       => 'Accent',
-                'default'     => '#4045A1',
+                'default'     => '#2b44df',
                 'description' => ''
             ],
             'headline' => [
                 'label'       => 'Headline',
-                'default'     => '#212121',
+                'default'     => '#252525',
                 'description' => ''
             ],
             'text' => [
                 'label'       => 'Text',
-                'default'     => '#383838',
+                'default'     => '#353535',
                 'description' => ''
             ],
             'border' => [
                 'label'       => 'Border',
-                'default'     => '#8E8E8E',
+                'default'     => '#8791BA',
                 'description' => ''
             ],
             'background' => [
                 'label'       => 'Background',
-                'default'     => '#fafafa',
+                'default'     => '#F8F9FD',
                 'description' => ''
             ],
         ],
@@ -85,12 +85,12 @@ function getConfig()
             ],
             'border' => [
                 'label'       => 'Border',
-                'default'     => '#7E7E8E',
+                'default'     => '#C3C4F7',
                 'description' => '',
             ],
             'background' => [
                 'label'       => 'Background',
-                'default'     => '#2B2C46',
+                'default'     => '#10205A',
                 'description' => '',
             ],
         ],
@@ -102,22 +102,22 @@ function getConfig()
             ],
             'headline' => [
                 'label'       => 'Headline',
-                'default'     => '#FBFCFC',
+                'default'     => '#FBFBFB',
                 'description' => '',
             ],
             'text' => [
                 'label'       => 'Text',
-                'default'     => '#D4DFE0',
+                'default'     => '#E9E9EC',
                 'description' => '',
             ],
             'border' => [
                 'label'       => 'Border',
-                'default'     => '#9CB6B5',
+                'default'     => '#CDE2FD',
                 'description' => '',
             ],
             'background' => [
                 'label'       => 'Background',
-                'default'     => '#28615E',
+                'default'     => '#2B44DF',
                 'description' => '',
             ],
         ],
