@@ -50,135 +50,49 @@ const alphaColorAmount = 0.4
 const darkenColorAmount = -0.1 // -0.1 darken value approximately equals scss darken 5%
 
 $(document).ready(function () {
+  const $root = $(':root.html')
+  const setColor = function (cssProperty) {
+    return function (setting) {
+      setting.bind(function (color) {
+        $root.css(cssProperty, color)
+      })
+    }
+  }
+  const setColorWithAlphaAndHover = function (cssProperty, theme) {
+    return function (setting) {
+      setting.bind(function (color) {
+        $root.css(`${cssProperty}-${theme}`, color)
+        $root.css(`${cssProperty}-alpha-${theme}`, hexToRgbA(color, alphaColorAmount))
+        $root.css(`${cssProperty}-hover-${theme}`, lightenDarkenColor(color, darkenColorAmount))
+      })
+    }
+  }
+
   // Default / Theme Reset
-  wp.customize('theme_colors_accent-default', function (value) {
-    value.bind(function (newval) {
-      $(':root.html').css('--theme-color-accent-default', newval)
-      $(':root.html').css('--theme-color-accent-alpha-default', hexToRgbA(newval, alphaColorAmount))
-      $(':root.html').css('--theme-color-accent-hover-default', lightenDarkenColor(newval, darkenColorAmount))
-    })
-  })
-
-  wp.customize('theme_colors_text-default', function (value) {
-    value.bind(function (newval) {
-      $(':root.html').css('--theme-color-text', newval)
-    })
-  })
-
-  wp.customize('theme_colors_headline-default', function (value) {
-    value.bind(function (newval) {
-      $(':root.html').css('--theme-color-headline', newval)
-    })
-  })
-
-  wp.customize('theme_colors_border-default', function (value) {
-    value.bind(function (newval) {
-      $(':root.html').css('--theme-color-border', newval)
-    })
-  })
-
-  wp.customize('theme_colors_background-default', function (value) {
-    value.bind(function (newval) {
-      $(':root.html').css('--theme-color-background', newval)
-    })
-  })
+  wp.customize('theme_colors_accent-default', setColorWithAlphaAndHover('--theme-color-accent', 'default'))
+  wp.customize('theme_colors_text-default', setColor('--theme-color-text-default'))
+  wp.customize('theme_colors_headline-default', setColor('--theme-color-headline-default'))
+  wp.customize('theme_colors_border-default', setColor('--theme-color-border-default'))
+  wp.customize('theme_colors_background-default', setColor('--theme-color-background-default'))
 
   // Theme Light
-  wp.customize('theme_colors_accent-light', function (value) {
-    value.bind(function (newval) {
-      $(':root.html').css('--theme-color-accent-light', newval)
-      $(':root.html').css('--theme-color-accent-alpha-light', newval ? hexToRgbA(newval, alphaColorAmount) : 'var(--theme-color-accent-alpha-default)')
-      $(':root.html').css('--theme-color-accent-hover-light', newval ? lightenDarkenColor(newval, darkenColorAmount) : 'var(--theme-color-accent-hover-default)')
-    })
-  })
-
-  wp.customize('theme_colors_text-light', function (value) {
-    value.bind(function (newval) {
-      $(':root.html').css('--theme-color-text-light', newval)
-    })
-  })
-
-  wp.customize('theme_colors_headline-light', function (value) {
-    value.bind(function (newval) {
-      $(':root.html').css('--theme-color-headline-light', newval)
-    })
-  })
-
-  wp.customize('theme_colors_border-light', function (value) {
-    value.bind(function (newval) {
-      $(':root.html').css('--theme-color-border-light', newval)
-    })
-  })
-
-  wp.customize('theme_colors_background-light', function (value) {
-    value.bind(function (newval) {
-      $(':root.html').css('--theme-color-background-light', newval)
-    })
-  })
+  wp.customize('theme_colors_accent-light', setColorWithAlphaAndHover('--theme-color-accent', 'light'))
+  wp.customize('theme_colors_text-light', setColor('--theme-color-text-light'))
+  wp.customize('theme_colors_headline-light', setColor('--theme-color-headline-light'))
+  wp.customize('theme_colors_border-light', setColor('--theme-color-border-light'))
+  wp.customize('theme_colors_background-light', setColor('--theme-color-background-light'))
 
   // Theme Dark
-  wp.customize('theme_colors_accent-dark', function (value) {
-    value.bind(function (newval) {
-      $(':root.html').css('--theme-color-accent-dark', newval)
-      $(':root.html').css('--theme-color-accent-alpha-dark', hexToRgbA(newval, alphaColorAmount))
-      $(':root.html').css('--theme-color-accent-hover-dark', lightenDarkenColor(newval, darkenColorAmount))
-    })
-  })
-
-  wp.customize('theme_colors_text-dark', function (value) {
-    value.bind(function (newval) {
-      $(':root.html').css('--theme-color-text-dark', newval)
-    })
-  })
-
-  wp.customize('theme_colors_headline-dark', function (value) {
-    value.bind(function (newval) {
-      $(':root.html').css('--theme-color-headline-dark', newval)
-    })
-  })
-
-  wp.customize('theme_colors_border-dark', function (value) {
-    value.bind(function (newval) {
-      $(':root.html').css('--theme-color-border-dark', newval)
-    })
-  })
-
-  wp.customize('theme_colors_background-dark', function (value) {
-    value.bind(function (newval) {
-      $(':root.html').css('--theme-color-background-dark', newval)
-    })
-  })
+  wp.customize('theme_colors_accent-dark', setColorWithAlphaAndHover('--theme-color-accent', 'dark'))
+  wp.customize('theme_colors_text-dark', setColor('--theme-color-text-dark'))
+  wp.customize('theme_colors_headline-dark', setColor('--theme-color-headline-dark'))
+  wp.customize('theme_colors_border-dark', setColor('--theme-color-border-dark'))
+  wp.customize('theme_colors_background-dark', setColor('--theme-color-background-dark'))
 
   // Theme Hero
-  wp.customize('theme_colors_accent-hero', function (value) {
-    value.bind(function (newval) {
-      $(':root.html').css('--theme-color-accent-hero', newval)
-      $(':root.html').css('--theme-color-accent-alpha-hero', hexToRgbA(newval, alphaColorAmount))
-      $(':root.html').css('--theme-color-accent-hover-hero', lightenDarkenColor(newval, darkenColorAmount))
-    })
-  })
-
-  wp.customize('theme_colors_text-hero', function (value) {
-    value.bind(function (newval) {
-      $(':root.html').css('--theme-color-text-hero', newval)
-    })
-  })
-
-  wp.customize('theme_colors_headline-hero', function (value) {
-    value.bind(function (newval) {
-      $(':root.html').css('--theme-color-headline-hero', newval)
-    })
-  })
-
-  wp.customize('theme_colors_border-hero', function (value) {
-    value.bind(function (newval) {
-      $(':root.html').css('--theme-color-border-hero', newval)
-    })
-  })
-
-  wp.customize('theme_colors_background-hero', function (value) {
-    value.bind(function (newval) {
-      $(':root.html').css('--theme-color-background-hero', newval)
-    })
-  })
+  wp.customize('theme_colors_accent-hero', setColorWithAlphaAndHover('--theme-color-accent', 'hero'))
+  wp.customize('theme_colors_text-hero', setColor('--theme-color-text-hero'))
+  wp.customize('theme_colors_headline-hero', setColor('--theme-color-headline-hero'))
+  wp.customize('theme_colors_border-hero', setColor('--theme-color-border-hero'))
+  wp.customize('theme_colors_background-hero', setColor('--theme-color-background-hero'))
 })
