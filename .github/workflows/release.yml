@@ -1,7 +1,6 @@
 name: Release
 
 on:
-  push:
   workflow_dispatch: 
   release: 
     types: [created]
@@ -36,7 +35,7 @@ jobs:
     - name: Install composer optimized
       run: php7.3 $(which composer) install --no-dev --no-progress --no-suggest --optimize-autoloader
     - name: Create archive
-      run: zip -r flynt-${{ github.event.release.tag_name || 'theme' }}.zip ./ -x './node_modules/*' './**/.git/*'
+      run: zip -r flynt-${{ github.event.release.tag_name || 'bundled' }}.zip ./ -x './node_modules/*' './**/.git/*'
     - name: Create download
       if: ${{ github.event.release.upload_url }}
       uses: actions/upload-release-asset@v1
@@ -51,5 +50,5 @@ jobs:
       if: ${{ !github.event.release.upload_url }}
       uses: actions/upload-artifact@v2
       with:
-        name: flynt-theme
-        path: ./flynt-theme.zip
+        name: flynt-bundled
+        path: ./flynt-bundled.zip
