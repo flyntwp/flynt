@@ -66,9 +66,15 @@ class BlockAnchor extends window.HTMLDivElement {
       const maxScrollOffsetTop = this.$document.height() - this.$window.height()
       offsetTop = $target.offset().top
       offsetTop = offsetTop >= maxScrollOffsetTop ? maxScrollOffsetTop : offsetTop
+      // calculate speed based on travel distance
+      const maxtime = 3000
+      const distance = Math.abs(offsetTop - this.$window.scrollTop())
+      const ratio = distance / this.$document.height()
+      const speed = maxtime * ratio
+
       $('html, body').stop().animate({
         scrollTop: offsetTop
-      }, 1000, 'easeInOutQuart')
+      }, speed, 'easeInOutQuart')
     }
   }
 }
