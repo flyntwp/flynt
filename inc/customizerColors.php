@@ -14,119 +14,120 @@ function getConfig()
 {
     $colorsByTheme = [
         'default' => [
-            'accent-default' => [
+            'accent' => [
                 'label'       => 'Accent',
                 'default'     => '#4045A1',
                 'description' => ''
             ],
-            'headline-default' => [
+            'headline' => [
                 'label'       => 'Headline',
                 'default'     => '#212121',
                 'description' => ''
             ],
-            'text-default' => [
+            'text' => [
                 'label'       => 'Text',
                 'default'     => '#383838',
                 'description' => ''
             ],
-            'border-default' => [
+            'border' => [
                 'label'       => 'Border',
                 'default'     => '#8E8E8E',
                 'description' => ''
             ],
-            'background-default' => [
+            'background' => [
                 'label'       => 'Background',
                 'default'     => '#ffffff',
                 'description' => ''
             ],
         ],
         'light' => [
-            'accent-light' => [
+            'accent' => [
                 'label'       => 'Accent',
                 'default'     => '#4045A1',
                 'description' => ''
             ],
-            'headline-light' => [
+            'headline' => [
                 'label'       => 'Headline',
                 'default'     => '#212121',
                 'description' => ''
             ],
-            'text-light' => [
+            'text' => [
                 'label'       => 'Text',
                 'default'     => '#383838',
                 'description' => ''
             ],
-            'border-light' => [
+            'border' => [
                 'label'       => 'Border',
                 'default'     => '#8E8E8E',
                 'description' => ''
             ],
-            'background-light' => [
+            'background' => [
                 'label'       => 'Background',
                 'default'     => '#fafafa',
                 'description' => ''
             ],
         ],
         'dark' => [
-            'accent-dark' => [
+            'accent' => [
                 'label'       => 'Accent',
                 'default'     => '#ffffff',
                 'description' => '',
             ],
-            'headline-dark' => [
+            'headline' => [
                 'label'       => 'Headline',
                 'default'     => '#FBFBFB',
                 'description' => '',
             ],
-            'text-dark' => [
+            'text' => [
                 'label'       => 'Text',
                 'default'     => '#E9E9EC',
                 'description' => '',
             ],
-            'border-dark' => [
+            'border' => [
                 'label'       => 'Border',
                 'default'     => '#7E7E8E',
                 'description' => '',
             ],
-            'background-dark' => [
+            'background' => [
                 'label'       => 'Background',
                 'default'     => '#2B2C46',
                 'description' => '',
             ],
         ],
         'hero' => [
-            'accent-hero' => [
+            'accent' => [
                 'label'       => 'Accent',
                 'default'     => '#ffffff',
                 'description' => '',
             ],
-            'headline-hero' => [
+            'headline' => [
                 'label'       => 'Headline',
                 'default'     => '#FBFCFC',
                 'description' => '',
             ],
-            'text-hero' => [
+            'text' => [
                 'label'       => 'Text',
                 'default'     => '#D4DFE0',
                 'description' => '',
             ],
-            'border-hero' => [
+            'border' => [
                 'label'       => 'Border',
                 'default'     => '#9CB6B5',
                 'description' => '',
             ],
-            'background-hero' => [
+            'background' => [
                 'label'       => 'Background',
                 'default'     => '#28615E',
                 'description' => '',
             ],
         ],
     ];
+
     $sectionsByTheme = [
-        'theme_colors_default' => __('Default', 'flynt'),
-        'theme_colors_light' => __('Theme Light', 'flynt'),
-        'theme_colors_dark' => __('Theme Dark', 'flynt'),
-        'theme_colors_hero' => __('Theme Hero', 'flynt'),
+        'default' => __('Default', 'flynt'),
+        'light' => __('Theme Light', 'flynt'),
+        'dark' => __('Theme Dark', 'flynt'),
+        'hero' => __('Theme Hero', 'flynt'),
     ];
 
     return [
@@ -138,7 +139,7 @@ function getConfig()
 add_action('acf/init', function () {
     $options = Options::getGlobal('CustomizerColors');
     if ($options['enabled']) {
-        add_action('customize_register', function ($wp_customize) use ($colorsDefault, $colorsLight, $colorsDark, $colorsHero) {
+        add_action('customize_register', function ($wp_customize) {
             $config = getConfig();
             $wp_customize->add_panel(
                 'theme_colors_panel',
@@ -150,7 +151,7 @@ add_action('acf/init', function () {
             );
             foreach (($config['sections'] ?? []) as $key => $title) {
                 $wp_customize->add_section(
-                    $key,
+                    "theme_colors_{$key}",
                     [
                         'title'      => $title,
                         'priority'   => 20,
@@ -162,7 +163,7 @@ add_action('acf/init', function () {
                 foreach ($colors as $colorName => $colorConfig) {
                     // Settings
                     $wp_customize->add_setting(
-                        'theme_colors_' . $colorName,
+                        "theme_colors_{$colorName}_{$theme}",
                         [
                             'default'   => $colorConfig['default'],
                             'transport' => 'postMessage',
@@ -172,7 +173,7 @@ add_action('acf/init', function () {
                     $wp_customize->add_control(
                         new WP_Customize_Color_Control(
                             $wp_customize,
-                            'theme_colors_' . $colorName,
+                            "theme_colors_{$colorName}_{$theme}",
                             [
                                 'section'     => 'theme_colors_' . $theme,
                                 'label'       => __($colorConfig['label']),
@@ -204,10 +205,10 @@ add_action('acf/init', function () {
                 :root.html {
                     <?php foreach (($config['colors'] ?? []) as $theme => $colors) {
                         foreach ($colors as $colorName => $colorConfig) {
-                            $colorValue = get_theme_mod("theme_colors_{$colorName}", $colorConfig['default']);
-                            echo "--theme-color-{$colorName}: {$colorValue};";
+                            $colorValue = get_theme_mod("theme_colors_{$colorName}_{$theme}", $colorConfig['default']);
+                            echo "--theme-color-{$colorName}-{$theme}: {$colorValue};";
                         }
-                        $accentColorValue = get_theme_mod("theme_colors_accent-{$theme}", $colors["accent-{$theme}"]);
+                        $accentColorValue = get_theme_mod("theme_colors_accent_{$theme}", $colors['accent']['default']);
                         $rgbaValue = hex2rgba($accentColorValue, $alphaColorAmount);
                         $darkenedValue = colorBrightness($accentColorValue, $darkenColorAmount);
                         echo "--theme-color-accent-alpha-{$theme}: {$rgbaValue};";
