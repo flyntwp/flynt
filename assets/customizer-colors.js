@@ -69,30 +69,30 @@ $(document).ready(function () {
   }
 
   // Default / Theme Reset
-  wp.customize('theme_colors_accent-default', setColorWithAlphaAndHover('--theme-color-accent', 'default'))
-  wp.customize('theme_colors_text-default', setColor('--theme-color-text-default'))
-  wp.customize('theme_colors_headline-default', setColor('--theme-color-headline-default'))
-  wp.customize('theme_colors_border-default', setColor('--theme-color-border-default'))
-  wp.customize('theme_colors_background-default', setColor('--theme-color-background-default'))
+  wp.customize('theme_colors_accent_default', setColorWithAlphaAndHover('--theme-color-accent', 'default'))
+  wp.customize('theme_colors_text_default', setColor('--theme-color-text-default'))
+  wp.customize('theme_colors_headline_default', setColor('--theme-color-headline-default'))
+  wp.customize('theme_colors_border_default', setColor('--theme-color-border-default'))
+  wp.customize('theme_colors_background_default', setColor('--theme-color-background-default'))
 
   // Theme Light
-  wp.customize('theme_colors_accent-light', setColorWithAlphaAndHover('--theme-color-accent', 'light'))
-  wp.customize('theme_colors_text-light', setColor('--theme-color-text-light'))
-  wp.customize('theme_colors_headline-light', setColor('--theme-color-headline-light'))
-  wp.customize('theme_colors_border-light', setColor('--theme-color-border-light'))
-  wp.customize('theme_colors_background-light', setColor('--theme-color-background-light'))
+  wp.customize('theme_colors_accent_light', setColorWithAlphaAndHover('--theme-color-accent', 'light'))
+  wp.customize('theme_colors_text_light', setColor('--theme-color-text-light'))
+  wp.customize('theme_colors_headline_light', setColor('--theme-color-headline-light'))
+  wp.customize('theme_colors_border_light', setColor('--theme-color-border-light'))
+  wp.customize('theme_colors_background_light', setColor('--theme-color-background-light'))
 
   // Theme Dark
-  wp.customize('theme_colors_accent-dark', setColorWithAlphaAndHover('--theme-color-accent', 'dark'))
-  wp.customize('theme_colors_text-dark', setColor('--theme-color-text-dark'))
-  wp.customize('theme_colors_headline-dark', setColor('--theme-color-headline-dark'))
-  wp.customize('theme_colors_border-dark', setColor('--theme-color-border-dark'))
-  wp.customize('theme_colors_background-dark', setColor('--theme-color-background-dark'))
+  wp.customize('theme_colors_accent_dark', setColorWithAlphaAndHover('--theme-color-accent', 'dark'))
+  wp.customize('theme_colors_text_dark', setColor('--theme-color-text-dark'))
+  wp.customize('theme_colors_headline_dark', setColor('--theme-color-headline-dark'))
+  wp.customize('theme_colors_border_dark', setColor('--theme-color-border-dark'))
+  wp.customize('theme_colors_background_dark', setColor('--theme-color-background-dark'))
 
   // Theme Hero
-  wp.customize('theme_colors_accent-hero', setColorWithAlphaAndHover('--theme-color-accent', 'hero'))
-  wp.customize('theme_colors_text-hero', setColor('--theme-color-text-hero'))
-  wp.customize('theme_colors_headline-hero', setColor('--theme-color-headline-hero'))
-  wp.customize('theme_colors_border-hero', setColor('--theme-color-border-hero'))
-  wp.customize('theme_colors_background-hero', setColor('--theme-color-background-hero'))
+  wp.customize('theme_colors_accent_hero', setColorWithAlphaAndHover('--theme-color-accent', 'hero'))
+  wp.customize('theme_colors_text_hero', setColor('--theme-color-text-hero'))
+  wp.customize('theme_colors_headline_hero', setColor('--theme-color-headline-hero'))
+  wp.customize('theme_colors_border_hero', setColor('--theme-color-border-hero'))
+  wp.customize('theme_colors_background_hero', setColor('--theme-color-background-hero'))
 })
