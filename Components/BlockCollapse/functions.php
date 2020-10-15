@@ -13,7 +13,7 @@ function getACFLayout()
                     'label' => __('Collapse Component Spacing', 'flynt'),
                     'name' => 'message',
                     'type' => 'message',
-                    'message' => __('The collapse block reduces the vertical space between components.\nSimply move the component in between components with same color themes.', 'flynt'),
+                    'message' => __('The collapse block reduces the vertical space between components. Simply move the component in between components with same color themes.', 'flynt'),
                     'new_lines' => 'wpautop',
                     'esc_html' => 1
                 ]
@@ -23,10 +23,10 @@ function getACFLayout()
                 'name' => 'collapseLevel',
                 'type' => 'button_group',
                 'choices' => [
-                    'collapseHalf' => '50%',
-                    'collapseFull' => '100%',
+                    'half' => __('50%', 'flynt'),
+                    'full' => __('100%', 'flynt'),
                 ],
-                'default_value' => 'collapseHalf'
+                'default_value' => 'half'
             ],
         ]
     ];
