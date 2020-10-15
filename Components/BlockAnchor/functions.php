@@ -80,12 +80,3 @@ add_filter('acf/load_field/name=anchorLinkCopy', function ($field) {
     $field['message'] = $message;
     return $field;
 });
-
-Options::addTranslatable('BlockAnchor', [
-    [
-        'label' => 'Copied Message',
-        'name' => 'copiedMessage',
-        'type' => 'text',
-        'default_value' => 'Copied!'
-    ],
-]);
