@@ -15,7 +15,7 @@ class ColorHelpers
      *
      * @return mixed
      */
-    public static function hexToRgba($color, $opacity = 1, $returnType = 'string')
+    public static function hexToRgba($color, $opacity = 1, $returnType = 'array')
     {
         $color = str_replace('#', '', $color);
 
@@ -31,11 +31,11 @@ class ColorHelpers
 
         $rgba = [ $r, $g, $b, $opacity ];
 
-        if ($returnType === 'array') {
-            return $rgba;
+        if ($returnType === 'string') {
+            return 'rgba(' . implode(',', $rgba) . ')';
         }
 
-        return 'rgba(' . implode(',', $rgba) . ')';
+        return $rgba;
     }
 
     /**
@@ -49,7 +49,7 @@ class ColorHelpers
      *
      * @return mixed
      */
-    public static function rgbaToHsla($color, $opacity = 1, $returnType = 'string')
+    public static function rgbaToHsla($color, $opacity = 1, $returnType = 'array')
     {
         $r = $color[0] / 255;
         $g = $color[1] / 255;
@@ -85,11 +85,11 @@ class ColorHelpers
 
         $hsla = [ $h, "$s%", "$l%", $opacity ];
 
-        if ($returnType === 'array') {
-            return $hsla;
+        if ($returnType === 'string') {
+            return 'hsla(' . implode(',', $hsla) . ')';
         }
 
-        return 'hsla(' . implode(',', $hsla) . ')';
+        return $hsla;
     }
 
     /**
@@ -103,9 +103,9 @@ class ColorHelpers
      *
      * @return mixed
      */
-    public static function hexToHsla($color, $opacity = 1, $returnType = 'string')
+    public static function hexToHsla($color, $opacity = 1, $returnType = 'array')
     {
-        $rgba = self::hexToRgba($color, $opacity, 'array');
+        $rgba = self::hexToRgba($color, $opacity);
         return self::rgbaToHsla($rgba, $opacity, $returnType);
     }
 
