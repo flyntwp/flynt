@@ -72,23 +72,23 @@ function hexToHsla (color, opacity = 1, returnType = 'array') {
 
 $(document).ready(function () {
   const $root = $(':root.html')
-  const setColor = function (cssProperty, theme, options) {
+  const setColor = function (cssProperty, options) {
     return function (setting) {
       setting.bind(function (color) {
-        $root.css(`${cssProperty}-${theme}`, color)
-        if (options.hsla) {
+        $root.css(`${cssProperty}`, color)
+        if (options.hsl) {
           const hsla = hexToHsla(color)
-          $root.css(`${cssProperty}-${theme}-h`, hsla[0])
-          $root.css(`${cssProperty}-${theme}-s`, hsla[1])
-          $root.css(`${cssProperty}-${theme}-l`, hsla[2])
+          $root.css(`${cssProperty}-h`, hsla[0])
+          $root.css(`${cssProperty}-s`, hsla[1])
+          $root.css(`${cssProperty}-l`, hsla[2])
         }
       })
     }
   }
 
   for (const [themeKey, theme] of Object.entries(FlyntCustomizerColorsData)) {
-    for (const [property, options] of Object.entries(theme)) {
-      wp.customize(`theme_colors_${property}_${themeKey}`, setColor(`--theme-color-${property}`, themeKey, options))
+    for (const [colorName, options] of Object.entries(theme)) {
+      wp.customize(`theme_${themeKey}_color_${colorName}`, setColor(`--theme-${themeKey}-color-${colorName}`, options))
     }
   }
 })

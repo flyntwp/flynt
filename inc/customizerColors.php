@@ -21,7 +21,7 @@ function getThemesConfig()
                     'label'       => __('Accent', 'flynt'),
                     'default'     => '#2b44df',
                     'description' => '',
-                    'hsla'        => 1,
+                    'hsl'         => 1,
                 ],
                 'headline' => [
                     'label'       => __('Headline', 'flynt'),
@@ -52,7 +52,7 @@ function getThemesConfig()
                     'label'       => __('Accent', 'flynt'),
                     'default'     => '#2b44df',
                     'description' => '',
-                    'hsla'        => 1,
+                    'hsl'         => 1,
                 ],
                 'headline' => [
                     'label'       => __('Headline', 'flynt'),
@@ -83,7 +83,7 @@ function getThemesConfig()
                     'label'       => __('Accent', 'flynt'),
                     'default'     => '#ffffff',
                     'description' => '',
-                    'hsla'        => 1,
+                    'hsl'         => 1,
                 ],
                 'headline' => [
                     'label'       => __('Headline', 'flynt'),
@@ -114,7 +114,7 @@ function getThemesConfig()
                     'label'       => __('Accent', 'flynt'),
                     'default'     => '#ffffff',
                     'description' => '',
-                    'hsla'        => 1,
+                    'hsl'         => 1,
                 ],
                 'headline' => [
                     'label'       => __('Headline', 'flynt'),
@@ -159,7 +159,7 @@ add_action('acf/init', function () {
 
             foreach ($themes as $key => $theme) {
                 $wp_customize->add_section(
-                    "theme_colors_{$key}",
+                    "theme_{$key}_colors",
                     [
                         'title' => $theme['name'],
                         'priority' => 20,
@@ -171,7 +171,7 @@ add_action('acf/init', function () {
             foreach ($themes as $themeKey => $theme) {
                 foreach ($theme['colors'] as $colorName => $colorConfig) {
                     $wp_customize->add_setting(
-                        "theme_colors_{$colorName}_{$themeKey}",
+                        "theme_{$themeKey}_color_{$colorName}",
                         [
                             'default' => $colorConfig['default'],
                             'transport' => 'postMessage',
@@ -181,9 +181,9 @@ add_action('acf/init', function () {
                     $wp_customize->add_control(
                         new WP_Customize_Color_Control(
                             $wp_customize,
-                            "theme_colors_{$colorName}_{$themeKey}",
+                            "theme_{$themeKey}_color_{$colorName}",
                             [
-                                'section' => 'theme_colors_' . $themeKey,
+                                'section' => "theme_{$themeKey}_colors",
                                 'label' => __($colorConfig['label']),
                                 'description' => __($colorConfig['description']),
                             ]
@@ -215,14 +215,15 @@ add_action('wp_head', function () {
         :root.html {
             <?php foreach ($themes as $themeKey => $theme) {
                 foreach ($theme['colors'] as $colorName => $colorConfig) {
-                    $colorValue = get_theme_mod("theme_colors_{$colorName}_{$themeKey}", $colorConfig['default']);
-                    echo "--theme-color-{$colorName}-{$themeKey}: {$colorValue};";
+                    $colorValue = get_theme_mod("theme_{$themeKey}_color_{$colorName}", $colorConfig['default']);
+                    $cssProperty = "--theme-{$themeKey}-color-{$colorName}";
+                    echo "{$cssProperty}: {$colorValue};";
 
-                    if ($colorConfig['hsla'] ?? false) {
+                    if ($colorConfig['hsl'] ?? false) {
                         $colorHsla = ColorHelpers::hexToHsla($colorValue);
-                        echo "--theme-color-{$colorName}-{$themeKey}-h: {$colorHsla[0]};";
-                        echo "--theme-color-{$colorName}-{$themeKey}-s: {$colorHsla[1]};";
-                        echo "--theme-color-{$colorName}-{$themeKey}-l: {$colorHsla[2]};";
+                        echo "{$cssProperty}-h: {$colorHsla[0]};";
+                        echo "{$cssProperty}-s: {$colorHsla[1]};";
+                        echo "{$cssProperty}-l: {$colorHsla[2]};";
                     }
                 }
             } ?>
