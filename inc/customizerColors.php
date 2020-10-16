@@ -145,8 +145,7 @@ add_action('acf/init', function () {
                 'theme_colors_panel',
                 [
                     'title' => __('Colors', 'flynt'),
-                    // 'description' => 'description', // Include html tags such as <p>.
-                    'priority' => 160, // Mixed with top-level-section hierarchy.
+                    'priority' => 160,
                 ]
             );
             foreach (($config['sections'] ?? []) as $key => $title) {
@@ -194,31 +193,31 @@ add_action('acf/init', function () {
                 true
             );
         });
-
-        add_action('wp_head', function () {
-            $config = getConfig();
-
-            $alphaColorAmount = 0.4;
-            $darkenColorAmount = -0.1; // -0.1 darken value approximately equals scss darken 5%
-            ?>
-            <style type="text/css">
-                :root.html {
-                    <?php foreach (($config['colors'] ?? []) as $theme => $colors) {
-                        foreach ($colors as $colorName => $colorConfig) {
-                            $colorValue = get_theme_mod("theme_colors_{$colorName}_{$theme}", $colorConfig['default']);
-                            echo "--theme-color-{$colorName}-{$theme}: {$colorValue};";
-                        }
-                        $accentColorValue = get_theme_mod("theme_colors_accent_{$theme}", $colors['accent']['default']);
-                        $rgbaValue = hex2rgba($accentColorValue, $alphaColorAmount);
-                        $darkenedValue = colorBrightness($accentColorValue, $darkenColorAmount);
-                        echo "--theme-color-accent-alpha-{$theme}: {$rgbaValue};";
-                        echo "--theme-color-accent-hover-{$theme}: {$darkenedValue};";
-                    } ?>
-            </style>
-            <?php
-        });
     }
 });
+
+add_action('wp_head', function () {
+    $config = getConfig();
+
+    $alphaColorAmount = 0.4;
+    $darkenColorAmount = -0.1; // -0.1 darken value approximately equals scss darken 5%
+    ?>
+    <style type="text/css">
+        :root.html {
+            <?php foreach (($config['colors'] ?? []) as $theme => $colors) {
+                foreach ($colors as $colorName => $colorConfig) {
+                    $colorValue = get_theme_mod("theme_colors_{$colorName}_{$theme}", $colorConfig['default']);
+                    echo "--theme-color-{$colorName}-{$theme}: {$colorValue};";
+                }
+                $accentColorValue = get_theme_mod("theme_colors_accent_{$theme}", $colors['accent']['default']);
+                $rgbaValue = hex2rgba($accentColorValue, $alphaColorAmount);
+                $darkenedValue = colorBrightness($accentColorValue, $darkenColorAmount);
+                echo "--theme-color-accent-alpha-{$theme}: {$rgbaValue};";
+                echo "--theme-color-accent-hover-{$theme}: {$darkenedValue};";
+            } ?>
+    </style>
+    <?php
+}, 5);
 
 Options::addGlobal('CustomizerColors', [
     [
