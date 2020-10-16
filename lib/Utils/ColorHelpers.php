@@ -33,9 +33,9 @@ class ColorHelpers
 
         if ($returnType === 'array') {
             return $rgba;
-        } else {
-            return 'rgba(' . implode(',', $rgba) . ')';
         }
+
+        return 'rgba(' . implode(',', $rgba) . ')';
     }
 
     /**
@@ -87,9 +87,9 @@ class ColorHelpers
 
         if ($returnType === 'array') {
             return $hsla;
-        } else {
-            return 'hsla(' . implode(',', $hsla) . ')';
         }
+
+        return 'hsla(' . implode(',', $hsla) . ')';
     }
 
     /**
