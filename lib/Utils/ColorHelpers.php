@@ -86,6 +86,23 @@ class ColorHelpers
         return [ $h, $s, $l ];
     }
 
+    /**
+     * Converts a color from hex to hsla.
+     *
+     * @since 2.0
+     *
+     * @param string $color The color to convert.
+     * @param int $opacity The color opacity.
+     * @param string $returnType The return format, string or array.
+     *
+     * @return mixed
+     */
+    public static function hexToHsla($color, $opacity = 1, $returnType = 'string')
+    {
+        $rgba = self::hexToRgba($color, $opacity, 'array');
+        return self::rgbaToHsla($rgba, $opacity, $returnType);
+    }
+
     public static function colorBrightness($hex, $percent)
     {
         // Work out if hash given
