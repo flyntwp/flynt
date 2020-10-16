@@ -167,7 +167,6 @@ hr {
 }
 
 img {
-  border-radius: 16px;
   display: block;
   max-width: 100%;
   width: 100%;
@@ -234,10 +233,23 @@ ol {
   margin: 1.5rem 0;
   padding-left: 1.5rem;
 
+  li {
+    margin-bottom: 0.25rem;
+  }
+
   ul,
   ol {
     margin-bottom: 0;
-    margin-top: 0;
+    margin-top: 0.25rem;
+    padding-left: 2rem;
+  }
+}
+
+ul {
+  > li {
+    &::marker {
+      font-size: 1.25rem;
+    }
   }
 }
 
@@ -248,7 +260,6 @@ ol {
   padding: 0;
 
   li {
-    margin-bottom: 0.5rem;
     padding-left: 2rem;
     position: relative;
 
