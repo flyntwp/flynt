@@ -61,6 +61,11 @@
   }
 }
 
+@mixin reset-link {
+  background-image: none;
+  font-weight: normal;
+}
+
 /**
 * Grid Mixin
 *

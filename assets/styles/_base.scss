@@ -119,36 +119,25 @@ h6,
 }
 
 a {
+  background-image: linear-gradient(to bottom, var(--color-border-alpha) 0%, var(--color-border-alpha) 100%);
+  background-position: 0 0.75em;
+  background-repeat: no-repeat;
+  background-size: 100%;
   color: var(--color-accent);
   font-weight: 500;
-  text-decoration: underline;
-  transition: color 0.2s ease;
+  text-decoration: none;
+  transition: color 0.2s ease, background-position 0.3s ease;
 
   &:hover,
   &:focus {
-    text-decoration: none;
+    background-position: 0 0;
+    color: var(--color-accent-hover);
   }
 
   &:focus {
-    color: var(--color-accent-hover);
     outline-color: var(--color-accent-alpha);
-    transition: color 0.2s ease;
   }
 }
-
-// .underlineLink {
-//   background-image: linear-gradient(to bottom, var(--color-accent-alpha) 0%, var(--color-accent-alpha) 100%);
-//   background-position: 0 0.85rem;
-//   background-repeat: no-repeat;
-//   background-size: 100%;
-//   text-decoration: none;
-//   transition: background-position 0.2s ease;
-
-//   &:hover,
-//   &:focus {
-//     background-position: 0 0;
-//   }
-// }
 
 p,
 .paragraph,
@@ -363,6 +352,8 @@ button {
 }
 
 .button {
+  @include reset-link;
+
   appearance: none;
   background-color: var(--color-accent);
   border: 2px solid var(--color-accent);
