@@ -158,12 +158,11 @@ figure {
 }
 
 hr {
-  background-color: var(--color-border);
+  background-color: var(--color-border-alpha);
   border: 0;
   display: block;
   height: 2px;
   margin: 3rem 0;
-  opacity: 0.2;
 }
 
 img {
@@ -180,7 +179,7 @@ figcaption {
 }
 
 code {
-  background-color: rgba(158, 170, 212, 0.15);
+  background-color: var(--color-border-alpha);
   display: inline-block;
   padding: 0 0.313rem;
 }
@@ -319,7 +318,7 @@ thead {
 }
 
 tr:nth-child(even) {
-  background-color: rgba(158, 170, 212, 0.15);
+  background-color: var(--color-border-alpha)
 }
 
 /**
@@ -564,7 +563,7 @@ label {
   }
 
   &:disabled {
-    background-color: rgba(158, 170, 212, 0.15);
+    background-color: var(--color-border-alpha);
     border-color: var(--color-border);
     color: var(--color-border);
     opacity: 0.75;

@@ -25,6 +25,7 @@ $gutter-width: 24px;
   --color-accent: var(--theme-default-color-accent);
   --color-accent-alpha: hsla(var(--theme-default-color-accent-h), var(--theme-default-color-accent-s), var(--theme-default-color-accent-l), 0.4);
   --color-accent-hover: hsl(var(--theme-default-color-accent-h), var(--theme-default-color-accent-s), calc(var(--theme-default-color-accent-l) - 5%));
+  --color-border-alpha: hsla(var(--theme-default-color-border-h), var(--theme-default-color-border-s), var(--theme-default-color-border-l), 0.1);
   --color-transparent: transparent; // needs for ie11-custom-propertiess polyfill to work properly
   --color-error: #e80242;
 }
@@ -37,6 +38,7 @@ $gutter-width: 24px;
   --color-accent: var(--theme-light-color-accent);
   --color-accent-alpha: hsla(var(--theme-light-color-accent-h), var(--theme-light-color-accent-s), var(--theme-light-color-accent-l), 0.4);
   --color-accent-hover: hsl(var(--theme-light-color-accent-h), var(--theme-light-color-accent-s), calc(var(--theme-light-color-accent-l) - 5%));
+  --color-border-alpha: hsla(var(--theme-light-color-border-h), var(--theme-light-color-border-s), var(--theme-light-color-border-l), 0.1);
 }
 
 .themeDark {
@@ -47,6 +49,7 @@ $gutter-width: 24px;
   --color-accent: var(--theme-dark-color-accent);
   --color-accent-alpha: hsla(var(--theme-dark-color-accent-h), var(--theme-dark-color-accent-s), var(--theme-dark-color-accent-l), 0.4);
   --color-accent-hover: hsl(var(--theme-dark-color-accent-h), var(--theme-dark-color-accent-s), calc(var(--theme-dark-color-accent-l) - 5%));
+  --color-border-alpha: hsla(var(--theme-dark-color-border-h), var(--theme-dark-color-border-s), var(--theme-dark-color-border-l), 0.1);
 }
 
 .themeHero {
@@ -57,6 +60,7 @@ $gutter-width: 24px;
   --color-accent: var(--theme-hero-color-accent);
   --color-accent-alpha: hsla(var(--theme-hero-color-accent-h), var(--theme-hero-color-accent-s), var(--theme-hero-color-accent-l), 0.4);
   --color-accent-hover: hsl(var(--theme-hero-color-accent-h), var(--theme-hero-color-accent-s), calc(var(--theme-hero-color-accent-l) - 5%));
+  --color-border-alpha: hsla(var(--theme-hero-color-border-h), var(--theme-hero-color-border-s), var(--theme-hero-color-border-l), 0.1);
 }
 
 $heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';

@@ -37,6 +37,7 @@ function getThemesConfig()
                     'label'       => __('Border', 'flynt'),
                     'default'     => '#8791BA',
                     'description' => '',
+                    'hsl'         => 1,
                 ],
                 'background' => [
                     'label'       => __('Background', 'flynt'),
@@ -68,6 +69,7 @@ function getThemesConfig()
                     'label'       => __('Border', 'flynt'),
                     'default'     => '#8791BA',
                     'description' => '',
+                    'hsl'         => 1,
                 ],
                 'background' => [
                     'label'       => __('Background', 'flynt'),
@@ -99,6 +101,7 @@ function getThemesConfig()
                     'label'       => __('Border', 'flynt'),
                     'default'     => '#C3C4F7',
                     'description' => '',
+                    'hsl'         => 1,
                 ],
                 'background' => [
                     'label'       => __('Background', 'flynt'),
@@ -130,6 +133,7 @@ function getThemesConfig()
                     'label'       => __('Border', 'flynt'),
                     'default'     => '#CDE2FD',
                     'description' => '',
+                    'hsl'         => 1,
                 ],
                 'background' => [
                     'label'       => __('Background', 'flynt'),
