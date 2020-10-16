@@ -1,0 +1,56 @@
+/* FeatureAdminLoginBranding */
+html {
+  .login {
+    background: $color-brand;
+
+    h1 {
+      a {
+        background-repeat: no-repeat;
+        background-size: 320px 65px;
+        filter: brightness(0) invert(1);
+        height: 65px;
+        width: 320px;
+      }
+    }
+
+    .button {
+      background-color: $color-accent;
+      border-color: $color-accent;
+      color: $color-background;
+      cursor: pointer;
+      transition: background-color 0.2s ease, border-color 0.2s ease,
+        color 0.2s ease;
+      user-select: none;
+
+      &:hover,
+      &:focus {
+        background-color: $color-background-dark;
+        border-color: $color-background-dark;
+        color: $color-background;
+      }
+    }
+
+    /* stylelint-disable-next-line selector-no-qualifying-type, selector-max-id */
+    #backtoblog,
+    /* stylelint-disable-next-line selector-no-qualifying-type, selector-max-id */
+    #nav {
+      /* stylelint-disable-next-line selector-no-qualifying-type, selector-max-id */
+      a {
+        color: $color-background;
+
+        /* stylelint-disable-next-line selector-no-qualifying-type, selector-max-id */
+        &:hover {
+          color: $color-border;
+        }
+      }
+    }
+
+    .privacy-policy-link {
+      color: $color-background;
+
+      &:hover {
+        color: $color-border;
+      }
+    }
+  }
+}
