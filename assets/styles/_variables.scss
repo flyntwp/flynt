@@ -18,45 +18,45 @@ $gutter-width: 24px;
 // Theming variables
 :root,
 .themeReset {
-  --color-background: var(--theme-color-background-default, #fff);
-  --color-headline: var(--theme-color-headline-default, #252525);
-  --color-text: var(--theme-color-text-default, #383838);
-  --color-border: var(--theme-color-border-default, #8791ba);
-  --color-accent: var(--theme-color-accent-default, #2b44df);
-  --color-accent-alpha: var(--theme-color-accent-alpha-default, #{rgba(#2b44df, 0.4)});
-  --color-accent-hover: var(--theme-color-accent-hover-default, #{darken(#2b44df, 5)});
+  --color-background: var(--theme-color-background-default);
+  --color-headline: var(--theme-color-headline-default);
+  --color-text: var(--theme-color-text-default);
+  --color-border: var(--theme-color-border-default);
+  --color-accent: var(--theme-color-accent-default);
+  --color-accent-alpha: hsla(var(--theme-color-accent-h-default), var(--theme-color-accent-s-default), var(--theme-color-accent-l-default), 0.4);
+  --color-accent-hover: hsl(var(--theme-color-accent-h-default), var(--theme-color-accent-s-default), calc(var(--theme-color-accent-l-default) - 5%));
   --color-transparent: transparent; // needs for ie11-custom-propertiess polyfill to work properly
   --color-error: #e80242;
 }
 
 .themeLight {
-  --color-background: var(--theme-color-background-light, #f8f9fd);
-  --color-headline: var(--theme-color-headline-light, #252525);
-  --color-text: var(--theme-color-text-light, #383838);
-  --color-border: var(--theme-color-border-light, #8791ba);
-  --color-accent: var(--theme-color-accent-light, #2b44df);
-  --color-accent-alpha: var(--theme-color-accent-alpha-light, #{rgba(#2b44df, 0.4)});
-  --color-accent-hover: var(--theme-color-accent-hover-light, #{darken(#2b44df, 5)});
+  --color-background: var(--theme-color-background-light);
+  --color-headline: var(--theme-color-headline-light);
+  --color-text: var(--theme-color-text-light);
+  --color-border: var(--theme-color-border-light);
+  --color-accent: var(--theme-color-accent-light);
+  --color-accent-alpha: hsla(var(--theme-color-accent-h-light), var(--theme-color-accent-s-light), var(--theme-color-accent-l-light), 0.4);
+  --color-accent-hover: hsl(var(--theme-color-accent-h-light), var(--theme-color-accent-s-light), calc(var(--theme-color-accent-l-light) - 5%));
 }
 
 .themeDark {
-  --color-background: var(--theme-color-background-dark, #10205a);
-  --color-headline: var(--theme-color-headline-dark, #fbfbfb);
-  --color-text: var(--theme-color-text-dark, #e9e9ec);
-  --color-border: var(--theme-color-border-dark, #c3c4f7);
-  --color-accent: var(--theme-color-accent-dark, #fff);
-  --color-accent-alpha: var(--theme-color-accent-alpha-dark, #{rgba(#fff, 0.4)});
-  --color-accent-hover: var(--theme-color-accent-hover-dark, #{darken(#fff, 5)});
+  --color-background: var(--theme-color-background-dark);
+  --color-headline: var(--theme-color-headline-dark);
+  --color-text: var(--theme-color-text-dark);
+  --color-border: var(--theme-color-border-dark);
+  --color-accent: var(--theme-color-accent-dark);
+  --color-accent-alpha: hsla(var(--theme-color-accent-h-dark), var(--theme-color-accent-s-dark), var(--theme-color-accent-l-dark), 0.4);
+  --color-accent-hover: hsl(var(--theme-color-accent-h-dark), var(--theme-color-accent-s-dark), calc(var(--theme-color-accent-l-dark) - 5%));
 }
 
 .themeHero {
-  --color-background: var(--theme-color-background-hero, #2b44df);
-  --color-headline: var(--theme-color-headline-hero, #fbfbfb);
-  --color-text: var(--theme-color-text-hero, #e9e9ec);
-  --color-border: var(--theme-color-border-hero, #cde2fd);
-  --color-accent: var(--theme-color-accent-hero, #fff);
-  --color-accent-alpha: var(--theme-color-accent-alpha-hero, #{rgba(#fff, 0.4)});
-  --color-accent-hover: var(--theme-color-accent-hover-hero, #{darken(#fff, 5)});
+  --color-background: var(--theme-color-background-hero);
+  --color-headline: var(--theme-color-headline-hero);
+  --color-text: var(--theme-color-text-hero);
+  --color-border: var(--theme-color-border-hero);
+  --color-accent: var(--theme-color-accent-hero);
+  --color-accent-alpha: hsla(var(--theme-color-accent-h-hero), var(--theme-color-accent-s-hero), var(--theme-color-accent-l-hero), 0.4);
+  --color-accent-hover: hsl(var(--theme-color-accent-h-hero), var(--theme-color-accent-s-hero), calc(var(--theme-color-accent-l-hero) - 5%));
 }
 
 $heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';

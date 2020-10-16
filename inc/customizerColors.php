@@ -199,9 +199,6 @@ add_action('acf/init', function () {
 
 add_action('wp_head', function () {
     $config = getConfig();
-
-    $alphaColorAmount = 0.4;
-    $darkenColorAmount = -0.1; // -0.1 darken value approximately equals scss darken 5%
     ?>
     <style type="text/css">
         :root.html {
@@ -210,11 +207,11 @@ add_action('wp_head', function () {
                     $colorValue = get_theme_mod("theme_colors_{$colorName}_{$theme}", $colorConfig['default']);
                     echo "--theme-color-{$colorName}-{$theme}: {$colorValue};";
                 }
-                $accentColorValue = get_theme_mod("theme_colors_accent_{$theme}", $colors['accent']['default']);
-                $rgbaValue = ColorHelpers::hexToRgba($accentColorValue, $alphaColorAmount);
-                $darkenedValue = ColorHelpers::colorBrightness($accentColorValue, $darkenColorAmount);
-                echo "--theme-color-accent-alpha-{$theme}: {$rgbaValue};";
-                echo "--theme-color-accent-hover-{$theme}: {$darkenedValue};";
+                $accentColor = get_theme_mod("theme_colors_accent_{$theme}", $colors['accent']['default']);
+                $accentColorHsla = ColorHelpers::hexToHsla($accentColor);
+                echo "--theme-color-accent-h-{$theme}: {$accentColorHsla[0]};";
+                echo "--theme-color-accent-s-{$theme}: {$accentColorHsla[1]};";
+                echo "--theme-color-accent-l-{$theme}: {$accentColorHsla[2]};";
             } ?>
     </style>
     <?php
