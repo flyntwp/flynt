@@ -191,8 +191,8 @@ blockquote,
   color: var(--color-accent);
   font-size: 1.5rem;
   font-weight: 700;
-  line-height: 1.45;
   letter-spacing: 0.0125em;
+  line-height: 1.45;
   margin: 3rem 0;
   padding-left: 2.5rem;
   position: relative;
@@ -714,7 +714,7 @@ select {
       background-color: var(--color-accent);
       border: 0;
       border-radius: 50%;
-      height: 1rem;;
+      height: 1rem;
       left: 0.25rem;
       top: 0.25rem;
       transform: none;
@@ -732,19 +732,19 @@ select {
 }
 
 .oneInputForm {
-  border-radius: 35px;
   border: 2px solid var(--color-border);
+  border-radius: 35px;
   margin: 0 0 2rem;
+  min-height: 64px;
   min-height: 64px;
   padding: 4px;
   position: relative;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   width: 100%;
-  min-height: 64px;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    display: flex;
     align-items: center;
+    display: flex;
 
     &:focus-within {
       border-color: var(--color-accent);
@@ -763,12 +763,12 @@ select {
   }
 
   &-input {
+    border: 0;
     border-radius: 35px;
     margin: 0;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     width: 100%;
-    border: 0;
 
     &:focus {
       box-shadow: none;
