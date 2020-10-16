@@ -178,10 +178,29 @@ figcaption {
   max-width: $content-max-width;
 }
 
+pre,
+code,
+kbd,
+samp {
+  font-size: inherit;
+}
+
+pre,
 code {
   background-color: var(--color-border-alpha);
+  border-radius: 4px;
   display: inline-block;
-  padding: 0 0.313rem;
+  padding: 0 0.25rem;
+}
+
+pre {
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+
+  code {
+    background: transparent;
+    padding: 0;
+  }
 }
 
 blockquote,
