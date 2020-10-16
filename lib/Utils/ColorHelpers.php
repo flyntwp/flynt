@@ -51,39 +51,45 @@ class ColorHelpers
      */
     public static function rgbaToHsla($color, $opacity = 1, $returnType = 'string')
     {
-        $r = $color[0];
-        $g = $color[1];
-        $b = $color[2];
+        $r = $color[0] / 255;
+        $g = $color[1] / 255;
+        $b = $color[2] / 255;
 
         $min = min($r, min($g, $b));
         $max = max($r, max($g, $b));
         $delta = $max - $min;
 
-        $l = ($min + $max) / 2;
-        $s = 0;
-
-        if ($l > 0 && $l < 1) {
-            $s = $delta / ($l < 0.5 ? (2 * $l) : (2 - 2 * $l));
-        }
-
         $h = 0;
+        $s = 0;
+        $l = 0;
 
-        if ($delta > 0) {
-            if ($max == $r && $max != $g) $h += ($g - $b) / $delta;
-            if ($max == $g && $max != $b) $h += (2 + ($b - $r) / $delta);
-            if ($max == $b && $max != $r) $h += (4 + ($r - $g) / $delta);
-            $h /= 6;
+        if ($max === $r) {
+            $h = (($g - $b) / $delta) % 6;
+        } else if ($max === $g) {
+            $h = ($b - $r) / $delta + 2;
+        } else {
+            $h = ($r - $g) / $delta + 4;
         }
 
-        $hsla = [ $h, $s, $l, $opacity ];
+        $h = round($h * 60);
+
+        if ($h < 0) {
+            $h += 360;
+        }
+
+        $l = ($min + $max) / 2;
+        $s = $delta == 0 ? 0 : $delta / (1 - abs(2 * $l - 1));
+
+        $s = round($s * 100, 1);
+        $l = round($l * 100, 1);
+
+        $hsla = [ $h, "$s%", "$l%", $opacity ];
 
         if ($returnType === 'array') {
             return $hsla;
         } else {
             return 'hsla(' . implode(',', $hsla) . ')';
         }
-
-        return [ $h, $s, $l ];
     }
 
     /**
