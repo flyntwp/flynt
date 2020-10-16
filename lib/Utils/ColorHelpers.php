@@ -38,6 +38,54 @@ class ColorHelpers
         }
     }
 
+    /**
+     * Converts a color from rgba to hsla.
+     *
+     * @since 2.0
+     *
+     * @param string $color The color to convert.
+     * @param int $opacity The color opacity.
+     * @param string $returnType The return format, string or array.
+     *
+     * @return mixed
+     */
+    public static function rgbaToHsla($color, $opacity = 1, $returnType = 'string')
+    {
+        $r = $color[0];
+        $g = $color[1];
+        $b = $color[2];
+
+        $min = min($r, min($g, $b));
+        $max = max($r, max($g, $b));
+        $delta = $max - $min;
+
+        $l = ($min + $max) / 2;
+        $s = 0;
+
+        if ($l > 0 && $l < 1) {
+            $s = $delta / ($l < 0.5 ? (2 * $l) : (2 - 2 * $l));
+        }
+
+        $h = 0;
+
+        if ($delta > 0) {
+            if ($max == $r && $max != $g) $h += ($g - $b) / $delta;
+            if ($max == $g && $max != $b) $h += (2 + ($b - $r) / $delta);
+            if ($max == $b && $max != $r) $h += (4 + ($r - $g) / $delta);
+            $h /= 6;
+        }
+
+        $hsla = [ $h, $s, $l, $opacity ];
+
+        if ($returnType === 'array') {
+            return $hsla;
+        } else {
+            return 'hsla(' . implode(',', $hsla) . ')';
+        }
+
+        return [ $h, $s, $l ];
+    }
+
     public static function colorBrightness($hex, $percent)
     {
         // Work out if hash given
