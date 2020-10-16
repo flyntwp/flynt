@@ -231,45 +231,27 @@ Options::addGlobal('CustomizerColors', [
     ],
 ]);
 
-
-function hex2rgba($color, $opacity = false)
+function hex2rgba($color, $opacity = 1, $format = 'string')
 {
-    $default = 'rgb(0,0,0)';
+    $color = str_replace('#', '', $color);
 
-    // Return default if no color provided
-    if (empty($color)) {
-          return $default;
-    }
-
-    // Sanitize $color if "#" is provided
-    if ($color[0] == '#') {
-        $color = substr($color, 1);
-    }
-
-    // Check if color has 6 or 3 characters and get values
-    if (strlen($color) == 6) {
-            $hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
-    } elseif (strlen($color) == 3) {
-            $hex = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
+    if (strlen($color) === 3) {
+        $r = hexdec(substr($color, 0, 1) . substr($color, 0, 1));
+        $g = hexdec(substr($color, 1, 1) . substr($color, 1, 1));
+        $b = hexdec(substr($color, 2, 1) . substr($color, 2, 1));
     } else {
-            return $default;
+        $r = hexdec(substr($color, 0, 2));
+        $g = hexdec(substr($color, 2, 2));
+        $b = hexdec(substr($color, 4, 2));
     }
 
-    // Convert hexadec to rgb
-    $rgb =  array_map('hexdec', $hex);
+    $rgba = [ $r, $g, $b, $opacity ];
 
-    // Check if opacity is set(rgba or rgb)
-    if ($opacity) {
-        if (abs($opacity) > 1) {
-            $opacity = 1.0;
-        }
-        $output = 'rgba(' . implode(",", $rgb) . ',' . $opacity . ')';
+    if ($format === 'array') {
+        return $rgba;
     } else {
-        $output = 'rgb(' . implode(",", $rgb) . ')';
+        return 'rgba(' . implode(',', $rgba) . ')';
     }
-
-    // Return rgb(a) color string
-    return $output;
 }
 
 function colorBrightness($hex, $percent)
