@@ -1,4 +1,4 @@
-/* globals wp */
+/* globals wp, FlyntCustomizerColorsData */
 import $ from 'jquery'
 
 function hexToRgba (color, opacity = 1, returnType = 'array') {
@@ -72,50 +72,23 @@ function hexToHsla (color, opacity = 1, returnType = 'array') {
 
 $(document).ready(function () {
   const $root = $(':root.html')
-  const setColor = function (cssProperty) {
+  const setColor = function (cssProperty, theme, options) {
     return function (setting) {
       setting.bind(function (color) {
-        $root.css(cssProperty, color)
-      })
-    }
-  }
-  const setColorWithHsla = function (cssProperty, theme) {
-    return function (setting) {
-      setting.bind(function (color) {
-        const hsla = hexToHsla(color)
         $root.css(`${cssProperty}-${theme}`, color)
-        $root.css(`${cssProperty}-h-${theme}`, hsla[0])
-        $root.css(`${cssProperty}-s-${theme}`, hsla[1])
-        $root.css(`${cssProperty}-l-${theme}`, hsla[2])
+        if (options.hsla) {
+          const hsla = hexToHsla(color)
+          $root.css(`${cssProperty}-${theme}-h`, hsla[0])
+          $root.css(`${cssProperty}-${theme}-s`, hsla[1])
+          $root.css(`${cssProperty}-${theme}-l`, hsla[2])
+        }
       })
     }
   }
 
-  // Default / Theme Reset
-  wp.customize('theme_colors_accent_default', setColorWithHsla('--theme-color-accent', 'default'))
-  wp.customize('theme_colors_text_default', setColor('--theme-color-text-default'))
-  wp.customize('theme_colors_headline_default', setColor('--theme-color-headline-default'))
-  wp.customize('theme_colors_border_default', setColor('--theme-color-border-default'))
-  wp.customize('theme_colors_background_default', setColor('--theme-color-background-default'))
-
-  // Theme Light
-  wp.customize('theme_colors_accent_light', setColorWithHsla('--theme-color-accent', 'light'))
-  wp.customize('theme_colors_text_light', setColor('--theme-color-text-light'))
-  wp.customize('theme_colors_headline_light', setColor('--theme-color-headline-light'))
-  wp.customize('theme_colors_border_light', setColor('--theme-color-border-light'))
-  wp.customize('theme_colors_background_light', setColor('--theme-color-background-light'))
-
-  // Theme Dark
-  wp.customize('theme_colors_accent_dark', setColorWithHsla('--theme-color-accent', 'dark'))
-  wp.customize('theme_colors_text_dark', setColor('--theme-color-text-dark'))
-  wp.customize('theme_colors_headline_dark', setColor('--theme-color-headline-dark'))
-  wp.customize('theme_colors_border_dark', setColor('--theme-color-border-dark'))
-  wp.customize('theme_colors_background_dark', setColor('--theme-color-background-dark'))
-
-  // Theme Hero
-  wp.customize('theme_colors_accent_hero', setColorWithHsla('--theme-color-accent', 'hero'))
-  wp.customize('theme_colors_text_hero', setColor('--theme-color-text-hero'))
-  wp.customize('theme_colors_headline_hero', setColor('--theme-color-headline-hero'))
-  wp.customize('theme_colors_border_hero', setColor('--theme-color-border-hero'))
-  wp.customize('theme_colors_background_hero', setColor('--theme-color-background-hero'))
+  for (const [themeKey, theme] of Object.entries(FlyntCustomizerColorsData)) {
+    for (const [property, options] of Object.entries(theme)) {
+      wp.customize(`theme_colors_${property}_${themeKey}`, setColor(`--theme-color-${property}`, themeKey, options))
+    }
+  }
 })

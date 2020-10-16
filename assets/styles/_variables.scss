@@ -35,8 +35,8 @@ $gutter-width: 24px;
   --color-text: var(--theme-color-text-light);
   --color-border: var(--theme-color-border-light);
   --color-accent: var(--theme-color-accent-light);
-  --color-accent-alpha: hsla(var(--theme-color-accent-h-light), var(--theme-color-accent-s-light), var(--theme-color-accent-l-light), 0.4);
-  --color-accent-hover: hsl(var(--theme-color-accent-h-light), var(--theme-color-accent-s-light), calc(var(--theme-color-accent-l-light) - 5%));
+  --color-accent-alpha: hsla(var(--theme-color-accent-light-h), var(--theme-color-accent-light-s), var(--theme-color-accent-light-l), 0.4);
+  --color-accent-hover: hsl(var(--theme-color-accent-light-h), var(--theme-color-accent-light-s), calc(var(--theme-color-accent-light-l) - 5%));
 }
 
 .themeDark {
@@ -45,8 +45,8 @@ $gutter-width: 24px;
   --color-text: var(--theme-color-text-dark);
   --color-border: var(--theme-color-border-dark);
   --color-accent: var(--theme-color-accent-dark);
-  --color-accent-alpha: hsla(var(--theme-color-accent-h-dark), var(--theme-color-accent-s-dark), var(--theme-color-accent-l-dark), 0.4);
-  --color-accent-hover: hsl(var(--theme-color-accent-h-dark), var(--theme-color-accent-s-dark), calc(var(--theme-color-accent-l-dark) - 5%));
+  --color-accent-alpha: hsla(var(--theme-color-accent-dark-h), var(--theme-color-accent-dark-s), var(--theme-color-accent-dark-l), 0.4);
+  --color-accent-hover: hsl(var(--theme-color-accent-dark-h), var(--theme-color-accent-dark-s), calc(var(--theme-color-accent-dark-l) - 5%));
 }
 
 .themeHero {
@@ -55,8 +55,8 @@ $gutter-width: 24px;
   --color-text: var(--theme-color-text-hero);
   --color-border: var(--theme-color-border-hero);
   --color-accent: var(--theme-color-accent-hero);
-  --color-accent-alpha: hsla(var(--theme-color-accent-h-hero), var(--theme-color-accent-s-hero), var(--theme-color-accent-l-hero), 0.4);
-  --color-accent-hover: hsl(var(--theme-color-accent-h-hero), var(--theme-color-accent-s-hero), calc(var(--theme-color-accent-l-hero) - 5%));
+  --color-accent-alpha: hsla(var(--theme-color-accent-hero-h), var(--theme-color-accent-hero-s), var(--theme-color-accent-hero-l), 0.4);
+  --color-accent-hover: hsl(var(--theme-color-accent-hero-h), var(--theme-color-accent-hero-s), calc(var(--theme-color-accent-hero-l) - 5%));
 }
 
 $heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';

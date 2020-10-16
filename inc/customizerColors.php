@@ -11,137 +11,144 @@ use Flynt\Utils\ColorHelpers;
 use Flynt\Utils\Options;
 use WP_Customize_Color_Control;
 
-function getConfig()
+function getThemesConfig()
 {
-    $colorsByTheme = [
+    $themes = [
         'default' => [
-            'accent' => [
-                'label'       => 'Accent',
-                'default'     => '#2b44df',
-                'description' => ''
-            ],
-            'headline' => [
-                'label'       => 'Headline',
-                'default'     => '#252525',
-                'description' => ''
-            ],
-            'text' => [
-                'label'       => 'Text',
-                'default'     => '#353535',
-                'description' => ''
-            ],
-            'border' => [
-                'label'       => 'Border',
-                'default'     => '#8791BA',
-                'description' => ''
-            ],
-            'background' => [
-                'label'       => 'Background',
-                'default'     => '#ffffff',
-                'description' => ''
+            'name' => __('Default', 'flynt'),
+            'colors' => [
+                'accent' => [
+                    'label'       => __('Accent', 'flynt'),
+                    'default'     => '#2b44df',
+                    'description' => '',
+                    'hsla'        => 1,
+                ],
+                'headline' => [
+                    'label'       => __('Headline', 'flynt'),
+                    'default'     => '#252525',
+                    'description' => '',
+                ],
+                'text' => [
+                    'label'       => __('Text', 'flynt'),
+                    'default'     => '#353535',
+                    'description' => '',
+                ],
+                'border' => [
+                    'label'       => __('Border', 'flynt'),
+                    'default'     => '#8791BA',
+                    'description' => '',
+                ],
+                'background' => [
+                    'label'       => __('Background', 'flynt'),
+                    'default'     => '#ffffff',
+                    'description' => '',
+                ],
             ],
         ],
         'light' => [
-            'accent' => [
-                'label'       => 'Accent',
-                'default'     => '#2b44df',
-                'description' => ''
-            ],
-            'headline' => [
-                'label'       => 'Headline',
-                'default'     => '#252525',
-                'description' => ''
-            ],
-            'text' => [
-                'label'       => 'Text',
-                'default'     => '#353535',
-                'description' => ''
-            ],
-            'border' => [
-                'label'       => 'Border',
-                'default'     => '#8791BA',
-                'description' => ''
-            ],
-            'background' => [
-                'label'       => 'Background',
-                'default'     => '#F8F9FD',
-                'description' => ''
+            'name' => __('Theme Light', 'flynt'),
+            'colors' => [
+                'accent' => [
+                    'label'       => __('Accent', 'flynt'),
+                    'default'     => '#2b44df',
+                    'description' => '',
+                    'hsla'        => 1,
+                ],
+                'headline' => [
+                    'label'       => __('Headline', 'flynt'),
+                    'default'     => '#252525',
+                    'description' => '',
+                ],
+                'text' => [
+                    'label'       => __('Text', 'flynt'),
+                    'default'     => '#353535',
+                    'description' => '',
+                ],
+                'border' => [
+                    'label'       => __('Border', 'flynt'),
+                    'default'     => '#8791BA',
+                    'description' => '',
+                ],
+                'background' => [
+                    'label'       => __('Background', 'flynt'),
+                    'default'     => '#F8F9FD',
+                    'description' => '',
+                ],
             ],
         ],
         'dark' => [
-            'accent' => [
-                'label'       => 'Accent',
-                'default'     => '#ffffff',
-                'description' => '',
-            ],
-            'headline' => [
-                'label'       => 'Headline',
-                'default'     => '#FBFBFB',
-                'description' => '',
-            ],
-            'text' => [
-                'label'       => 'Text',
-                'default'     => '#E9E9EC',
-                'description' => '',
-            ],
-            'border' => [
-                'label'       => 'Border',
-                'default'     => '#C3C4F7',
-                'description' => '',
-            ],
-            'background' => [
-                'label'       => 'Background',
-                'default'     => '#10205A',
-                'description' => '',
+            'name' => __('Theme Dark', 'flynt'),
+            'colors' => [
+                'accent' => [
+                    'label'       => __('Accent', 'flynt'),
+                    'default'     => '#ffffff',
+                    'description' => '',
+                    'hsla'        => 1,
+                ],
+                'headline' => [
+                    'label'       => __('Headline', 'flynt'),
+                    'default'     => '#FBFBFB',
+                    'description' => '',
+                ],
+                'text' => [
+                    'label'       => __('Text', 'flynt'),
+                    'default'     => '#E9E9EC',
+                    'description' => '',
+                ],
+                'border' => [
+                    'label'       => __('Border', 'flynt'),
+                    'default'     => '#C3C4F7',
+                    'description' => '',
+                ],
+                'background' => [
+                    'label'       => __('Background', 'flynt'),
+                    'default'     => '#10205A',
+                    'description' => '',
+                ],
             ],
         ],
         'hero' => [
-            'accent' => [
-                'label'       => 'Accent',
-                'default'     => '#ffffff',
-                'description' => '',
-            ],
-            'headline' => [
-                'label'       => 'Headline',
-                'default'     => '#FBFBFB',
-                'description' => '',
-            ],
-            'text' => [
-                'label'       => 'Text',
-                'default'     => '#E9E9EC',
-                'description' => '',
-            ],
-            'border' => [
-                'label'       => 'Border',
-                'default'     => '#CDE2FD',
-                'description' => '',
-            ],
-            'background' => [
-                'label'       => 'Background',
-                'default'     => '#2B44DF',
-                'description' => '',
+            'name' => __('Theme Hero', 'flynt'),
+            'colors' => [
+                'accent' => [
+                    'label'       => __('Accent', 'flynt'),
+                    'default'     => '#ffffff',
+                    'description' => '',
+                    'hsla'        => 1,
+                ],
+                'headline' => [
+                    'label'       => __('Headline', 'flynt'),
+                    'default'     => '#FBFBFB',
+                    'description' => '',
+                ],
+                'text' => [
+                    'label'       => __('Text', 'flynt'),
+                    'default'     => '#E9E9EC',
+                    'description' => '',
+                ],
+                'border' => [
+                    'label'       => __('Border', 'flynt'),
+                    'default'     => '#CDE2FD',
+                    'description' => '',
+                ],
+                'background' => [
+                    'label'       => __('Background', 'flynt'),
+                    'default'     => '#2B44DF',
+                    'description' => '',
+                ],
             ],
         ],
     ];
 
-    $sectionsByTheme = [
-        'default' => __('Default', 'flynt'),
-        'light' => __('Theme Light', 'flynt'),
-        'dark' => __('Theme Dark', 'flynt'),
-        'hero' => __('Theme Hero', 'flynt'),
-    ];
-
-    return [
-        'colors' => $colorsByTheme,
-        'sections' => $sectionsByTheme,
-    ];
+    return $themes;
 }
 
 add_action('acf/init', function () {
     $options = Options::getGlobal('CustomizerColors');
     if ($options['enabled']) {
         add_action('customize_register', function ($wp_customize) {
-            $config = getConfig();
+            $themes = getThemesConfig();
+
             $wp_customize->add_panel(
                 'theme_colors_panel',
                 [
@@ -149,34 +156,35 @@ add_action('acf/init', function () {
                     'priority' => 160,
                 ]
             );
-            foreach (($config['sections'] ?? []) as $key => $title) {
+
+            foreach ($themes as $key => $theme) {
                 $wp_customize->add_section(
                     "theme_colors_{$key}",
                     [
-                        'title'      => $title,
-                        'priority'   => 20,
-                        'panel' => 'theme_colors_panel'
+                        'title' => $theme['name'],
+                        'priority' => 20,
+                        'panel' => 'theme_colors_panel',
                     ]
                 );
             }
-            foreach (($config['colors'] ?? []) as $theme => $colors) {
-                foreach ($colors as $colorName => $colorConfig) {
-                    // Settings
+
+            foreach ($themes as $themeKey => $theme) {
+                foreach ($theme['colors'] as $colorName => $colorConfig) {
                     $wp_customize->add_setting(
-                        "theme_colors_{$colorName}_{$theme}",
+                        "theme_colors_{$colorName}_{$themeKey}",
                         [
-                            'default'   => $colorConfig['default'],
+                            'default' => $colorConfig['default'],
                             'transport' => 'postMessage',
                         ]
                     );
-                    // Controls
+
                     $wp_customize->add_control(
                         new WP_Customize_Color_Control(
                             $wp_customize,
-                            "theme_colors_{$colorName}_{$theme}",
+                            "theme_colors_{$colorName}_{$themeKey}",
                             [
-                                'section'     => 'theme_colors_' . $theme,
-                                'label'       => __($colorConfig['label']),
+                                'section' => 'theme_colors_' . $themeKey,
+                                'label' => __($colorConfig['label']),
                                 'description' => __($colorConfig['description']),
                             ]
                         )
@@ -189,30 +197,36 @@ add_action('acf/init', function () {
             wp_enqueue_script(
                 'customizer-colors',
                 Asset::requireUrl('assets/customizer-colors.js'),
-                array('jquery','customize-preview'),
-                '',
-                true
+                ['jquery','customize-preview'],
             );
+            $themes = getThemesConfig();
+            $config = array_map(function ($theme) {
+                return $theme['colors'];
+            }, $themes);
+            wp_localize_script('customizer-colors', 'FlyntCustomizerColorsData', $config);
         });
     }
 });
 
 add_action('wp_head', function () {
-    $config = getConfig();
+    $themes = getThemesConfig();
     ?>
     <style type="text/css">
         :root.html {
-            <?php foreach (($config['colors'] ?? []) as $theme => $colors) {
-                foreach ($colors as $colorName => $colorConfig) {
-                    $colorValue = get_theme_mod("theme_colors_{$colorName}_{$theme}", $colorConfig['default']);
-                    echo "--theme-color-{$colorName}-{$theme}: {$colorValue};";
+            <?php foreach ($themes as $themeKey => $theme) {
+                foreach ($theme['colors'] as $colorName => $colorConfig) {
+                    $colorValue = get_theme_mod("theme_colors_{$colorName}_{$themeKey}", $colorConfig['default']);
+                    echo "--theme-color-{$colorName}-{$themeKey}: {$colorValue};";
+
+                    if ($colorConfig['hsla'] ?? false) {
+                        $colorHsla = ColorHelpers::hexToHsla($colorValue);
+                        echo "--theme-color-{$colorName}-{$themeKey}-h: {$colorHsla[0]};";
+                        echo "--theme-color-{$colorName}-{$themeKey}-s: {$colorHsla[1]};";
+                        echo "--theme-color-{$colorName}-{$themeKey}-l: {$colorHsla[2]};";
+                    }
                 }
-                $accentColor = get_theme_mod("theme_colors_accent_{$theme}", $colors['accent']['default']);
-                $accentColorHsla = ColorHelpers::hexToHsla($accentColor);
-                echo "--theme-color-accent-h-{$theme}: {$accentColorHsla[0]};";
-                echo "--theme-color-accent-s-{$theme}: {$accentColorHsla[1]};";
-                echo "--theme-color-accent-l-{$theme}: {$accentColorHsla[2]};";
             } ?>
+        }
     </style>
     <?php
 }, 5);
