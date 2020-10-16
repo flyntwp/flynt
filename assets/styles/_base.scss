@@ -155,10 +155,6 @@ p,
 table,
 figure {
   margin: 0 0 1.5rem;
-
-  @media (min-width: $breakpoint-mobile-horizontal) {
-    margin: 0 0 1.5rem;
-  }
 }
 
 hr {
@@ -166,15 +162,12 @@ hr {
   border: 0;
   display: block;
   height: 2px;
-  margin: 2rem 0;
+  margin: 3rem 0;
   opacity: 0.2;
-
-  @media (min-width: $breakpoint-mobile-horizontal) {
-    margin: 4rem 0;
-  }
 }
 
 img {
+  border-radius: 16px;
   display: block;
   max-width: 100%;
   width: 100%;
@@ -182,8 +175,9 @@ img {
 
 figcaption {
   font-size: 0.875rem;
-  line-height: 1.4;
-  margin-top: 1rem;
+  line-height: 1.5;
+  margin: 1rem auto 0;
+  max-width: $content-max-width;
 }
 
 code {
@@ -974,7 +968,7 @@ select {
 }
 
 .boxShadow {
-  box-shadow: 0 5px 30px -10px rgba(16, 35, 90, 0.15);
+  box-shadow: 0 5px 35px -6px rgba(0, 0, 0, 0.1);
 }
 
 /* Custom styling for single post layouts */
