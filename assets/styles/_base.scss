@@ -347,19 +347,15 @@ button {
   cursor: pointer;
   display: inline-block;
   font-family: inherit;
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1.77;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  line-height: 1.7;
   outline: none;
-  padding: 0.75rem 2rem;
+  padding: 0.75rem 1.5rem;
   text-align: center;
   text-decoration: none;
   transition: 0.2s ease;
   user-select: none;
-
-  @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.125rem;
-  }
 
   &:disabled,
   &--disabled {
@@ -420,13 +416,15 @@ button {
 
   &--small {
     font-size: 0.875rem;
-    padding: 0.5rem 1.25rem;
+    line-height: 1.45;
+    padding: 0.5rem 1rem;
   }
 
   &--link {
     background-color: var(--color-transparent);
     border: 0 solid var(--color-transparent);
     color: var(--color-accent);
+    line-height: 1.77;
     padding: 0;
     position: relative;
     text-decoration: none;
@@ -452,13 +450,13 @@ button {
       border-top: 2px solid currentColor;
       content: '';
       display: inline-block;
-      height: 7px;
+      height: 6px;
       margin-bottom: 1px;
-      margin-left: 5px;
+      margin-left: 0.25rem;
       margin-right: 2px;
       transform: rotate(45deg);
       vertical-align: baseline;
-      width: 7px;
+      width: 6px;
 
       @media (min-width: $breakpoint-mobile-horizontal) {
         margin-bottom: 2px;
