@@ -965,6 +965,8 @@ select {
 .boxRadius {
   border-radius: 16px;
   overflow: hidden;
+  position: relative;
+  z-index: 1;
 }
 
 .boxShadow {
