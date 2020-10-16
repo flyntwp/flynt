@@ -63,12 +63,14 @@ class ColorHelpers
         $s = 0;
         $l = 0;
 
-        if ($max === $r) {
-            $h = (($g - $b) / $delta) % 6;
-        } else if ($max === $g) {
-            $h = ($b - $r) / $delta + 2;
-        } else {
-            $h = ($r - $g) / $delta + 4;
+        if ($delta > 0) {
+            if ($max === $r) {
+                $h = (($g - $b) / $delta) % 6;
+            } else if ($max === $g) {
+                $h = ($b - $r) / $delta + 2;
+            } else {
+                $h = ($r - $g) / $delta + 4;
+            }
         }
 
         $h = round($h * 60);
