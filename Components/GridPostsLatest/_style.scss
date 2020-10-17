@@ -35,20 +35,30 @@
 
   .grid-item {
     @include reset-list-item;
-    max-width: 675px;
+    display: flex;
+    max-width: $content-max-width;
     padding: $gutter-width 0 0 $gutter-width;
     width: 100%;
   }
 
-  .content {
+  .post {
+    @include reset-list-item;
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 100%;
+
+    &-link {
+      @include reset-link;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .figure {
+      flex-shrink: 0; // IE11 bug fix (prevent image from stretchin')
+      margin-bottom: 0;
+    }
 
     &-image {
-      background: var(--color-text);
-      flex-shrink: 0; // IE11 bug fix (prevent image from stretchin')
+      background: var(--color-border-alpha);
     }
 
     &-inner {
@@ -67,47 +77,60 @@
       display: flex;
       flex-direction: column;
       flex-grow: 1;
-      font-weight: 400;
-      text-decoration: none;
+    }
+
+    &-footer {
+      margin: 0 24px 24px;
+      position: relative;
+      width: 100%;
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        margin: 0 32px 24px;
+      }
     }
 
     &-readingTime {
-      color: var(--color-text);
+      align-items: center;
+      display: flex;
       font-size: 0.875rem;
-      opacity: 0.7;
+      transition: all 0.3s ease;
+      will-change: transform, opacity;
 
       .feather {
         color: currentColor;
         height: 1rem;
-        margin-right: 2px;
+        margin-right: 0.25rem;
+        top: 0;
         width: 1rem;
       }
     }
 
-    &-footer {
-      align-items: center;
-      align-self: flex-end;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 24px;
-      width: 100%;
+    &-readMore {
+      font-size: 0.875rem;
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      will-change: transform, opacity;
+    }
 
-      .content-readMore {
-        padding: 0.875rem 0 1.125rem;
-
-        &::before {
-          bottom: 1.1rem;
-        }
+    &:hover {
+      .post-readMore {
+        opacity: 1;
+        transform: none;
       }
 
-      @media (min-width: $breakpoint-tablet-horizontal) {
-        padding: 0 32px;
+      .post-readingTime {
+        opacity: 0;
+        transform: translateY(-10px);
       }
     }
   }
 
   .allPostsLink {
-    padding-top: 1.5rem;
+    padding-top: 2rem;
     text-align: center;
 
     @media (min-width: $breakpoint-desktop) {
