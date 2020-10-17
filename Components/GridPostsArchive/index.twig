@@ -11,11 +11,11 @@
     {% endif %}
     <ul class="posts">
       {% for post in posts %}
-        <li class="post">
-          <a class="post-link" href="{{ post.link }}">
+        <li class="post boxShadow boxRadius">
+          <a class="post-link" href="{{ post.link }}" aria-label="{{ post.title }}">
             {% if post.thumbnail %}
               <figure class="figure">
-                <img class="figure-image lazyload"
+                <img class="post-image figure-image lazyload"
                   src="{{ post.thumbnail.src|resizeDynamic(424, 283) }}"
                   srcset="{{ placeholderImage(3, 2) }}"
                   data-srcset="
@@ -31,14 +31,17 @@
                   alt="{{ post.title }}">
               </figure>
             {% endif %}
+            <div class="post-inner boxPadding">
+              <h2 class="post-title h3">{{ post.title }}</h2>
+              <p class="post-excerpt">{{ post.preview.read_more(false) }}</p>
+            </div>
+            <footer class="post-footer">
+              <span class="post-readingTime">
+                <i data-feather="clock"></i> {{ labels.readingTime|replace({'%': item.content|readingtime}) }}
+              </span>
+              <span class="button button--link post-readMore">{{ labels.readMore }}</span>
+            </footer>
           </a>
-          <div class="post-inner">
-            <h4 class="post-title">{{ post.title }}</h4>
-            <p class="post-excerpt">{{ post.preview.read_more(false) }}</p>
-            <a class="button button--link" href="{{ post.link }}" title="{{ post.title }}" aria-hidden="true" tabindex="-1">
-              {{ labels.readMore }}
-            </a>
-          </div>
         </li>
       {% else %}
         <p class="posts-empty">{{ labels.noPostsFound }}</p>

@@ -12,34 +12,94 @@
   }
 
   .posts-empty {
-    padding: 40px 0 0;
+    padding: 32px 0 0;
   }
 
   .post {
     @include reset-list-item;
     margin-bottom: $gutter-width;
-
-    @media (min-width: $breakpoint-tablet) {
-      margin-bottom: 0;
-    }
+    display: flex;
 
     &-link {
-      display: block;
-      font-weight: 400;
-      text-decoration: none;
+      @include reset-link;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     .figure {
-      background-color: var(--color-text);
       margin-bottom: 0;
+      flex-shrink: 0; // IE11 bug fix (prevent image from stretchin')
+    }
+
+    &-image {
+      background: var(--color-border-alpha);
     }
 
     &-inner {
       @include reset-content-margins;
-      padding: $gutter-width 0;
+      color: var(--color-text);
+      flex-grow: 1;
 
-      @media (min-width: $breakpoint-mobile-horizontal) {
-        padding: $gutter-width 1rem $gutter-width 0;
+      #{$heading-selectors} {
+        color: var(--color-headline);
+      }
+    }
+
+    &-link {
+      @include reset-link;
+
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    &-footer {
+      position: relative;
+      margin: 0 24px 24px;
+      width: 100%;
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        margin: 0 32px 24px;
+      }
+    }
+
+    &-readingTime {
+      font-size: 0.875rem;
+      will-change: transform, opacity;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+
+      .feather {
+        color: currentColor;
+        height: 1rem;
+        margin-right: 0.25rem;
+        width: 1rem;
+        top: 0;
+      }
+    }
+
+    &-readMore {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 0.875rem;
+      transform: translateY(10px);
+      opacity: 0;
+      will-change: transform, opacity;
+      transition: all 0.3s ease;
+    }
+
+    &:hover {
+      .post-readMore {
+        transform: none;
+        opacity: 1;
+      }
+
+      .post-readingTime {
+        transform: translateY(-10px);
+        opacity: 0;
       }
     }
   }
