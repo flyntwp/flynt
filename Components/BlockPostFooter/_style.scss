@@ -1,8 +1,10 @@
 [is='flynt-block-post-footer'] {
-  margin: $component-spacing-mobile 0;
+  margin-bottom: $component-spacing-mobile;
+  margin-top: 32px;
 
   @media (min-width: $breakpoint-tablet) {
     margin-bottom: $component-spacing-tablet;
+    margin-top: $component-spacing-mobile;
   }
 
   @media (min-width: $breakpoint-desktop) {
@@ -13,7 +15,6 @@
     @include reset-list;
     display: flex;
     flex-wrap: wrap;
-    margin: 0 0 $component-spacing-mobile;
 
     &-item {
       @include reset-list-item;
@@ -25,10 +26,14 @@
 
   .author {
     display: flex;
-    margin: $component-spacing-mobile 0;
+    margin: 32px 0;
 
     @media (min-width: $breakpoint-mobile-horizontal) {
       align-items: center;
+    }
+
+    @media (min-width: $breakpoint-tablet) {
+      margin: $component-spacing-mobile 0;
     }
 
     &-avatarLink {
