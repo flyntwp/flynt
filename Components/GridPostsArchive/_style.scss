@@ -1,9 +1,7 @@
 [is='flynt-grid-posts-archive'] {
-  ul {
-    @include reset-list;
-  }
-
   .posts {
+    @include reset-list;
+
     @media (min-width: $breakpoint-tablet) {
       @include grid(2);
     }
@@ -18,6 +16,7 @@
   }
 
   .post {
+    @include reset-list-item;
     margin-bottom: $gutter-width;
 
     @media (min-width: $breakpoint-tablet) {

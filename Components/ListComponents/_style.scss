@@ -13,6 +13,7 @@
   }
 
   .component {
+    @include reset-list-item;
     background-color: var(--color-background);
     display: flex;
     flex-wrap: wrap;

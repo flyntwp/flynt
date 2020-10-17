@@ -3,12 +3,12 @@
 
   .tags {
     @include reset-list;
-
     display: flex;
     flex-wrap: wrap;
     margin: 0 0 2rem;
 
     &-item {
+      @include reset-list-item;
       display: inline-block;
       margin-right: 1.5rem;
     }

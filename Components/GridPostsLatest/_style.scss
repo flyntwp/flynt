@@ -34,6 +34,7 @@
   }
 
   .grid-item {
+    @include reset-list-item;
     max-width: 675px;
     padding: $gutter-width 0 0 $gutter-width;
     width: 100%;

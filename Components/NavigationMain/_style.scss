@@ -39,6 +39,10 @@
     margin-right: -18px;
     padding-left: 36px;
 
+    &-item {
+      @include reset-list-item;
+    }
+
     &-item--current {
       .menu-link {
         color: var(--color-accent);

@@ -24,6 +24,10 @@
     }
   }
 
+  &-item {
+    @include reset-list-item;
+  }
+
   &-item--current {
     .menu-link {
       color: var(--color-accent);

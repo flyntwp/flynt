@@ -3,6 +3,7 @@
   margin-top: 4rem;
 
   &-item {
+    @include reset-list-item;
     margin-bottom: 1rem;
     position: relative;
 
