@@ -1005,20 +1005,12 @@ select {
         padding: $component-spacing-mobile/2 0;
 
         @media (min-width: $breakpoint-tablet) {
-          padding: $component-spacing-tablet/2 0;
-        }
-
-        @media (min-width: $breakpoint-desktop) {
-          padding: $component-spacing-desktop/2 0;
+          padding: $component-spacing-mobile 0;
         }
       }
 
       @media (min-width: $breakpoint-tablet) {
-        margin: $component-spacing-tablet/2 0;
-      }
-
-      @media (min-width: $breakpoint-desktop) {
-        margin: $component-spacing-desktop/2 0;
+        margin: $component-spacing-mobile 0;
       }
     }
 
