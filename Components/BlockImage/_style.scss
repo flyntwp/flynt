@@ -18,12 +18,21 @@
   }
 
   &.flyntComponent--sizeFull {
-    .figure-caption {
-      margin-left: 0.625rem;
+    .figure-image {
+      border-radius: 0;
     }
   }
 
   .figure {
     margin: 0 auto;
+
+    &-image {
+      background-color: var(--color-border-alpha);
+      border-radius: 16px;
+
+      &.lazyloaded {
+        background-color: transparent;
+      }
+    }
   }
 }
