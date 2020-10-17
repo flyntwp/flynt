@@ -326,7 +326,7 @@ thead {
 }
 
 tr:nth-child(even) {
-  background-color: var(--color-border-alpha)
+  background-color: var(--color-border-alpha);
 }
 
 /**
@@ -677,7 +677,7 @@ select {
       margin: 0;
       padding: 0;
       position: absolute;
-      top: .2rem;
+      top: 0.2rem;
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
       width: 1.25rem;
     }

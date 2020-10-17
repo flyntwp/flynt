@@ -8,6 +8,7 @@
 
   &-item {
     @include reset-list-item;
+
     &:not(:first-child) {
       margin-left: 2rem;
     }
