@@ -6,7 +6,7 @@
         <ul class="tags">
           {% for tag in post.terms('tag')  %}
             <li class="tags-item">
-              <a class="tags-itemLink" href="{{ tag.link }}">{{ tag }}</a>
+              <a class="tags-itemLink button button--ghost button--small" href="{{ tag.link }}">{{ tag }}</a>
             </li>
           {% endfor %}
         </ul>

@@ -358,7 +358,7 @@ button {
   appearance: none;
   background-color: var(--color-accent);
   border: 2px solid var(--color-accent);
-  border-radius: 30px;
+  border-radius: 35px;
   color: var(--color-background);
   cursor: pointer;
   display: inline-block;
@@ -366,6 +366,7 @@ button {
   font-size: 1.0625rem;
   font-weight: 500;
   line-height: 1.7;
+  letter-spacing: 0.0125em;
   outline: none;
   padding: 0.75rem 1.5rem;
   text-align: center;

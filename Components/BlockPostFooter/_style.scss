@@ -18,13 +18,8 @@
     &-item {
       @include reset-list-item;
       display: inline-block;
-      margin-right: 1.5rem;
-    }
-
-    &-itemLink {
-      &::before {
-        content: '#';
-      }
+      margin-bottom: 0.5rem;
+      margin-right: 0.5rem;
     }
   }
 
