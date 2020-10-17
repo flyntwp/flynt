@@ -35,7 +35,7 @@
 
   .grid-item {
     @include reset-list-item;
-    max-width: 675px;
+    max-width: $content-max-width;
     padding: $gutter-width 0 0 $gutter-width;
     width: 100%;
   }
@@ -44,18 +44,14 @@
     height: 100%;
 
     img {
-      background: var(--color-border);
+      background: var(--color-border-alpha);
     }
 
     &-inner {
       @include reset-content-margins;
 
       &:not(.boxPadding) {
-        padding: $gutter-width 0;
-
-        @media (min-width: $breakpoint-mobile-horizontal) {
-          padding: $gutter-width 1rem $gutter-width 0;
-        }
+        padding: 24px 0;
       }
     }
   }
