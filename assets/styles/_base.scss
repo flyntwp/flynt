@@ -103,7 +103,8 @@ h5,
   font-family: 'Roboto', Helvetica, Arial, sans-serif;
   font-size: 1.25rem;
   font-weight: 500;
-  line-height: 1.45;
+  letter-spacing: 0.0125em;
+  line-height: 1.5;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
     font-size: 1.375rem;
