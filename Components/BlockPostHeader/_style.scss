@@ -1,12 +1,10 @@
 [is='flynt-block-post-header'] {
-  padding: $component-spacing-mobile/2 0 0;
+  .header {
+    padding: $component-spacing-mobile 0 $component-spacing-desktop;
 
-  @media (min-width: $breakpoint-tablet) {
-    padding: $component-spacing-tablet/2 0 0;
-  }
-
-  @media (min-width: $breakpoint-desktop) {
-    padding: $component-spacing-desktop/2 0 0;
+    @media (min-width: $breakpoint-tablet) {
+      padding: $component-spacing-tablet 0 $component-spacing-tablet*2;
+    }
   }
 
   .content {
@@ -57,11 +55,15 @@
 
   .excerpt {
     color: var(--color-text);
-    font-weight: normal;
     margin-top: 1.5rem;
   }
 
   .featuredImage {
-    margin: 2.5rem 0;
+    margin-top: -#{$component-spacing-tablet};
+    margin-bottom: $component-spacing-mobile;
+
+    @media (min-width: $breakpoint-tablet) {
+      margin-top: -#{$component-spacing-desktop};
+    }
   }
 }

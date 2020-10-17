@@ -1,29 +1,30 @@
 <div class="flyntComponent" is="flynt-block-post-header">
-  <div class="container centerMaxWidthContainer">
-    <div class="content centerContentMaxWidth">
-      <h1>{{ post.title }}</h1>
-      <div class="meta">
-        {% if labels.postedByLabel %}<span class="meta-label">{{ labels.postedByLabel|e }}</span>{% endif %}
-        <a class="meta-author" href="{{ post.author.link|e('esc_url') }}">
-          {% if post.author.avatar %}
-          <span class="meta-avatar">
-            <img class="meta-avatarImage" src="{{ post.author.avatar }}" alt="{{ post.author.name|e }}">
-          </span>
-          {% endif %}
-          <span class="visuallyHidden">{{ __("Author:", "flynt") }}</span> {{ post.author.name }}
-        </a>
-        {% if labels.postedInLabel %}<span class="meta-label">{{ labels.postedInLabel|e }}</span>{% endif %}
-        <a class="meta-category" href="{{ post.category.link|e('esc_url') }}"><span class="visuallyHidden">{{ __("Category:", "flynt") }}</span> {{ post.category }}</a>
-        {% if dividers.authorDivider %}<span class="meta-divider">{{ dividers.authorDivider|e }}</span>{% endif %}
-        {% if post.date %}
-          <time class="meta-date" datetime="{{ post.post_date }}">{{ post.date|date }}</time>
+  <div class="header themeLight">
+    <div class="container centerMaxWidthContainer">
+      <div class="content centerContentMaxWidth">
+        <h1>{{ post.title }}</h1>
+        {% if post.post_excerpt %}
+          <p class="excerpt h5">{{ post.post_excerpt }}</p>
         {% endif %}
-        {% if dividers.readingtimeDivider %}<span class="meta-divider">{{ dividers.readingtimeDivider|e }}</span>{% endif %}
-        <span class="meta-readingtime">{{ post.content|readingtime }} {{ labels.readingtimeLabel|e }}</span>
+        <div class="meta">
+          <a class="meta-author" href="{{ post.author.link|e('esc_url') }}">
+            {% if post.author.avatar %}
+            <span class="meta-avatar">
+              <img class="meta-avatarImage" src="{{ post.author.avatar }}" alt="{{ post.author.name|e }}">
+            </span>
+            {% endif %}
+            <span class="visuallyHidden">{{ labels.postedByLabel|e }}</span>
+            {{ post.author.name }}
+          </a>
+          <a class="meta-category" href="{{ post.category.link|e('esc_url') }}"><span class="visuallyHidden">{{ labels.postedInLabel|e }}</span> {{ post.category }}</a>
+          {% if dividers.authorDivider %}<span class="meta-divider">{{ dividers.authorDivider|e }}</span>{% endif %}
+          {% if post.date %}
+            <time class="meta-date" datetime="{{ post.post_date }}">{{ post.date|date }}</time>
+          {% endif %}
+          {% if dividers.readingtimeDivider %}<span class="meta-divider">{{ dividers.readingtimeDivider|e }}</span>{% endif %}
+          <span class="meta-readingtime">{{ post.content|readingtime }} {{ labels.readingtimeLabel|e }}</span>
+        </div>
       </div>
-      {% if post.post_excerpt %}
-        <p class="excerpt h5">{{ post.post_excerpt }}</p>
-      {% endif %}
     </div>
   </div>
   {% if post.thumbnail %}
