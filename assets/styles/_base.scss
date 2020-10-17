@@ -672,30 +672,30 @@ select {
       border-radius: 4px;
       content: '';
       display: block;
-      height: 1.5rem;
+      height: 1.25rem;
       left: 0;
       margin: 0;
       padding: 0;
       position: absolute;
-      top: 0;
+      top: .2rem;
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
-      width: 1.5rem;
+      width: 1.25rem;
     }
 
     &::after {
-      border-bottom: 3px solid var(--color-accent);
-      border-right: 3px solid var(--color-accent);
+      border-bottom: 2px solid var(--color-accent);
+      border-right: 2px solid var(--color-accent);
       content: '';
       display: block;
-      height: 0.875rem;
+      height: 0.75rem;
       left: 0.5rem;
       opacity: 0;
       position: absolute;
-      top: 0.25rem;
+      top: 0.4rem;
       transform: rotate(45deg);
       transition: opacity 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
       visibility: hidden;
-      width: 0.5rem;
+      width: 0.3rem;
     }
   }
 
@@ -734,11 +734,11 @@ select {
       background-color: var(--color-accent);
       border: 0;
       border-radius: 50%;
-      height: 1rem;
+      height: 0.75rem;
       left: 0.25rem;
-      top: 0.25rem;
+      top: 0.45rem;
       transform: none;
-      width: 1rem;;
+      width: 0.75rem;;
     }
   }
 
