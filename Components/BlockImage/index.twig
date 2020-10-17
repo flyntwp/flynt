@@ -2,7 +2,7 @@
   <div class="container{% if options.size != 'sizeFull' %} centerMaxWidthContainer{% endif %}">
     <figure class="figure">
       {% set gif = image.post_mime_type == 'image/gif' %}
-      <img class="figure-image {{ not gif ? 'lazyload' }}"
+      <img class="figure-image boxRadius {{ not gif ? 'lazyload' }}"
         src="{{ not gif ? image.src|resizeDynamic(760) : image.src }}"
         {% if not gif %}
           srcset="{{ placeholderImage(760, 760 / image.aspect) }}"
