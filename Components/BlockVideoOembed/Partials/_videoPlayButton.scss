@@ -1,76 +1,4 @@
-$color-gray: #333;
-$color-white: #fff;
-$background-opacity: 0.5;
-$border-width: 3px;
-$transition-time: 0.3s;
-$transition-easing: ease;
-
-$play-button-circle-diameter: (
-  'desktop': 100px,
-  'mobile': 60px
-);
-
-$play-button-triangle-size: (
-  'desktop': 40px,
-  'mobile': 20px
-);
-
-@mixin pseudo-element-defaults() {
-  content: '';
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  transition: transform $transition-time $transition-easing;
-}
-
-@mixin play-button($color-play-button, $background-opacity, $border-width, $colorBorder, $play-button-circle-diameter, $color-triangle, $play-button-triangle-size) {
-  &::before {
-    @include pseudo-element-defaults();
-    background-color: rgba($color-play-button, $background-opacity);
-    border: $border-width solid $colorBorder;
-    border-radius: 50%;
-    height: map-get($play-button-circle-diameter, 'mobile');
-    margin-left: -(map-get($play-button-circle-diameter, 'mobile') / 2);
-    margin-top: -(map-get($play-button-circle-diameter, 'mobile') / 2);
-    width: map-get($play-button-circle-diameter, 'mobile');
-
-    @media (min-width: $breakpoint-tablet) {
-      height: map-get($play-button-circle-diameter, 'desktop');
-      margin-left: -(map-get($play-button-circle-diameter, 'desktop') / 2);
-      margin-top: -(map-get($play-button-circle-diameter, 'desktop') / 2);
-      width: map-get($play-button-circle-diameter, 'desktop');
-    }
-  }
-
-  &::after {
-    @include pseudo-element-defaults();
-    border-bottom: (map-get($play-button-triangle-size, 'mobile') / 2) solid transparent;
-    border-left: map-get($play-button-triangle-size, 'mobile') solid $color-triangle;
-    border-top: (map-get($play-button-triangle-size, 'mobile') / 2) solid transparent;
-    height: 0;
-    margin-left: -(map-get($play-button-triangle-size, 'mobile') / 2 * 0.9);
-    margin-top: -(map-get($play-button-triangle-size, 'mobile') / 2);
-    width: 0;
-
-    @media (min-width: $breakpoint-tablet) {
-      border-bottom: (map-get($play-button-triangle-size, 'desktop') / 2) solid transparent;
-      border-left: map-get($play-button-triangle-size, 'desktop') solid $color-triangle;
-      border-top: (map-get($play-button-triangle-size, 'desktop') / 2) solid transparent;
-      margin-left: -(map-get($play-button-triangle-size, 'desktop') / 2 * 0.9);
-      margin-top: -(map-get($play-button-triangle-size, 'desktop') / 2);
-    }
-  }
-
-  &:hover {
-    &::before,
-    &::after {
-      transform: scale(1.1);
-    }
-  }
-}
-
 .video-playButton {
-  @include play-button($color-gray, $background-opacity, $border-width, $color-white, $play-button-circle-diameter, $color-white, $play-button-triangle-size);
   cursor: pointer;
   display: block;
   height: 100%;
@@ -80,28 +8,63 @@ $play-button-triangle-size: (
   top: 0;
   width: 100%;
   z-index: 2;
+
+  &::before,
+  &::after {
+    content: '';
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform-origin: left top;
+    transform: translate(-50%, -50%);
+    transition: 0.2s ease;
+  }
+
+  &::before {
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    border: 2px solid var(--color-accent);
+    height: 64px;
+    width: 64px;
+
+    @media (min-width: $breakpoint-tablet) {
+      height: 96px;
+      width: 96px;
+    }
+  }
+
+  &::after {
+    border-bottom: 16px solid transparent;
+    border-left: 32px solid var(--color-background);
+    border-top: 16px solid transparent;
+    left: calc(50% + 6px);
+
+    @media (min-width: $breakpoint-tablet) {
+      border-bottom-width: 24px;
+      border-left-width: 40px;
+      border-top-width: 24px;
+    }
+  }
+
+  &:hover {
+    &::before,
+    &::after {
+      transform: scale(1.1) translate(-50%, -50%);
+    }
+  }
 }
 
 &.flyntComponent--sizeSmall {
-  $play-button-small-circle-diameter: (
-    'desktop': 60px,
-    'mobile': 40px
-  );
-
-  $play-button-small-triangle-size: (
-    'desktop': 20px,
-    'mobile': 10px
-  );
-
   .video-playButton {
-    @include play-button(
-      $color-gray,
-      $background-opacity,
-      $border-width,
-      $color-white,
-      $play-button-small-circle-diameter,
-      $color-white,
-      $play-button-small-triangle-size
-    );
+    &::before {
+      height: 64px;
+      width: 64px;
+    }
+
+    &::after {
+      border-bottom-width: 24px;
+      border-left-width: 32px;
+      border-top-width: 24px;
+    }
   }
 }
