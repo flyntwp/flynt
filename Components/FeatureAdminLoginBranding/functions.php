@@ -33,19 +33,17 @@ add_action('login_enqueue_scripts', function () {
 }, 99);
 
 add_filter('login_headerurl', function () {
-    ;
     return home_url();
 });
 
 add_filter('login_headertext', function () {
-    ;
-    return get_bloginfo('name') . get_bloginfo('description');
+    return get_bloginfo('name') . ' – '. get_bloginfo('description');
 });
 
 function insertLogoInlineCss($logoUrl)
 {
     return
-    '<style type="text/css">
+        '<style type="text/css">
         #login h1 a, .login h1 a {
             background-image: url(' . $logoUrl . ');
         }

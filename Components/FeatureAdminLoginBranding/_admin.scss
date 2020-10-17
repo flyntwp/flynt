@@ -5,11 +5,11 @@ html {
 
     h1 {
       a {
+        background-position: center center;
         background-repeat: no-repeat;
-        background-size: 320px 65px;
-        filter: brightness(0) invert(1);
-        height: 65px;
-        width: 320px;
+        background-size: auto;
+        //filter: brightness(0) invert(1); // Optional: change the logo to white
+        width: 100%;
       }
     }
 
