@@ -19,6 +19,10 @@
     flex-wrap: wrap;
     font-size: 0.875rem;
 
+    a {
+      @include reset-link;
+    }
+
     > * {
       margin-right: 0.5rem;
     }

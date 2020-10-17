@@ -21,6 +21,8 @@
   }
 
   .logo {
+    @include reset-link;
+
     display: block;
     height: 100%;
 
@@ -44,6 +46,8 @@
     }
 
     &-link {
+      @include reset-link;
+
       color: var(--color-text);
       display: inline-block;
       font-weight: 700;

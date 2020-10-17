@@ -12,6 +12,8 @@
   }
 
   &-link {
+    @include reset-link;
+
     color: currentColor;
     text-decoration: none;
 

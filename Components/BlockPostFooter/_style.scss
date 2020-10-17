@@ -3,13 +3,14 @@
 
   .tags {
     @include reset-list;
+
     display: flex;
     flex-wrap: wrap;
     margin: 0 0 2rem;
 
     &-item {
       display: inline-block;
-      margin-right: 1rem;
+      margin-right: 1.5rem;
     }
   }
 
@@ -17,6 +18,10 @@
     align-items: center;
     display: flex;
     margin: 2rem 0;
+
+    a {
+      @include reset-link;
+    }
 
     &-avatarLink {
       flex-shrink: 0;
