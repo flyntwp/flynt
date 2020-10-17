@@ -35,11 +35,12 @@
 
   &::after {
     border-bottom: 16px solid transparent;
-    border-left: 32px solid var(--color-background);
+    border-left: 24px solid var(--color-background);
     border-top: 16px solid transparent;
-    left: calc(50% + 6px);
+    left: calc(50% + 2px);
 
     @media (min-width: $breakpoint-tablet) {
+      left: calc(50% + 6px);
       border-bottom-width: 24px;
       border-left-width: 40px;
       border-top-width: 24px;
@@ -62,9 +63,10 @@
     }
 
     &::after {
-      border-bottom-width: 24px;
-      border-left-width: 32px;
-      border-top-width: 24px;
+      border-bottom-width: 16px;
+      border-left-width: 24px;
+      border-top-width: 16px;
+      left: calc(50% + 4px);
     }
   }
 }
