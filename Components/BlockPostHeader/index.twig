@@ -16,12 +16,11 @@
             <span class="visuallyHidden">{{ labels.postedByLabel|e }}</span>
             {{ post.author.name }}
           </a>
-          <a class="meta-category" href="{{ post.category.link|e('esc_url') }}"><span class="visuallyHidden">{{ labels.postedInLabel|e }}</span> {{ post.category }}</a>
-          {% if dividers.authorDivider %}<span class="meta-divider">{{ dividers.authorDivider|e }}</span>{% endif %}
-          {% if post.date %}
-            <time class="meta-date" datetime="{{ post.post_date }}">{{ post.date|date }}</time>
-          {% endif %}
-          {% if dividers.readingtimeDivider %}<span class="meta-divider">{{ dividers.readingtimeDivider|e }}</span>{% endif %}
+          <a class="meta-category" href="{{ post.category.link|e('esc_url') }}">
+            <span class="visuallyHidden">{{ labels.postedInLabel|e }}</span>
+            {{ post.category }}
+          </a>
+          <time class="meta-date" datetime="{{ post.post_date }}">{{ post.date|date }}</time>
           <span class="meta-readingtime">{{ post.content|readingtime }} {{ labels.readingtimeLabel|e }}</span>
         </div>
       </div>
