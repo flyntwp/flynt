@@ -20,6 +20,12 @@
       display: inline-block;
       margin-right: 1.5rem;
     }
+
+    &-itemLink {
+      &::before {
+        content: '#';
+      }
+    }
   }
 
   .author {
