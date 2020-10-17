@@ -1,11 +1,19 @@
 [is='flynt-block-post-footer'] {
-  margin: 64px 0;
+  margin: $component-spacing-mobile 0;
+
+  @media (min-width: $breakpoint-tablet) {
+    margin-bottom: $component-spacing-tablet;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    margin-bottom: $component-spacing-desktop;
+  }
 
   .tags {
     @include reset-list;
     display: flex;
     flex-wrap: wrap;
-    margin: 0 0 2rem;
+    margin: 0 0 $component-spacing-mobile;
 
     &-item {
       @include reset-list-item;
@@ -15,21 +23,21 @@
   }
 
   .author {
-    align-items: center;
     display: flex;
-    margin: 2rem 0;
+    margin: $component-spacing-mobile 0;
 
-    a {
-      @include reset-link;
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      align-items: center;
     }
 
     &-avatarLink {
+      @include reset-link;
       flex-shrink: 0;
     }
 
     &-avatarImage {
       border-radius: 50%;
-      width: 66px;
+      width: 64px;
 
       @media (min-width: $breakpoint-mobile-horizontal) {
         width: 96px;
@@ -50,7 +58,15 @@
     }
 
     &-name {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0;
+    }
+
+    &-nameLink {
+      @include reset-link;
+
+      &:hover {
+        color: var(--color-accent);
+      }
     }
 
     &-description {
