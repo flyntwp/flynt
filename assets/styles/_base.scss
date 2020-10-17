@@ -367,7 +367,7 @@ button {
   cursor: pointer;
   display: inline-block;
   font-family: inherit;
-  font-size: 1.0625rem;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 1.7;
   letter-spacing: 0.0125em;
@@ -377,6 +377,10 @@ button {
   text-decoration: none;
   transition: 0.2s ease;
   user-select: none;
+
+  @media (min-width: $breakpoint-mobile-horizontal) {
+    font-size: 1.0625rem;
+  }
 
   &:disabled,
   &--disabled {
