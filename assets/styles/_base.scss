@@ -1000,11 +1000,11 @@ select {
 .post {
   &-main {
     .componentSpacing {
-      margin: $component-spacing-mobile/2 0;
+      margin: 32px 0;
 
       &[class*='theme'] {
         margin: 0;
-        padding: $component-spacing-mobile/2 0;
+        padding: 32px 0;
 
         @media (min-width: $breakpoint-tablet) {
           padding: $component-spacing-mobile 0;
