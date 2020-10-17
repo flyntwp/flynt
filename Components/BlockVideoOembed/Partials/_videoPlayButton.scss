@@ -15,15 +15,15 @@
     left: 50%;
     position: absolute;
     top: 50%;
-    transform-origin: left top;
     transform: translate(-50%, -50%);
+    transform-origin: left top;
     transition: 0.2s ease;
   }
 
   &::before {
     background-color: var(--color-accent);
-    border-radius: 50%;
     border: 2px solid var(--color-accent);
+    border-radius: 50%;
     height: 64px;
     width: 64px;
 
@@ -40,10 +40,10 @@
     left: calc(50% + 2px);
 
     @media (min-width: $breakpoint-tablet) {
-      left: calc(50% + 6px);
       border-bottom-width: 24px;
       border-left-width: 40px;
       border-top-width: 24px;
+      left: calc(50% + 6px);
     }
   }
 

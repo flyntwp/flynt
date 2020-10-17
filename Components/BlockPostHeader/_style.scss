@@ -77,8 +77,8 @@
   }
 
   .featuredImage {
-    margin-top: -#{$component-spacing-tablet};
     margin-bottom: $component-spacing-mobile;
+    margin-top: -#{$component-spacing-tablet};
 
     @media (min-width: $breakpoint-tablet) {
       margin-top: -#{$component-spacing-desktop};
