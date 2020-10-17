@@ -42,9 +42,10 @@ Options::addTranslatable('BlockPostHeader', [
             ],
             [
                 'label' => __('Reading Time - (20) min read', 'flynt'),
+                'instructions' => __('% is placehoder for number of minutes', 'flynt'),
                 'name' => 'readingtimeLabel',
                 'type' => 'text',
-                'default_value' => 'min read',
+                'default_value' => '%s min read',
                 'wrapper' => [
                     'width' => '50',
                 ],
