@@ -35,9 +35,13 @@ html {
 }
 
 body {
-  font-size: 1.0625rem;
+  font-size: 1rem;
   height: 100%;
   overflow-x: hidden;
+
+  @media (min-width: $breakpoint-mobile-horizontal) {
+    font-size: 1.0625rem;
+  }
 }
 
 /**
