@@ -1,6 +1,7 @@
 [is='flynt-grid-posts-archive'] {
   .posts {
     @include reset-list;
+    @include grid(1);
 
     @media (min-width: $breakpoint-tablet) {
       @include grid(2);
@@ -18,7 +19,6 @@
   .post {
     @include reset-list-item;
     display: flex;
-    margin-bottom: $gutter-width;
 
     &-link {
       @include reset-link;
