@@ -1,5 +1,6 @@
 [is='flynt-slider-images'] {
   .slider {
+    background-color: var(--color-border-alpha);
     max-width: $content-max-width-large;
     position: relative;
 
@@ -15,12 +16,12 @@
       color: var(--color-background);
       cursor: pointer;
       display: flex;
-      height: 40px;
+      height: 48px;
       justify-content: center;
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 40px;
+      width: 48px;
       z-index: 10;
 
       &::before {
@@ -29,7 +30,7 @@
         content: '';
         height: 100%;
         left: 0;
-        opacity: 0.5;
+        opacity: 0.75;
         position: absolute;
         top: 0;
         transition: opacity 0.2s ease;
@@ -82,14 +83,16 @@
     }
 
     &-caption {
-      bottom: 0;
+      bottom: 2px;
       color: var(--color-background);
       display: inline-block;
-      font-size: 0.813rem;
+      font-size: 0.875rem;
       max-width: 450px;
+      overflow: hidden;
       padding: 0.25rem 0.5rem;
       position: absolute;
-      right: 0;
+      right: 2px;
+      border-radius: 35px;
       z-index: 2;
 
       &::before {
@@ -97,7 +100,7 @@
         content: '';
         height: 100%;
         left: 0;
-        opacity: 0.5;
+        opacity: 0.75;
         position: absolute;
         top: 0;
         width: 100%;
