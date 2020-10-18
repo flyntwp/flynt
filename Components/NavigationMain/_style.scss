@@ -2,6 +2,7 @@
   $navigation-height: 80px;
 
   display: none;
+  height: $navigation-height;
 
   @media (min-width: $breakpoint-tablet-horizontal) {
     display: block;
