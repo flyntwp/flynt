@@ -62,7 +62,7 @@
 
       .component-ctaSecondary {
         @include reset-link;
-        font-size: 0.875rem;
+        font-size: 0.9375rem;
         text-decoration: none;
         transition: color 0.2s ease-in-out, opacity 0.2s ease-in-out;
 
@@ -81,7 +81,7 @@
 
       .component-ctaPrimary {
         margin-left: auto;
-        font-size: 0.875rem;
+        font-size: 0.9375rem;
       }
 
       @media (min-width: $breakpoint-tablet-horizontal) {
