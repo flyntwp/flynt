@@ -7,7 +7,7 @@
 }
 
 [is='flynt-navigation-burger'] {
-  $navigation-height: 75px;
+  $navigation-height: 64px;
 
   height: $navigation-height;
 
@@ -18,13 +18,13 @@
   .container {
     align-items: center;
     background-color: var(--color-background);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16);
+    box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.07);
     display: flex;
     height: $navigation-height;
     justify-content: space-between;
     left: 0;
-    padding-bottom: 15px;
-    padding-top: 15px;
+    padding-bottom: 16px;
+    padding-top: 16px;
     position: fixed;
     right: 0;
     top: 0;
