@@ -36,11 +36,10 @@
 
   &-link {
     @include reset-link;
-
     color: var(--color-text);
     display: block;
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 500;
     padding: 12px $container-padding-mobile;
     text-align: center;
     text-decoration: none;
