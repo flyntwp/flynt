@@ -369,8 +369,8 @@ button {
   font-family: inherit;
   font-size: 1rem;
   font-weight: 500;
-  line-height: 1.7;
   letter-spacing: 0.0125em;
+  line-height: 1.7;
   outline: none;
   padding: 0.75rem 1.5rem;
   text-align: center;
@@ -931,6 +931,11 @@ select {
   max-width: $content-max-width;
 }
 
+.centerContentMaxWidthLarge {
+  margin: 0 auto;
+  max-width: $content-max-width-large;
+}
+
 .preContent {
   @include reset-content-margins;
   margin: 0 auto 32px;
@@ -992,6 +997,7 @@ select {
   border-radius: 16px;
   overflow: hidden;
   position: relative;
+  transform: translateZ(0);
   z-index: 1;
 }
 
