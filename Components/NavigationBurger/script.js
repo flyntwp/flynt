@@ -1,5 +1,7 @@
 import $ from 'jquery'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
+import Headroom from 'headroom.js'
+import debounce from 'lodash/debounce'
 
 class NavigationBurger extends window.HTMLElement {
   constructor (...args) {
@@ -13,14 +15,17 @@ class NavigationBurger extends window.HTMLElement {
     this.bindFunctions()
     this.bindEvents()
     this.resolveElements()
+    this.headroom = null
   }
 
   bindFunctions () {
     this.triggerMenu = this.triggerMenu.bind(this)
+    this.onWindowResize = this.onWindowResize.bind(this)
   }
 
   bindEvents () {
     this.$.on('click', '[data-toggle-menu]', this.triggerMenu)
+    $(window).on('resize', debounce(this.onWindowResize, 200))
   }
 
   resolveElements () {
@@ -28,7 +33,9 @@ class NavigationBurger extends window.HTMLElement {
     this.$menuButton = $('.hamburger', this)
   }
 
-  connectedCallback () {}
+  connectedCallback () {
+    this.initHeadroom()
+  }
 
   triggerMenu (e) {
     this.$.toggleClass('flyntComponent-menuIsOpen')
@@ -38,6 +45,32 @@ class NavigationBurger extends window.HTMLElement {
     } else {
       enableBodyScroll(this.$menu.get(0))
     }
+  }
+
+  initHeadroom () {
+    this.headroom = new Headroom(this, {
+      offset: 64,
+      tolerance: {
+        up: 5,
+        down: 0
+      }
+    })
+
+    if (this.isMobile()) {
+      this.headroom.init()
+    }
+  }
+
+  onWindowResize () {
+    if (this.isMobile()) {
+      if (!this.headroom.initialised) this.headroom.init()
+    } else {
+      if (this.headroom.initialised) this.headroom.destroy()
+    }
+  }
+
+  isMobile () {
+    return window.matchMedia('(max-width: 1023px)').matches
   }
 }
 
