@@ -3,11 +3,13 @@
     {% for post in posts  %}
       <li class="searchList-item boxRadius boxShadow themeReset boxPadding">
         <article class="post">
-          <h2 class="h4"><a href="{{ post.link }}">{{ post.title }}</a></h2>
-          <p>{{ post.preview.length(40).read_more(false) }}</p>
-          <footer class="post-footer">
-            <a href="{{ post.link }}" class="button button--link" aria-hidden="true" tabindex="-1">{{ labels.readMore }}</a>
-          </footer>
+          <a href="{{ post.link }}" aria-label="{{ post.title }}" class="post-link">
+            <h2 class="h3">{{ post.title }}</h2>
+            <p>{{ post.preview.length(40).read_more(false) }}</p>
+            <footer class="post-footer">
+              <span class="button button--link" aria-hidden="true">{{ labels.readMore }}</span>
+            </footer>
+          </a>
         </article>
       </li>
     {% endfor %}

@@ -1,27 +1,31 @@
 .searchList {
   @include reset-list;
-  margin-top: 4rem;
+  @include grid(1);
+  margin-top: 3rem;
+
+  @media (min-width: $breakpoint-tablet) {
+    @include grid(2);
+  }
 
   &-item {
     @include reset-list-item;
-    margin-bottom: 1rem;
     position: relative;
-
-    &:last-child {
-      border: 0;
-    }
   }
 }
 
 .post {
-  @include reset-content-margins;
+  display: flex;
+  height: 100%;
 
-  a {
+  &-link {
     @include reset-link;
+    @include reset-content-margins;
+    display: flex;
+    flex-direction: column;
   }
 
   &-footer {
-    text-align: right;
+    margin-top: auto;
   }
 }
 
