@@ -5,6 +5,7 @@ function getCopyConfig (source) {
   return {
     from: source,
     to: './',
+    noErrorOnMissing: true,
     globOptions: {
       ignore: [
         '**/*.js',
