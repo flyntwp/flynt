@@ -1,0 +1,54 @@
+name: Release
+
+on:
+  workflow_dispatch: 
+  release: 
+    types: [created]
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js v12
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - uses: actions/cache@v2
+      with:
+        path: ./node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('./package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - uses: actions/cache@v2
+      with:
+        path: ./vendor
+        key: ${{ runner.os }}-composer-${{ hashFiles('./composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-composer-
+    - name: Install npm
+      run: npm i
+    - name: Install composer
+      run: php7.3 $(which composer) install --no-progress --no-suggest
+    - name: Run build
+      run: npm run build
+    - name: Install composer optimized
+      run: php7.3 $(which composer) install --no-dev --no-progress --no-suggest --optimize-autoloader
+    - name: Create archive
+      run: zip -r flynt-${{ github.event.release.tag_name || 'bundled' }}.zip ./ -x './node_modules/*' './**/.git/*'
+    - name: Create download
+      if: ${{ github.event.release.upload_url }}
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: ./flynt-${{ github.event.release.tag_name }}.zip
+        asset_name: flynt-${{ github.event.release.tag_name }}.zip
+        asset_content_type: application/zip
+    - name: Create download
+      if: ${{ !github.event.release.upload_url }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: flynt-bundled
+        path: ./flynt-bundled.zip
