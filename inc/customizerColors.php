@@ -201,7 +201,7 @@ add_action('acf/init', function () {
             wp_enqueue_script(
                 'customizer-colors',
                 Asset::requireUrl('assets/customizer-colors.js'),
-                ['jquery','customize-preview'],
+                ['jquery','customize-preview']
             );
             $themes = getThemesConfig();
             $config = array_map(function ($theme) {
