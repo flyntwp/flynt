@@ -22,7 +22,6 @@ class Defaults
         return $output;
     }
 
-  // this action needs to be removed by the user if they want to overwrite this functionality
     public static function loadFunctionsFile($componentName)
     {
         $componentManager = ComponentManager::getInstance();
@@ -34,6 +33,7 @@ class Defaults
 
     protected static function renderFile($componentData, $filePath)
     {
+        _deprecated_function(__METHOD__, '%%NEXT_VERSION%%');
         if (!is_file($filePath)) {
             trigger_error("Template not found: {$filePath}", E_USER_WARNING);
             return '';

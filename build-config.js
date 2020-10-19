@@ -87,6 +87,10 @@ module.exports = {
       php: {
         files: '!(node_modules|dist)/**/*.php',
         from: '%%NEXT_VERSION%%'
+      },
+      js: {
+        files: '!(node_modules|dist)/**/*.js',
+        from: '%%NEXT_VERSION%%'
       }
     }
   }

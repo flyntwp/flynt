@@ -16,6 +16,11 @@ function replaceVersion (config) {
       for (const file of changedFilesPhp) {
         log(`Updated ${file}`)
       }
+      log(`Replacing ${config.replaceVersion.js.from} with ${config.replaceVersion.js.to} in all JS files.`)
+      const changedFilesJs = replace.sync(config.replaceVersion.js)
+      for (const file of changedFilesJs) {
+        log(`Updated ${file}`)
+      }
 
       // replace WordPress theme version in style.css
       log('Updating WordPress theme version.')
