@@ -24,4 +24,10 @@
       }
     }
   }
+
+  + .componentSpacing {
+    &[class*='theme'] {
+      padding-top: 0;
+    }
+  }
 }
