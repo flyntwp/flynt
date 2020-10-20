@@ -114,6 +114,7 @@
                 "extension",
                 "twig"
             ],
+            "abandoned": "twig/cache-extension",
             "time": "2020-01-01T20:47:37+00:00"
         },
         {
@@ -301,16 +302,16 @@
         },
         {
             "name": "flyntwp/acf-field-group-composer",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/flyntwp/acf-field-group-composer.git",
-                "reference": "600b1ae73c41842ab06b3d5e1f39dd411b788f25"
+                "reference": "02e4afbcf5dd8e211b8f6ca381fdc52591816864"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/flyntwp/acf-field-group-composer/zipball/600b1ae73c41842ab06b3d5e1f39dd411b788f25",
-                "reference": "600b1ae73c41842ab06b3d5e1f39dd411b788f25",
+                "url": "https://api.github.com/repos/flyntwp/acf-field-group-composer/zipball/02e4afbcf5dd8e211b8f6ca381fdc52591816864",
+                "reference": "02e4afbcf5dd8e211b8f6ca381fdc52591816864",
                 "shasum": ""
             },
             "require": {
@@ -334,11 +335,11 @@
                     "email": "hello@bleech.de"
                 }
             ],
-            "time": "2019-03-13T08:11:20+00:00"
+            "time": "2020-09-11T08:52:18+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
@@ -414,7 +415,7 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.18.0",
+            "version": "v1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
@@ -491,16 +492,16 @@
         },
         {
             "name": "timber/timber",
-            "version": "1.17.0",
+            "version": "1.18.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/timber/timber.git",
-                "reference": "f4de5dad03d59afb8e6532374e152e3a1e250623"
+                "reference": "18766d1af8650ca919534cc497e7f0e8d82423a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timber/timber/zipball/f4de5dad03d59afb8e6532374e152e3a1e250623",
-                "reference": "f4de5dad03d59afb8e6532374e152e3a1e250623",
+                "url": "https://api.github.com/repos/timber/timber/zipball/18766d1af8650ca919534cc497e7f0e8d82423a3",
+                "reference": "18766d1af8650ca919534cc497e7f0e8d82423a3",
                 "shasum": ""
             },
             "require": {
@@ -552,20 +553,20 @@
                 "timber",
                 "twig"
             ],
-            "time": "2020-07-19T17:22:17+00:00"
+            "time": "2020-10-11T15:08:40+00:00"
         },
         {
             "name": "twig/twig",
-            "version": "v2.13.0",
+            "version": "v2.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "46a612ba1bbf6ee1c58acabacd868212ff8a2911"
+                "reference": "57e96259776ddcacf1814885fc3950460c8e18ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/46a612ba1bbf6ee1c58acabacd868212ff8a2911",
-                "reference": "46a612ba1bbf6ee1c58acabacd868212ff8a2911",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/57e96259776ddcacf1814885fc3950460c8e18ef",
+                "reference": "57e96259776ddcacf1814885fc3950460c8e18ef",
                 "shasum": ""
             },
             "require": {
@@ -619,18 +620,6 @@
             ],
             "funding": [
                 {
-                    "url": "https://certification.symfony.com/",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://live.symfony.com/",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://symfony.com/cloud/",
-                    "type": "custom"
-                },
-                {
                     "url": "https://github.com/fabpot",
                     "type": "github"
                 },
@@ -639,7 +628,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-07-05T13:08:05+00:00"
+            "time": "2020-08-05T15:09:04+00:00"
         },
         {
             "name": "upstatement/routes",
