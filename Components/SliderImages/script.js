@@ -1,7 +1,9 @@
 import $ from 'jquery'
 import 'core-js/es/number'
-import Swiper from 'swiper/bundle'
+import Swiper, { Navigation, A11y, Autoplay } from 'swiper/swiper.esm'
 import 'swiper/swiper-bundle.css'
+
+Swiper.use([Navigation, A11y, Autoplay])
 
 class SliderImages extends window.HTMLDivElement {
   constructor (...args) {
