@@ -1,5 +1,7 @@
 import $ from 'jquery'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
+import 'core-js/es/object/assign'
+import 'core-js/es/object/keys'
 import Headroom from 'headroom.js'
 import debounce from 'lodash/debounce'
 
