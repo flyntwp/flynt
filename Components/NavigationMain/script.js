@@ -1,4 +1,6 @@
 import $ from 'jquery'
+import 'core-js/es/object/assign'
+import 'core-js/es/object/keys'
 import Headroom from 'headroom.js'
 import debounce from 'lodash/debounce'
 
