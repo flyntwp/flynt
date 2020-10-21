@@ -1,5 +1,19 @@
 [is='flynt-block-collapse'] {
   &.collapse {
+    // full collapse no spacing
+    &-none {
+      margin-top: -$component-spacing-mobile;
+
+      @media (min-width: $breakpoint-tablet) {
+        margin-top: -$component-spacing-tablet;
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        margin-top: -$component-spacing-desktop;
+      }
+    }
+
+    // precontent spacing
     &-small {
       margin-top: -$container-padding-mobile;
 
@@ -11,6 +25,9 @@
         margin-top: -$component-spacing-desktop / 2;
       }
     }
+
+    // regular spacing ($component-spacing-desktop) even for themed
+    // &-medium {}
   }
 
   + .componentSpacing {
