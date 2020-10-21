@@ -33,7 +33,7 @@ class Defaults
 
     protected static function renderFile($componentData, $filePath)
     {
-        _deprecated_function(__METHOD__, '%%NEXT_VERSION%%');
+        _deprecated_function(__METHOD__, '1.4.0');
         if (!is_file($filePath)) {
             trigger_error("Template not found: {$filePath}", E_USER_WARNING);
             return '';

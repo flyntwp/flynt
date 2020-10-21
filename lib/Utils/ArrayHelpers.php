@@ -15,7 +15,7 @@ class ArrayHelpers
      */
     public static function isAssoc(array $array)
     {
-        _deprecated_function(__METHOD__, '%%NEXT_VERSION%%');
+        _deprecated_function(__METHOD__, '1.4.0');
         // Keys of the array
         $keys = array_keys($array);
 

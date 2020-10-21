@@ -1,6 +1,6 @@
 {
   "name": "flynt",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "main": "index.js",
   "repository": "git@github.com:flyntwp/flynt.git",
   "author": "bleech <hello@bleech.de>",
@@ -122,7 +122,46 @@
   "standard-version": {
     "scripts": {
       "postbump": "gulp replaceVersion && composer config --unset version && composer update nothing && git diff && git add . && composer validate --strict"
-    }
+    },
+    "types": [
+      {
+        "type": "feat",
+        "section": "Features"
+      },
+      {
+        "type": "fix",
+        "section": "Bug Fixes"
+      },
+      {
+        "type": "chore",
+        "hidden": true
+      },
+      {
+        "type": "docs",
+        "section": "Other",
+        "hidden": false
+      },
+      {
+        "type": "doc",
+        "section": "Other"
+      },
+      {
+        "type": "style",
+        "hidden": true
+      },
+      {
+        "type": "refactor",
+        "section": "Other"
+      },
+      {
+        "type": "perf",
+        "section": "Other"
+      },
+      {
+        "type": "test",
+        "hidden": true
+      }
+    ]
   },
   "dependencies": {},
   "browserslist": [
