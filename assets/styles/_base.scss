@@ -934,13 +934,9 @@ select {
 
 .preContent {
   @include reset-content-margins;
-  margin: 0 auto 32px;
+  margin: 0 auto $container-padding-tablet;
   max-width: $content-max-width;
   text-align: center;
-
-  @media (min-width: $breakpoint-tablet) {
-    margin-bottom: $container-padding-tablet;
-  }
 
   @media (min-width: $breakpoint-desktop) {
     margin-bottom: $container-padding-desktop;

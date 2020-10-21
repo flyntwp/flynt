@@ -1,10 +1,10 @@
 [is='flynt-block-collapse'] {
   &.collapse {
-    &-half {
-      margin-top: -$component-spacing-mobile / 2;
+    &-small {
+      margin-top: -$container-padding-mobile;
 
       @media (min-width: $breakpoint-tablet) {
-        margin-top: -$component-spacing-tablet / 2;
+        margin-top: -$container-padding-desktop;
       }
 
       @media (min-width: $breakpoint-desktop) {
