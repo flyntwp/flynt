@@ -12,7 +12,7 @@ let instance
 
 class ExternalScriptLoader {
   constructor () {
-    console.warn('ExternalScriptLoader is deprecated since version %%NEXT_VERSION%% with no alternative available.')
+    console.warn('ExternalScriptLoader is deprecated since version 1.4.0 with no alternative available.')
     if (!instance) {
       instance = this
     }

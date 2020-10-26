@@ -10,13 +10,14 @@ function replaceVersion (config) {
     const replace = require('replace-in-file')
     try {
       // read current version from package.json
-      config.replaceVersion.php.to = pjson.version
       log(`Replacing ${config.replaceVersion.php.from} with ${config.replaceVersion.php.to} in all PHP files.`)
+      config.replaceVersion.php.to = pjson.version
       const changedFilesPhp = replace.sync(config.replaceVersion.php)
       for (const file of changedFilesPhp) {
         log(`Updated ${file}`)
       }
       log(`Replacing ${config.replaceVersion.js.from} with ${config.replaceVersion.js.to} in all JS files.`)
+      config.replaceVersion.js.to = pjson.version
       const changedFilesJs = replace.sync(config.replaceVersion.js)
       for (const file of changedFilesJs) {
         log(`Updated ${file}`)
