@@ -76,15 +76,6 @@ const webpackConfig = {
       }
     ]
   },
-  resolve: {
-    modules: [
-      'node_modules'
-    ],
-    descriptionFiles: [
-      'package.json'
-    ],
-    mainFields: ['main', 'browser']
-  },
   performance: {
     hints: false
   },
