@@ -21,7 +21,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   height: 100%;
-  line-height: 1.77;
+  line-height: 1.7;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -35,12 +35,12 @@ html {
 }
 
 body {
-  font-size: 1rem;
+  font-size: 1.0625rem;
   height: 100%;
   overflow-x: hidden;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.0625rem;
+    font-size: 1.125rem;
   }
 }
 
@@ -54,8 +54,8 @@ body {
   color: var(--color-headline);
   font-family: 'Encode Sans Semi Condensed', Helvetica, Arial, sans-serif;
   font-weight: 700;
-  line-height: 1.45;
-  margin-bottom: 1.5rem;
+  line-height: 1.4;
+  margin-bottom: 1rem;
   margin-top: 3rem;
 
   a,
@@ -68,10 +68,11 @@ body {
 
 h1,
 .h1 {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   font-weight: 800;
   letter-spacing: 0.02em;
   line-height: 1.3;
+  margin-bottom: 1.5rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
     font-size: 3.5rem;
@@ -80,9 +81,11 @@ h1,
 
 h2,
 .h2 {
-  font-size: 2rem;
+  font-size: 1.875rem;
   font-weight: 800;
   letter-spacing: 0.0125em;
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
     font-size: 2.625rem;
@@ -91,15 +94,24 @@ h2,
 
 h3,
 .h3 {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   letter-spacing: 0.02em;
+
+  @media (min-width: $breakpoint-mobile-horizontal) {
+    font-size: 1.6875rem;
+  }
 }
 
 h4,
 .h4 {
-  font-size: 1.375rem;
+  font-size: 1.25rem;
   letter-spacing: 0.02em;
   line-height: 1.45;
+  margin-top: 2rem;
+
+  @media (min-width: $breakpoint-mobile-horizontal) {
+    font-size: 1.375rem;
+  }
 }
 
 h5,
@@ -109,6 +121,7 @@ h5,
   font-weight: 400;
   letter-spacing: 0.0125em;
   line-height: 1.45;
+  margin-top: 1.5rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
     font-size: 1.375rem;
@@ -118,9 +131,10 @@ h5,
 h6,
 .h6 {
   font-family: 'Roboto', Helvetica, Arial, sans-serif;
-  font-size: 1.0625rem;
+  font-size: 1.125rem;
   font-weight: 500;
-  line-height: 1.77;
+  line-height: 1.7;
+  margin-top: 1.5rem;
 }
 
 @include headings-following-headings(1, 6) {
@@ -370,7 +384,7 @@ button {
   cursor: pointer;
   display: inline-block;
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 1.0625rem;
   font-weight: 500;
   letter-spacing: 0.0125em;
   line-height: 1.7;
@@ -382,7 +396,7 @@ button {
   user-select: none;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.0625rem;
+    font-size: 1.125rem;
   }
 
   &:disabled,
@@ -462,7 +476,7 @@ button {
     background-color: var(--color-transparent);
     border: 0 solid var(--color-transparent);
     color: var(--color-accent);
-    line-height: 1.77;
+    line-height: 1.7;
     padding: 0;
     position: relative;
     text-decoration: none;
@@ -615,7 +629,7 @@ textarea {
 }
 
 textarea {
-  line-height: 1.77;
+  line-height: 1.7;
   min-height: 150px;
   padding: 1rem 1.25rem;
   resize: vertical;
@@ -628,7 +642,7 @@ select {
   background-position: calc(100% - 18px) center;
   background-repeat: no-repeat;
   background-size: 9px;
-  line-height: 1.77;
+  line-height: 1.7;
   padding-right: 45px;
 
   &::-ms-expand {
@@ -685,7 +699,7 @@ select {
     display: inline-block;
     font-weight: 400;
     letter-spacing: 0;
-    line-height: 1.77;
+    line-height: 1.7;
     padding-left: 2rem;
     position: relative;
 
@@ -943,27 +957,31 @@ select {
 
 .preContent {
   @include reset-content-margins;
-  margin: 0 auto $container-padding-tablet;
+  margin: 0 auto $component-spacing-tablet/3;
   max-width: $content-max-width;
   text-align: center;
 
+  @media (min-width: $breakpoint-tablet) {
+    margin-bottom: $component-spacing-tablet/2;
+  }
+
   @media (min-width: $breakpoint-desktop) {
-    margin-bottom: $container-padding-desktop;
+    margin-bottom: $component-spacing-desktop/2;
   }
 }
 
 .postContent {
   @include reset-content-margins;
-  margin: 32px auto 0;
+  margin: $component-spacing-tablet/3 auto 0;
   max-width: $content-max-width;
   text-align: center;
 
   @media (min-width: $breakpoint-tablet) {
-    margin-top: $container-padding-tablet;
+    margin-top: $component-spacing-tablet/2;
   }
 
   @media (min-width: $breakpoint-desktop) {
-    margin-top: $container-padding-desktop;
+    margin-top: $component-spacing-desktop/2;
   }
 }
 
