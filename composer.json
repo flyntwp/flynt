@@ -1,5 +1,5 @@
 {
-  "name": "flyntwp/flynt",
+  "name": "pixelsaft/flynt",
   "description": "Flynt is a WordPress theme for component-based development using Timber and Advanced Custom Fields.",
   "type": "wordpress-theme",
   "license": "MIT",
@@ -7,8 +7,8 @@
   "prefer-stable": true,
   "authors": [
     {
-      "name": "bleech",
-      "email": "flynt@bleech.de"
+      "name": "Pixelsaft GbR",
+      "email": "info@pixelsaft.de"
     }
   ],
   "require": {
