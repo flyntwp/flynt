@@ -362,7 +362,6 @@ button {
 
 .button {
   @include reset-link;
-
   appearance: none;
   background-color: var(--color-accent);
   border: 2px solid var(--color-accent);
@@ -409,6 +408,16 @@ button {
 
   &:active {
     box-shadow: none;
+  }
+
+  + .button {
+    @media (max-width: $breakpoint-tablet) {
+      margin-top: 8px;
+    }
+
+    .centerContentMaxWidth & {
+      margin-top: 8px;
+    }
   }
 
   &--ghost {
