@@ -4,12 +4,9 @@ import 'normalize.css/normalize.css'
 import './main.scss'
 import $ from 'jquery'
 import feather from 'feather-icons'
+import 'lazysizes'
 
 window.jQuery = $
-
-window.lazySizesConfig = window.lazySizesConfig || {}
-window.lazySizesConfig.preloadAfterLoad = true
-require('lazysizes')
 
 $(document).ready(function () {
   feather.replace({
