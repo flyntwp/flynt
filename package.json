@@ -1,8 +1,8 @@
 {
   "name": "flynt",
   "version": "1.4.0",
-  "repository": "git@github.com:flyntwp/flynt.git",
-  "author": "bleech <hello@bleech.de>",
+  "repository": "git@github.com:pixelsaft/flynt.git",
+  "author": "Pixelsaft GbR <info@pixelsaft.de>",
   "license": "MIT",
   "scripts": {
     "checkVersion": "check-node-version --package -p",
