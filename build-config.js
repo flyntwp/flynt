@@ -24,7 +24,8 @@ module.exports = {
       'assets/main': './assets/main.js',
       'assets/admin': './assets/admin.js',
       'assets/ie11Polyfills': './assets/ie11Polyfills.js',
-      'assets/customizer-colors': './assets/customizer-colors.js'
+      'assets/customizerControls': './assets/customizerControls.js',
+      'assets/customizerPreview': './assets/customizerPreview.js'
     },
     copy: {
       patterns: [

@@ -1,4 +1,4 @@
-/* globals wp, FlyntCustomizerColorsData */
+/* globals wp, FlyntCustomizerData */
 import $ from 'jquery'
 
 function hexToRgba (color, opacity = 1, returnType = 'array') {
@@ -86,7 +86,7 @@ $(document).ready(function () {
     }
   }
 
-  for (const [themeKey, theme] of Object.entries(FlyntCustomizerColorsData)) {
+  for (const [themeKey, theme] of Object.entries(FlyntCustomizerData)) {
     for (const [colorName, options] of Object.entries(theme)) {
       wp.customize(`theme_${themeKey}_color_${colorName}`, setColor(`--theme-${themeKey}-color-${colorName}`, options))
     }
