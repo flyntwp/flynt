@@ -40,7 +40,7 @@
     display: block;
     font-size: 1rem;
     font-weight: 500;
-    padding: 12px $container-padding-mobile;
+    padding: 12px var(--container-padding-mobile);
     text-align: center;
     text-decoration: none;
     transition: color 0.2s ease-out;
@@ -50,8 +50,8 @@
     }
 
     @media (min-width: $breakpoint-tablet) {
-      padding-left: $container-padding-tablet;
-      padding-right: $container-padding-tablet;
+      padding-left: var(--container-padding-tablet);
+      padding-right: var(--container-padding-tablet);
     }
   }
 }

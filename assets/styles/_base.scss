@@ -937,11 +937,11 @@ select {
   @include center;
 
   @media (min-width: $breakpoint-tablet) {
-    @include center($padding: $container-padding-tablet);
+    @include center($padding: var(--container-padding-tablet));
   }
 
   @media (min-width: $breakpoint-desktop) {
-    @include center($padding: $container-padding-desktop);
+    @include center($padding: var(--container-padding-desktop));
   }
 }
 

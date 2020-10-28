@@ -15,10 +15,10 @@
 
     // precontent spacing
     &-small {
-      margin-top: -$container-padding-mobile;
+      margin-top: calc(-1 * -var(--container-padding-mobile));
 
       @media (min-width: $breakpoint-tablet) {
-        margin-top: -$container-padding-desktop;
+        margin-top: calc(-1 * -var(--container-padding-desktop));
       }
 
       @media (min-width: $breakpoint-desktop) {

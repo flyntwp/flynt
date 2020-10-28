@@ -23,8 +23,8 @@
 }
 
 @mixin center(
-  $max-width: $container-max-width,
-  $padding: $container-padding-mobile
+  $max-width: var(--container-max-width),
+  $padding: var(--container-padding-mobile)
 ) {
   display: block;
   margin-left: auto;

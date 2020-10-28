@@ -1,6 +1,6 @@
 [is='flynt-block-image-text'] {
   .container {
-    @include center(500px + 2 * $container-padding-mobile);
+    @include center(calc(500px + 2 * var(--container-padding-mobile)));
   }
 
   .box-inner {
@@ -13,17 +13,17 @@
 
   @media (min-width: $breakpoint-tablet-horizontal) {
     .container {
-      @include center(1080px + 2 * $container-padding-tablet, $container-padding-tablet);
+      @include center(calc(1080px + 2 * var(--container-padding-tablet)), var(--container-padding-tablet));
     }
 
     .box {
       align-items: center;
       display: flex;
-      margin: 0 $container-padding-tablet * -1;
+      margin: 0 calc(-1 * var(--container-padding-tablet));
 
       &-inner {
         @include reset-content-margins('both');
-        padding: 0 $container-padding-tablet;
+        padding: 0 var(--container-padding-tablet);
         width: 50%;
       }
 
