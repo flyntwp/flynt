@@ -1,22 +1,23 @@
 <div class="flyntComponent flyntComponent--{{ options.size }} {{ options.theme }} {{ noComponentSpacing == true ? '' : 'componentSpacing' }}" is="flynt-block-image">
   <div class="container{% if options.size != 'sizeFull' %} centerMaxWidthContainer{% endif %}">
     <figure class="figure">
-      {% set gif = image.post_mime_type == 'image/gif' %}
-      <img class="figure-image boxRadius {{ not gif ? 'lazyload' }}"
-        src="{{ not gif ? image.src|resizeDynamic(760) : image.src }}"
-        {% if not gif %}
-          srcset="{{ placeholderImage(760, 760 / image.aspect) }}"
-          data-srcset="
-            {{ image.src|resizeDynamic(1920) }} 1920w,
-            {{ image.src|resizeDynamic(1440) }} 1440w,
-            {{ image.src|resizeDynamic(1320) }} 1320w,
-            {{ image.src|resizeDynamic(1024) }} 1024w,
-            {{ image.src|resizeDynamic(860) }} 860w,
-            {{ image.src|resizeDynamic(760) }} 760w,
-            {{ image.src|resizeDynamic(375) }} 375w"
-          data-sizes="auto"
-        {% endif %}
-        alt="{{ image.alt|e }}">
+      {% if image.post_mime_type == 'image/svg+xml' or image.post_mime_type == 'image/gif' %}
+        <img src="{{ image.src }}" alt="{{ image.alt|e }}">
+      {% else %}
+        <img class="figure-image boxRadius lazyload"
+          src="{{ image.src|resizeDynamic(760) }}"
+            srcset="{{ placeholderImage(760, 760 / image.aspect) }}"
+            data-srcset="
+              {{ image.src|resizeDynamic(1920) }} 1920w,
+              {{ image.src|resizeDynamic(1440) }} 1440w,
+              {{ image.src|resizeDynamic(1320) }} 1320w,
+              {{ image.src|resizeDynamic(1024) }} 1024w,
+              {{ image.src|resizeDynamic(860) }} 860w,
+              {{ image.src|resizeDynamic(760) }} 760w,
+              {{ image.src|resizeDynamic(375) }} 375w"
+            data-sizes="auto"
+          alt="{{ image.alt|e }}">
+      {% endif %}
       {% if image.caption %}
         <figcaption class="figure-caption">{{ image.caption|e }}</figcaption>
       {% endif %}

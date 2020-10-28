@@ -22,9 +22,9 @@ function getACFLayout()
                 'name' => 'image',
                 'type' => 'image',
                 'preview_size' => 'medium',
-                'instructions' => __('Image-Format: JPG, PNG, GIF.', 'flynt'),
+                'instructions' => __('Image-Format: JPG, PNG, GIF, SVG.', 'flynt'),
                 'required' => 1,
-                'mime_types' => 'gif,jpg,jpeg,png'
+                'mime_types' => 'gif,jpg,jpeg,png,svg'
             ],
             [
                 'label' => __('Options', 'flynt'),
