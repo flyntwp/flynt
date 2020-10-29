@@ -4,20 +4,6 @@ $breakpoint-tablet-horizontal: 1024px;
 $breakpoint-desktop: 1280px;
 $breakpoint-desktop-wide: 1440px;
 
-// TODO: Remove when css variables are used everywhere
-$container-max-width: 1440px;
-$container-padding-desktop: 64px;
-$container-padding-tablet: 32px;
-$container-padding-mobile: 16px;
-$content-max-width: 690px;
-$content-max-width-large: 860px;
-$component-spacing-desktop: 128px;
-$component-spacing-tablet: 96px;
-$component-spacing-mobile: 48px;
-$gutter-width: 24px;
-$box-spacing: 32px;
-$box-border-radius: 16px;
-
 // Sizing variables
 :root {
   --container-max-width: var(--container-max-width);
