@@ -2,31 +2,31 @@
   &.collapse {
     // full collapse no spacing
     &-none {
-      margin-top: -$component-spacing-mobile;
+      margin-top: calc(-1 * var(--component-spacing-mobile));
 
       @media (min-width: $breakpoint-tablet) {
-        margin-top: -$component-spacing-tablet;
+        margin-top: calc(-1 * var(--component-spacing-tablet));
       }
 
       @media (min-width: $breakpoint-desktop) {
-        margin-top: -$component-spacing-desktop;
+        margin-top: calc(-1 * var(--component-spacing-desktop));
       }
     }
 
     // precontent spacing
     &-small {
-      margin-top: calc(-1 * -var(--container-padding-mobile));
+      margin-top: calc(-1 * var(--container-padding-mobile));
 
       @media (min-width: $breakpoint-tablet) {
-        margin-top: calc(-1 * -var(--container-padding-desktop));
+        margin-top: calc(-1 * var(--container-padding-desktop));
       }
 
       @media (min-width: $breakpoint-desktop) {
-        margin-top: -$component-spacing-desktop / 2;
+        margin-top: calc(-1 * var(--component-spacing-desktop) / 2);
       }
     }
 
-    // regular spacing ($component-spacing-desktop) even for themed
+    // regular spacing (var(--component-spacing-desktop)) even for themed
     // &-medium {}
   }
 

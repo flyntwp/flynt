@@ -187,7 +187,7 @@ figcaption {
   font-size: 0.875rem;
   line-height: 1.5;
   margin: 1rem auto 0;
-  max-width: $content-max-width;
+  max-width: var(--content-max-width);
 }
 
 pre,
@@ -425,13 +425,7 @@ button {
   }
 
   + .button {
-    @media (max-width: $breakpoint-tablet) {
-      margin-top: 8px;
-    }
-
-    .centerContentMaxWidth & {
-      margin-top: 8px;
-    }
+    margin-top: 4px;
   }
 
   &--ghost {
@@ -889,46 +883,46 @@ select {
 }
 
 .componentSpacing {
-  margin: $component-spacing-mobile 0;
+  margin: var(--component-spacing-mobile) 0;
 
   &[class*='theme'] {
     margin: 0;
-    padding: $component-spacing-mobile 0;
+    padding: var(--component-spacing-mobile) 0;
 
     @media (min-width: $breakpoint-tablet) {
-      padding: $component-spacing-tablet 0;
+      padding: var(--component-spacing-tablet) 0;
     }
 
     @media (min-width: $breakpoint-desktop) {
-      padding: $component-spacing-desktop 0;
+      padding: var(--component-spacing-desktop) 0;
     }
   }
 
   @media (min-width: $breakpoint-tablet) {
-    margin: $component-spacing-tablet 0;
+    margin: var(--component-spacing-tablet) 0;
   }
 
   @media (min-width: $breakpoint-desktop) {
-    margin: $component-spacing-desktop 0;
+    margin: var(--component-spacing-desktop) 0;
   }
 }
 
 // Reduce top spacing in half for first component in mainContent
 .mainContent {
   > .componentSpacing:first-child {
-    margin-top: $component-spacing-mobile;
+    margin-top: var(--component-spacing-mobile);
 
     &[class*='theme'] {
       margin: 0;
-      padding-top: $component-spacing-mobile;
+      padding-top: var(--component-spacing-mobile);
 
       @media (min-width: $breakpoint-tablet) {
-        padding-top: $component-spacing-tablet;
+        padding-top: var(--component-spacing-tablet);
       }
     }
 
     @media (min-width: $breakpoint-tablet) {
-      margin-top: $component-spacing-tablet;
+      margin-top: var(--component-spacing-tablet);
     }
   }
 }
@@ -947,41 +941,41 @@ select {
 
 .centerContentMaxWidth {
   margin: 0 auto;
-  max-width: $content-max-width;
+  max-width: var(--content-max-width);
 }
 
 .centerContentMaxWidthLarge {
   margin: 0 auto;
-  max-width: $content-max-width-large;
+  max-width: var(--content-max-width-large);
 }
 
 .preContent {
   @include reset-content-margins;
-  margin: 0 auto $component-spacing-tablet/3;
-  max-width: $content-max-width;
+  margin: 0 auto calc(var(--component-spacing-tablet) / 3);
+  max-width: var(--content-max-width);
   text-align: center;
 
   @media (min-width: $breakpoint-tablet) {
-    margin-bottom: $component-spacing-tablet/2;
+    margin-bottom: calc(var(--component-spacing-tablet) / 2);
   }
 
   @media (min-width: $breakpoint-desktop) {
-    margin-bottom: $component-spacing-desktop/2;
+    margin-bottom: calc(var(--component-spacing-desktop) / 2);
   }
 }
 
 .postContent {
   @include reset-content-margins;
-  margin: $component-spacing-tablet/3 auto 0;
-  max-width: $content-max-width;
+  margin: calc(var(--component-spacing-tablet) / 3) auto 0;
+  max-width: var(--content-max-width);
   text-align: center;
 
   @media (min-width: $breakpoint-tablet) {
-    margin-top: $component-spacing-tablet/2;
+    margin-top: calc(var(--component-spacing-tablet) / 2);
   }
 
   @media (min-width: $breakpoint-desktop) {
-    margin-top: $component-spacing-desktop/2;
+    margin-top: calc(var(--component-spacing-desktop) / 2);
   }
 }
 
@@ -1036,12 +1030,12 @@ select {
         padding: 32px 0;
 
         @media (min-width: $breakpoint-tablet) {
-          padding: $component-spacing-mobile 0;
+          padding: var(--component-spacing-mobile) 0;
         }
       }
 
       @media (min-width: $breakpoint-tablet) {
-        margin: $component-spacing-mobile 0;
+        margin: var(--component-spacing-mobile) 0;
       }
     }
 

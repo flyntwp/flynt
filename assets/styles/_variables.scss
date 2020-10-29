@@ -9,7 +9,6 @@ $container-max-width: 1440px;
 $container-padding-desktop: 64px;
 $container-padding-tablet: 32px;
 $container-padding-mobile: 16px;
-
 $content-max-width: 690px;
 $content-max-width-large: 860px;
 $component-spacing-desktop: 128px;
@@ -23,6 +22,12 @@ $gutter-width: 24px;
   --container-padding-desktop: var(--container-padding-desktop);
   --container-padding-tablet: var(--container-padding-tablet);
   --container-padding-mobile: var(--container-padding-mobile);
+  --content-max-width: var(--content-max-width);
+  --content-max-width-large: var(--content-max-width-large);
+  --component-spacing-desktop: var(--component-spacing-desktop);
+  --component-spacing-tablet: var(--component-spacing-tablet);
+  --component-spacing-mobile: var(--component-spacing-mobile);
+  --gutter-width: var(--gutter-width);
 }
 
 // Theming variables

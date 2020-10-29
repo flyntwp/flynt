@@ -1,7 +1,7 @@
 [is='flynt-slider-images'] {
   .slider {
     background-color: var(--color-border-alpha);
-    max-width: $content-max-width-large;
+    max-width: var(--content-max-width-large);
     position: relative;
 
     &-item {

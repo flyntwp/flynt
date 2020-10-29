@@ -16,7 +16,7 @@
     @include reset-list-item;
     display: flex;
     flex-wrap: wrap;
-    max-width: $content-max-width;
+    max-width: var(--content-max-width);
 
     &-imageWrapper {
       background-color: var(--color-border-alpha);

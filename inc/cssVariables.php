@@ -30,7 +30,8 @@ add_action('wp_head', function () {
                 }
             } ?>
             <?php foreach ($sizes as $sizeKey => $size) {
-                $sizeValue = get_theme_mod("size_{$sizeKey}", $size['default']);
+                $sizeKeySet = str_replace('-', '_', $sizeKey);
+                $sizeValue = get_theme_mod("size_{$sizeKeySet}", $size['default']);
                 echo "--{$sizeKey}: {$sizeValue}{$size['unit']};";
             } ?>
         }

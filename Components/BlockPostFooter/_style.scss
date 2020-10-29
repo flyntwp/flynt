@@ -1,14 +1,14 @@
 [is='flynt-block-post-footer'] {
-  margin-bottom: $component-spacing-mobile;
+  margin-bottom: var(--component-spacing-mobile);
   margin-top: 32px;
 
   @media (min-width: $breakpoint-tablet) {
-    margin-bottom: $component-spacing-tablet;
-    margin-top: $component-spacing-mobile;
+    margin-bottom: var(--component-spacing-tablet);
+    margin-top: var(--component-spacing-mobile);
   }
 
   @media (min-width: $breakpoint-desktop) {
-    margin-bottom: $component-spacing-desktop;
+    margin-bottom: var(--component-spacing-desktop);
   }
 
   .tags {
@@ -33,7 +33,7 @@
     }
 
     @media (min-width: $breakpoint-tablet) {
-      margin: $component-spacing-mobile 0;
+      margin: var(--component-spacing-mobile) 0;
     }
 
     &-avatarLink {
@@ -59,7 +59,7 @@
       padding-left: 1rem;
 
       @media (min-width: $breakpoint-mobile-horizontal) {
-        padding-left: $gutter-width;
+        padding-left: var(--gutter-width);
       }
     }
 

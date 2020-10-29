@@ -1,9 +1,9 @@
 [is='flynt-block-post-header'] {
   .header {
-    padding: $component-spacing-mobile 0 $component-spacing-desktop;
+    padding: var(--component-spacing-mobile) 0 var(--component-spacing-desktop);
 
     @media (min-width: $breakpoint-tablet) {
-      padding: $component-spacing-tablet 0 $component-spacing-tablet*2;
+      padding: var(--component-spacing-tablet) 0 calc(var(--component-spacing-tablet) * 2);
     }
   }
 
@@ -77,11 +77,11 @@
   }
 
   .featuredImage {
-    margin-bottom: $component-spacing-mobile;
-    margin-top: -#{$component-spacing-tablet};
+    margin-bottom: var(--component-spacing-mobile);
+    margin-top: calc(-1 * var(--component-spacing-tablet));
 
     @media (min-width: $breakpoint-tablet) {
-      margin-top: -#{$component-spacing-desktop};
+      margin-top: calc(-1 * var(--component-spacing-tablet));
     }
   }
 }

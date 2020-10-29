@@ -4,7 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: -#{$gutter-width} 0 0 -#{$gutter-width};
+    margin: calc(-1 * var(--gutter-width)) 0 0 calc(-1 * var(--gutter-width));
 
     &--columns2,
     &--columns3,
@@ -36,8 +36,8 @@
   .grid-item {
     @include reset-list-item;
     display: flex;
-    max-width: $content-max-width;
-    padding: $gutter-width 0 0 $gutter-width;
+    max-width: var(--content-max-width);
+    padding: var(--gutter-width) 0 0 var(--gutter-width);
     width: 100%;
   }
 

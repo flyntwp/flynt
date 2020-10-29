@@ -109,8 +109,8 @@
 @mixin grid(
   $columns,
   $alignment: flex-start,
-  $gutter-horizontal: $gutter-width,
-  $gutter-vertical: $gutter-width
+  $gutter-horizontal: var(--gutter-width),
+  $gutter-vertical: var(--gutter-width)
 ) {
   display: flex;
   flex-wrap: wrap;

@@ -7,13 +7,13 @@
 
   &.flyntComponent--sizeMedium {
     .figure {
-      max-width: $content-max-width;
+      max-width: var(--content-max-width);
     }
   }
 
   &.flyntComponent--sizeLarge {
     .figure {
-      max-width: $content-max-width-large;
+      max-width: var(--content-max-width-large);
     }
   }
 

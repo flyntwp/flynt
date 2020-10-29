@@ -49,6 +49,66 @@ function getSizes()
                 'step' => 1,
             ],
         ],
+        'content-max-width' => [
+            'label' => __('Content Max Width', 'flynt'),
+            'default' => 690,
+            'unit' => 'px',
+            'options' => [
+                'min' => 0,
+                'max' => 1440,
+                'step' => 1,
+            ],
+        ],
+        'content-max-width-large' => [
+            'label' => __('Content Max Width Large', 'flynt'),
+            'default' => 860,
+            'unit' => 'px',
+            'options' => [
+                'min' => 0,
+                'max' => 1440,
+                'step' => 1,
+            ],
+        ],
+        'component-spacing-desktop' => [
+            'label' => __('Component Spacing Desktop', 'flynt'),
+            'default' => 128,
+            'unit' => 'px',
+            'options' => [
+                'min' => 0,
+                'max' => 128,
+                'step' => 1,
+            ],
+        ],
+        'component-spacing-tablet' => [
+            'label' => __('Component Spacing Tablet', 'flynt'),
+            'default' => 96,
+            'unit' => 'px',
+            'options' => [
+                'min' => 0,
+                'max' => 128,
+                'step' => 1,
+            ],
+        ],
+        'component-spacing-mobile' => [
+            'label' => __('Component Spacing Mobile', 'flynt'),
+            'default' => 48,
+            'unit' => 'px',
+            'options' => [
+                'min' => 0,
+                'max' => 96,
+                'step' => 1,
+            ],
+        ],
+        'gutter-width' => [
+            'label' => __('Gutter Width', 'flynt'),
+            'default' => 24,
+            'unit' => 'px',
+            'options' => [
+                'min' => 4,
+                'max' => 24,
+                'step' => 4,
+            ],
+        ],
     ];
 }
 
