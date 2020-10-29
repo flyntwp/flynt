@@ -109,6 +109,26 @@ function getSizes()
                 'step' => 4,
             ],
         ],
+        'box-spacing' => [
+            'label' => __('Box Spacing', 'flynt'),
+            'default' => 32,
+            'unit' => 'px',
+            'options' => [
+                'min' => 0,
+                'max' => 32,
+                'step' => 1,
+            ],
+        ],
+        'box-border-radius' => [
+            'label' => __('Box Border Radius', 'flynt'),
+            'default' => 16,
+            'unit' => 'px',
+            'options' => [
+                'min' => 0,
+                'max' => 32,
+                'step' => 1,
+            ],
+        ],
     ];
 }
 

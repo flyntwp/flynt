@@ -999,15 +999,15 @@ select {
 
 .boxPadding {
   @include reset-content-margins;
-  padding: 24px;
+  padding: calc(var(--box-spacing) * 0.75);
 
   @media (min-width: $breakpoint-tablet-horizontal) {
-    padding: 32px;
+    padding: var(--box-spacing);
   }
 }
 
 .boxRadius {
-  border-radius: 16px;
+  border-radius: var(--box-border-radius);
   overflow: hidden;
   position: relative;
   transform: translateZ(0);
