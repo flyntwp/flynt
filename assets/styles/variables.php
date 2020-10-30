@@ -88,7 +88,7 @@ function getVariables()
                     ],
                 ],
                 [
-                    'label' => __('Component Spacing Base', 'flynt'),
+                    'label' => __('Component Spacing', 'flynt'),
                     'name' => 'component-spacing-base',
                     'type' => 'flynt-range',
                     'default' => 48,
