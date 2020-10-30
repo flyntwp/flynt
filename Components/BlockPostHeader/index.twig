@@ -1,5 +1,6 @@
 <div class="flyntComponent" is="flynt-block-post-header">
-  <div class="header themeLight">
+  <div class="header themeLight {% if post.thumbnail %}header--hasFeaturedImage{% endif %}
+  ">
     <div class="container centerMaxWidthContainer">
       <div class="content centerContentMaxWidth">
         <h1>{{ post.title }}</h1>

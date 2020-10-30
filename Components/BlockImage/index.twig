@@ -4,7 +4,7 @@
       {% if image.post_mime_type == 'image/svg+xml' or image.post_mime_type == 'image/gif' %}
         <img src="{{ image.src }}" alt="{{ image.alt|e }}">
       {% else %}
-        <img class="figure-image boxRadius lazyload"
+        <img class="figure-image lazyload"
           src="{{ image.src|resizeDynamic(760) }}"
             srcset="{{ placeholderImage(760, 760 / image.aspect) }}"
             data-srcset="
