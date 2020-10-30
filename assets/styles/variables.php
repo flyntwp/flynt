@@ -25,7 +25,7 @@ function getSizes()
             'unit' => 'px',
             'options' => [
                 'min' => 0,
-                'max' => 128,
+                'max' => 240,
                 'step' => 1,
             ],
         ],
@@ -35,7 +35,7 @@ function getSizes()
             'unit' => 'px',
             'options' => [
                 'min' => 0,
-                'max' => 64,
+                'max' => 128,
                 'step' => 1,
             ],
         ],
@@ -45,7 +45,7 @@ function getSizes()
             'unit' => 'px',
             'options' => [
                 'min' => 0,
-                'max' => 32,
+                'max' => 64,
                 'step' => 1,
             ],
         ],
