@@ -79,7 +79,7 @@ function getVariables()
                     'label' => __('Content Max Width Large', 'flynt'),
                     'name' => 'content-max-width-large',
                     'type' => 'range',
-                    'default' => 690,
+                    'default' => 860,
                     'unit' => 'px',
                     'input_attrs' => [
                         'min' => 0,
@@ -95,7 +95,7 @@ function getVariables()
                     'unit' => 'px',
                     'input_attrs' => [
                         'min' => 0,
-                        'max' => 128,
+                        'max' => 160,
                         'step' => 1,
                     ],
                 ],
