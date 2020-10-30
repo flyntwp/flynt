@@ -2,7 +2,7 @@
 import $ from 'jquery'
 import { hexToHsla } from './scripts/helpers'
 
-$(document).ready(function () {
+$(function () {
   const $root = $(':root.html')
   const setFieldValue = function (field) {
     return function (setting) {
