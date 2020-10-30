@@ -1,7 +1,6 @@
 [is='flynt-block-image-text'] {
   .container {
-    // TODO: Make 500px a dynamic value
-    @include center(calc(500px + 2 * var(--container-padding-mobile)));
+    @include center(calc(var(--content-max-width) - (2 * var(--container-padding-mobile))), var(--container-padding-mobile));
   }
 
   .box-inner {
@@ -14,18 +13,17 @@
 
   @media (min-width: $breakpoint-tablet-horizontal) {
     .container {
-      // TODO: Make 1080px a dynamic value
-      @include center(calc(1080px + 2 * var(--container-padding-tablet)), var(--container-padding-tablet));
+      @include center(calc(var(--container-max-width) - (2 * var(--container-padding-desktop))), var(--container-padding-tablet));
     }
 
     .box {
       align-items: center;
       display: flex;
-      margin: 0 calc(-1 * var(--container-padding-tablet));
+      margin: 0 calc(-1 * (var(--gutter-width) *2));
 
       &-inner {
         @include reset-content-margins('both');
-        padding: 0 var(--container-padding-tablet);
+        padding: 0 calc(var(--gutter-width) * 2);
         width: 50%;
       }
 
