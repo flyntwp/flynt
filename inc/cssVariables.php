@@ -6,35 +6,68 @@
 
 namespace Flynt\CSSVariables;
 
-use Flynt\Utils\ColorHelpers;
 use Flynt\Variables;
+use Flynt\Utils\ColorHelpers;
 
 add_action('wp_head', function () {
-    $themes = Variables\getColors();
-    $sizes = Variables\getSizes();
+    $variables = getCssVariables();
     ?>
     <style type="text/css">
         :root.html {
-            <?php foreach ($themes as $themeKey => $theme) {
-                foreach ($theme['colors'] as $colorName => $colorConfig) {
-                    $colorValue = get_theme_mod("theme_{$themeKey}_color_{$colorName}", $colorConfig['default']);
-                    $cssProperty = "--theme-{$themeKey}-color-{$colorName}";
-                    echo "{$cssProperty}: {$colorValue};";
-
-                    if ($colorConfig['hsl'] ?? false) {
-                        $colorHsla = ColorHelpers::hexToHsla($colorValue);
-                        echo "{$cssProperty}-h: {$colorHsla[0]};";
-                        echo "{$cssProperty}-s: {$colorHsla[1]};";
-                        echo "{$cssProperty}-l: {$colorHsla[2]};";
-                    }
-                }
-            } ?>
-            <?php foreach ($sizes as $sizeKey => $size) {
-                $sizeKeySet = str_replace('-', '_', $sizeKey);
-                $sizeValue = get_theme_mod("size_{$sizeKeySet}", $size['default']);
-                echo "--{$sizeKey}: {$sizeValue}{$size['unit']};";
+            <?php foreach ($variables as $variable => $value) {
+                echo "--{$variable}: {$value}; ";
             } ?>
         }
     </style>
     <?php
 }, 5);
+
+function getCssVariables()
+{
+    $fields = getFields();
+    $variables = [];
+
+    foreach ($fields as $field) {
+        $variable = $field['name'];
+        $value = get_theme_mod($field['name'], $field['default']);
+        $unit = $field['unit'] ?? '';
+        $variables[$variable] = $value . $unit;
+
+        if (isset($field['hsl']) && $field['type'] === 'color') {
+            $hslCssVariables = generateHslaCssVariables($field, $value);
+            foreach ($hslCssVariables as $variable => $value) {
+                $variables[$variable] = $value;
+            }
+        }
+    }
+
+    return $variables;
+}
+
+function getFields()
+{
+    $settings = Variables\getVariables();
+    $fields = [];
+
+    foreach ($settings as $setting) {
+        if ($setting['type'] === 'panel') {
+            foreach ($setting['sections'] ?? [] as $section) {
+                $fields = array_merge($section['fields'] ?? [], $fields);
+            }
+        } else if ($setting['type'] === 'section') {
+            $fields = array_merge($setting['fields'] ?? [], $fields);
+        }
+    }
+
+    return $fields;
+}
+
+function generateHslaCssVariables($field, $value)
+{
+    $colorHsla = ColorHelpers::hexToHsla($value);
+    return [
+        "{$field['name']}-h" => $colorHsla[0],
+        "{$field['name']}-s" => $colorHsla[1],
+        "{$field['name']}-l" => $colorHsla[2],
+    ];
+}
