@@ -14,7 +14,7 @@ $(function () {
 
         $root.css(variable, value)
 
-        if (field.hsl) {
+        if (field.hsl && field.type === 'color') {
           const hsla = hexToHsla(value)
           $root.css(`${variable}-h`, hsla[0])
           $root.css(`${variable}-s`, hsla[1])
