@@ -4,9 +4,8 @@ namespace Flynt\Customizer;
 
 class RangeControl extends \WP_Customize_Control
 {
-    public $type = 'flynt_range';
+    public $type = 'flynt-range';
     public $unit = '';
-    public $options = [];
 
     /**
      * Refresh the parameters passed to the JavaScript via JSON.
@@ -18,7 +17,7 @@ class RangeControl extends \WP_Customize_Control
         $this->json['link'] = $this->get_link();
         $this->json['value'] = $this->value();
         $this->json['unit'] = $this->unit;
-        $this->json['options'] = $this->options;
+        $this->json['input_attrs'] = $this->input_attrs;
         $this->json['default'] = $this->default ?? $this->setting->default;
     }
 
@@ -44,22 +43,20 @@ class RangeControl extends \WP_Customize_Control
             <div class="flynt-range-field">
                 <input
                     type="range"
-                    class="flynt-range flynt-range-slider"
                     data-change="number"
                     value="{{{ data.value }}}"
                     {{{ data.link }}}
-                    <# _.each(data.options, function(value, key) { #>
+                    <# _.each(_.extend({'class': 'flynt-range flynt-range-slider'}, data.input_attrs), function(value, key) { #>
                         {{{ key }}}="{{ value }}"
                     <# }); #>
                 >
                 <input
                     type="number"
-                    class="flynt-range flynt-range-number"
                     data-change="slider"
                     value="{{{ data.value }}}"
                     id="{{{ data.id }}}"
                     {{{ data.link }}}
-                    <# _.each(data.options, function(value, key) { #>
+                    <# _.each(_.extend({'class': 'flynt-range flynt-range-number'}, data.input_attrs), function(value, key) { #>
                         {{{ key }}}="{{ value }}"
                     <# }); #>
                 >

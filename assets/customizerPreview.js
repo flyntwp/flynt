@@ -1,26 +1,30 @@
-/* globals wp, FlyntCustomizerData */
+/* globals wp, FlyntCustomizerFields */
 import $ from 'jquery'
 import { hexToHsla } from './scripts/helpers'
 
 $(document).ready(function () {
   const $root = $(':root.html')
-  const setColor = function (cssProperty, options) {
+  const setFieldValue = function (field) {
     return function (setting) {
-      setting.bind(function (color) {
-        $root.css(`${cssProperty}`, color)
-        if (options.hsl) {
-          const hsla = hexToHsla(color)
-          $root.css(`${cssProperty}-h`, hsla[0])
-          $root.css(`${cssProperty}-s`, hsla[1])
-          $root.css(`${cssProperty}-l`, hsla[2])
+      setting.bind(function (value) {
+        const variable = `--${field.name}`
+        if (field.unit) {
+          value = `${value}${field.unit}`
+        }
+
+        $root.css(variable, value)
+
+        if (field.hsl) {
+          const hsla = hexToHsla(value)
+          $root.css(`${variable}-h`, hsla[0])
+          $root.css(`${variable}-s`, hsla[1])
+          $root.css(`${variable}-l`, hsla[2])
         }
       })
     }
   }
 
-  for (const [themeKey, theme] of Object.entries(FlyntCustomizerData)) {
-    for (const [colorName, options] of Object.entries(theme)) {
-      wp.customize(`theme_${themeKey}_color_${colorName}`, setColor(`--theme-${themeKey}-color-${colorName}`, options))
-    }
+  for (const field of FlyntCustomizerFields) {
+    wp.customize(field.name, setFieldValue(field))
   }
 })

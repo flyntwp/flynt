@@ -8,24 +8,23 @@ namespace Flynt\Customizer;
 
 use Flynt\Utils\Asset;
 use Flynt\Utils\Options;
-use WP_Customize_Color_Control;
 use Flynt\Variables;
+use Flynt\CSSVariables;
 
 add_action('acf/init', function () {
     $options = Options::getGlobal('Customizer');
+
     if ($options['enabled']) {
         add_action('customize_register', function ($wp_customize) {
             $wp_customize->register_control_type('Flynt\Customizer\RangeControl');
-
-            addSizesSettings($wp_customize);
-            addColorsSettings($wp_customize);
+            addSettings($wp_customize);
         });
 
         add_action('customize_controls_enqueue_scripts', function () {
             wp_enqueue_script(
                 'Flynt/customizerControls',
                 Asset::requireUrl('assets/customizerControls.js'),
-                ['jquery','customize-preview']
+                ['jquery']
             );
             wp_enqueue_style(
                 'Flynt/customizerControls',
@@ -39,102 +38,101 @@ add_action('acf/init', function () {
                 Asset::requireUrl('assets/customizerPreview.js'),
                 ['jquery','customize-preview']
             );
-            $themes = Variables\getColors();
-            $config = array_map(function ($theme) {
-                return $theme['colors'];
-            }, $themes);
-            wp_localize_script('Flynt/customizerPreview', 'FlyntCustomizerData', $config);
+            $fields = CSSVariables\getFields();
+            wp_localize_script('Flynt/customizerPreview', 'FlyntCustomizerFields', $fields);
         });
     }
 });
 
-function addSizesSettings($wp_customize)
+function addSettings($wp_customize)
 {
-    $sizes = Variables\getSizes();
+    $settings = Variables\getVariables();
 
-    $wp_customize->add_section(
-        "sizes_section",
-        [
-            'title' => __('Sizes', 'flynt'),
-            'priority' => 150,
-        ]
-    );
-
-    foreach ($sizes as $sizeKey => $size) {
-        $sizeKey = str_replace('-', '_', $sizeKey);
-
-        $wp_customize->add_setting(
-            "size_{$sizeKey}",
-            [
-                'default' => $size['default'],
-                'transport' => 'postMessage',
-                'sanitize_callback' => "Flynt\\Customizer\\sanitizeNumberRange",
-            ]
-        );
-
-        $wp_customize->add_control(
-            new RangeControl(
-                $wp_customize,
-                "size_{$sizeKey}",
+    foreach ($settings as $setting) {
+        if ($setting['type'] === 'panel') {
+            $wp_customize->add_panel(
+                "flynt_panel_{$setting['name']}",
                 [
-                    'section' => "sizes_section",
-                    'label' => $size['label'],
-                    'description' => $size['description'] ?? '',
-                    'unit' => $size['unit'],
-                    'options' => $size['options'],
+                    'title' => $setting['label'],
+                    'priority' => $setting['priority'] ?? 160,
                 ]
-            )
-        );
+            );
+
+            foreach ($setting['sections'] ?? [] as $section) {
+                addSection($wp_customize, $section, $setting['name']);
+            }
+        } else if ($setting['type'] === 'section') {
+            addSection($wp_customize, $setting);
+        }
     }
 }
 
-function addColorsSettings($wp_customize)
+function addSection($wp_customize, $section, $panel = '')
 {
-    $themes = Variables\getColors();
-
-    $wp_customize->add_panel(
-        'theme_colors_panel',
+    $panelKey = $panel ? "{$panel}_" : '';
+    $sectionKey = "flynt_section_{$panelKey}{$section['name']}";
+    $wp_customize->add_section(
+        $sectionKey,
         [
-            'title' => __('Colors', 'flynt'),
-            'priority' => 160,
+            'title' => $section['label'],
+            'priority' => $section['priority'] ?? 160,
+            'panel' => $panel ? "flynt_panel_{$panel}" : '',
         ]
     );
 
-    foreach ($themes as $key => $theme) {
-        $wp_customize->add_section(
-            "theme_{$key}_colors",
-            [
-                'title' => $theme['label'],
-                'priority' => 20,
-                'panel' => 'theme_colors_panel',
-            ]
-        );
+    foreach ($section['fields'] ?? [] as $setting) {
+        addSetting($wp_customize, $setting, $sectionKey);
     }
+}
 
-    foreach ($themes as $themeKey => $theme) {
-        foreach ($theme['colors'] as $colorName => $colorConfig) {
-            $wp_customize->add_setting(
-                "theme_{$themeKey}_color_{$colorName}",
+function addSetting($wp_customize, $setting, $sectionKey)
+{
+    $settingId = $setting['name'];
+    unset($setting['name']);
+
+    $wp_customize->add_setting(
+        $settingId,
+        [
+            'default' => $setting['default'],
+            'transport' => 'postMessage',
+            'sanitize_callback' => getSanitizeCallback($setting['type']),
+        ]
+    );
+
+    $controllClass = getControllCass($setting['type']);
+
+    $wp_customize->add_control(
+        new $controllClass(
+            $wp_customize,
+            $settingId,
+            array_merge(
+                $setting,
                 [
-                    'default' => $colorConfig['default'],
-                    'transport' => 'postMessage',
-                    'sanitize_callback' => 'sanitize_hex_color',
+                    'section' => $sectionKey,
                 ]
-            );
+            )
+        )
+    );
+}
 
-            $wp_customize->add_control(
-                new WP_Customize_Color_Control(
-                    $wp_customize,
-                    "theme_{$themeKey}_color_{$colorName}",
-                    [
-                        'section' => "theme_{$themeKey}_colors",
-                        'label' => $colorConfig['label'],
-                        'description' => $colorConfig['description'] ?? '',
-                    ]
-                )
-            );
-        }
-    }
+function getControllCass($type)
+{
+    $controls = [
+        'color' => 'WP_Customize_Color_Control',
+        'range' => 'Flynt\Customizer\RangeControl',
+    ];
+
+    return $controls[$type] ?? 'WP_Customize_Control';
+}
+
+function getSanitizeCallback($type)
+{
+    $sanitize = [
+        'color' => 'sanitize_hex_color',
+        'range' => 'Flynt\Customizer\sanitizeNumberRange',
+    ];
+
+    return $sanitize[$type] ?? '';
 }
 
 function sanitizeNumberRange($number, $setting)
