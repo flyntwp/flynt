@@ -13,7 +13,7 @@
 
   @media (min-width: $breakpoint-tablet-horizontal) {
     .container {
-      @include center(calc(var(--container-max-width) - (2 * var(--container-padding-desktop))), var(--container-padding-desktop));
+      @include center(calc(var(--container-max-width) - (2 * var(--container-padding-desktop))), var(--container-padding-tablet));
     }
 
     .box {
