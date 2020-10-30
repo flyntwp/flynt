@@ -1,7 +1,6 @@
 [is='flynt-block-image-text'] {
   .container {
-    // TODO: Make 500px a dynamic value
-    @include center(calc(500px + 2 * var(--container-padding-mobile)));
+    @include center(calc(var(--content-max-width) - (2 * var(--container-padding-mobile))), var(--container-padding-mobile));
   }
 
   .box-inner {
@@ -14,8 +13,7 @@
 
   @media (min-width: $breakpoint-tablet-horizontal) {
     .container {
-      // TODO: Make 1080px a dynamic value
-      @include center(calc(1080px + 2 * var(--container-padding-tablet)), var(--container-padding-tablet));
+      @include center(calc(var(--container-max-width) - (2 * var(--container-padding-desktop))), var(--container-padding-desktop));
     }
 
     .box {
