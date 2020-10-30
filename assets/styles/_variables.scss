@@ -10,16 +10,19 @@ $breakpoint-desktop-wide: 1440px;
   --container-padding: var(--container-padding-mobile);
   --content-max-width: var(--content-max-width);
   --content-max-width-large: var(--content-max-width-large);
-  --component-spacing: var(--component-spacing-mobile);
+  --component-spacing: var(--component-spacing-base);
   --gutter-width: var(--gutter-width);
   --box-spacing: var(--box-spacing);
   --box-border-radius: var(--box-border-radius);
+
+  --component-spacing-mobile: var(--component-spacing-base);
+  --component-spacing-tablet: calc(var(--component-spacing-base) / 3 * 6);
+  --component-spacing-desktop: calc(var(--component-spacing-base) / 3 * 8);
 
   @media (min-width: $breakpoint-tablet) {
     --container-padding: var(--container-padding-tablet);
     --component-spacing: var(--component-spacing-tablet);
   }
-
   @media (min-width: $breakpoint-desktop) {
     --container-padding: var(--container-padding-desktop);
     --component-spacing: var(--component-spacing-desktop);
