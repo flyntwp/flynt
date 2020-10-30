@@ -1,14 +1,9 @@
 [is='flynt-block-post-footer'] {
-  margin-bottom: var(--component-spacing-mobile);
+  margin-bottom: var(--component-spacing);
   margin-top: 32px;
 
   @media (min-width: $breakpoint-tablet) {
-    margin-bottom: var(--component-spacing-tablet);
     margin-top: var(--component-spacing-mobile);
-  }
-
-  @media (min-width: $breakpoint-desktop) {
-    margin-bottom: var(--component-spacing-desktop);
   }
 
   .tags {

@@ -1,6 +1,6 @@
 [is='flynt-block-image-text'] {
   .container {
-    @include center(calc(var(--content-max-width) - (2 * var(--container-padding-mobile))), var(--container-padding-mobile));
+    @include center(calc(var(--content-max-width) - (2 * var(--container-padding))), var(--container-padding));
   }
 
   .box-inner {

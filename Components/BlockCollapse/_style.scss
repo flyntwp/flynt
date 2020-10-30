@@ -2,15 +2,7 @@
   &.collapse {
     // full collapse no spacing
     &-none {
-      margin-top: calc(-1 * var(--component-spacing-mobile));
-
-      @media (min-width: $breakpoint-tablet) {
-        margin-top: calc(-1 * var(--component-spacing-tablet));
-      }
-
-      @media (min-width: $breakpoint-desktop) {
-        margin-top: calc(-1 * var(--component-spacing-desktop));
-      }
+      margin-top: calc(-1 * var(--component-spacing));
     }
 
     // precontent spacing

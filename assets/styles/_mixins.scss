@@ -24,7 +24,7 @@
 
 @mixin center(
   $max-width: var(--container-max-width),
-  $padding: var(--container-padding-mobile)
+  $padding: var(--container-padding)
 ) {
   display: block;
   margin-left: auto;

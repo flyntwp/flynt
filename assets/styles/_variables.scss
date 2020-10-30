@@ -7,17 +7,23 @@ $breakpoint-desktop-wide: 1440px;
 // Sizing variables
 :root {
   --container-max-width: var(--container-max-width);
-  --container-padding-desktop: var(--container-padding-desktop);
-  --container-padding-tablet: var(--container-padding-tablet);
-  --container-padding-mobile: var(--container-padding-mobile);
+  --container-padding: var(--container-padding-mobile);
   --content-max-width: var(--content-max-width);
   --content-max-width-large: var(--content-max-width-large);
-  --component-spacing-desktop: var(--component-spacing-desktop);
-  --component-spacing-tablet: var(--component-spacing-tablet);
-  --component-spacing-mobile: var(--component-spacing-mobile);
+  --component-spacing: var(--component-spacing-mobile);
   --gutter-width: var(--gutter-width);
   --box-spacing: var(--box-spacing);
   --box-border-radius: var(--box-border-radius);
+
+  @media (min-width: $breakpoint-tablet) {
+    --container-padding: var(--container-padding-tablet);
+    --component-spacing: var(--component-spacing-tablet);
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    --container-padding: var(--container-padding-desktop);
+    --component-spacing: var(--component-spacing-desktop);
+  }
 }
 
 // Theming variables

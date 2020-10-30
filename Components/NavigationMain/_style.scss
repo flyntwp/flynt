@@ -1,8 +1,8 @@
 [is='flynt-navigation-main'] {
-  $navigation-height: 80px;
+  --navigation-height: 80px;
 
   display: none;
-  height: $navigation-height;
+  height: var(--navigation-height);
 
   @media (min-width: $breakpoint-tablet-horizontal) {
     display: block;
@@ -25,7 +25,7 @@
   .wrapper {
     backdrop-filter: saturate(190%) blur(20px);
     background-color: rgba(255, 255, 255, 0.92);
-    height: $navigation-height;
+    height: var(--navigation-height);
     left: 0;
     position: fixed;
     right: 0;

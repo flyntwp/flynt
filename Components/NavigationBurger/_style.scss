@@ -7,9 +7,9 @@
 }
 
 [is='flynt-navigation-burger'] {
-  $navigation-height: 64px;
+  --navigation-height: 64px;
 
-  height: $navigation-height;
+  height: var(--navigation-height);
 
   @media (min-width: $breakpoint-tablet-horizontal) {
     display: none;
@@ -40,7 +40,7 @@
     backdrop-filter: saturate(190%) blur(20px);
     background-color: rgba(255, 255, 255, 0.92);
     display: flex;
-    height: $navigation-height;
+    height: var(--navigation-height);
     justify-content: space-between;
     left: 0;
     padding-bottom: 16px;
