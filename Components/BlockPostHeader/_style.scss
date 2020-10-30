@@ -86,10 +86,6 @@
 
   .featuredImage {
     margin-bottom: var(--component-spacing-mobile);
-    margin-top: calc(-1 * var(--component-spacing-tablet));
-
-    @media (min-width: $breakpoint-tablet) {
-      margin-top: calc(-1 * var(--component-spacing-desktop));
-    }
+    margin-top: calc(-1 * var(--component-spacing-mobile));
   }
 }
