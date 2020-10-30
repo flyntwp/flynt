@@ -35,7 +35,7 @@ function getVariables()
                     'unit' => 'px',
                     'input_attrs' => [
                         'min' => 0,
-                        'max' => 128,
+                        'max' => 240,
                         'step' => 1,
                     ],
                 ],
