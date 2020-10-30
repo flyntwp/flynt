@@ -149,7 +149,7 @@ a {
   color: var(--color-accent);
   font-weight: 500;
   text-decoration: none;
-  transition: color 0.2s ease, background-position 0.3s ease;
+  transition: color 0.2s $ease-in-out-circ, background-position 0.2s $ease-in-out-circ;
 
   &:hover,
   &:focus {
@@ -165,7 +165,8 @@ a {
 p,
 .paragraph,
 table,
-figure {
+figure,
+pre {
   margin: 0 0 1.5rem;
 }
 
@@ -184,7 +185,7 @@ img {
 }
 
 figcaption {
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   line-height: 1.5;
   margin: 1rem auto 0;
   max-width: var(--content-max-width);
@@ -333,7 +334,7 @@ table {
 
 td,
 th {
-  padding: 0.875rem 1.5rem;
+  padding: 0.9375rem 1.5rem;
   text-align: inherit;
   vertical-align: top;
 }
@@ -461,7 +462,7 @@ button {
   }
 
   &--small {
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     line-height: 1.45;
     padding: 0.5rem 1rem;
   }
