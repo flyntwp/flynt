@@ -18,7 +18,7 @@ function getVariables()
                 [
                     'label' => __('Container Max Width', 'flynt'),
                     'name' => 'container-max-width',
-                    'type' => 'range',
+                    'type' => 'flynt-range',
                     'default' => 1440,
                     'unit' => 'px',
                     'input_attrs' => [
@@ -30,7 +30,7 @@ function getVariables()
                 [
                     'label' => __('Container Padding Desktop', 'flynt'),
                     'name' => 'container-padding-desktop',
-                    'type' => 'range',
+                    'type' => 'flynt-range',
                     'default' => 64,
                     'unit' => 'px',
                     'input_attrs' => [
@@ -42,7 +42,7 @@ function getVariables()
                 [
                     'label' => __('Container Padding Tablet', 'flynt'),
                     'name' => 'container-padding-tablet',
-                    'type' => 'range',
+                    'type' => 'flynt-range',
                     'default' => 32,
                     'unit' => 'px',
                     'input_attrs' => [
@@ -54,7 +54,7 @@ function getVariables()
                 [
                     'label' => __('Container Padding Mobile', 'flynt'),
                     'name' => 'container-padding-mobile',
-                    'type' => 'range',
+                    'type' => 'flynt-range',
                     'default' => 16,
                     'unit' => 'px',
                     'input_attrs' => [
@@ -66,7 +66,7 @@ function getVariables()
                 [
                     'label' => __('Content Max Width', 'flynt'),
                     'name' => 'content-max-width',
-                    'type' => 'range',
+                    'type' => 'flynt-range',
                     'default' => 690,
                     'unit' => 'px',
                     'input_attrs' => [
@@ -78,7 +78,7 @@ function getVariables()
                 [
                     'label' => __('Content Max Width Large', 'flynt'),
                     'name' => 'content-max-width-large',
-                    'type' => 'range',
+                    'type' => 'flynt-range',
                     'default' => 860,
                     'unit' => 'px',
                     'input_attrs' => [
@@ -90,7 +90,7 @@ function getVariables()
                 [
                     'label' => __('Component Spacing Desktop', 'flynt'),
                     'name' => 'component-spacing-desktop',
-                    'type' => 'range',
+                    'type' => 'flynt-range',
                     'default' => 128,
                     'unit' => 'px',
                     'input_attrs' => [
@@ -102,7 +102,7 @@ function getVariables()
                 [
                     'label' => __('Component Spacing Tablet', 'flynt'),
                     'name' => 'component-spacing-tablet',
-                    'type' => 'range',
+                    'type' => 'flynt-range',
                     'default' => 96,
                     'unit' => 'px',
                     'input_attrs' => [
@@ -114,7 +114,7 @@ function getVariables()
                 [
                     'label' => __('Component Spacing Mobile', 'flynt'),
                     'name' => 'component-spacing-mobile',
-                    'type' => 'range',
+                    'type' => 'flynt-range',
                     'default' => 48,
                     'unit' => 'px',
                     'input_attrs' => [
@@ -126,7 +126,7 @@ function getVariables()
                 [
                     'label' => __('Gutter Width', 'flynt'),
                     'name' => 'gutter-width',
-                    'type' => 'range',
+                    'type' => 'flynt-range',
                     'default' => 24,
                     'unit' => 'px',
                     'input_attrs' => [
@@ -138,7 +138,7 @@ function getVariables()
                 [
                     'label' => __('Box Spacing', 'flynt'),
                     'name' => 'box-spacing',
-                    'type' => 'range',
+                    'type' => 'flynt-range',
                     'default' => 32,
                     'unit' => 'px',
                     'input_attrs' => [
@@ -150,7 +150,7 @@ function getVariables()
                 [
                     'label' => __('Box Border Radius', 'flynt'),
                     'name' => 'box-border-radius',
-                    'type' => 'range',
+                    'type' => 'flynt-range',
                     'default' => 16,
                     'unit' => 'px',
                     'input_attrs' => [

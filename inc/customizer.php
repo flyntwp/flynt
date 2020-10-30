@@ -119,7 +119,7 @@ function getControllCass($type)
 {
     $controls = [
         'color' => 'WP_Customize_Color_Control',
-        'range' => 'Flynt\Customizer\RangeControl',
+        'flynt-range' => 'Flynt\Customizer\RangeControl',
     ];
 
     return $controls[$type] ?? 'WP_Customize_Control';
@@ -129,7 +129,7 @@ function getSanitizeCallback($type)
 {
     $sanitize = [
         'color' => 'sanitize_hex_color',
-        'range' => 'Flynt\Customizer\sanitizeNumberRange',
+        'flynt-range' => 'Flynt\Customizer\sanitizeNumberRange',
     ];
 
     return $sanitize[$type] ?? '';
