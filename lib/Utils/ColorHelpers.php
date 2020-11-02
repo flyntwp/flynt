@@ -65,7 +65,7 @@ class ColorHelpers
 
         if ($delta > 0) {
             if ($max === $r) {
-                $h = (($g - $b) / $delta) % 6;
+                $h = fmod((($g - $b) / $delta), 6);
             } else if ($max === $g) {
                 $h = ($b - $r) / $delta + 2;
             } else {
