@@ -426,7 +426,11 @@ button {
   }
 
   + .button {
-    margin-top: 4px;
+    margin-top: 12px;
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      margin-top: 4px;
+    }
   }
 
   &--ghost {
