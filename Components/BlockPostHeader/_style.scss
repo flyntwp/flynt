@@ -1,16 +1,16 @@
 [is='flynt-block-post-header'] {
   .header {
-    padding: var(--component-spacing-mobile) 0;
+    padding: var(--component-spacing) 0;
 
     @media (min-width: $breakpoint-tablet) {
       padding: var(--component-spacing-tablet) 0;
     }
 
-    &--hasFeatured-Image {
-      padding: var(--component-spacing-mobile) 0 var(--component-spacing-desktop);
+    &--hasFeaturedImage {
+      padding: var(--component-spacing) 0 var(--component-spacing-desktop);
 
       @media (min-width: $breakpoint-tablet) {
-        padding: var(--component-spacing-tablet) 0 calc(var(--component-spacing-tablet) * 2);
+        padding: var(--component-spacing) 0 calc(var(--component-spacing-tablet) * 2);
       }
     }
   }
@@ -85,7 +85,11 @@
   }
 
   .featuredImage {
-    margin-bottom: var(--component-spacing-mobile);
-    margin-top: calc(-1 * var(--component-spacing-mobile));
+    margin-bottom: var(--component-spacing);
+    margin-top: calc(-1 * var(--component-spacing-tablet));
+
+    @media (min-width: $breakpoint-tablet) {
+      margin-top: calc(-1 * var(--component-spacing-desktop));
+    }
   }
 }
