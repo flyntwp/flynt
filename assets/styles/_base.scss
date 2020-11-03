@@ -64,6 +64,11 @@ body {
     color: var(--color-headline);
     text-decoration: none;
   }
+
+  > em {
+    color: var(--color-accent);
+    font-style: normal;
+  }
 }
 
 h1,
