@@ -1,0 +1,108 @@
+.customize-control {
+  .flynt-range {
+    &-field {
+      align-items: center;
+      display: flex;
+      margin-bottom: 16px;
+    }
+
+    &-reset {
+      margin-left: 5px;
+    }
+
+    &[type=range] {
+      appearance: none;
+      background: #fff;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      margin: 0;
+      padding: 0;
+      vertical-align: middle;
+      width: 100%;
+
+      &:focus {
+        box-shadow: none;
+        outline: 0;
+      }
+
+      &::-webkit-slider-runnable-track {
+        background: #fff;
+        border-radius: 4px;
+        cursor: pointer;
+        height: 4px;
+        width: 100%;
+      }
+
+      &::-moz-range-track {
+        background: #fff;
+        border-radius: 4px;
+        cursor: pointer;
+        height: 4px;
+        width: 100%;
+      }
+
+      &::-ms-track {
+        background: transparent;
+        border-color: transparent;
+        border-width: 4px 0;
+        color: transparent;
+        cursor: pointer;
+        height: 4px;
+        width: 100%;
+      }
+
+      &::-ms-fill-lower {
+        background: #fff;
+        border-radius: 4px;
+      }
+
+      &::-ms-fill-upper {
+        background: #fff;
+        border-radius: 4px;
+      }
+
+      &::-webkit-slider-thumb {
+        appearance: none;
+        background: #656a6f;
+        border: 0;
+        border-radius: 16px;
+        cursor: pointer;
+        height: 16px;
+        margin-top: -6px;
+        width: 16px;
+      }
+
+      &::-moz-range-thumb {
+        background: #656a6f;
+        border: 0;
+        border-radius: 16px;
+        cursor: pointer;
+        height: 16px;
+        width: 16px;
+      }
+
+      &::-ms-thumb {
+        background: #656a6f;
+        border: 0;
+        border-radius: 16px;
+        cursor: pointer;
+        height: 16px;
+        margin-top: 0;
+        width: 16px;
+      }
+    }
+
+    &[type=number] {
+      margin-left: 15px;
+      min-width: 65px;
+      padding-right: 0;
+      vertical-align: middle;
+      width: 90px;
+
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        opacity: 1;
+      }
+    }
+  }
+}

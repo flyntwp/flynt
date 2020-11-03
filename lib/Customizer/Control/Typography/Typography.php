@@ -1,10 +1,10 @@
 <?php
 
-namespace Flynt\Customizer;
+namespace Flynt\Customizer\Control;
 
-class RangeControl extends \WP_Customize_Control
+class Typography extends \WP_Customize_Control
 {
-    public $type = 'flynt-range';
+    public $type = 'flynt-typography';
     public $unit = '';
 
     /**
@@ -19,6 +19,16 @@ class RangeControl extends \WP_Customize_Control
         $this->json['unit'] = $this->unit;
         $this->json['input_attrs'] = $this->input_attrs;
         $this->json['default'] = $this->default ?? $this->setting->default;
+    }
+
+    public function get_fonts()
+    {
+        $fonts = Asset::getContents('../Components/FeatureGoogleFonts/fonts.json');
+        $fonts = json_decode($fonts);
+
+        return array_values(array_filter($fonts->familyMetadataList, function ($font) {
+            return $font->axes ? true : false;
+        }));
     }
 
     /**
@@ -40,13 +50,13 @@ class RangeControl extends \WP_Customize_Control
         <div class="customize-control-notifications-container"></div>
 
         <div class="customize-control-content">
-            <div class="flynt-range-field">
+            <div class="flynt-Typography-field">
                 <input
-                    type="range"
+                    type="Typography"
                     data-change="number"
                     value="{{{ data.value }}}"
                     {{{ data.link }}}
-                    <# _.each(_.extend({'class': 'flynt-range flynt-range-slider'}, data.input_attrs), function(value, key) { #>
+                    <# _.each(_.extend({'class': 'flynt-Typography flynt-Typography-slider'}, data.input_attrs), function(value, key) { #>
                         {{{ key }}}="{{ value }}"
                     <# }); #>
                 >
@@ -56,11 +66,11 @@ class RangeControl extends \WP_Customize_Control
                     value="{{{ data.value }}}"
                     id="{{{ data.id }}}"
                     {{{ data.link }}}
-                    <# _.each(_.extend({'class': 'flynt-range flynt-range-number'}, data.input_attrs), function(value, key) { #>
+                    <# _.each(_.extend({'class': 'flynt-Typography flynt-Typography-number'}, data.input_attrs), function(value, key) { #>
                         {{{ key }}}="{{ value }}"
                     <# }); #>
                 >
-                <button type="button" class="flynt-range-reset button button-secondary" data-default="{{{ data.default }}}"><?php esc_html_e('Default', 'flynt'); ?></button>
+                <button type="button" class="flynt-Typography-reset button button-secondary" data-default="{{{ data.default }}}"><?php esc_html_e('Default', 'flynt'); ?></button>
             </div>
         </div>
 
