@@ -230,7 +230,7 @@ function getVariables()
                             'label' => __('Accent', 'flynt'),
                             'name' => 'theme-dark-color-accent',
                             'type' => 'color',
-                            'default' => '#ffffff',
+                            'default' => '#ffc261',
                             'hsl' => 1,
                         ],
                         [
@@ -269,7 +269,7 @@ function getVariables()
                             'label' => __('Accent', 'flynt'),
                             'name' => 'theme-hero-color-accent',
                             'type' => 'color',
-                            'default' => '#ffffff',
+                            'default' => '#ffc261',
                             'hsl' => 1,
                         ],
                         [
