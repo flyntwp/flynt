@@ -1,5 +1,4 @@
 import $ from 'jquery'
-import 'core-js/es/number'
 import Swiper, { Navigation, A11y, Autoplay } from 'swiper/swiper.esm'
 import 'swiper/swiper-bundle.css'
 
