@@ -18,7 +18,7 @@
   * [Advanced Custom Fields](#advanced-custom-fields)
   * [Field Groups](#field-groups)
   * [ACF Option Pages](#acf-option-pages)
-  * [Timber Dynamic Resize](#timber-dynamic-resize--webp-generation)
+  * [Timber Dynamic Resize](#timber-dynamic-resize)
 * [Maintainers](#maintainers)
 * [Contributing](#contributing)
 * [License](#license)
@@ -178,15 +178,15 @@ Flynt includes several utility functions for creating Advanced Custom Fields opt
 * `Flynt\Utils\Options::getTranslatable` <br> Retrieve a translatable option.
 * `Flynt\Utils\Options::getGlobal` <br> Retrieve a global option.
 
-### Timber Dynamic Resize & WebP Generation
+### Timber Dynamic Resize
 
 Timber provides [a `resize` filter to resize images](https://timber.github.io/docs/reference/timber-imagehelper/#resize) on first page load. Resizing many images at the same time can result in a server timeout.
 
-That's why Flynt provides a `resizeDynamic` filter, that resizes images asynchronously upon first request of the image itself. The filter optionally generates additional WebP file versions for faster loading times.
+That's why Flynt provides a `resizeDynamic` filter, that resizes images asynchronously upon first request of the image itself.
 
 Resized images are stored in `uploads/resized`. To regenerate all image sizes and file versions, delete the folder.
 
-To enable Dynamic Resize and WebP Support, go to **Global Options -> Timber Dynamic Resize**.
+To enable Dynamic Resize, go to **Global Options -> Timber Dynamic Resize**.
 ​
 #### Troubleshooting
 ​
@@ -226,7 +226,7 @@ In this care try to set the relative upload path manually and refresh the permal
 
 ```php
 add_filter('Flynt/TimberDynamicResize/relativeUploadDir', function () {
-    return '/app/uploads'; // Example for Bedrock installs.
+    return 'app/uploads'; // Example for Bedrock installs.
 });
 ```
 

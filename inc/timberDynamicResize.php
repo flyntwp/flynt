@@ -4,7 +4,6 @@ namespace Flynt\TimberDynamicResize;
 
 use Flynt\Utils\Options;
 use Flynt\Utils\TimberDynamicResize;
-use acf_field_message;
 
 add_action('acf/init', function () {
     global $timberDynamicResize;
@@ -34,15 +33,7 @@ Options::addGlobal('TimberDynamicResize', [
                 ]
             ]
         ]
-    ],
-    [
-        'label' => 'WebP Support',
-        'name' => 'webpSupport',
-        'type' => 'true_false',
-        'default_value' => 0,
-        'ui' => true,
-        'instructions' => 'Generate additional .webp images. Changing this will delete the "uploads/resize" folder.',
-    ],
+                ],
 ]);
 
 add_filter(
@@ -53,41 +44,11 @@ add_filter(
     }
 );
 
-add_filter(
-    'acf/load_field/key=field_global_TimberDynamicResize_webpSupport',
-    function ($field) {
-        if (!function_exists('imagewebp')) {
-            $messageField = new acf_field_message();
-            $field = array_merge($messageField->defaults, $field);
-            $field['type'] = 'message';
-            $field['instructions'] = 'Your PHP Version does not support WebP generation. The function `imagewebp` does not exist.';
-        }
-        return $field;
-    }
-);
-
-add_filter(
-    'acf/load_value/key=field_global_TimberDynamicResize_webpSupport',
-    function ($value) {
-        return function_exists('imagewebp') ? $value : '0';
-    }
-);
-
 add_action(
     'update_option_options_global_TimberDynamicResize_dynamicImageGeneration',
     function ($oldValue, $value) {
         global $timberDynamicResize;
         $timberDynamicResize->toggleDynamic($value === '1');
-    },
-    10,
-    2
-);
-
-add_action(
-    'update_option_options_global_TimberDynamicResize_webpSupport',
-    function ($oldValue, $value) {
-        global $timberDynamicResize;
-        $timberDynamicResize->toggleWebp($value === '1');
     },
     10,
     2
