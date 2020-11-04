@@ -8,20 +8,21 @@ class Control extends \WP_Customize_Control
     public $unit = '';
 
     /**
-	 * Refresh the parameters passed to the JavaScript via JSON.
+     * Refresh the parameters passed to the JavaScript via JSON.
      *
-	 * @return array Array of parameters passed to the JavaScript.
-	 */
-    public function json() {
+     * @return array Array of parameters passed to the JavaScript.
+     */
+    public function json()
+    {
         $json = parent::json();
         $json['id'] = $this->id;
         $json['link'] = $this->get_link();
         $json['value'] = $this->value();
-		$json['unit'] = $this->unit;
+        $json['unit'] = $this->unit;
         $json['input_attrs'] = $this->input_attrs;
         $json['default'] = $this->default ?? $this->setting->default;
-		return $json;
-	}
+        return $json;
+    }
 
     /**
      * Don't render the control content from PHP, as it's rendered via JS on load.

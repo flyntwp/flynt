@@ -44,11 +44,12 @@ class Control extends \WP_Customize_Control
     }
 
     /**
-	 * Refresh the parameters passed to the JavaScript via JSON.
+     * Refresh the parameters passed to the JavaScript via JSON.
      *
-	 * @return array Array of parameters passed to the JavaScript.
-	 */
-    public function json() {
+     * @return array Array of parameters passed to the JavaScript.
+     */
+    public function json()
+    {
         $json = parent::json();
         $value = $this->value();
         $fonts = $this->getFonts();
@@ -60,11 +61,11 @@ class Control extends \WP_Customize_Control
         $json['default'] = $this->default ?? $this->setting->default;
         $json['defaultKey'] = sanitize_title($json['default']['family']);
         $json['fonts'] = $fonts;
-        $json['variants'] = array_filter($fonts[$key]['variants'], function($variant) {
+        $json['variants'] = array_filter($fonts[$key]['variants'], function ($variant) {
             return strpos($variant, 'italic') === false;
         });
-		return $json;
-	}
+        return $json;
+    }
 
     /**
      * Don't render the control content from PHP, as it's rendered via JS on load.

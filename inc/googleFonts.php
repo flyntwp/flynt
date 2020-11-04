@@ -22,7 +22,7 @@ function getFontsUrl()
     if ($settings) {
         $fonts = [];
 
-        foreach($settings as $family => $variants) {
+        foreach ($settings as $family => $variants) {
             $fonts[] = "{$family}:{$variants}";
         }
 
@@ -49,7 +49,7 @@ function getSettings()
         }
     }
 
-    return array_map(function($setting) {
+    return array_map(function ($setting) {
         return implode(',', array_values(array_unique($setting)));
     }, $settings);
 }
@@ -69,7 +69,7 @@ function getFields()
         }
     }
 
-    return array_values(array_filter($fields, function($field) {
+    return array_values(array_filter($fields, function ($field) {
         return $field['type'] === 'flynt-typography';
     }));
 }

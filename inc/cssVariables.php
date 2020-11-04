@@ -60,7 +60,7 @@ function getFields()
     return $fields;
 }
 
-add_filter('Flynt/cssVariable?type=color', function($variable, $value, $field) {
+add_filter('Flynt/cssVariable?type=color', function ($variable, $value, $field) {
     if (isset($field['hsl'])) {
         $colorHsla = ColorHelpers::hexToHsla($value);
         $variable["{$field['name']}-h"] = $colorHsla[0];
@@ -71,14 +71,14 @@ add_filter('Flynt/cssVariable?type=color', function($variable, $value, $field) {
     return $variable;
 }, 10, 3);
 
-add_filter('Flynt/cssVariable?type=flynt-range', function($variable, $value, $field) {
+add_filter('Flynt/cssVariable?type=flynt-range', function ($variable, $value, $field) {
     $unit = $field['unit'] ?? '';
     $variable[$field['name']] = $value . $unit;
 
     return $variable;
 }, 10, 3);
 
-add_filter('Flynt/cssVariable?type=flynt-typography', function($variable, $value, $field) {
+add_filter('Flynt/cssVariable?type=flynt-typography', function ($variable, $value, $field) {
     $fontFamily = array_filter([
         $value['family'] ?? '',
         $field['fallback'] ?? '',
