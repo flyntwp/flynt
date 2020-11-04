@@ -13,7 +13,7 @@
 
     &-button {
       align-items: center;
-      color: var(--color-background);
+      color: #fff;
       cursor: pointer;
       display: flex;
       height: 48px;
@@ -25,8 +25,9 @@
       z-index: 10;
 
       &::before {
-        background-color: var(--color-accent);
+        background-color: rgba($color: #000000, $alpha: 0.5);
         border-radius: 50%;
+        border: 2px solid #fff;
         content: '';
         height: 100%;
         left: 0;
@@ -85,7 +86,7 @@
     &-caption {
       border-radius: 35px;
       bottom: 2px;
-      color: var(--color-background);
+      color: #fff;
       display: inline-block;
       font-size: 0.875rem;
       max-width: 450px;
@@ -96,11 +97,10 @@
       z-index: 2;
 
       &::before {
-        background-color: var(--color-accent);
+        background-color: rgba($color: #000000, $alpha: 0.7);
         content: '';
         height: 100%;
         left: 0;
-        opacity: 0.75;
         position: absolute;
         top: 0;
         width: 100%;

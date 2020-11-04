@@ -91,5 +91,13 @@
     @media (min-width: $breakpoint-tablet) {
       margin-top: calc(-1 * var(--component-spacing-desktop));
     }
+
+    .figure {
+      border-radius: var(--box-border-radius);
+      overflow: hidden;
+      position: relative;
+      transform: translateZ(0);
+      z-index: 1;
+    }
   }
 }

@@ -23,8 +23,7 @@
   }
 
   .wrapper {
-    backdrop-filter: saturate(190%) blur(20px);
-    background-color: rgba(255, 255, 255, 0.92);
+    background-color: var(--color-background);
     height: var(--navigation-height);
     left: 0;
     position: fixed;

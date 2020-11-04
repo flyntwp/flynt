@@ -37,8 +37,7 @@
 
   .container {
     align-items: center;
-    backdrop-filter: saturate(190%) blur(20px);
-    background-color: rgba(255, 255, 255, 0.92);
+    background-color: var(--color-background);
     display: flex;
     height: var(--navigation-height);
     justify-content: space-between;
