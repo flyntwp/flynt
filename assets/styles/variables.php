@@ -72,7 +72,7 @@ function getVariables()
                     'default' => [
                         'family' => 'Roboto',
                         'category' => 'sans-serif',
-                        'variant' => '500',
+                        'variant' => '400',
                     ],
                 ],
                 [
