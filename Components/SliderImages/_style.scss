@@ -25,9 +25,9 @@
       z-index: 10;
 
       &::before {
-        background-color: rgba($color: #000000, $alpha: 0.5);
-        border-radius: 50%;
+        background-color: rgba($color: #000, $alpha: 0.5);
         border: 2px solid #fff;
+        border-radius: 50%;
         content: '';
         height: 100%;
         left: 0;
@@ -97,7 +97,7 @@
       z-index: 2;
 
       &::before {
-        background-color: rgba($color: #000000, $alpha: 0.7);
+        background-color: rgba($color: #000, $alpha: 0.7);
         content: '';
         height: 100%;
         left: 0;
