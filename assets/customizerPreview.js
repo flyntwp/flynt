@@ -8,30 +8,29 @@ $(function () {
   const setFieldValue = function (field) {
     return function (setting) {
       setting.bind(function (value) {
-        const variable = `--${field.name}`
-
-        console.log('seeting triggere', variable)
+        let variable = `--${field.name}`
 
         if (field.type === 'flynt-typography') {
-          const fontFamily = [
-            value.family,
-            field.fallback,
-            value.category
-          ]
-
-          const webFontLoad = [
-            value.family,
-            value.variants.join(','),
-            value.subsets.join(',')
-          ].filter(Boolean).join(':')
+          let variant = value.variant
+          if (field.italic) {
+            variant = `${variant},${variant}italic`
+          }
 
           WebFont.load({
             google: {
-              families: [`${webFontLoad}`]
+              families: [`${value.family}:${variant}`]
             }
           })
 
-          value = fontFamily.join(', ')
+          $root.css(`${variable}-weight`, value.variant)
+
+          variable = `${variable}-family`
+          value = [
+            value.family,
+            field.fallback,
+            value.category
+          ].join(', ')
+
         } else if (field.type === 'flynt-range') {
           if (field.unit) {
             value = `${value}${field.unit}`

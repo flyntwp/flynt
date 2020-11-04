@@ -18,6 +18,7 @@ class Control extends \WP_Customize_Control
         foreach ($gfonts['items'] as $font) {
             $key = sanitize_title($font['family']);
             $font['variants'] = array_map('self::parseVariants', $font['variants']);
+            $font['variants'] = array_values(array_filter($font['variants'], 'self::removeItalicVariants'));
             $fonts[$key] = array_merge([
                 'id' => $key,
                 'text' => $font['family'],
@@ -37,6 +38,11 @@ class Control extends \WP_Customize_Control
         return $variants[$variant] ?? $variant;
     }
 
+    public static function removeItalicVariants($variant)
+    {
+        return strpos($variant, 'italic') === false;
+    }
+
     /**
 	 * Refresh the parameters passed to the JavaScript via JSON.
      *
@@ -46,7 +52,6 @@ class Control extends \WP_Customize_Control
         $json = parent::json();
         $value = $this->value();
         $fonts = $this->getFonts();
-        // print_r($fonts);
         $key = sanitize_title($value['family']);
         $json['id'] = $this->id;
         $json['link'] = $this->get_link();
@@ -55,8 +60,9 @@ class Control extends \WP_Customize_Control
         $json['default'] = $this->default ?? $this->setting->default;
         $json['defaultKey'] = sanitize_title($json['default']['family']);
         $json['fonts'] = $fonts;
-        $json['variants'] = $fonts[$key]['variants'];
-        $json['subsets'] = $fonts[$key]['subsets'];
+        $json['variants'] = array_filter($fonts[$key]['variants'], function($variant) {
+            return strpos($variant, 'italic') === false;
+        });
 		return $json;
 	}
 
@@ -80,47 +86,23 @@ class Control extends \WP_Customize_Control
 
         <div class="customize-control-content">
             <div class="flynt-typography-field">
-                <div class="flynt-typography-option">
-                    <select
-                        class="flynt-typography-select"
-                        placeholder="<?php esc_html_e('Select Font', 'flynt'); ?>"
-                        value="{{{ data.font }}}"
-                    ></select>
+                <div class="flynt-typography-option flynt-typography-option--family">
+                    <span class="flynt-typography-option-title"><?php esc_html_e('Family', 'flynt'); ?></span>
+                    <select class="flynt-typography-family"></select>
                 </div>
-                <div class="flynt-typography-option">
-                    <span class="customize-control-title"><?php esc_html_e('Variants', 'flynt'); ?></span>
-                    <div class="flynt-typography-variants">
+                <div class="flynt-typography-option flynt-typography-option--variant">
+                    <span class="flynt-typography-option-title"><?php esc_html_e('Weight', 'flynt'); ?></span>
+                    <select class="flynt-typography-variant">
                         <# _.each(data.variants, function(variant) { #>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    value="{{{ variant }}}"
-                                    name="{{{ data.id }}}-{{{ variant }}}"
-                                    <# if (_.contains(data.value.variants, variant)) { #>checked='checked'<# } #>
-                                >
-                                <span>{{{ variant }}}</span>
-                            </label>
+                            <option
+                                value="{{{ variant }}}"
+                                <# if (_.isEqual(data.value.variant, variant)) { #>selected='selected'<# } #>
+                            >{{{ variant }}}</option>
                         <# }); #>
-                    </div>
+                    </select>
                 </div>
-                <div class="flynt-typography-option">
-                <span class="customize-control-title"><?php esc_html_e('Subsets', 'flynt'); ?></span>
-                    <div class="flynt-typography-subsets">
-                        <# _.each(data.subsets, function(subset) { #>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    value="{{{ subset }}}"
-                                    name="{{{ data.id }}}-{{{ subset }}}"
-                                    <# if (_.contains(data.value.subsets, subset)) { #>checked='checked'<# } #>
-                                >
-                                <span>{{{ subset }}}</span>
-                            </label>
-                        <# }); #>
-                    </div>
-                </div>
-                <button type="button" class="flynt-typography-reset button button-secondary" data-key="{{{ data.defaultKey }}}"><?php esc_html_e('Default', 'flynt'); ?></button>
             </div>
+            <button type="button" class="flynt-typography-reset button button-secondary" data-key="{{{ data.defaultKey }}}"><?php esc_html_e('Default', 'flynt'); ?></button>
         </div>
 
         <?php

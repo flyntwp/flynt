@@ -11,7 +11,6 @@ use Flynt\Utils\ColorHelpers;
 
 add_action('wp_head', function () {
     $variables = getCssVariables();
-    // print_r($variables);
     ?>
     <style type="text/css">
         :root.html {
@@ -86,6 +85,8 @@ add_filter('Flynt/cssVariable?type=flynt-typography', function($variable, $value
         $value['category'] ?? '',
     ]);
 
-    $variable[$field['name']] = implode(', ', $fontFamily);
+    unset($variable[$field['name']]);
+    $variable["{$field['name']}-family"] = implode(', ', $fontFamily);
+    $variable["{$field['name']}-weight"] = $value['variant'];
     return $variable;
 }, 10, 3);

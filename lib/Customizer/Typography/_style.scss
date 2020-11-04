@@ -1,8 +1,8 @@
 .customize-control {
   .flynt-typography {
     &-field {
-      border: 1px solid #ddd;
-      padding: 10px;
+      display: flex;
+      justify-content: space-between;
 
       .select2-container {
         width: 100% !important;
@@ -41,15 +41,21 @@
     }
 
     &-option {
-      margin-bottom: 15px;
-    }
+      margin-bottom: 5px;
 
-    &-variants,
-    &-subsets {
-      label {
-        display: inline-block;
-        margin: 0 10px 10px;
-        width: calc(50% - 24px);
+      &-title {
+        display: block;
+        font-size: 12px;
+        line-height: 1.75;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      &--family {
+        width: 67%;
+      }
+
+      &--variant {
+        width: 30%;
       }
     }
   }
