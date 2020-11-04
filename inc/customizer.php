@@ -16,7 +16,8 @@ add_action('acf/init', function () {
 
     if ($options['enabled']) {
         add_action('customize_register', function ($wp_customize) {
-            $wp_customize->register_control_type('Flynt\Customizer\Control\Range');
+            $wp_customize->register_control_type('Flynt\Customizer\Range\Control');
+            $wp_customize->register_control_type('Flynt\Customizer\Typography\Control');
             addSettings($wp_customize);
         });
 
@@ -121,7 +122,8 @@ function getControllCass($type)
 {
     $controls = [
         'color' => 'WP_Customize_Color_Control',
-        'flynt-range' => 'Flynt\Customizer\Control\Range',
+        'flynt-range' => 'Flynt\Customizer\Range\Control',
+        'flynt-typography' => 'Flynt\Customizer\Typography\Control',
     ];
 
     return $controls[$type] ?? 'WP_Customize_Control';

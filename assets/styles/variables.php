@@ -10,6 +10,38 @@ function getVariables()
 {
     return [
         [
+            'label' => __('Typography', 'flynt'),
+            'name' => 'typo',
+            'type' => 'section',
+            'priority' => 160,
+            'fields' => [
+                [
+                    'label' => __('Body Font', 'flynt'),
+                    'name' => 'body-font',
+                    'type' => 'flynt-typography',
+                    'fallback' => 'Helvetica, Arial',
+                    'default' => [
+                        'family' => 'Roboto',
+                        'variants' => ['400', '400italic', '500', '500italic', '700', '700italic'],
+                        'category' => 'sans-serif',
+                        'subsets' => ['latin-ext']
+                    ],
+                ],
+                [
+                    'label' => __('Heading Font', 'flynt'),
+                    'name' => 'heading-font',
+                    'type' => 'flynt-typography',
+                    'fallback' => 'Helvetica, Arial',
+                    'default' => [
+                        'family' => 'Encode Sans Semi Condensed',
+                        'variants' => ['700', '800'],
+                        'category' => 'sans-serif',
+                        'subsets' => ['latin-ext']
+                    ],
+                ],
+            ],
+        ],
+        [
             'label' => __('Sizes', 'flynt'),
             'name' => 'sizes',
             'type' => 'section',

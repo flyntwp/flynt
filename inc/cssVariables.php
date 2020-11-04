@@ -11,6 +11,7 @@ use Flynt\Utils\ColorHelpers;
 
 add_action('wp_head', function () {
     $variables = getCssVariables();
+    // print_r($variables);
     ?>
     <style type="text/css">
         :root.html {
@@ -28,17 +29,15 @@ function getCssVariables()
     $variables = [];
 
     foreach ($fields as $field) {
-        $variable = $field['name'];
         $value = get_theme_mod($field['name'], $field['default']);
-        $unit = $field['unit'] ?? '';
-        $variables[$variable] = $value . $unit;
+        $variable = [
+            $field['name'] => $value,
+        ];
 
-        if (isset($field['hsl']) && $field['type'] === 'color') {
-            $hslCssVariables = generateHslaCssVariables($field, $value);
-            foreach ($hslCssVariables as $variable => $value) {
-                $variables[$variable] = $value;
-            }
-        }
+        $variables = array_merge(
+            apply_filters("Flynt/cssVariable?type={$field['type']}", $variable, $value, $field),
+            $variables
+        );
     }
 
     return $variables;
@@ -62,12 +61,31 @@ function getFields()
     return $fields;
 }
 
-function generateHslaCssVariables($field, $value)
-{
-    $colorHsla = ColorHelpers::hexToHsla($value);
-    return [
-        "{$field['name']}-h" => $colorHsla[0],
-        "{$field['name']}-s" => $colorHsla[1],
-        "{$field['name']}-l" => $colorHsla[2],
-    ];
-}
+add_filter('Flynt/cssVariable?type=color', function($variable, $value, $field) {
+    if (isset($field['hsl'])) {
+        $colorHsla = ColorHelpers::hexToHsla($value);
+        $variable["{$field['name']}-h"] = $colorHsla[0];
+        $variable["{$field['name']}-s"] = $colorHsla[1];
+        $variable["{$field['name']}-l"] = $colorHsla[2];
+    }
+
+    return $variable;
+}, 10, 3);
+
+add_filter('Flynt/cssVariable?type=flynt-range', function($variable, $value, $field) {
+    $unit = $field['unit'] ?? '';
+    $variable[$field['name']] = $value . $unit;
+
+    return $variable;
+}, 10, 3);
+
+add_filter('Flynt/cssVariable?type=flynt-typography', function($variable, $value, $field) {
+    $fontFamily = array_filter([
+        $value['family'] ?? '',
+        $field['fallback'] ?? '',
+        $value['category'] ?? '',
+    ]);
+
+    $variable[$field['name']] = implode(', ', $fontFamily);
+    return $variable;
+}, 10, 3);

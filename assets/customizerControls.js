@@ -5,4 +5,4 @@ function importAll (r) {
   r.keys().forEach(r)
 }
 
-importAll(require.context('../lib/Customizer/Control/', true, /\/control\.js$/))
+importAll(require.context('../lib/Customizer/', true, /\/control\.js$/))

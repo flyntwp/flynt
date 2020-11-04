@@ -17,7 +17,7 @@ html {
   background-color: var(--color-background);
   box-sizing: border-box;
   color: var(--color-text);
-  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  font-family: var(--body-font);
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   height: 100%;
@@ -52,7 +52,7 @@ body {
 
 #{$heading-selectors} {
   color: var(--color-headline);
-  font-family: 'Encode Sans Semi Condensed', Helvetica, Arial, sans-serif;
+  font-family: var(--heading-font);
   font-weight: 700;
   line-height: 1.4;
   margin-bottom: 1rem;
