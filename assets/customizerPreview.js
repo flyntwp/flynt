@@ -30,7 +30,6 @@ $(function () {
             field.fallback,
             value.category
           ].join(', ')
-
         } else if (field.type === 'flynt-range') {
           if (field.unit) {
             value = `${value}${field.unit}`

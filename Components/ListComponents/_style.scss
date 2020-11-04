@@ -40,7 +40,7 @@
     &-link {
       @include reset-link;
       display: block;
-      font-weight: 400;
+      font-weight: var(--body-regular-font-weight);
       text-decoration: none;
       width: 100%;
     }

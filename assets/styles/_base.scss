@@ -4,23 +4,14 @@
 * Top level styles every element should inherit.
 */
 
-@include font-face('Encode Sans Semi Condensed', 'encode-sans-semi-condensed-v5-latin-700', '700', 'normal');
-@include font-face('Encode Sans Semi Condensed', 'encode-sans-semi-condensed-v5-latin-800', '800', 'normal');
-@include font-face('Roboto', 'roboto-v20-latin-regular', '400', 'normal');
-@include font-face('Roboto', 'roboto-v20-latin-italic', '400', 'italic');
-@include font-face('Roboto', 'roboto-v20-latin-500', '500', 'normal');
-@include font-face('Roboto', 'roboto-v20-latin-500italic', '500', 'italic');
-@include font-face('Roboto', 'roboto-v20-latin-700', '700', 'normal');
-@include font-face('Roboto', 'roboto-v20-latin-700italic', '700', 'italic');
-
 html {
   background-color: var(--color-background);
   box-sizing: border-box;
   color: var(--color-text);
   font-family: var(--body-regular-font-family);
-  font-weight: var(--body-regular-font-weight);
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  font-weight: var(--body-regular-font-weight);
   height: 100%;
   line-height: 1.7;
   -ms-overflow-style: -ms-autohiding-scrollbar;
@@ -72,8 +63,8 @@ body {
 
 h1,
 .h1 {
-  font-size: 2.25rem;
   font-family: var(--h1-font-family);
+  font-size: 2.25rem;
   font-weight: var(--h1-font-weight);
   letter-spacing: 0.02em;
   line-height: 1.3;
@@ -86,10 +77,10 @@ h1,
 
 h2,
 .h2 {
-  font-size: 1.875rem;
-  letter-spacing: 0.0125em;
   font-family: var(--h2-font-family);
+  font-size: 1.875rem;
   font-weight: var(--h2-font-weight);
+  letter-spacing: 0.0125em;
   line-height: 1.4;
   margin-bottom: 1.5rem;
 
@@ -100,8 +91,8 @@ h2,
 
 h3,
 .h3 {
-  font-size: 1.5rem;
   font-family: var(--h3-font-family);
+  font-size: 1.5rem;
   font-weight: var(--h3-font-weight);
   letter-spacing: 0.02em;
 
@@ -112,8 +103,8 @@ h3,
 
 h4,
 .h4 {
-  font-size: 1.25rem;
   font-family: var(--h4-font-family);
+  font-size: 1.25rem;
   font-weight: var(--h4-font-weight);
   letter-spacing: 0.02em;
   line-height: 1.45;
@@ -126,8 +117,8 @@ h4,
 
 h5,
 .h5 {
-  font-size: 1.25rem;
   font-family: var(--h5-font-family);
+  font-size: 1.25rem;
   font-weight: var(--h5-font-weight);
   letter-spacing: 0.0125em;
   line-height: 1.45;
@@ -140,8 +131,8 @@ h5,
 
 h6,
 .h6 {
-  font-size: 1.125rem;
   font-family: var(--h6-font-family);
+  font-size: 1.125rem;
   font-weight: var(--h6-font-weight);
   line-height: 1.7;
   margin-top: 1.5rem;

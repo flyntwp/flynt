@@ -47,7 +47,7 @@
       @include reset-link;
       color: var(--color-text);
       font-size: 0.875rem;
-      font-weight: 500;
+      font-weight: var(--body-medium-font-weight);
       letter-spacing: 0.0125em;
     }
 

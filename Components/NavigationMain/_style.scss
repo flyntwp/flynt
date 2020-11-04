@@ -84,7 +84,7 @@
       color: var(--color-text);
       display: inline-block;
       font-size: 1rem;
-      font-weight: 500;
+      font-weight: var(--body-medium-font-weight);
       padding: 0.5rem 1rem;
       text-decoration: none;
       transition: color 0.2s ease-out;

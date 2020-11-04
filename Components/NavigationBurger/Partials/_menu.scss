@@ -39,7 +39,7 @@
     color: var(--color-text);
     display: block;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: var(--body-medium-font-weight);
     padding: 12px var(--container-padding-mobile);
     text-align: center;
     text-decoration: none;
