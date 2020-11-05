@@ -28,7 +28,6 @@
     }
 
     .figure {
-      flex-shrink: 0; // IE11 bug fix (prevent image from stretchin')
       margin-bottom: 0;
     }
 

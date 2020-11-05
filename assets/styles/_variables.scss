@@ -40,7 +40,6 @@ $breakpoint-desktop-wide: 1440px;
   --color-accent-alpha: hsla(var(--theme-default-color-accent-h), var(--theme-default-color-accent-s), var(--theme-default-color-accent-l), 0.4);
   --color-accent-hover: hsl(var(--theme-default-color-accent-h), var(--theme-default-color-accent-s), calc(var(--theme-default-color-accent-l) - 5%));
   --color-border-alpha: hsla(var(--theme-default-color-border-h), var(--theme-default-color-border-s), var(--theme-default-color-border-l), 0.1);
-  --color-transparent: transparent; // needs for ie11-custom-propertiess polyfill to work properly
   --color-error: #e80242;
 }
 
