@@ -9,33 +9,37 @@
       <ul class="grid grid--columns{{ options.columns }}">
         {% for item in items %}
           <li class="grid-item">
-            <div class="content boxShadow themeReset">
-              <a href="{{ item.link }}" class="content-link" title="{{ item.title }}">
-                <img class="content-image lazyload"
-                  src="{{ item.thumbnail.src|resizeDynamic(424, 283) }}"
-                  srcset="{{ placeholderImage(3, 2) }}"
-                  data-srcset="
-                    {{ item.thumbnail.src|resizeDynamic(1920, 1280) }} 1920w,
-                    {{ item.thumbnail.src|resizeDynamic(1320, 880) }} 1320w,
-                    {{ item.thumbnail.src|resizeDynamic(1280, 853) }} 1280w,
-                    {{ item.thumbnail.src|resizeDynamic(1050, 700) }} 1050w,
-                    {{ item.thumbnail.src|resizeDynamic(750, 500) }} 750w,
-                    {{ item.thumbnail.src|resizeDynamic(600, 400) }} 600w,
-                    {{ item.thumbnail.src|resizeDynamic(424, 283) }} 424w,
-                    {{ item.thumbnail.src|resizeDynamic(312, 208) }} 312w"
-                  data-sizes="auto"
-                  alt="{{ item.thumbnail.alt|e }}">
-                <div class="content-inner boxPadding">
-                  <h3 class="content-title">{{ item.title }}</h3>
-                  <p class="content-excerpt">{{ item.preview.read_more(false).length(18) }}</p>
+            <div class="post boxShadow boxRadius themeReset">
+              <a class="post-link" href="{{ item.link }}" aria-label="{{ item.title }}">
+                {% if item.thumbnail %}
+                  <figure class="figure">
+                    <img class="post-image figure-image lazyload"
+                      src="{{ item.thumbnail.src|resizeDynamic(424, 283) }}"
+                      srcset="{{ placeholderImage(3, 2) }}"
+                      data-srcset="
+                        {{ item.thumbnail.src|resizeDynamic(1920, 1280) }} 1920w,
+                        {{ item.thumbnail.src|resizeDynamic(1320, 880) }} 1320w,
+                        {{ item.thumbnail.src|resizeDynamic(1280, 853) }} 1280w,
+                        {{ item.thumbnail.src|resizeDynamic(1050, 700) }} 1050w,
+                        {{ item.thumbnail.src|resizeDynamic(760, 506) }} 760w,
+                        {{ item.thumbnail.src|resizeDynamic(600, 400) }} 600w,
+                        {{ item.thumbnail.src|resizeDynamic(424, 283) }} 424w,
+                        {{ item.thumbnail.src|resizeDynamic(312, 208) }} 312w"
+                      data-sizes="auto"
+                      alt="{{ item.title }}">
+                  </figure>
+                {% endif %}
+                <div class="post-inner boxPadding">
+                  <h3 class="post-title">{{ item.title }}</h3>
+                  <p class="post-excerpt">{{ item.preview.read_more(false) }}</p>
                 </div>
+                <footer class="post-footer">
+                  <span class="post-readingTime">
+                    <i data-feather="clock"></i> {{ labels.readingTime|replace({'%': item.content|readingtime}) }}
+                  </span>
+                  <span class="button button--link post-readMore">{{ labels.readMore }}</span>
+                </footer>
               </a>
-              <footer class="content-footer">
-                <span class="content-readingTime">
-                  <i data-feather="clock"></i> {{ item.content | readingtime }} {{ labels.readingTime }}
-                </span>
-                <a href="{{ item.link }}" class="button button--link content-readMore" aria-hidden="true" tabindex="-1">{{ labels.readMore }}</a>
-              </footer>
             </div>
           </li>
         {% endfor %}

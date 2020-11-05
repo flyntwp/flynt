@@ -55,6 +55,7 @@
     "gulp-rev": "^9.0.0",
     "gulp-rev-napkin": "^0.1.0",
     "gulp-rev-rewrite": "^3.0.3",
+    "headroom.js": "^0.12.0",
     "jquery": "^3.5.1",
     "js-cookie": "^2.2.1",
     "lazysizes": "^5.2.2",
@@ -81,6 +82,7 @@
     "stylelint-scss": "^3.18.0",
     "swiper": "^6.3.3",
     "terser-webpack-plugin": "^4.2.3",
+    "webfontloader": "^1.6.28",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-dev-middleware": "^3.7.2"

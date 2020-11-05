@@ -109,9 +109,10 @@ Options::addTranslatable('GridPostsLatest', [
         'sub_fields' => [
             [
                 'label' => __('Reading Time', 'flynt'),
+                'instructions' => __('% is placehoder for number of minutes', 'flynt'),
                 'name' => 'readingTime',
                 'type' => 'text',
-                'default_value' => 'min',
+                'default_value' => '% min read',
                 'required' => 1,
                 'wrapper' => [
                     'width' => 50

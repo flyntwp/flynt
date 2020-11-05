@@ -8,6 +8,10 @@ import 'lazysizes'
 
 window.jQuery = $
 
+if ($('.iconList--checkCircle').length) {
+  $('.iconList--checkCircle li').prepend('<i data-feather=check-circle></i>')
+}
+
 $(document).ready(function () {
   feather.replace({
     'stroke-width': 1

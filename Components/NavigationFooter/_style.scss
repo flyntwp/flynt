@@ -1,15 +1,22 @@
 [is='flynt-navigation-footer'] {
-  font-size: 0.8rem;
+  font-size: 0.9375rem;
 
   .container {
-    padding-bottom: $component-spacing-mobile;
-    padding-top: $component-spacing-mobile;
+    padding-bottom: var(--component-spacing);
+    padding-top: var(--component-spacing);
     text-align: center;
 
     @media (min-width: $breakpoint-tablet) {
       display: flex;
       flex-direction: row-reverse;
       justify-content: space-between;
+      padding-bottom: var(--component-spacing-mobile);
+      padding-top: var(--component-spacing-mobile);
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      padding-bottom: var(--component-spacing-mobile);
+      padding-top: var(--component-spacing-mobile);
     }
   }
 

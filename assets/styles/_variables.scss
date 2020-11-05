@@ -4,27 +4,77 @@ $breakpoint-tablet-horizontal: 1024px;
 $breakpoint-desktop: 1280px;
 $breakpoint-desktop-wide: 1440px;
 
-$container-max-width: 1440px;
-$container-padding-desktop: 60px;
-$container-padding-tablet: 40px;
-$container-padding-mobile: 15px;
-$content-max-width: 600px;
-$component-spacing-desktop: 120px;
-$component-spacing-tablet: 80px;
-$component-spacing-mobile: 40px;
-$gutter-width: 24px;
+// Sizing variables
+:root {
+  --container-max-width: var(--container-max-width);
+  --container-padding: var(--container-padding-mobile);
+  --content-max-width: var(--content-max-width);
+  --content-max-width-large: var(--content-max-width-large);
+  --component-spacing: var(--component-spacing-base);
+  --gutter-width: var(--gutter-width);
+  --box-spacing: var(--box-spacing);
+  --box-border-radius: var(--box-border-radius);
 
-$color-brand: #0d8eff;
-$color-accent: #f96417;
-$color-background: #fff;
-$color-contrast: #414751;
-$color-text: $color-contrast;
-$color-headline: #0b1016;
-$color-border: #d8d8d8;
+  --component-spacing-mobile: var(--component-spacing-base);
+  --component-spacing-tablet: calc(var(--component-spacing-base) / 3 * 6);
+  --component-spacing-desktop: calc(var(--component-spacing-base) / 3 * 8);
 
-$color-background-light: #f2f6fe;
-$color-background-dark: #091a41;
-$color-background-hero: $color-brand;
+  @media (min-width: $breakpoint-tablet) {
+    --container-padding: var(--container-padding-tablet);
+    --component-spacing: var(--component-spacing-tablet);
+  }
+  @media (min-width: $breakpoint-desktop) {
+    --container-padding: var(--container-padding-desktop);
+    --component-spacing: var(--component-spacing-desktop);
+  }
+}
+
+// Theming variables
+:root,
+.themeReset {
+  --color-background: var(--theme-default-color-background);
+  --color-headline: var(--theme-default-color-headline);
+  --color-text: var(--theme-default-color-text);
+  --color-border: var(--theme-default-color-border);
+  --color-accent: var(--theme-default-color-accent);
+  --color-accent-alpha: hsla(var(--theme-default-color-accent-h), var(--theme-default-color-accent-s), var(--theme-default-color-accent-l), 0.4);
+  --color-accent-hover: hsl(var(--theme-default-color-accent-h), var(--theme-default-color-accent-s), calc(var(--theme-default-color-accent-l) - 5%));
+  --color-border-alpha: hsla(var(--theme-default-color-border-h), var(--theme-default-color-border-s), var(--theme-default-color-border-l), 0.1);
+  --color-error: #e80242;
+}
+
+.themeLight {
+  --color-background: var(--theme-light-color-background);
+  --color-headline: var(--theme-light-color-headline);
+  --color-text: var(--theme-light-color-text);
+  --color-border: var(--theme-light-color-border);
+  --color-accent: var(--theme-light-color-accent);
+  --color-accent-alpha: hsla(var(--theme-light-color-accent-h), var(--theme-light-color-accent-s), var(--theme-light-color-accent-l), 0.4);
+  --color-accent-hover: hsl(var(--theme-light-color-accent-h), var(--theme-light-color-accent-s), calc(var(--theme-light-color-accent-l) - 5%));
+  --color-border-alpha: hsla(var(--theme-light-color-border-h), var(--theme-light-color-border-s), var(--theme-light-color-border-l), 0.1);
+}
+
+.themeDark {
+  --color-background: var(--theme-dark-color-background);
+  --color-headline: var(--theme-dark-color-headline);
+  --color-text: var(--theme-dark-color-text);
+  --color-border: var(--theme-dark-color-border);
+  --color-accent: var(--theme-dark-color-accent);
+  --color-accent-alpha: hsla(var(--theme-dark-color-accent-h), var(--theme-dark-color-accent-s), var(--theme-dark-color-accent-l), 0.4);
+  --color-accent-hover: hsl(var(--theme-dark-color-accent-h), var(--theme-dark-color-accent-s), calc(var(--theme-dark-color-accent-l) - 5%));
+  --color-border-alpha: hsla(var(--theme-dark-color-border-h), var(--theme-dark-color-border-s), var(--theme-dark-color-border-l), 0.1);
+}
+
+.themeHero {
+  --color-background: var(--theme-hero-color-background);
+  --color-headline: var(--theme-hero-color-headline);
+  --color-text: var(--theme-hero-color-text);
+  --color-border: var(--theme-hero-color-border);
+  --color-accent: var(--theme-hero-color-accent);
+  --color-accent-alpha: hsla(var(--theme-hero-color-accent-h), var(--theme-hero-color-accent-s), var(--theme-hero-color-accent-l), 0.4);
+  --color-accent-hover: hsl(var(--theme-hero-color-accent-h), var(--theme-hero-color-accent-s), calc(var(--theme-hero-color-accent-l) - 5%));
+  --color-border-alpha: hsla(var(--theme-hero-color-border-h), var(--theme-hero-color-border-s), var(--theme-hero-color-border-l), 0.1);
+}
 
 $heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';
 $input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [type="email"], [type="search"], [type="number"], [type="password"], textarea, select';

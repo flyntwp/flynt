@@ -9,13 +9,13 @@
 
   &.flyntComponent--sizeMedium {
     .video {
-      max-width: $content-max-width;
+      max-width: var(--content-max-width);
     }
   }
 
   &.flyntComponent--sizeLarge {
     .video {
-      max-width: 800px;
+      max-width: var(--content-max-width-large);
     }
   }
 

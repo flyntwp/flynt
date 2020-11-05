@@ -3,7 +3,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-top: 25px;
+  margin-top: 2rem;
+
+  @media (min-width: $breakpoint-desktop) {
+    margin-top: 3rem;
+  }
 
   &--center {
     justify-content: center;
@@ -18,9 +22,8 @@
   }
 
   .arrow {
-    color: $color-background;
-    height: 18px;
-    width: 16px;
+    color: var(--color-background);
+    top: -1px;
   }
 
   &-next {

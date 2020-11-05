@@ -15,5 +15,11 @@
       margin-bottom: 0;
       padding-bottom: 0;
     }
+
+    @media (max-width: $breakpoint-tablet) {
+      br {
+        content: '\00a0';
+      }
+    }
   }
 }

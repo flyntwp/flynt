@@ -23,8 +23,8 @@
 }
 
 @mixin center(
-  $max-width: $container-max-width,
-  $padding: $container-padding-mobile
+  $max-width: var(--container-max-width),
+  $padding: var(--container-padding)
 ) {
   display: block;
   margin-left: auto;
@@ -32,6 +32,40 @@
   max-width: $max-width;
   padding-left: $padding;
   padding-right: $padding;
+}
+
+@function heading-combinations($i, $from, $to, $leading, $following) {
+  @if ($i == $to) {
+    @return '#{$leading}#{$from} + #{$following}#{$from}';
+  } @else {
+    @return '#{$leading}#{$from} + #{$following}#{$i+1}, ' + heading-combinations($i + 1, $from, $to, $leading, $following);
+  }
+}
+
+@mixin headings-following-headings($from: 1, $to: 6) {
+  $headings: '';
+
+  // h + h
+  @for $i from $from through $to {
+    $heading: heading-combinations($i, $i, $to, 'h', 'h');
+    $headings: '#{$headings} #{$heading}, ';
+  }
+
+  // h + .h
+  @for $i from $from through $to {
+    $heading: heading-combinations($i, $i, $to, 'h', '.h');
+    $headings: '#{$headings} #{$heading}, ';
+  }
+
+  // .h + .h
+  @for $i from $from through $to {
+    $heading: heading-combinations($i, $i, $to, '.h', '.h');
+    $headings: '#{$headings} #{$heading}, ';
+  }
+
+  #{$headings} {
+    @content;
+  }
 }
 
 @mixin reset-content-margins($direction: 'both') {
@@ -57,6 +91,16 @@
   padding: 0;
 }
 
+@mixin reset-list-item {
+  margin-bottom: 0;
+}
+
+@mixin reset-link {
+  background-image: none;
+  color: var(--color-text);
+  font-weight: var(--body-regular-font-weight);
+}
+
 /**
 * Grid Mixin
 *
@@ -65,8 +109,8 @@
 @mixin grid(
   $columns,
   $alignment: flex-start,
-  $gutter-horizontal: $gutter-width,
-  $gutter-vertical: $gutter-width
+  $gutter-horizontal: var(--gutter-width),
+  $gutter-vertical: var(--gutter-width)
 ) {
   display: flex;
   flex-wrap: wrap;

@@ -1,11 +1,26 @@
 .pagination {
-  margin-top: 20px;
-  overflow: auto;
+  margin-top: 32px;
+
+  &::after {
+    clear: both;
+    content: '';
+    display: block;
+  }
+
+  .button {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    min-width: 110px;
+    white-space: nowrap;
+  }
 
   .arrow {
-    color: $color-background;
+    color: var(--color-background);
     height: 18px;
-    width: 16px;
+    stroke-width: 2px;
+    top: -1px;
+    width: 18px;
   }
 
   &-previous {
@@ -13,13 +28,16 @@
 
     .arrow {
       margin-left: -5px;
+      margin-right: 5px;
     }
   }
 
   &-next {
     float: right;
+    margin-top: 0;
 
     .arrow {
+      margin-left: 5px;
       margin-right: -5px;
     }
   }

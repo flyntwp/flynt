@@ -1,11 +1,13 @@
 <div class="flyntComponent" is="flynt-block-post-footer">
   <div class="container centerMaxWidthContainer">
     <div class="content centerContentMaxWidth">
-      <hr>
       {% if post.terms('tag')  %}
+        <span class="visuallyHidden">{{ labels.tagsLabel }}</span>
         <ul class="tags">
           {% for tag in post.terms('tag')  %}
-            <li class="tags-item"><a class="tags-itemLink pill" href="{{ tag.link }}"><span class="visuallyHidden">{{ __("Tag:", "flynt") }}</span> {{ tag }}</a></li>
+            <li class="tags-item">
+              <a class="tags-itemLink button button--ghost button--small" href="{{ tag.link }}">{{ tag }}</a>
+            </li>
           {% endfor %}
         </ul>
       {% endif %}
@@ -16,7 +18,12 @@
           </a>
         {% endif %}
         <div class="author-info">
-          <a class="author-name" href="{{ post.author.link|e('esc_url') }}"><span class="visuallyHidden">{{ __("Author:", "flynt") }}</span> {{ post.author.name }}</a>
+          <div class="h5 author-name">
+            <a class="author-nameLink" href="{{ post.author.link|e('esc_url') }}">
+              <span class="visuallyHidden">{{ labels.postedByLabel }}</span>
+              {{ post.author.name }}
+            </a>
+          </div>
           {% if post.author.description %}
             <p class="author-description">{{ post.author.description|e }}</p>
           {% endif %}

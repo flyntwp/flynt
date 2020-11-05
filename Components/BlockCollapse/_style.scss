@@ -1,11 +1,30 @@
 [is='flynt-block-collapse'] {
-  margin-top: -$component-spacing-mobile;
+  &.collapse {
+    // full collapse no spacing
+    &-none {
+      margin-top: calc(-1 * var(--component-spacing));
+    }
 
-  @media (min-width: $breakpoint-tablet) {
-    margin-top: -$component-spacing-tablet;
+    // precontent spacing
+    &-small {
+      margin-top: calc(-1 * (var(--component-spacing-tablet) / 3));
+
+      @media (min-width: $breakpoint-tablet) {
+        margin-top: calc(-1 * (var(--component-spacing-tablet) / 2));
+      }
+
+      @media (min-width: $breakpoint-desktop) {
+        margin-top: calc(-1 * (var(--component-spacing-desktop) / 2));
+      }
+    }
+
+    // regular spacing (var(--component-spacing-desktop)) even for themed
+    // &-medium {}
   }
 
-  @media (min-width: $breakpoint-desktop) {
-    margin-top: -$component-spacing-desktop;
+  + .componentSpacing {
+    &[class*='theme'] {
+      padding-top: 0;
+    }
   }
 }

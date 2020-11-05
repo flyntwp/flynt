@@ -1,0 +1,9 @@
+[is='flynt-block-password-protection'] {
+  .post-password {
+    @include reset-content-margins;
+
+    .oneInputForm {
+      margin-bottom: 0;
+    }
+  }
+}

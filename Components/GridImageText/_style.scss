@@ -4,7 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: ($gutter-width * -1) 0 0 ($gutter-width * -1);
+    margin: calc(-1 * var(--gutter-width)) 0 0 calc(-1 * var(--gutter-width));
 
     &--columns2,
     &--columns3,
@@ -26,9 +26,6 @@
 
     &--columns4 {
       .grid-item {
-        /* ensure 2 columns stacking up until $breakpoint-desktop */
-        max-width: ($breakpoint-desktop - $container-padding-tablet * 2 + $gutter-width) / 3 + 1;
-
         @media (min-width: $breakpoint-desktop) {
           width: 25%;
         }
@@ -37,8 +34,9 @@
   }
 
   .grid-item {
-    max-width: 675px;
-    padding: $gutter-width 0 0 $gutter-width;
+    @include reset-list-item;
+    max-width: var(--content-max-width);
+    padding: var(--gutter-width) 0 0 var(--gutter-width);
     width: 100%;
   }
 
@@ -46,14 +44,14 @@
     height: 100%;
 
     img {
-      background: $color-contrast;
+      background: var(--color-border-alpha);
     }
 
     &-inner {
       @include reset-content-margins;
 
       &:not(.boxPadding) {
-        padding: $gutter-width 0;
+        padding: 24px 0;
       }
     }
   }

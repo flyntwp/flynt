@@ -1,6 +1,7 @@
 [is='flynt-slider-images'] {
   .slider {
-    max-width: 800px;
+    background-color: var(--color-border-alpha);
+    max-width: var(--content-max-width-large);
     position: relative;
 
     &-item {
@@ -12,23 +13,37 @@
 
     &-button {
       align-items: center;
-      background-color: rgba($color-background-dark, 0.5);
-      border-radius: 50%;
+      color: #fff;
       cursor: pointer;
       display: flex;
-      height: 40px;
+      height: 48px;
       justify-content: center;
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      transition: opacity 0.2s ease-out;
-      width: 40px;
+      width: 48px;
       z-index: 10;
+
+      &::before {
+        background-color: rgba($color: #000, $alpha: 0.5);
+        border: 2px solid #fff;
+        border-radius: 50%;
+        content: '';
+        height: 100%;
+        left: 0;
+        opacity: 0.75;
+        position: absolute;
+        top: 0;
+        transition: opacity 0.2s ease;
+        width: 100%;
+      }
 
       @media (min-width: $breakpoint-tablet-horizontal) {
         &:hover,
         &:focus {
-          background-color: $color-accent;
+          &::before {
+            opacity: 1;
+          }
         }
       }
 
@@ -46,7 +61,7 @@
       }
 
       .feather {
-        color: $color-background;
+        color: currentColor;
         height: auto;
         top: 0;
         width: 80%;
@@ -69,15 +84,28 @@
     }
 
     &-caption {
-      background: rgba($color-background-dark, 0.5);
-      bottom: 0;
-      color: $color-background-light;
+      border-radius: 35px;
+      bottom: 2px;
+      color: #fff;
       display: inline-block;
-      font-size: 0.8rem;
+      font-size: 0.875rem;
       max-width: 450px;
+      overflow: hidden;
       padding: 0.25rem 0.5rem;
       position: absolute;
-      right: 0;
+      right: 2px;
+      z-index: 2;
+
+      &::before {
+        background-color: rgba($color: #000, $alpha: 0.7);
+        content: '';
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: -1;
+      }
     }
   }
 }

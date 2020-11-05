@@ -7,23 +7,31 @@
 
   &.flyntComponent--sizeMedium {
     .figure {
-      max-width: $content-max-width;
+      max-width: var(--content-max-width);
     }
   }
 
   &.flyntComponent--sizeLarge {
     .figure {
-      max-width: 800px;
+      max-width: var(--content-max-width-large);
     }
   }
 
   &.flyntComponent--sizeFull {
-    .figure-caption {
-      margin-left: 0.625rem;
+    .figure-image {
+      border-radius: 0;
     }
   }
 
   .figure {
     margin: 0 auto;
+
+    &-image {
+      background-color: var(--color-border-alpha);
+
+      &.lazyloaded {
+        background-color: transparent;
+      }
+    }
   }
 }

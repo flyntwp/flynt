@@ -1,9 +1,8 @@
 [is='flynt-grid-posts-archive'] {
-  ul {
-    @include reset-list;
-  }
-
   .posts {
+    @include reset-list;
+    @include grid(1);
+
     @media (min-width: $breakpoint-tablet) {
       @include grid(2);
     }
@@ -14,33 +13,75 @@
   }
 
   .posts-empty {
-    padding: 40px 0 0;
+    padding: 32px 0 0;
   }
 
   .post {
-    margin-bottom: $gutter-width;
-
-    @media (min-width: $breakpoint-tablet) {
-      margin-bottom: 0;
-    }
+    @include reset-list-item;
+    display: flex;
 
     &-link {
-      display: block;
-      text-decoration: none;
+      @include reset-link;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     .figure {
-      background-color: $color-text;
       margin-bottom: 0;
+    }
+
+    &-image {
+      background: var(--color-border-alpha);
     }
 
     &-inner {
       @include reset-content-margins;
-      padding: $gutter-width 0;
+      color: var(--color-text);
+      flex-grow: 1;
+
+      #{$heading-selectors} {
+        color: var(--color-headline);
+      }
     }
 
-    &-excerpt {
-      margin-bottom: 0.75rem;
+    &-link {
+      @include reset-link;
+
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    &-footer {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 24px 24px;
+      position: relative;
+      width: 100%;
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        padding: 0 32px 24px;
+      }
+    }
+
+    &-readingTime {
+      align-items: center;
+      display: flex;
+      font-size: 0.9375rem;
+
+      .feather {
+        color: currentColor;
+        height: 1rem;
+        margin-right: 0.25rem;
+        top: 0;
+        width: 1rem;
+      }
+    }
+
+    &-readMore {
+      font-size: 0.9375rem;
     }
   }
 

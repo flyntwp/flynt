@@ -8,7 +8,7 @@
     <ul class="components">
       {% for componentBlock in componentBlocks %}
         {% if componentBlock.readme %}
-          <li class="component boxShadow">
+          <li class="component boxRadius boxShadow themeReset">
             {% if componentBlock.ctas.primary %}
               <a href="{{ componentBlock.ctas.primary }}" class="component-link" aria-hidden="true" tabindex="-1">
             {% else %}
@@ -18,7 +18,7 @@
                 <div class="component-image">
                   <div class="component-imageWrapper">
                     <img class="lazyload image {{ componentBlock.componentScreenshot.aspect > (1280/800) ? 'image--isSmallerThanWrapper' }} "
-                        src="{{ placeholderImage(600, 600 / componentBlock.componentScreenshot.aspect) }}"
+                        src="{{ placeholderImage(760, 760 / componentBlock.componentScreenshot.aspect) }}"
                         data-src="{{ componentBlock.componentScreenshot.src }}"
                         data-sizes="auto"
                         alt="{{ componentBlock.readme.title|e }}">
@@ -26,7 +26,7 @@
                 </div>
               {% endif %}
               <div class="component-description boxPadding">
-                <h2 class="h3">{{ componentBlock.readme.title }}</h2>
+                <h3>{{ componentBlock.readme.title }}</h3>
                 {{ componentBlock.readme.description }}
               </div>
             {% if componentBlock.ctas.primary %}

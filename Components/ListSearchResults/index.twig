@@ -1,7 +1,9 @@
-<div class="flyntComponent componentSpacing" is="flynt-list-search-results">
+<div class="flyntComponent componentSpacing themeLight" is="flynt-list-search-results">
   <div class="container centerMaxWidthContainer">
     <div class="centerContentMaxWidth">
       {% include 'Partials/_header.twig' %}
+    </div>
+    <div class="centerContentMaxWidthLarge">
       {% include 'Partials/_results.twig' %}
       {% if pagination %}
         {% include 'Partials/_pagination.twig' %}
