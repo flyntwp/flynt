@@ -60,7 +60,7 @@ add_filter('acf/load_field/name=anchorLinkCopy', function ($field) {
     $componentPath = $templateDir . '/Components/BlockAnchor';
 
     $copyIcon = [
-        'copyIcon' => Asset::getContents('../assets/icons/copy.svg')
+        'copyIcon' => Asset::getContents('assets/icons/copy.svg')
     ];
 
     $content = [
