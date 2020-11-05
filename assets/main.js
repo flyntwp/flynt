@@ -1,17 +1,12 @@
 import './scripts/publicPath'
-import 'console-polyfill'
+import './scripts/loadCustomElements'
 import 'normalize.css/normalize.css'
 import './main.scss'
 import $ from 'jquery'
 import feather from 'feather-icons'
-
-import installCE from 'document-register-element/pony'
+import 'lazysizes'
 
 window.jQuery = $
-
-window.lazySizesConfig = window.lazySizesConfig || {}
-window.lazySizesConfig.preloadAfterLoad = true
-require('lazysizes')
 
 if ($('.iconList--checkCircle').length) {
   $('.iconList--checkCircle li').prepend('<i data-feather=check-circle></i>')
@@ -21,11 +16,6 @@ $(document).ready(function () {
   feather.replace({
     'stroke-width': 1
   })
-})
-
-installCE(window, {
-  type: 'force',
-  noBuiltIn: true
 })
 
 function importAll (r) {

@@ -16,12 +16,10 @@ class TimberDynamicResize
     public $flyntResizedImages = [];
 
     protected $enabled = false;
-    protected $webpEnabled = false;
 
     public function __construct()
     {
         $this->enabled = get_field('field_global_TimberDynamicResize_dynamicImageGeneration', 'option');
-        $this->webpEnabled = get_field('field_global_TimberDynamicResize_webpSupport', 'option');
         if ($this->enabled) {
             $this->createTable();
             $this->addDynamicHooks();
@@ -80,10 +78,7 @@ class TimberDynamicResize
             );
             return $twig;
         });
-        if ($this->webpEnabled) {
-            add_filter('mod_rewrite_rules', [$this, 'addWebpRewriteRule']);
-        }
-        if ($this->enabled || $this->webpEnabled) {
+        if ($this->enabled) {
             add_action('after_switch_theme', function () {
                 add_action('shutdown', 'flush_rewrite_rules');
             });
@@ -241,19 +236,6 @@ class TimberDynamicResize
         remove_filter('timber/image/new_url', [$this, 'addImageSeparatorToUploadUrl']);
         remove_filter('timber/image/new_path', [$this, 'addImageSeparatorToUploadPath']);
 
-        if ($this->webpEnabled) {
-            $fileinfo = pathinfo($resizedUrl);
-            if (
-                in_array($fileinfo['extension'], [
-                'jpeg',
-                'jpg',
-                'png',
-                ])
-            ) {
-                ImageHelper::img_to_webp($resizedUrl);
-            }
-        }
-
         return $resizedUrl;
     }
 
@@ -275,40 +257,6 @@ class TimberDynamicResize
             trailingslashit($basepath) . static::IMAGE_PATH_SEPARATOR,
             empty($path) ? $basepath : $path
         );
-    }
-
-    public function addWebpRewriteRule($rules)
-    {
-        $dynamicImageRule = <<<EOD
-\n# BEGIN Flynt dynamic images
-<IfModule mod_setenvif.c>
-# Vary: Accept for all the requests to jpeg and png
-SetEnvIf Request_URI "\.(jpe?g|png)$" REQUEST_image
-</IfModule>
-
-<IfModule mod_rewrite.c>
-RewriteEngine On
-
-# Check if browser supports WebP images
-RewriteCond %{HTTP_ACCEPT} image/webp
-
-# Check if WebP replacement image exists
-RewriteCond %{DOCUMENT_ROOT}/$1.webp -f
-
-# Serve WebP image instead
-RewriteRule (.+)\.(jpe?g|png)$ $1.webp [T=image/webp]
-</IfModule>
-
-<IfModule mod_headers.c>
-Header merge Vary Accept env=REQUEST_image
-</IfModule>
-
-<IfModule mod_mime.c>
-AddType image/webp .webp
-</IfModule>\n
-# END Flynt dynamic images\n\n
-EOD;
-        return $dynamicImageRule . $rules;
     }
 
     public function storeResizedUrls()
@@ -339,22 +287,6 @@ EOD;
         }
         add_action('shutdown', function () {
             flush_rewrite_rules(false);
-        });
-    }
-
-    public function toggleWebp($enable)
-    {
-        if ($enable) {
-            add_filter('mod_rewrite_rules', [$this, 'addWebpRewriteRule']);
-        } else {
-            remove_filter('mod_rewrite_rules', [$this, 'addWebpRewriteRule']);
-        }
-        add_action('shutdown', function () {
-            require_once(ABSPATH . 'wp-admin/includes/file.php');
-            WP_Filesystem();
-            global $wp_filesystem;
-            flush_rewrite_rules(true);
-            @$wp_filesystem->rmdir($this->addImageSeparatorToUploadPath(), true);
         });
     }
 

@@ -1,0 +1,48 @@
+.acf-field {
+  .flyntAnchorLinkCopy {
+    &-container {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      width: 100%;
+    }
+
+    // stylelint-disable selector-no-qualifying-type
+    input[type='text'] {
+      color: inherit;
+      flex-shrink: 0;
+      user-select: all;
+      width: calc(100% - 30px);
+    }
+
+    &-button {
+      align-items: center;
+      display: flex;
+    }
+
+    [data-copy-anchor-link] {
+      align-items: center;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      display: flex;
+      height: 30px;
+      margin-left: 10px;
+      padding: 0;
+      width: 20px;
+
+      svg {
+        width: 100%;
+      }
+    }
+
+    &-message {
+      color: #008000;
+      display: none;
+      position: absolute;
+      right: 0;
+      top: -30px;
+    }
+  }
+}
