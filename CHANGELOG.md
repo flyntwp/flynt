@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/flyntwp/flynt/compare/v1.3.0...v1.4.0) (2020-10-21)
+
+
+### Features
+
+* **shortcodes, NavigationFooter:** add global shortcodes and examples for dynamic copyright notices ([#297](https://github.com/flyntwp/flynt/issues/297)) ([00f9f6b](https://github.com/flyntwp/flynt/commit/00f9f6b754a6df41f31b3396ad97884e85f1172d))
+* **theme:** use wp_get_environment_type for WP_ENV ([#298](https://github.com/flyntwp/flynt/issues/298)) ([5bf90db](https://github.com/flyntwp/flynt/commit/5bf90dbd26a51063f60d0a6af68ac800fca41555))
+
+
+### Bug Fixes
+
+* **SliderImages:** add Number polyfill to fix Swiper v6 in IE ([#304](https://github.com/flyntwp/flynt/issues/304)) ([72e2be9](https://github.com/flyntwp/flynt/commit/72e2be9307124c57e5a488beba968afd50d54498))
+* **theme:** force visuallyHidden styles ([#301](https://github.com/flyntwp/flynt/issues/301)) ([d0e7645](https://github.com/flyntwp/flynt/commit/d0e76454a30c678f4af2e1938c468692f9373652))
+* **theme:** rename skiplink text ([#307](https://github.com/flyntwp/flynt/issues/307)) ([f82743d](https://github.com/flyntwp/flynt/commit/f82743dfa7573e7cf54b78bee73349a2eb9e780d))
+* **TimberDynamicResize:** convert path with backslash to slash for uploads basedir just as get_home_path() ([#299](https://github.com/flyntwp/flynt/issues/299)) ([789098e](https://github.com/flyntwp/flynt/commit/789098e51c677b504058fbffb0e7b5a66c8f54b5))
+
+
+### Other
+
+* **php:** adjust several argument definition  ([b7f64f9](https://github.com/flyntwp/flynt/commit/b7f64f9ef71a48beb08f147c89e70ae123c81c53))
+* **swiper:** only import needed components ([#319](https://github.com/flyntwp/flynt/issues/319)) ([ff82ebd](https://github.com/flyntwp/flynt/commit/ff82ebdb70683504f18b85fa47fd2d5583cb4523))
+
 ## [1.3.0](https://github.com/flyntwp/flynt/compare/v1.2.1...v1.3.0) (2020-08-13)
 
 
