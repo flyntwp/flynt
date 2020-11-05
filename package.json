@@ -159,7 +159,9 @@
       }
     ]
   },
-  "dependencies": {},
+  "dependencies": {
+    "jquery.easing": "^1.4.1"
+  },
   "browserslist": [
     "supports es6-module"
   ]
