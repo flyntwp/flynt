@@ -5,15 +5,16 @@ use Flynt\Components;
 
 add_action('Flynt/afterRegisterComponents', function () {
     ACFComposer::registerFieldGroup([
-        'name' => 'pageComponents',
-        'title' => 'Page Components',
+        'name' => 'reusableComponents',
+        'title' => 'Reusable Components',
         'style' => 'seamless',
+        'menu_order' => 1,
         'fields' => [
             [
-                'name' => 'pageComponents',
-                'label' => __('Page Components', 'flynt'),
+                'name' => 'reusableComponents',
+                'label' => 'Reusable Components',
                 'type' => 'flexible_content',
-                'button_label' => __('Add Component', 'flynt'),
+                'button_label' => 'Add Component',
                 'layouts' => [
                     Components\BlockCollapse\getACFLayout(),
                     Components\BlockImage\getACFLayout(),
@@ -24,23 +25,17 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\GridPostsLatest\getACFLayout(),
                     Components\ListComponents\getACFLayout(),
                     Components\SliderImages\getACFLayout(),
-                    Components\ReusableComponent\getACFLayout(),
                 ],
-            ],
+            ]
         ],
         'location' => [
             [
                 [
                     'param' => 'post_type',
-                    'operator' => '!=',
-                    'value' => 'post'
-                ],
-                [
-                    'param' => 'post_type',
-                    'operator' => '!=',
+                    'operator' => '==',
                     'value' => 'reusable-components'
                 ],
-            ],
-        ],
+            ]
+        ]
     ]);
 });
