@@ -11,16 +11,30 @@ use Flynt\Utils\ColorHelpers;
 
 add_action('wp_head', function () {
     $variables = getCssVariables();
-    ?>
-    <style type="text/css">
-        :root.html {
-            <?php foreach ($variables as $variable => $value) {
-                echo "--{$variable}: {$value}; ";
-            } ?>
-        }
-    </style>
-    <?php
+    $properties = [];
+
+    foreach ($variables as $variable => $value) {
+        $properties[] = "--{$variable}: {$value};";
+    }
+
+    $selectors = [
+        sprintf(":root.html { %s }", formatLines($properties, 2)),
+    ];
+
+    echo sprintf("<style type='text/css'>%s</style>\n", formatLines($selectors));
 }, 5);
+
+function formatLines($lines, $tabs = 1)
+{
+    $lineTabs = str_repeat("\t", $tabs);
+    $endTabs = str_repeat("\t", $tabs - 1);
+
+    $lines = array_map(function ($line) use ($lineTabs) {
+        return "\n{$lineTabs}{$line}";
+    }, $lines);
+
+    return implode('', $lines) . "\n{$endTabs}";
+}
 
 function getCssVariables()
 {
