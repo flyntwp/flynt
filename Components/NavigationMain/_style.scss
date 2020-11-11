@@ -82,8 +82,9 @@
       @include reset-link;
       color: var(--color-text);
       display: inline-block;
+      font-family: var(--elements-font-family);
       font-size: 1rem;
-      font-weight: var(--body-medium-font-weight);
+      font-weight: var(--elements-font-weight);
       padding: 0.5rem 1rem;
       text-decoration: none;
       transition: color 0.2s ease-out;

@@ -98,6 +98,7 @@
 @mixin reset-link {
   background-image: none;
   color: var(--color-text);
+  font-family: var(--body-regular-font-family);
   font-weight: var(--body-regular-font-weight);
 }
 

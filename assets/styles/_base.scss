@@ -148,7 +148,8 @@ a {
   background-repeat: no-repeat;
   background-size: 100%;
   color: var(--color-accent);
-  font-weight: var(--body-medium-font-weight);
+  font-family: var(--elements-font-family);
+  font-weight: var(--elements-font-weight);
   text-decoration: none;
   transition: color 0.2s $ease-in-out-circ, background-position 0.2s $ease-in-out-circ;
 
@@ -386,8 +387,9 @@ button {
   cursor: pointer;
   display: inline-block;
   font-family: inherit;
+  font-family: var(--elements-font-family);
   font-size: 1.0625rem;
-  font-weight: var(--body-medium-font-weight);
+  font-weight: var(--elements-font-weight);
   letter-spacing: 0.0125em;
   line-height: 1.7;
   outline: none;
@@ -564,15 +566,17 @@ fieldset {
 
 legend {
   display: inline-block;
+  font-family: var(--elements-font-family);
   font-size: 1.125rem;
-  font-weight: var(--body-medium-font-weight);
+  font-weight: var(--elements-font-weight);
   margin-bottom: 1rem;
 }
 
 label {
   display: inline-block;
+  font-family: var(--elements-font-family);
   font-size: 1rem;
-  font-weight: var(--body-medium-font-weight);
+  font-weight: var(--elements-font-weight);
   letter-spacing: 0.0125em;
   line-height: 1.4;
   margin-bottom: 0.5rem;

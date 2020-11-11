@@ -46,8 +46,9 @@
     &-readingtime {
       @include reset-link;
       color: var(--color-text);
+      font-family: var(--elements-font-family);
       font-size: 0.875rem;
-      font-weight: var(--body-medium-font-weight);
+      font-weight: var(--elements-font-weight);
       letter-spacing: 0.0125em;
     }
 

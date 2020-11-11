@@ -100,18 +100,6 @@ function getVariables()
                     ],
                 ],
                 [
-                    'label' => __('Body Medium', 'flynt'),
-                    'name' => 'body-medium-font',
-                    'type' => 'flynt-typography',
-                    'fallback' => 'Helvetica, Arial',
-                    'italic' => 1,
-                    'default' => [
-                        'family' => 'Roboto',
-                        'category' => 'sans-serif',
-                        'variant' => '500',
-                    ],
-                ],
-                [
                     'label' => __('Body Bold', 'flynt'),
                     'name' => 'body-bold-font',
                     'type' => 'flynt-typography',
@@ -121,6 +109,19 @@ function getVariables()
                         'family' => 'Roboto',
                         'category' => 'sans-serif',
                         'variant' => '700',
+                    ],
+                ],
+                [
+                    'label' => __('Elements', 'flynt'),
+                    'description' => __('Buttons, links, menu, labels, meta.', 'flynt'),
+                    'name' => 'elements-font',
+                    'type' => 'flynt-typography',
+                    'fallback' => 'Helvetica, Arial',
+                    'italic' => 0,
+                    'default' => [
+                        'family' => 'Roboto',
+                        'category' => 'sans-serif',
+                        'variant' => '500',
                     ],
                 ],
             ],
