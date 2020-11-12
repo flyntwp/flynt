@@ -4,7 +4,11 @@ $breakpoint-tablet-horizontal: 1024px;
 $breakpoint-desktop: 1280px;
 $breakpoint-desktop-wide: 1440px;
 
-// Sizing variables
+/**
+ * Dynamic CSS Variables are defined in assets/styles/variables.php.
+ * You can see generated variables and their values in the <head> of the site.
+ */
+
 :root {
   --container-max-width: 1440px;
   --container-padding-base: 16px;
@@ -27,6 +31,7 @@ $breakpoint-desktop-wide: 1440px;
     --container-padding: var(--container-padding-tablet);
     --component-spacing: var(--component-spacing-tablet);
   }
+
   @media (min-width: $breakpoint-desktop) {
     --container-padding: var(--container-padding-desktop);
     --component-spacing: var(--component-spacing-desktop);
