@@ -6,3 +6,4 @@ function importAll (r) {
 }
 
 importAll(require.context('../Components/', true, /\/admin\.js$/))
+importAll(require.context('../lib/Customizer/', true, /\/control\.js$/))

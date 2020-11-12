@@ -16,20 +16,6 @@ add_action('customize_register', function ($wp_customize) {
     addSettings($wp_customize);
 });
 
-add_action('customize_controls_enqueue_scripts', function () {
-    wp_enqueue_script(
-        'Flynt/customizerControls',
-        Asset::requireUrl('assets/customizerControls.js'),
-        ['jquery'],
-        null,
-        true
-    );
-    wp_enqueue_style(
-        'Flynt/customizerControls',
-        Asset::requireUrl('assets/customizerControls.css')
-    );
-});
-
 add_action('customize_preview_init', function () {
     wp_enqueue_script(
         'Flynt/customizerPreview',
