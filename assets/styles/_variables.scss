@@ -6,14 +6,18 @@ $breakpoint-desktop-wide: 1440px;
 
 // Sizing variables
 :root {
-  --container-max-width: var(--container-max-width);
-  --container-padding: var(--container-padding-mobile);
-  --content-max-width: var(--content-max-width);
-  --content-max-width-large: var(--content-max-width-large);
+  --container-max-width: 1440px;
+  --container-padding-base: 16px;
+  --content-max-width: 690px;
+  --content-max-width-large: 860px;
+  --gutter-width: 24px;
+
+  --container-padding: var(--component-padding-base);
   --component-spacing: var(--component-spacing-base);
-  --gutter-width: var(--gutter-width);
-  --box-spacing: var(--box-spacing);
-  --box-border-radius: var(--box-border-radius);
+
+  --container-padding-mobile: var(--container-padding-base);
+  --container-padding-tablet: calc(var(--container-padding-base) * 2);
+  --container-padding-desktop: calc(var(--container-padding-base) * 4);
 
   --component-spacing-mobile: var(--component-spacing-base);
   --component-spacing-tablet: calc(var(--component-spacing-base) / 3 * 6);
