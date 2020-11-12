@@ -11,6 +11,10 @@ class Control extends \WP_Customize_Control
 
     public function getFonts()
     {
+        /**
+         * Use this link to get the fonts. You will need to create an API key first.
+         * https://webfonts.googleapis.com/v1/webfonts?fields=items(family,variants,subsets,category)&key={yourApiKey}
+         */
         $gfonts = Asset::getContents('../lib/Customizer/Typography/webfonts.json');
         $gfonts = json_decode($gfonts, 1);
         $fonts = [];
