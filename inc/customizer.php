@@ -7,44 +7,37 @@
 namespace Flynt\Customizer;
 
 use Flynt\Utils\Asset;
-use Flynt\Utils\Options;
 use Flynt\Variables;
 use Flynt\CSSVariables;
 
-add_action('acf/init', function () {
-    $options = Options::getGlobal('Customizer');
+add_action('customize_register', function ($wp_customize) {
+    $wp_customize->register_control_type('Flynt\Customizer\Range\Control');
+    $wp_customize->register_control_type('Flynt\Customizer\Typography\Control');
+    addSettings($wp_customize);
+});
 
-    if ($options['enabled']) {
-        add_action('customize_register', function ($wp_customize) {
-            $wp_customize->register_control_type('Flynt\Customizer\Range\Control');
-            $wp_customize->register_control_type('Flynt\Customizer\Typography\Control');
-            addSettings($wp_customize);
-        });
+add_action('customize_controls_enqueue_scripts', function () {
+    wp_enqueue_script(
+        'Flynt/customizerControls',
+        Asset::requireUrl('assets/customizerControls.js'),
+        ['jquery'],
+        null,
+        true
+    );
+    wp_enqueue_style(
+        'Flynt/customizerControls',
+        Asset::requireUrl('assets/customizerControls.css')
+    );
+});
 
-        add_action('customize_controls_enqueue_scripts', function () {
-            wp_enqueue_script(
-                'Flynt/customizerControls',
-                Asset::requireUrl('assets/customizerControls.js'),
-                ['jquery'],
-                null,
-                true
-            );
-            wp_enqueue_style(
-                'Flynt/customizerControls',
-                Asset::requireUrl('assets/customizerControls.css')
-            );
-        });
-
-        add_action('customize_preview_init', function () {
-            wp_enqueue_script(
-                'Flynt/customizerPreview',
-                Asset::requireUrl('assets/customizerPreview.js'),
-                ['jquery','customize-preview']
-            );
-            $fields = CSSVariables\getFields();
-            wp_localize_script('Flynt/customizerPreview', 'FlyntCustomizerFields', $fields);
-        });
-    }
+add_action('customize_preview_init', function () {
+    wp_enqueue_script(
+        'Flynt/customizerPreview',
+        Asset::requireUrl('assets/customizerPreview.js'),
+        ['jquery','customize-preview']
+    );
+    $fields = CSSVariables\getFields();
+    wp_localize_script('Flynt/customizerPreview', 'FlyntCustomizerFields', $fields);
 });
 
 function addSettings($wp_customize)
@@ -154,15 +147,3 @@ function sanitizeNumberRange($number, $setting)
 
     return $setting->default;
 }
-
-Options::addGlobal('Customizer', [
-    [
-        'label' => __('Status', 'flynt'),
-        'name' => 'enabled',
-        'type' => 'true_false',
-        'ui' => 1,
-        'ui_on_text' => 'Enabled',
-        'ui_off_text' => 'Disabled',
-        'default_value' => true,
-    ],
-]);
