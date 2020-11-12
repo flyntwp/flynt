@@ -169,6 +169,18 @@ function getVariables()
                         'step' => 1,
                     ],
                 ],
+                [
+                    'label' => __('Button Border Radius', 'flynt'),
+                    'name' => 'button-border-radius',
+                    'type' => 'flynt-range',
+                    'default' => 32,
+                    'unit' => 'px',
+                    'input_attrs' => [
+                        'min' => 0,
+                        'max' => 32,
+                        'step' => 1,
+                    ],
+                ],
             ]
         ],
         [

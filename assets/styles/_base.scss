@@ -382,7 +382,7 @@ button {
   appearance: none;
   background-color: var(--color-accent);
   border: 2px solid var(--color-accent);
-  border-radius: 35px;
+  border-radius: var(--button-border-radius);
   color: var(--color-background);
   cursor: pointer;
   display: inline-block;
@@ -790,7 +790,7 @@ select {
 
 .oneInputForm {
   border: 2px solid var(--color-border);
-  border-radius: 35px;
+  border-radius: var(--button-border-radius);
   margin: 0 0 2rem;
   min-height: 64px;
   min-height: 64px;
@@ -821,7 +821,7 @@ select {
 
   &-input {
     border: 0;
-    border-radius: 35px;
+    border-radius: var(--button-border-radius);
     margin: 0;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
