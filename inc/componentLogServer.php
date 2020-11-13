@@ -36,7 +36,6 @@ function addDebugInfo($data, $componentName)
 
 function consoleDebug($data, $postpone = true)
 {
-    $type = gettype($data);
     $output = json_encode($data);
     $result =  "<script>console.log({$output});</script>\n";
     echoDebug($result, $postpone);
