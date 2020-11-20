@@ -24,7 +24,6 @@ module.exports = {
     entry: {
       'assets/main': './assets/main.js',
       'assets/admin': './assets/admin.js',
-      'assets/customizerControls': './assets/customizerControls.js',
       'assets/customizerPreview': './assets/customizerPreview.js'
     },
     copy: {
