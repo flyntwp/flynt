@@ -80,7 +80,7 @@ function revStaticFiles (config) {
   gulp.task('revStaticFiles', function () {
     const path = require('path')
     const rewrite = require('gulp-rev-rewrite')
-    var manifest = gulp.src(path.join(config.dest, '/rev-manifest.json'))
+    const manifest = gulp.src(path.join(config.dest, '/rev-manifest.json'))
     return gulp.src(config.rev.srcStatic)
       .pipe(rewrite({
         manifest: manifest,
@@ -95,7 +95,7 @@ function revUpdateReferences (config) {
   gulp.task('revUpdateReferences', function () {
     const path = require('path')
     const rewrite = require('gulp-rev-rewrite')
-    var manifest = gulp.src(path.join(config.dest, 'rev-manifest.json'))
+    const manifest = gulp.src(path.join(config.dest, 'rev-manifest.json'))
 
     return gulp.src(config.rev.srcRevved)
       .pipe(rewrite({ manifest: manifest }))

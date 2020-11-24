@@ -13,90 +13,76 @@
     "build:production": "cross-env NODE_ENV=production webpack --progress --display=minimal",
     "build:rev": "gulp rev",
     "lint": "run-p --silent lint:*",
-    "lint:scripts": "cross-env eslint '**/*.js'",
+    "lint:scripts": "cross-env standard",
     "lint:styles": "cross-env stylelint '**/*.scss'",
     "lint:php": "cross-env ./vendor/bin/phpcs",
-    "lint:scripts:fix": "cross-env eslint '**/*.js' --fix",
+    "lint:scripts:fix": "cross-env standard --fix",
     "lint:styles:fix": "cross-env stylelint '**/*.scss' --fix",
     "lint:php:fix": "cross-env ./vendor/bin/phpcbf",
     "release": "standard-version -a"
+  },
+  "dependencies": {
+    "@webreflection/custom-elements-builtin": "^0.1.21",
+    "body-scroll-lock": "^3.1.5",
+    "countup.js": "^2.0.7",
+    "easings-css": "^1.0.0",
+    "feather-icons": "^4.28.0",
+    "headroom.js": "^0.12.0",
+    "jquery": "^3.5.1",
+    "jquery.easing": "^1.4.1",
+    "lazysizes": "^5.2.2",
+    "lodash": "^4.17.20",
+    "normalize.css": "^8.0.1",
+    "rellax": "^1.12.1",
+    "swiper": "^6.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/runtime": "^7.12.1",
-    "@webreflection/custom-elements-builtin": "^0.1.21",
     "ansi-colors": "^4.1.1",
     "autoprefixer": "^9.8.6",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
-    "body-scroll-lock": "^3.1.5",
     "browser-sync": "^2.26.13",
     "check-node-version": "^4.0.3",
     "copy-webpack-plugin": "^6.2.1",
     "core-js": "^3.6.5",
-    "countup.js": "^2.0.7",
     "cross-env": "^7.0.2",
     "css-loader": "^4.3.0",
-    "draggabilly": "^2.3.0",
-    "easings-css": "^1.0.0",
-    "eslint": "^7.11.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
+    "eslint": "^7.13.0",
     "fancy-log": "^1.3.3",
-    "feather-icons": "^4.28.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "gulp": "^4.0.2",
-    "gulp-notify": "^3.2.0",
     "gulp-rev": "^9.0.0",
     "gulp-rev-napkin": "^0.1.0",
     "gulp-rev-rewrite": "^3.0.3",
-    "headroom.js": "^0.12.0",
-    "jquery": "^3.5.1",
-    "js-cookie": "^2.2.1",
-    "lazysizes": "^5.2.2",
-    "lodash": "^4.17.20",
     "mini-css-extract-plugin": "^0.10.1",
     "node-sass": "^4.14.1",
     "node-sass-glob-importer": "^5.3.2",
-    "normalize.css": "^8.0.1",
     "npm-run-all": "^4.1.5",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "plugin-error": "^1.0.1",
     "postcss-loader": "^3.0.0",
-    "prettier": "^2.1.2",
-    "prettier-eslint": "^11.0.0",
-    "prettier-stylelint": "^0.4.2",
-    "rellax": "^1.12.1",
     "replace-in-file": "^6.1.0",
     "rimraf": "^3.0.2",
     "sass-loader": "^9.0.3",
+    "standard": "^16.0.2",
     "standard-version": "^8.0.2",
     "stylelint": "^13.7.2",
     "stylelint-config-sass-guidelines": "^7.1.0",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-scss": "^3.18.0",
-    "swiper": "^6.3.3",
     "terser-webpack-plugin": "^4.2.3",
     "webfontloader": "^1.6.28",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-dev-middleware": "^3.7.2"
   },
-  "eslintConfig": {
-    "extends": "eslint-config-standard",
-    "rules": {
-      "import/no-webpack-loader-syntax": 0
-    }
+  "standard": {
+    "parser": "babel-eslint"
   },
-  "eslintIgnore": [
-    "dist/**",
-    "vendor/**"
-  ],
   "stylelint": {
     "extends": "stylelint-config-sass-guidelines",
     "plugins": [
@@ -160,9 +146,6 @@
         "hidden": true
       }
     ]
-  },
-  "dependencies": {
-    "jquery.easing": "^1.4.1"
   },
   "browserslist": [
     "supports es6-module"
