@@ -81,12 +81,13 @@ add_filter('get_post_metadata', function ($null, $object_id, $meta_key, $single)
     // Get the Default Featured Image ID.
     $fallbackFeaturedImageOptions = Options::getGlobal('FeaturedImageFallback');
     $fallbackFeaturedImage = $fallbackFeaturedImageOptions['image'];
+    if ($fallbackFeaturedImage) {
+        $fallbackFeaturedImageId = $fallbackFeaturedImage->id;
 
-    $fallbackFeaturedImageId = $fallbackFeaturedImage->id;
-
-    // Set the featuredImageFallback_thumbnail_id in cache.
-    $meta_cache['_thumbnail_id'][0] = apply_filters('featuredImageFallback_thumbnail_id', $fallbackFeaturedImageId, $object_id);
-    wp_cache_set($object_id, $meta_cache, 'post_meta');
+        // Set the featuredImageFallback_thumbnail_id in cache.
+        $meta_cache['_thumbnail_id'][0] = apply_filters('featuredImageFallback_thumbnail_id', $fallbackFeaturedImageId, $object_id);
+        wp_cache_set($object_id, $meta_cache, 'post_meta');
+    }
 
     return $null;
 }, 5, 4);
