@@ -1,7 +1,7 @@
 [is='flynt-block-collapse'] {
   &.collapse {
     // full collapse no spacing
-    &-none {
+    &-full {
       margin-top: calc(-1 * var(--component-spacing));
     }
 

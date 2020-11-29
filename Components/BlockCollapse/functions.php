@@ -13,9 +13,9 @@ function getACFLayout()
                 'name' => 'collapseLevel',
                 'type' => 'button_group',
                 'choices' => [
-                    'none' => __('None', 'flynt'),
-                    'small' => __('Small', 'flynt'),
+                    'full' => __('Full', 'flynt'),
                     'medium' => __('Medium', 'flynt'),
+                    'small' => __('Small', 'flynt'),
                 ],
                 'default_value' => 'none',
             ],
