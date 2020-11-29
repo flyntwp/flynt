@@ -7,7 +7,7 @@
 
     // precontent spacing
     &-small {
-      margin-top: calc(-1 * (var(--component-spacing-tablet) / 3));
+      margin-top: calc(-1 * (var(--component-spacing-mobile) / 3));
 
       @media (min-width: $breakpoint-tablet) {
         margin-top: calc(-1 * (var(--component-spacing-tablet) / 2));
