@@ -13,7 +13,7 @@
 
     &-button {
       align-items: center;
-      color: #fff;
+      color: var(--color-background);
       cursor: pointer;
       display: flex;
       height: 48px;
@@ -25,8 +25,7 @@
       z-index: 10;
 
       &::before {
-        background-color: rgba($color: #000, $alpha: 0.5);
-        border: 2px solid #fff;
+        background-color: var(--color-accent);
         border-radius: 50%;
         content: '';
         height: 100%;

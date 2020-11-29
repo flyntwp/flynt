@@ -43,10 +43,8 @@
                   </a>
                 {% endif %}
                 {% if componentBlock.ctas.primary %}
-                  <a href="{{ componentBlock.ctas.primary }}" class="button button--link component-ctaPrimary">
-                  {{ labels.preview }}
-                    <span class="visuallyHidden">{{ __("of Component", "flynt")}} {{ componentBlock.readme.title }}</span>
-                  </a>
+                  <a href="{{ componentBlock.ctas.primary }}" class="button button--link button--small component-ctaPrimary">
+                  {{ labels.preview }}<span class="visuallyHidden">{{ __(" of Component", "flynt")}} {{ componentBlock.readme.title }}</span></a>
                 {% endif %}
               </footer>
             {% endif %}
