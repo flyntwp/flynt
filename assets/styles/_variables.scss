@@ -36,6 +36,25 @@ $breakpoint-desktop-wide: 1440px;
     --container-padding: var(--container-padding-desktop);
     --component-spacing: var(--component-spacing-desktop);
   }
+
+  // Typography variables
+  --body-regular-font-family: var(--theme-body-regular-font-family, 'Roboto', Helvetica, Arial, sans-serif);
+  --body-regular-font-weight: var(--theme-body-regular-font-weight, 400);
+  --body-bold-font-weight: var(--theme-body-bold-font-weight, 700);
+  --h1-font-family: var(--theme-h1-font-family, var(--body-regular-font-family));
+  --h2-font-family: var(--theme-h2-font-family, var(--body-regular-font-family));
+  --h3-font-family: var(--theme-h3-font-family, var(--body-regular-font-family));
+  --h4-font-family: var(--theme-h4-font-family, var(--body-regular-font-family));
+  --h5-font-family: var(--theme-h5-font-family, var(--body-regular-font-family));
+  --h5-font-family: var(--theme-h6-font-family, var(--body-regular-font-family));
+  --h1-font-weight: var(--theme-h1-font-weight, var(--body-bold-font-weight));
+  --h2-font-weight: var(--theme-h2-font-weight, var(--body-bold-font-weight));
+  --h3-font-weight: var(--theme-h3-font-weight, var(--body-bold-font-weight));
+  --h4-font-weight: var(--theme-h4-font-weight, var(--body-bold-font-weight));
+  --h5-font-weight: var(--theme-h5-font-weight, var(--body-bold-font-weight));
+  --h6-font-weight: var(--theme-h6-font-weight, var(--body-bold-font-weight));
+  --elements-font-family: var(--theme-elements-font-family, var(--body-regular-font-family));
+  --elements-font-weight: var(--theme-elements-font-weight, var(--body-bold-font-weight));
 }
 
 // Theming variables

@@ -17,7 +17,7 @@ function getVariables()
             'fields' => [
                 [
                     'label' => __('Heading 1', 'flynt'),
-                    'name' => 'h1-font',
+                    'name' => 'theme-h1-font',
                     'type' => 'flynt-typography',
                     'fallback' => 'Helvetica, Arial',
                     'italic' => 0,
@@ -29,7 +29,7 @@ function getVariables()
                 ],
                 [
                     'label' => __('Heading 2', 'flynt'),
-                    'name' => 'h2-font',
+                    'name' => 'theme-h2-font',
                     'type' => 'flynt-typography',
                     'fallback' => 'Helvetica, Arial',
                     'italic' => 0,
@@ -41,7 +41,7 @@ function getVariables()
                 ],
                 [
                     'label' => __('Heading 3', 'flynt'),
-                    'name' => 'h3-font',
+                    'name' => 'theme-h3-font',
                     'type' => 'flynt-typography',
                     'fallback' => 'Helvetica, Arial',
                     'italic' => 0,
@@ -53,7 +53,7 @@ function getVariables()
                 ],
                 [
                     'label' => __('Heading 4', 'flynt'),
-                    'name' => 'h4-font',
+                    'name' => 'theme-h4-font',
                     'type' => 'flynt-typography',
                     'fallback' => 'Helvetica, Arial',
                     'italic' => 0,
@@ -65,7 +65,7 @@ function getVariables()
                 ],
                 [
                     'label' => __('Heading 5', 'flynt'),
-                    'name' => 'h5-font',
+                    'name' => 'theme-h5-font',
                     'type' => 'flynt-typography',
                     'fallback' => 'Helvetica, Arial',
                     'italic' => 0,
@@ -77,7 +77,7 @@ function getVariables()
                 ],
                 [
                     'label' => __('Heading 6', 'flynt'),
-                    'name' => 'h6-font',
+                    'name' => 'theme-h6-font',
                     'type' => 'flynt-typography',
                     'fallback' => 'Helvetica, Arial',
                     'italic' => 0,
@@ -89,7 +89,7 @@ function getVariables()
                 ],
                 [
                     'label' => __('Body Regular', 'flynt'),
-                    'name' => 'body-regular-font',
+                    'name' => 'theme-body-regular-font',
                     'type' => 'flynt-typography',
                     'fallback' => 'Helvetica, Arial',
                     'italic' => 1,
@@ -101,7 +101,7 @@ function getVariables()
                 ],
                 [
                     'label' => __('Body Bold', 'flynt'),
-                    'name' => 'body-bold-font',
+                    'name' => 'theme-body-bold-font',
                     'type' => 'flynt-typography',
                     'fallback' => 'Helvetica, Arial',
                     'italic' => 1,
@@ -114,7 +114,7 @@ function getVariables()
                 [
                     'label' => __('Elements', 'flynt'),
                     'description' => __('Buttons, links, menu, labels, meta.', 'flynt'),
-                    'name' => 'elements-font',
+                    'name' => 'theme-elements-font',
                     'type' => 'flynt-typography',
                     'fallback' => 'Helvetica, Arial',
                     'italic' => 0,
