@@ -326,11 +326,11 @@ table {
     border: 1px solid  var(--color-border); // fix IE border artifacts
 
     &:first-child {
-      border-top-left-radius: 16px;
+      border-top-left-radius: var(--box-border-radius);
     }
 
     &:last-child {
-      border-top-right-radius: 16px;
+      border-top-right-radius: var(--box-border-radius);
     }
   }
 }
