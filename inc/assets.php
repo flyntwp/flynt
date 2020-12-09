@@ -14,6 +14,7 @@ add_action('wp_enqueue_scripts', function () {
         'path' => 'assets/main.js',
         'type' => 'script',
         'inFooter' => false,
+        'dependencies' => ['jquery-core'],
     ]);
     wp_script_add_data('Flynt/assets', 'defer', true);
     $data = [
@@ -33,6 +34,7 @@ add_action('admin_enqueue_scripts', function () {
         'path' => 'assets/admin.js',
         'type' => 'script',
         'inFooter' => false,
+        'dependencies' => ['jquery-core'],
     ]);
     wp_script_add_data('Flynt/assets/admin', 'defer', true);
     $data = [

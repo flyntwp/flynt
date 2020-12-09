@@ -6,8 +6,6 @@ import $ from 'jquery'
 import feather from 'feather-icons'
 import 'lazysizes'
 
-window.jQuery = $
-
 if ($('.iconList--checkCircle').length) {
   $('.iconList--checkCircle li').prepend('<i data-feather=check-circle></i>')
 }

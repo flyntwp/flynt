@@ -76,6 +76,9 @@ const webpackConfig = {
       }
     ]
   },
+  externals: {
+    jquery: 'jQuery'
+  },
   performance: {
     hints: false
   },
