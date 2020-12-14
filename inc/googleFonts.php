@@ -16,25 +16,6 @@ add_action('wp_enqueue_scripts', function () {
     }
 }, 5);
 
-add_filter('wp_resource_hints', function ($urls, $type) {
-    if (wp_style_is('Flynt/fonts', 'queue') && $type === 'preconnect') {
-        $urls[] = [
-            'href' => 'https://fonts.gstatic.com',
-            'crossorigin',
-        ];
-    }
-
-    return $urls;
-}, 10, 2);
-
-add_action('wp_head', function () {
-    $url = getFontsUrl();
-
-    if ($url) {
-        echo "<link rel='preload' as='style' href='{$url}'>\n";
-    }
-}, 5);
-
 function getFontsUrl()
 {
     $settings = getSettings();
