@@ -9,41 +9,35 @@ call_user_func(function () {
 });
 
 add_action('wp_enqueue_scripts', function () {
-    Asset::enqueue([
-        'name' => 'Flynt/assets',
-        'path' => 'assets/main.js',
-        'type' => 'script',
-        'inFooter' => false,
-        'dependencies' => ['jquery-core'],
-    ]);
+    wp_enqueue_script(
+        'Flynt/assets',
+        Asset::requireUrl('assets/main.js'),
+        ['jquery-core']
+    );
     wp_script_add_data('Flynt/assets', 'defer', true);
     $data = [
         'templateDirectoryUri' => get_template_directory_uri(),
     ];
     wp_localize_script('Flynt/assets', 'FlyntData', $data);
-    Asset::enqueue([
-        'name' => 'Flynt/assets',
-        'path' => 'assets/main.css',
-        'type' => 'style'
-    ]);
+    wp_enqueue_style(
+        'Flynt/assets',
+        Asset::requireUrl('assets/main.css')
+    );
 });
 
 add_action('admin_enqueue_scripts', function () {
-    Asset::enqueue([
-        'name' => 'Flynt/assets/admin',
-        'path' => 'assets/admin.js',
-        'type' => 'script',
-        'inFooter' => false,
-        'dependencies' => ['jquery-core'],
-    ]);
+    wp_enqueue_script(
+        'Flynt/assets/admin',
+        Asset::requireUrl('assets/admin.js'),
+        ['jquery-core']
+    );
     wp_script_add_data('Flynt/assets/admin', 'defer', true);
     $data = [
         'templateDirectoryUri' => get_template_directory_uri(),
     ];
     wp_localize_script('Flynt/assets/admin', 'FlyntData', $data);
-    Asset::enqueue([
-        'name' => 'Flynt/assets/admin',
-        'path' => 'assets/admin.css',
-        'type' => 'style'
-    ]);
+    wp_enqueue_style(
+        'Flynt/assets/admin',
+        Asset::requireUrl('assets/admin.css')
+    );
 });
