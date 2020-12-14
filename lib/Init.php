@@ -5,7 +5,6 @@ namespace Flynt;
 use Flynt\Api;
 use Flynt\Defaults;
 use Flynt\Utils\AdminNoticeManager;
-use Flynt\Utils\Asset;
 use Timber\Timber;
 
 class Init
@@ -14,9 +13,6 @@ class Init
     {
         Api::registerHooks();
         Defaults::init();
-
-        // Set to true to load all assets from a CDN if there is one specified
-        Asset::loadFromCdn(false);
 
         new Timber();
     }
