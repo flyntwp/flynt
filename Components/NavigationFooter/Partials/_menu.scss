@@ -1,13 +1,22 @@
 .menu {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   list-style: none;
   margin: 0;
   padding: 0;
 
+  @media (min-width: $breakpoint-tablet) {
+    flex-direction: flex-start;
+  }
+
   &-item {
+    margin-top: 0.5rem;
+
     &:not(:first-child) {
-      margin-left: 2rem;
+      @media (min-width: $breakpoint-tablet) {
+        margin-left: 2rem;
+      }
     }
   }
 

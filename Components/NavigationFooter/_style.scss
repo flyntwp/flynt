@@ -15,7 +15,7 @@
 
   .content {
     @include reset-content-margins;
-    margin: 10px 0 0;
+    margin: 20px 0 0;
 
     @media (min-width: $breakpoint-tablet) {
       margin: 0;
