@@ -3,8 +3,8 @@
 namespace Flynt\Components\NavigationFooter;
 
 use Flynt\Utils\Options;
-use Timber\Menu;
 use Flynt\Shortcodes;
+use Timber\Menu;
 
 add_action('init', function () {
     register_nav_menus([
