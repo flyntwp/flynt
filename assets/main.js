@@ -12,7 +12,7 @@ if ($('.iconList--checkCircle').length) {
 
 $(document).ready(function () {
   feather.replace({
-    'stroke-width': 1
+    'stroke-width': 1.5
   })
 })
 

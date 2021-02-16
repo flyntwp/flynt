@@ -57,8 +57,12 @@
       display: flex;
       justify-content: space-between;
       margin-bottom: 24px;
-      padding: 0 24px;
+      padding: 0 calc(var(--box-spacing) * 0.75);
       width: 100%;
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        padding: 0 var(--box-spacing);
+      }
 
       .component-ctaSecondary {
         @include reset-link;
@@ -80,7 +84,6 @@
       }
 
       .component-ctaPrimary {
-        font-size: 0.9375rem;
         margin-left: auto;
       }
 

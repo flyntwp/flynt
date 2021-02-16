@@ -13,7 +13,7 @@
   }
 
   &-lines {
-    height: 18px;
+    height: 21px;
     position: relative;
     width: 30px;
 
@@ -28,11 +28,11 @@
     &--secondary {
       background-color: var(--color-text);
       display: block;
-      height: 2px;
+      height: 3px;
       left: 0;
       position: absolute;
-      transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out,
-        background-color 0.2s ease-in-out;
+      transition: opacity 0.2s ease-in-out 0.2s, transform 0.2s ease-in-out 0.2s,
+        background-color 0.2s ease-in-out 0s;
       width: 30px;
     }
 
@@ -42,11 +42,12 @@
 
     &--primary,
     &--secondary {
-      top: 8px;
+      top: 9px;
+      transition-delay: 0s;
     }
 
     &::after {
-      top: 16px;
+      top: 18px;
     }
   }
 }
@@ -55,21 +56,30 @@
   &::before,
   &::after {
     opacity: 0;
+    transition-delay: 0s;
   }
 
   &::before {
-    transform: scale(0) translateY(8px);
+    transform: translateY(9px);
   }
 
   &::after {
-    transform: scale(0) translateY(-8px);
+    transform: translateY(-9px);
   }
 
   &--primary {
     transform: rotate(45deg);
+    transition-delay: 0.2s;
   }
 
   &--secondary {
     transform: rotate(-45deg);
+    transition-delay: 0.2s;
+  }
+
+  &::before,
+  &::after {
+    opacity: 0;
+    transition-delay: 0s;
   }
 }

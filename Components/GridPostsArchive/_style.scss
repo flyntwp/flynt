@@ -57,12 +57,12 @@
       align-items: center;
       display: flex;
       justify-content: space-between;
-      padding: 0 24px 24px;
+      padding: 0 calc(var(--box-spacing) * 0.75) 24px;
       position: relative;
       width: 100%;
 
       @media (min-width: $breakpoint-tablet-horizontal) {
-        padding: 0 32px 24px;
+        padding: 0 var(--box-spacing) 24px;
       }
     }
 
@@ -73,15 +73,11 @@
 
       .feather {
         color: currentColor;
-        height: 1rem;
+        height: 1.125rem;
         margin-right: 0.25rem;
         top: 0;
-        width: 1rem;
+        width: 1.125rem;
       }
-    }
-
-    &-readMore {
-      font-size: 0.9375rem;
     }
   }
 
