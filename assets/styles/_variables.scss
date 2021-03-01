@@ -7,6 +7,75 @@ $breakpoint-desktop-wide: 1440px;
 /**
  * Dynamic CSS Variables are defined in assets/styles/variables.php.
  * You can see generated variables and their values in the <head> of the site.
+ *
+ * List of default generated variables.
+ *
+ * --theme-body-regular-font-family: Roboto, Helvetica, Arial, sans-serif;
+ * --theme-body-regular-font-weight: 400;
+ * --theme-body-bold-font-family: Roboto, Helvetica, Arial, sans-serif;
+ * --theme-body-bold-font-weight: 700;
+ * --theme-h1-font-family: Encode Sans Semi Condensed, Helvetica, Arial, sans-serif;
+ * --theme-h1-font-weight: 800;
+ * --theme-h2-font-family: Encode Sans Semi Condensed, Helvetica, Arial, sans-serif;
+ * --theme-h2-font-weight: 800;
+ * --theme-h3-font-family: Encode Sans Semi Condensed, Helvetica, Arial, sans-serif;
+ * --theme-h3-font-weight: 700;
+ * --theme-h4-font-family: Encode Sans Semi Condensed, Helvetica, Arial, sans-serif;
+ * --theme-h4-font-weight: 700;
+ * --theme-h5-font-family: Roboto, Helvetica, Arial, sans-serif;
+ * --theme-h5-font-weight: 400;
+ * --theme-h6-font-family: Roboto, Helvetica, Arial, sans-serif;
+ * --theme-h6-font-weight: 500;
+ * --theme-elements-font-family: Roboto, Helvetica, Arial, sans-serif;
+ * --theme-elements-font-weight: 500;
+ * --button-border-radius: 32px;
+ * --box-border-radius: 16px;
+ * --box-spacing: 32px;
+ * --component-spacing-base: 48px;
+ * --theme-default-color-background: #ffffff;
+ * --theme-default-color-border: #8791BA;
+ * --theme-default-color-border-h: 228;
+ * --theme-default-color-border-s: 27%;
+ * --theme-default-color-border-l: 62.9%;
+ * --theme-default-color-text: #353535;
+ * --theme-default-color-headline: #252525;
+ * --theme-default-color-accent: #2b44df;
+ * --theme-default-color-accent-h: 232;
+ * --theme-default-color-accent-s: 73.8%;
+ * --theme-default-color-accent-l: 52.2%;
+ * --theme-light-color-background: #F8F9FD;
+ * --theme-light-color-border: #8791BA;
+ * --theme-light-color-border-h: 228;
+ * --theme-light-color-border-s: 27%;
+ * --theme-light-color-border-l: 62.9%;
+ * --theme-light-color-text: #353535;
+ * --theme-light-color-headline: #252525;
+ * --theme-light-color-accent: #2b44df;
+ * --theme-light-color-accent-h: 232;
+ * --theme-light-color-accent-s: 73.8%;
+ * --theme-light-color-accent-l: 52.2%;
+ * --theme-dark-color-background: #10205A;
+ * --theme-dark-color-border: #C3C4F7;
+ * --theme-dark-color-border-h: 239;
+ * --theme-dark-color-border-s: 76.5%;
+ * --theme-dark-color-border-l: 86.7%;
+ * --theme-dark-color-text: #E9E9EC;
+ * --theme-dark-color-headline: #FBFBFB;
+ * --theme-dark-color-accent: #ffc261;
+ * --theme-dark-color-accent-h: 37;
+ * --theme-dark-color-accent-s: 100%;
+ * --theme-dark-color-accent-l: 69%;
+ * --theme-hero-color-background: #2B44DF;
+ * --theme-hero-color-border: #CDE2FD;
+ * --theme-hero-color-border-h: 214;
+ * --theme-hero-color-border-s: 92.3%;
+ * --theme-hero-color-border-l: 89.8%;
+ * --theme-hero-color-text: #E9E9EC;
+ * --theme-hero-color-headline: #FBFBFB;
+ * --theme-hero-color-accent: #ffc261;
+ * --theme-hero-color-accent-h: 37;
+ * --theme-hero-color-accent-s: 100%;
+ * --theme-hero-color-accent-l: 69%;
  */
 
 :root {
@@ -38,23 +107,24 @@ $breakpoint-desktop-wide: 1440px;
   }
 
   // Typography variables
-  --body-regular-font-family: var(--theme-body-regular-font-family, 'Roboto', Helvetica, Arial, sans-serif);
-  --body-regular-font-weight: var(--theme-body-regular-font-weight, 400);
-  --body-bold-font-weight: var(--theme-body-bold-font-weight, 700);
-  --h1-font-family: var(--theme-h1-font-family, var(--body-regular-font-family));
-  --h2-font-family: var(--theme-h2-font-family, var(--body-regular-font-family));
-  --h3-font-family: var(--theme-h3-font-family, var(--body-regular-font-family));
-  --h4-font-family: var(--theme-h4-font-family, var(--body-regular-font-family));
-  --h5-font-family: var(--theme-h5-font-family, var(--body-regular-font-family));
-  --h5-font-family: var(--theme-h6-font-family, var(--body-regular-font-family));
-  --h1-font-weight: var(--theme-h1-font-weight, var(--body-bold-font-weight));
-  --h2-font-weight: var(--theme-h2-font-weight, var(--body-bold-font-weight));
-  --h3-font-weight: var(--theme-h3-font-weight, var(--body-bold-font-weight));
-  --h4-font-weight: var(--theme-h4-font-weight, var(--body-bold-font-weight));
-  --h5-font-weight: var(--theme-h5-font-weight, var(--body-bold-font-weight));
-  --h6-font-weight: var(--theme-h6-font-weight, var(--body-bold-font-weight));
-  --elements-font-family: var(--theme-elements-font-family, var(--body-regular-font-family));
-  --elements-font-weight: var(--theme-elements-font-weight, var(--body-bold-font-weight));
+  --body-regular-font-family: var(--theme-body-regular-font-family);
+  --body-regular-font-weight: var(--theme-body-regular-font-weight);
+  --body-bold-font-family: var(--theme-body-bold-font-family);
+  --body-bold-font-weight: var(--theme-body-bold-font-weight);
+  --h1-font-family: var(--theme-h1-font-family);
+  --h2-font-family: var(--theme-h2-font-family);
+  --h3-font-family: var(--theme-h3-font-family);
+  --h4-font-family: var(--theme-h4-font-family);
+  --h5-font-family: var(--theme-h5-font-family);
+  --h5-font-family: var(--theme-h6-font-family);
+  --h1-font-weight: var(--theme-h1-font-weight);
+  --h2-font-weight: var(--theme-h2-font-weight);
+  --h3-font-weight: var(--theme-h3-font-weight);
+  --h4-font-weight: var(--theme-h4-font-weight);
+  --h5-font-weight: var(--theme-h5-font-weight);
+  --h6-font-weight: var(--theme-h6-font-weight);
+  --elements-font-family: var(--theme-elements-font-family);
+  --elements-font-weight: var(--theme-elements-font-weight);
 }
 
 // Theming variables
