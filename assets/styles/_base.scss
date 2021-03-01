@@ -219,9 +219,16 @@ pre {
   }
 }
 
+b,
+strong {
+  font-family: var(--body-bold-font-family);
+  font-weight: var(--body-bold-font-weight);
+}
+
 blockquote,
 .blockquote {
   color: var(--color-accent);
+  font-family: var(--body-bold-font-family);
   font-size: 1.5rem;
   font-weight: var(--body-bold-font-weight);
   letter-spacing: 0.0125em;
