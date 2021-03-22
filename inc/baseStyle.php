@@ -39,7 +39,16 @@ function templateInclude($template)
 
     if (isset($wp_query->query_vars[ROUTENAME])) {
         setDocumentTitle();
-        add_action('wp_head', 'wp_no_robots');
+
+        if (function_exists('wp_robots') && function_exists('wp_robots_no_robots') && function_exists('add_filter')) {
+            // WordPress >= 5.7
+            add_filter('wp_robots', 'wp_robots_no_robots');
+        } else {
+            // Backwards compatibility with WordPress < 5.7
+            // This function has been deprecated. Use wp_robots_no_robots() instead on ‘wp_robots’ filter.
+            // Source: https://developer.wordpress.org/reference/functions/wp_no_robots/
+            add_action('wp_head', 'wp_no_robots');
+        }
         return get_template_directory() . '/basestyle.php';
     }
 
