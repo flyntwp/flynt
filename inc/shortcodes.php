@@ -31,6 +31,30 @@ add_shortcode('tagline', function () {
 });
 
 /**
+ * Privacy Policy Link
+ */
+add_shortcode('privacyPolicyPageLink', function ($atts) {
+    $data = shortcode_atts([
+        'label' => __('Privacy Policy', 'flynt'),
+        'target' => '_blank'
+    ], $atts);
+
+    $privacyPolicyPage = get_option('wp_page_for_privacy_policy');
+
+    if ($privacyPolicyPage) {
+        $privacyPolicyPageLink = esc_url(get_permalink($privacyPolicyPage));
+    }
+
+    if ($privacyPolicyPageLink) {
+        $output = '<a href="' . $privacyPolicyPageLink . '" target="' . esc_attr($data['target']) . '" rel="noreferrer noopener">' . esc_attr($data['label']) . '</a>';
+    } else {
+        $output = esc_attr($data['label']);
+    }
+
+    return $output;
+});
+
+/**
  * Flynt Shortcode reference
  */
 function getShortcodeReference()
@@ -74,6 +98,17 @@ function getShortcodeReference()
                     'width' => 50
                 ],
             ],
+            [
+                'label' => __('Privacy Policy Link', 'flynt'),
+                'name' => 'messageShortcodePrivacyPolicyPageLink',
+                'type' => 'message',
+                'message' => '<code>[privacyPolicyPageLink label="' . __('Privacy Policy', 'flynt') . '" target="_blank"]</code>',
+                'new_lines' => 'wpautop',
+                'esc_html' => 0,
+                'wrapper' => [
+                    'width' => 50
+                ],
+            ]
         ]
     ];
 }
