@@ -39,7 +39,7 @@ function templateInclude($template)
 
     if (isset($wp_query->query_vars[ROUTENAME])) {
         setDocumentTitle();
-        add_action('wp_head', 'wp_no_robots');
+        add_filter('wp_robots', 'wp_robots_no_robots');
         return get_template_directory() . '/basestyle.php';
     }
 
