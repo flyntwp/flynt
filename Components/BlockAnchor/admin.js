@@ -1,4 +1,4 @@
-/* globals acf jQuery */
+/* globals acf jQuery alert */
 
 (function ($) {
   const setUpInputVal = function () {
@@ -27,12 +27,12 @@
     const $blockAnchor = $el.closest('[data-layout="blockAnchor"]:not(.acf-clone)')
     const $anchorLink = $blockAnchor.find('.flyntAnchorLinkCopy')
     if ($anchorLink) {
-      const $anchorLinkInput = $anchorLink.find('input[type="text"]')
+      const $anchorLinkInput = $anchorLink.find('.flyntAnchorLinkCopy-input')
       $anchorLinkInput.attr('tabindex', '-1')
       const href = $anchorLinkInput.data('href')
       val = sanitiseText(val)
       const link = `${href}#${val}`
-      $anchorLinkInput.val(link)
+      $anchorLinkInput.text(link)
     }
   }
 
@@ -43,19 +43,25 @@
     return value
   }
 
-  const selectText = function (e, $el) {
-    $el.select()
-  }
-
   const copyToClipboard = function (e, $el) {
     e.preventDefault()
     const $anchorField = $el.closest('[data-layout="blockAnchor"]:not(.acf-clone)')
     if ($anchorField.length > 0) {
       const $anchorLinkInput = $anchorField.find('.flyntAnchorLinkCopy-input')
       const $copyMessage = $anchorField.find('.flyntAnchorLinkCopy-message')
-      $anchorLinkInput.select()
-      document.execCommand('copy')
-      $copyMessage.show().delay(5000).hide('fast')
+
+      if (!navigator.clipboard) {
+        document.execCommand('copy')
+      } else {
+        navigator.clipboard.writeText($anchorLinkInput.text()).then(
+          function () {
+            $copyMessage.show().delay(5000).hide('fast')
+          })
+          .catch(
+            function () {
+              alert('Oops! Something went wrong...')
+            })
+      }
     }
   }
 
@@ -63,12 +69,10 @@
     return new acf.Model({
       events: {
         'keyup input[name*=blockAnchor_anchor]': 'onChangeText',
-        'click [data-copy-anchor-link]': 'copyToClipboard',
-        'focus .flyntAnchorLinkCopy-input': 'selectText'
+        'click [data-copy-anchor-link]': 'copyToClipboard'
       },
       onChangeText,
-      copyToClipboard,
-      selectText
+      copyToClipboard
     })
   }
 

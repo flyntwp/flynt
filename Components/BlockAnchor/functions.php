@@ -59,15 +59,11 @@ add_filter('acf/load_field/name=anchorLinkCopy', function ($field) {
     $templateDir = get_template_directory();
     $componentPath = $templateDir . '/Components/BlockAnchor';
 
-    $copyIcon = [
-        'copyIcon' => Asset::getContents('assets/icons/copy.svg')
-    ];
-
     $content = [
         'copiedMessage' => __('Copied!', 'flynt'),
     ];
 
-    $content = array_merge($copyIcon, $content, $context);
+    $content = array_merge($content, $context);
 
     $html = Timber::compile(
         $componentPath . '/Partials/anchorLinkCopy.twig',
