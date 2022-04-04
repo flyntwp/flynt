@@ -24,6 +24,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\GridPostsLatest\getACFLayout(),
                     Components\ListComponents\getACFLayout(),
                     Components\SliderImages\getACFLayout(),
+                    Components\BlockSocialShare\getACFLayout(),
                 ]
             ]
         ],

@@ -1,0 +1,21 @@
+<div class="flyntComponent componentSpacing {{ options.theme }}" is="flynt-block-social-share">
+  <div class="container">
+    <div class="box">
+      <span class="share-label">{{ __("Share: ", "flynt") }}</span>
+      <div class="share-icons">
+        {% if facebookShare %}
+        <a class="button facebook" href="{{ facebookUrl }}"><i data-feather="facebook"></i></a>
+        {% endif %}
+        {% if twitterShare %}
+        <a class="button twitter" href="{{ twitterUrl }}"><i data-feather="twitter"></i></a>
+        {% endif %}
+        {% if linkedinShare %}
+        <a class="button linkedin" href="{{ linkedinUrl }}"><i data-feather="linkedin"></i></a>
+        {% endif %}
+        {% if emailShare %}
+        <a class="button email" href="{{ emailUrl }}"><i data-feather="mail"></i></a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

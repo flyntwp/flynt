@@ -1,0 +1,63 @@
+[is='flynt-block-social-share'] {
+
+  $social-share: (
+    'facebook': #1877f2,
+    'twitter': #1da1f2,
+    'linkedin': #0077b5,
+    'email': #495057,
+  );
+
+  .container {
+    @include center(500px + 2 * $container-padding-mobile);
+  }
+
+  .box {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 0 $container-padding-tablet * -1;
+  }
+
+  .share-label {
+    font-weight: bold;
+    margin-right: 1rem;
+  }
+
+  .share-icons {
+    display: grid;
+    gap: $gutter-width / 2;
+    grid-auto-flow: column;
+  }
+
+  .button {
+    padding: 0.75rem 1rem;
+  }
+
+  .feather {
+    color: #fff;
+  }
+
+  @media (max-width: $breakpoint-tablet-horizontal - 1) {
+    margin: $component-spacing-tablet 0;
+  }
+
+  @media (min-width: $breakpoint-tablet-horizontal) {
+    .container {
+      @include center(1080px + 2 * $container-padding-tablet, $container-padding-tablet);
+    }
+  }
+
+  @each $social-name, $social-color in $social-share {
+
+    .#{$social-name} {
+      background-color: $social-color;
+      border-color: $social-color;
+
+      &:hover {
+        background-color: adjust-color($social-color, $lightness: -15%);
+        border-color: adjust-color($social-color, $lightness: -15%);
+      }
+    }	
+  }
+
+}
