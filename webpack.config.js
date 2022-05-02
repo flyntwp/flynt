@@ -157,7 +157,7 @@ const multiConfig = Object.keys(config.entry).map(entry => {
         // Options similar to the same options in webpackOptions.output
         // both options are optional
         filename: `${entry}.css`,
-        chunkFilename: `${entry}.css`
+        chunkFilename: `${entry}.[hash:8].css`
       })
     ]
   }
