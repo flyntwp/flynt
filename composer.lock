@@ -59,6 +59,10 @@
                 "router",
                 "routing"
             ],
+            "support": {
+                "issues": "https://github.com/dannyvankooten/AltoRouter/issues",
+                "source": "https://github.com/dannyvankooten/AltoRouter/tree/master"
+            },
             "time": "2015-11-30T00:47:43+00:00"
         },
         {
@@ -114,6 +118,10 @@
                 "extension",
                 "twig"
             ],
+            "support": {
+                "issues": "https://github.com/asm89/twig-cache-extension/issues",
+                "source": "https://github.com/asm89/twig-cache-extension/tree/1.4.0"
+            },
             "abandoned": "twig/cache-extension",
             "time": "2020-01-01T20:47:37+00:00"
         },
@@ -242,6 +250,10 @@
                 "zend",
                 "zikula"
             ],
+            "support": {
+                "issues": "https://github.com/composer/installers/issues",
+                "source": "https://github.com/composer/installers/tree/v1.9.0"
+            },
             "funding": [
                 {
                     "url": "https://packagist.com",
@@ -298,6 +310,10 @@
                 "markdown",
                 "parser"
             ],
+            "support": {
+                "issues": "https://github.com/erusev/parsedown/issues",
+                "source": "https://github.com/erusev/parsedown/tree/1.7.x"
+            },
             "time": "2019-12-30T22:54:17+00:00"
         },
         {
@@ -335,6 +351,10 @@
                     "email": "hello@bleech.de"
                 }
             ],
+            "support": {
+                "issues": "https://github.com/flyntwp/acf-field-group-composer/issues",
+                "source": "https://github.com/flyntwp/acf-field-group-composer/tree/v1.0.2"
+            },
             "time": "2020-09-11T08:52:18+00:00"
         },
         {
@@ -368,12 +388,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Ctype\\": ""
-                },
                 "files": [
                     "bootstrap.php"
-                ]
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Ctype\\": ""
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -397,6 +417,9 @@
                 "polyfill",
                 "portable"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.18.0"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -444,12 +467,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Mbstring\\": ""
-                },
                 "files": [
                     "bootstrap.php"
-                ]
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Mbstring\\": ""
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -474,6 +497,9 @@
                 "portable",
                 "shim"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.18.1"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -553,6 +579,11 @@
                 "timber",
                 "twig"
             ],
+            "support": {
+                "docs": "https://timber.github.io/docs/",
+                "issues": "https://github.com/timber/timber/issues",
+                "source": "https://github.com/timber/timber"
+            },
             "time": "2020-10-11T15:08:40+00:00"
         },
         {
@@ -618,6 +649,10 @@
             "keywords": [
                 "templating"
             ],
+            "support": {
+                "issues": "https://github.com/twigphp/Twig/issues",
+                "source": "https://github.com/twigphp/Twig/tree/v2.13.1"
+            },
             "funding": [
                 {
                     "url": "https://github.com/fabpot",
@@ -679,6 +714,11 @@
                 "routes",
                 "routing"
             ],
+            "support": {
+                "issues": "https://github.com/jarednova/routes/issues",
+                "source": "https://github.com/jarednova/routes",
+                "wiki": "https://github.com/jarednova/routes/wiki"
+            },
             "time": "2018-12-04T01:13:41+00:00"
         }
     ],
@@ -732,6 +772,11 @@
                 "phpcs",
                 "standards"
             ],
+            "support": {
+                "issues": "https://github.com/squizlabs/PHP_CodeSniffer/issues",
+                "source": "https://github.com/squizlabs/PHP_CodeSniffer",
+                "wiki": "https://github.com/squizlabs/PHP_CodeSniffer/wiki"
+            },
             "time": "2020-08-10T04:50:15+00:00"
         }
     ],
@@ -744,5 +789,5 @@
         "php": ">=7.0.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.3.0"
 }
