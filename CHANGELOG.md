@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/flyntwp/flynt/compare/v1.4.0...v1.4.1) (2022-06-26)
+
+
+### Bug Fixes
+
+* **BlockPostHeader:** display dates correctly ([#400](https://github.com/flyntwp/flynt/issues/400)) ([b5e16af](https://github.com/flyntwp/flynt/commit/b5e16af19ced21426a8bfe0b303e15c2eb5dcc97))
+
+
+### Other
+
+* **NavigationBurger:** use Timber\Menu sub-namespace instead of Timber ([#352](https://github.com/flyntwp/flynt/issues/352)) ([c7a763f](https://github.com/flyntwp/flynt/commit/c7a763f697f949f049773a3b42b616816450bb00))
+* **NavigationMain:** use Timber\Menu sub-namespace instead of Timber ([#354](https://github.com/flyntwp/flynt/issues/354)) ([70f7e75](https://github.com/flyntwp/flynt/commit/70f7e75cde48241a9ff966d550226ba4782fad18))
+
 ## [1.4.0](https://github.com/flyntwp/flynt/compare/v1.3.0...v1.4.0) (2020-10-21)
 
 

@@ -35,7 +35,7 @@ class ArrayHelpers
      */
     public static function indexedValuesToAssocKeys(array $array)
     {
-        _deprecated_function(__METHOD__, '%%NEXT_VERSION%%');
+        _deprecated_function(__METHOD__, '1.4.1');
         $values = array_map(function ($value) {
             return is_array($value) ? $value : [];
         }, $array);
