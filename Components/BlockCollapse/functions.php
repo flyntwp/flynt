@@ -9,13 +9,13 @@ function getACFLayout()
         'label' => 'Block: Collapse',
         'sub_fields' => [
             [
-                'label' => __('Collapse Component Spacing', 'flynt'),
-                'name' => 'collapseLevel',
+                'label' => __('Collapse Spacing', 'flynt'),
+                'name' => 'collapseSpacing',
                 'type' => 'button_group',
                 'choices' => [
-                    'full' => __('Full', 'flynt'),
-                    'medium' => __('Medium', 'flynt'),
-                    'small' => __('Small', 'flynt'),
+                    'noSpacing' => __('No Spacing', 'flynt'),
+                    'preContent' => __('Pre Content', 'flynt'),
+                    'paragraph' => __('Paragraph', 'flynt'),
                 ],
                 'default_value' => 'none',
             ],
