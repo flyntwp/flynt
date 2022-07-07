@@ -38,9 +38,8 @@
     @include reset-link;
     color: var(--color-text);
     display: block;
-    font-family: var(--elements-font-family);
     font-size: 1rem;
-    font-weight: var(--elements-font-weight);
+    font-weight: 700;
     padding: 12px var(--container-padding-mobile);
     text-align: center;
     text-decoration: none;

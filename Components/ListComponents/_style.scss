@@ -40,7 +40,6 @@
     &-link {
       @include reset-link;
       display: block;
-      font-weight: var(--body-regular-font-weight);
       text-decoration: none;
       width: 100%;
     }
@@ -57,12 +56,8 @@
       display: flex;
       justify-content: space-between;
       margin-bottom: 24px;
-      padding: 0 calc(var(--box-spacing) * 0.75);
+      padding: 0 var(--box-padding);
       width: 100%;
-
-      @media (min-width: $breakpoint-tablet-horizontal) {
-        padding: 0 var(--box-spacing);
-      }
 
       .component-ctaSecondary {
         @include reset-link;

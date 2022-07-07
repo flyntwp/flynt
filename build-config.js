@@ -23,8 +23,7 @@ module.exports = {
   webpack: {
     entry: {
       'assets/main': './assets/main.js',
-      'assets/admin': './assets/admin.js',
-      'assets/customizerPreview': './assets/customizerPreview.js'
+      'assets/admin': './assets/admin.js'
     },
     copy: {
       patterns: [

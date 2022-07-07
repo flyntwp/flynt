@@ -1,20 +1,11 @@
 [is='flynt-block-post-header'] {
   .header {
     margin-bottom: calc(var(--component-spacing) / 2);
-    padding: var(--component-spacing) 0 calc(var(--component-spacing) / 2);
-
-    @media (min-width: $breakpoint-tablet) {
-      margin-bottom: calc(var(--component-spacing-tablet) / 2);
-      padding: var(--component-spacing-tablet) 0 calc(var(--component-spacing-tablet) / 2);
-    }
+    padding: calc(var(--component-spacing) / 2) 0 calc(var(--component-spacing) / 2);
 
     &--hasFeaturedImage {
       margin-bottom: 0;
-      padding: var(--component-spacing) 0 var(--component-spacing-desktop);
-
-      @media (min-width: $breakpoint-tablet) {
-        padding: var(--component-spacing-tablet) 0 calc(var(--component-spacing-tablet) * 2);
-      }
+      padding-bottom: var(--component-spacing);
     }
   }
 
@@ -34,7 +25,7 @@
         background-color: var(--color-border);
         content: '';
         display: inline-block;
-        height: 2px;
+        height: var(--border-width);
         margin: 0 0.5rem;
         vertical-align: middle;
         width: 8px;
@@ -51,10 +42,7 @@
     &-readingtime {
       @include reset-link;
       color: var(--color-text);
-      font-family: var(--elements-font-family);
       font-size: 0.875rem;
-      font-weight: var(--elements-font-weight);
-      letter-spacing: 0.0125em;
     }
 
     &-author,
@@ -92,13 +80,8 @@
   }
 
   .featuredImage {
-    margin-bottom: calc(var(--component-spacing-tablet) / 3);
-    margin-top: calc(-1 * var(--component-spacing-tablet));
-
-    @media (min-width: $breakpoint-tablet) {
-      margin-bottom: var(--component-spacing-mobile);
-      margin-top: calc(-1 * var(--component-spacing-desktop));
-    }
+    margin-bottom: calc(var(--component-spacing) / 2);
+    margin-top: calc(-1 * var(--component-spacing) / 2);
 
     .figure {
       &-image {

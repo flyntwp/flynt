@@ -1,4 +1,5 @@
 // Shorthands to help writing easier to understand code.
+@import 'functions';
 
 @mixin font-face(
   $family,
@@ -97,9 +98,6 @@
 
 @mixin reset-link {
   background-image: none;
-  color: var(--color-text);
-  font-family: var(--body-regular-font-family);
-  font-weight: var(--body-regular-font-weight);
 }
 
 /**
@@ -150,6 +148,51 @@
     &:nth-child(n) {
       margin-right: 0;
       margin-top: 0;
+    }
+  }
+}
+
+/**
+*  Create native css variables and classes.
+*
+* @param {sass:map} $variables - the string to convert.
+* @return css variables inside :root and classes based on sass:map.
+*/
+@mixin create-native-css-variables-and-classes($variables: '') {
+  @if not ($variables == '') {
+    // Create theme variables inside :root
+    :root {
+      @each $theme, $variables in $variables {
+        @each $variable, $values in $variables {
+          @each $value in $values {
+            @if ($theme == ':root') {
+              --#{$variable}: #{$value};
+            } @else {
+              --#{$theme}-#{$variable}: #{$value};
+            }
+          }
+        }
+      }
+    }
+
+    // Create theme class and map them with variables inside :root
+    @each $theme, $variables in $variables {
+      @if not ($theme == ':root') {
+        $theme-class-name: '.' + string-to-kebab($theme);
+
+        @if $theme == 'theme-default' {
+          $theme-class-name: ':root, .themeReset';
+        } @else {
+          $theme-class-name: '.' + string-to-kebab($theme);
+        }
+        #{$theme-class-name} {
+          @each $variable, $values in $variables {
+            @each $value in $values {
+              --#{$variable}: var(--#{$theme}-#{$variable});
+            }
+          }
+        }
+      }
     }
   }
 }
