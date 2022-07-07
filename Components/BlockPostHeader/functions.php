@@ -24,7 +24,7 @@ Options::addTranslatable('BlockPostHeader', [
         'sub_fields' => [
             [
                 'label' => __('Posted by', 'flynt'),
-                'name' => 'postedByLabel',
+                'name' => 'postedBy',
                 'type' => 'text',
                 'default_value' => 'Posted by',
                 'wrapper' => [
@@ -33,7 +33,7 @@ Options::addTranslatable('BlockPostHeader', [
             ],
             [
                 'label' => __('(Posted) in', 'flynt'),
-                'name' => 'postedInLabel',
+                'name' => 'postedIn',
                 'type' => 'text',
                 'default_value' => 'in',
                 'wrapper' => [
@@ -42,10 +42,10 @@ Options::addTranslatable('BlockPostHeader', [
             ],
             [
                 'label' => __('Reading Time - (20) min read', 'flynt'),
-                'instructions' => __('% is placehoder for number of minutes', 'flynt'),
-                'name' => 'readingtimeLabel',
+                'instructions' => __('%d is placehoder for number of minutes', 'flynt'),
+                'name' => 'readingTime',
                 'type' => 'text',
-                'default_value' => '%s min read',
+                'default_value' => '%d min read',
                 'wrapper' => [
                     'width' => '50',
                 ],

@@ -134,11 +134,11 @@ Options::addTranslatable('GridPostsArchive', [
                 ],
             ],
             [
-                'label' => __('Reading Time', 'flynt'),
-                'instructions' => __('% is placehoder for number of minutes', 'flynt'),
+                'label' => __('Reading Time - (20) min read', 'flynt'),
+                'instructions' => __('%d is placehoder for number of minutes', 'flynt'),
                 'name' => 'readingTime',
                 'type' => 'text',
-                'default_value' => '% min read',
+                'default_value' => '%d min read',
                 'required' => 1,
                 'wrapper' => [
                     'width' => 50
