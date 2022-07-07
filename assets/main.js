@@ -2,17 +2,26 @@ import './scripts/publicPath'
 import './scripts/loadCustomElements'
 import 'normalize.css/normalize.css'
 import './main.scss'
-import $ from 'jquery'
 import feather from 'feather-icons'
 import 'lazysizes'
 
-if ($('.iconList--checkCircle').length) {
-  $('.iconList--checkCircle li').prepend('<i data-feather=check-circle></i>')
-}
+// feather-icons
+document.addEventListener('DOMContentLoaded', function () {
+  // Prepare .iconList--checkCircle
+  const iconListCheckCircleElements = document.querySelectorAll('.iconList--checkCircle')
+  iconListCheckCircleElements.forEach(function (element) {
+    const children = [...element.children]
+    children.forEach(function (child) {
+      child.insertAdjacentHTML('afterbegin', '<i data-feather=check-circle></i>')
+    })
+  })
 
-$(document).ready(function () {
+  // Set feather-icons stroke width
+  const borderWidth = window.getComputedStyle(document.documentElement).getPropertyValue('--border-width')
+    ? parseInt(window.getComputedStyle(document.documentElement).getPropertyValue('--border-width'))
+    : 1.5
   feather.replace({
-    'stroke-width': 1.5
+    'stroke-width': borderWidth
   })
 })
 
