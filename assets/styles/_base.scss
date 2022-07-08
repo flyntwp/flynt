@@ -388,7 +388,7 @@ button {
     background-color: var(--color-border);
     border-color: var(--color-border);
     cursor: default;
-    opacity: 0.5;
+    opacity: calc(1 - 0.618); // based on golden ratio.
     pointer-events: none;
   }
 
