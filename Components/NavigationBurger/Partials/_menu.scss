@@ -17,11 +17,7 @@
   z-index: 98;
 
   .admin-bar & {
-    top: calc(var(--navigation-height) + 46px);
-
-    @media (min-width: 783px) {
-      top: calc(var(--navigation-height) + 32px);
-    }
+    top: calc(var(--navigation-height) + var(--wp-admin--admin-bar--height));
   }
 
   &-item {

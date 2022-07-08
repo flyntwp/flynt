@@ -844,11 +844,7 @@ select {
   height: 100%;
 
   .admin-bar & {
-    padding-top: 46px;
-
-    @media (min-width: 782px) {
-      padding-top: 32px;
-    }
+    padding-top: var(--wp-admin--admin-bar--height);
   }
 }
 
