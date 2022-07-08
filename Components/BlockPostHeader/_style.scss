@@ -1,11 +1,7 @@
 [is='flynt-block-post-header'] {
   .header {
-    margin-bottom: calc(var(--component-spacing) / 2);
-    padding: calc(var(--component-spacing) / 2) 0 calc(var(--component-spacing) / 2);
-
-    &--hasFeaturedImage {
-      margin-bottom: 0;
-      padding-bottom: var(--component-spacing);
+    @media (min-width: $breakpoint-tablet) {
+      --component-spacing: var(--component-spacing-tablet);
     }
   }
 
@@ -80,7 +76,6 @@
   }
 
   .featuredImage {
-    margin-bottom: calc(var(--component-spacing) / 2);
     margin-top: calc(-1 * var(--component-spacing) / 2);
 
     .figure {

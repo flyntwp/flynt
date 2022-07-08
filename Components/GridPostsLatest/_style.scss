@@ -4,7 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: calc(-1 * var(--gutter-width)) 0 0 calc(-1 * var(--gutter-width));
+    margin: calc(-1 * var(--gap-width)) 0 0 calc(-1 * var(--gap-width));
 
     &--columns2,
     &--columns3,
@@ -37,7 +37,7 @@
     @include reset-list-item;
     display: flex;
     max-width: var(--content-max-width);
-    padding: var(--gutter-width) 0 0 var(--gutter-width);
+    padding: var(--gap-width) 0 0 var(--gap-width);
     width: 100%;
   }
 

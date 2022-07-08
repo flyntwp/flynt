@@ -4,7 +4,6 @@
 * Top level styles every element should inherit.
 */
 
-@include font-face('Encode Sans Semi Condensed', 'encode-sans-semi-condensed-v10-latin-800', '800', 'normal');
 @include font-face('Encode Sans Semi Condensed', 'encode-sans-semi-condensed-v10-latin-700', '700', 'normal');
 @include font-face('Roboto', 'roboto-v30-latin-regular', '400', 'normal');
 @include font-face('Roboto', 'roboto-v30-latin-italic', '400', 'italic');
@@ -70,7 +69,6 @@ body {
 h1,
 .h1 {
   font-size: 2.25rem;
-  font-weight: 800;
   margin-bottom: 1.5rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
@@ -81,7 +79,6 @@ h1,
 h2,
 .h2 {
   font-size: 1.875rem;
-  font-weight: 800;
   margin-bottom: 1.5rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
@@ -125,10 +122,6 @@ h6,
   font-family: inherit;
   font-size: 1.125rem;
   margin-top: 1.5rem;
-}
-
-@include headings-following-headings(1, 6) {
-  margin-top: 0;
 }
 
 a {
@@ -225,7 +218,6 @@ blockquote,
     content: '\201c'; // Unicode escaped LEFT DOUBLE QUOTATION MARK
     font-family: Helvetica, Arial, sans-serif;
     font-size: 2.5rem;
-    font-weight: 800;
     left: 0;
     line-height: 1;
     position: absolute;
@@ -273,8 +265,6 @@ ul {
   }
 }
 
-/* Icon Lists */
-
 .iconList {
   list-style: none;
   padding: 0;
@@ -298,12 +288,11 @@ ul {
   }
 }
 
-/* Tables */
-
 table {
   border-spacing: 0;
   box-shadow: inset 0 0 0 var(--border-width) var(--color-border);
   max-width: 100%;
+  text-align: left;
   width: 100%;
 }
 
@@ -374,10 +363,9 @@ button {
   cursor: pointer;
   display: inline-block;
   font-family: inherit;
-  font-weight: 700;
   line-height: 1.7;
   outline: none;
-  padding: 0.75rem 2rem;
+  padding: 0.309em 1.618em;
   text-align: center;
   text-decoration: none;
   transition: 0.2s ease;
@@ -388,14 +376,13 @@ button {
     background-color: var(--color-border);
     border-color: var(--color-border);
     cursor: default;
-    opacity: calc(1 - 0.618); // based on golden ratio.
+    opacity: var(--opacity-grayed-out);
     pointer-events: none;
   }
 
   &:hover {
     background-color: var(--color-accent-hover);
     border-color: var(--color-accent-hover);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
     color: var(--color-background);
   }
 
@@ -445,9 +432,7 @@ button {
   }
 
   &--small {
-    font-size: 0.9375rem;
-    line-height: 1.45;
-    padding: 0.5rem 1.25rem;
+    font-size: 0.8em;
   }
 
   &--link {
@@ -476,8 +461,8 @@ button {
     }
 
     &::after {
-      border-right: var(--border-width) solid currentColor;
-      border-top: var(--border-width) solid currentColor;
+      border-right: 1.5px solid currentColor;
+      border-top: 1.5px solid currentColor;
       content: '';
       display: inline-block;
       height: 0.5rem;
@@ -512,19 +497,10 @@ button {
     transform: rotate(45deg) translate(0, 0);}
 }
 
-/* Icons */
-
-.feather {
-  color: var(--color-accent);
-  position: relative;
-  top: -2px;
-  vertical-align: middle;
-}
-
 /**
 * 1.3 Forms
 *
-* Global form elements, including structering wrapper elements.
+* Global form elements, including structuring wrapper elements.
 */
 
 form {
@@ -565,7 +541,7 @@ label {
   appearance: none;
   background-color: transparent;
   border: var(--border-width) solid var(--color-border);
-  border-radius: 0.66rem;
+  border-radius: var(--box-border-radius);
   color: var(--color-headline);
   font-family: inherit;
   font-size: 1rem;
@@ -575,7 +551,8 @@ label {
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
   &::placeholder {
-    color: var(--color-border);
+    color: var(--color-text);
+    opacity: var(--opacity-grayed-out);
   }
 
   &:focus {
@@ -587,7 +564,7 @@ label {
     background-color: var(--color-border-alpha);
     border-color: var(--color-border);
     color: var(--color-border);
-    opacity: 0.75;
+    opacity: var(--opacity-grayed-out);
   }
 }
 
@@ -599,13 +576,13 @@ input,
 select,
 textarea {
   margin: 0 0 1rem;
-  padding: 0.5rem 1.25rem;
+  padding: 0.309rem 0.927rem;
 }
 
 textarea {
   line-height: 1.7;
   min-height: 150px;
-  padding: 1rem 1.25rem;
+  padding: 0.927rem;
   resize: vertical;
   vertical-align: top;
   width: 100%;
@@ -643,7 +620,7 @@ select {
   }
 
   select {
-    // don't change backgound image, if you need to change it - use wrapper .select
+    // don't change background image, if you need to change it - use wrapper .select
     background-image: none;
     margin: 0;
     position: relative;
@@ -763,16 +740,16 @@ select {
 
 .oneInputForm {
   border: var(--border-width) solid var(--color-border);
-  border-radius: calc(var(--button-border-radius) + 4px);
+  border-radius: calc(var(--box-border-radius) + (var(--border-width) * 2));
   margin: 0 0 2rem;
-  min-height: 4.375rem;
-  padding: 4px;
+  padding: calc(var(--border-width) * 2);
   position: relative;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   width: 100%;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
     align-items: center;
+    border-radius: calc(var(--button-border-radius) + (var(--border-width) * 2));
     display: flex;
 
     &:focus-within {
@@ -795,9 +772,13 @@ select {
     border: 0;
     border-radius: var(--button-border-radius);
     margin: 0;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding: 0 0.618rem;
     width: 100%;
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      min-height: inherit;
+      padding: 0 1.618rem;
+    }
 
     &:focus {
       box-shadow: none;
@@ -838,6 +819,14 @@ select {
 * Global layout classes for a consistent appearance.
 */
 
+/* Icons */
+.feather {
+  color: var(--color-accent);
+  position: relative;
+  top: -2px;
+  vertical-align: middle;
+}
+
 .pageWrapper {
   display: flex;
   flex-direction: column;
@@ -863,21 +852,33 @@ select {
     margin: 0;
     padding: var(--component-spacing) 0;
   }
-}
 
-// Reduce top spacing in half for first component in mainContent
-.mainContent {
-  > .componentSpacing:first-child {
-    @media (min-width: $breakpoint-desktop) {
-      margin-top: calc(var(--component-spacing) / 2);
+  // Reduce componentSpacing top on desktop for the first component in mainContent.
+  .mainContent > & {
+    &:first-child {
+      @media (min-width: $breakpoint-tablet) {
+        margin-top: var(--component-spacing-tablet);
+      }
+
+      &[class*='theme'] {
+        @media (min-width: $breakpoint-tablet) {
+          margin: 0;
+          padding-top: var(--component-spacing-tablet);
+        }
+      }
+    }
+  }
+
+  // Reduce componentSpacing for all components in single post layouts.
+  .post-main & {
+    --component-spacing: calc(var(--component-spacing-mobile) / 2);
+
+    @media (min-width: $breakpoint-tablet) {
+      --component-spacing: calc(var(--component-spacing-tablet) / 2);
     }
 
-    &[class*='theme'] {
-      margin: 0;
-
-      @media (min-width: $breakpoint-desktop) {
-        padding-top: calc(var(--component-spacing) / 2);
-      }
+    @media (min-width: $breakpoint-desktop) {
+      --component-spacing: calc(var(--component-spacing-desktop) / 2);
     }
   }
 }
@@ -925,7 +926,20 @@ select {
   width: 1px !important;
 }
 
-/* Box Helpers */
+/* Skip link behavior */
+.skipLink {
+  position: fixed;
+  top: -100px;
+  z-index: 999;
+
+  &:focus {
+    top: 0;
+  }
+}
+
+/**
+* 2.1 Box Helpers
+*/
 
 .boxPadding {
   @include reset-content-margins;
@@ -940,50 +954,6 @@ select {
 
 .boxShadow {
   box-shadow: 0 5px 35px calc(-1 * var(--border-width)) rgba(0, 0, 0, 0.08);
-}
-
-/* Custom styling for single post layouts */
-.post {
-  &-main {
-    .componentSpacing {
-      margin: 32px 0;
-
-      &[class*='theme'] {
-        margin: 0;
-        padding: 32px 0;
-
-        @media (min-width: $breakpoint-tablet) {
-          padding: var(--component-spacing-mobile) 0;
-        }
-      }
-
-      @media (min-width: $breakpoint-tablet) {
-        margin: var(--component-spacing-mobile) 0;
-      }
-    }
-
-    > .componentSpacing {
-      &:first-child {
-        margin-top: 0;
-      }
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-}
-
-/* Skip link behaviour */
-
-.skipLink {
-  position: fixed;
-  top: -100px;
-  z-index: 999;
-
-  &:focus {
-    top: 0;
-  }
 }
 
 /**

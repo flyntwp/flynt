@@ -19,11 +19,11 @@
     .box {
       align-items: center;
       display: flex;
-      margin: 0 calc(-1 * (var(--gutter-width) *2));
+      margin: 0 calc(-1 * (var(--gap-width) *2));
 
       &-inner {
         @include reset-content-margins('both');
-        padding: 0 calc(var(--gutter-width) * 2);
+        padding: 0 calc(var(--gap-width) * 2);
         width: 50%;
       }
 

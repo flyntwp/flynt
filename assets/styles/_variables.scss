@@ -8,15 +8,17 @@ $breakpoint-desktop-wide: 1440px;
 :root {
   --color-brand: #2a42df;
   --color-error: #e80242;
+  --opacity-grayed-out: calc(1 - 0.618); // based on golden ratio.
 
   --border-width: 2px;
-  --gutter-width: 24px;
+  --gap-width: 24px;
+
   --button-border-radius: 32px;
+  --box-border-radius: 16px;
 
   --box-padding-mobile: 16px;
   --box-padding-tablet: 24px;
   --box-padding-desktop: 32px;
-  --box-border-radius: 16px;
 
   --content-max-width: calc(#{$breakpoint-tablet} - (var(--container-padding-desktop) * 2));
   --content-max-width-large: calc(#{$breakpoint-tablet} + var(--container-padding-desktop));
@@ -28,7 +30,7 @@ $breakpoint-desktop-wide: 1440px;
 
   --component-spacing-mobile: 48px;
   --component-spacing-tablet: 96px;
-  --component-spacing-desktop: 144px;
+  --component-spacing-desktop: 128px;
 
   --box-padding: var(--box-padding-mobile);
   --container-padding: var(--container-padding-mobile);
@@ -53,9 +55,9 @@ $breakpoint-desktop-wide: 1440px;
   --color-background: #fff;
   --color-headline: #252525;
   --color-text: #353535;
-  --color-accent: hsl(232, 74%, 52%);
+  --color-accent: var(--color-brand);
   --color-accent-alpha: hsla(232, 74%, 52%, 0.4);
-  --color-accent-hover: hsl(232, 74%, 45%);
+  --color-accent-hover: hsl(232, 74%, 55%);
   --color-border: hsl(228, 16%, 40%);
   --color-border-alpha: hsla(228, 16%, 40%, 0.1);
 }
@@ -70,7 +72,7 @@ $breakpoint-desktop-wide: 1440px;
   --color-text: #e9e9ec;
   --color-accent: hsl(37, 100%, 69%);
   --color-accent-alpha: hsla(37, 100%, 69%, 0.4);
-  --color-accent-hover: hsl(37, 100%, 62%);
+  --color-accent-hover: hsl(37, 100%, 72%);
   --color-border: hsl(240, 7%, 92%);
   --color-border-alpha: hsla(240, 7%, 92%, 0.1);
 }
@@ -81,7 +83,7 @@ $breakpoint-desktop-wide: 1440px;
   --color-text: #e9e9ec;
   --color-accent: hsl(37, 100%, 84%);
   --color-accent-alpha: hsla(37, 100%, 84%, 0.4);
-  --color-accent-hover: hsl(37, 100%, 77%);
+  --color-accent-hover: hsl(37, 100%, 87%);
   --color-border: hsl(240, 7%, 92%);
   --color-border-alpha: hsla(240, 7%, 92%, 0.1);
 }

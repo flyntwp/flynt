@@ -34,40 +34,6 @@
   padding-right: $padding;
 }
 
-@function heading-combinations($i, $from, $to, $leading, $following) {
-  @if ($i == $to) {
-    @return '#{$leading}#{$from} + #{$following}#{$from}';
-  } @else {
-    @return '#{$leading}#{$from} + #{$following}#{$i+1}, ' + heading-combinations($i + 1, $from, $to, $leading, $following);
-  }
-}
-
-@mixin headings-following-headings($from: 1, $to: 6) {
-  $headings: '';
-
-  // h + h
-  @for $i from $from through $to {
-    $heading: heading-combinations($i, $i, $to, 'h', 'h');
-    $headings: '#{$headings} #{$heading}, ';
-  }
-
-  // h + .h
-  @for $i from $from through $to {
-    $heading: heading-combinations($i, $i, $to, 'h', '.h');
-    $headings: '#{$headings} #{$heading}, ';
-  }
-
-  // .h + .h
-  @for $i from $from through $to {
-    $heading: heading-combinations($i, $i, $to, '.h', '.h');
-    $headings: '#{$headings} #{$heading}, ';
-  }
-
-  #{$headings} {
-    @content;
-  }
-}
-
 @mixin reset-content-margins($direction: 'both') {
   @if ($direction == 'both' or $direction == 'top') {
     > :first-child {
@@ -107,8 +73,8 @@
 @mixin grid(
   $columns,
   $alignment: flex-start,
-  $gutter-horizontal: var(--gutter-width),
-  $gutter-vertical: var(--gutter-width)
+  $gap-horizontal: var(--gap-width),
+  $gap-vertical: var(--gap-width)
 ) {
   display: flex;
   flex-wrap: wrap;
@@ -117,15 +83,15 @@
 
   > * {
     width: calc((#{100% / $columns}) -
-    (#{$columns - 1} / #{$columns} * #{$gutter-horizontal}));
+    (#{$columns - 1} / #{$columns} * #{$gap-horizontal}));
 
     &:nth-child(n) {
-      margin-right: $gutter-horizontal;
+      margin-right: $gap-horizontal;
       margin-top: 0;
     }
 
     &:nth-child(1n + #{$columns + 1}) {
-      margin-top: $gutter-vertical;
+      margin-top: $gap-vertical;
     }
 
     &:nth-child(#{$columns}n) {

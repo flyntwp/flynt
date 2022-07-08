@@ -1,6 +1,6 @@
 [is='flynt-block-post-footer'] {
   margin-bottom: var(--component-spacing);
-  margin-top: 32px;
+  margin-top: var(--component-spacing);
 
   @media (min-width: $breakpoint-tablet) {
     margin-top: var(--component-spacing-mobile);
@@ -54,7 +54,7 @@
       padding-left: 1rem;
 
       @media (min-width: $breakpoint-mobile-horizontal) {
-        padding-left: var(--gutter-width);
+        padding-left: var(--gap-width);
       }
     }
 
