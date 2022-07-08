@@ -52,11 +52,7 @@
     z-index: 99;
 
     .admin-bar & {
-      top: 46px;
-
-      @media (min-width: 783px) {
-        top: 32px;
-      }
+      top: var(--wp-admin--admin-bar--height);
     }
   }
 
