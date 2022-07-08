@@ -4,9 +4,6 @@ $breakpoint-tablet-horizontal: 1024px;
 $breakpoint-desktop: 1280px;
 $breakpoint-desktop-wide: 1440px;
 
-$heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';
-$input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [type="email"], [type="search"], [type="number"], [type="password"], textarea, select';
-
 // Global variables
 :root {
   --color-brand: #2a42df;
@@ -16,7 +13,7 @@ $input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [ty
   --gutter-width: 24px;
   --button-border-radius: 32px;
 
-  --box-padding: 16px;
+  --box-padding-mobile: 16px;
   --box-padding-tablet: 24px;
   --box-padding-desktop: 32px;
   --box-border-radius: 16px;
@@ -25,13 +22,17 @@ $input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [ty
   --content-max-width-large: calc(#{$breakpoint-tablet} + var(--container-padding-desktop));
   --container-max-width: #{$breakpoint-desktop-wide};
 
-  --container-padding: 16px;
+  --container-padding-mobile: 16px;
   --container-padding-tablet: 32px;
   --container-padding-desktop: 48px;
 
-  --component-spacing: 48px;
+  --component-spacing-mobile: 48px;
   --component-spacing-tablet: 96px;
   --component-spacing-desktop: 144px;
+
+  --box-padding: var(--box-padding-mobile);
+  --container-padding: var(--container-padding-mobile);
+  --component-spacing: var(--component-spacing-mobile);
 
   @media (min-width: $breakpoint-tablet) {
     --box-padding: var(--box-padding-tablet);
@@ -84,3 +85,6 @@ $input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [ty
   --color-border: hsl(240, 7%, 92%);
   --color-border-alpha: hsla(240, 7%, 92%, 0.1);
 }
+
+$heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';
+$input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [type="email"], [type="search"], [type="number"], [type="password"], textarea, select';
