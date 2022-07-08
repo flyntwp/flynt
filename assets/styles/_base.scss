@@ -222,7 +222,7 @@ blockquote,
   }
 
   &::before {
-    content: '“';
+    content: '\201c'; // Unicode escaped LEFT DOUBLE QUOTATION MARK
     font-family: Helvetica, Arial, sans-serif;
     font-size: 2.5rem;
     font-weight: 800;
