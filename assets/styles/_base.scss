@@ -270,12 +270,9 @@ ul {
       height: 20px;
       left: 0;
       position: absolute;
+      stroke-width: var(--border-width);
       top: 4px;
       width: 20px;
-
-      @media (min-width: $breakpoint-mobile-horizontal) {
-        top: 5px;
-      }
     }
   }
 }
@@ -816,6 +813,7 @@ select {
 .feather {
   color: var(--color-accent);
   position: relative;
+  stroke-width: 1.5;
   top: -2px;
   vertical-align: middle;
 }
