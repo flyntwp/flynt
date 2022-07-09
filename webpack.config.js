@@ -17,7 +17,10 @@ const babelQuery = {
       corejs: 'core-js@3'
     }]
   ],
-  plugins: ['@babel/plugin-transform-runtime']
+  plugins: [
+    '@babel/plugin-transform-runtime',
+    'babel-plugin-smart-webpack-import'
+  ]
 }
 
 // config.production = true
@@ -143,7 +146,8 @@ const multiConfig = Object.keys(config.entry).map(entry => {
     name: config.entry[entry],
     output: {
       ...webpackConfig.output,
-      filename: `${entry}.js`
+      filename: `${entry}.js`,
+      chunkFilename: `${entry}-chunkFiles/[name]-[contenthash].js`
     },
     plugins: [
       ...webpackConfig.plugins,

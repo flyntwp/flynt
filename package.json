@@ -44,6 +44,7 @@
     "autoprefixer": "^9.8.6",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
+    "babel-plugin-smart-webpack-import": "^2.0.0",
     "browser-sync": "^2.26.13",
     "check-node-version": "^4.0.3",
     "copy-webpack-plugin": "^6.2.1",

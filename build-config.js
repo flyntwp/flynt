@@ -63,7 +63,11 @@ module.exports = {
     dest: dest,
     rev: {
       src: dest + '/**/*.*',
-      srcRevved: [dest + '/**/*.{js,css}', '!' + dest + '/style.css'],
+      srcRevved: [
+        dest + '/**/*.{js,css}',
+        '!' + dest + '/style.css',
+        '!' + dest + '/**/*-chunkFiles/**/*.{js,css,txt}'
+      ],
       srcStatic: dest + '/**/*.{html,php,twig}',
       assetSrc: [
         dest + '/**/*',
