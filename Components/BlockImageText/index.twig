@@ -7,7 +7,7 @@
       <div class="box-inner box-inner--image">
         <figure class="figure">
           {% set imgWidth = 500 %}
-          {% set imgHeight = image.width and image.height ? (imgWidth / image.aspect)|round : 1.5 %}
+          {% set imgHeight = image.width and image.height ? (imgWidth / image.aspect)|round : (imgWidth / 1.5)|round %}
           {% set placeholderColor = 'rgba(125, 125, 125, 0.1)' %}
 
           {% if image.post_mime_type == 'image/svg+xml' %}
