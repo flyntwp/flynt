@@ -7,16 +7,13 @@
       <div class="box-inner box-inner--image">
         <figure class="figure">
           {% set imgWidth = 500 %}
-          {% set imgHeight = image.width and image.height ? (imgWidth / image.aspect)|round : (imgWidth / 1.5)|round %}
+          {% set imgHeight = (imgWidth / image.aspect)|round %}
           {% set placeholderColor = 'rgba(125, 125, 125, 0.1)' %}
 
           {% if image.post_mime_type == 'image/svg+xml' %}
             <img
-              class="image lazyload"
-              width="{{ imgWidth }}"
-              height="{{ imgHeight }}"
-              src="{{ placeholderImage(imgWidth, imgHeight, placeholderColor) }}"
-              data-src="{{ image.src }}"
+              class="image"
+              src="{{ image.src }}"
               alt="{{ image.alt|e }}">
           {% else %}
             <img class="figure-image lazyload"
