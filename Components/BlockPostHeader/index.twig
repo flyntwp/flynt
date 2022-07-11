@@ -10,7 +10,9 @@
           <a class="meta-author" href="{{ post.author.link|e('esc_url') }}">
             {% if post.author.avatar %}
             <span class="meta-avatar">
-              <img class="meta-avatarImage" src="{{ post.author.avatar }}" alt="{{ post.author.name|e }}">
+              <img class="meta-avatarImage"
+                src="{{ post.author.avatar }}"
+                alt="{{ post.author.name|e }}">
             </span>
             {% endif %}
             <span class="visuallyHidden">{{ labels.postedBy|e }}</span>

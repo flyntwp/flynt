@@ -14,7 +14,9 @@
       <div class="author">
         {% if post.author.avatar %}
           <a class="author-avatarLink" href="{{ post.author.link|e('esc_url') }}" aria-hidden="true" tabindex="-1">
-            <img class="author-avatarImage" src="{{ post.author.avatar }}" alt="{{ post.author.name|e }}">
+            <img class="author-avatarImage"
+              src="{{ post.author.avatar }}"
+              alt="{{ post.author.name|e }}">
           </a>
         {% endif %}
         <div class="author-info">

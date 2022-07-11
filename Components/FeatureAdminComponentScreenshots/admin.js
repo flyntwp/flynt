@@ -1,3 +1,4 @@
+// TODO: Remove jquery and use vanilla js
 /* globals FlyntData, FlyntComponentScreenshots */
 import $ from 'jquery'
 

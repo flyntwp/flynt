@@ -17,8 +17,12 @@
               {% if componentBlock.componentScreenshot %}
                 <div class="component-image">
                   <div class="component-imageWrapper">
+                    {% set imgWidth = 760 %}
+                    {% set imgHeight = 760 / componentBlock.componentScreenshot.aspect %}
+                    {% set placeholderColor = 'rgba(125, 125, 125, 0.1)' %}
+
                     <img class="lazyload image {{ componentBlock.componentScreenshot.aspect > (1280/800) ? 'image--isSmallerThanWrapper' }} "
-                        src="{{ placeholderImage(760, 760 / componentBlock.componentScreenshot.aspect) }}"
+                        src="{{ placeholderImage(imgWidth, imgHeight, placeholderColor) }}"
                         data-src="{{ componentBlock.componentScreenshot.src }}"
                         data-sizes="auto"
                         alt="{{ componentBlock.readme.title|e }}">

@@ -12,9 +12,15 @@
             <div class="content {{ options.card == 'layoutCard' ? 'boxRadius boxShadow themeReset' }}
             {{ options.card == 'layoutCard' and options.theme != 'themeDark' }}">
               {% if item.image %}
+                {% set imgWidth = 424 %}
+                {% set imgHeight = 283 %}
+                {% set placeholderColor = 'rgba(125, 125, 125, 0.1)' %}
+
                 <img class="content-image lazyload {{ options.card != 'layoutCard' ? 'boxRadius' }}"
-                  src="{{ item.image.src|resizeDynamic(424, 283) }}"
-                  srcset="{{ placeholderImage(3, 2, 'rgba(125, 125, 125, 0.1)') }}"
+                  src="{{ item.image.src|resizeDynamic(imgWidth, imgHeight) }}"
+                  width="{{ imgWidth }}"
+                  height="{{ imgHeight }}"
+                  srcset="{{ placeholderImage(imgWidth, imgHeight, placeholderColor) }}"
                   data-srcset="
                     {{ item.image.src|resizeDynamic(1920, 1280) }} 1920w,
                     {{ item.image.src|resizeDynamic(1320, 880) }} 1320w,
@@ -22,7 +28,7 @@
                     {{ item.image.src|resizeDynamic(1050, 700) }} 1050w,
                     {{ item.image.src|resizeDynamic(760, 506) }} 760w,
                     {{ item.image.src|resizeDynamic(600, 400) }} 600w,
-                    {{ item.image.src|resizeDynamic(424, 283) }} 424w,
+                    {{ item.image.src|resizeDynamic(imgWidth, imgHeight) }} 424w,
                     {{ item.image.src|resizeDynamic(312, 208) }} 312w"
                   data-sizes="auto"
                   alt="{{ item.image.alt|e }}">

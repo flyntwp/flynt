@@ -6,16 +6,24 @@
       </div>
       <div class="box-inner box-inner--image">
         <figure class="figure">
+          {% set imgWidth = 500 %}
+          {% set imgHeight = image.width and image.height ? (imgWidth / image.aspect)|round : 1.5 %}
+          {% set placeholderColor = 'rgba(125, 125, 125, 0.1)' %}
+
           {% if image.post_mime_type == 'image/svg+xml' %}
             <img
               class="image lazyload"
-              src="{{ placeholderImage(500, (500 * 0.75)|round, 'rgba(125, 125, 125, 0.1)') }}"
+              width="{{ imgWidth }}"
+              height="{{ imgHeight }}"
+              src="{{ placeholderImage(imgWidth, imgHeight, placeholderColor) }}"
               data-src="{{ image.src }}"
               alt="{{ image.alt|e }}">
           {% else %}
             <img class="figure-image lazyload"
-              src="{{ image.src|resizeDynamic(500) }}"
-              srcset="{{ placeholderImage(500, 500 / image.aspect, 'rgba(125, 125, 125, 0.1)') }}"
+              src="{{ image.src|resizeDynamic(imgWidth) }}"
+              width="{{ imgWidth }}"
+              height="{{ imgHeight }}"
+              srcset="{{ placeholderImage(imgWidth, imgHeight, placeholderColor) }}"
               data-srcset="
                 {{ image.src|resizeDynamic(1920) }} 1920w,
                 {{ image.src|resizeDynamic(1320) }} 1320w,
@@ -23,7 +31,7 @@
                 {{ image.src|resizeDynamic(1035) }} 1035w,
                 {{ image.src|resizeDynamic(860) }} 860w,
                 {{ image.src|resizeDynamic(760) }} 760w,
-                {{ image.src|resizeDynamic(500) }} 500w,
+                {{ image.src|resizeDynamic(imgWidth) }} 500w,
                 {{ image.src|resizeDynamic(375) }} 375w"
               data-sizes="auto"
               alt="{{ image.alt|e }}">
