@@ -11,8 +11,7 @@ call_user_func(function () {
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script(
         'Flynt/assets',
-        Asset::requireUrl('assets/main.js'),
-        ['jquery-core']
+        Asset::requireUrl('assets/main.js')
     );
     wp_script_add_data('Flynt/assets', 'defer', true);
     $data = [
