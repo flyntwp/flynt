@@ -1,4 +1,3 @@
-import $ from 'jquery'
 import Swiper, { Navigation, A11y, Autoplay } from 'swiper/swiper.esm'
 import 'swiper/swiper-bundle.css'
 
@@ -12,7 +11,6 @@ class SliderImages extends window.HTMLDivElement {
   }
 
   init () {
-    this.$ = $(this)
     this.props = this.getInitialProps()
     this.resolveElements()
   }
@@ -20,15 +18,15 @@ class SliderImages extends window.HTMLDivElement {
   getInitialProps () {
     let data = {}
     try {
-      data = JSON.parse($('script[type="application/json"]', this).text())
+      data = JSON.parse(this.querySelector('script[type="application/json"]').textContent)
     } catch (e) {}
     return data
   }
 
   resolveElements () {
-    this.$slider = $('[data-slider]', this)
-    this.$buttonNext = $('[data-slider-button="next"]', this)
-    this.$buttonPrev = $('[data-slider-button="prev"]', this)
+    this.slider = this.querySelector('[data-slider]')
+    this.buttonNext = this.querySelector('[data-slider-button="next"]')
+    this.buttonPrev = this.querySelector('[data-slider-button="prev"]')
   }
 
   connectedCallback () {
@@ -39,8 +37,8 @@ class SliderImages extends window.HTMLDivElement {
     const { options } = this.props
     const config = {
       navigation: {
-        nextEl: this.$buttonNext.get(0),
-        prevEl: this.$buttonPrev.get(0)
+        nextEl: this.buttonNext,
+        prevEl: this.buttonPrev
       },
       a11y: options.a11y
     }
@@ -49,7 +47,8 @@ class SliderImages extends window.HTMLDivElement {
         delay: options.autoplaySpeed
       }
     }
-    this.slider = new Swiper(this.$slider.get(0), config)
+
+    this.swiper = new Swiper(this.slider, config)
   }
 }
 
