@@ -1,4 +1,5 @@
-import $ from 'jquery'
+/* globals fetch, DOMParser */
+import { initFeatherIcons } from '../../assets/scripts/helpersFeatherIcons'
 
 class GridPostsArchive extends window.HTMLDivElement {
   constructor (...args) {
@@ -8,15 +9,15 @@ class GridPostsArchive extends window.HTMLDivElement {
   }
 
   init () {
-    this.$ = $(this)
     this.resolveElements()
     this.bindFunctions()
     this.bindEvents()
   }
 
   resolveElements () {
-    this.$posts = $('.posts', this)
-    this.$pagination = $('.pagination', this)
+    this.loadMore = this.querySelector('[data-action="loadMore"]')
+    this.posts = this.querySelector('.posts')
+    this.pagination = this.querySelector('.pagination')
   }
 
   bindFunctions () {
@@ -24,33 +25,49 @@ class GridPostsArchive extends window.HTMLDivElement {
   }
 
   bindEvents () {
-    this.$.on('click', '[data-action="loadMore"]', this.onLoadMore)
+    if (this.loadMore) {
+      this.loadMore.addEventListener('click', this.onLoadMore)
+    }
   }
 
   onLoadMore (e) {
     e.preventDefault()
 
-    const $target = $(e.currentTarget).addClass('button--disabled')
+    const target = e.currentTarget
+    target.classList.add('button--disabled')
 
     const url = new URL(e.currentTarget.href)
     url.searchParams.append('contentOnly', 1)
 
-    $.ajax({
-      url: url
-    }).then(
-      response => {
-        const $html = $(response)
-        const $posts = $('.posts', $html)
-        const $pagination = $('.pagination', $html)
+    fetch(url)
+      .then(response => {
+        return response.text()
+      }).then(responseAsText => {
+        const parser = new DOMParser()
+        const html = parser.parseFromString(responseAsText, 'text/html')
+        const posts = html.querySelector('.posts')
+        const pagination = html.querySelector('.pagination')
 
-        this.$posts.append($posts.html())
-        this.$pagination.html($pagination.html() || '')
-      },
-      response => {
-        console.error(response)
-        $target.removeClass('button--disabled')
-      }
-    )
+        if (posts) {
+          this.posts.innerHTML += posts.innerHTML
+          initFeatherIcons() // Init feather-icons inside the post item footer.
+        }
+
+        if (pagination) {
+          const loadMore = pagination.querySelector('[data-action="loadMore"]')
+          const targetUrl = new URL(loadMore.href)
+
+          targetUrl.searchParams.delete('contentOnly')
+          this.loadMore.href = targetUrl
+        } else {
+          this.pagination.innerHTML = ''
+        }
+
+        target.classList.remove('button--disabled')
+      })
+      .catch(err => {
+        console.error(err)
+      })
   }
 }
 
