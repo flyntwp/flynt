@@ -1,4 +1,3 @@
-import $ from 'jquery'
 
 class BlockVideoOembed extends window.HTMLDivElement {
   constructor (...args) {
@@ -8,16 +7,16 @@ class BlockVideoOembed extends window.HTMLDivElement {
   }
 
   init () {
-    this.$ = $(this)
     this.resolveElements()
     this.bindFunctions()
     this.bindEvents()
   }
 
   resolveElements () {
-    this.$posterImage = $('.figure-image', this)
-    this.$videoPlayer = $('.video-player', this)
-    this.$iframe = $('iframe', this)
+    this.playButton = this.querySelector('.video-playButton')
+    this.posterImage = this.querySelector('.figure-image')
+    this.videoPlayer = this.querySelector('.video-player')
+    this.iframe = this.querySelector('iframe')
   }
 
   bindFunctions () {
@@ -26,19 +25,19 @@ class BlockVideoOembed extends window.HTMLDivElement {
   }
 
   bindEvents () {
-    this.$.one('click', '.video-playButton', this.loadVideo)
+    this.playButton.addEventListener('click', this.loadVideo, { once: true })
   }
 
   loadVideo () {
-    this.$iframe.one('load', this.videoIsLoaded.bind(this))
-    this.$iframe.attr('src', this.$iframe.data('src'))
-    this.$videoPlayer.addClass('video-player--isLoading')
+    this.iframe.addEventListener('load', this.videoIsLoaded.bind(this), { once: true })
+    this.iframe.setAttribute('src', this.iframe.getAttribute('data-src'))
+    this.videoPlayer.classList.add('video-player--isLoading')
   }
 
   videoIsLoaded () {
-    this.$videoPlayer.removeClass('video-player--isLoading')
-    this.$videoPlayer.addClass('video-player--isLoaded')
-    this.$posterImage.addClass('figure-image--isHidden')
+    this.videoPlayer.classList.remove('video-player--isLoading')
+    this.videoPlayer.classList.add('video-player--isLoaded')
+    this.posterImage.classList.add('figure-image--isHidden')
   }
 }
 
