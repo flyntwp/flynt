@@ -1,6 +1,3 @@
-import $ from 'jquery'
-import 'core-js/es/object/assign'
-import 'core-js/es/object/keys'
 import Headroom from 'headroom.js'
 import debounce from 'lodash/debounce'
 
@@ -12,10 +9,8 @@ class NavigationMain extends window.HTMLElement {
   }
 
   init () {
-    this.$ = $(this)
     this.bindFunctions()
     this.bindEvents()
-    this.resolveElements()
     this.headroom = null
   }
 
@@ -24,18 +19,18 @@ class NavigationMain extends window.HTMLElement {
   }
 
   bindEvents () {
-    $(window).on('resize', debounce(this.onWindowResize, 200))
+    window.addEventListener('resize', debounce(this.onWindowResize, 200))
   }
-
-  resolveElements () {}
 
   connectedCallback () {
     this.initHeadroom()
   }
 
   initHeadroom () {
+    const navigationHeight = parseInt(window.getComputedStyle(this).getPropertyValue('--navigation-height')) || 0
+
     this.headroom = new Headroom(this, {
-      offset: 80,
+      offset: navigationHeight,
       tolerance: {
         up: 5,
         down: 0
