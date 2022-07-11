@@ -17,7 +17,7 @@
               <figure class="figure">
                 <img class="post-image figure-image lazyload"
                   src="{{ post.thumbnail.src|resizeDynamic(424, 283) }}"
-                  srcset="{{ placeholderImage(3, 2) }}"
+                  srcset="{{ placeholderImage(3, 2, 'rgba(125, 125, 125, 0.1)') }}"
                   data-srcset="
                     {{ post.thumbnail.src|resizeDynamic(1920, 1280) }} 1920w,
                     {{ post.thumbnail.src|resizeDynamic(1320, 880) }} 1320w,

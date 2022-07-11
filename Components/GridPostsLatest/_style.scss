@@ -56,10 +56,6 @@
       margin-bottom: 0;
     }
 
-    &-image {
-      background: var(--color-border-alpha);
-    }
-
     &-inner {
       @include reset-content-margins;
       color: var(--color-text);

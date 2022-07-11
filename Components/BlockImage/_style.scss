@@ -25,13 +25,5 @@
 
   .figure {
     margin: 0 auto;
-
-    &-image {
-      background-color: var(--color-border-alpha);
-
-      &.lazyloaded {
-        background-color: transparent;
-      }
-    }
   }
 }

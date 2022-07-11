@@ -9,13 +9,13 @@
           {% if image.post_mime_type == 'image/svg+xml' %}
             <img
               class="image lazyload"
-              src="{{ placeholderImage(500, (500 * 0.75)|round) }}"
+              src="{{ placeholderImage(500, (500 * 0.75)|round, 'rgba(125, 125, 125, 0.1)') }}"
               data-src="{{ image.src }}"
               alt="{{ image.alt|e }}">
           {% else %}
             <img class="figure-image lazyload"
               src="{{ image.src|resizeDynamic(500) }}"
-              srcset="{{ placeholderImage(500, 500 / image.aspect) }}"
+              srcset="{{ placeholderImage(500, 500 / image.aspect, 'rgba(125, 125, 125, 0.1)') }}"
               data-srcset="
                 {{ image.src|resizeDynamic(1920) }} 1920w,
                 {{ image.src|resizeDynamic(1320) }} 1320w,

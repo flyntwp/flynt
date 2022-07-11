@@ -13,7 +13,7 @@
             <figure class="figure">
               <img class="figure-image lazyload"
                 src="{{ image.src|resizeDynamic(0, 540) }}"
-                srcset="{{ placeholderImage(image.aspect * 540, 540) }}"
+                srcset="{{ placeholderImage(image.aspect * 540, 540, 'rgba(125, 125, 125, 0.1)') }}"
                 data-srcset="
                   {{ image.src|resizeDynamic(0, 1080) }} {{ (image.aspect * 1080)|round }}w,
                   {{ image.src|resizeDynamic(0, 860) }} {{ (image.aspect * 860)|round }}w,

@@ -14,7 +14,7 @@
               {% if item.image %}
                 <img class="content-image lazyload {{ options.card != 'layoutCard' ? 'boxRadius' }}"
                   src="{{ item.image.src|resizeDynamic(424, 283) }}"
-                  srcset="{{ placeholderImage(3, 2) }}"
+                  srcset="{{ placeholderImage(3, 2, 'rgba(125, 125, 125, 0.1)') }}"
                   data-srcset="
                     {{ item.image.src|resizeDynamic(1920, 1280) }} 1920w,
                     {{ item.image.src|resizeDynamic(1320, 880) }} 1320w,
