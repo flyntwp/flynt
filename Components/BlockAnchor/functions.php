@@ -2,8 +2,6 @@
 
 namespace Flynt\Components\BlockAnchor;
 
-use Flynt\Utils\Asset;
-use Flynt\Utils\Options;
 use Timber\Timber;
 use Timber\Post;
 
