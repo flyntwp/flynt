@@ -3,11 +3,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-top: 2rem;
-
-  @media (min-width: $breakpoint-desktop) {
-    margin-top: 3rem;
-  }
+  margin-top: calc(var(--component-spacing) / 2);
 
   &--center {
     justify-content: center;
