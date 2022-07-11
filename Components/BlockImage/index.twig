@@ -1,29 +1,28 @@
 <div class="flyntComponent flyntComponent--{{ options.size }} {{ options.theme }} {{ noComponentSpacing == true ? '' : 'componentSpacing' }}" is="flynt-block-image">
   <div class="container{% if options.size != 'sizeFull' %} centerMaxWidthContainer{% endif %}">
     <figure class="figure">
-      {% set imgWidth = 760 %}
-      {% set imgHeight = (imgWidth / image.aspect)|round %}
-      {% set placeholderColor = 'rgba(125, 125, 125, 0.1)' %}
 
       {% if image.post_mime_type == 'image/svg+xml' %}
-        <img
-            class="image"
-            src="{{ image.src }}"
+          <img class="image lazyload"
+            src="{{ placeholderImage(760, (760 / image.aspect)|round, 'rgba(125, 125, 125, 0.1)') }}"
+            width="{{ 760 }}"
+            height="{{ (760 / image.aspect)|round }}"
+            data-src="{{ image.src }}"
             alt="{{ image.alt|e }}"
           >
       {% else %}
         <img class="figure-image lazyload"
             src="{{ image.src|resizeDynamic(imgWidth) }}"
-            width="{{ imgWidth }}"
-            height="{{ imgHeight }}"
-            srcset="{{ placeholderImage(imgWidth, imgHeight, placeholderColor) }}"
+            width="{{ 760 }}"
+            height="{{ (760 / image.aspect)|round }}"
+            srcset="{{ placeholderImage(760, (760 / image.aspect)|round, 'rgba(125, 125, 125, 0.1)') }}"
             data-srcset="
               {{ image.src|resizeDynamic(1920) }} 1920w,
               {{ image.src|resizeDynamic(1440) }} 1440w,
               {{ image.src|resizeDynamic(1320) }} 1320w,
               {{ image.src|resizeDynamic(1024) }} 1024w,
               {{ image.src|resizeDynamic(860) }} 860w,
-              {{ image.src|resizeDynamic(imgWidth) }} 760w,
+              {{ image.src|resizeDynamic(760) }} 760w,
               {{ image.src|resizeDynamic(375) }} 375w"
             data-sizes="auto"
             alt="{{ image.alt|e }}">

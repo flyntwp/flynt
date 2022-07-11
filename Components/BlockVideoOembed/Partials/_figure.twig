@@ -1,19 +1,15 @@
 <figure class="figure">
-  {% set imgWidth = 1280 %}
-  {% set imgHeight = 720 %}
-  {% set placeholderColor = 'rgba(125, 125, 125, 0.1)' %}
-
   <img class="figure-image lazyload"
     src="{{ image.src|resizeDynamic(1280, 720) }}"
-    width="{{ imgWidth }}"
-    height="{{ imgHeight }}"
-    srcset="{{ placeholderImage(imgWidth, imgHeight, placeholderColor) }}"
+    width="{{ 1280 }}"
+    height="{{ 720 }}"
+    srcset="{{ placeholderImage(1280, 720, 'rgba(125, 125, 125, 0.1)') }}"
     data-srcset="
       {{ image.src|resizeDynamic(2048, 1152) }} 2048w,
       {{ image.src|resizeDynamic(1920, 1080) }} 1920w,
       {{ image.src|resizeDynamic(1440, 810) }} 1440w,
       {{ image.src|resizeDynamic(1320, 743) }} 1320w,
-      {{ image.src|resizeDynamic(imgWidth, imgHeight) }} 1280w,
+      {{ image.src|resizeDynamic(1280, 720) }} 1280w,
       {{ image.src|resizeDynamic(860, 515) }} 860w,
       {{ image.src|resizeDynamic(760, 428) }} 760w,
       {{ image.src|resizeDynamic(375, 211) }} 375w"

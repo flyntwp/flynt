@@ -15,15 +15,11 @@
           <a class="post-link" href="{{ post.link }}" aria-label="{{ post.title }}">
             {% if post.thumbnail %}
               <figure class="figure">
-                {% set imgWidth = 424 %}
-                {% set imgHeight = 283 %}
-                {% set placeholderColor = 'rgba(125, 125, 125, 0.1)' %}
-
                 <img class="post-image figure-image lazyload"
-                  src="{{ post.thumbnail.src|resizeDynamic(imgWidth, imgHeight) }}"
-                  width="{{ imgWidth }}"
-                  height="{{ imgHeight }}"
-                  srcset="{{ placeholderImage(imgWidth, imgHeight, placeholderColor) }}"
+                  src="{{ post.thumbnail.src|resizeDynamic(424, 283) }}"
+                  width="{{ 424 }}"
+                  height="{{ 283 }}"
+                  srcset="{{ placeholderImage(424, 283, 'rgba(125, 125, 125, 0.1)') }}"
                   data-srcset="
                     {{ post.thumbnail.src|resizeDynamic(1920, 1280) }} 1920w,
                     {{ post.thumbnail.src|resizeDynamic(1320, 880) }} 1320w,
@@ -31,7 +27,7 @@
                     {{ post.thumbnail.src|resizeDynamic(1050, 700) }} 1050w,
                     {{ post.thumbnail.src|resizeDynamic(760, 506) }} 760w,
                     {{ post.thumbnail.src|resizeDynamic(600, 400) }} 600w,
-                    {{ post.thumbnail.src|resizeDynamic(imgWidth, imgHeight) }} 424w,
+                    {{ post.thumbnail.src|resizeDynamic(424, 283) }} 424w,
                     {{ post.thumbnail.src|resizeDynamic(312, 208) }} 312w"
                   data-sizes="auto"
                   alt="{{ post.title }}">
