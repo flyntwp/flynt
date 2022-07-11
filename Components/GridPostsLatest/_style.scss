@@ -99,11 +99,7 @@
   }
 
   .allPostsLink {
-    padding-top: 2rem;
+    padding-top: calc(var(--component-spacing) / 2);
     text-align: center;
-
-    @media (min-width: $breakpoint-desktop) {
-      padding-top: 3rem;
-    }
   }
 }
