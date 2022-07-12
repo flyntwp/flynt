@@ -4,7 +4,6 @@
 * Top level styles every element should inherit.
 */
 
-@include font-face('Encode Sans Semi Condensed', 'encode-sans-semi-condensed-v10-latin-700', '700', 'normal');
 @include font-face('Montserrat', 'montserrat-v24-latin-regular', '400', 'normal');
 @include font-face('Montserrat', 'montserrat-v24-latin-italic', '400', 'italic');
 @include font-face('Montserrat', 'montserrat-v24-latin-700', '700', 'normal');
@@ -43,7 +42,7 @@ body {
 
 #{$heading-selectors} {
   color: var(--color-headline);
-  font-family: 'Encode Sans Semi Condensed', Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
   font-weight: 700;
   line-height: 1.33;
   margin-bottom: 1rem;
@@ -68,55 +67,53 @@ h1,
   margin-bottom: 1.5rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 3.5rem;
+    font-size: 2.75rem;
   }
 }
 
 h2,
 .h2 {
-  font-size: 1.875rem;
+  font-size: 1.5rem;
   margin-bottom: 1.5rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 2.625rem;
+    font-size: 2.5rem;
   }
 }
 
 h3,
 .h3 {
-  font-size: 1.5rem;
+  font-size: 1.125rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.6875rem;
+    font-size: 1.25rem;
   }
 }
 
 h4,
 .h4 {
-  font-size: 1.25rem;
+  font-size: 1rem;
   margin-top: 2rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.375rem;
+    font-size: 1.125rem;
   }
 }
 
 h5,
 .h5 {
-  font-family: inherit;
-  font-size: 1.25rem;
-  font-weight: inherit;
+  font-size: 1.125rem;
+  font-weight: 400;
   margin-top: 1.5rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.375rem;
+    font-size: 1.25rem;
   }
 }
 
 h6,
 .h6 {
-  font-family: inherit;
-  font-size: 1.125rem;
+  font-size: 1rem;
   margin-top: 1.5rem;
 }
 
