@@ -1,13 +1,12 @@
 [is='flynt-slider-images'] {
   .slider {
     background-color: var(--color-border-alpha);
-    max-width: var(--content-max-width-large);
     position: relative;
 
     &-item {
       height: 0;
       overflow: hidden;
-      padding-bottom: (2/3) * 100%;
+      padding-bottom: calc((2/3) * 100%);
       position: relative;
     }
 

@@ -33,7 +33,7 @@
     "lodash": "^4.17.21",
     "normalize.css": "^8.0.1",
     "rellax": "^1.12.1",
-    "swiper": "^6.3.3"
+    "swiper": "^8.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",

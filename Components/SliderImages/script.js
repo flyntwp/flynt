@@ -1,7 +1,5 @@
-import Swiper, { Navigation, A11y, Autoplay } from 'swiper/swiper.esm'
-import 'swiper/swiper-bundle.css'
-
-Swiper.use([Navigation, A11y, Autoplay])
+import Swiper, { Navigation, A11y, Autoplay } from 'swiper'
+import 'swiper/css/bundle'
 
 class SliderImages extends window.HTMLDivElement {
   constructor (...args) {
@@ -36,6 +34,7 @@ class SliderImages extends window.HTMLDivElement {
   initSlider () {
     const { options } = this.props
     const config = {
+      modules: [Navigation, A11y, Autoplay],
       navigation: {
         nextEl: this.buttonNext,
         prevEl: this.buttonPrev
