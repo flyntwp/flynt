@@ -1,107 +1,55 @@
 {% extends 'templates/_document.twig' %}
 
 {% block content %}
-<div class="flyntComponent componentSpacing centerMaxWidthContainer">
-  <div class="centerContentMaxWidth">
-    <section>
-      <h1>Base Style</h1>
-      <p>This style guide exemplifies the base styles.</p>
-    </section>
-    <section>
-      <p class="h4">Creating a well thought out base style for a new website is one of the most critical parts to ensure
-        an overall successful project progression.</p>
-      <p>The base style should contain all those basic HTML elements and their variations that will be needed within the
-        website. May it be in standard formatted text, or within custom styled layout components.</p>
-      <p>The goal is to abstract the element designs just to the right level, so that they can be used in any context
-        without further modifications, but to keep them flexible enough for custom adjustments when needed, without
-        having to overwrite many CSS attributes.</p>
-      <p>The following markup is a best practice starting point to help you focus on what's important. It does not
-        include <em>all</em> HTML elements, but as the theme is using <code>normalize.css</code>, elements will still be
-        recoginzably styled, only without further customization.</p>
-      <hr>
-      <h2>1.0 Typography</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation <a
-          href="https://www.google.com/search?q=ullamco+laboris" target="_blank">ullamco laboris</a> nisi ut aliquid ex
-        ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore
-        <strong>magna aliqua</strong>. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-        aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit <em>esse cillum</em> dolore eu
-        fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit
-        anim id est laborum.</p>
-      <figure>
-        <img src="https://via.placeholder.com/770x513?text=3:2%20ratio" alt="Placeholder">
-        <figcaption>A caption for this image</figcaption>
-      </figure>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi
-        consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-      <blockquote>
-        <p>Base styling is done, when this page has a custom look and is visually structured so that all elements, their
-          relationships, meanings and hierarchy are recognizable.</p>
-      </blockquote>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi
-        consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-      <h2 class="h1">Headline H1 is a very common element</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi
-        consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi
-        consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-      <h2>Headline H2 is a very common element</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi
-        consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi
-        consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-      <h3>Headline H3 will also be used all over the website</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi
-        consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi
-        consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-      <h4>Headline H4 is nice for alternative smaller styles</h4>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi
-        consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi
-        consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-      <h5>Headline H5 is unloved, but can be powerfull as a helper class</h5>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi
-        consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi
-        consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-      <h6>Headline H6 is very rare but might be a small alternative</h6>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi
-        consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi
-        consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-      <h1>Heading 1</h1>
-      <h2>Heading 2</h2>
-      <h3>Heading 3</32>
+  <div class="componentSpacing centerMaxWidthContainer">
+    <div class="centerContentMaxWidth">
+      <section>
+        <h1>Base Style</h1>
+        <p>This style guide exemplifies the base styles.</p>
+      </section>
+      <section>
+        <p class="h4">Creating a well thought out base style for a new website is one of the most critical parts to ensure an overall successful project progression.</p>
+        <p>The base style should contain all those basic HTML elements and their variations that will be needed within the website. May it be in standard formatted text, or within custom styled layout components.</p>
+        <p>The goal is to abstract the element designs just to the right level, so that they can be used in any context without further modifications, but to keep them flexible enough for custom adjustments when needed, without having to overwrite many CSS attributes.</p>
+        <p>The following markup is a best practice starting point to help you focus on what's important. It does not include <em>all</em> HTML elements, but as the theme is using <code>normalize.css</code>, elements will still be recoginzably styled, only without further customization.</p>
+        <hr>
+        <h2>1.0 Typography</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation <a href="https://www.google.com/search?q=ullamco+laboris" target="_blank">ullamco laboris</a> nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore <strong>magna aliqua</strong>. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit <em>esse cillum</em> dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <figure>
+          <img src="https://via.placeholder.com/770x513?text=3:2%20ratio" width="770" height="513" alt="Placeholder">
+          <figcaption>A caption for this image</figcaption>
+        </figure>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <blockquote><p>Base styling is done, when this page has a custom look and is visually structured so that all elements, their relationships, meanings and hierarchy are recognizable.</p></blockquote>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <h2 class="h1">Headline H1 is a very common element</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <h2>Headline H2 is a very common element</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <h3>Headline H3 will also be used all over the website</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <h4>Headline H4 is nice for alternative smaller styles</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <h5>Headline H5 is unloved, but can be powerfull as a helper class</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <h6>Headline H6 is very rare but might be a small alternative</h6>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</32>
         <h4>Heading 4</h4>
         <h5>Heading 5</h5>
         <h6>Heading 6</h6>
         <hr>
         <h2>1.1 Lists &amp; Tables</h2>
-        <p>Make sure you're not resetting all list elements, because that might come in handy for styling other layout
-          elements, but remain their purpose for formatted text.</p>
+        <p>Make sure you're not resetting all list elements, because that might come in handy for styling other layout elements, but remain their purpose for formatted text.</p>
         <h3>What you need to consider</h3>
         <ul>
           <li>What's the margin and padding of the list?</li>
@@ -117,14 +65,12 @@
             <ul>
               <li>The user agent stylesheet does that already.</li>
               <li>So custom styled lists should consider it as well.</li>
-              <li>An option might be to only specifically style the top level list style icon to keep the browser
-                defaults for nesting.</li>
+              <li>An option might be to only specifically style the top level list style icon to keep the browser defaults for nesting.</li>
             </ul>
           </li>
           <li>Also remember to test multiline list items like the one above.</li>
         </ul>
-        <p>It's also important to see those lists within the content flow, so margins and paddings fit with surrounding
-          text. And of course, also consider <strong>ordered lists</strong> like the following.</p>
+        <p>It's also important to see those lists within the content flow, so margins and paddings fit with surrounding text. And of course, also consider <strong>ordered lists</strong> like the following.</p>
         <ol>
           <li>It's basically the same</li>
           <li>But different</li>
@@ -202,9 +148,7 @@
         </div>
         <hr>
         <h2>1.2 Buttons</h2>
-        <p><button type="button">A <b>&lt;button&gt;</b> element without a class should have its styles reset, so it can
-            be used as a semantic tag on other interface elements, like the arrows of a slider, a closing &times; or a
-            burger menu.</button></p>
+        <p><button type="button">A <b>&lt;button&gt;</b> element without a class should have its styles reset, so it can be used as a semantic tag on other interface elements, like the arrows of a slider, a closing &times; or a burger menu.</button></p>
         <p>
           <button type="button" class="button">Type Button</button>
           <button type="button" class="button button--ghost">Type Button Ghost</button>
@@ -240,18 +184,15 @@
         <hr>
         <h2>1.3 Forms</h2>
         <form>
-          <p>Placing form elements on a page should just work without having to apply extra classes or custom wrapping
-            elements. However, a <b>&lt;fieldset&gt;</b> element provides a nice opportunity to group multiple form
-            elements.</p>
+          <p>Placing form elements on a page should just work without having to apply extra classes or custom wrapping elements. However, a <b>&lt;fieldset&gt;</b> element provides a nice opportunity to group multiple form elements.</p>
           <fieldset>
             <label for="textInput-1">Text Input</label><br>
             <input id="textInput-1" type="text" name="text" placeholder="Placeholder"><br>
             <label for="textInput-2">Text Input Disabled</label><br>
             <input id="textInput-2" type="text" name="text" placeholder="Placeholder" disabled><br>
             <label for="textInput-3">Text Input Validation Error</label><br>
-            <input id="textInput-3" type="text" name="text" value="Test" placeholder="Placeholder"
-              class="input-validation-error"><br>
-            <label for="emailInput">Email Input</label><br>
+            <input id="textInput-3" type="text" name="text" value="Test" placeholder="Placeholder" class="input-validation-error"><br>
+            <label for="emailInput" >Email Input</label><br>
             <input id="emailInput" type="email" name="email" placeholder="Placeholder"><br>
             <label for="searchInput">Search Input</label><br>
             <input id="searchInput" type="search" name="search" placeholder="Placeholder"><br>
@@ -259,8 +200,7 @@
             <input id="passwordInput" type="password" name="password" placeholder="Placeholder"><br>
             <label for="textarea">Your message</label><br>
             <textarea id="textarea" placeholder="Placeholder"></textarea><br>
-            <p>Wrap the select element in a container with the class <code>.select</code> to make the select arrow
-              themeable.</p>
+            <p>Wrap the select element in a container with the class <code>.select</code> to make the select arrow themeable.</p>
             <span class="select">
               <label class="visuallyHidden" for="selectInput">Select Input</label>
               <select name="select" id="selectInput">
@@ -270,8 +210,7 @@
               </select>
             </span>
           </fieldset>
-          <p>The user agent stylesheet typically has a very weird <b>&lt;fieldset&gt;</b> and <b>&lt;legend&gt;</b>
-            styling. But hey: why not customize it to our needs?!</p>
+          <p>The user agent stylesheet typically has a very weird <b>&lt;fieldset&gt;</b> and <b>&lt;legend&gt;</b> styling. But hey: why not customize it to our needs?!</p>
           <fieldset>
             <legend>Checkbox Inputs</legend>
             <div>
@@ -279,9 +218,7 @@
               <label for="checkbox-1">Checkbox Label #1<sup>*</sup></label>
               <br>
               <input type="checkbox" id="checkbox-2">
-              <label for="checkbox-2">Checkbox Label #2 <strong>Multiline</strong> Lorem ipsum dolor sit amet, <a
-                  href="#">consectetur</a> adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna
-                aliqua.</label>
+              <label for="checkbox-2">Checkbox Label #2 <strong>Multiline</strong> Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</label>
               <br>
               <input type="checkbox" id="checkbox-3">
               <label for="checkbox-3">Checkbox Label #3</label>
@@ -294,9 +231,7 @@
               <label for="radio-1">Radio Label #1</label>
               <br>
               <input type="radio" id="radio-2" name="radio-group">
-              <label for="radio-2">Radio Label #2 <strong>Multiline</strong> Lorem ipsum dolor sit amet, <a
-                  href="#">consectetur</a> adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna
-                aliqua.</label>
+              <label for="radio-2">Radio Label #2 <strong>Multiline</strong> Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</label>
               <br>
               <input type="radio" id="radio-3" name="radio-group">
               <label for="radio-3">Radio Label #3</label>
@@ -305,8 +240,7 @@
           <fieldset>
             <legend>One Input Forms</legend>
             <p>Uses screen reader visible labels.</p>
-            <p>Wrap the select element in a container with the class <code>.oneInputForm</code> to style single forms.
-            </p>
+            <p>Wrap the select element in a container with the class <code>.oneInputForm</code> to style single forms.</p>
             <div class="oneInputForm">
               <label class="visuallyHidden" for="searchInputSingle">Search</label>
               <input class="oneInputForm-input" type="search" id="searchInputSingle" placeholder="Enter search term...">
@@ -321,21 +255,15 @@
         </form>
         <hr>
         <h2>2.0 Helpers</h2>
-        <p>The BaseStyle includes some global CSS layout classes which help ensure a consistent appearance across
-          components:</p>
+        <p>The BaseStyle includes some global CSS layout classes which help ensure a consistent appearance across components:</p>
         <ul>
           <li><code>.flyntComponent</code><br>Wraps all components.</li>
           <li><code>.componentSpacing</code><br>Ensures consistent component top and bottom spacing.</li>
-          <li><code>.centerMaxWidthContainer</code><br>Ensures consistent left and right padding and website max width.
-          </li>
-          <li><code>.centerContentMaxWidth</code><br>Ensures text content doesn't flow wider than 80 characters per
-            line.</li>
-          <li><code>.preContent</code><br>Ensures consistent positioning of content preceding the main section of a
-            component.</li>
-          <li><code>.postContent</code><br>Ensures consistent positioning of content following the main section of a
-            component.</li>
-          <li><code>.scrollableTableWrapper</code><br>Wrapping a table with a container element with this class makes
-            the table scrollable on smaller screen sizes.</li>
+          <li><code>.centerMaxWidthContainer</code><br>Ensures consistent left and right padding and website max width.</li>
+          <li><code>.centerContentMaxWidth</code><br>Ensures text content doesn't flow wider than 80 characters per line.</li>
+          <li><code>.preContent</code><br>Ensures consistent positioning of content preceding the main section of a component.</li>
+          <li><code>.postContent</code><br>Ensures consistent positioning of content following the main section of a component.</li>
+          <li><code>.scrollableTableWrapper</code><br>Wrapping a table with a container element with this class makes the table scrollable on smaller screen sizes.</li>
           <li><code>.visuallyHidden</code><br>Visually hides text in a way that screen readers will still read it.</li>
         </ul>
         <p>Other helper classes are:</p>
@@ -343,342 +271,336 @@
           <h3>Box Helpers</h3>
           <p>Box helper classes can be used alone or in combination to ensure consistent styling across components.</p>
           <ul>
-            <li>Using the <code>.boxPadding</code> class allows you to consistently style any content container as a
-              responsive padding box.</li>
-            <li>Using the <code>.boxShadow</code> class allows you to give elements a box shadow with consistent
-              appearance.</li>
+            <li>Using the <code>.boxPadding</code> class allows you to consistently style any content container as a responsive padding box.</li>
+            <li>Using the <code>.boxShadow</code> class allows you to give elements a box shadow with consistent appearance.</li>
             <li>Using the <code>.boxRadius</code> class allows you to give elements a border radius.</li>
           </ul>
         </div>
         <hr>
         <h2>3.0 Themes</h2>
-        <div class="themeLight">
-          <br><br>
-          <div class="centerMaxWidthContainer">
-            <div class="centerContentMaxWidth">
-              <section>
-                <h3>Light Theme</h3>
-                <p>Using the <code>.themeLight</code> class allows you to style a group of content with a light
-                  background and dark text.</p>
-                <p>
-                  <i class="feather" data-feather="alert-circle"></i> Feather Icon
-                </p>
-                <div>
-                  <a href="javascript:void(0)">Regular link</a><br>
-                  <a class="button button--link" href="javascript:void(0)">Button Link</a><br><br>
-                  <button type="button" class="button">Button</button>
-                  <button type="button" class="button button--ghost">Button Ghost</button>
-                  <br><br>
-                  <button type="button" class="button" disabled>Button Disabled</button>
-                  <button type="button" class="button button--ghost" disabled>Button Ghost Disabled</button>
-                  <hr>
-                  <label for="textInput-4">Text Input</label><br>
-                  <input id="textInput-4" type="text" name="text" placeholder="Placeholder">
-                  <br>
-                  <span class="select">
-                    <label class="visuallyHidden" for="selectInputLight">Select Input</label>
-                    <select name="select" id="selectInputLight">
-                      <option value="select-value-1">Select Option #1</option>
-                      <option value="select-value-2">Select Option #2</option>
-                      <option value="select-value-3">Select Option #3</option>
-                    </select>
-                  </span>
-                  <br><br>
-                  <fieldset>
-                    <legend>Checkbox Input</legend>
-                    <div>
-                      <input type="checkbox" id="checkbox-light-1" required>
-                      <label for="checkbox-light-1">Checkbox Label #1</label>
-                    </div>
-                  </fieldset>
-                  <fieldset>
-                    <legend>Radio Inputs</legend>
-                    <div>
-                      <input type="radio" id="radio-light-1" name="radio-group-light">
-                      <label for="radio-light-1">Radio Label #1</label>
-                      <br>
-                      <input type="radio" id="radio-light-2" name="radio-group-light">
-                      <label for="radio-light-2">Radio Label #2</label>
-                    </div>
-                  </fieldset>
-                </div>
-                <div class="scrollableTableWrapper">
-                  <table class="boxRadius">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Ingredients</th>
-                        <th scope="col">Serves 12</th>
-                        <th scope="col">Serves 24</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>milk</td>
-                        <td>1 quart</td>
-                        <td>2 quart</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>cinnamon sticks</td>
-                        <td>2</td>
-                        <td>1</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </section>
-            </div>
-          </div>
-          <br><br>
-        </div>
-        <div class="themeDark">
-          <br><br>
-          <div class="centerMaxWidthContainer">
-            <div class="centerContentMaxWidth">
-              <section>
-                <h3>Dark Theme</h3>
-                <p>Using the <code>.themeDark</code> class allows you to style a group of content with a dark background
-                  and light text.</p>
-                <p>
-                  <i class="feather" data-feather="alert-circle"></i> Feather Icon
-                </p>
-                <div>
-                  <a href="javascript:void(0)">Regular link</a><br>
-                  <a class="button button--link" href="javascript:void(0)">Button Link</a><br><br>
-                  <button type="button" class="button">Button</button>
-                  <button type="button" class="button button--ghost">Button Ghost</button>
-                  <br><br>
-                  <button type="button" class="button" disabled>Button Disabled</button>
-                  <button type="button" class="button button--ghost" disabled>Button Ghost Disabled</button>
-                  <hr>
-                  <label for="textInput-5">Text Input</label><br>
-                  <input id="textInput-5" type="text" name="text" placeholder="Placeholder">
-                  <br>
-                  <span class="select">
-                    <label class="visuallyHidden" for="selectInputDark">Select Input</label>
-                    <select name="select" id="selectInputDark">
-                      <option value="select-value-1">Select Option #1</option>
-                      <option value="select-value-2">Select Option #2</option>
-                      <option value="select-value-3">Select Option #3</option>
-                    </select>
-                  </span>
-                  <br><br>
-                  <fieldset>
-                    <legend>Checkbox Input</legend>
-                    <div>
-                      <input type="checkbox" id="checkbox-dark-1" required>
-                      <label for="checkbox-dark-1">Checkbox Label #1</label>
-                    </div>
-                  </fieldset>
-                  <fieldset>
-                    <legend>Radio Inputs</legend>
-                    <div>
-                      <input type="radio" id="radio-dark-1" name="radio-group-dark">
-                      <label for="radio-dark-1">Radio Label #1</label>
-                      <br>
-                      <input type="radio" id="radio-dark-2" name="radio-group-dark">
-                      <label for="radio-dark-2">Radio Label #2</label>
-                    </div>
-                  </fieldset>
-                </div>
-                <div class="scrollableTableWrapper">
-                  <table class="boxRadius">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Ingredients</th>
-                        <th scope="col">Serves 12</th>
-                        <th scope="col">Serves 24</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>milk</td>
-                        <td>1 quart</td>
-                        <td>2 quart</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>cinnamon sticks</td>
-                        <td>2</td>
-                        <td>1</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </section>
-            </div>
-          </div>
-          <br><br>
-        </div>
-        <div class="themeHero">
-          <br><br>
-          <div class="centerMaxWidthContainer">
-            <div class="centerContentMaxWidth">
-              <section>
-                <h3>Hero Theme</h3>
-                <p>Using the <code>.themeHero</code> class allows you to style a group of content with a hero background
-                  and dark text.</p>
-                <p>
-                  <i class="feather" data-feather="alert-circle"></i> Feather Icon
-                </p>
-                <div>
-                  <a href="javascript:void(0)">Regular link</a><br>
-                  <a class="button button--link" href="javascript:void(0)">Button Link</a><br><br>
-                  <button type="button" class="button">Button</button>
-                  <button type="button" class="button button--ghost">Button Ghost</button>
-                  <br><br>
-                  <button type="button" class="button" disabled>Button Disabled</button>
-                  <button type="button" class="button button--ghost" disabled>Button Ghost Disabled</button>
-                  <hr>
-                  <label for="textInput-6">Text Input</label><br>
-                  <input id="textInput-6" type="text" name="text" placeholder="Placeholder">
-                  <br>
-                  <span class="select">
-                    <label class="visuallyHidden" for="selectInputHero">Select Input</label>
-                    <select name="select" id="selectInputHero">
-                      <option value="select-value-1">Select Option #1</option>
-                      <option value="select-value-2">Select Option #2</option>
-                      <option value="select-value-3">Select Option #3</option>
-                    </select>
-                  </span>
-                  <br><br>
-                  <fieldset>
-                    <legend>Checkbox Input</legend>
-                    <div>
-                      <input type="checkbox" id="checkbox-hero-1" required>
-                      <label for="checkbox-hero-1">Checkbox Label #1</label>
-                    </div>
-                  </fieldset>
-                  <fieldset>
-                    <legend>Radio Inputs</legend>
-                    <div>
-                      <input type="radio" id="radio-hero-1" name="radio-group-hero">
-                      <label for="radio-hero-1">Radio Label #1</label>
-                      <br>
-                      <input type="radio" id="radio-hero-2" name="radio-group-hero">
-                      <label for="radio-hero-2">Radio Label #2</label>
-                    </div>
-                  </fieldset>
-                </div>
-                <div class="scrollableTableWrapper">
-                  <table class="boxRadius">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Ingredients</th>
-                        <th scope="col">Serves 12</th>
-                        <th scope="col">Serves 24</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>milk</td>
-                        <td>1 quart</td>
-                        <td>2 quart</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>cinnamon sticks</td>
-                        <td>2</td>
-                        <td>1</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </section>
-            </div>
-          </div>
-          <br>
-        </div>
-        <div class="themeHero">
-          <br>
-          <div class="centerMaxWidthContainer">
-            <div class="centerContentMaxWidth">
-              <section>
-                <div class="themeReset boxPadding boxRadius">
-                  <h3>Reset Theme</h3>
-                  <p>Using the <code>.themeReset</code> class allows you to revert the styles of a parent theme back to
-                    the inital styles.</p>
-                  <p>
-                    <i class="feather" data-feather="alert-circle"></i> Feather Icon
-                  </p>
-                  <div>
-                    <a href="javascript:void(0)">Regular link</a><br>
-                    <a class="button button--link" href="javascript:void(0)">Button Link</a><br><br>
-                    <button type="button" class="button">Button</button>
-                    <button type="button" class="button button--ghost">Button Ghost</button>
-                    <br><br>
-                    <button type="button" class="button" disabled>Button Disabled</button>
-                    <button type="button" class="button button--ghost" disabled>Button Ghost Disabled</button>
-                    <hr>
-                    <label for="textInput-7">Text Input</label><br>
-                    <input id="textInput-7" type="text" name="text" placeholder="Placeholder">
-                    <br>
-                    <span class="select">
-                      <label class="visuallyHidden" for="selectInputReset">Select Input</label>
-                      <select name="select" id="selectInputReset">
-                        <option value="select-value-1">Select Option #1</option>
-                        <option value="select-value-2">Select Option #2</option>
-                        <option value="select-value-3">Select Option #3</option>
-                      </select>
-                    </span>
-                    <br><br>
-                    <fieldset>
-                      <legend>Checkbox Input</legend>
-                      <div>
-                        <input type="checkbox" id="checkbox-reset-1" required>
-                        <label for="checkbox-reset-1">Checkbox Label #1</label>
-                      </div>
-                    </fieldset>
-                    <fieldset>
-                      <legend>Radio Inputs</legend>
-                      <div>
-                        <input type="radio" id="radio-reset-1" name="radio-group-reset">
-                        <label for="radio-reset-1">Radio Label #1</label>
-                        <br>
-                        <input type="radio" id="radio-reset-2" name="radio-group-reset">
-                        <label for="radio-reset-2">Radio Label #2</label>
-                      </div>
-                    </fieldset>
-                  </div>
-                  <div class="scrollableTableWrapper">
-                    <table class="boxRadius">
-                      <thead>
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">Ingredients</th>
-                          <th scope="col">Serves 12</th>
-                          <th scope="col">Serves 24</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>milk</td>
-                          <td>1 quart</td>
-                          <td>2 quart</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>cinnamon sticks</td>
-                          <td>2</td>
-                          <td>1</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </section>
-            </div>
-          </div>
-          <br><br>
-        </div>
-    </section>
+      </section>
+    </div>
   </div>
-</div>
+  <div class="themeLight">
+    <br><br>
+    <div class="centerMaxWidthContainer">
+      <div class="centerContentMaxWidth">
+        <section>
+          <h3>Light Theme</h3>
+          <p>Using the <code>.themeLight</code> class allows you to style a group of content with a light background and dark text.</p>
+          <p>
+            <i class="feather" data-feather="alert-circle"></i> Feather Icon
+          </p>
+          <div>
+            <a href="javascript:void(0)">Regular link</a><br>
+            <a class="button button--link" href="javascript:void(0)">Button Link</a><br><br>
+            <button type="button" class="button">Button</button>
+            <button type="button" class="button button--ghost">Button Ghost</button>
+            <br><br>
+            <button type="button" class="button" disabled>Button Disabled</button>
+            <button type="button" class="button button--ghost" disabled>Button Ghost Disabled</button>
+            <hr>
+            <label for="textInput-4">Text Input</label><br>
+            <input id="textInput-4" type="text" name="text" placeholder="Placeholder">
+            <br>
+            <span class="select">
+              <label class="visuallyHidden" for="selectInputLight">Select Input</label>
+              <select name="select" id="selectInputLight">
+                <option value="select-value-1">Select Option #1</option>
+                <option value="select-value-2">Select Option #2</option>
+                <option value="select-value-3">Select Option #3</option>
+              </select>
+            </span>
+            <br><br>
+            <fieldset>
+              <legend>Checkbox Input</legend>
+              <div>
+                <input type="checkbox" id="checkbox-light-1" required>
+                <label for="checkbox-light-1">Checkbox Label #1</label>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Radio Inputs</legend>
+              <div>
+                <input type="radio" id="radio-light-1" name="radio-group-light">
+                <label for="radio-light-1">Radio Label #1</label>
+                <br>
+                <input type="radio" id="radio-light-2" name="radio-group-light">
+                <label for="radio-light-2">Radio Label #2</label>
+              </div>
+            </fieldset>
+          </div>
+          <div class="scrollableTableWrapper">
+            <table class="boxRadius">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Ingredients</th>
+                  <th scope="col">Serves 12</th>
+                  <th scope="col">Serves 24</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>milk</td>
+                  <td>1 quart</td>
+                  <td>2 quart</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>cinnamon sticks</td>
+                  <td>2</td>
+                  <td>1</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+    <br><br>
+  </div>
+  <div class="themeDark">
+    <br><br>
+    <div class="centerMaxWidthContainer">
+      <div class="centerContentMaxWidth">
+        <section>
+          <h3>Dark Theme</h3>
+          <p>Using the <code>.themeDark</code> class allows you to style a group of content with a dark background and light text.</p>
+          <p>
+            <i class="feather" data-feather="alert-circle"></i> Feather Icon
+          </p>
+          <div>
+            <a href="javascript:void(0)">Regular link</a><br>
+            <a class="button button--link" href="javascript:void(0)">Button Link</a><br><br>
+            <button type="button" class="button">Button</button>
+            <button type="button" class="button button--ghost">Button Ghost</button>
+            <br><br>
+            <button type="button" class="button" disabled>Button Disabled</button>
+            <button type="button" class="button button--ghost" disabled>Button Ghost Disabled</button>
+            <hr>
+            <label for="textInput-5">Text Input</label><br>
+            <input id="textInput-5" type="text" name="text" placeholder="Placeholder">
+            <br>
+            <span class="select">
+              <label class="visuallyHidden" for="selectInputDark">Select Input</label>
+              <select name="select" id="selectInputDark">
+                <option value="select-value-1">Select Option #1</option>
+                <option value="select-value-2">Select Option #2</option>
+                <option value="select-value-3">Select Option #3</option>
+              </select>
+            </span>
+            <br><br>
+            <fieldset>
+              <legend>Checkbox Input</legend>
+              <div>
+                <input type="checkbox" id="checkbox-dark-1" required>
+                <label for="checkbox-dark-1">Checkbox Label #1</label>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Radio Inputs</legend>
+              <div>
+                <input type="radio" id="radio-dark-1" name="radio-group-dark">
+                <label for="radio-dark-1">Radio Label #1</label>
+                <br>
+                <input type="radio" id="radio-dark-2" name="radio-group-dark">
+                <label for="radio-dark-2">Radio Label #2</label>
+              </div>
+            </fieldset>
+          </div>
+          <div class="scrollableTableWrapper">
+            <table class="boxRadius">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Ingredients</th>
+                  <th scope="col">Serves 12</th>
+                  <th scope="col">Serves 24</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>milk</td>
+                  <td>1 quart</td>
+                  <td>2 quart</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>cinnamon sticks</td>
+                  <td>2</td>
+                  <td>1</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+    <br><br>
+  </div>
+  <div class="themeHero">
+    <br><br>
+    <div class="centerMaxWidthContainer">
+      <div class="centerContentMaxWidth">
+        <section>
+          <h3>Hero Theme</h3>
+          <p>Using the <code>.themeHero</code> class allows you to style a group of content with a hero background and dark text.</p>
+          <p>
+            <i class="feather" data-feather="alert-circle"></i> Feather Icon
+          </p>
+          <div>
+            <a href="javascript:void(0)">Regular link</a><br>
+            <a class="button button--link" href="javascript:void(0)">Button Link</a><br><br>
+            <button type="button" class="button">Button</button>
+            <button type="button" class="button button--ghost">Button Ghost</button>
+            <br><br>
+            <button type="button" class="button" disabled>Button Disabled</button>
+            <button type="button" class="button button--ghost" disabled>Button Ghost Disabled</button>
+            <hr>
+            <label for="textInput-6">Text Input</label><br>
+            <input id="textInput-6" type="text" name="text" placeholder="Placeholder">
+            <br>
+            <span class="select">
+              <label class="visuallyHidden" for="selectInputHero">Select Input</label>
+              <select name="select" id="selectInputHero">
+                <option value="select-value-1">Select Option #1</option>
+                <option value="select-value-2">Select Option #2</option>
+                <option value="select-value-3">Select Option #3</option>
+              </select>
+            </span>
+            <br><br>
+            <fieldset>
+              <legend>Checkbox Input</legend>
+              <div>
+                <input type="checkbox" id="checkbox-hero-1" required>
+                <label for="checkbox-hero-1">Checkbox Label #1</label>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Radio Inputs</legend>
+              <div>
+                <input type="radio" id="radio-hero-1" name="radio-group-hero">
+                <label for="radio-hero-1">Radio Label #1</label>
+                <br>
+                <input type="radio" id="radio-hero-2" name="radio-group-hero">
+                <label for="radio-hero-2">Radio Label #2</label>
+              </div>
+            </fieldset>
+          </div>
+          <div class="scrollableTableWrapper">
+            <table class="boxRadius">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Ingredients</th>
+                  <th scope="col">Serves 12</th>
+                  <th scope="col">Serves 24</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>milk</td>
+                  <td>1 quart</td>
+                  <td>2 quart</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>cinnamon sticks</td>
+                  <td>2</td>
+                  <td>1</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+    <br>
+  </div>
+  <div class="themeHero">
+    <br>
+    <div class="centerMaxWidthContainer">
+      <div class="centerContentMaxWidth">
+        <section>
+          <div class="themeReset boxPadding boxRadius">
+            <h3>Reset Theme</h3>
+            <p>Using the <code>.themeReset</code> class allows you to revert the styles of a parent theme back to the inital styles.</p>
+            <p>
+              <i class="feather" data-feather="alert-circle"></i> Feather Icon
+            </p>
+            <div>
+              <a href="javascript:void(0)">Regular link</a><br>
+              <a class="button button--link" href="javascript:void(0)">Button Link</a><br><br>
+              <button type="button" class="button">Button</button>
+              <button type="button" class="button button--ghost">Button Ghost</button>
+              <br><br>
+              <button type="button" class="button" disabled>Button Disabled</button>
+              <button type="button" class="button button--ghost" disabled>Button Ghost Disabled</button>
+              <hr>
+              <label for="textInput-7">Text Input</label><br>
+              <input id="textInput-7" type="text" name="text" placeholder="Placeholder">
+              <br>
+              <span class="select">
+                <label class="visuallyHidden" for="selectInputReset">Select Input</label>
+                <select name="select" id="selectInputReset">
+                  <option value="select-value-1">Select Option #1</option>
+                  <option value="select-value-2">Select Option #2</option>
+                  <option value="select-value-3">Select Option #3</option>
+                </select>
+              </span>
+              <br><br>
+              <fieldset>
+                <legend>Checkbox Input</legend>
+                <div>
+                  <input type="checkbox" id="checkbox-reset-1" required>
+                  <label for="checkbox-reset-1">Checkbox Label #1</label>
+                </div>
+              </fieldset>
+              <fieldset>
+                <legend>Radio Inputs</legend>
+                <div>
+                  <input type="radio" id="radio-reset-1" name="radio-group-reset">
+                  <label for="radio-reset-1">Radio Label #1</label>
+                  <br>
+                  <input type="radio" id="radio-reset-2" name="radio-group-reset">
+                  <label for="radio-reset-2">Radio Label #2</label>
+                </div>
+              </fieldset>
+            </div>
+            <div class="scrollableTableWrapper">
+              <table class="boxRadius">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Ingredients</th>
+                    <th scope="col">Serves 12</th>
+                    <th scope="col">Serves 24</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>milk</td>
+                    <td>1 quart</td>
+                    <td>2 quart</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>cinnamon sticks</td>
+                    <td>2</td>
+                    <td>1</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <br><br>
+  </div>
 {% endblock %}
