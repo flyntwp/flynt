@@ -1,17 +1,14 @@
 import './scripts/publicPath'
 import './scripts/loadCustomElements'
 import { initFeatherIcons, addFeatherIconToListCheckCircle } from './scripts/helpersFeatherIcons'
+import { prepareAboveTheFoldLazyLoadedElements } from './scripts/PrepareAboveTheFold'
 import 'normalize.css/normalize.css'
 import './main.scss'
-
 import lazySizes from 'lazysizes'
 import 'lazysizes/plugins/native-loading/ls.native-loading'
-lazySizes.cfg.nativeLoading = {
-  setLoadingAttribute: true,
-  disableListeners: {
-    scroll: true
-  }
-}
+
+lazySizes.cfg.nativeLoading = { setLoadingAttribute: true, disableListeners: { scroll: true } }
+prepareAboveTheFoldLazyLoadedElements()
 
 document.addEventListener('DOMContentLoaded', function () {
   addFeatherIconToListCheckCircle()
