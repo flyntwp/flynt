@@ -76,9 +76,9 @@ class ListComponents extends window.HTMLDivElement {
 
       if (!image.dataset.parallaxConfig) {
         image.dataset.parallaxConfig = JSON.stringify({
-          imageOverflow: imageOverflow,
-          startOffset: startOffset,
-          endOffset: endOffset
+          imageOverflow,
+          startOffset,
+          endOffset
         })
       }
     })

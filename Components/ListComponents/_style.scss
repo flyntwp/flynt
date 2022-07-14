@@ -22,7 +22,7 @@
       background-color: var(--color-border-alpha);
       height: 0;
       overflow: hidden;
-      padding-bottom: percentage(800/1280);
+      padding-bottom: calc(100% * (800 / 1280));
       position: relative;
       width: 100%;
 
