@@ -38,8 +38,8 @@ npm run build
 
 ### Dependencies
 * [WordPress](https://wordpress.org/) >= 5.0
-* [Node](https://nodejs.org/en/) = 12
-* [Composer](https://getcomposer.org/download/) >= 1.8
+* [Node](https://nodejs.org/en/) = 18
+* [Composer](https://getcomposer.org/download/) >= 2.3
 * [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/) >= 5.7
 
 ## Usage

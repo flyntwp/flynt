@@ -1,4 +1,4 @@
-const host = 'https://flynt.test'
+const host = 'https://flynt-components.ddev.site'
 const dest = './dist'
 
 function getCopyConfig (source) {
@@ -60,7 +60,7 @@ module.exports = {
     writeToDisk: true
   },
   gulp: {
-    dest: dest,
+    dest,
     rev: {
       src: dest + '/**/*.*',
       srcRevved: [

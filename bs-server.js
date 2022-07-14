@@ -21,41 +21,28 @@ const webpackDevMiddleware = require('webpack-dev-middleware')
  */
 const webpackConfig = require('./webpack.config')
 const bundler = webpack(webpackConfig)
-
 const browserSync = require('browser-sync').create()
 
-const crypto = require('crypto')
-const fileHashes = []
-bundler.plugin('done', function (bundles) {
-  bundles.stats.forEach(function (stats, i) {
-    fileHashes[i] = fileHashes[i] || {}
-    checkAssets(stats, fileHashes[i])
-  })
-})
+bundler.hooks.watchRun.tap('WatchRun', (compiler) => {
+  if (compiler.modifiedFiles) {
+    const changedFiles = Array.from(compiler.modifiedFiles)
 
-function checkAssets (stats, bundleHashes) {
-  try {
-    const changedFiles = Object.keys(stats.compilation.assets)
-      .filter(name => {
-        const asset = stats.compilation.assets[name]
-        const md5Hash = crypto.createHash('md5')
-        const hash = md5Hash.update(asset.children ? asset.children[0]._value : asset.source()).digest('hex')
-        if (bundleHashes[name] !== hash) {
-          bundleHashes[name] = hash
-          return true
-        } else {
-          return false
-        }
-      })
-    browserSync.reload(changedFiles.map(name => `dist/${name}`))
-  } catch (e) {}
-}
+    const isCssModified = changedFiles.some(file => (/\.(s?css|sass)$/).test(file))
+    if (isCssModified === true) {
+      browserSync.reload('*.css')
+    }
+
+    const isJavaScriptModified = changedFiles.some(file => (/\.(js)$/).test(file))
+    if (isJavaScriptModified === true) {
+      browserSync.reload()
+    }
+  }
+})
 
 browserSync.init(Object.assign({
   middleware: [
     webpackDevMiddleware(bundler, Object.assign({
-      publicPath: webpackConfig[0].output.publicPath,
-      logLevel: 'silent'
+      publicPath: webpackConfig[0].output.publicPath
     }, config.webpackDevMiddleware))
   ]
 }, config.browserSync))

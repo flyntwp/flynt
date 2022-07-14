@@ -82,7 +82,7 @@
   width: 100%;
 
   > * {
-    width: calc((#{100% / $columns}) -
+    width: calc((100% / #{$columns}) -
     (#{$columns - 1} / #{$columns} * #{$gap-horizontal}));
 
     &:nth-child(n) {

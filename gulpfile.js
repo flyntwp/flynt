@@ -80,10 +80,11 @@ function revStaticFiles (config) {
   gulp.task('revStaticFiles', function () {
     const path = require('path')
     const rewrite = require('gulp-rev-rewrite')
-    const manifest = gulp.src(path.join(config.dest, '/rev-manifest.json'))
+    const { readFileSync } = require('fs')
+    const manifest = readFileSync(path.join(config.dest, 'rev-manifest.json'))
     return gulp.src(config.rev.srcStatic)
       .pipe(rewrite({
-        manifest: manifest,
+        manifest,
         replaceInExtensions: config.rev.staticFileExtensions
       }))
       .pipe(gulp.dest(config.dest))
@@ -92,13 +93,14 @@ function revStaticFiles (config) {
 
 function revUpdateReferences (config) {
   // 2) Update asset references with reved filenames in compiled css + js
+
   gulp.task('revUpdateReferences', function () {
     const path = require('path')
+    const { readFileSync } = require('fs')
     const rewrite = require('gulp-rev-rewrite')
-    const manifest = gulp.src(path.join(config.dest, 'rev-manifest.json'))
-
+    const manifest = readFileSync(path.join(config.dest, 'rev-manifest.json'))
     return gulp.src(config.rev.srcRevved)
-      .pipe(rewrite({ manifest: manifest }))
+      .pipe(rewrite({ manifest }))
       .pipe(gulp.dest(config.dest))
   })
 }
