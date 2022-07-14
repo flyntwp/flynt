@@ -6,7 +6,7 @@
       const $fieldEl = field.$el
 
       if ($fieldEl.data('name') === 'reusablePost') {
-        $select.on('change', { $fieldEl: $fieldEl }, function () {
+        $select.on('change', { $fieldEl }, function () {
           const postId = $(this).val()
           const postTitle = $(this).find('option:selected').text()
           const $postLink = $fieldEl.find('.reusable-postLink')
