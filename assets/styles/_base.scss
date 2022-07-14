@@ -4,6 +4,7 @@
 * Top level styles every element should inherit.
 */
 
+// FOUC can be reduced with good matching fallback font: https://meowni.ca/font-style-matcher/
 @include font-face('Montserrat', 'montserrat-v24-latin-regular', '400', 'normal');
 @include font-face('Montserrat', 'montserrat-v24-latin-italic', '400', 'italic');
 @include font-face('Montserrat', 'montserrat-v24-latin-700', '700', 'normal');
@@ -13,7 +14,7 @@ html {
   background-color: var(--color-background);
   box-sizing: border-box;
   color: var(--color-text);
-  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat', Verdana, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   height: 100%;
@@ -42,11 +43,10 @@ body {
 
 #{$heading-selectors} {
   color: var(--color-headline);
-  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
   font-weight: 700;
-  line-height: 1.33;
-  margin-bottom: 1rem;
-  margin-top: 3rem;
+  line-height: calc(1em + 0.5rem);
+  margin-bottom: 0.5rem;
+  margin-top: 1.5rem;
 
   a,
   a:hover,
@@ -64,7 +64,6 @@ body {
 h1,
 .h1 {
   font-size: 2.25rem;
-  margin-bottom: 1.5rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
     font-size: 2.75rem;
@@ -74,7 +73,6 @@ h1,
 h2,
 .h2 {
   font-size: 1.5rem;
-  margin-bottom: 1.5rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
     font-size: 2.5rem;
@@ -93,7 +91,6 @@ h3,
 h4,
 .h4 {
   font-size: 1rem;
-  margin-top: 2rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
     font-size: 1.125rem;
@@ -104,7 +101,6 @@ h5,
 .h5 {
   font-size: 1.125rem;
   font-weight: 400;
-  margin-top: 1.5rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
     font-size: 1.25rem;
@@ -114,22 +110,17 @@ h5,
 h6,
 .h6 {
   font-size: 1rem;
-  margin-top: 1.5rem;
 }
 
 a {
-  background-image: linear-gradient(to bottom, var(--color-border-alpha) 0%, var(--color-border-alpha) 100%);
-  background-position: 0 0.75em;
-  background-repeat: no-repeat;
-  background-size: 100%;
   color: var(--color-accent);
-  text-decoration: none;
-  transition: color 0.2s $ease-in-out-circ, background-position 0.2s $ease-in-out-circ;
+  text-decoration-color: var(--color-accent-alpha);
+  transition: color 0.2s $ease-in-out-circ, text-decoration-color 0.2s $ease-in-out-circ;
 
   &:hover,
   &:focus {
-    background-position: 0 0;
     color: var(--color-accent-hover);
+    text-decoration-color: var(--color-accent);
   }
 
   &:focus {
@@ -139,7 +130,6 @@ a {
 
 p,
 .paragraph,
-table,
 figure,
 pre {
   margin: 0 0 1.5rem;
@@ -161,9 +151,8 @@ img {
 }
 
 figcaption {
-  font-size: 0.9375rem;
-  line-height: 1.5;
-  margin: 1rem auto 0;
+  font-size: 0.9rem;
+  margin: 0.5rem auto 0;
   max-width: var(--content-max-width);
 }
 
@@ -194,7 +183,7 @@ blockquote,
   color: var(--color-accent);
   font-size: 1.5rem;
   font-weight: 700;
-  line-height: 1.33;
+  line-height: calc(1em + 0.5rem);
   margin: 3rem 0;
   padding-left: 2.5rem;
   position: relative;
@@ -278,20 +267,15 @@ ul {
 table {
   border-spacing: 0;
   box-shadow: inset 0 0 0 var(--border-width) var(--color-border);
+  margin: 0 auto;
   max-width: 100%;
   text-align: left;
   width: 100%;
-}
 
-.boxRadius > thead {
-  th {
-    &:first-child {
-      border-top-left-radius: var(--box-border-radius);
-    }
-
-    &:last-child {
-      border-top-right-radius: var(--box-border-radius);
-    }
+  + p,
+  + table,
+  + figure {
+    margin-top: 1.5rem;
   }
 }
 
@@ -304,8 +288,7 @@ th {
 
 thead {
   th {
-    background-color: var(--color-border);
-    color: var(--color-background);
+    border-bottom: solid var(--border-width) var(--color-border);
     padding: 1.25rem 1.5rem;
     vertical-align: middle;
     white-space: nowrap;
@@ -369,7 +352,7 @@ button {
   &:hover {
     background-color: var(--color-accent-hover);
     border-color: var(--color-accent-hover);
-    color: var(--color-background);
+    color: var(--color-button-text-hover);
   }
 
   &:focus {
@@ -544,7 +527,6 @@ label {
   }
 
   &:focus {
-    border-color: var(--color-accent);
     box-shadow: 0 0 0 3px var(--color-accent-alpha);
   }
 
@@ -727,6 +709,7 @@ select {
 }
 
 .oneInputForm {
+  background-color: var(--color-background);
   border: var(--border-width) solid var(--color-border);
   border-radius: calc(var(--box-border-radius) + (var(--border-width) * 2));
   margin: 0 0 2rem;
@@ -746,24 +729,15 @@ select {
     }
   }
 
-  &.themeReset {
-    @media (max-width: $breakpoint-mobile-horizontal - 1) {
-      background: none;
-
-      .oneInputForm-input {
-        background-color: var(--color-background);
-      }
-    }
-  }
-
   &-input {
+    background-color: transparent;
     border: 0;
-    border-radius: var(--button-border-radius);
     margin: 0;
     padding: 0 0.618rem;
     width: 100%;
 
     @media (min-width: $breakpoint-mobile-horizontal) {
+      border-radius: var(--button-border-radius);
       min-height: inherit;
       padding: 0 1.618rem;
     }
@@ -784,19 +758,6 @@ select {
 
     &:focus {
       box-shadow: none;
-    }
-  }
-
-  .themeDark &,
-  .themeHero & {
-    &:focus-within {
-      box-shadow: none;
-    }
-
-    .oneInputForm-input {
-      &:focus {
-        box-shadow: none;
-      }
     }
   }
 }
