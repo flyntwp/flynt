@@ -1,7 +1,7 @@
 import './scripts/publicPath'
 import './scripts/loadCustomElements'
-import { initFeatherIcons, addFeatherIconToListCheckCircle } from './scripts/helpersFeatherIcons'
 import { kebabToCamel } from './scripts/helpers'
+import { initFeatherIcons, addFeatherIconToListCheckCircle } from './scripts/featherIcons'
 import { prepareAboveTheFoldLazyLoadedElements } from './scripts/PrepareAboveTheFold'
 import 'normalize.css/normalize.css'
 import './main.scss'
@@ -13,10 +13,11 @@ import 'lazysizes/plugins/native-loading/ls.native-loading'
 lazySizes.cfg.nativeLoading = { setLoadingAttribute: true, disableListeners: { scroll: true } }
 prepareAboveTheFoldLazyLoadedElements()
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
   addFeatherIconToListCheckCircle()
   initFeatherIcons()
 })
+
 // Dynamic import component scripts
 loader({
   container: document.body,

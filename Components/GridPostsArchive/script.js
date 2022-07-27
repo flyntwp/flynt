@@ -1,5 +1,5 @@
 /* globals fetch, DOMParser */
-import { initFeatherIcons } from '../../assets/scripts/helpersFeatherIcons'
+import { initFeatherIcons } from '../../assets/scripts/featherIcons'
 
 class GridPostsArchive extends window.HTMLDivElement {
   constructor (...args) {
