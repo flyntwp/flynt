@@ -33,7 +33,8 @@
     "lodash": "^4.17.21",
     "normalize.css": "^8.0.1",
     "rellax": "^1.12.1",
-    "swiper": "^8.3.2"
+    "swiper": "^8.3.2",
+    "uce-loader": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.9",

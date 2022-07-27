@@ -1,9 +1,12 @@
 import './scripts/publicPath'
 import './scripts/loadCustomElements'
 import { initFeatherIcons, addFeatherIconToListCheckCircle } from './scripts/helpersFeatherIcons'
+import { kebabToCamel } from './scripts/helpers'
 import { prepareAboveTheFoldLazyLoadedElements } from './scripts/PrepareAboveTheFold'
 import 'normalize.css/normalize.css'
 import './main.scss'
+
+import loader from 'uce-loader'
 import lazySizes from 'lazysizes'
 import 'lazysizes/plugins/native-loading/ls.native-loading'
 
@@ -14,9 +17,16 @@ document.addEventListener('DOMContentLoaded', function () {
   addFeatherIconToListCheckCircle()
   initFeatherIcons()
 })
+// Dynamic import component scripts
+loader({
+  container: document.body,
 
-function importAll (r) {
-  r.keys().forEach(r)
-}
+  async on (newTag) {
+    const componentName = kebabToCamel(newTag).replace('Flynt', '')
+    const componentSubpath = window.FlyntData.componentsWithScript[componentName]
 
-importAll(require.context('../Components/', true, /\/script\.js$/))
+    if (window.FlyntData.componentsWithScript[componentName]) {
+      await import(`../Components/${componentSubpath}/script.js`)
+    }
+  }
+})

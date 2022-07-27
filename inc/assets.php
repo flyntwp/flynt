@@ -1,6 +1,7 @@
 <?php
 
 use Flynt\Utils\Asset;
+use Flynt\ComponentManager;
 use Flynt\Utils\ScriptLoader;
 
 call_user_func(function () {
@@ -16,6 +17,7 @@ add_action('wp_enqueue_scripts', function () {
     wp_script_add_data('Flynt/assets', 'defer', true);
     $data = [
         'templateDirectoryUri' => get_template_directory_uri(),
+        'componentsWithScript' => getComponentsWithScript(),
     ];
     wp_localize_script('Flynt/assets', 'FlyntData', $data);
     wp_enqueue_style(
@@ -40,3 +42,20 @@ add_action('admin_enqueue_scripts', function () {
         Asset::requireUrl('assets/admin.css')
     );
 });
+
+function getComponentsWithScript()
+{
+    $componentsWithScripts = [];
+
+    $ComponentManager = ComponentManager::getInstance();
+    $components = $ComponentManager->getAll();
+
+    foreach ($components as $componentName => $componentPath) {
+        $componentPath = str_replace('/dist/', '/', $componentPath);
+        $relativeComponentPath = trim(str_replace(get_template_directory() . '/Components/', '', $componentPath), '/');
+        if (file_exists($componentPath . '/script.js')) {
+            $componentsWithScripts[$componentName] = $relativeComponentPath;
+        }
+    }
+    return $componentsWithScripts;
+}
