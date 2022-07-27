@@ -21,7 +21,7 @@
             {{ post.category }}
           </a>
           <time class="meta-date" datetime="{{ post.post_date|date('c') }}">{{ post.post_date|date(dateFormat) }}</time>
-          <span class="meta-readingtime">{{ labels.readingtimeLabel|replace({'%': post.content|readingtime})|e }}</span>
+          <span class="meta-readingtime">{{ labels.readingTime|replace({'%d': post.content|readingtime})|e }}</span>
         </div>
       </div>
     </div>
