@@ -109,7 +109,7 @@ Options::addTranslatable('GridPostsLatest', [
         'sub_fields' => [
             [
                 'label' => __('Reading Time - (20) min read', 'flynt'),
-                'instructions' => __('%d is placehoder for number of minutes', 'flynt'),
+                'instructions' => __('%d is placeholder for number of minutes', 'flynt'),
                 'name' => 'readingTime',
                 'type' => 'text',
                 'default_value' => '%d min read',
