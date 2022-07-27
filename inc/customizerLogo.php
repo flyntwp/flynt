@@ -23,7 +23,7 @@ add_action('customize_register', function ($wp_customize) {
         $wp_customize,
         'custom_header_logo',
         [
-            'label' => __('Replace Header Logo'),
+            'label' => __('Replace Logo'),
             'description' => 'Upload file to replace header logo. Accepted file formats: jpg, jpeg, png, svg, gif.',
             'section' => 'title_tagline',
             'settings' => 'custom_header_logo',
