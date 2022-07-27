@@ -1,0 +1,6 @@
+// Prevent cutting of larger numbers inside of the block collapse
+[class*='blockCollapse'] {
+  [type='number'] {
+    min-width: 4.5em !important;
+  }
+}

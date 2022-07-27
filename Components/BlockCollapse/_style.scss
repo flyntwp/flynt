@@ -1,18 +1,11 @@
 [is='flynt-block-collapse'] {
-  &.collapseSpacing {
-    // No spacing
-    &--noSpacing {
-      margin-top: calc(-1 * var(--component-spacing));
+  &.flyntComponent {
+    &--collapse {
+      margin-top: calc((-1 * var(--component-spacing)) + (var(--distance) * var(--component-spacing) ) / 100);
     }
 
-    // Same margin-bottom of preContent by default.
-    &--preContent {
-      margin-top: calc(-1 * (var(--component-spacing) / 2));
-    }
-
-    // Same margin-bottom of paragraph by default.
-    &--paragraph {
-      margin-top: calc(-1 * (var(--component-spacing) - 1.5rem));
+    &--expand {
+      margin-top: calc((var(--distance) * var(--component-spacing) ) / 100);
     }
   }
 
