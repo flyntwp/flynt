@@ -64,8 +64,6 @@ class ListComponents extends window.HTMLDivElement {
 
   setParallaxConfig (e) {
     const windowHeight = this.window.innerHeight
-    console.log(e.type)
-
     this.componentScreenshotImages.forEach((image) => {
       const imageWrapper = image.parentElement
 

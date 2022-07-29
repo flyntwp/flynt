@@ -5,7 +5,6 @@ namespace Flynt\Components\ListComponents;
 use Flynt\FieldVariables;
 use Flynt\ComponentManager;
 use Flynt\Utils\Options;
-use Flynt\Utils\Asset;
 use Parsedown;
 
 add_filter('Flynt/addComponentData?name=ListComponents', function ($data) {
