@@ -29,8 +29,7 @@ add_action('wp_enqueue_scripts', function () {
 add_action('admin_enqueue_scripts', function () {
     wp_enqueue_script(
         'Flynt/assets/admin',
-        Asset::requireUrl('assets/admin.js'),
-        ['jquery-core']
+        Asset::requireUrl('assets/admin.js')
     );
     wp_script_add_data('Flynt/assets/admin', 'defer', true);
     $data = [
