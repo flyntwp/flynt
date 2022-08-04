@@ -74,11 +74,19 @@ class Asset
             $assetSuffix = $asset;
         }
 
-        if ('path' == $returnType) {
-            return $distPath . '/' . $assetSuffix;
-        } elseif ('url' == $returnType) {
-            $distUrl = get_template_directory_uri() . '/dist';
-            return $distUrl . '/' . $assetSuffix;
+        if (file_exists($distPath . '/' . $assetSuffix)) {
+            if ('path' == $returnType) {
+                return $distPath . '/' . $assetSuffix;
+            } else if ('url' == $returnType) {
+                $distUrl = get_template_directory_uri() . '/dist';
+                return $distUrl . '/' . $assetSuffix;
+            }
+        } else {
+            if ('path' == $returnType) {
+                return get_template_directory() . '/' . $assetSuffix;
+            } else if ('url' == $returnType) {
+                return get_template_directory_uri() . '/' . $assetSuffix;
+            }
         }
 
         return false;
