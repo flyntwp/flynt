@@ -1,4 +1,4 @@
-const domain = 'flynt-components.local.blee.ch'
+const domain = 'flynt.test'
 const dest = './dist'
 
 const host = `https://${domain}`
