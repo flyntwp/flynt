@@ -25,7 +25,7 @@
 
 ## Install
 1. Clone this repo to `<your-project>/wp-content/themes`.
-2. Change the host variable in `flynt/build-config.js` to match your host URL: `const host = 'your-project.test'`
+2. Change the domain variable in `flynt/build-config.js` to match your domain: `const domain = 'your-project.test'`
 3. Navigate to the theme folder and run the following command in your terminal:
 ```
 # wp-content/themes/flynt
@@ -34,7 +34,7 @@ npm i
 npm run build
 ```
 4. Open the WordPress back-end and activate the Flynt theme.
-5. Run `npm run start` and start developing. Your local server is available at `localhost:3000`.
+5. Run `npm run start` and start developing.
 
 ### Dependencies
 * [WordPress](https://wordpress.org/) >= 5.0
