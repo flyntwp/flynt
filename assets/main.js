@@ -27,7 +27,7 @@ loader({
     const componentSubpath = window.FlyntData.componentsWithScript[componentName]
 
     if (window.FlyntData.componentsWithScript[componentName]) {
-      await import(`../Components/${componentSubpath}/script.js`)
+      import(`../Components/${componentSubpath}/script.js`)
     }
   }
 })
