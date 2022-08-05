@@ -25,21 +25,18 @@
 
   const changeText = function ($el, val) {
     const $blockAnchor = $el.closest('[data-layout="blockAnchor"]:not(.acf-clone)')
-    const $anchorLink = $blockAnchor.find('.flyntAnchorLinkCopy')
-    if ($anchorLink) {
-      const $anchorLinkInput = $anchorLink.find('.flyntAnchorLinkCopy-input')
-      $anchorLinkInput.attr('tabindex', '-1')
+    const $anchorLinkInput = $blockAnchor.find('.anchorLink-url')
+    if ($anchorLinkInput) {
       const href = $anchorLinkInput.data('href')
-      val = sanitiseText(val)
+      val = sanitizeText(val)
       const link = `${href}#${val}`
       $anchorLinkInput.text(link)
     }
   }
 
-  const sanitiseText = function (value) {
+  const sanitizeText = function (value) {
     // convert to lowercase letters only
-    value = value.replace(/[^A-Za-z]/g, '').toLowerCase()
-
+    value = value.replace(/[^A-Za-z0-9]/g, '-').toLowerCase()
     return value
   }
 
@@ -47,8 +44,8 @@
     e.preventDefault()
     const $anchorField = $el.closest('[data-layout="blockAnchor"]:not(.acf-clone)')
     if ($anchorField.length > 0) {
-      const $anchorLinkInput = $anchorField.find('.flyntAnchorLinkCopy-input')
-      const $copyMessage = $anchorField.find('.flyntAnchorLinkCopy-message')
+      const $anchorLinkInput = $anchorField.find('.anchorLink-url')
+      const $copyMessage = $anchorField.find('.anchorLink-message')
 
       if (!navigator.clipboard) {
         document.execCommand('copy')

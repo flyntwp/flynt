@@ -22,17 +22,16 @@ function getACFLayout()
         'sub_fields' => [
             [
                 [
-                    'label' => __('Enter unique name', 'flynt'),
+                    'label' => __('Enter unique anchor name', 'flynt'),
                     'name' => 'anchor',
                     'type' => 'text',
                     'required' => 1,
-                    'instructions' => __('Enter a unique name to create an anchor link.<br>Copy the link below and use it anywhere on the page to scroll to this position.', 'flynt'),
+                    'instructions' => __('Enter a unique name to create an anchor link.', 'flynt'),
                 ],
                 [
-                    'label' => __('', 'flynt'),
-                    'name' => 'anchorLinkCopy',
+                    'label' => __('Anchor link', 'flynt'),
+                    'name' => 'anchorLink',
                     'type' => 'message',
-                    'message' => __('', 'flynt'),
                     'new_lines' => '',
                     'esc_html' => 0,
                 ],
@@ -41,9 +40,9 @@ function getACFLayout()
     ];
 }
 
-add_filter('acf/load_field/name=anchorLinkCopy', function ($field) {
+add_filter('acf/load_field/name=anchorLink', function ($field) {
     global $post;
-    $post = new \Timber\Post($post);
+    $post = new Post($post);
     $message = $field['message'];
     $context = Timber::get_context();
     $context['post'] = new Post($post);
@@ -58,19 +57,21 @@ add_filter('acf/load_field/name=anchorLinkCopy', function ($field) {
     $componentPath = $templateDir . '/Components/BlockAnchor';
 
     $content = [
-        'copiedMessage' => __('Copied!', 'flynt'),
+        'copiedMessage' => __('Link copied ', 'flynt'),
+        'description' => __('Copy the link and use it anywhere on the page to scroll to this position.', 'flynt'),
+        'buttonText' =>  __("Copy link", "flynt")
     ];
-
     $content = array_merge($content, $context);
-
-    $html = Timber::compile(
-        $componentPath . '/Partials/anchorLinkCopy.twig',
+    $message = Timber::compile(
+        $componentPath . '/Partials/_anchorLink.twig',
         $content
     );
-
-    // Note: overrides whats in the original field config written
-    $message = $html;
-
     $field['message'] = $message;
+
+    $field['label'] =  sprintf(
+        '<p class="anchorLink-url" data-href="%1$s">%2$s#</p>',
+        $post->link,
+        $post->link
+    );
     return $field;
 });
