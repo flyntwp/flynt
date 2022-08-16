@@ -59,7 +59,7 @@ add_filter('acf/load_field/name=anchorLink', function ($field) {
     $content = [
         'copiedMessage' => __('Link copied ', 'flynt'),
         'description' => __('Copy the link and use it anywhere on the page to scroll to this position.', 'flynt'),
-        'buttonText' =>  __("Copy link", "flynt")
+        'buttonText' =>  __('Copy link', 'flynt')
     ];
     $content = array_merge($content, $context);
     $message = Timber::compile(
