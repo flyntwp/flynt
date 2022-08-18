@@ -1,43 +1,26 @@
 [is='flynt-block-image-text'] {
   .container {
-    @include center(calc(var(--content-max-width) - (2 * var(--container-padding))), var(--container-padding));
-  }
-
-  .box-inner {
-    @include reset-content-margins('top');
-  }
-
-  @media (max-width: $breakpoint-tablet-horizontal - 1) {
-    margin: var(--component-spacing-tablet) 0;
-  }
-
-  @media (min-width: $breakpoint-tablet-horizontal) {
-    .container {
-      @include center(calc(var(--container-max-width) - (2 * var(--container-padding-desktop))), var(--container-padding-tablet));
-    }
-
-    .box {
+    @media (min-width: $breakpoint-tablet-horizontal) {
       align-items: center;
       display: flex;
-      margin: 0 calc(-1 * (var(--gap-width) *2));
-
-      &-inner {
-        @include reset-content-margins('both');
-        padding: 0 calc(var(--gap-width) * 2);
-        width: 50%;
-      }
-
-      &--imageRight {
-        flex-direction: row;
-      }
-
-      &--imageLeft {
-        flex-direction: row-reverse;
-      }
+      flex-direction: row-reverse;
+      gap: calc(var(--container-padding) * 2);
+      justify-content: space-around;
     }
 
-    .figure-caption {
-      position: absolute;
+    &--imageRight {
+      flex-direction: row;
+    }
+  }
+
+  .content {
+    @include reset-content-margins('top');
+    margin: 0 auto;
+    max-width: var(--content-max-width);
+
+    @media (min-width: $breakpoint-tablet-horizontal) {
+      @include reset-content-margins();
+      flex-basis: 50%;
     }
   }
 }

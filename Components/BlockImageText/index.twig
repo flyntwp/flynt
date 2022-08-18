@@ -1,42 +1,38 @@
 <div class="flyntComponent componentSpacing {{ options.theme }}" is="flynt-block-image-text">
-  <div class="container">
-    <div class="box box--{{ imagePosition }}">
-      <div class="box-inner box-inner--content">
-        {{ contentHtml|e('wp_kses_post') }}
-      </div>
-      <div class="box-inner box-inner--image">
-        <figure class="figure">
-          {% if image.post_mime_type == 'image/svg+xml' %}
-            <img class="image lazyload"
-              src="{{ placeholderImage(500, (500 / image.aspect)|round, 'rgba(125, 125, 125, 0.1)') }}"
-              width="{{ 500 }}"
-              height="{{ (500 / image.aspect)|round }}"
-              data-src="{{ image.src }}"
-              alt="{{ image.alt|e }}"
-            >
-          {% else %}
-            <img class="figure-image lazyload"
-              src="{{ image.src|resizeDynamic(500) }}"
-              width="{{ 500 }}"
-              height="{{ (500 / image.aspect)|round }}"
-              srcset="{{ placeholderImage(500, (500 / image.aspect)|round, 'rgba(125, 125, 125, 0.1)') }}"
-              data-srcset="
-                {{ image.src|resizeDynamic(1920) }} 1920w,
-                {{ image.src|resizeDynamic(1320) }} 1320w,
-                {{ image.src|resizeDynamic(1280) }} 1280w,
-                {{ image.src|resizeDynamic(1035) }} 1035w,
-                {{ image.src|resizeDynamic(860) }} 860w,
-                {{ image.src|resizeDynamic(760) }} 760w,
-                {{ image.src|resizeDynamic(500) }} 500w,
-                {{ image.src|resizeDynamic(375) }} 375w"
-              data-sizes="auto"
-              alt="{{ image.alt|e }}">
-            {% endif %}
-          {% if image.caption %}
-            <figcaption class="figure-caption">{{ image.caption|e }}</figcaption>
+  <div class="container centerMaxWidthContainer container--{{ imagePosition }}">
+    <div class="content">
+      {{ contentHtml|e('wp_kses_post') }}
+    </div>
+    <div class="content content-image">
+      <figure class="figure">
+        {% if image.post_mime_type == 'image/svg+xml' %}
+          <img class="image lazyload"
+            src="{{ placeholderImage(768, (768 / image.aspect)|round, 'rgba(125, 125, 125, 0.1)') }}"
+            width="{{ 768 }}"
+            height="{{ (768 / image.aspect)|round }}"
+            data-src="{{ image.src }}"
+            alt="{{ image.alt|e }}">
+        {% else %}
+          <img class="figure-image lazyload"
+            src="{{ image.src|resizeDynamic(768) }}"
+            width="{{ 768 }}"
+            height="{{ (768 / image.aspect)|round }}"
+            srcset="{{ placeholderImage(768, (768 / image.aspect)|round, 'rgba(125, 125, 125, 0.1)') }}"
+            data-srcset="
+              {{ image.src|resizeDynamic(1920) }} 1920w,
+              {{ image.src|resizeDynamic(1600) }} 1600w,
+              {{ image.src|resizeDynamic(1440) }} 1440w,
+              {{ image.src|resizeDynamic(1366) }} 1366w,
+              {{ image.src|resizeDynamic(1024) }} 1024w,
+              {{ image.src|resizeDynamic(768) }} 768w,
+              {{ image.src|resizeDynamic(640) }} 640w"
+            data-sizes="auto"
+            alt="{{ image.alt|e }}">
           {% endif %}
-        </figure>
-      </div>
+        {% if image.caption %}
+          <figcaption class="figure-caption">{{ image.caption|e }}</figcaption>
+        {% endif %}
+      </figure>
     </div>
   </div>
 </div>
