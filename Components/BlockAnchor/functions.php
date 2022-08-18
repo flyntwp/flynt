@@ -7,8 +7,7 @@ use Timber\Post;
 
 add_filter('Flynt/addComponentData?name=BlockAnchor', function ($data) {
     if (isset($data['anchor'])) {
-        // convert to lowercase letters only
-        $data['anchor'] = preg_replace('/[^a-zA-Z]/', '', strtolower($data['anchor']));
+        $data['anchor'] = preg_replace('/[^A-Za-z0-9]/', '-', strtolower($data['anchor']));
     }
 
     return $data;

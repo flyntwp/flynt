@@ -35,7 +35,6 @@
   }
 
   const sanitizeText = function (value) {
-    // convert to lowercase letters only
     value = value.replace(/[^A-Za-z0-9]/g, '-').toLowerCase()
     return value
   }
