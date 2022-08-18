@@ -13,7 +13,7 @@ add_filter('Flynt/addComponentData?name=GridPostsLatest', function ($data) {
 
     $data['taxonomies'] = $data['taxonomies'] ?: [];
 
-    $data['items'] = Timber::get_posts([
+    $data['posts'] = Timber::get_posts([
         'post_status' => 'publish',
         'post_type' => $postType,
         'category' => join(',', array_map(function ($taxonomy) {
