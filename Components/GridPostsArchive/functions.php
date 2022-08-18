@@ -41,7 +41,6 @@ add_filter('Flynt/addComponentData?name=GridPostsArchive', function ($data) {
         $data['description'] = get_the_archive_description();
     }
 
-
     return $data;
 });
 
@@ -54,6 +53,7 @@ Options::addGlobal('GridPostsArchive', [
         'ui' => 1
     ],
 ]);
+
 Options::addTranslatable('GridPostsArchive', [
     [
         'label' => __('General', 'flynt'),

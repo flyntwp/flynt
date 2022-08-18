@@ -9,46 +9,49 @@
     {% if terms %}
       {% include 'Partials/_filter.twig' %}
     {% endif %}
-    <ul class="posts">
-      {% for post in posts %}
-        <li class="post boxShadow boxRadius themeReset">
-          <a class="post-link" href="{{ post.link }}" aria-label="{{ post.title }}">
-            {% if post.thumbnail %}
-              <figure class="figure">
-                <img class="post-image figure-image lazyload"
-                  src="{{ post.thumbnail.src|resizeDynamic(424, 283) }}"
-                  width="{{ 424 }}"
-                  height="{{ 283 }}"
-                  srcset="{{ placeholderImage(424, 283, 'rgba(125, 125, 125, 0.1)') }}"
-                  data-srcset="
-                    {{ post.thumbnail.src|resizeDynamic(1920, 1280) }} 1920w,
-                    {{ post.thumbnail.src|resizeDynamic(1320, 880) }} 1320w,
-                    {{ post.thumbnail.src|resizeDynamic(1280, 853) }} 1280w,
-                    {{ post.thumbnail.src|resizeDynamic(1050, 700) }} 1050w,
-                    {{ post.thumbnail.src|resizeDynamic(760, 506) }} 760w,
-                    {{ post.thumbnail.src|resizeDynamic(600, 400) }} 600w,
-                    {{ post.thumbnail.src|resizeDynamic(424, 283) }} 424w,
-                    {{ post.thumbnail.src|resizeDynamic(312, 208) }} 312w"
-                  data-sizes="auto"
-                  alt="{{ post.title }}">
-              </figure>
-            {% endif %}
-            <div class="post-inner boxPadding">
-              <h2 class="post-title h3">{{ post.title }}</h2>
-              <p class="post-excerpt">{{ post.preview.read_more(false) }}</p>
-            </div>
-            <footer class="post-footer">
-              <span class="post-readingTime">
-                <i data-feather="clock"></i> {{ labels.readingTime|replace({'%d': post.content|readingtime}) }}
-              </span>
-              <span class="button button--link button--small post-readMore">{{ labels.readMore }}</span>
-            </footer>
-          </a>
-        </li>
-      {% else %}
-        <p class="posts-empty">{{ labels.noPostsFound }}</p>
-      {% endfor %}
-    </ul>
+
+    {% if posts|length > 0 %}
+      <ul class="posts">
+        {% for post in posts %}
+          <li class="post boxShadow boxRadius themeReset">
+            <a class="post-link" href="{{ post.link }}" aria-label="{{ post.title }}">
+              {% if post.thumbnail %}
+                <figure class="figure">
+                  <img class="post-image figure-image lazyload"
+                    src="{{ post.thumbnail.src|resizeDynamic(768, (768 / 3 * 2)|round) }}"
+                    width="{{ 768 }}"
+                    height="{{ (768 / 3 * 2)|round }}"
+                    srcset="{{ placeholderImage(768, (768 / 3 * 2)|round, 'rgba(125, 125, 125, 0.1)') }}"
+                    data-srcset="
+                      {{ post.thumbnail.src|resizeDynamic(1920, (1920 / 3 * 2)|round) }} 1920w,
+                      {{ post.thumbnail.src|resizeDynamic(1600, (1600 / 3 * 2)|round) }} 1600w,
+                      {{ post.thumbnail.src|resizeDynamic(1440, (1440 / 3 * 2)|round) }} 1440w,
+                      {{ post.thumbnail.src|resizeDynamic(1366, (1366 / 3 * 2)|round) }} 1366w,
+                      {{ post.thumbnail.src|resizeDynamic(1024, (1024 / 3 * 2)|round) }} 1024w,
+                      {{ post.thumbnail.src|resizeDynamic(768, (768 / 3 * 2)|round) }} 768w,
+                      {{ post.thumbnail.src|resizeDynamic(640, (640 / 3 * 2)|round) }} 640w"
+                    data-sizes="auto"
+                    alt="{{ post.title }}">
+                </figure>
+              {% endif %}
+              <div class="post-content boxPadding">
+                <h2 class="h3">{{ post.title }}</h2>
+                <p>{{ post.preview.read_more(false) }}</p>
+              </div>
+              <footer class="post-footer">
+                <span class="post-readingTime">
+                  <i data-feather="clock"></i> {{ labels.readingTime|replace({'%d': post.content|readingtime}) }}
+                </span>
+                <span class="button button--link button--small">{{ labels.readMore }}</span>
+              </footer>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="posts-empty">{{ labels.noPostsFound }}</p>
+    {% endif %}
+
     {% set pagination = posts.pagination %}
     {% if pagination.pages %}
       {% include 'Partials/_paginationButtons.twig' %}

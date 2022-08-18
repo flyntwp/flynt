@@ -1,24 +1,23 @@
 [is='flynt-grid-posts-archive'] {
   .posts {
     @include reset-list;
-    @include grid(1);
+    @include grid;
 
     @media (min-width: $breakpoint-tablet) {
-      @include grid(2);
+      --grid-columns: 2;
     }
 
     @media (min-width: $breakpoint-tablet-horizontal) {
-      @include grid(3);
+      --grid-columns: 3;
     }
   }
 
   .posts-empty {
-    padding: 32px 0 0;
+    text-align: center;
   }
 
   .post {
     @include reset-list-item;
-    display: flex;
 
     &-link {
       @include reset-link;
@@ -27,26 +26,13 @@
       height: 100%;
     }
 
-    .figure {
-      margin-bottom: 0;
-    }
-
-    &-inner {
-      @include reset-content-margins;
+    &-content {
       color: var(--color-text);
       flex-grow: 1;
 
       #{$heading-selectors} {
         color: var(--color-headline);
       }
-    }
-
-    &-link {
-      @include reset-link;
-
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
     }
 
     &-footer {
