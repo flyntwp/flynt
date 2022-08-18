@@ -1,58 +1,36 @@
 [is='flynt-grid-image-text'] {
   .grid {
     @include reset-list;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: calc(-1 * var(--gap-width)) 0 0 calc(-1 * var(--gap-width));
+    @include grid(1, center);
 
     &--columns2,
     &--columns3,
     &--columns4 {
-      .grid-item {
-        @media (min-width: $breakpoint-tablet) {
-          width: 50%;
-        }
+      @media (min-width: $breakpoint-tablet) {
+        --grid-columns: 2;
       }
     }
 
-    &--columns3 {
-      .grid-item {
-        @media (min-width: $breakpoint-tablet-horizontal) {
-          width: 33.33%;
-        }
+    &--columns3,
+    &--columns4 {
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        --grid-columns: 3;
       }
     }
 
     &--columns4 {
-      .grid-item {
-        @media (min-width: $breakpoint-desktop) {
-          width: 25%;
-        }
+      @media (min-width: $breakpoint-desktop) {
+        --grid-columns: 4;
       }
     }
   }
 
-  .grid-item {
+  .item {
     @include reset-list-item;
     max-width: var(--content-max-width);
-    padding: var(--gap-width) 0 0 var(--gap-width);
-    width: 100%;
-  }
 
-  .content {
-    height: 100%;
-
-    img {
-      background: var(--color-border-alpha);
-    }
-
-    &-inner {
-      @include reset-content-margins;
-
-      &:not(.boxPadding) {
-        padding: 24px 0;
-      }
+    &-content {
+      @include reset-content-margins('bottom');
     }
   }
 }
