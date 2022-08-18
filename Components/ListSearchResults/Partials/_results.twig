@@ -5,7 +5,7 @@
         <article class="post">
           <a href="{{ post.link }}" aria-label="{{ post.title }}" class="post-link">
             <h2 class="h3">{{ post.title }}</h2>
-            <p>{{ post.preview.length(40).read_more(false) }}</p>
+            <p>{{ post.preview.read_more(false) }}</p>
             <footer class="post-footer">
               <span class="button button--link" aria-hidden="true">{{ labels.readMore }}</span>
             </footer>
