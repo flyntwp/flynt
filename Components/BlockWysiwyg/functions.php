@@ -22,8 +22,8 @@ function getACFLayout()
                 'name' => 'textAlignment',
                 'type' => 'button_group',
                 'choices' => [
-                    'textLeft' => '<i class=\'dashicons dashicons-editor-alignleft\' title=\'Align text left\'></i>',
-                    'textCenter' => '<i class=\'dashicons dashicons-editor-aligncenter\' title=\'Align text center\'></i>'
+                    'textLeft' => sprintf('<i class="dashicons dashicons-editor-alignleft" title="%1$s"></i>', __('Align text left', 'flynt')),
+                    'textCenter' => sprintf('<i class="dashicons dashicons-editor-aligncenter" title="%1$s"></i>', __('Align text center', 'flynt'))
                 ]
             ],
             [
