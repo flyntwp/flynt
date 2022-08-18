@@ -3,26 +3,26 @@
     <figure class="figure">
       {% if image.post_mime_type == 'image/svg+xml' %}
           <img class="image lazyload"
-            src="{{ placeholderImage(760, (760 / image.aspect)|round, 'rgba(125, 125, 125, 0.1)') }}"
-            width="{{ 760 }}"
-            height="{{ (760 / image.aspect)|round }}"
+            src="{{ placeholderImage(768, (768 / image.aspect)|round, 'rgba(125, 125, 125, 0.1)') }}"
+            width="{{ 768 }}"
+            height="{{ (768 / image.aspect)|round }}"
             data-src="{{ image.src }}"
             alt="{{ image.alt|e }}"
           >
       {% else %}
         <img class="figure-image lazyload"
-            src="{{ image.src|resizeDynamic(760) }}"
-            width="{{ 760 }}"
-            height="{{ (760 / image.aspect)|round }}"
-            srcset="{{ placeholderImage(760, (760 / image.aspect)|round, 'rgba(125, 125, 125, 0.1)') }}"
+            src="{{ image.src|resizeDynamic(768) }}"
+            width="{{ 768 }}"
+            height="{{ (768 / image.aspect)|round }}"
+            srcset="{{ placeholderImage(768, (768 / image.aspect)|round, 'rgba(125, 125, 125, 0.1)') }}"
             data-srcset="
               {{ image.src|resizeDynamic(1920) }} 1920w,
+              {{ image.src|resizeDynamic(1600) }} 1600w,
               {{ image.src|resizeDynamic(1440) }} 1440w,
-              {{ image.src|resizeDynamic(1320) }} 1320w,
+              {{ image.src|resizeDynamic(1366) }} 1366w,
               {{ image.src|resizeDynamic(1024) }} 1024w,
-              {{ image.src|resizeDynamic(860) }} 860w,
-              {{ image.src|resizeDynamic(760) }} 760w,
-              {{ image.src|resizeDynamic(375) }} 375w"
+              {{ image.src|resizeDynamic(768) }} 768w,
+              {{ image.src|resizeDynamic(640) }} 640w"
             data-sizes="auto"
             alt="{{ image.alt|e }}">
       {% endif %}
