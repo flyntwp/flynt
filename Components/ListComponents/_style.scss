@@ -1,14 +1,14 @@
 [is='flynt-list-components'] {
   .components {
     @include reset-list;
-    @include grid(1);
+    @include grid;
 
     @media (min-width: $breakpoint-tablet) {
-      @include grid(2);
+      --grid-columns: 2;
     }
 
     @media (min-width: $breakpoint-tablet-horizontal) {
-      @include grid(3);
+      --grid-columns: 3;
     }
   }
 
