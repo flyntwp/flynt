@@ -27,7 +27,7 @@ module.exports = merge(common, {
     },
     host: 'localhost',
     port: 3000,
-    https: false, // set to true and install ssl certificate from host:port manually to enable https
+    server: 'http', // set to https and install ssl certificate from host:port manually if you want to use https
     allowedHosts: [domain, `*.${domain}`],
     watchFiles
   }
