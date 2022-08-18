@@ -69,8 +69,8 @@ $input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [ty
   --box-padding-tablet: 24px;
   --box-padding-desktop: 32px;
 
-  --content-max-width: calc(#{$breakpoint-tablet} - (var(--container-padding-desktop) * 2));
-  --content-max-width-large: calc(#{$breakpoint-tablet} + var(--container-padding-desktop));
+  --content-max-width: 60ch;
+  --content-max-width-large: 80ch;
   --container-max-width: #{$breakpoint-desktop-wide};
 
   --container-padding-mobile: 16px;

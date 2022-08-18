@@ -130,7 +130,6 @@ a {
 
 p,
 .paragraph,
-figure,
 pre {
   margin: 0 0 1.5rem;
 }
@@ -148,6 +147,14 @@ img {
   height: auto;
   max-width: 100%;
   width: 100%;
+}
+
+figure {
+  margin: 0;
+
+  + :not(div) {
+    margin-top: 1.5rem;
+  }
 }
 
 figcaption {
@@ -837,13 +844,13 @@ select {
 }
 
 .centerContentMaxWidth {
-  margin: 0 auto;
-  max-width: var(--content-max-width);
+  margin-inline: auto;
+  max-inline-size: var(--content-max-width);
 }
 
 .centerContentMaxWidthLarge {
-  margin: 0 auto;
-  max-width: var(--content-max-width-large);
+  margin-inline: auto;
+  max-inline-size: var(--content-max-width-large);
 }
 
 .preContent {
