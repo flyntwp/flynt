@@ -626,7 +626,7 @@ select {
     display: inline-block;
     letter-spacing: 0;
     line-height: 1.7;
-    padding-left: 2rem;
+    padding-left: 2em;
     position: relative;
 
     &::before {
@@ -635,14 +635,14 @@ select {
       border-radius: 0.25rem;
       content: '';
       display: block;
-      height: 1.25rem;
+      height: 1.25em;
       left: 0;
       margin: 0;
       padding: 0;
       position: absolute;
-      top: 0.2rem;
+      top: 0.2em;
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
-      width: 1.25rem;
+      width: 1.25em;
     }
 
     &::after {
@@ -650,15 +650,15 @@ select {
       border-right: var(--border-width) solid var(--color-accent);
       content: '';
       display: block;
-      height: 0.75rem;
-      left: 0.4375rem;
+      height: 0.75em;
+      left: 0.4375em;
       opacity: 0;
       position: absolute;
-      top: 0.3125rem;
+      top: 0.3125em;
       transform: rotate(45deg);
       transition: opacity 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
       visibility: hidden;
-      width: 0.375rem;
+      width: 0.375em;
     }
   }
 
@@ -697,11 +697,11 @@ select {
       background-color: var(--color-accent);
       border: 0;
       border-radius: 50%;
-      height: 0.75rem;
-      left: 0.25rem;
-      top: 0.4375rem;
+      height: 0.75em;
+      left: 0.25em;
+      top: 0.4375em;
       transform: none;
-      width: 0.75rem;
+      width: 0.75em;
     }
   }
 
@@ -718,7 +718,7 @@ select {
   background-color: var(--color-background);
   border: var(--border-width) solid var(--color-border);
   border-radius: calc(var(--box-border-radius) + (var(--border-width) * 2));
-  margin: 0 0 2rem;
+  margin: 0 0 2em;
   padding: calc(var(--border-width) * 2);
   position: relative;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -739,13 +739,13 @@ select {
     background-color: transparent;
     border: 0;
     margin: 0;
-    padding: 0 0.618rem;
+    padding: 0 0.618em;
     width: 100%;
 
     @media (min-width: $breakpoint-mobile-horizontal) {
       border-radius: var(--button-border-radius);
       min-height: inherit;
-      padding: 0 1.618rem;
+      padding: 0 1.618em;
     }
 
     &:focus {
