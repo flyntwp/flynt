@@ -35,6 +35,25 @@ body {
   overflow-x: hidden;
 }
 
+/*
+ * Respect reduced motion preferences and remove
+ * all animations, transitions and smooth scroll.
+*/
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /**
 * 1.0 Typography
 *
