@@ -1,4 +1,4 @@
-import Swiper, { Navigation, A11y, Autoplay } from 'swiper'
+import Swiper, { Navigation, A11y, Autoplay, Lazy } from 'swiper'
 import 'swiper/css/bundle'
 
 class SliderImages extends window.HTMLDivElement {
@@ -34,12 +34,16 @@ class SliderImages extends window.HTMLDivElement {
   initSlider () {
     const { options } = this.props
     const config = {
-      modules: [Navigation, A11y, Autoplay],
+      modules: [Navigation, A11y, Lazy, Autoplay],
+      a11y: options.a11y,
+      roundLengths: true,
       navigation: {
         nextEl: this.buttonNext,
         prevEl: this.buttonPrev
       },
-      a11y: options.a11y
+      lazy: {
+        loadPrevNext: true
+      }
     }
     if (options.autoplay && options.autoplaySpeed) {
       config.autoplay = {
