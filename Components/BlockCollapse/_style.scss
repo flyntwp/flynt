@@ -12,7 +12,7 @@
     }
   }
 
-  + .componentSpacing {
+  &[class*='theme'] + .componentSpacing {
     &[class*='theme'] {
       padding-top: 0;
     }
