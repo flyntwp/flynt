@@ -3,7 +3,7 @@
 namespace Flynt\Components\BlockCollapse;
 
 add_filter('Flynt/addComponentData?name=BlockCollapse', function ($data) {
-    $data['status'] = $data['percentageDistance'] >= 100 ? 'expand' : 'collapse';
+    $data['status'] = $data['percentageDistance'] >= 101 ? 'expand' : 'collapse';
     return $data;
 });
 
@@ -20,9 +20,10 @@ function getACFLayout()
                 'type' => 'range',
                 'prepend' => __('Distance', 'flynt'),
                 'append' => __('%', 'flynt'),
-                'default_value' => 0,
+                'default_value' => 50,
                 'min' => 0,
                 'max' => 200,
+                'step' => 50,
                 'wrapper' =>  [
                     'width' => '50',
                 ],
@@ -33,7 +34,7 @@ function getACFLayout()
                 'type' => 'message',
                 'message' => sprintf(
                     '%1$s' . PHP_EOL . '%2$s' . PHP_EOL . '%3$s',
-                    __('0% (Default) no spacing between components', 'flynt'),
+                    __('0% no spacing between components', 'flynt'),
                     __('50% reduces vertical space (by half)', 'flynt'),
                     __('150% extends vertical space (by 50%)', 'flynt')
                 ),
