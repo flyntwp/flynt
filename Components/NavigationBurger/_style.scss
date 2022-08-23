@@ -22,14 +22,14 @@
       }
     }
 
-    &--unpinned:not(.flyntComponent-menuIsOpen) {
+    &--unpinned:not([data-state='menuIsOpen']) {
       .container {
         transform: translate3d(0, -100%, 0);
       }
     }
   }
 
-  &.flyntComponent-menuIsOpen {
+  &[data-state='menuIsOpen'] {
     .container {
       box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.07);
     }

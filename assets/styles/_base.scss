@@ -159,7 +159,7 @@ figure {
 
 figcaption {
   font-size: 0.9rem;
-  margin: 0.5rem auto 0;
+  margin: 0.5rem auto 0 0;
   max-width: var(--content-max-width);
 }
 
@@ -845,12 +845,12 @@ select {
 
 .centerContentMaxWidth {
   margin-inline: auto;
-  max-inline-size: var(--content-max-width);
+  max-width: var(--content-max-width);
 }
 
 .centerContentMaxWidthLarge {
   margin-inline: auto;
-  max-inline-size: var(--content-max-width-large);
+  max-width: var(--content-max-width-large);
 }
 
 .preContent {

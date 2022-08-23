@@ -1,27 +1,3 @@
 [is='flynt-block-video-oembed'] {
   @import 'Partials/video';
-
-  &.flyntComponent--sizeSmall {
-    .video {
-      max-width: 375px;
-    }
-  }
-
-  &.flyntComponent--sizeMedium {
-    .video {
-      max-width: var(--content-max-width);
-    }
-  }
-
-  &.flyntComponent--sizeLarge {
-    .video {
-      max-width: var(--content-max-width-large);
-    }
-  }
-
-  &.flyntComponent--sizeFull {
-    .figure-caption {
-      margin-left: 0.625rem;
-    }
-  }
 }

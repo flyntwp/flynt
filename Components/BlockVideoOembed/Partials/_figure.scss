@@ -1,9 +1,7 @@
 .figure {
   margin-bottom: 0;
 
-  &-image {
-    &--isHidden {
-      visibility: hidden;
-    }
+  &[data-state='isHidden'] {
+    visibility: hidden;
   }
 }

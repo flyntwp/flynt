@@ -1,11 +1,14 @@
 [is='flynt-block-collapse'] {
-  &.flyntComponent {
-    &--collapse {
-      margin-top: calc((-1 * var(--component-spacing)) + (var(--distance) * var(--component-spacing) ) / 100);
-    }
+  &[data-state='collapse'] {
+    margin-top: calc((-1 * var(--component-spacing)) + (var(--percentage-distance) * var(--component-spacing) ) / 100);
+  }
 
-    &--expand {
-      margin-top: calc((var(--distance) * var(--component-spacing) ) / 100);
+  &[data-state='expand'] {
+    margin-top: calc((var(--percentage-distance) * var(--component-spacing) ) / 100);
+
+    &[class*='theme'] {
+      margin-top: 0;
+      padding-top: calc((var(--percentage-distance) * var(--component-spacing) ) / 100);
     }
   }
 

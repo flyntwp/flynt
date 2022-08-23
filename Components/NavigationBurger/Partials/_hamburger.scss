@@ -53,34 +53,37 @@
   }
 }
 
-&.flyntComponent-menuIsOpen .hamburger-lines {
-  &::before,
-  &::after {
-    opacity: 0;
-    transition-delay: 0s;
-  }
+&[data-state='menuIsOpen'] {
+  .hamburger-lines {
+    &::before,
+    &::after {
+      opacity: 0;
+      transition-delay: 0s;
+    }
 
-  &::before {
-    transform: translateY(9px);
-  }
+    &::before {
+      transform: translateY(9px);
+    }
 
-  &::after {
-    transform: translateY(-9px);
-  }
+    &::after {
+      transform: translateY(-9px);
+    }
 
-  &--primary {
-    transform: rotate(45deg);
-    transition-delay: 0.2s;
-  }
+    &--primary {
+      transform: rotate(45deg);
+      transition-delay: 0.2s;
+    }
 
-  &--secondary {
-    transform: rotate(-45deg);
-    transition-delay: 0.2s;
-  }
+    &--secondary {
+      transform: rotate(-45deg);
+      transition-delay: 0.2s;
+    }
 
-  &::before,
-  &::after {
-    opacity: 0;
-    transition-delay: 0s;
+    &::before,
+    &::after {
+      opacity: 0;
+      transition-delay: 0s;
+    }
   }
 }
+

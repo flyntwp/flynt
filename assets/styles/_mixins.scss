@@ -28,7 +28,7 @@
 ) {
   display: block;
   margin-inline: auto;
-  max-inline-size: $max-width;
+  max-width: $max-width;
   padding-left: $padding;
   padding-right: $padding;
 }

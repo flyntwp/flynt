@@ -1,15 +1,6 @@
 [is='flynt-block-wysiwyg'] {
   .content {
     @include reset-content-margins;
-    text-align: inherit;
-
-    &--textLeft {
-      text-align: left;
-    }
-
-    &--textCenter {
-      text-align: center;
-    }
 
     > :last-child {
       margin-bottom: 0;
@@ -21,5 +12,9 @@
         content: '\00a0';
       }
     }
+  }
+
+  [data-state='textCenter'] {
+    text-align: center;
   }
 }

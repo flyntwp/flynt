@@ -3,24 +3,21 @@
     @media (min-width: $breakpoint-tablet-horizontal) {
       align-items: center;
       display: flex;
-      flex-direction: row-reverse;
       gap: calc(var(--container-padding) * 2);
       justify-content: space-around;
     }
 
-    &--imageRight {
-      flex-direction: row;
+    > * {
+      @include reset-content-margins('top');
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        @include reset-content-margins();
+        flex-basis: 50%;
+      }
     }
   }
 
-  .content {
-    @include reset-content-margins('top');
-    margin: 0 auto;
-    max-width: var(--content-max-width);
-
-    @media (min-width: $breakpoint-tablet-horizontal) {
-      @include reset-content-margins();
-      flex-basis: 50%;
-    }
+  [data-state='imageLeft'] {
+    flex-direction: row-reverse;
   }
 }

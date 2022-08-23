@@ -4,7 +4,8 @@ function init () {
   // Add delegated events.
   document.addEventListener('mouseenter', (e) => {
     const { target } = e
-    if (target.matches('a[data-layout]')) {
+
+    if (typeof target === 'object' && target !== null && 'getAttribute' in target && target.matches('a[data-layout]')) {
       const layout = target.dataset.layout
       showComponentScreenshot(layout, target)
     }
@@ -12,7 +13,8 @@ function init () {
 
   document.addEventListener('mouseleave', (e) => {
     const { target } = e
-    if (target.matches('a[data-layout]')) {
+
+    if (typeof target === 'object' && target !== null && 'getAttribute' in target && target.matches('a[data-layout]')) {
       hideComponentScreenshot(target)
     }
   }, true)
@@ -36,7 +38,6 @@ function showComponentScreenshot (layout, wrapper) {
 
 function hideComponentScreenshot (wrapper) {
   const wrapperContainer = wrapper.querySelector('.flyntComponentScreenshot-imageWrapper')
-  console.log(wrapperContainer)
   wrapperContainer.remove()
 }
 

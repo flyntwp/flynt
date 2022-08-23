@@ -1,6 +1,6 @@
 <div class="flyntComponent componentSpacing {{ options.theme }}" is="flynt-block-wysiwyg">
   <div class="container centerMaxWidthContainer">
-    <div class="content content--{{ textAlignment }}{% if options.size != 'sizeFull' %} centerContentMaxWidth{{ options.size == 'sizeLarge' ? 'Large' }}{% endif %}">
+    <div class="content {{ options.size != 'sizeFull' ? 'centerContentMaxWidth'}}{{ options.size == 'sizeLarge' ? 'Large' }}" data-state="{{ textAlignment }}">
       {{ contentHtml|e('wp_kses_post') }}
     </div>
   </div>

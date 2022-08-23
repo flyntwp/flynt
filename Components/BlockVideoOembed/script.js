@@ -14,7 +14,7 @@ class BlockVideoOembed extends window.HTMLDivElement {
 
   resolveElements () {
     this.playButton = this.querySelector('.video-playButton')
-    this.posterImage = this.querySelector('.figure-image')
+    this.posterImage = this.querySelector('.figure')
     this.videoPlayer = this.querySelector('.video-player')
     this.iframe = this.querySelector('iframe')
   }
@@ -31,13 +31,12 @@ class BlockVideoOembed extends window.HTMLDivElement {
   loadVideo () {
     this.iframe.addEventListener('load', this.videoIsLoaded.bind(this), { once: true })
     this.iframe.setAttribute('src', this.iframe.getAttribute('data-src'))
-    this.videoPlayer.classList.add('video-player--isLoading')
+    this.videoPlayer.dataset.state = 'isLoading'
   }
 
   videoIsLoaded () {
-    this.videoPlayer.classList.remove('video-player--isLoading')
-    this.videoPlayer.classList.add('video-player--isLoaded')
-    this.posterImage.classList.add('figure-image--isHidden')
+    this.videoPlayer.dataset.state = 'isLoaded'
+    this.posterImage.dataset.state = 'isHidden'
   }
 }
 

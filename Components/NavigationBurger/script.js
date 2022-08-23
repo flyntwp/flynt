@@ -14,6 +14,7 @@ class NavigationBurger extends window.HTMLElement {
     this.bindFunctions()
     this.bindEvents()
     this.headroom = null
+    this.isMenuOpen = false
   }
 
   bindFunctions () {
@@ -22,13 +23,12 @@ class NavigationBurger extends window.HTMLElement {
   }
 
   bindEvents () {
-    this.toggleMenu.addEventListener('click', this.triggerMenu)
+    this.menuButton.addEventListener('click', this.triggerMenu)
     this.window.addEventListener('resize', debounce(this.onWindowResize, 200))
   }
 
   resolveElements () {
     this.window = window
-    this.toggleMenu = this.querySelector('[data-toggle-menu]')
     this.menu = this.querySelector('.menu')
     this.menuButton = this.querySelector('.hamburger')
     this.navigationHeight = parseInt(window.getComputedStyle(this).getPropertyValue('--navigation-height')) || 0
@@ -39,12 +39,14 @@ class NavigationBurger extends window.HTMLElement {
   }
 
   triggerMenu (e) {
-    this.classList.toggle('flyntComponent-menuIsOpen')
-    this.menuButton.setAttribute('aria-expanded', this.classList.contains('flyntComponent-menuIsOpen'))
+    this.isMenuOpen = !this.isMenuOpen
+    this.menuButton.setAttribute('aria-expanded', this.isMenuOpen)
 
-    if (this.classList.contains('flyntComponent-menuIsOpen')) {
+    if (this.isMenuOpen) {
+      this.dataset.state = 'menuIsOpen'
       disableBodyScroll(this.menu)
     } else {
+      this.removeAttribute('data-state')
       enableBodyScroll(this.menu)
     }
   }

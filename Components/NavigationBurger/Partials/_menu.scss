@@ -52,7 +52,9 @@
   }
 }
 
-&.flyntComponent-menuIsOpen .menu {
-  transform: translateX(0);
-  visibility: visible;
+&[data-state='menuIsOpen'] {
+  .menu {
+    transform: translateX(0);
+    visibility: visible;
+  }
 }
