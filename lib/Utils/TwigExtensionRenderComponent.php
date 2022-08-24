@@ -3,17 +3,12 @@
 namespace Flynt\Utils;
 
 use Flynt\ComponentManager;
-use Twig_Environment;
-use Twig_Extension;
+use Twig\Environment;
+use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
-class TwigExtensionFlynt extends Twig_Extension
+class TwigExtensionRenderComponent extends AbstractExtension
 {
-    public function getName()
-    {
-        return 'twig_extension_flynt';
-    }
-
     public function getFunctions()
     {
         return [
@@ -21,7 +16,7 @@ class TwigExtensionFlynt extends Twig_Extension
         ];
     }
 
-    public function renderComponent(Twig_Environment $env, $context, $componentName, $data = [], $withContext = true, $ignoreMissing = false, $sandboxed = false)
+    public function renderComponent(Environment $env, $context, $componentName, $data = [], $withContext = true, $ignoreMissing = false, $sandboxed = false)
     {
         $data = $data === false ? [] : $data;
 

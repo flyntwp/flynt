@@ -8,13 +8,8 @@
 
 namespace Flynt\TimberLoader;
 
-use Flynt\Utils\TwigExtensionFlynt;
-use Flynt;
-use Flynt\Utils\Asset;
 use Timber\Image;
 use Timber\Post;
-use Timber\Timber;
-use Twig\TwigFunction;
 
 define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
 
@@ -29,10 +24,6 @@ add_filter('acf/format_value/type=post_object', NS . 'formatPostObject', 100);
 
 // Convert ACF Field of type relationship to a Timber\Post and add all ACF Fields of that Post
 add_filter('acf/format_value/type=relationship', NS . 'formatPostObject', 100);
-add_filter('get_twig', function ($twig) {
-    $twig->addExtension(new TwigExtensionFlynt());
-    return $twig;
-});
 
 function formatImage($value)
 {
@@ -69,19 +60,3 @@ function convertToTimberPost($value)
     }
     return $value;
 }
-
-add_action('timber/twig/filters', function ($twig) {
-    $twig->addFunction(new TwigFunction('placeholderImage', function ($width, $height, $color = null) {
-        $width = round($width);
-        $height = round($height);
-        $colorRect = $color ? "<rect width='{$width}' height='{$height}' style='fill:$color' />" : '';
-        $svg = "<svg width='{$width}' height='{$height}' xmlns='http://www.w3.org/2000/svg'>{$colorRect}</svg>";
-        return "data:image/svg+xml;base64," . base64_encode($svg);
-    }));
-
-    $twig->addFunction(new TwigFunction('requireUrl', function ($asset) {
-        return Asset::requireUrl($asset);
-    }));
-
-    return $twig;
-});

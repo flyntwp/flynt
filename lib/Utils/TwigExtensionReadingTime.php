@@ -2,10 +2,10 @@
 
 namespace Flynt\Utils;
 
-use Twig_Extension;
+use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
-class TwigReadingTimeExtension extends Twig_Extension
+class TwigExtensionReadingTime extends AbstractExtension
 {
     public function getName()
     {
