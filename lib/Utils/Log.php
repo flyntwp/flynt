@@ -44,7 +44,7 @@ class Log
      * @param mixed    $data     Data to be printed.
      * @param boolean  $postpone Postpone printing to the wp_footer action.
      */
-    public static function pp($data, $postpone = true)
+    public static function debug($data, $postpone = true)
     {
         self::printDebug($data, $postpone);
     }
@@ -63,7 +63,7 @@ class Log
      * @param string   $title    A title.
      * @param string   $logType  The type of log (accepts log|error|trace).
      */
-    public static function consoleDebug($data, $postpone = true, $title = 'PHP', $logType = 'log')
+    protected static function consoleDebug($data, $postpone = true, $title = 'PHP', $logType = 'log')
     {
         if (in_array($logType, ['log', 'error', 'trace'])) {
             $title .= '(' . self::getCallerFile(2) . '):';
@@ -86,7 +86,7 @@ class Log
      * @param mixed    $data     Data to be printed.
      * @param boolean  $postpone Postpone printing to the wp_footer action.
      */
-    public static function printDebug($data, $postpone = true)
+    protected static function printDebug($data, $postpone = true)
     {
         $type = gettype($data);
         $output = '<pre>';
