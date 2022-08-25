@@ -77,14 +77,14 @@ class Asset
         if (file_exists($distPath . '/' . $assetSuffix)) {
             if ('path' == $returnType) {
                 return $distPath . '/' . $assetSuffix;
-            } else if ('url' == $returnType) {
+            } elseif ('url' == $returnType) {
                 $distUrl = get_template_directory_uri() . '/dist';
                 return $distUrl . '/' . $assetSuffix;
             }
         } else {
             if ('path' == $returnType) {
                 return get_template_directory() . '/' . $assetSuffix;
-            } else if ('url' == $returnType) {
+            } elseif ('url' == $returnType) {
                 return get_template_directory_uri() . '/' . $assetSuffix;
             }
         }
