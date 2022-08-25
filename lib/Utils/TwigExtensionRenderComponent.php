@@ -2,6 +2,7 @@
 
 namespace Flynt\Utils;
 
+use Flynt\Api;
 use Flynt\ComponentManager;
 use Twig\Environment;
 use Twig\Extension\AbstractExtension;
@@ -12,7 +13,11 @@ class TwigExtensionRenderComponent extends AbstractExtension
     public function getFunctions()
     {
         return [
-            new TwigFunction('renderComponent', [$this, 'renderComponent'], array('needs_environment' => true, 'needs_context' => true, 'is_safe' => array('all'))),
+            new TwigFunction(
+                'renderComponent',
+                [$this, 'renderComponent'],
+                ['needs_environment' => true, 'needs_context' => true, 'is_safe' => ['all']]
+            ),
         ];
     }
 
@@ -24,47 +29,37 @@ class TwigExtensionRenderComponent extends AbstractExtension
             $data = array_merge($componentName, $data);
             $componentName = ucfirst($data['acf_fc_layout']);
         }
-        $data = $this->getComponentData($data, $componentName);
 
-        $componentManager = ComponentManager::getInstance();
-        $templateFilename = apply_filters('Flynt/TimberLoader/templateFilename', 'index.twig');
-        $templateFilename = apply_filters("Flynt/TimberLoader/templateFilename?name=${componentName}", $templateFilename);
-        $filePath = $componentManager->getComponentFilePath($componentName, $templateFilename);
-        $relativeFilePath = ltrim(str_replace(get_template_directory(), '', $filePath), '/');
+        $fn = function ($output, $componentName, $data) use ($env, $context, $withContext, $ignoreMissing, $sandboxed) {
+            $componentManager = ComponentManager::getInstance();
+            $templateFilename = apply_filters('Flynt/TimberLoader/templateFilename', 'index.twig');
+            $templateFilename = apply_filters("Flynt/TimberLoader/templateFilename?name=${componentName}", $templateFilename);
+            $filePath = $componentManager->getComponentFilePath($componentName, $templateFilename);
+            $relativeFilePath = ltrim(str_replace(get_template_directory(), '', $filePath), '/');
 
-        if (!is_file($filePath)) {
-            trigger_error("Template not found: {$filePath}", E_USER_WARNING);
-            return '';
-        }
+            if (!is_file($filePath)) {
+                trigger_error("Template not found: {$filePath}", E_USER_WARNING);
+                return '';
+            }
 
-        $loader = $env->getLoader();
+            $loader = $env->getLoader();
+            $loaderPaths = $loader->getPaths();
 
-        $loaderPaths = $loader->getPaths();
+            $loader->addPath(dirname($filePath));
 
-        $loader->addPath(dirname($filePath));
+            $output = twig_include($env, $context, $relativeFilePath, $data, $withContext, $ignoreMissing, $sandboxed);
 
-        $output = twig_include($env, $context, $relativeFilePath, $data, $withContext, $ignoreMissing, $sandboxed);
+            $loader->setPaths($loaderPaths);
 
-        $loader->setPaths($loaderPaths);
+            return $output;
+        };
 
-        $output = apply_filters(
-            'Flynt/renderComponent',
-            $output,
-            $componentName,
-            $data
-        );
+        add_filter('Flynt/renderComponent', $fn, PHP_INT_MIN, 3);
+
+        $output = Api::renderComponent($componentName, $data);
+
+        remove_filter('Flynt/renderComponent', $fn, PHP_INT_MIN, 3);
 
         return $output;
-    }
-
-    protected function getComponentData($data, $componentName)
-    {
-        $data = apply_filters(
-            'Flynt/addComponentData',
-            $data,
-            $componentName
-        );
-
-        return $data;
     }
 }
