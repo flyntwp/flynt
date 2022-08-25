@@ -72,7 +72,7 @@ class TimberDynamicResize
 
     protected function addHooks()
     {
-        add_action('timber/twig/filters', function ($twig) {
+        add_action('timber/twig', function ($twig) {
             $twig->addFilter(
                 new TwigFilter('resizeDynamic', [$this, 'resizeDynamic'])
             );

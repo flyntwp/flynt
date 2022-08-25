@@ -4,7 +4,7 @@ namespace Flynt\Components\GridPostsArchive;
 
 use Flynt\FieldVariables;
 use Flynt\Utils\Options;
-use Timber\Term;
+use Timber\Timber;
 
 const POST_TYPE = 'post';
 const FILTER_BY_TAXONOMY = 'category';
@@ -19,7 +19,7 @@ add_filter('Flynt/addComponentData?name=GridPostsArchive', function ($data) {
     $queriedObject = get_queried_object();
     if (count($terms) > 1) {
         $data['terms'] = array_map(function ($term) use ($queriedObject) {
-            $timberTerm = new Term($term);
+            $timberTerm = Timber::get_term($term);
             if ($queriedObject) {
                 $timberTerm->isActive = $queriedObject->taxonomy === $term->taxonomy && $queriedObject->term_id === $term->term_id;
             }

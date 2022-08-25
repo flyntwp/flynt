@@ -3,7 +3,7 @@
 namespace Flynt\Components\NavigationBurger;
 
 use Flynt\Utils\Asset;
-use Timber\Menu;
+use Timber\Timber;
 
 add_action('init', function () {
     register_nav_menus([
@@ -12,7 +12,7 @@ add_action('init', function () {
 });
 
 add_filter('Flynt/addComponentData?name=NavigationBurger', function ($data) {
-    $data['menu'] = new Menu('navigation_burger');
+    $data['menu'] = Timber::get_menu('navigation_burger');
     $data['logo'] = [
         'src' => get_theme_mod('custom_header_logo') ? get_theme_mod('custom_header_logo') : Asset::requireUrl('assets/images/logo.svg'),
         'alt' => get_bloginfo('name')

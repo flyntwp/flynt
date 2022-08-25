@@ -8,8 +8,7 @@
 
 namespace Flynt\TimberLoader;
 
-use Timber\Image;
-use Timber\Post;
+use Timber\Timber;
 
 define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
 
@@ -28,7 +27,7 @@ add_filter('acf/format_value/type=relationship', NS . 'formatPostObject', 100);
 function formatImage($value)
 {
     if (!empty($value)) {
-        $value = new Image($value);
+        $value = Timber::get_Image($value);
     }
     return $value;
 }
@@ -37,7 +36,7 @@ function formatGallery($value)
 {
     if (!empty($value)) {
         $value = array_map(function ($image) {
-            return new Image($image);
+            return Timber::get_Image($image);
         }, $value);
     }
     return $value;
@@ -56,7 +55,7 @@ function formatPostObject($value)
 function convertToTimberPost($value)
 {
     if (!empty($value) && is_object($value) && get_class($value) === 'WP_Post') {
-        $value = new Post($value);
+        $value = Timber::get_Post($value);
     }
     return $value;
 }

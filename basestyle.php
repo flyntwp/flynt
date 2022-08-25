@@ -9,6 +9,6 @@
 
 use Timber\Timber;
 
-$context = Timber::get_context();
+$context = Timber::context();
 
 Timber::render('templates/basestyle.twig', $context);

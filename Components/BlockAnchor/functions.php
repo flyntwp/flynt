@@ -3,7 +3,6 @@
 namespace Flynt\Components\BlockAnchor;
 
 use Timber\Timber;
-use Timber\Post;
 
 add_filter('Flynt/addComponentData?name=BlockAnchor', function ($data) {
     if (isset($data['anchor'])) {
@@ -41,10 +40,10 @@ function getACFLayout()
 
 add_filter('acf/load_field/name=anchorLink', function ($field) {
     global $post;
-    $post = new Post($post);
+    $post = Timber::get_Post($post);
     $message = $field['message'];
-    $context = Timber::get_context();
-    $context['post'] = new Post($post);
+    $context = Timber::context();
+    $context['post'] = $post;
 
     if (isset($_GET['contentOnly'])) {
         $context['contentOnly'] = true;
