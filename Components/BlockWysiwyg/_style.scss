@@ -14,7 +14,11 @@
     }
   }
 
-  [data-state='textCenter'] {
+  [data-text-align='left'] {
+    text-align: left;
+  }
+
+  [data-text-align='center'] {
     text-align: center;
   }
 }

@@ -48,23 +48,23 @@
     width: 100%;
   }
 
-  &[data-state='sizeSmall'] {
+  &[data-video-size='small'] {
     max-width: 375px;
   }
 
-  &[data-state='sizeMedium'] {
+  &[data-video-size='medium'] {
     max-width: var(--content-max-width);
   }
 
-  &[data-state='sizeLarge'] {
+  &[data-video-size='large'] {
     max-width: var(--content-max-width-large);
   }
 
-  &[data-state='sizeHuge'] {
+  &[data-video-size='huge'] {
     max-width: var(--container-max-width);
   }
 
-  &[data-state='sizeFull'] {
+  &[data-video-size='full'] {
     max-width: 100%;
 
     .figure-caption {

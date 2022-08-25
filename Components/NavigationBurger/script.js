@@ -43,10 +43,10 @@ class NavigationBurger extends window.HTMLElement {
     this.menuButton.setAttribute('aria-expanded', this.isMenuOpen)
 
     if (this.isMenuOpen) {
-      this.dataset.state = 'menuIsOpen'
+      this.setAttribute('data-status', 'menuIsOpen')
       disableBodyScroll(this.menu)
     } else {
-      this.removeAttribute('data-state')
+      this.removeAttribute('data-status')
       enableBodyScroll(this.menu)
     }
   }

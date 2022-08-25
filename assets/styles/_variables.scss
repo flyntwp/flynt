@@ -6,7 +6,7 @@
 
 // Themes
 :root,
-.themeReset {
+[data-theme='reset'] {
   --color-background: #fff;
   --color-headline: #0b1016;
   --color-text: #414751;
@@ -18,11 +18,11 @@
   --color-button-text-hover: var(--color-background);
 }
 
-.themeLight {
+[data-theme='light'] {
   --color-background: hsl(228, 56%, 98%);
 }
 
-.themeDark {
+[data-theme='dark'] {
   --color-background: hsl(227, 70%, 20%);
   --color-headline: hsl(0, 0%, 100%);
   --color-text: hsl(0, 0%, 100%);
@@ -34,7 +34,7 @@
   --color-button-text-hover: var(--color-background);
 }
 
-.themeHero {
+[data-theme='hero'] {
   --color-background: var(--color-brand);
   --color-headline: hsl(0, 0%, 100%);
   --color-text: hsl(0, 0%, 100%);

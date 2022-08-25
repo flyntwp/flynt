@@ -22,8 +22,8 @@ function getACFLayout()
                 'name' => 'imagePosition',
                 'type' => 'button_group',
                 'choices' => [
-                    'imageLeft' => '<i class=\'dashicons dashicons-align-left\' title=\'Image on the left\'></i>',
-                    'imageRight' => '<i class=\'dashicons dashicons-align-right\' title=\'Image on the right\'></i>'
+                    'left' => '<i class=\'dashicons dashicons-align-left\' title=\'Image on the left\'></i>',
+                    'right' => '<i class=\'dashicons dashicons-align-right\' title=\'Image on the right\'></i>'
                 ]
             ],
             [

@@ -17,7 +17,11 @@
     }
   }
 
-  [data-state='imageLeft'] {
+  [data-image-position='right'] {
+    flex-direction: row;
+  }
+
+  [data-image-position='left'] {
     flex-direction: row-reverse;
   }
 }

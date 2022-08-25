@@ -1,19 +1,19 @@
 [is='flynt-block-collapse'] {
-  &[data-state='collapse'] {
+  &[data-status='collapse'] {
     margin-top: calc((-1 * var(--component-spacing)) + (var(--percentage-distance) * var(--component-spacing) ) / 100);
   }
 
-  &[data-state='expand'] {
+  &[data-status='expand'] {
     margin-top: calc((var(--percentage-distance) * var(--component-spacing) ) / 100);
 
-    &[class*='theme'] {
+    &[data-theme] {
       margin-top: 0;
       padding-top: calc((var(--percentage-distance) * var(--component-spacing) ) / 100);
     }
   }
 
-  &[class*='theme'] + .componentSpacing {
-    &[class*='theme'] {
+  &[data-theme] + .componentSpacing {
+    &[data-theme] {
       padding-top: 0;
     }
   }

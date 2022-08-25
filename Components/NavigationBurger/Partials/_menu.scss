@@ -52,7 +52,7 @@
   }
 }
 
-&[data-state='menuIsOpen'] {
+&[data-status='menuIsOpen'] {
   .menu {
     transform: translateX(0);
     visibility: visible;

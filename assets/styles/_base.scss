@@ -823,7 +823,7 @@ select {
 .componentSpacing {
   margin: var(--component-spacing) 0;
 
-  &[class*='theme'] {
+  &[data-theme] {
     margin: 0;
     padding: var(--component-spacing) 0;
   }
@@ -835,7 +835,7 @@ select {
         margin-top: var(--component-spacing-tablet);
       }
 
-      &[class*='theme'] {
+      &[data-theme] {
         @media (min-width: $breakpoint-tablet) {
           margin: 0;
           padding-top: var(--component-spacing-tablet);
@@ -863,12 +863,14 @@ select {
 }
 
 .centerContentMaxWidth {
-  margin-inline: auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width: var(--content-max-width);
 }
 
 .centerContentMaxWidthLarge {
-  margin-inline: auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width: var(--content-max-width-large);
 }
 
@@ -937,7 +939,7 @@ select {
 * Color themes for backgrounds and content elements.
 */
 
-[class*='theme'] {
+[data-theme] {
   background-color: var(--color-background);
   color: var(--color-text);
 }

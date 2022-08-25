@@ -1,4 +1,4 @@
-<div class="flyntComponent componentSpacing {{ options.theme }}" is="flynt-list-components">
+<div class="flyntComponent componentSpacing" {{ addAttribute('theme', options.theme) }} is="flynt-list-components">
   <div class="container centerMaxWidthContainer">
     {% if preContentHtml %}
       <div class="preContent">
@@ -8,7 +8,7 @@
     <ul class="components">
       {% for componentBlock in componentBlocks %}
         {% if componentBlock.readme %}
-          <li class="component boxRadius boxShadow themeReset">
+          <li class="component boxRadius boxShadow" data-theme="reset">
             {% if componentBlock.ctas.primary %}
               <a href="{{ componentBlock.ctas.primary }}" class="component-link" aria-hidden="true" tabindex="-1">
             {% else %}

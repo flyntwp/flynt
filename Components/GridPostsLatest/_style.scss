@@ -1,24 +1,24 @@
 [is='flynt-grid-posts-latest'] {
   .grid {
     @include reset-list;
-    @include grid;
+    @include grid(1, center);
 
-    &--columns2,
-    &--columns3,
-    &--columns4 {
+    &[data-max-columns='2'],
+    &[data-max-columns='3'],
+    &[data-max-columns='4'] {
       @media (min-width: $breakpoint-tablet) {
         --grid-columns: 2;
       }
     }
 
-    &--columns3,
-    &--columns4 {
+    &[data-max-columns='3'],
+    &[data-max-columns='4'] {
       @media (min-width: $breakpoint-tablet-horizontal) {
         --grid-columns: 3;
       }
     }
 
-    &--columns4 {
+    &[data-max-columns='4'] {
       @media (min-width: $breakpoint-desktop) {
         --grid-columns: 4;
       }

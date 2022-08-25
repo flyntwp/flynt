@@ -53,7 +53,7 @@
   }
 }
 
-&[data-state='menuIsOpen'] {
+&[data-status='menuIsOpen'] {
   .hamburger-lines {
     &::before,
     &::after {

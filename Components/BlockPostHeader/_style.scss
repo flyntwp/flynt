@@ -1,5 +1,7 @@
 [is='flynt-block-post-header'] {
-  .header {
+  > .container {
+    padding: var(--component-spacing) var(--container-padding);
+
     @media (min-width: $breakpoint-tablet) {
       --component-spacing: var(--component-spacing-tablet);
     }
@@ -9,10 +11,15 @@
     @include reset-content-margins;
   }
 
+  .excerpt {
+    margin-top: 1.5rem;
+  }
+
   .meta {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
+    font-size: 0.875rem;
     margin-top: 1.5rem;
     padding-left: 2rem;
 
@@ -32,13 +39,9 @@
       }
     }
 
-    &-author,
-    &-category,
-    &-date,
-    &-readingtime {
+    > * {
       @include reset-link;
       color: var(--color-text);
-      font-size: 0.875rem;
     }
 
     &-author,
@@ -71,21 +74,11 @@
     }
   }
 
-  .excerpt {
-    margin-top: 1.5rem;
-  }
-
-  .featuredImage {
+  [is='flynt-block-image'] {
     margin-top: calc(-1 * var(--component-spacing) / 2);
 
-    .figure {
-      &-image {
-        border-radius: var(--box-border-radius);
-        overflow: hidden;
-        position: relative;
-        transform: translateZ(0);
-        z-index: 1;
-      }
+    .figure-image {
+      border-radius: var(--box-border-radius);
     }
   }
 }

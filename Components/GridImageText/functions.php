@@ -73,8 +73,8 @@ function getACFLayout()
                 'sub_fields' => [
                     FieldVariables\getTheme(),
                     [
-                        'label' => __('Columns', 'flynt'),
-                        'name' => 'columns',
+                        'label' => __('Max Columns', 'flynt'),
+                        'name' => 'maxColumns',
                         'type' => 'number',
                         'default_value' => 3,
                         'min' => 1,

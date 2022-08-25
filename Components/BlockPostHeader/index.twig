@@ -1,34 +1,30 @@
 <div class="flyntComponent" is="flynt-block-post-header">
-  <div class="header componentSpacing themeLight {% if post.thumbnail %}header--hasFeaturedImage{% endif %}">
-    <div class="container centerMaxWidthContainer">
-      <div class="content centerContentMaxWidth">
-        <h1>{{ post.title }}</h1>
-        {% if post.post_excerpt %}
-          <p class="excerpt h5">{{ post.post_excerpt }}</p>
-        {% endif %}
-        <div class="meta">
-          <a class="meta-author" href="{{ post.author.link|e('esc_url') }}">
-            {% if post.author.avatar %}
-            <span class="meta-avatar">
-              <img class="meta-avatarImage" src="{{ post.author.avatar }}" alt="{{ post.author.name|e }}">
-            </span>
-            {% endif %}
-            <span class="visuallyHidden">{{ labels.postedByLabel|e }}</span>
-            {{ post.author.name }}
-          </a>
-          <a class="meta-category" href="{{ post.category.link|e('esc_url') }}">
-            <span class="visuallyHidden">{{ labels.postedInLabel|e }}</span>
-            {{ post.category }}
-          </a>
-          <time class="meta-date" datetime="{{ post.post_date|date('c') }}">{{ post.post_date|date(dateFormat) }}</time>
-          <span class="meta-readingtime">{{ labels.readingTime|replace({'%d': post.content|readingtime})|e }}</span>
-        </div>
+  <div class="container" data-theme="light">
+    <div class="content centerContentMaxWidth">
+      <h1>{{ post.title }}</h1>
+      {% if post.post_excerpt %}
+        <p class="excerpt h5">{{ post.post_excerpt }}</p>
+      {% endif %}
+      <div class="meta">
+        <a class="meta-author" href="{{ post.author.link|e('esc_url') }}">
+          {% if post.author.avatar %}
+          <span class="meta-avatar">
+            <img class="meta-avatarImage" src="{{ post.author.avatar }}" alt="{{ post.author.name|e }}">
+          </span>
+          {% endif %}
+          <span class="visuallyHidden">{{ labels.postedByLabel|e }}</span>
+          {{ post.author.name }}
+        </a>
+        <a class="meta-category" href="{{ post.category.link|e('esc_url') }}">
+          <span class="visuallyHidden">{{ labels.postedInLabel|e }}</span>
+          {{ post.category }}
+        </a>
+        <time class="meta-date" datetime="{{ post.post_date|date('c') }}">{{ post.post_date|date(dateFormat) }}</time>
+        <span class="meta-readingtime">{{ labels.readingTime|replace({'%d': post.content|readingtime})|e }}</span>
       </div>
     </div>
   </div>
   {% if post.thumbnail %}
-    <div class="featuredImage">
-      {{ renderComponent('BlockImage', { image: post.thumbnail, options: { size: 'sizeLarge' }, noComponentSpacing: true }) }}
-    </div>
+    {{ renderComponent('BlockImage', { image: post.thumbnail, options: { size: 'large' }, noComponentSpacing: true }) }}
   {% endif %}
 </div>

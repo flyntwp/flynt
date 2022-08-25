@@ -1,6 +1,6 @@
-<div class="flyntComponent {{ noComponentSpacing == true ? '' : 'componentSpacing' }} {{ options.theme }}" is="flynt-block-image">
+<div class="flyntComponent {{ noComponentSpacing == true ? '' : 'componentSpacing' }}" {{ addAttribute('theme', options.theme) }} is="flynt-block-image">
   <div class="container {{ options.size != 'sizeFull' ? 'centerMaxWidthContainer' }}">
-    <figure class="figure" data-state="{{ options.size }}">
+    <figure class="figure" {{ addAttribute('image-size', options.size) }}>
       {% if image.post_mime_type == 'image/svg+xml'%}
           <img class="image lazyload"
             src="{{ placeholderImage(768, (768 / image.aspect)|round, 'rgba(125, 125, 125, 0.1)') }}"
@@ -27,7 +27,7 @@
             alt="{{ image.alt|e }}">
       {% endif %}
       {% if image.caption %}
-        <figcaption class="figure-caption">{{ image.caption|e }}</figcaption>
+        <figcaption class="caption">{{ image.caption|e }}</figcaption>
       {% endif %}
     </figure>
   </div>
