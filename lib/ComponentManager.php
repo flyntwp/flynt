@@ -2,6 +2,8 @@
 
 namespace Flynt;
 
+use Flynt\Utils\StringHelpers;
+
 class ComponentManager
 {
     protected $components = [];
@@ -114,5 +116,19 @@ class ComponentManager
     public function isRegistered($componentName)
     {
         return array_key_exists($componentName, $this->components);
+    }
+
+    public function getComponentsWithScript()
+    {
+        $componentsWithScripts = [];
+        foreach ($this->components as $componentName => $componentPath) {
+            $componentPath = str_replace('/dist/', '/', $componentPath);
+            $relativeComponentPath = trim(str_replace(get_template_directory() . '/Components/', '', $componentPath), '/');
+            if (file_exists($componentPath . '/script.js')) {
+                $tagName = 'flynt-' . StringHelpers::camelCaseToKebap($componentName);
+                $componentsWithScripts[$tagName] = $relativeComponentPath;
+            }
+        }
+        return $componentsWithScripts;
     }
 }

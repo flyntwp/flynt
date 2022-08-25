@@ -23,11 +23,9 @@ loader({
   container: document.body,
 
   async on (newTag) {
-    const componentName = kebabToCamel(newTag).replace('Flynt', '')
-    const componentSubpath = window.FlyntData.componentsWithScript[componentName]
-
-    if (window.FlyntData.componentsWithScript[componentName]) {
-      import(`../Components/${componentSubpath}/script.js`)
+    if (window.FlyntData.componentsWithScript[newTag]) {
+      const componentName = window.FlyntData.componentsWithScript[newTag]
+      import(`../Components/${componentName}/script.js`)
     }
   }
 })

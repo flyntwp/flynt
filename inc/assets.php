@@ -17,9 +17,10 @@ add_action('wp_enqueue_scripts', function () {
     wp_script_add_data('Flynt/assets', 'defer', true);
     $data = [
         'templateDirectoryUri' => get_template_directory_uri(),
-        'componentsWithScript' => getComponentsWithScript(),
+        'componentsWithScript' => ComponentManager::getInstance()->getComponentsWithScript(),
     ];
     wp_localize_script('Flynt/assets', 'FlyntData', $data);
+
     wp_enqueue_style(
         'Flynt/assets',
         Asset::requireUrl('assets/main.css')
@@ -36,25 +37,9 @@ add_action('admin_enqueue_scripts', function () {
         'templateDirectoryUri' => get_template_directory_uri(),
     ];
     wp_localize_script('Flynt/assets/admin', 'FlyntData', $data);
+
     wp_enqueue_style(
         'Flynt/assets/admin',
         Asset::requireUrl('assets/admin.css')
     );
 });
-
-function getComponentsWithScript()
-{
-    $componentsWithScripts = [];
-
-    $ComponentManager = ComponentManager::getInstance();
-    $components = $ComponentManager->getAll();
-
-    foreach ($components as $componentName => $componentPath) {
-        $componentPath = str_replace('/dist/', '/', $componentPath);
-        $relativeComponentPath = trim(str_replace(get_template_directory() . '/Components/', '', $componentPath), '/');
-        if (file_exists($componentPath . '/script.js')) {
-            $componentsWithScripts[$componentName] = $relativeComponentPath;
-        }
-    }
-    return $componentsWithScripts;
-}
