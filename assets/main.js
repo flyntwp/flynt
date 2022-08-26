@@ -1,6 +1,5 @@
 import './scripts/publicPath'
 import './scripts/loadCustomElements'
-import { kebabToCamel } from './scripts/helpers'
 import { initFeatherIcons, addFeatherIconToListCheckCircle } from './scripts/featherIcons'
 import { prepareAboveTheFoldLazyLoadedElements } from './scripts/PrepareAboveTheFold'
 import 'normalize.css/normalize.css'
