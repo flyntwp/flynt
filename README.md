@@ -37,17 +37,17 @@ npm run build
 5. Run `npm run start` and start developing.
 
 ### Dependencies
-* [WordPress](https://wordpress.org/) >= 5.0
+* [WordPress](https://wordpress.org/) >= 5.8
 * [Node](https://nodejs.org/en/) = 16
 * [Composer](https://getcomposer.org/download/) >= 2.3
 * [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/) >= 5.7
 
 ## Usage
-In your terminal, navigate to `<your-project>/wp-content/themes/flynt` and run `npm start`. This will start a local server at `localhost:3000`.
+In your terminal, navigate to `<your-project>/wp-content/themes/flynt` and run `npm start`. This will start the webpack dev server.
 
 All files in `assets` and `Components` will now be watched for changes and compiled to the `dist` folder. Happy coding!
 
-Flynt comes with a ready to use Base Style built according to our best practices for building simple, maintainable components. Go to `localhost:3000/BaseStyle` to see it in action.
+Flynt comes with a ready to use Base Style built according to our best practices for building simple, maintainable components. Go to `domain/BaseStyle` to see it in action.
 
 ### Assets
 
