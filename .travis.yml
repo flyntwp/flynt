@@ -18,7 +18,8 @@ php:
   # - 7.0
   # - 7.1
   # - 7.2
-  - 7.3
+  # - 7.3
+  – 8.0
   # - nightly
 
 matrix:
@@ -31,8 +32,8 @@ before_install:
 
 install:
   - composer install
-  - nvm install 12
-  - nvm use 12
+  - nvm install 16
+  - nvm use 16
 
 before_script:
   - npm i
