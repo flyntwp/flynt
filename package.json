@@ -11,7 +11,6 @@
     "watch": "webpack watch --config webpack.dev.js",
     "build": "run-s --silent checkVersion build:production",
     "build:production": "cross-env NODE_ENV=production webpack --progress --config webpack.prod.js",
-    "build:rev": "gulp rev",
     "lint": "run-p --silent lint:*",
     "lint:scripts": "cross-env standard",
     "lint:styles": "cross-env stylelint '**/*.scss'",
@@ -19,7 +18,12 @@
     "lint:fix": "run-p --silent lint:*:fix",
     "lint:scripts:fix": "cross-env standard --fix",
     "lint:styles:fix": "cross-env stylelint '**/*.scss' --fix",
-    "lint:php:fix": "cross-env ./vendor/bin/phpcbf"
+    "lint:php:fix": "cross-env ./vendor/bin/phpcbf",
+    "release": "run-s --silent checkVersion && standard-version -a",
+    "replaceVersion": "run-s --silent checkVersion && npm i -g replace-in-file && run-p --silent replaceVersion:*",
+    "replaceVersion:style.css": "cross-env replace-in-files --regex='Version: (.*)' --replacement=Version:\\ $npm_package_version ./style.css",
+    "replaceVersion:js": "cross-env replace-in-files --string='%%NEXT_VERSION%%' --replacement=$npm_package_version './**/*.js' '!./dist/**/*' '!./node_modules/**/*'",
+    "replaceVersion:php": "cross-env replace-in-files --string='%%NEXT_VERSION%%' --replacement=$npm_package_version './**/*.php' '!./dist/**/*' '!./node_modules/**/*' '!./vendor/**/*'"
   },
   "dependencies": {
     "@webreflection/custom-elements-builtin": "^0.3.0",
@@ -97,7 +101,7 @@
   },
   "standard-version": {
     "scripts": {
-      "postbump": "gulp replaceVersion && composer config --unset version && composer update nothing && git diff && git add . && composer validate --strict"
+      "postbump": "npm run replaceVersion && composer config --unset version && composer update nothing && git diff && git add . && composer validate --strict"
     },
     "types": [
       {
