@@ -19,6 +19,7 @@
   * [Field Groups](#field-groups)
   * [ACF Option Pages](#acf-option-pages)
   * [Timber Dynamic Resize](#timber-dynamic-resize)
+  * [Twig Extensions](#twig-extensions)
 * [Maintainers](#maintainers)
 * [Contributing](#contributing)
 * [License](#license)
@@ -178,16 +179,12 @@ Flynt includes several utility functions for creating Advanced Custom Fields opt
 * `Flynt\Utils\Options::getTranslatable` <br> Retrieve a translatable option.
 * `Flynt\Utils\Options::getGlobal` <br> Retrieve a global option.
 
+
 ### Timber Dynamic Resize
-
-Timber provides [a `resize` filter to resize images](https://timber.github.io/docs/reference/timber-imagehelper/#resize) on first page load. Resizing many images at the same time can result in a server timeout.
-
-That's why Flynt provides a `resizeDynamic` filter, that resizes images asynchronously upon first request of the image itself.
-
-Resized images are stored in `uploads/resized`. To regenerate all image sizes and file versions, delete the folder.
+Timber provides [a `resize` filter to resize images](https://timber.github.io/docs/reference/timber-imagehelper/#resize) on first page load. Resizing many images at the same time can result in a server timeout. That's why Flynt provides a `resizeDynamic` filter, that resizes images asynchronously upon first request of the image itself. Resized images are stored in `uploads/resized`. To regenerate all image sizes and file versions, delete the folder.
 
 To enable Dynamic Resize, go to **Global Options -> Timber Dynamic Resize**.
-​
+
 #### Troubleshooting
 ​
 If `resizedDynamic` is enabled and image requests result in 404 errors, try the following solutions:
@@ -201,6 +198,54 @@ location ~ "^(.*)/wp-content/uploads/(.*)$" {
 ```
 
 2. Some plugins (like WPML) manipulate the `home_url` in such a way that `resizeDynamic` cannot resolve the path to images correctly. In that case, set the relative upload path manually in **Global Options -> Timber Dynamic Resize**. Example: The relative upload path in Bedrock installs with WPML needs to bet set to `app/uploads`.
+
+### Twig Extensions
+#### `readingTime` (Type: Filter)
+Returns the reading time of a string in minutes.
+```twig
+{{ 'This is a string'|readingTime }}
+```
+_Example from [Components/GridPostsArchive/index.twig](./Components/GridPostsArchive/index.twig)_
+
+---
+
+#### `renderComponent($componentName, $data)` (Type: Function)
+Renders a component. [See Page Templates](#page-templates).
+```twig
+{% for component in post.meta('pageComponents') %}
+    {{ renderComponent(component) }}
+{% endfor %}
+```
+_Example from [templates/page.twig](./templates/page.twig)_
+
+---
+
+#### `placeholderImage($width, $height, $color = null)` (Type: Function)
+Useful in combination with lazysizes for lazy loading. Returns a "data:image/svg+xml;base64" placeholder image.
+```twig
+{{ placeholderImage(768, (768 / image.aspect)|round, 'rgba(125, 125, 125, 0.1)') }}
+```
+_Example from [Components/BlockImage/index.twig](./Components/BlockImage/index.twig)_
+
+---
+
+#### `resizeDynamic($src, $w, $h = 0, $crop = 'default', $force = false)` (Type: Filter)
+Resizes an image dynamically. [See Timber Dynamic Resize](#timber-dynamic-resize).
+```twig
+{{ post.thumbnail.src|resizeDynamic(1920, (1920 / 3 * 2)|round) }}
+```
+_Example from [Components/BlockImage/index.twig](./Components/BlockImage/index.twig)_
+
+---
+
+#### `addAttribute($attribute = '', $value = '', string $prefix = 'data-')` (Type: Function)
+Return a single or multiple HTML Attributes. If no prefix is given, the attribute will be prefixed with `data-`.
+```twig
+{{ addAttribute('theme', options.theme) }}
+```
+_Example from [Components/BlockImage/index.twig](./Components/BlockImage/index.twig)_
+
+---
 
 ## Troubleshooting
 
@@ -229,10 +274,6 @@ add_filter('Flynt/TimberDynamicResize/relativeUploadDir', function () {
     return 'app/uploads'; // Example for Bedrock installs.
 });
 ```
-
-### Browsersync
-
-If browsersync is not working and you are not serving WordPress on https, try changing the `browsersync.https` value to `false` in the file `build-config.js`.
 
 ## Maintainers
 This project is maintained by [bleech](https://github.com/bleech).
