@@ -15,7 +15,7 @@ class StringHelpers
      */
     public static function camelCaseToKebap($str)
     {
-        return strtolower(preg_replace('/([a-zA-Z])(?=[A-Z])/', '$1-', $str));
+        return strtolower(preg_replace('/([a-zA-Z])(?=[A-Z0-9])/', '$1-', $str));
     }
 
     /**
