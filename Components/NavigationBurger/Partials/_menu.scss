@@ -17,6 +17,7 @@
   z-index: 98;
 
   .admin-bar & {
+    height: calc(100% - var(--navigation-height) - var(--wp-admin--admin-bar--height));
     top: calc(var(--navigation-height) + var(--wp-admin--admin-bar--height));
   }
 
