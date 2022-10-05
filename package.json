@@ -9,7 +9,7 @@
     "start": "run-s --silent checkVersion serve",
     "serve": "webpack serve --config webpack.dev.js",
     "watch": "webpack watch --config webpack.dev.js",
-    "build": "run-s --silent checkVersion build:production",
+    "build": "run-s --silent checkVersion lint build:production",
     "build:production": "cross-env NODE_ENV=production webpack --progress --config webpack.prod.js",
     "lint": "run-p --silent lint:*",
     "lint:scripts": "cross-env standard",
