@@ -6,6 +6,7 @@ const common = require('./webpack.common.js')
 
 module.exports = merge(common, {
   mode: 'development',
+  cache: false,
   devtool: 'inline-source-map',
   plugins: [
     new MiniCssExtractPlugin({
