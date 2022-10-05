@@ -368,8 +368,6 @@ button {
 
   &:disabled,
   &--disabled {
-    background-color: var(--color-border);
-    border-color: var(--color-border);
     cursor: default;
     opacity: var(--opacity-grayed-out);
     pointer-events: none;
@@ -415,13 +413,6 @@ button {
       border-color: var(--color-accent);
       box-shadow: none;
       color: var(--color-background);
-    }
-
-    &:disabled,
-    &--disabled {
-      background-color: transparent;
-      border-color: var(--color-border);
-      color: var(--color-border);
     }
   }
 
@@ -643,6 +634,7 @@ select {
   + label {
     cursor: pointer;
     display: inline-block;
+    font-weight: 400;
     letter-spacing: 0;
     line-height: 1.7;
     padding-left: 2em;
