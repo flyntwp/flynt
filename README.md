@@ -109,7 +109,7 @@ function getACFLayout()
 {
     return [
         'name' => 'blockWysiwyg',
-        'label' => 'Block: Wysiwyg',
+        'label' => __('Block: Wysiwyg', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('Content', 'flynt'),
@@ -145,7 +145,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                 'name' => 'pageComponents',
                 'label' => __('Page Components', 'flynt'),
                 'type' => 'flexible_content',
-                'button_label' => 'Add Component',
+                'button_label' => __('Add Component', 'flynt'),
                 'layouts' => [
                     Components\BlockWysiwyg\getACFLayout(),
                 ]

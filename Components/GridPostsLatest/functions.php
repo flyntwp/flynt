@@ -33,7 +33,7 @@ function getACFLayout()
 {
     return [
         'name' => 'GridPostsLatest',
-        'label' => 'Grid: Posts Latest',
+        'label' => __('Grid: Posts Latest', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('General', 'flynt'),
@@ -44,18 +44,18 @@ function getACFLayout()
             ],
             [
                 'label' => __('Title', 'flynt'),
+                'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
                 'name' => 'preContentHtml',
                 'type' => 'wysiwyg',
                 'tabs' => 'visual,text',
                 'media_upload' => 0,
                 'delay' => 1,
-                'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
             ],
             [
                 'label' => __('Categories', 'flynt'),
+                'instructions' => __('Select 1 or more categories or leave empty to show from all posts.', 'flynt'),
                 'name' => 'taxonomies',
                 'type' => 'taxonomy',
-                'instructions' => __('Select 1 or more categories or leave empty to show from all posts.', 'flynt'),
                 'taxonomy' => 'category',
                 'field_type' => 'multi_select',
                 'allow_null' => 1,
@@ -122,7 +122,7 @@ Options::addTranslatable('GridPostsLatest', [
                 'label' => __('All Posts', 'flynt'),
                 'name' => 'allPosts',
                 'type' => 'text',
-                'default_value' => 'See More Posts',
+                'default_value' => __('See More Posts', 'flynt'),
                 'required' => 1,
                 'wrapper' => [
                     'width' => 50
@@ -132,7 +132,7 @@ Options::addTranslatable('GridPostsLatest', [
                 'label' => __('Read More', 'flynt'),
                 'name' => 'readMore',
                 'type' => 'text',
-                'default_value' => 'Read More',
+                'default_value' => __('Read More', 'flynt'),
                 'required' => 1,
                 'wrapper' => [
                     'width' => 50

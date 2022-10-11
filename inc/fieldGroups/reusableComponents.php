@@ -12,9 +12,9 @@ add_action('Flynt/afterRegisterComponents', function () {
         'fields' => [
             [
                 'name' => 'reusableComponents',
-                'label' => 'Reusable Components',
+                'label' => __('Reusable Components', 'flynt'),
                 'type' => 'flexible_content',
-                'button_label' => 'Add Component',
+                'button_label' => __('Add Component', 'flynt'),
                 'layouts' => [
                     Components\BlockCollapse\getACFLayout(),
                     Components\BlockImage\getACFLayout(),

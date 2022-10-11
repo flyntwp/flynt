@@ -8,7 +8,7 @@ function getACFLayout()
 {
     return [
         'name' => 'blockWysiwyg',
-        'label' => 'Block: Wysiwyg',
+        'label' => __('Block: Wysiwyg', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('General', 'flynt'),
@@ -60,7 +60,7 @@ function getACFLayout()
                             'large' => __('Large', 'flynt)'),
                             'full' => __('Full', 'flynt)'),
                         ],
-                        'default_value' => 'sizeDefault',
+                        'default_value' => '',
                         'wrapper' =>  [
                             'width' => '100',
                         ],

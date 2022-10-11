@@ -45,8 +45,8 @@ Options::addTranslatable('NavigationFooter', [
     ],
     [
         'label' => __('Content Examples', 'flynt'),
-        'name' => 'groupContentExamples',
         'instructions' => __('Want some content inspiration? Here they are!', 'flynt'),
+        'name' => 'groupContentExamples',
         'type' => 'group',
         'sub_fields' => [
             [

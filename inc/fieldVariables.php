@@ -29,9 +29,9 @@ function getIcon()
 {
     return [
         'label' => __('Icon', 'flynt'),
+        'instructions' => __('Enter a valid icon name from <a href="https://feathericons.com">Feather Icons</a> (e.g. `check-circle`).', 'flynt'),
         'name' => 'icon',
         'type' => 'text',
-        'instructions' => __('Enter a valid icon name from <a href="https://feathericons.com">Feather Icons</a> (e.g. `check-circle`).', 'flynt'),
         'required' => 1
     ];
 }

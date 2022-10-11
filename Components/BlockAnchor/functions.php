@@ -16,15 +16,15 @@ function getACFLayout()
 {
     return [
         'name' => 'blockAnchor',
-        'label' => 'Block: Anchor',
+        'label' => __('Block: Anchor', 'flynt'),
         'sub_fields' => [
             [
                 [
                     'label' => __('Enter unique anchor name', 'flynt'),
+                    'instructions' => __('Enter a unique name to create an anchor link.', 'flynt'),
                     'name' => 'anchor',
                     'type' => 'text',
                     'required' => 1,
-                    'instructions' => __('Enter a unique name to create an anchor link.', 'flynt'),
                 ],
                 [
                     'label' => __('Anchor link', 'flynt'),

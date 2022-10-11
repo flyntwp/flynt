@@ -11,7 +11,7 @@ function getACFLayout()
 {
     return [
         'name' => 'blockCollapse',
-        'label' => 'Block: Collapse',
+        'label' => __('Block: Collapse', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('Vertical space', 'flynt'),

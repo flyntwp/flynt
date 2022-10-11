@@ -20,7 +20,7 @@ function getACFLayout()
 {
     return [
         'name' => 'blockVideoOembed',
-        'label' => 'Block: Video Oembed',
+        'label' =>  __('Block: Video Oembed', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('General', 'flynt'),
@@ -31,11 +31,11 @@ function getACFLayout()
             ],
             [
                 'label' => __('Poster Image', 'flynt'),
+                'instructions' => __('Recommended Size: Min-Width 1920px; Min-Height: 1080px; Image-Format: JPG, PNG. Aspect Ratio 16/9.', 'flynt'),
                 'name' => 'posterImage',
                 'type' => 'image',
                 'preview_size' => 'medium',
                 'mime_types' => 'jpg,jpeg,png',
-                'instructions' => __('Recommended Size: Min-Width 1920px; Min-Height: 1080px; Image-Format: JPG, PNG. Aspect Ratio 16/9.', 'flynt'),
                 'required' => 1
             ],
             [
@@ -72,7 +72,7 @@ function getACFLayout()
                             'huge' => __('Huge', 'flynt'),
                             'full' => __('Full', 'flynt'),
                         ],
-                        'default_value' => 'sizeLarge',
+                        'default_value' => 'large',
                     ],
                 ]
             ]

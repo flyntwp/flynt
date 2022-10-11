@@ -64,9 +64,9 @@ Options::addTranslatable('GridPostsArchive', [
     ],
     [
         'label' => __('Title', 'flynt'),
+        'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
         'name' => 'preContentHtml',
         'type' => 'wysiwyg',
-        'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
         'tabs' => 'visual,text',
         'media_upload' => 0,
         'delay' => 1,
@@ -87,7 +87,7 @@ Options::addTranslatable('GridPostsArchive', [
                 'label' => __('Previous', 'flynt'),
                 'name' => 'previous',
                 'type' => 'text',
-                'default_value' => 'Prev',
+                'default_value' => __('Prev', 'flynt'),
                 'required' => 1,
                 'wrapper' => [
                     'width' => '50',
@@ -97,7 +97,7 @@ Options::addTranslatable('GridPostsArchive', [
                 'label' => __('Next', 'flynt'),
                 'name' => 'next',
                 'type' => 'text',
-                'default_value' => 'Next',
+                'default_value' => __('Next', 'flynt'),
                 'required' => 1,
                 'wrapper' => [
                     'width' => '50',
@@ -107,7 +107,7 @@ Options::addTranslatable('GridPostsArchive', [
                 'label' => __('Load More', 'flynt'),
                 'name' => 'loadMore',
                 'type' => 'text',
-                'default_value' => 'Load more',
+                'default_value' => __('Load More', 'flynt'),
                 'required' => 1,
                 'wrapper' => [
                     'width' => '50',
@@ -117,7 +117,7 @@ Options::addTranslatable('GridPostsArchive', [
                 'label' => __('No Posts Found Text', 'flynt'),
                 'name' => 'noPostsFound',
                 'type' => 'text',
-                'default_value' => 'No posts found.',
+                'default_value' => __('No post found.', 'flynt'),
                 'required' => 1,
                 'wrapper' => [
                     'width' => '50',
@@ -127,7 +127,7 @@ Options::addTranslatable('GridPostsArchive', [
                 'label' => __('All Posts', 'flynt'),
                 'name' => 'allPosts',
                 'type' => 'text',
-                'default_value' => 'All',
+                'default_value' => __('All', 'flynt'),
                 'required' => 1,
                 'wrapper' => [
                     'width' => '50',
@@ -148,7 +148,7 @@ Options::addTranslatable('GridPostsArchive', [
                 'label' => __('Read More', 'flynt'),
                 'name' => 'readMore',
                 'type' => 'text',
-                'default_value' => 'Read More',
+                'default_value' => __('Read More', 'flynt'),
                 'required' => 1,
                 'wrapper' => [
                     'width' => '50',

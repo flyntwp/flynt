@@ -26,7 +26,7 @@ Options::addTranslatable('BlockPostHeader', [
                 'label' => __('Posted by', 'flynt'),
                 'name' => 'postedBy',
                 'type' => 'text',
-                'default_value' => 'Posted by',
+                'default_value' => __('Posted by', 'flynt'),
                 'wrapper' => [
                     'width' => '50',
                 ],
@@ -35,7 +35,7 @@ Options::addTranslatable('BlockPostHeader', [
                 'label' => __('(Posted) in', 'flynt'),
                 'name' => 'postedIn',
                 'type' => 'text',
-                'default_value' => 'in',
+                'default_value' => __('in', 'flynt'),
                 'wrapper' => [
                     'width' => '50',
                 ],

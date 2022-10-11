@@ -8,7 +8,7 @@ function getACFLayout()
 {
     return [
         'name' => 'blockImage',
-        'label' => 'Block: Image',
+        'label' => __('Block: Image', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('General', 'flynt'),
@@ -19,10 +19,10 @@ function getACFLayout()
             ],
             [
                 'label' => __('Image', 'flynt'),
+                'instructions' => __('Image-Format: JPG, PNG, SVG.', 'flynt'),
                 'name' => 'image',
                 'type' => 'image',
                 'preview_size' => 'medium',
-                'instructions' => __('Image-Format: JPG, PNG, SVG.', 'flynt'),
                 'required' => 1,
                 'mime_types' => 'jpg,jpeg,png,svg'
             ],
@@ -54,7 +54,7 @@ function getACFLayout()
                             'huge' => __('Huge', 'flynt'),
                             'full' => __('Full', 'flynt'),
                         ],
-                        'default_value' => 'sizeLarge',
+                        'default_value' => 'large',
                         'wrapper' =>  [
                             'width' => '100',
                         ],
