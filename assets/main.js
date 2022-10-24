@@ -2,7 +2,7 @@ import './scripts/publicPath'
 import './scripts/loadCustomElements'
 import { initFeatherIcons, addFeatherIconToListCheckCircle } from './scripts/featherIcons'
 import { prepareAboveTheFoldLazyLoadedElements } from './scripts/PrepareAboveTheFold'
-import 'normalize.css/normalize.css'
+import 'modern-normalize/modern-normalize.css'
 import './main.scss'
 
 import loader from 'uce-loader'
