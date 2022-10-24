@@ -18,13 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 // Dynamic import component scripts
+const componentsWithScripts = import.meta.glob('../Components/**/script.js')
 loader({
   container: document.body,
 
   async on (newTag) {
     if (window.FlyntData.componentsWithScript[newTag]) {
       const componentName = window.FlyntData.componentsWithScript[newTag]
-      import(`../Components/${componentName}/script.js`)
+      componentsWithScripts[`../Components/${componentName}/script.js`]()
     }
   }
 })
