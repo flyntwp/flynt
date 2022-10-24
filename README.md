@@ -232,7 +232,7 @@ _Example from [Components/BlockImage/index.twig](./Components/BlockImage/index.t
 #### `resizeDynamic($src, $w, $h = 0, $crop = 'default', $force = false)` (Type: Filter)
 Resizes an image dynamically. [See Timber Dynamic Resize](#timber-dynamic-resize).
 ```twig
-{{ post.thumbnail.src|resizeDynamic(1920, (1920 / 3 * 2)|round) }}
+{{ post.thumbnail.src|resizeDynamic(1920, (1920 / 3 * 2)|round, 'center') }}
 ```
 _Example from [Components/BlockImage/index.twig](./Components/BlockImage/index.twig)_
 
