@@ -2,11 +2,11 @@
   @include reset-list;
   display: flex;
   flex-wrap: wrap;
+  gap: var(--gap-width);
   justify-content: center;
-  margin-bottom: 32px;
+  margin-bottom: calc(var(--component-spacing) / 2);
 
-  &-item {
+  .item {
     @include reset-list-item;
-    margin: 0 0.25rem 0.5rem;
   }
 }
