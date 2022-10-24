@@ -9,7 +9,6 @@ use Twig\TwigFunction;
 
 class TwigExtensionFlynt extends Twig_Extension
 {
-
     public function getName()
     {
         return 'twig_extension_flynt';
