@@ -473,14 +473,6 @@ button {
       vertical-align: baseline;
       width: 0.5rem;
     }
-
-    &.button--small {
-      &::after {
-        height: 0.375rem;
-        margin-bottom: 0.0625rem;
-        width: 0.375rem;
-      }
-    }
   }
 }
 
