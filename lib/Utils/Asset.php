@@ -60,7 +60,7 @@ class Asset
         $distPath = get_template_directory() . '/dist';
 
         if (!isset(self::$assetManifest)) {
-            $manifestPath = $distPath . '/rev-manifest.json';
+            $manifestPath = $distPath . '/manifest.json';
             if (is_file($manifestPath)) {
                 self::$assetManifest = json_decode(file_get_contents($manifestPath), true);
             } else {
@@ -69,7 +69,7 @@ class Asset
         }
 
         if (array_key_exists($asset, self::$assetManifest)) {
-            $assetSuffix = self::$assetManifest[$asset];
+            $assetSuffix = self::$assetManifest[$asset]['file'];
         } else {
             $assetSuffix = $asset;
         }

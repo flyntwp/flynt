@@ -14,8 +14,10 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script(
         'Flynt/assets',
         Asset::requireUrl('assets/main.js')
+        // 'https://127.0.0.1:5173/assets/main.js'
     );
     wp_script_add_data('Flynt/assets', 'defer', true);
+    wp_script_add_data('Flynt/assets', 'module', true);
     $data = [
         'templateDirectoryUri' => get_template_directory_uri(),
         'componentsWithScript' => ComponentManager::getInstance()->getComponentsWithScript(),
@@ -35,6 +37,7 @@ add_action('admin_enqueue_scripts', function () {
         Asset::requireUrl('assets/admin.js')
     );
     wp_script_add_data('Flynt/assets/admin', 'defer', true);
+    wp_script_add_data('Flynt/assets/admin', 'module', true);
     $data = [
         'templateDirectoryUri' => get_template_directory_uri(),
     ];

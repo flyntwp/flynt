@@ -1,4 +1,4 @@
-import './scripts/publicPath'
+// import './scripts/publicPath'
 import './scripts/loadCustomElements'
 import { initFeatherIcons, addFeatherIconToListCheckCircle } from './scripts/featherIcons'
 import { prepareAboveTheFoldLazyLoadedElements } from './scripts/PrepareAboveTheFold'
