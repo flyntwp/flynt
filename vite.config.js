@@ -1,8 +1,9 @@
 import { defineConfig } from 'vite'
-import { dest, entries, host } from './build-config.js'
+import { dest, entries, host, watchFiles } from './build-config.js'
 import flynt from './vite-plugin-flynt'
 import globImporter from 'node-sass-glob-importer'
 import basicSsl from '@vitejs/plugin-basic-ssl'
+import FullReload from 'vite-plugin-full-reload'
 
 export default defineConfig({
   base: './',
@@ -15,6 +16,7 @@ export default defineConfig({
   },
   plugins: [
     flynt({ dest, host }),
+    FullReload(watchFiles),
     basicSsl()
   ],
   server: {
