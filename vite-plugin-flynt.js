@@ -4,15 +4,27 @@ import fs from 'fs'
 let exitHandlersBound = false
 export default function ({ dest, host }) {
   const hotFile = path.join(dest, 'hot')
-  let viteDevServerUrl
+  let viteDevServerUrl, resolvedConfig
   return {
     name: 'flynt',
     enforce: 'post',
-    // transform(code) {
-    //     if (resolvedConfig.command === 'serve') {
-    //         return code.replace(/__laravel_vite_placeholder__/g, viteDevServerUrl)
-    //     }
-    // },
+    config: () => {
+      return {
+        publicDir: false,
+        server: {
+          origin: '__flynt_vite_placeholder__'
+        }
+      }
+    },
+
+    configResolved (config) {
+      resolvedConfig = config
+    },
+    transform (code) {
+      if (resolvedConfig.command === 'serve') {
+        return code.replace(/__flynt_vite_placeholder__/g, viteDevServerUrl)
+      }
+    },
     configureServer (server) {
       const appUrl = host
 
