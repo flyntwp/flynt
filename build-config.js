@@ -3,10 +3,10 @@ const dest = './dist'
 
 const host = `https://${domain}`
 
-const entries = {
-  'assets/main': './assets/main.js',
-  'assets/admin': './assets/admin.js'
-}
+const entries = [
+  './assets/main.js',
+  './assets/admin.js'
+]
 
 const watchFiles = [
   '*.php',
