@@ -29,3 +29,14 @@ loader({
     }
   }
 })
+
+import.meta.glob([
+  '../Components/**',
+  '../assets/**',
+  '!**/*.js',
+  '!**/*.scss',
+  '!**/*.php',
+  '!**/*.twig',
+  '!**/screenshot.png',
+  '!**/*.md'
+])
