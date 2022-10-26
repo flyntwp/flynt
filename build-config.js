@@ -5,7 +5,9 @@ const host = `https://${domain}`
 
 const entries = [
   './assets/main.js',
-  './assets/admin.js'
+  './assets/main.scss',
+  './assets/admin.js',
+  './assets/admin.scss'
 ]
 
 const watchFiles = [

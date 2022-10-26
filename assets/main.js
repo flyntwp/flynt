@@ -2,8 +2,6 @@
 import './scripts/loadCustomElements'
 import { initFeatherIcons, addFeatherIconToListCheckCircle } from './scripts/featherIcons'
 import { prepareAboveTheFoldLazyLoadedElements } from './scripts/PrepareAboveTheFold'
-import 'modern-normalize/modern-normalize.css'
-import './main.scss'
 
 import loader from 'uce-loader'
 import lazySizes from 'lazysizes'
