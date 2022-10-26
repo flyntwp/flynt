@@ -5,9 +5,12 @@ import globImporter from 'node-sass-glob-importer'
 import basicSsl from '@vitejs/plugin-basic-ssl'
 import FullReload from 'vite-plugin-full-reload'
 
+const isSecure = host.indexOf('https://') === 0
+
 export default defineConfig({
   base: './',
   css: {
+    devSourcemap: true,
     preprocessorOptions: {
       scss: {
         importer: globImporter()
@@ -17,10 +20,10 @@ export default defineConfig({
   plugins: [
     flynt({ dest, host }),
     FullReload(watchFiles),
-    basicSsl()
+    isSecure ? basicSsl() : null
   ],
   server: {
-    https: true
+    https: isSecure
   },
   build: {
     // generate manifest.json in outDir
