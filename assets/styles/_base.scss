@@ -14,7 +14,6 @@ html {
   background-color: var(--color-background);
   box-sizing: border-box;
   color: var(--color-text);
-  font-family: 'Montserrat', Verdana, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   height: 100%;
@@ -31,6 +30,7 @@ html {
 }
 
 body {
+  font-family: 'Montserrat', Verdana, sans-serif;
   height: 100%;
   overflow-x: hidden;
 }
