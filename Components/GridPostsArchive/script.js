@@ -37,7 +37,6 @@ class GridPostsArchive extends window.HTMLDivElement {
     target.classList.add('button--disabled')
 
     const url = new URL(e.currentTarget.href)
-    url.searchParams.append('contentOnly', 1)
 
     fetch(url)
       .then(response => {
@@ -45,8 +44,8 @@ class GridPostsArchive extends window.HTMLDivElement {
       }).then(responseAsText => {
         const parser = new DOMParser()
         const html = parser.parseFromString(responseAsText, 'text/html')
-        const posts = html.querySelector('.posts')
-        const pagination = html.querySelector('.pagination')
+        const posts = html.querySelector('[is="flynt-grid-posts-archive"] .posts')
+        const pagination = html.querySelector('[is="flynt-grid-posts-archive"] .pagination')
 
         if (posts) {
           this.posts.innerHTML += posts.innerHTML
@@ -57,7 +56,6 @@ class GridPostsArchive extends window.HTMLDivElement {
           const loadMore = pagination.querySelector('[data-action="loadMore"]')
           const targetUrl = new URL(loadMore.href)
 
-          targetUrl.searchParams.delete('contentOnly')
           this.loadMore.href = targetUrl
         } else {
           this.pagination.innerHTML = ''
