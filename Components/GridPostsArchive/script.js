@@ -1,5 +1,4 @@
 /* globals fetch, DOMParser */
-import { initFeatherIcons } from '../../assets/scripts/featherIcons'
 
 class GridPostsArchive extends window.HTMLDivElement {
   constructor (...args) {
@@ -49,7 +48,6 @@ class GridPostsArchive extends window.HTMLDivElement {
 
         if (posts) {
           this.posts.innerHTML += posts.innerHTML
-          initFeatherIcons() // Init feather-icons inside the post item footer.
         }
 
         if (pagination) {

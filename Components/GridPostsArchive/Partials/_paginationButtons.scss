@@ -17,20 +17,33 @@
     white-space: nowrap;
   }
 
-  .arrow {
-    color: var(--color-background);
-    top: -1px;
-  }
-
   &-next {
-    .arrow {
-      margin-right: -5px;
+    &::after {
+      border-right: var(--border-width) solid currentColor;
+      border-top: var(--border-width) solid currentColor;
+      content: '';
+      display: inline-block;
+      height: 0.5rem;
+      margin-bottom: 0.0625rem;
+      margin-left: 0.25rem;
+      transform: rotate(45deg);
+      vertical-align: baseline;
+      width: 0.5rem;
     }
   }
 
   &-previous {
-    .arrow {
-      margin-left: -5px;
+    &::before {
+      border-left: var(--border-width) solid currentColor;
+      border-top: var(--border-width) solid currentColor;
+      content: '';
+      display: inline-block;
+      height: 0.5rem;
+      margin-bottom: 0.0625rem;
+      margin-right: 0.25rem;
+      transform: rotate(-45deg);
+      vertical-align: baseline;
+      width: 0.5rem;
     }
   }
 }

@@ -270,26 +270,6 @@ ul {
   }
 }
 
-.iconList {
-  list-style: none;
-  padding: 0;
-
-  li {
-    padding-left: 2rem;
-    position: relative;
-
-    .feather:first-child {
-      display: block;
-      height: 20px;
-      left: 0;
-      position: absolute;
-      stroke-width: var(--border-width);
-      top: 4px;
-      width: 20px;
-    }
-  }
-}
-
 table {
   border-spacing: 0;
   box-shadow: inset 0 0 0 var(--border-width) var(--color-border);
@@ -776,15 +756,6 @@ select {
 *
 * Global layout classes for a consistent appearance.
 */
-
-/* Icons */
-.feather {
-  color: var(--color-accent);
-  position: relative;
-  stroke-width: 1.5;
-  top: -2px;
-  vertical-align: middle;
-}
 
 .pageWrapper {
   display: flex;

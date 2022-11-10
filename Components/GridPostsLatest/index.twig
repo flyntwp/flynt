@@ -34,9 +34,7 @@
                 <p>{{ post.excerpt.read_more(false) }}</p>
               </div>
               <footer class="post-footer">
-                <span class="post-readingTime">
-                  <i data-feather="clock"></i> {{ labels.readingTime|replace({'%d': post.content|readingtime}) }}
-                </span>
+                <span class="post-readingTime">{{ labels.readingTime|replace({'%d': post.content|readingtime}) }}</span>
                 <span class="button button--link button--small">{{ labels.readMore }}</span>
               </footer>
             </a>

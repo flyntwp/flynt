@@ -40,7 +40,7 @@
               <footer class="component-footer">
                 {% if componentBlock.ctas.secondary %}
                   <a href="{{ componentBlock.ctas.secondary }}" target="_blank" rel="noreferrer noopener" class="component-ctaSecondary">
-                    <i data-feather="github"></i> {{ labels.code }}
+                    {{ labels.code }}
                     <span class="visuallyHidden">{{ __("of Component", "flynt")}} {{ componentBlock.readme.title }}</span>
                   </a>
                 {% endif %}
