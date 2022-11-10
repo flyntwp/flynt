@@ -1,7 +1,6 @@
 // import './scripts/publicPath'
 import 'vite/modulepreload-polyfill'
 import './scripts/loadCustomElements'
-import { initFeatherIcons, addFeatherIconToListCheckCircle } from './scripts/featherIcons'
 import { prepareAboveTheFoldLazyLoadedElements } from './scripts/PrepareAboveTheFold'
 
 import loader from 'uce-loader'
@@ -14,11 +13,6 @@ if (import.meta.env.DEV) {
 
 lazySizes.cfg.nativeLoading = { setLoadingAttribute: true, disableListeners: { scroll: true } }
 prepareAboveTheFoldLazyLoadedElements()
-
-document.addEventListener('DOMContentLoaded', () => {
-  addFeatherIconToListCheckCircle()
-  initFeatherIcons()
-})
 
 // Dynamic import component scripts
 const componentsWithScripts = import.meta.glob('../Components/**/script.js')

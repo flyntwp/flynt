@@ -25,13 +25,18 @@ function getTheme()
     ];
 }
 
-function getIcon()
+function getRawSvg()
 {
     return [
-        'label' => __('Icon', 'flynt'),
-        'instructions' => __('Enter a valid icon name from <a href="https://feathericons.com">Feather Icons</a> (e.g. `check-circle`).', 'flynt'),
-        'name' => 'icon',
-        'type' => 'text',
-        'required' => 1
+        'label' => __('Raw SVG', 'flynt'),
+        'instructions' => sprintf(
+            'Insert raw svg e. g. from <a ref="%1$s" target="_blank">%1$s</a>',
+            'https://heroicons.com/'
+        ),
+        'name' => 'rawSvg',
+        'type' => 'textarea',
+        'required' => 1,
+        'rows' => 1,
+        'new_lines' => '',
     ];
 }

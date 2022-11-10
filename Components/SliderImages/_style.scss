@@ -52,17 +52,30 @@
 
       &--prev {
         left: 15px;
+
+        &::after {
+          border-left: var(--border-width) solid currentColor;
+          border-top: var(--border-width) solid currentColor;
+          content: '';
+          height: 0.75em;
+          margin-left: calc(0.25em + 2px);
+          transform: rotate(-45deg);
+          width: 0.75em;
+        }
       }
 
       &--next {
         right: 15px;
-      }
 
-      .feather {
-        color: currentColor;
-        height: auto;
-        top: 0;
-        width: 80%;
+        &::after {
+          border-right: var(--border-width) solid currentColor;
+          border-top: var(--border-width) solid currentColor;
+          content: '';
+          height: 0.75em;
+          margin-right: calc(0.25em - 2px);
+          transform: rotate(45deg);
+          width: 0.75em;
+        }
       }
     }
   }
