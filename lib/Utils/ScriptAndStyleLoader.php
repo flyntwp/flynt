@@ -42,6 +42,9 @@ class ScriptAndStyleLoader
 
             break;
         }
+        if (wp_scripts()->get_data($handle, 'module')) {
+            $tag = preg_replace(':(?=></script>):', " type=\"module\"", $tag, 1);
+        }
         return $tag;
     }
 

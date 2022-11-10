@@ -14,5 +14,5 @@ try {
   requiresCePolyfill = true
 }
 if (requiresCePolyfill) {
-  require('@webreflection/custom-elements-builtin')
+  import('@webreflection/custom-elements-builtin')
 }
