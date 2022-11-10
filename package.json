@@ -83,7 +83,7 @@
     ]
   },
   "engines": {
-    "node": "=16"
+    "node": ">=18"
   },
   "standard-version": {
     "scripts": {
