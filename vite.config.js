@@ -5,10 +5,10 @@ import globImporter from 'node-sass-glob-importer'
 import FullReload from 'vite-plugin-full-reload'
 import fs from 'fs'
 
-const isSecure = host.indexOf('https://') === 0
-
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
+  const isSecure = host.indexOf('https://') === 0 && (env.VITE_DEV_SERVER_KEY || env.VITE_DEV_SERVER_CERT)
+
   return {
     base: './',
     css: {

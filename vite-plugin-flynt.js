@@ -33,15 +33,16 @@ export default function ({ dest, host }) {
 
         const isAddressInfo = (x) => typeof x === 'object'
         if (isAddressInfo(address)) {
-          // console.log(address,server)
           viteDevServerUrl = resolveDevServerUrl(address, server.config)
           fs.writeFileSync(hotFile, viteDevServerUrl)
 
           setTimeout(() => {
-            // server.config.logger.info(`\n  ${colors.red(`${colors.bold('LARAVEL')} ${laravelVersion()}`)}  ${colors.dim('plugin')} ${colors.bold(`v${pluginVersion()}`)}`)
-            // server.config.logger.info('')
-            // server.config.logger.info(`  ${colors.green('➜')}  ${colors.bold('APP_URL')}: ${colors.cyan(appUrl.replace(/:(\d+)/, (_, port) => `:${colors.bold(port)}`))}`)
-            server.config.logger.info(`  ➜  APP_URL: ${appUrl.replace(/:(\d+)/, (_, port) => `:${port}`)}`)
+            const isSecure = host.indexOf('https://') === 0 && (server.httpServer.key || server.httpServer.cert)
+            if (!isSecure) {
+              server.config.logger.info('  ➜ Please define VITE_DEV_SERVER_KEY and VITE_DEV_SERVER_CERT inside “.env.local” to enable ssl support for the vite dev server.')
+            }
+
+            server.config.logger.info(`  ➜ APP_URL: ${appUrl.replace(/:(\d+)/, (_, port) => `:${port}`)}`)
           }, 100)
         }
       })
