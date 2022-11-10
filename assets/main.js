@@ -1,4 +1,3 @@
-// import './scripts/publicPath'
 import 'vite/modulepreload-polyfill'
 import './scripts/loadCustomElements'
 import { prepareAboveTheFoldLazyLoadedElements } from './scripts/PrepareAboveTheFold'
