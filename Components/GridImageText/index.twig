@@ -1,11 +1,11 @@
-<div class="flyntComponent componentSpacing" {{ addAttribute('theme', options.theme) }} is="flynt-grid-image-text">
+<div class="flyntComponent componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }} is="flynt-grid-image-text">
   <div class="container centerMaxWidthContainer">
     {% if preContentHtml %}
       <div class="preContent">
         {{ preContentHtml|e('wp_kses_post') }}
       </div>
     {% endif %}
-    <ul class="grid" {{ addAttribute('max-columns', options.maxColumns) }}>
+    <ul class="grid" {{ options.maxColumns ? 'data-max-columns="' ~ options.maxColumns ~ '"' }}>
       {% for item in items %}
         {% if item.image or item.contentHtml %}
           <li class="item {{ options.card == 'layoutCard' ? 'boxRadius boxShadow' }}" {{ options.card == 'layoutCard' ? 'data-theme="reset"' }}>

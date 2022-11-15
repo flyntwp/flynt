@@ -1,4 +1,4 @@
-<div class="flyntComponent componentSpacing" {{ addAttribute('theme', options.theme) }} is="flynt-list-components">
+<div class="flyntComponent componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }} is="flynt-list-components">
   <div class="container centerMaxWidthContainer">
     {% if preContentHtml %}
       <div class="preContent">

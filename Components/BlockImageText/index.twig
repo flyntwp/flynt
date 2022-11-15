@@ -1,5 +1,5 @@
-<div class="flyntComponent componentSpacing" {{ addAttribute('theme', options.theme) }} is="flynt-block-image-text">
-  <div class="container centerMaxWidthContainer" {{ addAttribute('image-position', imagePosition) }}>
+<div class="flyntComponent componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }} is="flynt-block-image-text">
+  <div class="container centerMaxWidthContainer" {{ imagePosition ? 'data-image-position="' ~ imagePosition ~ '"' }}>
     <div class="content centerContentMaxWidth">
       {{ contentHtml|e('wp_kses_post') }}
     </div>

@@ -274,18 +274,6 @@ _Example from [Components/BlockImage/index.twig](./Components/BlockImage/index.t
 
 ---
 
-#### `addAttribute($attribute = '', $value = '', string $prefix = 'data-')` (Type: Function)
-
-Return a single or multiple HTML Attributes. If no prefix is given, the attribute will be prefixed with `data-`.
-
-```twig
-{{ addAttribute('theme', options.theme) }}
-```
-
-_Example from [Components/BlockImage/index.twig](./Components/BlockImage/index.twig)_
-
----
-
 ## Troubleshooting
 
 ### Images
