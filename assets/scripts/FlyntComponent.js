@@ -1,3 +1,4 @@
+/* global IntersectionObserver, requestIdleCallback */
 const componentsWithScripts = import.meta.glob('@/Components/**/script.js')
 
 export default class FlyntComponent extends window.HTMLElement {
@@ -29,7 +30,7 @@ function visible (element) {
   })
 }
 
-function mediaQueryMatches(query) {
+function mediaQueryMatches (query) {
   return new Promise(function (resolve) {
     const mediaQueryList = window.matchMedia(query)
     if (mediaQueryList.matches) {
@@ -38,23 +39,23 @@ function mediaQueryMatches(query) {
       mediaQueryList.addEventListener(
         'change',
         () => resolve(true),
-        { once:true }
+        { once: true }
       )
     }
   })
 }
 
-function determineLoadingStrategy(node) {
+function determineLoadingStrategy (node) {
   return node.hasAttribute('client:visible')
-      ? 'visible'
-      : (
+    ? 'visible'
+    : (
         node.hasAttribute('client:idle')
           ? 'idle'
           : 'load'
       )
 }
 
-function getLoadingFunctionWrapper(strategyName, node) {
+function getLoadingFunctionWrapper (strategyName, node) {
   const loadingFunctions = {
     load: (x) => x(),
     idle: (x) => requestIdleCallback(x),
@@ -67,11 +68,11 @@ function getLoadingFunctionWrapper(strategyName, node) {
   return loadingFunctions[strategyName] ?? defaultFn
 }
 
-function getMediaQuery(node) {
+function getMediaQuery (node) {
   return node.hasAttribute('client:media') ? node.getAttribute('client:media') : null
 }
 
-function getLoadingFunction(node) {
+function getLoadingFunction (node) {
   return async () => {
     const componentName = node.getAttribute('name')
     const componentPath = window.FlyntData.componentsWithScript[componentName]
