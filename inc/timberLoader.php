@@ -1,9 +1,9 @@
 <?php
 
 /**
- * - Enables rendering with Timber and Twig.
- * - Converts ACF Images to Timber Images if ACF is enabled.
- * - Convert ACF Field of type post_object to a Timber\Post and add all ACF Fields of that Post
+ * - Enables rendering with Timber and Twig
+ * - Convert ACF Images to Timber Images
+ * - Convert ACF Field of type post_object to a Timber\Post
  * - Convert ACF Field of type taxonomy to a Timber\Term
  */
 
@@ -13,20 +13,23 @@ use Timber\Timber;
 
 define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
 
-// Convert ACF Images to Timber Images
-add_filter('acf/format_value/type=image', NS . 'formatImage', 100);
+// To preserve conflicts the filters below only added if the current request is not on an administrative interface page
+if (!is_admin()) {
+    // Convert ACF Images to Timber Images
+    add_filter('acf/format_value/type=image', NS . 'formatImage', 100);
 
-// Convert ACF Gallery Images to Timber Images
-add_filter('acf/format_value/type=gallery', NS . 'formatGallery', 100);
+    // Convert ACF Gallery Images to Timber Images
+    add_filter('acf/format_value/type=gallery', NS . 'formatGallery', 100);
 
-// Convert ACF Field of type post_object to a Timber\Post and add all ACF Fields of that Post
-add_filter('acf/format_value/type=post_object', NS . 'formatPostObject', 100);
+    // Convert ACF Field of type post_object to a Timber\Post
+    add_filter('acf/format_value/type=post_object', NS . 'formatPostObject', 100);
 
-// Convert ACF Field of type relationship to a Timber\Post and add all ACF Fields of that Post
-add_filter('acf/format_value/type=relationship', NS . 'formatPostObject', 100);
+    // Convert ACF Field of type relationship to a Timber\Post
+    add_filter('acf/format_value/type=relationship', NS . 'formatPostObject', 100);
 
-// Convert ACF Field of type taxonomy to a Timber\Term
-add_filter('acf/format_value/type=taxonomy', NS . 'formatTaxonomy', 100);
+    // Convert ACF Field of type taxonomy to a Timber\Term
+    add_filter('acf/format_value/type=taxonomy', NS . 'formatTaxonomy', 100);
+}
 
 function formatImage($value)
 {
