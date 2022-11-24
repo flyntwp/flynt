@@ -1,10 +1,12 @@
-<div class="flyntComponent componentSpacing" is="flynt-block-not-found">
-  <div class="container centerMaxWidthContainer">
-    <div class="content centerContentMaxWidth">
-      {{ contentHtml|e('wp_kses_post') }}
-      <p>
-        <a class="button button--link" href="{{ function('home_url') }}">{{ backLinkLabel|e }}</a>
-      </p>
+<flynt-component client:visible name="BlockNotFound">
+  <div class="flyntComponent componentSpacing" is="flynt-block-not-found">
+    <div class="container centerMaxWidthContainer">
+      <div class="content centerContentMaxWidth">
+        {{ contentHtml|e('wp_kses_post') }}
+        <p>
+          <a class="button button--link" href="{{ function('home_url') }}">{{ backLinkLabel|e }}</a>
+        </p>
+      </div>
     </div>
   </div>
-</div>
+</flynt-component>

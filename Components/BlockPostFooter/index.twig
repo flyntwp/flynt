@@ -1,38 +1,40 @@
-<div class="flyntComponent componentSpacing" is="flynt-block-post-footer">
-  <div class="container centerMaxWidthContainer">
-    <div class="centerContentMaxWidth">
-      {% if post.terms('tag')  %}
-        <span class="visuallyHidden">{{ labels.tagsLabel }}</span>
-        <ul class="tags">
-          {% for tag in post.terms('tag')  %}
-            <li class="tags-item">
-              <a class="tags-itemLink button button--ghost button--small" href="{{ tag.link }}">{{ tag }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-      <div class="author postContent">
-        {% if post.author.avatar %}
-          <a class="author-avatarLink" href="{{ post.author.link|e('esc_url') }}" aria-hidden="true" tabindex="-1">
-            <img class="author-avatarImage"
-              width="64"
-              height="64"
-              src="{{ post.author.avatar }}"
-              alt="{{ post.author.name|e }}">
-          </a>
+<flynt-component client:visible name="BlockPostFooter">
+  <div class="flyntComponent componentSpacing" is="flynt-block-post-footer">
+    <div class="container centerMaxWidthContainer">
+      <div class="centerContentMaxWidth">
+        {% if post.terms('tag')  %}
+          <span class="visuallyHidden">{{ labels.tagsLabel }}</span>
+          <ul class="tags">
+            {% for tag in post.terms('tag')  %}
+              <li class="tags-item">
+                <a class="tags-itemLink button button--ghost button--small" href="{{ tag.link }}">{{ tag }}</a>
+              </li>
+            {% endfor %}
+          </ul>
         {% endif %}
-        <div class="author-info">
-          <div class="h5 author-name">
-            <a class="author-nameLink" href="{{ post.author.link|e('esc_url') }}">
-              <span class="visuallyHidden">{{ labels.postedByLabel }}</span>
-              {{ post.author.name }}
+        <div class="author postContent">
+          {% if post.author.avatar %}
+            <a class="author-avatarLink" href="{{ post.author.link|e('esc_url') }}" aria-hidden="true" tabindex="-1">
+              <img class="author-avatarImage"
+                width="64"
+                height="64"
+                src="{{ post.author.avatar }}"
+                alt="{{ post.author.name|e }}">
             </a>
-          </div>
-          {% if post.author.description %}
-            <p class="author-description">{{ post.author.description|e }}</p>
           {% endif %}
+          <div class="author-info">
+            <div class="h5 author-name">
+              <a class="author-nameLink" href="{{ post.author.link|e('esc_url') }}">
+                <span class="visuallyHidden">{{ labels.postedByLabel }}</span>
+                {{ post.author.name }}
+              </a>
+            </div>
+            {% if post.author.description %}
+              <p class="author-description">{{ post.author.description|e }}</p>
+            {% endif %}
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</flynt-component>

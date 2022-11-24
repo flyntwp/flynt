@@ -1,6 +1,6 @@
 class BlockCollapse extends window.HTMLDivElement {
   connectedCallback () {
-    const previousElementTheme = this.previousElementSibling.getAttribute('data-theme')
+    const previousElementTheme = this.parentElement.previousElementSibling.getAttribute('data-theme')
     if (previousElementTheme) {
       this.setAttribute('data-theme', previousElementTheme)
     }

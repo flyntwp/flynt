@@ -125,8 +125,7 @@ class ComponentManager
             $componentPath = str_replace('/dist/', '/', $componentPath);
             $relativeComponentPath = trim(str_replace(get_template_directory() . '/Components/', '', $componentPath), '/');
             if (file_exists($componentPath . '/script.js')) {
-                $tagName = 'flynt-' . StringHelpers::camelCaseToKebap($componentName);
-                $componentsWithScripts[$tagName] = $relativeComponentPath;
+                $componentsWithScripts[$componentName] = $relativeComponentPath;
             }
         }
         return $componentsWithScripts;

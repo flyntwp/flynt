@@ -19,6 +19,11 @@ export default defineConfig(({ mode }) => {
         }
       }
     },
+    resolve: {
+      alias: {
+        '@': __dirname
+      }
+    },
     plugins: [flynt({ dest, host }), FullReload(watchFiles)],
     server: {
       https: isSecure
