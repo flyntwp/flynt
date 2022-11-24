@@ -6,7 +6,7 @@
         {{ preContentHtml|e('wp_kses_post') }}
       </div>
     {% endif %}
-    <div class="slider swiper-container centerContentMaxWidthLarge boxRadius" data-slider data-theme="reset">
+    <div data-ref="slider" class="slider swiper-container centerContentMaxWidthLarge boxRadius" data-theme="reset">
       <div class="swiper-wrapper">
         {% for image in images %}
           <div class="slider-item swiper-slide">
@@ -31,8 +31,8 @@
           </div>
         {% endfor %}
       </div>
-      <button type="button" data-slider-button="prev" class="slider-button slider-button--prev"></button>
-      <button type="button" data-slider-button="next" class="slider-button slider-button--next"></button>
+      <button type="button" data-ref="prev" class="slider-button slider-button--prev"></button>
+      <button type="button" data-ref="next" class="slider-button slider-button--next"></button>
     </div>
   </div>
 </flynt-component>
