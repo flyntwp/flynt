@@ -775,6 +775,10 @@ select {
   position: relative;
 }
 
+flynt-component {
+  display: block;
+}
+
 .componentSpacing {
   margin: var(--component-spacing) 0;
 

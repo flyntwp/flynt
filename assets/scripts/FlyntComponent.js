@@ -79,7 +79,7 @@ function getLoadingFunction (node) {
     if (componentPath) {
       const componentScript = await componentsWithScripts[`/Components/${componentPath}/script.js`]()
       if (typeof componentScript.default === 'function') {
-        componentScript.default(this)
+        componentScript.default(node)
       }
     }
   }

@@ -36,8 +36,7 @@
     "lodash": "^4.17.21",
     "modern-normalize": "^1.1.0",
     "rellax": "^1.12.1",
-    "swiper": "^8.4.4",
-    "uce-loader": "^2.0.0"
+    "swiper": "^8.4.4"
   },
   "devDependencies": {
     "ansi-colors": "^4.1.3",
