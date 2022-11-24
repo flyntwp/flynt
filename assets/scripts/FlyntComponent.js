@@ -96,7 +96,7 @@ function getLoadingFunction (node) {
   }
 }
 
-function cleanupElement(node) {
+function cleanupElement (node) {
   if (upgradedElements.has(node)) {
     const cleanupFn = upgradedElements.get(node)
     if (typeof cleanupFn === 'function') {
