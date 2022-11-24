@@ -1,6 +1,6 @@
 import 'vite/modulepreload-polyfill'
 import './scripts/loadCustomElements'
-import { prepareAboveTheFoldLazyLoadedElements } from './scripts/PrepareAboveTheFold'
+import { prepareAboveTheFoldLazyLoadedElements } from './scripts/prepareAboveTheFold'
 
 import loader from 'uce-loader'
 import lazySizes from 'lazysizes'
