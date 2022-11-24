@@ -1,11 +1,15 @@
 import Swiper, { Navigation, A11y, Autoplay, Lazy } from 'swiper'
 import 'swiper/css/bundle'
 
-class SliderImages extends window.HTMLDivElement {
-  constructor (...args) {
-    const self = super(...args)
-    self.init()
-    return self
+export default function (el) {
+  new SliderImages(el)
+}
+
+class SliderImages {
+  constructor (el) {
+    this.element = el
+    this.init()
+    this.connectedCallback()
   }
 
   init () {
@@ -53,6 +57,8 @@ class SliderImages extends window.HTMLDivElement {
 
     this.swiper = new Swiper(this.slider, config)
   }
-}
 
-window.customElements.define('flynt-slider-images', SliderImages, { extends: 'div' })
+  querySelector (...args) {
+    return this.element.querySelector(...args)
+  }
+}
