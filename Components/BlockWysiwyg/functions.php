@@ -8,7 +8,7 @@ function getACFLayout()
 {
     return [
         'name' => 'blockWysiwyg',
-        'label' => 'Block: Wysiwyg',
+        'label' => __('Block: Wysiwyg', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('General', 'flynt'),
@@ -18,12 +18,12 @@ function getACFLayout()
                 'endpoint' => 0,
             ],
             [
-                'label' => __('Text Alignment', 'flynt'),
-                'name' => 'textAlignment',
+                'label' => __('Text Align', 'flynt'),
+                'name' => 'textAlign',
                 'type' => 'button_group',
                 'choices' => [
-                    'textLeft' => '<i class=\'dashicons dashicons-editor-alignleft\' title=\'Align text left\'></i>',
-                    'textCenter' => '<i class=\'dashicons dashicons-editor-aligncenter\' title=\'Align text center\'></i>'
+                    'left' => sprintf('<i class="dashicons dashicons-editor-alignleft" title="%1$s"></i>', __('Align text left', 'flynt')),
+                    'center' => sprintf('<i class="dashicons dashicons-editor-aligncenter" title="%1$s"></i>', __('Align text center', 'flynt'))
                 ]
             ],
             [
@@ -49,18 +49,18 @@ function getACFLayout()
                 'sub_fields' => [
                     FieldVariables\getTheme(),
                     [
-                        'label' => __('Size', 'flynt'),
-                        'name' => 'size',
+                        'label' => __('Max Width', 'flynt'),
+                        'name' => 'maxWidth',
                         'type' => 'radio',
                         'other_choice' => 0,
                         'save_other_choice' => 0,
                         'layout' => 'horizontal',
                         'choices' => [
-                            'sizeDefault' => __('Default', 'flynt'),
-                            'sizeLarge' => __('Large', 'flynt)'),
-                            'sizeFull' => __('Full', 'flynt)'),
+                            '' => __('Default', 'flynt'),
+                            'large' => __('Large', 'flynt)'),
+                            'full' => __('Full', 'flynt)'),
                         ],
-                        'default_value' => 'sizeDefault',
+                        'default_value' => '',
                         'wrapper' =>  [
                             'width' => '100',
                         ],

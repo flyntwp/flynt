@@ -8,7 +8,7 @@ function getACFLayout()
 {
     return [
         'name' => 'blockImage',
-        'label' => 'Block: Image',
+        'label' => __('Block: Image', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('General', 'flynt'),
@@ -19,12 +19,12 @@ function getACFLayout()
             ],
             [
                 'label' => __('Image', 'flynt'),
+                'instructions' => __('Image-Format: JPG, PNG, SVG.', 'flynt'),
                 'name' => 'image',
                 'type' => 'image',
                 'preview_size' => 'medium',
-                'instructions' => __('Image-Format: JPG, PNG, GIF, SVG.', 'flynt'),
                 'required' => 1,
-                'mime_types' => 'gif,jpg,jpeg,png,svg'
+                'mime_types' => 'jpg,jpeg,png,svg'
             ],
             [
                 'label' => __('Options', 'flynt'),
@@ -48,13 +48,13 @@ function getACFLayout()
                         'save_other_choice' => 0,
                         'layout' => 'horizontal',
                         'choices' => [
-                            'sizeSmall' => __('Small', 'flynt'),
-                            'sizeMedium' => __('Medium', 'flynt'),
-                            'sizeLarge' => __('Large (Default)', 'flynt)'),
-                            'sizeHuge' => __('Huge', 'flynt'),
-                            'sizeFull' => __('Full', 'flynt'),
+                            'small' => __('Small', 'flynt'),
+                            'medium' => __('Medium', 'flynt'),
+                            'large' => __('Large (Default)', 'flynt)'),
+                            'huge' => __('Huge', 'flynt'),
+                            'full' => __('Full', 'flynt'),
                         ],
-                        'default_value' => 'sizeLarge',
+                        'default_value' => 'large',
                         'wrapper' =>  [
                             'width' => '100',
                         ],

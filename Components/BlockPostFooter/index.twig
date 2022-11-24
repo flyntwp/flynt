@@ -1,6 +1,6 @@
-<div class="flyntComponent" is="flynt-block-post-footer">
+<div class="flyntComponent componentSpacing" is="flynt-block-post-footer">
   <div class="container centerMaxWidthContainer">
-    <div class="content centerContentMaxWidth">
+    <div class="centerContentMaxWidth">
       {% if post.terms('tag')  %}
         <span class="visuallyHidden">{{ labels.tagsLabel }}</span>
         <ul class="tags">
@@ -11,10 +11,14 @@
           {% endfor %}
         </ul>
       {% endif %}
-      <div class="author">
+      <div class="author postContent">
         {% if post.author.avatar %}
           <a class="author-avatarLink" href="{{ post.author.link|e('esc_url') }}" aria-hidden="true" tabindex="-1">
-            <img class="author-avatarImage" src="{{ post.author.avatar }}" alt="{{ post.author.name|e }}">
+            <img class="author-avatarImage"
+              width="64"
+              height="64"
+              src="{{ post.author.avatar }}"
+              alt="{{ post.author.name|e }}">
           </a>
         {% endif %}
         <div class="author-info">

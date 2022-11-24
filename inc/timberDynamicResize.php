@@ -12,18 +12,18 @@ add_action('acf/init', function () {
 
 Options::addGlobal('TimberDynamicResize', [
     [
-        'label' => 'Dynamic Image Generation',
+        'label' => __('Dynamic Image Generation', 'flynt'),
+        'instructions' => __('Generate images on-the-fly, when requested, not during initial render.', 'flynt'),
         'name' => 'dynamicImageGeneration',
         'type' => 'true_false',
         'default_value' => 0,
         'ui' => true,
-        'instructions' => 'Generate images on-the-fly, when requested, not during initial render.',
     ],
     [
-        'label' => 'Relative Upload Path',
+        'label' => __('Relative Upload Path', 'flynt'),
+        'instructions' => __('If Timber Dynamic Resize cannot resolve the path to images correctly, set the relative upload path manually.', 'flynt'),
         'name' => 'relativeUploadPath',
         'type' => 'text',
-        'instructions' => 'If Timber Dynamic Resize cannot resolve the path to images correctly, set the relative upload path manually.',
         'conditional_logic' => [
             [
                 [
@@ -33,7 +33,7 @@ Options::addGlobal('TimberDynamicResize', [
                 ]
             ]
         ]
-                ],
+    ],
 ]);
 
 add_filter(

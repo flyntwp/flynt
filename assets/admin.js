@@ -1,9 +1,6 @@
-import './scripts/publicPath'
-import './admin.scss'
-
-function importAll (r) {
-  r.keys().forEach(r)
+// import './scripts/publicPath'
+if (import.meta.env.DEV) {
+  import('@vite/client')
 }
 
-importAll(require.context('../Components/', true, /\/admin\.js$/))
-importAll(require.context('../lib/Customizer/', true, /\/control\.js$/))
+import.meta.glob('../Components/**/admin.js', { eager: true })

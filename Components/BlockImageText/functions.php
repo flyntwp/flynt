@@ -8,7 +8,7 @@ function getACFLayout()
 {
     return [
         'name' => 'blockImageText',
-        'label' => 'Block: Image Text',
+        'label' => __('Block: Image Text', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('General', 'flynt'),
@@ -22,16 +22,16 @@ function getACFLayout()
                 'name' => 'imagePosition',
                 'type' => 'button_group',
                 'choices' => [
-                    'imageLeft' => '<i class=\'dashicons dashicons-align-left\' title=\'Image on the left\'></i>',
-                    'imageRight' => '<i class=\'dashicons dashicons-align-right\' title=\'Image on the right\'></i>'
+                    'left' => sprintf('<i class=\'dashicons dashicons-align-left\' title=\'%1$s\'></i>', __('Image on the left', 'flynt')),
+                    'right' => sprintf('<i class=\'dashicons dashicons-align-right\' title=\'%1$s\'></i>', __('Image on the right', 'flynt'))
                 ]
             ],
             [
                 'label' => __('Image', 'flynt'),
+                'instructions' => __('Image-Format: JPG, PNG, SVG.', 'flynt'),
                 'name' => 'image',
                 'type' => 'image',
                 'preview_size' => 'medium',
-                'instructions' => __('Image-Format: JPG, PNG, SVG.', 'flynt'),
                 'required' => 1,
                 'mime_types' => 'jpg,jpeg,png,svg'
             ],

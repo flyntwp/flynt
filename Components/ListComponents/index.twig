@@ -1,4 +1,4 @@
-<div class="flyntComponent componentSpacing {{ options.theme }}" is="flynt-list-components">
+<div class="flyntComponent componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }} is="flynt-list-components">
   <div class="container centerMaxWidthContainer">
     {% if preContentHtml %}
       <div class="preContent">
@@ -8,7 +8,7 @@
     <ul class="components">
       {% for componentBlock in componentBlocks %}
         {% if componentBlock.readme %}
-          <li class="component boxRadius boxShadow themeReset">
+          <li class="component boxRadius boxShadow" data-theme="reset">
             {% if componentBlock.ctas.primary %}
               <a href="{{ componentBlock.ctas.primary }}" class="component-link" aria-hidden="true" tabindex="-1">
             {% else %}
@@ -18,7 +18,9 @@
                 <div class="component-image">
                   <div class="component-imageWrapper">
                     <img class="lazyload image {{ componentBlock.componentScreenshot.aspect > (1280/800) ? 'image--isSmallerThanWrapper' }} "
-                        src="{{ placeholderImage(760, 760 / componentBlock.componentScreenshot.aspect) }}"
+                        src="{{ placeholderImage(760, 760 / componentBlock.componentScreenshot.aspect, 'rgba(125, 125, 125, 0.1)') }}"
+                        width="{{ 760 }}"
+                        height="{{ (760 / componentBlock.componentScreenshot.aspect)|round }}"
                         data-src="{{ componentBlock.componentScreenshot.src }}"
                         data-sizes="auto"
                         alt="{{ componentBlock.readme.title|e }}">
@@ -38,7 +40,7 @@
               <footer class="component-footer">
                 {% if componentBlock.ctas.secondary %}
                   <a href="{{ componentBlock.ctas.secondary }}" target="_blank" rel="noreferrer noopener" class="component-ctaSecondary">
-                    <i data-feather="github"></i> {{ labels.code }}
+                    {{ labels.code }}
                     <span class="visuallyHidden">{{ __("of Component", "flynt")}} {{ componentBlock.readme.title }}</span>
                   </a>
                 {% endif %}

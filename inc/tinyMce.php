@@ -143,17 +143,6 @@ function getConfig()
                     ]
                 ]
             ],
-            [
-                'title' => 'Icon Lists',
-                'icon' => '',
-                'items' => [
-                    [
-                        'title' => 'Check Circle',
-                        'classes' => 'iconList iconList--checkCircle',
-                        'selector' => 'ul,ol'
-                    ]
-                ]
-            ]
         ],
         'toolbars' => [
             'default' => [

@@ -17,7 +17,7 @@ function getACFLayout()
 {
     return [
         'name' => 'sliderImages',
-        'label' => 'Slider: Images',
+        'label' => __('Slider: Images', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('General', 'flynt'),
@@ -28,19 +28,19 @@ function getACFLayout()
             ],
             [
                 'label' => __('Title', 'flynt'),
+                'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
                 'name' => 'preContentHtml',
                 'type' => 'wysiwyg',
-                'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
                 'media_upload' => 0,
             ],
             [
                 'label' => __('Images', 'flynt'),
+                'instructions' => __('Image-Format: JPG, PNG.', 'flynt'),
                 'name' => 'images',
                 'type' => 'gallery',
                 'min' => 2,
                 'preview_size' => 'medium',
                 'mime_types' => 'jpg,jpeg,png',
-                'instructions' => __('Image-Format: JPG, PNG.', 'flynt'),
                 'required' => 1
             ],
             [

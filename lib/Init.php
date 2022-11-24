@@ -5,7 +5,7 @@ namespace Flynt;
 use Flynt\Api;
 use Flynt\Defaults;
 use Flynt\Utils\AdminNoticeManager;
-use Timber\Timber;
+use Timber;
 
 class Init
 {
@@ -14,7 +14,7 @@ class Init
         Api::registerHooks();
         Defaults::init();
 
-        new Timber();
+        Timber\Timber::init();
     }
 
     public static function loadComponents()

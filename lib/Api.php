@@ -27,6 +27,7 @@ class Api
             $data,
             $componentName
         );
+
         $output = apply_filters(
             'Flynt/renderComponent',
             null,

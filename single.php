@@ -1,9 +1,7 @@
 <?php
 
 use Timber\Timber;
-use Timber\Post;
 
-$context = Timber::get_context();
-$context['post'] = new Post();
+$context = Timber::context();
 
 Timber::render('templates/single.twig', $context);

@@ -1,6 +1,8 @@
 .menu {
   @include reset-list;
   display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--gap-width) / 2) var(--gap-width);
   justify-content: center;
   list-style: none;
   margin: 0;
@@ -8,15 +10,10 @@
 
   &-item {
     @include reset-list-item;
-
-    &:not(:first-child) {
-      margin-left: 1.5rem;
-    }
   }
 
   &-link {
     @include reset-link;
-
     color: currentColor;
     text-decoration: none;
 

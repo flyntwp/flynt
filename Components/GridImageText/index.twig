@@ -1,38 +1,38 @@
-<div class="flyntComponent componentSpacing {{ options.theme }} {{ options.card ? 'layoutCard' }}" is="flynt-grid-image-text">
+<div class="flyntComponent componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }} is="flynt-grid-image-text">
   <div class="container centerMaxWidthContainer">
     {% if preContentHtml %}
       <div class="preContent">
         {{ preContentHtml|e('wp_kses_post') }}
       </div>
     {% endif %}
-    <ul class="grid grid--columns{{ options.columns }}">
+    <ul class="grid" {{ options.maxColumns ? 'data-max-columns="' ~ options.maxColumns ~ '"' }}>
       {% for item in items %}
         {% if item.image or item.contentHtml %}
-          <li class="grid-item">
-            <div class="content {{ options.card == 'layoutCard' ? 'boxRadius boxShadow themeReset' }}
-            {{ options.card == 'layoutCard' and options.theme != 'themeDark' }}">
+          <li class="item {{ options.card == 'layoutCard' ? 'boxRadius boxShadow' }}" {{ options.card == 'layoutCard' ? 'data-theme="reset"' }}>
               {% if item.image %}
-                <img class="content-image lazyload {{ options.card != 'layoutCard' ? 'boxRadius' }}"
-                  src="{{ item.image.src|resizeDynamic(424, 283) }}"
-                  srcset="{{ placeholderImage(3, 2) }}"
-                  data-srcset="
-                    {{ item.image.src|resizeDynamic(1920, 1280) }} 1920w,
-                    {{ item.image.src|resizeDynamic(1320, 880) }} 1320w,
-                    {{ item.image.src|resizeDynamic(1280, 853) }} 1280w,
-                    {{ item.image.src|resizeDynamic(1050, 700) }} 1050w,
-                    {{ item.image.src|resizeDynamic(760, 506) }} 760w,
-                    {{ item.image.src|resizeDynamic(600, 400) }} 600w,
-                    {{ item.image.src|resizeDynamic(424, 283) }} 424w,
-                    {{ item.image.src|resizeDynamic(312, 208) }} 312w"
-                  data-sizes="auto"
-                  alt="{{ item.image.alt|e }}">
+                <figure class="figure">
+                  <img class="figure-image lazyload {{ options.card != 'layoutCard' ? 'boxRadius' }}"
+                    src="{{ item.image.src|resizeDynamic(768, (768 / 3 * 2)|round, 'center') }}"
+                    width="{{ 768 }}"
+                    height="{{ (768 / 3 * 2)|round }}"
+                    srcset="{{ placeholderImage(768, (768 / 3 * 2)|round, 'rgba(125, 125, 125, 0.1)') }}"
+                    data-srcset="
+                      {{ item.image.src|resizeDynamic(1920, (1920 / 3 * 2)|round, 'center') }} 1920w,
+                      {{ item.image.src|resizeDynamic(1600, (1600 / 3 * 2)|round, 'center') }} 1600w,
+                      {{ item.image.src|resizeDynamic(1440, (1440 / 3 * 2)|round, 'center') }} 1440w,
+                      {{ item.image.src|resizeDynamic(1366, (1366 / 3 * 2)|round, 'center') }} 1366w,
+                      {{ item.image.src|resizeDynamic(1024, (1024 / 3 * 2)|round, 'center') }} 1024w,
+                      {{ item.image.src|resizeDynamic(768, (768 / 3 * 2)|round, 'center') }} 768w,
+                      {{ item.image.src|resizeDynamic(640, (640 / 3 * 2)|round, 'center') }} 640w"
+                    data-sizes="auto"
+                    alt="{{ item.image.alt|e }}">
+                </figure>
               {% endif %}
               {% if item.contentHtml %}
-                <div class="content-inner {{ options.card == 'layoutCard' ? 'boxPadding' }}">
+                <div class="content {{ options.card == 'layoutCard' ? 'boxPadding' }}">
                   {{ item.contentHtml|e('wp_kses_post') }}
                 </div>
               {% endif %}
-            </div>
           </li>
         {% endif %}
       {% endfor %}

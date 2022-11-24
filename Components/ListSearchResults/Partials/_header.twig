@@ -2,7 +2,7 @@
   {{ preContentHtml|e('wp_kses_post') }}
 </div>
 <form class="searchForm" role="search" action="{{ bloginfo('url') }}">
-  <div class="oneInputForm themeReset">
+  <div class="oneInputForm" data-theme="reset">
       <label class="visuallyHidden" for="searchForm-input">{{ searchPlaceholder }}</label>
       <input name="s" id="searchForm-input" class="oneInputForm-input" type="search" required placeholder="{{ searchPlaceholder }}" value="{{ searchQuery }}">
       <button class="button oneInputForm-button" type="submit">{{ labels.search }}</button>

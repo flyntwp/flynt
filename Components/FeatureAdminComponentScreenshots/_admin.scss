@@ -1,12 +1,11 @@
 /* Backend Component Screenshots */
 .flyntComponentScreenshot {
   background-color: #fff;
-  border: 1px solid #e1e1e1;
+  border: 1px solid #ccd0d4;
   bottom: 5px;
   display: inline-block;
-  height: 36px;
+  height: 40px;
   margin-left: 5px;
-  padding: 2px;
   position: absolute;
 
   &-imageWrapper {
@@ -17,7 +16,7 @@
 
   &-image {
     background: #fff;
-    border: 3px solid #333739;
+    border: 3px solid #2f353e;
     border-radius: 3px;
     bottom: 0;
     display: block;

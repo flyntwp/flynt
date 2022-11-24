@@ -4,17 +4,12 @@
  * - Enables rendering with Timber and Twig.
  * - Converts ACF Images to Timber Images if ACF is enabled.
  * - Convert ACF Field of type post_object to a Timber\Post and add all ACF Fields of that Post
+ * - Convert ACF Field of type taxonomy to a Timber\Term
  */
 
 namespace Flynt\TimberLoader;
 
-use Flynt\Utils\TwigExtensionFlynt;
-use Flynt;
-use Flynt\Utils\Asset;
-use Timber\Image;
-use Timber\Post;
 use Timber\Timber;
-use Twig\TwigFunction;
 
 define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
 
@@ -29,15 +24,14 @@ add_filter('acf/format_value/type=post_object', NS . 'formatPostObject', 100);
 
 // Convert ACF Field of type relationship to a Timber\Post and add all ACF Fields of that Post
 add_filter('acf/format_value/type=relationship', NS . 'formatPostObject', 100);
-add_filter('get_twig', function ($twig) {
-    $twig->addExtension(new TwigExtensionFlynt());
-    return $twig;
-});
+
+// Convert ACF Field of type taxonomy to a Timber\Term
+add_filter('acf/format_value/type=taxonomy', NS . 'formatTaxonomy', 100);
 
 function formatImage($value)
 {
     if (!empty($value)) {
-        $value = new Image($value);
+        $value = Timber::get_Image($value);
     }
     return $value;
 }
@@ -46,7 +40,7 @@ function formatGallery($value)
 {
     if (!empty($value)) {
         $value = array_map(function ($image) {
-            return new Image($image);
+            return Timber::get_Image($image);
         }, $value);
     }
     return $value;
@@ -65,23 +59,25 @@ function formatPostObject($value)
 function convertToTimberPost($value)
 {
     if (!empty($value) && is_object($value) && get_class($value) === 'WP_Post') {
-        $value = new Post($value);
+        $value = Timber::get_Post($value);
     }
     return $value;
 }
 
-add_action('timber/twig/filters', function ($twig) {
-    $twig->addFunction(new TwigFunction('placeholderImage', function ($width, $height, $color = null) {
-        $width = round($width);
-        $height = round($height);
-        $colorRect = $color ? "<rect width='{$width}' height='{$height}' style='fill:$color' />" : '';
-        $svg = "<svg width='{$width}' height='{$height}' xmlns='http://www.w3.org/2000/svg'>{$colorRect}</svg>";
-        return "data:image/svg+xml;base64," . base64_encode($svg);
-    }));
+function formatTaxonomy($value)
+{
+    if (is_array($value)) {
+        $value = array_map(NS . 'convertToTimberTaxonomy', $value);
+    } else {
+        $value = Timber::get_term($value);
+    }
+    return $value;
+}
 
-    $twig->addFunction(new TwigFunction('requireUrl', function ($asset) {
-        return Asset::requireUrl($asset);
-    }));
-
-    return $twig;
-});
+function convertToTimberTaxonomy($value)
+{
+    if (!empty($value) && is_object($value) && get_class($value) === 'WP_Term') {
+        $value = Timber::get_term($value->term_id);
+    }
+    return $value;
+}

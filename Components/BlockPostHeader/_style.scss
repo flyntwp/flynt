@@ -1,20 +1,9 @@
 [is='flynt-block-post-header'] {
-  .header {
-    margin-bottom: calc(var(--component-spacing) / 2);
-    padding: var(--component-spacing) 0 calc(var(--component-spacing) / 2);
+  > .container {
+    padding: var(--component-spacing) var(--container-padding);
 
     @media (min-width: $breakpoint-tablet) {
-      margin-bottom: calc(var(--component-spacing-tablet) / 2);
-      padding: var(--component-spacing-tablet) 0 calc(var(--component-spacing-tablet) / 2);
-    }
-
-    &--hasFeaturedImage {
-      margin-bottom: 0;
-      padding: var(--component-spacing) 0 var(--component-spacing-desktop);
-
-      @media (min-width: $breakpoint-tablet) {
-        padding: var(--component-spacing-tablet) 0 calc(var(--component-spacing-tablet) * 2);
-      }
+      --component-spacing: var(--component-spacing-tablet);
     }
   }
 
@@ -22,10 +11,15 @@
     @include reset-content-margins;
   }
 
+  .excerpt {
+    margin-top: 1.5rem;
+  }
+
   .meta {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
+    font-size: 0.875rem;
     margin-top: 1.5rem;
     padding-left: 2rem;
 
@@ -34,7 +28,7 @@
         background-color: var(--color-border);
         content: '';
         display: inline-block;
-        height: 2px;
+        height: var(--border-width);
         margin: 0 0.5rem;
         vertical-align: middle;
         width: 8px;
@@ -45,16 +39,9 @@
       }
     }
 
-    &-author,
-    &-category,
-    &-date,
-    &-readingtime {
+    > * {
       @include reset-link;
       color: var(--color-text);
-      font-family: var(--elements-font-family);
-      font-size: 0.875rem;
-      font-weight: var(--elements-font-weight);
-      letter-spacing: 0.0125em;
     }
 
     &-author,
@@ -87,27 +74,11 @@
     }
   }
 
-  .excerpt {
-    margin-top: 1.5rem;
-  }
+  [is='flynt-block-image'] {
+    margin-top: calc(-1 * var(--component-spacing) / 2);
 
-  .featuredImage {
-    margin-bottom: calc(var(--component-spacing-tablet) / 3);
-    margin-top: calc(-1 * var(--component-spacing-tablet));
-
-    @media (min-width: $breakpoint-tablet) {
-      margin-bottom: var(--component-spacing-mobile);
-      margin-top: calc(-1 * var(--component-spacing-desktop));
-    }
-
-    .figure {
-      &-image {
-        border-radius: var(--box-border-radius);
-        overflow: hidden;
-        position: relative;
-        transform: translateZ(0);
-        z-index: 1;
-      }
+    .figure-image {
+      border-radius: var(--box-border-radius);
     }
   }
 }

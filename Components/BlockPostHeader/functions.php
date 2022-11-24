@@ -5,7 +5,7 @@ namespace Flynt\Components\BlockPostHeader;
 use Flynt\Utils\Options;
 
 add_filter('Flynt/addComponentData?name=BlockPostHeader', function ($data) {
-
+    $data['dateFormat'] = get_option('date_format');
     return $data;
 });
 
@@ -24,28 +24,28 @@ Options::addTranslatable('BlockPostHeader', [
         'sub_fields' => [
             [
                 'label' => __('Posted by', 'flynt'),
-                'name' => 'postedByLabel',
+                'name' => 'postedBy',
                 'type' => 'text',
-                'default_value' => 'Posted by',
+                'default_value' => __('Posted by', 'flynt'),
                 'wrapper' => [
                     'width' => '50',
                 ],
             ],
             [
                 'label' => __('(Posted) in', 'flynt'),
-                'name' => 'postedInLabel',
+                'name' => 'postedIn',
                 'type' => 'text',
-                'default_value' => 'in',
+                'default_value' => __('in', 'flynt'),
                 'wrapper' => [
                     'width' => '50',
                 ],
             ],
             [
                 'label' => __('Reading Time - (20) min read', 'flynt'),
-                'instructions' => __('% is placehoder for number of minutes', 'flynt'),
-                'name' => 'readingtimeLabel',
+                'instructions' => __('%d is placeholder for number of minutes', 'flynt'),
+                'name' => 'readingTime',
                 'type' => 'text',
-                'default_value' => '%s min read',
+                'default_value' => __('%d min read', 'flynt'),
                 'wrapper' => [
                     'width' => '50',
                 ],

@@ -3,7 +3,6 @@
 namespace Flynt\Components\FeatureAdminComponentScreenshots;
 
 use Flynt\ComponentManager;
-use Flynt\Utils\Asset;
 
 add_action('admin_enqueue_scripts', function () {
     $componentManager = ComponentManager::getInstance();
@@ -30,7 +29,7 @@ if (class_exists('acf')) {
             $componentScreenshotUrl = "{$templateDirectoryUri}/{$componentPath}/screenshot.png";
             if (is_file($componentScreenshotPath)) {
                 $newTitle = '<span class="flyntComponentScreenshot">';
-                $newTitle .= '<img class="flyntComponentScreenshot-imageElement" src="' . $componentScreenshotUrl . '" height="36px">';
+                $newTitle .= '<img class="flyntComponentScreenshot-imageElement" src="' . $componentScreenshotUrl . '" height="40px" loading="lazy">';
                 $newTitle .= '<span class="flyntComponentScreenshot-label">' . $title . '</span>';
                 $newTitle .= '</span>';
                 $title = $newTitle;

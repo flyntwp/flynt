@@ -1,11 +1,4 @@
 [is='flynt-block-post-footer'] {
-  margin-bottom: var(--component-spacing);
-  margin-top: 32px;
-
-  @media (min-width: $breakpoint-tablet) {
-    margin-top: var(--component-spacing-mobile);
-  }
-
   .tags {
     @include reset-list;
     display: flex;
@@ -21,14 +14,10 @@
 
   .author {
     display: flex;
-    margin: 32px 0;
+    text-align: left;
 
     @media (min-width: $breakpoint-mobile-horizontal) {
       align-items: center;
-    }
-
-    @media (min-width: $breakpoint-tablet) {
-      margin: var(--component-spacing-mobile) 0;
     }
 
     &-avatarLink {
@@ -54,7 +43,7 @@
       padding-left: 1rem;
 
       @media (min-width: $breakpoint-mobile-horizontal) {
-        padding-left: var(--gutter-width);
+        padding-left: var(--gap-width);
       }
     }
 

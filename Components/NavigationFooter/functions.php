@@ -3,8 +3,8 @@
 namespace Flynt\Components\NavigationFooter;
 
 use Flynt\Utils\Options;
-use Timber\Menu;
 use Flynt\Shortcodes;
+use Timber\Timber;
 
 add_action('init', function () {
     register_nav_menus([
@@ -14,7 +14,7 @@ add_action('init', function () {
 
 add_filter('Flynt/addComponentData?name=NavigationFooter', function ($data) {
     $data['maxLevel'] = 0;
-    $data['menu'] = new Menu('navigation_footer');
+    $data['menu'] = Timber::get_menu('navigation_footer');
 
     return $data;
 });
@@ -45,8 +45,8 @@ Options::addTranslatable('NavigationFooter', [
     ],
     [
         'label' => __('Content Examples', 'flynt'),
-        'name' => 'groupContentExamples',
         'instructions' => __('Want some content inspiration? Here they are!', 'flynt'),
+        'name' => 'groupContentExamples',
         'type' => 'group',
         'sub_fields' => [
             [

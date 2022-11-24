@@ -1,13 +1,12 @@
 [is='flynt-slider-images'] {
   .slider {
     background-color: var(--color-border-alpha);
-    max-width: var(--content-max-width-large);
     position: relative;
 
     &-item {
       height: 0;
       overflow: hidden;
-      padding-bottom: (2/3) * 100%;
+      padding-bottom: calc((2/3) * 100%);
       position: relative;
     }
 
@@ -53,17 +52,30 @@
 
       &--prev {
         left: 15px;
+
+        &::after {
+          border-left: var(--border-width) solid currentColor;
+          border-top: var(--border-width) solid currentColor;
+          content: '';
+          height: 0.75em;
+          margin-left: calc(0.25em + 2px);
+          transform: rotate(-45deg);
+          width: 0.75em;
+        }
       }
 
       &--next {
         right: 15px;
-      }
 
-      .feather {
-        color: currentColor;
-        height: auto;
-        top: 0;
-        width: 80%;
+        &::after {
+          border-right: var(--border-width) solid currentColor;
+          border-top: var(--border-width) solid currentColor;
+          content: '';
+          height: 0.75em;
+          margin-right: calc(0.25em - 2px);
+          transform: rotate(45deg);
+          width: 0.75em;
+        }
       }
     }
   }
@@ -83,8 +95,7 @@
     }
 
     &-caption {
-      border-radius: 35px;
-      bottom: 2px;
+      bottom: 0;
       color: #fff;
       display: inline-block;
       font-size: 0.875rem;
@@ -92,7 +103,7 @@
       overflow: hidden;
       padding: 0.25rem 0.5rem;
       position: absolute;
-      right: 2px;
+      right: 0;
       z-index: 2;
 
       &::before {

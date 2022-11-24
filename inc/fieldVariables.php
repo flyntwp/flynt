@@ -18,20 +18,25 @@ function getTheme()
         'ajax' => 0,
         'choices' => [
             '' => __('(none)', 'flynt'),
-            'themeLight' => __('Light', 'flynt'),
-            'themeDark' => __('Dark', 'flynt'),
-            'themeHero' => __('Hero', 'flynt'),
+            'light' => __('Light', 'flynt'),
+            'dark' => __('Dark', 'flynt'),
+            'hero' => __('Hero', 'flynt'),
         ]
     ];
 }
 
-function getIcon()
+function getRawSvg()
 {
     return [
-        'label' => __('Icon', 'flynt'),
-        'name' => 'icon',
-        'type' => 'text',
-        'instructions' => __('Enter a valid icon name from <a href="https://feathericons.com">Feather Icons</a> (e.g. `check-circle`).', 'flynt'),
-        'required' => 1
+        'label' => __('Raw SVG', 'flynt'),
+        'instructions' => sprintf(
+            'Insert raw svg e. g. from <a ref="%1$s" target="_blank">%1$s</a>',
+            'https://heroicons.com/'
+        ),
+        'name' => 'rawSvg',
+        'type' => 'textarea',
+        'required' => 1,
+        'rows' => 1,
+        'new_lines' => '',
     ];
 }

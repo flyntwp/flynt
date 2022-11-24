@@ -1,11 +1,7 @@
 .figure {
   margin-bottom: 0;
 
-  &-image {
-    background: var(--color-border-alpha);
-
-    &--isHidden {
-      visibility: hidden;
-    }
+  &[data-state='isHidden'] {
+    visibility: hidden;
   }
 }

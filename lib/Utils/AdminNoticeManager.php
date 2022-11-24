@@ -2,8 +2,6 @@
 
 namespace Flynt\Utils;
 
-// # TODO make strings translatable
-
 /**
  * AdminNoticeManager provides an easy-to-use interface for the display of admin notices.
  *
@@ -28,13 +26,7 @@ class AdminNoticeManager
 {
     protected static $instance = null;
     protected static $notices = [];
-
-    const DEFAULT_OPTIONS = [
-        'type' => 'info',
-        'title' => 'Flynt - Oops, something went wrong',
-        'dismissible' => true,
-        'filenames' => ''
-    ];
+    private static $defaultOptions;
 
     public static function getInstance()
     {
@@ -60,6 +52,12 @@ class AdminNoticeManager
      */
     protected function __construct()
     {
+        self::$defaultOptions = [
+            'type' => 'info',
+            'title' => __('Flynt - Oops, something went wrong', 'flynt'),
+            'dismissible' => true,
+            'filenames' => ''
+        ];
     }
 
     public function addNotice($messages = [], $options = [])
@@ -68,7 +66,7 @@ class AdminNoticeManager
             return;
         }
 
-        $options = array_merge(self::DEFAULT_OPTIONS, $options);
+        $options = array_merge(self::$defaultOptions, $options);
 
         $cssClasses = 'notice';
         $cssClasses .= $options['dismissible'] ? ' is-dismissible' : '';

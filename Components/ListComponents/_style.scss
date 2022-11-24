@@ -1,14 +1,14 @@
 [is='flynt-list-components'] {
   .components {
     @include reset-list;
-    @include grid(1);
+    @include grid;
 
     @media (min-width: $breakpoint-tablet) {
-      @include grid(2);
+      --grid-columns: 2;
     }
 
     @media (min-width: $breakpoint-tablet-horizontal) {
-      @include grid(3);
+      --grid-columns: 3;
     }
   }
 
@@ -22,7 +22,7 @@
       background-color: var(--color-border-alpha);
       height: 0;
       overflow: hidden;
-      padding-bottom: percentage(800/1280);
+      padding-bottom: calc(100% * (800 / 1280));
       position: relative;
       width: 100%;
 
@@ -30,7 +30,6 @@
         position: absolute;
 
         &--isSmallerThanWrapper {
-          font-family: 'object-fit: contain';
           height: 100%;
           object-fit: contain;
         }
@@ -40,7 +39,6 @@
     &-link {
       @include reset-link;
       display: block;
-      font-weight: var(--body-regular-font-weight);
       text-decoration: none;
       width: 100%;
     }
@@ -57,26 +55,14 @@
       display: flex;
       justify-content: space-between;
       margin-bottom: 24px;
-      padding: 0 calc(var(--box-spacing) * 0.75);
+      padding: 0 var(--box-padding);
       width: 100%;
-
-      @media (min-width: $breakpoint-tablet-horizontal) {
-        padding: 0 var(--box-spacing);
-      }
 
       .component-ctaSecondary {
         @include reset-link;
         font-size: 0.9375rem;
         text-decoration: none;
         transition: color 0.2s ease-in-out, opacity 0.2s ease-in-out;
-
-        .feather {
-          color: inherit;
-          height: 1.25rem;
-          margin-right: 0.25rem;
-          top: -1px;
-          width: 1.25rem;
-        }
 
         &:hover {
           color: var(--color-accent);

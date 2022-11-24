@@ -11,8 +11,8 @@ $play-button-circle-diameter: (
   border-top: 4px solid rgba(255, 255, 255, 0.2);
   display: none;
   left: 50%;
-  margin-left: -(map-get($play-button-circle-diameter, 'mobile') / 2);
-  margin-top: -(map-get($play-button-circle-diameter, 'mobile') / 2);
+  margin-left: -(map-get($play-button-circle-diameter, 'mobile') * 0.5);
+  margin-top: -(map-get($play-button-circle-diameter, 'mobile') * 0.5);
   position: absolute;
   text-indent: -9999em;
   top: 50%;
@@ -20,8 +20,8 @@ $play-button-circle-diameter: (
   z-index: 1;
 
   @media (min-width: $breakpoint-tablet) {
-    margin-left: -(map-get($play-button-circle-diameter, 'desktop') / 2);
-    margin-top: -(map-get($play-button-circle-diameter, 'desktop') / 2);
+    margin-left: -(map-get($play-button-circle-diameter, 'desktop') * 0.5);
+    margin-top: -(map-get($play-button-circle-diameter, 'desktop') * 0.5);
   }
 }
 

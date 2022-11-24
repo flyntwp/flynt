@@ -6,8 +6,6 @@
 
 namespace Flynt\YoutubeNoCookieEmbed;
 
-use Flynt\Utils\Oembed;
-
 add_action('oembed_result', 'Flynt\YoutubeNoCookieEmbed\setNoCookieDomain', 10, 2);
 add_filter('embed_oembed_html', 'Flynt\YoutubeNoCookieEmbed\setNoCookieDomain', 10, 2);
 

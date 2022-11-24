@@ -22,14 +22,14 @@
       }
     }
 
-    &--unpinned:not(.flyntComponent-menuIsOpen) {
+    &--unpinned:not([data-status='menuIsOpen']) {
       .container {
         transform: translate3d(0, -100%, 0);
       }
     }
   }
 
-  &.flyntComponent-menuIsOpen {
+  &[data-status='menuIsOpen'] {
     .container {
       box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.07);
     }
@@ -52,11 +52,7 @@
     z-index: 99;
 
     .admin-bar & {
-      top: 46px;
-
-      @media (min-width: 783px) {
-        top: 32px;
-      }
+      top: var(--wp-admin--admin-bar--height);
     }
   }
 

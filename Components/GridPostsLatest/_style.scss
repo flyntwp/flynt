@@ -1,49 +1,35 @@
 [is='flynt-grid-posts-latest'] {
   .grid {
     @include reset-list;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: calc(-1 * var(--gutter-width)) 0 0 calc(-1 * var(--gutter-width));
+    @include grid(1, center);
 
-    &--columns2,
-    &--columns3,
-    &--columns4 {
-      .grid-item {
-        @media (min-width: $breakpoint-tablet) {
-          width: 50%;
-        }
+    &[data-max-columns='2'],
+    &[data-max-columns='3'],
+    &[data-max-columns='4'] {
+      @media (min-width: $breakpoint-tablet) {
+        --grid-columns: 2;
       }
     }
 
-    &--columns3 {
-      .grid-item {
-        @media (min-width: $breakpoint-tablet-horizontal) {
-          width: 33.33%;
-        }
+    &[data-max-columns='3'],
+    &[data-max-columns='4'] {
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        --grid-columns: 3;
       }
     }
 
-    &--columns4 {
-      .grid-item {
-        @media (min-width: $breakpoint-desktop) {
-          width: 25%;
-        }
+    &[data-max-columns='4'] {
+      @media (min-width: $breakpoint-desktop) {
+        --grid-columns: 4;
       }
     }
-  }
-
-  .grid-item {
-    @include reset-list-item;
-    display: flex;
-    max-width: var(--content-max-width);
-    padding: var(--gutter-width) 0 0 var(--gutter-width);
-    width: 100%;
   }
 
   .post {
     @include reset-list-item;
-    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--content-max-width);
 
     &-link {
       @include reset-link;
@@ -52,16 +38,7 @@
       height: 100%;
     }
 
-    .figure {
-      margin-bottom: 0;
-    }
-
-    &-image {
-      background: var(--color-border-alpha);
-    }
-
-    &-inner {
-      @include reset-content-margins;
+    &-content {
       color: var(--color-text);
       flex-grow: 1;
 
@@ -70,48 +47,19 @@
       }
     }
 
-    &-link {
-      @include reset-link;
-
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-
     &-footer {
       align-items: center;
       display: flex;
       justify-content: space-between;
-      padding: 0 calc(var(--box-spacing) * 0.75) 24px;
+      padding: 0 var(--box-padding) 24px;
       position: relative;
       width: 100%;
-
-      @media (min-width: $breakpoint-tablet-horizontal) {
-        padding: 0 var(--box-spacing) 24px;
-      }
     }
 
     &-readingTime {
       align-items: center;
       display: flex;
       font-size: 0.9375rem;
-
-      .feather {
-        color: currentColor;
-        height: 1.125rem;
-        margin-right: 0.25rem;
-        top: 0;
-        width: 1.125rem;
-      }
-    }
-  }
-
-  .allPostsLink {
-    padding-top: 2rem;
-    text-align: center;
-
-    @media (min-width: $breakpoint-desktop) {
-      padding-top: 3rem;
     }
   }
 }

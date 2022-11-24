@@ -1,4 +1,6 @@
-// Shorthands to help writing easier to understand code.
+/**
+ * Shorthands to help writing easier to understand code.
+*/
 
 @mixin font-face(
   $family,
@@ -34,40 +36,6 @@
   padding-right: $padding;
 }
 
-@function heading-combinations($i, $from, $to, $leading, $following) {
-  @if ($i == $to) {
-    @return '#{$leading}#{$from} + #{$following}#{$from}';
-  } @else {
-    @return '#{$leading}#{$from} + #{$following}#{$i+1}, ' + heading-combinations($i + 1, $from, $to, $leading, $following);
-  }
-}
-
-@mixin headings-following-headings($from: 1, $to: 6) {
-  $headings: '';
-
-  // h + h
-  @for $i from $from through $to {
-    $heading: heading-combinations($i, $i, $to, 'h', 'h');
-    $headings: '#{$headings} #{$heading}, ';
-  }
-
-  // h + .h
-  @for $i from $from through $to {
-    $heading: heading-combinations($i, $i, $to, 'h', '.h');
-    $headings: '#{$headings} #{$heading}, ';
-  }
-
-  // .h + .h
-  @for $i from $from through $to {
-    $heading: heading-combinations($i, $i, $to, '.h', '.h');
-    $headings: '#{$headings} #{$heading}, ';
-  }
-
-  #{$headings} {
-    @content;
-  }
-}
-
 @mixin reset-content-margins($direction: 'both') {
   @if ($direction == 'both' or $direction == 'top') {
     > :first-child {
@@ -96,60 +64,28 @@
 }
 
 @mixin reset-link {
-  background-image: none;
-  color: var(--color-text);
-  font-family: var(--body-regular-font-family);
-  font-weight: var(--body-regular-font-weight);
+  text-decoration: none;
 }
 
 /**
 * Grid Mixin
 *
-* Applies a flexbox grid to a container element. All direct children will be modified to create a column based grid.
+* Applies a flexbox grid (based on css variables) to a container element. All direct children will be modified to create a column based grid.
 */
-@mixin grid(
-  $columns,
-  $alignment: flex-start,
-  $gutter-horizontal: var(--gutter-width),
-  $gutter-vertical: var(--gutter-width)
-) {
+@mixin grid($columns: 1, $alignment: flex-start, $row-gap: var(--gap-width), $column-gap: var(--gap-width) ) {
+  --grid-columns: #{$columns};
+  --grid-alignment: #{$alignment};
+  --grid-row-gap: #{$row-gap};
+  --grid-column-gap: #{$column-gap};
+
+  column-gap: var(--grid-column-gap);
   display: flex;
   flex-wrap: wrap;
-  justify-content: $alignment;
+  justify-content: var(--grid-alignment);
+  row-gap: var(--grid-row-gap);
   width: 100%;
 
   > * {
-    width: calc((#{100% / $columns}) -
-    (#{$columns - 1} / #{$columns} * #{$gutter-horizontal}));
-
-    &:nth-child(n) {
-      margin-right: $gutter-horizontal;
-      margin-top: 0;
-    }
-
-    &:nth-child(1n + #{$columns + 1}) {
-      margin-top: $gutter-vertical;
-    }
-
-    &:nth-child(#{$columns}n) {
-      margin-right: 0;
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-}
-
-@mixin reset-grid {
-  display: block;
-
-  > * {
-    width: auto;
-
-    &:nth-child(n) {
-      margin-right: 0;
-      margin-top: 0;
-    }
+    width: calc((100% / var(--grid-columns)) - ((var(--grid-columns) - 1) / var(--grid-columns) * var(--grid-column-gap)));
   }
 }

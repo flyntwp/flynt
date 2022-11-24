@@ -1,23 +1,38 @@
-import './scripts/publicPath'
+import 'vite/modulepreload-polyfill'
 import './scripts/loadCustomElements'
-import 'normalize.css/normalize.css'
-import './main.scss'
-import $ from 'jquery'
-import feather from 'feather-icons'
-import 'lazysizes'
+import { prepareAboveTheFoldLazyLoadedElements } from './scripts/PrepareAboveTheFold'
 
-if ($('.iconList--checkCircle').length) {
-  $('.iconList--checkCircle li').prepend('<i data-feather=check-circle></i>')
+import loader from 'uce-loader'
+import lazySizes from 'lazysizes'
+import 'lazysizes/plugins/native-loading/ls.native-loading'
+
+if (import.meta.env.DEV) {
+  import('@vite/client')
 }
 
-$(document).ready(function () {
-  feather.replace({
-    'stroke-width': 1.5
-  })
+lazySizes.cfg.nativeLoading = { setLoadingAttribute: true, disableListeners: { scroll: true } }
+prepareAboveTheFoldLazyLoadedElements()
+
+// Dynamic import component scripts
+const componentsWithScripts = import.meta.glob('../Components/**/script.js')
+loader({
+  container: document.body,
+
+  async on (newTag) {
+    if (window.FlyntData.componentsWithScript[newTag]) {
+      const componentName = window.FlyntData.componentsWithScript[newTag]
+      componentsWithScripts[`../Components/${componentName}/script.js`]()
+    }
+  }
 })
 
-function importAll (r) {
-  r.keys().forEach(r)
-}
-
-importAll(require.context('../Components/', true, /\/script\.js$/))
+import.meta.glob([
+  '../Components/**',
+  '../assets/**',
+  '!**/*.js',
+  '!**/*.scss',
+  '!**/*.php',
+  '!**/*.twig',
+  '!**/screenshot.png',
+  '!**/*.md'
+])

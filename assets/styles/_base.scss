@@ -4,20 +4,23 @@
 * Top level styles every element should inherit.
 */
 
+// FOUC can be reduced with good matching fallback font: https://meowni.ca/font-style-matcher/
+@include font-face('Montserrat', 'montserrat-v24-latin-regular', '400', 'normal');
+@include font-face('Montserrat', 'montserrat-v24-latin-italic', '400', 'italic');
+@include font-face('Montserrat', 'montserrat-v24-latin-700', '700', 'normal');
+@include font-face('Montserrat', 'montserrat-v24-latin-700italic', '700', 'italic');
+
 html {
   background-color: var(--color-background);
   box-sizing: border-box;
   color: var(--color-text);
-  font-family: var(--body-regular-font-family);
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-weight: var(--body-regular-font-weight);
   height: 100%;
   line-height: 1.7;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   overflow-wrap: break-word;
   word-wrap: break-word;
-
 
   *,
   *::before,
@@ -27,12 +30,27 @@ html {
 }
 
 body {
-  font-size: 1.0625rem;
+  font-family: 'Montserrat', Verdana, sans-serif;
   height: 100%;
   overflow-x: hidden;
+}
 
-  @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.125rem;
+/*
+ * Respect reduced motion preferences and remove
+ * all animations, transitions and smooth scroll.
+*/
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
@@ -44,9 +62,10 @@ body {
 
 #{$heading-selectors} {
   color: var(--color-headline);
-  line-height: 1.4;
-  margin-bottom: 1rem;
-  margin-top: 3rem;
+  font-weight: 700;
+  line-height: calc(1em + 0.5rem);
+  margin-bottom: 0.5rem;
+  margin-top: 1.5rem;
 
   a,
   a:hover,
@@ -63,100 +82,64 @@ body {
 
 h1,
 .h1 {
-  font-family: var(--h1-font-family);
   font-size: 2.25rem;
-  font-weight: var(--h1-font-weight);
-  letter-spacing: 0.02em;
-  line-height: 1.3;
-  margin-bottom: 1.5rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 3.5rem;
+    font-size: 2.75rem;
   }
 }
 
 h2,
 .h2 {
-  font-family: var(--h2-font-family);
-  font-size: 1.875rem;
-  font-weight: var(--h2-font-weight);
-  letter-spacing: 0.0125em;
-  line-height: 1.4;
-  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 2.625rem;
+    font-size: 2.5rem;
   }
 }
 
 h3,
 .h3 {
-  font-family: var(--h3-font-family);
-  font-size: 1.5rem;
-  font-weight: var(--h3-font-weight);
-  letter-spacing: 0.02em;
+  font-size: 1.125rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.6875rem;
+    font-size: 1.25rem;
   }
 }
 
 h4,
 .h4 {
-  font-family: var(--h4-font-family);
-  font-size: 1.25rem;
-  font-weight: var(--h4-font-weight);
-  letter-spacing: 0.02em;
-  line-height: 1.45;
-  margin-top: 2rem;
+  font-size: 1rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.375rem;
+    font-size: 1.125rem;
   }
 }
 
 h5,
 .h5 {
-  font-family: var(--h5-font-family);
-  font-size: 1.25rem;
-  font-weight: var(--h5-font-weight);
-  letter-spacing: 0.0125em;
-  line-height: 1.45;
-  margin-top: 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 400;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.375rem;
+    font-size: 1.25rem;
   }
 }
 
 h6,
 .h6 {
-  font-family: var(--h6-font-family);
-  font-size: 1.125rem;
-  font-weight: var(--h6-font-weight);
-  line-height: 1.7;
-  margin-top: 1.5rem;
-}
-
-@include headings-following-headings(1, 6) {
-  margin-top: 0;
+  font-size: 1rem;
 }
 
 a {
-  background-image: linear-gradient(to bottom, var(--color-border-alpha) 0%, var(--color-border-alpha) 100%);
-  background-position: 0 0.75em;
-  background-repeat: no-repeat;
-  background-size: 100%;
   color: var(--color-accent);
-  font-family: var(--elements-font-family);
-  font-weight: var(--elements-font-weight);
-  text-decoration: none;
-  transition: color 0.2s $ease-in-out-circ, background-position 0.2s $ease-in-out-circ;
+  text-decoration-color: var(--color-accent-alpha);
+  transition: color 0.2s $ease-in-out-circ, text-decoration-color 0.2s $ease-in-out-circ;
 
   &:hover,
   &:focus {
-    background-position: 0 0;
     color: var(--color-accent-hover);
+    text-decoration-color: var(--color-accent);
   }
 
   &:focus {
@@ -166,8 +149,6 @@ a {
 
 p,
 .paragraph,
-table,
-figure,
 pre {
   margin: 0 0 1.5rem;
 }
@@ -176,35 +157,39 @@ hr {
   background-color: var(--color-border-alpha);
   border: 0;
   display: block;
-  height: 2px;
+  height: var(--border-width);
   margin: 3rem 0;
 }
 
 img {
   display: block;
+  height: auto;
   max-width: 100%;
   width: 100%;
 }
 
+figure {
+  margin: 0;
+
+  + :not(div) {
+    margin-top: 1.5rem;
+  }
+}
+
 figcaption {
-  font-size: 0.9375rem;
-  line-height: 1.5;
-  margin: 1rem auto 0;
+  font-size: 0.9rem;
+  margin: 0.5rem auto 0 0;
   max-width: var(--content-max-width);
 }
 
-pre,
 code,
 kbd,
-samp {
-  font-size: 1rem;
-}
-
 pre,
-code {
+samp {
   background-color: var(--color-border-alpha);
   border-radius: 4px;
   display: inline-block;
+  font-size: 0.95rem;
   padding: 0 0.375rem;
   word-break: break-word;
 }
@@ -223,9 +208,8 @@ blockquote,
 .blockquote {
   color: var(--color-accent);
   font-size: 1.5rem;
-  font-weight: var(--body-bold-font-weight);
-  letter-spacing: 0.0125em;
-  line-height: 1.45;
+  font-weight: 700;
+  line-height: calc(1em + 0.5rem);
   margin: 3rem 0;
   padding-left: 2.5rem;
   position: relative;
@@ -236,18 +220,17 @@ blockquote,
   }
 
   &::before {
-    content: '“';
+    content: '\201c'; // Unicode escaped LEFT DOUBLE QUOTATION MARK
     font-family: Helvetica, Arial, sans-serif;
     font-size: 2.5rem;
-    font-weight: 800;
     left: 0;
     line-height: 1;
     position: absolute;
     top: 0.25rem;
 
     @media (min-width: $breakpoint-mobile-horizontal) {
-      font-size: 4rem;
-      top: 0;
+      font-size: 6rem;
+      top: -2px;
     }
   }
 
@@ -287,51 +270,18 @@ ul {
   }
 }
 
-/* Icon Lists */
-
-.iconList {
-  list-style: none;
-  padding: 0;
-
-  li {
-    padding-left: 2rem;
-    position: relative;
-
-    .feather:first-child {
-      display: block;
-      height: 20px;
-      left: 0;
-      position: absolute;
-      top: 4px;
-      width: 20px;
-
-      @media (min-width: $breakpoint-mobile-horizontal) {
-        top: 5px;
-      }
-    }
-  }
-}
-
-/* Tables */
-
 table {
   border-spacing: 0;
-  box-shadow: inset 0 0 0 2px var(--color-border);
+  box-shadow: inset 0 0 0 var(--border-width) var(--color-border);
+  margin: 0 auto;
   max-width: 100%;
+  text-align: left;
   width: 100%;
-}
 
-.boxRadius > thead {
-  th {
-    border: 1px solid  var(--color-border); // fix IE border artifacts
-
-    &:first-child {
-      border-top-left-radius: var(--box-border-radius);
-    }
-
-    &:last-child {
-      border-top-right-radius: var(--box-border-radius);
-    }
+  + p,
+  + table,
+  + figure {
+    margin-top: 1.5rem;
   }
 }
 
@@ -344,8 +294,7 @@ th {
 
 thead {
   th {
-    background-color: var(--color-border);
-    color: var(--color-background);
+    border-bottom: solid var(--border-width) var(--color-border);
     padding: 1.25rem 1.5rem;
     vertical-align: middle;
     white-space: nowrap;
@@ -382,46 +331,36 @@ button {
   @include reset-link;
   appearance: none;
   background-color: var(--color-accent);
-  border: 2px solid var(--color-accent);
+  border: var(--border-width) solid var(--color-accent);
   border-radius: var(--button-border-radius);
   color: var(--color-background);
   cursor: pointer;
   display: inline-block;
   font-family: inherit;
-  font-family: var(--elements-font-family);
-  font-size: 1.0625rem;
-  font-weight: var(--elements-font-weight);
-  letter-spacing: 0.0125em;
+  font-weight: 700;
   line-height: 1.7;
   outline: none;
-  padding: 0.75rem 2rem;
+  padding: 0.618rem 1.618rem;
   text-align: center;
   text-decoration: none;
   transition: 0.2s ease;
   user-select: none;
 
-  @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.125rem;
-  }
-
   &:disabled,
   &--disabled {
-    background-color: var(--color-border);
-    border-color: var(--color-border);
     cursor: default;
-    opacity: 0.5;
+    opacity: var(--opacity-grayed-out);
     pointer-events: none;
   }
 
   &:hover {
     background-color: var(--color-accent-hover);
     border-color: var(--color-accent-hover);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-    color: var(--color-background);
+    color: var(--color-button-text-hover);
   }
 
   &:focus {
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 0 0 3px var(--color-accent-alpha);
+    box-shadow: 0 1px var(--border-width) rgba(0, 0, 0, 0.25), 0 0 0 3px var(--color-accent-alpha);
     color: var(--color-background);
   }
 
@@ -430,7 +369,7 @@ button {
   }
 
   + .button {
-    margin-top: 8px;
+    margin-top: 0.5rem;
   }
 
   &--ghost {
@@ -440,13 +379,12 @@ button {
 
     &:focus {
       background-color: transparent;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25), 0 0 0 3px var(--color-accent-alpha);
+      box-shadow: 0 1px var(--border-width) rgba(0, 0, 0, 0.25), 0 0 0 3px var(--color-accent-alpha);
       color: var(--color-accent);
     }
 
     &:hover {
-      background-color: var(--color-accent);
-      border-color: var(--color-accent);
+      background-color: var(--color-accent-hover);
       color: var(--color-background);
     }
 
@@ -456,25 +394,19 @@ button {
       box-shadow: none;
       color: var(--color-background);
     }
-
-    &:disabled,
-    &--disabled {
-      background-color: transparent;
-      border-color: var(--color-border);
-      color: var(--color-border);
-    }
   }
 
   &--small {
-    font-size: 0.9375rem;
-    line-height: 1.45;
-    padding: 0.5rem 1.25rem;
+    font-size: 0.95rem;
+    padding: 0.309rem 1.618rem;
   }
 
   &--link {
     background-color: transparent;
-    border: 0 solid transparent;
+    border: 0;
+    border-radius: 0;
     color: var(--color-accent);
+    display: inline-block;
     line-height: 1.7;
     padding: 0;
     position: relative;
@@ -490,63 +422,44 @@ button {
     }
 
     &:hover {
-      &::after {
-        animation: arrowFly 0.35s 1;
-        transform: rotate(45deg);
+      &::before {
+        transform: scaleX(1);
+        transform-origin: bottom left;
       }
     }
 
+    &::before {
+      background-color: var(--color-accent-hover);
+      bottom: 0;
+      content: '';
+      height: var(--border-width);
+      left: 0;
+      position: absolute;
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.2s $ease-in-out-circ;
+      width: 100%;
+    }
+
     &::after {
-      border-right: 2px solid currentColor;
-      border-top: 2px solid currentColor;
+      border-right: var(--border-width) solid currentColor;
+      border-top: var(--border-width) solid currentColor;
       content: '';
       display: inline-block;
       height: 0.5rem;
       margin-bottom: 0.0625rem;
       margin-left: 0.25rem;
-      margin-right: 2px;
       transform: rotate(45deg);
       vertical-align: baseline;
       width: 0.5rem;
     }
-
-    &.button--small {
-      &::after {
-        height: 0.375rem;
-        margin-bottom: 0.0625rem;
-        width: 0.375rem;
-      }
-    }
   }
-}
-
-@keyframes arrowFly {
-  0% {opacity: 1;
-    transform: rotate(45deg) translate(0, 0);}
-
-  50% {opacity: 0;
-    transform: rotate(45deg) translate(5px, -5px);}
-
-  51% {opacity: 0;
-    transform: rotate(45deg) translate(-5px, 5px);}
-
-  100% {opacity: 1;
-    transform: rotate(45deg) translate(0, 0);}
-}
-
-/* Icons */
-
-.feather {
-  color: var(--color-accent);
-  position: relative;
-  top: -2px;
-  vertical-align: middle;
 }
 
 /**
 * 1.3 Forms
 *
-* Global form elements, including structering wrapper elements.
+* Global form elements, including structuring wrapper elements.
 */
 
 form {
@@ -571,18 +484,14 @@ fieldset {
 
 legend {
   display: inline-block;
-  font-family: var(--elements-font-family);
   font-size: 1.125rem;
-  font-weight: var(--elements-font-weight);
   margin-bottom: 1rem;
 }
 
 label {
   display: inline-block;
-  font-family: var(--elements-font-family);
   font-size: 1rem;
-  font-weight: var(--elements-font-weight);
-  letter-spacing: 0.0125em;
+  font-weight: 700;
   line-height: 1.4;
   margin-bottom: 0.5rem;
 }
@@ -590,23 +499,22 @@ label {
 #{$input-selectors} {
   appearance: none;
   background-color: transparent;
-  border: 2px solid var(--color-border);
-  border-radius: 8px;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--box-border-radius);
   color: var(--color-headline);
   font-family: inherit;
   font-size: 1rem;
-  letter-spacing: 0.02em;
   line-height: 1.25;
   min-height: 3.5rem;
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
   &::placeholder {
-    color: var(--color-border);
+    color: var(--color-text);
+    opacity: var(--opacity-grayed-out);
   }
 
   &:focus {
-    border-color: var(--color-accent);
     box-shadow: 0 0 0 3px var(--color-accent-alpha);
   }
 
@@ -614,7 +522,7 @@ label {
     background-color: var(--color-border-alpha);
     border-color: var(--color-border);
     color: var(--color-border);
-    opacity: 0.75;
+    opacity: var(--opacity-grayed-out);
   }
 }
 
@@ -626,13 +534,13 @@ input,
 select,
 textarea {
   margin: 0 0 1rem;
-  padding: 0.5rem 1.25rem;
+  padding: 0.309rem 0.927rem;
 }
 
 textarea {
   line-height: 1.7;
   min-height: 150px;
-  padding: 1rem 1.25rem;
+  padding: 0.927rem;
   resize: vertical;
   vertical-align: top;
   width: 100%;
@@ -657,8 +565,8 @@ select {
   vertical-align: top;
 
   &::after {
-    border-bottom: 2px solid var(--color-headline);
-    border-left: 2px solid var(--color-headline);
+    border-bottom: var(--border-width) solid var(--color-headline);
+    border-left: var(--border-width) solid var(--color-headline);
     content: '';
     height: 8px;
     position: absolute;
@@ -670,7 +578,7 @@ select {
   }
 
   select {
-    // don't change backgound image, if you need to change it - use wrapper .select
+    // don't change background image, if you need to change it - use wrapper .select
     background-image: none;
     margin: 0;
     position: relative;
@@ -698,42 +606,42 @@ select {
   + label {
     cursor: pointer;
     display: inline-block;
-    font-weight: var(--body-regular-font-weight);
+    font-weight: 400;
     letter-spacing: 0;
     line-height: 1.7;
-    padding-left: 2rem;
+    padding-left: 2em;
     position: relative;
 
     &::before {
       background: transparent;
-      border: 2px solid var(--color-border);
+      border: var(--border-width) solid var(--color-border);
       border-radius: 0.25rem;
       content: '';
       display: block;
-      height: 1.25rem;
+      height: 1.25em;
       left: 0;
       margin: 0;
       padding: 0;
       position: absolute;
-      top: 0.2rem;
+      top: 0.2em;
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
-      width: 1.25rem;
+      width: 1.25em;
     }
 
     &::after {
-      border-bottom: 2px solid var(--color-accent);
-      border-right: 2px solid var(--color-accent);
+      border-bottom: var(--border-width) solid var(--color-accent);
+      border-right: var(--border-width) solid var(--color-accent);
       content: '';
       display: block;
-      height: 0.75rem;
-      left: 0.4375rem;
+      height: 0.75em;
+      left: 0.4375em;
       opacity: 0;
       position: absolute;
-      top: 0.3125rem;
+      top: 0.3125em;
       transform: rotate(45deg);
       transition: opacity 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
       visibility: hidden;
-      width: 0.375rem;
+      width: 0.375em;
     }
   }
 
@@ -772,11 +680,11 @@ select {
       background-color: var(--color-accent);
       border: 0;
       border-radius: 50%;
-      height: 0.75rem;
-      left: 0.25rem;
-      top: 0.4375rem;
+      height: 0.75em;
+      left: 0.25em;
+      top: 0.4375em;
       transform: none;
-      width: 0.75rem;
+      width: 0.75em;
     }
   }
 
@@ -790,17 +698,18 @@ select {
 }
 
 .oneInputForm {
-  border: 2px solid var(--color-border);
-  border-radius: calc(var(--button-border-radius) + 4px);
-  margin: 0 0 2rem;
-  min-height: 4.375rem;
-  padding: 4px;
+  background-color: var(--color-background);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: calc(var(--box-border-radius) + (var(--border-width) * 2));
+  margin: 0 0 2em;
+  padding: calc(var(--border-width) * 2);
   position: relative;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   width: 100%;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
     align-items: center;
+    border-radius: calc(var(--button-border-radius) + (var(--border-width) * 2));
     display: flex;
 
     &:focus-within {
@@ -809,23 +718,18 @@ select {
     }
   }
 
-  &.themeReset {
-    @media (max-width: $breakpoint-mobile-horizontal - 1) {
-      background: none;
-
-      .oneInputForm-input {
-        background-color: var(--color-background);
-      }
-    }
-  }
-
   &-input {
+    background-color: transparent;
     border: 0;
-    border-radius: var(--button-border-radius);
     margin: 0;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding: 0 0.618em;
     width: 100%;
+
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      border-radius: var(--button-border-radius);
+      min-height: inherit;
+      padding: 0 1.618em;
+    }
 
     &:focus {
       box-shadow: none;
@@ -845,19 +749,6 @@ select {
       box-shadow: none;
     }
   }
-
-  .themeDark &,
-  .themeHero & {
-    &:focus-within {
-      box-shadow: none;
-    }
-
-    .oneInputForm-input {
-      &:focus {
-        box-shadow: none;
-      }
-    }
-  }
 }
 
 /**
@@ -872,11 +763,7 @@ select {
   height: 100%;
 
   .admin-bar & {
-    padding-top: 46px;
-
-    @media (min-width: 782px) {
-      padding-top: 32px;
-    }
+    padding-top: var(--wp-admin--admin-bar--height);
   }
 }
 
@@ -891,25 +778,37 @@ select {
 .componentSpacing {
   margin: var(--component-spacing) 0;
 
-  &[class*='theme'] {
+  &[data-theme] {
     margin: 0;
     padding: var(--component-spacing) 0;
   }
-}
 
-// Reduce top spacing in half for first component in mainContent
-.mainContent {
-  > .componentSpacing:first-child {
-    @media (min-width: $breakpoint-desktop) {
-      margin-top: var(--component-spacing-tablet);
+  // Reduce componentSpacing top on desktop for the first component in mainContent.
+  .mainContent > & {
+    &:first-child {
+      @media (min-width: $breakpoint-tablet) {
+        margin-top: var(--component-spacing-tablet);
+      }
+
+      &[data-theme] {
+        @media (min-width: $breakpoint-tablet) {
+          margin: 0;
+          padding-top: var(--component-spacing-tablet);
+        }
+      }
+    }
+  }
+
+  // Reduce componentSpacing for all components in single post layouts.
+  .post-main & {
+    --component-spacing: calc(var(--component-spacing-mobile) / 2);
+
+    @media (min-width: $breakpoint-tablet) {
+      --component-spacing: calc(var(--component-spacing-tablet) / 2);
     }
 
-    &[class*='theme'] {
-      margin: 0;
-
-      @media (min-width: $breakpoint-desktop) {
-        padding-top: var(--component-spacing-tablet);
-      }
+    @media (min-width: $breakpoint-desktop) {
+      --component-spacing: calc(var(--component-spacing-desktop) / 2);
     }
   }
 }
@@ -919,43 +818,29 @@ select {
 }
 
 .centerContentMaxWidth {
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width: var(--content-max-width);
 }
 
 .centerContentMaxWidthLarge {
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width: var(--content-max-width-large);
 }
 
 .preContent {
   @include reset-content-margins;
-  margin: 0 auto calc(var(--component-spacing-tablet) / 3);
+  margin: 0 auto calc(var(--component-spacing) / 2);
   max-width: var(--content-max-width);
   text-align: center;
-
-  @media (min-width: $breakpoint-tablet) {
-    margin-bottom: calc(var(--component-spacing-tablet) / 2);
-  }
-
-  @media (min-width: $breakpoint-desktop) {
-    margin-bottom: calc(var(--component-spacing-desktop) / 2);
-  }
 }
 
 .postContent {
   @include reset-content-margins;
-  margin: calc(var(--component-spacing-tablet) / 3) auto 0;
+  margin: calc(var(--component-spacing) / 2) auto 0;
   max-width: var(--content-max-width);
   text-align: center;
-
-  @media (min-width: $breakpoint-tablet) {
-    margin-top: calc(var(--component-spacing-tablet) / 2);
-  }
-
-  @media (min-width: $breakpoint-desktop) {
-    margin-top: calc(var(--component-spacing-desktop) / 2);
-  }
 }
 
 .scrollableTableWrapper {
@@ -964,7 +849,6 @@ select {
 }
 
 /* Class for text that should only be visible to screen readers */
-
 .visuallyHidden {
   clip: rect(1px, 1px, 1px, 1px);
   height: 1px !important;
@@ -974,64 +858,7 @@ select {
   width: 1px !important;
 }
 
-/* Box Helpers */
-
-.boxPadding {
-  @include reset-content-margins;
-  padding: calc(var(--box-spacing) * 0.75);
-
-  @media (min-width: $breakpoint-tablet-horizontal) {
-    padding: var(--box-spacing);
-  }
-}
-
-.boxRadius {
-  border-radius: var(--box-border-radius);
-  overflow: hidden;
-  position: relative;
-  transform: translateZ(0);
-  z-index: 1;
-}
-
-.boxShadow {
-  box-shadow: 0 5px 35px -2px rgba(0, 0, 0, 0.08);
-}
-
-/* Custom styling for single post layouts */
-
-.post {
-  &-main {
-    .componentSpacing {
-      margin: 32px 0;
-
-      &[class*='theme'] {
-        margin: 0;
-        padding: 32px 0;
-
-        @media (min-width: $breakpoint-tablet) {
-          padding: var(--component-spacing-mobile) 0;
-        }
-      }
-
-      @media (min-width: $breakpoint-tablet) {
-        margin: var(--component-spacing-mobile) 0;
-      }
-    }
-
-    > .componentSpacing {
-      &:first-child {
-        margin-top: 0;
-      }
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-}
-
-/* Skip link behaviour */
-
+/* Skip link behavior */
 .skipLink {
   position: fixed;
   top: -100px;
@@ -1043,12 +870,31 @@ select {
 }
 
 /**
+* 2.1 Box Helpers
+*/
+
+.boxPadding {
+  @include reset-content-margins;
+  padding: var(--box-padding);
+}
+
+.boxRadius {
+  border-radius: var(--box-border-radius);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.boxShadow {
+  box-shadow: 0 5px 35px calc(-1 * var(--border-width)) rgba(0, 0, 0, 0.08);
+}
+
+/**
 * 3.0 Themes
 *
 * Color themes for backgrounds and content elements.
 */
 
-[class*='theme'] {
+[data-theme] {
   background-color: var(--color-background);
   color: var(--color-text);
 }

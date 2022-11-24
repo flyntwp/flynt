@@ -1,7 +1,4 @@
-import $ from 'jquery'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import 'core-js/es/object/assign'
-import 'core-js/es/object/keys'
 import Headroom from 'headroom.js'
 import debounce from 'lodash/debounce'
 
@@ -13,11 +10,11 @@ class NavigationBurger extends window.HTMLElement {
   }
 
   init () {
-    this.$ = $(this)
+    this.resolveElements()
     this.bindFunctions()
     this.bindEvents()
-    this.resolveElements()
     this.headroom = null
+    this.isMenuOpen = false
   }
 
   bindFunctions () {
@@ -26,13 +23,15 @@ class NavigationBurger extends window.HTMLElement {
   }
 
   bindEvents () {
-    this.$.on('click', '[data-toggle-menu]', this.triggerMenu)
-    $(window).on('resize', debounce(this.onWindowResize, 200))
+    this.menuButton.addEventListener('click', this.triggerMenu)
+    this.window.addEventListener('resize', debounce(this.onWindowResize, 200))
   }
 
   resolveElements () {
-    this.$menu = $('.menu', this)
-    this.$menuButton = $('.hamburger', this)
+    this.window = window
+    this.menu = this.querySelector('.menu')
+    this.menuButton = this.querySelector('.hamburger')
+    this.navigationHeight = parseInt(window.getComputedStyle(this).getPropertyValue('--navigation-height')) || 0
   }
 
   connectedCallback () {
@@ -40,18 +39,23 @@ class NavigationBurger extends window.HTMLElement {
   }
 
   triggerMenu (e) {
-    this.$.toggleClass('flyntComponent-menuIsOpen')
-    this.$menuButton.attr('aria-expanded', this.$menuButton.attr('aria-expanded') === 'false' ? 'true' : 'false')
-    if (this.$.hasClass('flyntComponent-menuIsOpen')) {
-      disableBodyScroll(this.$menu.get(0))
+    this.isMenuOpen = !this.isMenuOpen
+    this.menuButton.setAttribute('aria-expanded', this.isMenuOpen)
+
+    if (this.isMenuOpen) {
+      this.setAttribute('data-status', 'menuIsOpen')
+      disableBodyScroll(this.menu)
     } else {
-      enableBodyScroll(this.$menu.get(0))
+      this.removeAttribute('data-status')
+      enableBodyScroll(this.menu)
     }
   }
 
   initHeadroom () {
+    const navigationHeight = parseInt(window.getComputedStyle(this).getPropertyValue('--navigation-height')) || 0
+
     this.headroom = new Headroom(this, {
-      offset: 64,
+      offset: navigationHeight,
       tolerance: {
         up: 5,
         down: 0

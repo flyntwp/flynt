@@ -8,7 +8,7 @@ function getACFLayout()
 {
     return [
         'name' => 'GridImageText',
-        'label' => 'Grid: Image Text',
+        'label' => __('Grid: Image Text', 'flynt'),
         'sub_fields' => [
             [
                 'label' => __('General', 'flynt'),
@@ -19,11 +19,11 @@ function getACFLayout()
             ],
             [
                 'label' => __('Title', 'flynt'),
+                'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
                 'name' => 'preContentHtml',
                 'type' => 'wysiwyg',
                 'tabs' => 'visual,text',
                 'media_upload' => 0,
-                'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
                 'delay' => 1,
             ],
             [
@@ -32,14 +32,14 @@ function getACFLayout()
                 'type' => 'repeater',
                 'collapsed' => '',
                 'layout' => 'block',
-                'button_label' => 'Add',
+                'button_label' => __('Add Item', 'flynt'),
                 'sub_fields' => [
                     [
                         'label' => __('Image', 'flynt'),
+                        'instructions' => __('Image-Format: JPG, PNG.', 'flynt'),
                         'name' => 'image',
                         'type' => 'image',
                         'preview_size' => 'medium',
-                        'instructions' => __('Image-Format: JPG, PNG.', 'flynt'),
                         'mime_types' => 'jpg,jpeg,png',
                         'wrapper' => [
                             'width' => 40
@@ -73,8 +73,8 @@ function getACFLayout()
                 'sub_fields' => [
                     FieldVariables\getTheme(),
                     [
-                        'label' => __('Columns', 'flynt'),
-                        'name' => 'columns',
+                        'label' => __('Max Columns', 'flynt'),
+                        'name' => 'maxColumns',
                         'type' => 'number',
                         'default_value' => 3,
                         'min' => 1,

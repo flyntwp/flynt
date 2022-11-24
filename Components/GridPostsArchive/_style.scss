@@ -1,24 +1,23 @@
 [is='flynt-grid-posts-archive'] {
   .posts {
     @include reset-list;
-    @include grid(1);
+    @include grid;
 
     @media (min-width: $breakpoint-tablet) {
-      @include grid(2);
+      --grid-columns: 2;
     }
 
     @media (min-width: $breakpoint-tablet-horizontal) {
-      @include grid(3);
+      --grid-columns: 3;
     }
   }
 
   .posts-empty {
-    padding: 32px 0 0;
+    text-align: center;
   }
 
   .post {
     @include reset-list-item;
-    display: flex;
 
     &-link {
       @include reset-link;
@@ -27,16 +26,7 @@
       height: 100%;
     }
 
-    .figure {
-      margin-bottom: 0;
-    }
-
-    &-image {
-      background: var(--color-border-alpha);
-    }
-
-    &-inner {
-      @include reset-content-margins;
+    &-content {
       color: var(--color-text);
       flex-grow: 1;
 
@@ -45,39 +35,19 @@
       }
     }
 
-    &-link {
-      @include reset-link;
-
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-
     &-footer {
       align-items: center;
       display: flex;
       justify-content: space-between;
-      padding: 0 calc(var(--box-spacing) * 0.75) 24px;
+      padding: 0 var(--box-padding) 24px;
       position: relative;
       width: 100%;
-
-      @media (min-width: $breakpoint-tablet-horizontal) {
-        padding: 0 var(--box-spacing) 24px;
-      }
     }
 
     &-readingTime {
       align-items: center;
       display: flex;
       font-size: 0.9375rem;
-
-      .feather {
-        color: currentColor;
-        height: 1.125rem;
-        margin-right: 0.25rem;
-        top: 0;
-        width: 1.125rem;
-      }
     }
   }
 

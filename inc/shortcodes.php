@@ -37,8 +37,8 @@ function getShortcodeReference()
 {
     return [
         'label' => __('Shortcode Reference', 'flynt'),
-        'name' => 'groupShortcodes',
         'instructions' => __('A Shortcode can generally be used inside text fields. It’s best practice to switch to text mode before inserting a shortcode inside the visual editor.', 'flynt'),
+        'name' => 'groupShortcodes',
         'type' => 'group',
         'sub_fields' => [
             [

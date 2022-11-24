@@ -3,7 +3,6 @@
 namespace Flynt\TheContentFix;
 
 use Timber\Timber;
-use Timber\Post;
 
 function isShortcodeAndDoesNotMatchId($postContent, $postId)
 {
@@ -41,8 +40,9 @@ add_shortcode('flyntTheContent', function ($attrs) {
     $postId = $attrs['id'];
     // in case the post id was not set correctly and is 0
     if (!empty($postId)) {
-        $context = Timber::get_context();
-        $context['post'] = new Post($postId);
-        return Timber::fetch('templates/theContentFix.twig', $context);
+        $context = Timber::context();
+        $context['post'] = Timber::get_Post($postId);
+        $context['post']->setup();
+        return Timber::compile('templates/theContentFix.twig', $context);
     }
 });

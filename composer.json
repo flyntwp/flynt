@@ -12,10 +12,10 @@
     }
   ],
   "require": {
-    "php": ">=7.0.0",
-    "timber/timber": "^1.8",
+    "php": ">=7.4",
     "flyntwp/acf-field-group-composer": "^1.0.1",
-    "erusev/parsedown": "^1.7"
+    "erusev/parsedown": "^1.7",
+    "timber/timber": "^2.0"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.4"
@@ -32,6 +32,11 @@
   "autoload": {
     "psr-4": {
       "Flynt\\": "lib/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
     }
   }
 }

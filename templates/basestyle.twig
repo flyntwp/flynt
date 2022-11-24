@@ -1,7 +1,7 @@
 {% extends 'templates/_document.twig' %}
 
 {% block content %}
-  <div class="centerMaxWidthContainer">
+  <div class="componentSpacing centerMaxWidthContainer">
     <div class="centerContentMaxWidth">
       <section>
         <h1>Base Style</h1>
@@ -17,7 +17,7 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation <a href="https://www.google.com/search?q=ullamco+laboris" target="_blank">ullamco laboris</a> nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore <strong>magna aliqua</strong>. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit <em>esse cillum</em> dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <figure>
-          <img src="https://via.placeholder.com/770x513?text=3:2%20ratio" alt="Placeholder">
+          <img src="https://via.placeholder.com/770x513?text=3:2%20ratio" width="770" height="513" alt="Placeholder">
           <figcaption>A caption for this image</figcaption>
         </figure>
         <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
@@ -89,12 +89,6 @@
           </li>
           <li><strong>But don't stop here!</strong></li>
         </ol>
-        <h3>Icon Lists</h3>
-        <ul class="iconList iconList--checkCircle">
-          <li>The <code>.iconList</code> class is a global helper</li>
-          <li>It allows you to add custom icon styles to lists</li>
-          <li>This will make content more engaging (hopefully)</li>
-        </ul>
         <h3>Tables</h3>
         <div class="scrollableTableWrapper">
           <table class="boxRadius">
@@ -178,9 +172,6 @@
           <button class="button button--link">Type Button Link</button><br>
           <a class="button button--link button--small" href="">Button Link Small</a>
         </p>
-        <p>
-          <i class="feather" data-feather="alert-circle"></i> Feather Icon
-        </p>
         <hr>
         <h2>1.3 Forms</h2>
         <form>
@@ -257,10 +248,11 @@
         <h2>2.0 Helpers</h2>
         <p>The BaseStyle includes some global CSS layout classes which help ensure a consistent appearance across components:</p>
         <ul>
-          <li><code>.flyntComponent</code><br>Wraps all components.</li>
+          <li><code>.flyntComponent</code><br>Wraps a component.</li>
           <li><code>.componentSpacing</code><br>Ensures consistent component top and bottom spacing.</li>
           <li><code>.centerMaxWidthContainer</code><br>Ensures consistent left and right padding and website max width.</li>
-          <li><code>.centerContentMaxWidth</code><br>Ensures text content doesn't flow wider than 80 characters per line.</li>
+          <li><code>.centerContentMaxWidth</code><br>Ensures text content doesn't flow wider than 60 characters per line.</li>
+          <li><code>.centerContentMaxWidthLarge</code><br>Ensures text content doesn't flow wider than 80 characters per line.</li>
           <li><code>.preContent</code><br>Ensures consistent positioning of content preceding the main section of a component.</li>
           <li><code>.postContent</code><br>Ensures consistent positioning of content following the main section of a component.</li>
           <li><code>.scrollableTableWrapper</code><br>Wrapping a table with a container element with this class makes the table scrollable on smaller screen sizes.</li>
@@ -281,16 +273,13 @@
       </section>
     </div>
   </div>
-  <div class="themeLight">
+  <div data-theme="light">
     <br><br>
     <div class="centerMaxWidthContainer">
       <div class="centerContentMaxWidth">
         <section>
           <h3>Light Theme</h3>
-          <p>Using the <code>.themeLight</code> class allows you to style a group of content with a light background and dark text.</p>
-          <p>
-            <i class="feather" data-feather="alert-circle"></i> Feather Icon
-          </p>
+          <p>Using the <code>data-theme="light"</code> attribute allows you to style a group of content with a light background and dark text.</p>
           <div>
             <a href="javascript:void(0)">Regular link</a><br>
             <a class="button button--link" href="javascript:void(0)">Button Link</a><br><br>
@@ -361,16 +350,13 @@
     </div>
     <br><br>
   </div>
-  <div class="themeDark">
+  <div data-theme="dark">
     <br><br>
     <div class="centerMaxWidthContainer">
       <div class="centerContentMaxWidth">
         <section>
           <h3>Dark Theme</h3>
-          <p>Using the <code>.themeDark</code> class allows you to style a group of content with a dark background and light text.</p>
-          <p>
-            <i class="feather" data-feather="alert-circle"></i> Feather Icon
-          </p>
+          <p>Using the <code>data-theme="dark"</code> attribute allows you a group of content with a dark background and light text.</p>
           <div>
             <a href="javascript:void(0)">Regular link</a><br>
             <a class="button button--link" href="javascript:void(0)">Button Link</a><br><br>
@@ -441,16 +427,13 @@
     </div>
     <br><br>
   </div>
-  <div class="themeHero">
+  <div data-theme="hero">
     <br><br>
     <div class="centerMaxWidthContainer">
       <div class="centerContentMaxWidth">
         <section>
           <h3>Hero Theme</h3>
-          <p>Using the <code>.themeHero</code> class allows you to style a group of content with a hero background and dark text.</p>
-          <p>
-            <i class="feather" data-feather="alert-circle"></i> Feather Icon
-          </p>
+          <p>Using the <code>data-theme="hero"</code> attribute allows you a group of content with a hero background and dark text.</p>
           <div>
             <a href="javascript:void(0)">Regular link</a><br>
             <a class="button button--link" href="javascript:void(0)">Button Link</a><br><br>
@@ -521,17 +504,14 @@
     </div>
     <br>
   </div>
-  <div class="themeHero">
+  <div data-theme="hero">
     <br>
     <div class="centerMaxWidthContainer">
       <div class="centerContentMaxWidth">
         <section>
-          <div class="themeReset boxPadding boxRadius">
+          <div class="boxPadding boxRadius" data-theme="reset">
             <h3>Reset Theme</h3>
-            <p>Using the <code>.themeReset</code> class allows you to revert the styles of a parent theme back to the inital styles.</p>
-            <p>
-              <i class="feather" data-feather="alert-circle"></i> Feather Icon
-            </p>
+            <p>Using the <code>data-theme="reset"</code> class allows you to revert the styles of a parent theme back to the inital styles.</p>
             <div>
               <a href="javascript:void(0)">Regular link</a><br>
               <a class="button button--link" href="javascript:void(0)">Button Link</a><br><br>

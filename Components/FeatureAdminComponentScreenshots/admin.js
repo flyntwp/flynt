@@ -1,49 +1,48 @@
 /* globals FlyntData, FlyntComponentScreenshots */
-import $ from 'jquery'
-
-const ajaxCache = {}
 
 function init () {
-  const $body = $('body')
+  // Add delegated events.
+  document.addEventListener('mouseenter', (e) => {
+    const { target } = e
 
-  $body.on('mouseenter', 'a[data-layout]', function (e) {
-    const $target = $(e.currentTarget)
-    const layout = $target.data('layout')
-    showComponentScreenshot(layout, $target.closest('.acf-fc-popup'))
-  })
+    if (typeof target === 'object' && target !== null && 'getAttribute' in target && target.matches('a[data-layout]')) {
+      const layout = target.dataset.layout
+      showComponentScreenshot(layout, target)
+    }
+  }, true)
 
-  $body.on('mouseleave', 'a[data-layout]', function (e) {
-    const $target = $(e.currentTarget)
-    hideComponentScreenshot($target.closest('.acf-fc-popup'))
-  })
+  document.addEventListener('mouseleave', (e) => {
+    const { target } = e
+
+    if (typeof target === 'object' && target !== null && 'getAttribute' in target && target.matches('a[data-layout]')) {
+      hideComponentScreenshot(target)
+    }
+  }, true)
 }
 
-function showComponentScreenshot (layout, $wrapper) {
+function showComponentScreenshot (layout, wrapper) {
   const componentName = firstToUpperCase(layout)
   const image = `${FlyntData.templateDirectoryUri}/${FlyntComponentScreenshots.components[componentName]}/screenshot.png`
-  const $wrapperContainer = $("<div class='flyntComponentScreenshot-imageWrapper'>").appendTo($wrapper)
+  const wrapperContainer = document.createElement('div')
 
-  getImage(image).done(function () {
-    $wrapperContainer.prepend(`<img class='flyntComponentScreenshot-image' src='${image}'>`)
-  })
+  wrapperContainer.classList.add('flyntComponentScreenshot-imageWrapper')
+  wrapper.append(wrapperContainer)
+
+  const img = document.createElement('img')
+  img.classList.add('flyntComponentScreenshot-image')
+  img.setAttribute('loading', 'lazy')
+  img.src = image
+
+  wrapperContainer.prepend(img)
 }
 
-function hideComponentScreenshot ($wrapper) {
-  $wrapper.find('.flyntComponentScreenshot-imageWrapper')
-    .remove()
+function hideComponentScreenshot (wrapper) {
+  const wrapperContainer = wrapper.querySelector('.flyntComponentScreenshot-imageWrapper')
+  wrapperContainer.remove()
 }
 
 function firstToUpperCase (str) {
   return str.substr(0, 1).toUpperCase() + str.substr(1)
 }
 
-function getImage (image) {
-  if (!ajaxCache[image]) {
-    ajaxCache[image] = $.ajax({
-      url: image
-    })
-  }
-  return ajaxCache[image]
-}
-
-$(init)
+init()

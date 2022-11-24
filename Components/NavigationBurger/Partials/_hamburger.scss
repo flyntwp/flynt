@@ -27,6 +27,7 @@
     &--primary,
     &--secondary {
       background-color: var(--color-text);
+      border-radius: 6px;
       display: block;
       height: 3px;
       left: 0;
@@ -52,34 +53,37 @@
   }
 }
 
-&.flyntComponent-menuIsOpen .hamburger-lines {
-  &::before,
-  &::after {
-    opacity: 0;
-    transition-delay: 0s;
-  }
+&[data-status='menuIsOpen'] {
+  .hamburger-lines {
+    &::before,
+    &::after {
+      opacity: 0;
+      transition-delay: 0s;
+    }
 
-  &::before {
-    transform: translateY(9px);
-  }
+    &::before {
+      transform: translateY(9px);
+    }
 
-  &::after {
-    transform: translateY(-9px);
-  }
+    &::after {
+      transform: translateY(-9px);
+    }
 
-  &--primary {
-    transform: rotate(45deg);
-    transition-delay: 0.2s;
-  }
+    &--primary {
+      transform: rotate(45deg);
+      transition-delay: 0.2s;
+    }
 
-  &--secondary {
-    transform: rotate(-45deg);
-    transition-delay: 0.2s;
-  }
+    &--secondary {
+      transform: rotate(-45deg);
+      transition-delay: 0.2s;
+    }
 
-  &::before,
-  &::after {
-    opacity: 0;
-    transition-delay: 0s;
+    &::before,
+    &::after {
+      opacity: 0;
+      transition-delay: 0s;
+    }
   }
 }
+
