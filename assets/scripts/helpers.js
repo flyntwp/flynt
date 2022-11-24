@@ -1,10 +1,11 @@
-export function buildRefs (el) {
+export function buildRefs (el, customRefs) {
   return new Proxy(
     {},
     {
       get (target, prop) {
         if (!target[prop]) {
-          target[prop] = el.querySelector(`[data-ref="${prop}"]`)
+          const selector = customRefs[prop] ?? `[data-ref="${prop}"]`
+          target[prop] = el.querySelector(selector)
           if (!target[prop]) {
             throw `ref ${prop} not found.`
           }

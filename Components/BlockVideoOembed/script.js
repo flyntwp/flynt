@@ -1,43 +1,20 @@
+import { buildRefs } from "../../assets/scripts/helpers"
 
-class BlockVideoOembed extends window.HTMLDivElement {
-  constructor (...args) {
-    const self = super(...args)
-    self.init()
-    return self
+export default function (el) {
+  const refs = buildRefs(el, {
+    iframe: 'iframe'
+  })
+
+  refs.playButton.addEventListener('click', loadVideo, { once: true })
+
+  function loadVideo () {
+    refs.iframe.addEventListener('load', videoIsLoaded, { once: true })
+    refs.iframe.setAttribute('src', refs.iframe.getAttribute('data-src'))
+    refs.videoPlayer.dataset.state = 'isLoading'
   }
 
-  init () {
-    this.resolveElements()
-    this.bindFunctions()
-    this.bindEvents()
-  }
-
-  resolveElements () {
-    this.playButton = this.querySelector('.video-playButton')
-    this.posterImage = this.querySelector('.figure')
-    this.videoPlayer = this.querySelector('.video-player')
-    this.iframe = this.querySelector('iframe')
-  }
-
-  bindFunctions () {
-    this.loadVideo = this.loadVideo.bind(this)
-    this.videoIsLoaded = this.videoIsLoaded.bind(this)
-  }
-
-  bindEvents () {
-    this.playButton.addEventListener('click', this.loadVideo, { once: true })
-  }
-
-  loadVideo () {
-    this.iframe.addEventListener('load', this.videoIsLoaded.bind(this), { once: true })
-    this.iframe.setAttribute('src', this.iframe.getAttribute('data-src'))
-    this.videoPlayer.dataset.state = 'isLoading'
-  }
-
-  videoIsLoaded () {
-    this.videoPlayer.dataset.state = 'isLoaded'
-    this.posterImage.dataset.state = 'isHidden'
+  function videoIsLoaded () {
+    refs.videoPlayer.dataset.state = 'isLoaded'
+    refs.posterImage.dataset.state = 'isHidden'
   }
 }
-
-window.customElements.define('flynt-block-video-oembed', BlockVideoOembed, { extends: 'div' })
