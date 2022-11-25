@@ -1,60 +1,34 @@
 import Headroom from 'headroom.js'
-import debounce from 'lodash/debounce'
 
-class NavigationMain extends window.HTMLElement {
-  constructor (...args) {
-    const self = super(...args)
-    self.init()
-    return self
-  }
+export default function (el) {
+  let headroom
 
-  init () {
-    this.bindFunctions()
-    this.bindEvents()
-    this.headroom = null
-  }
+  const isDesktopMediaQuery = window.matchMedia('(min-width: 1024px)')
+  isDesktopMediaQuery.addEventListener('change', onBreakpointChange)
 
-  bindFunctions () {
-    this.onWindowResize = this.onWindowResize.bind(this)
-  }
+  onBreakpointChange()
 
-  bindEvents () {
-    window.addEventListener('resize', debounce(this.onWindowResize, 200))
-  }
+  function initHeadroom () {
+    if (headroom) {
+      return
+    }
+    const navigationHeight = parseInt(window.getComputedStyle(el).getPropertyValue('--navigation-height')) || 0
 
-  connectedCallback () {
-    this.initHeadroom()
-  }
-
-  initHeadroom () {
-    const navigationHeight = parseInt(window.getComputedStyle(this).getPropertyValue('--navigation-height')) || 0
-
-    this.headroom = new Headroom(this, {
+    headroom = new Headroom(el, {
       offset: navigationHeight,
       tolerance: {
         up: 5,
         down: 0
       }
     })
-
-    if (!this.isMobile()) {
-      this.headroom.init()
-    }
   }
 
-  onWindowResize () {
-    if (!this.isMobile()) {
-      if (!this.headroom.initialised) this.headroom.init()
+  function onBreakpointChange() {
+    if (isDesktopMediaQuery.matches) {
+      initHeadroom()
+      if (!headroom.initialised) headroom.init()
     } else {
-      if (this.headroom.initialised) this.headroom.destroy()
+      if (headroom?.initialised) headroom.destroy()
     }
-  }
-
-  isMobile () {
-    return window.matchMedia('(max-width: 1023px)').matches
   }
 }
-
-window.customElements.define('flynt-navigation-main', NavigationMain, {
-  extends: 'nav'
-})
