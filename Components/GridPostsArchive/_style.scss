@@ -1,4 +1,4 @@
-[is='flynt-grid-posts-archive'] {
+flynt-component[name="GridPostsArchive"] {
   .posts {
     @include reset-list;
     @include grid;

@@ -1,70 +1,39 @@
 /* globals fetch, DOMParser */
+import delegate from 'delegate-event-listener'
+import { buildRefs } from '@/assets/scripts/helpers.js'
 
-class GridPostsArchive extends window.HTMLDivElement {
-  constructor (...args) {
-    const self = super(...args)
-    self.init()
-    return self
-  }
+export default function (el) {
+  const refs = buildRefs(el)
 
-  init () {
-    this.resolveElements()
-    this.bindFunctions()
-    this.bindEvents()
-  }
+  el.addEventListener('click', delegate('[data-ref="loadMore"]', onLoadMore))
 
-  resolveElements () {
-    this.loadMore = this.querySelector('[data-action="loadMore"]')
-    this.posts = this.querySelector('.posts')
-    this.pagination = this.querySelector('.pagination')
-  }
-
-  bindFunctions () {
-    this.onLoadMore = this.onLoadMore.bind(this)
-  }
-
-  bindEvents () {
-    if (this.loadMore) {
-      this.loadMore.addEventListener('click', this.onLoadMore)
-    }
-  }
-
-  onLoadMore (e) {
+  async function onLoadMore (e) {
     e.preventDefault()
 
-    const target = e.currentTarget
+    const target = e.delegateTarget
     target.classList.add('button--disabled')
 
-    const url = new URL(e.currentTarget.href)
+    const url = new URL(target.href)
 
-    fetch(url)
-      .then(response => {
-        return response.text()
-      }).then(responseAsText => {
-        const parser = new DOMParser()
-        const html = parser.parseFromString(responseAsText, 'text/html')
-        const posts = html.querySelector('[is="flynt-grid-posts-archive"] .posts')
-        const pagination = html.querySelector('[is="flynt-grid-posts-archive"] .pagination')
+    try {
+      const response = await fetch(url)
+      const responseAsText = await response.text()
 
-        if (posts) {
-          this.posts.innerHTML += posts.innerHTML
-        }
+      const parser = new DOMParser()
+      const html = parser.parseFromString(responseAsText, 'text/html')
+      const posts = html.querySelector('flynt-component[name="GridPostsArchive"] [data-ref="posts"]')
+      const pagination = html.querySelector('flynt-component[name="GridPostsArchive"] [data-ref="pagination"]')
 
-        if (pagination) {
-          const loadMore = pagination.querySelector('[data-action="loadMore"]')
-          const targetUrl = new URL(loadMore.href)
+      refs.posts.append(...posts.children)
 
-          this.loadMore.href = targetUrl
-        } else {
-          this.pagination.innerHTML = ''
-        }
+      refs.pagination.textContent = ''
+      if (pagination) {
+        refs.pagination.append(...pagination.children)
+      }
 
-        target.classList.remove('button--disabled')
-      })
-      .catch(err => {
-        console.error(err)
-      })
+      target.classList.remove('button--disabled')
+    } catch (e) {
+      console.error(e)
+    }
   }
 }
-
-window.customElements.define('flynt-grid-posts-archive', GridPostsArchive, { extends: 'div' })

@@ -1,14 +1,14 @@
 
 {% if loadMore %}
   {% if pagination.next %}
-    <div class="pagination pagination--center">
+    <div data-ref="pagination" class="pagination pagination--center">
       <div class="pagination-loadMore">
-      <a data-action="loadMore" href="{{ pagination.next.link }}" class="button">{{ labels.loadMore }}</a>
+      <a data-ref="loadMore" href="{{ pagination.next.link }}" class="button">{{ labels.loadMore }}</a>
       </div>
     </div>
   {% endif %}
 {% else %}
-  <div class="pagination {% if not pagination.prev %} pagination--prevDisabled{% endif %}">
+  <div data-ref="pagination" class="pagination {% if not pagination.prev %} pagination--prevDisabled{% endif %}">
     {% if pagination.prev %}
       <a href="{{ pagination.prev.link }}" class="pagination-previous button">{{ labels.previous }}</a>
     {% endif %}
