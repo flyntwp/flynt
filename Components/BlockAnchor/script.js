@@ -1,4 +1,4 @@
-/* globals location */
+/* globals location, history */
 import delegate from 'delegate-event-listener'
 
 window.document.body.addEventListener('click', delegate('a[href*="#"]', onLinkClick))
@@ -7,7 +7,7 @@ if (location.hash) {
   smoothScrollTo(location.hash)
 }
 
-function onLinkClick(e) {
+function onLinkClick (e) {
   const delegate = e.delegateTarget
   const currentURL = new URL(location)
   const linkURL = new URL(delegate.href)
@@ -18,7 +18,7 @@ function onLinkClick(e) {
   }
 }
 
-function hrefWithoutHash(url) {
+function hrefWithoutHash (url) {
   return url.origin + url.pathname + url.search
 }
 

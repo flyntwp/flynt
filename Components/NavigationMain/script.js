@@ -23,7 +23,7 @@ export default function (el) {
     })
   }
 
-  function onBreakpointChange() {
+  function onBreakpointChange () {
     if (isDesktopMediaQuery.matches) {
       initHeadroom()
       if (!headroom.initialised) headroom.init()

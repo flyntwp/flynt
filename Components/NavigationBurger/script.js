@@ -43,8 +43,7 @@ export default function (el) {
     })
   }
 
-
-  function onBreakpointChange() {
+  function onBreakpointChange () {
     if (isDesktopMediaQuery.matches) {
       if (headroom?.initialised) headroom.destroy()
     } else {
