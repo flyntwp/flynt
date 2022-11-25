@@ -6,7 +6,7 @@
   }
 }
 
-[is='flynt-navigation-burger'] {
+flynt-component[name='NavigationBurger'] {
   --navigation-height: 64px;
 
   height: var(--navigation-height);

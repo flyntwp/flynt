@@ -1,5 +1,5 @@
-<flynt-component client:visible name="NavigationBurger">
-  <nav class="flyntComponent" aria-label="{{ __("Main", "flynt") }}" is="flynt-navigation-burger">
+<flynt-component client:idle client:media="(max-width: 1023px)" name="NavigationBurger" class="flyntComponent" aria-label="{{ __("Main", "flynt") }}">
+  <nav>
     <div class="container centerMaxWidthContainer">
       {% include 'Partials/_logo.twig' with { 'logo': logo, 'site': site } only %}
       {% if menu %}
