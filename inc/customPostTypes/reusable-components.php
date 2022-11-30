@@ -39,7 +39,7 @@ function registerReusableComponentsPostType()
         'show_in_nav_menus'     => false,
         'can_export'            => true,
         'has_archive'           => false,
-        'exclude_from_search'   => false,
+        'exclude_from_search'   => true,
         'capability_type'       => 'page',
         'rewrite'               => false
     ];
