@@ -1,4 +1,4 @@
-[is='flynt-block-collapse'] {
+flynt-component[name='BlockCollapse'] {
   &[data-status='collapse'] {
     margin-top: calc((-1 * var(--component-spacing)) + (var(--percentage-distance) * var(--component-spacing) ) / 100);
   }
