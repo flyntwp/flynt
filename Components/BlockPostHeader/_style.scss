@@ -1,4 +1,4 @@
-[is='flynt-block-post-header'] {
+flynt-component[name='BlockPostHeader'] {
   > .container {
     padding: var(--component-spacing) var(--container-padding);
 
@@ -74,7 +74,7 @@
     }
   }
 
-  [is='flynt-block-image'] {
+  flynt-component[name='BlockImage'] {
     margin-top: calc(-1 * var(--component-spacing) / 2);
 
     .figure-image {

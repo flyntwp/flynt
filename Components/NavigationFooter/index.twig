@@ -1,14 +1,12 @@
-<flynt-component client:visible name="NavigationFooter">
-  <div class="flyntComponent" data-theme="dark" is="flynt-navigation-footer">
-    <div class="container centerMaxWidthContainer">
-      {% if menu %}
-        <nav class="navigation" aria-label="{{ __("Footer", "flynt") }}">
-          {% include 'Partials/_menu.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel } only %}
-        </nav>
-      {% endif %}
-      {% if contentHtml %}
-        <div class="content">{{ contentHtml|e('wp_kses_post') }}</div>
-      {% endif %}
-    </div>
+<flynt-component client:visible name="NavigationFooter" class="flyntComponent" data-theme="dark" is="flynt-navigation-footer">
+  <div class="container centerMaxWidthContainer">
+    {% if menu %}
+      <nav class="navigation" aria-label="{{ __("Footer", "flynt") }}">
+        {% include 'Partials/_menu.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel } only %}
+      </nav>
+    {% endif %}
+    {% if contentHtml %}
+      <div class="content">{{ contentHtml|e('wp_kses_post') }}</div>
+    {% endif %}
   </div>
 </flynt-component>

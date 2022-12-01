@@ -1,43 +1,41 @@
-<flynt-component client:visible name="GridImageText">
-  <div class="flyntComponent componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }} is="flynt-grid-image-text">
-    <div class="container centerMaxWidthContainer">
-      {% if preContentHtml %}
-        <div class="preContent">
-          {{ preContentHtml|e('wp_kses_post') }}
-        </div>
-      {% endif %}
-      <ul class="grid" {{ options.maxColumns ? 'data-max-columns="' ~ options.maxColumns ~ '"' }}>
-        {% for item in items %}
-          {% if item.image or item.contentHtml %}
-            <li class="item {{ options.card == 'layoutCard' ? 'boxRadius boxShadow' }}" {{ options.card == 'layoutCard' ? 'data-theme="reset"' }}>
-                {% if item.image %}
-                  <figure class="figure">
-                    <img class="figure-image lazyload {{ options.card != 'layoutCard' ? 'boxRadius' }}"
-                      src="{{ item.image.src|resizeDynamic(768, (768 / 3 * 2)|round, 'center') }}"
-                      width="{{ 768 }}"
-                      height="{{ (768 / 3 * 2)|round }}"
-                      srcset="{{ placeholderImage(768, (768 / 3 * 2)|round, 'rgba(125, 125, 125, 0.1)') }}"
-                      data-srcset="
-                        {{ item.image.src|resizeDynamic(1920, (1920 / 3 * 2)|round, 'center') }} 1920w,
-                        {{ item.image.src|resizeDynamic(1600, (1600 / 3 * 2)|round, 'center') }} 1600w,
-                        {{ item.image.src|resizeDynamic(1440, (1440 / 3 * 2)|round, 'center') }} 1440w,
-                        {{ item.image.src|resizeDynamic(1366, (1366 / 3 * 2)|round, 'center') }} 1366w,
-                        {{ item.image.src|resizeDynamic(1024, (1024 / 3 * 2)|round, 'center') }} 1024w,
-                        {{ item.image.src|resizeDynamic(768, (768 / 3 * 2)|round, 'center') }} 768w,
-                        {{ item.image.src|resizeDynamic(640, (640 / 3 * 2)|round, 'center') }} 640w"
-                      data-sizes="auto"
-                      alt="{{ item.image.alt|e }}">
-                  </figure>
-                {% endif %}
-                {% if item.contentHtml %}
-                  <div class="content {{ options.card == 'layoutCard' ? 'boxPadding' }}">
-                    {{ item.contentHtml|e('wp_kses_post') }}
-                  </div>
-                {% endif %}
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    </div>
+<flynt-component client:visible name="GridImageText" class="flyntComponent componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
+  <div class="container centerMaxWidthContainer">
+    {% if preContentHtml %}
+      <div class="preContent">
+        {{ preContentHtml|e('wp_kses_post') }}
+      </div>
+    {% endif %}
+    <ul class="grid" {{ options.maxColumns ? 'data-max-columns="' ~ options.maxColumns ~ '"' }}>
+      {% for item in items %}
+        {% if item.image or item.contentHtml %}
+          <li class="item {{ options.card == 'layoutCard' ? 'boxRadius boxShadow' }}" {{ options.card == 'layoutCard' ? 'data-theme="reset"' }}>
+              {% if item.image %}
+                <figure class="figure">
+                  <img class="figure-image lazyload {{ options.card != 'layoutCard' ? 'boxRadius' }}"
+                    src="{{ item.image.src|resizeDynamic(768, (768 / 3 * 2)|round, 'center') }}"
+                    width="{{ 768 }}"
+                    height="{{ (768 / 3 * 2)|round }}"
+                    srcset="{{ placeholderImage(768, (768 / 3 * 2)|round, 'rgba(125, 125, 125, 0.1)') }}"
+                    data-srcset="
+                      {{ item.image.src|resizeDynamic(1920, (1920 / 3 * 2)|round, 'center') }} 1920w,
+                      {{ item.image.src|resizeDynamic(1600, (1600 / 3 * 2)|round, 'center') }} 1600w,
+                      {{ item.image.src|resizeDynamic(1440, (1440 / 3 * 2)|round, 'center') }} 1440w,
+                      {{ item.image.src|resizeDynamic(1366, (1366 / 3 * 2)|round, 'center') }} 1366w,
+                      {{ item.image.src|resizeDynamic(1024, (1024 / 3 * 2)|round, 'center') }} 1024w,
+                      {{ item.image.src|resizeDynamic(768, (768 / 3 * 2)|round, 'center') }} 768w,
+                      {{ item.image.src|resizeDynamic(640, (640 / 3 * 2)|round, 'center') }} 640w"
+                    data-sizes="auto"
+                    alt="{{ item.image.alt|e }}">
+                </figure>
+              {% endif %}
+              {% if item.contentHtml %}
+                <div class="content {{ options.card == 'layoutCard' ? 'boxPadding' }}">
+                  {{ item.contentHtml|e('wp_kses_post') }}
+                </div>
+              {% endif %}
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
   </div>
 </flynt-component>

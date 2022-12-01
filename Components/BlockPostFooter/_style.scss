@@ -1,4 +1,4 @@
-[is='flynt-block-post-footer'] {
+flynt-component[name='BlockPostFooter'] {
   .tags {
     @include reset-list;
     display: flex;

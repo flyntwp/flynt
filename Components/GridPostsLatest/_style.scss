@@ -1,4 +1,4 @@
-[is='flynt-grid-posts-latest'] {
+flynt-component[name='GridPostsLatest'] {
   .grid {
     @include reset-list;
     @include grid(1, center);

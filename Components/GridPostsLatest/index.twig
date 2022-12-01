@@ -1,50 +1,48 @@
 {% if posts|length > 0 %}
-  <flynt-component client:visible name="GridPostsLatest">
-    <div class="flyntComponent componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }} is="flynt-grid-posts-latest">
-      <div class="container centerMaxWidthContainer">
-        {% if preContentHtml %}
-          <div class="preContent">
-            {{ preContentHtml|e('wp_kses_post') }}
-          </div>
-        {% endif %}
-        <ul class="grid" {{ options.maxColumns ? 'data-max-columns="' ~ options.maxColumns ~ '"' }}>
-          {% for post in posts %}
-            <li class="post boxShadow boxRadius" data-theme="reset">
-              <a class="post-link" href="{{ post.link }}" aria-label="{{ post.title }}">
-                {% if post.thumbnail %}
-                  <figure class="figure">
-                    <img class="post-image figure-image lazyload"
-                      src="{{ post.thumbnail.src|resizeDynamic(768, (768 / 3 * 2)|round, 'center') }}"
-                      width="{{ 768 }}"
-                      height="{{ (768 / 3 * 2)|round }}"
-                      srcset="{{ placeholderImage(768, (768 / 3 * 2)|round, 'rgba(125, 125, 125, 0.1)') }}"
-                      data-srcset="
-                        {{ post.thumbnail.src|resizeDynamic(1920, (1920 / 3 * 2)|round, 'center') }} 1920w,
-                        {{ post.thumbnail.src|resizeDynamic(1600, (1600 / 3 * 2)|round, 'center') }} 1600w,
-                        {{ post.thumbnail.src|resizeDynamic(1440, (1440 / 3 * 2)|round, 'center') }} 1440w,
-                        {{ post.thumbnail.src|resizeDynamic(1366, (1366 / 3 * 2)|round, 'center') }} 1366w,
-                        {{ post.thumbnail.src|resizeDynamic(1024, (1024 / 3 * 2)|round, 'center') }} 1024w,
-                        {{ post.thumbnail.src|resizeDynamic(768, (768 / 3 * 2)|round, 'center') }} 768w,
-                        {{ post.thumbnail.src|resizeDynamic(640, (640 / 3 * 2)|round, 'center') }} 640w"
-                      data-sizes="auto"
-                      alt="{{ post.title }}">
-                  </figure>
-                {% endif %}
-                <div class="post-content boxPadding">
-                  <h2 class="h3">{{ post.title }}</h2>
-                  <p>{{ post.excerpt.read_more(false) }}</p>
-                </div>
-                <footer class="post-footer">
-                  <span class="post-readingTime">{{ labels.readingTime|replace({'%d': post.content|readingtime}) }}</span>
-                  <span class="button button--link button--small">{{ labels.readMore }}</span>
-                </footer>
-              </a>
-            </li>
-          {% endfor %}
-        </ul>
-        <div class="postContent">
-          <a href="{{ postTypeArchiveLink }}" class="button button--link">{{ labels.allPosts }}</a>
+  <flynt-component client:visible name="GridPostsLatest" class="flyntComponent componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
+    <div class="container centerMaxWidthContainer">
+      {% if preContentHtml %}
+        <div class="preContent">
+          {{ preContentHtml|e('wp_kses_post') }}
         </div>
+      {% endif %}
+      <ul class="grid" {{ options.maxColumns ? 'data-max-columns="' ~ options.maxColumns ~ '"' }}>
+        {% for post in posts %}
+          <li class="post boxShadow boxRadius" data-theme="reset">
+            <a class="post-link" href="{{ post.link }}" aria-label="{{ post.title }}">
+              {% if post.thumbnail %}
+                <figure class="figure">
+                  <img class="post-image figure-image lazyload"
+                    src="{{ post.thumbnail.src|resizeDynamic(768, (768 / 3 * 2)|round, 'center') }}"
+                    width="{{ 768 }}"
+                    height="{{ (768 / 3 * 2)|round }}"
+                    srcset="{{ placeholderImage(768, (768 / 3 * 2)|round, 'rgba(125, 125, 125, 0.1)') }}"
+                    data-srcset="
+                      {{ post.thumbnail.src|resizeDynamic(1920, (1920 / 3 * 2)|round, 'center') }} 1920w,
+                      {{ post.thumbnail.src|resizeDynamic(1600, (1600 / 3 * 2)|round, 'center') }} 1600w,
+                      {{ post.thumbnail.src|resizeDynamic(1440, (1440 / 3 * 2)|round, 'center') }} 1440w,
+                      {{ post.thumbnail.src|resizeDynamic(1366, (1366 / 3 * 2)|round, 'center') }} 1366w,
+                      {{ post.thumbnail.src|resizeDynamic(1024, (1024 / 3 * 2)|round, 'center') }} 1024w,
+                      {{ post.thumbnail.src|resizeDynamic(768, (768 / 3 * 2)|round, 'center') }} 768w,
+                      {{ post.thumbnail.src|resizeDynamic(640, (640 / 3 * 2)|round, 'center') }} 640w"
+                    data-sizes="auto"
+                    alt="{{ post.title }}">
+                </figure>
+              {% endif %}
+              <div class="post-content boxPadding">
+                <h2 class="h3">{{ post.title }}</h2>
+                <p>{{ post.excerpt.read_more(false) }}</p>
+              </div>
+              <footer class="post-footer">
+                <span class="post-readingTime">{{ labels.readingTime|replace({'%d': post.content|readingtime}) }}</span>
+                <span class="button button--link button--small">{{ labels.readMore }}</span>
+              </footer>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+      <div class="postContent">
+        <a href="{{ postTypeArchiveLink }}" class="button button--link">{{ labels.allPosts }}</a>
       </div>
     </div>
   </flynt-component>

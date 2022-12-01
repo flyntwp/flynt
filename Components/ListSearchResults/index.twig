@@ -1,15 +1,13 @@
-<flynt-component client:visible name="ListSearchResults">
-  <div class="flyntComponent componentSpacing" data-theme="light" is="flynt-list-search-results">
-    <div class="container centerMaxWidthContainer">
-      <div class="centerContentMaxWidth">
-        {% include 'Partials/_header.twig' %}
-      </div>
-      <div class="centerContentMaxWidthLarge">
-        {% include 'Partials/_results.twig' %}
-        {% if pagination %}
-          {% include 'Partials/_pagination.twig' %}
-        {% endif %}
-      </div>
+<flynt-component client:visible name="ListSearchResults" class="flyntComponent componentSpacing" data-theme="light">
+  <div class="container centerMaxWidthContainer">
+    <div class="centerContentMaxWidth">
+      {% include 'Partials/_header.twig' %}
+    </div>
+    <div class="centerContentMaxWidthLarge">
+      {% include 'Partials/_results.twig' %}
+      {% if pagination %}
+        {% include 'Partials/_pagination.twig' %}
+      {% endif %}
     </div>
   </div>
 </flynt-component>
