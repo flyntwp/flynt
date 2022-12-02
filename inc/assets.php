@@ -13,7 +13,9 @@ call_user_func(function () {
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script(
         'Flynt/assets',
-        viteUrl('assets/main.js')
+        viteUrl('assets/main.js'),
+        [],
+        false
     );
     wp_script_add_data('Flynt/assets', 'defer', true);
     wp_script_add_data('Flynt/assets', 'module', true);
@@ -35,7 +37,9 @@ add_action('wp_enqueue_scripts', function () {
 add_action('admin_enqueue_scripts', function () {
     wp_enqueue_script(
         'Flynt/assets/admin',
-        viteUrl('assets/admin.js')
+        viteUrl('assets/admin.js'),
+        [],
+        false
     );
     wp_script_add_data('Flynt/assets/admin', 'defer', true);
     wp_script_add_data('Flynt/assets/admin', 'module', true);
