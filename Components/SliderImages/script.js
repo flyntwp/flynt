@@ -5,7 +5,8 @@ import { buildRefs, getJSON } from '@/assets/scripts/helpers.js'
 export default function (el) {
   const refs = buildRefs(el)
   const data = getJSON(el)
-  initSlider(refs, data)
+  const swiper = initSlider(refs, data)
+  return () => swiper.destroy()
 }
 
 function initSlider (refs, data) {

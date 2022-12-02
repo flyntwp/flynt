@@ -1,7 +1,7 @@
 import { buildRefs } from '../../assets/scripts/helpers'
 
 export default function (el) {
-  const refs = buildRefs(el, {
+  const refs = buildRefs(el, false, {
     iframe: 'iframe'
   })
 
