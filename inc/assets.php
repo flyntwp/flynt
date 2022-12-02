@@ -15,7 +15,7 @@ add_action('wp_enqueue_scripts', function () {
         'Flynt/assets',
         viteUrl('assets/main.js'),
         [],
-        false
+        null
     );
     wp_script_add_data('Flynt/assets', 'defer', true);
     wp_script_add_data('Flynt/assets', 'module', true);
@@ -39,7 +39,7 @@ add_action('admin_enqueue_scripts', function () {
         'Flynt/assets/admin',
         viteUrl('assets/admin.js'),
         [],
-        false
+        null
     );
     wp_script_add_data('Flynt/assets/admin', 'defer', true);
     wp_script_add_data('Flynt/assets/admin', 'module', true);
