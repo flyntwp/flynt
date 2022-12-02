@@ -69,7 +69,7 @@ function determineLoadingStrategy (node) {
 function getLoadingFunctionWrapper (strategyName, node) {
   const loadingFunctions = {
     load: (x) => x(),
-    idle: (x) => requestIdleCallback(x, {timeout: 2000}),
+    idle: (x) => requestIdleCallback(x, { timeout: 2000 }),
     visible: async (x) => {
       await visible(node)
       x()
