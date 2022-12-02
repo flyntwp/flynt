@@ -1,4 +1,5 @@
 /* global IntersectionObserver, requestIdleCallback */
+import './rIC.js'
 const componentsWithScripts = import.meta.glob('@/Components/**/script.js')
 
 const upgradedElements = new WeakMap()
@@ -68,7 +69,7 @@ function determineLoadingStrategy (node) {
 function getLoadingFunctionWrapper (strategyName, node) {
   const loadingFunctions = {
     load: (x) => x(),
-    idle: (x) => requestIdleCallback(x),
+    idle: (x) => requestIdleCallback(x, {timeout: 2000}),
     visible: async (x) => {
       await visible(node)
       x()
