@@ -1,5 +1,5 @@
 <flynt-component client:visible name="BlockVideoOembed" class="flyntComponent componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
-  <div class="container {{ options.size != 'sizeFull' ? 'centerMaxWidthContainer' }}">
+  <div class="container {{ options.size != 'full' ? 'centerMaxWidthContainer' }}">
     {% include 'Partials/_video.twig' ignore missing with {video: video, image: posterImage, size: options.size} only %}
   </div>
 </flynt-component>
