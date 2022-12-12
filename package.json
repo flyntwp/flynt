@@ -55,8 +55,8 @@
     "stylelint-config-sass-guidelines": "^9.0.1",
     "stylelint-config-standard": "^26.0.0",
     "stylelint-scss": "^4.3.0",
-    "vite": "^3.2.4",
-    "vite-plugin-full-reload": "^1.0.4"
+    "vite": "^4.0.0",
+    "vite-plugin-full-reload": "^1.0.5"
   },
   "eslintConfig": {
     "parser": "@babel/eslint-parser",

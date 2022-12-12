@@ -27,7 +27,9 @@ add_action('wp_enqueue_scripts', function () {
 
     wp_enqueue_style(
         'Flynt/assets',
-        viteUrl('assets/main.scss')
+        viteUrl('assets/main.scss'),
+        [],
+        null
     );
     if (!isHot()) {
         wp_style_add_data('Flynt/assets', 'preload', true);
@@ -50,7 +52,9 @@ add_action('admin_enqueue_scripts', function () {
 
     wp_enqueue_style(
         'Flynt/assets/admin',
-        viteUrl('assets/admin.scss')
+        viteUrl('assets/admin.scss'),
+        [],
+        null
     );
 });
 
