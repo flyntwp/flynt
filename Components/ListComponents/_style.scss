@@ -1,4 +1,4 @@
-[is='flynt-list-components'] {
+flynt-component[name='ListComponents'] {
   .components {
     @include reset-list;
     @include grid;
