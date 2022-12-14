@@ -2,8 +2,6 @@
 
 namespace Flynt;
 
-use Flynt\Utils\StringHelpers;
-
 class ComponentManager
 {
     protected $components = [];

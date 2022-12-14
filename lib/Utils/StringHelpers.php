@@ -5,7 +5,7 @@ namespace Flynt\Utils;
 class StringHelpers
 {
     /**
-     * Converts a string from camel case to kebap case.
+     * Converts a string from camel case to kebab case.
      *
      * @since 0.1.0
      *
@@ -13,7 +13,7 @@ class StringHelpers
      *
      * @return string
      */
-    public static function camelCaseToKebap($str)
+    public static function camelCaseToKebab($str)
     {
         return strtolower(preg_replace('/([a-zA-Z])(?=[A-Z0-9])/', '$1-', $str));
     }
