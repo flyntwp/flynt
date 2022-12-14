@@ -4,7 +4,6 @@ namespace Flynt;
 
 use Flynt\Api;
 use Flynt\Defaults;
-use Flynt\Utils\AdminNoticeManager;
 use Timber;
 
 class Init
@@ -29,31 +28,49 @@ class Init
         $acfActive = class_exists('acf');
 
         if (!$acfActive) {
-            self::notifyRequiredPluginIsMissing('<a href="https://www.advancedcustomfields.com/pro/">Advanced Custom Fields PRO</a>');
+            self::notifyAcfPluginIsMissing();
+
             add_filter('template_include', function () {
-                die(
-                    'One or more required plugins are not activated! Please <a href="'
-                    . esc_url(admin_url('plugins.php'))
-                    . '">activate or install the required plugin(s)</a> and reload the page.'
+                $title = esc_html__('One or more required plugins are not activated!', 'flynt');
+                $message = sprintf(
+                    /* translators: %1$s, %2$s: link wrapper. */
+                    esc_html__('Please %1$sactivate or install the required plugin(s)%2$s and reload the page.', 'flynt'),
+                    '<a href="' . esc_url(admin_url('plugins.php')) . '" target="_blank">',
+                    '</a>'
                 );
+                die(sprintf('<p><strong>%1$s</strong></p><p>%2$s</p>', $title, $message));
             });
         }
 
         return $acfActive;
     }
 
-    protected static function notifyRequiredPluginIsMissing($pluginName)
+    protected static function notifyAcfPluginIsMissing()
     {
-        $manager = AdminNoticeManager::getInstance();
+        add_action('admin_notices', function () {
+            $class = esc_attr('notice notice-error');
+            $title = esc_html(__('Flynt is missing a required plugin', 'flynt'));
+            $pluginName = sprintf(
+                /* translators: %1$s, %2$s: link wrapper. */
+                esc_html__('%1$sAdvanced Custom Fields PRO%2$s', 'flynt'),
+                '<a href="' . esc_url(admin_url('plugins.php')) . '" target="_blank">',
+                '</a>'
+            );
+            $pluginsUrl = sprintf(
+                /* translators: %1$s, %2$s: link wrapper. */
+                esc_html__('%1$splugin page%2$s', 'flynt'),
+                '<a href="' . esc_url(admin_url('plugins.php')) . '" target="_blank">',
+                '</a>'
+            );
 
-        $pluginUrl = esc_url(admin_url('plugins.php'));
-        $message = ["${pluginName} plugin not activated. Make sure you activate the plugin on the <a href=\"${pluginUrl}\">plugin page</a>."];
-        $options = [
-          'type' => 'error',
-          'title' => 'Flynt is missing a required plugin',
-          'dismissible' => false,
-        ];
+            $message = sprintf(
+                /* translators: %1$s: Plugin Name, %2$s: plugin page */
+                esc_html__('%1$s plugin not activated. Make sure you activate the plugin on the %2$s.', 'flynt'),
+                $pluginName,
+                $pluginsUrl
+            );
 
-        $manager->addNotice($message, $options);
+            printf('<div class="%1$s"><p><strong>%2$s</strong></p><p>%3$s</p></div>', $class, $title, $message);
+        });
     }
 }
