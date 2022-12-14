@@ -15,14 +15,17 @@
 
 namespace Flynt\ComponentLogServer;
 
-use Flynt\Utils\Log;
-
 add_action('Flynt/afterRegisterComponents', function () {
     if ('production' !== wp_get_environment_type() && isset($_GET['log'])) {
         add_filter("Flynt/addComponentData", __NAMESPACE__ . '\addDebugInfo', 99999, 2);
     }
 }, 11);
 
+/**
+ * @param mixed $data
+ * @param mixed $componentName
+ * @return mixed
+ */
 function addDebugInfo($data, $componentName)
 {
     $filterByComponents = [];
@@ -31,10 +34,24 @@ function addDebugInfo($data, $componentName)
     }
 
     if (in_array($componentName, $filterByComponents) || empty($filterByComponents)) {
-        Log::console([
+        consoleDebug([
             'component' => $componentName,
             'data' => $data,
         ]);
     }
     return $data;
+}
+
+/**
+ * @param mixed $data
+ * @param bool $postpone
+ * @return void
+ */
+function consoleDebug($data)
+{
+    $output = json_encode($data);
+    $result =  "<script>console.log({$output});</script>\n";
+    add_action('wp_footer', function () use ($result) {
+        echo $result;
+    }, 30);
 }
