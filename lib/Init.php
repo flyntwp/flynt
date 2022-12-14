@@ -38,7 +38,7 @@ class Init
                     '<a href="' . esc_url(admin_url('plugins.php')) . '" target="_blank">',
                     '</a>'
                 );
-                die(sprintf('<p><strong>%1$s</strong></p><p>%2$s</p>', $title, $message));
+                wp_die(sprintf('<p><strong>%1$s</strong></p><p>%2$s</p>', $title, $message));
             });
         }
 
