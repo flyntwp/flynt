@@ -1,7 +1,7 @@
 {% if posts|length > 0 %}
-  <ul class="searchList">
+  <ul class="results">
     {% for post in posts  %}
-      <li class="searchList-item boxRadius boxShadow boxPadding" data-theme="reset">
+      <li class="result boxRadius boxShadow boxPadding" data-theme="reset">
         <article class="post">
           <a href="{{ post.link }}" aria-label="{{ post.title }}" class="post-link">
             <h2 class="h3">{{ post.title }}</h2>

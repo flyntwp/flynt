@@ -1,7 +1,7 @@
-.searchList {
+.results {
   @include reset-list;
 
-  &-item {
+  .result {
     @include reset-list-item;
 
     + & {

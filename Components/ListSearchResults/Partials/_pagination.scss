@@ -1,48 +1,44 @@
 .pagination {
-  margin-top: 32px;
-
-  &::after {
-    clear: both;
-    content: '';
-    display: block;
-  }
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-width);
+  justify-content: space-between;
+  margin-top: calc(var(--component-spacing) / 2);
 
   .button {
-    align-items: center;
-    display: inline-flex;
-    justify-content: center;
-    min-width: 110px;
-    white-space: nowrap;
-  }
-
-  .arrow {
-    color: var(--color-background);
-    height: 18px;
-    stroke-width: 2px;
-    top: -1px;
-    width: 18px;
-  }
-
-  &-previous {
-    float: left;
-
-    .arrow {
-      margin-left: -5px;
-      margin-right: 5px;
-    }
-  }
-
-  &-next {
-    float: right;
     margin-top: 0;
 
-    .arrow {
-      margin-left: 5px;
-      margin-right: -5px;
-    }
-  }
+    &-next {
+      margin-left: auto;
 
-  .button {
-    white-space: nowrap;
+      &::after {
+        border-right: var(--border-width) solid currentColor;
+        border-top: var(--border-width) solid currentColor;
+        content: '';
+        display: inline-block;
+        height: 0.5rem;
+        margin-bottom: 0.0625rem;
+        margin-left: 0.25rem;
+        transform: rotate(45deg);
+        vertical-align: baseline;
+        width: 0.5rem;
+      }
+    }
+
+    &-previous {
+      &::before {
+        border-left: var(--border-width) solid currentColor;
+        border-top: var(--border-width) solid currentColor;
+        content: '';
+        display: inline-block;
+        height: 0.5rem;
+        margin-bottom: 0.0625rem;
+        margin-right: 0.25rem;
+        transform: rotate(-45deg);
+        vertical-align: baseline;
+        width: 0.5rem;
+      }
+    }
   }
 }

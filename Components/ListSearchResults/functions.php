@@ -36,9 +36,9 @@ Options::addTranslatable('ListSearchResults', [
         'sub_fields' => [
             [
                 'label' => __('Previous', 'flynt'),
-                'name' => 'previousLabel',
+                'name' => 'previous',
                 'type' => 'text',
-                'default_value' => __('Previous', 'flynt'),
+                'default_value' => __('Prev', 'flynt'),
                 'required' => 1,
                 'wrapper' => [
                     'width' => '50',
@@ -46,7 +46,7 @@ Options::addTranslatable('ListSearchResults', [
             ],
             [
                 'label' => __('Next', 'flynt'),
-                'name' => 'nextLabel',
+                'name' => 'next',
                 'type' => 'text',
                 'default_value' => __('Next', 'flynt'),
                 'required' => 1,

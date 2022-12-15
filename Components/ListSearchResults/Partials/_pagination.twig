@@ -1,8 +1,8 @@
 <div class="pagination">
   {% if pagination.prev %}
-    <a class="pagination-previous button button--small" href="{{ pagination.prev.link }}">{{ labels.previousLabel }}</a>
+    <a href="{{ pagination.prev.link }}" class="button button-previous">{{ labels.previous }}</a>
   {% endif %}
   {% if pagination.next %}
-    <a class="pagination-next button button--small" href="{{ pagination.next.link }}">{{ labels.nextLabel }}</a>
+    <a href="{{ pagination.next.link }}" class="button button-next">{{ labels.next }}</a>
   {% endif %}
 </div>
