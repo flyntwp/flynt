@@ -1,0 +1,49 @@
+.pagination {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-width);
+  justify-content: space-between;
+  margin-top: calc(var(--component-spacing) / 2);
+
+  .button {
+    margin-top: 0;
+
+    &-loadMore {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &-next {
+      margin-left: auto;
+
+      &::after {
+        border-right: var(--border-width) solid currentColor;
+        border-top: var(--border-width) solid currentColor;
+        content: '';
+        display: inline-block;
+        height: 0.5rem;
+        margin-bottom: 0.0625rem;
+        margin-left: 0.25rem;
+        transform: rotate(45deg);
+        vertical-align: baseline;
+        width: 0.5rem;
+      }
+    }
+
+    &-previous {
+      &::before {
+        border-left: var(--border-width) solid currentColor;
+        border-top: var(--border-width) solid currentColor;
+        content: '';
+        display: inline-block;
+        height: 0.5rem;
+        margin-bottom: 0.0625rem;
+        margin-right: 0.25rem;
+        transform: rotate(-45deg);
+        vertical-align: baseline;
+        width: 0.5rem;
+      }
+    }
+  }
+}

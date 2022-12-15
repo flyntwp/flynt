@@ -1,0 +1,15 @@
+
+{% if loadMore and pagination.next %}
+  <div data-ref="pagination" class="pagination">
+    <a data-ref="loadMore" href="{{ pagination.next.link }}" class="button button-loadMore">{{ labels.loadMore }}</a>
+  </div>
+{% else %}
+  <div class="pagination">
+    {% if pagination.prev %}
+      <a href="{{ pagination.prev.link }}" class="button button-previous">{{ labels.previous }}</a>
+    {% endif %}
+    {% if pagination.next %}
+      <a href="{{ pagination.next.link }}" class="button button-next">{{ labels.next }}</a>
+    {% endif %}
+  </div>
+{% endif %}
