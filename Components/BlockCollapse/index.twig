@@ -1,2 +1,2 @@
-<flynt-component client:idle name="BlockCollapse" class="flyntComponent" data-status="{{ status }}" style="--percentage-distance: {{ percentageDistance }};">
+<flynt-component client:idle name="BlockCollapse" class="flyntComponent" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }} data-status="{{ status }}" style="--percentage-distance: {{ percentageDistance }};">
 </flynt-component>
