@@ -1,4 +1,4 @@
-<flynt-component client:visible name="SliderImages" class="flyntComponent componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
+<flynt-component client:visible name="SliderImages" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
   <script type="application/json">{{ jsonData|json_encode }}</script>
   <div class="centerMaxWidthContainer">
     {% if preContentHtml %}

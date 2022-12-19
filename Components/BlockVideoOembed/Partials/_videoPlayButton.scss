@@ -55,7 +55,7 @@
   }
 }
 
-&.flyntComponent--sizeSmall {
+[data-video-size='small'] {
   .video-playButton {
     &::before {
       height: 64px;

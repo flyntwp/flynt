@@ -1,5 +1,5 @@
 {% if posts|length > 0 %}
-  <flynt-component client:visible name="GridPostsLatest" class="flyntComponent componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
+  <flynt-component client:visible name="GridPostsLatest" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
     <div class="container centerMaxWidthContainer">
       {% if preContentHtml %}
         <div class="preContent">

@@ -1,4 +1,4 @@
-<flynt-component client:visible name="BlockWysiwyg" class="flyntComponent componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
+<flynt-component client:visible name="BlockWysiwyg" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
   <div class="container centerMaxWidthContainer">
     <div class="content{{ options.maxWidth != 'full' ? ' centerContentMaxWidth'}}{{ options.maxWidth == 'large' ? 'Large' }}" {{ textAlign ? 'data-text-align="' ~ textAlign ~ '"' }}>
       {{ contentHtml|e('wp_kses_post') }}
