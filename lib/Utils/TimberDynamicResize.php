@@ -8,10 +8,10 @@ use Timber\Image\Operation\Resize;
 
 class TimberDynamicResize
 {
-    const DB_VERSION = '2.0';
-    const TABLE_NAME = 'resized_images';
-    const IMAGE_QUERY_VAR = 'resized-images';
-    const IMAGE_PATH_SEPARATOR = 'resized';
+    private const DB_VERSION = '2.0';
+    private const TABLE_NAME = 'resized_images';
+    private const IMAGE_QUERY_VAR = 'resized-images';
+    private const IMAGE_PATH_SEPARATOR = 'resized';
 
     public $flyntResizedImages = [];
 
