@@ -41,12 +41,12 @@
                 {% if componentBlock.ctas.secondary %}
                   <a href="{{ componentBlock.ctas.secondary }}" target="_blank" rel="noreferrer noopener" class="component-ctaSecondary">
                     {{ labels.code }}
-                    <span class="visuallyHidden">{{ __("of Component", "flynt")}} {{ componentBlock.readme.title }}</span>
+                    <span class="visuallyHidden">{{ componentBlock.readme.title ~ ' ' ~ labels.code }}</span>
                   </a>
                 {% endif %}
                 {% if componentBlock.ctas.primary %}
                   <a href="{{ componentBlock.ctas.primary }}" class="button button--link button--small component-ctaPrimary">
-                  {{ labels.preview }}<span class="visuallyHidden">{{ __(" of Component", "flynt")}} {{ componentBlock.readme.title }}</span></a>
+                  {{ labels.preview }}<span class="visuallyHidden">{{ componentBlock.readme.title ~ ' ' ~ labels.preview }}</span></a>
                 {% endif %}
               </footer>
             {% endif %}
