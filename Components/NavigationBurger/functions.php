@@ -3,6 +3,7 @@
 namespace Flynt\Components\NavigationBurger;
 
 use Flynt\Utils\Asset;
+use Flynt\Utils\Options;
 use Timber\Timber;
 
 add_action('init', function () {
@@ -20,3 +21,40 @@ add_filter('Flynt/addComponentData?name=NavigationBurger', function ($data) {
 
     return $data;
 });
+
+Options::addTranslatable('NavigationBurger', [
+    [
+        'label' => __('Labels', 'flynt'),
+        'name' => 'labelsTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => '',
+        'name' => 'labels',
+        'type' => 'group',
+        'sub_fields' => [
+            [
+                'label' => __('Aria Label', 'flynt'),
+                'name' => 'ariaLabel',
+                'type' => 'text',
+                'default_value' => __('Main', 'flynt'),
+                'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
+            ],
+            [
+                'label' => __('Toggle Menu', 'flynt'),
+                'name' => 'toggleMenu',
+                'type' => 'text',
+                'default_value' => __('Toggle Menu', 'flynt'),
+                'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
+            ],
+        ],
+    ],
+]);

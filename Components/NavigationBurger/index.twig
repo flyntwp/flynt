@@ -1,9 +1,9 @@
-<flynt-component client:idle client:media="(max-width: 1023px)" name="NavigationBurger" aria-label="{{ __("Main", "flynt") }}">
-  <nav>
+<flynt-component client:idle client:media="(max-width: 1023px)" name="NavigationBurger">
+  <nav aria-label="{{ labels.ariaLabel|e }}">
     <div class="container centerMaxWidthContainer">
       {% include 'Partials/_logo.twig' with { 'logo': logo, 'site': site } only %}
       {% if menu %}
-        {% include 'Partials/_hamburger.twig' with { 'a11y': a11y } only %}
+        {% include 'Partials/_hamburger.twig' with { 'labels': labels } only %}
       {% endif %}
     </div>
     {% if menu %}
