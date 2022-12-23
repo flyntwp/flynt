@@ -6,7 +6,7 @@ use ACFComposer;
 
 class Options
 {
-    const OPTION_TYPES = [
+    public const OPTION_TYPES = [
         'translatable' => [
             'title' => 'Translatable Options',
             'icon' => 'dashicons-translation',
