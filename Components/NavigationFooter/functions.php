@@ -74,4 +74,28 @@ Options::addTranslatable('NavigationFooter', [
         ]
     ],
     Shortcodes\getShortcodeReference(),
+    [
+        'label' => __('Labels', 'flynt'),
+        'name' => 'labelsTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => '',
+        'name' => 'labels',
+        'type' => 'group',
+        'sub_fields' => [
+            [
+                'label' => __('Aria Label', 'flynt'),
+                'name' => 'ariaLabel',
+                'type' => 'text',
+                'default_value' => __('Footer', 'flynt'),
+                'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
+            ],
+        ],
+    ],
 ]);
