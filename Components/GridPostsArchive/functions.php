@@ -84,6 +84,16 @@ Options::addTranslatable('GridPostsArchive', [
         'type' => 'group',
         'sub_fields' => [
             [
+                'label' => __('Filter by', 'flynt'),
+                'name' => 'filterBy',
+                'type' => 'text',
+                'default_value' => __('Filter by', 'flynt'),
+                'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
+            ],
+            [
                 'label' => __('Previous', 'flynt'),
                 'name' => 'previous',
                 'type' => 'text',
