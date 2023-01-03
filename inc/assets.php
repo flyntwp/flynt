@@ -13,7 +13,7 @@ call_user_func(function () {
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script(
         'Flynt/assets',
-        viteUrl('assets/main.js'),
+        Asset::requireUrl('assets/main.js'),
         [],
         null
     );
@@ -27,11 +27,12 @@ add_action('wp_enqueue_scripts', function () {
 
     wp_enqueue_style(
         'Flynt/assets',
-        viteUrl('assets/main.scss'),
+        Asset::requireUrl('assets/main.scss'),
         [],
         null
     );
-    if (!isHot()) {
+
+    if (!Asset::isHotModuleReplacement()) {
         wp_style_add_data('Flynt/assets', 'preload', true);
     }
 });
@@ -39,7 +40,7 @@ add_action('wp_enqueue_scripts', function () {
 add_action('admin_enqueue_scripts', function () {
     wp_enqueue_script(
         'Flynt/assets/admin',
-        viteUrl('assets/admin.js'),
+        Asset::requireUrl('assets/admin.js'),
         [],
         null
     );
@@ -52,29 +53,8 @@ add_action('admin_enqueue_scripts', function () {
 
     wp_enqueue_style(
         'Flynt/assets/admin',
-        viteUrl('assets/admin.scss'),
+        Asset::requireUrl('assets/admin.scss'),
         [],
         null
     );
 });
-
-function viteUrl($asset)
-{
-    $hotFile = getViteHotFile();
-    if (file_exists($hotFile)) {
-        $baseUrl = trim(file_get_contents($hotFile));
-        return trailingslashit($baseUrl) . $asset;
-    } else {
-        return Asset::requireUrl($asset);
-    }
-}
-
-function getViteHotFile()
-{
-    return get_template_directory() . '/dist/hot';
-}
-
-function isHot()
-{
-    return file_exists(getViteHotFile());
-}

@@ -4,7 +4,7 @@ namespace Flynt\Utils;
 
 class Asset
 {
-    protected static $assetManifest;
+    protected static array $assetManifest;
 
     /**
      * Gets the asset's url.
@@ -15,7 +15,7 @@ class Asset
      *
      * @return string|boolean Returns the url or false if the asset is not found.
      */
-    public static function requireUrl($asset)
+    public static function requireUrl(string $asset)
     {
         return self::get('url', $asset);
     }
@@ -29,14 +29,13 @@ class Asset
      *
      * @return string|boolean Returns the absolute path or false if the asset is not found.
      */
-    public static function requirePath($asset)
+    public static function requirePath(string $asset)
     {
         return self::get('path', $asset);
     }
 
     /**
      * Gets the contents of an asset.
-     *
      * Useful for loading SVGs or other files inline.
      *
      * @since 0.2.0
@@ -44,7 +43,7 @@ class Asset
      * @param string $asset Asset path (relative to the theme directory).
      * @return string|boolean Returns the file contents or false in case of failure.
      */
-    public static function getContents($asset)
+    public static function getContents(string $asset)
     {
         $file = self::requirePath($asset);
         if (file_exists($file)) {
@@ -55,11 +54,20 @@ class Asset
         }
     }
 
-    protected static function get($returnType, $asset)
+    /**
+     * Gets the asset's url or absolute path.
+     *
+     * If the asset is not found, it will return the original asset path.
+     * This is useful for loading assets from the theme directory.
+     *
+     * @param string $returnType
+     * @param string $asset
+     * @return string|false
+     */
+    protected static function get(string $returnType, string $asset)
     {
-        $distPath = get_template_directory() . '/dist';
-
         if (!isset(self::$assetManifest)) {
+            $distPath = get_template_directory() . '/dist';
             $manifestPath = $distPath . '/manifest.json';
             if (is_file($manifestPath)) {
                 self::$assetManifest = json_decode(file_get_contents($manifestPath), true);
@@ -68,27 +76,40 @@ class Asset
             }
         }
 
-        if (array_key_exists($asset, self::$assetManifest)) {
-            $assetSuffix = self::$assetManifest[$asset]['file'];
-        } else {
-            $assetSuffix = $asset;
+        $assetSuffix = self::$assetManifest[$asset]['file'] ?? $asset;
+        $filePath = get_template_directory() . '/dist/' . $assetSuffix;
+
+        if ('path' == $returnType) {
+            return file_exists($filePath) ? $filePath : get_template_directory() . '/' . $assetSuffix;
         }
 
-        if (file_exists($distPath . '/' . $assetSuffix)) {
-            if ('path' == $returnType) {
-                return $distPath . '/' . $assetSuffix;
-            } elseif ('url' == $returnType) {
-                $distUrl = get_template_directory_uri() . '/dist';
-                return $distUrl . '/' . $assetSuffix;
+        if ('url' == $returnType) {
+            if (file_exists(self::viteHotFile())) {
+                return trailingslashit(trim(file_get_contents(self::viteHotFile()))) . $asset;
             }
-        } else {
-            if ('path' == $returnType) {
-                return get_template_directory() . '/' . $assetSuffix;
-            } elseif ('url' == $returnType) {
-                return get_template_directory_uri() . '/' . $assetSuffix;
-            }
+            return file_exists($filePath) ? get_template_directory_uri() . '/dist/' . $assetSuffix : get_template_directory_uri() . '/' . $assetSuffix;
         }
 
         return false;
+    }
+
+    /**
+     * Checks if the current environment is a Vite dev server.
+     *
+     * @return bool
+     */
+    public static function isHotModuleReplacement()
+    {
+        return file_exists(self::viteHotFile());
+    }
+
+    /**
+     * Gets the path to the Vite dev server hot file.
+     *
+     * @return string
+     */
+    protected static function viteHotFile()
+    {
+        return get_template_directory() . '/dist/hot';
     }
 }
