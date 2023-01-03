@@ -2,8 +2,7 @@
   <div class="centerMaxWidthContainer">
     <div class="centerContentMaxWidth">
       <div class="post-password boxRadius boxPadding boxShadow" data-theme="reset">
-        <h1 class="h3">{{ __('Enter Password', 'flynt') }}</h1>
-        <p>{{ __('This content is password protected. To view it please enter your password below:', 'flynt') }}</p>
+        {{ contentHtml|e('wp_kses_post') }}
         <form action="{{ form.url }}" class="post-password-form" method="post">
           <div class="oneInputForm">
             <input class="oneInputForm-input" name="post_password" type="password" size="20" maxlength="20" aria-label="{{ __('Password', 'flynt') }}" placeholder="{{ _x('Enter password', 'password form placeholder', 'flynt') }}" /><br>
