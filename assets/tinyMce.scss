@@ -1,0 +1,16 @@
+@import
+  'styles/mixins',
+  'styles/variables',
+  'styles/base';
+
+html {
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  text-size-adjust: none;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+}

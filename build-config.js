@@ -7,7 +7,8 @@ const entries = [
   './assets/main.js',
   './assets/main.scss',
   './assets/admin.js',
-  './assets/admin.scss'
+  './assets/admin.scss',
+  './assets/tinyMce.scss'
 ]
 
 const watchFiles = [
