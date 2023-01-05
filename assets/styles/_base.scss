@@ -134,7 +134,7 @@ h6,
 a {
   color: var(--color-accent);
   text-decoration-color: var(--color-accent-alpha);
-  transition: color 0.2s $ease-in-out-circ, text-decoration-color 0.2s $ease-in-out-circ;
+  transition: color 0.2s ease-in-out, text-decoration-color 0.2s ease-in-out;
 
   &:hover,
   &:focus {
@@ -437,7 +437,7 @@ button {
       position: absolute;
       transform: scaleX(0);
       transform-origin: bottom right;
-      transition: transform 0.2s $ease-in-out-circ;
+      transition: transform 0.2s ease-in-out;
       width: 100%;
     }
 
