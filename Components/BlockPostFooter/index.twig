@@ -28,8 +28,8 @@
               {{ post.author.name }}
             </a>
           </div>
-          {% if post.author.description %}
-            <p class="author-description">{{ post.author.description|e }}</p>
+          {% if post.author.meta.description %}
+            <p class="author-description">{{ post.author.meta.description|e }}</p>
           {% endif %}
         </div>
       </div>
