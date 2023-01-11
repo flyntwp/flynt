@@ -4,8 +4,7 @@ flynt-component[name='GridImageText'] {
     --grid-max-width: calc(var(--item-max-width) * var(--grid-columns) + ((var(--grid-columns) - 1) * var(--grid-column-gap)));
     @include reset-list;
     @include grid(1, center);
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline: auto;
     max-width: var(--grid-max-width);
 
     &[data-max-columns='2'],
@@ -36,10 +35,10 @@ flynt-component[name='GridImageText'] {
     ul {
       list-style-position: outside;
       list-style-type: initial;
-      padding-left: 0;
+      padding-inline-start: 0;
 
       li {
-        margin-left: 1em;
+        margin-inline-start: 1em;
       }
     }
   }

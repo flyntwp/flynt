@@ -26,18 +26,17 @@ flynt-component[name='NavigationMain'] {
 
   .wrapper {
     background-color: var(--color-background);
-    border-bottom: solid 2px var(--color-border);
+    border-block-end: solid 2px var(--color-border);
     height: var(--navigation-height);
-    left: 0;
+    inset-block-start: 0;
+    inset-inline: 0;
     position: fixed;
-    right: 0;
-    top: 0;
     transition: all 0.3s;
     width: 100%;
     z-index: 99;
 
     .admin-bar & {
-      top: var(--wp-admin--admin-bar--height);
+      inset-block-start: var(--wp-admin--admin-bar--height);
     }
   }
 
@@ -45,8 +44,7 @@ flynt-component[name='NavigationMain'] {
     display: flex;
     height: 100%;
     justify-content: space-between;
-    padding-bottom: 24px;
-    padding-top: 24px;
+    padding-block: 24px;
   }
 
   @import 'Partials/logo';

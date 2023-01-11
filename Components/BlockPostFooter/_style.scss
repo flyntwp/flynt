@@ -9,8 +9,7 @@ flynt-component[name='BlockPostFooter'] {
 
     .item {
       display: inline-block;
-      margin-left: 0.5rem;
-      margin-right: 0.5rem;
+      margin-inline: 0.5rem;
     }
   }
 
@@ -18,7 +17,7 @@ flynt-component[name='BlockPostFooter'] {
     display: flex;
     flex-direction: column;
     gap: calc(var(--flow-space) / 2);
-    text-align: left;
+    text-align: start;
 
     @media (min-width: $breakpoint-mobile-horizontal) {
       flex-direction: row;
@@ -43,7 +42,7 @@ flynt-component[name='BlockPostFooter'] {
 
     .description {
       font-size: var(--font-size-small);
-      margin-top: calc(var(--flow-space) / 2);
+      margin-block-start: calc(var(--flow-space) / 2);
     }
   }
 }

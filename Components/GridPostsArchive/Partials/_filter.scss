@@ -4,5 +4,5 @@
   flex-wrap: wrap;
   gap: var(--flow-space);
   justify-content: center;
-  margin-bottom: calc(var(--component-spacing) / 2);
+  margin-block-end: calc(var(--component-spacing) / 2);
 }

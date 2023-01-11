@@ -10,7 +10,7 @@ flynt-component[name='BlockImageText'] {
     > * {
       @media (min-width: $breakpoint-tablet-horizontal) {
         flex-basis: 50%;
-        margin-top: 0;
+        margin-block-start: 0;
       }
     }
   }

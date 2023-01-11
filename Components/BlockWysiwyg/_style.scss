@@ -1,7 +1,7 @@
 flynt-component[name='BlockWysiwyg'] {
   .flowContent {
     > :last-child {
-      margin-bottom: 0;
+      margin-block-end: 0;
     }
 
     @media (max-width: $breakpoint-tablet) {
@@ -12,7 +12,7 @@ flynt-component[name='BlockWysiwyg'] {
   }
 
   [data-text-align='left'] {
-    text-align: left;
+    text-align: start;
   }
 
   [data-text-align='center'] {

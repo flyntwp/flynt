@@ -6,7 +6,7 @@
   display: flex;
   height: 48px;
   justify-content: center;
-  margin-right: -10px;
+  margin-inline-end: -10px;
   position: relative;
   width: 48px;
 
@@ -32,7 +32,7 @@
       border-radius: 6px;
       display: block;
       height: var(--line-border-width);
-      left: 0;
+      inset-inline-start: 0;
       position: absolute;
       transition: opacity 0.2s ease-in-out 0.2s, transform 0.2s ease-in-out 0.2s,
         background-color 0.2s ease-in-out 0s;
@@ -40,17 +40,17 @@
     }
 
     &::before {
-      top: 0;
+      inset-block-start: 0;
     }
 
     &--primary,
     &--text {
-      top: 9px;
+      inset-block-start: 9px;
       transition-delay: 0s;
     }
 
     &::after {
-      top: 18px;
+      inset-block-start: 18px;
     }
   }
 }

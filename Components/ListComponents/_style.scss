@@ -4,8 +4,7 @@ flynt-component[name='ListComponents'] {
     --posts-max-width: calc(var(--item-max-width) * var(--grid-columns) + ((var(--grid-columns) - 1) * var(--grid-column-gap)));
     @include reset-list;
     @include grid;
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline: auto;
     max-width: var(--posts-max-width);
 
     @media (min-width: $breakpoint-tablet) {
@@ -20,14 +19,13 @@ flynt-component[name='ListComponents'] {
   .component {
     display: flex;
     flex-wrap: wrap;
-    margin-left: auto;
-    margin-right: auto;
+    margin-inline: auto;
     max-width: calc(var(--container-max-width) / var(--grid-columns));
 
     .imageWrapper {
       height: 0;
       overflow: hidden;
-      padding-bottom: calc(100% * (800 / 1280));
+      padding-block-end: calc(100% * (800 / 1280));
       position: relative;
       width: 100%;
 
@@ -61,7 +59,7 @@ flynt-component[name='ListComponents'] {
       width: 100%;
 
       .button--text {
-        margin-left: auto;
+        margin-inline-start: auto;
       }
     }
   }

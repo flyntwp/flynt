@@ -28,21 +28,19 @@ flynt-component[name='NavigationBurger'] {
   .container {
     align-items: center;
     background-color: var(--color-background);
-    border-bottom: solid 2px var(--color-border);
+    border-block-end: solid 2px var(--color-border);
     display: flex;
     height: var(--navigation-height);
+    inset-block-start: 0;
+    inset-inline: 0;
     justify-content: space-between;
-    left: 0;
-    padding-bottom: 12px;
-    padding-top: 12px;
+    padding-block: 12px;
     position: fixed;
-    right: 0;
-    top: 0;
     width: 100%;
     z-index: 99;
 
     .admin-bar & {
-      top: var(--wp-admin--admin-bar--height);
+      inset-block-start: var(--wp-admin--admin-bar--height);
     }
   }
 

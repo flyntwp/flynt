@@ -2,21 +2,18 @@ flynt-component[name='NavigationFooter'] {
   font-size: 1rem;
 
   .container {
-    padding-bottom: var(--component-spacing);
-    padding-top: var(--component-spacing);
+    padding-block: var(--component-spacing);
     text-align: center;
 
     @media (min-width: $breakpoint-tablet) {
       display: flex;
       flex-direction: row-reverse;
       justify-content: space-between;
-      padding-bottom: var(--component-spacing-mobile);
-      padding-top: var(--component-spacing-mobile);
+      padding-block: var(--component-spacing-mobile);
     }
 
     @media (min-width: $breakpoint-desktop) {
-      padding-bottom: var(--component-spacing-mobile);
-      padding-top: var(--component-spacing-mobile);
+      padding-block: var(--component-spacing-mobile);
     }
   }
 

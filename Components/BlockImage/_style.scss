@@ -18,11 +18,9 @@ flynt-component[name='BlockImage'] {
       max-width: 100%;
 
       .caption {
-        margin-left: auto;
-        margin-right: auto;
+        margin-inline: auto;
         max-width: var(--container-max-width);
-        padding-left: var(--container-padding);
-        padding-right: var(--container-padding);
+        padding-inline: var(--container-padding);
       }
     }
   }

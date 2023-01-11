@@ -108,18 +108,18 @@ code {
 figcaption {
   color: var(--color-text-muted);
   font-size: 1rem;
-  padding-top: 0.25rem;
+  padding-block-start: 0.25rem;
 }
 
 blockquote,
 .blockquote {
-  border-left: 5px solid var(--color-accent);
+  border-inline-start: 5px solid var(--color-accent);
   font-size: 1.375rem;
   font-style: italic;
   font-weight: 500;
   margin: calc(var(--flow-space) * 1.5) auto;
   max-width: 40ch;
-  padding-left: 1rem;
+  padding-inline-start: 1rem;
   width: 100%;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
@@ -133,7 +133,7 @@ blockquote,
   footer {
     color: var(--color-text-muted);
     font-size: 1.25rem;
-    padding-top: 0.25rem;
+    padding-block-start: 0.25rem;
   }
 }
 
@@ -142,7 +142,7 @@ blockquote,
 */
 ul,
 ol {
-  padding-left: 1.5rem;
+  padding-inline-start: 1.5rem;
 }
 
 table {
@@ -156,7 +156,7 @@ table {
   caption {
     caption-side: bottom;
     color: var(--color-text-muted);
-    margin-top: calc(var(--flow-space) / 2);
+    margin-block-start: calc(var(--flow-space) / 2);
     text-align: start;
   }
 
@@ -174,7 +174,7 @@ table {
 
   thead {
     background-color: var(--color-background-secondary);
-    border-bottom: solid 2px var(--color-border);
+    border-block-end: solid 2px var(--color-border);
   }
 
   tr {
@@ -248,7 +248,7 @@ fieldset {
   padding: 0;
 
   *:last-child {
-    margin-bottom: 0;
+    margin-block-end: 0;
   }
 }
 
@@ -258,7 +258,7 @@ legend {
 }
 
 legend {
-  margin-bottom: calc(var(--flow-space) / 2);
+  margin-block-end: calc(var(--flow-space) / 2);
 }
 
 #{$input-selectors} {
@@ -288,7 +288,7 @@ input,
 select,
 textarea {
   color: var(--color-text);
-  margin-bottom: var(--flow-space);
+  margin-block-end: var(--flow-space);
   padding: 0.7em 0.6em;
 }
 
@@ -299,20 +299,20 @@ textarea {
   position: relative;
 
   &::after {
-    border-left: var(--icon-border-width) solid currentColor;
-    border-top: var(--icon-border-width) solid currentColor;
+    border-block-start: var(--icon-border-width) solid currentColor;
+    border-inline-start: var(--icon-border-width) solid currentColor;
     content: '';
     height: var(--icon-size);
+    inset-block-start: calc(50% + (var(--icon-border-width) / 2));
+    inset-inline-end: 0.6em;
     pointer-events: none;
     position: absolute;
-    right: 0.6em;
-    top: calc(50% + (var(--icon-border-width) / 2));
     transform: rotate(45deg) translateX(calc(-1 * (50% - var(--icon-border-width) / 2)));
     width: var(--icon-size);
   }
 
   select {
-    padding-right: calc(var(--icon-size) + 1.5em);
+    padding-inline-end: calc(var(--icon-size) + 1.5em);
   }
 }
 
@@ -341,7 +341,7 @@ textarea {
   + label {
     display: inline-block;
     font: inherit;
-    padding-left: 1.75em;
+    padding-inline-start: 1.75em;
     position: relative;
     width: 100%;
 
@@ -357,11 +357,11 @@ textarea {
       content: '';
       display: block;
       height: 1em;
-      left: 0;
+      inset-block-start: var(--border-width);
+      inset-inline-start: 0;
       margin: 0;
       padding: 0;
       position: absolute;
-      top: var(--border-width);
       transition: border-color 0.2s ease, background-color 0.2s ease;
       width: 1em;
     }
@@ -378,14 +378,14 @@ textarea {
   + label::after {
     --mark-width: 0.3em;
     --mark-height: 0.6em;
-    border-bottom: var(--border-width) solid transparent;
-    border-right: var(--border-width) solid transparent;
+    border-block-end: var(--border-width) solid transparent;
+    border-inline-end: var(--border-width) solid transparent;
     content: '';
     display: block;
     height: var(--mark-height);
-    left: calc(var(--mark-width) + (var(--border-width) / 2));
+    inset-block-start: calc((var(--mark-height) / 2) - (var(--border-width) / 2));
+    inset-inline-start: calc(var(--mark-width) + (var(--border-width) / 2));
     position: absolute;
-    top: calc((var(--mark-height) / 2) - (var(--border-width) / 2));
     transform: rotate(45deg);
     transition: border-color 0.2s ease;
     width: var(--mark-width);
@@ -393,8 +393,8 @@ textarea {
 
   &:checked {
     + label::after {
-      border-bottom-color: var(--color-accent);
-      border-right-color: var(--color-accent);
+      border-block-end-color: var(--color-accent);
+      border-inline-end-color: var(--color-accent);
     }
   }
 }
@@ -427,7 +427,7 @@ flynt-component {
   height: 100%;
 
   .admin-bar & {
-    padding-top: var(--wp-admin--admin-bar--height);
+    padding-block-start: var(--wp-admin--admin-bar--height);
   }
 }
 
@@ -450,36 +450,30 @@ flynt-component {
 }
 
 .centerMaxWidthContainer {
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
   max-width: var(--container-max-width);
-  padding-left: var(--container-padding);
-  padding-right: var(--container-padding);
+  padding-inline: var(--container-padding);
 }
 
 .centerMaxWidthContainerLarge {
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
   max-width: var(--container-max-width-large);
-  padding-left: var(--container-padding);
-  padding-right: var(--container-padding);
+  padding-inline: var(--container-padding);
 }
 
 .centerContentMaxWidth {
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
   max-width: var(--content-max-width);
 }
 
 .centerContentMaxWidthLarge {
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
   max-width: var(--content-max-width-large);
 }
 
 .flowContent {
   > * + * {
-    margin-top: var(--flow-space);
+    margin-block-start: var(--flow-space);
   }
 }
 
@@ -514,12 +508,12 @@ flynt-component {
 
 /* Skip link behavior */
 .skipLink {
+  inset-block-start: -100px;
   position: fixed;
-  top: -100px;
   z-index: 999;
 
   &:focus {
-    top: 0;
+    inset-block-start: 0;
   }
 }
 
