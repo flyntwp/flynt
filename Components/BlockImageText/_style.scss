@@ -8,20 +8,18 @@ flynt-component[name='BlockImageText'] {
     }
 
     > * {
-      @include reset-content-margins('top');
-
       @media (min-width: $breakpoint-tablet-horizontal) {
-        @include reset-content-margins();
         flex-basis: 50%;
+        margin-top: 0;
       }
     }
   }
 
   [data-image-position='right'] {
-    flex-direction: row;
+    flex-direction: row-reverse;
   }
 
   [data-image-position='left'] {
-    flex-direction: row-reverse;
+    flex-direction: row;
   }
 }

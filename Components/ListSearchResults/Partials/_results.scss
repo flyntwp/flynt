@@ -1,20 +1,16 @@
 .results {
   @include reset-list;
-
-  .result {
-    @include reset-list-item;
-
-    + & {
-      margin-top: var(--gap-width);
-    }
-  }
+  margin-top: calc(var(--component-spacing) / 2);
 }
 
 .post {
-  &-link {
+  .link {
     @include reset-link;
-    @include reset-content-margins;
     color: var(--color-text);
+  }
+
+  .footer {
+    text-align: right;
   }
 }
 

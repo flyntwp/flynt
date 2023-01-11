@@ -31,7 +31,8 @@ export default defineConfig(({ mode }) => {
             key: fs.readFileSync(env.VITE_DEV_SERVER_KEY),
             cert: fs.readFileSync(env.VITE_DEV_SERVER_CERT)
           }
-        : false
+        : false,
+      host: 'localhost' // preserve conflicts with IpV6
     },
     build: {
       // generate manifest.json in outDir

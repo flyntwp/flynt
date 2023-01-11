@@ -1,6 +1,6 @@
 <flynt-component client:visible name="GridPostsArchive" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
   <div class="container centerMaxWidthContainer">
-    <div class="preContent">
+    <div class="preContent flowContent">
       <h1>{{ title }}</h1>
       {% set html = isHome ? preContentHtml : description %}
       {{ html|e('wp_kses_post') }}
@@ -12,8 +12,8 @@
     {% if posts|length > 0 %}
       <ul data-ref="posts" class="posts">
         {% for post in posts %}
-          <li class="post boxShadow boxRadius" data-theme="reset">
-            <a class="post-link" href="{{ post.link }}" aria-label="{{ post.title }}">
+          <li class="post boxBorder" data-theme="reset">
+            <a class="link" href="{{ post.link }}" aria-label="{{ post.title }}">
               {% if post.thumbnail %}
                 <figure class="figure">
                   <img class="post-image figure-image lazyload"
@@ -33,13 +33,13 @@
                     alt="{{ post.title }}">
                 </figure>
               {% endif %}
-              <div class="post-content boxPadding">
-                <h2 class="h3">{{ post.title }}</h2>
+              <div class="flowContent boxPadding">
+                <h2 class="h5">{{ post.title }}</h2>
                 <p>{{ post.excerpt.read_more(false) }}</p>
               </div>
-              <footer class="post-footer">
-                <span class="post-readingTime">{{ labels.readingTime|replace({'%d': post.content|readingtime}) }}</span>
-                <span class="button button--link button--small">{{ labels.readMore }}</span>
+              <footer class="footer">
+                <span>{{ labels.readingTime|replace({'%d': post.content|readingtime}) }}</span>
+                <span class="button button--text">{{ labels.readMore }}</span>
               </footer>
             </a>
           </li>

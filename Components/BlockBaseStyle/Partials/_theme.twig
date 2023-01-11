@@ -1,0 +1,18 @@
+<ol>
+  <li><a href="#theme-{{ theme }}-colors">Colors</a></li>
+  <li><a href="#theme-{{ theme }}-typography">Typography</a></li>
+  <li><a href="#theme-{{ theme }}-buttons-and-links">Buttons and Links</a></li>
+  <li><a href="#theme-{{ theme }}-forms">Forms</a></li>
+</ol>
+<hr>
+<h2 id="theme-{{ theme }}-colors">1. Colors <a href="#theme-{{ theme }}-colors" aria-label="Link to Theme {{ theme|capitalize }} Colors">#</a></h2>
+{% include 'Partials/_tableColors.twig'%}
+<hr>
+<h2 id="theme-{{ theme }}-typography">2. Typography <a href="#theme-{{ theme }}-typography" aria-label="Link to Theme {{ theme|capitalize }} Typography">#</a></h2>
+{% include 'Partials/_typographyExamples.twig'%}
+<hr>
+<h2 id="theme-{{ theme }}-buttons-and-links">3. Buttons and Links <a href="#theme-{{ theme }}-buttons-and-links" aria-label="Link to Theme {{ theme|capitalize }} Buttons and Links">#</a></h2>
+{% include 'Partials/_buttonsAndLinks.twig'%}
+<hr>
+<h2 id="theme-{{ theme }}-forms">4. Forms <a href="#theme-{{ theme }}-forms" aria-label="Link to Theme {{ theme|capitalize }} Forms">#</a></h2>
+{% include 'Partials/_inputs.twig'%}

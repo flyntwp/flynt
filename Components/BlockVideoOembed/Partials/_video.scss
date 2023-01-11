@@ -15,9 +15,6 @@
     z-index: 10;
 
     &[data-state='isLoading'] {
-      background: var(--color-border-alpha);
-      transition: background 0.2s ease-out;
-
       .video-loader {
         display: block;
       }
@@ -58,10 +55,6 @@
 
   &[data-video-size='large'] {
     max-width: var(--content-max-width-large);
-  }
-
-  &[data-video-size='huge'] {
-    max-width: var(--container-max-width);
   }
 
   &[data-video-size='full'] {

@@ -1,31 +1,31 @@
 flynt-component[name='BlockPostFooter'] {
+  --font-size-small: 1rem;
+
   .tags {
     @include reset-list;
     display: flex;
     flex-wrap: wrap;
+    font-size: var(--font-size-small);
 
-    &-item {
-      @include reset-list-item;
+    .item {
       display: inline-block;
-      margin-bottom: 0.5rem;
+      margin-left: 0.5rem;
       margin-right: 0.5rem;
     }
   }
 
   .author {
     display: flex;
+    flex-direction: column;
+    gap: calc(var(--flow-space) / 2);
     text-align: left;
 
     @media (min-width: $breakpoint-mobile-horizontal) {
-      align-items: center;
+      flex-direction: row;
+      gap: var(--flow-space);
     }
 
-    &-avatarLink {
-      @include reset-link;
-      flex-shrink: 0;
-    }
-
-    &-avatarImage {
+    .avatar {
       border-radius: 50%;
       width: 64px;
 
@@ -34,34 +34,16 @@ flynt-component[name='BlockPostFooter'] {
       }
     }
 
-    &-info {
-      @include reset-content-margins;
+    .details {
       display: flex;
       flex: 1;
       flex-direction: column;
       justify-content: center;
-      padding-left: 1rem;
-
-      @media (min-width: $breakpoint-mobile-horizontal) {
-        padding-left: var(--gap-width);
-      }
     }
 
-    &-name {
-      margin-bottom: 0;
-    }
-
-    &-nameLink {
-      @include reset-link;
-
-      &:hover {
-        color: var(--color-accent);
-      }
-    }
-
-    &-description {
-      font-size: 0.9375rem;
-      line-height: 1.5;
+    .description {
+      font-size: var(--font-size-small);
+      margin-top: calc(var(--flow-space) / 2);
     }
   }
 }

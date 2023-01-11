@@ -1,0 +1,23 @@
+.menu {
+  @include reset-list;
+  align-items: center;
+  display: flex;
+  margin-right: -1rem;
+  padding-left: 2rem;
+
+  .link {
+    @include reset-link;
+    color: var(--color-text);
+    display: inline-block;
+    font-size: 1.063rem;
+    font-weight: 400;
+    padding: 0.5rem 1rem;
+  }
+
+  .current-menu-item {
+    .link {
+      color: var(--color-accent);
+      text-decoration: underline;
+    }
+  }
+}

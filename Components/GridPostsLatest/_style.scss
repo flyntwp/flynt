@@ -1,7 +1,12 @@
 flynt-component[name='GridPostsLatest'] {
   .grid {
+    --item-max-width: calc((var(--container-max-width) / 3) - var(--grid-column-gap));
+    --grid-max-width: calc(var(--item-max-width) * var(--grid-columns) + ((var(--grid-columns) - 1) * var(--grid-column-gap)));
     @include reset-list;
     @include grid(1, center);
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--grid-max-width);
 
     &[data-max-columns='2'],
     &[data-max-columns='3'],
@@ -26,19 +31,14 @@ flynt-component[name='GridPostsLatest'] {
   }
 
   .post {
-    @include reset-list-item;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: var(--content-max-width);
-
-    &-link {
+    .link {
       @include reset-link;
       display: flex;
       flex-direction: column;
       height: 100%;
     }
 
-    &-content {
+    .flowContent {
       color: var(--color-text);
       flex-grow: 1;
 
@@ -47,19 +47,13 @@ flynt-component[name='GridPostsLatest'] {
       }
     }
 
-    &-footer {
+    .footer {
       align-items: center;
       display: flex;
       justify-content: space-between;
-      padding: 0 var(--box-padding) 24px;
+      padding: 0 var(--box-padding) var(--box-padding);
       position: relative;
       width: 100%;
-    }
-
-    &-readingTime {
-      align-items: center;
-      display: flex;
-      font-size: 0.9375rem;
     }
   }
 }

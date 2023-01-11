@@ -24,43 +24,9 @@
   }
 }
 
-@mixin center(
-  $max-width: var(--container-max-width),
-  $padding: var(--container-padding)
-) {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: $max-width;
-  padding-left: $padding;
-  padding-right: $padding;
-}
-
-@mixin reset-content-margins($direction: 'both') {
-  @if ($direction == 'both' or $direction == 'top') {
-    > :first-child {
-      margin-top: 0;
-      padding-top: 0;
-    }
-  }
-
-  @if ($direction == 'both' or $direction == 'bottom') {
-    > :last-child {
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
-  }
-}
-
 @mixin reset-list {
-  display: block;
   list-style: none;
-  margin: 0;
   padding: 0;
-}
-
-@mixin reset-list-item {
-  margin-bottom: 0;
 }
 
 @mixin reset-link {
@@ -68,11 +34,24 @@
 }
 
 /**
+* Default Outline style
+*/
+
+@mixin normalize-outline {
+  outline-color: Highlight;
+  outline-color: -webkit-focus-ring-color;
+  outline-offset: 2px;
+  outline-style: dotted;
+  outline-width: 2px;
+}
+
+/**
 * Grid Mixin
 *
-* Applies a flexbox grid (based on css variables) to a container element. All direct children will be modified to create a column based grid.
+* Applies a flexbox grid (based on css variables) to a container element.
+* All direct children will be modified to create a column based grid.
 */
-@mixin grid($columns: 1, $alignment: flex-start, $row-gap: var(--gap-width), $column-gap: var(--gap-width) ) {
+@mixin grid($columns: 1, $alignment: flex-start, $row-gap: var(--flow-space), $column-gap: var(--flow-space) ) {
   --grid-columns: #{$columns};
   --grid-alignment: #{$alignment};
   --grid-row-gap: #{$row-gap};

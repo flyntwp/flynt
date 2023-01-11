@@ -1,26 +1,24 @@
 <flynt-component client:visible name="BlockPostHeader">
   <div class="container" data-theme="light">
-    <div class="content centerContentMaxWidth">
+    <div class="flowContent centerContentMaxWidth">
       <h1>{{ post.title }}</h1>
       {% if post.post_excerpt %}
         <p class="excerpt h5">{{ post.post_excerpt }}</p>
       {% endif %}
       <div class="meta">
-        <a class="meta-author" href="{{ post.author.link|e('esc_url') }}">
+        <a class="author" href="{{ post.author.link|e('esc_url') }}">
           {% if post.author.avatar %}
-          <span class="meta-avatar">
-            <img class="meta-avatarImage" src="{{ post.author.avatar }}" alt="{{ post.author.name|e }}">
-          </span>
+            <img class="avatar" src="{{ post.author.avatar }}" alt="{{ post.author.name|e }}">
           {% endif %}
-          <span class="visuallyHidden">{{ labels.postedByLabel|e }}</span>
+          <span class="visuallyHidden">{{ labels.postedBy|e }}</span>
           {{ post.author.name }}
         </a>
-        <a class="meta-category" href="{{ post.category.link|e('esc_url') }}">
-          <span class="visuallyHidden">{{ labels.postedInLabel|e }}</span>
+        <a class="category" href="{{ post.category.link|e('esc_url') }}">
+          <span class="visuallyHidden">{{ labels.postedIn|e }}</span>
           {{ post.category }}
         </a>
-        <time class="meta-date" datetime="{{ post.post_date|date('c') }}">{{ post.post_date|date(dateFormat) }}</time>
-        <span class="meta-readingtime">{{ labels.readingTime|replace({'%d': post.content|readingtime})|e }}</span>
+        <time class="date" datetime="{{ post.post_date|date('c') }}">{{ post.post_date|date(dateFormat) }}</time>
+        <span class="readingtime">{{ labels.readingTime|replace({'%d': post.content|readingtime})|e }}</span>
       </div>
     </div>
   </div>

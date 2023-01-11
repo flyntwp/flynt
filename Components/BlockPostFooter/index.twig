@@ -1,35 +1,32 @@
 <flynt-component client:visible name="BlockPostFooter" class="componentSpacing">
   <div class="container centerMaxWidthContainer">
     <div class="centerContentMaxWidth">
+      <hr>
       {% if post.terms('tag')  %}
         <span class="visuallyHidden">{{ labels.tagsLabel }}</span>
         <ul class="tags">
           {% for tag in post.terms('tag')  %}
-            <li class="tags-item">
-              <a class="tags-itemLink button button--ghost button--small" href="{{ tag.link }}">{{ tag }}</a>
+            <li class="item">
+              <a class="button button--text" href="{{ tag.link }}">{{ tag }}</a>
             </li>
           {% endfor %}
         </ul>
       {% endif %}
       <div class="author postContent">
         {% if post.author.avatar %}
-          <a class="author-avatarLink" href="{{ post.author.link|e('esc_url') }}" aria-hidden="true" tabindex="-1">
-            <img class="author-avatarImage"
-              width="64"
-              height="64"
-              src="{{ post.author.avatar }}"
-              alt="{{ post.author.name|e }}">
+          <a href="{{ post.author.link|e('esc_url') }}" aria-hidden="true" tabindex="-1">
+            <img class="avatar" width="64" height="64" src="{{ post.author.avatar }}" alt="{{ post.author.name|e }}">
           </a>
         {% endif %}
-        <div class="author-info">
-          <div class="h5 author-name">
-            <a class="author-nameLink" href="{{ post.author.link|e('esc_url') }}">
+        <div class="details">
+          <p class="name">
+            <a href="{{ post.author.link|e('esc_url') }}">
               <span class="visuallyHidden">{{ labels.postedByLabel }}</span>
               {{ post.author.name }}
             </a>
-          </div>
-          {% if post.author.description %}
-            <p class="author-description">{{ post.author.description|e }}</p>
+          </p>
+          {% if post.author.meta.description %}
+            <p class="description">{{ post.author.meta.description|e }}</p>
           {% endif %}
         </div>
       </div>

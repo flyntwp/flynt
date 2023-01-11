@@ -67,12 +67,11 @@ function getACFLayout()
                         'layout' => 'horizontal',
                         'choices' => [
                             'small' => __('Small', 'flynt'),
-                            'medium' => __('Medium', 'flynt'),
-                            'large' => __('Large (Default)', 'flynt'),
-                            'huge' => __('Huge', 'flynt'),
+                            'medium' => __('Medium (Default)', 'flynt'),
+                            'large' => __('Large', 'flynt'),
                             'full' => __('Full', 'flynt'),
                         ],
-                        'default_value' => 'large',
+                        'default_value' => 'medium',
                     ],
                 ]
             ]

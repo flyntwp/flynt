@@ -2,14 +2,14 @@
   <flynt-component client:visible name="GridPostsLatest" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
     <div class="container centerMaxWidthContainer">
       {% if preContentHtml %}
-        <div class="preContent">
+        <div class="preContent flowContent">
           {{ preContentHtml|e('wp_kses_post') }}
         </div>
       {% endif %}
       <ul class="grid" {{ options.maxColumns ? 'data-max-columns="' ~ options.maxColumns ~ '"' }}>
         {% for post in posts %}
-          <li class="post boxShadow boxRadius" data-theme="reset">
-            <a class="post-link" href="{{ post.link }}" aria-label="{{ post.title }}">
+          <li class="post boxBorder" data-theme="reset">
+            <a class="link" href="{{ post.link }}" aria-label="{{ post.title }}">
               {% if post.thumbnail %}
                 <figure class="figure">
                   <img class="post-image figure-image lazyload"
@@ -29,20 +29,20 @@
                     alt="{{ post.title }}">
                 </figure>
               {% endif %}
-              <div class="post-content boxPadding">
-                <h2 class="h3">{{ post.title }}</h2>
+              <div class="flowContent boxPadding">
+                <h2 class="h5">{{ post.title }}</h2>
                 <p>{{ post.excerpt.read_more(false) }}</p>
               </div>
-              <footer class="post-footer">
-                <span class="post-readingTime">{{ labels.readingTime|replace({'%d': post.content|readingtime}) }}</span>
-                <span class="button button--link button--small">{{ labels.readMore }}</span>
+              <footer class="footer">
+                <span>{{ labels.readingTime|replace({'%d': post.content|readingtime}) }}</span>
+                <span class="button button--text">{{ labels.readMore }}</span>
               </footer>
             </a>
           </li>
         {% endfor %}
       </ul>
       <div class="postContent">
-        <a href="{{ postTypeArchiveLink }}" class="button button--link">{{ labels.allPosts }}</a>
+        <a href="{{ postTypeArchiveLink }}" class="button button--text">{{ labels.allPosts }}</a>
       </div>
     </div>
   </flynt-component>

@@ -1,0 +1,11 @@
+.logo {
+  @include reset-link;
+  display: block;
+  flex-shrink: 0;
+  height: 100%;
+
+  &-image {
+    height: 100%;
+    width: auto;
+  }
+}

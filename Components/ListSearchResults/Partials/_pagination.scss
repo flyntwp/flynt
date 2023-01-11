@@ -2,7 +2,7 @@
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--gap-width);
+  gap: var(--flow-space);
   justify-content: space-between;
   margin-top: calc(var(--component-spacing) / 2);
 
@@ -13,31 +13,31 @@
       margin-left: auto;
 
       &::after {
-        border-right: var(--border-width) solid currentColor;
-        border-top: var(--border-width) solid currentColor;
+        border-right: 2px solid currentColor;
+        border-top: 2px solid currentColor;
         content: '';
         display: inline-block;
-        height: 0.5rem;
-        margin-bottom: 0.0625rem;
-        margin-left: 0.25rem;
+        height: 0.5em;
+        margin-bottom: 0.07em;
+        margin-left: 0.5em;
         transform: rotate(45deg);
         vertical-align: baseline;
-        width: 0.5rem;
+        width: 0.5em;
       }
     }
 
     &-previous {
       &::before {
-        border-left: var(--border-width) solid currentColor;
-        border-top: var(--border-width) solid currentColor;
+        border-left: 2px solid currentColor;
+        border-top: 2px solid currentColor;
         content: '';
         display: inline-block;
-        height: 0.5rem;
-        margin-bottom: 0.0625rem;
-        margin-right: 0.25rem;
+        height: 0.5em;
+        margin-bottom: 0.07em;
+        margin-right: 0.5em;
         transform: rotate(-45deg);
         vertical-align: baseline;
-        width: 0.5rem;
+        width: 0.5em;
       }
     }
   }

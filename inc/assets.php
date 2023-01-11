@@ -11,50 +11,32 @@ call_user_func(function () {
 });
 
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_script(
-        'Flynt/assets',
-        Asset::requireUrl('assets/main.js'),
-        [],
-        null
-    );
-    wp_script_add_data('Flynt/assets', 'defer', true);
-    wp_script_add_data('Flynt/assets', 'module', true);
-    $data = [
-        'templateDirectoryUri' => get_template_directory_uri(),
-        'componentsWithScript' => ComponentManager::getInstance()->getComponentsWithScript(),
-    ];
-    wp_localize_script('Flynt/assets', 'FlyntData', $data);
+    wp_enqueue_script('Flynt/assets/main', Asset::requireUrl('assets/main.js'), [], null);
+    wp_script_add_data('Flynt/assets/main', 'defer', true);
+    wp_script_add_data('Flynt/assets/main', 'module', true);
 
-    wp_enqueue_style(
-        'Flynt/assets',
-        Asset::requireUrl('assets/main.scss'),
-        [],
-        null
-    );
+    wp_localize_script('Flynt/assets/main', 'FlyntData', [
+        'componentsWithScript' => ComponentManager::getInstance()->getComponentsWithScript(),
+        'templateDirectoryUri' => get_template_directory_uri(),
+    ]);
+
+    wp_enqueue_style('Flynt/assets/main', Asset::requireUrl('assets/main.scss'), [], null);
+    wp_enqueue_style('Flynt/assets/print', Asset::requireUrl('assets/print.scss'), [], null, 'print');
 
     if (!Asset::isHotModuleReplacement()) {
-        wp_style_add_data('Flynt/assets', 'preload', true);
+        wp_style_add_data('Flynt/assets/main', 'preload', true);
     }
 });
 
 add_action('admin_enqueue_scripts', function () {
-    wp_enqueue_script(
-        'Flynt/assets/admin',
-        Asset::requireUrl('assets/admin.js'),
-        [],
-        null
-    );
+    wp_enqueue_script('Flynt/assets/admin', Asset::requireUrl('assets/admin.js'), [], null);
     wp_script_add_data('Flynt/assets/admin', 'defer', true);
     wp_script_add_data('Flynt/assets/admin', 'module', true);
-    $data = [
-        'templateDirectoryUri' => get_template_directory_uri(),
-    ];
-    wp_localize_script('Flynt/assets/admin', 'FlyntData', $data);
 
-    wp_enqueue_style(
-        'Flynt/assets/admin',
-        Asset::requireUrl('assets/admin.scss'),
-        [],
-        null
-    );
+    wp_localize_script('Flynt/assets/admin', 'FlyntData', [
+        'componentsWithScript' => ComponentManager::getInstance()->getComponentsWithScript(),
+        'templateDirectoryUri' => get_template_directory_uri(),
+    ]);
+
+    wp_enqueue_style('Flynt/assets/admin', Asset::requireUrl('assets/admin.scss'), [], null);
 });

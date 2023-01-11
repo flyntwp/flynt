@@ -1,52 +1,29 @@
-// Colors
-:root {
-  --color-brand: hsl(232, 74%, 52%);
+:root,
+[data-theme='reset'] {
+  --color-accent: hsla(212, 100%, 45%, 1);
+  --color-background: hsla(0, 0%, 100%, 1);
+  --color-background-secondary: hsla(0, 0%, 19%, 0.08);
+  --color-border: hsl(0, 0%, 90%);
+  --color-border-secondary: hsl(0, 0%, 19%, 0.68);
+  --color-text: hsl(0, 0%, 19%, 1);
+  --color-text-muted: hsl(0, 0%, 19%, 0.8);
   --color-error: hsl(343, 98%, 46%);
 }
 
-// Themes
-:root,
-[data-theme='reset'] {
-  --color-background: #fff;
-  --color-headline: #0b1016;
-  --color-text: #414751;
-  --color-accent: var(--color-brand);
-  --color-accent-alpha: hsla(232, 74%, 52%, 0.4);
-  --color-accent-hover: hsl(232, 74%, 42%);
-  --color-border: hsl(228, 16%, 40%);
-  --color-border-alpha: hsla(228, 16%, 40%, 0.15);
-  --color-button-text-hover: var(--color-background);
-}
-
 [data-theme='light'] {
-  --color-background: hsl(228, 56%, 98%);
+  --color-background: hsla(228, 56%, 98%, 1);
+  --color-text: hsla(212, 100%, 15%, 1);
 }
 
 [data-theme='dark'] {
-  --color-background: hsl(227, 70%, 20%);
-  --color-headline: hsl(0, 0%, 100%);
-  --color-text: hsl(0, 0%, 100%);
-  --color-accent: hsl(37, 100%, 69%);
-  --color-accent-alpha: hsla(37, 100%, 69%, 0.4);
-  --color-accent-hover: hsl(37, 100%, 59%);
-  --color-border: hsl(0, 0%, 100%);
-  --color-border-alpha: hsla(240, 7%, 92%, 0.1);
-  --color-button-text-hover: var(--color-background);
+  --color-accent: hsla(79, 100%, 60%, 1);
+  --color-background: hsla(212, 100%, 15%, 1);
+  --color-background-secondary: hsl(228, 56%, 98%, 0.06);
+  --color-border-secondary: hsl(0, 0%, 90%, 0.68);
+  --color-text: hsla(0, 0%, 100%, 1);
+  --color-text-muted: hsl(0, 0%, 100%, 0.8);
 }
 
-[data-theme='hero'] {
-  --color-background: var(--color-brand);
-  --color-headline: hsl(0, 0%, 100%);
-  --color-text: hsl(0, 0%, 100%);
-  --color-accent: hsl(37, 100%, 84%);
-  --color-accent-alpha: hsla(37, 100%, 84%, 0.4);
-  --color-accent-hover: hsl(37, 100%, 74%);
-  --color-border: hsl(0, 0%, 100%);
-  --color-border-alpha: hsla(240, 7%, 92%, 0.1);
-  --color-button-text-hover: var(--color-background);
-}
-
-// Helpers
 $breakpoint-mobile-horizontal: 480px;
 $breakpoint-tablet: 768px;
 $breakpoint-tablet-horizontal: 1024px;
@@ -57,29 +34,25 @@ $heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';
 $input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [type="email"], [type="search"], [type="number"], [type="password"], textarea, select';
 
 :root {
-  --opacity-grayed-out: calc(1 - 0.618); // based on golden ratio.
-
-  --border-width: 2px;
-  --gap-width: 24px;
-
-  --button-border-radius: 24px;
-  --box-border-radius: 16px;
+  --body-font-size: 1.25rem; // font-size for body text
+  --flow-space: 1.5rem;
 
   --box-padding-mobile: 16px;
   --box-padding-tablet: 24px;
   --box-padding-desktop: 32px;
 
-  --content-max-width: 60ch;
-  --content-max-width-large: 80ch;
-  --container-max-width: #{$breakpoint-desktop-wide};
+  --content-max-width: 700px;
+  --content-max-width-large: 960px;
+  --container-max-width: calc(1200px + (var(--container-padding) * 2));
+  --container-max-width-large: calc(1340px + (var(--container-padding) * 2));
 
   --container-padding-mobile: 16px;
-  --container-padding-tablet: 32px;
-  --container-padding-desktop: 48px;
+  --container-padding-tablet: 30px;
+  --container-padding-desktop: 40px;
 
   --component-spacing-mobile: 48px;
-  --component-spacing-tablet: 96px;
-  --component-spacing-desktop: 128px;
+  --component-spacing-tablet: 64px;
+  --component-spacing-desktop: 96px;
 
   --box-padding: var(--box-padding-mobile);
   --container-padding: var(--container-padding-mobile);

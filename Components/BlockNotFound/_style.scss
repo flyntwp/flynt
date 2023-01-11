@@ -1,6 +1,3 @@
 flynt-component[name='BlockNotFound'] {
-  .content {
-    @include reset-content-margins;
-    text-align: center;
-  }
+  text-align: center;
 }

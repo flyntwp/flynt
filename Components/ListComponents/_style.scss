@@ -1,7 +1,12 @@
 flynt-component[name='ListComponents'] {
   .components {
+    --item-max-width: calc((var(--container-max-width) / 3) - var(--grid-column-gap));
+    --posts-max-width: calc(var(--item-max-width) * var(--grid-columns) + ((var(--grid-columns) - 1) * var(--grid-column-gap)));
     @include reset-list;
     @include grid;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--posts-max-width);
 
     @media (min-width: $breakpoint-tablet) {
       --grid-columns: 2;
@@ -13,13 +18,13 @@ flynt-component[name='ListComponents'] {
   }
 
   .component {
-    @include reset-list-item;
     display: flex;
     flex-wrap: wrap;
-    max-width: var(--content-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    max-width: calc(var(--container-max-width) / var(--grid-columns));
 
-    &-imageWrapper {
-      background-color: var(--color-border-alpha);
+    .imageWrapper {
       height: 0;
       overflow: hidden;
       padding-bottom: calc(100% * (800 / 1280));
@@ -36,45 +41,27 @@ flynt-component[name='ListComponents'] {
       }
     }
 
-    &-link {
+    .componentLink {
       @include reset-link;
       display: block;
       text-decoration: none;
       width: 100%;
     }
 
-    &-description {
-      @include reset-content-margins;
+    .flowContent {
       color: var(--color-text);
-      position: relative;
     }
 
-    &-footer {
+    footer {
       align-items: center;
       align-self: flex-end;
       display: flex;
       justify-content: space-between;
-      margin-bottom: 24px;
-      padding: 0 var(--box-padding);
+      padding: 0 var(--box-padding) var(--box-padding);
       width: 100%;
 
-      .component-ctaSecondary {
-        @include reset-link;
-        font-size: 0.9375rem;
-        text-decoration: none;
-        transition: color 0.2s ease-in-out, opacity 0.2s ease-in-out;
-
-        &:hover {
-          color: var(--color-accent);
-        }
-      }
-
-      .component-ctaPrimary {
+      .button--text {
         margin-left: auto;
-      }
-
-      @media (min-width: $breakpoint-tablet-horizontal) {
-        padding: 0 32px;
       }
     }
   }

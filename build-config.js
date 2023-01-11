@@ -4,10 +4,11 @@ const dest = './dist'
 const host = `https://${domain}`
 
 const entries = [
+  './assets/admin.js',
+  './assets/admin.scss',
   './assets/main.js',
   './assets/main.scss',
-  './assets/admin.js',
-  './assets/admin.scss'
+  './assets/print.scss'
 ]
 
 const watchFiles = [

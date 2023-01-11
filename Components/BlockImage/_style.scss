@@ -14,10 +14,6 @@ flynt-component[name='BlockImage'] {
       max-width: var(--content-max-width-large);
     }
 
-    &[data-image-size='huge'] {
-      max-width: var(--container-max-width);
-    }
-
     &[data-image-size='full'] {
       max-width: 100%;
 

@@ -1,10 +1,12 @@
 .hamburger {
+  --line-width: 28px;
+  --line-border-width: 2px;
   align-items: center;
   cursor: pointer;
   display: flex;
   height: 48px;
   justify-content: center;
-  margin-right: -9px;
+  margin-right: -10px;
   position: relative;
   width: 48px;
 
@@ -13,9 +15,9 @@
   }
 
   &-lines {
-    height: 21px;
+    height: calc(var(--line-width) - (3 * var(--line-border-width)));
     position: relative;
-    width: 30px;
+    width: var(--line-width);
 
     &::before,
     &::after {
@@ -25,16 +27,16 @@
     &::before,
     &::after,
     &--primary,
-    &--secondary {
+    &--text {
       background-color: var(--color-text);
       border-radius: 6px;
       display: block;
-      height: 3px;
+      height: var(--line-border-width);
       left: 0;
       position: absolute;
       transition: opacity 0.2s ease-in-out 0.2s, transform 0.2s ease-in-out 0.2s,
         background-color 0.2s ease-in-out 0s;
-      width: 30px;
+      width: var(--line-width);
     }
 
     &::before {
@@ -42,7 +44,7 @@
     }
 
     &--primary,
-    &--secondary {
+    &--text {
       top: 9px;
       transition-delay: 0s;
     }
@@ -74,7 +76,7 @@
       transition-delay: 0.2s;
     }
 
-    &--secondary {
+    &--text {
       transform: rotate(-45deg);
       transition-delay: 0.2s;
     }
@@ -86,4 +88,3 @@
     }
   }
 }
-

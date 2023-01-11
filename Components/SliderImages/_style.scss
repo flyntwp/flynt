@@ -1,11 +1,11 @@
 flynt-component[name='SliderImages'] {
   .slider {
-    background-color: var(--color-border-alpha);
+    background-color: var(--color-border);
+    overflow: hidden;
     position: relative;
 
     &-item {
       height: 0;
-      overflow: hidden;
       padding-bottom: calc((2/3) * 100%);
       position: relative;
     }
@@ -29,20 +29,11 @@ flynt-component[name='SliderImages'] {
         content: '';
         height: 100%;
         left: 0;
-        opacity: 0.75;
+        opacity: 1;
         position: absolute;
         top: 0;
         transition: opacity 0.2s ease;
         width: 100%;
-      }
-
-      @media (min-width: $breakpoint-tablet-horizontal) {
-        &:hover,
-        &:focus {
-          &::before {
-            opacity: 1;
-          }
-        }
       }
 
       &.swiper-button-disabled {
@@ -54,8 +45,8 @@ flynt-component[name='SliderImages'] {
         left: 15px;
 
         &::after {
-          border-left: var(--border-width) solid currentColor;
-          border-top: var(--border-width) solid currentColor;
+          border-left: 2px solid currentColor;
+          border-top: 2px solid currentColor;
           content: '';
           height: 0.75em;
           margin-left: calc(0.25em + 2px);
@@ -68,8 +59,8 @@ flynt-component[name='SliderImages'] {
         right: 15px;
 
         &::after {
-          border-right: var(--border-width) solid currentColor;
-          border-top: var(--border-width) solid currentColor;
+          border-right: 2px solid currentColor;
+          border-top: 2px solid currentColor;
           content: '';
           height: 0.75em;
           margin-right: calc(0.25em - 2px);

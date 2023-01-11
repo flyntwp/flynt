@@ -1,20 +1,10 @@
 <flynt-component client:idle client:media="(min-width: 1024px)" name="NavigationMain">
-  <nav aria-label="{{ labels.ariaLabel|e }}">
-    <div class="wrapper">
-      <div class="container centerMaxWidthContainer">
-        <a class="logo" href="{{ site.link }}">
-          <img class="logo-image" width="134" height="48" src="{{ logo.src }}" alt="{{ logo.alt }}">
-        </a>
-        {% if menu %}
-          <ul class="menu">
-            {% for item in menu.items %}
-              <li class="menu-item {{ item.current ? 'menu-item--current' }}">
-                <a class="menu-link" href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>{{ item.title }}</a>
-              </li>
-            {% endfor %}
-          </ul>
-        {% endif %}
-      </div>
+  <nav class="wrapper" aria-label="{{ labels.ariaLabel|e }}">
+    <div class="container centerMaxWidthContainerLarge">
+      {% include 'Partials/_logo.twig' with { 'logo': logo, 'site': site } only %}
+      {% if menu %}
+        {% include 'Partials/_menu.twig' with { 'items': menu.items } only %}
+      {% endif %}
     </div>
   </nav>
 </flynt-component>

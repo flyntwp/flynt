@@ -6,8 +6,7 @@
   left: 0;
   margin: 0;
   overflow-y: auto;
-  padding-bottom: 30px;
-  padding-top: 30px;
+  padding: var(--component-spacing) var(--container-padding);
   position: fixed;
   top: var(--navigation-height);
   transform: translateX(100%);
@@ -21,34 +20,23 @@
     top: calc(var(--navigation-height) + var(--wp-admin--admin-bar--height));
   }
 
-  &-item {
-    @include reset-list-item;
+  .item + .item {
+    margin-top: var(--flow-space);
   }
 
-  &-item--current {
-    .menu-link {
-      color: var(--color-accent);
-    }
-  }
-
-  &-link {
+  .link {
     @include reset-link;
     color: var(--color-text);
     display: block;
-    font-size: 1rem;
-    font-weight: 700;
-    padding: 12px var(--container-padding-mobile);
-    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 400;
     text-decoration: none;
-    transition: color 0.2s ease-out;
+  }
 
-    &:focus {
+  .current-menu-item {
+    .link {
       color: var(--color-accent);
-    }
-
-    @media (min-width: $breakpoint-tablet) {
-      padding-left: var(--container-padding-tablet);
-      padding-right: var(--container-padding-tablet);
+      text-decoration: underline;
     }
   }
 }

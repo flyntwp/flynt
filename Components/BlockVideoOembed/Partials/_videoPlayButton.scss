@@ -22,7 +22,7 @@
 
   &::before {
     background-color: rgba($color: #000, $alpha: 0.5);
-    border: var(--border-width) solid #fff;
+    border: 2px solid #fff;
     border-radius: 50%;
     height: 64px;
     width: 64px;
@@ -37,7 +37,7 @@
     border-bottom: 16px solid transparent;
     border-left: 24px solid #fff;
     border-top: 16px solid transparent;
-    left: calc(50% + var(--border-width));
+    left: calc(50% + 2px);
 
     @media (min-width: $breakpoint-tablet) {
       border-bottom-width: 24px;

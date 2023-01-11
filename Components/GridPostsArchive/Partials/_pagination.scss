@@ -2,7 +2,7 @@
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--gap-width);
+  gap: var(--flow-space);
   justify-content: space-between;
   margin-top: calc(var(--component-spacing) / 2);
 
@@ -18,8 +18,8 @@
       margin-left: auto;
 
       &::after {
-        border-right: var(--border-width) solid currentColor;
-        border-top: var(--border-width) solid currentColor;
+        border-right: 2px solid currentColor;
+        border-top: 2px solid currentColor;
         content: '';
         display: inline-block;
         height: 0.5rem;
@@ -33,8 +33,8 @@
 
     &-previous {
       &::before {
-        border-left: var(--border-width) solid currentColor;
-        border-top: var(--border-width) solid currentColor;
+        border-left: 2px solid currentColor;
+        border-top: 2px solid currentColor;
         content: '';
         display: inline-block;
         height: 0.5rem;

@@ -1,6 +1,5 @@
 flynt-component[name='NavigationMain'] {
-  --navigation-height: 80px;
-
+  --navigation-height: 96px;
   display: none;
   height: var(--navigation-height);
 
@@ -9,10 +8,13 @@ flynt-component[name='NavigationMain'] {
   }
 
   &.headroom {
-    &--not-top {
-      .wrapper {
-        box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.07);
-      }
+    .wrapper {
+      transition: transform 0.3s;
+      will-change: transform;
+    }
+
+    .wrapper {
+      transition: transform 0.3s;
     }
 
     &--unpinned {
@@ -24,6 +26,7 @@ flynt-component[name='NavigationMain'] {
 
   .wrapper {
     background-color: var(--color-background);
+    border-bottom: solid 2px var(--color-border);
     height: var(--navigation-height);
     left: 0;
     position: fixed;
@@ -42,51 +45,10 @@ flynt-component[name='NavigationMain'] {
     display: flex;
     height: 100%;
     justify-content: space-between;
-    padding-bottom: 16px;
-    padding-top: 16px;
+    padding-bottom: 24px;
+    padding-top: 24px;
   }
 
-  .logo {
-    @include reset-link;
-    display: block;
-    height: 100%;
-
-    &-image {
-      height: 100%;
-      width: auto;
-    }
-  }
-
-  .menu {
-    @include reset-list;
-    align-items: center;
-    display: flex;
-    margin-right: -1rem;
-    padding-left: 2rem;
-
-    &-item {
-      @include reset-list-item;
-    }
-
-    &-item--current {
-      .menu-link {
-        color: var(--color-accent);
-      }
-    }
-
-    &-link {
-      @include reset-link;
-      color: var(--color-text);
-      display: inline-block;
-      font-weight: 700;
-      padding: 0.5rem 1rem;
-      text-decoration: none;
-      transition: color 0.2s ease-out;
-
-      &:hover,
-      &:focus {
-        color: var(--color-accent);
-      }
-    }
-  }
+  @import 'Partials/logo';
+  @import 'Partials/menu';
 }

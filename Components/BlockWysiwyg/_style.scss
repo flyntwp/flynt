@@ -1,10 +1,7 @@
 flynt-component[name='BlockWysiwyg'] {
-  .content {
-    @include reset-content-margins;
-
+  .flowContent {
     > :last-child {
       margin-bottom: 0;
-      padding-bottom: 0;
     }
 
     @media (max-width: $breakpoint-tablet) {

@@ -5,8 +5,8 @@ import { buildRefs } from '@/assets/scripts/helpers.js'
 
 export default function (el) {
   let headroom, isMenuOpen
-
   const refs = buildRefs(el)
+  const navigationHeight = parseInt(window.getComputedStyle(el).getPropertyValue('--navigation-height')) || 0
 
   const isDesktopMediaQuery = window.matchMedia('(min-width: 1024px)')
   isDesktopMediaQuery.addEventListener('change', onBreakpointChange)
@@ -32,7 +32,6 @@ export default function (el) {
     if (headroom) {
       return
     }
-    const navigationHeight = parseInt(window.getComputedStyle(el).getPropertyValue('--navigation-height')) || 0
 
     headroom = new Headroom(el, {
       offset: navigationHeight,
@@ -47,8 +46,16 @@ export default function (el) {
     if (isDesktopMediaQuery.matches) {
       if (headroom?.initialised) headroom.destroy()
     } else {
+      setScrollPaddingTop()
       initHeadroom()
       if (!headroom.initialised) headroom.init()
     }
+  }
+
+  function setScrollPaddingTop () {
+    const scrollPaddingTop = document.getElementById('wpadminbar')
+      ? navigationHeight + document.getElementById('wpadminbar').offsetHeight
+      : navigationHeight
+    document.documentElement.style.scrollPaddingTop = `${scrollPaddingTop}px`
   }
 }
