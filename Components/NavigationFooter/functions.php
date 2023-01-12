@@ -14,7 +14,7 @@ add_action('init', function () {
 
 add_filter('Flynt/addComponentData?name=NavigationFooter', function ($data) {
     $data['maxLevel'] = 0;
-    $data['menu'] = Timber::get_menu('navigation_footer');
+    $data['menu'] = Timber::get_menu('navigation_footer') ?? Timber::get_pages_menu();
 
     return $data;
 });
