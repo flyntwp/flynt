@@ -30,10 +30,10 @@ flynt-component[name='SliderImages'] {
         height: 100%;
         inset-block-start: 0;
         inset-inline-start: 0;
-        opacity: 1;
         position: absolute;
         transition: opacity 0.2s ease;
         width: 100%;
+        will-change: opacity;
       }
 
       &.swiper-button-disabled {
@@ -85,7 +85,6 @@ flynt-component[name='SliderImages'] {
     &-caption {
       color: #fff;
       display: inline-block;
-      font-size: 0.875rem;
       inset-block-end: 0;
       inset-inline-end: 0;
       max-width: 450px;

@@ -1,46 +1,55 @@
 {% set formId = function('wp_generate_uuid4') %}
-<fieldset>
-  <label for="textInput-{{ formId }}">Text Input</label><br>
-  <input id="textInput-{{ formId }}" type="text" name="text" placeholder="Placeholder">
-  <br>
-  <label for="textInput-{{ formId }}">Text Input Disabled</label><br>
-  <input id="textInput-{{ formId }}" type="text" name="text" placeholder="Placeholder" disabled>
-  <br>
-  <label for="textInput-{{ formId }}">Text Input Filled Invalid</label><br>
-  <input id="textInput-{{ formId }}" type="text" name="text" placeholder="Placeholder" pattern="[0-9]*" value="Only Numbers are valid"><br>
-  <label for="textarea">Your message</label><br>
-  <textarea id="textarea" placeholder="Placeholder"></textarea>
-  <br>
-  <span class="select">
-  <label class="visuallyHidden" for="selectInput-{{ formId }}">Select Input</label>
-  <select name="select" id="selectInput-{{ formId }}">
-    <option value="select-value-{{ formId }}-1">Select Option #1</option>
-    <option value="select-value-{{ formId }}-2">Select Option #2</option>
-    <option value="select-value-{{ formId }}-3">Select Option #3</option>
-  </select>
-</span>
+<fieldset class="flowContent">
+  <div class="form-group">
+    <label for="textInput-{{ formId }}">Text Input</label><br>
+    <input id="textInput-{{ formId }}" type="text" name="text" placeholder="Placeholder">
+  </div>
+  <div class="form-group">
+    <label for="textInput-{{ formId }}">Text Input Disabled</label><br>
+    <input id="textInput-{{ formId }}" type="text" name="text" placeholder="Placeholder" disabled>
+  </div>
+  <div class="form-group">
+    <label for="textInput-{{ formId }}">Text Input Filled Invalid</label><br>
+    <input id="textInput-{{ formId }}" type="text" name="text" placeholder="Placeholder" pattern="[0-9]*" value="Only Numbers are valid"><br>
+  </div>
+  <div class="form-group">
+    <label for="textarea">Your message</label><br>
+    <textarea id="textarea" placeholder="Placeholder"></textarea>
+  </div>
+  <p>Wrap the select element in a container with the class <code>.select</code> to make the select arrow themeable.</p>
+  <div class="form-group">
+    <span class="select">
+      <label class="visuallyHidden" for="selectInput-{{ formId }}">Select Input</label>
+      <select name="select" id="selectInput-{{ formId }}">
+        <option value="select-value-{{ formId }}-1">Select Option #1</option>
+        <option value="select-value-{{ formId }}-2">Select Option #2</option>
+        <option value="select-value-{{ formId }}-3">Select Option #3</option>
+      </select>
+    </span>
+  </div>
 </fieldset>
 
-<fieldset>
+<p>The user agent stylesheet typically has a very weird <b>&lt;fieldset&gt;</b> and <b>&lt;legend&gt;</b> styling. But hey: why not customize it to our needs?!</p>
+<fieldset class="flowContent">
   <legend>Checkbox Inputs</legend>
   <input type="checkbox" id="checkbox-{{ formId }}-1" required>
   <label for="checkbox-{{ formId }}-1">Checkbox Label #1<sup>*</sup></label>
-  <br>
+
   <input type="checkbox" id="checkbox-{{ formId }}-2">
   <label for="checkbox-{{ formId }}-2">Checkbox Item #2 using <strong>Multiline content</strong> that takes over multiple lines. Lorem ipsum dolor sit amet, <a href="#table-of-contents">consectetur</a> adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</label>
-  <br>
+
   <input type="checkbox" id="checkbox-{{ formId }}-3">
   <label for="checkbox-{{ formId }}-3">Checkbox Label #3</label>
 </fieldset>
 
-<fieldset>
+<fieldset class="flowContent">
   <legend>Radio Inputs</legend>
   <input type="radio" id="radio-{{ formId }}-1" name="radio-group">
   <label for="radio-{{ formId }}-1">Radio Label #1</label>
-  <br>
+
   <input type="radio" id="radio-{{ formId }}-2" name="radio-group">
   <label for="radio-{{ formId }}-2">Radio Item #2 using <strong>Multiline content</strong> that takes over multiple lines. Lorem ipsum dolor sit amet, <a href="#table-of-contents">consectetur</a> adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</label>
-  <br>
+
   <input type="radio" id="radio-{{ formId }}-3" name="radio-group">
   <label for="radio-{{ formId }}-3">Radio Label #3</label>
 </fieldset>

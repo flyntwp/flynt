@@ -144,13 +144,13 @@ function getConfig()
                         'title' => 'Button Text',
                         'classes' => 'button--text',
                         'selector' => '.button'
-                    ],
-                    [
-                        'title' => 'Button Link',
-                        'classes' => 'button--link',
-                        'selector' => '.button'
                     ]
                 ]
+            ],
+            [
+                'title' => 'Paragraph',
+                'classes' => 'paragraph',
+                'selector' => '*'
             ],
         ],
         'toolbars' => [

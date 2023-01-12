@@ -1,11 +1,6 @@
-/* Reset all margins to 0 */
+/* Reset all margins */
 * {
   margin: 0;
-}
-
-/* A11y – Normalize outline */
-:focus-visible {
-  @include normalize-outline;
 }
 
 html {
@@ -66,6 +61,7 @@ object {
   width: 100%;
 }
 
+/* Reset font styling */
 input,
 button,
 textarea,
@@ -99,6 +95,11 @@ sub {
 
 sup {
   inset-block-start: -0.5em;
+}
+
+/* Normalize outline to ensure A11y */
+:focus-visible {
+  @include normalize-outline;
 }
 
 /* Disable animations and transitions for users that prefer reduced motion */

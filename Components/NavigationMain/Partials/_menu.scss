@@ -7,11 +7,10 @@
 
   .link {
     @include reset-link;
-    color: var(--color-text);
+    color: currentColor;
     display: inline-block;
-    font-size: 1.063rem;
     font-weight: 400;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
   }
 
   .current-menu-item {

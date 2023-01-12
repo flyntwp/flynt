@@ -1,13 +1,10 @@
 flynt-component[name='BlockPostFooter'] {
-  --font-size-small: 1rem;
-
   .tags {
     @include reset-list;
     display: flex;
     flex-wrap: wrap;
-    font-size: var(--font-size-small);
 
-    .item {
+    .tag {
       display: inline-block;
       margin-inline: 0.5rem;
     }
@@ -24,7 +21,7 @@ flynt-component[name='BlockPostFooter'] {
       gap: var(--flow-space);
     }
 
-    .avatar {
+    .avatar-image {
       border-radius: 50%;
       width: 64px;
 
@@ -34,6 +31,7 @@ flynt-component[name='BlockPostFooter'] {
     }
 
     .details {
+      --flow-space: 0.5rem;
       display: flex;
       flex: 1;
       flex-direction: column;
@@ -42,7 +40,6 @@ flynt-component[name='BlockPostFooter'] {
 
     .description {
       font-size: var(--font-size-small);
-      margin-block-start: calc(var(--flow-space) / 2);
     }
   }
 }

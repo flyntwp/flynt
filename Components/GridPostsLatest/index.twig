@@ -29,12 +29,12 @@
                     alt="{{ post.title }}">
                 </figure>
               {% endif %}
-              <div class="flowContent boxPadding">
+              <div class="content flowContent boxPadding">
                 <h2 class="h5">{{ post.title }}</h2>
                 <p>{{ post.excerpt.read_more(false) }}</p>
               </div>
               <footer class="footer">
-                <span>{{ labels.readingTime|replace({'%d': post.content|readingtime}) }}</span>
+                <span class="readingTime">{{ labels.readingTime|replace({'%d': post.content|readingtime}) }}</span>
                 <span class="button button--text">{{ labels.readMore }}</span>
               </footer>
             </a>

@@ -17,7 +17,8 @@
     position: absolute;
     transform: translate(-50%, -50%);
     transform-origin: left top;
-    transition: 0.2s ease;
+    transition: 0.3s ease-in-out;
+    will-change: transform;
   }
 
   &::before {

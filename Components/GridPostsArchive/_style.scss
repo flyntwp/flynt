@@ -1,7 +1,7 @@
 flynt-component[name='GridPostsArchive'] {
   .posts {
-    --item-max-width: calc((var(--container-max-width) / 3) - var(--grid-column-gap));
-    --posts-max-width: calc(var(--item-max-width) * var(--grid-columns) + ((var(--grid-columns) - 1) * var(--grid-column-gap)));
+    --post-max-width: calc((var(--container-max-width) / 3) - var(--grid-column-gap));
+    --posts-max-width: calc(var(--post-max-width) * var(--grid-columns) + ((var(--grid-columns) - 1) * var(--grid-column-gap)));
     @include reset-list;
     @include grid;
     margin-inline: auto;
@@ -25,12 +25,13 @@ flynt-component[name='GridPostsArchive'] {
 
     .link {
       @include reset-link;
+      color: currentColor;
       display: flex;
       flex-direction: column;
       height: 100%;
     }
 
-    .flowContent {
+    .content {
       color: var(--color-text);
       flex-grow: 1;
 
@@ -46,6 +47,11 @@ flynt-component[name='GridPostsArchive'] {
       padding: 0 var(--box-padding) var(--box-padding);
       position: relative;
       width: 100%;
+
+      .readingTime {
+        color: var(--color-text-muted);
+        font-size: var(--font-size-small);
+      }
     }
   }
 

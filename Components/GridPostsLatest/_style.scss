@@ -32,12 +32,13 @@ flynt-component[name='GridPostsLatest'] {
   .post {
     .link {
       @include reset-link;
+      color: currentColor;
       display: flex;
       flex-direction: column;
       height: 100%;
     }
 
-    .flowContent {
+    .content {
       color: var(--color-text);
       flex-grow: 1;
 
@@ -53,6 +54,11 @@ flynt-component[name='GridPostsLatest'] {
       padding: 0 var(--box-padding) var(--box-padding);
       position: relative;
       width: 100%;
+
+      .readingTime {
+        color: var(--color-text-muted);
+        font-size: var(--font-size-small);
+      }
     }
   }
 }

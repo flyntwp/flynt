@@ -2,20 +2,18 @@
   <ul role="list" class="results flowContent">
     {% for post in posts  %}
       <li class="result boxBorder boxPadding" data-theme="reset">
-        <article class="post">
-          <a href="{{ post.link }}" aria-label="{{ post.title }}" class="link flowContent">
+        <article class="flowContent">
             <h2 class="h5">{{ post.title }}</h2>
             <p>{{ post.excerpt.read_more(false) }}</p>
-            <footer class="footer">
-              <span class="button button--link" aria-hidden="true">{{ labels.readMore }}</span>
+            <footer>
+              <a href="{{ post.link }}" aria-label="{{ post.title }}" class="link">{{ labels.readMore }}</a>
             </footer>
-          </a>
         </article>
       </li>
     {% endfor %}
   </ul>
 {% else %}
-  <div class="noResults boxPadding">
+  <div class="noResults">
     <p>{{ labels.noResults }}</p>
   </div>
 {% endif %}

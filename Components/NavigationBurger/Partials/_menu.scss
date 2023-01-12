@@ -13,6 +13,7 @@
   transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1), visibility 0.45s;
   visibility: hidden;
   width: 100%;
+  will-change: transform;
   z-index: 98;
 
   .admin-bar & {
@@ -20,16 +21,13 @@
     inset-block-start: calc(var(--navigation-height) + var(--wp-admin--admin-bar--height));
   }
 
-  .item + .item {
-    margin-block-start: var(--flow-space);
-  }
-
   .link {
     @include reset-link;
     color: var(--color-text);
     display: block;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 400;
+    padding: 0.9rem 1.25rem;
     text-decoration: none;
   }
 

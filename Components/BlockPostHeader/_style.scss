@@ -1,12 +1,6 @@
 flynt-component[name='BlockPostHeader'] {
-  --font-size-small: 1rem;
-
   > .container {
     padding: var(--component-spacing) var(--container-padding);
-  }
-
-  .excerpt {
-    margin-block-start: 1.5rem;
   }
 
   .meta {
@@ -24,10 +18,6 @@ flynt-component[name='BlockPostHeader'] {
         margin: 0 0.5rem;
         vertical-align: middle;
         width: 8px;
-
-        @media (min-width: $breakpoint-mobile-horizontal) {
-          margin: 0 0.75rem;
-        }
       }
     }
 

@@ -1,6 +1,7 @@
 flynt-component[name='NavigationMain'] {
   --navigation-height: 96px;
   display: none;
+  font-size: var(--font-size-small);
   height: var(--navigation-height);
 
   @media (min-width: $breakpoint-tablet-horizontal) {
@@ -31,7 +32,6 @@ flynt-component[name='NavigationMain'] {
     inset-block-start: 0;
     inset-inline: 0;
     position: fixed;
-    transition: all 0.3s;
     width: 100%;
     z-index: 99;
 

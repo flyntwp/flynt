@@ -11,33 +11,24 @@
 @include font-face('Public Sans', 'public-sans-v14-latin-600italic', '600', 'italic');
 @include font-face('Public Sans', 'public-sans-v14-latin-700italic', '700', 'italic');
 
-body {
+html,
+body,
+.paragraph {
   color: var(--color-text);
   font-family: 'Public Sans', Verdana, sans-serif; // FOUC can be reduced with good matching fallback font: https://meowni.ca/font-style-matcher/
-  font-size: var(--body-font-size);
+  font-size: var(--font-size-default);
 }
 
 #{$heading-selectors} {
-  --flow-space: 2.5rem;
+  --flow-space: 2rem;
   font-weight: 600;
   line-height: calc(1em + 0.5rem);
 }
 
 h1,
 .h1 {
-  --flow-space: 3.75rem;
+  --flow-space: 3rem;
   font-size: 2.5rem;
-  font-weight: 700;
-
-  @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 3.125rem;
-  }
-}
-
-h2,
-.h2 {
-  --flow-space: 3.75rem;
-  font-size: 2.25rem;
   font-weight: 700;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
@@ -45,36 +36,48 @@ h2,
   }
 }
 
-h3,
-.h3 {
-  font-size: 2rem;
+h2,
+.h2 {
+  font-size: 2.056rem;
+  font-weight: 700;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 2.25rem;
+    font-size: 2.05rem;
+  }
+}
+
+h3,
+.h3 {
+  font-size: 1.722rem;
+
+  @media (min-width: $breakpoint-mobile-horizontal) {
+    font-size: 1.75rem;
   }
 }
 
 h4,
 .h4 {
-  font-size: 1.625rem;
+  font-size: 1.44rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.875rem;
+    font-size: 1.145rem;
   }
 }
 
 h5,
 .h5 {
-  font-size: 1.375rem;
+  font-size: 1.22rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 }
 
 h6,
 .h6 {
-  font-size: 1rem;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-default-small);
+  font-weight: 400;
 }
 
 a {
@@ -84,8 +87,9 @@ a {
 }
 
 hr {
+  --flow-space: var(--component-spacing);
   border: 0;
-  margin: var(--component-spacing) auto;
+  margin: var(--flow-space) auto;
 
   &::after {
     background-color: var(--color-text);
@@ -107,33 +111,26 @@ code {
 
 figcaption {
   color: var(--color-text-muted);
-  font-size: 1rem;
-  padding-block-start: 0.25rem;
+  font-size: var(--font-size-default-small);
+  margin-block-start: 0.25rem;
 }
 
 blockquote,
 .blockquote {
   border-inline-start: 5px solid var(--color-accent);
-  font-size: 1.375rem;
+  display: block;
+  font-size: 1.44rem;
   font-style: italic;
   font-weight: 500;
-  margin: calc(var(--flow-space) * 1.5) auto;
-  max-width: 40ch;
-  padding-inline-start: 1rem;
-  width: 100%;
-
-  @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.5rem;
-  }
-
-  p {
-    font-size: inherit;
-  }
+  line-height: calc(1em + 0.75rem);
+  margin: calc(var(--flow-space) * 1.5) 0 calc(var(--flow-space) * 1.5) 3rem;
+  max-width: 100%;
+  padding-inline-start: 0.8rem;
 
   footer {
     color: var(--color-text-muted);
-    font-size: 1.25rem;
-    padding-block-start: 0.25rem;
+    font-size: var(--font-size-default);
+    margin-block-start: 0.25rem;
   }
 }
 
@@ -149,7 +146,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
   color: var(--color-text);
-  font-size: 1rem;
+  font-size: var(--font-size-default-small);
   max-width: 100%;
   width: 100%;
 
@@ -162,7 +159,7 @@ table {
 
   td,
   th {
-    padding: 1.25rem;
+    padding: 0.9rem 1rem;
     text-align: inherit;
     vertical-align: top;
   }
@@ -190,6 +187,8 @@ table {
 
 .button {
   --border-width: 2px;
+  --padding-inline: calc(1rem - var(--border-width));
+  --padding-block: calc(0.6rem - var(--border-width));
   @include reset-link;
   appearance: none;
   background-color: var(--color-accent);
@@ -200,10 +199,9 @@ table {
   font: inherit;
   font-weight: 700;
   letter-spacing: 0;
-  padding: calc(0.75rem - (var(--border-width))) calc(1.25rem - (var(--border-width)));
+  padding: var(--padding-block) var(--padding-inline);
   text-align: center;
   text-decoration: none;
-  transition: 0.2s ease;
 
   &:disabled {
     cursor: default;
@@ -222,17 +220,6 @@ table {
     color: var(--color-accent);
     padding: 0;
   }
-
-  &--link {
-    background-color: transparent;
-    border: 0;
-    color: var(--color-accent);
-    font-weight: normal;
-    padding: 0;
-    text-decoration: underline;
-    text-decoration-thickness: 0.066em;
-    text-underline-offset: 0.25em;
-  }
 }
 
 /*
@@ -246,19 +233,20 @@ form {
 fieldset {
   border: 0;
   padding: 0;
-
-  *:last-child {
-    margin-block-end: 0;
-  }
 }
 
-label,
 legend {
+  color: var(--color-text);
+  font-size: var(--font-size-default);
+  font-weight: 700;
+  padding: 0;
+}
+
+label {
+  color: var(--color-text-muted);
   display: inline-block;
-}
-
-legend {
-  margin-block-end: calc(var(--flow-space) / 2);
+  font-size: var(--font-size-default-small);
+  font-weight: 500;
 }
 
 #{$input-selectors} {
@@ -267,6 +255,12 @@ legend {
   border: 2px solid var(--color-border-secondary);
   border-radius: 0;
   caret-color: var(--color-text);
+  color: var(--color-text);
+  font-size: var(--font-size-default-small);
+  max-width: 100%;
+  padding: 0.7rem 0.6rem;
+  transition: border-color 0.3s ease-in-out;
+  width: 300px;
 
   &::placeholder {
     color: var(--color-border-secondary);
@@ -280,34 +274,25 @@ legend {
 
   &:invalid {
     border-color: var(--color-error);
-    color: var(--color-error);
   }
-}
-
-input,
-select,
-textarea {
-  color: var(--color-text);
-  margin-block-end: var(--flow-space);
-  padding: 0.7em 0.6em;
 }
 
 .select {
   --icon-size: 17px;
   --icon-border-width: 2px;
-  display: inline;
   position: relative;
 
   &::after {
-    border-block-start: var(--icon-border-width) solid currentColor;
-    border-inline-start: var(--icon-border-width) solid currentColor;
+    border-block-end: var(--icon-border-width) solid currentColor;
+    border-inline-end: var(--icon-border-width) solid currentColor;
     content: '';
+    display: block;
     height: var(--icon-size);
-    inset-block-start: calc(50% + (var(--icon-border-width) / 2));
-    inset-inline-end: 0.6em;
+    inset-block-start: calc(50% - var(--icon-border-width));
+    inset-inline-end: calc(0.6rem + (var(--icon-border-width) * 2));
     pointer-events: none;
     position: absolute;
-    transform: rotate(45deg) translateX(calc(-1 * (50% - var(--icon-border-width) / 2)));
+    transform: translateY(calc(-50% - var(--icon-border-width))) rotate(45deg);
     width: var(--icon-size);
   }
 
@@ -325,6 +310,7 @@ textarea {
 
 [type='checkbox'],
 [type='radio'] {
+  --flow-space: 0;
   opacity: 0;
   pointer-events: none;
   position: absolute;
@@ -339,16 +325,20 @@ textarea {
   }
 
   + label {
-    display: inline-block;
+    color: var(--color-text);
+    display: block;
     font: inherit;
     padding-inline-start: 1.75em;
     position: relative;
-    width: 100%;
 
     &::before,
     &::after {
-      --border-width: 0.1em;
-      font-size: 1.25em;
+      --checkbox-radio-size: 24px;
+      --border-width: 2px;
+      height: var(--checkbox-radio-size);
+      transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+      width: var(--checkbox-radio-size);
+      will-change: border-color, background-color;
     }
 
     &::before {
@@ -356,14 +346,11 @@ textarea {
       border: var(--border-width) solid var(--color-border-secondary);
       content: '';
       display: block;
-      height: 1em;
       inset-block-start: var(--border-width);
       inset-inline-start: 0;
       margin: 0;
       padding: 0;
       position: absolute;
-      transition: border-color 0.2s ease, background-color 0.2s ease;
-      width: 1em;
     }
   }
 
@@ -376,19 +363,16 @@ textarea {
 
 [type='checkbox'] {
   + label::after {
-    --mark-width: 0.3em;
-    --mark-height: 0.6em;
     border-block-end: var(--border-width) solid transparent;
     border-inline-end: var(--border-width) solid transparent;
     content: '';
     display: block;
-    height: var(--mark-height);
-    inset-block-start: calc((var(--mark-height) / 2) - (var(--border-width) / 2));
-    inset-inline-start: calc(var(--mark-width) + (var(--border-width) / 2));
+    height: 15px;
+    inset-block-start: 5px;
+    inset-inline-start: 9px;
     position: absolute;
-    transform: rotate(45deg);
-    transition: border-color 0.2s ease;
-    width: var(--mark-width);
+    transform: rotate(40deg);
+    width: 7px;
   }
 
   &:checked {
@@ -401,13 +385,14 @@ textarea {
 
 [type='radio'] {
   + label::before {
+    background-color: transparent;
     border-radius: 50%;
+    box-shadow: inset 0 0 0 calc(var(--border-width) * 2) var(--color-background);
   }
 
   &:checked {
     + label::before {
       background-color: var(--color-accent);
-      box-shadow: inset 0 0 0 calc(var(--border-width) * 2) var(--color-background);
     }
   }
 }

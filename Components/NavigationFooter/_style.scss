@@ -1,5 +1,5 @@
 flynt-component[name='NavigationFooter'] {
-  font-size: 1rem;
+  font-size: var(--font-size-small);
 
   .container {
     padding-block: var(--component-spacing);
@@ -17,7 +17,7 @@ flynt-component[name='NavigationFooter'] {
     }
   }
 
-  .flowContent {
+  .content {
     margin: var(--flow-space) 0 0;
 
     @media (min-width: $breakpoint-tablet) {

@@ -1,20 +1,13 @@
 .results {
   @include reset-list;
   margin-block-start: calc(var(--component-spacing) / 2);
-}
 
-.post {
-  .link {
-    @include reset-link;
-    color: var(--color-text);
-  }
-
-  .footer {
+  footer {
     text-align: end;
   }
 }
 
 .noResults {
-  margin-block-start: 2rem;
+  margin-block-start: calc(var(--component-spacing) / 2);
   text-align: center;
 }

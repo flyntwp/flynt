@@ -43,7 +43,7 @@
     <div class="flowContent centerContentMaxWidth">
       <h2 id="typography">2. Typography <a href="#typography" aria-label="Link to Typography">#</a></h2>
       <p>By default elements <u>doesn’t</u> have any white-space between (as result of the css reset). Using the <a href="#helpers">helper class</a> <code>.flowContent</code> in combination with a css variable gets rid of them and creates a smooth flow rhythm between elements. Just use the css variable <code>--flow-space</code> and let it flow.</p>
-      {% include 'Partials/_typographyExamples.twig' %}
+      {% include 'Partials/_typography.twig' %}
     </div>
   </section>
   <hr class="centerContentMaxWidth">
@@ -73,25 +73,8 @@
   <section class="centerMaxWidthContainer componentSpacing">
     <div class="flowContent centerContentMaxWidth">
       <h2 id="helpers">5. Helpers <a href="#helpers" aria-label="Link to Helpers">#</a></h2>
-      <p>The Base Style includes some global CSS layout classes which help ensure a consistent appearance across components:</p>
-      <ul class="flowContent">
-        <li><code>.componentSpacing</code><br>Ensures consistent component top and bottom spacing.</li>
-        <li><code>.centerMaxWidthContainer</code><br>Ensures consistent left and right padding and website max width.</li>
-        <li><code>.centerContentMaxWidth</code><br>Ensures an optimal readability of text contents (optimal line length for text is between 50 and 75 characters).</li>
-        <li><code>.flowContent</code><br>Ensures adds margin to child sibling elements, mostly perfect for flowing texts. For a closer examination of how it works, take a look at the <a href="#typography">2.&nbsp;Typography</a> section.</li>
-        <li><code>.preContent</code><br>Ensures consistent positioning of content preceding the main section of a component.</li>
-        <li><code>.postContent</code><br>Ensures consistent positioning of content following the main section of a component.</li>
-        <li><code>.scrollableTableWrapper</code><br>Wrapping a table with a container element with this class makes the table scrollable on smaller screen sizes.</li>
-        <li><code>.visuallyHidden</code><br>Visually hides text in a way that screen readers will still read it.</li>
-      </ul>
-      <div class="boxBorder boxPadding">
-        <h3>Box Helpers</h3>
-        <p>Box helper classes can be used alone or in combination to ensure consistent styling across components and easily create “cards”.</p>
-        <ul>
-          <li>Using the class <code>.boxBorder</code> allows you to consistently add borders.</li>
-          <li>Using the class <code>.boxPadding</code> allows you to consistently style any content container as a responsive padding box.</li>
-        </ul>
-      </div>
+      <p>To ensure a consistent appearance across all components, it is important to use helper classes for specific tasks. Keep in mind: <strong>A helper class should do one job and does it well.</strong></p>
+      {% include 'Partials/_helpers.twig' with { 'theme': theme } only %}
     </div>
   </section>
   <div class="centerMaxWidthContainer"><hr class="centerContentMaxWidth"></div>

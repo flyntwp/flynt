@@ -2,23 +2,25 @@
   <div class="container centerMaxWidthContainer">
     <div class="centerContentMaxWidth">
       <hr>
-      {% if post.terms('tag')  %}
-        <span class="visuallyHidden">{{ labels.tagsLabel }}</span>
-        <ul class="tags">
+      <div class="postContent flowContent">
+        {% if post.terms('tag')  %}
+          <span class="visuallyHidden">{{ labels.tagsLabel }}</span>
+          <ul class="tags">
           {% for tag in post.terms('tag')  %}
-            <li class="item">
+            <li class="tag">
               <a class="button button--text" href="{{ tag.link }}">{{ tag }}</a>
             </li>
           {% endfor %}
-        </ul>
-      {% endif %}
-      <div class="author postContent">
+          </ul>
+        {% endif %}
+
+        <div class="author">
         {% if post.author.avatar %}
-          <a href="{{ post.author.link|e('esc_url') }}" aria-hidden="true" tabindex="-1">
-            <img class="avatar" width="64" height="64" src="{{ post.author.avatar }}" alt="{{ post.author.name|e }}">
+          <a class="avatar" href="{{ post.author.link|e('esc_url') }}" aria-hidden="true" tabindex="-1">
+            <img class="avatar-image" width="64" height="64" src="{{ post.author.avatar }}" alt="{{ post.author.name|e }}">
           </a>
         {% endif %}
-        <div class="details">
+        <div class="details flowContent">
           <p class="name">
             <a href="{{ post.author.link|e('esc_url') }}">
               <span class="visuallyHidden">{{ labels.postedByLabel }}</span>
@@ -28,6 +30,7 @@
           {% if post.author.meta.description %}
             <p class="description">{{ post.author.meta.description|e }}</p>
           {% endif %}
+        </div>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 .hamburger {
-  --line-width: 28px;
+  --line-width: 29px;
   --line-border-width: 2px;
   align-items: center;
   cursor: pointer;
@@ -15,7 +15,7 @@
   }
 
   &-lines {
-    height: calc(var(--line-width) - (3 * var(--line-border-width)));
+    height: 18px;
     position: relative;
     width: var(--line-width);
 
@@ -34,9 +34,9 @@
       height: var(--line-border-width);
       inset-inline-start: 0;
       position: absolute;
-      transition: opacity 0.2s ease-in-out 0.2s, transform 0.2s ease-in-out 0.2s,
-        background-color 0.2s ease-in-out 0s;
+      transition: opacity 0.2s ease-in-out 0.2s, transform 0.2s ease-in-out 0.2s;
       width: var(--line-width);
+      will-change: opacity, transform;
     }
 
     &::before {
