@@ -5,6 +5,9 @@ npm-debug.log
 yarn-error.log
 docs/styles/**/*.css.map
 
+# Environment
+.env
+
 # Created by https://www.gitignore.io/api/osx,node,linux,windows,phpstorm,composer,sublimetext,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=osx,node,linux,windows,phpstorm,composer,sublimetext,visualstudiocode
 
