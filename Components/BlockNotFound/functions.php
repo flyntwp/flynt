@@ -18,7 +18,7 @@ Options::addTranslatable('BlockNotFound', [
         'name' => 'contentHtml',
         'type' => 'wysiwyg',
         'media_upload' => 0,
-        'default_value' => sprintf('<h1>%1$s</h1><p%2$s</p>', __('Not Found', 'flynt'), __('The page you are looking for does not exist.', 'flynt')),
+        'default_value' => sprintf('<h1>%1$s</h1><p>%2$s</p>', __('Not Found', 'flynt'), __('The page you are looking for does not exist.', 'flynt')),
         'required' => 1,
         'delay' => 1,
     ],
