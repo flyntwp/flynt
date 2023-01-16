@@ -6,7 +6,7 @@ use Flynt\Components;
 add_action('Flynt/afterRegisterComponents', function () {
     ACFComposer::registerFieldGroup([
         'name' => 'postComponents',
-        'title' => 'Post Components',
+        'title' => __('Post Components', 'flynt'),
         'style' => 'seamless',
         'fields' => [
             [
