@@ -6,7 +6,7 @@ use Flynt\Components;
 add_action('Flynt/afterRegisterComponents', function () {
     ACFComposer::registerFieldGroup([
         'name' => 'reusableComponents',
-        'title' => 'Reusable Components',
+        'title' => __('Reusable Components', 'flynt'),
         'style' => 'seamless',
         'menu_order' => 1,
         'fields' => [
