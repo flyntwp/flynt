@@ -407,9 +407,10 @@ flynt-component {
 }
 
 .pageWrapper {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100%;
 
   .admin-bar & {
     padding-block-start: var(--wp-admin--admin-bar--height);
