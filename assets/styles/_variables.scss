@@ -33,10 +33,10 @@ $heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';
 $input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [type="email"], [type="search"], [type="number"], [type="password"], textarea, select';
 
 :root {
-  --font-size-default-mobile: 18px; // 1rem = 18px
-  --font-size-default-tablet: 20px; // 1rem = 20px
-  --font-size-small: 0.85rem;
-  --flow-space: 1.25rem;
+  --body-font-size-mobile: 1.125rem; // Always use rem. 1rem = 16px
+  --body-font-size-tablet: 1.25rem; // Always use rem. 1rem = 16px
+  --body-font-size-small: 1.0625rem;
+  --flow-space: 1.5625rem;
 
   --box-padding-mobile: 16px;
   --box-padding-tablet: 24px;
@@ -55,13 +55,13 @@ $input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [ty
   --component-spacing-tablet: 64px;
   --component-spacing-desktop: 96px;
 
-  --font-size-default: var(--font-size-default-mobile);
+  --body-font-size: var(--body-font-size-mobile);
   --box-padding: var(--box-padding-mobile);
   --container-padding: var(--container-padding-mobile);
   --component-spacing: var(--component-spacing-mobile);
 
   @media (min-width: $breakpoint-tablet) {
-    --font-size-default: var(--font-size-default-tablet);
+    --body-font-size: var(--body-font-size-tablet);
     --box-padding: var(--box-padding-tablet);
     --container-padding: var(--container-padding-tablet);
     --component-spacing: var(--component-spacing-tablet);

@@ -7,7 +7,7 @@ flynt-component[name='BlockPostHeader'] {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
-    font-size: var(--font-size-small);
+    font-size: var(--body-font-size-small);
 
     > *:not(:last-child) {
       &::after {

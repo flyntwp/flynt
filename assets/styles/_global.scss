@@ -11,72 +11,71 @@
 @include font-face('Public Sans', 'public-sans-v14-latin-600italic', '600', 'italic');
 @include font-face('Public Sans', 'public-sans-v14-latin-700italic', '700', 'italic');
 
-html,
 body,
 .paragraph {
   color: var(--color-text);
   font-family: 'Public Sans', Verdana, sans-serif; // FOUC can be reduced with good matching fallback font: https://meowni.ca/font-style-matcher/
-  font-size: var(--font-size-default);
+  font-size: var(--body-font-size);
 }
 
 #{$heading-selectors} {
-  --flow-space: 2rem;
+  --flow-space: 2.5rem;
   font-weight: 600;
   line-height: calc(1em + 0.5rem);
 }
 
 h1,
 .h1 {
-  --flow-space: 3rem;
-  font-size: 2.5rem;
+  --flow-space: 3.75rem;
+  font-size: 2.8125rem;
   font-weight: 700;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 2.5rem;
+    font-size: 3.125rem;
   }
 }
 
 h2,
 .h2 {
-  font-size: 2.056rem;
+  font-size: 2.3125rem;
   font-weight: 700;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 2.05rem;
+    font-size: 2.5625rem;
   }
 }
 
 h3,
 .h3 {
-  font-size: 1.722rem;
+  font-size: 1.9375rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.75rem;
+    font-size: 2.1875rem;
   }
 }
 
 h4,
 .h4 {
-  font-size: 1.44rem;
+  font-size: 1.625rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.145rem;
+    font-size: 1.825rem;
   }
 }
 
 h5,
 .h5 {
-  font-size: 1.22rem;
+  font-size: 1.375rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 }
 
 h6,
 .h6 {
   color: var(--color-text-muted);
-  font-size: var(--font-size-default-small);
+  font-size: var(--body-font-size-small);
   font-weight: 400;
 }
 
@@ -111,7 +110,7 @@ code {
 
 figcaption {
   color: var(--color-text-muted);
-  font-size: var(--font-size-default-small);
+  font-size: var(--body-font-size-small);
   margin-block-start: 0.25rem;
 }
 
@@ -123,13 +122,13 @@ blockquote,
   font-style: italic;
   font-weight: 500;
   line-height: calc(1em + 0.75rem);
-  margin: calc(var(--flow-space) * 1.5) 0 calc(var(--flow-space) * 1.5) 3rem;
+  margin: var(--flow-space) 0 var(--flow-space) 2.5rem;
   max-width: 100%;
   padding-inline-start: 0.8rem;
 
   footer {
     color: var(--color-text-muted);
-    font-size: var(--font-size-default);
+    font-size: var(--body-font-size);
     margin-block-start: 0.25rem;
   }
 }
@@ -146,7 +145,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
   color: var(--color-text);
-  font-size: var(--font-size-default-small);
+  font-size: var(--body-font-size-small);
   max-width: 100%;
   width: 100%;
 
@@ -237,7 +236,7 @@ fieldset {
 
 legend {
   color: var(--color-text);
-  font-size: var(--font-size-default);
+  font-size: var(--body-font-size);
   font-weight: 700;
   padding: 0;
 }
@@ -245,7 +244,7 @@ legend {
 label {
   color: var(--color-text-muted);
   display: inline-block;
-  font-size: var(--font-size-default-small);
+  font-size: var(--body-font-size-small);
   font-weight: 500;
 }
 
@@ -256,7 +255,7 @@ label {
   border-radius: 0;
   caret-color: var(--color-text);
   color: var(--color-text);
-  font-size: var(--font-size-default-small);
+  font-size: var(--body-font-size-small);
   max-width: 100%;
   padding: 0.7rem 0.6rem;
   transition: border-color 0.3s ease-in-out;
