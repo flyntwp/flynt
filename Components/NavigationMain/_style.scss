@@ -9,23 +9,19 @@ flynt-component[name='NavigationMain'] {
   }
 
   &.headroom {
-    .wrapper {
+    .navigation {
       transition: transform 0.3s;
       will-change: transform;
     }
 
-    .wrapper {
-      transition: transform 0.3s;
-    }
-
     &--unpinned {
-      .wrapper {
+      .navigation {
         transform: translate3d(0, -100%, 0);
       }
     }
   }
 
-  .wrapper {
+  .navigation {
     background-color: var(--color-background);
     border-block-end: solid 2px var(--color-border);
     height: var(--navigation-height);
