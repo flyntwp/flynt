@@ -19,8 +19,51 @@ class Options
         ]
     ];
 
+    protected static $initialized = false;
     protected static $optionPages = [];
     protected static $registeredOptions = [];
+
+    public static function init()
+    {
+        if (static::$initialized) {
+            return;
+        } else {
+            static::$initialized = true;
+        }
+
+        add_action('current_screen', function ($currentScreen) {
+            $currentScreenId = strtolower($currentScreen->id);
+            foreach (static::OPTION_TYPES as $optionType => $option) {
+                $isTranslatable = $option['translatable'];
+                // NOTE: because the first subpage starts with toplevel instead (there is no overview page)
+                $toplevelPageId = strtolower('toplevel_page_' . $optionType);
+                $menuTitle = static::$optionPages[$optionType]['menu_title'];
+                // NOTE: all other subpages have the parent menu-title in front instead
+                $subPageId = strtolower(
+                    sanitize_title($menuTitle) . '_page_' . $optionType
+                );
+                $isCurrentPage =
+                    StringHelpers::startsWith(
+                        $toplevelPageId,
+                        $currentScreenId
+                    ) ||
+                    StringHelpers::startsWith($subPageId, $currentScreenId);
+                if (!$isTranslatable && $isCurrentPage) {
+                    // set acf field values to default language
+                    add_filter(
+                        'acf/settings/current_language',
+                        'Flynt\Utils\Options::getDefaultAcfLanguage',
+                        101
+                    );
+                    // hide language selector in admin bar
+                    add_action('wp_before_admin_bar_render', function () {
+                        $adminBar = $GLOBALS['wp_admin_bar'];
+                        $adminBar->remove_menu('WPML_ALS');
+                    });
+                }
+            }
+        });
+    }
 
     protected static function createOptionPage($optionType)
     {
