@@ -4,6 +4,7 @@ namespace Flynt;
 
 use Flynt\Api;
 use Flynt\Defaults;
+use Flynt\Utils\Options;
 use Timber;
 
 class Init
@@ -12,7 +13,7 @@ class Init
     {
         Api::registerHooks();
         Defaults::init();
-
+        Options::init();
         Timber\Timber::init();
     }
 
