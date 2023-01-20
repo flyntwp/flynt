@@ -30,7 +30,7 @@
 
 1. Clone this repo to `<your-project>/wp-content/themes`.
 2. Change the domain variable in `flynt/build-config.js` to match your domain: `const domain = 'your-project.test'`
-3. Create a `.env.local` file in the theme folder.
+3. Create a `.env` file in the theme folder.
 4. Define ssl certificate variables to enable ssl support for the vite dev server:
 
 ```
