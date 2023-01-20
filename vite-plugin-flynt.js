@@ -39,7 +39,7 @@ export default function ({ dest, host }) {
           setTimeout(() => {
             const isSecure = host.indexOf('https://') === 0 && (server.httpServer.key || server.httpServer.cert)
             if (!isSecure) {
-              server.config.logger.info('  ➜ Please define VITE_DEV_SERVER_KEY and VITE_DEV_SERVER_CERT inside “.env.local” to enable ssl support for the vite dev server.')
+              server.config.logger.info('  ➜ Please define VITE_DEV_SERVER_KEY and VITE_DEV_SERVER_CERT inside “.env” to enable ssl support for the vite dev server.')
             }
 
             server.config.logger.info(`  ➜ APP_URL: ${appUrl.replace(/:(\d+)/, (_, port) => `:${port}`)}`)
