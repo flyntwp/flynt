@@ -185,8 +185,8 @@ table {
 
 .button {
   --border-width: 2px;
-  --padding-inline: calc(1rem - var(--border-width));
-  --padding-block: calc(0.6rem - var(--border-width));
+  --padding-inline: calc(1.125rem - var(--border-width));
+  --padding-block: calc(0.625rem - var(--border-width));
   @include reset-link;
   appearance: none;
   background-color: var(--color-accent);
