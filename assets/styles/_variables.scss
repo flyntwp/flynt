@@ -33,43 +33,16 @@ $heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';
 $input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [type="email"], [type="search"], [type="number"], [type="password"], textarea, select';
 
 :root {
-  --body-font-size-mobile: 1.125rem; // Always use rem. 1rem = 16px
-  --body-font-size-tablet: 1.25rem; // Always use rem. 1rem = 16px
-  --body-font-size-small: 1.0625rem;
+  --body-font-size: 1.125rem; // Always use rem. 1rem = 16px
+  --body-font-size-small: 1rem;
   --flow-space: 1.5625rem;
-
-  --box-padding-mobile: 16px;
-  --box-padding-tablet: 24px;
-  --box-padding-desktop: 32px;
 
   --content-max-width: 55ch;
   --content-max-width-large: 75ch;
   --container-max-width: calc(1200px + (var(--container-padding) * 2));
   --container-max-width-large: calc(1340px + (var(--container-padding) * 2));
 
-  --container-padding-mobile: 16px;
-  --container-padding-tablet: 30px;
-  --container-padding-desktop: 40px;
-
-  --component-spacing-mobile: 48px;
-  --component-spacing-tablet: 64px;
-  --component-spacing-desktop: 96px;
-
-  --body-font-size: var(--body-font-size-mobile);
-  --box-padding: var(--box-padding-mobile);
-  --container-padding: var(--container-padding-mobile);
-  --component-spacing: var(--component-spacing-mobile);
-
-  @media (min-width: $breakpoint-tablet) {
-    --body-font-size: var(--body-font-size-tablet);
-    --box-padding: var(--box-padding-tablet);
-    --container-padding: var(--container-padding-tablet);
-    --component-spacing: var(--component-spacing-tablet);
-  }
-
-  @media (min-width: $breakpoint-desktop) {
-    --box-padding: var(--box-padding-desktop);
-    --container-padding: var(--container-padding-desktop);
-    --component-spacing: var(--component-spacing-desktop);
-  }
+  --box-padding: clamp(16px, calc((36 / 1280) * 100vw), 36px);
+  --container-padding: clamp(16px, calc((36 / 1280) * 100vw), 36px);
+  --component-spacing: clamp(48px, calc((96 / 1280) * 100vw), 96px);
 }

@@ -9,11 +9,7 @@ flynt-component[name='NavigationFooter'] {
       display: flex;
       flex-direction: row-reverse;
       justify-content: space-between;
-      padding-block: var(--component-spacing-mobile);
-    }
-
-    @media (min-width: $breakpoint-desktop) {
-      padding-block: var(--component-spacing-mobile);
+      padding-block: 36px;
     }
   }
 
