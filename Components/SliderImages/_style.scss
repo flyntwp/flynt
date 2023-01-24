@@ -1,12 +1,12 @@
 flynt-component[name='SliderImages'] {
   .slider {
-    background-color: var(--color-border-alpha);
+    background-color: var(--color-border);
+    overflow: hidden;
     position: relative;
 
     &-item {
       height: 0;
-      overflow: hidden;
-      padding-bottom: calc((2/3) * 100%);
+      padding-block-end: calc((2/3) * 100%);
       position: relative;
     }
 
@@ -16,9 +16,9 @@ flynt-component[name='SliderImages'] {
       cursor: pointer;
       display: flex;
       height: 48px;
+      inset-block-start: 50%;
       justify-content: center;
       position: absolute;
-      top: 50%;
       transform: translateY(-50%);
       width: 48px;
       z-index: 10;
@@ -28,21 +28,12 @@ flynt-component[name='SliderImages'] {
         border-radius: 50%;
         content: '';
         height: 100%;
-        left: 0;
-        opacity: 0.75;
+        inset-block-start: 0;
+        inset-inline-start: 0;
         position: absolute;
-        top: 0;
         transition: opacity 0.2s ease;
         width: 100%;
-      }
-
-      @media (min-width: $breakpoint-tablet-horizontal) {
-        &:hover,
-        &:focus {
-          &::before {
-            opacity: 1;
-          }
-        }
+        will-change: opacity;
       }
 
       &.swiper-button-disabled {
@@ -51,28 +42,28 @@ flynt-component[name='SliderImages'] {
       }
 
       &--prev {
-        left: 15px;
+        inset-inline-start: 15px;
 
         &::after {
-          border-left: var(--border-width) solid currentColor;
-          border-top: var(--border-width) solid currentColor;
+          border-block-start: 2px solid currentColor;
+          border-inline-start: 2px solid currentColor;
           content: '';
           height: 0.75em;
-          margin-left: calc(0.25em + 2px);
+          margin-inline-start: calc(0.25em + 2px);
           transform: rotate(-45deg);
           width: 0.75em;
         }
       }
 
       &--next {
-        right: 15px;
+        inset-inline-end: 15px;
 
         &::after {
-          border-right: var(--border-width) solid currentColor;
-          border-top: var(--border-width) solid currentColor;
+          border-block-start: 2px solid currentColor;
+          border-inline-end: 2px solid currentColor;
           content: '';
           height: 0.75em;
-          margin-right: calc(0.25em - 2px);
+          margin-inline-end: calc(0.25em - 2px);
           transform: rotate(45deg);
           width: 0.75em;
         }
@@ -81,12 +72,9 @@ flynt-component[name='SliderImages'] {
   }
 
   .figure {
-    bottom: 0;
-    left: 0;
-    margin-bottom: 0;
+    inset: 0;
+    margin-block-end: 0;
     position: absolute;
-    right: 0;
-    top: 0;
 
     &-image {
       height: 100%;
@@ -95,24 +83,23 @@ flynt-component[name='SliderImages'] {
     }
 
     &-caption {
-      bottom: 0;
       color: #fff;
       display: inline-block;
-      font-size: 0.875rem;
+      inset-block-end: 0;
+      inset-inline-end: 0;
       max-width: 450px;
       overflow: hidden;
       padding: 0.25rem 0.5rem;
       position: absolute;
-      right: 0;
       z-index: 2;
 
       &::before {
         background-color: rgba($color: #000, $alpha: 0.7);
         content: '';
         height: 100%;
-        left: 0;
+        inset-block-start: 0;
+        inset-inline-start: 0;
         position: absolute;
-        top: 0;
         width: 100%;
         z-index: -1;
       }

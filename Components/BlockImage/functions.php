@@ -51,10 +51,9 @@ function getACFLayout()
                             'small' => __('Small', 'flynt'),
                             'medium' => __('Medium', 'flynt'),
                             'large' => __('Large (Default)', 'flynt)'),
-                            'huge' => __('Huge', 'flynt'),
                             'full' => __('Full', 'flynt'),
                         ],
-                        'default_value' => 'large',
+                        'default_value' => 'medium',
                         'wrapper' =>  [
                             'width' => '100',
                         ],

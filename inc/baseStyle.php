@@ -1,16 +1,22 @@
 <?php
 
 /**
- * Loads the `basestyle.php` template on route /BaseStyle/ to render base style markup for proper base styling.
+ * Registers a custom rewrite rule and template for the 'BaseStyle' route.
+ * The route can be accessed at /BaseStyle/ in the site's permalink structure.
+ * The template file used for this route is 'basestyle.php' in the theme's root directory.
+ * The document title for this route is set to 'Base Style'.
  */
 
 namespace Flynt\BaseStyle;
 
+const ROUTENAME = 'BaseStyle';
+
 add_filter('init', 'Flynt\BaseStyle\registerRewriteRule');
 add_filter('template_include', 'Flynt\BaseStyle\templateInclude');
 
-const ROUTENAME = 'BaseStyle';
-
+/**
+ * Registers the custom rewrite rule for the 'BaseStyle' route.
+ */
 function registerRewriteRule()
 {
     $routeName = ROUTENAME;
@@ -19,20 +25,12 @@ function registerRewriteRule()
     add_rewrite_tag("%{$routeName}%", "([^&]+)");
 }
 
-function setDocumentTitle()
-{
-    // prevent yoast overwriting the title
-    add_filter('pre_get_document_title', function ($title) {
-        return '';
-    }, 99);
-
-    // set custom title and keep the default separator and site name
-    add_filter('document_title_parts', function ($title) {
-        $title['title'] = 'Base Style';
-        return $title;
-    }, 99);
-}
-
+/**
+ * Sets the template file for the 'BaseStyle' route and sets the document title for the route.
+ *
+ * @param string $template The current template file path.
+ * @return string The template file path to use for the 'BaseStyle' route.
+ */
 function templateInclude($template)
 {
     global $wp_query;
@@ -44,4 +42,19 @@ function templateInclude($template)
     }
 
     return $template;
+}
+
+/**
+ * Sets the document title for the 'BaseStyle' route.
+ */
+function setDocumentTitle()
+{
+    // prevent yoast overwriting the title
+    add_filter('pre_get_document_title', '__return_empty_string', 99);
+
+    // set custom title and keep the default separator and site name
+    add_filter('document_title_parts', function ($title) {
+        $title['title'] = __('Base Style', 'flynt');
+        return $title;
+    }, 99);
 }

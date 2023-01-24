@@ -1,7 +1,11 @@
 flynt-component[name='GridImageText'] {
   .grid {
+    --item-max-width: calc((var(--container-max-width) / 3) - var(--grid-column-gap));
+    --grid-max-width: calc(var(--item-max-width) * var(--grid-columns) + ((var(--grid-columns) - 1) * var(--grid-column-gap)));
     @include reset-list;
     @include grid(1, center);
+    margin-inline: auto;
+    max-width: var(--grid-max-width);
 
     &[data-max-columns='2'],
     &[data-max-columns='3'],
@@ -26,11 +30,16 @@ flynt-component[name='GridImageText'] {
   }
 
   .item {
-    @include reset-list-item;
-    max-width: var(--content-max-width);
+    max-width: calc(var(--container-max-width) / 3);
 
-    .content {
-      @include reset-content-margins('bottom');
+    ul {
+      list-style-position: outside;
+      list-style-type: initial;
+      padding-inline-start: 0;
+
+      li {
+        margin-inline-start: 1em;
+      }
     }
   }
 }

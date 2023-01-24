@@ -1,6 +1,6 @@
 @import
-  'styles/mixins',
-  'styles/variables';
+  'styles/variables',
+  'styles/mixins';
 
 // stylelint-disable scss/at-import-no-partial-leading-underscore, scss/at-import-partial-extension-blacklist
 @import '../Components/**/_admin.scss';

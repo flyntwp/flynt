@@ -29,9 +29,7 @@ add_filter('mce_buttons', function ($buttons) {
 });
 
 // Second Toolbar
-add_filter('mce_buttons_2', function ($buttons) {
-    return [];
-});
+add_filter('mce_buttons_2', '__return_empty_array');
 
 add_filter('tiny_mce_before_init', function ($init) {
     $config = getConfig();
@@ -134,21 +132,21 @@ function getConfig()
                         'selector' => 'a,button'
                     ],
                     [
-                        'title' => 'Button Ghost',
-                        'classes' => 'button--ghost',
+                        'title' => 'Button Outlined',
+                        'classes' => 'button--outlined',
                         'selector' => '.button'
                     ],
                     [
-                        'title' => 'Button Small',
-                        'classes' => 'button--small',
-                        'selector' => '.button'
-                    ],
-                    [
-                        'title' => 'Button Link',
-                        'classes' => 'button--link',
+                        'title' => 'Button Text',
+                        'classes' => 'button--text',
                         'selector' => '.button'
                     ]
                 ]
+            ],
+            [
+                'title' => 'Paragraph',
+                'classes' => 'paragraph',
+                'selector' => '*'
             ],
         ],
         'toolbars' => [

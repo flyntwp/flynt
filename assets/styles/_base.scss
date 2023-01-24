@@ -1,465 +1,227 @@
-/**
-* 0.0 Root
-*
-* Top level styles every element should inherit.
-*/
-
-// FOUC can be reduced with good matching fallback font: https://meowni.ca/font-style-matcher/
-@include font-face('Montserrat', 'montserrat-v24-latin-regular', '400', 'normal');
-@include font-face('Montserrat', 'montserrat-v24-latin-italic', '400', 'italic');
-@include font-face('Montserrat', 'montserrat-v24-latin-700', '700', 'normal');
-@include font-face('Montserrat', 'montserrat-v24-latin-700italic', '700', 'italic');
-
-html {
-  background-color: var(--color-background);
-  box-sizing: border-box;
-  color: var(--color-text);
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  height: 100%;
-  line-height: 1.7;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit;
-  }
-}
-
-body {
-  font-family: 'Montserrat', Verdana, sans-serif;
-  height: 100%;
-  overflow-x: hidden;
-}
-
 /*
- * Respect reduced motion preferences and remove
- * all animations, transitions and smooth scroll.
+*  Typography
 */
-@media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-    scroll-behavior: auto;
-  }
 
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-  }
+@include font-face('Public Sans', 'public-sans-v14-latin-regular', '400', 'normal');
+@include font-face('Public Sans', 'public-sans-v14-latin-500', '500', 'normal');
+@include font-face('Public Sans', 'public-sans-v14-latin-600', '600', 'normal');
+@include font-face('Public Sans', 'public-sans-v14-latin-700', '700', 'normal');
+@include font-face('Public Sans', 'public-sans-v14-latin-italic', '400', 'italic');
+@include font-face('Public Sans', 'public-sans-v14-latin-500italic', '500', 'italic');
+@include font-face('Public Sans', 'public-sans-v14-latin-600italic', '600', 'italic');
+@include font-face('Public Sans', 'public-sans-v14-latin-700italic', '700', 'italic');
+
+body,
+.paragraph {
+  color: var(--color-text);
+  font-family: 'Public Sans', Verdana, sans-serif; // FOUC can be reduced with good matching fallback font: https://meowni.ca/font-style-matcher/
+  font-size: var(--body-font-size);
 }
-
-/**
-* 1.0 Typography
-*
-* Styling all likely used content flow elements.
-*/
 
 #{$heading-selectors} {
-  color: var(--color-headline);
-  font-weight: 700;
+  --flow-space: 2.5rem;
+  font-weight: 600;
   line-height: calc(1em + 0.5rem);
-  margin-bottom: 0.5rem;
-  margin-top: 1.5rem;
-
-  a,
-  a:hover,
-  a:focus {
-    color: var(--color-headline);
-    text-decoration: none;
-  }
-
-  > em {
-    color: var(--color-accent);
-    font-style: normal;
-  }
 }
 
 h1,
 .h1 {
-  font-size: 2.25rem;
+  --flow-space: 3.75rem;
+  font-size: 2.8125rem;
+  font-weight: 700;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 2.75rem;
+    font-size: 3.125rem;
   }
 }
 
 h2,
 .h2 {
-  font-size: 1.5rem;
+  font-size: 2.3125rem;
+  font-weight: 700;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 2.5rem;
+    font-size: 2.5625rem;
   }
 }
 
 h3,
 .h3 {
-  font-size: 1.125rem;
+  font-size: 1.9375rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.25rem;
+    font-size: 2.1875rem;
   }
 }
 
 h4,
 .h4 {
-  font-size: 1rem;
+  font-size: 1.625rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.125rem;
+    font-size: 1.825rem;
   }
 }
 
 h5,
 .h5 {
-  font-size: 1.125rem;
-  font-weight: 400;
+  font-size: 1.375rem;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
   }
 }
 
 h6,
 .h6 {
-  font-size: 1rem;
+  color: var(--color-text-muted);
+  font-size: var(--body-font-size-small);
+  font-weight: 400;
 }
 
 a {
   color: var(--color-accent);
-  text-decoration-color: var(--color-accent-alpha);
-  transition: color 0.2s ease-in-out, text-decoration-color 0.2s ease-in-out;
-
-  &:hover,
-  &:focus {
-    color: var(--color-accent-hover);
-    text-decoration-color: var(--color-accent);
-  }
-
-  &:focus {
-    outline-color: var(--color-accent-alpha);
-  }
-}
-
-p,
-.paragraph,
-pre {
-  margin: 0 0 1.5rem;
+  text-underline-offset: 0.25em;
 }
 
 hr {
-  background-color: var(--color-border-alpha);
+  --flow-space: var(--component-spacing);
   border: 0;
-  display: block;
-  height: var(--border-width);
-  margin: 3rem 0;
-}
+  margin: var(--flow-space) auto;
 
-img {
-  display: block;
-  height: auto;
-  max-width: 100%;
-  width: 100%;
-}
-
-figure {
-  margin: 0;
-
-  + :not(div) {
-    margin-top: 1.5rem;
+  &::after {
+    background-color: var(--color-text);
+    content: '';
+    display: block;
+    height: 2px;
+    opacity: 0.28;
   }
 }
 
-figcaption {
-  font-size: 0.9rem;
-  margin: 0.5rem auto 0 0;
-  max-width: var(--content-max-width);
-}
-
-code,
-kbd,
-pre,
-samp {
-  background-color: var(--color-border-alpha);
+code {
+  background: var(--color-background-secondary);
   border-radius: 4px;
   display: inline-block;
-  font-size: 0.95rem;
-  padding: 0 0.375rem;
+  font-size: 0.95em;
+  padding: 0 0.375em;
   word-break: break-word;
 }
 
-pre {
-  border-radius: 8px;
-  padding: 1.25rem 1.5rem;
-
-  code {
-    background: transparent;
-    padding: 0;
-  }
+figcaption {
+  color: var(--color-text-muted);
+  font-size: var(--body-font-size-small);
+  margin-block-start: 0.25rem;
 }
 
 blockquote,
 .blockquote {
-  color: var(--color-accent);
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: calc(1em + 0.5rem);
-  margin: 3rem 0;
-  padding-left: 2.5rem;
-  position: relative;
+  border-inline-start: 5px solid var(--color-accent);
+  display: block;
+  font-size: 1.44rem;
+  font-style: italic;
+  font-weight: 500;
+  line-height: calc(1em + 0.75rem);
+  margin: var(--flow-space) 0 var(--flow-space) 2.5rem;
+  max-width: 100%;
+  padding-inline-start: 0.8rem;
 
-  @media (min-width: $breakpoint-mobile-horizontal) {
-    font-size: 1.75rem;
-    padding-left: 3.75rem;
-  }
-
-  &::before {
-    content: '\201c'; // Unicode escaped LEFT DOUBLE QUOTATION MARK
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 2.5rem;
-    left: 0;
-    line-height: 1;
-    position: absolute;
-    top: 0.25rem;
-
-    @media (min-width: $breakpoint-mobile-horizontal) {
-      font-size: 6rem;
-      top: -2px;
-    }
-  }
-
-  p:last-child {
-    margin-bottom: 0;
+  footer {
+    color: var(--color-text-muted);
+    font-size: var(--body-font-size);
+    margin-block-start: 0.25rem;
   }
 }
 
-/**
-* 1.1 Lists & Tables
-*
-* Default and custom styled list and table elements.
+/*
+* Lists & Tables
 */
-
 ul,
 ol {
-  margin: 1.5rem 0;
-  padding-left: 1.5rem;
-
-  li {
-    margin-bottom: 0.25rem;
-  }
-
-  ul,
-  ol {
-    margin-bottom: 0;
-    margin-top: 0.25rem;
-    padding-left: 2rem;
-  }
-}
-
-ul {
-  > li {
-    &::marker {
-      font-size: 1.25rem;
-    }
-  }
+  padding-inline-start: 1.5rem;
 }
 
 table {
+  border-collapse: collapse;
   border-spacing: 0;
-  box-shadow: inset 0 0 0 var(--border-width) var(--color-border);
-  margin: 0 auto;
+  color: var(--color-text);
+  font-size: var(--body-font-size-small);
   max-width: 100%;
-  text-align: left;
   width: 100%;
 
-  + p,
-  + table,
-  + figure {
-    margin-top: 1.5rem;
+  caption {
+    caption-side: bottom;
+    color: var(--color-text-muted);
+    margin-block-start: calc(var(--flow-space) / 2);
+    text-align: start;
   }
-}
 
-td,
-th {
-  padding: 0.9375rem 1.5rem;
-  text-align: inherit;
-  vertical-align: top;
-}
-
-thead {
+  td,
   th {
-    border-bottom: solid var(--border-width) var(--color-border);
-    padding: 1.25rem 1.5rem;
-    vertical-align: middle;
-    white-space: nowrap;
+    padding: 0.9rem 1rem;
+    text-align: inherit;
+    vertical-align: top;
+  }
+
+  th {
+    color: var(--color-text-muted);
+    font-weight: 500;
+  }
+
+  thead {
+    background-color: var(--color-background-secondary);
+    border-block-end: solid 2px var(--color-border);
+  }
+
+  tr {
+    &:nth-child(even) {
+      background-color: var(--color-background-secondary);
+    }
   }
 }
 
-tr:nth-child(even) {
-  background-color: var(--color-border-alpha);
-}
-
-/**
-* 1.2 Buttons
-*
-* Global button elements, including reset on standard button element.
+/*
+* Buttons
 */
 
-button {
-  appearance: none;
-  background-color: transparent;
-  border: 0;
-  color: inherit;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  padding: 0;
-  text-align: inherit;
-
-  &:focus {
-    outline-color: var(--color-accent-alpha);
-  }
-}
-
 .button {
+  --border-width: 2px;
+  --padding-inline: calc(1.125rem - var(--border-width));
+  --padding-block: calc(0.625rem - var(--border-width));
   @include reset-link;
   appearance: none;
   background-color: var(--color-accent);
-  border: var(--border-width) solid var(--color-accent);
-  border-radius: var(--button-border-radius);
+  border: solid var(--border-width) var(--color-accent);
   color: var(--color-background);
   cursor: pointer;
   display: inline-block;
-  font-family: inherit;
+  font: inherit;
   font-weight: 700;
-  line-height: 1.7;
-  outline: none;
-  padding: 0.618rem 1.618rem;
+  letter-spacing: 0;
+  padding: var(--padding-block) var(--padding-inline);
   text-align: center;
   text-decoration: none;
-  transition: 0.2s ease;
-  user-select: none;
 
-  &:disabled,
-  &--disabled {
+  &:disabled {
     cursor: default;
-    opacity: var(--opacity-grayed-out);
+    opacity: 0.5;
     pointer-events: none;
   }
 
-  &:hover {
-    background-color: var(--color-accent-hover);
-    border-color: var(--color-accent-hover);
-    color: var(--color-button-text-hover);
-  }
-
-  &:focus {
-    box-shadow: 0 1px var(--border-width) rgba(0, 0, 0, 0.25), 0 0 0 3px var(--color-accent-alpha);
-    color: var(--color-background);
-  }
-
-  &:active {
-    box-shadow: none;
-  }
-
-  + .button {
-    margin-top: 0.5rem;
-  }
-
-  &--ghost {
+  &--outlined {
     background-color: transparent;
-    border-color: var(--color-accent);
     color: var(--color-accent);
-
-    &:focus {
-      background-color: transparent;
-      box-shadow: 0 1px var(--border-width) rgba(0, 0, 0, 0.25), 0 0 0 3px var(--color-accent-alpha);
-      color: var(--color-accent);
-    }
-
-    &:hover {
-      background-color: var(--color-accent-hover);
-      color: var(--color-background);
-    }
-
-    &:active {
-      background-color: var(--color-accent);
-      border-color: var(--color-accent);
-      box-shadow: none;
-      color: var(--color-background);
-    }
   }
 
-  &--small {
-    font-size: 0.95rem;
-    padding: 0.309rem 1.618rem;
-  }
-
-  &--link {
+  &--text {
     background-color: transparent;
     border: 0;
-    border-radius: 0;
     color: var(--color-accent);
-    display: inline-block;
-    line-height: 1.7;
     padding: 0;
-    position: relative;
-    text-decoration: none;
-    text-transform: none;
-    transition: color 0.2s ease;
-
-    &:hover,
-    &:focus {
-      background-color: transparent;
-      box-shadow: none;
-      color: var(--color-accent-hover);
-    }
-
-    &:hover {
-      &::before {
-        transform: scaleX(1);
-        transform-origin: bottom left;
-      }
-    }
-
-    &::before {
-      background-color: var(--color-accent-hover);
-      bottom: 0;
-      content: '';
-      height: var(--border-width);
-      left: 0;
-      position: absolute;
-      transform: scaleX(0);
-      transform-origin: bottom right;
-      transition: transform 0.2s ease-in-out;
-      width: 100%;
-    }
-
-    &::after {
-      border-right: var(--border-width) solid currentColor;
-      border-top: var(--border-width) solid currentColor;
-      content: '';
-      display: inline-block;
-      height: 0.5rem;
-      margin-bottom: 0.0625rem;
-      margin-left: 0.25rem;
-      transform: rotate(45deg);
-      vertical-align: baseline;
-      width: 0.5rem;
-    }
   }
 }
 
-/**
-* 1.3 Forms
-*
-* Global form elements, including structuring wrapper elements.
+/*
+* Forms
 */
 
 form {
@@ -468,312 +230,194 @@ form {
 
 fieldset {
   border: 0;
-  margin: 0 0 1.5rem;
   padding: 0;
-
-  *:last-child {
-    margin-bottom: 0;
-  }
-
-  input,
-  select,
-  textarea {
-    margin: 0 0 2rem;
-  }
 }
 
 legend {
-  display: inline-block;
-  font-size: 1.125rem;
-  margin-bottom: 1rem;
+  color: var(--color-text);
+  font-size: var(--body-font-size);
+  font-weight: 700;
+  padding: 0;
 }
 
 label {
+  color: var(--color-text-muted);
   display: inline-block;
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1.4;
-  margin-bottom: 0.5rem;
+  font-size: var(--body-font-size-small);
+  font-weight: 500;
 }
 
 #{$input-selectors} {
   appearance: none;
   background-color: transparent;
-  border: var(--border-width) solid var(--color-border);
-  border-radius: var(--box-border-radius);
-  color: var(--color-headline);
-  font-family: inherit;
-  font-size: 1rem;
-  line-height: 1.25;
-  min-height: 3.5rem;
-  outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  border: 2px solid var(--color-border-secondary);
+  border-radius: 0;
+  caret-color: var(--color-text);
+  color: var(--color-text);
+  font-size: var(--body-font-size-small);
+  max-width: 100%;
+  padding: 0.7rem 0.6rem;
+  transition: border-color 0.3s ease-in-out;
+  width: 300px;
 
   &::placeholder {
-    color: var(--color-text);
-    opacity: var(--opacity-grayed-out);
-  }
-
-  &:focus {
-    box-shadow: 0 0 0 3px var(--color-accent-alpha);
+    color: var(--color-border-secondary);
   }
 
   &:disabled {
-    background-color: var(--color-border-alpha);
-    border-color: var(--color-border);
-    color: var(--color-border);
-    opacity: var(--opacity-grayed-out);
+    cursor: default;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &:invalid {
+    border-color: var(--color-error);
   }
 }
 
-.input-validation-error {
-  border-color: var(--color-error);
+.select {
+  --icon-size: 17px;
+  --icon-border-width: 2px;
+  position: relative;
+
+  &::after {
+    border-block-end: var(--icon-border-width) solid currentColor;
+    border-inline-end: var(--icon-border-width) solid currentColor;
+    content: '';
+    display: block;
+    height: var(--icon-size);
+    inset-block-start: calc(50% - var(--icon-border-width));
+    inset-inline-end: calc(0.6rem + (var(--icon-border-width) * 2));
+    pointer-events: none;
+    position: absolute;
+    transform: translateY(calc(-50% - var(--icon-border-width))) rotate(45deg);
+    width: var(--icon-size);
+  }
+
+  select {
+    padding-inline-end: calc(var(--icon-size) + 1.5em);
+  }
 }
 
-input,
-select,
 textarea {
-  margin: 0 0 1rem;
-  padding: 0.309rem 0.927rem;
-}
-
-textarea {
-  line-height: 1.7;
   min-height: 150px;
-  padding: 0.927rem;
   resize: vertical;
   vertical-align: top;
   width: 100%;
 }
 
-select {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='32' height='32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline fill='none' stroke='%23414751' stroke-width='5'  points='2,9 16,25 30,9 '/%3E%3C/svg%3E");
-  background-position: calc(100% - 18px) center;
-  background-repeat: no-repeat;
-  background-size: 9px;
-  line-height: 1.7;
-  padding-right: 45px;
-
-  &::-ms-expand {
-    display: none;
-  }
-}
-
-.select {
-  display: inline-block;
-  position: relative;
-  vertical-align: top;
-
-  &::after {
-    border-bottom: var(--border-width) solid var(--color-headline);
-    border-left: var(--border-width) solid var(--color-headline);
-    content: '';
-    height: 8px;
-    position: absolute;
-    right: 20px;
-    top: calc(50% - 6px);
-    transform: rotate(-45deg);
-    width: 8px;
-    z-index: 1;
-  }
-
-  select {
-    // don't change background image, if you need to change it - use wrapper .select
-    background-image: none;
-    margin: 0;
-    position: relative;
-    z-index: 2;
-
-    option {
-      color: #000;
-    }
-  }
-}
-
 [type='checkbox'],
 [type='radio'] {
+  --flow-space: 0;
+  appearance: none;
   opacity: 0;
   pointer-events: none;
   position: absolute;
   width: 1px;
 
-  &,
-  &:hover {
-    border-color: var(--color-border);
-    outline: 0;
+  &:focus-visible {
+    + label {
+      &::before {
+        @include normalize-outline;
+      }
+    }
   }
 
   + label {
-    cursor: pointer;
-    display: inline-block;
-    font-weight: 400;
-    letter-spacing: 0;
-    line-height: 1.7;
-    padding-left: 2em;
+    color: var(--color-text);
+    display: block;
+    font: inherit;
+    padding-inline-start: 1.75em;
     position: relative;
 
+    &::before,
+    &::after {
+      --size: 24px;
+      --border-width: 2px;
+      height: var(--size);
+      transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+      width: var(--size);
+      will-change: border-color, background-color;
+    }
+
     &::before {
-      background: transparent;
-      border: var(--border-width) solid var(--color-border);
-      border-radius: 0.25rem;
+      background-color: var(--color-background);
+      border: var(--border-width) solid var(--color-border-secondary);
       content: '';
       display: block;
-      height: 1.25em;
-      left: 0;
+      inset-block-start: var(--border-width);
+      inset-inline-start: 0;
       margin: 0;
       padding: 0;
       position: absolute;
-      top: 0.2em;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-      width: 1.25em;
-    }
-
-    &::after {
-      border-bottom: var(--border-width) solid var(--color-accent);
-      border-right: var(--border-width) solid var(--color-accent);
-      content: '';
-      display: block;
-      height: 0.75em;
-      left: 0.4375em;
-      opacity: 0;
-      position: absolute;
-      top: 0.3125em;
-      transform: rotate(45deg);
-      transition: opacity 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
-      visibility: hidden;
-      width: 0.375em;
-    }
-  }
-
-  &:focus {
-    + label {
-      &::before {
-        border-color: var(--color-accent);
-        box-shadow: 0 0 0 3px var(--color-accent-alpha);
-      }
     }
   }
 
   &:checked {
-    + label {
-      &::before {
-        background-color: var(--color-accent);
-        border-color: var(--color-accent);
-      }
+    + label::before {
+      border-color: var(--color-accent);
+    }
+  }
+}
 
-      &::after {
-        border-color: var(--color-background);
-        opacity: 1;
-        visibility: visible;
-      }
+[type='checkbox'] {
+  + label::after {
+    border-block-end: var(--border-width) solid transparent;
+    border-inline-end: var(--border-width) solid transparent;
+    content: '';
+    display: block;
+    height: 15px;
+    inset-block-start: 5px;
+    inset-inline-start: 9px;
+    position: absolute;
+    transform: rotate(40deg);
+    width: 7px;
+  }
+
+  &:checked {
+    + label::after {
+      border-block-end-color: var(--color-accent);
+      border-inline-end-color: var(--color-accent);
     }
   }
 }
 
 [type='radio'] {
-  + label {
-    &::before {
-      border-radius: 50%;
-    }
-
-    &::after {
-      background-color: var(--color-accent);
-      border: 0;
-      border-radius: 50%;
-      height: 0.75em;
-      left: 0.25em;
-      top: 0.4375em;
-      transform: none;
-      width: 0.75em;
-    }
+  + label::before {
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 calc(var(--border-width) * 2) var(--color-background);
   }
 
   &:checked {
-    + label {
-      &::before {
-        background-color: var(--color-background);
-      }
+    + label::before {
+      background-color: var(--color-accent);
     }
   }
 }
 
-.oneInputForm {
-  background-color: var(--color-background);
-  border: var(--border-width) solid var(--color-border);
-  border-radius: calc(var(--box-border-radius) + (var(--border-width) * 2));
-  margin: 0 0 2em;
-  padding: calc(var(--border-width) * 2);
-  position: relative;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  width: 100%;
-
-  @media (min-width: $breakpoint-mobile-horizontal) {
-    align-items: center;
-    border-radius: calc(var(--button-border-radius) + (var(--border-width) * 2));
-    display: flex;
-
-    &:focus-within {
-      border-color: var(--color-accent);
-      box-shadow: 0 0 0 3px var(--color-accent-alpha);
-    }
-  }
-
-  &-input {
-    background-color: transparent;
-    border: 0;
-    margin: 0;
-    padding: 0 0.618em;
-    width: 100%;
-
-    @media (min-width: $breakpoint-mobile-horizontal) {
-      border-radius: var(--button-border-radius);
-      min-height: inherit;
-      padding: 0 1.618em;
-    }
-
-    &:focus {
-      box-shadow: none;
-    }
-  }
-
-  &-button {
-    width: 100%;
-
-    @media (min-width: $breakpoint-mobile-horizontal) {
-      box-shadow: none;
-      flex-shrink: 0;
-      width: auto;
-    }
-
-    &:focus {
-      box-shadow: none;
-    }
-  }
-}
-
-/**
-* 2.0 Helpers
-*
-* Global layout classes for a consistent appearance.
+/*
+* Helpers
 */
 
+flynt-component {
+  display: block;
+  position: relative;
+}
+
 .pageWrapper {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100%;
 
   .admin-bar & {
-    padding-top: var(--wp-admin--admin-bar--height);
+    padding-block-start: var(--wp-admin--admin-bar--height);
   }
 }
 
 .mainContent {
   flex: 1 0 auto;
-}
-
-flynt-component {
-  display: block;
-  position: relative;
 }
 
 .componentSpacing {
@@ -784,61 +428,47 @@ flynt-component {
     padding: var(--component-spacing) 0;
   }
 
-  // Reduce componentSpacing top on desktop for the first component in mainContent.
-  .mainContent > & {
-    &:first-child {
-      @media (min-width: $breakpoint-tablet) {
-        margin-top: var(--component-spacing-tablet);
-      }
-
-      &[data-theme] {
-        @media (min-width: $breakpoint-tablet) {
-          margin: 0;
-          padding-top: var(--component-spacing-tablet);
-        }
-      }
-    }
-  }
-
-  // Reduce componentSpacing for all components in single post layouts.
+  /* Use flow-space as componentSpacing for all components in single post layouts. */
   .post-main & {
-    --component-spacing: calc(var(--component-spacing-mobile) / 2);
-
-    @media (min-width: $breakpoint-tablet) {
-      --component-spacing: calc(var(--component-spacing-tablet) / 2);
-    }
-
-    @media (min-width: $breakpoint-desktop) {
-      --component-spacing: calc(var(--component-spacing-desktop) / 2);
-    }
+    --component-spacing: var(--flow-space);
   }
 }
 
 .centerMaxWidthContainer {
-  @include center;
+  margin-inline: auto;
+  max-width: var(--container-max-width);
+  padding-inline: var(--container-padding);
+}
+
+.centerMaxWidthContainerLarge {
+  margin-inline: auto;
+  max-width: var(--container-max-width-large);
+  padding-inline: var(--container-padding);
 }
 
 .centerContentMaxWidth {
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
   max-width: var(--content-max-width);
 }
 
 .centerContentMaxWidthLarge {
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
   max-width: var(--content-max-width-large);
 }
 
+.flowContent {
+  > * + * {
+    margin-block-start: var(--flow-space);
+  }
+}
+
 .preContent {
-  @include reset-content-margins;
   margin: 0 auto calc(var(--component-spacing) / 2);
   max-width: var(--content-max-width);
   text-align: center;
 }
 
 .postContent {
-  @include reset-content-margins;
   margin: calc(var(--component-spacing) / 2) auto 0;
   max-width: var(--content-max-width);
   text-align: center;
@@ -851,48 +481,41 @@ flynt-component {
 
 /* Class for text that should only be visible to screen readers */
 .visuallyHidden {
-  clip: rect(1px, 1px, 1px, 1px);
+  clip: rect(0, 0, 0, 0) !important;
   height: 1px !important;
-  overflow: hidden;
+  margin: -1px !important; // Fix for https://github.com/twbs/bootstrap/issues/25686
+  overflow: hidden !important;
+  padding: 0 !important;
   position: absolute !important;
-  white-space: nowrap;
+  white-space: nowrap !important;
   width: 1px !important;
 }
 
 /* Skip link behavior */
 .skipLink {
+  inset-block-start: -100px;
   position: fixed;
-  top: -100px;
   z-index: 999;
 
   &:focus {
-    top: 0;
+    inset-block-start: 0;
   }
 }
 
 /**
-* 2.1 Box Helpers
+* Box Helpers
 */
 
 .boxPadding {
-  @include reset-content-margins;
   padding: var(--box-padding);
 }
 
-.boxRadius {
-  border-radius: var(--box-border-radius);
-  overflow: hidden;
-  z-index: 1;
-}
-
-.boxShadow {
-  box-shadow: 0 5px 35px calc(-1 * var(--border-width)) rgba(0, 0, 0, 0.08);
+.boxBorder {
+  border: solid 2px var(--color-border);
 }
 
 /**
-* 3.0 Themes
-*
-* Color themes for backgrounds and content elements.
+* Themes
 */
 
 [data-theme] {

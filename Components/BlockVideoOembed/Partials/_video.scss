@@ -8,16 +8,13 @@
 
   &-player {
     height: 0;
-    padding-bottom: calc(100% / 16 * 9);
+    inset-block-start: 0;
+    padding-block-end: calc(100% / 16 * 9);
     position: absolute;
-    top: 0;
     width: 100%;
     z-index: 10;
 
     &[data-state='isLoading'] {
-      background: var(--color-border-alpha);
-      transition: background 0.2s ease-out;
-
       .video-loader {
         display: block;
       }
@@ -42,9 +39,9 @@
   iframe {
     display: none;
     height: 100%;
-    left: 0;
+    inset-block-start: 0;
+    inset-inline-start: 0;
     position: absolute;
-    top: 0;
     width: 100%;
   }
 
@@ -60,19 +57,13 @@
     max-width: var(--content-max-width-large);
   }
 
-  &[data-video-size='huge'] {
-    max-width: var(--container-max-width);
-  }
-
   &[data-video-size='full'] {
     max-width: 100%;
 
     .figure-caption {
-      margin-left: auto;
-      margin-right: auto;
+      margin-inline: auto;
       max-width: var(--container-max-width);
-      padding-left: var(--container-padding);
-      padding-right: var(--container-padding);
+      padding-inline: var(--container-padding);
     }
   }
 }

@@ -1,7 +1,11 @@
 flynt-component[name='GridPostsArchive'] {
   .posts {
+    --post-max-width: calc((var(--container-max-width) / 3) - var(--grid-column-gap));
+    --posts-max-width: calc(var(--post-max-width) * var(--grid-columns) + ((var(--grid-columns) - 1) * var(--grid-column-gap)));
     @include reset-list;
     @include grid;
+    margin-inline: auto;
+    max-width: var(--posts-max-width);
 
     @media (min-width: $breakpoint-tablet) {
       --grid-columns: 2;
@@ -17,16 +21,17 @@ flynt-component[name='GridPostsArchive'] {
   }
 
   .post {
-    @include reset-list-item;
+    margin-inline: auto;
 
-    &-link {
+    .link {
       @include reset-link;
+      color: currentColor;
       display: flex;
       flex-direction: column;
       height: 100%;
     }
 
-    &-content {
+    .content {
       color: var(--color-text);
       flex-grow: 1;
 
@@ -35,19 +40,18 @@ flynt-component[name='GridPostsArchive'] {
       }
     }
 
-    &-footer {
+    .footer {
       align-items: center;
       display: flex;
       justify-content: space-between;
-      padding: 0 var(--box-padding) 24px;
+      padding: 0 var(--box-padding) var(--box-padding);
       position: relative;
       width: 100%;
-    }
 
-    &-readingTime {
-      align-items: center;
-      display: flex;
-      font-size: 0.9375rem;
+      .readingTime {
+        color: var(--color-text-muted);
+        font-size: var(--body-font-size-small);
+      }
     }
   }
 

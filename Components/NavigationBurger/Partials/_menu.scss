@@ -3,52 +3,38 @@
   backface-visibility: hidden;
   background-color: var(--color-background);
   height: calc(100% - var(--navigation-height));
-  left: 0;
+  inset-block-start: var(--navigation-height);
+  inset-inline-start: 0;
   margin: 0;
   overflow-y: auto;
-  padding-bottom: 30px;
-  padding-top: 30px;
+  padding: var(--component-spacing) var(--container-padding);
   position: fixed;
-  top: var(--navigation-height);
   transform: translateX(100%);
   transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1), visibility 0.45s;
   visibility: hidden;
   width: 100%;
+  will-change: transform;
   z-index: 98;
 
   .admin-bar & {
     height: calc(100% - var(--navigation-height) - var(--wp-admin--admin-bar--height));
-    top: calc(var(--navigation-height) + var(--wp-admin--admin-bar--height));
+    inset-block-start: calc(var(--navigation-height) + var(--wp-admin--admin-bar--height));
   }
 
-  &-item {
-    @include reset-list-item;
-  }
-
-  &-item--current {
-    .menu-link {
-      color: var(--color-accent);
-    }
-  }
-
-  &-link {
+  .link {
     @include reset-link;
     color: var(--color-text);
     display: block;
-    font-size: 1rem;
-    font-weight: 700;
-    padding: 12px var(--container-padding-mobile);
-    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 400;
+    padding: 0.9rem 1.25rem;
     text-decoration: none;
-    transition: color 0.2s ease-out;
+  }
 
-    &:focus {
+  .current-menu-item {
+    .link {
       color: var(--color-accent);
-    }
-
-    @media (min-width: $breakpoint-tablet) {
-      padding-left: var(--container-padding-tablet);
-      padding-right: var(--container-padding-tablet);
+      text-decoration: underline;
     }
   }
 }

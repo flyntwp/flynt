@@ -1,585 +1,344 @@
 {% extends 'templates/_document.twig' %}
 
 {% block content %}
-  <div class="componentSpacing centerMaxWidthContainer">
-    <div class="centerContentMaxWidth">
-      <section>
-        <h1>Base Style</h1>
-        <p>This style guide exemplifies the base styles.</p>
-      </section>
-      <section>
-        <p class="h4">Creating a well thought out base style for a new website is one of the most critical parts to ensure an overall successful project progression.</p>
-        <p>The base style should contain all those basic HTML elements and their variations that will be needed within the website. May it be in standard formatted text, or within custom styled layout components.</p>
-        <p>The goal is to abstract the element designs just to the right level, so that they can be used in any context without further modifications, but to keep them flexible enough for custom adjustments when needed, without having to overwrite many CSS attributes.</p>
-        <p>The following markup is a best practice starting point to help you focus on what's important. It does not include <em>all</em> HTML elements, but as the theme is using <code>normalize.css</code>, elements will still be recoginzably styled, only without further customization.</p>
-        <hr>
-        <h2>1.0 Typography</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation <a href="https://www.google.com/search?q=ullamco+laboris" target="_blank">ullamco laboris</a> nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore <strong>magna aliqua</strong>. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit <em>esse cillum</em> dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <figure>
-          <img src="https://via.placeholder.com/770x513?text=3:2%20ratio" width="770" height="513" alt="Placeholder">
-          <figcaption>A caption for this image</figcaption>
-        </figure>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-        <blockquote><p>Base styling is done, when this page has a custom look and is visually structured so that all elements, their relationships, meanings and hierarchy are recognizable.</p></blockquote>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <h2 class="h1">Headline H1 is a very common element</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <h2>Headline H2 is a very common element</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <h3>Headline H3 will also be used all over the website</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-        <h4>Headline H4 is nice for alternative smaller styles</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-        <h5>Headline H5 is unloved, but can be powerfull as a helper class</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-        <h6>Headline H6 is very rare but might be a small alternative</h6>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-        <h1>Heading 1</h1>
-        <h2>Heading 2</h2>
-        <h3>Heading 3</32>
-        <h4>Heading 4</h4>
-        <h5>Heading 5</h5>
-        <h6>Heading 6</h6>
-        <hr>
-        <h2>1.1 Lists &amp; Tables</h2>
-        <p>Make sure you're not resetting all list elements, because that might come in handy for styling other layout elements, but remain their purpose for formatted text.</p>
-        <h3>What you need to consider</h3>
-        <ul>
-          <li>What's the margin and padding of the list?</li>
-          <li>Which list style is the default?</li>
-          <li>Will there be custom list style icons like:
-            <ol>
-              <li>stars</li>
-              <li>checkmarks</li>
-              <li>colored bullets or list numbers</li>
-            </ol>
-          </li>
-          <li>Nested list styles should have a different look.
-            <ul>
-              <li>The user agent stylesheet does that already.</li>
-              <li>So custom styled lists should consider it as well.</li>
-              <li>An option might be to only specifically style the top level list style icon to keep the browser defaults for nesting.</li>
-            </ul>
-          </li>
-          <li>Also remember to test multiline list items like the one above.</li>
-        </ul>
-        <p>It's also important to see those lists within the content flow, so margins and paddings fit with surrounding text. And of course, also consider <strong>ordered lists</strong> like the following.</p>
-        <ol>
-          <li>It's basically the same</li>
-          <li>But different</li>
-          <li>And they may also nest other lists:
-            <ol>
-              <li>may it be another ordered list,</li>
-              <li>or an unoredered list.</li>
-            </ol>
-          </li>
-          <li>The best part is:
-            <ul>
-              <li>this boring text ends here!</li>
-              <li>Because I <em>really</em> don't know what else to write here.</li>
-              <li>Hope it'll still be more helpful than lorem ipsum.</li>
-            </ul>
-          </li>
-          <li><strong>But don't stop here!</strong></li>
-        </ol>
-        <h3>Tables</h3>
+  {% set themes = ['light', 'dark'] %}
+
+  <section class="centerMaxWidthContainer componentSpacing">
+    <div class="flowContent centerContentMaxWidth">
+      <h1>Base Style</h1>
+      <p>This style guide exemplifies the base styles.</p>
+      <p><strong>Creating a well thought out base style for a new website is one of the most critical parts to ensure an overall successful project progression.</strong></p>
+      <p>The base style should contain all those basic HTML elements and their variations that will be needed within the website. May it be in standard formatted text, or within custom styled layout components.</p>
+      <p>The goal is to abstract the element designs just to the right level, so that they can be used in any context without further modifications, but to keep them flexible enough for custom adjustments when needed, without having to overwrite many CSS attributes.</p>
+      <p>The following markup is a best practice starting point to help you focus on what's important. It does not include all HTML elements and other elements will still work, only without further customization.</p>
+      <ol id="table-of-contents">
+        <li><a href="#colors">Colors</a></li>
+        <li><a href="#typography">Typography</a></li>
+        <li><a href="#buttons-and-links">Buttons and Links</a></li>
+        <li><a href="#forms">Forms</a></li>
+        <li><a href="#helpers">Helpers</a></li>
+        <li><a href="#themes">Themes</a>
+          <ol>
+            {% for theme in themes %}
+              <li><a href="#theme-{{ theme }}">Theme {{ theme|capitalize }}</a></li>
+            {% endfor %}
+            <li><a href="#theme-reset">Theme Reset</a></li>
+          </ol>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <div class="centerMaxWidthContainer"><hr class="centerContentMaxWidth"></div>
+
+  <!-- 1. Colors -->
+  <section class="centerMaxWidthContainer componentSpacing">
+    <div class="flowContent centerContentMaxWidth">
+      <h2 id="colors">1. Colors <a href="#colors" aria-label="Link to Colors">#</a></h2>
+      <p>A strong selection of colors is essential for any website. Using CSS color variables provide a consistent and efficient way to incorporate color into the design while it is easy to make global changes.</p>
+      {% block blockTableColors %}
         <div class="scrollableTableWrapper">
-          <table class="boxRadius">
+          <table>
+            <caption>Additionally demonstrates how tables typically appear</caption>
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">Ingredients</th>
-                <th scope="col">Serves 12</th>
-                <th scope="col">Serves 24</th>
+                <th scope="col">Example</th>
+                <th scope="col">CSS variable</th>
+                <th scope="col">Usage</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">1</th>
-                <td>milk</td>
-                <td>1 quart</td>
-                <td>2 quart</td>
+                <th scope="row" style="background: var(--color-accent);"><span class="visuallyHidden">Color example</span></th>
+                <td>--color-accent</td>
+                <td>Highlight elements or draw attention (e.g. Links or Buttons)</td>
               </tr>
               <tr>
-                <th scope="row">2</th>
-                <td>cinnamon sticks</td>
-                <td>2</td>
-                <td>1</td>
+                <th scope="row" style="background: var(--color-background);"><span class="visuallyHidden">Color example</span></th>
+                <td>--color-background</td>
+                <td>Element Backgrounds</td>
               </tr>
               <tr>
-                <th scope="row">3</th>
-                <td>cloves</td>
-                <td>5</td>
-                <td>10</td>
+                <th scope="row" style="background: var(--color-background-secondary);"><span class="visuallyHidden">Color example</span></th>
+                <td>--color-background-secondary</td>
+                <td>More contrasted Element Backgrounds (e.g. inside Table Rows)</td>
               </tr>
               <tr>
-                <th scope="row">4</th>
-                <td>egg yolks</td>
-                <td>12</td>
-                <td>24</td>
+                <th scope="row" style="background: var(--color-border);"><span class="visuallyHidden">Color example</span></th>
+                <td>--color-border</td>
+                <td>Element Borders (e.g. Tables or Cards)</td>
               </tr>
               <tr>
-                <th scope="row">5</th>
-                <td>cups sugar</td>
-                <td>1 &frac12; cups</td>
-                <td>3 cups</td>
+                <th scope="row" style="background: var(--color-border-secondary);"><span class="visuallyHidden">Color example</span></th>
+                <td>--color-border-secondary</td>
+                <td>More contrasted Element Borders (e.g. inputs)</td>
               </tr>
               <tr>
-                <th scope="row">6</th>
-                <td>dark rum</td>
-                <td>1 &frac12; cups</td>
-                <td>3 cups</td>
+                <th scope="row" style="background: var(--color-text);"><span class="visuallyHidden">Color example</span></th>
+                <td>--color-text</td>
+                <td>Texts and Elements</td>
+              </tr>
+              <tr>
+                <th scope="row" style="background: var(--color-text-muted);"><span class="visuallyHidden">Color example</span></th>
+                <td>--color-text-muted</td>
+                <td>Subtle Texts or Elements (e.g. Captions and Table Headers)</td>
+              </tr>
+              <tr>
+                <th scope="row" style="background: var(--color-error);"><span class="visuallyHidden">Color example</span></th>
+                <td>--color-error</td>
+                <td>Indicate errors (e.g. on inputs)</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <hr>
-        <h2>1.2 Buttons</h2>
-        <p><button type="button">A <b>&lt;button&gt;</b> element without a class should have its styles reset, so it can be used as a semantic tag on other interface elements, like the arrows of a slider, a closing &times; or a burger menu.</button></p>
+      {% endblock %}
+    </div>
+  </section>
+  <hr class="centerContentMaxWidth">
+
+  <!-- 2. Typography -->
+  <section class="centerMaxWidthContainer componentSpacing">
+    <div class="flowContent centerContentMaxWidth">
+      <h2 id="typography">2. Typography <a href="#typography" aria-label="Link to Typography">#</a></h2>
+      <p>By default elements <u>doesn’t</u> have any white-space between (as result of the css reset). Using the <a href="#helpers">helper class</a> <code>.flowContent</code> in combination with a css variable gets rid of them and creates a smooth flow rhythm between elements. Just use the css variable <code>--flow-space</code> and let it flow.</p>
+      {% block blockTypography %}
+        <h3 class="h1">H1: The quick brown fox jumps over the lazy dog</h3>
+        <h3 class="h2">H2: The quick brown fox jumps over the lazy dog</h3>
+        <h3>H3: The quick brown fox jumps over the lazy dog</h3>
+        <h3 class="h4">H4: The quick brown fox jumps over the lazy dog</h3>
+        <h3 class="h5">H5: The quick brown fox jumps over the lazy dog</h3>
+        <h3 class="h6">H6: The quick brown fox jumps over the lazy dog</h3>
+        <p>Paragraph: The quick brown fox jumps over the lazy dog</h3>
+        <p><label>Label: The quick brown fox jumps over the lazy dog</label></p>
+        <p><figcaption>Caption: The quick brown fox jumps over the lazy dog</figcaption></p>
+
+        <p>Paragraphs can contain any number of words or other elements. It can also contain <a href="https://www.google.com/search?q=HTML+Links" target="_blank">links</a>, <strong>bold</strong>, <em>italic</em>, <u>underline</u>, <s>strikethrough</s>, <sub>sub</sub>, <sup>sup</sup>, <abbr title="Abbreviation">abbr.</abbr>, <mark>highlighted</mark>, <kbd>kbd</kbd>, <code>code</code> or other inline elements.</p>
+        <p>This paragraph is a placeholder and it can be skipped. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet venenatis urna cursus. Amet nulla facilisi morbi tempus iaculis urna id volutpat lacus.</p>
+        <blockquote>
+          <p>“Base styling is done, when this page has a custom look and is visually structured so that all elements, their relationships, meanings and hierarchy are recognizable.”</p>
+          <footer><cite>— a mysterious web developer</cite></footer>
+        </blockquote>
+        <p>This paragraph is a placeholder and it can be skipped. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet venenatis urna cursus. Amet nulla facilisi morbi tempus iaculis urna id volutpat lacus.</p>
+        <figure>
+            <img src="https://via.placeholder.com/770x513?text=3:2%20ratio" alt="Placeholder">
+            <figcaption>A caption for the image</figcaption>
+         </figure>
+         <h3>Lists</h3>
+         <p>Make sure you're not resetting all list elements, because that might come in handy for styling other layout elements, but remain their purpose for formatted text.</p>
+         <h4>What you need to consider?</h4>
+         <ul>
+           <li>What's the margin and padding of the list?</li>
+           <li>Which list style is the default?</li>
+           <li>Will there be custom list style icons like:
+             <ol>
+               <li>stars</li>
+               <li>checkmarks</li>
+               <li>colored bullets or list numbers</li>
+             </ol>
+           </li>
+           <li>Nested list styles should have a different look.
+             <ul>
+               <li>The user agent stylesheet does that already.</li>
+               <li>So custom styled lists should consider it as well.</li>
+               <li>An option might be to only specifically style the top level list style icon to keep the browser defaults for nesting.</li>
+             </ul>
+           </li>
+           <li>Also remember to test multiline list items like the one above.</li>
+         </ul>
+      {% endblock %}
+    </div>
+  </section>
+  <hr class="centerContentMaxWidth">
+
+  <!-- 3. Buttons and Links -->
+  <section class="centerMaxWidthContainer componentSpacing">
+    <div class="flowContent centerContentMaxWidth">
+      <h2 id="buttons-and-links">3. Buttons and Links <a href="#buttons-and-links" aria-label="Link to Buttons and Links">#</a></h2>
+      <p>A <strong>&lt;button&gt;</strong> element without a class should have its styles reset, so it can be used as a semantic tag on other interface elements, like the arrows of a slider, a closing × or a burger menu.</p>
+      <p>Using the anchor element (<strong>&lt;a&gt;</strong>) as a button is common for a “call to action”. Anchor elements as <a href="https://www.google.com/search?q=HTML+Links" target="_blank">regular Link</a> are nearly on all over the internet.</p>
+      {% block blockButtonsAndLinks %}
         <p>
-          <button type="button" class="button">Type Button</button>
-          <button type="button" class="button button--ghost">Type Button Ghost</button>
+          <button type="button" class="button">Button</button>
+          <button type="button" class="button button--outlined">Button outlined</button>
         </p>
         <p>
-          <button type="submit" class="button">Type Submit Button</button>
-          <button type="submit" class="button button--ghost">Type Submit Button Ghost</button>
+          <button type="button" class="button" disabled>Button disabled</button>
+          <button type="button" class="button button--outlined" disabled>Button outlined disabled</button>
         </p>
         <p>
-          <button type="reset" class="button">Type Reset Button</button>
-          <button type="reset" class="button button--ghost">Type Reset Button Ghost</button>
+          <button class="button button--text">Button Text</button>
+          <button class="button button--text" disabled>Button Text disabled</button>
         </p>
         <p>
-          <a class="button">Link Button</a>
-          <a class="button button--ghost">Link Button Ghost</a>
+          <a class="button" href="https://www.google.com/search?q=HTML+Links" target="_blank">Link as Button</a>
+          <a class="button button--outlined" href="https://www.google.com/search?q=HTML+Links" target="_blank">Link as Button outlined</a>
         </p>
         <p>
-          <button type="button" disabled class="button">Button Disabled</button>
-          <button type="button" disabled class="button button--ghost">Button Ghost Disabled</button>
+          <a class="button button--text" href="https://www.google.com/search?q=HTML+Links" target="_blank">Link as Button Text</a>
         </p>
         <p>
-          <button class="button button--small">Button Small</button>
-          <button class="button button--ghost button--small">Button Ghost Small</button>
+          <a href="https://www.google.com/search?q=HTML+Links" target="_blank">Regular Link</a>
         </p>
-        <p>
-          <a class="button button--link" href="">Button Link</a><br>
-          <button class="button button--link">Type Button Link</button><br>
-          <a class="button button--link button--small" href="">Button Link Small</a>
-        </p>
-        <hr>
-        <h2>1.3 Forms</h2>
-        <form>
-          <p>Placing form elements on a page should just work without having to apply extra classes or custom wrapping elements. However, a <b>&lt;fieldset&gt;</b> element provides a nice opportunity to group multiple form elements.</p>
-          <fieldset>
-            <label for="textInput-1">Text Input</label><br>
-            <input id="textInput-1" type="text" name="text" placeholder="Placeholder"><br>
-            <label for="textInput-2">Text Input Disabled</label><br>
-            <input id="textInput-2" type="text" name="text" placeholder="Placeholder" disabled><br>
-            <label for="textInput-3">Text Input Validation Error</label><br>
-            <input id="textInput-3" type="text" name="text" value="Test" placeholder="Placeholder" class="input-validation-error"><br>
-            <label for="emailInput" >Email Input</label><br>
-            <input id="emailInput" type="email" name="email" placeholder="Placeholder"><br>
-            <label for="searchInput">Search Input</label><br>
-            <input id="searchInput" type="search" name="search" placeholder="Placeholder"><br>
-            <label for="passwordInput">Password Input</label><br>
-            <input id="passwordInput" type="password" name="password" placeholder="Placeholder"><br>
+      {% endblock %}
+    </div>
+  </section>
+  <hr class="centerContentMaxWidth">
+
+  <!-- 4. Forms -->
+  <section class="centerMaxWidthContainer componentSpacing">
+    <div class="flowContent centerContentMaxWidth">
+      <h2 id="forms">4. Forms <a href="#forms" aria-label="Link to Forms">#</a></h2>
+      <p>Placing form elements on a page should just work without having to apply extra classes or custom wrapping elements. However, a <strong>&lt;fieldset&gt;</strong> element provides a nice opportunity to group multiple form elements.</p>
+      {% block blockInputs %}
+        {% set formId = function('wp_generate_uuid4') %}
+        <fieldset class="flowContent">
+          <div class="form-group">
+            <label for="textInput-{{ formId }}">Text Input</label><br>
+            <input id="textInput-{{ formId }}" type="text" name="text" placeholder="Placeholder">
+          </div>
+          <div class="form-group">
+            <label for="textInput-{{ formId }}">Text Input Disabled</label><br>
+            <input id="textInput-{{ formId }}" type="text" name="text" placeholder="Placeholder" disabled>
+          </div>
+          <div class="form-group">
+            <label for="textInput-{{ formId }}">Text Input Filled Invalid</label><br>
+            <input id="textInput-{{ formId }}" type="text" name="text" placeholder="Placeholder" pattern="[0-9]*" value="Only Numbers are valid"><br>
+          </div>
+          <div class="form-group">
             <label for="textarea">Your message</label><br>
-            <textarea id="textarea" placeholder="Placeholder"></textarea><br>
-            <p>Wrap the select element in a container with the class <code>.select</code> to make the select arrow themeable.</p>
+            <textarea id="textarea" placeholder="Placeholder"></textarea>
+          </div>
+          <p>Wrap the <strong>&lt;select&gt;</strong> element in a container with the class <code>.select</code> to make the select arrow themeable.</p>
+          <div class="form-group">
             <span class="select">
-              <label class="visuallyHidden" for="selectInput">Select Input</label>
-              <select name="select" id="selectInput">
-                <option value="select-value-1">Select Option #1</option>
-                <option value="select-value-2">Select Option #2</option>
-                <option value="select-value-3">Select Option #3</option>
+              <label class="visuallyHidden" for="selectInput-{{ formId }}">Select Input</label>
+              <select name="select" id="selectInput-{{ formId }}">
+                <option value="select-value-{{ formId }}-1">Select Option #1</option>
+                <option value="select-value-{{ formId }}-2">Select Option #2</option>
+                <option value="select-value-{{ formId }}-3">Select Option #3</option>
               </select>
             </span>
-          </fieldset>
-          <p>The user agent stylesheet typically has a very weird <b>&lt;fieldset&gt;</b> and <b>&lt;legend&gt;</b> styling. But hey: why not customize it to our needs?!</p>
-          <fieldset>
-            <legend>Checkbox Inputs</legend>
-            <div>
-              <input type="checkbox" id="checkbox-1" required checked>
-              <label for="checkbox-1">Checkbox Label #1<sup>*</sup></label>
-              <br>
-              <input type="checkbox" id="checkbox-2">
-              <label for="checkbox-2">Checkbox Label #2 <strong>Multiline</strong> Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</label>
-              <br>
-              <input type="checkbox" id="checkbox-3">
-              <label for="checkbox-3">Checkbox Label #3</label>
-            </div>
-          </fieldset>
-          <fieldset>
-            <legend>Radio Inputs</legend>
-            <div>
-              <input type="radio" id="radio-1" name="radio-group" checked>
-              <label for="radio-1">Radio Label #1</label>
-              <br>
-              <input type="radio" id="radio-2" name="radio-group">
-              <label for="radio-2">Radio Label #2 <strong>Multiline</strong> Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.</label>
-              <br>
-              <input type="radio" id="radio-3" name="radio-group">
-              <label for="radio-3">Radio Label #3</label>
-            </div>
-          </fieldset>
-          <fieldset>
-            <legend>One Input Forms</legend>
-            <p>Uses screen reader visible labels.</p>
-            <p>Wrap the select element in a container with the class <code>.oneInputForm</code> to style single forms.</p>
-            <div class="oneInputForm">
-              <label class="visuallyHidden" for="searchInputSingle">Search</label>
-              <input class="oneInputForm-input" type="search" id="searchInputSingle" placeholder="Enter search term...">
-              <button class="button oneInputForm-button">Search</button>
-            </div>
-            <div class="oneInputForm">
-              <label class="visuallyHidden" for="emailInputSingle">Subscribe</label>
-              <input class="oneInputForm-input" type="email" id="emailInputSingle" placeholder="Email address">
-              <button class="button oneInputForm-button">Subscribe</button>
-            </div>
-          </fieldset>
-        </form>
-        <hr>
-        <h2>2.0 Helpers</h2>
-        <p>The BaseStyle includes some global CSS layout classes which help ensure a consistent appearance across components:</p>
-        <ul>
+          </div>
+        </fieldset>
+
+        <p>The user agent stylesheet typically has a very weird <b>&lt;fieldset&gt;</b> and <b>&lt;legend&gt;</b> styling. But hey: why not customize it to our needs?!</p>
+        <fieldset class="flowContent">
+          <legend>Checkbox Inputs</legend>
+          <input type="checkbox" id="checkbox-{{ formId }}-1" required>
+          <label for="checkbox-{{ formId }}-1">Checkbox Label #1<sup>*</sup></label>
+
+          <input type="checkbox" id="checkbox-{{ formId }}-2">
+          <label for="checkbox-{{ formId }}-2">Checkbox Item #2 using <strong>Multiline content</strong> that takes over multiple lines. Lorem ipsum dolor sit amet, <a href="#table-of-contents">consectetur</a> adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</label>
+
+          <input type="checkbox" id="checkbox-{{ formId }}-3">
+          <label for="checkbox-{{ formId }}-3">Checkbox Label #3</label>
+        </fieldset>
+
+        <fieldset class="flowContent">
+          <legend>Radio Inputs</legend>
+          <input type="radio" id="radio-{{ formId }}-1" name="radio-group">
+          <label for="radio-{{ formId }}-1">Radio Label #1</label>
+
+          <input type="radio" id="radio-{{ formId }}-2" name="radio-group">
+          <label for="radio-{{ formId }}-2">Radio Item #2 using <strong>Multiline content</strong> that takes over multiple lines. Lorem ipsum dolor sit amet, <a href="#table-of-contents">consectetur</a> adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</label>
+
+          <input type="radio" id="radio-{{ formId }}-3" name="radio-group">
+          <label for="radio-{{ formId }}-3">Radio Label #3</label>
+        </fieldset>
+      {% endblock %}
+    </div>
+  </section>
+  <div class="centerMaxWidthContainer"><hr class="centerContentMaxWidth"></div>
+
+  <!-- 5. Helpers -->
+  <section class="centerMaxWidthContainer componentSpacing">
+    <div class="flowContent centerContentMaxWidth">
+      <h2 id="helpers">5. Helpers <a href="#helpers" aria-label="Link to Helpers">#</a></h2>
+      <p>To ensure a consistent appearance across all components, it is important to use helper classes for specific tasks. Keep in mind: <strong>A helper class should do one job and does it well.</strong></p>
+      {% block blockHelpers %}
+        <ul class="flowContent">
           <li><code>.componentSpacing</code><br>Ensures consistent component top and bottom spacing.</li>
           <li><code>.centerMaxWidthContainer</code><br>Ensures consistent left and right padding and website max width.</li>
-          <li><code>.centerContentMaxWidth</code><br>Ensures text content doesn't flow wider than 60 characters per line.</li>
-          <li><code>.centerContentMaxWidthLarge</code><br>Ensures text content doesn't flow wider than 80 characters per line.</li>
+          <li><code>.centerContentMaxWidth</code><br>Ensures an optimal readability of text contents (optimal line length for text is between 50 and 75 characters).</li>
+          <li><code>.flowContent</code><br>Ensures adds margin to child sibling elements, mostly perfect for flowing texts. For a closer examination of how it works, take a look at the <a href="#typography">2.&nbsp;Typography</a> section.</li>
           <li><code>.preContent</code><br>Ensures consistent positioning of content preceding the main section of a component.</li>
           <li><code>.postContent</code><br>Ensures consistent positioning of content following the main section of a component.</li>
           <li><code>.scrollableTableWrapper</code><br>Wrapping a table with a container element with this class makes the table scrollable on smaller screen sizes.</li>
           <li><code>.visuallyHidden</code><br>Visually hides text in a way that screen readers will still read it.</li>
         </ul>
-        <p>Other helper classes are:</p>
-        <div class="boxPadding boxShadow boxRadius">
+        <div class="boxBorder boxPadding flowContent">
           <h3>Box Helpers</h3>
-          <p>Box helper classes can be used alone or in combination to ensure consistent styling across components.</p>
-          <ul>
-            <li>Using the <code>.boxPadding</code> class allows you to consistently style any content container as a responsive padding box.</li>
-            <li>Using the <code>.boxShadow</code> class allows you to give elements a box shadow with consistent appearance.</li>
-            <li>Using the <code>.boxRadius</code> class allows you to give elements a border radius.</li>
+          <p>Box helper classes can be used alone or in combination to ensure consistent styling across components and easily create “cards”.</p>
+          <ul class="flowContent">
+            <li>Using the class <code>.boxBorder</code> allows you to consistently add borders.</li>
+            <li>Using the class <code>.boxPadding</code> allows you to consistently style any content container as a responsive padding box.</li>
           </ul>
         </div>
+      {% endblock %}
+    </div>
+  </section>
+  <div class="centerMaxWidthContainer"><hr class="centerContentMaxWidth"></div>
+
+  <!-- 6. Themes -->
+  <section class="centerMaxWidthContainer componentSpacing">
+    <div class="flowContent centerContentMaxWidth">
+      <h2 class="h1" id="themes">6. Themes <a href="#themes" aria-label="Link to Themes">#</a></h2>
+      <p>To easily change the appearance of a group of content, using themes is a reliable method. The <code>data-theme</code> attribute makes it simple to apply styles and customize the appearance of a group of content, while the code keeps readable.</p>
+    </div>
+  </section>
+  {% for theme in themes %}
+    <section data-theme="{{ theme }}" class="componentSpacing">
+      <div class="centerMaxWidthContainer">
+        <div class="flowContent centerContentMaxWidth">
+          <h3 class="h2" id="theme-{{ theme }}">Theme {{ theme|capitalize }} <a href="#theme-{{ theme }}" aria-label="Link to Theme {{ theme|capitalize }}">#</a></h3>
+          <p>Using the attribute <code>data-theme="{{ theme }}"</code> allows you to style a group content as Theme {{ theme|capitalize }}.</p>
+            <ol>
+              <li><a href="#theme-reset-colors">Colors</a></li>
+              <li><a href="#theme-{{ theme }}-typography">Typography</a></li>
+              <li><a href="#theme-{{ theme }}-buttons-and-links">Buttons and Links</a></li>
+              <li><a href="#theme-{{ theme }}-forms">Forms</a></li>
+            </ol>
+            <hr>
+            <h2 id="theme-{{ theme }}-colors">1. Colors <a href="#theme-{{ theme }}-colors" aria-label="Link to Theme {{ theme|capitalize }} Colors">#</a></h2>
+            {{ block('blockTableColors') }}
+            <hr>
+            <h2 id="theme-{{ theme }}-typography">2. Typography <a href="#theme-{{ theme }}-typography" aria-label="Link to Theme {{ theme|capitalize }} Typography">#</a></h2>
+            {{ block('blockTypography') }}
+            <hr>
+            <h2 id="theme-{{ theme }}-buttons-and-links">3. Buttons and Links <a href="#theme-{{ theme }}-buttons-and-links" aria-label="Link to Theme {{ theme|capitalize }} Buttons and Links">#</a></h2>
+            {{ block('blockButtonsAndLinks') }}
+            <hr>
+            <h2 id="theme-{{ theme }}-forms">4. Forms <a href="#theme-{{ theme }}-forms" aria-label="Link to Theme {{ theme|capitalize }} Forms">#</a></h2>
+            {{ block('blockInputs') }}
+        </div>
+      </div>
+    </section>
+  {% endfor %}
+  <!-- Theme Reset -->
+  <section data-theme="{{ themes[0] }}" class="componentSpacing">
+    <div class="centerMaxWidthContainer">
+      <div class="flowContent centerContentMaxWidth boxPadding" data-theme="reset">
+        <h3 class="h2" id="theme-reset">Theme Reset <a href="#theme-reset" aria-label="Link to Theme Reset">#</a></h3>
+        <p>Using the attribute <code>data-theme="reset"</code> allows you to revert the styles of a parent theme back to the initial styles.</p>
+        {% set theme = 'reset' %}
+        <ol>
+          <li><a href="#theme-reset-colors">Colors</a></li>
+          <li><a href="#theme-{{ theme }}-typography">Typography</a></li>
+          <li><a href="#theme-{{ theme }}-buttons-and-links">Buttons and Links</a></li>
+          <li><a href="#theme-{{ theme }}-forms">Forms</a></li>
+        </ol>
         <hr>
-        <h2>3.0 Themes</h2>
-      </section>
-    </div>
-  </div>
-  <div data-theme="light">
-    <br><br>
-    <div class="centerMaxWidthContainer">
-      <div class="centerContentMaxWidth">
-        <section>
-          <h3>Light Theme</h3>
-          <p>Using the <code>data-theme="light"</code> attribute allows you to style a group of content with a light background and dark text.</p>
-          <div>
-            <a href="javascript:void(0)">Regular link</a><br>
-            <a class="button button--link" href="javascript:void(0)">Button Link</a><br><br>
-            <button type="button" class="button">Button</button>
-            <button type="button" class="button button--ghost">Button Ghost</button>
-            <br><br>
-            <button type="button" class="button" disabled>Button Disabled</button>
-            <button type="button" class="button button--ghost" disabled>Button Ghost Disabled</button>
-            <hr>
-            <label for="textInput-4">Text Input</label><br>
-            <input id="textInput-4" type="text" name="text" placeholder="Placeholder">
-            <br>
-            <span class="select">
-              <label class="visuallyHidden" for="selectInputLight">Select Input</label>
-              <select name="select" id="selectInputLight">
-                <option value="select-value-1">Select Option #1</option>
-                <option value="select-value-2">Select Option #2</option>
-                <option value="select-value-3">Select Option #3</option>
-              </select>
-            </span>
-            <br><br>
-            <fieldset>
-              <legend>Checkbox Input</legend>
-              <div>
-                <input type="checkbox" id="checkbox-light-1" required>
-                <label for="checkbox-light-1">Checkbox Label #1</label>
-              </div>
-            </fieldset>
-            <fieldset>
-              <legend>Radio Inputs</legend>
-              <div>
-                <input type="radio" id="radio-light-1" name="radio-group-light">
-                <label for="radio-light-1">Radio Label #1</label>
-                <br>
-                <input type="radio" id="radio-light-2" name="radio-group-light">
-                <label for="radio-light-2">Radio Label #2</label>
-              </div>
-            </fieldset>
-          </div>
-          <div class="scrollableTableWrapper">
-            <table class="boxRadius">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Ingredients</th>
-                  <th scope="col">Serves 12</th>
-                  <th scope="col">Serves 24</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>milk</td>
-                  <td>1 quart</td>
-                  <td>2 quart</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>cinnamon sticks</td>
-                  <td>2</td>
-                  <td>1</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
+        <h2 id="theme-{{ theme }}-colors">1. Colors <a href="#theme-{{ theme }}-colors" aria-label="Link to Theme {{ theme|capitalize }} Colors">#</a></h2>
+        {{ block('blockTableColors') }}
+        <hr>
+        <h2 id="theme-{{ theme }}-typography">2. Typography <a href="#theme-{{ theme }}-typography" aria-label="Link to Theme {{ theme|capitalize }} Typography">#</a></h2>
+        {{ block('blockTypography') }}
+        <hr>
+        <h2 id="theme-{{ theme }}-buttons-and-links">3. Buttons and Links <a href="#theme-{{ theme }}-buttons-and-links" aria-label="Link to Theme {{ theme|capitalize }} Buttons and Links">#</a></h2>
+        {{ block('blockButtonsAndLinks') }}
+        <hr>
+        <h2 id="theme-{{ theme }}-forms">4. Forms <a href="#theme-{{ theme }}-forms" aria-label="Link to Theme {{ theme|capitalize }} Forms">#</a></h2>
+        {{ block('blockInputs') }}
       </div>
     </div>
-    <br><br>
-  </div>
-  <div data-theme="dark">
-    <br><br>
-    <div class="centerMaxWidthContainer">
-      <div class="centerContentMaxWidth">
-        <section>
-          <h3>Dark Theme</h3>
-          <p>Using the <code>data-theme="dark"</code> attribute allows you a group of content with a dark background and light text.</p>
-          <div>
-            <a href="javascript:void(0)">Regular link</a><br>
-            <a class="button button--link" href="javascript:void(0)">Button Link</a><br><br>
-            <button type="button" class="button">Button</button>
-            <button type="button" class="button button--ghost">Button Ghost</button>
-            <br><br>
-            <button type="button" class="button" disabled>Button Disabled</button>
-            <button type="button" class="button button--ghost" disabled>Button Ghost Disabled</button>
-            <hr>
-            <label for="textInput-5">Text Input</label><br>
-            <input id="textInput-5" type="text" name="text" placeholder="Placeholder">
-            <br>
-            <span class="select">
-              <label class="visuallyHidden" for="selectInputDark">Select Input</label>
-              <select name="select" id="selectInputDark">
-                <option value="select-value-1">Select Option #1</option>
-                <option value="select-value-2">Select Option #2</option>
-                <option value="select-value-3">Select Option #3</option>
-              </select>
-            </span>
-            <br><br>
-            <fieldset>
-              <legend>Checkbox Input</legend>
-              <div>
-                <input type="checkbox" id="checkbox-dark-1" required>
-                <label for="checkbox-dark-1">Checkbox Label #1</label>
-              </div>
-            </fieldset>
-            <fieldset>
-              <legend>Radio Inputs</legend>
-              <div>
-                <input type="radio" id="radio-dark-1" name="radio-group-dark">
-                <label for="radio-dark-1">Radio Label #1</label>
-                <br>
-                <input type="radio" id="radio-dark-2" name="radio-group-dark">
-                <label for="radio-dark-2">Radio Label #2</label>
-              </div>
-            </fieldset>
-          </div>
-          <div class="scrollableTableWrapper">
-            <table class="boxRadius">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Ingredients</th>
-                  <th scope="col">Serves 12</th>
-                  <th scope="col">Serves 24</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>milk</td>
-                  <td>1 quart</td>
-                  <td>2 quart</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>cinnamon sticks</td>
-                  <td>2</td>
-                  <td>1</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-      </div>
-    </div>
-    <br><br>
-  </div>
-  <div data-theme="hero">
-    <br><br>
-    <div class="centerMaxWidthContainer">
-      <div class="centerContentMaxWidth">
-        <section>
-          <h3>Hero Theme</h3>
-          <p>Using the <code>data-theme="hero"</code> attribute allows you a group of content with a hero background and dark text.</p>
-          <div>
-            <a href="javascript:void(0)">Regular link</a><br>
-            <a class="button button--link" href="javascript:void(0)">Button Link</a><br><br>
-            <button type="button" class="button">Button</button>
-            <button type="button" class="button button--ghost">Button Ghost</button>
-            <br><br>
-            <button type="button" class="button" disabled>Button Disabled</button>
-            <button type="button" class="button button--ghost" disabled>Button Ghost Disabled</button>
-            <hr>
-            <label for="textInput-6">Text Input</label><br>
-            <input id="textInput-6" type="text" name="text" placeholder="Placeholder">
-            <br>
-            <span class="select">
-              <label class="visuallyHidden" for="selectInputHero">Select Input</label>
-              <select name="select" id="selectInputHero">
-                <option value="select-value-1">Select Option #1</option>
-                <option value="select-value-2">Select Option #2</option>
-                <option value="select-value-3">Select Option #3</option>
-              </select>
-            </span>
-            <br><br>
-            <fieldset>
-              <legend>Checkbox Input</legend>
-              <div>
-                <input type="checkbox" id="checkbox-hero-1" required>
-                <label for="checkbox-hero-1">Checkbox Label #1</label>
-              </div>
-            </fieldset>
-            <fieldset>
-              <legend>Radio Inputs</legend>
-              <div>
-                <input type="radio" id="radio-hero-1" name="radio-group-hero">
-                <label for="radio-hero-1">Radio Label #1</label>
-                <br>
-                <input type="radio" id="radio-hero-2" name="radio-group-hero">
-                <label for="radio-hero-2">Radio Label #2</label>
-              </div>
-            </fieldset>
-          </div>
-          <div class="scrollableTableWrapper">
-            <table class="boxRadius">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Ingredients</th>
-                  <th scope="col">Serves 12</th>
-                  <th scope="col">Serves 24</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>milk</td>
-                  <td>1 quart</td>
-                  <td>2 quart</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>cinnamon sticks</td>
-                  <td>2</td>
-                  <td>1</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-      </div>
-    </div>
-    <br>
-  </div>
-  <div data-theme="hero">
-    <br>
-    <div class="centerMaxWidthContainer">
-      <div class="centerContentMaxWidth">
-        <section>
-          <div class="boxPadding boxRadius" data-theme="reset">
-            <h3>Reset Theme</h3>
-            <p>Using the <code>data-theme="reset"</code> class allows you to revert the styles of a parent theme back to the inital styles.</p>
-            <div>
-              <a href="javascript:void(0)">Regular link</a><br>
-              <a class="button button--link" href="javascript:void(0)">Button Link</a><br><br>
-              <button type="button" class="button">Button</button>
-              <button type="button" class="button button--ghost">Button Ghost</button>
-              <br><br>
-              <button type="button" class="button" disabled>Button Disabled</button>
-              <button type="button" class="button button--ghost" disabled>Button Ghost Disabled</button>
-              <hr>
-              <label for="textInput-7">Text Input</label><br>
-              <input id="textInput-7" type="text" name="text" placeholder="Placeholder">
-              <br>
-              <span class="select">
-                <label class="visuallyHidden" for="selectInputReset">Select Input</label>
-                <select name="select" id="selectInputReset">
-                  <option value="select-value-1">Select Option #1</option>
-                  <option value="select-value-2">Select Option #2</option>
-                  <option value="select-value-3">Select Option #3</option>
-                </select>
-              </span>
-              <br><br>
-              <fieldset>
-                <legend>Checkbox Input</legend>
-                <div>
-                  <input type="checkbox" id="checkbox-reset-1" required>
-                  <label for="checkbox-reset-1">Checkbox Label #1</label>
-                </div>
-              </fieldset>
-              <fieldset>
-                <legend>Radio Inputs</legend>
-                <div>
-                  <input type="radio" id="radio-reset-1" name="radio-group-reset">
-                  <label for="radio-reset-1">Radio Label #1</label>
-                  <br>
-                  <input type="radio" id="radio-reset-2" name="radio-group-reset">
-                  <label for="radio-reset-2">Radio Label #2</label>
-                </div>
-              </fieldset>
-            </div>
-            <div class="scrollableTableWrapper">
-              <table class="boxRadius">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Ingredients</th>
-                    <th scope="col">Serves 12</th>
-                    <th scope="col">Serves 24</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>milk</td>
-                    <td>1 quart</td>
-                    <td>2 quart</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>cinnamon sticks</td>
-                    <td>2</td>
-                    <td>1</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-    <br><br>
-  </div>
+  </section>
 {% endblock %}

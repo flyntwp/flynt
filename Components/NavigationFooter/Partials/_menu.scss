@@ -2,24 +2,14 @@
   @include reset-list;
   display: flex;
   flex-wrap: wrap;
-  gap: calc(var(--gap-width) / 2) var(--gap-width);
+  gap: calc(var(--flow-space) / 2) var(--flow-space);
   justify-content: center;
   list-style: none;
   margin: 0;
   padding: 0;
 
-  &-item {
-    @include reset-list-item;
-  }
-
   &-link {
     @include reset-link;
     color: currentColor;
-    text-decoration: none;
-
-    &:hover,
-    &:focus {
-      color: var(--color-accent);
-    }
   }
 }

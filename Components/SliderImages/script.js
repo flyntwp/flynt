@@ -2,9 +2,9 @@ import Swiper, { Navigation, A11y, Autoplay, Lazy } from 'swiper'
 import 'swiper/css/bundle'
 import { buildRefs, getJSON } from '@/assets/scripts/helpers.js'
 
-export default function (el) {
-  const refs = buildRefs(el)
-  const data = getJSON(el)
+export default function (sliderImages) {
+  const refs = buildRefs(sliderImages)
+  const data = getJSON(sliderImages)
   const swiper = initSlider(refs, data)
   return () => swiper.destroy()
 }

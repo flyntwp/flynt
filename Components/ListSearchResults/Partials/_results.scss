@@ -1,24 +1,13 @@
 .results {
   @include reset-list;
+  margin-block-start: calc(var(--component-spacing) / 2);
 
-  .result {
-    @include reset-list-item;
-
-    + & {
-      margin-top: var(--gap-width);
-    }
-  }
-}
-
-.post {
-  &-link {
-    @include reset-link;
-    @include reset-content-margins;
-    color: var(--color-text);
+  footer {
+    text-align: end;
   }
 }
 
 .noResults {
-  margin-top: 2rem;
+  margin-block-start: calc(var(--component-spacing) / 2);
   text-align: center;
 }

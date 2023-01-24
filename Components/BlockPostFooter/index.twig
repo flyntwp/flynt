@@ -1,36 +1,36 @@
 <flynt-component client:visible name="BlockPostFooter" class="componentSpacing">
   <div class="container centerMaxWidthContainer">
     <div class="centerContentMaxWidth">
-      {% if post.terms('tag')  %}
-        <span class="visuallyHidden">{{ labels.tagsLabel }}</span>
-        <ul class="tags">
-          {% for tag in post.terms('tag')  %}
-            <li class="tags-item">
-              <a class="tags-itemLink button button--ghost button--small" href="{{ tag.link }}">{{ tag }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-      <div class="author postContent">
-        {% if post.author.avatar %}
-          <a class="author-avatarLink" href="{{ post.author.link|e('esc_url') }}" aria-hidden="true" tabindex="-1">
-            <img class="author-avatarImage"
-              width="64"
-              height="64"
-              src="{{ post.author.avatar }}"
-              alt="{{ post.author.name|e }}">
-          </a>
+      <hr>
+      <div class="postContent flowContent">
+        {% if post.terms('tag')  %}
+          <span class="visuallyHidden">{{ labels.tagsLabel }}</span>
+          <ul class="tags">
+            {% for tag in post.terms('tag')  %}
+              <li class="tag">
+                <a class="button button--text" href="{{ tag.link }}">{{ tag }}</a>
+              </li>
+            {% endfor %}
+          </ul>
         {% endif %}
-        <div class="author-info">
-          <div class="h5 author-name">
-            <a class="author-nameLink" href="{{ post.author.link|e('esc_url') }}">
-              <span class="visuallyHidden">{{ labels.postedByLabel }}</span>
-              {{ post.author.name }}
+
+        <div class="author">
+          {% if post.author.avatar %}
+            <a class="avatar" href="{{ post.author.link|e('esc_url') }}" aria-hidden="true" tabindex="-1">
+              <img class="avatar-image" width="64" height="64" src="{{ post.author.avatar }}" alt="{{ post.author.name|e }}">
             </a>
-          </div>
-          {% if post.author.meta.description %}
-            <p class="author-description">{{ post.author.meta.description|e }}</p>
           {% endif %}
+          <div class="details flowContent">
+            <p class="name">
+              <a href="{{ post.author.link|e('esc_url') }}">
+                <span class="visuallyHidden">{{ labels.postedByLabel }}</span>
+                {{ post.author.name }}
+              </a>
+            </p>
+            {% if post.author.meta.description %}
+              <p class="description">{{ post.author.meta.description|e }}</p>
+            {% endif %}
+          </div>
         </div>
       </div>
     </div>

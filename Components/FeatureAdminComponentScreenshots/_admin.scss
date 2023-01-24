@@ -2,29 +2,29 @@
 .flyntComponentScreenshot {
   background-color: #fff;
   border: 1px solid #ccd0d4;
-  bottom: 5px;
   display: inline-block;
   height: 40px;
-  margin-left: 5px;
+  inset-block-end: 5px;
+  margin-inline-start: 5px;
   position: absolute;
 
   &-imageWrapper {
-    bottom: 0;
+    inset-block-end: 0;
+    inset-inline-end: 100%;
     position: absolute;
-    right: 100%;
   }
 
   &-image {
     background: #fff;
     border: 3px solid #2f353e;
     border-radius: 3px;
-    bottom: 0;
     display: block;
     height: 250px;
+    inset-block-end: 0;
+    inset-inline-end: 20px;
     max-width: 500px;
     object-fit: contain;
     position: absolute;
-    right: 20px;
   }
 
   &-imageElement {
@@ -33,9 +33,9 @@
   }
 
   &-label {
-    bottom: 4px;
-    left: 100%;
-    padding-left: 8px;
+    inset-block-end: 4px;
+    inset-inline-start: 100%;
+    padding-inline-start: 8px;
     position: absolute;
     white-space: nowrap;
   }

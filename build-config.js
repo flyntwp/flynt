@@ -4,10 +4,11 @@ const dest = './dist'
 const host = `https://${domain}`
 
 const entries = [
-  './assets/main.js',
-  './assets/main.scss',
   './assets/admin.js',
   './assets/admin.scss',
+  './assets/main.js',
+  './assets/main.scss',
+  './assets/print.scss',
   './assets/tinyMce.scss'
 ]
 

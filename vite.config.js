@@ -32,10 +32,7 @@ export default defineConfig(({ mode }) => {
             cert: fs.readFileSync(env.VITE_DEV_SERVER_CERT)
           }
         : false,
-      hmr: {
-        // always use 'localhost' to preserve issues with IPv6
-        host: 'localhost'
-      }
+      host: 'localhost' // preserve conflicts with IpV6
     },
     build: {
       // generate manifest.json in outDir

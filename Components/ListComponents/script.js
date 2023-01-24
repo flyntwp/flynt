@@ -3,14 +3,10 @@ import { buildRefs } from '../../assets/scripts/helpers'
 
 const parallaxConfigs = new Map()
 
-/**
- *
- * @param { Element } el
- */
 export default function (el) {
   const multiRefs = buildRefs(el, true)
   const delegatedToggleHoverScroll = e =>
-    e.target.matches('.component-link') ? toggleHoverScroll(e) : null
+    e.target.matches('.componentLink') ? toggleHoverScroll(e) : null
 
   connect()
   isDesktopQueryList.addEventListener('change', () => {
@@ -46,9 +42,7 @@ export default function (el) {
 
       const imageOverflow = image.offsetHeight - imageWrapper.offsetHeight
       const topOffset =
-        imageWrapper.getBoundingClientRect().top +
-        scrollY -
-        clientTop
+        imageWrapper.getBoundingClientRect().top + scrollY - clientTop
       const startOffset = topOffset - innerHeight * 0.4
       const endOffset = topOffset - 100
 
@@ -93,7 +87,7 @@ const isDesktop = () => isDesktopQueryList.matches
  */
 function toggleHoverScroll (e) {
   const target = e.delegateTarget || e.target
-  const imageWrapper = target.querySelector('.component-imageWrapper')
+  const imageWrapper = target.querySelector('.imageWrapper')
   const imageWrapperHeight = imageWrapper.offsetHeight
   const image = imageWrapper.querySelector('img')
   const imageHeight = image.offsetHeight

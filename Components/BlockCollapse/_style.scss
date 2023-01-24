@@ -1,20 +1,20 @@
 flynt-component[name='BlockCollapse'] {
   &[data-status='collapse'] {
-    margin-top: calc((-1 * var(--component-spacing)) + (var(--percentage-distance) * var(--component-spacing) ) / 100);
+    margin-block-start: calc((-1 * var(--component-spacing)) + (var(--percentage-distance) * var(--component-spacing) ) / 100);
   }
 
   &[data-status='expand'] {
-    margin-top: calc((var(--percentage-distance) * var(--component-spacing) ) / 100);
+    margin-block-start: calc((var(--percentage-distance) * var(--component-spacing) ) / 100);
 
     &[data-theme] {
-      margin-top: 0;
-      padding-top: calc((var(--percentage-distance) * var(--component-spacing) ) / 100);
+      margin-block-start: 0;
+      padding-block-start: calc((var(--percentage-distance) * var(--component-spacing) ) / 100);
     }
   }
 
   &[data-theme] + .componentSpacing {
     &[data-theme] {
-      padding-top: 0;
+      padding-block-start: 0;
     }
   }
 }

@@ -1,84 +1,51 @@
 flynt-component[name='BlockPostHeader'] {
   > .container {
     padding: var(--component-spacing) var(--container-padding);
-
-    @media (min-width: $breakpoint-tablet) {
-      --component-spacing: var(--component-spacing-tablet);
-    }
-  }
-
-  .content {
-    @include reset-content-margins;
-  }
-
-  .excerpt {
-    margin-top: 1.5rem;
   }
 
   .meta {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
-    font-size: 0.875rem;
-    margin-top: 1.5rem;
-    padding-left: 2rem;
+    font-size: var(--body-font-size-small);
 
     > *:not(:last-child) {
       &::after {
-        background-color: var(--color-border);
+        background-color: var(--color-accent);
         content: '';
         display: inline-block;
-        height: var(--border-width);
+        height: 2px;
         margin: 0 0.5rem;
         vertical-align: middle;
         width: 8px;
-
-        @media (min-width: $breakpoint-mobile-horizontal) {
-          margin: 0 0.75rem;
-        }
       }
     }
 
-    > * {
+    a {
       @include reset-link;
       color: var(--color-text);
     }
 
-    &-author,
-    &-category {
-      &:hover {
-        color: var(--color-accent);
-      }
-    }
-
-    &-author {
+    .author {
       align-items: center;
       display: flex;
       text-decoration: none;
-    }
 
-    &-avatar {
-      margin-left: -2rem;
-      margin-right: 0.5rem;
-    }
+      .avatar {
+        border-radius: 100%;
+        height: 32px;
+        margin-inline-end: 0.75rem;
+        width: 32px;
 
-    &-avatarImage {
-      border-radius: 100%;
-      height: 1.5rem;
-      width: 1.5rem;
-
-      @media (min-width: $breakpoint-mobile-horizontal) {
-        height: 2rem;
-        width: 2rem;
+        @media (min-width: $breakpoint-mobile-horizontal) {
+          height: 48px;
+          width: 48px;
+        }
       }
     }
   }
 
   flynt-component[name='BlockImage'] {
-    margin-top: calc(-1 * var(--component-spacing) / 2);
-
-    .figure-image {
-      border-radius: var(--box-border-radius);
-    }
+    margin-block: calc(-1 * var(--component-spacing) / 2) calc(var(--component-spacing) / 2);
   }
 }

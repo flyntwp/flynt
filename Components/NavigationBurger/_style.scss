@@ -1,14 +1,5 @@
-// NOTE: overwriting wp defaults
-@media screen and (max-width: 600px) {
-  // stylelint-disable-next-line selector-max-id
-  #wpadminbar {
-    position: fixed;
-  }
-}
-
 flynt-component[name='NavigationBurger'] {
   --navigation-height: 64px;
-
   height: var(--navigation-height);
 
   @media (min-width: $breakpoint-tablet-horizontal) {
@@ -16,10 +7,9 @@ flynt-component[name='NavigationBurger'] {
   }
 
   &.headroom {
-    &--not-top {
-      .container {
-        box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.07);
-      }
+    .container {
+      transition: transform 0.3s;
+      will-change: transform;
     }
 
     &--unpinned:not([data-status='menuIsOpen']) {
@@ -38,25 +28,31 @@ flynt-component[name='NavigationBurger'] {
   .container {
     align-items: center;
     background-color: var(--color-background);
+    border-block-end: solid 2px var(--color-border);
     display: flex;
     height: var(--navigation-height);
+    inset-block-start: 0;
+    inset-inline: 0;
     justify-content: space-between;
-    left: 0;
-    padding-bottom: 8px;
-    padding-top: 8px;
+    padding-block: 12px;
     position: fixed;
-    right: 0;
-    top: 0;
-    transition: transform 0.3s, box-shadow 0.3s;
     width: 100%;
     z-index: 99;
 
     .admin-bar & {
-      top: var(--wp-admin--admin-bar--height);
+      inset-block-start: var(--wp-admin--admin-bar--height);
     }
   }
 
   @import 'Partials/logo';
   @import 'Partials/hamburger';
   @import 'Partials/menu';
+}
+
+// Overwriting wp defaults to keep admin bar fixed
+@media screen and (max-width: 600px) {
+  // stylelint-disable-next-line selector-max-id
+  #wpadminbar {
+    position: fixed;
+  }
 }

@@ -4,28 +4,24 @@ flynt-component[name='BlockPostFooter'] {
     display: flex;
     flex-wrap: wrap;
 
-    &-item {
-      @include reset-list-item;
+    .tag {
       display: inline-block;
-      margin-bottom: 0.5rem;
-      margin-right: 0.5rem;
+      margin-inline: 0.5rem;
     }
   }
 
   .author {
     display: flex;
-    text-align: left;
+    flex-direction: column;
+    gap: calc(var(--flow-space) / 2);
+    text-align: start;
 
     @media (min-width: $breakpoint-mobile-horizontal) {
-      align-items: center;
+      flex-direction: row;
+      gap: var(--flow-space);
     }
 
-    &-avatarLink {
-      @include reset-link;
-      flex-shrink: 0;
-    }
-
-    &-avatarImage {
+    .avatar-image {
       border-radius: 50%;
       width: 64px;
 
@@ -34,34 +30,16 @@ flynt-component[name='BlockPostFooter'] {
       }
     }
 
-    &-info {
-      @include reset-content-margins;
+    .details {
+      --flow-space: 0.5rem;
       display: flex;
       flex: 1;
       flex-direction: column;
       justify-content: center;
-      padding-left: 1rem;
-
-      @media (min-width: $breakpoint-mobile-horizontal) {
-        padding-left: var(--gap-width);
-      }
     }
 
-    &-name {
-      margin-bottom: 0;
-    }
-
-    &-nameLink {
-      @include reset-link;
-
-      &:hover {
-        color: var(--color-accent);
-      }
-    }
-
-    &-description {
-      font-size: 0.9375rem;
-      line-height: 1.5;
+    .description {
+      font-size: var(--body-font-size-small);
     }
   }
 }
