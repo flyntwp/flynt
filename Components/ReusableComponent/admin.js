@@ -5,7 +5,7 @@
     acf.addAction('select2_init', function ($select, args, settings, field) {
       const $fieldEl = field.$el
 
-      if ($fieldEl.data('name') === 'reusablePost') {
+      if ($fieldEl.data('name') === 'reusableComponent') {
         $select.on('change', { $fieldEl }, function () {
           const postId = $(this).val()
           const postTitle = $(this).find('option:selected').text()

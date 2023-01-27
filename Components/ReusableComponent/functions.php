@@ -10,7 +10,7 @@ function getACFLayout()
         'sub_fields' => [
             [
                 'label' => __('Select Reusable Component', 'flynt'),
-                'name' => 'reusablePost',
+                'name' => 'reusableComponent',
                 'type' => 'post_object',
                 'post_type' => [
                     'reusable-components'
@@ -25,15 +25,14 @@ function getACFLayout()
     ];
 }
 
-add_filter('acf/prepare_field/name=reusablePost', function ($field) {
-    // Set initial instructions and update with selected post link
+add_filter('acf/prepare_field/name=reusableComponent', function ($field) {
     $reusableAdminLink = admin_url('edit.php?post_type=reusable-components');
     $postEditLink = get_edit_post_link($field['value']);
     $postTitle = get_the_title($field['value']);
     $postId = $field['value'] ? $field['value'] : get_the_ID();
 
-    $instructions = sprintf(_x('Add %sreusable component%s.', '%s: start and end of <a> tag', 'flynt'), "<a href=\"${reusableAdminLink}\" target=\"_blank\" rel=\"noopener noreferrer\">", "</a>");
-    $editLink = sprintf(_x(' Edit %s.', '%s: Link and title of selected reusable-post', 'flynt'), "<a class=\"reusable-postLink\" data-postId=\"${postId}\" href=\"${postEditLink}\" target=\"_blank\" rel=\"noopener noreferrer\">${postTitle}</a>");
+    $instructions = sprintf(_x('Add %sreusable component%s.', '%s: start and end of <a> tag', 'flynt'), "<a href='${reusableAdminLink}' target='_blank' rel='noopener noreferrer'>", "</a>");
+    $editLink = sprintf(_x(' Edit %s.', '%s: Link and title of selected reusable-post', 'flynt'), "<a class='reusable-postLink' data-postId='${postId}' href='${postEditLink}' target='_blank' rel='noopener noreferrer'>${postTitle}</a>");
 
     if ($field['value']) {
         $instructions .= $editLink;
