@@ -242,7 +242,6 @@ legend {
 
 label {
   color: var(--color-text-muted);
-  display: inline-block;
   font-size: var(--body-font-size-small);
   font-weight: 500;
 }
@@ -278,6 +277,7 @@ label {
 .select {
   --icon-size: 17px;
   --icon-border-width: 2px;
+  display: inline-block;
   position: relative;
 
   &::after {
@@ -308,91 +308,19 @@ textarea {
 
 [type='checkbox'],
 [type='radio'] {
-  --flow-space: 0;
-  appearance: none;
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-  width: 1px;
-
-  &:focus-visible {
-    + label {
-      &::before {
-        @include normalize-outline;
-      }
-    }
-  }
+  accent-color: var(--color-accent);
+  display: inline-block;
+  height: 20px;
+  margin-block-start: 4px;
+  margin-inline-end: 8px;
+  vertical-align: top;
+  width: 20px;
 
   + label {
     color: var(--color-text);
-    display: block;
+    display: inline-block;
     font: inherit;
-    padding-inline-start: 1.75em;
-    position: relative;
-
-    &::before,
-    &::after {
-      --size: 24px;
-      --border-width: 2px;
-      height: var(--size);
-      transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
-      width: var(--size);
-      will-change: border-color, background-color;
-    }
-
-    &::before {
-      background-color: var(--color-background);
-      border: var(--border-width) solid var(--color-border-secondary);
-      content: '';
-      display: block;
-      inset-block-start: var(--border-width);
-      inset-inline-start: 0;
-      margin: 0;
-      padding: 0;
-      position: absolute;
-    }
-  }
-
-  &:checked {
-    + label::before {
-      border-color: var(--color-accent);
-    }
-  }
-}
-
-[type='checkbox'] {
-  + label::after {
-    border-block-end: var(--border-width) solid transparent;
-    border-inline-end: var(--border-width) solid transparent;
-    content: '';
-    display: block;
-    height: 15px;
-    inset-block-start: 5px;
-    inset-inline-start: 9px;
-    position: absolute;
-    transform: rotate(40deg);
-    width: 7px;
-  }
-
-  &:checked {
-    + label::after {
-      border-block-end-color: var(--color-accent);
-      border-inline-end-color: var(--color-accent);
-    }
-  }
-}
-
-[type='radio'] {
-  + label::before {
-    background-color: transparent;
-    border-radius: 50%;
-    box-shadow: inset 0 0 0 calc(var(--border-width) * 2) var(--color-background);
-  }
-
-  &:checked {
-    + label::before {
-      background-color: var(--color-accent);
-    }
+    width: calc(100% - 33px);
   }
 }
 
