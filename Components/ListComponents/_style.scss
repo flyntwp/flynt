@@ -30,6 +30,7 @@ flynt-component[name='ListComponents'] {
       width: 100%;
 
       .image {
+        height: auto;
         position: absolute;
 
         &--isSmallerThanWrapper {
