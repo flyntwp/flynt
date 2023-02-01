@@ -4,7 +4,7 @@
   {% set themes = ['light', 'dark'] %}
 
   <section class="centerMaxWidthContainer componentSpacing">
-    <div class="flowContent centerContentMaxWidth">
+    <div class="centerContentMaxWidth">
       <h1>Base Style</h1>
       <p>This style guide exemplifies the base styles.</p>
       <p><strong>Creating a well thought out base style for a new website is one of the most critical parts to ensure an overall successful project progression.</strong></p>
@@ -32,7 +32,7 @@
 
   <!-- 1. Colors -->
   <section class="centerMaxWidthContainer componentSpacing">
-    <div class="flowContent centerContentMaxWidth">
+    <div class="centerContentMaxWidth">
       <h2 id="colors">1. Colors <a href="#colors" aria-label="Link to Colors">#</a></h2>
       <p>A strong selection of colors is essential for any website. Using CSS color variables provide a consistent and efficient way to incorporate color into the design while it is easy to make global changes.</p>
       {% block blockTableColors %}
@@ -97,7 +97,7 @@
 
   <!-- 2. Typography -->
   <section class="centerMaxWidthContainer componentSpacing">
-    <div class="flowContent centerContentMaxWidth">
+    <div class="centerContentMaxWidth">
       <h2 id="typography">2. Typography <a href="#typography" aria-label="Link to Typography">#</a></h2>
       <p>By default elements <u>doesn’t</u> have any white-space between (as result of the css reset). Using the <a href="#helpers">helper class</a> <code>.flowContent</code> in combination with a css variable gets rid of them and creates a smooth flow rhythm between elements. Just use the css variable <code>--flow-space</code> and let it flow.</p>
       {% block blockTypography %}
@@ -151,7 +151,7 @@
 
   <!-- 3. Buttons and Links -->
   <section class="centerMaxWidthContainer componentSpacing">
-    <div class="flowContent centerContentMaxWidth">
+    <div class="centerContentMaxWidth">
       <h2 id="buttons-and-links">3. Buttons and Links <a href="#buttons-and-links" aria-label="Link to Buttons and Links">#</a></h2>
       <p>A <strong>&lt;button&gt;</strong> element without a class should have its styles reset, so it can be used as a semantic tag on other interface elements, like the arrows of a slider, a closing × or a burger menu.</p>
       <p>Using the anchor element (<strong>&lt;a&gt;</strong>) as a button is common for a “call to action”. Anchor elements as <a href="https://www.google.com/search?q=HTML+Links" target="_blank">regular Link</a> are nearly on all over the internet.</p>
@@ -185,7 +185,7 @@
 
   <!-- 4. Forms -->
   <section class="centerMaxWidthContainer componentSpacing">
-    <div class="flowContent centerContentMaxWidth">
+    <div class="centerContentMaxWidth">
       <h2 id="forms">4. Forms <a href="#forms" aria-label="Link to Forms">#</a></h2>
       <p>Placing form elements on a page should just work without having to apply extra classes or custom wrapping elements. However, a <strong>&lt;fieldset&gt;</strong> element provides a nice opportunity to group multiple form elements.</p>
       {% block blockInputs %}
@@ -251,7 +251,7 @@
 
   <!-- 5. Helpers -->
   <section class="centerMaxWidthContainer componentSpacing">
-    <div class="flowContent centerContentMaxWidth">
+    <div class="centerContentMaxWidth">
       <h2 id="helpers">5. Helpers <a href="#helpers" aria-label="Link to Helpers">#</a></h2>
       <p>To ensure a consistent appearance across all components, it is important to use helper classes for specific tasks. Keep in mind: <strong>A helper class should do one job and does it well.</strong></p>
       {% block blockHelpers %}
@@ -280,7 +280,7 @@
 
   <!-- 6. Themes -->
   <section class="centerMaxWidthContainer componentSpacing">
-    <div class="flowContent centerContentMaxWidth">
+    <div class="centerContentMaxWidth">
       <h2 class="h1" id="themes">6. Themes <a href="#themes" aria-label="Link to Themes">#</a></h2>
       <p>To easily change the appearance of a group of content, using themes is a reliable method. The <code>data-theme</code> attribute makes it simple to apply styles and customize the appearance of a group of content, while the code keeps readable.</p>
     </div>
@@ -288,7 +288,7 @@
   {% for theme in themes %}
     <section data-theme="{{ theme }}" class="componentSpacing">
       <div class="centerMaxWidthContainer">
-        <div class="flowContent centerContentMaxWidth">
+        <div class="centerContentMaxWidth">
           <h3 class="h2" id="theme-{{ theme }}">Theme {{ theme|capitalize }} <a href="#theme-{{ theme }}" aria-label="Link to Theme {{ theme|capitalize }}">#</a></h3>
           <p>Using the attribute <code>data-theme="{{ theme }}"</code> allows you to style a group content as Theme {{ theme|capitalize }}.</p>
             <ol>
@@ -316,7 +316,7 @@
   <!-- Theme Reset -->
   <section data-theme="{{ themes[0] }}" class="componentSpacing">
     <div class="centerMaxWidthContainer">
-      <div class="flowContent centerContentMaxWidth boxPadding" data-theme="reset">
+      <div class="centerContentMaxWidth boxPadding" data-theme="reset">
         <h3 class="h2" id="theme-reset">Theme Reset <a href="#theme-reset" aria-label="Link to Theme Reset">#</a></h3>
         <p>Using the attribute <code>data-theme="reset"</code> allows you to revert the styles of a parent theme back to the initial styles.</p>
         {% set theme = 'reset' %}

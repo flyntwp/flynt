@@ -2,7 +2,7 @@
   <ul role="list" class="results flowContent">
     {% for post in posts  %}
       <li class="result boxBorder boxPadding" data-theme="reset">
-        <article class="flowContent">
+        <article>
             <h2 class="h5">{{ post.title }}</h2>
             <p>{{ post.excerpt.read_more(false) }}</p>
             <footer>

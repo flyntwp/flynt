@@ -2,7 +2,7 @@
   <div class="container centerMaxWidthContainer">
     <div class="centerContentMaxWidth">
       <hr>
-      <div class="postContent flowContent">
+      <div class="postContent">
         {% if post.terms('tag')  %}
           <span class="visuallyHidden">{{ labels.tagsLabel }}</span>
           <ul class="tags">
@@ -20,7 +20,7 @@
               <img class="avatar-image" width="64" height="64" src="{{ post.author.avatar }}" alt="{{ post.author.name|e }}">
             </a>
           {% endif %}
-          <div class="details flowContent">
+          <div class="details">
             <p class="name">
               <a href="{{ post.author.link|e('esc_url') }}">
                 <span class="visuallyHidden">{{ labels.postedByLabel }}</span>

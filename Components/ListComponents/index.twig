@@ -1,7 +1,7 @@
 <flynt-component client:visible name="ListComponents" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
   <div class="container centerMaxWidthContainer">
     {% if preContentHtml %}
-      <div class="preContent flowContent">
+      <div class="preContent">
         {{ preContentHtml|e('wp_kses_post')}}
       </div>
     {% endif %}
@@ -25,7 +25,7 @@
                       alt="{{ componentBlock.readme.title|e }}">
                 </div>
               {% endif %}
-              <div class="content flowContent boxPadding">
+              <div class="content boxPadding">
                 <h3 class="h5">{{ componentBlock.readme.title }}</h3>
                 {{ componentBlock.readme.description }}
               </div>

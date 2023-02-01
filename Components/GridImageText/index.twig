@@ -1,14 +1,14 @@
 <flynt-component client:visible name="GridImageText" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
   <div class="container centerMaxWidthContainer">
     {% if preContentHtml %}
-      <div class="preContent flowContent">
+      <div class="preContent">
         {{ preContentHtml|e('wp_kses_post') }}
       </div>
     {% endif %}
     <ul class="grid" {{ options.maxColumns ? 'data-max-columns="' ~ options.maxColumns ~ '"' }}>
       {% for item in items %}
         {% if item.image or item.contentHtml %}
-          <li class="item {{ options.card == 'layoutCard' ? 'boxBorder' : 'flowContent' }}" {{ options.card == 'layoutCard' ? 'data-theme="reset"' }}>
+          <li class="item {{ options.card == 'layoutCard' ? 'boxBorder' }}" {{ options.card == 'layoutCard' ? 'data-theme="reset"' }}>
               {% if item.image %}
                 <figure class="figure">
                   <img class="figure-image lazyload"
@@ -29,7 +29,7 @@
                 </figure>
               {% endif %}
               {% if item.contentHtml %}
-                <div class="flowContent {{ options.card == 'layoutCard' ? 'boxPadding' }}">
+                <div class="{{ options.card == 'layoutCard' ? 'boxPadding' }}">
                   {{ item.contentHtml|e('wp_kses_post') }}
                 </div>
               {% endif %}
