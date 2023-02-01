@@ -1,4 +1,4 @@
-/*
+/**
 *  Typography
 */
 
@@ -72,13 +72,6 @@ h5,
   }
 }
 
-h6,
-.h6 {
-  color: var(--color-text-muted);
-  font-size: var(--body-font-size-small);
-  font-weight: 400;
-}
-
 a {
   color: var(--color-accent);
   text-underline-offset: 0.25em;
@@ -132,9 +125,10 @@ blockquote,
   }
 }
 
-/*
+/**
 * Lists & Tables
 */
+
 ul,
 ol {
   padding-inline-start: 1.5rem;
@@ -179,7 +173,7 @@ table {
   }
 }
 
-/*
+/**
 * Buttons
 */
 
@@ -220,7 +214,7 @@ table {
   }
 }
 
-/*
+/**
 * Forms
 */
 
@@ -324,13 +318,20 @@ textarea {
   }
 }
 
-/*
+/**
 * Helpers
 */
 
 flynt-component {
   display: block;
   position: relative;
+}
+
+/* Base flow for content */
+:where(#{$heading-selectors}, p, .paragraph, ul, ol, pre, table, figure, blockquote, form, fieldset, dl, address, details, hr, aside, video, fieldset) {
+  + * {
+    margin-block-start: var(--flow-space);
+  }
 }
 
 .pageWrapper {

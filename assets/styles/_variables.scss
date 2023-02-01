@@ -42,7 +42,7 @@ $input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [ty
   --container-max-width: calc(1200px + (var(--container-padding) * 2));
   --container-max-width-large: calc(1340px + (var(--container-padding) * 2));
 
-  --box-padding: clamp(16px, calc((36 / 1280) * 100vw), 36px);
-  --container-padding: clamp(16px, calc((36 / 1280) * 100vw), 36px);
-  --component-spacing: clamp(48px, calc((96 / 1280) * 100vw), 96px);
+  --box-padding: #{fluid-size(16px, 36px)};
+  --container-padding: #{fluid-size(16px, 36px)};
+  --component-spacing: #{fluid-size(48px, 96px)};
 }
