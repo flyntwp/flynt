@@ -99,7 +99,7 @@
   <section class="centerMaxWidthContainer componentSpacing">
     <div class="centerContentMaxWidth">
       <h2 id="typography">2. Typography <a href="#typography" aria-label="Link to Typography">#</a></h2>
-      <p>By default elements <u>doesn’t</u> have any white-space between (as result of the css reset). Using the <a href="#helpers">helper class</a> <code>.flowContent</code> in combination with a css variable gets rid of them and creates a smooth flow rhythm between elements. Just use the css variable <code>--flow-space</code> and let it flow.</p>
+      <p>Using the css variable <code>--flow-space</code> creates a smooth flow rhythm between elements.</p>
       {% block blockTypography %}
         <h3 class="h1">H1: The quick brown fox jumps over the lazy dog</h3>
         <h3 class="h2">H2: The quick brown fox jumps over the lazy dog</h3>
@@ -221,7 +221,7 @@
         </fieldset>
 
         <p>The user agent stylesheet typically has a very weird <b>&lt;fieldset&gt;</b> and <b>&lt;legend&gt;</b> styling. But hey: why not customize it to our needs?!</p>
-        <fieldset class="flowContent">
+        <fieldset>
           <legend>Checkbox Inputs</legend>
           <input type="checkbox" id="checkbox-{{ formId }}-1" required>
           <label for="checkbox-{{ formId }}-1">Checkbox Label #1<sup>*</sup></label>
@@ -233,7 +233,7 @@
           <label for="checkbox-{{ formId }}-3">Checkbox Label #3</label>
         </fieldset>
 
-        <fieldset class="flowContent">
+        <fieldset>
           <legend>Radio Inputs</legend>
           <input type="radio" id="radio-{{ formId }}-1" name="radio-group">
           <label for="radio-{{ formId }}-1">Radio Label #1</label>
@@ -259,7 +259,7 @@
           <li><code>.componentSpacing</code><br>Ensures consistent component top and bottom spacing.</li>
           <li><code>.centerMaxWidthContainer</code><br>Ensures consistent left and right padding and website max width.</li>
           <li><code>.centerContentMaxWidth</code><br>Ensures an optimal readability of text contents (optimal line length for text is between 50 and 75 characters).</li>
-          <li><code>.flowContent</code><br>Ensures adds margin to child sibling elements, mostly perfect for flowing texts. For a closer examination of how it works, take a look at the <a href="#typography">2.&nbsp;Typography</a> section.</li>
+          <li><code>.flowContent</code><br>Ensures that a <strong>margin-block-start</strong> is added its child sibling elements, which is great for using a consistent flow rhythm between elements.</li>
           <li><code>.preContent</code><br>Ensures consistent positioning of content preceding the main section of a component.</li>
           <li><code>.postContent</code><br>Ensures consistent positioning of content following the main section of a component.</li>
           <li><code>.scrollableTableWrapper</code><br>Wrapping a table with a container element with this class makes the table scrollable on smaller screen sizes.</li>
