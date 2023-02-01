@@ -11,10 +11,14 @@ class Init
 {
     public static function initTheme()
     {
-        Api::registerHooks();
         Defaults::init();
         Options::init();
         Timber\Timber::init();
+
+        // Fronted related actions
+        if (!is_admin()) {
+            Api::registerHooks();
+        }
     }
 
     public static function loadComponents()
