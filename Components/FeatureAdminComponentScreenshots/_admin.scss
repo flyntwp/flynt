@@ -14,21 +14,23 @@
     position: absolute;
   }
 
-  &-image {
+  &-previewImageLarge {
     background: #fff;
     border: 3px solid #2f353e;
     border-radius: 3px;
     display: block;
-    height: 250px;
+    height: auto;
     inset-block-end: 0;
-    inset-inline-end: 20px;
-    max-width: 500px;
-    object-fit: contain;
+    inset-inline-end: 10px;
+    max-width: 400px;
+    object-fit: cover;
     position: absolute;
+    width: 33vw;
   }
 
-  &-imageElement {
+  &-previewImageSmall {
     display: block;
+    height: 40px;
     width: auto;
   }
 

@@ -29,7 +29,7 @@ if (class_exists('acf')) {
             $componentScreenshotUrl = "{$templateDirectoryUri}/{$componentPath}/screenshot.png";
             if (is_file($componentScreenshotPath)) {
                 $newTitle = '<span class="flyntComponentScreenshot">';
-                $newTitle .= '<img class="flyntComponentScreenshot-imageElement" src="' . $componentScreenshotUrl . '" height="40px" loading="lazy">';
+                $newTitle .= '<img class="flyntComponentScreenshot-previewImageSmall" src="' . $componentScreenshotUrl . '" loading="lazy">';
                 $newTitle .= '<span class="flyntComponentScreenshot-label">' . $title . '</span>';
                 $newTitle .= '</span>';
                 $title = $newTitle;

@@ -29,8 +29,7 @@ function showComponentScreenshot (layout, wrapper) {
   wrapper.append(wrapperContainer)
 
   const img = document.createElement('img')
-  img.classList.add('flyntComponentScreenshot-image')
-  img.setAttribute('loading', 'lazy')
+  img.classList.add('flyntComponentScreenshot-previewImageLarge')
   img.src = image
 
   wrapperContainer.prepend(img)
