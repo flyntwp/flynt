@@ -31,8 +31,17 @@ add_filter('acf/prepare_field/name=reusableComponent', function ($field) {
     $postTitle = get_the_title($field['value']);
     $postId = $field['value'] ? $field['value'] : get_the_ID();
 
-    $instructions = sprintf(_x('Add %sreusable component%s.', '%s: start and end of <a> tag', 'flynt'), "<a href='${reusableAdminLink}' target='_blank' rel='noopener noreferrer'>", "</a>");
-    $editLink = sprintf(_x(' Edit %s.', '%s: Link and title of selected reusable-post', 'flynt'), "<a class='reusable-postLink' data-postId='${postId}' href='${postEditLink}' target='_blank' rel='noopener noreferrer'>${postTitle}</a>");
+    $instructions = sprintf(
+        /* translators: 1: <a> element 2: </a> element */
+        __('Add %1$sreusable component%2$s.', 'flynt'),
+        "<a href='${reusableAdminLink}' target='_blank' rel='noopener noreferrer'>",
+        "</a>"
+    );
+    $editLink = sprintf(
+        /* translators: %s: Link and title of selected reusable-post */
+        __(' Edit %s.', 'flynt'),
+        "<a class='reusable-postLink' data-postId='${postId}' href='${postEditLink}' target='_blank' rel='noopener noreferrer'>${postTitle}</a>"
+    );
 
     if ($field['value']) {
         $instructions .= $editLink;

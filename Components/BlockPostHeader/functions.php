@@ -42,9 +42,11 @@ Options::addTranslatable('BlockPostHeader', [
             ],
             [
                 'label' => __('Reading Time - (20) min read', 'flynt'),
+                /* translators: %d: Placeholder for a number */
                 'instructions' => __('%d is placeholder for number of minutes', 'flynt'),
                 'name' => 'readingTime',
                 'type' => 'text',
+                /* translators: %d: Placeholder for a number */
                 'default_value' => __('%d min read', 'flynt'),
                 'wrapper' => [
                     'width' => '50',

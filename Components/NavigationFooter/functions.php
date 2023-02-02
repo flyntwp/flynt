@@ -50,6 +50,7 @@ Options::addTranslatable('NavigationFooter', [
         'type' => 'group',
         'sub_fields' => [
             [
+                /* translators: %s: Placeholder for the current year */
                 'label' => sprintf(__('© %s Website Name', 'flynt'), date_i18n('Y')),
                 'name' => 'messageShortcodeCopyrightYearWebsiteName',
                 'type' => 'message',
@@ -61,6 +62,7 @@ Options::addTranslatable('NavigationFooter', [
                 ],
             ],
             [
+                /* translators: %s: Placeholder for the current year */
                 'label' => sprintf(__('© %s Website Name — Subtitle', 'flynt'), date_i18n('Y')),
                 'name' => 'messageShortcodeCopyrightYearWebsiteNameTagLine',
                 'type' => 'message',
