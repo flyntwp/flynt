@@ -6,7 +6,7 @@
 
 namespace Flynt\FieldVariables;
 
-function getTheme()
+function getTheme($default = '')
 {
     return [
         'label' => __('Theme', 'flynt'),
@@ -20,8 +20,8 @@ function getTheme()
             '' => __('(none)', 'flynt'),
             'light' => __('Light', 'flynt'),
             'dark' => __('Dark', 'flynt'),
-            'hero' => __('Hero', 'flynt'),
-        ]
+        ],
+        'default_value' => $default,
     ];
 }
 
