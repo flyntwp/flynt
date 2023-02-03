@@ -161,6 +161,10 @@ table {
     font-weight: 500;
   }
 
+  td {
+    min-width: 25ch;
+  }
+
   thead {
     background-color: var(--color-background-secondary);
     border-block-end: solid 2px var(--color-border);
