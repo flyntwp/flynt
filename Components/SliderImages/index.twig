@@ -11,7 +11,7 @@
         {% for image in images %}
           <div class="slider-item swiper-slide">
             <figure class="figure">
-              <img class="figure-image swiper-lazy"
+              <img class="figure-image lazyload"
                 src="{{ image.src|resizeDynamic(0, 540) }}"
                 width="{{ (540 * image.aspect )|round }}"
                 height="{{ 540 }}"

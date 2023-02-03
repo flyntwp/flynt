@@ -36,7 +36,7 @@
     "lodash-es": "^4.17.21",
     "modern-normalize": "^1.1.0",
     "rellax": "^1.12.1",
-    "swiper": "^8.4.5"
+    "swiper": "^9.0.2"
   },
   "devDependencies": {
     "ansi-colors": "^4.1.3",
