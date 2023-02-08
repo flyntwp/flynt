@@ -1,5 +1,5 @@
 import { debounce } from 'lodash-es'
-import { buildRefs } from '../../assets/scripts/helpers'
+import { buildRefs } from '@/assets/scripts/helpers'
 
 const parallaxConfigs = new Map()
 
