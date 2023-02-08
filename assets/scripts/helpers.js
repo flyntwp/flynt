@@ -9,7 +9,9 @@ export function buildRefs (el, multiple = false, customRefs = {}) {
           const selector = customRefs[prop] ?? `[${DA}="${prop}"]`
           target[prop] = el[QS](selector)
           if (!target[prop]) {
-            console.warn(`ref ${prop} not found.`)
+            if (process.env.NODE_ENV !== 'production') {
+              console.warn(`ref ${prop} not found.`)
+            }
           }
         }
         return target[prop]
@@ -22,6 +24,6 @@ export function getJSON (node, selector = 'script[type="application/json"]', pro
   let data = {}
   try {
     data = JSON.parse(node.querySelector(selector)[property])
-  } catch (e) {}
+  } catch (e) { }
   return data
 }
