@@ -207,16 +207,13 @@
             <label for="textarea">Your message</label><br>
             <textarea id="textarea" placeholder="Placeholder"></textarea>
           </div>
-          <p>Wrap the <strong>&lt;select&gt;</strong> element in a container with the class <code>.select</code> to make the select arrow themeable.</p>
           <div class="form-group">
-            <span class="select">
-              <label class="visuallyHidden" for="selectInput-{{ formId }}">Select Input</label>
-              <select name="select" id="selectInput-{{ formId }}">
-                <option value="select-value-{{ formId }}-1">Select Option #1</option>
-                <option value="select-value-{{ formId }}-2">Select Option #2</option>
-                <option value="select-value-{{ formId }}-3">Select Option #3</option>
-              </select>
-            </span>
+            <label class="visuallyHidden" for="selectInput-{{ formId }}">Select Input</label>
+            <select name="select" id="selectInput-{{ formId }}">
+              <option value="select-value-{{ formId }}-1">Select Option #1</option>
+              <option value="select-value-{{ formId }}-2">Select Option #2</option>
+              <option value="select-value-{{ formId }}-3">Select Option #3</option>
+            </select>
           </div>
         </fieldset>
 
@@ -253,7 +250,8 @@
   <section class="centerMaxWidthContainer componentSpacing">
     <div class="centerContentMaxWidth">
       <h2 id="helpers">5. Helpers <a href="#helpers" aria-label="Link to Helpers">#</a></h2>
-      <p>To ensure a consistent appearance across all components, it is important to use helper classes for specific tasks. Keep in mind: <strong>A helper class should do one job and does it well.</strong></p>
+      <p>To ensure a consistent appearance across all components, it is important to use helper classes for specific tasks.</p>
+      <p>Keep in mind: <strong>A&nbsp;helper class should do one job and does it well.</strong></p>
       {% block blockHelpers %}
         <ul class="flowContent">
           <li><code>.componentSpacing</code><br>Ensures consistent component top and bottom spacing.</li>

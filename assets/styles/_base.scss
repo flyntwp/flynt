@@ -253,7 +253,7 @@ label {
   color: var(--color-text);
   font-size: var(--body-font-size-small);
   max-width: 100%;
-  padding: 0.7rem 0.6rem;
+  padding: 0.75rem 0.625rem;
   transition: border-color 0.3s ease-in-out;
   width: 300px;
 
@@ -272,29 +272,13 @@ label {
   }
 }
 
-.select {
-  --icon-size: 17px;
-  --icon-border-width: 2px;
-  display: inline-block;
-  position: relative;
-
-  &::after {
-    border-block-end: var(--icon-border-width) solid currentColor;
-    border-inline-end: var(--icon-border-width) solid currentColor;
-    content: '';
-    display: block;
-    height: var(--icon-size);
-    inset-block-start: calc(50% - var(--icon-border-width));
-    inset-inline-end: calc(0.6rem + (var(--icon-border-width) * 2));
-    pointer-events: none;
-    position: absolute;
-    transform: translateY(calc(-50% - var(--icon-border-width))) rotate(45deg);
-    width: var(--icon-size);
-  }
-
-  select {
-    padding-inline-end: calc(var(--icon-size) + 1.5em);
-  }
+select {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='32' height='32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline fill='none' stroke='rgb(48, 48, 48)' stroke-width='5'  points='2,9 16,25 30,9 '/%3E%3C/svg%3E");
+  background-position: calc(100% - 0.75rem) center;
+  background-repeat: no-repeat;
+  background-size: 1rem;
+  line-height: 1.75;
+  padding-inline-end: 45px;
 }
 
 textarea {
