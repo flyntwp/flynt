@@ -1,4 +1,4 @@
-import { buildRefs } from '../../assets/scripts/helpers'
+import { buildRefs } from '@/assets/scripts/helpers'
 
 export default function (el) {
   const refs = buildRefs(el, false, {

@@ -1,5 +1,12 @@
 <flynt-component client:visible name="BlockVideoOembed" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
   <div class="container {{ options.size != 'full' ? 'centerMaxWidthContainer' }}">
-    {% include 'Partials/_video.twig' ignore missing with {video: video, image: posterImage, size: options.size} only %}
+    <div class="video" data-video-size="{{ options.size }}">
+      {% include 'Partials/_figure.twig' ignore missing with {image: posterImage} only %}
+      <div data-ref="videoPlayer" class="video-player">
+        {{ oembed }}
+        <div class="video-loader"></div>
+        <button data-ref="playButton" class="video-playButton" type="button" aria-label="Play Video"></button>
+      </div>
+    </div>
   </div>
 </flynt-component>

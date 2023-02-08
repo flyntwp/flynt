@@ -1,4 +1,6 @@
 .video-playButton {
+  --button-width: 60px;
+  --button-height: 60px;
   cursor: pointer;
   display: block;
   height: 100%;
@@ -22,29 +24,28 @@
   }
 
   &::before {
-    background-color: rgba($color: #000, $alpha: 0.5);
-    border: 2px solid #fff;
+    background-color: var(--color-accent);
     border-radius: 50%;
-    height: 64px;
-    width: 64px;
+    height: var(--button-width);
+    width: var(--button-width);
 
     @media (min-width: $breakpoint-tablet) {
-      height: 96px;
-      width: 96px;
+      --button-width: 80px;
+      --button-height: 80px;
     }
   }
 
   &::after {
-    border-block-end: 16px solid transparent;
-    border-block-start: 16px solid transparent;
-    border-inline-start: 24px solid #fff;
+    border-block-end: 12px solid transparent;
+    border-block-start: 12px solid transparent;
+    border-inline-start: 18px solid var(--color-background);
     inset-inline-start: calc(50% + 2px);
 
     @media (min-width: $breakpoint-tablet) {
-      border-block-end-width: 24px;
-      border-block-start-width: 24px;
-      border-inline-start-width: 40px;
-      inset-inline-start: calc(50% + 6px);
+      border-block-end-width: 17px;
+      border-block-start-width: 17px;
+      border-inline-start-width: 27px;
+      inset-inline-start: calc(50% + 4px);
     }
   }
 
@@ -56,18 +57,16 @@
   }
 }
 
-[data-video-size='small'] {
-  .video-playButton {
-    &::before {
-      height: 64px;
-      width: 64px;
-    }
+[data-video-size='small'] .video-playButton {
+  &::before {
+    --button-width: 60px;
+    --button-height: 60px;
+  }
 
-    &::after {
-      border-block-end-width: 16px;
-      border-block-start-width: 16px;
-      border-inline-start-width: 24px;
-      inset-inline-start: calc(50% + 4px);
-    }
+  &::after {
+    border-block-end: 12px solid transparent;
+    border-block-start: 12px solid transparent;
+    border-inline-start: 18px solid var(--color-background);
+    inset-inline-start: calc(50% + 3px);
   }
 }
