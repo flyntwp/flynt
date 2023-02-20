@@ -6,19 +6,6 @@ flynt-component[name='NavigationBurger'] {
     display: none;
   }
 
-  &.headroom {
-    .container {
-      transition: transform 0.3s;
-      will-change: transform;
-    }
-
-    &--unpinned:not([data-status='menuIsOpen']) {
-      .container {
-        transform: translate3d(0, -100%, 0);
-      }
-    }
-  }
-
   &[data-status='menuIsOpen'] {
     .container {
       box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.07);

@@ -1,10 +1,9 @@
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import Headroom from 'headroom.js'
 import delegate from 'delegate-event-listener'
 import { buildRefs } from '@/assets/scripts/helpers.js'
 
 export default function (el) {
-  let headroom, isMenuOpen
+  let isMenuOpen
   const refs = buildRefs(el)
   const navigationHeight = parseInt(window.getComputedStyle(el).getPropertyValue('--navigation-height')) || 0
 
@@ -28,27 +27,9 @@ export default function (el) {
     }
   }
 
-  function initHeadroom () {
-    if (headroom) {
-      return
-    }
-
-    headroom = new Headroom(el, {
-      offset: navigationHeight,
-      tolerance: {
-        up: 5,
-        down: 0
-      }
-    })
-  }
-
   function onBreakpointChange () {
-    if (isDesktopMediaQuery.matches) {
-      if (headroom?.initialised) headroom.destroy()
-    } else {
+    if (!isDesktopMediaQuery.matches) {
       setScrollPaddingTop()
-      initHeadroom()
-      if (!headroom.initialised) headroom.init()
     }
   }
 
