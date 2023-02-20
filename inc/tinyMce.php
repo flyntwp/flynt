@@ -77,74 +77,74 @@ function getConfig()
 {
     return [
         'blockformats' => [
-            'Paragraph' => 'p',
-            'Heading 1' => 'h1',
-            'Heading 2' => 'h2',
-            'Heading 3' => 'h3',
-            'Heading 4' => 'h4',
-            'Heading 5' => 'h5',
-            'Heading 6' => 'h6'
+            __('Paragraph', 'flynt') => 'p',
+            __('Heading 1', 'flynt') => 'h1',
+            __('Heading 2', 'flynt') => 'h2',
+            __('Heading 3', 'flynt') => 'h3',
+            __('Heading 4', 'flynt') => 'h4',
+            __('Heading 5', 'flynt') => 'h5',
+            __('Heading 6', 'flynt') => 'h6'
         ],
         'styleformats' => [
             [
-                'title' => 'Headings',
+                'title' => __('Headings', 'flynt'),
                 'icon' => '',
                 'items' => [
                     [
-                        'title' => 'Heading 1',
+                        'title' => __('Heading 1', 'flynt'),
                         'classes' => 'h1',
                         'selector' => '*'
                     ],
                     [
-                        'title' => 'Heading 2',
+                        'title' => __('Heading 2', 'flynt'),
                         'classes' => 'h2',
                         'selector' => '*'
                     ],
                     [
-                        'title' => 'Heading 3',
+                        'title' => __('Heading 3', 'flynt'),
                         'classes' => 'h3',
                         'selector' => '*'
                     ],
                     [
-                        'title' => 'Heading 4',
+                        'title' => __('Heading 4', 'flynt'),
                         'classes' => 'h4',
                         'selector' => '*'
                     ],
                     [
-                        'title' => 'Heading 5',
+                        'title' => __('Heading 5', 'flynt'),
                         'classes' => 'h5',
                         'selector' => '*'
                     ],
                     [
-                        'title' => 'Heading 6',
+                        'title' => __('Heading 6', 'flynt'),
                         'classes' => 'h6',
                         'selector' => '*'
                     ],
                 ]
             ],
             [
-                'title' => 'Buttons',
+                'title' => __('Buttons', 'flynt'),
                 'icon' => '',
                 'items' => [
                     [
-                        'title' => 'Button',
+                        'title' => __('Button', 'flynt'),
                         'classes' => 'button',
                         'selector' => 'a,button'
                     ],
                     [
-                        'title' => 'Button Outlined',
+                        'title' => __('Button Outlined', 'flynt'),
                         'classes' => 'button--outlined',
                         'selector' => '.button'
                     ],
                     [
-                        'title' => 'Button Text',
+                        'title' => __('Button Text', 'flynt'),
                         'classes' => 'button--text',
                         'selector' => '.button'
                     ]
                 ]
             ],
             [
-                'title' => 'Paragraph',
+                'title' => __('Paragraph', 'flynt'),
                 'classes' => 'paragraph',
                 'selector' => '*'
             ],
