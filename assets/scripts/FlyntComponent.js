@@ -4,7 +4,7 @@ const componentsWithScripts = import.meta.glob('@/Components/**/script.js')
 
 const interactionEvents = new Set([
   'pointerdown',
-  'scroll',
+  'scroll'
 ])
 
 const upgradedElements = new WeakMap()
@@ -20,31 +20,27 @@ export default class FlyntComponent extends window.HTMLElement {
     })
     FlyntComponents.set(this, [isReady, setReady])
   }
+
   async connectedCallback () {
-    const loadingStrategy = determineLoadingStrategy(this)
-    const loadingFunctionWrapper = getLoadingFunctionWrapper(loadingStrategy, this)
-    const mediaQuery = getMediaQuery(this)
-    const loadingFunction = getLoadingFunction(this)
+    if (hasScript(this)) {
+      prefetch(this)
+      const loadingStrategy = determineLoadingStrategy(this)
+      const loadingFunctionWrapper = getLoadingFunctionWrapper(loadingStrategy, this)
+      const mediaQuery = getMediaQuery(this)
+      const loadingFunction = getLoadingFunction(this)
 
-    if (mediaQuery) {
-      await mediaQueryMatches(mediaQuery, this)
-    }
+      if (mediaQuery) {
+        await mediaQueryMatches(mediaQuery, this)
+      }
 
-    if (this.hasParent()) {
-      const [parentLoaded] = FlyntComponents.get(parents.get(this))
-      await parentLoaded
-    }
+      if (hasParent(this)) {
+        const [parentLoaded] = FlyntComponents.get(parents.get(this))
+        await parentLoaded
+      }
 
-    loadingFunctionWrapper(loadingFunction)
-  }
-
-  hasParent () {
-    if (!parents.has(this)) {
-      const parent = this.parentElement.closest('flynt-component')
-      parents.set(this, parent)
-      return !!parent
+      loadingFunctionWrapper(loadingFunction)
     } else {
-      return !!parents.get(this)
+      setComponentReady(this)
     }
   }
 
@@ -53,6 +49,46 @@ export default class FlyntComponent extends window.HTMLElement {
     this.mediaQueryList?.removeEventListener('change')
     cleanupElement(this)
   }
+}
+
+function getComponentPath (node) {
+  const componentName = node.getAttribute('name')
+  return window.FlyntData.componentsWithScript[componentName]
+}
+
+function hasScript (node) {
+  const componentPath = getComponentPath(node)
+  return !!componentPath
+}
+
+function getScriptPath (node) {
+  const componentPath = getComponentPath(node)
+  return `/Components/${componentPath}/script.js`
+}
+
+function getScriptImport (node) {
+  return componentsWithScripts[getScriptPath(node)]
+}
+
+function prefetch (node) {
+  requestIdleCallback(() => {
+    getScriptImport(node)()
+  }, { timeout: 5000 })
+}
+
+function hasParent (node) {
+  if (!parents.has(node)) {
+    const parent = node.parentElement.closest('flynt-component')
+    parents.set(node, parent)
+    return !!parent
+  } else {
+    return !!parents.get(node)
+  }
+}
+
+function setComponentReady (node) {
+  const setReady = FlyntComponents.get(node)[1]
+  setReady()
 }
 
 function visible (node) {
@@ -92,7 +128,7 @@ function determineLoadingStrategy (node) {
     load: 'load',
     idle: 'idle',
     visible: 'visible',
-    interaction: 'interaction',
+    interaction: 'interaction'
   }
   return strategies[node.getAttribute('load:on')] ?? defaultStrategy
 }
@@ -127,17 +163,13 @@ function getMediaQuery (node) {
 
 function getLoadingFunction (node) {
   return async () => {
-    const componentName = node.getAttribute('name')
-    const componentPath = window.FlyntData.componentsWithScript[componentName]
-    if (componentPath) {
-      const componentScript = await componentsWithScripts[`/Components/${componentPath}/script.js`]()
-      if (typeof componentScript.default === 'function' && !upgradedElements.has(node)) {
-        const cleanupFn = componentScript.default(node)
-        upgradedElements.set(node, cleanupFn)
-      }
+    const componentScriptImport = getScriptImport(node)
+    const componentScript = await componentScriptImport()
+    if (typeof componentScript.default === 'function' && !upgradedElements.has(node)) {
+      const cleanupFn = componentScript.default(node)
+      upgradedElements.set(node, cleanupFn)
     }
-    const [_, setReady] = FlyntComponents.get(node)
-    setReady()
+    setComponentReady(node)
   }
 }
 
