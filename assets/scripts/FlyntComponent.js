@@ -23,7 +23,6 @@ export default class FlyntComponent extends window.HTMLElement {
 
   async connectedCallback () {
     if (hasScript(this)) {
-      prefetch(this)
       const loadingStrategy = determineLoadingStrategy(this)
       const loadingFunctionWrapper = getLoadingFunctionWrapper(loadingStrategy, this)
       const mediaQuery = getMediaQuery(this)
@@ -138,10 +137,12 @@ function getLoadingFunctionWrapper (strategyName, node) {
     load: (x) => x(),
     idle: (x) => requestIdleCallback(x, { timeout: 2000 }),
     visible: async (x) => {
+      prefetch(node)
       await visible(node)
       x()
     },
     interaction: (x) => {
+      prefetch(node)
       const load = () => {
         interactionEvents.forEach((event) =>
           document.removeEventListener(event, load)
