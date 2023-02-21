@@ -2,6 +2,11 @@
 import './rIC.js'
 const componentsWithScripts = import.meta.glob('@/Components/**/script.js')
 
+const interactionEvents = new Set([
+  'pointerdown',
+  'scroll',
+])
+
 const upgradedElements = new WeakMap()
 const FlyntComponents = new WeakMap()
 const parents = new WeakMap()
@@ -82,13 +87,14 @@ function mediaQueryMatches (query, node) {
 }
 
 function determineLoadingStrategy (node) {
-  return node.hasAttribute('client:visible')
-    ? 'visible'
-    : (
-        node.hasAttribute('client:idle')
-          ? 'idle'
-          : 'load'
-      )
+  const defaultStrategy = 'load'
+  const strategies = {
+    load: 'load',
+    idle: 'idle',
+    visible: 'visible',
+    interaction: 'interaction',
+  }
+  return strategies[node.getAttribute('load:on')] ?? defaultStrategy
 }
 
 function getLoadingFunctionWrapper (strategyName, node) {
@@ -98,6 +104,17 @@ function getLoadingFunctionWrapper (strategyName, node) {
     visible: async (x) => {
       await visible(node)
       x()
+    },
+    interaction: (x) => {
+      const load = () => {
+        interactionEvents.forEach((event) =>
+          document.removeEventListener(event, load)
+        )
+        x()
+      }
+      interactionEvents.forEach((event) =>
+        document.addEventListener(event, load, { once: true })
+      )
     }
   }
   const defaultFn = loadingFunctions.load
@@ -105,7 +122,7 @@ function getLoadingFunctionWrapper (strategyName, node) {
 }
 
 function getMediaQuery (node) {
-  return node.hasAttribute('client:media') ? node.getAttribute('client:media') : null
+  return node.hasAttribute('load:on:media') ? node.getAttribute('load:on:media') : null
 }
 
 function getLoadingFunction (node) {

@@ -1,4 +1,4 @@
-<flynt-component client:idle client:media="(min-width: 1024px)" name="NavigationMain">
+<flynt-component load:on="idle" load:on:media="(min-width: 1024px)" name="NavigationMain">
   <nav class="navigation" aria-label="{{ labels.ariaLabel|e }}">
     <div class="container centerMaxWidthContainerLarge">
       {% include 'Partials/_logo.twig' with { 'logo': logo, 'site': site } only %}
