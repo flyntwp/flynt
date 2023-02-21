@@ -69,12 +69,6 @@ function getScriptImport (node) {
   return componentsWithScripts[getScriptPath(node)]
 }
 
-function prefetch (node) {
-  requestIdleCallback(() => {
-    getScriptImport(node)()
-  }, { timeout: 5000 })
-}
-
 function hasParent (node) {
   if (!parents.has(node)) {
     const parent = node.parentElement.closest('flynt-component')
@@ -137,12 +131,10 @@ function getLoadingFunctionWrapper (strategyName, node) {
     load: (x) => x(),
     idle: (x) => requestIdleCallback(x, { timeout: 2000 }),
     visible: async (x) => {
-      prefetch(node)
       await visible(node)
       x()
     },
     interaction: (x) => {
-      prefetch(node)
       const load = () => {
         interactionEvents.forEach((event) =>
           document.removeEventListener(event, load)
