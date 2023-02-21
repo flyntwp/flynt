@@ -3,8 +3,18 @@ import './rIC.js'
 const componentsWithScripts = import.meta.glob('@/Components/**/script.js')
 
 const upgradedElements = new WeakMap()
+const FlyntComponents = new WeakMap()
+const parents = new WeakMap()
 
 export default class FlyntComponent extends window.HTMLElement {
+  constructor () {
+    super()
+    let setReady
+    const isReady = new Promise((resolve) => {
+      setReady = resolve
+    })
+    FlyntComponents.set(this, [isReady, setReady])
+  }
   async connectedCallback () {
     const loadingStrategy = determineLoadingStrategy(this)
     const loadingFunctionWrapper = getLoadingFunctionWrapper(loadingStrategy, this)
@@ -15,7 +25,22 @@ export default class FlyntComponent extends window.HTMLElement {
       await mediaQueryMatches(mediaQuery, this)
     }
 
+    if (this.hasParent()) {
+      const [parentLoaded] = FlyntComponents.get(parents.get(this))
+      await parentLoaded
+    }
+
     loadingFunctionWrapper(loadingFunction)
+  }
+
+  hasParent () {
+    if (!parents.has(this)) {
+      const parent = this.parentElement.closest('flynt-component')
+      parents.set(this, parent)
+      return !!parent
+    } else {
+      return !!parents.get(this)
+    }
   }
 
   disconnectedCallback () {
@@ -94,6 +119,8 @@ function getLoadingFunction (node) {
         upgradedElements.set(node, cleanupFn)
       }
     }
+    const [_, setReady] = FlyntComponents.get(node)
+    setReady()
   }
 }
 
