@@ -11,6 +11,12 @@
     display: inline-block;
     font-weight: 400;
     padding: 0.5rem 0.75rem;
+    transition: color 0.2s ease-in-out;
+    will-change: color;
+
+    &:hover {
+      color: var(--color-accent);
+    }
   }
 
   .current-menu-item {
