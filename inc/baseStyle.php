@@ -21,7 +21,7 @@ function registerRewriteRule()
 {
     $routeName = ROUTENAME;
 
-    add_rewrite_rule("{$routeName}/?$", "index.php?{$routeName}", "top");
+    add_rewrite_rule("{$routeName}/?$", "index.php?pagename={$routeName}", "top");
     add_rewrite_tag("%{$routeName}%", "([^&]+)");
 }
 
@@ -35,7 +35,9 @@ function templateInclude($template)
 {
     global $wp_query;
 
-    if (isset($wp_query->query_vars[ROUTENAME])) {
+    $routeName = ROUTENAME;
+
+    if (isset($wp_query->query['pagename']) && $wp_query->query["pagename"] === $routeName) {
         setDocumentTitle();
         add_filter('wp_robots', 'wp_robots_no_robots');
         return get_template_directory() . '/basestyle.php';
