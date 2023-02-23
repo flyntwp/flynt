@@ -9,6 +9,7 @@ namespace Flynt\RemoveEditor;
 add_action('init', function () {
     remove_post_type_support('page', 'editor');
     remove_post_type_support('post', 'editor');
+    remove_action('wp_enqueue_scripts', 'wp_enqueue_classic_theme_styles');
 });
 
 /**
