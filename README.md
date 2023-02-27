@@ -115,9 +115,41 @@ The `functions.php` file for every component in the `./Components` folder is exe
 
 To render components into a template, see [Page Templates](#page-templates).
 
+#### Web Components
+
+Web components provide a standard component model for encapsulation and interoperability HTML elements. Most [components](#components) are based on an autonomous custom element called `flynt-component`.
+
+To define the name of a specific component use the `name` attribute, which must match the component’s folder name.
+
+For example:
+
+```twig
+<flynt-component name="BlockWysiwyg" …></flynt-component>
+
+```
+
+#### JavaScript modules
+
+Using a module based approach, allows to breaks JavaScript into separate files and keep them encapsuled inside [Components](#components) itself. Different loading strategies can be defined for each component independently when using the custom element `flynt-component`:
+
+* `load:on="idle"`<br>Elements that don’t need to be interactive immediately.
+* `load:on="visible"`<br>Elements that go "below the fold" or if you want to load it when the user sees it.
+* `load:on="load"` (default)<br>Elements that need to be interactive as soon as possible.
+* `load:on="interaction"`<br>Elements that may only become visible after being interacted with.
+* `load:on:media="(min-width: 1024px)"`<br>Elements which may only be visible on certain screen sizes.
+
+For example:
+
+```twig
+<flynt-component name="BlockWysiwyg" load:on="visible"></flynt-component>
+
+```
+
+With nested components the loading strategy is waiting for parents. If you have a component with `load:on="idle"` nested inside a component with `load:on="visible"`, the child component will only be loaded on visible of the parent component.
+
 ### Advanced Custom Fields
 
-Defining Advanced Custom Fields (ACF) can be done in `functions.php` for each component. As a best practise, we recommend defining your fields inside a function named `getACFLayout()` which you can then call in a [field group](#field-groups).
+Defining Advanced Custom Fields (ACF) can be done in `functions.php` for each component. As a best practice, we recommend defining your fields inside a function named `getACFLayout()` which you can then call in a [field group](#field-groups).
 
 For example:
 
@@ -206,22 +238,6 @@ Timber provides [a `resize` filter to resize images](https://timber.github.io/do
 
 To enable Dynamic Resize, go to **Global Options -> Timber Dynamic Resize**.
 
-#### Troubleshooting
-
-​
-If `resizedDynamic` is enabled and image requests result in 404 errors, try the following solutions:
-​
-
-1. If you're using nginx and the server (not WordPress) responds with a 404 error, check your server configuration against [the recommended standard](https://wordpress.org/support/article/nginx/#general-wordpress-rules). If the standard configuration cannot be used, resolve the image requests correctly by adding the following rule to your configuration:
-
-```nginx
-location ~ "^(.*)/wp-content/uploads/(.*)$" {
-  try_files $uri $uri/ /index.php$is_args$args;
-}
-```
-
-2. Some plugins (like WPML) manipulate the `home_url` in such a way that `resizeDynamic` cannot resolve the path to images correctly. In that case, set the relative upload path manually in **Global Options -> Timber Dynamic Resize**. Example: The relative upload path in Bedrock installs with WPML needs to bet set to `app/uploads`.
-
 ### Twig Extensions
 
 #### `readingTime` (Type: Filter)
@@ -247,8 +263,6 @@ Renders a component. [See Page Templates](#page-templates).
 ```
 
 _Example from [templates/page.twig](./templates/page.twig)_
-
----
 
 #### `placeholderImage($width, $height, $color = null)` (Type: Function)
 
@@ -280,7 +294,7 @@ _Example from [Components/BlockImage/index.twig](./Components/BlockImage/index.t
 
 In some setups images may not show up, returning a 404 by the server.
 
-The most common reason for this is that you are using nginx and your server is not set up in the default way. You can see that this is the case, if an image url return a 404 from nginx, not from WordPress itself.
+The most common reason for this is that you are using nginx and your server is not set up in the [the recommended standard](https://wordpress.org/support/article/nginx/#general-wordpress-rules). You can see that this is the case, if an image url return a 404 from nginx, not from WordPress itself.
 
 In this case, please add something like
 
