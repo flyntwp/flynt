@@ -1,12 +1,13 @@
 flynt-component[name='BlockPostFooter'] {
   .tags {
-    @include reset-list;
     display: flex;
     flex-wrap: wrap;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
 
     .tag {
       display: inline-block;
-      margin-inline: 0.5rem;
     }
   }
 

@@ -1,5 +1,4 @@
 .menu {
-  @include reset-list;
   display: flex;
   flex-wrap: wrap;
   gap: calc(var(--flow-space) / 2) var(--flow-space);
@@ -9,7 +8,7 @@
   padding: 0;
 
   &-link {
-    @include reset-link;
     color: currentColor;
+    text-decoration: none;
   }
 }

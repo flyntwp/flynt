@@ -2,10 +2,11 @@ flynt-component[name='GridPostsLatest'] {
   .grid {
     --item-max-width: calc((var(--container-max-width) / 3) - var(--grid-column-gap));
     --grid-max-width: calc(var(--item-max-width) * var(--grid-columns) + ((var(--grid-columns) - 1) * var(--grid-column-gap)));
-    @include reset-list;
     @include grid(1, center);
+    list-style: none;
     margin-inline: auto;
     max-width: var(--grid-max-width);
+    padding: 0;
 
     &[data-max-columns='2'],
     &[data-max-columns='3'],

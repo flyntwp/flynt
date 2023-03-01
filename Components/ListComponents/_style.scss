@@ -2,10 +2,11 @@ flynt-component[name='ListComponents'] {
   .components {
     --item-max-width: calc((var(--container-max-width) / 3) - var(--grid-column-gap));
     --posts-max-width: calc(var(--item-max-width) * var(--grid-columns) + ((var(--grid-columns) - 1) * var(--grid-column-gap)));
-    @include reset-list;
     @include grid;
+    list-style: none;
     margin-inline: auto;
     max-width: var(--posts-max-width);
+    padding: 0;
 
     @media (min-width: $breakpoint-tablet) {
       --grid-columns: 2;

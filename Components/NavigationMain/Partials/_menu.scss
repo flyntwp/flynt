@@ -1,16 +1,17 @@
 .menu {
-  @include reset-list;
   align-items: center;
   display: flex;
+  list-style: none;
   margin-inline-end: -1rem;
+  padding: 0;
   padding-inline-start: 2rem;
 
   .link {
-    @include reset-link;
     color: currentColor;
     display: inline-block;
     font-weight: 400;
     padding: 0.5rem 0.75rem;
+    text-decoration: none;
     transition: color 0.2s ease-in-out;
     will-change: color;
 

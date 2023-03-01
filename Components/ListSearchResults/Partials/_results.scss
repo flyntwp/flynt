@@ -1,6 +1,7 @@
 .results {
-  @include reset-list;
+  list-style: none;
   margin-block-start: calc(var(--component-spacing) / 2);
+  padding: 0;
 
   footer {
     text-align: end;

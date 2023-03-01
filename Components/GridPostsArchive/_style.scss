@@ -2,10 +2,11 @@ flynt-component[name='GridPostsArchive'] {
   .posts {
     --post-max-width: calc((var(--container-max-width) / 3) - var(--grid-column-gap));
     --posts-max-width: calc(var(--post-max-width) * var(--grid-columns) + ((var(--grid-columns) - 1) * var(--grid-column-gap)));
-    @include reset-list;
     @include grid;
+    list-style: none;
     margin-inline: auto;
     max-width: var(--posts-max-width);
+    padding: 0;
 
     @media (min-width: $breakpoint-tablet) {
       --grid-columns: 2;
@@ -24,11 +25,11 @@ flynt-component[name='GridPostsArchive'] {
     margin-inline: auto;
 
     .link {
-      @include reset-link;
       color: currentColor;
       display: flex;
       flex-direction: column;
       height: 100%;
+      text-decoration: none;
     }
 
     .content {
