@@ -129,8 +129,7 @@ blockquote,
 * Lists & Tables
 */
 
-ul,
-ol {
+:where(ul, ol):not([class]) {
   padding-inline-start: 1.5rem;
 }
 
@@ -172,7 +171,8 @@ table {
 
   tr {
     &:nth-child(even) {
-      background-color: var(--color-background-secondary);
+      border-bottom: solid 1px var(--color-border);
+      border-top: solid 1px var(--color-border);
     }
   }
 }

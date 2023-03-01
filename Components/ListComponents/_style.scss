@@ -6,7 +6,6 @@ flynt-component[name='ListComponents'] {
     list-style: none;
     margin-inline: auto;
     max-width: var(--posts-max-width);
-    padding: 0;
 
     @media (min-width: $breakpoint-tablet) {
       --grid-columns: 2;
