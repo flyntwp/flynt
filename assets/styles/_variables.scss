@@ -37,8 +37,8 @@ $input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [ty
   --body-font-size-small: 1rem;
   --flow-space: 1.5625rem;
 
-  --content-max-width: 55ch;
-  --content-max-width-large: 75ch;
+  --content-max-width: 700px;
+  --content-max-width-large: 800px;
   --container-max-width: calc(1200px + (var(--container-padding) * 2));
   --container-max-width-large: calc(1340px + (var(--container-padding) * 2));
 
