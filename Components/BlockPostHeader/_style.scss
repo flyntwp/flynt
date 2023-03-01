@@ -22,8 +22,8 @@ flynt-component[name='BlockPostHeader'] {
     }
 
     a {
-      @include reset-link;
       color: var(--color-text);
+      text-decoration: none;
     }
 
     .author {

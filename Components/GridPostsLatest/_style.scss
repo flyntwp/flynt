@@ -32,11 +32,11 @@ flynt-component[name='GridPostsLatest'] {
 
   .post {
     .link {
-      @include reset-link;
       color: currentColor;
       display: flex;
       flex-direction: column;
       height: 100%;
+      text-decoration: none;
     }
 
     .content {

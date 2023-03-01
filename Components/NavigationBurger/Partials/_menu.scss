@@ -23,7 +23,6 @@
   }
 
   .link {
-    @include reset-link;
     color: var(--color-text);
     display: block;
     font-size: 1.25rem;

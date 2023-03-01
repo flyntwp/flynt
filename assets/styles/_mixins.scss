@@ -28,10 +28,6 @@
 }
 
 
-@mixin reset-link {
-  text-decoration: none;
-}
-
 @mixin normalize-outline {
   outline-color: Highlight;
   outline-color: -webkit-focus-ring-color;

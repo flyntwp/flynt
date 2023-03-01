@@ -185,7 +185,6 @@ table {
   --border-width: 2px;
   --padding-inline: calc(1.125rem - var(--border-width));
   --padding-block: calc(0.625rem - var(--border-width));
-  @include reset-link;
   appearance: none;
   background-color: var(--color-accent);
   border: solid var(--border-width) var(--color-accent);
