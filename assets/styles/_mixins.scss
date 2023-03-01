@@ -27,15 +27,6 @@
   }
 }
 
-
-@mixin normalize-outline {
-  outline-color: Highlight;
-  outline-color: -webkit-focus-ring-color;
-  outline-offset: 2px;
-  outline-style: dotted;
-  outline-width: 2px;
-}
-
 /**
 * Grid Mixin
 *
