@@ -13,7 +13,7 @@ use Flynt\Utils\Asset;
 
 // Add tinyMce styles to editor
 add_action('admin_init', function () {
-    add_editor_style(Asset::requireUrl('assets/tinymce.scss'));
+    add_editor_style(Asset::requireUrl('assets/tinyMce.scss'));
 });
 
 // First Toolbar
