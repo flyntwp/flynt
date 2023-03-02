@@ -166,13 +166,13 @@ table {
 
   thead {
     background-color: var(--color-background-secondary);
-    border-block-end: solid 2px var(--color-border);
+    border-block-end: solid 1px var(--color-border);
   }
 
   tr {
     &:nth-child(even) {
-      border-bottom: solid 1px var(--color-border);
-      border-top: solid 1px var(--color-border);
+      border-block-end: solid 1px var(--color-border);
+      border-block-start: solid 1px var(--color-border);
     }
   }
 }
