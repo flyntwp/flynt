@@ -26,27 +26,3 @@
     }
   }
 }
-
-/**
-* Grid Mixin
-*
-* Applies a flexbox grid (based on css variables) to a container element.
-* All direct children will be modified to create a column based grid.
-*/
-@mixin grid($columns: 1, $alignment: flex-start, $row-gap: var(--flow-space), $column-gap: var(--flow-space) ) {
-  --grid-columns: #{$columns};
-  --grid-alignment: #{$alignment};
-  --grid-row-gap: #{$row-gap};
-  --grid-column-gap: #{$column-gap};
-
-  column-gap: var(--grid-column-gap);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: var(--grid-alignment);
-  row-gap: var(--grid-row-gap);
-  width: 100%;
-
-  > * {
-    width: calc((100% / var(--grid-columns)) - ((var(--grid-columns) - 1) / var(--grid-columns) * var(--grid-column-gap)));
-  }
-}

@@ -1,11 +1,15 @@
 flynt-component[name='ListComponents'] {
   .components {
-    --item-max-width: calc((var(--container-max-width) / 3) - var(--grid-column-gap));
-    --posts-max-width: calc(var(--item-max-width) * var(--grid-columns) + ((var(--grid-columns) - 1) * var(--grid-column-gap)));
-    @include grid;
+    --grid-columns: 1;
+    --grid-gap: var(--flow-space);
+    --grid-item-width: calc((100% / var(--grid-columns)) - ((var(--grid-columns) - 1) / var(--grid-columns) * var(--grid-gap)));
+    --grid-item-max-width: calc(((var(--container-max-width) - ((var(--container-padding) * 2))) / 3) - (2 / 3 * var(--grid-gap)));
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--grid-gap);
+    justify-content: center;
     list-style: none;
-    margin-inline: auto;
-    max-width: var(--posts-max-width);
 
     @media (min-width: $breakpoint-tablet) {
       --grid-columns: 2;
@@ -19,8 +23,8 @@ flynt-component[name='ListComponents'] {
   .component {
     display: flex;
     flex-wrap: wrap;
-    margin-inline: auto;
-    max-width: calc(var(--container-max-width) / var(--grid-columns));
+    max-width: var(--grid-item-max-width);
+    width: var(--grid-item-width);
 
     .imageWrapper {
       height: 0;
