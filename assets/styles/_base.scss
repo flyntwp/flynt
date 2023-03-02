@@ -2,14 +2,69 @@
 *  Typography
 */
 
-@include font-face('Public Sans', 'public-sans-v14-latin-regular', '400', 'normal');
-@include font-face('Public Sans', 'public-sans-v14-latin-500', '500', 'normal');
-@include font-face('Public Sans', 'public-sans-v14-latin-600', '600', 'normal');
-@include font-face('Public Sans', 'public-sans-v14-latin-700', '700', 'normal');
-@include font-face('Public Sans', 'public-sans-v14-latin-italic', '400', 'italic');
-@include font-face('Public Sans', 'public-sans-v14-latin-500italic', '500', 'italic');
-@include font-face('Public Sans', 'public-sans-v14-latin-600italic', '600', 'italic');
-@include font-face('Public Sans', 'public-sans-v14-latin-700italic', '700', 'italic');
+@font-face {
+  font-display: swap;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/public-sans-v14-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../assets/fonts/public-sans-v14-latin-500.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../assets/fonts/public-sans-v14-latin-600.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/fonts/public-sans-v14-latin-700.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Public Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: url('../assets/fonts/public-sans-v14-latin-italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Public Sans';
+  font-style: italic;
+  font-weight: 500;
+  src: url('../assets/fonts/public-sans-v14-latin-500italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Public Sans';
+  font-style: italic;
+  font-weight: 600;
+  src: url('../assets/fonts/public-sans-v14-latin-600italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Public Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: url('../assets/fonts/public-sans-v14-latin-700italic.woff2') format('woff2');
+}
 
 body,
 .paragraph {
