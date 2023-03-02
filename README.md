@@ -119,30 +119,46 @@ To render components into a template, see [Page Templates](#page-templates).
 
 Web components provide a standard component model for encapsulation and interoperability HTML elements. Most [components](#components) are based on an autonomous custom element called `flynt-component`.
 
-To define the name of a specific component use the `name` attribute, which must match the component’s folder name.
+To define the name of a specific component use the `name` attribute, which should match the component’s folder name, to be ensure that its JavaScript is loaded as specified (see [JavaScript modules](#javascript-modules) for more details).
 
 For example:
 
 ```twig
 <flynt-component name="BlockWysiwyg" …></flynt-component>
-
 ```
 
 #### JavaScript modules
 
-Using a module based approach, allows to breaks JavaScript into separate files and keep them encapsuled inside [Components](#components) itself. Different loading strategies can be defined for each component independently when using the custom element `flynt-component`:
+Using a module based approach, allows to breaks JavaScript into separate files and keep them encapsuled inside [Components](#components) itself.
 
-* `load:on="idle"`<br>Elements that don’t need to be interactive immediately.
-* `load:on="visible"`<br>Elements that go "below the fold" or if you want to load it when the user sees it.
-* `load:on="load"` (default)<br>Elements that need to be interactive as soon as possible.
-* `load:on="interaction"`<br>Elements that may only become visible after being interacted with.
-* `load:on:media="(min-width: 1024px)"`<br>Elements which may only be visible on certain screen sizes.
+Different loading strategies can be defined for each component independently when using the custom element `flynt-component`:
 
-For example:
+* `load:on="idle"`<br>
+Initialises after full page load, when the browser enters idle state.<br>
+Usage example: Elements that don’t need to be interactive immediately.
+* `load:on="visible"`<br>
+Initialises after the element get visible in the viewport.<br>
+Usage example: Elements that go “below the fold” or if you want to load it when the user sees it.
+* `load:on="load"` (default)<br>
+Initialises immediately when the page loads.<br>
+Usage example: Elements that need to be interactive as soon as possible.
+* `load:on="interaction"`<br>
+Initialises after one interaction event (`pointerdown` or `scroll`) at the document is fired.<br>
+Usage example: Elements that may only become visible after interaction.
+* `load:on:media="(min-width: 1024px)"`<br>
+Initialises when the specified media query matches.<br>
+Usage example: Elements which may only be visible on certain screen sizes.
+
+Example:
 
 ```twig
 <flynt-component name="BlockWysiwyg" load:on="visible"></flynt-component>
+```
 
+If it makes logical sense, loading strategies can be combined:
+
+```twig
+<flynt-component name="NavigationMain" load:on="idle" load:on:media="(min-width: 1024px)">
 ```
 
 With nested components the loading strategy is waiting for parents. If you have a component with `load:on="idle"` nested inside a component with `load:on="visible"`, the child component will only be loaded on visible of the parent component.
