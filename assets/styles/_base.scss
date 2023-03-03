@@ -127,6 +127,13 @@ h5,
   }
 }
 
+h6,
+.h6 {
+  color: var(--color-text-muted);
+  font-size: 1.0625rem;
+  font-weight: 500;
+}
+
 a {
   color: var(--color-accent);
   text-underline-offset: 0.25em;
@@ -184,7 +191,8 @@ blockquote,
 * Lists & Tables
 */
 
-:where(ul, ol):not([class]) {
+ul,
+ol {
   padding-inline-start: 1.5rem;
 }
 

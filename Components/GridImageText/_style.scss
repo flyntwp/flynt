@@ -10,6 +10,7 @@ flynt-component[name='GridImageText'] {
     gap: var(--grid-gap);
     justify-content: center;
     list-style: none;
+    padding: 0;
 
     &[data-max-columns='2'],
     &[data-max-columns='3'],

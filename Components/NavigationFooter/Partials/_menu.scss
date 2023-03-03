@@ -4,6 +4,7 @@
   gap: calc(var(--flow-space) / 2) var(--flow-space);
   justify-content: center;
   list-style: none;
+  padding: 0;
 
   &-link {
     color: currentColor;

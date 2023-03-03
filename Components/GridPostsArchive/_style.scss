@@ -10,6 +10,7 @@ flynt-component[name='GridPostsArchive'] {
     gap: var(--grid-gap);
     justify-content: center;
     list-style: none;
+    padding: 0;
 
     @media (min-width: $breakpoint-tablet) {
       --grid-columns: 2;

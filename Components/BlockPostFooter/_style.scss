@@ -4,6 +4,7 @@ flynt-component[name='BlockPostFooter'] {
     flex-wrap: wrap;
     gap: 1rem;
     list-style: none;
+    padding: 0;
 
     .tag {
       display: inline-block;
