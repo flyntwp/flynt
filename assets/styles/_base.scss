@@ -148,15 +148,15 @@ blockquote,
   display: block;
   font-size: 1.44rem;
   font-style: italic;
-  font-weight: 400;
   line-height: calc(1em + 0.75rem);
   margin: var(--flow-space) 0 var(--flow-space) 2.5rem;
   max-width: 100%;
   padding-inline-start: 0.8rem;
 
-  footer {
+  cite {
     color: var(--color-text-muted);
     font-size: var(--body-font-size);
+    font-style: normal;
     margin-block-start: 0.25rem;
   }
 }
