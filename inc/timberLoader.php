@@ -13,8 +13,8 @@ use Timber\Timber;
 
 define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
 
-// To preserve conflicts add the filters only if the current request is not on an administrative interface page
-// but also if the post action is “editpost“, which required to resolve an issue with twig and images.
+// To avoid conflicts, the filters are added only if the current request is not on an administrative interface page,
+// but also if the post action is "editpost", which is required to resolve an issue with twig and images.
 if (!is_admin() || (isset($_POST['action']) && 'editpost' == $_POST['action'])) {
     $priority = 100;
 
