@@ -34,6 +34,13 @@
   src: url('../assets/fonts/public-sans-v14-latin-700italic.woff2') format('woff2');
 }
 
+/* Default flow */
+:where(#{$heading-selectors}, p, .paragraph, ul, ol, pre, table, figure, blockquote, form, fieldset, dl, address, details, hr, aside, video, fieldset) {
+  + * {
+    margin-block-start: var(--flow-space);
+  }
+}
+
 body,
 .paragraph {
   color: var(--color-text);
@@ -342,13 +349,6 @@ textarea {
 flynt-component {
   display: block;
   position: relative;
-}
-
-/* Base flow for content */
-:where(#{$heading-selectors}, p, .paragraph, ul, ol, pre, table, figure, blockquote, form, fieldset, dl, address, details, hr, aside, video, fieldset) {
-  + * {
-    margin-block-start: var(--flow-space);
-  }
 }
 
 .pageWrapper {
