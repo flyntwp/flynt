@@ -40,6 +40,7 @@ flynt-component[name='GridPostsArchive'] {
     .content {
       color: var(--color-text);
       flex-grow: 1;
+      margin-block-start: 0;
 
       #{$heading-selectors} {
         color: var(--color-headline);
