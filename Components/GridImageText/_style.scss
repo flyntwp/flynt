@@ -48,4 +48,10 @@ flynt-component[name='GridImageText'] {
       }
     }
   }
+
+  .is-card {
+    .content {
+      margin-block-start: 0;
+    }
+  }
 }
