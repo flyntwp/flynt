@@ -1,30 +1,19 @@
-# Flynt
+![Flynt – WordPress Starter Theme for Developers](./screenshot.png)
+
+# Flynt – WordPress Starter Theme for Developers
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 [![Build Status](https://travis-ci.org/flyntwp/flynt.svg?branch=master)](https://travis-ci.org/flyntwp/flynt)
 [![Code Quality](https://img.shields.io/scrutinizer/g/flyntwp/flynt.svg)](https://scrutinizer-ci.com/g/flyntwp/flynt/?branch=master)
 
-## Short Description
-
 [Flynt](https://flyntwp.com/) is a WordPress theme for component-based development using [Timber](#page-templates) and [Advanced Custom Fields](#advanced-custom-fields).
 
-## Table of Contents
+## Dependencies
 
-* [Install](#install)
-  * [Dependencies](#dependencies)
-* [Usage](#usage)
-  * [Assets](#assets)
-  * [Lib & Inc](#lib--inc)
-  * [Page Templates](#page-templates)
-  * [Components](#components)
-  * [Advanced Custom Fields](#advanced-custom-fields)
-  * [Field Groups](#field-groups)
-  * [ACF Option Pages](#acf-option-pages)
-  * [Timber Dynamic Resize](#timber-dynamic-resize)
-  * [Twig Extensions](#twig-extensions)
-* [Maintainers](#maintainers)
-* [Contributing](#contributing)
-* [License](#license)
+* [WordPress](https://wordpress.org/) >= 6.1
+* [Node](https://nodejs.org/en/) = 18
+* [Composer](https://getcomposer.org/download/) >= 2.4
+* [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/) >= 6.0
 
 ## Install
 
@@ -50,18 +39,13 @@ npm run build
 6. Open the WordPress back-end and activate the Flynt theme.
 7. Run `npm run start` and start developing.
 
-### Dependencies
-
-* [WordPress](https://wordpress.org/) >= 6.1
-* [Node](https://nodejs.org/en/) = 18
-* [Composer](https://getcomposer.org/download/) >= 2.4
-* [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/) >= 6.0
-
 ## Usage
 
 In your terminal, navigate to `<your-project>/wp-content/themes/flynt` and run `npm start`. This will start the webpack dev server.
 
 All files in `assets` and `Components` will now be watched for changes and compiled to the `dist` folder. Happy coding!
+
+### Base Style
 
 Flynt comes with a ready to use Base Style built according to our best practices for building simple, maintainable components. Go to `domain/BaseStyle` to see it in action.
 
@@ -91,7 +75,7 @@ After the files from `./lib` and `./inc` are loaded, all [components](#component
 
 Flynt uses [Timber](https://www.upstatement.com/timber/) to structure its page templates and [Twig](https://twig.symfony.com/) for rendering them. [Timber's documentation](https://timber.github.io/docs/) is extensive and up to date, so be sure to get familiar with it.
 
-There is one Twig function added in Flynt to render components into templates:
+As part of the [Twig Extension](#twig-extensions) the theme uses a Twig function in to render components into templates:
 
 * `renderComponent(componentName, data)` renders a single component. [For example, in the `index.twig` template](https://github.com/flyntwp/flynt/tree/master/templates/index.twig).
 
