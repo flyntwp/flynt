@@ -32,8 +32,8 @@ before_install:
 
 install:
   - composer install
-  - nvm install 16
-  - nvm use 16
+  - nvm install 18
+  - nvm use 18
 
 before_script:
   - npm i
