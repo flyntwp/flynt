@@ -4,6 +4,9 @@ namespace Flynt\Utils;
 
 use DOMDocument;
 
+/**
+ * Provides a set of methods that are used to modify oembeds.
+ */
 class Oembed
 {
     /**
@@ -17,7 +20,7 @@ class Oembed
      *
      * @return string The modified oembed iframe HTML tag.
      */
-    public static function setSrcAsDataAttribute($iframeTagHtml, $additionalGetParams)
+    public static function setSrcAsDataAttribute(string $iframeTagHtml, array $additionalGetParams)
     {
         $output = '';
         if ($iframeTagHtml) {
@@ -26,7 +29,7 @@ class Oembed
             $domNodes = $Dom->getElementsByTagName('iframe');
             foreach ($domNodes as $node) {
                 $src = $node->getAttribute('src');
-                // add additional get parameters to existing oembed url
+                // Add additional get parameters to existing oembed url.
                 $src = add_query_arg($additionalGetParams, $src);
                 $node->removeAttribute('src');
                 $node->setAttribute('data-src', $src);

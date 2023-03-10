@@ -4,15 +4,34 @@ namespace Flynt;
 
 use Flynt\ComponentManager;
 
+/**
+ * Provides a set of static methods that can be used to register
+ * components and render them.
+ */
 class Api
 {
-    public static function registerComponent($componentName, $componentPath = null)
+    /**
+     * Register a component.
+     *
+     * @param string $componentName The name of the component.
+     * @param string $componentPath The path to the component.
+     *
+     * @return void
+     */
+    public static function registerComponent(string $componentName, ?string $componentPath = null)
     {
         $componentManager = ComponentManager::getInstance();
         $componentManager->registerComponent($componentName, $componentPath);
     }
 
-    public static function registerComponentsFromPath($componentBasePath)
+    /**
+     * Register components from a path.
+     *
+     * @param string $componentBasePath The path to the components.
+     *
+     * @return void
+     */
+    public static function registerComponentsFromPath(string $componentBasePath)
     {
         foreach (glob("{$componentBasePath}/*", GLOB_ONLYDIR) as $componentPath) {
             $componentName = basename($componentPath);
@@ -20,7 +39,15 @@ class Api
         }
     }
 
-    public static function renderComponent($componentName, $data)
+    /**
+     * Render a component.
+     *
+     * @param string $componentName The name of the component.
+     * @param array $data The data to pass to the component.
+     *
+     * @return string The rendered component.
+     */
+    public static function renderComponent(string $componentName, array $data)
     {
         $data = apply_filters(
             'Flynt/addComponentData',
@@ -38,6 +65,11 @@ class Api
         return is_null($output) ? '' : $output;
     }
 
+    /**
+     * Register hooks.
+     *
+     * @return void
+     */
     public static function registerHooks()
     {
         add_filter('Flynt/renderComponent', function ($output, $componentName, $data) {

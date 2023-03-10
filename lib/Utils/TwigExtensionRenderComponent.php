@@ -8,8 +8,16 @@ use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
+/**
+ * Creates the render components function to use them in Twig files.
+ */
 class TwigExtensionRenderComponent extends AbstractExtension
 {
+    /**
+     *  Returns a list of functions to add to the existing list.
+     *
+     * @return array An array of filters
+     */
     public function getFunctions()
     {
         return [
@@ -21,8 +29,22 @@ class TwigExtensionRenderComponent extends AbstractExtension
         ];
     }
 
-    public function renderComponent(Environment $env, $context, $componentName, $data = [], $withContext = true, $ignoreMissing = false, $sandboxed = false)
+    /**
+     * Render component.
+     *
+     * @param Environment $env Twig environment.
+     * @param array $context Twig context.
+     * @param string|array $componentName The name of the component.
+     * @param array $data The data of the component.
+     * @param boolean $withContext Whether to pass the context to the component.
+     * @param boolean $ignoreMissing Whether to ignore missing components.
+     * @param boolean $sandboxed Whether to sandbox the component.
+     *
+     * @return string The rendered component.
+     */
+    public function renderComponent(Environment $env, array $context, mixed $componentName, ?array $data = [], bool $withContext = true, bool $ignoreMissing = false, bool $sandboxed = false)
     {
+
         $data = $data === false ? [] : $data;
 
         if (is_array($componentName)) {

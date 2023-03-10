@@ -2,11 +2,31 @@
 
 namespace Flynt;
 
+/**
+ * Provides a set of methods that are used to register and get
+ * information about components.
+ */
 class ComponentManager
 {
+    /**
+     * The internal list (array) of components.
+     *
+     * @var array
+     */
     protected $components = [];
+
+    /**
+     * The instance of the class.
+     *
+     * @var ComponentManager
+     */
     protected static $instance = null;
 
+    /**
+     * Get the instance of the class.
+     *
+     * @return ComponentManager
+     */
     public static function getInstance()
     {
         if (null === self::$instance) {
@@ -16,35 +36,47 @@ class ComponentManager
     }
 
     /**
-     * clone
+     * Clone
      *
      * Prevent cloning with 'protected' keyword
+     *
+     * @return void
      */
     protected function __clone()
     {
     }
 
     /**
-     * constructor
+     * Constructor.
      *
      * Prevent instantiation with 'protected' keyword
+     *
+     * @return void
      */
     protected function __construct()
     {
     }
 
-    public function registerComponent($componentName, $componentPath = null)
+    /**
+     * Register a component.
+     *
+     * @param string $componentName The name of the component.
+     * @param string $componentPath The path to the component.
+     *
+     * @return boolean
+     */
+    public function registerComponent(string $componentName, ?string $componentPath = null)
     {
-        // check if component already registered
+        // Check if component already registered.
         if ($this->isRegistered($componentName)) {
             trigger_error("Component {$componentName} is already registered!", E_USER_WARNING);
             return false;
         }
 
-        // register component / require functions.php
+        // Register component / require functions.php.
         $componentPath = trailingslashit(apply_filters('Flynt/componentPath', $componentPath, $componentName));
 
-        // add component to internal list (array)
+        // Add component to internal list (array).
         $this->add($componentName, $componentPath);
 
         do_action('Flynt/registerComponent', $componentName);
@@ -53,7 +85,15 @@ class ComponentManager
         return true;
     }
 
-    public function getComponentFilePath($componentName, $fileName = 'index.php')
+    /**
+     * Get the path to a component file.
+     *
+     * @param string $componentName The name of the component.
+     * @param string $fileName The name of the file.
+     *
+     * @return string|boolean
+     */
+    public function getComponentFilePath(string $componentName, string $fileName = 'index.php')
     {
         $componentDir = $this->getComponentDirPath($componentName);
 
@@ -61,17 +101,24 @@ class ComponentManager
             return false;
         }
 
-        // dir path already has a trailing slash
+        // Dir path already has a trailing slash.
         $filePath = $componentDir . $fileName;
 
         return is_file($filePath) ? $filePath : false;
     }
 
-    public function getComponentDirPath($componentName)
+    /**
+     * Get the path to a component directory.
+     *
+     * @param string $componentName The name of the component.
+     *
+     * @return string|boolean
+     */
+    public function getComponentDirPath(string $componentName)
     {
         $dirPath = $this->get($componentName);
 
-        // check if dir exists
+        // Check if dir exists.
         if (!is_dir($dirPath)) {
             return false;
         }
@@ -79,15 +126,30 @@ class ComponentManager
         return $dirPath;
     }
 
-    protected function add($name, $path)
+   /**
+    * Add a component to the internal list (array).
+    *
+    * @param string $name The name of the component.
+    * @param string $path The path to the component.
+    *
+    * @return boolean
+    */
+    protected function add(string $name, string $path)
     {
         $this->components[$name] = $path;
         return true;
     }
 
-    public function get($componentName)
+    /**
+     * Get a component from the internal list (array).
+     *
+     * @param string $componentName The name of the component.
+     *
+     * @return string|boolean
+     */
+    public function get(string $componentName)
     {
-        // check if component exists / is registered
+        // Check if component exists / is registered.
         if (!$this->isRegistered($componentName)) {
             trigger_error("Cannot get component: Component '{$componentName}' is not registered!", E_USER_WARNING);
             return false;
@@ -96,26 +158,55 @@ class ComponentManager
         return $this->components[$componentName];
     }
 
-    public function remove($componentName)
+    /**
+     * Remove a component from the internal list (array).
+     *
+     * @param string $componentName The name of the component.
+     *
+     * @return void
+     */
+    public function remove(string $componentName)
     {
         unset($this->components[$componentName]);
     }
 
+    /**
+     * Get all components from the internal list (array).
+     *
+     * @return array
+     */
     public function getAll()
     {
         return $this->components;
     }
 
+    /**
+     * Remove all components from the internal list (array).
+     *
+     * @return void
+     */
     public function removeAll()
     {
         $this->components = [];
     }
 
-    public function isRegistered($componentName)
+    /**
+     * Check if a component is registered.
+     *
+     * @param string $componentName The name of the component.
+     *
+     * @return boolean
+     */
+    public function isRegistered(string $componentName)
     {
         return array_key_exists($componentName, $this->components);
     }
 
+    /**
+     * Get all components that have a script.js file.
+     *
+     * @return array
+     */
     public function getComponentsWithScript()
     {
         $componentsWithScripts = [];

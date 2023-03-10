@@ -2,6 +2,9 @@
 
 namespace Flynt\Utils;
 
+/**
+ * Provides functions to add async/defer attributes to enqueued / registered scripts or add a preload link.
+ */
 class ScriptAndStyleLoader
 {
     /**
@@ -12,7 +15,7 @@ class ScriptAndStyleLoader
      * @param string $src The script src.
      * @return string Script HTML string.
      */
-    public function filterScriptLoaderTag($tag, $handle, $src)
+    public function filterScriptLoaderTag(string $tag, string $handle, string $src)
     {
         /*
          * If #12009 lands in WordPress, this loop can no-op since it would be handled in core.
@@ -56,7 +59,7 @@ class ScriptAndStyleLoader
      * @param string $src The style src.
      * @return string Style HTML string.
      */
-    public function filterStyleLoaderTag($tag, $handle, $src)
+    public function filterStyleLoaderTag(string $tag, string $handle, string $src)
     {
         foreach (['preload'] as $attr) {
             if (!wp_styles()->get_data($handle, $attr)) {
@@ -76,11 +79,11 @@ class ScriptAndStyleLoader
      * Add a preload link right before a tag.
      *
      * @param string $tag HTML tag.
-     * @param string $src src attribute value.
-     * @param string $type type script|style.
+     * @param string $src The src attribute value.
+     * @param string $type The type script|style.
      * @return string HTML string.
      */
-    private function addPreloadLinkBeforeTag($tag, $src, $type)
+    private function addPreloadLinkBeforeTag(string $tag, string $src, string $type)
     {
         $tag = '<link rel="preload" href="' . $src . '" as="' . $type . '">' . $tag;
         return $tag;

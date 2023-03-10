@@ -4,6 +4,9 @@ namespace Flynt\Utils;
 
 use DirectoryIterator;
 
+/**
+ * Provides a set of methods that are used to load files.
+ */
 class FileLoader
 {
     /**
@@ -17,7 +20,7 @@ class FileLoader
      *
      * @return array An array of the callback results.
      */
-    public static function iterateDir($dir, callable $callback)
+    public static function iterateDir(string $dir, callable $callback)
     {
         $output = [];
 
@@ -49,8 +52,10 @@ class FileLoader
      *
      * @param string $dir Directory to search through.
      * @param array $files Optional array of files to include. If this is set, only the files specified will be loaded.
+     *
+     * @return void
      */
-    public static function loadPhpFiles($dir, $files = [])
+    public static function loadPhpFiles(string $dir, array $files = [])
     {
         $dir = trim($dir, '/');
 

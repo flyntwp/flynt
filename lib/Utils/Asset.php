@@ -2,8 +2,17 @@
 
 namespace Flynt\Utils;
 
+/**
+ * Provides a set of methods that are used to get the url or path
+ * of an asset.
+ */
 class Asset
 {
+    /**
+     * The internal list (array) of assets.
+     *
+     * @var array
+     */
     protected static array $assetManifest;
 
     /**
@@ -55,13 +64,13 @@ class Asset
     }
 
     /**
-     * Gets the asset's url or absolute path.
+     * Gets the asset’s url or absolute path.
      *
      * If the asset is not found, it will return the original asset path.
      * This is useful for loading assets from the theme directory.
      *
-     * @param string $returnType
-     * @param string $asset
+     * @param string $returnType The type of the return value. Either 'url' or 'path'.
+     * @param string $asset The filename of the required asset.
      * @return string|false
      */
     protected static function get(string $returnType, string $asset)
@@ -96,7 +105,7 @@ class Asset
     /**
      * Checks if the current environment is a Vite dev server.
      *
-     * @return bool
+     * @return boolean
      */
     public static function isHotModuleReplacement()
     {

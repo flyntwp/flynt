@@ -2,6 +2,9 @@
 
 namespace Flynt\Utils;
 
+/**
+ * Provides a set of methods that are used to manipulate strings.
+ */
 class StringHelpers
 {
     /**
@@ -13,7 +16,7 @@ class StringHelpers
      *
      * @return string
      */
-    public static function camelCaseToKebab($str)
+    public static function camelCaseToKebab(string $str)
     {
         return strtolower(preg_replace('/([a-zA-Z])(?=[A-Z0-9])/', '$1-', $str));
     }
@@ -24,12 +27,12 @@ class StringHelpers
      *
      * @since 0.1.0
      *
-     * @param string $str    The string to trim and strip.
-     * @param number $length The string length to return.
+     * @param string $str The string to trim and strip.
+     * @param integer $length The string length to return.
      *
      * @return string
      */
-    public static function trimStrip($str = '', $length = 25)
+    public static function trimStrip(string $str = '', ?int $length = 25)
     {
         return wp_trim_words(wp_strip_all_tags($str), $length, '&hellip;');
     }
@@ -43,7 +46,7 @@ class StringHelpers
      *
      * @return string
      */
-    public static function splitCamelCase($str)
+    public static function splitCamelCase(string $str)
     {
         $a = preg_split('/(^[^A-Z]+|[A-Z][^A-Z]+)/', $str, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
         return implode(' ', $a);
@@ -55,11 +58,11 @@ class StringHelpers
      * @since 0.1.0
      *
      * @param string $str The string to convert.
-     * @param boolean $capitalizeFirstCharacter  Sets if the first character should be capitalized.
+     * @param boolean $capitalizeFirstCharacter Sets if the first character should be capitalized.
      *
      * @return string
      */
-    public static function kebapCaseToCamelCase($str, $capitalizeFirstCharacter = false)
+    public static function kebapCaseToCamelCase(string $str, ?bool $capitalizeFirstCharacter = false)
     {
         $str = str_replace(' ', '', ucwords(str_replace('-', ' ', $str)));
         if (false === $capitalizeFirstCharacter) {
@@ -74,11 +77,11 @@ class StringHelpers
      * @since 0.1.0
      *
      * @param string $prefix The prefix to be removed.
-     * @param string $str    The string to manipulate.
+     * @param string $str The string to manipulate.
      *
      * @return string
      */
-    public static function removePrefix($prefix, $str)
+    public static function removePrefix(string $prefix, string $str)
     {
         if (substr($str, 0, strlen($prefix)) == $prefix) {
             return substr($str, strlen($prefix));
@@ -91,12 +94,12 @@ class StringHelpers
      *
      * @since 0.1.0
      *
-     * @param string $search   The string to search for.
-     * @param string $subject  The string to look into.
+     * @param string $search The string to search for.
+     * @param string $subject The string to look into.
      *
      * @return boolean Returns true if the subject string starts with the search string.
      */
-    public static function startsWith($search, $subject)
+    public static function startsWith(string $search, string $subject)
     {
         return substr($subject, 0, strlen($search)) === $search;
     }
@@ -106,12 +109,12 @@ class StringHelpers
      *
      * @since 0.1.0
      *
-     * @param string $search   The string to search for.
-     * @param string $subject  The string to look into.
+     * @param string $search The string to search for.
+     * @param string $subject The string to look into.
      *
      * @return boolean Returns true if the subject string ends with the search string.
      */
-    public static function endsWith($search, $subject)
+    public static function endsWith(string $search, string $subject)
     {
         $searchLength = strlen($search);
         $subjectLength = strlen($subject);
