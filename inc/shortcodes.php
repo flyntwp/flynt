@@ -6,7 +6,7 @@
 
 namespace Flynt\Shortcodes;
 
-/**
+/*
  * Current year
  */
 add_shortcode('year', function () {
@@ -14,7 +14,7 @@ add_shortcode('year', function () {
     return $year;
 });
 
-/**
+/*
  * Site Title
  */
 add_shortcode('sitetitle', function () {
@@ -22,7 +22,7 @@ add_shortcode('sitetitle', function () {
     return $blogname;
 });
 
-/**
+/*
  * Tagline
  */
 add_shortcode('tagline', function () {
@@ -32,6 +32,8 @@ add_shortcode('tagline', function () {
 
 /**
  * Flynt Shortcode reference
+ *
+ * @return array
  */
 function getShortcodeReference()
 {

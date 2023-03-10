@@ -9,7 +9,7 @@ namespace Flynt\CustomizerLogo;
 use WP_Customize_Image_Control;
 
 add_action('customize_register', function ($wp_customize) {
-    // Add option to replace header logo
+    // Add option to replace header logo.
     $wp_customize->add_setting(
         'custom_header_logo',
         [

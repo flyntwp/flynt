@@ -32,13 +32,13 @@ add_filter('acf/prepare_field/name=reusableComponent', function ($field) {
     $postId = $field['value'] ? $field['value'] : get_the_ID();
 
     $instructions = sprintf(
-        /* translators: 1: <a> element 2: </a> element */
+        // translators: 1: <a> element 2: </a> element
         __('Add %1$sreusable component%2$s.', 'flynt'),
         "<a href='${reusableAdminLink}' target='_blank' rel='noopener noreferrer'>",
         "</a>"
     );
     $editLink = sprintf(
-        /* translators: %s: Link and title of selected reusable-post */
+        // translators: %s: Link and title of selected reusable-post
         __(' Edit %s.', 'flynt'),
         "<a class='reusable-postLink' data-postId='${postId}' href='${postEditLink}' target='_blank' rel='noopener noreferrer'>${postTitle}</a>"
     );

@@ -18,19 +18,19 @@ define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
 if (!is_admin() || (isset($_POST['action']) && 'editpost' == $_POST['action'])) {
     $priority = 100;
 
-    // Convert ACF Images to Timber Images
+    // Convert ACF Images to Timber Images.
     add_filter('acf/format_value/type=image', NS . 'formatImage', $priority);
 
-    // Convert ACF Gallery Images to Timber Images
+    // Convert ACF Gallery Images to Timber Images.
     add_filter('acf/format_value/type=gallery', NS . 'formatGallery', $priority);
 
-    // Convert ACF Field of type post_object to a Timber\Post
+    // Convert ACF Field of type post_object to a Timber\Post.
     add_filter('acf/format_value/type=post_object', NS . 'formatPostObject', $priority);
 
-    // Convert ACF Field of type relationship to a Timber\Post
+    // Convert ACF Field of type relationship to a Timber\Post.
     add_filter('acf/format_value/type=relationship', NS . 'formatPostObject', $priority);
 
-    // Convert ACF Field of type taxonomy to a Timber\Term
+    // Convert ACF Field of type taxonomy to a Timber\Term.
     add_filter('acf/format_value/type=taxonomy', NS . 'formatTaxonomy', $priority);
 }
 

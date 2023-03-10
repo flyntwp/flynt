@@ -12,8 +12,8 @@ add_action('init', function () {
     remove_action('wp_enqueue_scripts', 'wp_enqueue_classic_theme_styles');
 });
 
-/**
- * Removes Gutenberg default styles on front-end
+/*
+ * Removes Gutenberg default styles on front-end.
  */
 add_action('wp_print_styles', function () {
     wp_dequeue_style('wp-block-library');

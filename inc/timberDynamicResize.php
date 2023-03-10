@@ -64,7 +64,7 @@ add_action(
     2
 );
 
-# WPML REWRITE FIX
+// WPML rewrite fix.
 add_filter('mod_rewrite_rules', function ($rules) {
     $homeRoot = parse_url(home_url());
     if (isset($homeRoot['path'])) {

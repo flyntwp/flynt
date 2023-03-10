@@ -18,7 +18,7 @@
 
 namespace Flynt\CleanHead;
 
-/**
+/*
  * Clean up wp_head()
  *
  * Remove unnecessary <link>'s
@@ -55,7 +55,7 @@ add_action('init', function () {
     add_filter('emoji_svg_url', '__return_false');
 });
 
-/**
+/*
  * cleanStyleTag
  *
  * Clean up output of stylesheet <link> tags

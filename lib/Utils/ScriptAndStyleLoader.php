@@ -14,11 +14,11 @@ class ScriptAndStyleLoader
      */
     public function filterScriptLoaderTag($tag, $handle, $src)
     {
-        /**
-        * If #12009 lands in WordPress, this loop can no-op since it would be handled in core.
-        *
-        * @link https://core.trac.wordpress.org/ticket/12009
-        */
+        /*
+         * If #12009 lands in WordPress, this loop can no-op since it would be handled in core.
+         *
+         * @link https://core.trac.wordpress.org/ticket/12009
+         */
         foreach (['async', 'defer'] as $attr) {
             if (!wp_scripts()->get_data($handle, $attr)) {
                 continue;

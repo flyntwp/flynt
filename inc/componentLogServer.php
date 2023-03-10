@@ -44,7 +44,7 @@ function addDebugInfo($data, $componentName)
 
 /**
  * @param mixed $data
- * @param bool $postpone
+ * @param boolean $postpone
  * @return void
  */
 function consoleDebug($data)
