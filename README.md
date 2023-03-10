@@ -324,6 +324,7 @@ The main people in charge of this repo are:
 
 * [Steffen Bewersdorff](https://github.com/steffenbew)
 * [Dominik Tränklein](https://github.com/domtra)
+* [Timo Hubois](https://github.com/timohubois)
 
 ## Contributing
 
