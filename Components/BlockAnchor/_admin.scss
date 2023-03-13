@@ -3,9 +3,9 @@
     align-items: center;
     display: flex;
     gap: 1rem;
+    inline-size: 100%;
     justify-content: space-between;
     position: relative;
-    width: 100%;
 
     &-url {
       margin: 0 0 -10px;
@@ -22,7 +22,7 @@
       display: flex;
 
       svg {
-        width: 100%;
+        inline-size: 100%;
       }
     }
 

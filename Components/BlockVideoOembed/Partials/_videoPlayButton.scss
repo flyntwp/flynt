@@ -1,14 +1,14 @@
 .video-playButton {
   --button-width: 60px;
   --button-height: 60px;
+  block-size: 100%;
   cursor: pointer;
   display: block;
-  height: 100%;
+  inline-size: 100%;
   inset-block-start: 0;
   inset-inline-start: 0;
   outline: 0;
   position: absolute;
-  width: 100%;
   z-index: 2;
 
   &::before,
@@ -25,9 +25,9 @@
 
   &::before {
     background-color: var(--color-accent);
+    block-size: var(--button-width);
     border-radius: 50%;
-    height: var(--button-width);
-    width: var(--button-width);
+    inline-size: var(--button-width);
 
     @media (min-width: $breakpoint-tablet) {
       --button-width: 80px;

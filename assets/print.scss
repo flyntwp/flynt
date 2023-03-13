@@ -27,7 +27,7 @@
 
   /* prevent link overflowing parent elements */
   .button[href] {
-    max-width: 100%;
+    max-inline-size: 100%;
   }
 
   abbr[title]::after { /* stylelint-disable-line selector-no-qualifying-type */

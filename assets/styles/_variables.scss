@@ -35,8 +35,8 @@ $heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';
 $input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [type="email"], [type="search"], [type="number"], [type="password"], textarea, select';
 
 :root {
-  --body-font-size: 1.125rem; // Always use rem. 1rem = 16px
-  --body-font-size-small: 1rem;
+  --font-size-body: 1.125rem; // Always use rem. 1rem = 16px
+  --font-size-body-small: 1rem;
   --flow-space: 1.5625rem;
 
   --content-max-width: 700px;

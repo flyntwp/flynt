@@ -3,23 +3,23 @@ flynt-component[name='BlockImage'] {
     margin: 0 auto;
 
     &[data-image-size='small'] {
-      max-width: 375px;
+      max-inline-size: 375px;
     }
 
     &[data-image-size='medium'] {
-      max-width: var(--content-max-width);
+      max-inline-size: var(--content-max-width);
     }
 
     &[data-image-size='large'] {
-      max-width: var(--content-max-width-large);
+      max-inline-size: var(--content-max-width-large);
     }
 
     &[data-image-size='full'] {
-      max-width: 100%;
+      max-inline-size: 100%;
 
       .caption {
         margin-inline: auto;
-        max-width: var(--container-max-width);
+        max-inline-size: var(--container-max-width);
         padding-inline: var(--container-padding);
       }
     }

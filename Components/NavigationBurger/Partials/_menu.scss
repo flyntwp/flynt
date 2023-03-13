@@ -1,7 +1,8 @@
 .menu {
   backface-visibility: hidden;
   background-color: var(--color-background);
-  height: calc(100% - var(--navigation-height));
+  block-size: calc(100% - var(--navigation-height));
+  inline-size: 100%;
   inset-block-start: var(--navigation-height);
   inset-inline-start: 0;
   list-style: none;
@@ -12,12 +13,11 @@
   transform: translateX(100%);
   transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1), visibility 0.45s;
   visibility: hidden;
-  width: 100%;
   will-change: transform;
   z-index: 98;
 
   .admin-bar & {
-    height: calc(100% - var(--navigation-height) - var(--wp-admin--admin-bar--height));
+    block-size: calc(100% - var(--navigation-height) - var(--wp-admin--admin-bar--height));
     inset-block-start: calc(var(--navigation-height) + var(--wp-admin--admin-bar--height));
   }
 

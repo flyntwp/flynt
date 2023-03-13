@@ -2,22 +2,22 @@
   --line-width: 29px;
   --line-border-width: 2px;
   align-items: center;
+  block-size: 48px;
   cursor: pointer;
   display: flex;
-  height: 48px;
+  inline-size: 48px;
   justify-content: center;
   margin-inline-end: -10px;
   position: relative;
-  width: 48px;
 
   &:focus:not(:focus-visible) {
     outline: none;
   }
 
   &-lines {
-    height: 18px;
+    block-size: 18px;
+    inline-size: var(--line-width);
     position: relative;
-    width: var(--line-width);
 
     &::before,
     &::after {
@@ -29,13 +29,13 @@
     &--primary,
     &--secondary {
       background-color: var(--color-text);
+      block-size: var(--line-border-width);
       border-radius: 6px;
       display: block;
-      height: var(--line-border-width);
+      inline-size: var(--line-width);
       inset-inline-start: 0;
       position: absolute;
       transition: opacity 0.2s ease-in-out 0.2s, transform 0.2s ease-in-out 0.2s;
-      width: var(--line-width);
       will-change: opacity, transform;
     }
 

@@ -4,12 +4,12 @@ flynt-component[name='BlockVideoOembed'] {
     position: relative;
 
     &-player {
-      height: 0;
+      block-size: 0;
+      inline-size: 100%;
       inset-block-start: 0;
       margin-block-start: 0;
       padding-block-end: calc(100% / 16 * 9);
       position: absolute;
-      width: 100%;
       z-index: 10;
 
       &[data-state='isLoading'] {
@@ -35,32 +35,32 @@ flynt-component[name='BlockVideoOembed'] {
     }
 
     iframe {
+      block-size: 100%;
       display: none;
-      height: 100%;
+      inline-size: 100%;
       inset-block-start: 0;
       inset-inline-start: 0;
       position: absolute;
-      width: 100%;
     }
 
     &[data-video-size='small'] {
-      max-width: 375px;
+      max-inline-size: 375px;
     }
 
     &[data-video-size='medium'] {
-      max-width: var(--content-max-width);
+      max-inline-size: var(--content-max-width);
     }
 
     &[data-video-size='large'] {
-      max-width: var(--content-max-width-large);
+      max-inline-size: var(--content-max-width-large);
     }
 
     &[data-video-size='full'] {
-      max-width: 100%;
+      max-inline-size: 100%;
 
       .figure-caption {
         margin-inline: auto;
-        max-width: var(--container-max-width);
+        max-inline-size: var(--container-max-width);
         padding-inline: var(--container-padding);
       }
     }

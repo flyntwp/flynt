@@ -27,13 +27,13 @@ $play-button-circle-diameter: (
 
 .video-loader,
 .video-loader::after {
+  block-size: map-get($play-button-circle-diameter, 'mobile');
   border-radius: 50%;
-  height: map-get($play-button-circle-diameter, 'mobile');
-  width: map-get($play-button-circle-diameter, 'mobile');
+  inline-size: map-get($play-button-circle-diameter, 'mobile');
 
   @media (min-width: $breakpoint-tablet) {
-    height: map-get($play-button-circle-diameter, 'desktop');
-    width: map-get($play-button-circle-diameter, 'desktop');
+    block-size: map-get($play-button-circle-diameter, 'desktop');
+    inline-size: map-get($play-button-circle-diameter, 'desktop');
   }
 }
 

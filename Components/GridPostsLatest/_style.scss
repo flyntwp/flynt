@@ -35,14 +35,14 @@ flynt-component[name='GridPostsLatest'] {
   }
 
   .post {
-    max-width: var(--grid-item-max-width);
-    width: var(--grid-item-width);
+    inline-size: var(--grid-item-width);
+    max-inline-size: var(--grid-item-max-width);
 
     .link {
+      block-size: 100%;
       color: currentColor;
       display: flex;
       flex-direction: column;
-      height: 100%;
       text-decoration: none;
     }
 
@@ -59,14 +59,14 @@ flynt-component[name='GridPostsLatest'] {
     .footer {
       align-items: center;
       display: flex;
+      inline-size: 100%;
       justify-content: space-between;
       padding: 0 var(--box-padding) var(--box-padding);
       position: relative;
-      width: 100%;
 
       .readingTime {
         color: var(--color-text-muted);
-        font-size: var(--body-font-size-small);
+        font-size: var(--font-size-body-small);
       }
     }
   }

@@ -1,6 +1,6 @@
 flynt-component[name='NavigationBurger'] {
   --navigation-height: 64px;
-  height: var(--navigation-height);
+  block-size: var(--navigation-height);
 
   @media (min-width: $breakpoint-tablet-horizontal) {
     display: none;
@@ -15,15 +15,15 @@ flynt-component[name='NavigationBurger'] {
   .container {
     align-items: center;
     background-color: var(--color-background);
+    block-size: var(--navigation-height);
     border-block-end: solid 2px var(--color-border);
     display: flex;
-    height: var(--navigation-height);
+    inline-size: 100%;
     inset-block-start: 0;
     inset-inline: 0;
     justify-content: space-between;
     padding-block: 12px;
     position: fixed;
-    width: 100%;
     z-index: 99;
 
     .admin-bar & {

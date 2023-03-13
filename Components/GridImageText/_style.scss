@@ -35,8 +35,8 @@ flynt-component[name='GridImageText'] {
   }
 
   .item {
-    max-width: var(--grid-item-max-width);
-    width: var(--grid-item-width);
+    inline-size: var(--grid-item-width);
+    max-inline-size: var(--grid-item-max-width);
 
     ul {
       list-style-position: outside;

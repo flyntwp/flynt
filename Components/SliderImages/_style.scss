@@ -5,34 +5,34 @@ flynt-component[name='SliderImages'] {
     position: relative;
 
     &-item {
-      height: 0;
+      block-size: 0;
       padding-block-end: calc((2/3) * 100%);
       position: relative;
     }
 
     &-button {
       align-items: center;
+      block-size: 48px;
       color: var(--color-background);
       cursor: pointer;
       display: flex;
-      height: 48px;
+      inline-size: 48px;
       inset-block-start: 50%;
       justify-content: center;
       position: absolute;
       transform: translateY(-50%);
-      width: 48px;
       z-index: 10;
 
       &::before {
         background-color: var(--color-accent);
+        block-size: 100%;
         border-radius: 50%;
         content: '';
-        height: 100%;
+        inline-size: 100%;
         inset-block-start: 0;
         inset-inline-start: 0;
         position: absolute;
         transition: opacity 0.2s ease;
-        width: 100%;
         will-change: opacity;
       }
 
@@ -45,13 +45,13 @@ flynt-component[name='SliderImages'] {
         inset-inline-start: 15px;
 
         &::after {
+          block-size: 0.75em;
           border-block-start: 2px solid currentColor;
           border-inline-start: 2px solid currentColor;
           content: '';
-          height: 0.75em;
+          inline-size: 0.75em;
           margin-inline-start: calc(0.25em + 2px);
           transform: rotate(-45deg);
-          width: 0.75em;
         }
       }
 
@@ -59,13 +59,13 @@ flynt-component[name='SliderImages'] {
         inset-inline-end: 15px;
 
         &::after {
+          block-size: 0.75em;
           border-block-start: 2px solid currentColor;
           border-inline-end: 2px solid currentColor;
           content: '';
-          height: 0.75em;
+          inline-size: 0.75em;
           margin-inline-end: calc(0.25em - 2px);
           transform: rotate(45deg);
-          width: 0.75em;
         }
       }
     }
@@ -77,9 +77,9 @@ flynt-component[name='SliderImages'] {
     position: absolute;
 
     &-image {
-      height: 100%;
+      block-size: 100%;
+      inline-size: auto;
       margin: 0 auto;
-      width: auto;
     }
 
     &-caption {
@@ -87,7 +87,7 @@ flynt-component[name='SliderImages'] {
       display: inline-block;
       inset-block-end: 0;
       inset-inline-end: 0;
-      max-width: 450px;
+      max-inline-size: 450px;
       overflow: hidden;
       padding: 0.25rem 0.5rem;
       position: absolute;
@@ -95,12 +95,12 @@ flynt-component[name='SliderImages'] {
 
       &::before {
         background-color: rgba($color: #000, $alpha: 0.7);
+        block-size: 100%;
         content: '';
-        height: 100%;
+        inline-size: 100%;
         inset-block-start: 0;
         inset-inline-start: 0;
         position: absolute;
-        width: 100%;
         z-index: -1;
       }
     }

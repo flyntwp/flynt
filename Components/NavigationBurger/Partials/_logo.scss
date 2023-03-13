@@ -1,11 +1,11 @@
 .logo {
+  block-size: 100%;
   display: block;
   flex-shrink: 0;
-  height: 100%;
   text-decoration: none;
 
   &-image {
-    height: 100%;
-    width: auto;
+    block-size: 100%;
+    inline-size: auto;
   }
 }

@@ -1,9 +1,9 @@
 /* Backend Component Screenshots */
 .flyntComponentScreenshot {
   background-color: #fff;
+  block-size: 40px;
   border: 1px solid #ccd0d4;
   display: inline-block;
-  height: 40px;
   inset-block-end: 5px;
   margin-inline-start: 5px;
   position: absolute;
@@ -16,22 +16,22 @@
 
   &-previewImageLarge {
     background: #fff;
+    block-size: auto;
     border: 3px solid #2f353e;
     border-radius: 3px;
     display: block;
-    height: auto;
+    inline-size: 33vw;
     inset-block-end: 0;
     inset-inline-end: 10px;
-    max-width: 400px;
+    max-inline-size: 400px;
     object-fit: cover;
     position: absolute;
-    width: 33vw;
   }
 
   &-previewImageSmall {
+    block-size: 40px;
     display: block;
-    height: 40px;
-    width: auto;
+    inline-size: auto;
   }
 
   &-label {

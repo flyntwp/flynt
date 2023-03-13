@@ -24,10 +24,10 @@ flynt-component[name='BlockPostFooter'] {
 
     .avatar-image {
       border-radius: 50%;
-      width: 64px;
+      inline-size: 64px;
 
       @media (min-width: $breakpoint-mobile-horizontal) {
-        width: 96px;
+        inline-size: 96px;
       }
     }
 
@@ -40,7 +40,7 @@ flynt-component[name='BlockPostFooter'] {
     }
 
     .description {
-      font-size: var(--body-font-size-small);
+      font-size: var(--font-size-body-small);
     }
   }
 }

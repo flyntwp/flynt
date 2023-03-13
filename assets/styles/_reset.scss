@@ -4,8 +4,8 @@
 }
 
 html {
+  block-size: 100%;
   box-sizing: border-box;
-  height: 100%;
   overflow-wrap: break-word;
   text-size-adjust: none;
 
@@ -26,7 +26,7 @@ html {
 
 html,
 body {
-  height: 100%;
+  block-size: 100%;
 }
 
 body {
@@ -57,12 +57,12 @@ iframe,
 embed,
 object {
   display: block;
-  max-width: 100%;
+  max-inline-size: 100%;
 }
 
 img {
-  height: initial;
-  width: 100%;
+  block-size: initial;
+  inline-size: 100%;
 }
 
 /* Reset font styling */
