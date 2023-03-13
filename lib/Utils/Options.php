@@ -125,7 +125,7 @@ class Options
      * Create an options sub page.
      *
      * @param string $optionType The type of the options page.
-     * @param string $optionCategory The category of the options page.
+     * @param string $optionCategory The category of the options page in camel case.
      *
      * @return void
      */
@@ -134,10 +134,11 @@ class Options
         if (empty(static::$optionPages[$optionType]['sub_pages'][$optionCategory])) {
             $optionPage = static::createOptionPage($optionType);
             $categoryTitle = _x($optionCategory, 'title', 'flynt');
+            $categoryTitleSplit = StringHelpers::splitCamelCase($categoryTitle);
             $categorySlug = implode('-', [$optionPage['menu_slug'], $optionCategory]);
             $pageConfig = [
-                'page_title' => $optionPage['menu_title'] . ': ' . $categoryTitle,
-                'menu_title' => $categoryTitle,
+                'page_title' => $optionPage['menu_title'] . ': ' . $categoryTitleSplit,
+                'menu_title' => $categoryTitleSplit,
                 'redirect' => true,
                 'menu_slug' => $categorySlug,
                 'parent_slug' => $optionPage['menu_slug']
