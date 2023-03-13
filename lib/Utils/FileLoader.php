@@ -61,18 +61,27 @@ class FileLoader
 
         if (count($files) === 0) {
             $dir = get_template_directory() . '/' . $dir;
+            $phpFiles = [];
 
-            self::iterateDir($dir, function ($file) {
+            self::iterateDir($dir, function ($file) use (&$phpFiles) {
                 if ($file->isDir()) {
                     $dirPath = trim(str_replace(get_template_directory(), '', $file->getPathname()), '/');
                     self::loadPhpFiles($dirPath);
                 } elseif ($file->isFile() && $file->getExtension() === 'php') {
                     $filePath = $file->getPathname();
-                    require_once $filePath;
+                    $phpFiles[] = $filePath;
                 }
             });
+
+            // Sort files alphabetically.
+            sort($phpFiles);
+            foreach ($phpFiles as $phpFile) {
+                require_once $phpFile;
+            }
         } else {
-            array_walk($files, function ($file) use ($dir) {
+            sort($files);
+
+            foreach ($files as $file) {
                 $filePath = $dir . '/' . ltrim($file, '/');
 
                 if (!locate_template($filePath, true, true)) {
@@ -81,7 +90,7 @@ class FileLoader
                         E_USER_ERROR
                     );
                 }
-            });
+            }
         }
     }
 }
