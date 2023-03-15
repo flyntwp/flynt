@@ -15,7 +15,7 @@ add_action('init', function () {
 add_filter('Flynt/addComponentData?name=NavigationBurger', function ($data) {
     $data['menu'] = Timber::get_menu('navigation_burger') ?? Timber::get_pages_menu();
     $data['logo'] = [
-        'src' => get_theme_mod('custom_header_logo') ? get_theme_mod('custom_header_logo') : Asset::requireUrl('assets/images/logo.svg'),
+        'src' => get_theme_mod('custom_logo') ? get_theme_mod('custom_logo') : Asset::requireUrl('assets/images/logo.svg'),
         'alt' => get_bloginfo('name')
     ];
 
