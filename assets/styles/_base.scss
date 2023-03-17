@@ -173,6 +173,7 @@ blockquote,
 
   cite {
     color: var(--color-text-muted);
+    display: block;
     font-size: var(--font-size-body);
     font-style: normal;
     margin-block-start: 0.25rem;
