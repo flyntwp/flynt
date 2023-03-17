@@ -22,6 +22,22 @@
   font-display: swap;
   font-family: 'Public Sans';
   font-style: normal;
+  font-weight: 500;
+  src: url('../assets/fonts/public-sans-v14-latin-500.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Public Sans';
+  font-style: italic;
+  font-weight: 500;
+  src: url('../assets/fonts/public-sans-v14-latin-500italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Public Sans';
+  font-style: normal;
   font-weight: 700;
   src: url('../assets/fonts/public-sans-v14-latin-700.woff2') format('woff2');
 }
@@ -44,7 +60,8 @@
 body,
 .paragraph {
   color: var(--color-text);
-  font-family: 'Public Sans', Verdana, sans-serif; // FOUC can be reduced with good matching fallback font: https://meowni.ca/font-style-matcher/
+  // FOUC can be reduced with good matching fallback font: https://meowni.ca/font-style-matcher/
+  font-family: 'Public Sans', 'Trebuchet MS', sans-serif;
   font-size: var(--font-size-body);
 }
 
@@ -147,7 +164,8 @@ blockquote,
   border-inline-start: 5px solid var(--color-accent);
   display: block;
   font-size: 1.44rem;
-  font-style: italic;
+  font-style: normal;
+  font-weight: 500;
   line-height: calc(1em + 0.75rem);
   margin: var(--flow-space) 0 var(--flow-space) 2.5rem;
   max-inline-size: 100%;
@@ -194,7 +212,7 @@ table {
 
   th {
     color: var(--color-text-muted);
-    font-weight: 700;
+    font-weight: 500;
   }
 
   td {
@@ -277,7 +295,7 @@ legend {
 label {
   color: var(--color-text-muted);
   font-size: var(--font-size-body-small);
-  font-weight: 700;
+  font-weight: 500;
 }
 
 #{$input-selectors} {
