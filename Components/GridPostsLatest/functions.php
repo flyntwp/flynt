@@ -21,7 +21,7 @@ add_filter('Flynt/addComponentData?name=GridPostsLatest', function ($data) {
         }, $data['taxonomies'])),
         'posts_per_page' => $data['options']['maxColumns'],
         'ignore_sticky_posts' => 1,
-        'post__not_in' => array(get_the_ID())
+        'post__not_in' => [get_the_ID()]
     ]);
 
     $data['postTypeArchiveLink'] = get_post_type_archive_link($postType);
