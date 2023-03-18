@@ -23,6 +23,9 @@
     <exclude name="Squiz.Commenting.FileComment.MissingAuthorTag"/>
   </rule>
 
+  <!-- Use short array syntax -->
+  <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+
   <!-- Show sniff codes in all reports -->
   <arg value="s"/>
   <!-- Exclude Warnings -->
