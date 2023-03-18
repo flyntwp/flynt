@@ -23,7 +23,7 @@ if (Init::checkRequiredPlugins()) {
 
 // Remove the admin-bar inline-CSS as it isn't compatible with the sticky footer CSS.
 // This prevents unintended scrolling on pages with few content, when logged in.
-add_theme_support('admin-bar', array('callback' => '__return_false'));
+add_theme_support('admin-bar', ['callback' => '__return_false']);
 
 add_action('after_setup_theme', function () {
     // Make theme available for translation.
