@@ -19,20 +19,25 @@ add_filter('wp_insert_post_data', function ($data, $postArr) {
         in_array(
             $postArr['post_type'],
             [
-            'revision',
-            'nav_menu_item',
-            'attachment',
-            'customize_changeset',
-            'custom_css',
+                'revision',
+                'nav_menu_item',
+                'attachment',
+                'customize_changeset',
+                'custom_css',
             ]
         )
     ) {
         return $data;
     }
-    // check if no content was saved before, or if there is a flyntTheContent shortcode but the id does not match the post id
-    if (empty($data['post_content']) || isShortcodeAndDoesNotMatchId($data['post_content'], $postArr['ID'])) {
-        $data['post_content'] = "[flyntTheContent id=\"{$postArr['ID']}\"]";
+
+    $isPostTypeUsingGutenberg = post_type_supports($data['post_type'], 'editor');
+    if (!$isPostTypeUsingGutenberg) {
+        // Check if no content was saved before, or if there is a flyntTheContent shortcode but the id does not match the post id.
+        if (empty($data['post_content']) || isShortcodeAndDoesNotMatchId($data['post_content'], $postArr['ID'])) {
+            $data['post_content'] = "[flyntTheContent id=\"{$postArr['ID']}\"]";
+        }
     }
+
     return $data;
 }, 99, 2);
 

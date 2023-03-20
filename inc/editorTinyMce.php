@@ -6,13 +6,13 @@
  * See the TinyMce documentation for more information: https://www.tiny.cloud/docs/
  */
 
-namespace Flynt\TinyMce;
+namespace Flynt\EditorTinyMce;
 
 use Flynt\Utils\Asset;
 
-// Add tinyMce styles to editor.
+// Add styles to the classic editor.
 add_action('admin_init', function () {
-    add_editor_style(Asset::requireUrl('assets/tinyMce.scss'));
+    add_editor_style(Asset::requireUrl('assets/editorTinyMce.scss'));
 });
 
 // First Toolbar.

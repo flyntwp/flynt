@@ -60,13 +60,14 @@
 body,
 .paragraph {
   color: var(--color-text);
-  // FOUC can be reduced with good matching fallback font: https://meowni.ca/font-style-matcher/
-  font-family: 'Public Sans', 'Trebuchet MS', sans-serif;
+  font-family: var(--font-family-text);
   font-size: var(--font-size-body);
+  line-height: 1.5;
 }
 
 #{$heading-selectors} {
   --flow-space: 2.5rem;
+  font-family: var(--font-family-heading);
   font-weight: 700;
   line-height: calc(1em + 0.5rem);
 }
@@ -144,6 +145,7 @@ hr {
   }
 }
 
+kbd,
 code {
   background: var(--color-background-secondary);
   border-radius: 4px;
@@ -168,7 +170,6 @@ blockquote,
   font-weight: 500;
   line-height: calc(1em + 0.75rem);
   margin: var(--flow-space) 0 var(--flow-space) 2.5rem;
-  max-inline-size: 100%;
   padding-inline-start: 0.8rem;
 
   cite {

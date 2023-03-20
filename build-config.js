@@ -9,7 +9,8 @@ const entries = [
   './assets/main.js',
   './assets/main.scss',
   './assets/print.scss',
-  './assets/tinyMce.scss'
+  './assets/editorTinyMce.scss',
+  './assets/editor.scss'
 ]
 
 const watchFiles = [
