@@ -1,4 +1,4 @@
-![Flynt – WordPress Starter Theme for Developers](./screenshot.png)
+![Flynt – WordPress Starter Theme for Developers](.github/assets/banner.png 'Flynt – WordPress Starter Theme for Developers')
 
 # Flynt – WordPress Starter Theme for Developers
 
