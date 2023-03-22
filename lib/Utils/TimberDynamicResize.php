@@ -25,11 +25,11 @@ class TimberDynamicResize
      */
     public $flyntResizedImages = [];
 
-   /**
-    * The internal value of the dynamic image generation setting.
-    *
-    * @var boolean
-    */
+    /**
+     * The internal value of the dynamic image generation setting.
+     *
+     * @var boolean
+     */
     protected $enabled = false;
 
     /**
@@ -209,13 +209,11 @@ class TimberDynamicResize
      *
      * @return string The resized image url.
      */
-    public function resizeDynamic(
-        string $src,
-        int $w,
-        int $h = 0,
-        string $crop = 'default',
-        bool $force = false
-    ) {
+    public function resizeDynamic(string $src, int $w, int $h = 0, string $crop = 'default', bool $force = false)
+    {
+        $w = round($w);
+        $h = round($h);
+
         if ($this->enabled) {
             $resizeOp = new Resize($w, $h, $crop);
             $fileinfo = pathinfo($src);
