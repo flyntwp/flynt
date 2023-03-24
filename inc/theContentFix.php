@@ -42,6 +42,10 @@ add_filter('wp_insert_post_data', function ($data, $postArr) {
 }, 99, 2);
 
 add_shortcode('flyntTheContent', function ($attrs) {
+    if (is_admin()) {
+        return;
+    }
+
     $postId = $attrs['id'];
     // in case the post id was not set correctly and is 0
     if (!empty($postId)) {
