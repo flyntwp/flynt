@@ -211,8 +211,8 @@ class TimberDynamicResize
      */
     public function resizeDynamic(string $src, int $w, int $h = 0, string $crop = 'default', bool $force = false)
     {
-        $w = round($w);
-        $h = round($h);
+        $w = round($w) ?? 0;
+        $h = round($h) ?? 0;
 
         if ($this->enabled) {
             $resizeOp = new Resize($w, $h, $crop);
