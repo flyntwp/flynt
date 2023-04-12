@@ -1,3 +1,5 @@
+@use "sass:map";
+
 $play-button-circle-diameter: (
   'desktop': 100px,
   'mobile': 60px
@@ -12,28 +14,28 @@ $play-button-circle-diameter: (
   display: none;
   inset-block-start: 50%;
   inset-inline-start: 50%;
-  margin-block-start: -(map-get($play-button-circle-diameter, 'mobile') * 0.5);
-  margin-inline-start: -(map-get($play-button-circle-diameter, 'mobile') * 0.5);
+  margin-block-start: -(map.get($play-button-circle-diameter, 'mobile') * 0.5);
+  margin-inline-start: -(map.get($play-button-circle-diameter, 'mobile') * 0.5);
   position: absolute;
   text-indent: -9999em;
   transform: translate(-50%, -50%);
   z-index: 1;
 
   @media (min-width: $breakpoint-tablet) {
-    margin-block-start: -(map-get($play-button-circle-diameter, 'desktop') * 0.5);
-    margin-inline-start: -(map-get($play-button-circle-diameter, 'desktop') * 0.5);
+    margin-block-start: -(map.get($play-button-circle-diameter, 'desktop') * 0.5);
+    margin-inline-start: -(map.get($play-button-circle-diameter, 'desktop') * 0.5);
   }
 }
 
 .video-loader,
 .video-loader::after {
-  block-size: map-get($play-button-circle-diameter, 'mobile');
+  block-size: map.get($play-button-circle-diameter, 'mobile');
   border-radius: 50%;
-  inline-size: map-get($play-button-circle-diameter, 'mobile');
+  inline-size: map.get($play-button-circle-diameter, 'mobile');
 
   @media (min-width: $breakpoint-tablet) {
-    block-size: map-get($play-button-circle-diameter, 'desktop');
-    inline-size: map-get($play-button-circle-diameter, 'desktop');
+    block-size: map.get($play-button-circle-diameter, 'desktop');
+    inline-size: map.get($play-button-circle-diameter, 'desktop');
   }
 }
 
