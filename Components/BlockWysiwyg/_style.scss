@@ -3,12 +3,6 @@ flynt-component[name='BlockWysiwyg'] {
     > :last-child {
       margin-block-end: 0;
     }
-
-    @media (max-width: $breakpoint-tablet) {
-      br {
-        content: '\00a0';
-      }
-    }
   }
 
   [data-text-align='left'] {
