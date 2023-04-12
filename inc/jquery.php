@@ -14,7 +14,7 @@ add_action('wp_enqueue_scripts', function () {
     $jqueryVersion = wp_scripts()->registered['jquery']->ver;
     wp_deregister_script('jquery');
 
-    $jqueryLocalUrl = esc_url(includes_url("/js/jquery/jquery.js?ver=${jqueryVersion}"));
+    $jqueryLocalUrl = esc_url(includes_url("/js/jquery/jquery.min.js?ver=${jqueryVersion}"));
     Asset::register([
         'name' => 'jquery',
         'cdn' => [
