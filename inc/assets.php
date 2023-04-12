@@ -8,6 +8,14 @@ call_user_func(function () {
     $loader = new ScriptAndStyleLoader();
     add_filter('script_loader_tag', [$loader, 'filterScriptLoaderTag'], 10, 3);
     add_filter('style_loader_tag', [$loader, 'filterStyleLoaderTag'], 10, 3);
+
+    // Preload jQuery if it is enqueued.
+    add_filter('script_loader_tag', function ($tag, $handle, $src) use ($loader) {
+        if ('jquery-core' === $handle) {
+            $tag = $loader->addPreloadLinkBeforeTag($tag, $src, 'script');
+        }
+        return $tag;
+    }, 10, 3);
 });
 
 add_action('wp_enqueue_scripts', function () {
