@@ -469,7 +469,8 @@ flynt-component {
 */
 
 .boxPadding {
-  padding: var(--box-padding);
+  padding-block: var(--box-padding-block);
+  padding-inline: var(--box-padding-inline);
 }
 
 .boxBorder {

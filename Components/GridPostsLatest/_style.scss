@@ -61,7 +61,7 @@ flynt-component[name='GridPostsLatest'] {
       display: flex;
       inline-size: 100%;
       justify-content: space-between;
-      padding: 0 var(--box-padding) var(--box-padding);
+      padding: 0 var(--box-padding-inline) var(--box-padding-block);
       position: relative;
 
       .readingTime {

@@ -13,10 +13,11 @@
     border: 0;
     flex-grow: 1;
     margin-block-end: 0;
-    padding: var(--box-padding) var(--form-inner-space);
+    max-inline-size: unset;
+    padding: var(--box-padding-block) var(--form-inner-space);
 
     @media (min-width: $breakpoint-mobile-horizontal) {
-      padding: 0 calc(var(--box-padding) - var(--form-inner-space));
+      padding: 0 var(--box-padding-inline) var(--box-padding-block);
     }
 
     &:focus {
