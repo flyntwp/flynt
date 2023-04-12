@@ -83,7 +83,7 @@ class ScriptAndStyleLoader
      * @param string $type The type script|style.
      * @return string HTML string.
      */
-    private function addPreloadLinkBeforeTag(string $tag, string $src, string $type)
+    public function addPreloadLinkBeforeTag(string $tag, string $src, string $type)
     {
         $tag = '<link rel="preload" href="' . $src . '" as="' . $type . '">' . $tag;
         return $tag;
