@@ -3,6 +3,18 @@
 namespace Flynt\Components\BlockVideoOembed;
 
 use Flynt\FieldVariables;
+use Flynt\Utils\Oembed;
+
+add_filter('Flynt/addComponentData?name=BlockVideoOembed', function ($data) {
+    $data['oembed'] = Oembed::setSrcAsDataAttribute(
+        $data['oembed'],
+        [
+            'autoplay' => 'true'
+        ]
+    );
+
+    return $data;
+});
 
 function getACFLayout()
 {
