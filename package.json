@@ -28,7 +28,7 @@
     "replaceVersion:php": "cross-env replace-in-files --string='%%NEXT_VERSION%%' --replacement=$npm_package_version './**/*.php' '!./dist/**/*' '!./node_modules/**/*' '!./vendor/**/*'"
   },
   "dependencies": {
-    "@webreflection/custom-elements-builtin": "^0.3.0",
+    "@webreflection/custom-elements-builtin": "^0.4.0",
     "body-scroll-lock": "^3.1.5",
     "countup.js": "^2.6.0",
     "delegate-event-listener": "^1.2.0",
@@ -36,7 +36,7 @@
     "lodash-es": "^4.17.21",
     "modern-normalize": "^1.1.0",
     "rellax": "^1.12.1",
-    "swiper": "^9.2.0"
+    "swiper": "^9.2.3"
   },
   "devDependencies": {
     "ansi-colors": "^4.1.3",
@@ -50,11 +50,13 @@
     "rimraf": "^5.0.0",
     "sass": "^1.62.0",
     "standard": "^17.0.0",
-    "stylelint": "^15.4.0",
+    "stylelint": "^15.5.0",
     "stylelint-config-sass-guidelines": "^10.0.0",
-    "stylelint-config-standard": "^32.0.0",
+    "stylelint-config-standard": "^33.0.0",
+    "stylelint-order": "^6.0.3",
     "stylelint-scss": "^4.6.0",
-    "vite": "^4.2.1",
+    "stylelint-use-logical": "^2.1.0",
+    "vite": "^4.3.1",
     "vite-plugin-full-reload": "^1.0.5"
   },
   "eslintConfig": {
@@ -66,7 +68,9 @@
   "stylelint": {
     "extends": "stylelint-config-sass-guidelines",
     "plugins": [
-      "stylelint-scss"
+      "stylelint-scss",
+      "stylelint-order",
+      "stylelint-use-logical"
     ],
     "rules": {
       "at-rule-no-unknown": null,
@@ -74,7 +78,9 @@
       "selector-class-pattern": null,
       "max-nesting-depth": null,
       "selector-max-compound-selectors": 4,
-      "selector-no-qualifying-type": null
+      "selector-no-qualifying-type": null,
+      "order/properties-alphabetical-order": true,
+      "csstools/use-logical": true
     },
     "ignoreFiles": [
       "dist/**",
