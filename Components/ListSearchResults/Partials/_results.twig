@@ -6,7 +6,7 @@
           <h2 class="h5">{{ post.title }}</h2>
           <p>{{ post.excerpt.read_more(false) }}</p>
           <footer>
-            <a href="{{ post.link }}" aria-label="{{ post.title }}" class="link">{{ labels.readMore }}</a>
+            <a href="{{ post.link|e('esc_url') }}" aria-label="{{ post.title }}" class="link">{{ labels.readMore }}</a>
           </footer>
         </article>
       </li>
