@@ -13,7 +13,7 @@
       <ul data-ref="posts" class="posts">
         {% for post in posts %}
           <li class="post boxBorder" data-theme="reset">
-            <a class="link" href="{{ post.link }}" aria-label="{{ post.title }}">
+            <a class="link" href="{{ post.link|e('esc_url') }}" aria-label="{{ post.title }}">
               {% if post.thumbnail %}
                 <figure class="figure">
                   <img class="post-image figure-image lazyload"
