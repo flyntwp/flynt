@@ -10,7 +10,7 @@
         {% if componentBlock.readme %}
           <li class="component boxBorder" data-theme="reset">
             {% if componentBlock.ctas.primary %}
-              <a href="{{ componentBlock.ctas.primary }}" class="componentLink" aria-hidden="true" tabindex="-1">
+              <a href="{{ componentBlock.ctas.primary|e('esc_url') }}" class="componentLink" aria-hidden="true" tabindex="-1">
             {% else %}
               <div class="componentLink">
             {% endif %}
@@ -37,13 +37,13 @@
             {% if componentBlock.ctas.primary or componentBlock.ctas.secondary %}
               <footer>
                 {% if componentBlock.ctas.secondary %}
-                  <a href="{{ componentBlock.ctas.secondary }}" target="_blank" rel="noreferrer noopener" class="component-ctaSecondary">
+                  <a href="{{ componentBlock.ctas.secondary|e('esc_url') }}" target="_blank" rel="noreferrer noopener" class="component-ctaSecondary">
                     {{ labels.code }}
                     <span class="visuallyHidden">{{ componentBlock.readme.title ~ ' ' ~ labels.code }}</span>
                   </a>
                 {% endif %}
                 {% if componentBlock.ctas.primary %}
-                  <a href="{{ componentBlock.ctas.primary }}" class="button button--text">
+                  <a href="{{ componentBlock.ctas.primary|e('esc_url') }}" class="button button--text">
                   {{ labels.preview }}<span class="visuallyHidden">{{ __(" of Component", "flynt")}} {{ componentBlock.readme.title }}</span></a>
                 {% endif %}
               </footer>
