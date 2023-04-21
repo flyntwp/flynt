@@ -39,8 +39,17 @@ function getACFLayout()
 }
 
 add_filter('acf/load_field/name=anchorLink', function ($field) {
+    if (!is_admin()) {
+        return $field;
+    }
+
     global $post;
     $post = Timber::get_Post($post);
+
+    if (!$post || !$post->link) {
+        return $field;
+    }
+
     $context = Timber::context();
     $context['post'] = $post;
     $context['href'] = $post->link;
@@ -49,7 +58,7 @@ add_filter('acf/load_field/name=anchorLink', function ($field) {
     $componentPath = $templateDir . '/Components/BlockAnchor';
 
     $content = [
-        'copiedMessage' => __('Link copied ', 'flynt'),
+        'copiedMessage' => __('Link copied', 'flynt'),
         'description' => __('Copy the link and use it anywhere on the page to scroll to this position.', 'flynt'),
         'buttonText' =>  __('Copy link', 'flynt')
     ];
