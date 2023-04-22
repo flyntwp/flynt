@@ -1,8 +1,8 @@
 /**
- *  Typography
+ * Typography
  */
 
-/* Default flow */
+// Applies a consistent margin for most common elements.
 :where(#{$heading-selectors}, p, .paragraph, ul, ol, pre, table, figure, blockquote, form, fieldset, dl, address, details, hr, aside, video, fieldset) {
   + * {
     margin-block-start: var(--flow-space);
@@ -134,8 +134,8 @@ blockquote,
 }
 
 /**
-* Lists & Tables
-*/
+ * Lists & Tables
+ */
 
 ul,
 ol {
@@ -187,8 +187,8 @@ table {
 }
 
 /**
-* Buttons
-*/
+ * Buttons
+ */
 
 .button,
 .wp-block-button > .wp-block-button__link {
@@ -337,8 +337,8 @@ textarea {
 }
 
 /**
-* Helpers
-*/
+ * Helpers
+ */
 
 flynt-component {
   display: block;
@@ -364,7 +364,7 @@ flynt-component {
     padding: var(--component-spacing) 0;
   }
 
-  /* Use flow-space as componentSpacing for all components in single post layouts. */
+  // Use flow-space as componentSpacing for all components in single post layouts.
   .post-main & {
     --component-spacing: var(--flow-space);
   }
@@ -415,7 +415,7 @@ flynt-component {
   overflow-x: auto;
 }
 
-/* Class for text that should only be visible to screen readers */
+// Class for text that should only be visible to screen readers.
 .visuallyHidden {
   block-size: 1px !important;
   clip: rect(0, 0, 0, 0) !important;
@@ -427,7 +427,7 @@ flynt-component {
   white-space: nowrap !important;
 }
 
-/* Skip link behavior */
+// Skip link behavior.
 .skipLink {
   inset-block-start: -100px;
   position: fixed;
@@ -439,8 +439,8 @@ flynt-component {
 }
 
 /**
-* Box Helpers
-*/
+ * Box Helpers
+ */
 
 .boxPadding {
   padding-block: var(--box-padding-block);
@@ -452,8 +452,8 @@ flynt-component {
 }
 
 /**
-* Themes
-*/
+ * Themes
+ */
 
 [data-theme] {
   background-color: var(--color-background);
