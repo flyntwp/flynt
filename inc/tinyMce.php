@@ -6,13 +6,13 @@
  * See the TinyMce documentation for more information: https://www.tiny.cloud/docs/
  */
 
-namespace Flynt\EditorTinyMce;
+namespace Flynt\TinyMce;
 
 use Flynt\Utils\Asset;
 
 // Add styles to the classic editor.
 add_action('admin_init', function () {
-    add_editor_style(Asset::requireUrl('assets/editorTinyMce.scss'));
+    add_editor_style(Asset::requireUrl('assets/tinyMce.scss'));
 });
 
 // First Toolbar.
@@ -139,7 +139,13 @@ function getConfig()
                         'title' => __('Button Text', 'flynt'),
                         'classes' => 'button--text',
                         'selector' => '.button'
-                    ]
+                    ],
+                    [
+                        'title' => __('Button Group', 'flynt'),
+                        'classes' => 'buttonGroup',
+                        'block' => 'div',
+                        'wrapper' => true
+                    ],
                 ]
             ],
             [

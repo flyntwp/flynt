@@ -1,54 +1,6 @@
 /**
-*  Typography
-*/
-
-@font-face {
-  font-display: swap;
-  font-family: 'Public Sans';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../assets/fonts/public-sans-v14-latin-regular.woff2') format('woff2');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'Public Sans';
-  font-style: italic;
-  font-weight: 400;
-  src: url('../assets/fonts/public-sans-v14-latin-italic.woff2') format('woff2');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'Public Sans';
-  font-style: normal;
-  font-weight: 500;
-  src: url('../assets/fonts/public-sans-v14-latin-500.woff2') format('woff2');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'Public Sans';
-  font-style: italic;
-  font-weight: 500;
-  src: url('../assets/fonts/public-sans-v14-latin-500italic.woff2') format('woff2');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'Public Sans';
-  font-style: normal;
-  font-weight: 700;
-  src: url('../assets/fonts/public-sans-v14-latin-700.woff2') format('woff2');
-}
-
-@font-face {
-  font-display: swap;
-  font-family: 'Public Sans';
-  font-style: italic;
-  font-weight: 700;
-  src: url('../assets/fonts/public-sans-v14-latin-700italic.woff2') format('woff2');
-}
+ *  Typography
+ */
 
 /* Default flow */
 :where(#{$heading-selectors}, p, .paragraph, ul, ol, pre, table, figure, blockquote, form, fieldset, dl, address, details, hr, aside, video, fieldset) {
@@ -238,20 +190,27 @@ table {
 * Buttons
 */
 
-.button {
-  --border-width: 2px;
-  --padding-inline: calc(1.125rem - var(--border-width));
-  --padding-block: calc(0.625rem - var(--border-width));
+.button,
+.wp-block-button > .wp-block-button__link {
+  --button-background-color: var(--color-accent);
+  --button-text-color: var(--color-background);
+  --button-border-width: 2px;
+  --button-border-radius: 0;
+  --button-font-weight: 700;
+  --button-padding-inline: calc(1.125rem - var(--button-border-width));
+  --button-padding-block: calc(0.625rem - var(--button-border-width));
+
   appearance: none;
-  background-color: var(--color-accent);
-  border: solid var(--border-width) var(--color-accent);
-  color: var(--color-background);
+  background-color: var(--button-background-color);
+  border: solid var(--button-border-width) var(--color-accent);
+  border-radius: var(--button-border-radius);
+  color: var(--button-text-color);
   cursor: pointer;
   display: inline-block;
   font: inherit;
-  font-weight: 700;
+  font-weight: var(--button-font-weight);
   letter-spacing: 0;
-  padding: var(--padding-block) var(--padding-inline);
+  padding: var(--button-padding-block) var(--button-padding-inline);
   text-align: center;
   text-decoration: none;
 
@@ -262,21 +221,36 @@ table {
   }
 
   &--outlined {
-    background-color: transparent;
-    color: var(--color-accent);
+    --button-text-color: var(--color-accent);
+    --button-background-color: transparent;
   }
 
   &--text {
-    background-color: transparent;
+    --button-background-color: transparent;
+    --button-text-color: var(--color-accent);
     border: 0;
-    color: var(--color-accent);
     padding: 0;
   }
 }
 
+.wp-block-button {
+  color: var(--button-text-color);
+
+  &.is-style-outline {
+    --button-text-color: var(--color-accent);
+
+    .wp-block-button__link {
+      --button-text-color: var(--color-accent);
+      border: solid var(--button-border-width) var(--color-accent);
+      color: var(--button-text-color);
+      padding: var(--button-padding-block) var(--button-padding-inline);
+    }
+  }
+}
+
 /**
-* Forms
-*/
+ * Forms
+ */
 
 form {
   margin: 0;

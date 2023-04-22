@@ -1,4 +1,4 @@
-const domain = 'flynt.test'
+const domain = 'flynt-components.local.blee.ch'
 const dest = './dist'
 
 const host = `https://${domain}`
@@ -9,8 +9,8 @@ const entries = [
   './assets/main.js',
   './assets/main.scss',
   './assets/print.scss',
-  './assets/editorTinyMce.scss',
-  './assets/editor.scss'
+  './assets/tinyMce.scss',
+  './assets/blockEditor.scss'
 ]
 
 const watchFiles = [

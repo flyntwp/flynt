@@ -1,5 +1,5 @@
 {
-  "version": "2",
+  "version": 2,
   "$schema": "https://schemas.wp.org/trunk/theme.json",
   "settings": {
     "border": {
@@ -23,14 +23,14 @@
     },
     "layout": {
       "contentSize": "var(--content-max-width)",
-      "wideSize": "var(--content-max-large)"
+      "wideSize": "var(--content-max-width-large)"
     },
     "spacing": {
       "margin": false,
       "padding": false,
       "blockGap": null,
       "units": []
-  },
+    },
     "typography": {
       "customFontSize": false,
       "lineHeight": false,

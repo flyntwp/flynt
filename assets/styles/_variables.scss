@@ -35,7 +35,11 @@ $heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';
 $input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [type="email"], [type="search"], [type="number"], [type="password"], textarea, select';
 
 :root {
-  // FOUC can be reduced with good matching fallback font: https://meowni.ca/font-style-matcher/
+  /*
+   * FOUC can be reduced with good matching fallback font.
+   * https://meowni.ca/font-style-matcher/ or
+   * https://github.com/pixel-point/fontpie
+   */
   --font-family-heading: 'Public Sans', 'Trebuchet MS', sans-serif;
   --font-family-text: 'Public Sans', 'Trebuchet MS', sans-serif;
   --font-size-body: 1.125rem; // Always use rem. 1rem = 16px
