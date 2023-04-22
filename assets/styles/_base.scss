@@ -370,26 +370,28 @@ flynt-component {
   }
 }
 
-.centerMaxWidthContainer {
+.centerContainer {
   margin-inline: auto;
-  max-inline-size: var(--container-max-width);
-  padding-inline: var(--container-padding-inline);
 }
 
-.centerMaxWidthContainerLarge {
-  margin-inline: auto;
-  max-inline-size: var(--container-max-width-large);
-  padding-inline: var(--container-padding-inline);
-}
+.maxWidth {
+  &--container {
+    max-inline-size: var(--container-max-width);
+    padding-inline: var(--container-padding-inline);
+  }
 
-.centerContentMaxWidth {
-  margin-inline: auto;
-  max-inline-size: var(--content-max-width);
-}
+  &--containerLarge {
+    max-inline-size: var(--container-max-width-large);
+    padding-inline: var(--container-padding-inline);
+  }
 
-.centerContentMaxWidthLarge {
-  margin-inline: auto;
-  max-inline-size: var(--content-max-width-large);
+  &--content {
+    max-inline-size: var(--content-max-width);
+  }
+
+  &--contentLarge {
+    max-inline-size: var(--content-max-width-large);
+  }
 }
 
 .flowContent {

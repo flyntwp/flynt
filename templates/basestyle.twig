@@ -3,8 +3,8 @@
 {% block content %}
   {% set themes = ['light', 'dark'] %}
 
-  <section class="centerMaxWidthContainer componentSpacing">
-    <div class="centerContentMaxWidth">
+  <section class="centerContainer maxWidth--container componentSpacing">
+    <div class="centerContainer maxWidth--content">
       <h1>Base Style</h1>
       <p>This style guide exemplifies the base styles.</p>
       <p><strong>Creating a well thought out base style for a new website is one of the most critical parts to ensure an overall successful project progression.</strong></p>
@@ -28,11 +28,11 @@
       </ol>
     </div>
   </section>
-  <div class="centerMaxWidthContainer"><hr class="centerContentMaxWidth"></div>
+  <div class="centerContainer maxWidth--container"><hr class="centerContainer maxWidth--content"></div>
 
   <!-- 1. Colors -->
-  <section class="centerMaxWidthContainer componentSpacing">
-    <div class="centerContentMaxWidth">
+  <section class="centerContainer maxWidth--container componentSpacing">
+    <div class="centerContainer maxWidth--content">
       <h2 id="colors">1. Colors <a href="#colors" aria-label="Link to Colors">#</a></h2>
       <p>A strong selection of colors is essential for any website. Using CSS color variables provide a consistent and efficient way to incorporate color into the design while it is easy to make global changes.</p>
       {% block blockTableColors %}
@@ -93,11 +93,11 @@
       {% endblock %}
     </div>
   </section>
-  <hr class="centerContentMaxWidth">
+  <hr class="centerContainer maxWidth--content">
 
   <!-- 2. Typography -->
-  <section class="centerMaxWidthContainer componentSpacing">
-    <div class="centerContentMaxWidth">
+  <section class="centerContainer maxWidth--container componentSpacing">
+    <div class="centerContainer maxWidth--content">
       <h2 id="typography">2. Typography <a href="#typography" aria-label="Link to Typography">#</a></h2>
       <p>Using the css variable <code>--flow-space</code> creates a smooth flow rhythm between elements.</p>
       {% block blockTypography %}
@@ -147,11 +147,11 @@
       {% endblock %}
     </div>
   </section>
-  <hr class="centerContentMaxWidth">
+  <hr class="centerContainer maxWidth--content">
 
   <!-- 3. Buttons and Links -->
-  <section class="centerMaxWidthContainer componentSpacing">
-    <div class="centerContentMaxWidth">
+  <section class="centerContainer maxWidth--container componentSpacing">
+    <div class="centerContainer maxWidth--content">
       <h2 id="buttons-and-links">3. Buttons and Links <a href="#buttons-and-links" aria-label="Link to Buttons and Links">#</a></h2>
       <p>A <strong>&lt;button&gt;</strong> element without a class should have its styles reset, so it can be used as a semantic tag on other interface elements, like the arrows of a slider, a closing × or a burger menu.</p>
       <p>Using the anchor element (<strong>&lt;a&gt;</strong>) as a button is common for a “call to action”. Anchor elements as <a href="https://www.google.com/search?q=HTML+Links" target="_blank">regular Link</a> are nearly on all over the internet.</p>
@@ -181,11 +181,11 @@
       {% endblock %}
     </div>
   </section>
-  <hr class="centerContentMaxWidth">
+  <hr class="centerContainer maxWidth--content">
 
   <!-- 4. Forms -->
-  <section class="centerMaxWidthContainer componentSpacing">
-    <div class="centerContentMaxWidth">
+  <section class="centerContainer maxWidth--container componentSpacing">
+    <div class="centerContainer maxWidth--content">
       <h2 id="forms">4. Forms <a href="#forms" aria-label="Link to Forms">#</a></h2>
       <p>Placing form elements on a page should just work without having to apply extra classes or custom wrapping elements. However, a <strong>&lt;fieldset&gt;</strong> element provides a nice opportunity to group multiple form elements.</p>
       {% block blockInputs %}
@@ -244,18 +244,19 @@
       {% endblock %}
     </div>
   </section>
-  <div class="centerMaxWidthContainer"><hr class="centerContentMaxWidth"></div>
+  <div class="centerContainer maxWidth--container"><hr class="centerContainer maxWidth--content"></div>
 
   <!-- 5. Helpers -->
-  <section class="centerMaxWidthContainer componentSpacing">
-    <div class="centerContentMaxWidth">
+  <section class="centerContainer maxWidth--container componentSpacing">
+    <div class="centerContainer maxWidth--content">
       <h2 id="helpers">5. Helpers <a href="#helpers" aria-label="Link to Helpers">#</a></h2>
       <p>To ensure a consistent appearance across all components, it is important to use helper classes for specific tasks.</p>
       <p>Keep in mind: <strong>A&nbsp;helper class should do one job and does it well.</strong></p>
       <ul class="flowContent">
         <li><code>.componentSpacing</code><br>Ensures consistent component top and bottom spacing.</li>
-        <li><code>.centerMaxWidthContainer</code><br>Ensures consistent left and right padding and website max width.</li>
-        <li><code>.centerContentMaxWidth</code><br>Ensures an optimal readability of text contents (optimal line length for text is between 50 and 75 characters).</li>
+        <li><code>.centerContainer</code><br>Sets margin-inline: auto to an element.</li>
+        <li><code>.maxWidth--container</code> / <code>.maxWidth--containerLarge</code><br>Ensures consistent left and right padding and max width.</li>
+        <li><code>.maxWidth--content</code> / <code>.maxWidth--contentLarge</code><br>Ensures an optimal readability of text contents (optimal line length for text is between 50 and 75 characters).</li>
         <li><code>.flowContent</code><br>Ensures that a <strong>margin-block-start</strong> is added its child sibling elements, which is great for using a consistent flow rhythm between elements.</li>
         <li><code>.preContent</code><br>Ensures consistent positioning of content preceding the main section of a component.</li>
         <li><code>.postContent</code><br>Ensures consistent positioning of content following the main section of a component.</li>
@@ -274,19 +275,19 @@
       {% endblock %}
     </div>
   </section>
-  <div class="centerMaxWidthContainer"><hr class="centerContentMaxWidth"></div>
+  <div class="centerContainer maxWidth--container"><hr class="centerContainer maxWidth--content"></div>
 
   <!-- 6. Themes -->
-  <section class="centerMaxWidthContainer componentSpacing">
-    <div class="centerContentMaxWidth">
+  <section class="centerContainer maxWidth--container componentSpacing">
+    <div class="centerContainer maxWidth--content">
       <h2 class="h1" id="themes">6. Themes <a href="#themes" aria-label="Link to Themes">#</a></h2>
       <p>To easily change the appearance of a group of content, using themes is a reliable method. The <code>data-theme</code> attribute makes it simple to apply styles and customize the appearance of a group of content, while the code keeps readable.</p>
     </div>
   </section>
   {% for theme in themes %}
     <section data-theme="{{ theme }}" class="componentSpacing">
-      <div class="centerMaxWidthContainer">
-        <div class="centerContentMaxWidth">
+      <div class="centerContainer maxWidth--container">
+        <div class="centerContainer maxWidth--content">
           <h3 class="h2" id="theme-{{ theme }}">Theme {{ theme|capitalize }} <a href="#theme-{{ theme }}" aria-label="Link to Theme {{ theme|capitalize }}">#</a></h3>
           <p>Using the attribute <code>data-theme="{{ theme }}"</code> allows you to style a group content as Theme {{ theme|capitalize }}.</p>
             <ol>
@@ -316,8 +317,8 @@
   {% endfor %}
   <!-- Theme Reset -->
   <section data-theme="{{ themes[0] }}" class="componentSpacing">
-    <div class="centerMaxWidthContainer">
-      <div class="centerContentMaxWidth boxPadding" data-theme="reset">
+    <div class="centerContainer maxWidth--container">
+      <div class="centerContainer maxWidth--content boxPadding" data-theme="reset">
         <h3 class="h2" id="theme-reset">Theme Reset <a href="#theme-reset" aria-label="Link to Theme Reset">#</a></h3>
         <p>Using the attribute <code>data-theme="reset"</code> allows you to revert the styles of a parent theme back to the initial styles.</p>
         {% set theme = 'reset' %}

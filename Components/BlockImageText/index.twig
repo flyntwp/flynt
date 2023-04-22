@@ -1,6 +1,6 @@
 <flynt-component name="BlockImageText" load:on="visible" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
-  <div class="container centerMaxWidthContainer" {{ imagePosition ? 'data-image-position="' ~ imagePosition ~ '"' }}>
-    <figure class="figure centerContentMaxWidth">
+  <div class="container centerContainer maxWidth--container" {{ imagePosition ? 'data-image-position="' ~ imagePosition ~ '"' }}>
+    <figure class="figure centerContainer maxWidth--content">
       {% if image.post_mime_type == 'image/svg+xml'%}
         <img class="image lazyload"
           src="{{ placeholderImage(768, (768 / image.aspect)|round, 'rgba(125, 125, 125, 0.1)') }}"
@@ -29,7 +29,7 @@
         <figcaption>{{ image.caption|e }}</figcaption>
       {% endif %}
     </figure>
-    <div class="centerContentMaxWidth">
+    <div class="centerContainer maxWidth--content">
       {{ contentHtml|e('wp_kses_post') }}
     </div>
   </div>
