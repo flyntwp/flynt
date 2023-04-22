@@ -373,13 +373,13 @@ flynt-component {
 .centerMaxWidthContainer {
   margin-inline: auto;
   max-inline-size: var(--container-max-width);
-  padding-inline: var(--container-padding);
+  padding-inline: var(--container-padding-inline);
 }
 
 .centerMaxWidthContainerLarge {
   margin-inline: auto;
   max-inline-size: var(--container-max-width-large);
-  padding-inline: var(--container-padding);
+  padding-inline: var(--container-padding-inline);
 }
 
 .centerContentMaxWidth {

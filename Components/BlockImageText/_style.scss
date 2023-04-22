@@ -3,7 +3,7 @@ flynt-component[name='BlockImageText'] {
     @media (min-width: $breakpoint-tablet-horizontal) {
       align-items: center;
       display: flex;
-      gap: calc(var(--container-padding) * 2);
+      gap: calc(var(--container-padding-inline) * 2);
       justify-content: space-around;
     }
 
