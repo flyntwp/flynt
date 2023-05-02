@@ -5,7 +5,7 @@
         {{ preContentHtml|e('wp_kses_post') }}
       </div>
     {% endif %}
-    <ul class="grid" {{ options.maxColumns ? 'data-max-columns="' ~ options.maxColumns ~ '"' }}>
+    <ul class="grid" {{ options.card ? 'data-has-cards="true"' }} {{ options.maxColumns ? 'data-max-columns="' ~ options.maxColumns ~ '"' }}>
       {% for item in items %}
         {% if item.image or item.contentHtml %}
           <li class="item {{- options.card ? ' is-card boxBorder' }}">
@@ -29,7 +29,7 @@
                 </figure>
               {% endif %}
               {% if item.contentHtml %}
-                <div class="content {{ options.card == 'layoutCard' ? 'boxPadding' }}">
+                <div class="content {{ options.card ? 'boxPadding' }}">
                   {{ item.contentHtml|e('wp_kses_post') }}
                 </div>
               {% endif %}

@@ -2,8 +2,8 @@ flynt-component[name='GridImageText'] {
   .grid {
     --grid-columns: 1;
     display: grid;
-    gap: var(--component-spacing) var(--flow-space);
-    grid-template-columns: repeat(var(--grid-columns), minmax(0, max-content));
+    gap: var(--column-gap);
+    grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
     justify-content: center;
     list-style: none;
     margin-block: 0;
@@ -32,6 +32,10 @@ flynt-component[name='GridImageText'] {
       @media (min-width: $breakpoint-tablet-horizontal) {
         --grid-columns: 4;
       }
+    }
+
+    &[data-has-cards='true']{
+      --column-gap: var(--flow-space);
     }
   }
 
