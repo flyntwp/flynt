@@ -45,15 +45,15 @@ $input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [ty
   --font-size-body: 1.125rem; // Always use rem. 1rem = 16px
   --font-size-body-small: 1rem;
   --flow-space: 1.5625rem;
-  --column-gap: clamp(2.5rem, 2.50vw + 1.75rem, 3.75rem);
+  --column-gap: clamp(2.5rem, 2.5vw + 1.75rem, 3.75rem);
 
   --content-max-width: 700px;
   --content-max-width-large: 800px;
   --container-max-width: calc(1200px + (var(--container-padding-inline) * 2));
   --container-max-width-large: calc(1340px + (var(--container-padding-inline) * 2));
 
-  --box-padding-block: clamp(1rem, 2.5vw + 0.25rem, 2.25rem);
+  --box-padding-block: clamp(1rem, 2.50vw + 0.25rem, 2.25rem);
   --box-padding-inline: var(--box-padding-block);
   --container-padding-inline: clamp(1rem, 2.5vw + 0.25rem, 2.25rem);
-  --component-spacing: clamp(3rem, 6vw + 1.2rem, 6rem);
+  --component-spacing: clamp(3rem, 6.5vw + 1.05rem, 6.25rem);
 }
