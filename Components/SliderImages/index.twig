@@ -31,8 +31,8 @@
           </div>
         {% endfor %}
       </div>
-      <button type="button" data-ref="prev" class="slider-button slider-button--prev"></button>
-      <button type="button" data-ref="next" class="slider-button slider-button--next"></button>
+      <button type="button" data-ref="prev" class="slider-button slider-button--prev" aria-label="{{ sliderOptions.a11y.prevSlideMessage|e }}"></button>
+      <button type="button" data-ref="next" class="slider-button slider-button--next" aria-label="{{ sliderOptions.a11y.nextSlideMessage|e }}"></button>
     </div>
   </div>
 </flynt-component>

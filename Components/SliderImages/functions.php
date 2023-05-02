@@ -6,9 +6,9 @@ use Flynt\FieldVariables;
 use Flynt\Utils\Options;
 
 add_filter('Flynt/addComponentData?name=SliderImages', function ($data) {
-    $translatableOptions = Options::getTranslatable('SliderOptions');
+    $data['sliderOptions'] = Options::getTranslatable('SliderOptions');
     $data['jsonData'] = [
-        'options' => array_merge($translatableOptions, $data['options']),
+        'options' => array_merge($data['sliderOptions'], $data['options']),
     ];
     return $data;
 });
