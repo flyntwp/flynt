@@ -1,15 +1,13 @@
 flynt-component[name='GridImageText'] {
   .grid {
     --grid-columns: 1;
-    --grid-gap: var(--flow-space);
-    --grid-item-width: calc((100% / var(--grid-columns)) - ((var(--grid-columns) - 1) / var(--grid-columns) * var(--grid-gap)));
-    --grid-item-max-width: calc(((var(--container-max-width) - ((var(--container-padding-inline) * 2))) / 3) - (2 / 3 * var(--grid-gap)));
-
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--grid-gap);
+    display: grid;
+    gap: var(--component-spacing) var(--flow-space);
+    grid-template-columns: repeat(var(--grid-columns), minmax(0, max-content));
     justify-content: center;
     list-style: none;
+    margin-block: 0;
+    margin-inline: auto;
     padding: 0;
 
     &[data-max-columns='2'],
@@ -18,26 +16,26 @@ flynt-component[name='GridImageText'] {
       @media (min-width: $breakpoint-tablet) {
         --grid-columns: 2;
       }
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        max-inline-size: max-content;
+      }
     }
 
-    &[data-max-columns='3'],
-    &[data-max-columns='4'] {
+    &[data-max-columns='3'] {
       @media (min-width: $breakpoint-tablet-horizontal) {
         --grid-columns: 3;
       }
     }
 
     &[data-max-columns='4'] {
-      @media (min-width: $breakpoint-desktop) {
+      @media (min-width: $breakpoint-tablet-horizontal) {
         --grid-columns: 4;
       }
     }
   }
 
   .item {
-    inline-size: var(--grid-item-width);
-    max-inline-size: var(--grid-item-max-width);
-
     ul {
       list-style-position: outside;
       list-style-type: initial;
