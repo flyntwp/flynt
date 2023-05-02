@@ -386,7 +386,15 @@ flynt-component {
   margin-inline: auto;
 }
 
+.flowContent {
+  > * + * {
+    margin-block-start: var(--flow-space);
+  }
+}
+
 .maxWidth {
+  max-inline-size: 100%;
+
   &--container {
     max-inline-size: var(--container-max-width);
     padding-inline: var(--container-padding-inline);
@@ -406,22 +414,26 @@ flynt-component {
   }
 }
 
-.flowContent {
-  > * + * {
-    margin-block-start: var(--flow-space);
+.preContent {
+  margin: 0 auto calc(var(--component-spacing) / 2) 0;
+  max-inline-size: var(--content-max-width);
+
+  &--center {
+    margin: 0 auto calc(var(--component-spacing) / 2);
+    max-inline-size: var(--content-max-width);
+    text-align: center;
   }
 }
 
-.preContent {
-  margin: 0 auto calc(var(--component-spacing) / 2);
-  max-inline-size: var(--content-max-width);
-  text-align: center;
-}
-
 .postContent {
-  margin: calc(var(--component-spacing) / 2) auto 0;
+  margin: calc(var(--component-spacing) / 2) 0 0;
   max-inline-size: var(--content-max-width);
-  text-align: center;
+
+  &--center {
+    margin: calc(var(--component-spacing) / 2) auto 0;
+    max-inline-size: var(--content-max-width);
+    text-align: center;
+  }
 }
 
 .scrollableTableWrapper {
