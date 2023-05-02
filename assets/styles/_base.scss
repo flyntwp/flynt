@@ -137,9 +137,21 @@ blockquote,
  * Lists & Tables
  */
 
-ul,
-ol {
+ul:not([class]),
+ol:not([class]) {
+  --item-spacing: 0.66em;
   padding-inline-start: 1.5rem;
+
+  li + li {
+    margin-block-start: var(--item-spacing);
+  }
+
+  li {
+    > ul, ol {
+      --item-spacing: 0.33em;
+      margin-block-start: var(--item-spacing);
+    }
+  }
 }
 
 table {
