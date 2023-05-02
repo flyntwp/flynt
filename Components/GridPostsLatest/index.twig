@@ -2,7 +2,7 @@
   <flynt-component name="GridPostsLatest" load:on="visible" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
     <div class="container centerContainer maxWidth--container">
       {% if preContentHtml %}
-        <div class="preContent">
+        <div class="preContent--center">
           {{ preContentHtml|e('wp_kses_post') }}
         </div>
       {% endif %}
@@ -41,7 +41,7 @@
           </li>
         {% endfor %}
       </ul>
-      <div class="postContent">
+      <div class="postContent--center">
         <a href="{{ postTypeArchiveLink|e('esc_url') }}" class="button button--text">{{ labels.allPosts }}</a>
       </div>
     </div>
