@@ -18,6 +18,16 @@ function getACFLayout()
                 'endpoint' => 0
             ],
             [
+                'label' => __('Title Alignment', 'flynt'),
+                'name' => 'titleAlignment',
+                'type' => 'button_group',
+                'choices' => [
+                    'left' => sprintf('<i class="dashicons dashicons-editor-alignleft" title="%1$s"></i>', __('Align items left', 'flynt')),
+                    'center' => sprintf('<i class="dashicons dashicons-editor-aligncenter" title="%1$s"></i>', __('Align items center', 'flynt'))
+                ],
+                'default_value' => 'left'
+            ],
+            [
                 'label' => __('Title', 'flynt'),
                 'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
                 'name' => 'preContentHtml',
