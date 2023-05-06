@@ -34,13 +34,6 @@ add_action('wp_enqueue_scripts', function () {
     if (!Asset::isHotModuleReplacement()) {
         wp_style_add_data('Flynt/assets/main', 'preload', true);
     }
-
-    // Remove Gutenberg block related styles on front-end, when a post has no blocks.
-    if (!has_blocks()) {
-        wp_dequeue_style('wp-block-library');
-        wp_dequeue_style('wp-block-library-theme');
-        wp_dequeue_style('global-styles');
-    }
 });
 
 add_action('admin_enqueue_scripts', function () {
@@ -54,4 +47,14 @@ add_action('admin_enqueue_scripts', function () {
     ]);
 
     wp_enqueue_style('Flynt/assets/admin', Asset::requireUrl('assets/admin.scss'), [], null);
+});
+
+// Remove Gutenberg block related styles on front-end, when a post has no blocks.
+add_action('wp_footer', function () {
+    if (!has_blocks()) {
+        wp_dequeue_style('core-block-supports');
+        wp_dequeue_style('wp-block-library');
+        wp_dequeue_style('wp-block-library-theme');
+        wp_dequeue_style('global-styles');
+    }
 });
