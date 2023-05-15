@@ -112,6 +112,15 @@ code {
   word-break: break-word;
 }
 
+img {
+  block-size: initial;
+  inline-size: 100%;
+
+  .wp-block-image & {
+    inline-size: unset;
+  }
+}
+
 figcaption {
   color: var(--color-text-muted);
   font-size: var(--font-size-body-small);
