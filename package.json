@@ -35,7 +35,7 @@
     "lazysizes": "^5.3.2",
     "lodash-es": "^4.17.21",
     "rellax": "^1.12.1",
-    "swiper": "^9.2.4"
+    "swiper": "^9.3.1"
   },
   "devDependencies": {
     "ansi-colors": "^4.1.3",
