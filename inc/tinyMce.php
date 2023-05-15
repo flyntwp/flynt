@@ -8,13 +8,6 @@
 
 namespace Flynt\TinyMce;
 
-use Flynt\Utils\Asset;
-
-// Add styles to the classic editor.
-add_action('admin_init', function () {
-    add_editor_style(Asset::requireUrl('assets/tinyMce.scss'));
-});
-
 // First Toolbar.
 add_filter('mce_buttons', function ($buttons) {
     $config = getConfig();

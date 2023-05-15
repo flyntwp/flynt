@@ -3,7 +3,12 @@
   'styles/fonts',
   'styles/base';
 
-html {
+/**
+ * Classic editor styles
+ */
+
+// stylelint-disable selector-max-id
+#tinymce.wp-editor {
   box-sizing: border-box;
   overflow-wrap: break-word;
   text-size-adjust: none;
@@ -13,4 +18,12 @@ html {
   *::after {
     box-sizing: inherit;
   }
+}
+
+/**
+ * Gutenberg editor styles
+ */
+
+.block-editor-inserter {
+  margin: 0;
 }
