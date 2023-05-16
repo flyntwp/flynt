@@ -414,8 +414,8 @@ flynt-component {
     padding-inline: var(--container-padding-inline);
   }
 
-  &--containerLarge {
-    max-inline-size: var(--container-max-width-large);
+  &--containerWide {
+    max-inline-size: var(--container-max-width-wide);
     padding-inline: var(--container-padding-inline);
   }
 
@@ -423,7 +423,7 @@ flynt-component {
     max-inline-size: var(--content-max-width);
   }
 
-  &--contentLarge {
+  &--contentWide {
     max-inline-size: var(--content-max-width-wide);
   }
 }

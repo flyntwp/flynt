@@ -1,5 +1,5 @@
 <flynt-component name="NavigationFooter" load:on="visible">
-  <div class="container centerContainer maxWidth--containerLarge">
+  <div class="container centerContainer maxWidth--containerWide">
     {% if menu %}
       <nav class="navigation" aria-label="{{ labels.ariaLabel }}">
         {% include 'Partials/_menu.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel } only %}
