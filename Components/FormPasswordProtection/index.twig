@@ -1,7 +1,7 @@
 <flynt-component name="FormPasswordProtection" class="componentSpacing" data-theme="dark">
-  <div class="centerContainer maxWidth--container">
-    <div class="centerContainer maxWidth--content">
       <div class="flowContent boxRadius boxPadding boxShadow" data-theme="reset">
+  <div class="centerContainer maxWidthContainer">
+    <div class="centerContainer maxWidthContent">
         {{ contentHtml|e('wp_kses_post') }}
         <form action="{{ form.url }}" class="flowContent" method="post">
             <input name="post_password" type="password" size="20" maxlength="20" aria-label="{{ __('Password', 'flynt') }}" placeholder="{{ _x('Enter password', 'password form placeholder', 'flynt') }}" /><br>

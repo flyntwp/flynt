@@ -1,5 +1,5 @@
 <flynt-component name="BlockImage" {{- not noComponentSpacing ? ' class="componentSpacing"' }} {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
-  <div class="container {{ options.size != 'full' ? 'centerContainer maxWidth--container' }}">
+  <div class="container {{ options.size != 'full' ? 'centerContainer maxWidthContainer' }}">
     <figure class="figure" {{ options.size ? 'data-image-size="' ~ options.size ~ '"' }}>
       {% if image.post_mime_type == 'image/svg+xml'%}
           <img class="image lazyload"

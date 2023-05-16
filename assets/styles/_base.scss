@@ -415,50 +415,44 @@ flynt-component {
   > * + * {
     margin-block-start: var(--flow-space);
   }
+.maxWidthContainer {
+  max-inline-size: var(--container-max-width);
+  padding-inline: var(--container-spacing);
 }
 
-.maxWidth {
-  max-inline-size: 100%;
+.maxWidthContainerWide {
+  max-inline-size: var(--container-max-width-wide);
+  padding-inline: var(--container-spacing);
+}
 
-  &--container {
-    max-inline-size: var(--container-max-width);
-    padding-inline: var(--container-spacing);
-  }
+.maxWidthContent {
+  max-inline-size: var(--content-max-width);
+}
 
-  &--containerWide {
-    max-inline-size: var(--container-max-width-wide);
-    padding-inline: var(--container-spacing);
-  }
-
-  &--content {
-    max-inline-size: var(--content-max-width);
-  }
-
-  &--contentWide {
-    max-inline-size: var(--content-max-width-wide);
-  }
+.maxWidthContentWide {
+  max-inline-size: var(--content-max-width-wide);
 }
 
 .preContent {
   margin: 0 auto calc(var(--component-spacing) / 2) 0;
   max-inline-size: var(--content-max-width);
+}
 
-  &--center {
-    margin: 0 auto calc(var(--component-spacing) / 2);
-    max-inline-size: var(--content-max-width);
-    text-align: center;
-  }
+.preContentCenter {
+  margin: 0 auto calc(var(--component-spacing) / 2);
+  max-inline-size: var(--content-max-width);
+  text-align: center;
 }
 
 .postContent {
   margin: calc(var(--component-spacing) / 2) 0 0;
   max-inline-size: var(--content-max-width);
+}
 
-  &--center {
-    margin: calc(var(--component-spacing) / 2) auto 0;
-    max-inline-size: var(--content-max-width);
-    text-align: center;
-  }
+.postContentCenter {
+  margin: calc(var(--component-spacing) / 2) auto 0;
+  max-inline-size: var(--content-max-width);
+  text-align: center;
 }
 
 .scrollableTableWrapper {
