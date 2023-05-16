@@ -17,10 +17,10 @@ export default defineConfig(({ mode }) => {
       preprocessorOptions: {
         scss: {
           importer: globImporter()
-        },
-        postcss: {
-          plugins: [autoprefixer()]
         }
+      },
+      postcss: {
+        plugins: [autoprefixer()]
       }
     },
     resolve: {
