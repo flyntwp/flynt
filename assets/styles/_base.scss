@@ -219,16 +219,17 @@ table {
 .button,
 .wp-block-button > .wp-block-button__link {
   --button-background-color: var(--color-accent);
-  --button-text-color: var(--color-background);
+  --button-border-color: var(--color-accent);
   --button-border-width: 2px;
   --button-border-radius: 0;
   --button-font-weight: 700;
+  --button-text-color: var(--color-background);
   --button-padding-inline: calc(1.125rem - var(--button-border-width));
   --button-padding-block: calc(0.625rem - var(--button-border-width));
 
   appearance: none;
   background-color: var(--button-background-color);
-  border: solid var(--button-border-width) var(--color-accent);
+  border: solid var(--button-border-width) var(--button-border-color);
   border-radius: var(--button-border-radius);
   color: var(--button-text-color);
   cursor: pointer;
@@ -308,7 +309,6 @@ label {
   caret-color: var(--color-text);
   color: var(--color-text);
   font-size: var(--font-size-body-small);
-  inline-size: 300px;
   max-inline-size: 100%;
   padding: 0.75rem 0.625rem;
   transition: border-color 0.3s ease-in-out;
