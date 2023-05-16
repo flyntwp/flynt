@@ -147,6 +147,10 @@ blockquote,
   }
 }
 
+small {
+  font-size: var(--font-size-body-small);
+}
+
 /**
  * Lists & Tables
  */
