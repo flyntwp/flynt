@@ -133,18 +133,18 @@ function getConfig()
                         'classes' => 'button--text',
                         'selector' => '.button'
                     ],
-                    [
-                        'title' => __('Button Group', 'flynt'),
-                        'classes' => 'buttonGroup',
-                        'block' => 'div',
-                        'wrapper' => true
-                    ],
                 ]
             ],
             [
                 'title' => __('Paragraph', 'flynt'),
                 'classes' => 'paragraph',
                 'selector' => '*'
+            ],
+            [
+                'title' => __('Group', 'flynt'),
+                'classes' => 'groupContainer',
+                'block' => 'div',
+                'wrapper' => true
             ],
         ],
         'toolbars' => [

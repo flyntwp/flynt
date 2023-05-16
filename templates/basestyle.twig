@@ -155,21 +155,21 @@
       <h2 id="buttons-and-links">3. Buttons and Links <a href="#buttons-and-links" aria-label="Link to Buttons and Links">#</a></h2>
       <p>A <strong>&lt;button&gt;</strong> element without a class should have its styles reset, so it can be used as a semantic tag on other interface elements, like the arrows of a slider, a closing × or a burger menu.</p>
       <p>Using the anchor element (<strong>&lt;a&gt;</strong>) as a button is common for a “call to action”. Anchor elements as <a href="https://www.google.com/search?q=HTML+Links" target="_blank">regular Link</a> are nearly on all over the internet.</p>
-      <p>Displaying buttons side by side is a common pattern. The <code>.buttonGroup</code> class is a helper to achieve that.</p>
+      <p>Displaying buttons side by side is a common pattern. The <code>.groupContainer</code> class is a helper to achieve that.</p>
       {% block blockButtonsAndLinks %}
-        <p class="buttonGroup">
+        <p class="groupContainer">
           <button type="button" class="button">Button</button>
           <button type="button" class="button button--outlined">Button outlined</button>
         </p>
-        <p class="buttonGroup">
+        <p class="groupContainer">
           <button type="button" class="button" disabled>Button disabled</button>
           <button type="button" class="button button--outlined" disabled>Button outlined disabled</button>
         </p>
-        <p class="buttonGroup">
+        <p class="groupContainer">
           <button class="button button--text">Button Text</button>
           <button class="button button--text" disabled>Button Text disabled</button>
         </p>
-        <p class="buttonGroup">
+        <p class="groupContainer">
           <a class="button" href="https://www.google.com/search?q=HTML+Links" target="_blank">Link as Button</a>
           <a class="button button--outlined" href="https://www.google.com/search?q=HTML+Links" target="_blank">Link as Button outlined</a>
         </p>
@@ -246,6 +246,7 @@
       <ul>
         <li><code>.componentSpacing</code><br>Ensures consistent component top and bottom spacing.</li>
         <li><code>.centerContainer</code><br>Sets margin-inline: auto to an element.</li>
+        <li><code>.groupContainer</code><br>Ensures consistent spacing between elements inside the container.</li>
         <li><code>.maxWidthContainer</code> / <code>.maxWidthContainerWide</code><br>Ensures consistent left and right padding and max width.</li>
         <li><code>.maxWidthContent</code> / <code>.maxWidthContentWide</code><br>Ensures an optimal readability of text contents (optimal line length for text is between 50 and 75 characters).</li>
         <li><code>.preContent / .preContentCenter</code><br>Ensures consistent positioning of content preceding the main section of a component.</li>
