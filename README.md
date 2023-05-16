@@ -126,9 +126,6 @@ Usage example: Elements that go “below the fold” or if you want to load it w
 * `load:on="load"` (default)<br>
 Initialises immediately when the page loads.<br>
 Usage example: Elements that need to be interactive as soon as possible.
-* `load:on="interaction"`<br>
-Initialises after one interaction event (`pointerdown` or `scroll`) at the document is fired.<br>
-Usage example: Elements that may only become visible after interaction.
 * `load:on:media="(min-width: 1024px)"`<br>
 Initialises when the specified media query matches.<br>
 Usage example: Elements which may only be visible on certain screen sizes.
