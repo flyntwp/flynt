@@ -1,6 +1,6 @@
 <flynt-component name="BlockWysiwyg" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
   <div class="container centerContainer maxWidthContainer">
-    <div class="content {{- options.maxWidth != 'full' ? ' centerContainer maxWidthContent'}}{{ options.maxWidth == 'large' ? 'Large' }}" {{ textAlign ? 'data-text-align="' ~ textAlign ~ '"' }}>
+    <div class="content {{- options.maxWidth != 'full' ? ' centerContainer maxWidthContent'}}{{ options.maxWidth == 'large' ? 'Wide' }}" {{ textAlign ? 'data-text-align="' ~ textAlign ~ '"' }}>
       {{ contentHtml|e('wp_kses_post') }}
     </div>
   </div>
