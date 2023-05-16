@@ -411,12 +411,12 @@ flynt-component {
 
   &--container {
     max-inline-size: var(--container-max-width);
-    padding-inline: var(--container-padding-inline);
+    padding-inline: var(--container-spacing);
   }
 
   &--containerWide {
     max-inline-size: var(--container-max-width-wide);
-    padding-inline: var(--container-padding-inline);
+    padding-inline: var(--container-spacing);
   }
 
   &--content {
@@ -483,8 +483,8 @@ flynt-component {
  */
 
 .boxPadding {
-  padding-block: var(--box-padding-block);
-  padding-inline: var(--box-padding-inline);
+  padding-block: var(--box-spacing);
+  padding-inline: var(--box-spacing);
 }
 
 .boxBorder {
