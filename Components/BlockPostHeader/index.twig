@@ -5,7 +5,7 @@
       {% if post.post_excerpt %}
         <p class="h5">{{ post.post_excerpt }}</p>
       {% endif %}
-      <div class="meta">
+      <small class="meta">
         <a class="author" href="{{ post.author.link|e('esc_url') }}">
           {% if post.author.avatar %}
             <img class="avatar" src="{{ post.author.avatar }}" alt="{{ post.author.name|e }}">
@@ -19,7 +19,7 @@
         </a>
         <time class="date" datetime="{{ post.post_date|date('c') }}">{{ post.post_date|date(dateFormat) }}</time>
         <span class="readingtime">{{ labels.readingTime|replace({'%d': post.content|readingtime})|e }}</span>
-      </div>
+      </small>
     </div>
   </div>
   {% if post.thumbnail %}
