@@ -396,6 +396,12 @@ flynt-component {
   }
 }
 
+.buttonGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--flow-space);
+}
+
 .centerContainer {
   margin-inline: auto;
 }

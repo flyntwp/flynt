@@ -155,20 +155,21 @@
       <h2 id="buttons-and-links">3. Buttons and Links <a href="#buttons-and-links" aria-label="Link to Buttons and Links">#</a></h2>
       <p>A <strong>&lt;button&gt;</strong> element without a class should have its styles reset, so it can be used as a semantic tag on other interface elements, like the arrows of a slider, a closing × or a burger menu.</p>
       <p>Using the anchor element (<strong>&lt;a&gt;</strong>) as a button is common for a “call to action”. Anchor elements as <a href="https://www.google.com/search?q=HTML+Links" target="_blank">regular Link</a> are nearly on all over the internet.</p>
+      <p>Displaying buttons side by side is a common pattern. The <code>.buttonGroup</code> class is a helper to achieve that.</p>
       {% block blockButtonsAndLinks %}
-        <p>
+        <p class="buttonGroup">
           <button type="button" class="button">Button</button>
           <button type="button" class="button button--outlined">Button outlined</button>
         </p>
-        <p>
+        <p class="buttonGroup">
           <button type="button" class="button" disabled>Button disabled</button>
           <button type="button" class="button button--outlined" disabled>Button outlined disabled</button>
         </p>
-        <p>
+        <p class="buttonGroup">
           <button class="button button--text">Button Text</button>
           <button class="button button--text" disabled>Button Text disabled</button>
         </p>
-        <p>
+        <p class="buttonGroup">
           <a class="button" href="https://www.google.com/search?q=HTML+Links" target="_blank">Link as Button</a>
           <a class="button button--outlined" href="https://www.google.com/search?q=HTML+Links" target="_blank">Link as Button outlined</a>
         </p>
