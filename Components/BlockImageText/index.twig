@@ -1,4 +1,4 @@
-<flynt-component name="BlockImageText" load:on="visible" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
+<flynt-component name="BlockImageText" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
   <div class="container centerContainer maxWidth--container" {{ imagePosition ? 'data-image-position="' ~ imagePosition ~ '"' }}>
     <figure class="figure centerContainer maxWidth--content">
       {% if image.post_mime_type == 'image/svg+xml'%}

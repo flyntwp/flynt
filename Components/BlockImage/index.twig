@@ -1,4 +1,4 @@
-<flynt-component name="BlockImage" load:on="visible" {{- not noComponentSpacing ? ' class="componentSpacing"' }} {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
+<flynt-component name="BlockImage" {{- not noComponentSpacing ? ' class="componentSpacing"' }} {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
   <div class="container {{ options.size != 'full' ? 'centerContainer maxWidth--container' }}">
     <figure class="figure" {{ options.size ? 'data-image-size="' ~ options.size ~ '"' }}>
       {% if image.post_mime_type == 'image/svg+xml'%}
