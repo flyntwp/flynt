@@ -11,7 +11,7 @@ flynt-component[name='BlockImage'] {
     }
 
     &[data-image-size='large'] {
-      max-inline-size: var(--content-max-width-large);
+      max-inline-size: var(--content-max-width-wide);
     }
 
     &[data-image-size='full'] {

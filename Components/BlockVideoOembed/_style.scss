@@ -52,7 +52,7 @@ flynt-component[name='BlockVideoOembed'] {
     }
 
     &[data-video-size='large'] {
-      max-inline-size: var(--content-max-width-large);
+      max-inline-size: var(--content-max-width-wide);
     }
 
     &[data-video-size='full'] {

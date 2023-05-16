@@ -23,7 +23,7 @@
     },
     "layout": {
       "contentSize": "var(--content-max-width)",
-      "wideSize": "var(--content-max-width-large)"
+      "wideSize": "var(--content-max-width-wide)"
     },
     "spacing": {
       "margin": false,
