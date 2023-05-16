@@ -3,7 +3,7 @@
  */
 
 // Applies a consistent margin for most common elements.
-:where(#{$heading-selectors}, p, .paragraph, ul, ol, pre, table, figure, blockquote, form, fieldset, dl, address, details, hr, aside, video, fieldset) {
+:where(#{$heading-selectors}, p, .paragraph, ul, ol, pre, table, figure, blockquote, form, fieldset, dl, address, details, hr, aside, video) {
   + * {
     margin-block-start: var(--flow-space);
   }
@@ -304,6 +304,7 @@ label {
   color: var(--color-text-muted);
   font-size: var(--font-size-body-small);
   font-weight: 500;
+  margin-block-start: 0;
 }
 
 #{$input-selectors} {
@@ -402,6 +403,7 @@ flynt-component {
 }
 
 .buttonGroup {
+  align-items: flex-start;
   display: flex;
   flex-wrap: wrap;
   gap: var(--flow-space);
@@ -411,10 +413,6 @@ flynt-component {
   margin-inline: auto;
 }
 
-.flowContent {
-  > * + * {
-    margin-block-start: var(--flow-space);
-  }
 .maxWidthContainer {
   max-inline-size: var(--container-max-width);
   padding-inline: var(--container-spacing);
