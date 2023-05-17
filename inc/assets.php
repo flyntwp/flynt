@@ -42,7 +42,7 @@ add_action('wp_enqueue_scripts', function () {
         wp_dequeue_style('wp-block-library-theme');
         wp_dequeue_style('global-styles');
     }
-}, PHP_INT_MAX);
+});
 
 add_action('admin_enqueue_scripts', function () {
     wp_enqueue_script('Flynt/assets/admin', Asset::requireUrl('assets/admin.js'), [], null);
@@ -55,4 +55,4 @@ add_action('admin_enqueue_scripts', function () {
     ]);
 
     wp_enqueue_style('Flynt/assets/admin', Asset::requireUrl('assets/admin.scss'), [], null);
-}, PHP_INT_MAX);
+});
