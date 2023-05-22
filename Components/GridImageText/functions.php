@@ -7,7 +7,7 @@ use Flynt\FieldVariables;
 function getACFLayout()
 {
     return [
-        'name' => 'GridImageText',
+        'name' => 'gridImageText',
         'label' => __('Grid: Image Text', 'flynt'),
         'sub_fields' => [
             [
