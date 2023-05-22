@@ -1,5 +1,7 @@
 <?php
 
+namespace Flynt\Assets;
+
 use Flynt\Utils\Asset;
 use Flynt\ComponentManager;
 use Flynt\Utils\ScriptAndStyleLoader;
