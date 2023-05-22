@@ -1,5 +1,7 @@
 <?php
 
+namespace Flynt\SliderOptions;
+
 use Flynt\Utils\Options;
 
 Options::addTranslatable('SliderOptions', [
