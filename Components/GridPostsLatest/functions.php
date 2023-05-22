@@ -9,13 +9,11 @@ use Timber\Timber;
 const POST_TYPE = 'post';
 
 add_filter('Flynt/addComponentData?name=GridPostsLatest', function ($data) {
-    $postType = POST_TYPE;
-
     $data['taxonomies'] = $data['taxonomies'] ?: [];
 
     $data['posts'] = Timber::get_posts([
         'post_status' => 'publish',
-        'post_type' => $postType,
+        'post_type' => POST_TYPE,
         'category' => join(',', array_map(function ($taxonomy) {
             return $taxonomy->term_id;
         }, $data['taxonomies'])),
@@ -24,7 +22,7 @@ add_filter('Flynt/addComponentData?name=GridPostsLatest', function ($data) {
         'post__not_in' => [get_the_ID()]
     ]);
 
-    $data['postTypeArchiveLink'] = get_post_type_archive_link($postType);
+    $data['postTypeArchiveLink'] = get_permalink(get_option('page_for_posts')) ?? get_post_type_archive_link(POST_TYPE);
 
     return $data;
 });
@@ -32,7 +30,7 @@ add_filter('Flynt/addComponentData?name=GridPostsLatest', function ($data) {
 function getACFLayout()
 {
     return [
-        'name' => 'GridPostsLatest',
+        'name' => 'gridPostsLatest',
         'label' => __('Grid: Posts Latest', 'flynt'),
         'sub_fields' => [
             [
