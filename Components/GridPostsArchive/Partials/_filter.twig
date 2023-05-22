@@ -2,7 +2,7 @@
   {% for term in terms %}
     <li class="item">
       <a href="{{ term.link|e('esc_url') }}" class="button {{- term.isActive ? '' : ' button--outlined' }}">
-        <span class="visuallyHidden">{{ __("Filter by", "flynt") }}</span>{{ term.title }}
+        <span class="visuallyHidden">{{ labels.filterBy|e }}</span>{{ term.title }}
       </a>
     </li>
   {% endfor %}
