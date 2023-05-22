@@ -28,7 +28,7 @@
     "spacing": {
       "margin": false,
       "padding": false,
-      "blockGap": null,
+      "blockGap": true,
       "units": []
     },
     "typography": {
@@ -44,5 +44,10 @@
       "fontSizes": [],
       "fontFamilies": []
     }
-  }
+  },
+  "styles": {
+		"spacing": {
+			"blockGap": "var(--flow-space)"
+		}
+	}
 }
