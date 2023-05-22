@@ -1,15 +1,10 @@
 <?php
 
-namespace Flynt;
+namespace Flynt\Options;
 
 use Flynt\Utils\Options;
 
-add_filter(
-    'Flynt/addComponentData',
-    'Flynt\\addOptionsToComponent',
-    9,
-    2
-);
+add_filter('Flynt/addComponentData', 'Flynt\\Options\\addOptionsToComponent', 9, 2);
 
 function addOptionsToComponent($data, $componentName)
 {
