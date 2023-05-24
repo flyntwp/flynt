@@ -15,7 +15,7 @@
     "php": ">=7.2.5 || ^8.0",
     "flyntwp/acf-field-group-composer": "^1.0.1",
     "erusev/parsedown": "^1.7",
-    "timber/timber": "2.x-dev"
+    "timber/timber": "2.0.0-beta.2"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.4"
