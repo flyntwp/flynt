@@ -9,7 +9,7 @@ use Timber\Timber;
 const POST_TYPE = 'post';
 
 add_filter('Flynt/addComponentData?name=GridPostsLatest', function ($data) {
-    $data['taxonomies'] = $data['taxonomies'] ?: [];
+    $data['taxonomies'] = $data['taxonomies'] ?? [];
 
     $data['posts'] = Timber::get_posts([
         'post_status' => 'publish',
@@ -17,7 +17,7 @@ add_filter('Flynt/addComponentData?name=GridPostsLatest', function ($data) {
         'category' => join(',', array_map(function ($taxonomy) {
             return $taxonomy->term_id;
         }, $data['taxonomies'])),
-        'posts_per_page' => $data['options']['maxColumns'],
+        'posts_per_page' => $data['options']['maxColumns'] ?? 3,
         'ignore_sticky_posts' => 1,
         'post__not_in' => [get_the_ID()]
     ]);
@@ -93,6 +93,23 @@ function getACFLayout()
 }
 
 Options::addTranslatable('GridPostsLatest', [
+    [
+        'label' => __('General', 'flynt'),
+        'name' => 'generalTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => __('Title', 'flynt'),
+        'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
+        'name' => 'preContentHtml',
+        'type' => 'wysiwyg',
+        'default_value' => '<h2>' . __('Related Posts', 'flynt') . '</h2>',
+        'tabs' => 'visual,text',
+        'media_upload' => 0,
+        'delay' => 1,
+    ],
     [
         'label' => __('Labels', 'flynt'),
         'name' => 'labelsTab',
