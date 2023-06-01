@@ -139,13 +139,7 @@ function getConfig()
                 'title' => __('Paragraph', 'flynt'),
                 'classes' => 'paragraph',
                 'selector' => '*'
-            ],
-            [
-                'title' => __('Group', 'flynt'),
-                'classes' => 'groupContainer',
-                'block' => 'div',
-                'wrapper' => true
-            ],
+            ]
         ],
         'toolbars' => [
             'default' => [

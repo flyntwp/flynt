@@ -1,5 +1,5 @@
 <flynt-component name="GridImageText" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
-  <div class="container centerContainer maxWidthContainer">
+  <div class="container centerMaxWidthContainer">
     {% if preContentHtml %}
       <div class="preContent{{- titleAlignment == 'center' ? '--center' -}}">
         {{ preContentHtml|e('wp_kses_post') }}

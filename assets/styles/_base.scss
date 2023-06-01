@@ -409,25 +409,25 @@ flynt-component {
   gap: var(--flow-space);
 }
 
-.centerContainer {
+.centerMaxWidthContainer {
   margin-inline: auto;
-}
-
-.maxWidthContainer {
   max-inline-size: var(--container-max-width);
   padding-inline: var(--container-spacing);
 }
 
-.maxWidthContainerWide {
+.centerMaxWidthContainerWide {
+  margin-inline: auto;
   max-inline-size: var(--container-max-width-wide);
   padding-inline: var(--container-spacing);
 }
 
-.maxWidthContent {
+.centerContentMaxWidth {
+  margin-inline: auto;
   max-inline-size: var(--content-max-width);
 }
 
-.maxWidthContentWide {
+.centerContentMaxWidthWide {
+  margin-inline: auto;
   max-inline-size: var(--content-max-width-wide);
 }
 

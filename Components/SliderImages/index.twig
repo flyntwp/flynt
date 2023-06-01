@@ -1,12 +1,12 @@
 <flynt-component name="SliderImages" load:on="visible" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
   <script type="application/json">{{ jsonData|json_encode }}</script>
-  <div class="centerContainer maxWidthContainer">
+  <div class="centerMaxWidthContainer">
     {% if preContentHtml %}
       <div class="preContentCenter">
         {{ preContentHtml|e('wp_kses_post') }}
       </div>
     {% endif %}
-    <div data-ref="slider" class="slider swiper-container centerContainer maxWidthContentWide" data-theme="reset">
+    <div data-ref="slider" class="slider swiper-container centerContentMaxWidthWide" data-theme="reset">
       <div class="swiper-wrapper">
         {% for image in images %}
           <div class="slider-item swiper-slide">
