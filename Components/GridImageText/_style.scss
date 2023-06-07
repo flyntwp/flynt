@@ -34,7 +34,7 @@ flynt-component[name='GridImageText'] {
       }
     }
 
-    &[data-has-cards='true']{
+    &[data-card='true']{
       --column-gap: var(--flow-space);
     }
   }
@@ -49,9 +49,7 @@ flynt-component[name='GridImageText'] {
         margin-inline-start: 1em;
       }
     }
-  }
 
-  .is-card {
     .content {
       margin-block-start: 0;
     }
