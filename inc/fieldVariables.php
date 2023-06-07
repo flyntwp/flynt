@@ -34,7 +34,7 @@ function getRawSvg()
             'https://heroicons.com/'
         ),
         'name' => 'rawSvg',
-        'type' => 'textarea',
+        'type' => 'text',
         'required' => 1,
         'rows' => 1,
         'new_lines' => '',
