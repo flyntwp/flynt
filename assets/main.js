@@ -8,11 +8,6 @@ if (import.meta.env.DEV) {
   import('@vite/client')
 }
 
-window.customElements.define(
-  'flynt-component',
-  FlyntComponent
-)
-
 import.meta.glob([
   '../Components/**',
   '../assets/**',
@@ -23,3 +18,8 @@ import.meta.glob([
   '!**/screenshot.png',
   '!**/*.md'
 ])
+
+window.customElements.define(
+  'flynt-component',
+  FlyntComponent
+)
