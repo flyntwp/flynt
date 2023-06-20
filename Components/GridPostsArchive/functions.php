@@ -20,7 +20,7 @@ add_filter('Flynt/addComponentData?name=GridPostsArchive', function ($data) {
     if (count($terms) > 1) {
         $data['terms'] = array_map(function ($term) use ($queriedObject) {
             $timberTerm = Timber::get_term($term);
-            if ($queriedObject) {
+            if ($queriedObject->taxonomy ?? null) {
                 $timberTerm->isActive = $queriedObject->taxonomy === $term->taxonomy && $queriedObject->term_id === $term->term_id;
             }
             return $timberTerm;
