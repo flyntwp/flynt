@@ -246,7 +246,8 @@ table {
   text-align: center;
   text-decoration: none;
 
-  &:disabled {
+  &:disabled,
+  &--disabled {
     cursor: default;
     opacity: 0.5;
     pointer-events: none;
