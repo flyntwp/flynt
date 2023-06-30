@@ -42,7 +42,7 @@ class TwigExtensionRenderComponent extends AbstractExtension
      *
      * @return string The rendered component.
      */
-    public function renderComponent(Environment $env, array $context, mixed $componentName, ?array $data = [], bool $withContext = true, bool $ignoreMissing = false, bool $sandboxed = false)
+    public function renderComponent(Environment $env, array $context, $componentName, ?array $data = [], bool $withContext = true, bool $ignoreMissing = false, bool $sandboxed = false)
     {
 
         $data = $data === false ? [] : $data;

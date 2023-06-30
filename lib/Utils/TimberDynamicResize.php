@@ -209,7 +209,7 @@ class TimberDynamicResize
      *
      * @return string The resized image url.
      */
-    public function resizeDynamic(string $src, int|float $w, int|float $h = 0, string $crop = 'default', bool $force = false)
+    public function resizeDynamic(string $src, float $w, float $h = 0, string $crop = 'default', bool $force = false)
     {
         $w = (int) round($w);
         $h = (int) round($h);
