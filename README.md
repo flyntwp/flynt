@@ -41,7 +41,7 @@ npm run build
 
 ## Usage
 
-In your terminal, navigate to `<your-project>/wp-content/themes/flynt` and run `npm start`. This will start the webpack dev server.
+In your terminal, navigate to `<your-project>/wp-content/themes/flynt` and run `npm start`. This will start the dev server.
 
 All files in `assets` and `Components` will now be watched for changes and compiled to the `dist` folder. Happy coding!
 
@@ -245,7 +245,7 @@ Returns the reading time of a string in minutes.
 {{ 'This is a string'|readingTime }}
 ```
 
-_Example from [Components/GridPostsArchive/index.twig](./Components/GridPostsArchive/index.twig)_
+*Example from [Components/GridPostsArchive/index.twig](./Components/GridPostsArchive/index.twig)*
 
 ---
 
@@ -259,7 +259,7 @@ Renders a component. [See Page Templates](#page-templates).
 {% endfor %}
 ```
 
-_Example from [templates/page.twig](./templates/page.twig)_
+*Example from [templates/page.twig](./templates/page.twig)*
 
 #### `placeholderImage($width, $height, $color = null)` (Type: Function)
 
@@ -269,7 +269,7 @@ Useful in combination with lazysizes for lazy loading. Returns a "data:image/svg
 {{ placeholderImage(768, (768 / image.aspect)|round, 'rgba(125, 125, 125, 0.1)') }}
 ```
 
-_Example from [Components/BlockImage/index.twig](./Components/BlockImage/index.twig)_
+*Example from [Components/BlockImage/index.twig](./Components/BlockImage/index.twig)*
 
 ---
 
@@ -281,7 +281,7 @@ Resizes an image dynamically. [See Timber Dynamic Resize](#timber-dynamic-resize
 {{ post.thumbnail.src|resizeDynamic(1920, (1920 / 3 * 2)|round, 'center') }}
 ```
 
-_Example from [Components/BlockImage/index.twig](./Components/BlockImage/index.twig)_
+*Example from [Components/BlockImage/index.twig](./Components/BlockImage/index.twig)*
 
 ---
 
