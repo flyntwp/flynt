@@ -28,9 +28,9 @@
     "replaceVersion:php": "cross-env replace-in-files --string='%%NEXT_VERSION%%' --replacement=$npm_package_version './**/*.php' '!./dist/**/*' '!./node_modules/**/*' '!./vendor/**/*'"
   },
   "dependencies": {
-    "@webreflection/custom-elements-builtin": "^0.4.0",
+    "@webreflection/custom-elements-builtin": "^0.4.1",
     "body-scroll-lock": "^3.1.5",
-    "countup.js": "^2.6.2",
+    "countup.js": "^2.7.0",
     "delegate-event-listener": "^1.2.0",
     "lazysizes": "^5.3.2",
     "lodash-es": "^4.17.21",
@@ -47,9 +47,9 @@
     "node-sass-glob-importer": "^5.3.2",
     "npm-run-all": "^4.1.5",
     "rimraf": "^5.0.1",
-    "sass": "^1.63.4",
+    "sass": "^1.63.6",
     "standard": "^17.1.0",
-    "stylelint": "^15.8.0",
+    "stylelint": "^15.9.0",
     "stylelint-config-sass-guidelines": "^10.0.0",
     "stylelint-config-standard": "^33.0.0",
     "stylelint-order": "^6.0.3",
