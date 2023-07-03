@@ -1,5 +1,4 @@
 import 'vite/modulepreload-polyfill'
-import './scripts/loadCustomElements'
 import FlyntComponent from './scripts/FlyntComponent'
 
 import 'lazysizes'

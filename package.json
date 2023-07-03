@@ -28,7 +28,6 @@
     "replaceVersion:php": "cross-env replace-in-files --string='%%NEXT_VERSION%%' --replacement=$npm_package_version './**/*.php' '!./dist/**/*' '!./node_modules/**/*' '!./vendor/**/*'"
   },
   "dependencies": {
-    "@webreflection/custom-elements-builtin": "^0.4.1",
     "body-scroll-lock": "^3.1.5",
     "countup.js": "^2.7.0",
     "delegate-event-listener": "^1.2.0",
