@@ -33,7 +33,6 @@
     "countup.js": "^2.7.0",
     "delegate-event-listener": "^1.2.0",
     "lazysizes": "^5.3.2",
-    "lodash-es": "^4.17.21",
     "rellax": "^1.12.1",
     "swiper": "^9.4.1"
   },
