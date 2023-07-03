@@ -2,6 +2,8 @@
 
 namespace Flynt\Theme;
 
+use Flynt\Utils\Options;
+
 add_action('after_setup_theme', function () {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
@@ -14,3 +16,49 @@ add_action('after_setup_theme', function () {
 });
 
 add_filter('big_image_size_threshold', '__return_false');
+
+Options::addTranslatable('Theme', [
+    [
+        'label' => __('Labels', 'flynt'),
+        'name' => 'labels',
+        'type' => 'group',
+        'sub_fields' => [
+            [
+                'label' => __('Feed', 'flynt'),
+                'instructions' => __('%s is placeholder for site title.', 'flynt'),
+                'name' => 'feed',
+                'type' => 'text',
+                'default_value' => __('%s Feed', 'flynt'),
+                'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
+            ],
+            [
+                'label' => __('Skip to main content', 'flynt'),
+                'name' => 'skipToMainContent',
+                'type' => 'text',
+                'default_value' => __('Skip to main content', 'flynt'),
+                'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
+            ],
+            [
+                'label' => __('Main Content – Aria Label', 'flynt'),
+                'name' => 'mainContentAriaLabel',
+                'type' => 'text',
+                'default_value' => __('Content', 'flynt'),
+                'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
+            ],
+        ],
+    ],
+]);
+
+add_filter('timber_context', function ($context) {
+    $context['theme']->labels = Options::getTranslatable('Theme')['labels'] ?? [];
+    return $context;
+});

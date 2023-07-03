@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="alternate" type="application/rss+xml" title="{{ site.title }} {{ __('Feed', 'flynt') }}" href="{{ site.rss2 | e('esc_url') }}">
+    <link rel="alternate" type="application/rss+xml" title="{{- theme.labels.feed|replace({ '%s': site.title }) -}}" href="{{ site.rss2|e('esc_url') }}">
     {{ function('wp_head') }}
   </head>
   <body>
     {{ function('wp_body_open') }}
     <a href="#mainContent" class="skipLink">
-      {{ __("Skip to main content", "flynt") }}
+      {{- theme.labels.skipToMainContent|e -}}
     </a>
     {% block layout %}
       <div class="pageWrapper">
@@ -19,7 +19,7 @@
             {{ renderComponent('NavigationBurger') }}
           {% endblock %}
         </header>
-        <main id="mainContent" class="mainContent" aria-label="{{ __('Content', 'flynt') }}">
+        <main id="mainContent" class="mainContent" aria-label="{{- theme.labels.mainContentAriaLabel|e -}}">
           {% if function('post_password_required') %}
             {{ function('get_the_password_form') }}
           {% else %}
