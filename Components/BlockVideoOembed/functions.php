@@ -35,7 +35,7 @@ function getACFLayout()
                 'name' => 'posterImage',
                 'type' => 'image',
                 'preview_size' => 'medium',
-                'mime_types' => 'jpg,jpeg,png',
+                'mime_types' => 'jpg,jpeg,png,svg',
                 'required' => 1
             ],
             [
