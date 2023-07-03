@@ -36,7 +36,7 @@ function getACFLayout()
                 'type' => 'image',
                 'preview_size' => 'medium',
                 'mime_types' => 'jpg,jpeg,png,svg',
-                'required' => 1
+                'required' => 1,
             ],
             [
                 'label' => __('Video', 'flynt'),
