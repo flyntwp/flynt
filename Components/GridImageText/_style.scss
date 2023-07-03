@@ -10,6 +10,10 @@ flynt-component[name='GridImageText'] {
     margin-inline: auto;
     padding: 0;
 
+    &[data-max-columns='1'] {
+      max-inline-size: calc(100% / 2 - var(--flow-space));
+    }
+
     &[data-max-columns='2'],
     &[data-max-columns='3'],
     &[data-max-columns='4'] {

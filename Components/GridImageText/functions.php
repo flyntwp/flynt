@@ -46,7 +46,7 @@ function getACFLayout()
                 'sub_fields' => [
                     [
                         'label' => __('Image', 'flynt'),
-                        'instructions' => __('Image-Format: JPG, PNG, SVG.', 'flynt'),
+                        'instructions' => __('Image-Format: JPG, PNG, SVG. Aspect Ratio 3/2.', 'flynt'),
                         'name' => 'image',
                         'type' => 'image',
                         'preview_size' => 'medium',
