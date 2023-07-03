@@ -5,9 +5,9 @@
         {{ contentHtml|e('wp_kses_post') }}
         <br>
         <form action="{{ form.url }}" method="post">
-            <input name="post_password" type="password" size="30" maxlength="30" aria-label="{{ __('Password', 'flynt') }}" placeholder="{{ _x('Enter password', 'password form placeholder', 'flynt') }}" />
+            <input name="post_password" type="password" size="30" maxlength="30" aria-label="{{ labels.inputAriaLabel|e }}" placeholder="{{ labels.inputPlaceholder|e }}" />
             <br><br>
-            <button class="button oneInputForm-button" type="submit" name="Submit">{{ _x('Enter', 'post password form', 'flynt') }}</button>
+            <button class="button oneInputForm-button" type="submit" name="Submit">{{ labels.buttonSubmit|e }}</button>
         </form>
       </div>
     </div>
