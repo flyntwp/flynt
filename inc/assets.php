@@ -9,15 +9,6 @@ use Flynt\Utils\ScriptAndStyleLoader;
 call_user_func(function () {
     $loader = new ScriptAndStyleLoader();
     add_filter('script_loader_tag', [$loader, 'filterScriptLoaderTag'], 10, 3);
-    add_filter('style_loader_tag', [$loader, 'filterStyleLoaderTag'], 10, 3);
-
-    // Preload jQuery if it is enqueued.
-    add_filter('script_loader_tag', function ($tag, $handle, $src) use ($loader) {
-        if ('jquery-core' === $handle) {
-            $tag = $loader->addPreloadLinkBeforeTag($tag, $src, 'script');
-        }
-        return $tag;
-    }, 10, 3);
 });
 
 add_action('wp_enqueue_scripts', function () {
@@ -32,10 +23,6 @@ add_action('wp_enqueue_scripts', function () {
 
     wp_enqueue_style('Flynt/assets/main', Asset::requireUrl('assets/main.scss'), [], null);
     wp_enqueue_style('Flynt/assets/print', Asset::requireUrl('assets/print.scss'), [], null, 'print');
-
-    if (!Asset::isHotModuleReplacement()) {
-        wp_style_add_data('Flynt/assets/main', 'preload', true);
-    }
 
     // Remove Gutenberg block related styles on front-end, when a post has no blocks.
     if (!has_blocks()) {
