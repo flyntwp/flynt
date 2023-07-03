@@ -28,7 +28,7 @@ function getEditorStylesheetUrl()
 }
 
 if (Asset::isHotModuleReplacement()) {
-    add_filter('http_request_args', function( $parsedArgs, $url) {
+    add_filter('http_request_args', function ($parsedArgs, $url) {
         if (getEditorStylesheetUrl() === $url) {
             $parsedArgs['sslverify'] = false;
             $parsedArgs['headers'] = [
