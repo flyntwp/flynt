@@ -195,14 +195,14 @@
           <label for="textInput-{{ formId }}">Text Input</label><br>
           <input id="textInput-{{ formId }}" type="text" name="text" size="30" placeholder="Placeholder">
           <br><br>
-          <label for="textInput-{{ formId }}">Text Input Disabled</label><br>
-          <input id="textInput-{{ formId }}" type="text" name="text" size="30" placeholder="Placeholder" disabled>
+          <label for="textInput-{{ formId }}-2">Text Input Disabled</label><br>
+          <input id="textInput-{{ formId }}-2" type="text" name="text" size="30" placeholder="Placeholder" disabled>
           <br><br>
-          <label for="textInput-{{ formId }}">Text Input Filled Invalid</label><br>
-          <input id="textInput-{{ formId }}" type="text" name="text" size="30" placeholder="Placeholder" pattern="[0-9]*" value="Only Numbers are valid"><br>
+          <label for="textInput-{{ formId }}-3">Text Input Filled Invalid</label><br>
+          <input id="textInput-{{ formId }}-3" type="text" name="text" size="30" placeholder="Placeholder" pattern="[0-9]*" value="Only Numbers are valid"><br>
           <br>
-          <label for="textarea">Your message</label><br>
-          <textarea id="textarea" placeholder="Placeholder"></textarea>
+          <label for="textarea-{{ formId }}">Your message</label><br>
+          <textarea id="textarea-{{ formId }}" placeholder="Placeholder"></textarea>
           <br><br>
           <label class="visuallyHidden" for="selectInput-{{ formId }}">Select Input</label>
           <select id="selectInput-{{ formId }}" name="select">
