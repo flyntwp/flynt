@@ -1,5 +1,5 @@
 import { defineConfig, loadEnv } from 'vite'
-import { dest, entries, host, watchFiles } from './build-config.js'
+import { dest, entries, host as configHost, watchFiles } from './build-config.js'
 import autoprefixer from 'autoprefixer'
 import flynt from './vite-plugin-flynt'
 import globImporter from 'node-sass-glob-importer'
@@ -8,6 +8,7 @@ import fs from 'fs'
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
+  const host = env.VITE_DEV_SERVER_HOST || configHost
   const isSecure = host.indexOf('https://') === 0 && (env.VITE_DEV_SERVER_KEY || env.VITE_DEV_SERVER_CERT)
 
   return {
