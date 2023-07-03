@@ -58,7 +58,7 @@ Options::addTranslatable('Theme', [
     ],
 ]);
 
-add_filter('timber_context', function ($context) {
+add_filter('timber/context', function ($context) {
     $context['theme']->labels = Options::getTranslatable('Theme')['labels'] ?? [];
     return $context;
 });
