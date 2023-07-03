@@ -46,14 +46,12 @@ function getACFLayout()
                 'sub_fields' => [
                     [
                         'label' => __('Image', 'flynt'),
-                        'instructions' => __('Image-Format: JPG, PNG.', 'flynt'),
+                        'instructions' => __('Image-Format: JPG, PNG, SVG.', 'flynt'),
                         'name' => 'image',
                         'type' => 'image',
                         'preview_size' => 'medium',
-                        'mime_types' => 'jpg,jpeg,png',
-                        'wrapper' => [
-                            'width' => 40
-                        ],
+                        'required' => 1,
+                        'mime_types' => 'jpg,jpeg,png,svg'
                     ],
                     [
                         'label' => __('Content', 'flynt'),

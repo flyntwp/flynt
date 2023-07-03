@@ -50,6 +50,10 @@ flynt-component[name='GridImageText'] {
       }
     }
 
+    .figure-image-svg {
+      aspect-ratio: 3 / 2;
+    }
+
     .content {
       margin-block-start: 0;
     }
