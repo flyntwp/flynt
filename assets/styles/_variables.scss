@@ -42,7 +42,7 @@ $input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [ty
    */
   --font-family-heading: 'Public Sans', 'Trebuchet MS', sans-serif;
   --font-family-text: 'Public Sans', 'Trebuchet MS', sans-serif;
-  --font-size-body: 1.125rem; // Always use rem. 1rem = 16px
+  --font-size-body: 1.125rem;
   --font-size-body-small: 1rem;
   --flow-space: 1.5625rem;
   --column-gap: clamp(2.5rem, 2.5vw + 1.75rem, 3.75rem);
