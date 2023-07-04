@@ -24,19 +24,3 @@ function getTheme($default = '')
         'default_value' => $default,
     ];
 }
-
-function getRawSvg()
-{
-    return [
-        'label' => __('Raw SVG', 'flynt'),
-        'instructions' => sprintf(
-            'Insert raw svg e. g. from <a href="%1$s" target="_blank">%1$s</a>',
-            'https://heroicons.com/'
-        ),
-        'name' => 'rawSvg',
-        'type' => 'text',
-        'required' => 1,
-        'rows' => 1,
-        'new_lines' => '',
-    ];
-}
