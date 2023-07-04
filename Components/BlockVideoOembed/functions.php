@@ -31,11 +31,11 @@ function getACFLayout()
             ],
             [
                 'label' => __('Poster Image', 'flynt'),
-                'instructions' => __('Recommended Size: Min-Width 1920px; Min-Height: 1080px; Image-Format: JPG, PNG. Aspect Ratio 16/9.', 'flynt'),
+                'instructions' => __('Recommended Size: Min-Width 1920px; Min-Height: 1080px; Image-Format: JPG, PNG, SVG, WebP. Aspect Ratio 16/9.', 'flynt'),
                 'name' => 'posterImage',
                 'type' => 'image',
                 'preview_size' => 'medium',
-                'mime_types' => 'jpg,jpeg,png,svg',
+                'mime_types' => 'jpg,jpeg,png,svg,webp',
                 'required' => 1,
             ],
             [
