@@ -409,47 +409,42 @@ flynt-component {
   gap: var(--flow-space);
 }
 
-.centerMaxWidthContainer {
+.centerMaxWidthContainer,
+.centerMaxWidthContainerWide {
   margin-inline: auto;
   max-inline-size: var(--container-max-width);
   padding-inline: var(--container-spacing);
 }
 
 .centerMaxWidthContainerWide {
-  margin-inline: auto;
-  max-inline-size: var(--container-max-width-wide);
-  padding-inline: var(--container-spacing);
+  --container-max-width: var(--container-max-width-wide);
 }
 
-.centerContentMaxWidth {
+.centerContentMaxWidth,
+.centerContentMaxWidthWide {
   margin-inline: auto;
   max-inline-size: var(--content-max-width);
 }
 
 .centerContentMaxWidthWide {
-  margin-inline: auto;
-  max-inline-size: var(--content-max-width-wide);
+  --content-max-width: var(--content-max-width-wide);
 }
 
-.preContent {
-  margin: 0 auto calc(var(--component-spacing) / 2) 0;
-  max-inline-size: var(--content-max-width);
-}
-
+.preContent,
 .preContentCenter {
-  margin: 0 auto calc(var(--component-spacing) / 2);
-  max-inline-size: var(--content-max-width);
-  text-align: center;
-}
-
-.postContent {
-  margin: calc(var(--component-spacing) / 2) 0 0;
+  margin-block-end: calc(var(--component-spacing) / 2);
   max-inline-size: var(--content-max-width);
 }
 
+.postContent,
+.postContentCenter  {
+  margin-block-start: calc(var(--component-spacing) / 2);
+  max-inline-size: var(--content-max-width);
+}
+
+.preContentCenter,
 .postContentCenter {
-  margin: calc(var(--component-spacing) / 2) auto 0;
-  max-inline-size: var(--content-max-width);
+  margin-inline: auto;
   text-align: center;
 }
 
