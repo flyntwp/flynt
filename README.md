@@ -87,12 +87,12 @@ A component is a self-contained building-block. Each component contains its own 
 
 ```
   ExampleComponent/
+  ├── _style.scss
   ├── functions.php
   ├── index.twig
   ├── README.md
   ├── screenshot.png
   ├── script.js
-  ├── style.scss
 ```
 
 The `functions.php` file for every component in the `./Components` folder is executed during the WordPress action `after_setup_theme`. [This is run from the `./functions.php` file of the theme.](https://github.com/flyntwp/flynt/tree/master/functions.php)
