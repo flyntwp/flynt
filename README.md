@@ -1,4 +1,4 @@
-![Flynt – WordPress Starter Theme for Developers](.github/assets/banner.png 'Flynt – WordPress Starter Theme for Developers')
+![Flynt – WordPress Starter Theme for Developers](.github/assets/banner.svg 'Flynt – WordPress Starter Theme for Developers')
 
 # Fall in love with WordPress (again)
 
