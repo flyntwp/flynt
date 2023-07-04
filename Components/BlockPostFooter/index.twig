@@ -16,7 +16,12 @@
         <div class="author">
           {% if post.author.avatar %}
             <a href="{{ post.author.link|e('esc_url') }}" aria-hidden="true" tabindex="-1">
-              <img class="avatar-image" width="96" height="96" src="{{ post.author.avatar }}" alt="{{ post.author.name|e }}">
+              <img
+                class="avatar-image lazyload"
+                width="96" height="96"
+                src="{{ placeholderImage(96, 96) }}"
+                data-src="{{ post.author.avatar({size: 192}) }}"
+                alt="{{ post.author.name|e }}">
             </a>
           {% endif %}
           <div class="details">
