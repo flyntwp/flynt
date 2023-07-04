@@ -3,15 +3,28 @@ flynt-component[name='GridImageText'] {
     --grid-columns: 1;
     display: grid;
     gap: var(--column-gap);
-    grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
-    justify-content: center;
+    grid-template-columns: repeat(var(--grid-columns), minmax(300px, 1fr));
     list-style: none;
-    margin-block: 0;
-    margin-inline: auto;
+    margin: 0;
     padding: 0;
+
+    &[data-max-columns='1'],
+    &[data-max-columns='2'],
+    &[data-max-columns='3'],
+    &[data-max-columns='4'] {
+      max-inline-size: calc(100% / 2 - var(--flow-space));
+
+      @media (min-width: $breakpoint-tablet) {
+        max-inline-size: unset;
+      }
+    }
 
     &[data-max-columns='1'] {
       max-inline-size: calc(100% / 2 - var(--flow-space));
+
+      @media (min-width: $breakpoint-tablet) {
+        margin-inline: auto;
+      }
     }
 
     &[data-max-columns='2'],
