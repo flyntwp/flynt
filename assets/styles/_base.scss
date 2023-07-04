@@ -26,8 +26,8 @@ body,
 #{$heading-selectors} {
   --flow-space: 2.5rem;
   font-family: var(--font-family-heading);
-  font-weight: 700;
-  line-height: calc(1em + 0.5rem);
+  font-weight: 500;
+  line-height: 1.3;
 }
 
 h1,
@@ -54,6 +54,7 @@ h2,
 h3,
 .h3 {
   font-size: 1.9375rem;
+  line-height: 1.4;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
     font-size: 2.1875rem;
@@ -63,6 +64,7 @@ h3,
 h4,
 .h4 {
   font-size: 1.625rem;
+  line-height: 1.4;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
     font-size: 1.825rem;
@@ -72,6 +74,7 @@ h4,
 h5,
 .h5 {
   font-size: 1.375rem;
+  line-height: 1.5;
 
   @media (min-width: $breakpoint-mobile-horizontal) {
     font-size: 1.5rem;
@@ -82,6 +85,7 @@ h6,
 .h6 {
   color: var(--color-text-muted);
   font-size: 1.0625rem;
+  line-height: 1.5;
 }
 
 a {
