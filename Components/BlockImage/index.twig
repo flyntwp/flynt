@@ -2,13 +2,13 @@
   <div class="container {{ options.size != 'full' ? 'centerMaxWidthContainer' }}">
     <figure class="figure" {{ options.size ? 'data-image-size="' ~ options.size ~ '"' }}>
       {% if image.post_mime_type == 'image/svg+xml'%}
-          <img class="figure-image-svg lazyload"
-            src="{{ placeholderImage(768, (768 / image.aspect)|round, 'rgba(125, 125, 125, 0.1)') }}"
-            width="{{ 768 }}"
-            height="{{ (768 / image.aspect)|round }}"
-            data-src="{{ image.src }}"
-            alt="{{ image.alt|e }}"
-          >
+        <img class="figure-image-svg lazyload"
+          src="{{ placeholderImage(768, (768 / image.aspect)|round, 'rgba(125, 125, 125, 0.1)') }}"
+          width="{{ 768 }}"
+          height="{{ (768 / image.aspect)|round }}"
+          data-src="{{ image.src }}"
+          alt="{{ image.alt|e }}"
+        >
       {% else %}
         <img class="figure-image lazyload"
             src="{{ image.src|resizeDynamic(768) }}"
