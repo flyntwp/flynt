@@ -3,6 +3,10 @@ flynt-component[name='BlockPostHeader'] {
     padding: var(--component-spacing) var(--container-spacing);
   }
 
+  .content * + * {
+    --flow-space: 2rem;
+  }
+
   .meta {
     align-items: center;
     display: flex;

@@ -1,6 +1,6 @@
 <flynt-component name="BlockPostHeader">
   <div class="container" data-theme="light">
-    <div class="centerContentMaxWidth">
+    <div class="centerContentMaxWidth content">
       <h1>{{ post.title }}</h1>
       {% if post.post_excerpt %}
         <p class="h5">{{ post.post_excerpt }}</p>
@@ -8,7 +8,7 @@
       <p class="meta">
         <a class="author" href="{{ post.author.link|e('esc_url') }}">
           {% if post.author.avatar %}
-            <img class="avatar" src="{{ post.author.avatar }}" alt="{{ post.author.name|e }}">
+            <img class="avatar lazyload" src="{{ placeholderImage(48, 48) }}" data-src="{{ post.author.avatar }}" alt="{{ post.author.name|e }}">
           {% endif %}
           <span class="visuallyHidden">{{ labels.postedBy|e }}</span>
           <small>{{ post.author.name }}</small>
