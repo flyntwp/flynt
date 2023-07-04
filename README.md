@@ -6,7 +6,7 @@
 [![Build Status](https://travis-ci.org/flyntwp/flynt.svg?branch=master)](https://travis-ci.org/flyntwp/flynt)
 [![Code Quality](https://img.shields.io/scrutinizer/g/flyntwp/flynt.svg)](https://scrutinizer-ci.com/g/flyntwp/flynt/?branch=master)
 
-[Flynt](https://flyntwp.com/) is a lightning-fast WordPress theme for component-based development with [Advanced Custom Fields](#advanced-custom-fields).
+[Flynt](https://flyntwp.com/) is a lightning-fast WordPress Starter Theme for component-based development with [ACF Pro](#advanced-custom-fields).
 
 ## Dependencies
 
