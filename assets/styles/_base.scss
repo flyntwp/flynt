@@ -404,8 +404,7 @@ flynt-component {
 }
 
 .groupContainer {
-  align-items: flex-start;
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
   gap: var(--flow-space);
 }

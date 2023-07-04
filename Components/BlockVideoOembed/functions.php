@@ -35,8 +35,8 @@ function getACFLayout()
                 'name' => 'posterImage',
                 'type' => 'image',
                 'preview_size' => 'medium',
-                'mime_types' => 'jpg,jpeg,png',
-                'required' => 1
+                'mime_types' => 'jpg,jpeg,png,svg',
+                'required' => 1,
             ],
             [
                 'label' => __('Video', 'flynt'),
