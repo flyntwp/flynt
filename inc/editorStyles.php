@@ -24,7 +24,7 @@ add_action('admin_init', function () {
 
 function getEditorStylesheetUrl()
 {
-    return Asset::requireUrl('assets/editor-style.scss');
+    return str_replace(get_template_directory_uri(), '', Asset::requireUrl('assets/editor-style.scss'));
 }
 
 if (Asset::isHotModuleReplacement()) {
