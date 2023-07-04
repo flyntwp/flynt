@@ -15,7 +15,7 @@ namespace Flynt\EditorStyles;
 
 use Flynt\Utils\Asset;
 
-add_action('admin_init', function () {
+add_action('after_setup_theme', function () {
     add_theme_support('editor-styles');
 
     $stylesheet = getEditorStylesheetUrl();
