@@ -37,8 +37,9 @@ export default function ({ dest, host }) {
           fs.writeFileSync(hotFile, viteDevServerUrl)
 
           setTimeout(() => {
-            const isSecure = host.indexOf('https://') === 0 && (server.httpServer.key || server.httpServer.cert)
-            if (!isSecure) {
+            const isHttps = host.indexOf('https://') === 0
+            const hasCertificates = server.httpServer.key && server.httpServer.cert
+            if (isHttps && !hasCertificates) {
               server.config.logger.info('  ➜ Please define VITE_DEV_SERVER_KEY and VITE_DEV_SERVER_CERT inside a “.env” file in the theme folder to enable ssl support for the vite dev server.')
             }
 
