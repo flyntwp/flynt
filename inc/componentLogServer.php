@@ -17,7 +17,7 @@ namespace Flynt\ComponentLogServer;
 
 add_action('Flynt/afterRegisterComponents', function () {
     if ('production' !== wp_get_environment_type() && isset($_GET['log'])) {
-        add_filter("Flynt/addComponentData", __NAMESPACE__ . '\addDebugInfo', 99999, 2);
+        add_filter("Flynt/addComponentData", 'Flynt\ComponentLogServer\addDebugInfo', 99999, 2);
     }
 }, 11);
 
