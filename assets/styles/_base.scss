@@ -401,11 +401,6 @@ flynt-component {
     margin: 0;
     padding: var(--component-spacing) 0;
   }
-
-  // Use flow-space as componentSpacing for all components in single post layouts (Gutenberg).
-  .wp-block-post-content & {
-    --component-spacing: var(--flow-space);
-  }
 }
 
 .wp-block-post-content {
