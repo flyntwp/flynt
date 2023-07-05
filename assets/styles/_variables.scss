@@ -48,7 +48,7 @@ $input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [ty
   --column-gap: clamp(2.5rem, 2.5vw + 1.75rem, 3.75rem);
 
   --content-max-width: 700px;
-  --content-max-width-wide: 800px;
+  --content-max-width-wide: 900px;
   --container-max-width: calc(1200px + (var(--container-spacing) * 2));
   --container-max-width-wide: calc(1340px + (var(--container-spacing) * 2));
 
