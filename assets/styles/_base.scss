@@ -436,13 +436,13 @@ flynt-component {
 
 .preContent,
 .preContentCenter {
-  margin-block-end: calc(var(--component-spacing) / 2);
+  margin-block-end: var(--column-gap);
   max-inline-size: var(--content-max-width);
 }
 
 .postContent,
 .postContentCenter  {
-  margin-block-start: calc(var(--component-spacing) / 2);
+  margin-block-start: var(--column-gap);
   max-inline-size: var(--content-max-width);
 }
 
