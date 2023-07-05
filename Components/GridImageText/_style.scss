@@ -53,6 +53,10 @@ flynt-component[name='GridImageText'] {
 
     &[data-card='true']{
       --column-gap: var(--flow-space);
+
+      .content {
+        margin-block-start: 0;
+      }
     }
   }
 
@@ -69,10 +73,6 @@ flynt-component[name='GridImageText'] {
 
     .figure-image-svg {
       aspect-ratio: 3 / 2;
-    }
-
-    .content {
-      margin-block-start: 0;
     }
   }
 }
