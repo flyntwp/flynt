@@ -8,22 +8,10 @@ flynt-component[name='GridImageText'] {
     margin: 0;
     padding: 0;
 
-    &[data-max-columns='1'],
-    &[data-max-columns='2'],
-    &[data-max-columns='3'],
-    &[data-max-columns='4'] {
-      max-inline-size: calc(100% / 2 - var(--flow-space));
-
-      @media (min-width: $breakpoint-tablet) {
-        max-inline-size: unset;
-      }
-    }
-
     &[data-max-columns='1'] {
-      max-inline-size: calc(100% / 2 - var(--flow-space));
-
       @media (min-width: $breakpoint-tablet) {
         margin-inline: auto;
+        max-inline-size: calc(100% / 2 - var(--flow-space));
       }
     }
 
