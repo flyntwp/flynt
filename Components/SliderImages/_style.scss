@@ -4,6 +4,12 @@ flynt-component[name='SliderImages'] {
     overflow: hidden;
     position: relative;
 
+    &:not(.swiper-initialized) {
+      .swiper-wrapper .swiper-slide:not(:first-child) {
+        display: none;
+      }
+    }
+
     &-item {
       block-size: 0;
       padding-block-end: calc((2/3) * 100%);
