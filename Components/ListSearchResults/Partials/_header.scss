@@ -2,12 +2,7 @@
   --form-inner-space: 6px;
   border: 2px solid var(--color-border);
   display: flex;
-  flex-direction: column;
   padding: var(--form-inner-space);
-
-  @media (min-width: $breakpoint-mobile-horizontal) {
-    flex-direction: row;
-  }
 
   .input {
     border: 0;
