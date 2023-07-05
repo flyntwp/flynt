@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Block Editor related adjustments.
+ */
+
 namespace Flynt\BlockEditor;
 
 /**
