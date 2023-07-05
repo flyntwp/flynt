@@ -458,25 +458,33 @@ flynt-component {
 }
 
 // Class for text that should only be visible to screen readers.
-.visuallyHidden {
-  block-size: 1px !important;
-  clip: rect(0, 0, 0, 0) !important;
-  inline-size: 1px !important;
-  margin: -1px !important; // Fix for https://github.com/twbs/bootstrap/issues/25686
-  overflow: hidden !important;
-  padding: 0 !important;
-  position: absolute !important;
-  white-space: nowrap !important;
+.visuallyHidden,
+.visuallyHidden-focusable {
+  block-size: 1px;
+  clip: rect(0, 0, 0, 0);
+  inline-size: 1px;
+  margin: -1px;
+  overflow: hidden;
+  position: absolute;
+  transition: none !important;
+  white-space: nowrap;
 }
 
-// Skip link behavior.
-.skipLink {
-  inset-block-start: -100px;
-  position: fixed;
-  z-index: 999;
-
-  &:focus {
+.visuallyHidden-focusable {
+  &:focus-visible {
+    background-color: var(--color-background);
+    block-size: auto;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+    clip: auto;
+    color: var(--color-text);
+    font-size: 1rem;
+    inline-size: auto;
     inset-block-start: 0;
+    inset-inline-start: 0;
+    outline-offset: -3px;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    z-index: 100000;
   }
 }
 
