@@ -20,7 +20,7 @@ add_filter('block_editor_settings_all', function ($settings) {
 }, 10);
 
 /**
- * Removes editor from Wordpress pages, since Flynt uses ACF.
+ * Remove editor from Wordpress pages, since Flynt uses ACF.
  */
 add_action('init', function () {
     remove_post_type_support('page', 'editor');
@@ -28,7 +28,7 @@ add_action('init', function () {
 });
 
 /**
- * Removes Gutenberg block related styles on front-end, when a post has no blocks.
+ * Remove Gutenberg block related styles on front-end, when a post has no blocks.
  */
 add_action('wp_enqueue_scripts', function () {
     if (!has_blocks()) {
