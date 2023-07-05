@@ -8,7 +8,7 @@
   </head>
   <body>
     {{ function('wp_body_open') }}
-    <a href="#mainContent" class="skipLink">
+    <a href="#mainContent" class="visuallyHidden-focusable">
       {{- theme.labels.skipToMainContent|e -}}
     </a>
     {% block layout %}
