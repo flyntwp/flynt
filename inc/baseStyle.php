@@ -50,8 +50,3 @@ function setDocumentTitle()
         return $title;
     }, 99);
 }
-
-
-
-
-
