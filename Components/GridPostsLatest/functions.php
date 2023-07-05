@@ -18,7 +18,7 @@ add_filter('Flynt/addComponentData?name=GridPostsLatest', function ($data) {
         'category' => join(',', array_map(function ($taxonomy) {
             return $taxonomy->term_id;
         }, $data['taxonomies'])),
-        'posts_per_page' => $postsPerPage + 1,
+        'posts_per_page' => $postsPerPage,
         'ignore_sticky_posts' => 1,
     ]);
 
