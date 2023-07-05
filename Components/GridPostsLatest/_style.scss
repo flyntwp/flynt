@@ -47,6 +47,10 @@ flynt-component[name='GridPostsLatest'] {
       text-decoration: none;
     }
 
+    .figure {
+      margin: 0;
+    }
+
     .content {
       color: var(--color-text);
       flex-grow: 1;
