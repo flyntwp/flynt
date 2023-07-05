@@ -31,7 +31,7 @@ function getACFLayout()
                     FieldVariables\getTheme(),
                     [
                         'label' => __('Vertical space', 'flynt'),
-                        'instructions' => __('Distance adjusts the vertical space between two components.', 'flynt'),
+                        'instructions' => __('Distance between two components.', 'flynt'),
                         'name' => 'percentageDistance',
                         'type' => 'range',
                         'prepend' => __('Distance', 'flynt'),
@@ -54,7 +54,7 @@ function getACFLayout()
                             __('50% reduces vertical space (by half)', 'flynt'),
                             __('150% extends vertical space (by 50%)', 'flynt')
                         ),
-                        'new_lines' => 'wpautop',
+                        'new_lines' => 'br',
                         'esc_html' => 1,
                         'wrapper' =>  [
                             'width' => '50',
