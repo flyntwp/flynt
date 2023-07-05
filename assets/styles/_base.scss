@@ -101,7 +101,7 @@ hr {
   &::after {
     background-color: var(--color-text);
     block-size: 2px;
-    content: '';
+    content: "";
     display: block;
     opacity: 0.28;
   }
@@ -170,7 +170,8 @@ ol:not([class]) {
   }
 
   li {
-    > ul, ol {
+    > ul,
+    ol {
       --item-spacing: 0.33em;
       margin-block-start: var(--item-spacing);
     }
@@ -355,8 +356,8 @@ textarea {
   vertical-align: top;
 }
 
-[type='checkbox'],
-[type='radio'] {
+[type="checkbox"],
+[type="radio"] {
   accent-color: var(--color-accent);
   block-size: 20px;
   display: inline-block;
@@ -401,9 +402,19 @@ flynt-component {
     padding: var(--component-spacing) 0;
   }
 
-  // Use flow-space as componentSpacing for all components in single post layouts.
-  .post-main & {
+  // Use flow-space as componentSpacing for all components in single post layouts (Gutenberg).
+  .wp-block-post-content & {
     --component-spacing: var(--flow-space);
+  }
+}
+
+.wp-block-post-content {
+  &.has-global-padding {
+    padding-inline: var(--container-spacing);
+
+    > .alignfull {
+      margin-inline: calc(var(--container-spacing) * -1);
+    }
   }
 }
 
@@ -441,7 +452,7 @@ flynt-component {
 }
 
 .postContent,
-.postContentCenter  {
+.postContentCenter {
   margin-block-start: var(--column-gap);
   max-inline-size: var(--content-max-width);
 }

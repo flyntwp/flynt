@@ -5,10 +5,8 @@
     <header class="post-header">
       {{ renderComponent('BlockPostHeader', { post: post }) }}
     </header>
-    <section class="post-main centerMaxWidthContainer">
-      <div class="centerContentMaxWidth componentSpacing">
+    <section class="post-main wp-block-post-content has-global-padding is-layout-constrained">
         {{ post.content }}
-      </div>
     </section>
     <footer class="post-meta">
       {{ renderComponent('BlockPostFooter', { post: post }) }}
