@@ -4,16 +4,6 @@ namespace Flynt\TheContentFix;
 
 use Timber\Timber;
 
-function isShortcodeAndDoesNotMatchId($postContent, $postId)
-{
-    preg_match('/^\[flyntTheContent id=\\\"(\d*)\\\"\]$/', $postContent, $matches);
-    if (!empty($matches) && $matches[1] != $postId) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
 add_filter('wp_insert_post_data', function ($data, $postArr) {
     if (
         in_array(
@@ -55,3 +45,13 @@ add_shortcode('flyntTheContent', function ($attrs) {
         return Timber::compile('templates/theContentFix.twig', $context);
     }
 });
+
+function isShortcodeAndDoesNotMatchId($postContent, $postId)
+{
+    preg_match('/^\[flyntTheContent id=\\\"(\d*)\\\"\]$/', $postContent, $matches);
+    if (!empty($matches) && $matches[1] != $postId) {
+        return true;
+    } else {
+        return false;
+    }
+}

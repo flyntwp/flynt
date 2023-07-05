@@ -17,6 +17,11 @@ add_action('after_setup_theme', function () {
 
 add_filter('big_image_size_threshold', '__return_false');
 
+add_filter('timber/context', function ($context) {
+    $context['theme']->labels = Options::getTranslatable('Theme')['labels'] ?? [];
+    return $context;
+});
+
 Options::addTranslatable('Theme', [
     [
         'label' => __('Labels', 'flynt'),
@@ -57,8 +62,3 @@ Options::addTranslatable('Theme', [
         ],
     ],
 ]);
-
-add_filter('timber/context', function ($context) {
-    $context['theme']->labels = Options::getTranslatable('Theme')['labels'] ?? [];
-    return $context;
-});

@@ -11,28 +11,19 @@ namespace Flynt\BaseStyle;
 
 const ROUTENAME = 'BaseStyle';
 
-add_filter('init', 'Flynt\BaseStyle\registerRewriteRule');
-add_filter('template_include', 'Flynt\BaseStyle\templateInclude');
-
 /**
  * Registers the custom rewrite rule for the 'BaseStyle' route.
  */
-function registerRewriteRule()
-{
+add_filter('init', function () {
     $routeName = ROUTENAME;
 
     add_rewrite_rule("{$routeName}/?$", "index.php?pagename={$routeName}", "top");
     add_rewrite_tag("%{$routeName}%", "([^&]+)");
-}
-
+});
 /**
  * Sets the template file for the 'BaseStyle' route and sets the document title for the route.
- *
- * @param string $template The current template file path.
- * @return string The template file path to use for the 'BaseStyle' route.
  */
-function templateInclude($template)
-{
+add_filter('template_include', function ($template) {
     global $wp_query;
 
     $routeName = ROUTENAME;
@@ -44,8 +35,7 @@ function templateInclude($template)
     }
 
     return $template;
-}
-
+});
 /**
  * Sets the document title for the 'BaseStyle' route.
  */
@@ -60,3 +50,8 @@ function setDocumentTitle()
         return $title;
     }, 99);
 }
+
+
+
+
+

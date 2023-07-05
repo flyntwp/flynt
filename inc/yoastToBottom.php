@@ -6,9 +6,6 @@
 
 namespace Flynt\YoastToBottom;
 
-function init()
-{
+add_filter('wpseo_metabox_prio', function () {
     return 'low';
-}
-
-add_filter('wpseo_metabox_prio', 'Flynt\YoastToBottom\init');
+});

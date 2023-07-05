@@ -8,8 +8,7 @@
 
 namespace Flynt\CustomPostTypes;
 
-// function registerExamplePostType()
-// {
+// add_action('init', function () {
 //     $labels = [
 //         'name'                  => _x('Post Types', 'Post Type General Name', 'flynt'),
 //         'singular_name'         => _x('Post Type', 'Post Type Singular Name', 'flynt'),
@@ -59,6 +58,4 @@ namespace Flynt\CustomPostTypes;
 //         'capability_type'       => 'page',
 //     ];
 //     register_post_type('example', $args);
-// }
-
-// add_action('init', '\\Flynt\\CustomPostTypes\\registerExamplePostType');
+// });
