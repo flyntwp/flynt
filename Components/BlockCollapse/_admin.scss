@@ -1,6 +1,0 @@
-// Prevent cutting of larger numbers inside of the block collapse
-[class*='blockCollapse'] {
-  [type='number'] {
-    min-inline-size: 4.5em !important;
-  }
-}
