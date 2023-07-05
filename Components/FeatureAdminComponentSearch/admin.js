@@ -1,0 +1,63 @@
+const FeatureAdminComponentSearch = window.acf.Model.extend({
+  wait: 'ready',
+
+  events: {
+    'click [data-name="add-layout"]': 'onClick'
+  },
+
+  initialize: function () {
+    // prevent closing popup when clicking on the search field
+    document.body.addEventListener('click', (event) => {
+      if (event.target.classList.contains('flyntComponentSearch-field')) {
+        event.stopPropagation()
+      }
+    }, false)
+  },
+
+  onClick: function (e, $el) {
+    const $tooltip = document.querySelector('.acf-fc-popup')
+    this.render($tooltip)
+  },
+
+  render: function ($tooltip) {
+    const { placeholder, noResults } = window.FeatureAdminComponentSearch.labels
+
+    $tooltip.insertAdjacentHTML(
+      'afterbegin',
+      `<div class="flyntComponentSearch">
+        <input type="text" placeholder="${placeholder}" class="flyntComponentSearch-field">
+        <div class="flyntComponentSearch-noResults" hidden>${noResults}</div>
+      </div>`
+    )
+
+    const $searchField = $tooltip.querySelector('.flyntComponentSearch-field')
+    const $noResults = $tooltip.querySelector('.flyntComponentSearch-noResults')
+    const $listItems = $tooltip.querySelectorAll('ul li')
+
+    $searchField.focus()
+
+    $searchField.addEventListener('input', (e) => {
+      const searchedTerms = e.target.value.toLowerCase().split(' ').filter(i => i)
+      const hasResults = this.filterComponents(searchedTerms, $listItems)
+      $noResults.toggleAttribute('hidden', hasResults)
+    })
+  },
+
+  filterComponents: function (searchedTerms, $listItems) {
+    const hasResults = []
+
+    $listItems.forEach(($item) => {
+      const componentName = $item.innerText.toLowerCase()
+      const hasResult = searchedTerms.every((term) => componentName.indexOf(term) > -1)
+      $item.style.display = hasResult ? 'block' : 'none'
+      if (hasResult) {
+        hasResults.push(hasResult)
+      }
+    })
+
+    return hasResults.length > 0
+  }
+})
+
+// eslint-disable-next-line no-new
+new FeatureAdminComponentSearch()
