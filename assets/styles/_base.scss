@@ -3,7 +3,7 @@
  */
 
 // Applies a consistent margin for most common elements.
-:where(#{$heading-selectors}, p, .paragraph, ul, ol, pre, table, figure, blockquote, form, fieldset, dl, address, details, hr, aside, video) {
+:where(h1, h2, h3, h4, h5, h6, p, .paragraph, ul, ol, pre, table, figure, blockquote, form, fieldset, dl, address, details, hr, aside, video) {
   + * {
     margin-block-start: var(--flow-space);
   }
@@ -23,7 +23,7 @@ body,
   line-height: 1.5;
 }
 
-#{$heading-selectors} {
+h1, h2, h3, h4, h5, h6 {
   --flow-space: 2.5rem;
   font-family: var(--font-family-heading);
   font-weight: 500;
@@ -313,7 +313,7 @@ label {
   margin-block-start: 0;
 }
 
-#{$input-selectors} {
+[type="tel"], [type="url"], [type="text"], [type="date"], [type="email"], [type="search"], [type="number"], [type="password"], textarea, select {
   appearance: none;
   background-color: transparent;
   border: 2px solid var(--color-border-secondary);

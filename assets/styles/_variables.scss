@@ -31,9 +31,6 @@ $breakpoint-tablet: 768px;
 $breakpoint-tablet-horizontal: 1024px;
 $breakpoint-desktop: 1280px;
 
-$heading-selectors: 'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';
-$input-selectors: '[type="tel"], [type="url"], [type="text"], [type="date"], [type="email"], [type="search"], [type="number"], [type="password"], textarea, select';
-
 :root {
   /**
    * FOUC can be reduced with good matching fallback font.
