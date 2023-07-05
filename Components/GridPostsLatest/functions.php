@@ -10,21 +10,17 @@ const POST_TYPE = 'post';
 
 add_filter('Flynt/addComponentData?name=GridPostsLatest', function ($data) {
     $data['taxonomies'] = $data['taxonomies'] ?? [];
-    $postsPerPage = $data['options']['maxColumns'] ?? 3;
 
-    $posts = Timber::get_posts([
+    $data['posts'] = Timber::get_posts([
         'post_status' => 'publish',
         'post_type' => POST_TYPE,
         'category' => join(',', array_map(function ($taxonomy) {
             return $taxonomy->term_id;
         }, $data['taxonomies'])),
-        'posts_per_page' => $postsPerPage,
+        'posts_per_page' => $data['options']['maxColumns'] ?? 3,
         'ignore_sticky_posts' => 1,
+        'post__not_in' => [get_the_ID()]
     ]);
-
-    $data['posts'] = array_filter($posts->to_array(), function ($post) {
-        return $post->ID !== get_the_ID();
-    });
 
     $data['postTypeArchiveLink'] = get_permalink(get_option('page_for_posts')) ?? get_post_type_archive_link(POST_TYPE);
 
