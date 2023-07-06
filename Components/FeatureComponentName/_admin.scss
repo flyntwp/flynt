@@ -1,25 +1,25 @@
 .flyntComponentName {
   align-items: center;
-  display: flex;
-  inset-block-start: 3px;
-  position: absolute;
   block-size: 30px;
-  z-index: 100;
-  inset-inline-start: calc(var(--flynt-component-name-offset) + 20px);
+  display: flex;
   inline-size: calc(100% - var(--flynt-component-name-max-width) - 30px);
+  inset-block-start: 3px;
+  inset-inline-start: calc(var(--flynt-component-name-offset) + 20px);
+  position: absolute;
+  z-index: 100;
 
   &::before {
     content: '»';
     font-weight: 600;
+    inset-inline-start: -12px;
     position: absolute;
-    left: -12px;
     visibility: hidden;
   }
 
   &-icon.acf-icon {
+    inset-inline-start: -10px;
     position: absolute;
     visibility: hidden;
-    left: -10px;
 
     .acf-flexible-content .layout:hover [data-has-name='false'] & {
       visibility: visible;
@@ -29,10 +29,10 @@
   &-field[type='text'] {
     .acf-field & {
       block-size: 30px;
-      inline-size: 100%;
       display: none;
-      padding: 4px;
+      inline-size: 100%;
       overflow: hidden;
+      padding: 4px;
       text-overflow: ellipsis;
 
       &:hover:not(:focus) {
@@ -54,6 +54,7 @@
     &::before {
       visibility: visible;
     }
+
     .flyntComponentName-field[type='text'] {
       display: block;
     }
