@@ -1,0 +1,61 @@
+.flyntComponentName {
+  align-items: center;
+  display: flex;
+  inset-block-start: 3px;
+  position: absolute;
+  block-size: 30px;
+  z-index: 100;
+  inset-inline-start: calc(var(--flynt-component-name-offset) + 20px);
+  inline-size: calc(100% - var(--flynt-component-name-max-width) - 30px);
+
+  &::before {
+    content: '»';
+    font-weight: 600;
+    position: absolute;
+    left: -12px;
+    visibility: hidden;
+  }
+
+  &-icon.acf-icon {
+    position: absolute;
+    visibility: hidden;
+    left: -10px;
+
+    .acf-flexible-content .layout:hover [data-has-name='false'] & {
+      visibility: visible;
+    }
+  }
+
+  &-field[type='text'] {
+    .acf-field & {
+      block-size: 30px;
+      inline-size: 100%;
+      display: none;
+      padding: 4px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      &:hover:not(:focus) {
+        border-color: #ddd;
+      }
+
+      &:not(:focus) {
+        border-color: transparent;
+      }
+
+      &:focus {
+        box-shadow: none;
+        outline: 0;
+      }
+    }
+  }
+
+  &[data-has-name='true'] {
+    &::before {
+      visibility: visible;
+    }
+    .flyntComponentName-field[type='text'] {
+      display: block;
+    }
+  }
+}
