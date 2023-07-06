@@ -16,15 +16,33 @@ if (window.acf) {
     },
 
     onClick: function (e, $el) {
-      const $tooltip = document.querySelector('.acf-fc-popup')
-      this.render($tooltip)
+      const $tooltips = document.querySelectorAll('.acf-fc-popup')
+
+      $tooltips.forEach(($tooltip) => {
+        this.render($tooltip, $el)
+        const position = $tooltip.classList.contains('top') ? 'top' : 'bottom'
+        this.render($tooltip, position)
+
+        if ($tooltip.classList.contains('top')) {
+          const $target = $el[0]
+          const targetTop = $target.getBoundingClientRect().bottom
+          const targetHeight = $target.getBoundingClientRect().height
+          const offsetBottom = window.innerHeight + window.scrollY - targetTop + targetHeight + 10
+          $tooltip.style.top = 'auto'
+          $tooltip.style.bottom = `${offsetBottom}px`
+        }
+      })
     },
 
-    render: function ($tooltip) {
+    render: function ($tooltip, position) {
       const { placeholder, noResults } = window.FeatureAdminComponentSearch.labels
 
+      if ($tooltip.querySelector('.flyntComponentSearch')) {
+        return
+      }
+
       $tooltip.insertAdjacentHTML(
-        'afterbegin',
+        position === 'top' ? 'beforeend' : 'afterbegin',
         `<div class="flyntComponentSearch">
           <input type="text" placeholder="${placeholder}" class="flyntComponentSearch-field">
           <div class="flyntComponentSearch-noResults" hidden>${noResults}</div>

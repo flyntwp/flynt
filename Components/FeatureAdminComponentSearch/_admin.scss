@@ -1,5 +1,12 @@
 /* Backend Component Search */
 .flyntComponentSearch {
+  display: flex;
+  flex-direction: column;
+
+  .acf-fc-popup.top & {
+    flex-direction: column-reverse;
+  }
+
   &-field[type='text'] {
     background-color: rgba(255, 255, 255, 0.1);
     border: 0;
