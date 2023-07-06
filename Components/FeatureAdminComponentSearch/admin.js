@@ -19,7 +19,6 @@ if (window.acf) {
       const $tooltips = document.querySelectorAll('.acf-fc-popup')
 
       $tooltips.forEach(($tooltip) => {
-        this.render($tooltip, $el)
         const position = $tooltip.classList.contains('top') ? 'top' : 'bottom'
         this.render($tooltip, position)
 
