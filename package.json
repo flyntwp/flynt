@@ -33,7 +33,7 @@
     "delegate-event-listener": "^1.2.0",
     "lazysizes": "^5.3.2",
     "rellax": "^1.12.1",
-    "swiper": "^9.4.1"
+    "swiper": "^10.0.3"
   },
   "devDependencies": {
     "ansi-colors": "^4.1.3",
