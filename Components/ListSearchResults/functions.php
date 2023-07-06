@@ -6,8 +6,8 @@ use Flynt\Utils\Options;
 
 Options::addTranslatable('ListSearchResults', [
     [
-        'label' => __('General', 'flynt'),
-        'name' => 'generalTab',
+        'label' => __('Content', 'flynt'),
+        'name' => 'contentTab',
         'type' => 'tab',
         'placement' => 'top',
         'endpoint' => 0

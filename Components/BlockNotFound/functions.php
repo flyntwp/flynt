@@ -6,7 +6,7 @@ use Flynt\Utils\Options;
 
 Options::addTranslatable('BlockNotFound', [
     [
-        'label' => __('General', 'flynt'),
+        'label' => __('Content', 'flynt'),
         'name' => 'general',
         'type' => 'tab',
         'placement' => 'top',

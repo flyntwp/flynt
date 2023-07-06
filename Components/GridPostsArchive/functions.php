@@ -56,7 +56,7 @@ Options::addGlobal('GridPostsArchive', [
 
 Options::addTranslatable('GridPostsArchive', [
     [
-        'label' => __('General', 'flynt'),
+        'label' => __('Content', 'flynt'),
         'name' => 'general',
         'type' => 'tab',
         'placement' => 'top',
