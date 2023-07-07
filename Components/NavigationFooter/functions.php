@@ -27,11 +27,12 @@ Options::addTranslatable('NavigationFooter', [
         'endpoint' => 0
     ],
     [
-        'label' => __('Content', 'flynt'),
+        'label' => __('Text', 'flynt'),
         'name' => 'contentHtml',
         'type' => 'wysiwyg',
-        'media_upload' => 0,
         'delay' => 1,
+        'media_upload' => 0,
+        'required' => 1,
         'toolbar' => 'basic',
         'default_value' => '©&nbsp;' . date_i18n('Y') . ' ' . get_bloginfo('name'),
     ],

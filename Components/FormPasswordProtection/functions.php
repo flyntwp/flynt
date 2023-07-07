@@ -27,12 +27,12 @@ Options::addTranslatable('FormPasswordProtection', [
         'endpoint' => 0,
     ],
     [
-        'label' => __('Content', 'flynt'),
+        'label' => __('Text', 'flynt'),
         'name' => 'contentHtml',
         'type' => 'wysiwyg',
-        'tabs' => 'visual,text',
-        'media_upload' => 0,
         'delay' => 1,
+        'media_upload' => 0,
+        'required' => 1,
         'default_value' => sprintf(
             '<h1 class="h3">%1$s</h1><p>%2$s %3$s</p>',
             __('Enter Password', 'flynt'),

@@ -36,7 +36,7 @@ function getACFLayout()
                 'mime_types' => 'jpg,jpeg,png,svg,webp',
             ],
             [
-                'label' => __('Content', 'flynt'),
+                'label' => __('Text', 'flynt'),
                 'name' => 'contentHtml',
                 'type' => 'wysiwyg',
                 'delay' => 1,
