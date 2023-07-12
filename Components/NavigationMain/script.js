@@ -1,6 +1,4 @@
 export default function (el) {
-  const navigationHeight = parseInt(window.getComputedStyle(el).getPropertyValue('--navigation-height')) || 0
-
   const isDesktopMediaQuery = window.matchMedia('(min-width: 1024px)')
   isDesktopMediaQuery.addEventListener('change', onBreakpointChange)
 
@@ -14,8 +12,8 @@ export default function (el) {
 
   function setScrollPaddingTop () {
     const scrollPaddingTop = document.getElementById('wpadminbar')
-      ? navigationHeight + document.getElementById('wpadminbar').offsetHeight
-      : navigationHeight
+      ? document.getElementById('wpadminbar').offsetHeight
+      : 0
     document.documentElement.style.scrollPaddingTop = `${scrollPaddingTop}px`
   }
 }
