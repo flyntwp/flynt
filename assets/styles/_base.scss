@@ -425,15 +425,10 @@ flynt-component {
   gap: var(--flow-space);
 }
 
-.centerMaxWidthContainer,
-.centerMaxWidthContainerWide {
+.centerMaxWidthContainer {
   margin-inline: auto;
   max-inline-size: var(--container-max-width);
   padding-inline: var(--container-spacing);
-}
-
-.centerMaxWidthContainerWide {
-  --container-max-width: var(--container-max-width-wide);
 }
 
 .centerContentMaxWidth,

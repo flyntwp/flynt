@@ -47,7 +47,6 @@ $breakpoint-desktop: 1280px;
   --content-max-width: 700px;
   --content-max-width-wide: 900px;
   --container-max-width: calc(1200px + (var(--container-spacing) * 2));
-  --container-max-width-wide: calc(1340px + (var(--container-spacing) * 2));
 
   --box-spacing: clamp(1rem, 2.50vw + 0.25rem, 2.25rem);
   --container-spacing: clamp(1rem, 2.5vw + 0.25rem, 2.25rem);
