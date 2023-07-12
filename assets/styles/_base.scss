@@ -455,11 +455,6 @@ flynt-component {
   margin-inline: auto;
 }
 
-.centerContentMaxWidthWide {
-  margin-inline: auto;
-  max-inline-size: var(--content-max-width-wide);
-}
-
 .preContent,
 .preContentCenter {
   margin-block-end: var(--column-gap);
