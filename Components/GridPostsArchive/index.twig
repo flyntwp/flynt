@@ -1,6 +1,6 @@
 <flynt-component name="GridPostsArchive" load:on="visible" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
   <div class="container">
-    <div class="preContentCenter">
+    <div data-size="medium" data-align="center">
       <h1>{{ title }}</h1>
       {% set html = isHome ? preContentHtml : description %}
       {{ html|e('wp_kses_post') }}
