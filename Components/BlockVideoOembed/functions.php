@@ -71,7 +71,7 @@ function getACFLayout()
                         'choices' => [
                             'small' => __('Small', 'flynt'),
                             'medium' => __('Medium (Default)', 'flynt'),
-                            'large' => __('Large', 'flynt'),
+                            'wide' => __('Wide', 'flynt'),
                             'full' => __('Full', 'flynt'),
                         ],
                         'default_value' => 'medium',

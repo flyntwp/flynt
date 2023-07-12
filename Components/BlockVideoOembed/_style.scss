@@ -51,7 +51,7 @@ flynt-component[name='BlockVideoOembed'] {
       max-inline-size: var(--content-max-width);
     }
 
-    &[data-video-size='large'] {
+    &[data-video-size='wide'] {
       max-inline-size: var(--content-max-width-wide);
     }
 

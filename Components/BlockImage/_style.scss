@@ -10,7 +10,7 @@ flynt-component[name='BlockImage'] {
       max-inline-size: var(--content-max-width);
     }
 
-    &[data-image-size='large'] {
+    &[data-image-size='wide'] {
       max-inline-size: var(--content-max-width-wide);
     }
 

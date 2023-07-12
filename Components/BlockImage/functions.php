@@ -50,7 +50,7 @@ function getACFLayout()
                         'choices' => [
                             'small' => __('Small', 'flynt'),
                             'medium' => __('Medium', 'flynt'),
-                            'large' => __('Large (Default)', 'flynt)'),
+                            'wide' => __('Wide (Default)', 'flynt)'),
                             'full' => __('Full', 'flynt'),
                         ],
                         'default_value' => 'medium',
