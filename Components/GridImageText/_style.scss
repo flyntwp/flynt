@@ -5,7 +5,6 @@ flynt-component[name='GridImageText'] {
     gap: var(--column-gap);
     grid-template-columns: repeat(var(--grid-columns), minmax(300px, 1fr));
     list-style: none;
-    margin: 0;
     padding: 0;
 
     &[data-max-columns='1'] {

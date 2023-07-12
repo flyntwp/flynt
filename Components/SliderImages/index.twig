@@ -1,6 +1,6 @@
 <flynt-component name="SliderImages" load:on="visible" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
   <script type="application/json">{{ jsonData|json_encode }}</script>
-  <div class="container">
+  <div class="container" data-flow="layout">
     {% if preContentHtml %}
       <div data-size="medium" data-align="center">
         {{ preContentHtml|e('wp_kses_post') }}
