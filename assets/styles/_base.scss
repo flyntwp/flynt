@@ -429,6 +429,30 @@ flynt-component {
   margin-inline: auto;
   max-inline-size: var(--container-max-width);
   padding-inline: var(--container-spacing);
+
+  &[data-size=full] {
+    padding-inline: 0;
+  }
+}
+
+[data-size=medium] {
+  max-inline-size: var(--content-max-width);
+}
+
+[data-size=wide] {
+  max-inline-size: var(--content-max-width-wide);
+}
+
+[data-size=full] {
+  max-inline-size: 100%;
+}
+
+[data-align=left] {
+  margin-inline: unset;
+}
+
+[data-align=center] {
+  margin-inline: auto;
 }
 
 .centerContentMaxWidth,
