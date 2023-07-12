@@ -461,23 +461,6 @@ flynt-component {
   }
 }
 
-.preContentCenter {
-  margin-block-end: var(--column-gap);
-  max-inline-size: var(--content-max-width);
-}
-
-.postContent,
-.postContentCenter {
-  margin-block-start: var(--column-gap);
-  max-inline-size: var(--content-max-width);
-}
-
-.preContentCenter,
-.postContentCenter {
-  margin-inline: auto;
-  text-align: center;
-}
-
 .scrollableTableWrapper {
   -webkit-overflow-scrolling: touch;
   overflow-x: auto;
