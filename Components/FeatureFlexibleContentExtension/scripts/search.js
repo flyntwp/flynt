@@ -1,5 +1,5 @@
 if (window.acf) {
-  const FeatureAdminComponentSearch = window.acf.Model.extend({
+  const FeatureFlexibleContentExtension = window.acf.Model.extend({
     wait: 'ready',
 
     events: {
@@ -34,7 +34,7 @@ if (window.acf) {
     },
 
     render: function ($tooltip, position) {
-      const { placeholder, noResults } = window.FeatureAdminComponentSearch.labels
+      const { placeholder, noResults } = window.FeatureFlexibleContentExtension.labels
 
       if ($tooltip.querySelector('.flyntComponentSearch')) {
         return
@@ -78,5 +78,5 @@ if (window.acf) {
   })
 
   // eslint-disable-next-line no-new
-  new FeatureAdminComponentSearch()
+  new FeatureFlexibleContentExtension()
 }
