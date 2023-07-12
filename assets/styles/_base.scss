@@ -455,14 +455,9 @@ flynt-component {
   margin-inline: auto;
 }
 
-.centerContentMaxWidth,
 .centerContentMaxWidthWide {
   margin-inline: auto;
-  max-inline-size: var(--content-max-width);
-}
-
-.centerContentMaxWidthWide {
-  --content-max-width: var(--content-max-width-wide);
+  max-inline-size: var(--content-max-width-wide);
 }
 
 .preContent,
