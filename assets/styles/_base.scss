@@ -464,13 +464,13 @@ flynt-component {
 }
 
 [data-flow=layout] {
-  & > * + * {
+  > * + * {
     margin-block-start: calc(var(--component-spacing) / 2);
   }
 }
 
 [data-flow=content] {
-  & > * + * {
+  > * + * {
     margin-block-start: var(--flow-space);
   }
 }
