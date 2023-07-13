@@ -121,6 +121,10 @@ code {
 img {
   block-size: initial;
   inline-size: 100%;
+
+  .wp-block-image & {
+    inline-size: unset;
+  }
 }
 
 figcaption {
