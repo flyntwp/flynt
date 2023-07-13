@@ -400,17 +400,6 @@ flynt-component {
   }
 }
 
-.wp-block-post-content {
-  &.has-global-padding {
-    padding-inline: var(--container-spacing);
-
-    > .alignfull {
-      margin-inline: auto;
-      max-inline-size: var(--container-max-width);
-    }
-  }
-}
-
 .groupContainer {
   display: inline-flex;
   flex-wrap: wrap;
