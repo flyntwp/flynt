@@ -7,11 +7,6 @@
   + * {
     margin-block-start: var(--flow-space);
   }
-
-  // Required to override margin for core/image block.
-  + .wp-block-image {
-    margin-block-start: var(--flow-space);
-  }
 }
 
 body,
@@ -126,10 +121,6 @@ code {
 img {
   block-size: initial;
   inline-size: 100%;
-
-  .wp-block-image & {
-    inline-size: unset;
-  }
 }
 
 figcaption {
