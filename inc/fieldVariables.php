@@ -24,3 +24,22 @@ function getTheme($default = '')
         'default_value' => $default,
     ];
 }
+
+
+function getSize($default = 'medium')
+{
+    return [
+        'label' => __('Size', 'flynt'),
+        'name' => 'size',
+        'type' => 'radio',
+        'other_choice' => 0,
+        'save_other_choice' => 0,
+        'layout' => 'horizontal',
+        'choices' => [
+            'medium' => __('Medium', 'flynt'),
+            'wide' => __('Wide', 'flynt)'),
+            'full' => __('Full', 'flynt'),
+        ],
+        'default_value' => $default
+    ];
+}
