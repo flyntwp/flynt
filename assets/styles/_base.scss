@@ -475,6 +475,17 @@ flynt-component {
   }
 }
 
+[data-size=wide],
+[data-size=full] {
+  p {
+    @media (max-width: $breakpoint-tablet) {
+      br {
+        display: none;
+      }
+    }
+  }
+}
+
 .scrollableTableWrapper {
   -webkit-overflow-scrolling: touch;
   overflow-x: auto;
