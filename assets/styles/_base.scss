@@ -455,6 +455,14 @@ flynt-component {
   margin-inline: auto;
 }
 
+[data-text-align=left] {
+  text-align: start;
+}
+
+[data-text-align=center] {
+  text-align: center;
+}
+
 [data-flow=layout] {
   & > * + * {
     margin-block-start: calc(var(--component-spacing) / 2);
