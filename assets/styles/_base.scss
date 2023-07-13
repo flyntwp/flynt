@@ -414,7 +414,8 @@ flynt-component {
     padding-inline: var(--container-spacing);
 
     > .alignfull {
-      margin-inline: calc(var(--container-spacing) * -1);
+      margin-inline: auto;
+      max-inline-size: var(--container-max-width);
     }
   }
 }
