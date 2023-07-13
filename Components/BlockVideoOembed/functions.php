@@ -61,21 +61,7 @@ function getACFLayout()
                 'layout' => 'row',
                 'sub_fields' => [
                     FieldVariables\getTheme(),
-                    [
-                        'label' => __('Size', 'flynt'),
-                        'name' => 'size',
-                        'type' => 'radio',
-                        'other_choice' => 0,
-                        'save_other_choice' => 0,
-                        'layout' => 'horizontal',
-                        'choices' => [
-                            'small' => __('Small', 'flynt'),
-                            'medium' => __('Medium (Default)', 'flynt'),
-                            'wide' => __('Wide', 'flynt'),
-                            'full' => __('Full', 'flynt'),
-                        ],
-                        'default_value' => 'medium',
-                    ],
+                    FieldVariables\getSize()
                 ]
             ]
         ]

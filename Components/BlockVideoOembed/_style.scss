@@ -1,6 +1,5 @@
 flynt-component[name='BlockVideoOembed'] {
   .video {
-    margin: 0 auto;
     position: relative;
 
     &-player {
@@ -41,28 +40,6 @@ flynt-component[name='BlockVideoOembed'] {
       inset-block-start: 0;
       inset-inline-start: 0;
       position: absolute;
-    }
-
-    &[data-video-size='small'] {
-      max-inline-size: 375px;
-    }
-
-    &[data-video-size='medium'] {
-      max-inline-size: var(--content-max-width);
-    }
-
-    &[data-video-size='wide'] {
-      max-inline-size: var(--content-max-width-wide);
-    }
-
-    &[data-video-size='full'] {
-      max-inline-size: 100%;
-
-      .figure-caption {
-        margin-inline: auto;
-        max-inline-size: var(--container-max-width);
-        padding-inline: var(--container-spacing);
-      }
     }
   }
 
