@@ -10,7 +10,8 @@ const POST_TYPE = 'post';
 
 add_filter('Flynt/addComponentData?name=GridPostsLatest', function ($data) {
     $data['taxonomies'] = $data['taxonomies'] ?? [];
-    $postsPerPage = $data['options']['maxColumns'] ?? 3;
+    $data['options']['maxColumns'] = 3;
+    $postsPerPage = $data['options']['maxPosts'] ?? 3;
 
     $posts = Timber::get_posts([
         'post_status' => 'publish',
@@ -82,12 +83,11 @@ function getACFLayout()
                 'sub_fields' => [
                     FieldVariables\getTheme(),
                     [
-                        'label' => __('Max Columns', 'flynt'),
-                        'name' => 'maxColumns',
+                        'label' => __('Max Posts', 'flynt'),
+                        'name' => 'maxPosts',
                         'type' => 'number',
                         'default_value' => 3,
                         'min' => 1,
-                        'max' => 4,
                         'step' => 1
                     ]
                 ]
