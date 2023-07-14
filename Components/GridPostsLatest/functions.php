@@ -51,7 +51,7 @@ function getACFLayout()
                 'type' => 'wysiwyg',
                 'tabs' => 'visual,text',
                 'media_upload' => 0,
-                'delay' => 1,
+                'delay' => 0,
             ],
             [
                 'label' => __('Categories', 'flynt'),
@@ -112,7 +112,7 @@ Options::addTranslatable('GridPostsLatest', [
         'default_value' => '<h2>' . __('Related Posts', 'flynt') . '</h2>',
         'tabs' => 'visual,text',
         'media_upload' => 0,
-        'delay' => 1,
+        'delay' => 0,
     ],
     [
         'label' => __('Labels', 'flynt'),

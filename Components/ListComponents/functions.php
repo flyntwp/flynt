@@ -70,7 +70,7 @@ function getACFLayout()
                 'type' => 'wysiwyg',
                 'tabs' => 'visual,text',
                 'media_upload' => 0,
-                'delay' => 1,
+                'delay' => 0,
             ],
             [
                 'label' => __('Component Blocks', 'flynt'),

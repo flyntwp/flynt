@@ -20,7 +20,7 @@ Options::addTranslatable('ListSearchResults', [
         'required' => 1,
         'default_value' => __('Search Result', 'flynt'),
         'media_upload' => 0,
-        'delay' => 1,
+        'delay' => 0,
     ],
     [
         'label' => __('Labels', 'flynt'),

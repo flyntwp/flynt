@@ -30,7 +30,7 @@ Options::addTranslatable('FormPasswordProtection', [
         'label' => __('Text', 'flynt'),
         'name' => 'contentHtml',
         'type' => 'wysiwyg',
-        'delay' => 1,
+        'delay' => 0,
         'media_upload' => 0,
         'required' => 1,
         'default_value' => sprintf(

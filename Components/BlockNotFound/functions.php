@@ -17,7 +17,7 @@ Options::addTranslatable('BlockNotFound', [
         'instructions' => __('Content to be displayed on the 404 Not Found Page', 'flynt'),
         'name' => 'contentHtml',
         'type' => 'wysiwyg',
-        'delay' => 1,
+        'delay' => 0,
         'media_upload' => 0,
         'required' => 1,
         'default_value' => sprintf('<h1>%1$s</h1><p>%2$s</p>', __('Not Found', 'flynt'), __('The page you are looking for does not exist.', 'flynt')),
