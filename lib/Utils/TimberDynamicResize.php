@@ -5,6 +5,7 @@ namespace Flynt\Utils;
 use Twig\TwigFilter;
 use Timber\ImageHelper;
 use Timber\Image\Operation\Resize;
+use Timber\URLHelper;
 use WP;
 use WP_Rewrite;
 
@@ -216,10 +217,13 @@ class TimberDynamicResize
 
         if ($this->enabled) {
             $resizeOp = new Resize($w, $h, $crop);
+            if (URLHelper::is_external_content($src)) {
+                $src = ImageHelper::sideload_image($src);
+            }
             $fileinfo = pathinfo($src);
             $resizedUrl = $resizeOp->filename(
                 $fileinfo['dirname'] . '/' . $fileinfo['filename'],
-                $fileinfo['extension']
+                $fileinfo['extension'] ?? ''
             );
 
             if (empty($this->flyntResizedImages)) {
