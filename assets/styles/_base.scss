@@ -100,11 +100,10 @@ hr {
   margin: var(--flow-space) auto;
 
   &::after {
-    background-color: var(--color-text);
+    background-color: var(--color-border);
     block-size: 2px;
     content: "";
     display: block;
-    opacity: 0.28;
   }
 }
 
