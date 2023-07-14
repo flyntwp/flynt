@@ -5,7 +5,7 @@ flynt-component[name='BlockImageText'] {
       display: flex;
       gap: var(--column-gap);
       justify-content: space-around;
-      
+
       > * {
         flex-basis: 50%;
         margin-block-start: 0;
