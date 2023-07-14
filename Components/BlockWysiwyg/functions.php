@@ -18,15 +18,6 @@ function getACFLayout()
                 'endpoint' => 0,
             ],
             [
-                'label' => __('Text Align', 'flynt'),
-                'name' => 'textAlign',
-                'type' => 'button_group',
-                'choices' => [
-                    'left' => sprintf('<i class="dashicons dashicons-editor-alignleft" title="%1$s"></i>', __('Align text left', 'flynt')),
-                    'center' => sprintf('<i class="dashicons dashicons-editor-aligncenter" title="%1$s"></i>', __('Align text center', 'flynt'))
-                ]
-            ],
-            [
                 'label' => __('Text', 'flynt'),
                 'name' => 'contentHtml',
                 'type' => 'wysiwyg',
@@ -48,23 +39,17 @@ function getACFLayout()
                 'layout' => 'row',
                 'sub_fields' => [
                     FieldVariables\getTheme(),
-                    [
-                        'label' => __('Size', 'flynt'),
-                        'name' => 'size',
-                        'type' => 'radio',
-                        'other_choice' => 0,
-                        'save_other_choice' => 0,
-                        'layout' => 'horizontal',
-                        'choices' => [
-                            'medium' => __('Default', 'flynt'),
-                            'wide' => __('Wide', 'flynt)'),
-                            'full' => __('Full', 'flynt)'),
-                        ],
-                        'default_value' => 'medium',
-                        'wrapper' =>  [
-                            'width' => '100',
-                        ],
-                    ],
+                    FieldVariables\getSize(),
+                    FieldVariables\getTitleAlignment([
+                        'label' => __('Align', 'flynt'),
+                        'name' => 'align',
+                        'default' => 'center'
+                    ]),
+                    FieldVariables\getTitleTextAlignment([
+                        'label' => __('Text Align', 'flynt'),
+                        'name' => 'textAlign',
+                        'default' => 'left',
+                    ]),
                 ]
             ]
         ]
