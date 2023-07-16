@@ -43,11 +43,16 @@
       "textTransform": false,
       "fontSizes": [],
       "fontFamilies": []
-    }
+    },
+    "useRootPaddingAwareAlignments": true
   },
   "styles": {
 		"spacing": {
-			"blockGap": "var(--flow-space)"
+			"blockGap": "var(--flow-space)",
+      "padding": {
+        "left": "var(--container-spacing)",
+        "right": "var(--container-spacing)"
+      }
 		}
 	}
 }

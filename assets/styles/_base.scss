@@ -117,7 +117,7 @@ img {
   inline-size: 100%;
 
   .wp-block-image & {
-    inline-size: unset;
+    inline-size: initial;
   }
 }
 
@@ -396,6 +396,11 @@ flynt-component {
     margin: 0;
     padding: var(--component-spacing) 0;
   }
+}
+
+.wp-block-post-content > .alignfull {
+  margin-inline: auto;
+  max-inline-size: calc(var(--container-max-width) - (var(--container-spacing) * 2)) !important;
 }
 
 .groupContainer {
