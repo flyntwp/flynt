@@ -18,17 +18,12 @@ body,
   line-height: 1.5;
 }
 
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+h1, h2, h3, h4, h5, h6, 
+.h1, .h2, .h3, .h4, .h5, .h6 {
   --flow-space: 2.5rem;
   font-family: var(--font-family-heading);
   font-weight: 500;
   line-height: 1.3;
-
-  @media (max-width: $breakpoint-tablet) {
-    br {
-      display: none;
-    }
-  }
 }
 
 h1,
@@ -459,10 +454,17 @@ flynt-component {
   }
 }
 
-[data-size=wide],
-[data-size=full] {
-  p {
-    @media (max-width: $breakpoint-tablet) {
+// balance layouted text lines on mobile
+@media (max-width: $breakpoint-tablet - 1) {
+  [data-size=wide],
+  [data-size=full],
+  [data-text-align=center] {
+    p,
+    .paragraph,
+    h1, h2, h3, h4, h5, h6,
+    .h1, .h2, .h3, .h4, .h5, .h6 {
+      text-wrap: balance;
+
       br {
         display: none;
       }
