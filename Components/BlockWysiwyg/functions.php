@@ -40,16 +40,8 @@ function getACFLayout()
                 'sub_fields' => [
                     FieldVariables\getTheme(),
                     FieldVariables\getSize(),
-                    FieldVariables\getTitleAlignment([
-                        'label' => __('Align', 'flynt'),
-                        'name' => 'align',
-                        'default' => 'center'
-                    ]),
-                    FieldVariables\getTitleTextAlignment([
-                        'label' => __('Text Align', 'flynt'),
-                        'name' => 'textAlign',
-                        'default' => 'left',
-                    ]),
+                    FieldVariables\getAlignment(),
+                    FieldVariables\getTextAlignment()
                 ]
             ]
         ]

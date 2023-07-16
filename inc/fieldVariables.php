@@ -44,11 +44,11 @@ function getSize($default = 'medium')
     ];
 }
 
-function getTitleAlignment($args = [])
+function getAlignment($args = [])
 {
     $options = wp_parse_args($args, [
-        'label' => __('Title Align', 'flynt'),
-        'name' => 'titleAlign',
+        'label' => __('Align', 'flynt'),
+        'name' => 'align',
         'default' => 'center',
     ]);
 
@@ -67,12 +67,12 @@ function getTitleAlignment($args = [])
     ];
 }
 
-function getTitleTextAlignment($args = [])
+function getTextAlignment($args = [])
 {
     $options = wp_parse_args($args, [
-        'label' => __('Title Text Align', 'flynt'),
-        'name' => 'titleTextAlign',
-        'default' => 'center',
+        'label' => __('Align text', 'flynt'),
+        'name' => 'textAlign',
+        'default' => 'left',
     ]);
 
     return [
