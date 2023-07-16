@@ -17,7 +17,6 @@
           <span class="visuallyHidden">{{ labels.postedIn|e }}</span>
           <small>{{ post.category }}</small>
         </a>
-        <time class="date" datetime="{{ post.post_date|date('c') }}"><small>{{ post.post_date|date(dateFormat) }}</small></time>
         <span class="readingtime"><small>{{ labels.readingTime|replace({'%d': post.content|readingtime})|e }}</small></span>
       </p>
     </div>
