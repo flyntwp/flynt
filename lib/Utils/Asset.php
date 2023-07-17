@@ -58,7 +58,7 @@ class Asset
         if (file_exists($file)) {
             return file_get_contents($file);
         } else {
-            trigger_error("File not found at: ${asset}", E_USER_WARNING);
+            trigger_error("File not found at: {$asset}", E_USER_WARNING);
             return false;
         }
     }
