@@ -12,8 +12,16 @@ flynt-component[name='BlockSpacer'] {
     }
   }
 
-  &[data-theme] + .componentSpacing {
+  &[data-theme][data-status='collapse'] + .componentSpacing {
     &[data-theme] {
+      margin-block-start: 0;
+      padding-block-start: 0;
+    }
+  }
+
+  &[data-theme][data-status='expand'] + .componentSpacing {
+    &[data-theme] {
+      margin-block-start: calc(-1 * var(--component-spacing));
       padding-block-start: 0;
     }
   }
