@@ -37,7 +37,7 @@ npm run build
 ```
 
 6. Open the WordPress back-end and activate the Flynt theme.
-7. Run `npm run start` and start developing.
+7. Run `npm start` and start developing.
 
 ## Usage
 
