@@ -18,16 +18,8 @@
 ## Install
 
 1. Clone this repo to `<your-project>/wp-content/themes`.
-2. Change the domain variable in `flynt/build-config.js` to match your domain: `const domain = 'your-project.test'`
-3. Create a `.env` file in the theme folder.
-4. Define ssl certificate variables to enable ssl support for the vite dev server:
-
-```
-VITE_DEV_SERVER_KEY=<path-to-ssl-certificate-key>/your-project.test_key.pem
-VITE_DEV_SERVER_CERT=<path-to-ssl-certificate-cert>/your-project.test_cert.pem
-```
-
-5. Navigate to the theme folder and run the following command in your terminal:
+2. Change the domain variable in `flynt/vite.config.js` to match your domain: `const wordpressHost = 'http://your-project.test'`
+3. Navigate to the theme folder and run the following command in your terminal:
 
 ```
 # wp-content/themes/flynt
@@ -36,14 +28,18 @@ npm install
 npm run build
 ```
 
-6. Open the WordPress back-end and activate the Flynt theme.
-7. Run `npm start` and start developing.
+4. Open the WordPress backend and activate the Flynt theme.
 
 ## Usage
 
-In your terminal, navigate to `<your-project>/wp-content/themes/flynt` and run `npm start`. This will start the dev server.
+To start developing run the following command:
 
-All files in `assets` and `Components` will now be watched for changes and compiled to the `dist` folder. Happy coding!
+```
+# wp-content/themes/flynt
+npm start
+```
+
+All files in `assets` and `Components` will now be watched for changes and served. Happy coding!
 
 ### Base Style
 
@@ -311,6 +307,15 @@ In this care try to set the relative upload path manually and refresh the permal
 add_filter('Flynt/TimberDynamicResize/relativeUploadDir', function () {
     return 'app/uploads'; // Example for Bedrock installs.
 });
+```
+
+### SSL certificate for dev server
+
+If you want to use https in development, please define the following variables inside a `.env` file:
+
+```
+VITE_DEV_SERVER_KEY=<path-to-ssl-certificate-key>/your-project.test_key.pem
+VITE_DEV_SERVER_CERT=<path-to-ssl-certificate-cert>/your-project.test_cert.pem
 ```
 
 ## Maintainers
