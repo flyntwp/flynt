@@ -32,7 +32,7 @@ VITE_DEV_SERVER_CERT=<path-to-ssl-certificate-cert>/your-project.test_cert.pem
 ```
 # wp-content/themes/flynt
 composer install
-npm i
+npm install
 npm run build
 ```
 
