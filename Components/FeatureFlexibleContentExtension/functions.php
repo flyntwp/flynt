@@ -28,7 +28,7 @@ add_filter('acf/fields/flexible_content/layout_title', function ($title, $field,
     $componentPath = str_replace(get_template_directory(), '', $componentPathFull);
     $templateDirectoryUri = get_template_directory_uri();
     $componentScreenshotPath = "{$componentPathFull}/screenshot.png";
-    $componentScreenshotUrl = "{$templateDirectoryUri}/{$componentPath}/screenshot.png";
+    $componentScreenshotUrl = "{$templateDirectoryUri}/{$componentPath}/screenshot.png?v=" . wp_get_theme()->get('Version');
     if (is_file($componentScreenshotPath)) {
         $imageSize = getimagesize($componentScreenshotPath);
         $newTitle = '<span class="flyntComponentScreenshot">';
