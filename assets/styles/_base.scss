@@ -400,7 +400,7 @@ flynt-component {
 
 .wp-block-post-content > .alignfull {
   margin-inline: auto;
-  max-inline-size: calc(var(--container-max-width) - (var(--container-spacing) * 2)) !important;
+  max-inline-size: var(--content-max-width-full) !important;
 }
 
 .groupContainer {
@@ -411,7 +411,7 @@ flynt-component {
 
 .container {
   margin-inline: auto;
-  max-inline-size: var(--container-max-width);
+  max-inline-size: calc(var(--content-max-width-full) + var(--container-spacing) * 2);
   padding-inline: var(--container-spacing);
 
   &[data-size=full] {
