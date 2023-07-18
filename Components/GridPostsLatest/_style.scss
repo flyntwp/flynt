@@ -1,6 +1,6 @@
 flynt-component[name='GridPostsLatest'] {
   .grid {
-    --grid-item-width: calc((1200px - 2 * var(--flow-space)) / 3);
+    --grid-item-width: calc((var(--content-max-width-full) - 2 * var(--flow-space)) / 3);
     display: grid;
     gap: var(--flow-space);
     grid-template-columns: repeat(auto-fit, min(var(--grid-item-width), 100%));
