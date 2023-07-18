@@ -1,0 +1,10 @@
+/.editorconfig export-ignore
+/.github/ export-ignore
+/.gitignore export-ignore
+/.scrutinizr.yml export-ignore
+/.travis.yml export-ignore
+/composer.lock export-ignore
+/package-lock.json export-ignore
+/phpcs.xml.dist export-ignore
+/vite-plugin-flynt.js export-ignore
+/vite.config.js export-ignore
