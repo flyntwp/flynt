@@ -315,13 +315,14 @@ add_filter('Flynt/TimberDynamicResize/relativeUploadDir', function () {
 
 ## Maintainers
 
-This project is maintained by [bleech](https://github.com/bleech).
+This project is maintained by [Bleech](https://bleech.de/en/).
 
 The main people in charge of this repo are:
 
 * [Steffen Bewersdorff](https://github.com/steffenbew)
 * [Dominik Tränklein](https://github.com/domtra)
 * [Timo Hubois](https://github.com/timohubois)
+* [Harun Bašić](https://github.com/harunbleech)
 
 ## Contributing
 
@@ -331,4 +332,4 @@ If editing the README, please conform to the [standard-readme](https://github.co
 
 ## License
 
-MIT © [bleech](https://www.bleech.de)
+MIT © [Bleech](https://bleech.de/en/)
