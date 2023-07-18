@@ -18,7 +18,7 @@ body,
   line-height: 1.5;
 }
 
-h1, h2, h3, h4, h5, h6, 
+h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   --flow-space: 2.5rem;
   font-family: var(--font-family-heading);
@@ -336,7 +336,8 @@ label {
 }
 
 select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='38' fill='none'%3E%3Crect width='38' height='38' fill='rgba(255, 255, 255, 0.7)' rx='19'/%3E%3Cpath stroke='rgba(48, 48, 48, 1)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8.846 13.846 19 24l10.154-10.154'/%3E%3C/svg%3E");  background-position: calc(100% - 0.75rem) center;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='38' fill='none'%3E%3Crect width='38' height='38' fill='rgba(255, 255, 255, 0.7)' rx='19'/%3E%3Cpath stroke='rgba(48, 48, 48, 1)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8.846 15.846 19 26l10.153-10.154'/%3E%3C/svg%3E");
+  background-position: calc(100% - 0.75rem) center;
   background-repeat: no-repeat;
   background-size: 1.75rem;
   line-height: 1.5;
