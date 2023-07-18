@@ -25,8 +25,8 @@ class TwigExtensionPlaceholderImage extends AbstractExtension
     /**
      * Render placeholder image.
      *
-     * @param integer|float $width The width of the placeholder image.
-     * @param integer|float $height The height of the placeholder image.
+     * @param float $width The width of the placeholder image.
+     * @param float $height The height of the placeholder image.
      * @param string $color The color of the placeholder image.
      *
      * @return string The placeholder image.
