@@ -1,46 +1,42 @@
-import $ from 'jquery'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
+import delegate from 'delegate-event-listener'
+import { buildRefs } from '@/assets/scripts/helpers.js'
 
-class NavigationBurger extends window.HTMLElement {
-  constructor (...args) {
-    const self = super(...args)
-    self.init()
-    return self
-  }
+export default function (el) {
+  let isMenuOpen
+  const refs = buildRefs(el)
+  const navigationHeight = parseInt(window.getComputedStyle(el).getPropertyValue('--navigation-height')) || 0
 
-  init () {
-    this.$ = $(this)
-    this.bindFunctions()
-    this.bindEvents()
-    this.resolveElements()
-  }
+  const isDesktopMediaQuery = window.matchMedia('(min-width: 1024px)')
+  isDesktopMediaQuery.addEventListener('change', onBreakpointChange)
 
-  bindFunctions () {
-    this.triggerMenu = this.triggerMenu.bind(this)
-  }
+  el.addEventListener('click', delegate('[data-ref="menuButton"]', onMenuButtonClick))
 
-  bindEvents () {
-    this.$.on('click', '[data-toggle-menu]', this.triggerMenu)
-  }
+  onBreakpointChange()
 
-  resolveElements () {
-    this.$menu = $('.menu', this)
-    this.$menuButton = $('.hamburger', this)
-  }
+  function onMenuButtonClick (e) {
+    isMenuOpen = !isMenuOpen
+    refs.menuButton.setAttribute('aria-expanded', isMenuOpen)
 
-  connectedCallback () {}
-
-  triggerMenu (e) {
-    this.$.toggleClass('flyntComponent-menuIsOpen')
-    this.$menuButton.attr('aria-expanded', this.$menuButton.attr('aria-expanded') === 'false' ? 'true' : 'false')
-    if (this.$.hasClass('flyntComponent-menuIsOpen')) {
-      disableBodyScroll(this.$menu.get(0))
+    if (isMenuOpen) {
+      el.setAttribute('data-status', 'menuIsOpen')
+      disableBodyScroll(refs.menu)
     } else {
-      enableBodyScroll(this.$menu.get(0))
+      el.removeAttribute('data-status')
+      enableBodyScroll(refs.menu)
     }
   }
-}
 
-window.customElements.define('flynt-navigation-burger', NavigationBurger, {
-  extends: 'nav'
-})
+  function onBreakpointChange () {
+    if (!isDesktopMediaQuery.matches) {
+      setScrollPaddingTop()
+    }
+  }
+
+  function setScrollPaddingTop () {
+    const scrollPaddingTop = document.getElementById('wpadminbar')
+      ? navigationHeight + document.getElementById('wpadminbar').offsetHeight
+      : navigationHeight
+    document.documentElement.style.scrollPaddingTop = `${scrollPaddingTop}px`
+  }
+}

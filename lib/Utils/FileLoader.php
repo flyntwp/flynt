@@ -4,6 +4,9 @@ namespace Flynt\Utils;
 
 use DirectoryIterator;
 
+/**
+ * Provides a set of methods that are used to load files.
+ */
 class FileLoader
 {
     /**
@@ -17,7 +20,7 @@ class FileLoader
      *
      * @return array An array of the callback results.
      */
-    public static function iterateDir($dir, callable $callback)
+    public static function iterateDir(string $dir, callable $callback)
     {
         $output = [];
 
@@ -49,34 +52,45 @@ class FileLoader
      *
      * @param string $dir Directory to search through.
      * @param array $files Optional array of files to include. If this is set, only the files specified will be loaded.
+     *
+     * @return void
      */
-    public static function loadPhpFiles($dir, $files = [])
+    public static function loadPhpFiles(string $dir, array $files = [])
     {
         $dir = trim($dir, '/');
 
         if (count($files) === 0) {
             $dir = get_template_directory() . '/' . $dir;
+            $phpFiles = [];
 
-            self::iterateDir($dir, function ($file) {
+            self::iterateDir($dir, function ($file) use (&$phpFiles) {
                 if ($file->isDir()) {
                     $dirPath = trim(str_replace(get_template_directory(), '', $file->getPathname()), '/');
                     self::loadPhpFiles($dirPath);
                 } elseif ($file->isFile() && $file->getExtension() === 'php') {
                     $filePath = $file->getPathname();
-                    require_once $filePath;
+                    $phpFiles[] = $filePath;
                 }
             });
+
+            // Sort files alphabetically.
+            sort($phpFiles);
+            foreach ($phpFiles as $phpFile) {
+                require_once $phpFile;
+            }
         } else {
-            array_walk($files, function ($file) use ($dir) {
+            sort($files);
+
+            foreach ($files as $file) {
                 $filePath = $dir . '/' . ltrim($file, '/');
 
                 if (!locate_template($filePath, true, true)) {
                     trigger_error(
-                        sprintf('Error locating %s for inclusion', $filePath),
+                        sprintf(__('Error locating %s for inclusion', 'flynt'), $filePath),
                         E_USER_ERROR
                     );
                 }
-            });
+            }
         }
     }
 }

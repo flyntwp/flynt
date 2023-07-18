@@ -8,29 +8,20 @@ function getACFLayout()
 {
     return [
         'name' => 'blockWysiwyg',
-        'label' => 'Block: Wysiwyg',
+        'label' => __('Block: Wysiwyg', 'flynt'),
         'sub_fields' => [
             [
-                'label' => __('General', 'flynt'),
-                'name' => 'generalTab',
+                'label' => __('Content', 'flynt'),
+                'name' => 'contentTab',
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0,
             ],
             [
-                'label' => __('Text Alignment', 'flynt'),
-                'name' => 'textAlignment',
-                'type' => 'button_group',
-                'choices' => [
-                    'textLeft' => '<i class=\'dashicons dashicons-editor-alignleft\' title=\'Align text left\'></i>',
-                    'textCenter' => '<i class=\'dashicons dashicons-editor-aligncenter\' title=\'Align text center\'></i>'
-                ]
-            ],
-            [
-                'label' => __('Content', 'flynt'),
+                'label' => __('Text', 'flynt'),
                 'name' => 'contentHtml',
                 'type' => 'wysiwyg',
-                'delay' => 1,
+                'delay' => 0,
                 'media_upload' => 0,
                 'required' => 1,
             ],
@@ -47,7 +38,10 @@ function getACFLayout()
                 'type' => 'group',
                 'layout' => 'row',
                 'sub_fields' => [
-                    FieldVariables\getTheme()
+                    FieldVariables\getTheme(),
+                    FieldVariables\getSize(),
+                    FieldVariables\getAlignment(),
+                    FieldVariables\getTextAlignment()
                 ]
             ]
         ]

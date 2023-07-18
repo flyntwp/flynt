@@ -1,57 +1,39 @@
-import $ from 'jquery'
+/* globals fetch, DOMParser */
+import delegate from 'delegate-event-listener'
+import { buildRefs } from '@/assets/scripts/helpers.js'
 
-class GridPostsArchive extends window.HTMLDivElement {
-  constructor (...args) {
-    const self = super(...args)
-    self.init()
-    return self
-  }
+export default function (el) {
+  const refs = buildRefs(el)
 
-  init () {
-    this.$ = $(this)
-    this.resolveElements()
-    this.bindFunctions()
-    this.bindEvents()
-  }
+  el.addEventListener('click', delegate('[data-ref="loadMore"]', onLoadMore))
 
-  resolveElements () {
-    this.$posts = $('.posts', this)
-    this.$pagination = $('.pagination', this)
-  }
-
-  bindFunctions () {
-    this.onLoadMore = this.onLoadMore.bind(this)
-  }
-
-  bindEvents () {
-    this.$.on('click', '[data-action="loadMore"]', this.onLoadMore)
-  }
-
-  onLoadMore (e) {
+  async function onLoadMore (e) {
     e.preventDefault()
 
-    const $target = $(e.currentTarget).addClass('button--disabled')
+    const target = e.delegateTarget
+    target.classList.add('button--disabled')
 
-    const url = new URL(e.currentTarget.href)
-    url.searchParams.append('contentOnly', 1)
+    const url = new URL(target.href)
 
-    $.ajax({
-      url: url
-    }).then(
-      response => {
-        const $html = $(response)
-        const $posts = $('.posts', $html)
-        const $pagination = $('.pagination', $html)
+    try {
+      const response = await fetch(url)
+      const responseAsText = await response.text()
 
-        this.$posts.append($posts.html())
-        this.$pagination.html($pagination.html() || '')
-      },
-      response => {
-        console.error(response)
-        $target.removeClass('button--disabled')
+      const parser = new DOMParser()
+      const html = parser.parseFromString(responseAsText, 'text/html')
+      const posts = html.querySelector('flynt-component[name="GridPostsArchive"] [data-ref="posts"]')
+      const pagination = html.querySelector('flynt-component[name="GridPostsArchive"] [data-ref="pagination"]')
+
+      refs.posts.append(...posts.children)
+
+      refs.pagination.textContent = ''
+      if (pagination) {
+        refs.pagination.append(...pagination.children)
       }
-    )
+
+      target.classList.remove('button--disabled')
+    } catch (e) {
+      console.error(e)
+    }
   }
 }
-
-window.customElements.define('flynt-grid-posts-archive', GridPostsArchive, { extends: 'div' })

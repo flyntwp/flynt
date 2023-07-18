@@ -4,12 +4,11 @@
  * Moves most relevant editor buttons to the first toolbar
  * and provides config for creating new toolbars, block formats, and style formats.
  * See the TinyMce documentation for more information: https://www.tiny.cloud/docs/
- *
  */
 
 namespace Flynt\TinyMce;
 
-// First Toolbar
+// First Toolbar.
 add_filter('mce_buttons', function ($buttons) {
     $config = getConfig();
     if ($config && isset($config['toolbars'])) {
@@ -21,10 +20,8 @@ add_filter('mce_buttons', function ($buttons) {
     return $buttons;
 });
 
-// Second Toolbar
-add_filter('mce_buttons_2', function ($buttons) {
-    return [];
-});
+// Second Toolbar.
+add_filter('mce_buttons_2', '__return_empty_array');
 
 add_filter('tiny_mce_before_init', function ($init) {
     $config = getConfig();
@@ -42,7 +39,7 @@ add_filter('tiny_mce_before_init', function ($init) {
 });
 
 add_filter('acf/fields/wysiwyg/toolbars', function ($toolbars) {
-    // Load Toolbars and parse them into TinyMCE
+    // Load Toolbars and parse them into TinyMCE.
     $config = getConfig();
     if ($config && !empty($config['toolbars'])) {
         $toolbars = array_map(function ($toolbar) {
@@ -58,7 +55,7 @@ function getBlockFormats($blockFormats)
     if (!empty($blockFormats)) {
         $blockFormatStrings = array_map(
             function ($tag, $label) {
-                return "${label}=${tag}";
+                return "{$label}={$tag}";
             },
             $blockFormats,
             array_keys($blockFormats)
@@ -72,87 +69,76 @@ function getConfig()
 {
     return [
         'blockformats' => [
-            'Paragraph' => 'p',
-            'Heading 1' => 'h1',
-            'Heading 2' => 'h2',
-            'Heading 3' => 'h3',
-            'Heading 4' => 'h4',
-            'Heading 5' => 'h5',
-            'Heading 6' => 'h6'
+            __('Paragraph', 'flynt') => 'p',
+            __('Heading 1', 'flynt') => 'h1',
+            __('Heading 2', 'flynt') => 'h2',
+            __('Heading 3', 'flynt') => 'h3',
+            __('Heading 4', 'flynt') => 'h4',
+            __('Heading 5', 'flynt') => 'h5',
+            __('Heading 6', 'flynt') => 'h6'
         ],
         'styleformats' => [
             [
-                'title' => 'Headings',
+                'title' => __('Headings', 'flynt'),
                 'icon' => '',
                 'items' => [
                     [
-                        'title' => 'Heading 1',
+                        'title' => __('Heading 1', 'flynt'),
                         'classes' => 'h1',
                         'selector' => '*'
                     ],
                     [
-                        'title' => 'Heading 2',
+                        'title' => __('Heading 2', 'flynt'),
                         'classes' => 'h2',
                         'selector' => '*'
                     ],
                     [
-                        'title' => 'Heading 3',
+                        'title' => __('Heading 3', 'flynt'),
                         'classes' => 'h3',
                         'selector' => '*'
                     ],
                     [
-                        'title' => 'Heading 4',
+                        'title' => __('Heading 4', 'flynt'),
                         'classes' => 'h4',
                         'selector' => '*'
                     ],
                     [
-                        'title' => 'Heading 5',
+                        'title' => __('Heading 5', 'flynt'),
                         'classes' => 'h5',
                         'selector' => '*'
                     ],
                     [
-                        'title' => 'Heading 6',
+                        'title' => __('Heading 6', 'flynt'),
                         'classes' => 'h6',
                         'selector' => '*'
                     ],
                 ]
             ],
             [
-                'title' => 'Buttons',
+                'title' => __('Buttons', 'flynt'),
                 'icon' => '',
                 'items' => [
                     [
-                        'title' => 'Button',
+                        'title' => __('Button', 'flynt'),
                         'classes' => 'button',
                         'selector' => 'a,button'
                     ],
                     [
-                        'title' => 'Button Ghost',
-                        'classes' => 'button--ghost',
+                        'title' => __('Button Outlined', 'flynt'),
+                        'classes' => 'button--outlined',
                         'selector' => '.button'
                     ],
                     [
-                        'title' => 'Button Small',
-                        'classes' => 'button--small',
+                        'title' => __('Button Text', 'flynt'),
+                        'classes' => 'button--text',
                         'selector' => '.button'
                     ],
-                    [
-                        'title' => 'Button Link',
-                        'classes' => 'button--link',
-                        'selector' => '.button'
-                    ]
                 ]
             ],
             [
-                'title' => 'Icon Lists',
-                'icon' => '',
-                'items' => [
-                    [
-                        'title' => 'Check Circle',
-                        'classes' => 'iconList iconList--checkCircle',
-                        'selector' => 'ul,ol'
-                    ]
-                ]
+                'title' => __('Paragraph', 'flynt'),
+                'classes' => 'paragraph',
+                'selector' => '*'
             ]
         ],
         'toolbars' => [

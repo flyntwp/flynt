@@ -1,22 +1,24 @@
-<div class="flyntComponent componentSpacing {{ options.theme }}" is="flynt-slider-images">
+<flynt-component name="SliderImages" load:on="visible" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
   <script type="application/json">{{ jsonData|json_encode }}</script>
-  <div class="centerMaxWidthContainer">
+  <div class="container" data-flow="layout">
     {% if preContentHtml %}
-      <div class="preContent">
+      <div data-size="medium" data-align="center" data-text-align="center">
         {{ preContentHtml|e('wp_kses_post') }}
       </div>
     {% endif %}
-    <div data-slider class="slider swiper-container themeLight">
+    <div data-ref="slider" class="slider swiper-container" data-size="wide" data-align="center">
       <div class="swiper-wrapper">
         {% for image in images %}
           <div class="slider-item swiper-slide">
             <figure class="figure">
               <img class="figure-image lazyload"
                 src="{{ image.src|resizeDynamic(0, 540) }}"
-                srcset="{{ placeholderImage(image.aspect * 540, 540) }}"
+                width="{{ (540 * image.aspect )|round }}"
+                height="{{ 540 }}"
+                srcset="{{ placeholderImage((540 * image.aspect)|round, 540, 'rgba(125, 125, 125, 0.1)') }}"
                 data-srcset="
                   {{ image.src|resizeDynamic(0, 1080) }} {{ (image.aspect * 1080)|round }}w,
-                  {{ image.src|resizeDynamic(0, 800) }} {{ (image.aspect * 800)|round }}w,
+                  {{ image.src|resizeDynamic(0, 860) }} {{ (image.aspect * 860)|round }}w,
                   {{ image.src|resizeDynamic(0, 540) }} {{ (image.aspect * 540)|round }}w,
                   {{ image.src|resizeDynamic(0, 385) }} {{ (image.aspect * 385)|round }}w,
                   {{ image.src|resizeDynamic(0, 250) }} {{ (image.aspect * 250)|round }}w"
@@ -29,12 +31,8 @@
           </div>
         {% endfor %}
       </div>
-      <button type="button" data-slider-button="prev" class="slider-button slider-button--prev">
-        <i data-feather="arrow-left"></i>
-      </button>
-      <button type="button" data-slider-button="next" class="slider-button slider-button--next">
-        <i data-feather="arrow-right"></i>
-      </button>
+      <button type="button" data-ref="prev" class="slider-button slider-button--prev" aria-label="{{ sliderOptions.a11y.prevSlideMessage|e }}"></button>
+      <button type="button" data-ref="next" class="slider-button slider-button--next" aria-label="{{ sliderOptions.a11y.nextSlideMessage|e }}"></button>
     </div>
   </div>
-</div>
+</flynt-component>

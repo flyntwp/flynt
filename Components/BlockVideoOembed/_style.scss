@@ -1,27 +1,49 @@
-[is='flynt-block-video-oembed'] {
-  @import 'Partials/video';
+flynt-component[name='BlockVideoOembed'] {
+  .video {
+    position: relative;
 
-  &.flyntComponent--sizeSmall {
-    .video {
-      max-width: 375px;
+    &-player {
+      block-size: 0;
+      inline-size: 100%;
+      inset-block-start: 0;
+      margin-block-start: 0;
+      padding-block-end: calc(100% / 16 * 9);
+      position: absolute;
+      z-index: 10;
+
+      &[data-state='isLoading'] {
+        .video-loader {
+          display: block;
+        }
+
+        .video-playButton {
+          display: none;
+        }
+      }
+
+      &[data-state='isLoaded'] {
+        .video-loader,
+        .video-playButton {
+          display: none;
+        }
+
+        iframe {
+          display: block;
+        }
+      }
+    }
+
+    iframe {
+      block-size: 100%;
+      display: none;
+      inline-size: 100%;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      position: absolute;
     }
   }
 
-  &.flyntComponent--sizeMedium {
-    .video {
-      max-width: $content-max-width;
-    }
-  }
-
-  &.flyntComponent--sizeLarge {
-    .video {
-      max-width: 800px;
-    }
-  }
-
-  &.flyntComponent--sizeFull {
-    .figure-caption {
-      margin-left: 0.625rem;
-    }
-  }
+  @import 'Partials/figure';
+  @import 'Partials/videoPlayButton';
+  @import 'Partials/videoLoader';
 }

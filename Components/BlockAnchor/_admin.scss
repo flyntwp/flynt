@@ -1,0 +1,37 @@
+.acf-field {
+  .anchorLink {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    inline-size: 100%;
+    justify-content: space-between;
+    position: relative;
+
+    &-url {
+      margin: 0 0 -10px;
+      pointer-events: initial;
+    }
+
+    &-button {
+      align-items: center;
+      display: flex;
+    }
+
+    [data-copy-anchor-link] {
+      align-items: center;
+      display: flex;
+
+      svg {
+        inline-size: 100%;
+      }
+    }
+
+    &-message {
+      color: #008000;
+      display: none;
+      inset-block-start: -22px;
+      inset-inline-end: 0;
+      position: absolute;
+    }
+  }
+}

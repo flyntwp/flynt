@@ -1,32 +1,32 @@
-<div class="flyntComponent componentSpacing {{ options.theme }}" is="flynt-list-components">
-  <div class="container centerMaxWidthContainer">
+<flynt-component name="ListComponents" load:on="visible" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
+  <div class="container" data-flow="layout">
     {% if preContentHtml %}
-      <div class="preContent">
+      <div data-size="full" data-align="left">
         {{ preContentHtml|e('wp_kses_post')}}
       </div>
     {% endif %}
     <ul class="components">
       {% for componentBlock in componentBlocks %}
         {% if componentBlock.readme %}
-          <li class="component boxShadow">
+          <li class="component boxBorder" data-theme="reset">
             {% if componentBlock.ctas.primary %}
-              <a href="{{ componentBlock.ctas.primary }}" class="component-link" aria-hidden="true" tabindex="-1">
+              <a href="{{ componentBlock.ctas.primary|e('esc_url') }}" class="componentLink" aria-hidden="true" tabindex="-1">
             {% else %}
-              <div class="component-link">
+              <div class="componentLink">
             {% endif %}
               {% if componentBlock.componentScreenshot %}
-                <div class="component-image">
-                  <div class="component-imageWrapper">
-                    <img class="lazyload image {{ componentBlock.componentScreenshot.aspect > (1280/800) ? 'image--isSmallerThanWrapper' }} "
-                        src="{{ placeholderImage(600, 600 / componentBlock.componentScreenshot.aspect) }}"
-                        data-src="{{ componentBlock.componentScreenshot.src }}"
-                        data-sizes="auto"
-                        alt="{{ componentBlock.readme.title|e }}">
-                  </div>
+                <div class="imageWrapper">
+                  <img data-refs="images" class="lazyload image {{ componentBlock.componentScreenshot.aspect > (1280/800) ? 'image--isSmallerThanWrapper' }} "
+                      src="{{ placeholderImage(760, 760 / componentBlock.componentScreenshot.aspect, 'rgba(125, 125, 125, 0.1)') }}"
+                      width="{{ 760 }}"
+                      height="{{ (760 / componentBlock.componentScreenshot.aspect)|round }}"
+                      data-src="{{ componentBlock.componentScreenshot.src }}"
+                      data-sizes="auto"
+                      alt="{{ componentBlock.readme.title|e }}">
                 </div>
               {% endif %}
-              <div class="component-description boxPadding">
-                <h2 class="h3">{{ componentBlock.readme.title }}</h2>
+              <div class="content boxPadding">
+                <h3 class="h5">{{ componentBlock.readme.title }}</h3>
                 {{ componentBlock.readme.description }}
               </div>
             {% if componentBlock.ctas.primary %}
@@ -35,18 +35,16 @@
               </div>
             {% endif %}
             {% if componentBlock.ctas.primary or componentBlock.ctas.secondary %}
-              <footer class="component-footer">
+              <footer>
                 {% if componentBlock.ctas.secondary %}
-                  <a href="{{ componentBlock.ctas.secondary }}" target="_blank" rel="noreferrer noopener" class="component-ctaSecondary">
-                    <i data-feather="github"></i> {{ labels.code }}
-                    <span class="visuallyHidden">{{ __("of Component", "flynt")}} {{ componentBlock.readme.title }}</span>
+                  <a href="{{ componentBlock.ctas.secondary|e('esc_url') }}" target="_blank" rel="noreferrer noopener" class="component-ctaSecondary">
+                    {{ labels.code }}
+                    <span class="visuallyHidden">{{ componentBlock.readme.title ~ ' ' ~ labels.code }}</span>
                   </a>
                 {% endif %}
                 {% if componentBlock.ctas.primary %}
-                  <a href="{{ componentBlock.ctas.primary }}" class="button button--link component-ctaPrimary">
-                  {{ labels.preview }}
-                    <span class="visuallyHidden">{{ __("of Component", "flynt")}} {{ componentBlock.readme.title }}</span>
-                  </a>
+                  <a href="{{ componentBlock.ctas.primary|e('esc_url') }}" class="button button--text">
+                  {{ labels.preview }}<span class="visuallyHidden">{{ componentBlock.readme.title }}</span></a>
                 {% endif %}
               </footer>
             {% endif %}
@@ -55,4 +53,4 @@
       {% endfor %}
     </ul>
   </div>
-</div>
+</flynt-component>

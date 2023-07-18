@@ -6,21 +6,21 @@ use Flynt\Utils\Options;
 
 Options::addTranslatable('ListSearchResults', [
     [
-        'label' => __('General', 'flynt'),
-        'name' => 'generalTab',
+        'label' => __('Content', 'flynt'),
+        'name' => 'contentTab',
         'type' => 'tab',
         'placement' => 'top',
         'endpoint' => 0
     ],
     [
         'label' => __('Title', 'flynt'),
+        'instructions' => __('Title of the search Page.', 'flynt'),
         'name' => 'preContentHtml',
         'type' => 'wysiwyg',
         'required' => 1,
-        'default_value' => 'Search Result ',
-        'instructions' => __('Title of the search Page.', 'flynt'),
+        'default_value' => __('Search Result', 'flynt'),
         'media_upload' => 0,
-        'delay' => 1,
+        'delay' => 0,
     ],
     [
         'label' => __('Labels', 'flynt'),
@@ -36,9 +36,9 @@ Options::addTranslatable('ListSearchResults', [
         'sub_fields' => [
             [
                 'label' => __('Previous', 'flynt'),
-                'name' => 'previousLabel',
+                'name' => 'previous',
                 'type' => 'text',
-                'default_value' => 'Previous',
+                'default_value' => __('Prev', 'flynt'),
                 'required' => 1,
                 'wrapper' => [
                     'width' => '50',
@@ -46,9 +46,9 @@ Options::addTranslatable('ListSearchResults', [
             ],
             [
                 'label' => __('Next', 'flynt'),
-                'name' => 'nextLabel',
+                'name' => 'next',
                 'type' => 'text',
-                'default_value' => 'Next',
+                'default_value' => __('Next', 'flynt'),
                 'required' => 1,
                 'wrapper' => [
                     'width' => '50',
@@ -56,22 +56,22 @@ Options::addTranslatable('ListSearchResults', [
             ],
             [
                 'label' => __('Placeholder - Search', 'flynt'),
+                'instructions' => __('The text for the input field.', 'flynt'),
                 'name' => 'searchPlaceholder',
                 'type' => 'text',
                 'required' => 1,
-                'default_value' => 'Search...',
-                'instructions' => 'The text for the input field.',
+                'default_value' => __('Search …', 'flynt'),
                 'wrapper' => [
                     'width' => '50',
                 ],
             ],
             [
                 'label' => __('Button - Search', 'flynt'),
+                'instructions' => __('The text for the search button', 'flynt'),
                 'name' => 'search',
                 'type' => 'text',
-                'default_value' => 'Search',
+                'default_value' => __('Search', 'flynt'),
                 'required' => 1,
-                'instructions' => 'The text for the search button.',
                 'wrapper' => [
                     'width' => '50',
                 ],
@@ -80,7 +80,7 @@ Options::addTranslatable('ListSearchResults', [
                 'label' => __('Read More', 'flynt'),
                 'name' => 'readMore',
                 'type' => 'text',
-                'default_value' => 'Read More',
+                'default_value' => __('Read More', 'flynt'),
                 'required' => 1,
                 'wrapper' => [
                     'width' => '50',
@@ -90,7 +90,7 @@ Options::addTranslatable('ListSearchResults', [
                 'label' => __('No Results', 'flynt'),
                 'name' => 'noResults',
                 'type' => 'text',
-                'default_value' => 'No results found.',
+                'default_value' => __('No results found.', 'flynt'),
                 'required' => 1,
                 'wrapper' => [
                     'width' => '50',

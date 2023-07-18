@@ -1,41 +1,42 @@
-[is='flynt-block-post-footer'] {
+flynt-component[name='BlockPostFooter'] {
   .tags {
-    @include reset-list;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
 
-    &-item {
+    .tag {
       display: inline-block;
-      margin-top: 5px;
     }
   }
 
   .author {
     display: flex;
-    margin: 3rem 0;
+    flex-direction: column;
+    gap: calc(var(--flow-space) / 2);
+    text-align: start;
 
-    &-avatarLink {
-      flex-shrink: 0;
+    @media (min-width: $breakpoint-mobile-horizontal) {
+      flex-direction: row;
+      gap: var(--flow-space);
     }
 
-    &-avatarImage {
+    .avatar-image {
       border-radius: 50%;
-      width: 80px;
+      inline-size: 64px;
+
+      @media (min-width: $breakpoint-mobile-horizontal) {
+        inline-size: 96px;
+      }
     }
 
-    &-info {
+    .details {
+      --flow-space: 0.5rem;
       display: flex;
       flex: 1;
       flex-direction: column;
       justify-content: center;
-      padding-left: 1rem;
-
-      @media (min-width: $breakpoint-mobile-horizontal) {
-        padding-left: 2rem;
-      }
-    }
-
-    &-description {
-      font-size: 14px;
-      margin: 0.5rem 0 0;
     }
   }
 }

@@ -1,19 +1,19 @@
 {% if posts|length > 0 %}
-  <ul class="searchList boxShadow themeReset">
+  <ul role="list" class="results">
     {% for post in posts  %}
-      <li class="searchList-item boxPadding">
-        <article class="post">
-          <h2 class="h3"><a href="{{ post.link }}">{{ post.title }}</a></h2>
-          <p>{{ post.preview.length(40).read_more(false) }}</p>
-          <footer class="post-footer">
-            <a href="{{ post.link }}" class="button button--link" aria-hidden="true" tabindex="-1">{{ labels.readMore }}</a>
+      <li class="result boxBorder boxPadding" data-theme="reset">
+        <article>
+          <h2 class="h5">{{ post.title }}</h2>
+          <p>{{ post.excerpt.read_more(false) }}</p>
+          <footer>
+            <a href="{{ post.link|e('esc_url') }}" aria-label="{{ post.title }}" class="link">{{ labels.readMore }}</a>
           </footer>
         </article>
       </li>
     {% endfor %}
   </ul>
 {% else %}
-  <div class="noResults boxPadding">
+  <div class="noResults">
     <p>{{ labels.noResults }}</p>
   </div>
 {% endif %}

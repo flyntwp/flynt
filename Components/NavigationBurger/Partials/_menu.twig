@@ -1,9 +1,7 @@
-<ul class="menu" id="navigationBurger-menu">
+<ul data-ref="menu" id="navigationBurger-menu" class="menu">
   {% for item in items %}
-    <li class="menu-item {{ item.current ? 'menu-item--current' }}">
-      <a class="menu-link" href="{{ item.link }}" {{ item.target == '_blank' ? 'target="_blank" rel="noreferrer noopener"' }}>
-        {{ item.title }}
-      </a>
+    <li class="item {{- item.current ? ' current-menu-item' }}">
+      <a class="link" href="{{ item.link|e('esc_url') }}" {{ item.target == '_blank' ? 'target="_blank" rel="noopener noreferrer"' }}>{{ item.title }}</a>
     </li>
   {% endfor %}
 </ul>

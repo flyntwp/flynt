@@ -1,60 +1,65 @@
-[is='flynt-grid-image-text'] {
+flynt-component[name='GridImageText'] {
   .grid {
-    @include reset-list;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: ($gutter-width * -1) 0 0 ($gutter-width * -1);
+    --grid-columns: 1;
+    display: grid;
+    gap: var(--column-gap);
+    grid-template-columns: repeat(var(--grid-columns), minmax(300px, 1fr));
+    list-style: none;
+    padding: 0;
 
-    &--columns2,
-    &--columns3,
-    &--columns4 {
-      .grid-item {
-        @media (min-width: $breakpoint-tablet) {
-          width: 50%;
-        }
+    &[data-max-columns='1'] {
+      @media (min-width: $breakpoint-tablet) {
+        margin-inline: auto;
+        max-inline-size: calc(100% / 2 - var(--flow-space));
       }
     }
 
-    &--columns3 {
-      .grid-item {
-        @media (min-width: $breakpoint-tablet-horizontal) {
-          width: 33.33%;
-        }
+    &[data-max-columns='2'],
+    &[data-max-columns='3'],
+    &[data-max-columns='4'] {
+      @media (min-width: $breakpoint-tablet) {
+        --grid-columns: 2;
+      }
+
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        max-inline-size: max-content;
       }
     }
 
-    &--columns4 {
-      .grid-item {
-        /* ensure 2 columns stacking up until $breakpoint-desktop */
-        max-width: ($breakpoint-desktop - $container-padding-tablet * 2 + $gutter-width) / 3 + 1;
+    &[data-max-columns='3'] {
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        --grid-columns: 3;
+      }
+    }
 
-        @media (min-width: $breakpoint-desktop) {
-          width: 25%;
-        }
+    &[data-max-columns='4'] {
+      @media (min-width: $breakpoint-tablet-horizontal) {
+        --grid-columns: 4;
+      }
+    }
+
+    &[data-card='true']{
+      --column-gap: var(--flow-space);
+
+      .content {
+        margin-block-start: 0;
       }
     }
   }
 
-  .grid-item {
-    max-width: 675px;
-    padding: $gutter-width 0 0 $gutter-width;
-    width: 100%;
-  }
+  .item {
+    ul {
+      list-style-position: outside;
+      list-style-type: initial;
+      padding-inline-start: 0;
 
-  .content {
-    height: 100%;
-
-    img {
-      background: $color-contrast;
+      li {
+        margin-inline-start: 1em;
+      }
     }
 
-    &-inner {
-      @include reset-content-margins;
-
-      &:not(.boxPadding) {
-        padding: $gutter-width 0;
-      }
+    .figure-image-svg {
+      aspect-ratio: 3 / 2;
     }
   }
 }

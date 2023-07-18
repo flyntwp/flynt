@@ -8,23 +8,23 @@ function getACFLayout()
 {
     return [
         'name' => 'blockImage',
-        'label' => 'Block: Image',
+        'label' => __('Block: Image', 'flynt'),
         'sub_fields' => [
             [
-                'label' => __('General', 'flynt'),
-                'name' => 'generalTab',
+                'label' => __('Content', 'flynt'),
+                'name' => 'contentTab',
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0,
             ],
             [
                 'label' => __('Image', 'flynt'),
+                'instructions' => __('Image-Format: JPG, PNG, SVG, WebP.', 'flynt'),
                 'name' => 'image',
                 'type' => 'image',
                 'preview_size' => 'medium',
-                'instructions' => __('Image-Format: JPG, PNG, GIF.', 'flynt'),
+                'mime_types' => 'jpg,jpeg,png,svg,webp',
                 'required' => 1,
-                'mime_types' => 'gif,jpg,jpeg,png'
             ],
             [
                 'label' => __('Options', 'flynt'),
@@ -40,25 +40,7 @@ function getACFLayout()
                 'layout' => 'row',
                 'sub_fields' => [
                     FieldVariables\getTheme(),
-                    [
-                        'label' => __('Size', 'flynt'),
-                        'name' => 'size',
-                        'type' => 'radio',
-                        'other_choice' => 0,
-                        'save_other_choice' => 0,
-                        'layout' => 'horizontal',
-                        'choices' => [
-                            'sizeSmall' => __('Small', 'flynt'),
-                            'sizeMedium' => __('Medium', 'flynt'),
-                            'sizeLarge' => __('Large (Default)', 'flynt)'),
-                            'sizeHuge' => __('Huge', 'flynt'),
-                            'sizeFull' => __('Full', 'flynt'),
-                        ],
-                        'default_value' => 'sizeLarge',
-                        'wrapper' =>  [
-                            'width' => '100',
-                        ],
-                    ],
+                    FieldVariables\getSize()
                 ]
             ]
         ]

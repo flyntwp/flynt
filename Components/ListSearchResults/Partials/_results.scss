@@ -1,27 +1,17 @@
-.searchList {
-  @include reset-list;
-  border-radius: 4px;
-  margin-top: 20px;
+.results {
+  list-style: none;
+  padding: 0;
 
-  &-item {
-    border-bottom: 1px solid #ececec;
-    position: relative;
-
-    &:last-child {
-      border: 0;
-    }
+  .result + .result {
+    margin-block-start: var(--flow-space);
   }
-}
 
-.post {
-  @include reset-content-margins;
-
-  &-footer {
-    text-align: right;
+  footer {
+    text-align: end;
   }
 }
 
 .noResults {
-  margin-top: 20px;
+  margin-block-start: calc(var(--component-spacing) / 2);
   text-align: center;
 }

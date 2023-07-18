@@ -1,43 +1,23 @@
-[is='flynt-block-image-text'] {
-  .container {
-    @include center(500px + 2 * $container-padding-mobile);
-  }
-
-  .box-inner {
-    @include reset-content-margins('top');
-  }
-
-  @media (max-width: $breakpoint-tablet-horizontal - 1) {
-    margin: $component-spacing-tablet 0;
-  }
-
+flynt-component[name='BlockImageText'] {
   @media (min-width: $breakpoint-tablet-horizontal) {
     .container {
-      @include center(1080px + 2 * $container-padding-tablet, $container-padding-tablet);
-    }
-
-    .box {
       align-items: center;
       display: flex;
-      margin: 0 $container-padding-tablet * -1;
+      gap: var(--column-gap);
+      justify-content: space-around;
 
-      &-inner {
-        @include reset-content-margins('both');
-        padding: 0 $container-padding-tablet;
-        width: 50%;
+      > * {
+        flex-basis: 50%;
+        margin-block-start: 0;
       }
 
-      &--imageRight {
+      &[data-image-position='left'] {
         flex-direction: row;
       }
 
-      &--imageLeft {
+      &[data-image-position='right'] {
         flex-direction: row-reverse;
       }
-    }
-
-    .figure-caption {
-      position: absolute;
     }
   }
 }

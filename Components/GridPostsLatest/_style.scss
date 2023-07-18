@@ -1,116 +1,45 @@
-[is='flynt-grid-posts-latest'] {
+flynt-component[name='GridPostsLatest'] {
   .grid {
-    @include reset-list;
-    display: flex;
-    flex-wrap: wrap;
+    --grid-item-width: calc((var(--content-max-width-full) - 2 * var(--flow-space)) / 3);
+    display: grid;
+    gap: var(--flow-space);
+    grid-template-columns: repeat(auto-fit, min(var(--grid-item-width), 100%));
     justify-content: center;
-    margin: ($gutter-width * -1) 0 0 ($gutter-width * -1);
-
-    &--columns2,
-    &--columns3,
-    &--columns4 {
-      .grid-item {
-        @media (min-width: $breakpoint-tablet) {
-          width: 50%;
-        }
-      }
-    }
-
-    &--columns3 {
-      .grid-item {
-        @media (min-width: $breakpoint-tablet-horizontal) {
-          width: 33.33%;
-        }
-      }
-    }
-
-    &--columns4 {
-      .grid-item {
-        /* ensure 2 columns stacking up until $breakpoint-desktop */
-        max-width: ($breakpoint-desktop - $container-padding-tablet * 2 + $gutter-width) / 3 + 1;
-
-        @media (min-width: $breakpoint-desktop) {
-          width: 25%;
-        }
-      }
-    }
+    list-style: none;
+    padding: 0;
   }
 
-  .grid-item {
-    max-width: 675px;
-    padding: $gutter-width 0 0 $gutter-width;
-    width: 100%;
-  }
-
-  .content {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 100%;
-
-    &-image {
-      background: $color-contrast;
-      flex-shrink: 0; // IE11 bug fix (prevent image from stretchin')
-    }
-
-    &-inner {
-      @include reset-content-margins;
-      color: $color-text;
-      flex-grow: 1;
-
-      #{$heading-selectors} {
-        color: $color-headline;
-      }
-    }
-
-    &-link {
+  .post {
+    .link {
+      block-size: 100%;
+      color: currentColor;
       display: flex;
       flex-direction: column;
-      flex-grow: 1;
+      font-weight: initial;
       text-decoration: none;
     }
 
-    &-readingTime {
-      color: #7b838d;
-      font-size: 0.9rem;
-
-      .feather {
-        color: #7b838d;
-        height: 1rem;
-        margin-right: 2px;
-        width: 1rem;
-      }
+    .figure {
+      margin: 0;
     }
 
-    &-footer {
+    .content {
+      color: var(--color-text);
+      flex-grow: 1;
+      margin-block-start: 0;
+    }
+
+    .footer {
       align-items: center;
-      align-self: flex-end;
-      border-top: 1px solid $color-border;
       display: flex;
+      inline-size: 100%;
       justify-content: space-between;
-      padding: 0 20px;
-      width: 100%;
+      padding: 0 var(--box-spacing) var(--box-spacing);
+      position: relative;
 
-      .content-readMore {
-        padding: 0.9rem 0 1.1rem;
-
-        &::before {
-          bottom: 1.1rem;
-        }
+      .readingTime {
+        color: var(--color-text-muted);
       }
-
-      @media (min-width: $breakpoint-tablet-horizontal) {
-        padding: 0 30px;
-      }
-    }
-  }
-
-  .allPostsLink {
-    padding-top: 1.5rem;
-    text-align: center;
-
-    @media (min-width: $breakpoint-desktop) {
-      padding-top: 3rem;
     }
   }
 }

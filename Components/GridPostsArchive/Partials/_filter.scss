@@ -1,9 +1,8 @@
 .filter {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -8px 32px;
-
-  &-item {
-    padding: 0 8px 15px;
-  }
+  gap: var(--flow-space);
+  justify-content: center;
+  list-style: none;
+  padding: 0;
 }

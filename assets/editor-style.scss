@@ -1,0 +1,29 @@
+@import
+  'styles/variables',
+  'styles/fonts',
+  'styles/base';
+
+/**
+ * Classic editor styles
+ */
+
+// stylelint-disable selector-max-id
+#tinymce.wp-editor {
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  text-size-adjust: none;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+}
+
+/**
+ * Gutenberg editor styles
+ */
+
+.block-editor-inserter {
+  margin: 0;
+}

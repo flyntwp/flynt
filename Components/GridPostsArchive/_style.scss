@@ -1,49 +1,59 @@
-[is='flynt-grid-posts-archive'] {
-  ul {
-    @include reset-list;
-  }
-
+flynt-component[name='GridPostsArchive'] {
   .posts {
+    --grid-columns: 1;
+    display: grid;
+    gap: var(--flow-space);
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+
     @media (min-width: $breakpoint-tablet) {
-      @include grid(2);
+      --grid-columns: 2;
     }
 
     @media (min-width: $breakpoint-tablet-horizontal) {
-      @include grid(3);
+      --grid-columns: 3;
     }
   }
 
   .posts-empty {
-    padding: 40px 0 0;
+    text-align: center;
   }
 
   .post {
-    margin-bottom: $gutter-width;
+    inline-size: var(--grid-item-width);
+    max-inline-size: var(--grid-item-max-width);
 
-    @media (min-width: $breakpoint-tablet) {
-      margin-bottom: 0;
-    }
-
-    &-link {
-      display: block;
+    .link {
+      block-size: 100%;
+      color: currentColor;
+      display: flex;
+      flex-direction: column;
+      font-weight: initial;
       text-decoration: none;
     }
 
-    .figure {
-      background-color: $color-text;
-      margin-bottom: 0;
+    .content {
+      color: var(--color-text);
+      flex-grow: 1;
+      margin-block-start: 0;
     }
 
-    &-inner {
-      @include reset-content-margins;
-      padding: $gutter-width 0;
-    }
+    .footer {
+      align-items: center;
+      display: flex;
+      inline-size: 100%;
+      justify-content: space-between;
+      padding: 0 var(--box-spacing) var(--box-spacing);
+      position: relative;
 
-    &-excerpt {
-      margin-bottom: 0.75rem;
+      .readingTime {
+        color: var(--color-text-muted);
+      }
     }
   }
 
   @import 'Partials/filter';
-  @import 'Partials/paginationButtons';
+  @import 'Partials/pagination';
 }

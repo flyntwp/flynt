@@ -1,7 +1,7 @@
-<div class="flyntComponent componentSpacing {{ options.theme }}" is="flynt-block-wysiwyg">
-  <div class="container centerMaxWidthContainer">
-    <div class="content content--{{ textAlignment }} centerContentMaxWidth">
+<flynt-component name="BlockWysiwyg" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
+  <div class="container">
+    <div class="content" data-size="{{ options.size }}" data-align="{{ options.align }}" data-text-align="{{ options.textAlign }}">
       {{ contentHtml|e('wp_kses_post') }}
     </div>
   </div>
-</div>
+</flynt-component>

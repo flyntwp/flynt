@@ -1,31 +1,24 @@
-import './scripts/publicPath'
-import 'console-polyfill'
-import 'normalize.css/normalize.css'
-import './main.scss'
-import $ from 'jquery'
-import feather from 'feather-icons'
+import 'vite/modulepreload-polyfill'
+import FlyntComponent from './scripts/FlyntComponent'
 
-import installCE from 'document-register-element/pony'
+import 'lazysizes'
 
-window.jQuery = $
-
-window.lazySizesConfig = window.lazySizesConfig || {}
-window.lazySizesConfig.preloadAfterLoad = true
-require('lazysizes')
-
-$(document).ready(function () {
-  feather.replace({
-    'stroke-width': 1
-  })
-})
-
-installCE(window, {
-  type: 'force',
-  noBuiltIn: true
-})
-
-function importAll (r) {
-  r.keys().forEach(r)
+if (import.meta.env.DEV) {
+  import('@vite/client')
 }
 
-importAll(require.context('../Components/', true, /\/script\.js$/))
+import.meta.glob([
+  '../Components/**',
+  '../assets/**',
+  '!**/*.js',
+  '!**/*.scss',
+  '!**/*.php',
+  '!**/*.twig',
+  '!**/screenshot.png',
+  '!**/*.md'
+])
+
+window.customElements.define(
+  'flynt-component',
+  FlyntComponent
+)

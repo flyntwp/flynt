@@ -1,21 +1,20 @@
-[is='flynt-navigation-footer'] {
-  font-size: 0.8rem;
+flynt-component[name='NavigationFooter'] {
+  font-size: var(--font-size-body-small);
 
   .container {
-    padding-bottom: $component-spacing-mobile;
-    padding-top: $component-spacing-mobile;
+    padding-block: var(--component-spacing);
     text-align: center;
 
     @media (min-width: $breakpoint-tablet) {
       display: flex;
       flex-direction: row-reverse;
       justify-content: space-between;
+      padding-block: 36px;
     }
   }
 
   .content {
-    @include reset-content-margins;
-    margin: 10px 0 0;
+    margin: var(--flow-space) 0 0;
 
     @media (min-width: $breakpoint-tablet) {
       margin: 0;

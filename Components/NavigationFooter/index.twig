@@ -1,7 +1,7 @@
-<div class="flyntComponent themeLight" is="flynt-navigation-footer">
-  <div class="container centerMaxWidthContainer">
+<flynt-component name="NavigationFooter">
+  <div class="container">
     {% if menu %}
-      <nav class="navigation" aria-label="{{ __("Footer", "flynt") }}">
+      <nav class="navigation" aria-label="{{ labels.ariaLabel }}">
         {% include 'Partials/_menu.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel } only %}
       </nav>
     {% endif %}
@@ -9,4 +9,4 @@
       <div class="content">{{ contentHtml|e('wp_kses_post') }}</div>
     {% endif %}
   </div>
-</div>
+</flynt-component>

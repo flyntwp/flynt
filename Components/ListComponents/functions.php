@@ -5,7 +5,6 @@ namespace Flynt\Components\ListComponents;
 use Flynt\FieldVariables;
 use Flynt\ComponentManager;
 use Flynt\Utils\Options;
-use Flynt\Utils\Asset;
 use Parsedown;
 
 add_filter('Flynt/addComponentData?name=ListComponents', function ($data) {
@@ -55,23 +54,23 @@ function getACFLayout()
 {
     return [
         'name' => 'listComponents',
-        'label' => 'List: Components',
+        'label' => __('List: Components', 'flynt'),
         'sub_fields' => [
             [
-                'label' => __('General', 'flynt'),
-                'name' => 'generalTab',
+                'label' => __('Content', 'flynt'),
+                'name' => 'contentTab',
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0
             ],
             [
                 'label' => __('Title', 'flynt'),
+                'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
                 'name' => 'preContentHtml',
                 'type' => 'wysiwyg',
                 'tabs' => 'visual,text',
                 'media_upload' => 0,
-                'delay' => 1,
-                'instructions' => __('Want to add a headline? And a paragraph? Go ahead! Or just leave it empty and nothing will be shown.', 'flynt'),
+                'delay' => 0,
             ],
             [
                 'label' => __('Component Blocks', 'flynt'),
@@ -151,7 +150,7 @@ Options::addTranslatable('ListComponents', [
                 'label' => __('Code', 'flynt'),
                 'name' => 'code',
                 'type' => 'text',
-                'default_value' => 'Code',
+                'default_value' =>  __('Code', 'flynt'),
                 'required' => 1,
                 'wrapper' => [
                     'width' => '50',
@@ -161,7 +160,7 @@ Options::addTranslatable('ListComponents', [
                 'label' => __('Preview', 'flynt'),
                 'name' => 'preview',
                 'type' => 'text',
-                'default_value' => 'Preview',
+                'default_value' =>  __('Preview', 'flynt'),
                 'required' => 1,
                 'wrapper' => [
                     'width' => '50',

@@ -3,8 +3,7 @@
 namespace Flynt\Components\NavigationFooter;
 
 use Flynt\Utils\Options;
-use Timber\Menu;
-use Flynt\Shortcodes;
+use Timber\Timber;
 
 add_action('init', function () {
     register_nav_menus([
@@ -14,64 +13,51 @@ add_action('init', function () {
 
 add_filter('Flynt/addComponentData?name=NavigationFooter', function ($data) {
     $data['maxLevel'] = 0;
-    $data['menu'] = new Menu('navigation_footer');
+    $data['menu'] = Timber::get_menu('navigation_footer') ?? Timber::get_pages_menu();
 
     return $data;
 });
 
 Options::addTranslatable('NavigationFooter', [
     [
-        'label' => __('General', 'flynt'),
-        'name' => 'generalTab',
+        'label' => __('Content', 'flynt'),
+        'name' => 'contentTab',
         'type' => 'tab',
         'placement' => 'top',
         'endpoint' => 0
     ],
     [
-        'label' => __('Content', 'flynt'),
+        'label' => __('Text', 'flynt'),
         'name' => 'contentHtml',
         'type' => 'wysiwyg',
+        'delay' => 0,
         'media_upload' => 0,
-        'delay' => 1,
+        'required' => 1,
         'toolbar' => 'basic',
-        'default_value' => '©&nbsp;[year] [sitetitle]'
+        'default_value' => '©&nbsp;' . date_i18n('Y') . ' ' . get_bloginfo('name'),
     ],
     [
-        'label' => __('Content Examples', 'flynt'),
-        'name' => 'templateTab',
+        'label' => __('Labels', 'flynt'),
+        'name' => 'labelsTab',
         'type' => 'tab',
         'placement' => 'top',
-        'endpoint' => 0,
+        'endpoint' => 0
     ],
     [
-        'label' => __('Content Examples', 'flynt'),
-        'name' => 'groupContentExamples',
-        'instructions' => __('Want some content inspiration? Here they are!', 'flynt'),
+        'label' => '',
+        'name' => 'labels',
         'type' => 'group',
         'sub_fields' => [
             [
-                'label' => sprintf(__('© %s Website Name', 'flynt'), date_i18n('Y')),
-                'name' => 'messageShortcodeCopyrightYearWebsiteName',
-                'type' => 'message',
-                'message' => '<code>©' . htmlspecialchars('&nbsp;') . '[year] [sitetitle]</code>',
-                'new_lines' => 'wpautop',
-                'esc_html' => 0,
+                'label' => __('Aria Label', 'flynt'),
+                'name' => 'ariaLabel',
+                'type' => 'text',
+                'default_value' => __('Footer', 'flynt'),
+                'required' => 1,
                 'wrapper' => [
-                    'width' => 50
+                    'width' => '50',
                 ],
             ],
-            [
-                'label' => sprintf(__('© %s Website Name — Subtitle', 'flynt'), date_i18n('Y')),
-                'name' => 'messageShortcodeCopyrightYearWebsiteNameTagLine',
-                'type' => 'message',
-                'message' => '<code>©' . htmlspecialchars('&nbsp;') . '[year] [sitetitle] ' . htmlspecialchars('&mdash;') . ' [tagline]</code>',
-                'new_lines' => 'wpautop',
-                'esc_html' => 0,
-                'wrapper' => [
-                    'width' => 50
-                ]
-            ]
-        ]
+        ],
     ],
-    Shortcodes\getShortcodeReference(),
 ]);

@@ -1,0 +1,125 @@
+/* Reset all margins */
+* {
+  margin: 0;
+}
+
+html {
+  block-size: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  text-size-adjust: none;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  /*
+  * Add smooth scrolling behavior when focused within the html element
+  * https://css-tricks.com/fixing-smooth-scrolling-with-find-on-page/
+  */
+  &:focus-within {
+    scroll-behavior: smooth;
+  }
+}
+
+html,
+body {
+  block-size: 100%;
+}
+
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Remove padding on lists */
+ul,
+ol {
+  padding: 0;
+}
+
+/* Media elements defaults */
+img,
+picture,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  max-inline-size: 100%;
+}
+
+/* Reset font styling */
+input,
+button,
+textarea,
+select,
+table {
+  font: inherit;
+}
+
+/* Reset default styling for buttons */
+button {
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  color: inherit;
+  padding: 0;
+  text-align: inherit;
+}
+
+/* Prevent sub and sup elements from affecting the line height */
+sub,
+sup {
+  font-size: 0.75em;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  inset-block-end: -0.25em;
+}
+
+sup {
+  inset-block-start: -0.5em;
+}
+
+/* Normalize outline to ensure A11y */
+:focus-visible {
+  outline-color: Highlight;
+  outline-color: -webkit-focus-ring-color;
+  outline-offset: 2px;
+  outline-style: dotted;
+  outline-width: 2px;
+}
+
+/* Disable animations and transitions for users that prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+  /* Disable smooth scrolling for html element when focused within */
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  /* Disable animations and transitions for all elements, including pseudo-elements */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

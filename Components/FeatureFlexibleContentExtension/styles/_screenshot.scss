@@ -1,0 +1,44 @@
+.flyntComponentScreenshot {
+  background-color: #fff;
+  block-size: 40px;
+  border: 1px solid #ccd0d4;
+  display: inline-block;
+  inset-block-end: 4px;
+  margin-inline-start: 5px;
+  position: absolute;
+
+  &-imageWrapper {
+    inset-block-end: 0;
+    inset-inline-end: 100%;
+    position: absolute;
+  }
+
+  &-previewImageLarge {
+    background: #fff;
+    block-size: auto;
+    border: 3px solid #2f353e;
+    border-radius: 3px;
+    display: block;
+    inline-size: 33vw;
+    inset-block-end: 0;
+    inset-inline-end: 10px;
+    max-inline-size: 400px;
+    object-fit: cover;
+    position: absolute;
+  }
+
+  &-previewImageSmall {
+    block-size: 40px;
+    display: block;
+    inline-size: auto;
+    max-block-size: 40px;
+  }
+
+  &-label {
+    inset-block-end: 4px;
+    inset-inline-start: 100%;
+    padding-inline-start: 8px;
+    position: absolute;
+    white-space: nowrap;
+  }
+}

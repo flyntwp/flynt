@@ -1,12 +1,10 @@
-<div class="preContent">
+<div data-size="medium" data-align="left">
   {{ preContentHtml|e('wp_kses_post') }}
 </div>
-<form class="searchForm" role="search" action="{{ bloginfo('url') }}">
-  <div class="searchForm-field boxShadow themeReset">
-    <div class="searchForm-box">
-      <label class="visuallyHidden" for="searchForm-input">{{ searchPlaceholder }}</label>
-      <input name="s" id="searchForm-input" class="searchForm-input" type="search" required placeholder="{{ searchPlaceholder }}" value="{{ searchQuery }}">
-    </div>
-    <button class="searchForm-submit button" type="submit">{{ labels.search }}</button>
+<form class="searchForm" role="search" action="{{ bloginfo('url') }}" data-theme="reset">
+  <div class="oneInputForm">
+    <label class="visuallyHidden" for="searchForm-input-text">{{ labels.searchPlaceholder }}</label>
+    <input name="s" class="input" id="searchForm-input-text" type="search" required placeholder="{{ labels.searchPlaceholder }}" value="{{ searchQuery }}">
+    <button class="button" type="submit">{{ labels.search }}</button>
   </div>
 </form>

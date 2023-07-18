@@ -1,107 +1,72 @@
-$color-gray: #333;
-$color-white: #fff;
-$background-opacity: 0.5;
-$border-width: 3px;
-$transition-time: 0.3s;
-$transition-easing: ease;
-
-$play-button-circle-diameter: (
-  'desktop': 100px,
-  'mobile': 60px
-);
-
-$play-button-triangle-size: (
-  'desktop': 40px,
-  'mobile': 20px
-);
-
-@mixin pseudo-element-defaults() {
-  content: '';
-  left: 50%;
+.video-playButton {
+  --button-width: 60px;
+  --button-height: 60px;
+  block-size: 100%;
+  cursor: pointer;
+  display: block;
+  inline-size: 100%;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  outline: 0;
   position: absolute;
-  top: 50%;
-  transition: transform $transition-time $transition-easing;
-}
+  z-index: 2;
 
-@mixin play-button($color-play-button, $background-opacity, $border-width, $colorBorder, $play-button-circle-diameter, $color-triangle, $play-button-triangle-size) {
+  &::before,
+  &::after {
+    content: '';
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    transform-origin: left top;
+    transition: 0.3s ease-in-out;
+    will-change: transform;
+  }
+
   &::before {
-    @include pseudo-element-defaults();
-    background-color: rgba($color-play-button, $background-opacity);
-    border: $border-width solid $colorBorder;
+    background-color: var(--color-accent);
+    block-size: var(--button-width);
     border-radius: 50%;
-    height: map-get($play-button-circle-diameter, 'mobile');
-    margin-left: -(map-get($play-button-circle-diameter, 'mobile') / 2);
-    margin-top: -(map-get($play-button-circle-diameter, 'mobile') / 2);
-    width: map-get($play-button-circle-diameter, 'mobile');
+    inline-size: var(--button-width);
 
     @media (min-width: $breakpoint-tablet) {
-      height: map-get($play-button-circle-diameter, 'desktop');
-      margin-left: -(map-get($play-button-circle-diameter, 'desktop') / 2);
-      margin-top: -(map-get($play-button-circle-diameter, 'desktop') / 2);
-      width: map-get($play-button-circle-diameter, 'desktop');
+      --button-width: 80px;
+      --button-height: 80px;
     }
   }
 
   &::after {
-    @include pseudo-element-defaults();
-    border-bottom: (map-get($play-button-triangle-size, 'mobile') / 2) solid transparent;
-    border-left: map-get($play-button-triangle-size, 'mobile') solid $color-triangle;
-    border-top: (map-get($play-button-triangle-size, 'mobile') / 2) solid transparent;
-    height: 0;
-    margin-left: -(map-get($play-button-triangle-size, 'mobile') / 2 * 0.9);
-    margin-top: -(map-get($play-button-triangle-size, 'mobile') / 2);
-    width: 0;
+    border-block-end: 12px solid transparent;
+    border-block-start: 12px solid transparent;
+    border-inline-start: 18px solid var(--color-background);
+    inset-inline-start: calc(50% + 2px);
 
     @media (min-width: $breakpoint-tablet) {
-      border-bottom: (map-get($play-button-triangle-size, 'desktop') / 2) solid transparent;
-      border-left: map-get($play-button-triangle-size, 'desktop') solid $color-triangle;
-      border-top: (map-get($play-button-triangle-size, 'desktop') / 2) solid transparent;
-      margin-left: -(map-get($play-button-triangle-size, 'desktop') / 2 * 0.9);
-      margin-top: -(map-get($play-button-triangle-size, 'desktop') / 2);
+      border-block-end-width: 17px;
+      border-block-start-width: 17px;
+      border-inline-start-width: 27px;
+      inset-inline-start: calc(50% + 4px);
     }
   }
 
   &:hover {
     &::before,
     &::after {
-      transform: scale(1.1);
+      transform: scale(1.1) translate(-50%, -50%);
     }
   }
 }
 
-.video-playButton {
-  @include play-button($color-gray, $background-opacity, $border-width, $color-white, $play-button-circle-diameter, $color-white, $play-button-triangle-size);
-  cursor: pointer;
-  display: block;
-  height: 100%;
-  left: 0;
-  outline: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 2;
-}
+[data-video-size='small'] .video-playButton {
+  &::before {
+    --button-width: 60px;
+    --button-height: 60px;
+  }
 
-&.flyntComponent--sizeSmall {
-  $play-button-small-circle-diameter: (
-    'desktop': 60px,
-    'mobile': 40px
-  );
-
-  $play-button-small-triangle-size: (
-    'desktop': 20px,
-    'mobile': 10px
-  );
-
-  .video-playButton {
-    @include play-button(
-      $color-gray,
-      $background-opacity,
-      $border-width,
-      $color-white,
-      $play-button-small-circle-diameter,
-      $color-white,
-      $play-button-small-triangle-size
-    );
+  &::after {
+    border-block-end: 12px solid transparent;
+    border-block-start: 12px solid transparent;
+    border-inline-start: 18px solid var(--color-background);
+    inset-inline-start: calc(50% + 3px);
   }
 }

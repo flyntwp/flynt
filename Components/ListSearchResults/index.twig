@@ -1,11 +1,11 @@
-<div class="flyntComponent componentSpacing" is="flynt-list-search-results">
-  <div class="container centerMaxWidthContainer">
-    <div class="centerContentMaxWidth">
+<flynt-component name="ListSearchResults" class="componentSpacing">
+  <div class="container">
+    <div data-size="medium" data-align="center" data-flow="layout">
       {% include 'Partials/_header.twig' %}
       {% include 'Partials/_results.twig' %}
-      {% if pagination %}
+      {% if pagination.pages %}
         {% include 'Partials/_pagination.twig' %}
       {% endif %}
     </div>
   </div>
-</div>
+</flynt-component>

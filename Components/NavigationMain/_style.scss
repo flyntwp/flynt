@@ -1,60 +1,32 @@
-[is='flynt-navigation-main'] {
-  $navigation-height: 100px;
-
+flynt-component[name='NavigationMain'] {
+  --navigation-height: 96px;
+  block-size: var(--navigation-height);
   display: none;
+  font-size: var(--font-size-body-small);
 
   @media (min-width: $breakpoint-tablet-horizontal) {
     display: block;
   }
 
-  .wrapper {
-    background-color: $color-background;
-    height: $navigation-height;
+  .navigation {
+    background-color: var(--color-background);
+    block-size: var(--navigation-height);
+    border-block-end: solid 2px var(--color-border);
+    inset-block-start: 0;
+    inset-inline: 0;
+
+    .admin-bar & {
+      inset-block-start: var(--wp-admin--admin-bar--height);
+    }
   }
 
   .container {
+    block-size: 100%;
     display: flex;
-    height: 100%;
     justify-content: space-between;
-    padding-bottom: 30px;
-    padding-top: 30px;
+    padding-block: 24px;
   }
 
-  .logo {
-    display: block;
-    height: 100%;
-
-    &-image {
-      height: 100%;
-      width: auto;
-    }
-  }
-
-  .menu {
-    @include reset-list;
-    align-items: center;
-    display: flex;
-    margin-right: -18px;
-    padding-left: 36px;
-
-    &-item--current {
-      .menu-link {
-        color: $color-accent;
-      }
-    }
-
-    &-link {
-      color: $color-text;
-      display: inline-block;
-      font-weight: 700;
-      padding: 7px 18px;
-      text-decoration: none;
-      transition: color 0.2s ease-out;
-
-      &:hover,
-      &:focus {
-        color: $color-accent;
-      }
-    }
-  }
+  @import 'Partials/logo';
+  @import 'Partials/menu';
 }

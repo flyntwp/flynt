@@ -18,7 +18,7 @@
 
 namespace Flynt\CleanHead;
 
-/**
+/*
  * Clean up wp_head()
  *
  * Remove unnecessary <link>'s
@@ -53,23 +53,4 @@ add_action('init', function () {
     remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
     add_filter('use_default_gallery_style', '__return_false');
     add_filter('emoji_svg_url', '__return_false');
-});
-
-/**
- * cleanStyleTag
- *
- * Clean up output of stylesheet <link> tags
- */
-add_filter('style_loader_tag', function ($input) {
-    preg_match_all(
-        "!<link rel='stylesheet'\s?(id='[^']+')?\s+href='(.*)' type='text/css' media='(.*)' />!",
-        $input,
-        $matches
-    );
-    if (empty($matches[2])) {
-        return $input;
-    }
-    // Only display media if it is meaningful
-    $media = $matches[3][0] !== '' && $matches[3][0] !== 'all' ? ' media="' . $matches[3][0] . '"' : '';
-    return '<link rel="stylesheet" href="' . $matches[2][0] . '"' . $media . '>' . "\n";
 });

@@ -1,14 +1,54 @@
-[is='flynt-block-post-header'] {
+flynt-component[name='BlockPostHeader'] {
+  > .container {
+    padding: var(--component-spacing) var(--container-spacing);
+  }
+
+  .content * + * {
+    --flow-space: 2rem;
+  }
+
   .meta {
-    font-size: 14px;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+
+    > *:not(:last-child) {
+      &::after {
+        background-color: var(--color-accent);
+        block-size: 2px;
+        content: '';
+        display: inline-block;
+        inline-size: 8px;
+        margin: 0 0.5rem;
+        vertical-align: middle;
+      }
+    }
+
+    a {
+      color: var(--color-text);
+      text-decoration: none;
+    }
+
+    .author {
+      align-items: center;
+      display: flex;
+      text-decoration: none;
+
+      .avatar {
+        block-size: 32px;
+        border-radius: 100%;
+        inline-size: 32px;
+        margin-inline-end: 0.75rem;
+
+        @media (min-width: $breakpoint-mobile-horizontal) {
+          block-size: 48px;
+          inline-size: 48px;
+        }
+      }
+    }
   }
 
-  .excerpt {
-    color: $color-text;
-    font-weight: normal;
-  }
-
-  .featuredImage {
-    margin: 2.5rem 0;
+  flynt-component[name='BlockImage'] {
+    margin-block: calc(-1 * var(--component-spacing) / 2) calc(var(--component-spacing) / 2);
   }
 }

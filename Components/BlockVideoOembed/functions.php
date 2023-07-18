@@ -6,7 +6,7 @@ use Flynt\FieldVariables;
 use Flynt\Utils\Oembed;
 
 add_filter('Flynt/addComponentData?name=BlockVideoOembed', function ($data) {
-    $data['video'] = Oembed::setSrcAsDataAttribute(
+    $data['oembed'] = Oembed::setSrcAsDataAttribute(
         $data['oembed'],
         [
             'autoplay' => 'true'
@@ -20,29 +20,32 @@ function getACFLayout()
 {
     return [
         'name' => 'blockVideoOembed',
-        'label' => 'Block: Video Oembed',
+        'label' =>  __('Block: Video Oembed', 'flynt'),
         'sub_fields' => [
             [
-                'label' => __('General', 'flynt'),
-                'name' => 'generalTab',
+                'label' => __('Content', 'flynt'),
+                'name' => 'contentTab',
                 'type' => 'tab',
                 'placement' => 'top',
                 'endpoint' => 0
             ],
             [
                 'label' => __('Poster Image', 'flynt'),
+                'instructions' => __('Image-Format: JPG, PNG, SVG, WebP. Aspect Ratio: 16:9. Recommended Size: 1920px × 1080px.', 'flynt'),
                 'name' => 'posterImage',
                 'type' => 'image',
                 'preview_size' => 'medium',
-                'mime_types' => 'jpg,jpeg,png',
-                'instructions' => __('Recommended Size: Min-Width 1920px; Min-Height: 1080px; Image-Format: JPG, PNG. Aspect Ratio 16/9.', 'flynt'),
-                'required' => 1
+                'mime_types' => 'jpg,jpeg,png,svg,webp',
+                'required' => 1,
             ],
             [
                 'label' => __('Video', 'flynt'),
                 'name' => 'oembed',
                 'type' => 'oembed',
-                'required' => 1
+                'required' => 1,
+                'videoParams' => [
+                    'autoplay' => 1,
+                ]
             ],
             [
                 'label' => __('Options', 'flynt'),
@@ -58,22 +61,7 @@ function getACFLayout()
                 'layout' => 'row',
                 'sub_fields' => [
                     FieldVariables\getTheme(),
-                    [
-                        'label' => __('Size', 'flynt'),
-                        'name' => 'size',
-                        'type' => 'radio',
-                        'other_choice' => 0,
-                        'save_other_choice' => 0,
-                        'layout' => 'horizontal',
-                        'choices' => [
-                            'sizeSmall' => __('Small', 'flynt'),
-                            'sizeMedium' => __('Medium', 'flynt'),
-                            'sizeLarge' => __('Large (Default)', 'flynt'),
-                            'sizeHuge' => __('Huge', 'flynt'),
-                            'sizeFull' => __('Full', 'flynt'),
-                        ],
-                        'default_value' => 'sizeLarge',
-                    ],
+                    FieldVariables\getSize()
                 ]
             ]
         ]

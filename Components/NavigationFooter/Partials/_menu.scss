@@ -1,23 +1,13 @@
 .menu {
   display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--flow-space) / 2) var(--flow-space);
   justify-content: center;
   list-style: none;
-  margin: 0;
   padding: 0;
-
-  &-item {
-    &:not(:first-child) {
-      margin-left: 2rem;
-    }
-  }
 
   &-link {
     color: currentColor;
     text-decoration: none;
-
-    &:hover,
-    &:focus {
-      color: $color-accent;
-    }
   }
 }

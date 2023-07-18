@@ -1,23 +1,27 @@
-<div class="flyntComponent" is="flynt-block-post-header">
-  <div class="container centerMaxWidthContainer">
-    <div class="content centerContentMaxWidth">
+<flynt-component name="BlockPostHeader">
+  <div class="container" data-size="full" data-theme="light">
+    <div class="content" data-size="medium" data-align="center">
       <h1>{{ post.title }}</h1>
-      <div class="meta">
-        {% if post.post_date %}
-          <time class="meta-date" datetime="{{ post.post_date|date('c') }}">{{ post.post_date|date(dateFormat) }}</time> {{ dividers.authorDivider|e }}
-        {% endif %}
-        {{ labels.postedByLabel|e }} <a class="meta-author" href="{{ post.author.link|e('esc_url') }}"><span class="visuallyHidden">{{ __("Author:", "flynt") }}</span> {{ post.author.name }}</a>
-        {{ labels.postedInLabel|e }} <a class="meta-category" href="{{ post.category.link|e('esc_url') }}"><span class="visuallyHidden">{{ __("Category:", "flynt") }}</span> {{ post.category }}</a>
-        {{ dividers.readingtimeDivider|e }} <span class="meta-readingtime">{{ post.content|readingtime }} {{ labels.readingtimeLabel|e }}</span>
-      </div>
       {% if post.post_excerpt %}
-        <p class="excerpt h3">{{ post.post_excerpt }}</p>
+        <p class="h5">{{ post.post_excerpt }}</p>
       {% endif %}
+      <p class="meta">
+        <a class="author" href="{{ post.author.link|e('esc_url') }}">
+          {% if post.author.avatar %}
+            <img class="avatar lazyload" src="{{ placeholderImage(48, 48) }}" data-src="{{ post.author.avatar|resizeDynamic(96) }}" width="48" height="48" alt="{{ post.author.name|e }}">
+          {% endif %}
+          <span class="visuallyHidden">{{ labels.postedBy|e }}</span>
+          <small>{{ post.author.name }}</small>
+        </a>
+        <a class="category" href="{{ post.category.link|e('esc_url') }}">
+          <span class="visuallyHidden">{{ labels.postedIn|e }}</span>
+          <small>{{ post.category }}</small>
+        </a>
+        <span class="readingtime"><small>{{ labels.readingTime|replace({'%d': post.content|readingtime})|e }}</small></span>
+      </p>
     </div>
   </div>
   {% if post.thumbnail %}
-    <div class="featuredImage">
-      {{ renderComponent('BlockImage', { image: post.thumbnail, options: { size: 'sizeLarge' }, noComponentSpacing: true }) }}
-    </div>
+    {{ renderComponent('BlockImage', { image: post.thumbnail, options: { size: 'wide' }, noComponentSpacing: true }) }}
   {% endif %}
-</div>
+</flynt-component>

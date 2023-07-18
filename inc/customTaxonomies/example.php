@@ -8,8 +8,7 @@
 
 namespace Flynt\CustomTaxonomies;
 
-// function registerExampleTaxonomy()
-// {
+// add_action('init', function () {
 //     $labels = [
 //         'name'                       => _x('Taxonomies', 'Taxonomy General Name', 'flynt'),
 //         'singular_name'              => _x('Taxonomy', 'Taxonomy Singular Name', 'flynt'),
@@ -43,6 +42,4 @@ namespace Flynt\CustomTaxonomies;
 //     ];
 
 //     register_taxonomy('example', ['post'], $args);
-// }
-
-// add_action('init', 'Flynt\\CustomTaxonomies\\registerExampleTaxonomy');
+// });

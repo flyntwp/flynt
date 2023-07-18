@@ -1,0 +1,27 @@
+.menu {
+  align-items: center;
+  display: flex;
+  list-style: none;
+  margin-inline-end: -1rem;
+  padding-inline-start: 2rem;
+
+  .link {
+    color: currentColor;
+    display: inline-block;
+    padding: 0.5rem 0.75rem;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+    will-change: color;
+
+    &:hover {
+      color: var(--color-accent);
+    }
+  }
+
+  .current-menu-item {
+    .link {
+      color: var(--color-accent);
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,47 +1,52 @@
 <?php
 
 /**
- * Loads the `basestyle.php` template on route /BaseStyle/ to render base style markup for proper base styling.
+ * Registers a custom rewrite rule and template for the 'BaseStyle' route.
+ * The route can be accessed at /BaseStyle/ in the site's permalink structure.
+ * The template file used for this route is 'basestyle.php' in the theme's root directory.
+ * The document title for this route is set to 'Base Style'.
  */
 
 namespace Flynt\BaseStyle;
 
-add_filter('init', 'Flynt\BaseStyle\registerRewriteRule');
-add_filter('template_include', 'Flynt\BaseStyle\templateInclude');
-
 const ROUTENAME = 'BaseStyle';
 
-function registerRewriteRule()
-{
+/**
+ * Registers the custom rewrite rule for the 'BaseStyle' route.
+ */
+add_filter('init', function () {
     $routeName = ROUTENAME;
 
-    add_rewrite_rule("{$routeName}/?$", "index.php?{$routeName}", "top");
+    add_rewrite_rule("{$routeName}/?$", "index.php?pagename={$routeName}", "top");
     add_rewrite_tag("%{$routeName}%", "([^&]+)");
-}
-
-function setDocumentTitle()
-{
-    // prevent yoast overwriting the title
-    add_filter('pre_get_document_title', function ($title) {
-        return '';
-    }, 99);
-
-    // set custom title and keep the default separator and site name
-    add_filter('document_title_parts', function ($title) {
-        $title['title'] = 'Base Style';
-        return $title;
-    }, 99);
-}
-
-function templateInclude($template)
-{
+});
+/**
+ * Sets the template file for the 'BaseStyle' route and sets the document title for the route.
+ */
+add_filter('template_include', function ($template) {
     global $wp_query;
 
-    if (isset($wp_query->query_vars[ROUTENAME])) {
+    $routeName = ROUTENAME;
+
+    if (isset($wp_query->query['pagename']) && $wp_query->query["pagename"] === $routeName) {
         setDocumentTitle();
         add_filter('wp_robots', 'wp_robots_no_robots');
         return get_template_directory() . '/basestyle.php';
     }
 
     return $template;
+});
+/**
+ * Sets the document title for the 'BaseStyle' route.
+ */
+function setDocumentTitle()
+{
+    // prevent yoast overwriting the title
+    add_filter('pre_get_document_title', '__return_empty_string', 99);
+
+    // set custom title and keep the default separator and site name
+    add_filter('document_title_parts', function ($title) {
+        $title['title'] = __('Base Style', 'flynt');
+        return $title;
+    }, 99);
 }

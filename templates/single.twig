@@ -1,20 +1,18 @@
 {% extends 'templates/_document.twig' %}
 
 {% block content %}
-  <article class="post">
-    <header class="post-header">
+  <article>
+    <header>
       {{ renderComponent('BlockPostHeader', { post: post }) }}
     </header>
-    <section class="post-main">
-      {% for component in post.meta('postComponents') %}
-        {{ renderComponent(component) }}
-      {% endfor %}
+    <section class="wp-block-post-content has-global-padding is-layout-constrained">
+        {{ post.content }}
     </section>
-    <footer class="post-meta">
+    <footer>
       {{ renderComponent('BlockPostFooter', { post: post }) }}
     </footer>
-    <section class="post-related">
-      {{ renderComponent('GridPostsLatest', {'preContentHtml': '<h2>' ~ __('Related Posts') ~ '</h2>','taxonomies': post.categories(), 'options': {'theme': 'themeLight', 'columns': 3}}) }}
+    <section>
+      {{ renderComponent('GridPostsLatest', {'taxonomies': post.categories(), 'options': {'theme': 'light', 'maxColumns': 3}}) }}
     </section>
   </article>
 {% endblock %}

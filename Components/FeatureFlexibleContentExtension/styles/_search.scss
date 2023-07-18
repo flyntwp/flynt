@@ -1,0 +1,32 @@
+.flyntComponentSearch {
+  display: flex;
+  flex-direction: column;
+
+  .acf-fc-popup.top & {
+    flex-direction: column-reverse;
+  }
+
+  &-field[type='text'] {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 0;
+    border-radius: 0.25rem;
+    color: #fff;
+    inline-size: calc(100% - 20px);
+    margin: 5px 10px;
+    outline: 0;
+    padding: 0.25rem 0.5rem;
+
+    &:focus {
+      box-shadow: none;
+      outline: 0;
+    }
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  &-noResults {
+    padding: 5px 10px;
+  }
+}

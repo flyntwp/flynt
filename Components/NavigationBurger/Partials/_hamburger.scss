@@ -1,62 +1,90 @@
 .hamburger {
+  --line-width: 29px;
+  --line-border-width: 2px;
+  align-items: center;
+  block-size: 48px;
   cursor: pointer;
-  display: block;
-  height: 18px;
+  display: flex;
+  inline-size: 48px;
+  justify-content: center;
+  margin-inline-end: -10px;
   position: relative;
-  width: 30px;
 
-  &::before,
-  &::after {
-    content: '';
+  &:focus:not(:focus-visible) {
+    outline: none;
   }
 
-  &::before,
-  &::after,
-  &-barPrimary,
-  &-barSecondary {
-    background-color: $color-accent;
-    display: block;
-    height: 2px;
-    left: 0;
-    position: absolute;
-    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out,
-      background-color 0.2s ease-in-out;
-    width: 30px;
-  }
+  &-lines {
+    block-size: 18px;
+    inline-size: var(--line-width);
+    position: relative;
 
-  &::before {
-    top: 0;
-  }
+    &::before,
+    &::after {
+      content: '';
+    }
 
-  &-barPrimary,
-  &-barSecondary {
-    top: 8px;
-  }
+    &::before,
+    &::after,
+    &--primary,
+    &--secondary {
+      background-color: var(--color-text);
+      block-size: var(--line-border-width);
+      border-radius: 6px;
+      display: block;
+      inline-size: var(--line-width);
+      inset-inline-start: 0;
+      position: absolute;
+      transition: opacity 0.2s ease-in-out 0.2s, transform 0.2s ease-in-out 0.2s;
+      will-change: opacity, transform;
+    }
 
-  &::after {
-    top: 16px;
+    &::before {
+      inset-block-start: 0;
+    }
+
+    &--primary,
+    &--secondary {
+      inset-block-start: 9px;
+      transition-delay: 0s;
+    }
+
+    &::after {
+      inset-block-start: 18px;
+    }
   }
 }
 
-&.flyntComponent-menuIsOpen .hamburger {
-  &::before,
-  &::after {
-    opacity: 0;
-  }
+&[data-status='menuIsOpen'] {
+  .hamburger-lines {
+    &::before,
+    &::after {
+      opacity: 0;
+      transition-delay: 0s;
+    }
 
-  &::before {
-    transform: scale(0) translateY(8px);
-  }
+    &::before {
+      transform: translateY(9px);
+    }
 
-  &::after {
-    transform: scale(0) translateY(-8px);
-  }
+    &::after {
+      transform: translateY(-9px);
+    }
 
-  &-barPrimary {
-    transform: rotate(45deg);
-  }
+    &--primary {
+      transform: rotate(45deg);
+      transition-delay: 0.2s;
+    }
 
-  &-barSecondary {
-    transform: rotate(-45deg);
+    &--secondary {
+      transform: rotate(-45deg);
+      transition-delay: 0.2s;
+    }
+
+    &::before,
+    &::after {
+      opacity: 0;
+      transition-delay: 0s;
+    }
   }
 }

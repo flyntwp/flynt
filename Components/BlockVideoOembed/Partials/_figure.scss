@@ -1,11 +1,11 @@
 .figure {
-  margin-bottom: 0;
+  margin-block-end: 0;
 
-  &-image {
-    background: rgba(0, 0, 0, 0.03);
+  &-image-svg {
+    aspect-ratio: 16 / 9;
+  }
 
-    &--isHidden {
-      visibility: hidden;
-    }
+  &[data-state='isHidden'] {
+    visibility: hidden;
   }
 }

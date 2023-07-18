@@ -24,59 +24,30 @@ Options::addTranslatable('BlockPostHeader', [
         'sub_fields' => [
             [
                 'label' => __('Posted by', 'flynt'),
-                'name' => 'postedByLabel',
+                'name' => 'postedBy',
                 'type' => 'text',
-                'default_value' => 'Posted by',
+                'default_value' => __('Posted by', 'flynt'),
                 'wrapper' => [
                     'width' => '50',
                 ],
             ],
             [
                 'label' => __('(Posted) in', 'flynt'),
-                'name' => 'postedInLabel',
+                'name' => 'postedIn',
                 'type' => 'text',
-                'default_value' => 'in',
+                'default_value' => __('in', 'flynt'),
                 'wrapper' => [
                     'width' => '50',
                 ],
             ],
             [
                 'label' => __('Reading Time - (20) min read', 'flynt'),
-                'name' => 'readingtimeLabel',
+                // translators: %d: Placeholder for a number
+                'instructions' => __('%d is placeholder for number of minutes', 'flynt'),
+                'name' => 'readingTime',
                 'type' => 'text',
-                'default_value' => 'min read',
-                'wrapper' => [
-                    'width' => '50',
-                ],
-            ],
-        ],
-    ],
-    [
-        'label' => __('Dividers', 'flynt'),
-        'name' => 'dividersTab',
-        'type' => 'tab',
-        'placement' => 'top',
-        'endpoint' => 0
-    ],
-    [
-        'label' => '',
-        'name' => 'dividers',
-        'type' => 'group',
-        'sub_fields' => [
-            [
-                'label' => __('Datetime | Author', 'flynt'),
-                'name' => 'authorDivider',
-                'type' => 'text',
-                'default_value' => '-',
-                'wrapper' => [
-                    'width' => '50',
-                ],
-            ],
-            [
-                'label' => __('Author | Reading Time', 'flynt'),
-                'name' => 'readingtimeDivider',
-                'type' => 'text',
-                'default_value' => '|',
+                // translators: %d: Placeholder for a number
+                'default_value' => __('%d min read', 'flynt'),
                 'wrapper' => [
                     'width' => '50',
                 ],

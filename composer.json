@@ -7,15 +7,15 @@
   "prefer-stable": true,
   "authors": [
     {
-      "name": "bleech",
+      "name": "Bleech",
       "email": "flynt@bleech.de"
     }
   ],
   "require": {
-    "php": ">=7.0.0",
-    "timber/timber": "^1.8",
-    "flyntwp/acf-field-group-composer": "^1.0.1",
-    "erusev/parsedown": "^1.7"
+    "php": ">=7.4",
+    "flyntwp/acf-field-group-composer": "^1.0",
+    "erusev/parsedown": "^1.7",
+    "timber/timber": "^2.0.0"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.4"
