@@ -35,8 +35,6 @@ class TimberDynamicResize
 
     /**
      * Constructor.
-     *
-     * @var TimberDynamicResize
      */
     public function __construct()
     {
@@ -89,7 +87,7 @@ class TimberDynamicResize
      */
     protected function addDynamicHooks()
     {
-        add_filter('init', [$this, 'addRewriteTag']);
+        add_action('init', [$this, 'addRewriteTag']);
         add_action('generate_rewrite_rules', [$this, 'registerRewriteRule']);
         add_action('parse_request', [$this, 'parseRequest']);
     }
@@ -203,8 +201,8 @@ class TimberDynamicResize
      * This function is a wrapper for the Resize class.
      *
      * @param string $src The image source.
-     * @param integer|float $w The width of the image.
-     * @param integer|float $h The height of the image.
+     * @param float $w The width of the image.
+     * @param float $h The height of the image.
      * @param string $crop The crop mode.
      * @param boolean $force Force the image to be generated.
      *

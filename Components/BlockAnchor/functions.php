@@ -46,13 +46,13 @@ add_filter('acf/load_field/name=anchorLink', function ($field) {
     global $post;
     $post = Timber::get_Post($post);
 
-    if (!$post || !$post->link) {
+    if (!$post || !$post->link()) {
         return $field;
     }
 
     $context = Timber::context();
     $context['post'] = $post;
-    $context['href'] = $post->link;
+    $context['href'] = $post->link();
 
     $templateDir = get_template_directory();
     $componentPath = $templateDir . '/Components/BlockAnchor';
@@ -71,8 +71,8 @@ add_filter('acf/load_field/name=anchorLink', function ($field) {
 
     $field['label'] =  sprintf(
         '<p class="anchorLink-url" data-href="%1$s">%2$s#</p>',
-        $post->link,
-        $post->link
+        $post->link(),
+        $post->link()
     );
     return $field;
 });

@@ -14,7 +14,7 @@ const ROUTENAME = 'BaseStyle';
 /**
  * Registers the custom rewrite rule for the 'BaseStyle' route.
  */
-add_filter('init', function () {
+add_action('init', function () {
     $routeName = ROUTENAME;
 
     add_rewrite_rule("{$routeName}/?$", "index.php?pagename={$routeName}", "top");

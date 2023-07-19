@@ -35,7 +35,7 @@ class TwigExtensionRenderComponent extends AbstractExtension
      * @param Environment $env Twig environment.
      * @param array $context Twig context.
      * @param string|array $componentName The name of the component.
-     * @param array $data The data of the component.
+     * @param array|null $data The data of the component.
      * @param boolean $withContext Whether to pass the context to the component.
      * @param boolean $ignoreMissing Whether to ignore missing components.
      * @param boolean $sandboxed Whether to sandbox the component.
@@ -45,7 +45,7 @@ class TwigExtensionRenderComponent extends AbstractExtension
     public function renderComponent(Environment $env, array $context, $componentName, ?array $data = [], bool $withContext = true, bool $ignoreMissing = false, bool $sandboxed = false)
     {
 
-        $data = $data === false ? [] : $data;
+        $data = $data === null ? [] : $data;
 
         if (is_array($componentName)) {
             $data = array_merge($componentName, $data);
@@ -80,7 +80,7 @@ class TwigExtensionRenderComponent extends AbstractExtension
 
         $output = Api::renderComponent($componentName, $data);
 
-        remove_filter('Flynt/renderComponent', $fn, PHP_INT_MIN, 3);
+        remove_filter('Flynt/renderComponent', $fn, PHP_INT_MIN);
 
         return $output;
     }
