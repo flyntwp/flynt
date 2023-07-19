@@ -1,5 +1,8 @@
 # language: php
 
+build:
+  image: default-bionic
+
 filter:
     paths: [./*]
     excluded_paths: [./node_modules/*]
