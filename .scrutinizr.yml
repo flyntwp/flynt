@@ -1,15 +1,10 @@
-# language: php
-
 build:
-  image: default-bionic
-
+    image: default-bionic
+    environment:
+        php: 7.4.33
 filter:
     paths: [./*]
     excluded_paths: [./node_modules/*]
-
-# before_commands:
-#   - 'composer self-update'
-#   - 'composer update --prefer-stable --prefer-source --no-interaction --no-scripts --no-progress --no-suggest'
 
 tools:
   php_code_coverage: false
