@@ -1,10 +1,12 @@
 build:
-    image: default-bionic
-    environment:
-        php: 7.4.33
+  image: default-bionic
+  environment:
+    php:
+      version: "7.4"
+
 filter:
-    paths: [./*]
-    excluded_paths: [./node_modules/*]
+  paths: [./*]
+  excluded_paths: [./node_modules/*]
 
 tools:
   php_code_coverage: false
