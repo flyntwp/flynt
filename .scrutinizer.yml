@@ -1,5 +1,5 @@
 build:
-  image: default-focal
+  image: default-jammy
   environment:
     php:
       version: "7.4"
