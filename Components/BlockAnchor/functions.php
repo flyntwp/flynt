@@ -50,29 +50,27 @@ add_filter('acf/load_field/name=anchorLink', function ($field) {
         return $field;
     }
 
-    $context = Timber::context();
-    $context['post'] = $post;
-    $context['href'] = $post->link();
-
     $templateDir = get_template_directory();
     $componentPath = $templateDir . '/Components/BlockAnchor';
 
-    $content = [
+    $context = Timber::context();
+    $context['post'] = $post;
+    $data = [
         'copiedMessage' => __('Link copied', 'flynt'),
         'description' => __('Copy the link and use it anywhere on the page to scroll to this position.', 'flynt'),
         'buttonText' =>  __('Copy link', 'flynt')
     ];
-    $content = array_merge($content, $context);
     $message = Timber::compile(
         $componentPath . '/Partials/_anchorLink.twig',
-        $content
+        array_merge($data, $context)
     );
     $field['message'] = $message;
 
+    $postLink = $post->link();
     $field['label'] =  sprintf(
         '<p class="anchorLink-url" data-href="%1$s">%2$s#</p>',
-        $post->link(),
-        $post->link()
+        $postLink,
+        $postLink
     );
     return $field;
 });
