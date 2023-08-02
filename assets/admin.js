@@ -1,4 +1,3 @@
-// import './scripts/publicPath'
 if (import.meta.env.DEV) {
   import('@vite/client')
 }
