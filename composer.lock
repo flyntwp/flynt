@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d667db2d768fe971f9dfd0561ae240b",
+    "content-hash": "3ce7362f7c772fad39ef9c6011e9ef01",
     "packages": [
         {
             "name": "composer/installers",
@@ -498,16 +498,16 @@
         },
         {
             "name": "timber/timber",
-            "version": "2.0.0-beta.2",
+            "version": "2.0.0-rc.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/timber/timber.git",
-                "reference": "b71a6bd66a32f80eaf6cfc926701d056ac2a7168"
+                "reference": "f56f062cd56a706a24848915bb554615bc215542"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timber/timber/zipball/b71a6bd66a32f80eaf6cfc926701d056ac2a7168",
-                "reference": "b71a6bd66a32f80eaf6cfc926701d056ac2a7168",
+                "url": "https://api.github.com/repos/timber/timber/zipball/f56f062cd56a706a24848915bb554615bc215542",
+                "reference": "f56f062cd56a706a24848915bb554615bc215542",
                 "shasum": ""
             },
             "require": {
@@ -577,20 +577,20 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2023-05-20T19:14:42+00:00"
+            "time": "2023-07-31T12:20:20+00:00"
         },
         {
             "name": "twig/twig",
-            "version": "v3.6.1",
+            "version": "v3.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "7e7d5839d4bec168dfeef0ac66d5c5a2edbabffd"
+                "reference": "5cf942bbab3df42afa918caeba947f1b690af64b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/7e7d5839d4bec168dfeef0ac66d5c5a2edbabffd",
-                "reference": "7e7d5839d4bec168dfeef0ac66d5c5a2edbabffd",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/5cf942bbab3df42afa918caeba947f1b690af64b",
+                "reference": "5cf942bbab3df42afa918caeba947f1b690af64b",
                 "shasum": ""
             },
             "require": {
@@ -636,7 +636,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twigphp/Twig/issues",
-                "source": "https://github.com/twigphp/Twig/tree/v3.6.1"
+                "source": "https://github.com/twigphp/Twig/tree/v3.7.0"
             },
             "funding": [
                 {
@@ -648,7 +648,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-08T12:52:13+00:00"
+            "time": "2023-07-26T07:16:09+00:00"
         }
     ],
     "packages-dev": [
