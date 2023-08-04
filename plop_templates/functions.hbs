@@ -1,0 +1,57 @@
+<?php
+
+namespace Flynt\Components\\{{name}};
+
+use Flynt\FieldVariables;
+{{#if hasAnyOptions}}
+use Flynt\Utils\Options;
+{{/if}}
+
+add_filter('Flynt/addComponentData?name={{name}}', function ($data) {
+    return $data;
+});
+
+function getACFLayout()
+{
+    return [
+        'name' => '{{componentAcfName name}}',
+        'label' => __('{{componentTitle name}}', 'flynt'),
+        'sub_fields' => [
+            [
+                'label' => __('General', 'flynt'),
+                'name' => 'generalTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
+            ],
+            [
+                'label' => __('Options', 'flynt'),
+                'name' => 'optionsTab',
+                'type' => 'tab',
+                'placement' => 'top',
+                'endpoint' => 0,
+            ],
+            [
+                'label' => '',
+                'name' => 'options',
+                'type' => 'group',
+                'layout' => 'row',
+                'sub_fields' => [
+                    FieldVariables\getTheme()
+                ],
+            ],
+        ]
+    ];
+}
+
+{{#if addGlobals}}
+Options::addGlobal('{{name}}', [
+
+]);
+{{/if}}
+
+{{#if addTranslatables}}
+Options::addTranslatable('{{name}}', [
+
+]);
+{{/if}}

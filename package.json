@@ -25,7 +25,8 @@
     "replaceVersion": "run-s --silent checkVersion && npm i -g replace-in-files-cli && run-p --silent replaceVersion:*",
     "replaceVersion:style.css": "cross-env replace-in-files --regex='Version: (.*)' --replacement=Version:\\ $npm_package_version ./style.css",
     "replaceVersion:js": "cross-env replace-in-files --string='%%NEXT_VERSION%%' --replacement=$npm_package_version './**/*.js' '!./dist/**/*' '!./node_modules/**/*'",
-    "replaceVersion:php": "cross-env replace-in-files --string='%%NEXT_VERSION%%' --replacement=$npm_package_version './**/*.php' '!./dist/**/*' '!./node_modules/**/*' '!./vendor/**/*'"
+    "replaceVersion:php": "cross-env replace-in-files --string='%%NEXT_VERSION%%' --replacement=$npm_package_version './**/*.php' '!./dist/**/*' '!./node_modules/**/*' '!./vendor/**/*'",
+    "generate": "npx plop"
   },
   "dependencies": {
     "body-scroll-lock": "^3.1.5",
@@ -44,6 +45,8 @@
     "mkdirp": "^3.0.1",
     "node-sass-glob-importer": "^5.3.3",
     "npm-run-all": "^4.1.5",
+    "plop": "^3.1.2",
+    "plop-action-copy": "^1.1.0",
     "rimraf": "^5.0.1",
     "sass": "^1.63.6",
     "standard": "^17.1.0",

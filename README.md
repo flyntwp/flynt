@@ -18,7 +18,7 @@
 ## Install
 
 1. Clone this repo to `<your-project>/wp-content/themes`.
-2. Change the domain variable in `flynt/vite.config.js` to match your domain:  
+2. Change the domain variable in `flynt/vite.config.js` to match your domain:
 `const wordpressHost = 'http://your-project.test'`
 3. Navigate to the theme folder and run the following command in your terminal:
 
@@ -95,6 +95,10 @@ A component is a self-contained building-block. Each component contains its own 
 The `functions.php` file for every component in the `./Components` folder is executed during the WordPress action `after_setup_theme`. [This is run from the `./functions.php` file of the theme.](https://github.com/flyntwp/flynt/tree/master/functions.php)
 
 To render components into a template, see [Page Templates](#page-templates).
+
+#### Developing Custom Components
+
+There is a [Plop.js](https://github.com/plopjs/plop) based code generator included to help with custom components development. Run `npm run generate` and follow the wizard to generate a boilerplate code for your new Flynt component.
 
 #### Web Components
 

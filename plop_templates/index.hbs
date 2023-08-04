@@ -1,0 +1,8 @@
+<flynt-component {{{componentAtts}}} name="{{name}}" class="componentSpacing" {{curlyOpen}} options.theme ? 'data-theme="' {{tilde}} options.theme {{tilde}} '"' {{curlyClose}}>
+  {{#if withJs}}
+  <script type="application/json">{{curlyOpen}} jsonData|json_encode {{curlyClose}}</script>
+  {{/if}}
+  <div class="container">
+    <h1>Component: {{componentTitleCase name}}</h1>
+  </div>
+</flynt-component>
