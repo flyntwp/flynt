@@ -1,5 +1,6 @@
 import 'vite/modulepreload-polyfill'
 import FlyntComponent from './scripts/FlyntComponent'
+import { initIcons, addCustomAPIProviders, addCustomIcons } from './scripts/icons'
 
 import 'lazysizes'
 
@@ -22,3 +23,7 @@ window.customElements.define(
   'flynt-component',
   FlyntComponent
 )
+
+// addCustomAPIProviders()
+addCustomIcons()
+initIcons()
