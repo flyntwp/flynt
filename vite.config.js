@@ -2,8 +2,10 @@ import { defineConfig, loadEnv } from 'vite'
 import autoprefixer from 'autoprefixer'
 import flynt from './vite-plugin-flynt'
 import globImporter from 'node-sass-glob-importer'
-import FullReload from 'vite-plugin-full-reload'
+import fullReload from 'vite-plugin-full-reload'
+import importIcons from './vite-plugin-import-icons'
 import fs from 'fs'
+import path from 'path'
 
 const wordpressHost = 'http://localhost:3000'
 
@@ -47,7 +49,11 @@ export default defineConfig(({ mode }) => {
         '@': __dirname
       }
     },
-    plugins: [flynt({ dest, host }), FullReload(watchFiles)],
+    plugins: [
+      flynt({ dest, host }), 
+      fullReload(watchFiles), 
+      importIcons({ directory: path.join(__dirname, '/assets/icons') })
+    ],
     server: {
       https: isSecure
         ? {
