@@ -19,6 +19,8 @@ add_action('wp_enqueue_scripts', function () {
     wp_localize_script('Flynt/assets/main', 'FlyntData', [
         'componentsWithScript' => ComponentManager::getInstance()->getComponentsWithScript(),
         'templateDirectoryUri' => get_template_directory_uri(),
+        // 'iconsProviderUrl' => env('ICONS_PROVIDER_URL'),
+        'iconsCustomDirectory' => Asset::requireUrl('assets/icons')
     ]);
 
     wp_enqueue_style('Flynt/assets/main', Asset::requireUrl('assets/main.scss'), [], null);
