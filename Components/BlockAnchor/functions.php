@@ -2,6 +2,7 @@
 
 namespace Flynt\Components\BlockAnchor;
 
+use Flynt\ComponentManager;
 use Timber\Timber;
 
 add_filter('Flynt/addComponentData?name=BlockAnchor', function ($data) {
@@ -50,27 +51,22 @@ add_filter('acf/load_field/name=anchorLink', function ($field) {
         return $field;
     }
 
-    $templateDir = get_template_directory();
-    $componentPath = $templateDir . '/Components/BlockAnchor';
-
-    $context = Timber::context();
-    $context['post'] = $post;
-    $data = [
-        'copiedMessage' => __('Link copied', 'flynt'),
-        'description' => __('Copy the link and use it anywhere on the page to scroll to this position.', 'flynt'),
-        'buttonText' =>  __('Copy link', 'flynt')
-    ];
-    $message = Timber::compile(
-        $componentPath . '/Partials/_anchorLink.twig',
-        array_merge($data, $context)
-    );
-    $field['message'] = $message;
-
     $postLink = $post->link();
     $field['label'] =  sprintf(
         '<p class="anchorLink-url" data-href="%1$s">%2$s#</p>',
         $postLink,
         $postLink
     );
+
+    $data = [
+        'copiedMessage' => __('Link copied', 'flynt'),
+        'description' => __('Copy the link and use it anywhere on the page to scroll to this position.', 'flynt'),
+        'buttonText' =>  __('Copy link', 'flynt')
+    ];
+    $field['message'] = Timber::compile(
+        ComponentManager::getInstance()->getComponentFilePath('BlockAnchor', 'Partials/_anchorLink.twig'),
+        array_merge($data, Timber::context(['post' => $post]))
+    );
+
     return $field;
 });
