@@ -30,7 +30,7 @@
                       {{ post.thumbnail.src|resizeDynamic(768, (768 / 3 * 2)|round, 'center') }} 768w,
                       {{ post.thumbnail.src|resizeDynamic(640, (640 / 3 * 2)|round, 'center') }} 640w"
                     data-sizes="auto"
-                    alt="{{ post.title }}">
+                    alt="{{ post.thumbnail.alt|e ?: post.title }}">
                 </figure>
               {% endif %}
               <div class="content boxPadding">
