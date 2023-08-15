@@ -26,7 +26,7 @@ if (window.acf) {
           const $target = $el[0]
           const targetTop = $target.getBoundingClientRect().bottom
           const targetHeight = $target.getBoundingClientRect().height
-          const offsetBottom = window.innerHeight + window.scrollY - targetTop + targetHeight + 10
+          const offsetBottom = window.innerHeight - window.scrollY - targetTop + targetHeight + 10
           $tooltip.style.top = 'auto'
           $tooltip.style.bottom = `${offsetBottom}px`
         }
