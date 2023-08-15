@@ -8,8 +8,9 @@
       {% endif %}
       <ul class="grid" {{ options.maxColumns ? 'data-max-columns="' ~ options.maxColumns ~ '"' }}>
         {% for post in posts %}
-          <li class="post boxBorder" data-theme="reset">
-            <a class="link" href="{{ post.link|e('esc_url') }}" aria-label="{{ post.title }}">
+          {% set ariaLabelledbyId = uuid ~ '-' ~ loop.index %}
+          <li class="post boxBorder" id="{{ ariaLabelledbyId }}" data-theme="reset">
+            <a class="link" href="{{ post.link|e('esc_url') }}" aria-labelledby="{{ ariaLabelledbyId }}">
               {% if post.thumbnail %}
                 <figure class="figure">
                   <img class="post-image figure-image lazyload"
