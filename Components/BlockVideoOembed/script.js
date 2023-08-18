@@ -17,4 +17,9 @@ export default function (el) {
     refs.videoPlayer.dataset.state = 'isLoaded'
     refs.posterImage.dataset.state = 'isHidden'
   }
+
+  return () => {
+    refs.playButton.removeEventListener('click', loadVideo)
+    refs.iframe.removeEventListener('load', videoIsLoaded)
+  }
 }
