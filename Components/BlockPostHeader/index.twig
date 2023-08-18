@@ -1,4 +1,4 @@
-<flynt-component name="BlockPostHeader">
+<flynt-component name="BlockPostHeader" {{ not post.thumbnail ? 'data-thumbnail="false"' }}">
   <div class="container" data-size="full" data-theme="light">
     <div class="content" data-size="medium" data-align="center">
       <h1>{{ post.title }}</h1>
@@ -13,11 +13,15 @@
           <span class="visuallyHidden">{{ labels.postedBy|e }}</span>
           <small>{{ post.author.name }}</small>
         </a>
-        <a class="category" href="{{ post.category.link|e('esc_url') }}">
-          <span class="visuallyHidden">{{ labels.postedIn|e }}</span>
-          <small>{{ post.category }}</small>
-        </a>
-        <span class="readingtime"><small>{{ labels.readingTime|replace({'%d': post.content|readingtime})|e }}</small></span>
+        {% if post.category %}
+          <a class="category" href="{{ post.category.link|e('esc_url') }}">
+            <span class="visuallyHidden">{{ labels.postedIn|e }}</span>
+            <small>{{ post.category }}</small>
+          </a>
+        {% endif %}
+        <span class="readingtime">
+          <small>{{ labels.readingTime|replace({'%d': post.content|readingtime})|e }}</small>
+        </span>
       </p>
     </div>
   </div>

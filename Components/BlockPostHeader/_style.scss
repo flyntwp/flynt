@@ -1,4 +1,8 @@
 flynt-component[name='BlockPostHeader'] {
+  &[data-thumbnail='false'] {
+    margin-block-end: var(--component-spacing);
+  }
+
   > .container {
     padding: var(--component-spacing) var(--container-spacing);
   }
@@ -11,6 +15,7 @@ flynt-component[name='BlockPostHeader'] {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
+    font-size: var(--font-size-body-small);
 
     > *:not(:last-child) {
       &::after {
