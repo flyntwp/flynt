@@ -10,7 +10,8 @@ export default function (el) {
   const isDesktopMediaQuery = window.matchMedia('(min-width: 1024px)')
   isDesktopMediaQuery.addEventListener('change', onBreakpointChange)
 
-  el.addEventListener('click', delegate('[data-ref="menuButton"]', onMenuButtonClick))
+  const menuButtonClickDelegate = delegate('[data-ref="menuButton"]', onMenuButtonClick)
+  el.addEventListener('click', menuButtonClickDelegate)
 
   onBreakpointChange()
 
@@ -38,5 +39,10 @@ export default function (el) {
       ? navigationHeight + document.getElementById('wpadminbar').offsetHeight
       : navigationHeight
     document.documentElement.style.scrollPaddingTop = `${scrollPaddingTop}px`
+  }
+
+  return () => {
+    isDesktopMediaQuery.removeEventListener('change', onBreakpointChange)
+    el.removeEventListener('click', menuButtonClickDelegate)
   }
 }

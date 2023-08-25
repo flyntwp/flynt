@@ -10,6 +10,7 @@ const POST_TYPE = 'post';
 const FILTER_BY_TAXONOMY = 'category';
 
 add_filter('Flynt/addComponentData?name=GridPostsArchive', function ($data) {
+    $data['uuid'] = $data['uuid'] ?? wp_generate_uuid4();
     $postType = POST_TYPE;
     $taxonomy = FILTER_BY_TAXONOMY;
     $terms = get_terms([

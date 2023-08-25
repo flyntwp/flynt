@@ -5,7 +5,8 @@ import { buildRefs } from '@/assets/scripts/helpers.js'
 export default function (el) {
   const refs = buildRefs(el)
 
-  el.addEventListener('click', delegate('[data-ref="loadMore"]', onLoadMore))
+  const loadMoreDelegate = delegate('[data-ref="loadMore"]', onLoadMore)
+  el.addEventListener('click', loadMoreDelegate)
 
   async function onLoadMore (e) {
     e.preventDefault()
@@ -35,5 +36,9 @@ export default function (el) {
     } catch (e) {
       console.error(e)
     }
+  }
+
+  return () => {
+    el.removeEventListener('click', loadMoreDelegate)
   }
 }

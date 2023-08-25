@@ -9,13 +9,13 @@
 
 namespace Flynt\BaseStyle;
 
-const ROUTENAME = 'BaseStyle';
+const ROUTE_NAME = 'BaseStyle';
 
 /**
  * Registers the custom rewrite rule for the 'BaseStyle' route.
  */
 add_action('init', function () {
-    $routeName = ROUTENAME;
+    $routeName = ROUTE_NAME;
 
     add_rewrite_rule("{$routeName}/?$", "index.php?pagename={$routeName}", "top");
     add_rewrite_tag("%{$routeName}%", "([^&]+)");
@@ -26,7 +26,7 @@ add_action('init', function () {
 add_filter('template_include', function ($template) {
     global $wp_query;
 
-    $routeName = ROUTENAME;
+    $routeName = ROUTE_NAME;
 
     if (isset($wp_query->query['pagename']) && $wp_query->query["pagename"] === $routeName) {
         setDocumentTitle();

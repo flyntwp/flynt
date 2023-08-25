@@ -12,8 +12,9 @@
     {% if posts|length > 0 %}
       <ul data-ref="posts" class="posts">
         {% for post in posts %}
-          <li class="post boxBorder" data-theme="reset">
-            <a class="link" href="{{ post.link|e('esc_url') }}" aria-label="{{ post.title }}">
+          {% set ariaLabelledbyId = uuid ~ '-' ~ loop.index %}
+          <li class="post boxBorder" id="{{ ariaLabelledbyId }}" data-theme="reset">
+            <a class="link" href="{{ post.link|e('esc_url') }}" aria-labelledby="{{ ariaLabelledbyId }}">
               {% if post.thumbnail %}
                 <figure class="figure">
                   <img class="post-image figure-image lazyload"
@@ -30,7 +31,7 @@
                       {{ post.thumbnail.src|resizeDynamic(768, (768 / 3 * 2)|round, 'center') }} 768w,
                       {{ post.thumbnail.src|resizeDynamic(640, (640 / 3 * 2)|round, 'center') }} 640w"
                     data-sizes="auto"
-                    alt="{{ post.title }}">
+                    alt="{{ post.thumbnail.alt|e ?: post.title }}">
                 </figure>
               {% endif %}
               <div class="content boxPadding">

@@ -203,11 +203,6 @@ add_action('Flynt/afterRegisterComponents', function () {
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'page'
-                ],
-                [
-                    'param' => 'page_type',
-                    'operator' => '!=',
-                    'value' => 'posts_page'
                 ]
             ]
         ]
