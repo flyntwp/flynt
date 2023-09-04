@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html class="html {{ body_class }}" {{ site.language_attributes }}>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="alternate" type="application/rss+xml" title="{{- theme.labels.feed|replace({ '%s': site.title }) -}}" href="{{ site.rss2|e('esc_url') }}">
-    {{ function('wp_head') }}
-  </head>
-  <body>
-    {{ function('wp_body_open') }}
-    <a href="#mainContent" class="visuallyHidden-focusable">
-      {{- theme.labels.skipToMainContent|e -}}
-    </a>
-    {% block layout %}
-      <div class="pageWrapper">
-        <header class="mainHeader">
-          {% block header %}
-            {{ renderComponent('NavigationMain') }}
-            {{ renderComponent('NavigationBurger') }}
-          {% endblock %}
-        </header>
-        <main id="mainContent" class="mainContent" aria-label="{{- theme.labels.mainContentAriaLabel|e -}}">
-          {% if function('post_password_required') %}
-            {{ function('get_the_password_form') }}
-          {% else %}
-            {% block content %}
-              No <code>{{ '{% block content %}' }}</code> defined for this template.
-            {% endblock %}
-          {% endif %}
-        </main>
-        <footer class="mainFooter">
-          {% block footer %}
-            {{ renderComponent('NavigationFooter') }}
-          {% endblock %}
-        </footer>
-      </div>
-    {% endblock %}
-    <div class="wpFooter">
-      {{ function('wp_footer') }}
-    </div>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="alternate" type="application/rss+xml" title="{{- theme.labels.feed|replace({ '%s': site.title }) -}}" href="{{ site.rss2|e('esc_url') }}">
+  {{ function('wp_head') }}
+</head>
+<body>
+
+  {{ function('wp_body_open') }}
+  <a href="#mainContent" class="visuallyHidden-focusable">
+    {{- theme.labels.skipToMainContent|e -}}
+  </a>
+  <div class="pageWrapper">
+    <header class="mainHeader">
+      {% block header %}
+        {{ renderComponent('NavigationMain') }}
+        {{ renderComponent('NavigationBurger') }}
+      {% endblock %}
+    </header>
+    <main id="mainContent" class="mainContent" aria-label="{{- theme.labels.mainContentAriaLabel|e -}}">
+      {% if function('post_password_required') %}
+        {{ function('get_the_password_form') }}
+      {% else %}
+        {% block content %}
+          <div class="contentWrapper">
+            <p>Sorry, der Inhalt wurde nicht gefunden.</p>
+          </div>
+        {% endblock %}
+      {% endif %}
+    </main>
+    <footer class="mainFooter">
+      {% block footer %}
+        {{ renderComponent('NavigationFooter') }}
+      {% endblock %}
+    </footer>
+  </div>
+  <div class="wpFooter">
+    {{ function('wp_footer') }}
+  </div>
+</body>
 </html>
