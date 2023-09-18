@@ -1,5 +1,5 @@
 :root,
-[data-theme='reset'] {
+[data-theme="reset"] {
   --color-accent: hsla(212, 100%, 45%, 1);
   --color-background: hsla(0, 0%, 100%, 1);
   --color-background-secondary: hsla(0, 0%, 19%, 0.08);
@@ -10,14 +10,14 @@
   --color-error: hsl(343, 98%, 46%);
 }
 
-[data-theme='light'] {
+[data-theme="light"] {
   --color-background: hsl(212, 76%, 97%);
   --color-text: hsla(212, 100%, 15%, 1);
   --color-border: hsla(212, 100%, 15%, 0.7);
   --color-border-secondary: var(--color-border);
 }
 
-[data-theme='dark'] {
+[data-theme="dark"] {
   --color-accent: hsla(79, 100%, 60%, 1);
   --color-background: hsla(212, 100%, 15%, 1);
   --color-background-secondary: hsl(228, 56%, 98%, 0.06);

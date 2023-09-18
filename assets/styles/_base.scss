@@ -414,46 +414,46 @@ flynt-component {
   max-inline-size: calc(var(--content-max-width-full) + var(--container-spacing) * 2);
   padding-inline: var(--container-spacing);
 
-  &[data-size=full] {
+  &[data-size="full"] {
     padding-inline: 0;
   }
 }
 
-[data-size=medium] {
+[data-size="medium"] {
   max-inline-size: var(--content-max-width);
 }
 
-[data-size=wide] {
+[data-size="wide"] {
   max-inline-size: var(--content-max-width-wide);
 }
 
-[data-size=full] {
+[data-size="full"] {
   max-inline-size: 100%;
 }
 
-[data-align=left] {
+[data-align="left"] {
   margin-inline: unset;
 }
 
-[data-align=center] {
+[data-align="center"] {
   margin-inline: auto;
 }
 
-[data-text-align=left] {
+[data-text-align="left"] {
   text-align: start;
 }
 
-[data-text-align=center] {
+[data-text-align="center"] {
   text-align: center;
 }
 
-[data-flow=layout] {
+[data-flow="layout"] {
   > * + * {
     margin-block-start: calc(var(--component-spacing) / 2);
   }
 }
 
-[data-flow=content] {
+[data-flow="content"] {
   > * + * {
     margin-block-start: var(--flow-space);
   }
@@ -461,9 +461,9 @@ flynt-component {
 
 // Balance layouted text lines on mobile.
 @media (max-width: $breakpoint-tablet - 1) {
-  [data-size=wide],
-  [data-size=full],
-  [data-text-align=center] {
+  [data-size="wide"],
+  [data-size="full"],
+  [data-text-align="center"] {
     p,
     .paragraph,
     h1, h2, h3, h4, h5, h6,
