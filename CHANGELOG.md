@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.1](https://github.com/flyntwp/flynt/compare/v2.0.0...v2.0.1) (2023-09-27)
+
+
+### Features
+
+* **NavigationBurger:** use is_external and is_target_blank ([e383910](https://github.com/flyntwp/flynt/commit/e3839105158a3afc91bdb9e012fa48cb3ff15773))
+* **NavigationFooter:** use is_external and is_target_blank, reduce markup ([acf44aa](https://github.com/flyntwp/flynt/commit/acf44aac5d464f1c030af995426ade543c5ad01f))
+* **NavigationMain:** use is_external and is_target_blank ([39ee3c0](https://github.com/flyntwp/flynt/commit/39ee3c0fe04cecef50d012ee790e27423ae1aea9))
+* **package.json:** add releasePatch script ([f6429d8](https://github.com/flyntwp/flynt/commit/f6429d855f1d1e64ef001a5f99d6a66d2cd130a2))
+
+
+### Bug Fixes
+
+* **assets.php:** remove strategy, because modules are deferred automatically ([8dfe556](https://github.com/flyntwp/flynt/commit/8dfe556330ac315f580ec064336d0f4745da0c5d))
+* **BlockPostHeader:** remove quote ([7de0de5](https://github.com/flyntwp/flynt/commit/7de0de5125239e48c09302f6ed43f2fe2320f958))
+* **FeatureFlexibleContentExtension:** add component tooltip positioning ([#501](https://github.com/flyntwp/flynt/issues/501)) ([0ef7ec8](https://github.com/flyntwp/flynt/commit/0ef7ec83dba205e1d9707c09c5bf9a8d5eae2f4d))
+
+
+### Other
+
+* **package.json:** change author name ([a6c5b4b](https://github.com/flyntwp/flynt/commit/a6c5b4bcde0d5c4871bbc18a1ba3784a7fa02b12))
+* **README.md:** add host const to .env config ([e7a1b8c](https://github.com/flyntwp/flynt/commit/e7a1b8c8db962133af75260b64a8fa3153ed0630))
+
 ## [2.0.0](https://github.com/flyntwp/flynt/compare/v1.4.1...v2.0.0) (2023-07-18)
 
 * Google PageSpeed Insights scores: a full 100/100 in Performance, Accessibility, Best Practices, SEO.
