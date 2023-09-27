@@ -22,6 +22,7 @@
     "lintFix:styles": "cross-env stylelint '**/*.scss' --fix",
     "lintFix:php": "cross-env ./vendor/bin/phpcbf",
     "release": "run-s --silent checkVersion && standard-version -a",
+    "releasePatch": "run-s --silent checkVersion && standard-version -a --release-as patch",
     "replaceVersion": "run-s --silent checkVersion && npm i -g replace-in-files-cli && run-p --silent replaceVersion:*",
     "replaceVersion:style.css": "cross-env replace-in-files --regex='Version: (.*)' --replacement=Version:\\ $npm_package_version ./style.css",
     "replaceVersion:js": "cross-env replace-in-files --string='%%NEXT_VERSION%%' --replacement=$npm_package_version './**/*.js' '!./dist/**/*' '!./node_modules/**/*'",
