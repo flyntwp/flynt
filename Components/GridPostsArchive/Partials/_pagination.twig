@@ -1,4 +1,3 @@
-
 {% if loadMore and pagination.next %}
   <div data-ref="pagination" class="pagination">
     <a data-ref="loadMore" href="{{ pagination.next.link|e('esc_url') }}" class="button button-loadMore">{{ labels.loadMore }}</a>
