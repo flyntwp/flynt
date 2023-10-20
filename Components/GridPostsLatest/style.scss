@@ -1,3 +1,5 @@
+@use "assets/styles/variables" as *;
+
 flynt-component[name='GridPostsLatest'] {
   .grid {
     --grid-item-width: calc((var(--content-max-width-full) - 2 * var(--flow-space)) / 3);

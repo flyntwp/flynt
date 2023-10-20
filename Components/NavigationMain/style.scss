@@ -1,3 +1,5 @@
+@use "assets/styles/variables" as *;
+
 flynt-component[name='NavigationMain'] {
   --navigation-height: 96px;
   block-size: var(--navigation-height);

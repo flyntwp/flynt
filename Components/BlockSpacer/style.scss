@@ -1,3 +1,5 @@
+@use "assets/styles/variables" as *;
+
 flynt-component[name='BlockSpacer'] {
   &[data-status='collapse'] {
     margin-block-start: calc((-1 * var(--component-spacing)) + (var(--percentage-distance) * var(--component-spacing) ) / 100);

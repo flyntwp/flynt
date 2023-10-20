@@ -1,3 +1,5 @@
+@use "assets/styles/variables" as *;
+
 flynt-component[name='BlockImageText'] {
   @media (min-width: $breakpoint-tablet-horizontal) {
     .container {

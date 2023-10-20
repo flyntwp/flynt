@@ -24,6 +24,16 @@ const watchFiles = [
   './Components/**/*.{php,twig}'
 ]
 
+const componentStyles = getComponentStyles('./Components/**/style.*')
+function getComponentStyles (globPath) {
+  const files = require('glob').sync(globPath)
+  return files.reduce((entries, file) => {
+    const key = file.replace(/(\.\/Components\/|\/style\.(scss|css))/g, '')
+    entries[key] = file
+    return entries
+  }, {})
+}
+
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   const host = env.VITE_DEV_SERVER_HOST || wordpressHost
@@ -63,7 +73,10 @@ export default defineConfig(({ mode }) => {
       outDir: dest,
       rollupOptions: {
         // overwrite default .html entry
-        input: entries
+        input: {
+          ...entries,
+          ...componentStyles
+        }
       }
     }
   }

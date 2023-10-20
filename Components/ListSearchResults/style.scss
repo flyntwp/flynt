@@ -1,3 +1,5 @@
+@use "assets/styles/variables" as *;
+
 flynt-component[name='ListSearchResults'] {
   @import 'Partials/header';
   @import 'Partials/pagination';

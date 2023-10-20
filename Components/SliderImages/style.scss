@@ -1,3 +1,5 @@
+@use "assets/styles/variables" as *;
+
 flynt-component[name='SliderImages'] {
   .slider {
     background-color: var(--color-border);

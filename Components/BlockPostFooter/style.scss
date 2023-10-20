@@ -1,3 +1,5 @@
+@use "assets/styles/variables" as *;
+
 flynt-component[name='BlockPostFooter'] {
   .tags {
     display: flex;

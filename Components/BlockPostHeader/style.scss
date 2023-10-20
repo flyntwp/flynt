@@ -1,3 +1,5 @@
+@use "assets/styles/variables" as *;
+
 flynt-component[name='BlockPostHeader'] {
   &[data-thumbnail='false'] {
     margin-block-end: var(--component-spacing);

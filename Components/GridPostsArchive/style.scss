@@ -1,5 +1,7 @@
-flynt-component[name='ListComponents'] {
-  .components {
+@use "assets/styles/variables" as *;
+
+flynt-component[name='GridPostsArchive'] {
+  .posts {
     --grid-columns: 1;
     display: grid;
     gap: var(--flow-space);
@@ -17,50 +19,43 @@ flynt-component[name='ListComponents'] {
     }
   }
 
-  .component {
-    display: flex;
-    flex-wrap: wrap;
+  .posts-empty {
+    text-align: center;
+  }
 
-    .imageWrapper {
-      block-size: 0;
-      inline-size: 100%;
-      overflow: hidden;
-      padding-block-end: calc(100% * (800 / 1280));
-      position: relative;
+  .post {
+    inline-size: var(--grid-item-width);
+    max-inline-size: var(--grid-item-max-width);
 
-      .image {
-        block-size: auto;
-        position: absolute;
-
-        &--isSmallerThanWrapper {
-          block-size: 100%;
-          object-fit: contain;
-        }
-      }
-    }
-
-    .componentLink {
-      display: block;
+    .link {
+      block-size: 100%;
+      color: currentColor;
+      display: flex;
+      flex-direction: column;
       font-weight: initial;
-      inline-size: 100%;
       text-decoration: none;
     }
 
     .content {
       color: var(--color-text);
+      flex-grow: 1;
+      margin-block-start: 0;
     }
 
-    footer {
+    .footer {
       align-items: center;
-      align-self: flex-end;
       display: flex;
       inline-size: 100%;
       justify-content: space-between;
       padding: 0 var(--box-spacing) var(--box-spacing);
+      position: relative;
 
-      .button--text {
-        margin-inline-start: auto;
+      .readingTime {
+        color: var(--color-text-muted);
       }
     }
   }
+
+  @import 'Partials/filter';
+  @import 'Partials/pagination';
 }

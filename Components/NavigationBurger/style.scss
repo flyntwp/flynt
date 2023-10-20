@@ -1,3 +1,5 @@
+@use "assets/styles/variables" as *;
+
 flynt-component[name='NavigationBurger'] {
   --navigation-height: 64px;
   block-size: var(--navigation-height);

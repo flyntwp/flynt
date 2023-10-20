@@ -1,4 +1,66 @@
 /**
+ * CSS Variables
+ */
+:root {
+  /**
+   * FOUC can be reduced with good matching fallback font.
+   * https://meowni.ca/font-style-matcher/ or
+   * https://github.com/pixel-point/fontpie
+   */
+  --font-family-heading: 'Public Sans', 'Trebuchet MS', sans-serif;
+  --font-family-text: 'Public Sans', 'Trebuchet MS', sans-serif;
+  --font-size-body: 1.125rem;
+  --font-size-body-small: 1rem;
+  --flow-space: 1.5625rem;
+  --column-gap: clamp(2.5rem, 2.5vw + 1.75rem, 3.75rem);
+
+  --content-max-width: 700px;
+  --content-max-width-wide: 900px;
+  --content-max-width-full: 1200px;
+
+  --box-spacing: clamp(1rem, 2.50vw + 0.25rem, 2.25rem);
+  --container-spacing: clamp(1rem, 2.5vw + 0.25rem, 2.25rem);
+  --component-spacing: clamp(3rem, 6.5vw + 1.05rem, 6.25rem);
+}
+
+:root,
+[data-theme="reset"] {
+  --color-accent: hsla(212, 100%, 45%, 1);
+  --color-background: hsla(0, 0%, 100%, 1);
+  --color-background-secondary: hsla(0, 0%, 19%, 0.08);
+  --color-border: hsl(0, 0%, 90%);
+  --color-border-secondary: hsl(0, 0%, 19%, 0.68);
+  --color-text: hsl(0, 0%, 19%, 1);
+  --color-text-muted: hsla(0, 0%, 19%, 0.8);
+  --color-error: hsl(343, 98%, 46%);
+}
+
+[data-theme="light"] {
+  --color-background: hsl(212, 76%, 97%);
+  --color-text: hsla(212, 100%, 15%, 1);
+  --color-border: hsla(212, 100%, 15%, 0.7);
+  --color-border-secondary: var(--color-border);
+}
+
+[data-theme="dark"] {
+  --color-accent: hsla(79, 100%, 60%, 1);
+  --color-background: hsla(212, 100%, 15%, 1);
+  --color-background-secondary: hsl(228, 56%, 98%, 0.06);
+  --color-border-secondary: hsl(0, 0%, 90%, 0.68);
+  --color-text: hsla(0, 0%, 100%, 1);
+  --color-text-muted: hsl(0, 0%, 100%, 0.8);
+}
+
+/**
+ * Themes
+ */
+
+ [data-theme] {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+/**
  * Typography
  */
 
@@ -524,13 +586,4 @@ flynt-component {
 
 .boxBorder {
   border: solid 2px var(--color-border);
-}
-
-/**
- * Themes
- */
-
-[data-theme] {
-  background-color: var(--color-background);
-  color: var(--color-text);
 }

@@ -1,4 +1,5 @@
-@use 'sass:map';
+@use "sass:map";
+@use "../../../assets/styles/variables" as variables;
 
 $play-button-circle-diameter: (
   'desktop': 100px,
@@ -21,7 +22,7 @@ $play-button-circle-diameter: (
   transform: translate(-50%, -50%);
   z-index: 1;
 
-  @media (min-width: $breakpoint-tablet) {
+  @media (min-width: variables.$breakpoint-tablet) {
     margin-block-start: -(map.get($play-button-circle-diameter, 'desktop') * 0.5);
     margin-inline-start: -(map.get($play-button-circle-diameter, 'desktop') * 0.5);
   }
@@ -33,7 +34,7 @@ $play-button-circle-diameter: (
   border-radius: 50%;
   inline-size: map.get($play-button-circle-diameter, 'mobile');
 
-  @media (min-width: $breakpoint-tablet) {
+  @media (min-width: variables.$breakpoint-tablet) {
     block-size: map.get($play-button-circle-diameter, 'desktop');
     inline-size: map.get($play-button-circle-diameter, 'desktop');
   }

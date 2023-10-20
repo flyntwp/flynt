@@ -1,3 +1,5 @@
+@use "assets/styles/variables" as *;
+
 flynt-component[name='GridImageText'] {
   .grid {
     --grid-columns: 1;
