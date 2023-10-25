@@ -14,6 +14,10 @@ use Timber\Timber;
 // To avoid conflicts, the filters are added only if the current request is not on an administrative interface page,
 // but also if the post action is "editpost", which is required to resolve an issue with twig and images.
 if (!is_admin() || (isset($_POST['action']) && 'editpost' == $_POST['action'])) {
+    addFilters();
+}
+
+function addFilters() {
     $priority = 100;
 
     // Convert ACF Images to Timber Images.

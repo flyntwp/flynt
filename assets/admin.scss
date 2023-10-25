@@ -1,2 +1,44 @@
 // stylelint-disable scss/at-import-no-partial-leading-underscore, scss/at-import-partial-extension-blacklist
 @import '../Components/**/_admin.scss';
+
+#postmate {
+  --iframe-scale: 0.5;
+  display: flex;
+  gap: 1rem;
+  > div {
+    // position: relative;
+    block-size: calc(var(--iframe-block-size) * var(--iframe-scale));
+    inline-size: calc(var(--iframe-inline-size) * var(--iframe-scale));
+  }
+
+  .desktop {
+    --iframe-block-size: 1000px;
+    --iframe-inline-size: 1200px;
+  }
+
+  .mobile {
+    --iframe-block-size: 1000px;
+    --iframe-inline-size: 412px;
+  }
+
+  .tablet {
+    --iframe-block-size: 1000px;
+    --iframe-inline-size: 768px;
+  }
+  // block-size: 400px;
+  // inline-size: 600px;
+  // position: relative;
+  iframe {
+    // position: absolute;
+    // top:0;
+    // left: 0;
+    // margin-top: -200px;
+    // margin-left: -300px;
+    block-size: var(--iframe-block-size);
+    border: 1px solid grey;
+    inline-size: var(--iframe-inline-size);
+    scale: var(--iframe-scale);
+    // translate: calc(-1 * var(--iframe-inline-size) + var(--iframe-inline-size) * var(--iframe-scale)) calc(-1 * var(--iframe-block-size) * var(--iframe-scale) / 2);
+    translate: calc(-1 * var(--iframe-inline-size) * (1 - var(--iframe-scale)) / 2) calc(-1 * var(--iframe-block-size) * (1 - var(--iframe-scale)) / 2);
+  }
+}
