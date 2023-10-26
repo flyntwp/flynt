@@ -72,7 +72,8 @@ function init() {
   })
 
   async function submit() {
-    const response = await fetch('/wp/wp-admin/admin-ajax.php', {
+    const { adminAjaxUrl } = window.FlyntData
+    const response = await fetch(adminAjaxUrl, {
       method: 'POST',
       credentials: 'same-origin',
       body: new FormData(flyntRenderer)

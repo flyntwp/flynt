@@ -31,6 +31,7 @@ add_action('admin_enqueue_scripts', function () {
     wp_localize_script('Flynt/assets/admin', 'FlyntData', [
         'componentsWithScript' => ComponentManager::getInstance()->getComponentsWithScript(),
         'templateDirectoryUri' => get_template_directory_uri(),
+        'adminAjaxUrl' => admin_url('admin-ajax.php'),
     ]);
 
     wp_enqueue_style('Flynt/assets/admin', Asset::requireUrl('assets/admin.scss'), [], null);

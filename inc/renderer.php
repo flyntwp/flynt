@@ -33,23 +33,13 @@ function registerField($componentName) {
             ],
             [
                 'label' => 'Current Component',
-                'name' => 'component',
+                'name' => "fcr_$componentName",
                 'type' => 'group',
                 'sub_fields' => "Flynt\\Components\\$componentName\\getACFLayout"()['sub_fields'],
             ],
         ],
         'location' => []
     ]);
-}
-
-function getFieldInputName($field) {
-    if (!empty($field['parent'])) {
-        $parent = acf_get_field($field['parent']);
-        if (!empty($parent)) {
-            return getFieldInputName($parent) . '[' . $field['key'] . ']';
-        }
-    }
-    return $field['key'];
 }
 
 function my_admin_page_contents() {
@@ -64,10 +54,10 @@ function my_admin_page_contents() {
     $currentComponent = $_GET['component'] ?? null;
     if ($currentComponent) {
         registerField($currentComponent);
-        prepareLoadValues();
         acf_form_head();
         acf_form([
             'id' => 'flynt-renderer',
+            'post_id' => 'options',
             'field_groups' => [
                 'group_tmp'
             ],
@@ -83,51 +73,6 @@ function my_admin_page_contents() {
     }
 }
 
-function prepareLoadValues() {
-    $config = get_option('flynt_render_config', []);
-    $componentConfig = $config[$_GET['component']] ?? null;
-    if (isset($componentConfig)) {
-        add_filter('acf/load_value', function ($value, $postId, $field) use ($componentConfig) {
-            $val = getValueForField($field, $componentConfig);
-            return $val;
-        }, 1, 3);
-    }
-}
-
-function getParents($field, &$parents = []) {
-    if ($field['parent']) {
-        $parent = acf_get_field($field['parent']);
-        array_unshift($parents, $parent);
-        if ($parent['key'] ?? null) {
-            return getParents($parent, $parents);
-        }
-    }
-    return $parents;
-}
-
-function getValueForField($field, $values) {
-    $parents = getParents($field);
-    foreach ($parents as $parent) {
-        if ($parent['key'] ?? null) {
-            $values = $values[$parent['key']] ?? null;
-        }
-    }
-    return $values[$field['key']] ?? null;
-}
-
-function getFieldValues($keysAndValues) {
-    $values = [];
-    foreach($keysAndValues as $key => $value) {
-        $field = acf_get_field($key);
-        if ($field['sub_fields']) {
-            $values[$field['name']] = getFieldValues($value);
-        } else {
-            $values[$field['name']] = acf_format_value($value, 0, $field);
-        }
-    }
-    return $values;
-}
-
 function acfRenderComponent() {
     $componentName = $_POST['currentComponent'];
     registerField($componentName);
@@ -135,18 +80,18 @@ function acfRenderComponent() {
     saveConfig();
     $values = [];
     \Flynt\TimberLoader\addFilters();
-    $values = getFieldValues($_POST['acf']);
+    $values = get_field("field_tmp_fcr_$componentName", 'options');
     echo Timber::compile_string("{{ renderComponent('$componentName', data) }}", [
-        'data' => $values['component'],
+        'data' => $values,
     ]);
     wp_die();
 }
 
 function saveConfig() {
-    $config = get_option('flynt_render_config', []);
     $componentName = $_POST['currentComponent'];
-    $config[$componentName] = $_REQUEST['acf'];
-    update_option('flynt_render_config', $config);
+    acf_update_values([
+        "field_tmp_fcr_$componentName" => $_POST['acf']["field_tmp_fcr_$componentName"],
+    ], 'options');
 }
 
 function checkSubmit() {
