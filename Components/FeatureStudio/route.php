@@ -31,7 +31,16 @@ add_filter('template_include', function ($template) {
     if (isset($wp_query->query['pagename']) && $wp_query->query["pagename"] === $routeName) {
         setDocumentTitle();
         add_filter('wp_robots', 'wp_robots_no_robots');
-        return get_template_directory() . '/renderer.php';
+        add_action('parse_query', function ($query) {
+            if ($query->is_main_query()) {
+                $query->is_404 = false;
+            }
+        }, 1);
+        add_action('template_redirect', function () {
+            global $wp_query;
+            $wp_query->is_404 = false;
+        });
+        return get_template_directory() . '/Components/FeatureStudio/renderer.php';
     }
 
     return $template;

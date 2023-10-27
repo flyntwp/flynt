@@ -34,7 +34,6 @@
     "delegate-event-listener": "^1.2.0",
     "lazysizes": "^5.3.2",
     "penpal": "^6.2.2",
-    "postmate": "^1.5.2",
     "rellax": "^1.12.1",
     "swiper": "^10.3.0"
   },

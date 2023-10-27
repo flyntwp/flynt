@@ -14,4 +14,4 @@ define('QM_HIDE_SELF', true);
 
 $context = Timber::context();
 
-Timber::render('templates/renderer.twig', $context);
+Timber::render('renderer.twig', $context);

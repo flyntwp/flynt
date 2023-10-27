@@ -69,7 +69,7 @@ function my_admin_page_contents() {
         // echo '<iframe width="800" height="800" id="rendererIframe" src="/renderer"></iframe>';
         echo '<label for="iframe-scale">Scale</label>';
         echo '<input type="range" id="iframe-scale" min=0 max=1 step="0.01" value="0.5" />';
-        echo '<div id="postmate"></div>';
+        echo '<div class="flyntStudio-iframes"></div>';
     }
 }
 
