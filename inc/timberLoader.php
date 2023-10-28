@@ -17,7 +17,8 @@ if (!is_admin() || (isset($_POST['action']) && 'editpost' == $_POST['action'])) 
     addFilters();
 }
 
-function addFilters() {
+function addFilters()
+{
     $priority = 100;
 
     // Convert ACF Images to Timber Images.

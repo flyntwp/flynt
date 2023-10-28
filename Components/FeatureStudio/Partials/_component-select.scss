@@ -1,0 +1,75 @@
+.component-list-select {
+  isolation: isolate;
+  position: relative;
+  z-index: 9;
+}
+
+.component-list-wrapper {
+  background: #1D2939;
+  border-radius: 6px;
+  color: #fff;
+  display: none;
+  inset: 100% auto auto 0;
+  margin-block-start: 0.625rem;
+  position: absolute;
+  z-index: 9999;
+
+  &[aria-hidden="false"] {
+    display: block;
+  }
+
+  &::before {
+    border: 6px solid transparent;
+    border-block-end-color: #1D2939;
+    border-block-start-width: 0;
+    content: "";
+    inset: -6px auto auto 50%;
+    margin-inline-start: -6px;
+    position: absolute;
+  }
+}
+
+.flyntComponentSearch {
+  margin-block-start: 0.5rem;
+}
+
+.component-list {
+  margin-block: 0;
+  max-block-size: 380px;
+  overflow-y: auto;
+  padding-block: 0.5rem;
+
+  /* width */
+  &::-webkit-scrollbar {
+    inline-size: 10px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #1D2939;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #1D2939;
+  }
+}
+
+.component-list-item {
+  background: transparent;
+  color: #eee;
+  display: block;
+  padding: 5px 10px;
+  position: relative;
+  text-decoration: none;
+
+  &:hover {
+    background: #0073aa;
+    color: #fff;
+  }
+}

@@ -7,7 +7,7 @@
 //     }
 //   })
 // }
-import { connectToParent } from "penpal"
+import { connectToParent } from 'penpal'
 
 export default function (el) {
   connectToParent({

@@ -1,0 +1,85 @@
+.flyntStudio-iframes {
+  --iframe-scale: 0.5;
+  block-size: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-block: 1rem;
+  min-block-size: 500px;
+
+  > div {
+    // position: relative;
+    block-size: calc(var(--iframe-block-size) * var(--iframe-scale));
+    inline-size: calc(var(--iframe-inline-size) * var(--iframe-scale));
+  }
+
+  .desktop {
+    --iframe-block-size: 1000px;
+    --iframe-inline-size: 1200px;
+  }
+
+  .mobile {
+    --iframe-block-size: 1000px;
+    --iframe-inline-size: 412px;
+  }
+
+  .tablet {
+    --iframe-block-size: 1000px;
+    --iframe-inline-size: 768px;
+  }
+
+  // block-size: 400px;
+  // inline-size: 600px;
+  // position: relative;
+  iframe {
+    // position: absolute;
+    // top:0;
+    // left: 0;
+    // margin-top: -200px;
+    // margin-left: -300px;
+    block-size: var(--iframe-block-size);
+    border: 1px solid #ccd0d4;
+    inline-size: var(--iframe-inline-size);
+    scale: var(--iframe-scale);
+    // translate: calc(-1 * var(--iframe-inline-size) + var(--iframe-inline-size) * var(--iframe-scale)) calc(-1 * var(--iframe-block-size) * var(--iframe-scale) / 2);
+    translate: calc(-1 * var(--iframe-inline-size) * (1 - var(--iframe-scale)) / 2) calc(-1 * var(--iframe-block-size) * (1 - var(--iframe-scale)) / 2);
+  }
+}
+
+.iframe-actions {
+  align-items: center;
+  background: #f9f9f9;
+  border: #ccd0d4 solid 1px;
+  display: flex;
+  justify-content: space-between;
+  margin-block-start: 1rem;
+  padding: 0.5rem;
+
+  .screen-size-checkboxes {
+    align-items: center;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .screen-size-checkbox {
+    [type="checkbox"] {
+      block-size: 1px;
+      clip: rect(0, 0, 0, 0);
+      inline-size: 1px;
+      margin: -1px;
+      overflow: hidden;
+      position: absolute;
+      transition: none !important;
+      white-space: nowrap;
+
+      &:checked + label {
+        opacity: 1;
+      }
+    }
+
+    label {
+      margin: 0;
+      opacity: 0.5;
+    }
+  }
+}
