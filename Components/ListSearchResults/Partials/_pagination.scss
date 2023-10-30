@@ -20,7 +20,7 @@
         inline-size: 0.5em;
         margin-block-end: 0.07em;
         margin-inline-start: 0.5em;
-        transform: rotate(45deg);
+        rotate: 45deg;
         vertical-align: baseline;
       }
     }
@@ -35,7 +35,7 @@
         inline-size: 0.5em;
         margin-block-end: 0.07em;
         margin-inline-end: 0.5em;
-        transform: rotate(-45deg);
+        rotate: -45deg;
         vertical-align: baseline;
       }
     }
