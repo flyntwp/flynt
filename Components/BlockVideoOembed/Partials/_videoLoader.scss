@@ -18,7 +18,6 @@ $play-button-circle-diameter: (
   margin-inline-start: -(map.get($play-button-circle-diameter, 'mobile') * 0.5);
   position: absolute;
   text-indent: -9999em;
-  transform: translate(-50%, -50%);
   z-index: 1;
 
   @media (min-width: $breakpoint-tablet) {
@@ -41,10 +40,10 @@ $play-button-circle-diameter: (
 
 @keyframes loading {
   0% {
-    transform: rotate(0deg);
+    rotate: 0deg;
   }
 
   100% {
-    transform: rotate(360deg);
+    rotate: 360deg;
   }
 }
