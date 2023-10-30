@@ -10,10 +10,10 @@
   overflow-y: auto;
   padding: var(--component-spacing) var(--container-spacing);
   position: fixed;
-  transform: translateX(100%);
-  transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1), visibility 0.45s;
+  transition: translate 0.45s cubic-bezier(0.19, 1, 0.22, 1), visibility 0.45s;
+  translate: 100% 0;
   visibility: hidden;
-  will-change: transform;
+  will-change: translate, visibility;
   z-index: 98;
 
   .admin-bar & {
@@ -39,7 +39,7 @@
 
 &[data-status='menuIsOpen'] {
   .menu {
-    transform: translateX(0);
+    translate: 0 0;
     visibility: visible;
   }
 }
