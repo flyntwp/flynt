@@ -26,7 +26,7 @@ flynt-component[name='SliderImages'] {
       inset-block-start: 50%;
       justify-content: center;
       position: absolute;
-      transform: translateY(-50%);
+      translate: 0 -50%;
       z-index: 10;
 
       &::before {
@@ -57,7 +57,7 @@ flynt-component[name='SliderImages'] {
           content: '';
           inline-size: 0.75em;
           margin-inline-start: calc(0.25em + 2px);
-          transform: rotate(-45deg);
+          rotate: -45deg;
         }
       }
 
@@ -71,7 +71,7 @@ flynt-component[name='SliderImages'] {
           content: '';
           inline-size: 0.75em;
           margin-inline-end: calc(0.25em - 2px);
-          transform: rotate(45deg);
+          rotate: 45deg;
         }
       }
     }
