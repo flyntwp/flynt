@@ -63,7 +63,7 @@ function init () {
     submit()
   })
 
-  document.getElementById('iframe-scale').addEventListener('change', e => {
+  document.getElementById('iframe-scale').addEventListener('input', e => {
     wrapper.style.setProperty('--iframe-scale', e.target.value)
   })
 
