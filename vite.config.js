@@ -4,6 +4,7 @@ import flynt from './vite-plugin-flynt'
 import globImporter from 'node-sass-glob-importer'
 import FullReload from 'vite-plugin-full-reload'
 import fs from 'fs'
+import react from '@vitejs/plugin-react'
 
 const wordpressHost = 'http://localhost:3000'
 
@@ -42,12 +43,15 @@ export default defineConfig(({ mode }) => {
         plugins: [autoprefixer()]
       }
     },
+    esbuild: {
+      loader: 'jsx'
+    },
     resolve: {
       alias: {
         '@': __dirname
       }
     },
-    plugins: [flynt({ dest, host }), FullReload(watchFiles)],
+    plugins: [flynt({ dest, host }), FullReload(watchFiles), react({ fastRefresh: false })],
     server: {
       https: isSecure
         ? {

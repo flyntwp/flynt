@@ -18,6 +18,7 @@ add_action('Flynt/afterRegisterComponents', function () {
                     Components\BlockAnchor\getACFLayout(),
                     Components\BlockImage\getACFLayout(),
                     Components\BlockImageText\getACFLayout(),
+                    Components\BlockR3F\getACFLayout(),
                     Components\BlockSpacer\getACFLayout(),
                     Components\BlockVideoOembed\getACFLayout(),
                     Components\BlockWysiwyg\getACFLayout(),
