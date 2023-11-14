@@ -86,7 +86,7 @@
     ]
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "standard-version": {
     "scripts": {

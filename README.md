@@ -11,14 +11,14 @@
 ## Dependencies
 
 * [WordPress](https://wordpress.org/) >= 6.1
-* [Node](https://nodejs.org/en/) = 18
+* [Node](https://nodejs.org/en/) = 20
 * [Composer](https://getcomposer.org/download/) >= 2.4
 * [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/) >= 6.0
 
 ## Install
 
 1. Clone this repo to `<your-project>/wp-content/themes`.
-2. Change the domain variable in `flynt/vite.config.js` to match your domain:  
+2. Change the domain variable in `flynt/vite.config.js` to match your domain:
 `const wordpressHost = 'http://your-project.test'`
 3. Navigate to the theme folder and run the following command in your terminal:
 
