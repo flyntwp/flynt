@@ -76,11 +76,7 @@ class Options
                     StringHelpers::startsWith($subPageId, $currentScreenId);
                 if (!$isTranslatable && $isCurrentPage) {
                     // Set acf field values to default language.
-                    add_filter(
-                        'acf/settings/current_language',
-                        'Flynt\Utils\Options::getDefaultAcfLanguage',
-                        101
-                    );
+                    add_filter('acf/settings/current_language', [self::class, 'getDefaultAcfLanguage'], 101);
                     // Hide language selector in admin bar.
                     add_action('wp_before_admin_bar_render', function () {
                         $adminBar = $GLOBALS['wp_admin_bar'];
@@ -407,11 +403,9 @@ class Options
             $option = get_field('field_' . $key, 'option');
         } else {
             // Switch to default language to get global options.
-            add_filter('acf/settings/current_language', 'Flynt\Utils\Options::getDefaultAcfLanguage', 100);
-
+            add_filter('acf/settings/current_language', [self::class, 'getDefaultAcfLanguage'], 100);
             $option = get_field('field_' . $key, 'option');
-
-            remove_filter('acf/settings/current_language', 'Flynt\Utils\Options::getDefaultAcfLanguage', 100);
+            remove_filter('acf/settings/current_language', [self::class, 'getDefaultAcfLanguage'], 100);
         }
 
         return $option;
