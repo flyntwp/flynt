@@ -17,7 +17,7 @@ class Defaults
      */
     public static function init()
     {
-        add_action('Flynt/registerComponent', ['Flynt\Defaults', 'loadFunctionsFile']);
+        add_action('Flynt/registerComponent', [self::class, 'loadFunctionsFile']);
     }
 
     /**
