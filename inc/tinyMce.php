@@ -34,6 +34,17 @@ add_filter('tiny_mce_before_init', function ($init) {
             // Send it to style_formats as true js array
             $init['style_formats'] = json_encode($config['styleformats']);
         }
+
+        if (isset($config['entities'])) {
+            $entityString = getEntities($config['entities']);
+            if ($entityString) {
+                $init['entities'] = implode(',', [$init['entities'], $entityString]);
+            }
+        }
+
+        if (isset($config['entity_encoding'])) {
+            $init['entity_encoding'] = getEntityEncoding($config['entity_encoding']);
+        }
     }
     return $init;
 });
@@ -63,6 +74,29 @@ function getBlockFormats($blockFormats)
         return implode(';', $blockFormatStrings);
     }
     return '';
+}
+
+function getEntities($entities)
+{
+    if (!empty($entities)) {
+        $entityString = array_map(
+            function ($name, $code) {
+                return "{$code},{$name}";
+            },
+            $entities,
+            array_keys($entities)
+        );
+        return implode(',', $entityString);
+    }
+    return '';
+}
+
+function getEntityEncoding($entityEncoding): string
+{
+    if (!empty($entityEncoding)) {
+        return $entityEncoding;
+    }
+    return 'raw';
 }
 
 function getConfig()
@@ -179,6 +213,11 @@ function getConfig()
                     'fullscreen'
                 ]
             ]
-        ]
+        ],
+        'entities' => [
+            '160' => 'nbsp',
+            '173' => 'shy'
+        ],
+        'entity_encoding' => 'named',
     ];
 }
