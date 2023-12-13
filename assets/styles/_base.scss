@@ -344,6 +344,11 @@ select {
   padding-inline-end: 54px;
 }
 
+option {
+  // Fix for Windows.
+  color: initial;
+}
+
 textarea {
   inline-size: 100%;
   min-block-size: 150px;
