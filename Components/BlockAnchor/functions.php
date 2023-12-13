@@ -44,28 +44,20 @@ add_filter('acf/load_field/name=anchorLink', function ($field) {
         return $field;
     }
 
-    global $post;
-    $post = Timber::get_Post($post);
-
-    if (!$post || !$post->link()) {
-        return $field;
-    }
-
-    $postLink = $post->link();
+    $permalink = get_permalink();
     $field['label'] =  sprintf(
         '<p class="anchorLink-url" data-href="%1$s">%2$s#</p>',
-        $postLink,
-        $postLink
+        $permalink,
+        $permalink
     );
 
-    $data = [
-        'copiedMessage' => __('Link copied', 'flynt'),
-        'description' => __('Copy the link and use it anywhere on the page to scroll to this position.', 'flynt'),
-        'buttonText' =>  __('Copy link', 'flynt')
-    ];
     $field['message'] = Timber::compile(
         ComponentManager::getInstance()->getComponentFilePath('BlockAnchor', 'Partials/_anchorLink.twig'),
-        array_merge($data, Timber::context(['post' => $post]))
+        [
+            'copiedMessage' => __('Link copied', 'flynt'),
+            'description' => __('Copy the link and use it anywhere on the page to scroll to this position.', 'flynt'),
+            'buttonText' =>  __('Copy link', 'flynt')
+        ]
     );
 
     return $field;
