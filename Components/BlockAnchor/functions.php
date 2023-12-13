@@ -45,7 +45,7 @@ add_filter('acf/load_field/name=anchorLink', function ($field) {
     }
 
     $permalink = get_permalink();
-    $field['label'] =  sprintf(
+    $field['label'] = sprintf(
         '<p class="anchorLink-url" data-href="%1$s">%2$s#</p>',
         $permalink,
         $permalink
