@@ -54,9 +54,7 @@ class TwigExtensionRenderComponent extends AbstractExtension
 
         $fn = function ($output, $componentName, $data) use ($env, $context, $withContext, $ignoreMissing, $sandboxed) {
             $componentManager = ComponentManager::getInstance();
-            $templateFilename = apply_filters('Flynt/TimberLoader/templateFilename', 'index.twig');
-            $templateFilename = apply_filters("Flynt/TimberLoader/templateFilename?name={$componentName}", $templateFilename);
-            $filePath = $componentManager->getComponentFilePath($componentName, $templateFilename);
+            $filePath = $componentManager->getComponentFilePath($componentName, 'index.twig');
             $relativeFilePath = ltrim(str_replace(get_template_directory(), '', $filePath), '/');
 
             if (!is_file($filePath)) {
