@@ -17,7 +17,6 @@ add_action('init', function () {
     add_filter('acf/format_value/type=post_object', __NAMESPACE__ . '\transformPostObject', $priority, 3);
     add_filter('acf/format_value/type=relationship', __NAMESPACE__ . '\transformRelationship', $priority, 3);
     add_filter('acf/format_value/type=taxonomy', __NAMESPACE__ . '\transformTaxonomy', $priority, 3);
-    add_filter('acf/format_value/type=user', __NAMESPACE__ . '\transformUser', $priority, 3);
 });
 
 /**
@@ -49,11 +48,7 @@ function shouldTransformValue($value, $field)
  */
 function transformFile($value, $id, $field)
 {
-    if (empty($value)) {
-        return false;
-    }
-
-    if (!shouldTransformValue($value, $field)) {
+    if (empty($value) || !shouldTransformValue($value, $field)) {
         return $value;
     }
 
@@ -62,11 +57,7 @@ function transformFile($value, $id, $field)
 
 function transformImage($value, $id, $field)
 {
-    if (empty($value)) {
-        return false;
-    }
-
-    if (!shouldTransformValue($value, $field)) {
+    if (empty($value) || !shouldTransformValue($value, $field)) {
         return $value;
     }
 
@@ -82,11 +73,7 @@ function transformImage($value, $id, $field)
  */
 function transformGallery($value, $id, $field)
 {
-    if (empty($value)) {
-        return false;
-    }
-
-    if (!shouldTransformValue($value, $field)) {
+    if (empty($value) || !shouldTransformValue($value, $field)) {
         return $value;
     }
 
@@ -104,8 +91,8 @@ function transformGallery($value, $id, $field)
  */
 function transformPostObject($value, $id, $field)
 {
-    if (empty($value)) {
-        return false;
+    if (empty($value) || !shouldTransformValue($value, $field)) {
+        return $value;
     }
 
     if (!shouldTransformValue($value, $field)) {
@@ -128,11 +115,7 @@ function transformPostObject($value, $id, $field)
  */
 function transformRelationship($value, $id, $field)
 {
-    if (empty($value)) {
-        return false;
-    }
-
-    if (!shouldTransformValue($value, $field)) {
+    if (empty($value) || !shouldTransformValue($value, $field)) {
         return $value;
     }
 
@@ -148,11 +131,7 @@ function transformRelationship($value, $id, $field)
  */
 function transformTaxonomy($value, $id, $field)
 {
-    if (empty($value)) {
-        return false;
-    }
-
-    if (!shouldTransformValue($value, $field)) {
+    if (empty($value) || !shouldTransformValue($value, $field)) {
         return $value;
     }
 
@@ -161,28 +140,4 @@ function transformTaxonomy($value, $id, $field)
     }
 
     return Timber::get_terms((array) $value);
-}
-
-/**
- * Transform ACF user field
- *
- * @param string $value
- * @param int $id
- * @param array $field
- */
-function transformUser($value, $id, $field)
-{
-    if (empty($value)) {
-        return false;
-    }
-
-    if (!shouldTransformValue($value, $field)) {
-        return $value;
-    }
-
-    if (!$field['multiple']) {
-        return Timber::get_user((int) $value);
-    }
-
-    return Timber::get_users((array) $value);
 }
