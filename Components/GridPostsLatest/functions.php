@@ -10,7 +10,7 @@ const POST_TYPE = 'post';
 
 add_filter('Flynt/addComponentData?name=GridPostsLatest', function ($data) {
     $data['uuid'] = $data['uuid'] ?? wp_generate_uuid4();
-    $data['taxonomies'] = $data['taxonomies'] ?? [];
+    $data['taxonomies'] = $data['taxonomies'] ?: [];
     $data['options']['maxColumns'] = 3;
     $postsPerPage = $data['options']['maxPosts'] ?? 3;
 
