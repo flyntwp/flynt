@@ -8,7 +8,7 @@
       <p class="meta">
         <a class="author" href="{{ post.author.link|e('esc_url') }}">
           {% if post.author.avatar %}
-            <img class="avatar lazyload" src="{{ placeholderImage(48, 48) }}" data-src="{{ post.author.avatar|resizeDynamic(96) }}" width="48" height="48" alt="{{ post.author.name|e }}">
+            <img class="avatar lazyload" src="{{ placeholderImage(48, 48) }}" data-src="{{ post.author.avatar({size: 96}) }}" width="48" height="48" alt="{{ post.author.name|e }}">
           {% endif %}
           <span class="visuallyHidden">{{ labels.postedBy|e }}</span>
           <small>{{ post.author.name }}</small>
