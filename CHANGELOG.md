@@ -2,8 +2,7 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [2.0.1](https://github.com/flyntwp/flynt/compare/v2.0.0...v2.0.1) (2023-09-27)
-
+## [2.0.1](https://github.com/flyntwp/flynt/compare/v2.0.0...v2.0.1) (2023-09-27)
 
 ### Features
 
@@ -12,13 +11,11 @@ All notable changes to this project will be documented in this file. See [standa
 * **NavigationMain:** use is_external and is_target_blank ([39ee3c0](https://github.com/flyntwp/flynt/commit/39ee3c0fe04cecef50d012ee790e27423ae1aea9))
 * **package.json:** add releasePatch script ([f6429d8](https://github.com/flyntwp/flynt/commit/f6429d855f1d1e64ef001a5f99d6a66d2cd130a2))
 
-
 ### Bug Fixes
 
 * **assets.php:** remove strategy, because modules are deferred automatically ([8dfe556](https://github.com/flyntwp/flynt/commit/8dfe556330ac315f580ec064336d0f4745da0c5d))
 * **BlockPostHeader:** remove quote ([7de0de5](https://github.com/flyntwp/flynt/commit/7de0de5125239e48c09302f6ed43f2fe2320f958))
 * **FeatureFlexibleContentExtension:** add component tooltip positioning ([#501](https://github.com/flyntwp/flynt/issues/501)) ([0ef7ec8](https://github.com/flyntwp/flynt/commit/0ef7ec83dba205e1d9707c09c5bf9a8d5eae2f4d))
-
 
 ### Other
 
@@ -39,18 +36,7 @@ All notable changes to this project will be documented in this file. See [standa
 * Updated all kinds of dependencies.
 * And quite a bunch of other stuff to make things easier and better.
 
-### [1.4.1](https://github.com/flyntwp/flynt/compare/v1.4.0...v1.4.1) (2022-07-08)
-
-### Bug Fixes
-
-* **BlockPostHeader:** display dates correctly ([#400](https://github.com/flyntwp/flynt/issues/400)) ([b5e16af](https://github.com/flyntwp/flynt/commit/b5e16af19ced21426a8bfe0b303e15c2eb5dcc97))
-
-### Other
-
-* **NavigationBurger:** use Timber\Menu sub-namespace instead of Timber ([#352](https://github.com/flyntwp/flynt/issues/352)) ([c7a763f](https://github.com/flyntwp/flynt/commit/c7a763f697f949f049773a3b42b616816450bb00))
-* **NavigationMain:** use Timber\Menu sub-namespace instead of Timber ([#354](https://github.com/flyntwp/flynt/issues/354)) ([70f7e75](https://github.com/flyntwp/flynt/commit/70f7e75cde48241a9ff966d550226ba4782fad18))
-
-### [1.4.1](https://github.com/flyntwp/flynt/compare/v1.4.0...v1.4.1) (2022-06-26)
+## [1.4.1](https://github.com/flyntwp/flynt/compare/v1.4.0...v1.4.1) (2022-07-08)
 
 ### Bug Fixes
 
@@ -103,7 +89,7 @@ All notable changes to this project will be documented in this file. See [standa
 * **FeatureAdminComponentScreenshots:** fix preview image not being full width ([7a68830](https://github.com/flyntwp/flynt/commit/7a688307364bd23963b27764824d2194a3a9e50f))
 * **MimeTypes:** allow png uploads, remove max upload size, update instructions ([33f0247](https://github.com/flyntwp/flynt/commit/33f0247241d27bc1650da348dbb51530076500f7))
 
-### [1.2.1](https://github.com/flyntwp/flynt/compare/v1.2.0...v1.2.1) (2020-03-02)
+## [1.2.1](https://github.com/flyntwp/flynt/compare/v1.2.0...v1.2.1) (2020-03-02)
 
 ### Bug Fixes
 
@@ -130,7 +116,7 @@ All notable changes to this project will be documented in this file. See [standa
 * **Oembed:** check if $iframeTagHtml exists ([61debe5](https://github.com/flyntwp/flynt/commit/61debe5ecc716ab7d3473ed7d9c4dbb815d38129))
 * **theContentFix:** don't add shortcode to custom css ([43272e4](https://github.com/flyntwp/flynt/commit/43272e4728a790937d2a00f96a05fadef3c8359b))
 
-### [1.1.1](https://github.com/flyntwp/flynt/compare/v1.1.0...v1.1.1) (2019-11-29)
+## [1.1.1](https://github.com/flyntwp/flynt/compare/v1.1.0...v1.1.1) (2019-11-29)
 
 ### Bug Fixes
 
