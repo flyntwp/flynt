@@ -16,10 +16,10 @@
             {% endif %}
               {% if componentBlock.componentScreenshot %}
                 <div class="imageWrapper">
-                  <img data-refs="images" class="lazyload image {{ componentBlock.componentScreenshot.aspect > (1280/800) ? 'image--isSmallerThanWrapper' }} "
-                      src="{{ placeholderImage(760, 760 / componentBlock.componentScreenshot.aspect, 'rgba(125, 125, 125, 0.1)') }}"
+                  <img data-refs="images" class="lazyload image {{ componentBlock.componentScreenshot.aspect|default(1) > (1280/800) ? 'image--isSmallerThanWrapper' }} "
+                      src="{{ placeholderImage(760, 760 / componentBlock.componentScreenshot.aspect|default(1), 'rgba(125, 125, 125, 0.1)') }}"
                       width="{{ 760 }}"
-                      height="{{ (760 / componentBlock.componentScreenshot.aspect)|round }}"
+                      height="{{ (760 / componentBlock.componentScreenshot.aspect|default(1))|round }}"
                       data-src="{{ componentBlock.componentScreenshot.src }}"
                       data-sizes="auto"
                       alt="{{ componentBlock.readme.title|e }}">
