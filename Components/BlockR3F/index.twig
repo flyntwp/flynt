@@ -1,10 +1,11 @@
-<flynt-component name="BlockR3F" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
-  <div class="container" data-flow="layout">
-    {% if preContentHtml %}
-      <div data-size="medium" data-align="{{ titleAlignment }}" data-text-align="{{ titleAlignment }}">
-        {{ preContentHtml|e('wp_kses_post') }}
+<flynt-component name="BlockR3F" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
+  {% if contentHtml %}
+    <div class="container">
+      <div class="rightContent">
+        {{ contentHtml|e('wp_kses_post') }}
       </div>
-    {% endif %}
-    <div data-ref="canvasPlaceholder" class="scene"></div>
-  </div>
+    </div>
+  {% endif %}
+  <script type="application/json">{{ jsonData|json_encode }}</script>
+  <div data-ref="canvasPlaceholder" class="scene" data-gltf-file-url={{ gltfModel.url }}></div>
 </flynt-component>

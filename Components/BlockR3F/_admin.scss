@@ -1,0 +1,38 @@
+.acf-field {
+  [name*='_blockR3F_options_modelPosition_y'],
+  [name*='_blockR3F_tooltips_position_y'] {
+    accent-color: #008000;
+    inline-size: 110px !important;
+    writing-mode: vertical-lr;
+  }
+
+  [name*='_blockR3F_options_modelPosition_x'],
+  [name*='_blockR3F_tooltips_position_x'] {
+    accent-color: #f00;
+    block-size: 110px !important;
+    transform: rotate(30deg);
+  }
+
+  [name*='_blockR3F_options_modelPosition_z'],
+  [name*='_blockR3F_tooltips_position_z'] {
+    accent-color: #00f;
+    block-size: 110px !important;
+    transform: rotate(150deg);
+  }
+}
+
+[class*='-blockR3F-options-modelPosition'],
+[class*='-blockR3F-tooltips-position'] {
+  .acf-range-wrap {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+  
+    [type='number'] {
+      margin: 0;
+      text-align: center;
+    }
+  }
+}

@@ -1,7 +1,8 @@
 import ReactDOM from 'react-dom/client'
 import { Canvas } from '@react-three/fiber'
+// import { ScrollControls } from '@react-three/drei'
+import Scene from './Scene.jsx'
 import * as THREE from 'three'
-import Experience from './Experience.jsx'
 
 export default function (el, props) {
   const root = ReactDOM.createRoot(el)
@@ -16,10 +17,11 @@ export default function (el, props) {
         fov: 45,
         near: 0.1,
         far: 200,
-        position: [3, 2, 6]
+        position: [6, 2, 4]
       }}
     >
-      <Experience />
+      {/* <axesHelper args={[5]} /> */}
+      <Scene {...props} />
     </Canvas>
   )
 }

@@ -1,6 +1,57 @@
 
 flynt-component[name='BlockR3F'] {
+  block-size: calc(100vh - 96px);
+  min-block-size: 400px;
+  position: relative;
+  z-index: 1;
+
   .scene {
-    block-size: clamp(15.625rem, 7.813rem + 26.042vw, 31.25rem);
+    // block-size: clamp(15.625rem, 7.813rem + 26.042vw, 31.25rem);
+    block-size: 100%;
+    inline-size: 100%;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    position: absolute
+  }
+
+  .container {
+    align-items: center;
+    block-size: 100%;
+    display: flex;
+    justify-content: flex-end;
+    pointer-events: none;
+    position: relative;
+    z-index: 2;
+  }
+
+  .rightContent {
+    max-inline-size: 45%;
+    padding-block: 80px;
+  }
+
+  .r3f-tooltip > div {
+    background-color: var(--color-text);
+    border-radius: 3px 3px 3px 0;
+    color: var(--color-background);
+    font-family: var(--font-family-text);
+    font-size: 0.75rem;
+    line-height: 1.2;
+    padding: 0.25rem 0.375rem;
+    user-select: none;
+    white-space: nowrap;
+
+    &::before {
+      block-size: 0;
+      border: 8px solid transparent;
+      border-block-end: 0;
+      border-block-start-color: var(--color-text);
+      border-inline-start: 0;
+      content: '';
+      inline-size: 0;
+      inset-block-start: 100%;
+      inset-inline-start: 0;
+      margin-block-start: -1px;
+      position: absolute;
+    }
   }
 }
