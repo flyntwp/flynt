@@ -200,16 +200,20 @@ class TimberDynamicResize
      * Resize an image dynamically using Timbers Resize class.
      * This function is a wrapper for the Resize class.
      *
-     * @param string $src The image source.
+     * @param string|null $src The image source.
      * @param float $w The width of the image.
      * @param float $h The height of the image.
      * @param string $crop The crop mode.
      * @param boolean $force Force the image to be generated.
      *
-     * @return string The resized image url.
+     * @return string|null The resized image url.
      */
-    public function resizeDynamic(string $src, float $w, float $h = 0, string $crop = 'default', bool $force = false)
+    public function resizeDynamic(mixed $src, float $w, float $h = 0, string $crop = 'default', bool $force = false)
     {
+        if (empty($src)) {
+            return '';
+        }
+
         $w = (int) round($w);
         $h = (int) round($h);
 
