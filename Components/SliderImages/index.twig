@@ -13,15 +13,15 @@
             <figure class="figure">
               <img class="figure-image lazyload"
                 src="{{ image.src|resizeDynamic(0, 540) }}"
-                width="{{ (540 * image.aspect )|round }}"
+                width="{{ (540 * image.aspect|default(1))|round }}"
                 height="{{ 540 }}"
-                srcset="{{ placeholderImage((540 * image.aspect)|round, 540, 'rgba(125, 125, 125, 0.1)') }}"
+                srcset="{{ placeholderImage((540 * image.aspect|default(1))|round, 540, 'rgba(125, 125, 125, 0.1)') }}"
                 data-srcset="
-                  {{ image.src|resizeDynamic(0, 1080) }} {{ (image.aspect * 1080)|round }}w,
-                  {{ image.src|resizeDynamic(0, 860) }} {{ (image.aspect * 860)|round }}w,
-                  {{ image.src|resizeDynamic(0, 540) }} {{ (image.aspect * 540)|round }}w,
-                  {{ image.src|resizeDynamic(0, 385) }} {{ (image.aspect * 385)|round }}w,
-                  {{ image.src|resizeDynamic(0, 250) }} {{ (image.aspect * 250)|round }}w"
+                  {{ image.src|resizeDynamic(0, 1080) }} {{ (image.aspect|default(1) * 1080)|round }}w,
+                  {{ image.src|resizeDynamic(0, 860) }} {{ (image.aspect|default(1) * 860)|round }}w,
+                  {{ image.src|resizeDynamic(0, 540) }} {{ (image.aspect|default(1) * 540)|round }}w,
+                  {{ image.src|resizeDynamic(0, 385) }} {{ (image.aspect|default(1) * 385)|round }}w,
+                  {{ image.src|resizeDynamic(0, 250) }} {{ (image.aspect|default(1) * 250)|round }}w"
                 data-sizes="auto"
                 alt="{{ image.alt|e }}">
               {% if image.caption %}
