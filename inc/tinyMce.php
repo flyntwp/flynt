@@ -38,7 +38,7 @@ add_filter('tiny_mce_before_init', function ($init) {
         if (isset($config['entities'])) {
             $entityString = getEntities($config['entities']);
             if ($entityString) {
-                $init['entities'] = implode(',', [$init['entities'], $entityString]);
+                $init['entities'] = implode(',', [$init['entities'] ?? '', $entityString]);
             }
         }
 
