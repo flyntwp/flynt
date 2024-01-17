@@ -42,6 +42,24 @@ npm start
 
 All files in `assets` and `Components` will now be watched for changes and served. Happy coding!
 
+### Build
+
+After developing it is required to generate compiled files in the `./dist` folder.
+
+To generate the compiled files, run the following command:
+
+```
+# wp-content/themes/flynt
+npm run build
+```
+
+To skip the linting process (optional) and to generate the compiled files, run the command:
+
+```
+# wp-content/themes/flynt
+npm run build:production
+```
+
 ### Base Style
 
 Flynt comes with a ready to use Base Style built according to our best practices for building simple, maintainable components. Go to `domain/BaseStyle` to see it in action.
@@ -119,7 +137,7 @@ Initialises after full page load, when the browser enters idle state.<br>
 Usage example: Elements that don’t need to be interactive immediately.
 * `load:on="visible"`<br>
 Initialises after the element get visible in the viewport.<br>
-Usage example: Elements that go “below the fold” or if you want to load it when the user sees it.
+Usage example: Elements that go “below the fold” or should be loaded when the user sees them.
 * `load:on="load"` (default)<br>
 Initialises immediately when the page loads.<br>
 Usage example: Elements that need to be interactive as soon as possible.
