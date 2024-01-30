@@ -51,7 +51,7 @@ Options::addTranslatable('NavigationFooter', [
                 'label' => __('Aria Label', 'flynt'),
                 'name' => 'ariaLabel',
                 'type' => 'text',
-                'default_value' => __('Footer', 'flynt'),
+                'default_value' => __('Footer Navigation', 'flynt'),
                 'required' => 1,
                 'wrapper' => [
                     'width' => '50',
