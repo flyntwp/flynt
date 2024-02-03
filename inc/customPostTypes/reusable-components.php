@@ -25,6 +25,7 @@ add_action('init', function (): void {
         'items_list_navigation' => __('Reusable components list navigation', 'flynt'),
         'filter_items_list'     => __('Filter reusable components list', 'flynt'),
     ];
+
     $args = [
         'labels'                => $labels,
         'supports'              => ['title', 'revisions'],
@@ -42,5 +43,6 @@ add_action('init', function (): void {
         'capability_type'       => 'page',
         'rewrite'               => false
     ];
+
     register_post_type('reusable-components', $args);
 });
