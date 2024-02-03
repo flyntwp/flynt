@@ -35,7 +35,7 @@ class TwigExtensionPlaceholderImage extends AbstractExtension
     {
         $width = (int) round($width);
         $height = (int) round($height);
-        $colorRect = $color ? "<rect width='{$width}' height='{$height}' style='fill:$color' />" : '';
+        $colorRect = $color ? "<rect width='{$width}' height='{$height}' style='fill:{$color}' />" : '';
         $svg = "<svg width='{$width}' height='{$height}' xmlns='http://www.w3.org/2000/svg'>{$colorRect}</svg>";
         return "data:image/svg+xml;base64," . base64_encode($svg);
     }
