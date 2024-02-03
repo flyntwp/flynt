@@ -7,13 +7,13 @@ use Flynt\ComponentManager;
 use Flynt\Utils\Options;
 use Parsedown;
 
-add_filter('Flynt/addComponentData?name=ListComponents', function ($data) {
+add_filter('Flynt/addComponentData?name=ListComponents', function (array $data) {
     if (!empty($data['componentBlocks'])) {
         $templatePaths = [
             'dir' => trailingslashit(get_template_directory()),
             'uri' => trailingslashit(get_template_directory_uri()),
         ];
-        $data['componentBlocks'] = array_map(function ($block) use ($templatePaths) {
+        $data['componentBlocks'] = array_map(function (array $block) use ($templatePaths) {
             $block['component'] = substr($block['component'], strpos($block['component'], 'Components/'));
 
             $imagePath = $templatePaths['dir'] . $block['component'] . 'screenshot.png';
@@ -44,7 +44,7 @@ add_filter('Flynt/addComponentData?name=ListComponents', function ($data) {
     return $data;
 });
 
-add_filter('acf/load_field/name=component', function ($field) {
+add_filter('acf/load_field/name=component', function (array $field) {
     $componentManager = ComponentManager::getInstance();
     $field['choices'] = array_flip($componentManager->getAll());
     return $field;

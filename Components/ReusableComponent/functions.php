@@ -25,7 +25,7 @@ function getACFLayout()
     ];
 }
 
-add_filter('acf/prepare_field/name=reusableComponent', function ($field) {
+add_filter('acf/prepare_field/name=reusableComponent', function (array $field) {
     $reusableAdminLink = admin_url('edit.php?post_type=reusable-components');
     $postEditLink = get_edit_post_link($field['value']);
     $postTitle = get_the_title($field['value']);

@@ -24,7 +24,7 @@ add_filter('Flynt/addComponentData?name=GridPostsLatest', function ($data) {
         'ignore_sticky_posts' => 1,
     ]);
 
-    $data['posts'] = array_slice(array_filter($posts->to_array(), function ($post) {
+    $data['posts'] = array_slice(array_filter($posts->to_array(), function ($post): bool {
         return $post->ID !== get_the_ID();
     }), 0, $postsPerPage);
 

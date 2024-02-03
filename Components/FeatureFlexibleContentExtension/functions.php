@@ -4,7 +4,7 @@ namespace Flynt\Components\FeatureFlexibleContentExtension;
 
 use Flynt\ComponentManager;
 
-add_action('admin_enqueue_scripts', function () {
+add_action('admin_enqueue_scripts', function (): void {
     $componentManager = ComponentManager::getInstance();
     $templateDirectory = get_template_directory();
     $data = [
@@ -21,7 +21,7 @@ add_action('admin_enqueue_scripts', function () {
 });
 
 // add image to the flexible content component name
-add_filter('acf/fields/flexible_content/layout_title', function ($title, $field, $layout, $i) {
+add_filter('acf/fields/flexible_content/layout_title', function ($title, $field, array $layout, $i) {
     $componentManager = ComponentManager::getInstance();
     $componentName = ucfirst($layout['name']);
     $componentPathFull = $componentManager->getComponentDirPath($componentName);

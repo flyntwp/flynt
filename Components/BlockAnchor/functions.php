@@ -5,7 +5,7 @@ namespace Flynt\Components\BlockAnchor;
 use Flynt\ComponentManager;
 use Timber\Timber;
 
-add_filter('Flynt/addComponentData?name=BlockAnchor', function ($data) {
+add_filter('Flynt/addComponentData?name=BlockAnchor', function (array $data) {
     if (isset($data['anchor'])) {
         $data['anchor'] = preg_replace('/[^A-Za-z0-9]/', '-', strtolower($data['anchor']));
     }
@@ -39,7 +39,7 @@ function getACFLayout()
     ];
 }
 
-add_filter('acf/load_field/name=anchorLink', function ($field) {
+add_filter('acf/load_field/name=anchorLink', function (array $field) {
     if (!is_admin()) {
         return $field;
     }
