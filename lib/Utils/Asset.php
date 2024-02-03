@@ -10,8 +10,6 @@ class Asset
 {
     /**
      * The internal list (array) of assets.
-     *
-     * @var array
      */
     protected static array $assetManifest;
 
