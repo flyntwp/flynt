@@ -32,8 +32,13 @@ add_filter('acf/fields/flexible_content/layout_title', function ($title, $field,
     if (is_file($componentScreenshotPath)) {
         $imageSize = getimagesize($componentScreenshotPath);
         $newTitle = '<span class="flyntComponentScreenshot">';
-        $newTitle .= '<img class="flyntComponentScreenshot-previewImageSmall" width="' . $imageSize[0] . '" height="' . $imageSize[1] . '" src="' . $componentScreenshotUrl . '" loading="lazy">';
-        $newTitle .= '<span class="flyntComponentScreenshot-label">' . $title . '</span>';
+        $newTitle .= sprintf(
+            '<img class="flyntComponentScreenshot-previewImageSmall" width="%s" height="%s" src="%s" loading="lazy">',
+            $imageSize[0],
+            $imageSize[1],
+            $componentScreenshotUrl
+        );
+        $newTitle .= sprintf('<span class="flyntComponentScreenshot-label">%s</span>', $title);
         $newTitle .= '</span>';
         $title = $newTitle;
     }
