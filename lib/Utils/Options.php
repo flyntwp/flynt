@@ -303,7 +303,7 @@ class Options
      */
     protected static function registerOptionNames(string $type, string $scope, array $fields)
     {
-        static::$registeredOptions[$type] = static::$registeredOptions[$type] ?? [];
+        static::$registeredOptions[$type] ??= [];
         static::$registeredOptions[$type][$scope] = array_column($fields, 'name');
         return static::$registeredOptions;
     }
