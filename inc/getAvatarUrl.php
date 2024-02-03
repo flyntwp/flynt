@@ -2,17 +2,14 @@
 
 /**
  * Side load external avatar images in relation to GDPR.
- *
- * @param string $url
- * @return string
  */
 
- namespace Flynt\GetAvatarUrl;
+namespace Flynt\GetAvatarUrl;
 
 use Timber\ImageHelper;
 use Timber\URLHelper;
 
-add_filter('get_avatar_url', function (string $url): string {
+add_filter('get_avatar_url', function (string $url) {
     if (URLHelper::is_external_content($url)) {
         return ImageHelper::sideload_image($url);
     }
