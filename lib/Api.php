@@ -15,10 +15,8 @@ class Api
      *
      * @param string $componentName The name of the component.
      * @param string $componentPath The path to the component.
-     *
-     * @return void
      */
-    public static function registerComponent(string $componentName, ?string $componentPath = null)
+    public static function registerComponent(string $componentName, ?string $componentPath = null): void
     {
         $componentManager = ComponentManager::getInstance();
         $componentManager->registerComponent($componentName, $componentPath);
@@ -28,10 +26,8 @@ class Api
      * Register components from a path.
      *
      * @param string $componentBasePath The path to the components.
-     *
-     * @return void
      */
-    public static function registerComponentsFromPath(string $componentBasePath)
+    public static function registerComponentsFromPath(string $componentBasePath): void
     {
         foreach (glob("{$componentBasePath}/*", GLOB_ONLYDIR) as $componentPath) {
             $componentName = basename($componentPath);
@@ -67,10 +63,8 @@ class Api
 
     /**
      * Register hooks.
-     *
-     * @return void
      */
-    public static function registerHooks()
+    public static function registerHooks(): void
     {
         add_filter('Flynt/renderComponent', function ($output, $componentName, $data) {
             return apply_filters(

@@ -12,10 +12,8 @@ class Defaults
 {
     /**
      * Initialize the class.
-     *
-     * @return void
      */
-    public static function init()
+    public static function init(): void
     {
         add_action('Flynt/registerComponent', [self::class, 'loadFunctionsFile']);
     }
@@ -24,10 +22,8 @@ class Defaults
      * Load the functions.php file of a component.
      *
      * @param string $componentName The name of the component.
-     *
-     * @return void
      */
-    public static function loadFunctionsFile(string $componentName)
+    public static function loadFunctionsFile(string $componentName): void
     {
         $componentManager = ComponentManager::getInstance();
         $functionsFilePath = $componentManager->getComponentFilePath($componentName, 'functions.php');

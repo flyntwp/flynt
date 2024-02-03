@@ -99,20 +99,16 @@ class Asset
 
     /**
      * Checks if the current environment is a Vite dev server.
-     *
-     * @return boolean
      */
-    public static function isHotModuleReplacement()
+    public static function isHotModuleReplacement(): bool
     {
         return file_exists(self::viteHotFile());
     }
 
     /**
      * Gets the path to the Vite dev server hot file.
-     *
-     * @return string
      */
-    protected static function viteHotFile()
+    protected static function viteHotFile(): string
     {
         return get_template_directory() . '/dist/hot';
     }

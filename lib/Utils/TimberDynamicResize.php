@@ -100,10 +100,8 @@ class TimberDynamicResize
      * Parse the request.
      *
      * @param WP $wp Current WordPress environment instance (passed by reference).
-     *
-     * @return void
      */
-    public function parseRequest(WP $wp)
+    public function parseRequest(WP $wp): void
     {
         if (isset($wp->query_vars[self::IMAGE_QUERY_VAR])) {
             $this->checkAndGenerateImage($wp->query_vars[self::IMAGE_QUERY_VAR]);
@@ -124,10 +122,10 @@ class TimberDynamicResize
             return $twig;
         });
         if ($this->enabled) {
-            add_action('after_switch_theme', function () {
+            add_action('after_switch_theme', function (): void {
                 add_action('shutdown', 'flush_rewrite_rules');
             });
-            add_action('switch_theme', function () {
+            add_action('switch_theme', function (): void {
                 flush_rewrite_rules(true);
             });
         }
@@ -135,10 +133,8 @@ class TimberDynamicResize
 
     /**
      * Get the table name.
-     *
-     * @return string
      */
-    public function getTableName()
+    public function getTableName(): string
     {
         global $wpdb;
         return $wpdb->prefix . self::TABLE_NAME;
@@ -248,10 +244,8 @@ class TimberDynamicResize
      * Register rewrite rule.
      *
      * @param WP_Rewrite $wpRewrite The WordPress rewrite class.
-     *
-     * @return void
      */
-    public function registerRewriteRule(WP_Rewrite $wpRewrite)
+    public function registerRewriteRule(WP_Rewrite $wpRewrite): void
     {
         $routeName = self::IMAGE_QUERY_VAR;
         $relativeUploadDir = $this->getRelativeUploadDir();
@@ -266,10 +260,8 @@ class TimberDynamicResize
     /**
      * Add rewrite tag.
      * This is needed to make the rewrite rule work.
-     *
-     * @return void
      */
-    public function addRewriteTag()
+    public function addRewriteTag(): void
     {
         $routeName = self::IMAGE_QUERY_VAR;
         add_rewrite_tag("%{$routeName}%", "([^&]+)");
@@ -277,10 +269,8 @@ class TimberDynamicResize
 
     /**
      * Remove rewrite tag.
-     *
-     * @return void
      */
-    public function removeRewriteTag()
+    public function removeRewriteTag(): void
     {
         $routeName = self::IMAGE_QUERY_VAR;
         remove_rewrite_tag("%{$routeName}%");
@@ -290,10 +280,8 @@ class TimberDynamicResize
      * Check and generate image.
      *
      * @param string $relativePath The relative path to the image.
-     *
-     * @return void
      */
-    public function checkAndGenerateImage(string $relativePath)
+    public function checkAndGenerateImage(string $relativePath): void
     {
         $matched = preg_match('/(.+)-(\d+)x(\d+)-c-(.+)(\..*)$/', $relativePath, $matchedSrc);
         $exists = false;
@@ -370,7 +358,7 @@ class TimberDynamicResize
      *
      * @return string The url with the image separator.
      */
-    public function addImageSeparatorToUploadUrl(string $url)
+    public function addImageSeparatorToUploadUrl(string $url): string
     {
         $baseurl = $this->getUploadsBaseurl();
         return str_replace(
@@ -387,7 +375,7 @@ class TimberDynamicResize
      *
      * @return string The path with the image separator.
      */
-    public function addImageSeparatorToUploadPath(string $path = '')
+    public function addImageSeparatorToUploadPath(string $path = ''): string
     {
         $basepath = $this->getUploadsBasedir();
         return str_replace(
@@ -399,10 +387,8 @@ class TimberDynamicResize
 
     /**
      *  Store resized urls.
-     *
-     * @return void
      */
-    public function storeResizedUrls()
+    public function storeResizedUrls(): void
     {
         global $wpdb;
         $tableName = $this->getTableName();
@@ -421,10 +407,8 @@ class TimberDynamicResize
      * Toggle dynamic image generation.
      *
      * @param boolean $enable Enable or disable dynamic image generation.
-     *
-     * @return void
      */
-    public function toggleDynamic(bool $enable)
+    public function toggleDynamic(bool $enable): void
     {
         if ($enable) {
             $this->addRewriteTag();
@@ -436,7 +420,7 @@ class TimberDynamicResize
             remove_action('parse_request', [$this, 'parseRequest']);
         }
 
-        add_action('shutdown', function () {
+        add_action('shutdown', function (): void {
             flush_rewrite_rules(false);
         });
     }
@@ -445,12 +429,10 @@ class TimberDynamicResize
      * Change relative upload path.
      *
      * @param string $relativeUploadPath The relative upload path.
-     *
-     * @return void
      */
-    public function changeRelativeUploadPath(string $relativeUploadPath)
+    public function changeRelativeUploadPath(string $relativeUploadPath): void
     {
-        add_action('shutdown', function () {
+        add_action('shutdown', function (): void {
             flush_rewrite_rules(false);
         });
     }

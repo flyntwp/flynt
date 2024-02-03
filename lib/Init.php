@@ -14,10 +14,8 @@ class Init
 {
     /**
      * Initialize the theme.
-     *
-     * @return void
      */
-    public static function initTheme()
+    public static function initTheme(): void
     {
         Defaults::init();
         Options::init();
@@ -31,10 +29,8 @@ class Init
 
     /**
      * Load components.
-     *
-     * @return void
      */
-    public static function loadComponents()
+    public static function loadComponents(): void
     {
         $basePath = get_template_directory() . '/Components';
         Api::registerComponentsFromPath($basePath);
@@ -46,14 +42,14 @@ class Init
      *
      * @return boolean True if all required plugins are active.
      */
-    public static function checkRequiredPlugins()
+    public static function checkRequiredPlugins(): bool
     {
         $acfActive = class_exists('acf');
 
         if (!$acfActive) {
             self::notifyAcfPluginIsMissing();
 
-            add_filter('template_include', function () {
+            add_filter('template_include', function (): void {
                 $title = esc_html__('One or more required plugins are not activated!', 'flynt');
                 $message = sprintf(
                     // phpcs:ignore Squiz.Commenting.InlineComment.NotCapital
@@ -76,7 +72,7 @@ class Init
      */
     protected static function notifyAcfPluginIsMissing()
     {
-        add_action('admin_notices', function () {
+        add_action('admin_notices', function (): void {
             $class = esc_attr('notice notice-error');
             $title = esc_html(__('Flynt is missing a required plugin', 'flynt'));
             $pluginName = sprintf(

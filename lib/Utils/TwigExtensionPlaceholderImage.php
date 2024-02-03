@@ -31,7 +31,7 @@ class TwigExtensionPlaceholderImage extends AbstractExtension
      *
      * @return string The placeholder image.
      */
-    public function renderPlaceholderImage(float $width, float $height, string $color = null)
+    public function renderPlaceholderImage(float $width, float $height, string $color = null): string
     {
         $width = (int) round($width);
         $height = (int) round($height);

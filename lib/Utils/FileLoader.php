@@ -20,7 +20,7 @@ class FileLoader
      *
      * @return array An array of the callback results.
      */
-    public static function iterateDir(string $dir, callable $callback)
+    public static function iterateDir(string $dir, callable $callback): array
     {
         $output = [];
 
@@ -53,10 +53,8 @@ class FileLoader
      *
      * @param string $dir Directory to search through.
      * @param array $files Optional array of files to include. If this is set, only the files specified will be loaded.
-     *
-     * @return void
      */
-    public static function loadPhpFiles(string $dir, array $files = [])
+    public static function loadPhpFiles(string $dir, array $files = []): void
     {
         $dir = trim($dir, '/');
 
@@ -64,7 +62,7 @@ class FileLoader
             $dir = get_template_directory() . '/' . $dir;
             $phpFiles = [];
 
-            self::iterateDir($dir, function ($file) use (&$phpFiles) {
+            self::iterateDir($dir, function ($file) use (&$phpFiles): void {
                 if ($file->isDir()) {
                     $dirPath = trim(str_replace(get_template_directory(), '', $file->getPathname()), '/');
                     self::loadPhpFiles($dirPath);

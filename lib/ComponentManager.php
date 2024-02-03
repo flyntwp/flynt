@@ -52,10 +52,8 @@ class ComponentManager
      *
      * @param string $componentName The name of the component.
      * @param string $componentPath The path to the component.
-     *
-     * @return boolean
      */
-    public function registerComponent(string $componentName, ?string $componentPath = null)
+    public function registerComponent(string $componentName, ?string $componentPath = null): bool
     {
         // Check if component already registered.
         if ($this->isRegistered($componentName)) {
@@ -121,10 +119,8 @@ class ComponentManager
     *
     * @param string $name The name of the component.
     * @param string $path The path to the component.
-    *
-    * @return boolean
     */
-    protected function add(string $name, string $path)
+    protected function add(string $name, string $path): bool
     {
         $this->components[$name] = $path;
         return true;
@@ -152,10 +148,8 @@ class ComponentManager
      * Remove a component from the internal list (array).
      *
      * @param string $componentName The name of the component.
-     *
-     * @return void
      */
-    public function remove(string $componentName)
+    public function remove(string $componentName): void
     {
         unset($this->components[$componentName]);
     }
@@ -172,10 +166,8 @@ class ComponentManager
 
     /**
      * Remove all components from the internal list (array).
-     *
-     * @return void
      */
-    public function removeAll()
+    public function removeAll(): void
     {
         $this->components = [];
     }
@@ -184,20 +176,16 @@ class ComponentManager
      * Check if a component is registered.
      *
      * @param string $componentName The name of the component.
-     *
-     * @return boolean
      */
-    public function isRegistered(string $componentName)
+    public function isRegistered(string $componentName): bool
     {
         return array_key_exists($componentName, $this->components);
     }
 
     /**
      * Get all components that have a script.js file.
-     *
-     * @return array
      */
-    public function getComponentsWithScript()
+    public function getComponentsWithScript(): array
     {
         $componentsWithScripts = [];
         foreach ($this->components as $componentName => $componentPath) {

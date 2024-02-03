@@ -20,7 +20,7 @@ class Oembed
      *
      * @return string The modified oembed iframe HTML tag.
      */
-    public static function setSrcAsDataAttribute(string $iframeTagHtml, array $additionalGetParams)
+    public static function setSrcAsDataAttribute(string $iframeTagHtml, array $additionalGetParams): string
     {
         $output = '';
         if ($iframeTagHtml !== '' && $iframeTagHtml !== '0') {
