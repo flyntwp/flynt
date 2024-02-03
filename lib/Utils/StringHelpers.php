@@ -83,7 +83,7 @@ class StringHelpers
      */
     public static function removePrefix(string $prefix, string $str)
     {
-        if (substr($str, 0, strlen($prefix)) == $prefix) {
+        if (substr($str, 0, strlen($prefix)) === $prefix) {
             return substr($str, strlen($prefix));
         }
         return $str;
