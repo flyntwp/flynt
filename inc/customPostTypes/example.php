@@ -8,7 +8,7 @@
 
 namespace Flynt\CustomPostTypes;
 
-// add_action('init', function () {
+// add_action('init', function (): void {
 //     $labels = [
 //         'name'                  => _x('Post Types', 'Post Type General Name', 'flynt'),
 //         'singular_name'         => _x('Post Type', 'Post Type Singular Name', 'flynt'),
@@ -38,6 +38,7 @@ namespace Flynt\CustomPostTypes;
 //         'items_list_navigation' => __('Items list navigation', 'flynt'),
 //         'filter_items_list'     => __('Filter items list', 'flynt'),
 //     ];
+//
 //     $args = [
 //         'label'                 => __('Post Type', 'flynt'),
 //         'description'           => __('Post Type Description', 'flynt'),
@@ -57,5 +58,6 @@ namespace Flynt\CustomPostTypes;
 //         'publicly_queryable'    => true,
 //         'capability_type'       => 'page',
 //     ];
+//
 //     register_post_type('example', $args);
 // });
