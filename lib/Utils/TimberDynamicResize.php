@@ -215,12 +215,12 @@ class TimberDynamicResize
         $h = (int) round($h);
 
         if ($this->enabled) {
-            $resizeOp = new Resize($w, $h, $crop);
+            $resize = new Resize($w, $h, $crop);
             if (URLHelper::is_external_content($src)) {
                 $src = ImageHelper::sideload_image($src);
             }
             $fileinfo = pathinfo($src);
-            $resizedUrl = $resizeOp->filename(
+            $resizedUrl = $resize->filename(
                 $fileinfo['dirname'] . '/' . $fileinfo['filename'],
                 $fileinfo['extension'] ?? ''
             );
