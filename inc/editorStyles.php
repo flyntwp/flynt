@@ -35,6 +35,7 @@ if (Asset::isHotModuleReplacement()) {
                 'Accept' => 'text/css'
             ];
         }
+
         return $parsedArgs;
     }, 10, 2);
 }

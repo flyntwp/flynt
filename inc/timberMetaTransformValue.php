@@ -31,6 +31,7 @@ function shouldTransformValue($value, $field)
     if (empty($value) || empty($field)) {
         return false;
     }
+
     return isset($field['return_format']) && in_array($field['return_format'], ['array', 'object']);
 }
 

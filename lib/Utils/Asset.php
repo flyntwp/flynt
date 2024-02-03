@@ -56,6 +56,7 @@ class Asset
         if (file_exists($file)) {
             return file_get_contents($file);
         }
+
         trigger_error("File not found at: {$asset}", E_USER_WARNING);
         return false;
     }
@@ -89,6 +90,7 @@ class Asset
             if (file_exists(self::viteHotFile())) {
                 return trailingslashit(trim(file_get_contents(self::viteHotFile()))) . $asset;
             }
+
             return file_exists($filePath) ? get_template_directory_uri() . '/dist/' . $assetSuffix : get_template_directory_uri() . '/' . $assetSuffix;
         }
 

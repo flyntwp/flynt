@@ -15,8 +15,11 @@ use WP_Rewrite;
 class TimberDynamicResize
 {
     private const DB_VERSION = '2.0';
+
     private const TABLE_NAME = 'resized_images';
+
     private const IMAGE_QUERY_VAR = 'resized-images';
+
     private const IMAGE_PATH_SEPARATOR = 'resized';
 
     /**
@@ -43,6 +46,7 @@ class TimberDynamicResize
             $this->createTable();
             $this->addDynamicHooks();
         }
+
         $this->addHooks();
     }
 
@@ -154,6 +158,7 @@ class TimberDynamicResize
             $baseDir = str_replace('\\', '/', $uploadDir['basedir']);
             return str_replace($homePath, '', $baseDir);
         }
+
         return $uploadDir['relative'];
     }
 
@@ -168,6 +173,7 @@ class TimberDynamicResize
         if (empty($relativeUploadPath)) {
             return static::getDefaultRelativeUploadDir();
         }
+
         return $relativeUploadPath;
     }
 
@@ -219,6 +225,7 @@ class TimberDynamicResize
             if (URLHelper::is_external_content($src)) {
                 $src = ImageHelper::sideload_image($src);
             }
+
             $fileinfo = pathinfo($src);
             $resizedUrl = $resize->filename(
                 $fileinfo['dirname'] . '/' . $fileinfo['filename'],
@@ -228,10 +235,12 @@ class TimberDynamicResize
             if ($this->flyntResizedImages === []) {
                 add_action('shutdown', [$this, 'storeResizedUrls'], -1);
             }
+
             $this->flyntResizedImages[$w . '-' . $h . '-' . $crop] = [$w, $h, $crop];
 
             return $this->addImageSeparatorToUploadUrl($resizedUrl);
         }
+
         return $this->generateImage($src, $w, $h, $crop, $force);
     }
 
@@ -247,6 +256,7 @@ class TimberDynamicResize
         $routeName = self::IMAGE_QUERY_VAR;
         $relativeUploadDir = $this->getRelativeUploadDir();
         $relativeUploadDir = trailingslashit($relativeUploadDir) . self::IMAGE_PATH_SEPARATOR;
+
         $wpRewrite->rules = array_merge(
             ["^{$relativeUploadDir}/?(.*?)/?$" => "index.php?{$routeName}=\$matches[1]"],
             $wpRewrite->rules
@@ -317,6 +327,7 @@ class TimberDynamicResize
             include get_404_template();
             exit();
         }
+
         $resizedUrl = $this->generateImage($originalUrl, $w, $h, $crop);
         wp_redirect($resizedUrl);
         exit();
@@ -424,6 +435,7 @@ class TimberDynamicResize
             remove_action('generate_rewrite_rules', [$this, 'registerRewriteRule']);
             remove_action('parse_request', [$this, 'parseRequest']);
         }
+
         add_action('shutdown', function () {
             flush_rewrite_rules(false);
         });

@@ -32,6 +32,7 @@ class ComponentManager
         if (null === self::$instance) {
             self::$instance = new self();
         }
+
         return self::$instance;
     }
 
@@ -206,6 +207,7 @@ class ComponentManager
                 $componentsWithScripts[$componentName] = $relativeComponentPath;
             }
         }
+
         return $componentsWithScripts;
     }
 }

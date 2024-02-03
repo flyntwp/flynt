@@ -36,6 +36,7 @@ class Oembed
                 $output .= $domDocument->saveHTML($domNode);
             }
         }
+
         return $output;
     }
 }

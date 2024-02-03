@@ -34,6 +34,7 @@ class FileLoader
             if ($file->isDot()) {
                 continue;
             }
+
             $callbackResult = call_user_func($callback, $file);
             $output[] = $callbackResult;
         }

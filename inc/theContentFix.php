@@ -50,5 +50,6 @@ function isShortcodeAndDoesNotMatchId($postContent, $postId)
     if (empty($matches)) {
         return false;
     }
+
     return $matches[1] != $postId;
 }

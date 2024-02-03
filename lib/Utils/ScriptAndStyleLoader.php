@@ -20,6 +20,7 @@ class ScriptAndStyleLoader
         if (wp_scripts()->get_data($handle, 'module')) {
             return preg_replace(':(?=></script>):', ' type="module"', $tag, 1);
         }
+
         return $tag;
     }
 }

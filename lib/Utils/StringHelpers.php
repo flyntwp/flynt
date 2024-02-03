@@ -68,6 +68,7 @@ class StringHelpers
         if (false === $capitalizeFirstCharacter) {
             $str[0] = strtolower($str[0]);
         }
+
         return $str;
     }
 
@@ -86,6 +87,7 @@ class StringHelpers
         if (substr($str, 0, strlen($prefix)) === $prefix) {
             return substr($str, strlen($prefix));
         }
+
         return $str;
     }
 
@@ -121,6 +123,7 @@ class StringHelpers
         if ($searchLength > $subjectLength) {
             return false;
         }
+
         return substr_compare($subject, $search, $subjectLength - $searchLength, $searchLength) === 0;
     }
 }

@@ -54,6 +54,7 @@ class Options
         if (static::$initialized) {
             return;
         }
+
         static::$initialized = true;
 
         add_action('current_screen', function ($currentScreen) {
@@ -113,6 +114,7 @@ class Options
                 'menu_title' => $title
             ];
         }
+
         return static::$optionPages[$optionType];
     }
 
@@ -233,6 +235,7 @@ class Options
                 }, $optionNames)
             );
         }
+
         $fieldKey = $prefix . $fieldName;
         return static::getOptionField($fieldKey, $isTranslatable);
     }
@@ -384,6 +387,7 @@ class Options
             trigger_error("Could not get option/s for [{$parameters}]. Required hooks have not yet been executed! Please make sure to run `Options::get()` after the `acf/init` action is finished.", E_USER_WARNING);
             return false;
         }
+
         return true;
     }
 

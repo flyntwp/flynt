@@ -17,6 +17,7 @@ add_filter('mce_buttons', function ($buttons) {
             return $toolbars['default'][0];
         }
     }
+
     return $buttons;
 });
 
@@ -46,6 +47,7 @@ add_filter('tiny_mce_before_init', function ($init) {
             $init['entity_encoding'] = getEntityEncoding($config['entity_encoding']);
         }
     }
+
     return $init;
 });
 
@@ -58,6 +60,7 @@ add_filter('acf/fields/wysiwyg/toolbars', function ($toolbars) {
             return $toolbar;
         }, $config['toolbars']);
     }
+
     return $toolbars;
 });
 
@@ -73,6 +76,7 @@ function getBlockFormats($blockFormats)
         );
         return implode(';', $blockFormatStrings);
     }
+
     return '';
 }
 
@@ -88,6 +92,7 @@ function getEntities($entities)
         );
         return implode(',', $entityString);
     }
+
     return '';
 }
 
@@ -96,6 +101,7 @@ function getEntityEncoding($entityEncoding): string
     if (!empty($entityEncoding)) {
         return $entityEncoding;
     }
+
     return 'raw';
 }
 

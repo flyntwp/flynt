@@ -19,9 +19,11 @@ add_action('Flynt/afterRegisterComponents', function () {
     if ('production' === wp_get_environment_type()) {
         return;
     }
+
     if (!isset($_GET['log'])) {
         return;
     }
+
     add_filter("Flynt/addComponentData", 'Flynt\ComponentLogServer\addDebugInfo', 99999, 2);
 }, 11);
 
@@ -43,6 +45,7 @@ function addDebugInfo($data, $componentName)
             'data' => $data,
         ]);
     }
+
     return $data;
 }
 
