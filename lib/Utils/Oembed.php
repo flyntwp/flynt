@@ -23,7 +23,7 @@ class Oembed
     public static function setSrcAsDataAttribute(string $iframeTagHtml, array $additionalGetParams)
     {
         $output = '';
-        if ($iframeTagHtml) {
+        if ($iframeTagHtml !== '' && $iframeTagHtml !== '0') {
             $domDocument = new DOMDocument();
             $domDocument->loadHTML($iframeTagHtml);
             $domNodes = $domDocument->getElementsByTagName('iframe');
