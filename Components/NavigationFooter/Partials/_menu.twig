@@ -3,7 +3,7 @@
     <li class="item">
       <a class="link" href="{{ item.link|e('esc_url') }}" {{- item.is_external or item.is_target_blank ? ' target="_blank" rel="noopener noreferrer"' -}}>{{ item.title }}</a>
       {% if item.children %}
-        {% include 'Partials/_menu.twig' with { 'items': item.children } only %}
+        {% include 'Partials/_menu.twig' with {'items': item.children} only %}
       {% endif %}
     </li>
   {% endfor %}
