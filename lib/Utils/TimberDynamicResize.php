@@ -63,11 +63,11 @@ class TimberDynamicResize
 
             $charsetCollate = $wpdb->get_charset_collate();
 
-            $sql = "CREATE TABLE $tableName (
+            $sql = "CREATE TABLE {$tableName} (
                 width int(11) NOT NULL,
                 height int(11) NOT NULL,
                 crop varchar(32) NOT NULL
-            ) $charsetCollate;";
+            ) {$charsetCollate};";
 
             require_once ABSPATH . 'wp-admin/includes/upgrade.php';
             dbDelta($sql);
@@ -401,7 +401,7 @@ class TimberDynamicResize
         $wpdb->query(
             $wpdb->prepare(
                 "INSERT IGNORE INTO {$tableName} (width, height, crop) VALUES {$placeholdersString}",
-                call_user_func_array('array_merge', $values)
+                array_merge(...$values)
             )
         );
     }
