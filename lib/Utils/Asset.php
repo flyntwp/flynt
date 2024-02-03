@@ -75,7 +75,7 @@ class Asset
     {
         if (!isset(self::$assetManifest)) {
             $distPath = get_template_directory() . '/dist';
-            $manifestPath = $distPath . '/manifest.json';
+            $manifestPath = $distPath . '/.vite/manifest.json';
             self::$assetManifest = is_file($manifestPath) ? json_decode(file_get_contents($manifestPath), true) : [];
         }
 

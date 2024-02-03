@@ -54,7 +54,7 @@
     "stylelint-order": "^6.0.4",
     "stylelint-scss": "^6.1.0",
     "stylelint-use-logical-spec": "^5.0.1",
-    "vite": "^4.5.1",
+    "vite": "^5.0.12",
     "vite-plugin-full-reload": "^1.1.0"
   },
   "eslintConfig": {
@@ -88,6 +88,7 @@
   "engines": {
     "node": ">=20"
   },
+  "type": "module",
   "standard-version": {
     "scripts": {
       "postbump": "npm run replaceVersion && composer config --unset version && composer update nothing && git diff && git add . && composer validate --strict"
