@@ -31,12 +31,7 @@ function shouldTransformValue($value, $field)
     if (empty($value) || empty($field)) {
         return false;
     }
-
-    if (!isset($field['return_format']) || !in_array($field['return_format'], ['array', 'object'])) {
-        return false;
-    }
-
-    return true;
+    return isset($field['return_format']) && in_array($field['return_format'], ['array', 'object']);
 }
 
 /**
