@@ -16,7 +16,7 @@ add_filter('Flynt/addComponentData?name=BlockVideoOembed', function (array $data
     return $data;
 });
 
-function getACFLayout()
+function getACFLayout(): array
 {
     return [
         'name' => 'blockVideoOembed',

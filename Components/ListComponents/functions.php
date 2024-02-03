@@ -50,7 +50,7 @@ add_filter('acf/load_field/name=component', function (array $field) {
     return $field;
 });
 
-function getACFLayout()
+function getACFLayout(): array
 {
     return [
         'name' => 'listComponents',

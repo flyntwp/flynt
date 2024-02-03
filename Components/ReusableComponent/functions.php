@@ -2,7 +2,7 @@
 
 namespace Flynt\Components\ReusableComponent;
 
-function getACFLayout()
+function getACFLayout(): array
 {
     return [
         'name' => 'ReusableComponent',

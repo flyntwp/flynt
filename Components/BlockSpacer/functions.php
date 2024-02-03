@@ -9,7 +9,7 @@ add_filter('Flynt/addComponentData?name=BlockSpacer', function (array $data) {
     return $data;
 });
 
-function getACFLayout()
+function getACFLayout(): array
 {
     return [
         'name' => 'blockSpacer',

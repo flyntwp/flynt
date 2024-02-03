@@ -13,7 +13,7 @@ add_filter('Flynt/addComponentData?name=BlockAnchor', function (array $data) {
     return $data;
 });
 
-function getACFLayout()
+function getACFLayout(): array
 {
     return [
         'name' => 'blockAnchor',
