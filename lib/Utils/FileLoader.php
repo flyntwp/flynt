@@ -35,7 +35,7 @@ class FileLoader
                 continue;
             }
             $callbackResult = call_user_func($callback, $file);
-            array_push($output, $callbackResult);
+            $output[] = $callbackResult;
         }
 
         return $output;
@@ -59,7 +59,7 @@ class FileLoader
     {
         $dir = trim($dir, '/');
 
-        if (count($files) === 0) {
+        if ($files === []) {
             $dir = get_template_directory() . '/' . $dir;
             $phpFiles = [];
 
@@ -84,7 +84,7 @@ class FileLoader
             foreach ($files as $file) {
                 $filePath = $dir . '/' . ltrim($file, '/');
 
-                if (!locate_template($filePath, true, true)) {
+                if (locate_template($filePath, true, true) === '' || locate_template($filePath, true, true) === '0') {
                     trigger_error(
                         sprintf(__('Error locating %s for inclusion', 'flynt'), $filePath),
                         E_USER_ERROR
