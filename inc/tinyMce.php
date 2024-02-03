@@ -53,7 +53,7 @@ add_filter('acf/fields/wysiwyg/toolbars', function ($toolbars) {
     // Load Toolbars and parse them into TinyMCE.
     $config = getConfig();
     if ($config && !empty($config['toolbars'])) {
-        $toolbars = array_map(function ($toolbar) {
+        return array_map(function ($toolbar) {
             array_unshift($toolbar, []);
             return $toolbar;
         }, $config['toolbars']);
