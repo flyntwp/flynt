@@ -53,11 +53,11 @@ class TimberDynamicResize
      */
     protected function createTable()
     {
-        $optionName = static::TABLE_NAME . '_db_version';
+        $optionName = self::TABLE_NAME . '_db_version';
 
         $installedVersion = get_option($optionName);
 
-        if ($installedVersion !== static::DB_VERSION) {
+        if ($installedVersion !== self::DB_VERSION) {
             global $wpdb;
             $tableName = self::getTableName();
 
@@ -76,7 +76,7 @@ class TimberDynamicResize
                 $wpdb->query("ALTER TABLE {$tableName} ADD PRIMARY KEY(`width`, `height`, `crop`);");
             }
 
-            update_option($optionName, static::DB_VERSION);
+            update_option($optionName, self::DB_VERSION);
         }
     }
 
@@ -101,8 +101,8 @@ class TimberDynamicResize
      */
     public function parseRequest(WP $wp)
     {
-        if (isset($wp->query_vars[static::IMAGE_QUERY_VAR])) {
-            $this->checkAndGenerateImage($wp->query_vars[static::IMAGE_QUERY_VAR]);
+        if (isset($wp->query_vars[self::IMAGE_QUERY_VAR])) {
+            $this->checkAndGenerateImage($wp->query_vars[self::IMAGE_QUERY_VAR]);
         }
     }
 
@@ -137,7 +137,7 @@ class TimberDynamicResize
     public function getTableName()
     {
         global $wpdb;
-        return $wpdb->prefix . static::TABLE_NAME;
+        return $wpdb->prefix . self::TABLE_NAME;
     }
 
     /**
@@ -225,7 +225,7 @@ class TimberDynamicResize
                 $fileinfo['extension'] ?? ''
             );
 
-            if (empty($this->flyntResizedImages)) {
+            if ($this->flyntResizedImages === []) {
                 add_action('shutdown', [$this, 'storeResizedUrls'], -1);
             }
             $this->flyntResizedImages[$w . '-' . $h . '-' . $crop] = [$w, $h, $crop];
@@ -244,9 +244,9 @@ class TimberDynamicResize
      */
     public function registerRewriteRule(WP_Rewrite $wpRewrite)
     {
-        $routeName = static::IMAGE_QUERY_VAR;
+        $routeName = self::IMAGE_QUERY_VAR;
         $relativeUploadDir = $this->getRelativeUploadDir();
-        $relativeUploadDir = trailingslashit($relativeUploadDir) . static::IMAGE_PATH_SEPARATOR;
+        $relativeUploadDir = trailingslashit($relativeUploadDir) . self::IMAGE_PATH_SEPARATOR;
         $wpRewrite->rules = array_merge(
             ["^{$relativeUploadDir}/?(.*?)/?$" => "index.php?{$routeName}=\$matches[1]"],
             $wpRewrite->rules
@@ -261,7 +261,7 @@ class TimberDynamicResize
      */
     public function addRewriteTag()
     {
-        $routeName = static::IMAGE_QUERY_VAR;
+        $routeName = self::IMAGE_QUERY_VAR;
         add_rewrite_tag("%{$routeName}%", "([^&]+)");
     }
 
@@ -272,7 +272,7 @@ class TimberDynamicResize
      */
     public function removeRewriteTag()
     {
-        $routeName = static::IMAGE_QUERY_VAR;
+        $routeName = self::IMAGE_QUERY_VAR;
         remove_rewrite_tag("%{$routeName}%");
     }
 
@@ -364,7 +364,7 @@ class TimberDynamicResize
         $baseurl = $this->getUploadsBaseurl();
         return str_replace(
             $baseurl,
-            trailingslashit($baseurl) . static::IMAGE_PATH_SEPARATOR,
+            trailingslashit($baseurl) . self::IMAGE_PATH_SEPARATOR,
             $url
         );
     }
@@ -381,8 +381,8 @@ class TimberDynamicResize
         $basepath = $this->getUploadsBasedir();
         return str_replace(
             $basepath,
-            trailingslashit($basepath) . static::IMAGE_PATH_SEPARATOR,
-            empty($path) ? $basepath : $path
+            trailingslashit($basepath) . self::IMAGE_PATH_SEPARATOR,
+            $path === '' || $path === '0' ? $basepath : $path
         );
     }
 
