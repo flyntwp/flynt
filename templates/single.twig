@@ -3,13 +3,13 @@
 {% block content %}
   <article>
     <header>
-      {{ renderComponent('BlockPostHeader', { post: post }) }}
+      {{ renderComponent('BlockPostHeader', {post: post}) }}
     </header>
     <section class="wp-block-post-content has-global-padding is-layout-constrained">
         {{ post.content }}
     </section>
     <footer>
-      {{ renderComponent('BlockPostFooter', { post: post }) }}
+      {{ renderComponent('BlockPostFooter', {post: post}) }}
     </footer>
     <section>
       {{ renderComponent('GridPostsLatest', {'taxonomies': post.categories(), 'options': {'theme': 'light', 'maxColumns': 3}}) }}
