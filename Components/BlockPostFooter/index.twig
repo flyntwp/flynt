@@ -6,7 +6,7 @@
         {% if post.terms('tag')  %}
           <span class="visuallyHidden">{{ labels.tagsLabel }}</span>
           <ul class="tags">
-            {% for tag in post.terms('tag')  %}
+            {% for tag in post.terms('tag') %}
               <li class="tag">
                 <a class="button button--text" href="{{ tag.link|e('esc_url') }}">{{ tag }}</a>
               </li>
