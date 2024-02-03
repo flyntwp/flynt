@@ -54,18 +54,10 @@ add_action('update_option_options_global_TimberDynamicResize_relativeUploadPath'
 // WPML rewrite fix.
 add_filter('mod_rewrite_rules', function ($rules) {
     $homeRoot = parse_url(home_url());
-    if (isset($homeRoot['path'])) {
-        $homeRoot = trailingslashit($homeRoot['path']);
-    } else {
-        $homeRoot = '/';
-    }
+    $homeRoot = isset($homeRoot['path']) ? trailingslashit($homeRoot['path']) : '/';
 
     $wpmlRoot = parse_url(get_option('home'));
-    if (isset($wpmlRoot['path'])) {
-        $wpmlRoot = trailingslashit($wpmlRoot['path']);
-    } else {
-        $wpmlRoot = '/';
-    }
+    $wpmlRoot = isset($wpmlRoot['path']) ? trailingslashit($wpmlRoot['path']) : '/';
 
     return str_replace(
         ["RewriteBase $homeRoot", "RewriteRule . $homeRoot"],
