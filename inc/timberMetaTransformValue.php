@@ -38,7 +38,7 @@ function shouldTransformValue($value, $field): bool
  * Transform ACF file field
  *
  * @param string $value
- * @param int $id
+ * @param integer $id
  * @param array $field
  */
 function transformFile($value, $id, $field)
@@ -63,7 +63,7 @@ function transformImage($value, $id, $field)
  * Transform ACF gallery field
  *
  * @param array $value
- * @param int $id
+ * @param integer $id
  * @param array $field
  */
 function transformGallery($value, $id, $field)
@@ -81,7 +81,7 @@ function transformGallery($value, $id, $field)
  * Transform ACF post object field
  *
  * @param string $value
- * @param int $id
+ * @param integer $id
  */
 function transformPostObject($value, $id, array $field)
 {
@@ -104,7 +104,7 @@ function transformPostObject($value, $id, array $field)
  * Transform ACF relationship field
  *
  * @param string $value
- * @param int $id
+ * @param integer $id
  * @param array $field
  */
 function transformRelationship($value, $id, $field)
@@ -120,7 +120,7 @@ function transformRelationship($value, $id, $field)
  * Transform ACF taxonomy field
  *
  * @param string $value
- * @param int $id
+ * @param integer $id
  */
 function transformTaxonomy($value, $id, array $field)
 {
