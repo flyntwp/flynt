@@ -12,9 +12,11 @@
     border-radius: 0.25rem;
     color: #fff;
     inline-size: calc(100% - 20px);
-    margin: 5px 10px;
+    margin-block: 5px;
+    margin-inline: 10px;
     outline: 0;
-    padding: 0.25rem 0.5rem;
+    padding-block: 0.25rem;
+    padding-inline: 0.5rem;
 
     &:focus {
       box-shadow: none;
@@ -27,6 +29,7 @@
   }
 
   &-noResults {
-    padding: 5px 10px;
+    padding-block: 5px;
+    padding-inline: 10px;
   }
 }

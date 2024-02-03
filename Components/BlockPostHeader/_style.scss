@@ -4,7 +4,8 @@ flynt-component[name='BlockPostHeader'] {
   }
 
   > .container {
-    padding: var(--component-spacing) var(--container-spacing);
+    padding-block: var(--component-spacing);
+    padding-inline: var(--container-spacing);
   }
 
   .content * + * {
@@ -24,7 +25,8 @@ flynt-component[name='BlockPostHeader'] {
         content: '';
         display: inline-block;
         inline-size: 8px;
-        margin: 0 0.5rem;
+        margin-block: 0;
+        margin-inline: 0.5rem;
         vertical-align: middle;
       }
     }

@@ -85,7 +85,8 @@ flynt-component[name='SliderImages'] {
     &-image {
       block-size: 100%;
       inline-size: auto;
-      margin: 0 auto;
+      margin-block: 0;
+      margin-inline: auto;
     }
 
     &-caption {
@@ -95,7 +96,8 @@ flynt-component[name='SliderImages'] {
       inset-inline-end: 0;
       max-inline-size: 450px;
       overflow: hidden;
-      padding: 0.25rem 0.5rem;
+      padding-block: 0.25rem;
+      padding-inline: 0.5rem;
       position: absolute;
       z-index: 2;
 

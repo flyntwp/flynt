@@ -8,7 +8,8 @@
   list-style: none;
   margin: 0;
   overflow-y: auto;
-  padding: var(--component-spacing) var(--container-spacing);
+  padding-block: var(--component-spacing);
+  padding-inline: var(--container-spacing);
   position: fixed;
   transition: translate 0.45s cubic-bezier(0.19, 1, 0.22, 1), visibility 0.45s;
   translate: 100% 0;
@@ -25,7 +26,8 @@
     color: var(--color-text);
     display: block;
     font-size: 1.25rem;
-    padding: 0.9rem 1.25rem;
+    padding-block: 0.9rem;
+    padding-inline: 1.25rem;
     text-decoration: none;
   }
 

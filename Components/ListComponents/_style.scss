@@ -56,7 +56,8 @@ flynt-component[name='ListComponents'] {
       display: flex;
       inline-size: 100%;
       justify-content: space-between;
-      padding: 0 var(--box-spacing) var(--box-spacing);
+      padding-block: 0 var(--box-spacing);
+      padding-inline: var(--box-spacing);
 
       .button--text {
         margin-inline-start: auto;

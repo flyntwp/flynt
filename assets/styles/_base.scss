@@ -92,7 +92,8 @@ a {
 hr {
   --flow-space: var(--component-spacing);
   border: 0;
-  margin: var(--flow-space) auto;
+  margin-block: var(--flow-space);
+  margin-inline: auto;
 
   &::after {
     background-color: var(--color-border);
@@ -108,7 +109,8 @@ code {
   border-radius: 4px;
   display: inline-block;
   font-size: 0.95em;
-  padding: 0 0.375em;
+  padding-block: 0;
+  padding-inline: 0.375em;
   word-break: break-word;
 }
 
@@ -135,7 +137,8 @@ blockquote,
   font-style: normal;
   font-weight: 500;
   line-height: calc(1em + 0.75rem);
-  margin: var(--flow-space) 0 var(--flow-space) 2.5rem;
+  margin-block: var(--flow-space);
+  margin-inline: 2.5rem 0;
   padding-inline-start: 0.8rem;
 
   cite {
@@ -190,7 +193,8 @@ table {
 
   td,
   th {
-    padding: 0.9rem 1rem;
+    padding-block: 0.9rem;
+    padding-inline: 1rem;
     text-align: inherit;
     vertical-align: top;
   }
@@ -242,7 +246,8 @@ table {
   font: inherit;
   font-weight: var(--button-font-weight);
   letter-spacing: 0;
-  padding: var(--button-padding-block) var(--button-padding-inline);
+  padding-block: var(--button-padding-block);
+  padding-inline: var(--button-padding-inline);
   text-align: center;
   text-decoration: none;
 
@@ -276,7 +281,8 @@ table {
       --button-text-color: var(--color-accent);
       border: solid var(--button-border-width) var(--color-accent);
       color: var(--button-text-color);
-      padding: var(--button-padding-block) var(--button-padding-inline);
+      padding-block: var(--button-padding-block);
+      padding-inline: var(--button-padding-inline);
     }
   }
 }
@@ -317,7 +323,8 @@ label {
   color: var(--color-text);
   font-size: var(--font-size-body-small);
   max-inline-size: 100%;
-  padding: 0.75rem 0.625rem;
+  padding-block: 0.75rem;
+  padding-inline: 0.625rem;
   transition: border-color 0.3s ease-in-out;
 
   &::placeholder {
@@ -395,11 +402,13 @@ flynt-component {
 }
 
 .componentSpacing {
-  margin: var(--component-spacing) 0;
+  margin-block: var(--component-spacing);
+  margin-inline: 0;
 
   &[data-theme] {
     margin: 0;
-    padding: var(--component-spacing) 0;
+    padding-block: var(--component-spacing);
+    padding-inline: 0;
   }
 }
 
@@ -512,7 +521,8 @@ flynt-component {
     inset-block-start: 0;
     inset-inline-start: 0;
     outline-offset: -3px;
-    padding: 0.75rem 1rem;
+    padding-block: 0.75rem;
+    padding-inline: 1rem;
     text-decoration: none;
     z-index: 100000;
   }

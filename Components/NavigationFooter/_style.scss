@@ -14,7 +14,8 @@ flynt-component[name='NavigationFooter'] {
   }
 
   .content {
-    margin: var(--flow-space) 0 0;
+    margin-block: var(--flow-space) 0;
+    margin-inline: 0;
 
     @media (min-width: $breakpoint-tablet) {
       margin: 0;
