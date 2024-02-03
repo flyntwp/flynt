@@ -17,7 +17,7 @@ add_filter('Flynt/addComponentData?name=GridPostsLatest', function ($data) {
     $posts = Timber::get_posts([
         'post_status' => 'publish',
         'post_type' => POST_TYPE,
-        'cat' => join(',', array_map(function ($taxonomy) {
+        'cat' => implode(',', array_map(function ($taxonomy) {
             return $taxonomy->term_id;
         }, $data['taxonomies'])),
         'posts_per_page' => $postsPerPage + 1,
