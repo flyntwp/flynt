@@ -53,9 +53,8 @@ class Options
     {
         if (static::$initialized) {
             return;
-        } else {
-            static::$initialized = true;
         }
+        static::$initialized = true;
 
         add_action('current_screen', function ($currentScreen) {
             $currentScreenId = strtolower($currentScreen->id);
@@ -233,10 +232,9 @@ class Options
                     return static::getOptionField($fieldKey, $isTranslatable);
                 }, $optionNames)
             );
-        } else {
-            $fieldKey = $prefix . $fieldName;
-            return static::getOptionField($fieldKey, $isTranslatable);
         }
+        $fieldKey = $prefix . $fieldName;
+        return static::getOptionField($fieldKey, $isTranslatable);
     }
 
     /**
