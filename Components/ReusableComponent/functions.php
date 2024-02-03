@@ -29,7 +29,7 @@ add_filter('acf/prepare_field/name=reusableComponent', function ($field) {
     $reusableAdminLink = admin_url('edit.php?post_type=reusable-components');
     $postEditLink = get_edit_post_link($field['value']);
     $postTitle = get_the_title($field['value']);
-    $postId = $field['value'] ? $field['value'] : get_the_ID();
+    $postId = $field['value'] ?: get_the_ID();
 
     $instructions = sprintf(
         // translators: 1: <a> element 2: </a> element
