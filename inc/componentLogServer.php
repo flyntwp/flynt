@@ -37,7 +37,7 @@ function addDebugInfo($data, $componentName)
         $filterByComponents = explode(',', $_GET['component']);
     }
 
-    if (in_array($componentName, $filterByComponents) || empty($filterByComponents)) {
+    if (in_array($componentName, $filterByComponents) || $filterByComponents === []) {
         consoleDebug([
             'component' => $componentName,
             'data' => $data,
