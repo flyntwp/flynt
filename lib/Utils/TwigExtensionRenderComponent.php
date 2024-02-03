@@ -45,7 +45,7 @@ class TwigExtensionRenderComponent extends AbstractExtension
     public function renderComponent(Environment $env, array $context, $componentName, ?array $data = [], bool $withContext = true, bool $ignoreMissing = false, bool $sandboxed = false)
     {
 
-        $data = $data === null ? [] : $data;
+        $data ??= [];
 
         if (is_array($componentName)) {
             $data = array_merge($componentName, $data);
