@@ -18,7 +18,7 @@ class ScriptAndStyleLoader
     public function filterScriptLoaderTag(string $tag, string $handle, string $src)
     {
         if (wp_scripts()->get_data($handle, 'module')) {
-            $tag = preg_replace(':(?=></script>):', " type=\"module\"", $tag, 1);
+            return preg_replace(':(?=></script>):', " type=\"module\"", $tag, 1);
         }
         return $tag;
     }
