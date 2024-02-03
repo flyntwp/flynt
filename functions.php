@@ -17,8 +17,8 @@ if (!defined('WP_ENV')) {
 // plugin-inactive.php instead and shows a warning in the admin backend.
 if (Init::checkRequiredPlugins()) {
     FileLoader::loadPhpFiles('inc');
-    add_action('after_setup_theme', ['Flynt\Init', 'initTheme']);
-    add_action('after_setup_theme', ['Flynt\Init', 'loadComponents'], 101);
+    add_action('after_setup_theme', [\Flynt\Init::class, 'initTheme']);
+    add_action('after_setup_theme', [\Flynt\Init::class, 'loadComponents'], 101);
 }
 
 // Remove the admin-bar inline-CSS as it isn't compatible with the sticky footer CSS.
