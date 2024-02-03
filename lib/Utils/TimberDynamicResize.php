@@ -145,32 +145,32 @@ class TimberDynamicResize
      *
      * @return string
      */
-    public static function getDefaultRelativeUploadDir()
+    private function getDefaultRelativeUploadDir()
     {
         require_once(ABSPATH . 'wp-admin/includes/file.php');
-        $uploadDir = wp_upload_dir();
-        $homePath = get_home_path();
-        if (!empty($homePath) && $homePath !== '/') {
-            $baseDir = str_replace('\\', '/', $uploadDir['basedir']);
-            return str_replace($homePath, '', $baseDir);
-        }
 
-        return $uploadDir['relative'];
+        $uploadDir = wp_upload_dir();
+        return $uploadDir['relative'] ?? '/wp-content/uploads';
     }
 
     /**
      * Get relative upload dir.
      *
+     * @param boolean $useDefaultUploadDir Use the default upload dir.
+     *
      * @return string
      */
-    public function getRelativeUploadDir()
+    public function getRelativeUploadDir(bool $useDefaultUploadDir = false)
     {
-        $relativeUploadPath = get_field('field_global_TimberDynamicResize_relativeUploadPath', 'option');
+        $relativeUploadPath = $useDefaultUploadDir
+            ? static::getDefaultRelativeUploadDir()
+            : get_field('field_global_TimberDynamicResize_relativeUploadPath', 'option');
+
         if (empty($relativeUploadPath)) {
-            return static::getDefaultRelativeUploadDir();
+            $relativeUploadPath = static::getDefaultRelativeUploadDir();
         }
 
-        return $relativeUploadPath;
+        return apply_filters('Flynt/TimberDynamicResize/relativeUploadDir', $relativeUploadPath);
     }
 
     /**
@@ -249,6 +249,7 @@ class TimberDynamicResize
     {
         $routeName = self::IMAGE_QUERY_VAR;
         $relativeUploadDir = $this->getRelativeUploadDir();
+        $relativeUploadDir = ltrim(untrailingslashit($relativeUploadDir), '/');
         $relativeUploadDir = trailingslashit($relativeUploadDir) . self::IMAGE_PATH_SEPARATOR;
 
         $wpRewrite->rules = array_merge(
@@ -337,13 +338,7 @@ class TimberDynamicResize
         add_filter('timber/image/new_url', [$this, 'addImageSeparatorToUploadUrl']);
         add_filter('timber/image/new_path', [$this, 'addImageSeparatorToUploadPath']);
 
-        $resizedUrl = ImageHelper::resize(
-            $url,
-            $w,
-            $h,
-            $crop,
-            $force
-        );
+        $resizedUrl = ImageHelper::resize($url, $w, $h, $crop, $force);
 
         remove_filter('timber/image/new_url', [$this, 'addImageSeparatorToUploadUrl']);
         remove_filter('timber/image/new_path', [$this, 'addImageSeparatorToUploadPath']);

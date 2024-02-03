@@ -37,7 +37,8 @@ Options::addGlobal('TimberDynamicResize', [
 ]);
 
 add_filter('acf/load_field/key=field_global_TimberDynamicResize_relativeUploadPath', function (array $field) {
-    $field['placeholder'] = TimberDynamicResize::getDefaultRelativeUploadDir();
+    global $timberDynamicResize;
+    $field['placeholder'] = $timberDynamicResize->getRelativeUploadDir(true);
     return $field;
 });
 
