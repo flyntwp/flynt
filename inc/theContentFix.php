@@ -49,9 +49,11 @@ add_shortcode('flyntTheContent', function ($attrs) {
 function isShortcodeAndDoesNotMatchId($postContent, $postId)
 {
     preg_match('/^\[flyntTheContent id=\\\"(\d*)\\\"\]$/', $postContent, $matches);
-    if (!empty($matches) && $matches[1] != $postId) {
-        return true;
-    } else {
+    if (empty($matches)) {
         return false;
     }
+    if ($matches[1] == $postId) {
+        return false;
+    }
+    return true;
 }
