@@ -60,8 +60,8 @@ add_filter('mod_rewrite_rules', function ($rules) {
     $wpmlRoot = isset($wpmlRoot['path']) ? trailingslashit($wpmlRoot['path']) : '/';
 
     return str_replace(
-        ["RewriteBase $homeRoot", "RewriteRule . $homeRoot"],
-        ["RewriteBase $wpmlRoot", "RewriteRule . $wpmlRoot"],
+        ["RewriteBase {$homeRoot}", "RewriteRule . {$homeRoot}"],
+        ["RewriteBase {$wpmlRoot}", "RewriteRule . {$wpmlRoot}"],
         $rules
     );
 });
