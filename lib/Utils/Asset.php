@@ -75,11 +75,7 @@ class Asset
         if (!isset(self::$assetManifest)) {
             $distPath = get_template_directory() . '/dist';
             $manifestPath = $distPath . '/manifest.json';
-            if (is_file($manifestPath)) {
-                self::$assetManifest = json_decode(file_get_contents($manifestPath), true);
-            } else {
-                self::$assetManifest = [];
-            }
+            self::$assetManifest = is_file($manifestPath) ? json_decode(file_get_contents($manifestPath), true) : [];
         }
 
         $assetSuffix = self::$assetManifest[$asset]['file'] ?? $asset;
