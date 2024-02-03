@@ -4,7 +4,7 @@ namespace Flynt\TheContentFix;
 
 use Timber\Timber;
 
-add_filter('wp_insert_post_data', function ($data, $postArr) {
+add_filter('wp_insert_post_data', function (array $data, array $postArr) {
     if (
         in_array(
             $postArr['post_type'],
@@ -29,7 +29,7 @@ add_filter('wp_insert_post_data', function ($data, $postArr) {
     return $data;
 }, 99, 2);
 
-add_shortcode('flyntTheContent', function ($attrs) {
+add_shortcode('flyntTheContent', function (array $attrs) {
     if (is_admin()) {
         return;
     }
@@ -44,7 +44,7 @@ add_shortcode('flyntTheContent', function ($attrs) {
     }
 });
 
-function isShortcodeAndDoesNotMatchId($postContent, $postId)
+function isShortcodeAndDoesNotMatchId($postContent, $postId): bool
 {
     preg_match('/^\[flyntTheContent id=\\\"(\d*)\\\"\]$/', $postContent, $matches);
     if (empty($matches)) {

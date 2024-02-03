@@ -5,7 +5,7 @@ namespace Flynt\TimberDynamicResize;
 use Flynt\Utils\Options;
 use Flynt\Utils\TimberDynamicResize;
 
-add_action('acf/init', function () {
+add_action('acf/init', function (): void {
     global $timberDynamicResize;
     $timberDynamicResize = new TimberDynamicResize();
 });
@@ -36,17 +36,17 @@ Options::addGlobal('TimberDynamicResize', [
     ],
 ]);
 
-add_filter('acf/load_field/key=field_global_TimberDynamicResize_relativeUploadPath', function ($field) {
+add_filter('acf/load_field/key=field_global_TimberDynamicResize_relativeUploadPath', function (array $field) {
     $field['placeholder'] = TimberDynamicResize::getDefaultRelativeUploadDir();
     return $field;
 });
 
-add_action('update_option_options_global_TimberDynamicResize_dynamicImageGeneration', function ($oldValue, $value) {
+add_action('update_option_options_global_TimberDynamicResize_dynamicImageGeneration', function ($oldValue, $value): void {
     global $timberDynamicResize;
     $timberDynamicResize->toggleDynamic($value === '1');
 }, 10, 2);
 
-add_action('update_option_options_global_TimberDynamicResize_relativeUploadPath', function ($oldValue, $value) {
+add_action('update_option_options_global_TimberDynamicResize_relativeUploadPath', function ($oldValue, $value): void {
     global $timberDynamicResize;
     $timberDynamicResize->changeRelativeUploadPath($value);
 }, 10, 2);

@@ -2,7 +2,7 @@
 
 namespace Flynt\CustomPostTypes;
 
-add_action('init', function () {
+add_action('init', function (): void {
     $labels = [
         'name'                  => _x('Reusable Components', 'Component Post Type', 'flynt'),
         'singular_name'         => _x('Reusable Components', 'Component Post Type', 'flynt'),

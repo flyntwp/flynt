@@ -15,7 +15,7 @@
 
 namespace Flynt\ComponentLogServer;
 
-add_action('Flynt/afterRegisterComponents', function () {
+add_action('Flynt/afterRegisterComponents', function (): void {
     if ('production' === wp_get_environment_type()) {
         return;
     }
@@ -51,13 +51,12 @@ function addDebugInfo($data, $componentName)
 
 /**
  * @param mixed $data
- * @return void
  */
-function consoleDebug($data)
+function consoleDebug($data): void
 {
     $output = json_encode($data);
     $result =  "<script>console.log({$output});</script>\n";
-    add_action('wp_footer', function () use ($result) {
+    add_action('wp_footer', function () use ($result): void {
         echo $result;
     }, 30);
 }

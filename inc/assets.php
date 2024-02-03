@@ -6,12 +6,12 @@ use Flynt\Utils\Asset;
 use Flynt\ComponentManager;
 use Flynt\Utils\ScriptAndStyleLoader;
 
-call_user_func(function () {
+call_user_func(function (): void {
     $loader = new ScriptAndStyleLoader();
     add_filter('script_loader_tag', [$loader, 'filterScriptLoaderTag'], 10, 3);
 });
 
-add_action('wp_enqueue_scripts', function () {
+add_action('wp_enqueue_scripts', function (): void {
     wp_enqueue_script('Flynt/assets/main', Asset::requireUrl('assets/main.js'), [], null);
     wp_script_add_data('Flynt/assets/main', 'module', true);
 
@@ -24,7 +24,7 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('Flynt/assets/print', Asset::requireUrl('assets/print.scss'), [], null, 'print');
 });
 
-add_action('admin_enqueue_scripts', function () {
+add_action('admin_enqueue_scripts', function (): void {
     wp_enqueue_script('Flynt/assets/admin', Asset::requireUrl('assets/admin.js'), [], null);
     wp_script_add_data('Flynt/assets/admin', 'module', true);
 

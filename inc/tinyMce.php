@@ -64,11 +64,11 @@ add_filter('acf/fields/wysiwyg/toolbars', function ($toolbars) {
     return $toolbars;
 });
 
-function getBlockFormats($blockFormats)
+function getBlockFormats($blockFormats): string
 {
     if (!empty($blockFormats)) {
         $blockFormatStrings = array_map(
-            function ($tag, $label) {
+            function ($tag, $label): string {
                 return "{$label}={$tag}";
             },
             $blockFormats,
@@ -80,11 +80,11 @@ function getBlockFormats($blockFormats)
     return '';
 }
 
-function getEntities($entities)
+function getEntities($entities): string
 {
     if (!empty($entities)) {
         $entityString = array_map(
-            function ($name, $code) {
+            function ($name, $code): string {
                 return "{$code},{$name}";
             },
             $entities,

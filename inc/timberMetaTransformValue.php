@@ -9,7 +9,7 @@ namespace Flynt\TimberMetaTransformValue;
 
 use Timber\Timber;
 
-add_action('init', function () {
+add_action('init', function (): void {
     $priority = 100;
     add_filter('acf/format_value/type=file', __NAMESPACE__ . '\transformFile', $priority, 3);
     add_filter('acf/format_value/type=image', __NAMESPACE__ . '\transformImage', $priority, 3);
@@ -24,9 +24,8 @@ add_action('init', function () {
  *
  * @param mixed $value
  * @param array $field
- * @return boolean
  */
-function shouldTransformValue($value, $field)
+function shouldTransformValue($value, $field): bool
 {
     if (empty($value) || empty($field)) {
         return false;
@@ -83,9 +82,8 @@ function transformGallery($value, $id, $field)
  *
  * @param string $value
  * @param int $id
- * @param array $field
  */
-function transformPostObject($value, $id, $field)
+function transformPostObject($value, $id, array $field)
 {
     if (empty($value) || !shouldTransformValue($value, $field)) {
         return $value;
@@ -123,9 +121,8 @@ function transformRelationship($value, $id, $field)
  *
  * @param string $value
  * @param int $id
- * @param array $field
  */
-function transformTaxonomy($value, $id, $field)
+function transformTaxonomy($value, $id, array $field)
 {
     if (empty($value) || !shouldTransformValue($value, $field)) {
         return $value;
