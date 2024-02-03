@@ -11,7 +11,7 @@ namespace Flynt\BaseStyle;
 
 const ROUTE_NAME = 'BaseStyle';
 
-/**
+/*
  * Registers the custom rewrite rule for the 'BaseStyle' route.
  */
 add_action('init', function (): void {
@@ -20,7 +20,7 @@ add_action('init', function (): void {
     add_rewrite_rule("{$routeName}/?$", "index.php?pagename={$routeName}", "top");
     add_rewrite_tag("%{$routeName}%", "([^&]+)");
 });
-/**
+/*
  * Sets the template file for the 'BaseStyle' route and sets the document title for the route.
  */
 add_filter('template_include', function ($template) {
