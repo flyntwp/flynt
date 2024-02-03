@@ -223,7 +223,7 @@ class Options
 
         $prefix = implode('_', [$optionType, $scope, '']);
         $isTranslatable = static::OPTION_TYPES[$optionType]['translatable'];
-        if (empty($fieldName)) {
+        if ($fieldName === null || $fieldName === '' || $fieldName === '0') {
             $optionNames = ((static::$registeredOptions[$optionType] ?? [])[$scope] ?? []);
             return array_combine(
                 $optionNames,
