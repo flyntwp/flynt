@@ -382,7 +382,7 @@ class Options
     {
         if (did_action('acf/init') < 1) {
             $parameters = "{$optionType}, {$scope}, ";
-            $parameters .= isset($fieldName) ? $fieldName : 'NULL';
+            $parameters .= $fieldName ?? 'NULL';
             trigger_error("Could not get option/s for [{$parameters}]. Required hooks have not yet been executed! Please make sure to run `Options::get()` after the `acf/init` action is finished.", E_USER_WARNING);
             return false;
         }
