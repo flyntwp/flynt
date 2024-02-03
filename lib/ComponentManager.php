@@ -20,7 +20,7 @@ class ComponentManager
      *
      * @var ComponentManager
      */
-    protected static $instance = null;
+    protected static $instance;
 
     /**
      * Get the instance of the class.
@@ -33,17 +33,6 @@ class ComponentManager
             self::$instance = new self();
         }
         return self::$instance;
-    }
-
-    /**
-     * Clone
-     *
-     * Prevent cloning with 'protected' keyword
-     *
-     * @return void
-     */
-    protected function __clone()
-    {
     }
 
     /**
