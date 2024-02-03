@@ -48,12 +48,12 @@
     "rimraf": "^5.0.5",
     "sass": "^1.70.0",
     "standard": "^17.1.0",
-    "stylelint": "^15.11.0",
-    "stylelint-config-sass-guidelines": "^10.0.0",
-    "stylelint-config-standard": "^34.0.0",
+    "stylelint": "^16.2.1",
+    "stylelint-config-sass-guidelines": "^11.0.0",
+    "stylelint-config-standard": "^36.0.0",
     "stylelint-order": "^6.0.4",
-    "stylelint-scss": "^5.3.2",
-    "stylelint-use-logical": "^2.1.0",
+    "stylelint-scss": "^6.1.0",
+    "stylelint-use-logical-spec": "^5.0.1",
     "vite": "^4.5.1",
     "vite-plugin-full-reload": "^1.1.0"
   },
@@ -68,7 +68,7 @@
     "plugins": [
       "stylelint-scss",
       "stylelint-order",
-      "stylelint-use-logical"
+      "stylelint-use-logical-spec"
     ],
     "rules": {
       "at-rule-no-unknown": null,
@@ -78,7 +78,7 @@
       "selector-max-compound-selectors": 4,
       "selector-no-qualifying-type": null,
       "order/properties-alphabetical-order": true,
-      "csstools/use-logical": true
+      "liberty/use-logical-spec": true
     },
     "ignoreFiles": [
       "dist/**",
