@@ -152,11 +152,9 @@ class TimberDynamicResize
         $homePath = get_home_path();
         if (!empty($homePath) && $homePath !== '/') {
             $baseDir = str_replace('\\', '/', $uploadDir['basedir']);
-            $relativeUploadDir = str_replace($homePath, '', $baseDir);
-        } else {
-            $relativeUploadDir = $uploadDir['relative'];
+            return str_replace($homePath, '', $baseDir);
         }
-        return $relativeUploadDir;
+        return $uploadDir['relative'];
     }
 
     /**
@@ -169,9 +167,8 @@ class TimberDynamicResize
         $relativeUploadPath = get_field('field_global_TimberDynamicResize_relativeUploadPath', 'option');
         if (empty($relativeUploadPath)) {
             return static::getDefaultRelativeUploadDir();
-        } else {
-            return $relativeUploadPath;
         }
+        return $relativeUploadPath;
     }
 
     /**
@@ -234,9 +231,8 @@ class TimberDynamicResize
             $this->flyntResizedImages[$w . '-' . $h . '-' . $crop] = [$w, $h, $crop];
 
             return $this->addImageSeparatorToUploadUrl($resizedUrl);
-        } else {
-            return $this->generateImage($src, $w, $h, $crop, $force);
         }
+        return $this->generateImage($src, $w, $h, $crop, $force);
     }
 
     /**
@@ -320,12 +316,10 @@ class TimberDynamicResize
             nocache_headers();
             include get_404_template();
             exit();
-        } else {
-            $resizedUrl = $this->generateImage($originalUrl, $w, $h, $crop);
-
-            wp_redirect($resizedUrl);
-            exit();
         }
+        $resizedUrl = $this->generateImage($originalUrl, $w, $h, $crop);
+        wp_redirect($resizedUrl);
+        exit();
     }
 
     /**
