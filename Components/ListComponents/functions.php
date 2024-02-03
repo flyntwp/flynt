@@ -19,7 +19,7 @@ add_filter('Flynt/addComponentData?name=ListComponents', function ($data) {
             $imagePath = $templatePaths['dir'] . $block['component'] . 'screenshot.png';
             if (file_exists($imagePath)) {
                 $src = $templatePaths['uri'] . $block['component'] . 'screenshot.png';
-                list($width, $height) = getimagesize($imagePath);
+                [$width, $height] = getimagesize($imagePath);
 
                 $block['componentScreenshot'] = [
                     'src' => $src . '?v=' . wp_get_theme()->get('Version'),
