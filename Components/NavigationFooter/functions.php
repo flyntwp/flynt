@@ -11,7 +11,7 @@ add_action('init', function (): void {
     ]);
 });
 
-add_filter('Flynt/addComponentData?name=NavigationFooter', function (array $data) {
+add_filter('Flynt/addComponentData?name=NavigationFooter', function (array $data): array {
     $data['menu'] = Timber::get_menu('navigation_footer') ?? Timber::get_pages_menu();
 
     return $data;

@@ -7,7 +7,7 @@ use Flynt\ComponentManager;
 use Flynt\Utils\Options;
 use Parsedown;
 
-add_filter('Flynt/addComponentData?name=ListComponents', function (array $data) {
+add_filter('Flynt/addComponentData?name=ListComponents', function (array $data): array {
     if (!empty($data['componentBlocks'])) {
         $templatePaths = [
             'dir' => trailingslashit(get_template_directory()),

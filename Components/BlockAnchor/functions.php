@@ -5,7 +5,7 @@ namespace Flynt\Components\BlockAnchor;
 use Flynt\ComponentManager;
 use Timber\Timber;
 
-add_filter('Flynt/addComponentData?name=BlockAnchor', function (array $data) {
+add_filter('Flynt/addComponentData?name=BlockAnchor', function (array $data): array {
     if (isset($data['anchor'])) {
         $data['anchor'] = preg_replace('/[^A-Za-z0-9]/', '-', strtolower($data['anchor']));
     }

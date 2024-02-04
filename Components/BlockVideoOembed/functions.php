@@ -5,7 +5,7 @@ namespace Flynt\Components\BlockVideoOembed;
 use Flynt\FieldVariables;
 use Flynt\Utils\Oembed;
 
-add_filter('Flynt/addComponentData?name=BlockVideoOembed', function (array $data) {
+add_filter('Flynt/addComponentData?name=BlockVideoOembed', function (array $data): array {
     $data['oembed'] = Oembed::setSrcAsDataAttribute(
         $data['oembed'],
         [
