@@ -24,15 +24,11 @@ add_action('Flynt/afterRegisterComponents', function (): void {
         return;
     }
 
-    add_filter("Flynt/addComponentData", 'Flynt\ComponentLogServer\addDebugInfo', 99999, 2);
-}, 11);
+    add_filter("Flynt/addComponentData", 'Flynt\ComponentLogServer\addDebugInfo', PHP_INT_MAX, 2);
+}, PHP_INT_MAX);
 
-/**
- * @param mixed $data
- * @param mixed $componentName
- * @return mixed
- */
-function addDebugInfo($data, $componentName)
+
+function addDebugInfo(array $data, string $componentName): array
 {
     $filterByComponents = [];
     if (isset($_GET['log']) && isset($_GET['component'])) {
@@ -49,10 +45,7 @@ function addDebugInfo($data, $componentName)
     return $data;
 }
 
-/**
- * @param mixed $data
- */
-function consoleDebug($data): void
+function consoleDebug(array $data): void
 {
     $output = json_encode($data);
     $result =  "<script>console.log({$output});</script>\n";

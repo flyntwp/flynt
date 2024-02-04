@@ -20,10 +20,11 @@ add_action('init', function (): void {
     add_rewrite_rule("{$routeName}/?$", "index.php?pagename={$routeName}", "top");
     add_rewrite_tag("%{$routeName}%", "([^&]+)");
 });
+
 /*
  * Sets the template file for the 'BaseStyle' route and sets the document title for the route.
  */
-add_filter('template_include', function ($template) {
+add_filter('template_include', function (string $template): string {
     global $wp_query;
 
     $routeName = ROUTE_NAME;
@@ -36,6 +37,7 @@ add_filter('template_include', function ($template) {
 
     return $template;
 });
+
 /**
  * Sets the document title for the 'BaseStyle' route.
  */

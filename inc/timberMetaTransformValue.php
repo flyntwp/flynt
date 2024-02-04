@@ -23,11 +23,10 @@ add_action('init', function (): void {
  * Check if value should be transformed to Timber/standard PHP objects.
  *
  * @param mixed $value
- * @param array $field
  */
-function shouldTransformValue($value, $field): bool
+function shouldTransformValue($value, array $field): bool
 {
-    if (empty($value) || empty($field)) {
+    if (empty($value) || $field === []) {
         return false;
     }
 
@@ -37,11 +36,10 @@ function shouldTransformValue($value, $field): bool
 /**
  * Transform ACF file field
  *
- * @param string $value
- * @param integer $id
- * @param array $field
+ * @param mixed $value
+ * @param int|string $id
  */
-function transformFile($value, $id, $field)
+function transformFile($value, $id, array $field)
 {
     if (empty($value) || !shouldTransformValue($value, $field)) {
         return $value;
@@ -50,7 +48,13 @@ function transformFile($value, $id, $field)
     return Timber::get_attachment($value);
 }
 
-function transformImage($value, $id, $field)
+/**
+ * Transform ACF image field
+ *
+ * @param mixed $value
+ * @param int|string $id
+ */
+function transformImage($value, $id, array $field)
 {
     if (empty($value) || !shouldTransformValue($value, $field)) {
         return $value;
@@ -62,11 +66,10 @@ function transformImage($value, $id, $field)
 /**
  * Transform ACF gallery field
  *
- * @param array $value
- * @param integer $id
- * @param array $field
+ * @param mixed $value
+ * @param int|string
  */
-function transformGallery($value, $id, $field)
+function transformGallery($value, $id, array $field)
 {
     if (empty($value) || !shouldTransformValue($value, $field)) {
         return $value;
@@ -80,8 +83,8 @@ function transformGallery($value, $id, $field)
 /**
  * Transform ACF post object field
  *
- * @param string $value
- * @param integer $id
+ * @param mixed $value
+ * @param int|string $id
  */
 function transformPostObject($value, $id, array $field)
 {
@@ -103,11 +106,10 @@ function transformPostObject($value, $id, array $field)
 /**
  * Transform ACF relationship field
  *
- * @param string $value
- * @param integer $id
- * @param array $field
+ * @param mixed $value
+ * @param int|string
  */
-function transformRelationship($value, $id, $field)
+function transformRelationship($value, $id, array $field)
 {
     if (empty($value) || !shouldTransformValue($value, $field)) {
         return $value;
@@ -119,8 +121,8 @@ function transformRelationship($value, $id, $field)
 /**
  * Transform ACF taxonomy field
  *
- * @param string $value
- * @param integer $id
+ * @param mixed $value
+ * @param int|string
  */
 function transformTaxonomy($value, $id, array $field)
 {

@@ -17,7 +17,7 @@ add_action('after_setup_theme', function (): void {
 
 add_filter('big_image_size_threshold', '__return_false');
 
-add_filter('timber/context', function (array $context) {
+add_filter('timber/context', function (array $context): array {
     $context['theme']->labels = Options::getTranslatable('Theme')['labels'] ?? [];
     return $context;
 });

@@ -53,7 +53,7 @@ add_action('update_option_options_global_TimberDynamicResize_relativeUploadPath'
 }, 10, 2);
 
 // WPML rewrite fix.
-add_filter('mod_rewrite_rules', function ($rules) {
+add_filter('mod_rewrite_rules', function (string $rules): string {
     $homeRoot = parse_url(home_url());
     $homeRoot = isset($homeRoot['path']) ? trailingslashit($homeRoot['path']) : '/';
 
