@@ -207,7 +207,7 @@ class TimberDynamicResize
      *
      * @return string|null The resized image url.
      */
-    public function resizeDynamic(mixed $src, float $w, float $h = 0, string $crop = 'default', bool $force = false)
+    public function resizeDynamic($src, float $w, float $h = 0, string $crop = 'default', bool $force = false)
     {
         if (empty($src)) {
             return '';
