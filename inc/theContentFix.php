@@ -22,8 +22,10 @@ add_filter('wp_insert_post_data', function (array $data, array $postArr) {
 
     $isPostTypeSupportsGutenberg = post_type_supports($data['post_type'], 'editor');
     // Check if no content was saved before, or if there is a flyntTheContent shortcode but the id does not match the post id.
-    if (!$isPostTypeSupportsGutenberg &&
-    (!isset($data['post_content']) || $data['post_content'] === '' || !isPostIdInShortcode($data['post_content'], $postArr['ID']))) {
+    if (
+        !$isPostTypeSupportsGutenberg &&
+        (!isset($data['post_content']) || $data['post_content'] === '' || !isPostIdInShortcode($data['post_content'], $postArr['ID']))
+    ) {
         $data['post_content'] = "[flyntTheContent id=\"{$postArr['ID']}\"]";
     }
 
