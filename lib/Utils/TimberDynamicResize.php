@@ -163,11 +163,11 @@ class TimberDynamicResize
     public function getRelativeUploadDir(bool $useDefaultUploadDir = false)
     {
         $relativeUploadPath = $useDefaultUploadDir
-            ? static::getDefaultRelativeUploadDir()
+            ? $this->getDefaultRelativeUploadDir()
             : get_field('field_global_TimberDynamicResize_relativeUploadPath', 'option');
 
         if (empty($relativeUploadPath)) {
-            $relativeUploadPath = static::getDefaultRelativeUploadDir();
+            $relativeUploadPath = $this->getDefaultRelativeUploadDir();
         }
 
         return apply_filters('Flynt/TimberDynamicResize/relativeUploadDir', $relativeUploadPath);
