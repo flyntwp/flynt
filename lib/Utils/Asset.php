@@ -87,7 +87,7 @@ class Asset
         }
 
         if ('url' == $returnType) {
-            if (file_exists(self::viteHotFile())) {
+            if (self::isHotModuleReplacement()) {
                 return trailingslashit(trim(file_get_contents(self::viteHotFile()))) . $asset;
             }
 
