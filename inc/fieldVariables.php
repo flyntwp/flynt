@@ -25,7 +25,6 @@ function getTheme($default = ''): array
     ];
 }
 
-
 function getSize($default = 'medium'): array
 {
     return [
