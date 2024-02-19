@@ -8,7 +8,7 @@ use Timber\Timber;
 
 const POST_TYPE = 'post';
 
-add_filter('Flynt/addComponentData?name=GridPostsLatest', function ($data) {
+add_filter('Flynt/addComponentData?name=GridPostsLatest', function (array $data): array {
     $data['uuid'] ??= wp_generate_uuid4();
     $data['taxonomies'] = $data['taxonomies'] ?: [];
     $data['options']['maxColumns'] = 3;
