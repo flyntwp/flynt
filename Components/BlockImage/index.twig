@@ -1,34 +1,36 @@
 <flynt-component name="BlockImage" {{- not noComponentSpacing ? ' class="componentSpacing"' }} {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
   <div class="container">
-    <figure class="figure" data-size="{{ options.size }}" data-align="center">
-      {% if image.post_mime_type == 'image/svg+xml'%}
-        <img class="figure-image-svg lazyload"
-          src="{{ placeholderImage(768, (768 / image.aspect|default(1))|round, 'rgba(125, 125, 125, 0.1)') }}"
-          width="{{ 768 }}"
-          height="{{ (768 / image.aspect|default(1))|round }}"
-          data-src="{{ image.src }}"
-          alt="{{ image.alt|e }}"
-        >
-      {% else %}
-        <img class="figure-image lazyload"
-            src="{{ image.src|resizeDynamic(768) }}"
+    {% if image %}
+      <figure class="figure" data-size="{{ options.size }}" data-align="center">
+        {% if image.post_mime_type == 'image/svg+xml' %}
+          <img class="figure-image-svg lazyload"
+            src="{{ placeholderImage(768, (768 / image.aspect|default(1))|round, 'rgba(125, 125, 125, 0.1)') }}"
             width="{{ 768 }}"
             height="{{ (768 / image.aspect|default(1))|round }}"
-            srcset="{{ placeholderImage(768, (768 / image.aspect|default(1))|round, 'rgba(125, 125, 125, 0.1)') }}"
-            data-srcset="
-              {{ image.src|resizeDynamic(1920) }} 1920w,
-              {{ image.src|resizeDynamic(1600) }} 1600w,
-              {{ image.src|resizeDynamic(1440) }} 1440w,
-              {{ image.src|resizeDynamic(1366) }} 1366w,
-              {{ image.src|resizeDynamic(1024) }} 1024w,
-              {{ image.src|resizeDynamic(768) }} 768w,
-              {{ image.src|resizeDynamic(640) }} 640w"
-            data-sizes="auto"
-            alt="{{ image.alt|e }}">
-      {% endif %}
-      {% if image.caption %}
-        <figcaption class="caption">{{ image.caption|e }}</figcaption>
-      {% endif %}
-    </figure>
+            data-src="{{ image.src }}"
+            alt="{{ image.alt|e }}"
+          >
+        {% else %}
+          <img class="figure-image lazyload"
+              src="{{ image.src|resizeDynamic(768) }}"
+              width="{{ 768 }}"
+              height="{{ (768 / image.aspect|default(1))|round }}"
+              srcset="{{ placeholderImage(768, (768 / image.aspect|default(1))|round, 'rgba(125, 125, 125, 0.1)') }}"
+              data-srcset="
+                {{ image.src|resizeDynamic(1920) }} 1920w,
+                {{ image.src|resizeDynamic(1600) }} 1600w,
+                {{ image.src|resizeDynamic(1440) }} 1440w,
+                {{ image.src|resizeDynamic(1366) }} 1366w,
+                {{ image.src|resizeDynamic(1024) }} 1024w,
+                {{ image.src|resizeDynamic(768) }} 768w,
+                {{ image.src|resizeDynamic(640) }} 640w"
+              data-sizes="auto"
+              alt="{{ image.alt|e }}">
+        {% endif %}
+        {% if image.caption %}
+          <figcaption class="caption">{{ image.caption|e }}</figcaption>
+        {% endif %}
+      </figure>
+    {% endif %}
   </div>
 </flynt-component>
