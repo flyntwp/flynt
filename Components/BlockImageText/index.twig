@@ -2,7 +2,7 @@
   <div class="container" {{ imagePosition ? 'data-image-position="' ~ imagePosition ~ '"' }}>
     {% if image %}
       <figure class="figure" data-size="medium" data-align="center">
-        {% if image.post_mime_type == 'image/svg+xml'%}
+        {% if image.post_mime_type == 'image/svg+xml' %}
           <img class="figure-image-svg lazyload"
             src="{{ placeholderImage(768, (768 / image.aspect|default(1))|round, 'rgba(125, 125, 125, 0.1)') }}"
             width="{{ 768 }}"
