@@ -276,7 +276,7 @@ Renders a component. [See Page Templates](#page-templates).
 Useful in combination with lazysizes for lazy loading. Returns a "data:image/svg+xml;base64" placeholder image.
 
 ```twig
-{{ placeholderImage(768, (768 / image.aspect)|round, 'rgba(125, 125, 125, 0.1)') }}
+{{ placeholderImage(768, 512, 'rgba(125, 125, 125, 0.1)') }}
 ```
 
 *Example from [Components/BlockImage/index.twig](./Components/BlockImage/index.twig)*

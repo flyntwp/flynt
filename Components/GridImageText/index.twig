@@ -14,7 +14,7 @@
                   {% if item.image.post_mime_type == 'image/svg+xml' %}
                     <img class="figure-image-svg lazyload"
                       src="{{ placeholderImage(768, (768 / 3 * 2)|round, 'rgba(125, 125, 125, 0.1)') }}"
-                      width="{{ 768 }}"
+                      width="768"
                       height="{{ (768 / 3 * 2)|round }}"
                       data-src="{{ item.image.src }}"
                       alt="{{ item.image.alt|e }}"
@@ -22,7 +22,7 @@
                   {% else %}
                     <img class="figure-image lazyload"
                       src="{{ item.image.src|resizeDynamic(768, (768 / 3 * 2)|round, 'center') }}"
-                      width="{{ 768 }}"
+                      width="768"
                       height="{{ (768 / 3 * 2)|round }}"
                       srcset="{{ placeholderImage(768, (768 / 3 * 2)|round, 'rgba(125, 125, 125, 0.1)') }}"
                       data-srcset="

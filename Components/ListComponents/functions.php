@@ -23,7 +23,9 @@ add_filter('Flynt/addComponentData?name=ListComponents', function (array $data):
 
                 $block['componentScreenshot'] = [
                     'src' => $src . '?v=' . wp_get_theme()->get('Version'),
-                    'aspect' => $width / $height
+                    'aspect' => $width / $height,
+                    'width' => $width,
+                    'height' => $height
                 ];
             }
 
