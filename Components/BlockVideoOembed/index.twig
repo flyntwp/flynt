@@ -7,7 +7,7 @@
       <div data-ref="videoPlayer" class="video-player">
         {{ oembed }}
         <div class="video-loader"></div>
-        <button data-ref="playButton" class="video-playButton" type="button" aria-label="Play Video"></button>
+        <button data-ref="playButton" class="video-playButton" type="button" aria-label="{{ labels.videoPlayButtonAriaLabel|e }}"></button>
       </div>
     </div>
   </div>
