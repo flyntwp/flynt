@@ -1,13 +1,15 @@
 <figure data-ref="posterImage" class="figure">
   {% if image.post_mime_type == 'image/svg+xml' %}
-    <img class="figure-image-svg lazyload"
+    <img
+      class="figure-image-svg lazyload"
       src="{{ placeholderImage(1280, 720, 'rgba(125, 125, 125, 0.1)') }}"
       width="1280"
       height="720"
       data-src="{{ image.src }}"
       alt="{{ image.alt|e }}">
   {% else %}
-    <img class="figure-image lazyload"
+    <img
+      class="figure-image lazyload"
       src="{{ image.src|resizeDynamic(1280, 720) }}"
       width="1280"
       height="720"

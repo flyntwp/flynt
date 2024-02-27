@@ -16,13 +16,15 @@
             {% endif %}
               {% if component.componentScreenshot %}
                 <div class="imageWrapper">
-                  <img data-refs="images" class="lazyload image {{ component.componentScreenshot.aspect > (1280 / 800) ? 'image--isSmallerThanWrapper' }}"
-                      src="{{ placeholderImage(component.componentScreenshot.width, component.componentScreenshot.height, 'rgba(125, 125, 125, 0.1)') }}"
-                      width="{{ component.componentScreenshot.width }}"
-                      height="{{ component.componentScreenshot.height }}"
-                      data-src="{{ component.componentScreenshot.src }}"
-                      data-sizes="auto"
-                      alt="{{ component.readme.title|e }}">
+                  <img
+                    data-refs="images"
+                    class="lazyload image {{ component.componentScreenshot.aspect > (1280 / 800) ? 'image--isSmallerThanWrapper' }}"
+                    src="{{ placeholderImage(component.componentScreenshot.width, component.componentScreenshot.height, 'rgba(125, 125, 125, 0.1)') }}"
+                    width="{{ component.componentScreenshot.width }}"
+                    height="{{ component.componentScreenshot.height }}"
+                    data-src="{{ component.componentScreenshot.src }}"
+                    data-sizes="auto"
+                    alt="{{ component.readme.title|e }}">
                 </div>
               {% endif %}
               <div class="content boxPadding">

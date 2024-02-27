@@ -13,7 +13,8 @@
             <a class="link" href="{{ post.link|e('esc_url') }}" aria-labelledby="{{ aria_labelledby_id }}">
               {% if post.thumbnail %}
                 <figure class="figure">
-                  <img class="post-image figure-image lazyload"
+                  <img
+                    class="post-image figure-image lazyload"
                     src="{{ post.thumbnail.src|resizeDynamic(768, (768 / 3 * 2)|round, 'center') }}"
                     width="768"
                     height="{{ (768 / 3 * 2)|round }}"
