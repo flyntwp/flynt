@@ -27,6 +27,7 @@ add_filter('Flynt/addComponentData?name=GridPostsArchive', function (array $data
 
             return $timberTerm;
         }, $terms);
+
         // Add item for all posts
         array_unshift($data['terms'], [
             'link' => get_post_type_archive_link($postType),
