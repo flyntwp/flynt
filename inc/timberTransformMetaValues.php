@@ -5,7 +5,7 @@
  *
  */
 
-namespace Flynt\TimberMetaTransformValue;
+namespace Flynt\TimberMetaTransformValues;
 
 use Timber\Timber;
 
