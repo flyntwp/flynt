@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Side load external avatar images in relation to GDPR.
+ * Download and serve external avatar images from local server.
  */
 
-namespace Flynt\GetAvatarUrl;
+namespace Flynt\SideloadAvatarImages;
 
 use Timber\ImageHelper;
 use Timber\URLHelper;
