@@ -131,7 +131,8 @@ function transformTaxonomy($value, $id, array $field)
     }
 
     if ($field['field_type'] === 'select' || $field['field_type'] === 'radio') {
-        return Timber::get_term((int) $value);
+        $termId = isset($value->term_id) ? $value->term_id : $value;
+        return Timber::get_term((int) $termId);
     }
 
     return Timber::get_terms((array) $value);
