@@ -14,6 +14,11 @@ add_filter('wp_insert_post_data', function (array $data, array $postArr) {
                 'attachment',
                 'customize_changeset',
                 'custom_css',
+                'acf-taxonomy',
+                'acf-post-type',
+                'acf-ui-options-page',
+                'acf-field-group',
+                'acf-field'
             ]
         )
     ) {
