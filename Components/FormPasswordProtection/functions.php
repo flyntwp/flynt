@@ -21,7 +21,7 @@ add_filter('the_password_form', function (): string {
 Options::addTranslatable('FormPasswordProtection', [
     [
         'label' => __('Content', 'flynt'),
-        'name' => 'general',
+        'name' => 'contentTab',
         'type' => 'tab',
         'placement' => 'top',
         'endpoint' => 0,
