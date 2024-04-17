@@ -4,5 +4,5 @@
   'styles/fonts',
   'styles/base';
 
-// stylelint-disable-next-line scss/load-no-partial-leading-underscore, scss/at-import-partial-extension-blacklist
+// stylelint-disable-next-line scss/load-no-partial-leading-underscore, scss/at-import-partial-extension-disallowed-list
 @import '../Components/**/_style.scss';
