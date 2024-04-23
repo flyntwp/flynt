@@ -47,6 +47,13 @@
       const $copyMessage = $anchorField.find('.anchorLink-message')
 
       if (!navigator.clipboard) {
+        const selection = window.getSelection()
+        if (selection.rangeCount > 0) {
+          selection.removeAllRanges()
+        }
+        const range = document.createRange()
+        range.selectNode($anchorLinkInput.get(0))
+        selection.addRange(range)
         document.execCommand('copy')
       } else {
         navigator.clipboard.writeText($anchorLinkInput.text()).then(
