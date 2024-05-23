@@ -6,6 +6,7 @@ use Flynt\Api;
 use Flynt\ComponentManager;
 use Twig\Environment;
 use Twig\Extension\AbstractExtension;
+use Twig\Extension\CoreExtension;
 use Twig\TwigFunction;
 
 /**
@@ -67,7 +68,7 @@ class TwigExtensionRenderComponent extends AbstractExtension
 
             $loader->addPath(dirname($filePath));
 
-            $output = twig_include($twigEnvironment, $context, $relativeFilePath, $data, $withContext, $ignoreMissing, $sandboxed);
+            $output = CoreExtension::include($twigEnvironment, $context, $relativeFilePath, $data, $withContext, $ignoreMissing, $sandboxed);
 
             $loader->setPaths($loaderPaths);
 
