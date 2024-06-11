@@ -6,7 +6,7 @@
     <link rel="alternate" type="application/rss+xml" title="{{- theme.labels.feed|replace({'%s': site.title}) -}}" href="{{ site.rss2|e('esc_url') }}">
     {{ function('wp_head') }}
   </head>
-  <body>
+  <body {{ function('body_class') }}>
     {{ function('wp_body_open') }}
     <a href="#mainContent" class="visuallyHidden-focusable">
       {{- theme.labels.skipToMainContent|e -}}
