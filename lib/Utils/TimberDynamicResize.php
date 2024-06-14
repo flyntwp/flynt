@@ -2,6 +2,7 @@
 
 namespace Flynt\Utils;
 
+use Composer\Platform\Version;
 use Twig\TwigFilter;
 use Timber\ImageHelper;
 use Timber\Image\Operation\Resize;
@@ -14,20 +15,11 @@ use WP_Rewrite;
  */
 class TimberDynamicResize
 {
-    private const DB_VERSION = '2.0';
-
-    private const TABLE_NAME = 'resized_images';
-
     private const IMAGE_QUERY_VAR = 'resized-images';
 
     private const IMAGE_PATH_SEPARATOR = 'resized';
 
-    /**
-     * The internal list (array) of resized images.
-     *
-     * @var array
-     */
-    public $flyntResizedImages = [];
+    private const VERSION = '1.0';
 
     /**
      * The internal value of the dynamic image generation setting.
@@ -43,45 +35,10 @@ class TimberDynamicResize
     {
         $this->enabled = get_field('field_global_TimberDynamicResize_dynamicImageGeneration', 'option');
         if ($this->enabled) {
-            $this->createTable();
             $this->addDynamicHooks();
         }
 
         $this->addHooks();
-    }
-
-    /**
-     * Create database table for resized images.
-     *
-     * @return void
-     */
-    protected function createTable()
-    {
-        $optionName = self::TABLE_NAME . '_db_version';
-
-        $installedVersion = get_option($optionName);
-
-        if ($installedVersion !== self::DB_VERSION) {
-            global $wpdb;
-            $tableName = self::getTableName();
-
-            $charsetCollate = $wpdb->get_charset_collate();
-
-            $sql = "CREATE TABLE {$tableName} (
-                width int(11) NOT NULL,
-                height int(11) NOT NULL,
-                crop varchar(32) NOT NULL
-            ) {$charsetCollate};";
-
-            require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-            dbDelta($sql);
-
-            if (version_compare($installedVersion, '2.0', '<=')) {
-                $wpdb->query("ALTER TABLE {$tableName} ADD PRIMARY KEY(`width`, `height`, `crop`);");
-            }
-
-            update_option($optionName, self::DB_VERSION);
-        }
     }
 
     /**
@@ -104,7 +61,7 @@ class TimberDynamicResize
     public function parseRequest(WP $wp): void
     {
         if (isset($wp->query_vars[self::IMAGE_QUERY_VAR])) {
-            $this->checkAndGenerateImage($wp->query_vars[self::IMAGE_QUERY_VAR]);
+            $this->checkAndServeImage($wp->query_vars[self::IMAGE_QUERY_VAR]);
         }
     }
 
@@ -121,6 +78,7 @@ class TimberDynamicResize
             );
             return $twig;
         });
+
         if ($this->enabled) {
             add_action('after_switch_theme', function (): void {
                 add_action('shutdown', 'flush_rewrite_rules');
@@ -129,15 +87,6 @@ class TimberDynamicResize
                 flush_rewrite_rules(true);
             });
         }
-    }
-
-    /**
-     * Get the table name.
-     */
-    public function getTableName(): string
-    {
-        global $wpdb;
-        return $wpdb->prefix . self::TABLE_NAME;
     }
 
     /**
@@ -217,27 +166,60 @@ class TimberDynamicResize
         $h = (int) round($h);
 
         if ($this->enabled) {
-            $resize = new Resize($w, $h, $crop);
             if (URLHelper::is_external_content($src)) {
                 $src = ImageHelper::sideload_image($src);
             }
 
-            $fileinfo = pathinfo($src);
-            $resizedUrl = $resize->filename(
-                $fileinfo['dirname'] . '/' . $fileinfo['filename'],
-                $fileinfo['extension'] ?? ''
-            );
+            $resizedImageUrl = $this->getResizedImageUrl($src, $w, $h, $crop);
+            $destination = ImageHelper::get_server_location($resizedImageUrl);
 
-            if ($this->flyntResizedImages === []) {
-                add_action('shutdown', [$this, 'storeResizedUrls'], -1);
+            if (file_exists($destination)) {
+                return $resizedImageUrl;
             }
 
-            $this->flyntResizedImages[$w . '-' . $h . '-' . $crop] = [$w, $h, $crop];
-
-            return $this->addImageSeparatorToUploadUrl($resizedUrl);
+            $token = $this->generateToken($resizedImageUrl);
+            return add_query_arg('ref', $token, $resizedImageUrl);
         }
 
         return $this->generateImage($src, $w, $h, $crop, $force);
+    }
+
+    /**
+     * Generate token.
+     *
+     * @param string $resizedImageUrl The resized image url.
+     *
+     * @return string
+     */
+    private function generateToken(string $resizedImageUrl): string
+    {
+        $fullHash = hash_hmac('sha256', $resizedImageUrl, $this->getSalt());
+        return substr($fullHash, 0, 16);
+    }
+
+    /**
+     * Validate token.
+     *
+     * @param string $resizedImageUrl The resized image url.
+     * @param string $token The token.
+     *
+     * @return boolean
+     */
+    private function validateToken(string $resizedImageUrl, string $token): bool
+    {
+        $expectedToken = $this->generateToken($resizedImageUrl);
+        return hash_equals($expectedToken, $token);
+    }
+
+    /**
+     * Get salt.
+     *
+     * @return string
+     */
+    private function getSalt(): string
+    {
+        $salt = defined('AUTH_SALT') ? AUTH_SALT : __DIR__;
+        return hash('sha256', $salt . self::VERSION);
     }
 
     /**
@@ -278,47 +260,86 @@ class TimberDynamicResize
     }
 
     /**
-     * Check and generate image.
+     * Check and serve image.
      *
      * @param string $relativePath The relative path to the image.
      */
-    public function checkAndGenerateImage(string $relativePath): void
+    public function checkAndServeImage(string $relativePath): void
     {
-        $matched = preg_match('/(.+)-(\d+)x(\d+)-c-(.+)(\..*)$/', $relativePath, $matchedSrc);
-        $exists = false;
-        if ($matched) {
-            $originalRelativePath = $matchedSrc[1] . $matchedSrc[5];
-            $originalPath = trailingslashit($this->getUploadsBasedir()) . $originalRelativePath;
-            $originalUrl = trailingslashit($this->getUploadsBaseurl()) . $originalRelativePath;
-            $exists = file_exists($originalPath);
-            $w = (int) $matchedSrc[2];
-            $h = (int) $matchedSrc[3];
-            $crop = $matchedSrc[4];
+        $relativePath = urldecode($relativePath);
+
+        $urlMatched = preg_match('/(.+)-(\d+)x(\d+)-c-(.+)(\..*)$/', $relativePath, $matches);
+        if (!$urlMatched) {
+            $this->serve404();
         }
 
-        if ($exists) {
-            global $wpdb;
-            $tableName = $this->getTableName();
-            $resizedImage = $wpdb->get_row(
-                $wpdb->prepare("SELECT * FROM {$tableName} WHERE width = %d AND height = %d AND crop = %s", [
-                    $w,
-                    $h,
-                    $crop,
-                ])
-            );
-        }
+        $originalImageRelativePath = $matches[1] . $matches[5];
+        $originalImageUrl = trailingslashit($this->getUploadsBaseurl()) . $originalImageRelativePath;
+        $w = (int) $matches[2];
+        $h = (int) $matches[3];
+        $crop = $matches[4];
 
-        if (empty($resizedImage)) {
-            global $wp_query;
-            $wp_query->set_404();
-            status_header(404);
-            nocache_headers();
-            include get_404_template();
+        $resizedImageUrl = $this->getResizedImageUrl($originalImageUrl, $w, $h, $crop);
+        $resizedImageLocation = ImageHelper::get_server_location($resizedImageUrl);
+
+        if (file_exists($resizedImageLocation)) {
+            status_header(301);
+            header('Location: ' . $resizedImageUrl);
             exit();
         }
 
-        $resizedUrl = $this->generateImage($originalUrl, $w, $h, $crop);
-        wp_redirect($resizedUrl);
+        $token = isset($_GET['ref']) ? sanitize_key($_GET['ref']) : '';
+        if (!$this->validateToken($resizedImageUrl, $token)) {
+            $this->serve403();
+        }
+
+        $originalImageLocation = ImageHelper::get_server_location($originalImageUrl);
+        $mime = mime_content_type($originalImageLocation);
+        if (false === $mime) {
+            $this->serve404();
+        }
+
+        if (!in_array($mime, get_allowed_mime_types())) {
+            $this->serve403();
+        }
+
+        try {
+            $resizedImageUrl = $this->generateImage($originalImageUrl, $w, $h, $crop);
+            header("Content-type: $mime");
+            header("X-Dynamic-Resize: Image Processed; Width=$w; Height=$h; Crop=$crop");
+            $destination = ImageHelper::get_server_location($resizedImageUrl);
+            echo file_get_contents($destination);
+            exit();
+        } catch (\Exception $e) {
+            status_header(500);
+            error_log($e->getMessage());
+            exit();
+        }
+    }
+
+    /**
+     * Serve 403 Forbidden.
+     */
+    private function serve403(): void
+    {
+        global $wp_query;
+        $wp_query->set_404();
+        status_header(403);
+        nocache_headers();
+        include get_404_template();
+        exit();
+    }
+
+    /**
+     * Serve 404 Not Found.
+     */
+    private function serve404(): void
+    {
+        global $wp_query;
+        $wp_query->set_404();
+        status_header(404);
+        nocache_headers();
+        include get_404_template();
         exit();
     }
 
@@ -338,12 +359,34 @@ class TimberDynamicResize
         add_filter('timber/image/new_url', [$this, 'addImageSeparatorToUploadUrl']);
         add_filter('timber/image/new_path', [$this, 'addImageSeparatorToUploadPath']);
 
-        $resizedUrl = ImageHelper::resize($url, $w, $h, $crop, $force);
+        $resizedImageUrl = ImageHelper::resize($url, $w, $h, $crop, $force);
 
         remove_filter('timber/image/new_url', [$this, 'addImageSeparatorToUploadUrl']);
         remove_filter('timber/image/new_path', [$this, 'addImageSeparatorToUploadPath']);
 
-        return $resizedUrl;
+        return $resizedImageUrl;
+    }
+
+    /**
+     * Get resized url.
+     *
+     * @param string $url The image url.
+     * @param integer $w The width of the image.
+     * @param integer $h The height of the image.
+     * @param string $crop The crop mode.
+     *
+     * @return string The resized image url.
+     */
+    protected function getResizedImageUrl(string $url, int $w, int $h, string $crop): string
+    {
+        $resize = new Resize($w, $h, $crop);
+        $fileinfo = pathinfo($url);
+        $resizedImageUrl = $resize->filename(
+            $fileinfo['dirname'] . '/' . $fileinfo['filename'],
+            $fileinfo['extension'] ?? ''
+        );
+
+        return $this->addImageSeparatorToUploadUrl($resizedImageUrl);
     }
 
     /**
@@ -381,24 +424,6 @@ class TimberDynamicResize
     }
 
     /**
-     *  Store resized urls.
-     */
-    public function storeResizedUrls(): void
-    {
-        global $wpdb;
-        $tableName = $this->getTableName();
-        $values = array_values($this->flyntResizedImages);
-        $placeholders = array_fill(0, count($values), '(%d, %d, %s)');
-        $placeholdersString = implode(', ', $placeholders);
-        $wpdb->query(
-            $wpdb->prepare(
-                "INSERT IGNORE INTO {$tableName} (width, height, crop) VALUES {$placeholdersString}",
-                array_merge(...$values)
-            )
-        );
-    }
-
-    /**
      * Toggle dynamic image generation.
      *
      * @param boolean $enable Enable or disable dynamic image generation.
@@ -423,9 +448,8 @@ class TimberDynamicResize
     /**
      * Change relative upload path.
      *
-     * @param string $relativeUploadPath The relative upload path.
      */
-    public function changeRelativeUploadPath(string $relativeUploadPath): void
+    public function changeRelativeUploadPath(): void
     {
         add_action('shutdown', function (): void {
             flush_rewrite_rules(false);
