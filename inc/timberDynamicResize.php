@@ -66,3 +66,93 @@ add_filter('mod_rewrite_rules', function (string $rules): string {
         $rules
     );
 });
+
+// WebP Express rewrite fix if dynamic image generation is enabled.
+add_action('update_option_options_global_TimberDynamicResize_dynamicImageGeneration', function ($oldValue, $value): void {
+    $isDynamicImageGenerationEnabled = (bool) $value;
+    maybeModifyUploadsHtaccess($isDynamicImageGenerationEnabled);
+}, 10, 2);
+
+add_action("admin_init", function () {
+    $isWebExpressOptionsPage = strpos($_SERVER['REQUEST_URI'], 'webp_express_settings_page') !== false;
+
+    if (!$isWebExpressOptionsPage) {
+        return;
+    }
+
+    $webpExpressMessagesPending = (bool) get_option('webp-express-messages-pending');
+    if ($webpExpressMessagesPending === true) {
+        $isDynamicImageGenerationEnabled = (bool) get_field('field_global_TimberDynamicResize_dynamicImageGeneration', 'option');
+        maybeModifyUploadsHtaccess($isDynamicImageGenerationEnabled);
+    }
+});
+
+function maybeModifyUploadsHtaccess(bool $enabledDynamicImageGeneration): void
+{
+    $uploadsHtaccessFile = WP_CONTENT_DIR . '/uploads/.htaccess';
+    $rewriteRules = <<<EOT
+      # BEGIN TimberDynamicResize
+      RewriteCond %{QUERY_STRING} (^|&)ref= [NC]
+      RewriteCond %{HTTP_HOST} ^(.+)$
+      RewriteCond %{REQUEST_URI} ^.*/resized/(.+)$
+      RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} !-f
+      RewriteRule ^ https://%{HTTP_HOST}/index.php?resized-images=%1&%{QUERY_STRING} [R=302,L]
+      # END TimberDynamicResize
+    EOT;
+
+    $fnAddRewriteRulesToHtaccess = function () use ($uploadsHtaccessFile, $rewriteRules): void {
+        if (!file_exists($uploadsHtaccessFile)) {
+            return;
+        }
+
+        $uploadsHtaccessContent = file_get_contents($uploadsHtaccessFile);
+
+        if (strpos($uploadsHtaccessContent, 'RewriteEngine On') === false) {
+            return;
+        }
+
+        if (
+            strpos($uploadsHtaccessContent, '# BEGIN TimberDynamicResize') !== false &&
+            strpos($uploadsHtaccessContent, '# END TimberDynamicResize') !== false
+        ) {
+            return;
+        }
+
+        $uploadsHtaccessContent = str_replace(
+            'RewriteEngine On',
+            "RewriteEngine On\n\n{$rewriteRules}",
+            $uploadsHtaccessContent
+        );
+
+        file_put_contents($uploadsHtaccessFile, $uploadsHtaccessContent);
+    };
+
+    $fnRemoveRewriteRulesFromHtaccess = function () use ($uploadsHtaccessFile): void {
+        if (!file_exists($uploadsHtaccessFile)) {
+            return;
+        }
+
+        $uploadsHtaccessContent = file_get_contents($uploadsHtaccessFile);
+
+        if (
+            strpos($uploadsHtaccessContent, '# BEGIN TimberDynamicResize') === false ||
+            strpos($uploadsHtaccessContent, '# END TimberDynamicResize') === false
+        ) {
+            return;
+        }
+
+        $uploadsHtaccessContent = preg_replace(
+            "/# BEGIN TimberDynamicResize.*?# END TimberDynamicResize\\s*/s",
+            '',
+            $uploadsHtaccessContent
+        );
+
+        file_put_contents($uploadsHtaccessFile, $uploadsHtaccessContent);
+    };
+
+    if ($enabledDynamicImageGeneration) {
+        $fnAddRewriteRulesToHtaccess();
+    } else {
+        $fnRemoveRewriteRulesFromHtaccess();
+    }
+}
