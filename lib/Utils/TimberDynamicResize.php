@@ -2,7 +2,6 @@
 
 namespace Flynt\Utils;
 
-use Composer\Platform\Version;
 use Twig\TwigFilter;
 use Timber\ImageHelper;
 use Timber\Image\Operation\Resize;
