@@ -30,7 +30,7 @@ add_action('init', function (): void {
 /*
  * Remove Gutenberg block related styles on front-end, when a post has no blocks.
  */
-add_action('wp_enqueue_scripts', function (): void {
+add_action('shutdown', function (): void {
     if (!has_blocks()) {
         wp_dequeue_style('core-block-supports');
         wp_dequeue_style('wp-block-library');
