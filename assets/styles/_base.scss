@@ -278,6 +278,7 @@ table {
     --button-text-color: var(--color-accent);
 
     .wp-block-button__link {
+      --button-background-color: transparent;
       --button-text-color: var(--color-accent);
       border: solid var(--button-border-width) var(--color-accent);
       color: var(--button-text-color);
