@@ -158,8 +158,8 @@ small {
  * Lists & Tables
  */
 
-ul:not([class]),
-ol:not([class]) {
+:where(ul, ol):not([class]),
+:where(ul, ol).wp-block-list {
   --item-spacing: 0.66em;
   padding-inline-start: 1.5rem;
 
@@ -278,6 +278,7 @@ table {
     --button-text-color: var(--color-accent);
 
     .wp-block-button__link {
+      --button-background-color: transparent;
       --button-text-color: var(--color-accent);
       border: solid var(--button-border-width) var(--color-accent);
       color: var(--button-text-color);
