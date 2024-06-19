@@ -5,6 +5,7 @@ namespace Flynt\Utils;
 use Twig\TwigFilter;
 use Timber\ImageHelper;
 use Timber\Image\Operation\Resize;
+use Timber\Timber;
 use Timber\URLHelper;
 use WP;
 use WP_Rewrite;
@@ -121,6 +122,9 @@ class TimberDynamicResize
             );
             return $twig;
         });
+
+        add_action('delete_attachment', [$this, 'deleteAttachment']);
+
         if ($this->enabled) {
             add_action('after_switch_theme', function (): void {
                 add_action('shutdown', 'flush_rewrite_rules');
@@ -430,5 +434,21 @@ class TimberDynamicResize
         add_action('shutdown', function (): void {
             flush_rewrite_rules(false);
         });
+    }
+
+    /**
+     * Deletes the auto-generated files for resized images.
+     *
+     * @param integer $postId The attachment id.
+     */
+    public function deleteAttachment(int $postId): void
+    {
+        if (wp_attachment_is_image($postId)) {
+            $attachment = Timber::get_post($postId);
+            if ($fileLoc = $attachment->file_loc()) {
+                $fileLoc = $this->addImageSeparatorToUploadPath($fileLoc);
+                ImageHelper::delete_generated_files($fileLoc);
+            }
+        }
     }
 }
