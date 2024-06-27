@@ -1,0 +1,13 @@
+{
+	"$schema": "https://advancedcustomfields.com/schemas/json/main/block.json",
+  "name": "flynt/slider-images",
+  "title": "Slider: Images",
+  "description": "A Slider block that uses ACF fields to display images in a slider",
+  "category": "media",
+  "icon": "block-default",
+  "keywords": ["image", "media"],
+  "acf": {
+      "validate": true,
+      "usePostMeta": true
+  }
+}
