@@ -389,6 +389,12 @@ textarea {
 flynt-component {
   display: block;
   position: relative;
+
+  // Opt-out of the default WordPress editor styles.
+  .is-layout-constrained & {
+    margin-inline: unset;
+    max-inline-size: unset;
+  }
 }
 
 .pageWrapper {

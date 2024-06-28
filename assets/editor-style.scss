@@ -6,6 +6,12 @@
 // stylelint-disable-next-line scss/load-no-partial-leading-underscore, scss/at-import-partial-extension-disallowed-list
 @import '../Components/**/_style.scss';
 
+// Opt-out of the default WordPress editor styles.
+.is-root-container .wp-block:has(flynt-component) {
+  margin-inline: unset;
+  max-inline-size: unset;
+}
+
 /**
  * Classic editor styles
  */
