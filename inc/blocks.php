@@ -66,7 +66,7 @@ add_action('Flynt/afterRegisterComponents', function (): void {
  */
 function renderBlock(array $block, string $content = '', bool $isPreview = false, int $postId = 0, WP_Block|null $wpBlock = null): void
 {
-    if ($isPreview && isBlockEmpty($block) && hasScreenshotUrl($block)) {
+    if (is_admin() && isBlockEmpty($block) && hasScreenshotUrl($block)) {
         renderComponentScreenshot($block);
         return;
     }
@@ -152,16 +152,18 @@ function isBlockEmpty(array $block): bool
     $fieldIds = wp_list_pluck($fields, 'key');
 
     $blockData = array_chunk($block['data'], 2);
-    foreach ($blockData as $field_data) {
-        $currentValue = $field_data[0];
-        $fieldKey = $field_data[1];
 
-        if (empty($currentValue) || false !== strpos($currentValue, 'field_')) {
+    foreach ($blockData as $fieldData) {
+        $currentValue = $fieldData[0];
+        $field_key = $fieldData[1];
+
+        if (empty($currentValue) || is_string($currentValue) && false !== strpos($currentValue, 'field_')) {
             continue;
         }
 
-        $fieldKeyIndex = array_search($fieldKey, $fieldIds, true);
-        if (empty($fields[$fieldKeyIndex]['default_value']) || $currentValue !== $fields[$fieldKeyIndex]['default_value']) {
+        $fieldKeyIndex = array_search($field_key, $fieldIds, true);
+        $defaultValue = $fields[$fieldKeyIndex]['default_value'];
+        if (empty($defaultValue) || $currentValue !== $defaultValue) {
             return false;
         }
     }
