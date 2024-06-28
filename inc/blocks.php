@@ -20,11 +20,10 @@ add_action('Flynt/afterRegisterComponents', function () {
         $block['componentName'] = $componentName;
         $block['render_callback'] = isset($block['render_callback']) ? $block['render_callback'] : 'Flynt\Blocks\renderBlock';
 
-
         $screenshotPath = $componentPath . 'screenshot.png';
-        if (file_exists($screenshotPath)) {
+        if (!isset($block['example']) && file_exists($screenshotPath)) {
             $screenshotUrl = get_template_directory_uri() . '/Components/' . $componentName . '/screenshot.png';
-            $block['example'] = isset($block['example']) ? $block['example'] : ['screenshotUrl' => $screenshotUrl];
+            $block['example']['screenshotUrl'] = $screenshotUrl;
         }
 
         $getACFLayout = "Flynt\\Components\\$componentName\\getACFLayout";
