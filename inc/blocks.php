@@ -58,33 +58,33 @@ add_action('Flynt/afterRegisterComponents', function (): void {
 /**
  * Render callback for blocks
  *
- * @param array $attributes The block attributes.
+ * @param array $block The block settings and attributes.
  * @param string $content The inner blocks content.
  * @param bool $isPreview Whether the block is being rendered in the admin preview.
  * @param int $postId The post ID.
  * @param WP_Block|null $wpBlock
  */
-function renderBlock(array $attributes, string $content = '', bool $isPreview = false, int $postId = 0, WP_Block|null $wpBlock = null): void
+function renderBlock(array $block, string $content = '', bool $isPreview = false, int $postId = 0, WP_Block|null $wpBlock = null): void
 {
-    if ($isPreview && isBlockEmpty($attributes) && hasScreenshotUrl($attributes)) {
-        renderComponentScreenshot($attributes);
+    if ($isPreview && isBlockEmpty($block) && hasScreenshotUrl($block)) {
+        renderComponentScreenshot($block);
         return;
     }
 
     $fields = get_fields();
-    if ($isPreview && !isSupportingJsx($attributes) && empty($fields) && hasScreenshotUrl($attributes)) {
-        renderComponentScreenshot($attributes);
+    if ($isPreview && !isSupportingJsx($block) && empty($fields) && hasScreenshotUrl($block)) {
+        renderComponentScreenshot($block);
         return;
     }
 
-    $componentName = $attributes['componentName'];
+    $componentName = $block['componentName'];
     $components = ComponentManager::getInstance()->getAll();
     $componentPath = $components[$componentName];
 
     $additionalData = [
         'isPreview' => $isPreview,
         'innerBlocksContent' => $content,
-        'attributes' => $attributes,
+        'attributes' => $block,
     ];
     add_filter("Flynt/addComponentData?name={$componentName}", function ($data) use ($additionalData) {
         // Don't overwrite existing data
@@ -108,11 +108,11 @@ function renderBlock(array $attributes, string $content = '', bool $isPreview = 
 /**
  * Render a screenshot of the component
  *
- * @param array $attributes The block attributes.
+ * @param array $block The block settings and attributes.
  */
-function renderComponentScreenshot(array $attributes): void
+function renderComponentScreenshot(array $block): void
 {
-    $screenshotUrl = $attributes['example']['screenshotUrl'];
+    $screenshotUrl = $block['example']['screenshotUrl'];
     if (filter_var($screenshotUrl, FILTER_VALIDATE_URL)) {
         echo '<img src="' . esc_url($screenshotUrl) . '" loading="lazy" />';
     }
@@ -121,37 +121,37 @@ function renderComponentScreenshot(array $attributes): void
 /**
  * Check if the block supports JSX
  *
- * @param array $attributes The block attributes.
+ * @param array $block The block settings and attributes.
  * @return bool
  */
-function isSupportingJsx($attributes): bool
+function isSupportingJsx($block): bool
 {
-    return isset($attributes['supports']['jsx']) && $attributes['supports']['jsx'] === true;
+    return isset($block['supports']['jsx']) && $block['supports']['jsx'] === true;
 }
 
 /**
  * Check if the block has a screenshot URL
  *
- * @param array $attributes The block attributes.
+ * @param array $block The block settings and attributes.
  * @return bool
  */
-function hasScreenshotUrl($attributes): bool
+function hasScreenshotUrl($block): bool
 {
-    return is_array($attributes['example']) && !empty($attributes['example']['screenshotUrl']);
+    return is_array($block['example']) && !empty($block['example']['screenshotUrl']);
 }
 
 /**
  * Check if the block acf fields are empty
  *
- * @param array $attributes The block attributes.
+ * @param array $block The block settings and attributes.
  * @return bool
  */
-function isBlockEmpty(array $attributes): bool
+function isBlockEmpty(array $block): bool
 {
-    $fields = acf_get_block_fields($attributes);
+    $fields = acf_get_block_fields($block);
     $fieldIds = wp_list_pluck($fields, 'key');
 
-    $blockData = array_chunk($attributes['data'], 2);
+    $blockData = array_chunk($block['data'], 2);
     foreach ($blockData as $field_data) {
         $currentValue = $field_data[0];
         $fieldKey = $field_data[1];
