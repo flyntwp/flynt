@@ -18,12 +18,16 @@ add_action('Flynt/afterRegisterComponents', function () {
 
         $block = json_decode(file_get_contents($blockJsonPath), true);
         $block['componentName'] = $componentName;
-        $block['render_callback'] = isset($block['render_callback']) ? $block['render_callback'] : 'Flynt\Blocks\renderBlock';
 
-        $screenshotPath = $componentPath . 'screenshot.png';
-        if (!isset($block['example']) && file_exists($screenshotPath)) {
-            $screenshotUrl = get_template_directory_uri() . '/Components/' . $componentName . '/screenshot.png';
-            $block['example']['screenshotUrl'] = $screenshotUrl;
+        $shouldUseRenderCallback = !isset($block['render']) && !isset($block['render_callback']);
+        if ($shouldUseRenderCallback) {
+            $block['render_callback'] = isset($block['render_callback']) ? $block['render_callback'] : 'Flynt\Blocks\renderBlock';
+
+            $screenshotPath = $componentPath . 'screenshot.png';
+            if (!isset($block['example']) && file_exists($screenshotPath)) {
+                $screenshotUrl = get_template_directory_uri() . '/Components/' . $componentName . '/screenshot.png';
+                $block['example']['screenshotUrl'] = $screenshotUrl;
+            }
         }
 
         $getACFLayout = "Flynt\\Components\\$componentName\\getACFLayout";
@@ -46,14 +50,15 @@ add_action('Flynt/afterRegisterComponents', function () {
             ]);
         }
 
-        acf_register_block_type($block);
+        acf_register_block($block);
     }
 });
 
 function renderBlock($attributes, $content = '', $isPreview = false, $postId = 0, $wpBlock = null): void
 {
     $fields = get_fields();
-    if ($isPreview && empty($fields) && is_array($attributes['example']) && !empty($attributes['example']['screenshotUrl'])) {
+    $supportsJsx = isset($attributes['supports']['jsx']) && $attributes['supports']['jsx'] === true;
+    if ($isPreview && !$supportsJsx && empty($fields) && is_array($attributes['example']) && !empty($attributes['example']['screenshotUrl'])) {
         $screenshotUrl = $attributes['example']['screenshotUrl'];
         if (filter_var($screenshotUrl, FILTER_VALIDATE_URL)) {
             echo '<img src="' . esc_url($screenshotUrl) . '" loading="lazy" />';
