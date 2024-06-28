@@ -6,7 +6,6 @@ use ACFComposer\ACFComposer;
 use Flynt\ComponentManager;
 use Flynt\Utils\Asset;
 use Timber\Timber;
-use WP_Block_Type_Registry;
 
 add_action('Flynt/afterRegisterComponents', function () {
     $components = ComponentManager::getInstance()->getAll();
