@@ -6,8 +6,9 @@ use ACFComposer\ACFComposer;
 use Flynt\ComponentManager;
 use Flynt\Utils\Asset;
 use Timber\Timber;
+use WP_Block;
 
-add_action('Flynt/afterRegisterComponents', function () {
+add_action('Flynt/afterRegisterComponents', function (): void {
     $components = ComponentManager::getInstance()->getAll();
 
     foreach ($components as $componentName => $componentPath) {
@@ -54,7 +55,16 @@ add_action('Flynt/afterRegisterComponents', function () {
     }
 });
 
-function renderBlock($attributes, $content = '', $isPreview = false, $postId = 0, $wpBlock = null): void
+/**
+ * Render callback for blocks
+ *
+ * @param array $attributes
+ * @param string $content
+ * @param bool $isPreview
+ * @param int $postId
+ * @param WP_Block|null $wpBlock
+ */
+function renderBlock(array $attributes, string $content = '', bool $isPreview = false, int $postId = 0, WP_Block|null $wpBlock = null): void
 {
     $fields = get_fields();
     $supportsJsx = isset($attributes['supports']['jsx']) && $attributes['supports']['jsx'] === true;
