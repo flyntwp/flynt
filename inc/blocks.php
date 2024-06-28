@@ -58,22 +58,23 @@ add_action('Flynt/afterRegisterComponents', function (): void {
 /**
  * Render callback for blocks
  *
- * @param array $attributes
- * @param string $content
- * @param bool $isPreview
- * @param int $postId
+ * @param array $attributes The block attributes.
+ * @param string $content The inner blocks content.
+ * @param bool $isPreview Whether the block is being rendered in the admin preview.
+ * @param int $postId The post ID.
  * @param WP_Block|null $wpBlock
  */
 function renderBlock(array $attributes, string $content = '', bool $isPreview = false, int $postId = 0, WP_Block|null $wpBlock = null): void
 {
+    if ($isPreview && isBlockEmpty($attributes) && hasScreenshotUrl($attributes)) {
+        renderComponentScreenshot($attributes);
+        return;
+    }
+
     $fields = get_fields();
-    $supportsJsx = isset($attributes['supports']['jsx']) && $attributes['supports']['jsx'] === true;
-    if ($isPreview && !$supportsJsx && empty($fields) && is_array($attributes['example']) && !empty($attributes['example']['screenshotUrl'])) {
-        $screenshotUrl = $attributes['example']['screenshotUrl'];
-        if (filter_var($screenshotUrl, FILTER_VALIDATE_URL)) {
-            echo '<img src="' . esc_url($screenshotUrl) . '" loading="lazy" />';
-            return;
-        }
+    if ($isPreview && !isSupportingJsx($attributes) && empty($fields) && hasScreenshotUrl($attributes)) {
+        renderComponentScreenshot($attributes);
+        return;
     }
 
     $componentName = $attributes['componentName'];
@@ -102,6 +103,70 @@ function renderBlock(array $attributes, string $content = '', bool $isPreview = 
 
     $context = apply_filters("Flynt/addComponentData?name={$componentName}", $fields ?: [], $componentName);
     Timber::render($fileToRender, $context ?: []);
+}
+
+/**
+ * Render a screenshot of the component
+ *
+ * @param array $attributes The block attributes.
+ */
+function renderComponentScreenshot(array $attributes): void
+{
+    $screenshotUrl = $attributes['example']['screenshotUrl'];
+    if (filter_var($screenshotUrl, FILTER_VALIDATE_URL)) {
+        echo '<img src="' . esc_url($screenshotUrl) . '" loading="lazy" />';
+    }
+}
+
+/**
+ * Check if the block supports JSX
+ *
+ * @param array $attributes The block attributes.
+ * @return bool
+ */
+function isSupportingJsx($attributes): bool
+{
+    return isset($attributes['supports']['jsx']) && $attributes['supports']['jsx'] === true;
+}
+
+/**
+ * Check if the block has a screenshot URL
+ *
+ * @param array $attributes The block attributes.
+ * @return bool
+ */
+function hasScreenshotUrl($attributes): bool
+{
+    return is_array($attributes['example']) && !empty($attributes['example']['screenshotUrl']);
+}
+
+/**
+ * Check if the block acf fields are empty
+ *
+ * @param array $attributes The block attributes.
+ * @return bool
+ */
+function isBlockEmpty(array $attributes): bool
+{
+    $fields = acf_get_block_fields($attributes);
+    $fieldIds = wp_list_pluck($fields, 'key');
+
+    $blockData = array_chunk($attributes['data'], 2);
+    foreach ($blockData as $field_data) {
+        $currentValue = $field_data[0];
+        $fieldKey = $field_data[1];
+
+        if (empty($currentValue) || false !== strpos($currentValue, 'field_')) {
+            continue;
+        }
+
+        $fieldKeyIndex = array_search($fieldKey, $fieldIds, true);
+        if (empty($fields[$fieldKeyIndex]['default_value']) || $currentValue !== $fields[$fieldKeyIndex]['default_value']) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 // Move to other file?
