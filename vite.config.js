@@ -4,6 +4,7 @@ import flynt from './vite-plugin-flynt'
 import globImporter from 'node-sass-glob-importer'
 import FullReload from 'vite-plugin-full-reload'
 import fs from 'fs'
+import path from 'path'
 
 const wordpressHost = 'http://localhost:3000'
 
@@ -24,15 +25,29 @@ const watchFiles = [
   './Components/**/*.{php,twig}'
 ]
 
-const componentStyles = getComponentStyles('./Components/**/style.*')
-function getComponentStyles (globPath) {
-  const files = require('glob').sync(globPath)
-  return files.reduce((entries, file) => {
-    const key = file.replace(/(\.\/Components\/|\/style\.(scss|css))/g, '')
-    entries[key] = file
-    return entries
-  }, {})
+function getComponentStyles (startPath) {
+  const entries = {}
+
+  function exploreDirectory (directory) {
+    const filesAndDirectories = fs.readdirSync(directory, { withFileTypes: true })
+
+    for (const dirent of filesAndDirectories) {
+      const fullPath = path.join(directory, dirent.name)
+
+      if (dirent.isDirectory()) {
+        exploreDirectory(fullPath) // Recurse into subdirectories
+      } else if (dirent.isFile() && /style\.(scss|css)$/.test(dirent.name)) {
+        const key = fullPath.replace(/(\.\/Components\/|\/style\.(scss|css))/g, '')
+        entries[key] = fullPath
+      }
+    }
+  }
+
+  exploreDirectory(startPath)
+
+  return entries
 }
+const componentStyles = getComponentStyles('./Components')
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
