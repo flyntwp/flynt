@@ -60,6 +60,12 @@ To skip the linting process (optional) and to generate the compiled files, run t
 npm run build:production
 ```
 
+**Optional:** To further reduce the project size by excluding development dependencies, run:
+```
+# wp-content/themes/flynt
+composer install --optimize-autoloader --no-dev
+```
+
 ### Base Style
 
 Flynt comes with a ready to use Base Style built according to our best practices for building simple, maintainable components. Go to `domain/BaseStyle` to see it in action.
