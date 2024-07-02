@@ -6,7 +6,7 @@
         {% if post.terms('tag')  %}
           <span class="visuallyHidden">{{ labels.tagsLabel }}</span>
           <ul class="tags">
-            {% for tag in post.terms('tag')  %}
+            {% for tag in post.terms('tag') %}
               <li class="tag">
                 <a class="button button--text" href="{{ tag.link|e('esc_url') }}">{{ tag }}</a>
               </li>
@@ -18,9 +18,10 @@
             <a href="{{ post.author.link|e('esc_url') }}" aria-hidden="true" tabindex="-1">
               <img
                 class="avatar-image lazyload"
-                width="96" height="96"
+                width="96"
+                height="96"
                 src="{{ placeholderImage(96, 96) }}"
-                data-src="{{ post.author.avatar({size: 192})|resizeDynamic(192) }}"
+                data-src="{{ post.author.avatar({size: 192}) }}"
                 alt="{{ post.author.name|e }}">
             </a>
           {% endif %}

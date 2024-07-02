@@ -8,23 +8,23 @@ use Timber\Timber;
 
 const POST_TYPE = 'post';
 
-add_filter('Flynt/addComponentData?name=GridPostsLatest', function ($data) {
-    $data['uuid'] = $data['uuid'] ?? wp_generate_uuid4();
-    $data['taxonomies'] = $data['taxonomies'] ?? [];
+add_filter('Flynt/addComponentData?name=GridPostsLatest', function (array $data): array {
+    $data['uuid'] ??= wp_generate_uuid4();
+    $data['taxonomies'] = $data['taxonomies'] ?: [];
     $data['options']['maxColumns'] = 3;
     $postsPerPage = $data['options']['maxPosts'] ?? 3;
 
     $posts = Timber::get_posts([
         'post_status' => 'publish',
         'post_type' => POST_TYPE,
-        'cat' => join(',', array_map(function ($taxonomy) {
+        'cat' => implode(',', array_map(function ($taxonomy) {
             return $taxonomy->term_id;
         }, $data['taxonomies'])),
         'posts_per_page' => $postsPerPage + 1,
         'ignore_sticky_posts' => 1,
     ]);
 
-    $data['posts'] = array_slice(array_filter($posts->to_array(), function ($post) {
+    $data['posts'] = array_slice(array_filter($posts->to_array(), function ($post): bool {
         return $post->ID !== get_the_ID();
     }), 0, $postsPerPage);
 
@@ -33,7 +33,7 @@ add_filter('Flynt/addComponentData?name=GridPostsLatest', function ($data) {
     return $data;
 });
 
-function getACFLayout()
+function getACFLayout(): array
 {
     return [
         'name' => 'gridPostsLatest',

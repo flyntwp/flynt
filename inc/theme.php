@@ -4,7 +4,7 @@ namespace Flynt\Theme;
 
 use Flynt\Utils\Options;
 
-add_action('after_setup_theme', function () {
+add_action('after_setup_theme', function (): void {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
     add_theme_support('custom-logo');
@@ -17,7 +17,7 @@ add_action('after_setup_theme', function () {
 
 add_filter('big_image_size_threshold', '__return_false');
 
-add_filter('timber/context', function ($context) {
+add_filter('timber/context', function (array $context): array {
     $context['theme']->labels = Options::getTranslatable('Theme')['labels'] ?? [];
     return $context;
 });

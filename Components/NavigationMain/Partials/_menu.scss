@@ -8,7 +8,8 @@
   .link {
     color: currentColor;
     display: inline-block;
-    padding: 0.5rem 0.75rem;
+    padding-block: 0.5rem;
+    padding-inline: 0.75rem;
     text-decoration: none;
     transition: color 0.2s ease-in-out;
     will-change: color;

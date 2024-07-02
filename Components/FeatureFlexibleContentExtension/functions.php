@@ -4,7 +4,7 @@ namespace Flynt\Components\FeatureFlexibleContentExtension;
 
 use Flynt\ComponentManager;
 
-add_action('admin_enqueue_scripts', function () {
+add_action('admin_enqueue_scripts', function (): void {
     $componentManager = ComponentManager::getInstance();
     $templateDirectory = get_template_directory();
     $data = [
@@ -21,7 +21,7 @@ add_action('admin_enqueue_scripts', function () {
 });
 
 // add image to the flexible content component name
-add_filter('acf/fields/flexible_content/layout_title', function ($title, $field, $layout, $i) {
+add_filter('acf/fields/flexible_content/layout_title', function (string $title, array $field, array $layout): string {
     $componentManager = ComponentManager::getInstance();
     $componentName = ucfirst($layout['name']);
     $componentPathFull = $componentManager->getComponentDirPath($componentName);
@@ -29,13 +29,20 @@ add_filter('acf/fields/flexible_content/layout_title', function ($title, $field,
     $templateDirectoryUri = get_template_directory_uri();
     $componentScreenshotPath = "{$componentPathFull}/screenshot.png";
     $componentScreenshotUrl = "{$templateDirectoryUri}/{$componentPath}/screenshot.png?v=" . wp_get_theme()->get('Version');
+
     if (is_file($componentScreenshotPath)) {
         $imageSize = getimagesize($componentScreenshotPath);
         $newTitle = '<span class="flyntComponentScreenshot">';
-        $newTitle .= '<img class="flyntComponentScreenshot-previewImageSmall" width="' . $imageSize[0] . '" height="' . $imageSize[1] . '" src="' . $componentScreenshotUrl . '" loading="lazy">';
-        $newTitle .= '<span class="flyntComponentScreenshot-label">' . $title . '</span>';
+        $newTitle .= sprintf(
+            '<img class="flyntComponentScreenshot-previewImageSmall" width="%s" height="%s" src="%s" loading="lazy">',
+            $imageSize[0],
+            $imageSize[1],
+            $componentScreenshotUrl
+        );
+        $newTitle .= sprintf('<span class="flyntComponentScreenshot-label">%s</span>', $title);
         $newTitle .= '</span>';
         $title = $newTitle;
     }
+
     return $title;
 }, 11, 4);

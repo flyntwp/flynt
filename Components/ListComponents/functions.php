@@ -7,23 +7,25 @@ use Flynt\ComponentManager;
 use Flynt\Utils\Options;
 use Parsedown;
 
-add_filter('Flynt/addComponentData?name=ListComponents', function ($data) {
+add_filter('Flynt/addComponentData?name=ListComponents', function (array $data): array {
     if (!empty($data['componentBlocks'])) {
         $templatePaths = [
             'dir' => trailingslashit(get_template_directory()),
             'uri' => trailingslashit(get_template_directory_uri()),
         ];
-        $data['componentBlocks'] = array_map(function ($block) use ($templatePaths) {
+        $data['componentBlocks'] = array_map(function (array $block) use ($templatePaths) {
             $block['component'] = substr($block['component'], strpos($block['component'], 'Components/'));
 
             $imagePath = $templatePaths['dir'] . $block['component'] . 'screenshot.png';
             if (file_exists($imagePath)) {
                 $src = $templatePaths['uri'] . $block['component'] . 'screenshot.png';
-                list($width, $height) = getimagesize($imagePath);
+                [$width, $height] = getimagesize($imagePath);
 
                 $block['componentScreenshot'] = [
                     'src' => $src . '?v=' . wp_get_theme()->get('Version'),
-                    'aspect' => $width / $height
+                    'aspect' => $width / $height,
+                    'width' => $width,
+                    'height' => $height
                 ];
             }
 
@@ -44,13 +46,13 @@ add_filter('Flynt/addComponentData?name=ListComponents', function ($data) {
     return $data;
 });
 
-add_filter('acf/load_field/name=component', function ($field) {
+add_filter('acf/load_field/name=component', function (array $field): array {
     $componentManager = ComponentManager::getInstance();
     $field['choices'] = array_flip($componentManager->getAll());
     return $field;
 });
 
-function getACFLayout()
+function getACFLayout(): array
 {
     return [
         'name' => 'listComponents',

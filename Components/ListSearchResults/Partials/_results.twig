@@ -1,13 +1,13 @@
 {% if posts|length > 0 %}
   <ul role="list" class="results">
-    {% for post in posts  %}
-      {% set ariaLabelledbyId = uuid ~ '-' ~ loop.index %}
-      <li class="result boxBorder boxPadding" id="{{ ariaLabelledbyId }}" data-theme="reset">
+    {% for post in posts %}
+      {% set aria_labelledby_id = uuid ~ '-' ~ loop.index %}
+      <li class="result boxBorder boxPadding" id="{{ aria_labelledby_id }}" data-theme="reset">
         <article>
           <h2 class="h5">{{ post.title }}</h2>
           <p>{{ post.excerpt.read_more(false) }}</p>
           <footer>
-            <a href="{{ post.link|e('esc_url') }}" aria-labelledby="{{ ariaLabelledbyId }}" class="link">{{ labels.readMore }}</a>
+            <a href="{{ post.link|e('esc_url') }}" aria-labelledby="{{ aria_labelledby_id }}" class="link">{{ labels.readMore }}</a>
           </footer>
         </article>
       </li>

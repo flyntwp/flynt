@@ -21,6 +21,8 @@
     <exclude name="Squiz.Commenting.FileComment.Missing"/>
     <exclude name="Squiz.Commenting.BlockComment.NoEmptyLineAfter"/>
     <exclude name="Squiz.Commenting.FileComment.MissingAuthorTag"/>
+    <exclude name="Squiz.Commenting.FunctionComment.MissingReturn"/>
+    <exclude name="Squiz.Commenting.VariableComment.MissingVar"/>
   </rule>
 
   <!-- Use short array syntax -->

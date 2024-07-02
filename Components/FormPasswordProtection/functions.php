@@ -5,7 +5,7 @@ namespace Flynt\Components\FormPasswordProtection;
 use Flynt\Utils\Options;
 use Timber\Timber;
 
-add_filter('the_password_form', function () {
+add_filter('the_password_form', function (): string {
     $context = Timber::context();
     $context['form'] = [
         'url' => site_url('/wp-login.php?action=postpass', 'login_post')
@@ -21,7 +21,7 @@ add_filter('the_password_form', function () {
 Options::addTranslatable('FormPasswordProtection', [
     [
         'label' => __('Content', 'flynt'),
-        'name' => 'general',
+        'name' => 'contentTab',
         'type' => 'tab',
         'placement' => 'top',
         'endpoint' => 0,

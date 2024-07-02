@@ -1,20 +1,23 @@
 <flynt-component name="BlockImage" {{- not noComponentSpacing ? ' class="componentSpacing"' }} {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
   <div class="container">
-    <figure class="figure" data-size="{{ options.size }}" data-align="center">
-      {% if image.post_mime_type == 'image/svg+xml'%}
-        <img class="figure-image-svg lazyload"
-          src="{{ placeholderImage(768, (768 / image.aspect)|round, 'rgba(125, 125, 125, 0.1)') }}"
-          width="{{ 768 }}"
-          height="{{ (768 / image.aspect)|round }}"
-          data-src="{{ image.src }}"
-          alt="{{ image.alt|e }}"
-        >
-      {% else %}
-        <img class="figure-image lazyload"
+    {% if image %}
+      <figure class="figure" data-size="{{ options.size }}" data-align="center">
+        {% if image.post_mime_type == 'image/svg+xml' %}
+          <img
+            class="figure-image-svg lazyload"
+            src="{{ placeholderImage(image.width, image.height, 'rgba(125, 125, 125, 0.1)') }}"
+            width="{{ image.width }}"
+            height="{{ image.height }}"
+            data-src="{{ image.src }}"
+            alt="{{ image.alt|e }}"
+          >
+        {% else %}
+          <img
+            class="figure-image lazyload"
             src="{{ image.src|resizeDynamic(768) }}"
-            width="{{ 768 }}"
-            height="{{ (768 / image.aspect)|round }}"
-            srcset="{{ placeholderImage(768, (768 / image.aspect)|round, 'rgba(125, 125, 125, 0.1)') }}"
+            width="{{ image.width }}"
+            height="{{ image.height }}"
+            srcset="{{ placeholderImage(image.width, image.height, 'rgba(125, 125, 125, 0.1)') }}"
             data-srcset="
               {{ image.src|resizeDynamic(1920) }} 1920w,
               {{ image.src|resizeDynamic(1600) }} 1600w,
@@ -25,10 +28,11 @@
               {{ image.src|resizeDynamic(640) }} 640w"
             data-sizes="auto"
             alt="{{ image.alt|e }}">
-      {% endif %}
-      {% if image.caption %}
-        <figcaption class="caption">{{ image.caption|e }}</figcaption>
-      {% endif %}
-    </figure>
+        {% endif %}
+        {% if image.caption %}
+          <figcaption class="caption">{{ image.caption|e }}</figcaption>
+        {% endif %}
+      </figure>
+    {% endif %}
   </div>
 </flynt-component>

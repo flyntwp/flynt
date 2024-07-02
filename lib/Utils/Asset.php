@@ -10,8 +10,6 @@ class Asset
 {
     /**
      * The internal list (array) of assets.
-     *
-     * @var array
      */
     protected static array $assetManifest;
 
@@ -57,10 +55,10 @@ class Asset
         $file = self::requirePath($asset);
         if (file_exists($file)) {
             return file_get_contents($file);
-        } else {
-            trigger_error("File not found at: {$asset}", E_USER_WARNING);
-            return false;
         }
+
+        trigger_error("File not found at: {$asset}", E_USER_WARNING);
+        return false;
     }
 
     /**
@@ -77,12 +75,8 @@ class Asset
     {
         if (!isset(self::$assetManifest)) {
             $distPath = get_template_directory() . '/dist';
-            $manifestPath = $distPath . '/manifest.json';
-            if (is_file($manifestPath)) {
-                self::$assetManifest = json_decode(file_get_contents($manifestPath), true);
-            } else {
-                self::$assetManifest = [];
-            }
+            $manifestPath = $distPath . '/.vite/manifest.json';
+            self::$assetManifest = is_file($manifestPath) ? json_decode(file_get_contents($manifestPath), true) : [];
         }
 
         $assetSuffix = self::$assetManifest[$asset]['file'] ?? $asset;
@@ -93,9 +87,10 @@ class Asset
         }
 
         if ('url' == $returnType) {
-            if (file_exists(self::viteHotFile())) {
+            if (self::isHotModuleReplacement()) {
                 return trailingslashit(trim(file_get_contents(self::viteHotFile()))) . $asset;
             }
+
             return file_exists($filePath) ? get_template_directory_uri() . '/dist/' . $assetSuffix : get_template_directory_uri() . '/' . $assetSuffix;
         }
 
@@ -104,20 +99,16 @@ class Asset
 
     /**
      * Checks if the current environment is a Vite dev server.
-     *
-     * @return boolean
      */
-    public static function isHotModuleReplacement()
+    public static function isHotModuleReplacement(): bool
     {
         return file_exists(self::viteHotFile());
     }
 
     /**
      * Gets the path to the Vite dev server hot file.
-     *
-     * @return string
      */
-    protected static function viteHotFile()
+    protected static function viteHotFile(): string
     {
         return get_template_directory() . '/dist/hot';
     }

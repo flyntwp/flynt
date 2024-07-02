@@ -29,7 +29,7 @@ class TwigExtensionReadingTime extends AbstractExtension
      *
      * @return integer The minutes to read.
      */
-    public function renderMinutesToRead(string $content)
+    public function renderMinutesToRead(string $content): int
     {
         $wordsPerMinute = 200;
         $words = str_word_count(strip_tags($content));

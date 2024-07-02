@@ -15,8 +15,11 @@ use WP_Rewrite;
 class TimberDynamicResize
 {
     private const DB_VERSION = '2.0';
+
     private const TABLE_NAME = 'resized_images';
+
     private const IMAGE_QUERY_VAR = 'resized-images';
+
     private const IMAGE_PATH_SEPARATOR = 'resized';
 
     /**
@@ -43,6 +46,7 @@ class TimberDynamicResize
             $this->createTable();
             $this->addDynamicHooks();
         }
+
         $this->addHooks();
     }
 
@@ -53,21 +57,21 @@ class TimberDynamicResize
      */
     protected function createTable()
     {
-        $optionName = static::TABLE_NAME . '_db_version';
+        $optionName = self::TABLE_NAME . '_db_version';
 
         $installedVersion = get_option($optionName);
 
-        if ($installedVersion !== static::DB_VERSION) {
+        if ($installedVersion !== self::DB_VERSION) {
             global $wpdb;
             $tableName = self::getTableName();
 
             $charsetCollate = $wpdb->get_charset_collate();
 
-            $sql = "CREATE TABLE $tableName (
+            $sql = "CREATE TABLE {$tableName} (
                 width int(11) NOT NULL,
                 height int(11) NOT NULL,
                 crop varchar(32) NOT NULL
-            ) $charsetCollate;";
+            ) {$charsetCollate};";
 
             require_once ABSPATH . 'wp-admin/includes/upgrade.php';
             dbDelta($sql);
@@ -76,7 +80,7 @@ class TimberDynamicResize
                 $wpdb->query("ALTER TABLE {$tableName} ADD PRIMARY KEY(`width`, `height`, `crop`);");
             }
 
-            update_option($optionName, static::DB_VERSION);
+            update_option($optionName, self::DB_VERSION);
         }
     }
 
@@ -96,13 +100,11 @@ class TimberDynamicResize
      * Parse the request.
      *
      * @param WP $wp Current WordPress environment instance (passed by reference).
-     *
-     * @return void
      */
-    public function parseRequest(WP $wp)
+    public function parseRequest(WP $wp): void
     {
-        if (isset($wp->query_vars[static::IMAGE_QUERY_VAR])) {
-            $this->checkAndGenerateImage($wp->query_vars[static::IMAGE_QUERY_VAR]);
+        if (isset($wp->query_vars[self::IMAGE_QUERY_VAR])) {
+            $this->checkAndGenerateImage($wp->query_vars[self::IMAGE_QUERY_VAR]);
         }
     }
 
@@ -120,10 +122,10 @@ class TimberDynamicResize
             return $twig;
         });
         if ($this->enabled) {
-            add_action('after_switch_theme', function () {
+            add_action('after_switch_theme', function (): void {
                 add_action('shutdown', 'flush_rewrite_rules');
             });
-            add_action('switch_theme', function () {
+            add_action('switch_theme', function (): void {
                 flush_rewrite_rules(true);
             });
         }
@@ -131,13 +133,11 @@ class TimberDynamicResize
 
     /**
      * Get the table name.
-     *
-     * @return string
      */
-    public function getTableName()
+    public function getTableName(): string
     {
         global $wpdb;
-        return $wpdb->prefix . static::TABLE_NAME;
+        return $wpdb->prefix . self::TABLE_NAME;
     }
 
     /**
@@ -145,33 +145,32 @@ class TimberDynamicResize
      *
      * @return string
      */
-    public static function getDefaultRelativeUploadDir()
+    private function getDefaultRelativeUploadDir()
     {
         require_once(ABSPATH . 'wp-admin/includes/file.php');
+
         $uploadDir = wp_upload_dir();
-        $homePath = get_home_path();
-        if (!empty($homePath) && $homePath !== '/') {
-            $baseDir = str_replace('\\', '/', $uploadDir['basedir']);
-            $relativeUploadDir = str_replace($homePath, '', $baseDir);
-        } else {
-            $relativeUploadDir = $uploadDir['relative'];
-        }
-        return $relativeUploadDir;
+        return $uploadDir['relative'] ?? '/wp-content/uploads';
     }
 
     /**
      * Get relative upload dir.
      *
+     * @param boolean $useDefaultUploadDir Use the default upload dir.
+     *
      * @return string
      */
-    public function getRelativeUploadDir()
+    public function getRelativeUploadDir(bool $useDefaultUploadDir = false)
     {
-        $relativeUploadPath = get_field('field_global_TimberDynamicResize_relativeUploadPath', 'option');
+        $relativeUploadPath = $useDefaultUploadDir
+            ? $this->getDefaultRelativeUploadDir()
+            : get_field('field_global_TimberDynamicResize_relativeUploadPath', 'option');
+
         if (empty($relativeUploadPath)) {
-            return static::getDefaultRelativeUploadDir();
-        } else {
-            return $relativeUploadPath;
+            $relativeUploadPath = $this->getDefaultRelativeUploadDir();
         }
+
+        return apply_filters('Flynt/TimberDynamicResize/relativeUploadDir', $relativeUploadPath);
     }
 
     /**
@@ -200,53 +199,59 @@ class TimberDynamicResize
      * Resize an image dynamically using Timbers Resize class.
      * This function is a wrapper for the Resize class.
      *
-     * @param string $src The image source.
+     * @param string|null $src The image source.
      * @param float $w The width of the image.
      * @param float $h The height of the image.
      * @param string $crop The crop mode.
      * @param boolean $force Force the image to be generated.
      *
-     * @return string The resized image url.
+     * @return string|null The resized image url.
      */
-    public function resizeDynamic(string $src, float $w, float $h = 0, string $crop = 'default', bool $force = false)
+    public function resizeDynamic($src, float $w, float $h = 0, string $crop = 'default', bool $force = false)
     {
+        if (empty($src)) {
+            return '';
+        }
+
         $w = (int) round($w);
         $h = (int) round($h);
 
         if ($this->enabled) {
-            $resizeOp = new Resize($w, $h, $crop);
+            $resize = new Resize($w, $h, $crop);
             if (URLHelper::is_external_content($src)) {
                 $src = ImageHelper::sideload_image($src);
             }
+
             $fileinfo = pathinfo($src);
-            $resizedUrl = $resizeOp->filename(
+            $resizedUrl = $resize->filename(
                 $fileinfo['dirname'] . '/' . $fileinfo['filename'],
                 $fileinfo['extension'] ?? ''
             );
 
-            if (empty($this->flyntResizedImages)) {
+            if ($this->flyntResizedImages === []) {
                 add_action('shutdown', [$this, 'storeResizedUrls'], -1);
             }
+
             $this->flyntResizedImages[$w . '-' . $h . '-' . $crop] = [$w, $h, $crop];
 
             return $this->addImageSeparatorToUploadUrl($resizedUrl);
-        } else {
-            return $this->generateImage($src, $w, $h, $crop, $force);
         }
+
+        return $this->generateImage($src, $w, $h, $crop, $force);
     }
 
     /**
      * Register rewrite rule.
      *
      * @param WP_Rewrite $wpRewrite The WordPress rewrite class.
-     *
-     * @return void
      */
-    public function registerRewriteRule(WP_Rewrite $wpRewrite)
+    public function registerRewriteRule(WP_Rewrite $wpRewrite): void
     {
-        $routeName = static::IMAGE_QUERY_VAR;
+        $routeName = self::IMAGE_QUERY_VAR;
         $relativeUploadDir = $this->getRelativeUploadDir();
-        $relativeUploadDir = trailingslashit($relativeUploadDir) . static::IMAGE_PATH_SEPARATOR;
+        $relativeUploadDir = ltrim(untrailingslashit($relativeUploadDir), '/');
+        $relativeUploadDir = trailingslashit($relativeUploadDir) . self::IMAGE_PATH_SEPARATOR;
+
         $wpRewrite->rules = array_merge(
             ["^{$relativeUploadDir}/?(.*?)/?$" => "index.php?{$routeName}=\$matches[1]"],
             $wpRewrite->rules
@@ -256,23 +261,19 @@ class TimberDynamicResize
     /**
      * Add rewrite tag.
      * This is needed to make the rewrite rule work.
-     *
-     * @return void
      */
-    public function addRewriteTag()
+    public function addRewriteTag(): void
     {
-        $routeName = static::IMAGE_QUERY_VAR;
+        $routeName = self::IMAGE_QUERY_VAR;
         add_rewrite_tag("%{$routeName}%", "([^&]+)");
     }
 
     /**
      * Remove rewrite tag.
-     *
-     * @return void
      */
-    public function removeRewriteTag()
+    public function removeRewriteTag(): void
     {
-        $routeName = static::IMAGE_QUERY_VAR;
+        $routeName = self::IMAGE_QUERY_VAR;
         remove_rewrite_tag("%{$routeName}%");
     }
 
@@ -280,10 +281,8 @@ class TimberDynamicResize
      * Check and generate image.
      *
      * @param string $relativePath The relative path to the image.
-     *
-     * @return void
      */
-    public function checkAndGenerateImage(string $relativePath)
+    public function checkAndGenerateImage(string $relativePath): void
     {
         $matched = preg_match('/(.+)-(\d+)x(\d+)-c-(.+)(\..*)$/', $relativePath, $matchedSrc);
         $exists = false;
@@ -316,12 +315,11 @@ class TimberDynamicResize
             nocache_headers();
             include get_404_template();
             exit();
-        } else {
-            $resizedUrl = $this->generateImage($originalUrl, $w, $h, $crop);
-
-            wp_redirect($resizedUrl);
-            exit();
         }
+
+        $resizedUrl = $this->generateImage($originalUrl, $w, $h, $crop);
+        wp_redirect($resizedUrl);
+        exit();
     }
 
     /**
@@ -340,13 +338,7 @@ class TimberDynamicResize
         add_filter('timber/image/new_url', [$this, 'addImageSeparatorToUploadUrl']);
         add_filter('timber/image/new_path', [$this, 'addImageSeparatorToUploadPath']);
 
-        $resizedUrl = ImageHelper::resize(
-            $url,
-            $w,
-            $h,
-            $crop,
-            $force
-        );
+        $resizedUrl = ImageHelper::resize($url, $w, $h, $crop, $force);
 
         remove_filter('timber/image/new_url', [$this, 'addImageSeparatorToUploadUrl']);
         remove_filter('timber/image/new_path', [$this, 'addImageSeparatorToUploadPath']);
@@ -361,12 +353,12 @@ class TimberDynamicResize
      *
      * @return string The url with the image separator.
      */
-    public function addImageSeparatorToUploadUrl(string $url)
+    public function addImageSeparatorToUploadUrl(string $url): string
     {
         $baseurl = $this->getUploadsBaseurl();
         return str_replace(
             $baseurl,
-            trailingslashit($baseurl) . static::IMAGE_PATH_SEPARATOR,
+            trailingslashit($baseurl) . self::IMAGE_PATH_SEPARATOR,
             $url
         );
     }
@@ -378,22 +370,20 @@ class TimberDynamicResize
      *
      * @return string The path with the image separator.
      */
-    public function addImageSeparatorToUploadPath(string $path = '')
+    public function addImageSeparatorToUploadPath(string $path = ''): string
     {
         $basepath = $this->getUploadsBasedir();
         return str_replace(
             $basepath,
-            trailingslashit($basepath) . static::IMAGE_PATH_SEPARATOR,
-            empty($path) ? $basepath : $path
+            trailingslashit($basepath) . self::IMAGE_PATH_SEPARATOR,
+            $path === '' || $path === '0' ? $basepath : $path
         );
     }
 
     /**
      *  Store resized urls.
-     *
-     * @return void
      */
-    public function storeResizedUrls()
+    public function storeResizedUrls(): void
     {
         global $wpdb;
         $tableName = $this->getTableName();
@@ -403,7 +393,7 @@ class TimberDynamicResize
         $wpdb->query(
             $wpdb->prepare(
                 "INSERT IGNORE INTO {$tableName} (width, height, crop) VALUES {$placeholdersString}",
-                call_user_func_array('array_merge', $values)
+                array_merge(...$values)
             )
         );
     }
@@ -412,10 +402,8 @@ class TimberDynamicResize
      * Toggle dynamic image generation.
      *
      * @param boolean $enable Enable or disable dynamic image generation.
-     *
-     * @return void
      */
-    public function toggleDynamic(bool $enable)
+    public function toggleDynamic(bool $enable): void
     {
         if ($enable) {
             $this->addRewriteTag();
@@ -426,7 +414,8 @@ class TimberDynamicResize
             remove_action('generate_rewrite_rules', [$this, 'registerRewriteRule']);
             remove_action('parse_request', [$this, 'parseRequest']);
         }
-        add_action('shutdown', function () {
+
+        add_action('shutdown', function (): void {
             flush_rewrite_rules(false);
         });
     }
@@ -435,12 +424,10 @@ class TimberDynamicResize
      * Change relative upload path.
      *
      * @param string $relativeUploadPath The relative upload path.
-     *
-     * @return void
      */
-    public function changeRelativeUploadPath(string $relativeUploadPath)
+    public function changeRelativeUploadPath(string $relativeUploadPath): void
     {
-        add_action('shutdown', function () {
+        add_action('shutdown', function (): void {
             flush_rewrite_rules(false);
         });
     }

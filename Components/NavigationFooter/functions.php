@@ -5,13 +5,13 @@ namespace Flynt\Components\NavigationFooter;
 use Flynt\Utils\Options;
 use Timber\Timber;
 
-add_action('init', function () {
+add_action('init', function (): void {
     register_nav_menus([
         'navigation_footer' => __('Navigation Footer', 'flynt')
     ]);
 });
 
-add_filter('Flynt/addComponentData?name=NavigationFooter', function ($data) {
+add_filter('Flynt/addComponentData?name=NavigationFooter', function (array $data): array {
     $data['menu'] = Timber::get_menu('navigation_footer') ?? Timber::get_pages_menu();
 
     return $data;
@@ -51,7 +51,7 @@ Options::addTranslatable('NavigationFooter', [
                 'label' => __('Aria Label', 'flynt'),
                 'name' => 'ariaLabel',
                 'type' => 'text',
-                'default_value' => __('Footer', 'flynt'),
+                'default_value' => __('Footer Navigation', 'flynt'),
                 'required' => 1,
                 'wrapper' => [
                     'width' => '50',

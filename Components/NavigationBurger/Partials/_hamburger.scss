@@ -35,8 +35,12 @@
       inline-size: var(--line-width);
       inset-inline-start: 0;
       position: absolute;
-      transition: opacity 0.2s ease-in-out 0.2s, transform 0.2s ease-in-out 0.2s;
-      will-change: opacity, transform;
+      transition: opacity 0.2s ease-in-out 0.2s, rotate 0.2s ease-in-out 0.2s, translate 0.2s ease-in-out 0.2s;
+    }
+
+    &::before,
+    &::after {
+      will-change: translate, opacity;
     }
 
     &::before {
@@ -47,6 +51,7 @@
     &--secondary {
       inset-block-start: 9px;
       transition-delay: 0s;
+      will-change: rotate;
     }
 
     &::after {
@@ -64,20 +69,20 @@
     }
 
     &::before {
-      transform: translateY(9px);
+      translate: 0 9px;
     }
 
     &::after {
-      transform: translateY(-9px);
+      translate: 0 -9px;
     }
 
     &--primary {
-      transform: rotate(45deg);
+      rotate: 45deg;
       transition-delay: 0.2s;
     }
 
     &--secondary {
-      transform: rotate(-45deg);
+      rotate: -45deg;
       transition-delay: 0.2s;
     }
 

@@ -2,7 +2,7 @@
 
 namespace Flynt\CustomPostTypes;
 
-add_action('init', function () {
+add_action('init', function (): void {
     $labels = [
         'name'                  => _x('Reusable Components', 'Component Post Type', 'flynt'),
         'singular_name'         => _x('Reusable Components', 'Component Post Type', 'flynt'),
@@ -25,6 +25,7 @@ add_action('init', function () {
         'items_list_navigation' => __('Reusable components list navigation', 'flynt'),
         'filter_items_list'     => __('Filter reusable components list', 'flynt'),
     ];
+
     $args = [
         'labels'                => $labels,
         'supports'              => ['title', 'revisions'],
@@ -42,5 +43,6 @@ add_action('init', function () {
         'capability_type'       => 'page',
         'rewrite'               => false
     ];
+
     register_post_type('reusable-components', $args);
 });

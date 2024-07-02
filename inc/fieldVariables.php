@@ -6,7 +6,7 @@
 
 namespace Flynt\FieldVariables;
 
-function getTheme($default = '')
+function getTheme($default = ''): array
 {
     return [
         'label' => __('Theme', 'flynt'),
@@ -25,8 +25,7 @@ function getTheme($default = '')
     ];
 }
 
-
-function getSize($default = 'medium')
+function getSize($default = 'medium'): array
 {
     return [
         'label' => __('Size', 'flynt'),
@@ -44,7 +43,7 @@ function getSize($default = 'medium')
     ];
 }
 
-function getAlignment($args = [])
+function getAlignment($args = []): array
 {
     $options = wp_parse_args($args, [
         'label' => __('Align', 'flynt'),
@@ -67,7 +66,7 @@ function getAlignment($args = [])
     ];
 }
 
-function getTextAlignment($args = [])
+function getTextAlignment($args = []): array
 {
     $options = wp_parse_args($args, [
         'label' => __('Align text', 'flynt'),

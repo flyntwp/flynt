@@ -5,7 +5,7 @@ namespace Flynt\TimberDynamicResize;
 use Flynt\Utils\Options;
 use Flynt\Utils\TimberDynamicResize;
 
-add_action('acf/init', function () {
+add_action('acf/init', function (): void {
     global $timberDynamicResize;
     $timberDynamicResize = new TimberDynamicResize();
 });
@@ -36,52 +36,33 @@ Options::addGlobal('TimberDynamicResize', [
     ],
 ]);
 
-add_filter(
-    'acf/load_field/key=field_global_TimberDynamicResize_relativeUploadPath',
-    function ($field) {
-        $field['placeholder'] = TimberDynamicResize::getDefaultRelativeUploadDir();
-        return $field;
-    }
-);
+add_filter('acf/load_field/key=field_global_TimberDynamicResize_relativeUploadPath', function (array $field) {
+    global $timberDynamicResize;
+    $field['placeholder'] = $timberDynamicResize->getRelativeUploadDir(true);
+    return $field;
+});
 
-add_action(
-    'update_option_options_global_TimberDynamicResize_dynamicImageGeneration',
-    function ($oldValue, $value) {
-        global $timberDynamicResize;
-        $timberDynamicResize->toggleDynamic($value === '1');
-    },
-    10,
-    2
-);
+add_action('update_option_options_global_TimberDynamicResize_dynamicImageGeneration', function ($oldValue, $value): void {
+    global $timberDynamicResize;
+    $timberDynamicResize->toggleDynamic($value === '1');
+}, 10, 2);
 
-add_action(
-    'update_option_options_global_TimberDynamicResize_relativeUploadPath',
-    function ($oldValue, $value) {
-        global $timberDynamicResize;
-        $timberDynamicResize->changeRelativeUploadPath($value);
-    },
-    10,
-    2
-);
+add_action('update_option_options_global_TimberDynamicResize_relativeUploadPath', function ($oldValue, $value): void {
+    global $timberDynamicResize;
+    $timberDynamicResize->changeRelativeUploadPath($value);
+}, 10, 2);
 
 // WPML rewrite fix.
-add_filter('mod_rewrite_rules', function ($rules) {
+add_filter('mod_rewrite_rules', function (string $rules): string {
     $homeRoot = parse_url(home_url());
-    if (isset($homeRoot['path'])) {
-        $homeRoot = trailingslashit($homeRoot['path']);
-    } else {
-        $homeRoot = '/';
-    }
+    $homeRoot = isset($homeRoot['path']) ? trailingslashit($homeRoot['path']) : '/';
 
     $wpmlRoot = parse_url(get_option('home'));
-    if (isset($wpmlRoot['path'])) {
-        $wpmlRoot = trailingslashit($wpmlRoot['path']);
-    } else {
-        $wpmlRoot = '/';
-    }
+    $wpmlRoot = isset($wpmlRoot['path']) ? trailingslashit($wpmlRoot['path']) : '/';
 
-    $rules = str_replace("RewriteBase $homeRoot", "RewriteBase $wpmlRoot", $rules);
-    $rules = str_replace("RewriteRule . $homeRoot", "RewriteRule . $wpmlRoot", $rules);
-
-    return $rules;
+    return str_replace(
+        ["RewriteBase {$homeRoot}", "RewriteRule . {$homeRoot}"],
+        ["RewriteBase {$wpmlRoot}", "RewriteRule . {$wpmlRoot}"],
+        $rules
+    );
 });

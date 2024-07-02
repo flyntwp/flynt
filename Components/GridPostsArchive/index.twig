@@ -12,14 +12,15 @@
     {% if posts|length > 0 %}
       <ul data-ref="posts" class="posts">
         {% for post in posts %}
-          {% set ariaLabelledbyId = uuid ~ '-' ~ loop.index %}
-          <li class="post boxBorder" id="{{ ariaLabelledbyId }}" data-theme="reset">
-            <a class="link" href="{{ post.link|e('esc_url') }}" aria-labelledby="{{ ariaLabelledbyId }}">
+          {% set aria_labelledby_id = uuid ~ '-' ~ loop.index %}
+          <li class="post boxBorder" id="{{ aria_labelledby_id }}" data-theme="reset">
+            <a class="link" href="{{ post.link|e('esc_url') }}" aria-labelledby="{{ aria_labelledby_id }}">
               {% if post.thumbnail %}
                 <figure class="figure">
-                  <img class="post-image figure-image lazyload"
+                  <img
+                    class="post-image figure-image lazyload"
                     src="{{ post.thumbnail.src|resizeDynamic(768, (768 / 3 * 2)|round, 'center') }}"
-                    width="{{ 768 }}"
+                    width="768"
                     height="{{ (768 / 3 * 2)|round }}"
                     srcset="{{ placeholderImage(768, (768 / 3 * 2)|round, 'rgba(125, 125, 125, 0.1)') }}"
                     data-srcset="

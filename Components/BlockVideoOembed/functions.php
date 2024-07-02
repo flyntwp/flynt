@@ -4,8 +4,9 @@ namespace Flynt\Components\BlockVideoOembed;
 
 use Flynt\FieldVariables;
 use Flynt\Utils\Oembed;
+use Flynt\Utils\Options;
 
-add_filter('Flynt/addComponentData?name=BlockVideoOembed', function ($data) {
+add_filter('Flynt/addComponentData?name=BlockVideoOembed', function (array $data): array {
     $data['oembed'] = Oembed::setSrcAsDataAttribute(
         $data['oembed'],
         [
@@ -16,7 +17,7 @@ add_filter('Flynt/addComponentData?name=BlockVideoOembed', function ($data) {
     return $data;
 });
 
-function getACFLayout()
+function getACFLayout(): array
 {
     return [
         'name' => 'blockVideoOembed',
@@ -67,3 +68,30 @@ function getACFLayout()
         ]
     ];
 }
+
+Options::addTranslatable('BlockVideoOembed', [
+    [
+        'label' => __('Labels', 'flynt'),
+        'name' => 'labelsTab',
+        'type' => 'tab',
+        'placement' => 'top',
+        'endpoint' => 0
+    ],
+    [
+        'label' => '',
+        'name' => 'labels',
+        'type' => 'group',
+        'sub_fields' => [
+            [
+                'label' => __('Video Play Button - Aria Label', 'flynt'),
+                'name' => 'videoPlayButtonAriaLabel',
+                'type' => 'text',
+                'default_value' => __('Play Video', 'flynt'),
+                'required' => 1,
+                'wrapper' => [
+                    'width' => '50',
+                ],
+            ],
+        ],
+    ]
+]);

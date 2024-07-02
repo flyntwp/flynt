@@ -2,49 +2,51 @@
   <div class="container" data-flow="layout">
     {% if preContentHtml %}
       <div data-size="full" data-align="left">
-        {{ preContentHtml|e('wp_kses_post')}}
+        {{ preContentHtml|e('wp_kses_post') }}
       </div>
     {% endif %}
     <ul class="components">
-      {% for componentBlock in componentBlocks %}
-        {% if componentBlock.readme %}
+      {% for component in componentBlocks %}
+        {% if component.readme %}
           <li class="component boxBorder" data-theme="reset">
-            {% if componentBlock.ctas.primary %}
-              <a href="{{ componentBlock.ctas.primary|e('esc_url') }}" class="componentLink" aria-hidden="true" tabindex="-1">
+            {% if component.ctas.primary %}
+              <a href="{{ component.ctas.primary|e('esc_url') }}" class="componentLink" aria-hidden="true" tabindex="-1">
             {% else %}
               <div class="componentLink">
             {% endif %}
-              {% if componentBlock.componentScreenshot %}
+              {% if component.componentScreenshot %}
                 <div class="imageWrapper">
-                  <img data-refs="images" class="lazyload image {{ componentBlock.componentScreenshot.aspect > (1280/800) ? 'image--isSmallerThanWrapper' }} "
-                      src="{{ placeholderImage(760, 760 / componentBlock.componentScreenshot.aspect, 'rgba(125, 125, 125, 0.1)') }}"
-                      width="{{ 760 }}"
-                      height="{{ (760 / componentBlock.componentScreenshot.aspect)|round }}"
-                      data-src="{{ componentBlock.componentScreenshot.src }}"
-                      data-sizes="auto"
-                      alt="{{ componentBlock.readme.title|e }}">
+                  <img
+                    data-refs="images"
+                    class="lazyload image {{ component.componentScreenshot.aspect > (1280 / 800) ? 'image--isSmallerThanWrapper' }}"
+                    src="{{ placeholderImage(component.componentScreenshot.width, component.componentScreenshot.height, 'rgba(125, 125, 125, 0.1)') }}"
+                    width="{{ component.componentScreenshot.width }}"
+                    height="{{ component.componentScreenshot.height }}"
+                    data-src="{{ component.componentScreenshot.src }}"
+                    data-sizes="auto"
+                    alt="{{ component.readme.title|e }}">
                 </div>
               {% endif %}
               <div class="content boxPadding">
-                <h3 class="h5">{{ componentBlock.readme.title }}</h3>
-                {{ componentBlock.readme.description }}
+                <h3 class="h5">{{ component.readme.title }}</h3>
+                {{ component.readme.description }}
               </div>
-            {% if componentBlock.ctas.primary %}
+            {% if component.ctas.primary %}
               </a>
             {% else %}
               </div>
             {% endif %}
-            {% if componentBlock.ctas.primary or componentBlock.ctas.secondary %}
+            {% if component.ctas.primary or component.ctas.secondary %}
               <footer>
-                {% if componentBlock.ctas.secondary %}
-                  <a href="{{ componentBlock.ctas.secondary|e('esc_url') }}" target="_blank" rel="noreferrer noopener" class="component-ctaSecondary">
+                {% if component.ctas.secondary %}
+                  <a href="{{ component.ctas.secondary|e('esc_url') }}" target="_blank" rel="noreferrer noopener" class="component-ctaSecondary">
                     {{ labels.code }}
-                    <span class="visuallyHidden">{{ componentBlock.readme.title ~ ' ' ~ labels.code }}</span>
+                    <span class="visuallyHidden">{{ component.readme.title ~ ' ' ~ labels.code }}</span>
                   </a>
                 {% endif %}
-                {% if componentBlock.ctas.primary %}
-                  <a href="{{ componentBlock.ctas.primary|e('esc_url') }}" class="button button--text">
-                  {{ labels.preview }}<span class="visuallyHidden">{{ componentBlock.readme.title }}</span></a>
+                {% if component.ctas.primary %}
+                  <a href="{{ component.ctas.primary|e('esc_url') }}" class="button button--text">
+                  {{ labels.preview }}<span class="visuallyHidden">{{ component.readme.title }}</span></a>
                 {% endif %}
               </footer>
             {% endif %}

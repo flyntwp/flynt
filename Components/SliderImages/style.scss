@@ -28,7 +28,7 @@ flynt-component[name='SliderImages'] {
       inset-block-start: 50%;
       justify-content: center;
       position: absolute;
-      transform: translateY(-50%);
+      translate: 0 -50%;
       z-index: 10;
 
       &::before {
@@ -59,7 +59,7 @@ flynt-component[name='SliderImages'] {
           content: '';
           inline-size: 0.75em;
           margin-inline-start: calc(0.25em + 2px);
-          transform: rotate(-45deg);
+          rotate: -45deg;
         }
       }
 
@@ -73,7 +73,7 @@ flynt-component[name='SliderImages'] {
           content: '';
           inline-size: 0.75em;
           margin-inline-end: calc(0.25em - 2px);
-          transform: rotate(45deg);
+          rotate: 45deg;
         }
       }
     }
@@ -87,7 +87,8 @@ flynt-component[name='SliderImages'] {
     &-image {
       block-size: 100%;
       inline-size: auto;
-      margin: 0 auto;
+      margin-block: 0;
+      margin-inline: auto;
     }
 
     &-caption {
@@ -97,7 +98,8 @@ flynt-component[name='SliderImages'] {
       inset-inline-end: 0;
       max-inline-size: 450px;
       overflow: hidden;
-      padding: 0.25rem 0.5rem;
+      padding-block: 0.25rem;
+      padding-inline: 0.5rem;
       position: absolute;
       z-index: 2;
 

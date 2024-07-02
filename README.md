@@ -11,14 +11,14 @@
 ## Dependencies
 
 * [WordPress](https://wordpress.org/) >= 6.1
-* [Node](https://nodejs.org/en/) = 18
+* [Node](https://nodejs.org/en/) = 20
 * [Composer](https://getcomposer.org/download/) >= 2.4
 * [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/) >= 6.0
 
 ## Install
 
 1. Clone this repo to `<your-project>/wp-content/themes`.
-2. Change the domain variable in `flynt/vite.config.js` to match your domain:  
+2. Change the domain variable in `flynt/vite.config.js` to match your domain:
 `const wordpressHost = 'http://your-project.test'`
 3. Navigate to the theme folder and run the following command in your terminal:
 
@@ -41,6 +41,30 @@ npm start
 ```
 
 All files in `assets` and `Components` will now be watched for changes and served. Happy coding!
+
+### Build
+
+After developing it is required to generate compiled files in the `./dist` folder.
+
+To generate the compiled files, run the following command:
+
+```
+# wp-content/themes/flynt
+npm run build
+```
+
+To skip the linting process (optional) and to generate the compiled files, run the command:
+
+```
+# wp-content/themes/flynt
+npm run build:production
+```
+
+**Optional:** To further reduce the project size by excluding development dependencies, run:
+```
+# wp-content/themes/flynt
+composer install --optimize-autoloader --no-dev
+```
 
 ### Base Style
 
@@ -119,7 +143,7 @@ Initialises after full page load, when the browser enters idle state.<br>
 Usage example: Elements that don’t need to be interactive immediately.
 * `load:on="visible"`<br>
 Initialises after the element get visible in the viewport.<br>
-Usage example: Elements that go “below the fold” or if you want to load it when the user sees it.
+Usage example: Elements that go “below the fold” or should be loaded when the user sees them.
 * `load:on="load"` (default)<br>
 Initialises immediately when the page loads.<br>
 Usage example: Elements that need to be interactive as soon as possible.
@@ -258,7 +282,7 @@ Renders a component. [See Page Templates](#page-templates).
 Useful in combination with lazysizes for lazy loading. Returns a "data:image/svg+xml;base64" placeholder image.
 
 ```twig
-{{ placeholderImage(768, (768 / image.aspect)|round, 'rgba(125, 125, 125, 0.1)') }}
+{{ placeholderImage(768, 512, 'rgba(125, 125, 125, 0.1)') }}
 ```
 
 *Example from [Components/BlockImage/index.twig](./Components/BlockImage/index.twig)*

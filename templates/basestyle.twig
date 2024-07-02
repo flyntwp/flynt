@@ -93,7 +93,7 @@
       {% endblock %}
     </div>
   </section>
-  <hr data-size="medium" data-align="center">
+  <div class="container"><hr data-size="medium" data-align="center"></div>
 
   <!-- 2. Typography -->
   <section class="container componentSpacing">
@@ -110,7 +110,6 @@
         <p>Paragraph: The quick brown fox jumps over the lazy dog</p>
         <p><label>Label: The quick brown fox jumps over the lazy dog</label></p>
         <p><figcaption>Caption: The quick brown fox jumps over the lazy dog</figcaption></p>
-
         <p>Paragraphs can contain any number of words or other elements. It can also contain <a href="https://www.google.com/search?q=HTML+Links" target="_blank">links</a>, <strong>bold</strong>, <em>italic</em>, <u>underline</u>, <s>strikethrough</s>, <sub>sub</sub>, <sup>sup</sup>, <small>small</small> <abbr title="Abbreviation">abbr.</abbr>, <mark>highlighted</mark>, <kbd>kbd</kbd>, <code>code</code> or other inline elements.</p>
         <p>This paragraph is a placeholder and it can be skipped. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet venenatis urna cursus. Amet nulla facilisi morbi tempus iaculis urna id volutpat lacus.</p>
         <blockquote>
@@ -119,8 +118,8 @@
         </blockquote>
         <p>This paragraph is a placeholder and it can be skipped. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet venenatis urna cursus. Amet nulla facilisi morbi tempus iaculis urna id volutpat lacus.</p>
         <figure>
-          <img src="https://via.placeholder.com/770x513?text=3:2%20ratio" width="770" height="513" alt="Placeholder">
-            <figcaption>A caption for the image</figcaption>
+          <img width="768" height="512" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' %3E%3Crect width='100%25' height='100%25' fill='%23ddd' /%3E%3Ctext x='50%25' y='50%25' alignment-baseline='middle' text-anchor='middle' fill='%23303030cc' font-size='30' font-family='sans-serif'%3E3:2 ratio%3C/text%3E%3C/svg%3E" alt="Placeholder">
+          <figcaption>A caption for the image</figcaption>
         </figure>
         <h3>Lists</h3>
         <p>Make sure you’re not resetting all list elements, because that might come in handy for styling other layout elements, but remain their purpose for formatted text.</p>
@@ -147,7 +146,7 @@
       {% endblock %}
     </div>
   </section>
-  <hr data-size="medium" data-align="center">
+  <div class="container"><hr data-size="medium" data-align="center"></div>
 
   <!-- 3. Buttons and Links -->
   <section class="container componentSpacing">
@@ -182,7 +181,7 @@
       {% endblock %}
     </div>
   </section>
-  <hr data-size="medium" data-align="center">
+  <div class="container"><hr data-size="medium" data-align="center"></div>
 
   <!-- 4. Forms -->
   <section class="container componentSpacing">
@@ -190,47 +189,47 @@
       <h2 id="forms">4. Forms <a href="#forms" aria-label="Link to Forms">#</a></h2>
       <p>Placing form elements on a page should just work without having to apply extra classes or custom wrapping elements. However, a <strong>&lt;fieldset&gt;</strong> element provides a nice opportunity to group multiple form elements.</p>
       {% block blockInputs %}
-        {% set formId = function('wp_generate_uuid4') %}
+        {% set form_id = function('wp_generate_uuid4') %}
         <fieldset>
-          <label for="textInput-{{ formId }}">Text Input</label><br>
-          <input id="textInput-{{ formId }}" type="text" name="text" size="30" placeholder="Placeholder">
+          <label for="textInput-{{ form_id }}">Text Input</label><br>
+          <input id="textInput-{{ form_id }}" type="text" name="text" size="30" placeholder="Placeholder">
           <br><br>
-          <label for="textInput-{{ formId }}-2">Text Input Disabled</label><br>
-          <input id="textInput-{{ formId }}-2" type="text" name="text" size="30" placeholder="Placeholder" disabled>
+          <label for="textInput-{{ form_id }}-2">Text Input Disabled</label><br>
+          <input id="textInput-{{ form_id }}-2" type="text" name="text" size="30" placeholder="Placeholder" disabled>
           <br><br>
-          <label for="textInput-{{ formId }}-3">Text Input Filled Invalid</label><br>
-          <input id="textInput-{{ formId }}-3" type="text" name="text" size="30" placeholder="Placeholder" pattern="[0-9]*" value="Only Numbers are valid"><br>
+          <label for="textInput-{{ form_id }}-3">Text Input Filled Invalid</label><br>
+          <input id="textInput-{{ form_id }}-3" type="text" name="text" size="30" placeholder="Placeholder" pattern="[0-9]*" value="Only Numbers are valid"><br>
           <br>
-          <label for="textarea-{{ formId }}">Your message</label><br>
-          <textarea id="textarea-{{ formId }}" placeholder="Placeholder"></textarea>
+          <label for="textarea-{{ form_id }}">Your message</label><br>
+          <textarea id="textarea-{{ form_id }}" placeholder="Placeholder"></textarea>
           <br><br>
-          <label class="visuallyHidden" for="selectInput-{{ formId }}">Select Input</label>
-          <select id="selectInput-{{ formId }}" name="select">
-            <option value="select-value-{{ formId }}-1">Select Option #1</option>
-            <option value="select-value-{{ formId }}-2">Select Option #2</option>
-            <option value="select-value-{{ formId }}-3">Select Option #3</option>
+          <label class="visuallyHidden" for="selectInput-{{ form_id }}">Select Input</label>
+          <select id="selectInput-{{ form_id }}" name="select">
+            <option value="select-value-{{ form_id }}-1">Select Option #1</option>
+            <option value="select-value-{{ form_id }}-2">Select Option #2</option>
+            <option value="select-value-{{ form_id }}-3">Select Option #3</option>
           </select>
         </fieldset>
 
         <p>The user agent stylesheet typically has a very weird <b>&lt;fieldset&gt;</b> and <b>&lt;legend&gt;</b> styling. But hey: why not customize it to our needs?!</p>
         <fieldset>
           <legend>Checkbox Inputs</legend>
-          <input type="checkbox" id="checkbox-{{ formId }}-1" required>
-          <label for="checkbox-{{ formId }}-1">Checkbox Label #1<sup>*</sup></label>
-          <input type="checkbox" id="checkbox-{{ formId }}-2">
-          <label for="checkbox-{{ formId }}-2">Checkbox Item #2 using <strong>Multiline content</strong> that takes over multiple lines. Lorem ipsum dolor sit amet, <a href="#table-of-contents">consectetur</a> adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</label>
-          <input type="checkbox" id="checkbox-{{ formId }}-3">
-          <label for="checkbox-{{ formId }}-3">Checkbox Label #3</label>
+          <input type="checkbox" id="checkbox-{{ form_id }}-1" required>
+          <label for="checkbox-{{ form_id }}-1">Checkbox Label #1<sup>*</sup></label>
+          <input type="checkbox" id="checkbox-{{ form_id }}-2">
+          <label for="checkbox-{{ form_id }}-2">Checkbox Item #2 using <strong>Multiline content</strong> that takes over multiple lines. Lorem ipsum dolor sit amet, <a href="#table-of-contents">consectetur</a> adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</label>
+          <input type="checkbox" id="checkbox-{{ form_id }}-3">
+          <label for="checkbox-{{ form_id }}-3">Checkbox Label #3</label>
         </fieldset>
 
         <fieldset>
           <legend>Radio Inputs</legend>
-          <input type="radio" id="radio-{{ formId }}-1" name="radio-group">
-          <label for="radio-{{ formId }}-1">Radio Label #1</label>
-          <input type="radio" id="radio-{{ formId }}-2" name="radio-group">
-          <label for="radio-{{ formId }}-2">Radio Item #2 using <strong>Multiline content</strong> that takes over multiple lines. Lorem ipsum dolor sit amet, <a href="#table-of-contents">consectetur</a> adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</label>
-          <input type="radio" id="radio-{{ formId }}-3" name="radio-group">
-          <label for="radio-{{ formId }}-3">Radio Label #3</label>
+          <input type="radio" id="radio-{{ form_id }}-1" name="radio-group">
+          <label for="radio-{{ form_id }}-1">Radio Label #1</label>
+          <input type="radio" id="radio-{{ form_id }}-2" name="radio-group">
+          <label for="radio-{{ form_id }}-2">Radio Item #2 using <strong>Multiline content</strong> that takes over multiple lines. Lorem ipsum dolor sit amet, <a href="#table-of-contents">consectetur</a> adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</label>
+          <input type="radio" id="radio-{{ form_id }}-3" name="radio-group">
+          <label for="radio-{{ form_id }}-3">Radio Label #3</label>
         </fieldset>
       {% endblock %}
     </div>
@@ -281,7 +280,7 @@
             </summary>
             <p>Using the attribute <code>data-theme="{{ theme }}"</code> allows you to style a group content as Theme {{ theme|capitalize }}.</p>
               <ol>
-                <li><a href="#theme-reset-colors">Colors</a></li>
+                <li><a href="#theme-{{ theme }}-colors">Colors</a></li>
                 <li><a href="#theme-{{ theme }}-typography">Typography</a></li>
                 <li><a href="#theme-{{ theme }}-buttons-and-links">Buttons and Links</a></li>
                 <li><a href="#theme-{{ theme }}-forms">Forms</a></li>
@@ -322,6 +321,7 @@
               <li><a href="#theme-{{ theme }}-typography">Typography</a></li>
               <li><a href="#theme-{{ theme }}-buttons-and-links">Buttons and Links</a></li>
               <li><a href="#theme-{{ theme }}-forms">Forms</a></li>
+              <li><a href="#theme-{{ theme }}-helpers">Helpers</a></li>
             </ol>
             <hr>
             <h2 id="theme-{{ theme }}-colors">1. Colors <a href="#theme-{{ theme }}-colors" aria-label="Link to Theme {{ theme|capitalize }} Colors">#</a></h2>

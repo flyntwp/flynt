@@ -17,10 +17,9 @@
     inset-block-start: 50%;
     inset-inline-start: 50%;
     position: absolute;
-    transform: translate(-50%, -50%);
-    transform-origin: left top;
     transition: 0.3s ease-in-out;
-    will-change: transform;
+    translate: -50% -50%;
+    will-change: translate;
   }
 
   &::before {
@@ -52,7 +51,8 @@
   &:hover {
     &::before,
     &::after {
-      transform: scale(1.1) translate(-50%, -50%);
+      scale: 1.1;
+      translate: -50% -50%;
     }
   }
 }

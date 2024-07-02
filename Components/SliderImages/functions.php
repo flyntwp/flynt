@@ -5,7 +5,7 @@ namespace Flynt\Components\SliderImages;
 use Flynt\FieldVariables;
 use Flynt\Utils\Options;
 
-add_filter('Flynt/addComponentData?name=SliderImages', function ($data) {
+add_filter('Flynt/addComponentData?name=SliderImages', function (array $data): array {
     $data['sliderOptions'] = Options::getTranslatable('SliderOptions');
     $data['jsonData'] = [
         'options' => array_merge($data['sliderOptions'], $data['options']),
@@ -13,7 +13,7 @@ add_filter('Flynt/addComponentData?name=SliderImages', function ($data) {
     return $data;
 });
 
-function getACFLayout()
+function getACFLayout(): array
 {
     return [
         'name' => 'sliderImages',

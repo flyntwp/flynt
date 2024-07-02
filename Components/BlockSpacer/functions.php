@@ -4,12 +4,12 @@ namespace Flynt\Components\BlockSpacer;
 
 use Flynt\FieldVariables;
 
-add_filter('Flynt/addComponentData?name=BlockSpacer', function ($data) {
+add_filter('Flynt/addComponentData?name=BlockSpacer', function (array $data): array {
     $data['status'] = $data['options']['percentageDistance'] >= 101 ? 'expand' : 'collapse';
     return $data;
 });
 
-function getACFLayout()
+function getACFLayout(): array
 {
     return [
         'name' => 'blockSpacer',

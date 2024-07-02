@@ -3,7 +3,7 @@
 use ACFComposer\ACFComposer;
 use Flynt\Components;
 
-add_action('Flynt/afterRegisterComponents', function () {
+add_action('Flynt/afterRegisterComponents', function (): void {
     ACFComposer::registerFieldGroup([
         'name' => 'reusableComponents',
         'title' => __('Reusable Components', 'flynt'),

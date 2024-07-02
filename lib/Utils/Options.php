@@ -46,18 +46,16 @@ class Options
 
     /**
      * Initialize the class.
-     *
-     * @return void
      */
-    public static function init()
+    public static function init(): void
     {
         if (static::$initialized) {
             return;
-        } else {
-            static::$initialized = true;
         }
 
-        add_action('current_screen', function ($currentScreen) {
+        static::$initialized = true;
+
+        add_action('current_screen', function ($currentScreen): void {
             $currentScreenId = strtolower($currentScreen->id);
             foreach (static::OPTION_TYPES as $optionType => $option) {
                 $isTranslatable = $option['translatable'];
@@ -76,13 +74,9 @@ class Options
                     StringHelpers::startsWith($subPageId, $currentScreenId);
                 if (!$isTranslatable && $isCurrentPage) {
                     // Set acf field values to default language.
-                    add_filter(
-                        'acf/settings/current_language',
-                        'Flynt\Utils\Options::getDefaultAcfLanguage',
-                        101
-                    );
+                    add_filter('acf/settings/current_language', [self::class, 'getDefaultAcfLanguage'], 101);
                     // Hide language selector in admin bar.
-                    add_action('wp_before_admin_bar_render', function () {
+                    add_action('wp_before_admin_bar_render', function (): void {
                         $adminBar = $GLOBALS['wp_admin_bar'];
                         $adminBar->remove_menu('WPML_ALS');
                     });
@@ -118,6 +112,7 @@ class Options
                 'menu_title' => $title
             ];
         }
+
         return static::$optionPages[$optionType];
     }
 
@@ -228,19 +223,19 @@ class Options
 
         $prefix = implode('_', [$optionType, $scope, '']);
         $isTranslatable = static::OPTION_TYPES[$optionType]['translatable'];
-        if (empty($fieldName)) {
+        if ($fieldName === null || $fieldName === '' || $fieldName === '0') {
             $optionNames = ((static::$registeredOptions[$optionType] ?? [])[$scope] ?? []);
             return array_combine(
                 $optionNames,
-                array_map(function ($optionName) use ($prefix, $isTranslatable) {
+                array_map(function (string $optionName) use ($prefix, $isTranslatable) {
                     $fieldKey = $prefix . $optionName;
                     return static::getOptionField($fieldKey, $isTranslatable);
                 }, $optionNames)
             );
-        } else {
-            $fieldKey = $prefix . $fieldName;
-            return static::getOptionField($fieldKey, $isTranslatable);
         }
+
+        $fieldKey = $prefix . $fieldName;
+        return static::getOptionField($fieldKey, $isTranslatable);
     }
 
     /**
@@ -249,10 +244,8 @@ class Options
      * @param string $scope Scope of the option.
      * @param array $fields Fields to add.
      * @param string $category Category of the option.
-     *
-     * @return void
      */
-    public static function addTranslatable(string $scope, array $fields, string $category = 'Default')
+    public static function addTranslatable(string $scope, array $fields, string $category = 'Default'): void
     {
         static::addOptions($scope, $fields, 'translatable', $category);
     }
@@ -263,10 +256,8 @@ class Options
      * @param string $scope Scope of the option.
      * @param array $fields Fields to add.
      * @param string $category Category of the option.
-     *
-     * @return void
      */
-    public static function addGlobal(string $scope, array $fields, string $category = 'Default')
+    public static function addGlobal(string $scope, array $fields, string $category = 'Default'): void
     {
         static::addOptions($scope, $fields, 'global', $category);
     }
@@ -278,10 +269,8 @@ class Options
      * @param array $fields Fields to add.
      * @param string $type Type of the option page.
      * @param string $category Category of the option.
-     *
-     * @return void
      */
-    public static function addOptions(string $scope, array $fields, string $type, string $category = 'Default')
+    public static function addOptions(string $scope, array $fields, string $type, string $category = 'Default'): void
     {
         static::createOptionSubPage($type, $category);
         $fieldGroupTitle = StringHelpers::splitCamelCase($scope);
@@ -307,7 +296,7 @@ class Options
      */
     protected static function registerOptionNames(string $type, string $scope, array $fields)
     {
-        static::$registeredOptions[$type] = static::$registeredOptions[$type] ?? [];
+        static::$registeredOptions[$type] ??= [];
         static::$registeredOptions[$type][$scope] = array_column($fields, 'name');
         return static::$registeredOptions;
     }
@@ -362,12 +351,10 @@ class Options
      *
      * @param array $fields Fields to prefix.
      * @param string $prefix Prefix to add.
-     *
-     * @return array
      */
-    protected static function prefixFields(array $fields, string $prefix)
+    protected static function prefixFields(array $fields, string $prefix): array
     {
-        return array_map(function ($field) use ($prefix) {
+        return array_map(function (array $field) use ($prefix): array {
             $field['name'] = $prefix . '_' . $field['name'];
             return $field;
         }, $fields);
@@ -379,17 +366,16 @@ class Options
      * @param string $optionType Type of the option page.
      * @param string $scope Scope of the option.
      * @param string $fieldName Name of the field.
-     *
-     * @return boolean
      */
-    protected static function checkRequiredHooks(string $optionType, string $scope, ?string $fieldName = null)
+    protected static function checkRequiredHooks(string $optionType, string $scope, ?string $fieldName = null): bool
     {
         if (did_action('acf/init') < 1) {
             $parameters = "{$optionType}, {$scope}, ";
-            $parameters .= isset($fieldName) ? $fieldName : 'NULL';
+            $parameters .= $fieldName ?? 'NULL';
             trigger_error("Could not get option/s for [{$parameters}]. Required hooks have not yet been executed! Please make sure to run `Options::get()` after the `acf/init` action is finished.", E_USER_WARNING);
             return false;
         }
+
         return true;
     }
 
@@ -407,11 +393,9 @@ class Options
             $option = get_field('field_' . $key, 'option');
         } else {
             // Switch to default language to get global options.
-            add_filter('acf/settings/current_language', 'Flynt\Utils\Options::getDefaultAcfLanguage', 100);
-
+            add_filter('acf/settings/current_language', [self::class, 'getDefaultAcfLanguage'], 100);
             $option = get_field('field_' . $key, 'option');
-
-            remove_filter('acf/settings/current_language', 'Flynt\Utils\Options::getDefaultAcfLanguage', 100);
+            remove_filter('acf/settings/current_language', [self::class, 'getDefaultAcfLanguage'], 100);
         }
 
         return $option;

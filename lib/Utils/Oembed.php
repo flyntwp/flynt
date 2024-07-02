@@ -20,22 +20,23 @@ class Oembed
      *
      * @return string The modified oembed iframe HTML tag.
      */
-    public static function setSrcAsDataAttribute(string $iframeTagHtml, array $additionalGetParams)
+    public static function setSrcAsDataAttribute(string $iframeTagHtml, array $additionalGetParams): string
     {
         $output = '';
-        if ($iframeTagHtml) {
-            $Dom = new DOMDocument();
-            $Dom->loadHTML($iframeTagHtml);
-            $domNodes = $Dom->getElementsByTagName('iframe');
-            foreach ($domNodes as $node) {
-                $src = $node->getAttribute('src');
+        if ($iframeTagHtml !== '' && $iframeTagHtml !== '0') {
+            $domDocument = new DOMDocument();
+            $domDocument->loadHTML($iframeTagHtml);
+            $domNodes = $domDocument->getElementsByTagName('iframe');
+            foreach ($domNodes as $domNode) {
+                $src = $domNode->getAttribute('src');
                 // Add additional get parameters to existing oembed url.
                 $src = add_query_arg($additionalGetParams, $src);
-                $node->removeAttribute('src');
-                $node->setAttribute('data-src', $src);
-                $output .= $Dom->saveHTML($node);
+                $domNode->removeAttribute('src');
+                $domNode->setAttribute('data-src', $src);
+                $output .= $domDocument->saveHTML($domNode);
             }
         }
+
         return $output;
     }
 }

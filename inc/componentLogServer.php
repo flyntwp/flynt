@@ -15,42 +15,41 @@
 
 namespace Flynt\ComponentLogServer;
 
-add_action('Flynt/afterRegisterComponents', function () {
-    if ('production' !== wp_get_environment_type() && isset($_GET['log'])) {
-        add_filter("Flynt/addComponentData", 'Flynt\ComponentLogServer\addDebugInfo', 99999, 2);
+add_action('Flynt/afterRegisterComponents', function (): void {
+    if ('production' === wp_get_environment_type()) {
+        return;
     }
-}, 11);
 
-/**
- * @param mixed $data
- * @param mixed $componentName
- * @return mixed
- */
-function addDebugInfo($data, $componentName)
+    if (!isset($_GET['log'])) {
+        return;
+    }
+
+    add_filter("Flynt/addComponentData", 'Flynt\ComponentLogServer\addDebugInfo', PHP_INT_MAX, 2);
+}, PHP_INT_MAX);
+
+
+function addDebugInfo(array $data, string $componentName): array
 {
     $filterByComponents = [];
     if (isset($_GET['log']) && isset($_GET['component'])) {
         $filterByComponents = explode(',', $_GET['component']);
     }
 
-    if (in_array($componentName, $filterByComponents) || empty($filterByComponents)) {
+    if (in_array($componentName, $filterByComponents) || $filterByComponents === []) {
         consoleDebug([
             'component' => $componentName,
             'data' => $data,
         ]);
     }
+
     return $data;
 }
 
-/**
- * @param mixed $data
- * @return void
- */
-function consoleDebug($data)
+function consoleDebug(array $data): void
 {
     $output = json_encode($data);
     $result =  "<script>console.log({$output});</script>\n";
-    add_action('wp_footer', function () use ($result) {
+    add_action('wp_footer', function () use ($result): void {
         echo $result;
     }, 30);
 }

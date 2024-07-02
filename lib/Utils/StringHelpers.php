@@ -13,10 +13,8 @@ class StringHelpers
      * @since 0.1.0
      *
      * @param string $str The string to convert.
-     *
-     * @return string
      */
-    public static function camelCaseToKebab(string $str)
+    public static function camelCaseToKebab(string $str): string
     {
         return strtolower(preg_replace('/([a-zA-Z])(?=[A-Z0-9])/', '$1-', $str));
     }
@@ -43,10 +41,8 @@ class StringHelpers
      * @since 0.1.0
      *
      * @param string $str The string to split.
-     *
-     * @return string
      */
-    public static function splitCamelCase(string $str)
+    public static function splitCamelCase(string $str): string
     {
         $a = preg_split('/(^[^A-Z]+|[A-Z][^A-Z]+)/', $str, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
         return implode(' ', $a);
@@ -68,6 +64,7 @@ class StringHelpers
         if (false === $capitalizeFirstCharacter) {
             $str[0] = strtolower($str[0]);
         }
+
         return $str;
     }
 
@@ -78,14 +75,13 @@ class StringHelpers
      *
      * @param string $prefix The prefix to be removed.
      * @param string $str The string to manipulate.
-     *
-     * @return string
      */
-    public static function removePrefix(string $prefix, string $str)
+    public static function removePrefix(string $prefix, string $str): string
     {
-        if (substr($str, 0, strlen($prefix)) == $prefix) {
+        if (substr($str, 0, strlen($prefix)) === $prefix) {
             return substr($str, strlen($prefix));
         }
+
         return $str;
     }
 
@@ -99,7 +95,7 @@ class StringHelpers
      *
      * @return boolean Returns true if the subject string starts with the search string.
      */
-    public static function startsWith(string $search, string $subject)
+    public static function startsWith(string $search, string $subject): bool
     {
         return substr($subject, 0, strlen($search)) === $search;
     }
@@ -114,13 +110,14 @@ class StringHelpers
      *
      * @return boolean Returns true if the subject string ends with the search string.
      */
-    public static function endsWith(string $search, string $subject)
+    public static function endsWith(string $search, string $subject): bool
     {
         $searchLength = strlen($search);
         $subjectLength = strlen($subject);
         if ($searchLength > $subjectLength) {
             return false;
         }
+
         return substr_compare($subject, $search, $subjectLength - $searchLength, $searchLength) === 0;
     }
 }
