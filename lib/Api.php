@@ -58,8 +58,6 @@ class Api
             $data
         );
 
-        do_action('Flynt/afterRenderComponent', $componentName);
-
         return is_null($output) ? '' : $output;
     }
 

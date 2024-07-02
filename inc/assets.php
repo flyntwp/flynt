@@ -36,43 +36,49 @@ add_action('admin_enqueue_scripts', function (): void {
     wp_enqueue_style('Flynt/assets/admin', Asset::requireUrl('assets/admin.scss'), [], null);
 });
 
+// Register component stylesheets only when a component is rendered.
+add_filter('Flynt/renderComponent', function ($output, $componentName) {
+    $componentManager = ComponentManager::getInstance();
+    $stylesFilePath = $componentManager->getComponentFilePath($componentName, 'style.scss');
+    if (false !== $stylesFilePath) {
+        $stylesFilePath = str_replace(trailingslashit(get_template_directory()), '', $stylesFilePath);
+        $url = Asset::requireUrl($stylesFilePath);
+        $handle = "Flynt/Components/{$componentName}";
+
+        if (!wp_style_is($handle, 'registered')) {
+            wp_register_style("Flynt/Components/{$componentName}", $url, [], null);
+        }
+    }
+
+    return $output;
+}, 10, 2);
+
 // Add component stylesheets to the head.
 add_filter('timber/compile/result', function ($output) {
     if (strpos($output, '<!DOCTYPE html>') === false) {
         return $output;
     }
 
-    $componentManager = ComponentManager::getInstance();
-    $components = $componentManager->getAll();
-    foreach ($components as $componentName => $componentPath) {
-        $handle = "Flynt/assets/components/{$componentName}";
-        if (wp_style_is($handle, 'registered') && !wp_style_is($handle, 'enqueued')) {
-            $stylesFilePath = $componentManager->getComponentFilePath($componentName, 'style.scss');
-            if (false !== $stylesFilePath) {
-                $stylesFilePath = str_replace(trailingslashit(get_template_directory()), '', $stylesFilePath);
-                $href = Asset::requireUrl($stylesFilePath);
-                $output = str_replace(
-                    '</head>',
-                    "<link rel=\"stylesheet\" id=\"{$handle}\" href=\"{$href}\" />\n</head>",
-                    $output
-                );
-            }
+    global $wp_styles;
+    if (empty($wp_styles) || empty($wp_styles->registered)) {
+        return $output;
+    }
+
+    $filteredStyles = array_filter($wp_styles->registered, function ($style) {
+        return isset($style->handle) && strpos($style->handle, 'Flynt/Components/') === 0;
+    });
+
+    $styleLinks = '';
+    foreach ($filteredStyles as $style) {
+        if (isset($style->src) && !empty($style->src)) {
+            $escapedSrc = esc_url($style->src);
+            $styleLinks .= "<link rel=\"stylesheet\" id=\"{$style->handle}\" href=\"{$escapedSrc}\" />\n";
         }
     }
 
-    return $output;
+    if ($styleLinks === '') {
+        return $output;
+    }
+
+    return str_replace('</head>', $styleLinks . '</head>', $output);
 }, PHP_INT_MAX);
-
-add_action('Flynt/afterRenderComponent', function ($componentName) {
-    $componentManager = ComponentManager::getInstance();
-    $stylesFilePath = $componentManager->getComponentFilePath($componentName, 'style.scss');
-    if (false !== $stylesFilePath) {
-        $stylesFilePath = str_replace(trailingslashit(get_template_directory()), '', $stylesFilePath);
-        $url = Asset::requireUrl($stylesFilePath);
-        $handle = "Flynt/assets/components{$componentName}";
-
-        if (!wp_style_is($handle, 'registered')) {
-            wp_register_style("Flynt/assets/components/{$componentName}", $url, [], null);
-        }
-    }
-}, 1, 10);
