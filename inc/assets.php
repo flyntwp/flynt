@@ -68,17 +68,20 @@ add_filter('timber/compile/result', function ($output) {
         return isset($style->handle) && strpos($style->handle, 'Flynt/Components/') === 0;
     });
 
-    $styleLinks = '';
+    $styleLinksContent = '';
     foreach ($filteredStyles as $style) {
         if (isset($style->src) && !empty($style->src)) {
-            $escapedSrc = esc_url($style->src);
-            $styleLinks .= "<link rel=\"stylesheet\" id=\"{$style->handle}\" href=\"{$escapedSrc}\" />\n";
+            ob_start();
+            $success = $wp_styles->do_item($style->handle);
+            $styleContent = ob_get_clean();
+
+            if (!$success) {
+                continue;
+            }
+
+            $styleLinksContent .= $styleContent;
         }
     }
 
-    if ($styleLinks === '') {
-        return $output;
-    }
-
-    return str_replace('</head>', $styleLinks . '</head>', $output);
+    return str_replace('</head>', $styleLinksContent . '</head>', $output);
 }, PHP_INT_MAX);
