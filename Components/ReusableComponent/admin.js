@@ -1,11 +1,16 @@
 /* globals acf jQuery */
 
 (function ($) {
+  if (typeof acf === 'undefined') {
+    return
+  }
+
   const select2init = function () {
     acf.addAction('select2_init', function ($select, args, settings, field) {
       const $fieldEl = field.$el
+      const fieldName = $fieldEl ? $fieldEl.data('name') || '' : ''
 
-      if ($fieldEl.data('name') === 'reusableComponent') {
+      if (fieldName === 'reusableComponent') {
         $select.on('change', { $fieldEl }, function () {
           const postId = $(this).val()
           const postTitle = $(this).find('option:selected').text()
@@ -23,7 +28,5 @@
     })
   }
 
-  if (typeof acf !== 'undefined') {
-    select2init()
-  }
+  select2init()
 })(jQuery)
