@@ -76,7 +76,7 @@ function transformGallery($value, $id, array $field)
     }
 
     return array_map(function ($image) {
-        return Timber::get_Image($image);
+        return Timber::get_image($image);
     }, $value);
 }
 
