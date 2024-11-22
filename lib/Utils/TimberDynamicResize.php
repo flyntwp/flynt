@@ -95,10 +95,11 @@ class TimberDynamicResize
      */
     private function getDefaultRelativeUploadDir()
     {
-        require_once(ABSPATH . 'wp-admin/includes/file.php');
-
         $uploadDir = wp_upload_dir();
-        return $uploadDir['relative'] ?? '/wp-content/uploads';
+        $path = parse_url((string) $uploadDir['baseurl'], PHP_URL_PATH);
+        $relativePath = $path ? wp_normalize_path($path) : '';
+
+        return $relativePath ?: 'wp-content/uploads';
     }
 
     /**
