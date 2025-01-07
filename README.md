@@ -195,7 +195,7 @@ function getACFLayout()
 
 ### Field Groups
 
-Field groups are needed to show registered fields in the WordPress back-end. All field groups are created in the `./inc/fieldGroups` folder. Two field groups exist by default: [`pageComponents.php`](https://github.com/flyntwp/flynt/tree/master/inc/fieldGroups/pageComponents.php) and [`postComponents.php`](https://github.com/flyntwp/flynt/tree/master/inc/fieldGroups/postComponents.php).
+Field groups are needed to show registered fields in the WordPress back-end. All field groups are created in the `./inc/fieldGroups` folder. Two field groups exist by default: [`pageComponents.php`](https://github.com/flyntwp/flynt/tree/master/inc/fieldGroups/pageComponents.php) and [`reusableComponents.php`](https://github.com/flyntwp/flynt/tree/master/inc/fieldGroups/reusableComponents.php).
 
 We call the function `getACFLayout()` defined in the `functions.php` file of each component to load fields into a field group.
 
