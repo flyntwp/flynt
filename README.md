@@ -339,6 +339,19 @@ VITE_DEV_SERVER_KEY=<path-to-ssl-certificate-key>/your-project.test_key.pem
 VITE_DEV_SERVER_CERT=<path-to-ssl-certificate-cert>/your-project.test_cert.pem
 ```
 
+## Further Resources
+- [Flynt Website 🏠](https://flyntwp.com/) - Learn more about Flynt and its features.
+- [Flynt BaseStyle 🎨](https://flyntwp.com/BaseStyle/) - The default BaseStyle.
+- [Flynt Components 🧩](https://flyntwp.com/components/) - Free & Premium Component demos.
+- [Flynt Design Kit 🧑‍🎨](https://flyntwp.com/introducing-our-flynt-2-0-design-kit-for-figma/) - The Figma template to design custom websites.
+- [VS Code Snippets ✂️](https://github.com/flyntwp/flynt-vscode-snippets) - Code snippets and ACF field templates for Flynt.
+- [flynt-add-ons 🛠️](https://github.com/awesome-flynt/flynt-add-ons) - Additional tools and extensions for Flynt.
+- [Beginner's Guide to Flynt Development 📖](https://flyntwp.com/the-beginners-guide-to-developing-a-custom-wordpress-theme-with-flynt/) - A quick start to getting hands-on with Flynt.
+- [Continuous Deployments for Flynt Using GitHub Actions 📖](https://css-tricks.com/continuous-deployments-for-wordpress-using-github-actions/) - How to automate Flynt deployments.
+- [Flynt Introduction & Tutorial 📹](https://www.youtube.com/watch?v=8as8rVNcJuU) - A comprehensive video tutorial by [@aaronmeder](https://github.com/aaronmeder).
+- [What's New in Flynt v2.0 📹](https://www.youtube.com/watch?v=lt6TwEyVXm8) - A closer look at Flynt's latest features and changes.
+- [Understanding WordPress Starter Themes 📹](https://www.youtube.com/watch?v=xvi1yNz0MI8) - The motivation and background story of Flynt.
+
 ## Maintainers
 
 This project is maintained by [Bleech](https://bleech.de/en/).
