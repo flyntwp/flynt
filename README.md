@@ -344,6 +344,7 @@ VITE_DEV_SERVER_CERT=<path-to-ssl-certificate-cert>/your-project.test_cert.pem
 - [Flynt BaseStyle 🎨](https://flyntwp.com/BaseStyle/) - The default BaseStyle.
 - [Flynt Components 🧩](https://flyntwp.com/components/) - Free & Premium Component demos.
 - [Flynt Design Kit 🧑‍🎨](https://flyntwp.com/introducing-our-flynt-2-0-design-kit-for-figma/) - The Figma template to design custom websites.
+- [VS Code Snippets ✂️](https://github.com/flyntwp/flynt-vscode-snippets) - Code snippets and ACF field templates for Flynt.
 - [flynt-add-ons 🛠️](https://github.com/awesome-flynt/flynt-add-ons) - Additional tools and extensions for Flynt.
 - [Beginner's Guide to Flynt Development 📖](https://flyntwp.com/the-beginners-guide-to-developing-a-custom-wordpress-theme-with-flynt/) - A quick start to getting hands-on with Flynt.
 - [Continuous Deployments for Flynt Using GitHub Actions 📖](https://css-tricks.com/continuous-deployments-for-wordpress-using-github-actions/) - How to automate Flynt deployments.
