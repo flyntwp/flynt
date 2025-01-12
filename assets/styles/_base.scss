@@ -475,7 +475,7 @@ flynt-component {
 }
 
 // Balance layouted text lines on mobile.
-@media (max-width: $breakpoint-tablet - 1) {
+@media (max-width: ($breakpoint-tablet - 1)) {
   [data-size="wide"],
   [data-size="full"],
   [data-text-align="center"] {
