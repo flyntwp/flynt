@@ -58,12 +58,11 @@ export default defineConfig(({ mode }) => {
       host: 'localhost' // preserve conflicts with IpV6
     },
     build: {
-      // generate manifest.json in outDir
-      manifest: true,
+      manifest: true, // generate manifest.json in outDir
       outDir: dest,
+      assetsInlineLimit: 0, // disable assets inlining
       rollupOptions: {
-        // overwrite default .html entry
-        input: entries
+        input: entries // overwrite default .html entry
       }
     }
   }
