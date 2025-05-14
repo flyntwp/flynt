@@ -14,9 +14,11 @@ use WP_Rewrite;
  */
 class TimberDynamicResize
 {
-    private const IMAGE_QUERY_VAR = 'resized-images';
+    public const RESIZED_DIR_NAME = 'resized';
 
-    private const IMAGE_PATH_SEPARATOR = 'resized';
+    public const TOKEN_QUERY_VAR = 'resizeDynamicToken';
+
+    private const IMAGE_QUERY_VAR = 'resized-images';
 
     private const VERSION = '1.0';
 
@@ -59,7 +61,7 @@ class TimberDynamicResize
      */
     public function parseRequest(WP $wp): void
     {
-        if (isset($wp->query_vars[self::IMAGE_QUERY_VAR])) {
+        if (isset($wp->query_vars[self::IMAGE_QUERY_VAR]) && !empty($wp->query_vars[self::IMAGE_QUERY_VAR])) {
             $this->checkAndServeImage($wp->query_vars[self::IMAGE_QUERY_VAR]);
         }
     }
@@ -178,7 +180,7 @@ class TimberDynamicResize
             }
 
             $token = $this->generateToken($resizedImageUrl);
-            return add_query_arg('ref', $token, $resizedImageUrl);
+            return add_query_arg(self::TOKEN_QUERY_VAR, $token, $resizedImageUrl);
         }
 
         return $this->generateImage($src, $w, $h, $crop, $force);
@@ -208,6 +210,10 @@ class TimberDynamicResize
     private function validateToken(string $resizedImageUrl, string $token): bool
     {
         $expectedToken = $this->generateToken($resizedImageUrl);
+        error_log('validateToken:');
+        error_log('resizedImageUrl: ' . $resizedImageUrl);
+        error_log('provided token: ' . $token);
+        error_log('expected token: ' . $expectedToken);
         return hash_equals($expectedToken, $token);
     }
 
@@ -232,7 +238,7 @@ class TimberDynamicResize
         $routeName = self::IMAGE_QUERY_VAR;
         $relativeUploadDir = $this->getRelativeUploadDir();
         $relativeUploadDir = ltrim(untrailingslashit($relativeUploadDir), '/');
-        $relativeUploadDir = trailingslashit($relativeUploadDir) . self::IMAGE_PATH_SEPARATOR;
+        $relativeUploadDir = trailingslashit($relativeUploadDir) . self::RESIZED_DIR_NAME;
 
         $wpRewrite->rules = array_merge(
             ["^{$relativeUploadDir}/?(.*?)/?$" => "index.php?{$routeName}=\$matches[1]"],
@@ -274,7 +280,11 @@ class TimberDynamicResize
         }
 
         $originalImageRelativePath = $matches[1] . $matches[5];
-        $originalImageUrl = trailingslashit($this->getUploadsBaseurl()) . $originalImageRelativePath;
+        // Multiple site fix - prevent duplicate 'sites/X/' in the path, due getUploadsBaseurl() returns the base URL for the current site.
+        $originalImageRelativePath = preg_replace('#^sites/\d+/resized/#', '', $originalImageRelativePath);
+
+        $uploadsBaseUrl = trailingslashit($this->getUploadsBaseurl());
+        $originalImageUrl = $uploadsBaseUrl . $originalImageRelativePath;
         $w = (int) $matches[2];
         $h = (int) $matches[3];
         $crop = $matches[4];
@@ -283,12 +293,13 @@ class TimberDynamicResize
         $resizedImageLocation = ImageHelper::get_server_location($resizedImageUrl);
 
         if (file_exists($resizedImageLocation)) {
+            nocache_headers();
             status_header(301);
             header('Location: ' . $resizedImageUrl);
             exit();
         }
 
-        $token = isset($_GET['ref']) ? sanitize_key($_GET['ref']) : '';
+        $token = isset($_GET[self::TOKEN_QUERY_VAR]) ? sanitize_key($_GET[self::TOKEN_QUERY_VAR]) : '';
         if (!$this->validateToken($resizedImageUrl, $token)) {
             $this->serve403();
         }
@@ -304,11 +315,10 @@ class TimberDynamicResize
         }
 
         try {
-            $resizedImageUrl = $this->generateImage($originalImageUrl, $w, $h, $crop);
-            header("Content-type: $mime");
-            header("X-Dynamic-Resize: Image Processed; Width=$w; Height=$h; Crop=$crop");
-            $destination = ImageHelper::get_server_location($resizedImageUrl);
-            echo file_get_contents($destination);
+            $this->generateImage($originalImageUrl, $w, $h, $crop);
+            nocache_headers();
+            status_header(301);
+            header('Location: ' . $resizedImageUrl);
             exit();
         } catch (\Exception $e) {
             status_header(500);
@@ -401,7 +411,7 @@ class TimberDynamicResize
         $baseurl = $this->getUploadsBaseurl();
         return str_replace(
             $baseurl,
-            trailingslashit($baseurl) . self::IMAGE_PATH_SEPARATOR,
+            trailingslashit($baseurl) . self::RESIZED_DIR_NAME,
             $url
         );
     }
@@ -418,7 +428,7 @@ class TimberDynamicResize
         $basepath = $this->getUploadsBasedir();
         return str_replace(
             $basepath,
-            trailingslashit($basepath) . self::IMAGE_PATH_SEPARATOR,
+            trailingslashit($basepath) . self::RESIZED_DIR_NAME,
             $path === '' || $path === '0' ? $basepath : $path
         );
     }
