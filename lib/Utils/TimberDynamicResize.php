@@ -213,10 +213,6 @@ class TimberDynamicResize
     private function validateToken(string $resizedImageUrl, string $token): bool
     {
         $expectedToken = $this->generateToken($resizedImageUrl);
-        error_log('validateToken:');
-        error_log('resizedImageUrl: ' . $resizedImageUrl);
-        error_log('provided token: ' . $token);
-        error_log('expected token: ' . $expectedToken);
         return hash_equals($expectedToken, $token);
     }
 
@@ -227,7 +223,7 @@ class TimberDynamicResize
      */
     private function getSalt(): string
     {
-        $salt = defined('AUTH_SALT') ? AUTH_SALT : __DIR__;
+        $salt = defined('NONCE_SALT') ? NONCE_SALT : __DIR__;
         return hash('sha256', $salt . self::VERSION);
     }
 
