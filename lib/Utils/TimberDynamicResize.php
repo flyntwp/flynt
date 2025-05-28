@@ -289,7 +289,6 @@ class TimberDynamicResize
         $w = (int) $matches[2];
         $h = (int) $matches[3];
         $crop = $matches[4];
-
         $resizedImageUrl = $this->getResizedImageUrl($originalImageUrl, $w, $h, $crop);
         $resizedImageLocation = ImageHelper::get_server_location($resizedImageUrl);
 
@@ -299,8 +298,11 @@ class TimberDynamicResize
             $lockTime = filemtime($lockFile);
             if ($lockTime && (time() - $lockTime) < self::LOCK_TIMEOUT) {
                 // Another process is already generating this image.
-                status_header(302);
-                exit('Image is still being generated.');
+                $token = $this->generateToken($resizedImageUrl);
+                $redirectUrl = add_query_arg(self::TOKEN_QUERY_VAR, $token, $resizedImageUrl);
+                status_header(307);
+                header('Location: ' . $redirectUrl);
+                exit();
             }
             // Lock expired, remove it.
             @unlink($lockFile);
