@@ -23,6 +23,8 @@ class TimberDynamicResize
 
     private const VERSION = '1.0';
 
+    private const LOCK_TIMEOUT = 30;
+
     /**
      * The internal value of the dynamic image generation setting.
      *
@@ -291,6 +293,19 @@ class TimberDynamicResize
         $resizedImageUrl = $this->getResizedImageUrl($originalImageUrl, $w, $h, $crop);
         $resizedImageLocation = ImageHelper::get_server_location($resizedImageUrl);
 
+        // Check for lock file early to avoid unnecessary processing.
+        $lockFile = $resizedImageLocation . '.lock';
+        if (file_exists($lockFile)) {
+            $lockTime = filemtime($lockFile);
+            if ($lockTime && (time() - $lockTime) < self::LOCK_TIMEOUT) {
+                // Another process is already generating this image.
+                status_header(302);
+                exit('Image is still being generated.');
+            }
+            // Lock expired, remove it.
+            @unlink($lockFile);
+        }
+
         if (file_exists($resizedImageLocation)) {
             nocache_headers();
             status_header(301);
@@ -314,12 +329,21 @@ class TimberDynamicResize
         }
 
         try {
+            // Create lock file.
+            file_put_contents($lockFile, time());
+
             $this->generateImage($originalImageUrl, $w, $h, $crop);
+
+            // Remove lock file.
+            @unlink($lockFile);
+
             nocache_headers();
             status_header(301);
             header('Location: ' . $resizedImageUrl);
             exit();
         } catch (\Exception $e) {
+            // Clean up lock file on error.
+            @unlink($lockFile);
             status_header(500);
             error_log($e->getMessage());
             exit();
