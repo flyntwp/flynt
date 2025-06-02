@@ -8,12 +8,12 @@
   </head>
   <body>
     {{ function('wp_body_open') }}
-    <a href="#mainContent" class="visuallyHidden-focusable">
-      {{- theme.labels.skipToMainContent|e -}}
-    </a>
     {% block layout %}
       <div class="pageWrapper">
         <header class="mainHeader">
+          <a href="#mainContent" class="visuallyHidden-focusable">
+            {{- theme.labels.skipToMainContent|e -}}
+          </a>
           {% block header %}
             {{ renderComponent('NavigationMain') }}
             {{ renderComponent('NavigationBurger') }}
