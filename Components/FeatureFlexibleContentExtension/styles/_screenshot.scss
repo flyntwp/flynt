@@ -1,44 +1,41 @@
-.flyntComponentScreenshot {
-  background-color: #fff;
-  block-size: 40px;
-  border: 1px solid #ccd0d4;
-  display: inline-block;
-  inset-block-end: 4px;
-  margin-inline-start: 5px;
-  position: absolute;
+.componentScreenshot {
+  align-items: center;
+  display: flex;
+  height: 40px;
+  margin-left: 5px;
 
   &-imageWrapper {
-    inset-block-end: 0;
-    inset-inline-end: 100%;
+    bottom: 0;
     position: absolute;
+    right: 100%;
   }
 
   &-previewImageLarge {
     background: #fff;
-    block-size: auto;
     border: 3px solid #2f353e;
     border-radius: 3px;
+    bottom: 0;
     display: block;
-    inline-size: 33vw;
-    inset-block-end: 0;
-    inset-inline-end: 10px;
-    max-inline-size: 400px;
+    height: auto;
+    max-width: 400px;
     object-fit: cover;
     position: absolute;
+    right: 10px;
+    width: 33vw;
   }
 
   &-previewImageSmall {
-    block-size: 40px;
+    border: 1px solid #ccd0d4;
     display: block;
-    inline-size: auto;
-    max-block-size: 40px;
+    height: 40px;
+    max-height: 40px;
+    width: auto;
+
   }
 
   &-label {
-    inset-block-end: 4px;
-    inset-inline-start: 100%;
-    padding-inline-start: 8px;
-    position: absolute;
+    left: 100%;
+    padding-left: 10px;
     white-space: nowrap;
   }
 }
