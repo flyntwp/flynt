@@ -1,11 +1,7 @@
 .flyntComponentScreenshot {
-  background-color: #fff;
-  block-size: 40px;
-  border: 1px solid #ccd0d4;
-  display: inline-block;
-  inset-block-end: 4px;
-  margin-inline-start: 5px;
-  position: absolute;
+  align-items: center;
+  display: flex;
+  gap: 8px;
 
   &-imageWrapper {
     inset-block-end: 0;
@@ -16,29 +12,35 @@
   &-previewImageLarge {
     background: #fff;
     block-size: auto;
-    border: 3px solid #2f353e;
-    border-radius: 3px;
+    border: 1px solid #d0d5dd;
+    border-radius: 6px;
     display: block;
     inline-size: 33vw;
     inset-block-end: 0;
-    inset-inline-end: 10px;
+    inset-inline-end: 12px;
     max-inline-size: 400px;
     object-fit: cover;
     position: absolute;
   }
 
   &-previewImageSmall {
-    block-size: 40px;
+    block-size: 38px;
+    border: 1px solid #ccd0d4;
     display: block;
     inline-size: auto;
     max-block-size: 40px;
   }
 
   &-label {
-    inset-block-end: 4px;
-    inset-inline-start: 100%;
-    padding-inline-start: 8px;
-    position: absolute;
-    white-space: nowrap;
+    white-space: nowrap
   }
+}
+
+a[data-layout]:has(.flyntComponentScreenshot-imageWrapper) {
+  overflow: visible;
+}
+
+[data-renamed="1"] .acf-fc-layout-original-title:has(.flyntComponentScreenshot) {
+    align-items: center;
+    display: inline-flex;
 }
