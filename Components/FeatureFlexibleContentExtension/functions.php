@@ -44,5 +44,5 @@ add_filter('acf/fields/flexible_content/layout_title', function (string $title, 
         $title = $newTitle;
     }
 
-    return $title;
+    return html_entity_decode($title);
 }, 11, 4);
