@@ -1,9 +1,11 @@
 .flyntComponentSearch {
   display: flex;
   flex-direction: column;
-  margin-block: 5px;
+  margin-block: 6px;
 
   &-field[type='text']{
+    background-color: #f0f0f1;
+    border-color: transparent;
     border-radius: 4px;
 
     &:focus {
@@ -14,7 +16,12 @@
 
   &-noResults {
     color: #101828;
-    padding-block: 5px;
+    margin-block-end: -12px;
+    padding-block: 12px;
     padding-inline: 10px;
+  }
+
+  + ul li {
+    block-size: unset;
   }
 }
