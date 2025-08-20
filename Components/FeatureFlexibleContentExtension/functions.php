@@ -21,7 +21,11 @@ add_action('admin_enqueue_scripts', function (): void {
 });
 
 // add image to the flexible content component name
-add_filter('acf/fields/flexible_content/layout_title', function (string $title, array $field, array $layout): string {
+add_filter('acf/fields/flexible_content/layout_title', function (string $title, array $field, array $layout, $order): string {
+    if (!is_numeric($order)) {
+        return $title;
+    }
+
     $componentManager = ComponentManager::getInstance();
     $componentName = ucfirst($layout['name']);
     $componentPathFull = $componentManager->getComponentDirPath($componentName);
