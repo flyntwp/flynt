@@ -34,19 +34,20 @@ add_filter('acf/fields/flexible_content/layout_title', function (string $title, 
     $componentScreenshotPath = "{$componentPathFull}/screenshot.png";
     $componentScreenshotUrl = "{$templateDirectoryUri}/{$componentPath}/screenshot.png?v=" . wp_get_theme()->get('Version');
 
+    $newTitle = '<span class="flyntComponentScreenshot">';
+
     if (is_file($componentScreenshotPath)) {
         $imageSize = getimagesize($componentScreenshotPath);
-        $newTitle = '<span class="flyntComponentScreenshot">';
         $newTitle .= sprintf(
             '<img class="flyntComponentScreenshot-previewImageSmall" width="%s" height="%s" src="%s" loading="lazy">',
             $imageSize[0],
             $imageSize[1],
             $componentScreenshotUrl
         );
-        $newTitle .= sprintf('<span class="flyntComponentScreenshot-label">%s</span>', $title);
-        $newTitle .= '</span>';
-        $title = $newTitle;
     }
 
-    return html_entity_decode($title);
+    $newTitle .= sprintf('<span class="flyntComponentScreenshot-label">%s</span>', $title);
+    $newTitle .= '</span>';
+
+    return html_entity_decode($newTitle);
 }, 11, 4);
