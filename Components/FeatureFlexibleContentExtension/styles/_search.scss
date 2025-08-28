@@ -1,4 +1,4 @@
-.flyntComponentSearch {
+.acf-flexible-content .flyntComponentSearch {
   display: flex;
   flex-direction: column;
   margin-block: 6px;
@@ -8,6 +8,9 @@
     border-color: transparent;
     border-radius: 4px;
     box-shadow: 0 0 2px #f0f0f1;
+    font-size: 13px;
+    padding-block: 5px;
+    padding-inline: 10px;
 
     &:focus {
       border-color: transparent;
@@ -17,9 +20,16 @@
 
   &-noResults {
     color: #101828;
-    margin-block-end: -10px;
-    padding-block: 10px;
+    inline-size: 100%;
+    margin-block-end: -6px;
+    margin-block-start: 6px;
+    overflow: hidden;
+    padding-block: 5px;
     padding-inline: 10px;
+    position: relative;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   + ul li {
