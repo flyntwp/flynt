@@ -7,17 +7,18 @@
     background-color: #f0f0f1;
     border-color: transparent;
     border-radius: 4px;
+    box-shadow: 0 0 2px #f0f0f1;
 
     &:focus {
       border-color: transparent;
-      box-shadow: 0 0 0 var(--wp-admin-border-width-focus) var(--wp-components-color-accent, var(--wp-admin-theme-color, #3858e9));
+      box-shadow: 0 0 2px #686868;
     }
   }
 
   &-noResults {
     color: #101828;
-    margin-block-end: -12px;
-    padding-block: 12px;
+    margin-block-end: -10px;
+    padding-block: 10px;
     padding-inline: 10px;
   }
 
