@@ -48,12 +48,19 @@
 
   .layout[data-renamed="1"] .acf-fc-layout-handle {
     .acf-fc-layout-original-title:has(.flyntComponentScreenshot-label) {
+      color: inherit;
       font-size: 0;
       order: 1;
     }
 
     .acf-fc-layout-title {
+      display: inline-flex;
       order: 2;
+
+      &::before {
+        content: '/';
+        margin-inline-end: 8px;
+      }
     }
 
     .acf-layout-disabled {
@@ -75,6 +82,6 @@
 
   // stylelint-disable-next-line selector-max-compound-selectors
   .layout[data-renamed].active-layout > .acf-fc-layout-actions-wrap .acf-fc-layout-handle .acf-fc-layout-original-title {
-      color: inherit;
-    }
+    color: inherit;
+  }
 }
