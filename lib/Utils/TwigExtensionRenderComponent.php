@@ -4,6 +4,7 @@ namespace Flynt\Utils;
 
 use Flynt\Api;
 use Flynt\ComponentManager;
+use Timber\Timber;
 use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 use Twig\Extension\CoreExtension;
@@ -43,7 +44,7 @@ class TwigExtensionRenderComponent extends AbstractExtension
      *
      * @return string The rendered component.
      */
-    public function renderComponent(Environment $twigEnvironment, array $context, $componentName, ?array $data = [], bool $withContext = true, bool $ignoreMissing = false, bool $sandboxed = false)
+    public function renderComponent(Environment $twigEnvironment, array $context, $componentName, ?array $data = [], bool $withContext = false, bool $ignoreMissing = false, bool $sandboxed = false)
     {
 
         $data ??= [];
@@ -52,8 +53,9 @@ class TwigExtensionRenderComponent extends AbstractExtension
             $data = array_merge($componentName, $data);
             $componentName = ucfirst($data['acf_fc_layout']);
         }
+        $timberContext = $withContext ? $context : Timber::context();
 
-        $fn = function ($output, $componentName, $data) use ($twigEnvironment, $context, $withContext, $ignoreMissing, $sandboxed) {
+        $fn = function ($output, $componentName, $data) use ($twigEnvironment, $timberContext, $withContext, $ignoreMissing, $sandboxed) {
             $componentManager = ComponentManager::getInstance();
             $filePath = $componentManager->getComponentFilePath($componentName, 'index.twig');
             $relativeFilePath = ltrim(str_replace(get_template_directory(), '', $filePath), '/');
@@ -68,7 +70,7 @@ class TwigExtensionRenderComponent extends AbstractExtension
 
             $loader->addPath(dirname($filePath));
 
-            $output = CoreExtension::include($twigEnvironment, $context, $relativeFilePath, $data, $withContext, $ignoreMissing, $sandboxed);
+            $output = CoreExtension::include($twigEnvironment, $timberContext, $relativeFilePath, $data, true, $ignoreMissing, $sandboxed); //TODO: CoreExtension::include: review withContext parameter 
 
             $loader->setPaths($loaderPaths);
 
