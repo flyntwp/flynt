@@ -43,7 +43,7 @@ if (window.acf) {
       $tooltip.insertAdjacentHTML(
         position === 'top' ? 'beforeend' : 'afterbegin',
         `<div class="flyntComponentSearch">
-          <input type="text" placeholder="${placeholder}" class="flyntComponentSearch-field">
+          <input type="search" placeholder="${placeholder}" class="flyntComponentSearch-field">
           <div class="flyntComponentSearch-noResults" hidden>${noResults}</div>
         </div>`
       )
@@ -66,10 +66,10 @@ if (window.acf) {
 
       $listItems.forEach(($item) => {
         const componentName = $item.innerText.toLowerCase()
-        const hasResult = searchedTerms.every((term) => componentName.indexOf(term) > -1)
-        $item.style.display = hasResult ? 'block' : 'none'
-        if (hasResult) {
-          hasResults.push(hasResult)
+        const isResult = searchedTerms.every((term) => componentName.indexOf(term) > -1)
+        $item.style.display = isResult ? null : 'none'
+        if (isResult) {
+          hasResults.push(isResult)
         }
       })
 
