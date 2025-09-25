@@ -1,13 +1,9 @@
-.acf-flexible-content .flyntComponentSearch {
+.flyntComponentSearch {
   display: flex;
   flex-direction: column;
   margin-block-start: -2px;
 
-  + ul {
-    margin-block: 6px;
-  }
-
-  &-field[type='search']{
+  &-field[type='search'] {
     border: 0;
     border-block-end: 1px solid #d0d5dd;
     border-radius: 0;
@@ -16,7 +12,7 @@
     font-size: 13px;
     inline-size: calc(100% + 16px);
     margin-inline: -8px;
-    padding-block: 12px;
+    padding-block: 4px;
     padding-inline: 18px;
 
     &:focus {
@@ -28,8 +24,7 @@
   &-noResults {
     color: #101828;
     inline-size: 100%;
-    margin-block-end: -6px;
-    margin-block-start: 6px;
+    margin-block: 6px -6px;
     overflow: hidden;
     padding-block: 5px;
     padding-inline: 10px;
@@ -37,6 +32,10 @@
     text-decoration: none;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  + ul:has(li) {
+    margin-block: 6px;
   }
 
   + ul li {

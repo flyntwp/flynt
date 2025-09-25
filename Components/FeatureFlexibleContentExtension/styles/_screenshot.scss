@@ -41,12 +41,14 @@
   }
 }
 
-.acf-flexible-content {
+.acf-fc-popup {
   a[data-layout]:has(.flyntComponentScreenshot-imageWrapper) {
     overflow: visible;
   }
+}
 
-  .layout[data-renamed="1"] .acf-fc-layout-handle {
+.acf-field-flexible-content {
+  .layout[data-renamed='1'] .acf-fc-layout-handle {
     .acf-fc-layout-original-title:has(.flyntComponentScreenshot-label) {
       color: inherit;
       font-size: 0;
@@ -68,7 +70,7 @@
     }
   }
 
-  .layout[data-renamed="0"] .acf-fc-layout-handle {
+  .layout[data-renamed='0'] .acf-fc-layout-handle {
     .acf-fc-layout-title {
       display: none;
     }
