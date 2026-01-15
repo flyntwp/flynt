@@ -3,6 +3,10 @@
   flex-direction: column;
   margin-block-start: -2px;
 
+  + ul {
+    margin-block: 6px;
+  }
+
   &-field[type='search'] {
     border: 0;
     border-block-end: 1px solid #d0d5dd;
@@ -24,7 +28,7 @@
   &-noResults {
     color: #101828;
     inline-size: 100%;
-    margin-block: 6px -6px;
+    margin-block-start: 0;
     overflow: hidden;
     padding-block: 5px;
     padding-inline: 10px;
@@ -32,10 +36,6 @@
     text-decoration: none;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-
-  + ul:has(li) {
-    margin-block: 6px;
   }
 
   + ul li {
