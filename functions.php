@@ -16,7 +16,9 @@ if (!defined('WP_ENV')) {
 // If they aren't, this function redirects the template rendering to use
 // plugin-inactive.php instead and shows a warning in the admin backend.
 if (Init::checkRequiredPlugins()) {
-    FileLoader::loadPhpFiles('inc');
+    add_action('after_setup_theme', function (): void {
+        FileLoader::loadPhpFiles('inc');
+    }, PHP_INT_MIN);
     add_action('after_setup_theme', [\Flynt\Init::class, 'initTheme']);
     add_action('after_setup_theme', [\Flynt\Init::class, 'loadComponents'], 101);
 }
