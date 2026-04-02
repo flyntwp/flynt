@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.2](https://github.com/flyntwp/flynt/compare/v2.1.1...v2.1.2) (2026-04-02)
+
+* Added `FeatureFlexibleContentExtension` ACF > 6.5.1 compatibility.
+* Improved accessibility by switching flexible content search inputs to `type="search"` and refining related backend UI behavior.
+* Updated block editor integration to dequeue Gutenberg styles more reliably.
+* Fixed flexible content layout title handling, Twig template inclusion, and reusable component backend guards.
+* Refined base styles and `BaseStyle` links for more consistent frontend output.
+* Updated documentation and package metadata to align with the current PHP 8.1 theme requirements.
+
 ## [2.1.1](https://github.com/flyntwp/flynt/compare/v2.1.0...v2.1.1) (2024-05-10)
 
 ### Bug Fixes

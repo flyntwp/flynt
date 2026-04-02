@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v4
-    - name: Use Node.js v18
+    - name: Use Node.js v20
       uses: actions/setup-node@v3
       with:
-        node-version: 18.x
+        node-version: 20.x
     - uses: actions/cache@v3
       with:
         path: ./node_modules
@@ -28,7 +28,7 @@ jobs:
           ${{ runner.os }}-composer-
     - uses: shivammathur/setup-php@v2
       with:
-        php-version: 8.0
+        php-version: 8.3
         extensions: zip, imagick, gd
     - name: Install npm
       run: npm i
