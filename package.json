@@ -1,6 +1,6 @@
 {
   "name": "flynt",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "repository": "git@github.com:flyntwp/flynt.git",
   "author": "Bleech <hello@bleech.de>",
   "license": "MIT",
@@ -21,12 +21,12 @@
     "lintFix:scripts": "cross-env standard --fix",
     "lintFix:styles": "cross-env stylelint '**/*.scss' --fix",
     "lintFix:php": "cross-env ./vendor/bin/phpcbf",
-    "release": "run-s --silent checkVersion && standard-version -a",
-    "releasePatch": "run-s --silent checkVersion && standard-version -a --release-as patch",
-    "replaceVersion": "run-s --silent checkVersion && npm i -g replace-in-files-cli && run-p --silent replaceVersion:*",
-    "replaceVersion:style.css": "cross-env replace-in-files --regex='Version: (.*)' --replacement=Version:\\ $npm_package_version ./style.css",
-    "replaceVersion:js": "cross-env replace-in-files --string='%%NEXT_VERSION%%' --replacement=$npm_package_version './**/*.js' '!./dist/**/*' '!./node_modules/**/*'",
-    "replaceVersion:php": "cross-env replace-in-files --string='%%NEXT_VERSION%%' --replacement=$npm_package_version './**/*.php' '!./dist/**/*' '!./node_modules/**/*' '!./vendor/**/*'"
+    "release": "run-s --silent checkVersion && npx --yes standard-version -a",
+    "releasePatch": "run-s --silent checkVersion && npx --yes standard-version -a --release-as patch",
+    "replaceVersion": "run-s --silent checkVersion && run-p --silent replaceVersion:*",
+    "replaceVersion:style.css": "cross-env npx --yes replace-in-files-cli --regex='Version: (.*)' --replacement=Version:\\ $npm_package_version ./style.css",
+    "replaceVersion:js": "cross-env npx --yes replace-in-files-cli --string='%%NEXT_VERSION%%' --replacement=$npm_package_version './**/*.js' '!./dist/**/*' '!./node_modules/**/*'",
+    "replaceVersion:php": "cross-env npx --yes replace-in-files-cli --string='%%NEXT_VERSION%%' --replacement=$npm_package_version './**/*.php' '!./dist/**/*' '!./node_modules/**/*' '!./vendor/**/*'"
   },
   "dependencies": {
     "body-scroll-lock": "^3.1.5",
