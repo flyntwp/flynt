@@ -52,7 +52,7 @@ jobs:
         asset_content_type: application/zip
     - name: Create download
       if: ${{ !github.event.release.upload_url }}
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: flynt-bundled
         path: ./flynt-bundled.zip
