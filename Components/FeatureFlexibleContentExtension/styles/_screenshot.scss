@@ -1,11 +1,11 @@
 .flyntComponentScreenshot {
-  background-color: #fff;
-  block-size: 40px;
-  border: 1px solid #ccd0d4;
-  display: inline-block;
-  inset-block-end: 4px;
-  margin-inline-start: 5px;
-  position: absolute;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 13px;
+  gap: 8px;
+
+
 
   &-imageWrapper {
     inset-block-end: 0;
@@ -16,29 +16,93 @@
   &-previewImageLarge {
     background: #fff;
     block-size: auto;
-    border: 3px solid #2f353e;
-    border-radius: 3px;
+    border: 1px solid #d0d5dd;
+    border-radius: 6px;
     display: block;
     inline-size: 33vw;
     inset-block-end: 0;
-    inset-inline-end: 10px;
+    inset-inline-end: 12px;
     max-inline-size: 400px;
     object-fit: cover;
     position: absolute;
   }
 
   &-previewImageSmall {
-    block-size: 40px;
+    block-size: 58px;
+    border: 1px solid #ccd0d4;
     display: block;
     inline-size: auto;
-    max-block-size: 40px;
+    margin-block-end: -5px;
+    margin-block-start: -25px;
+    max-block-size: 60px;
   }
 
   &-label {
-    inset-block-end: 4px;
-    inset-inline-start: 100%;
-    padding-inline-start: 8px;
-    position: absolute;
+    font-size: 13px;
     white-space: nowrap;
+  }
+}
+
+.acf-fc-popup {
+  a[data-layout]:has(.flyntComponentScreenshot-imageWrapper) {
+    overflow: visible;
+  }
+}
+
+.acf-flexible-content .values .layout {
+  .acf-fc-layout-handle {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .acf-fc-layout-order,
+  .acf-fc-layout-draggable-icon {
+    margin-block: 16px;
+    z-index: 1;
+  }
+
+  .acf-fc-layout-original-title {
+    font-size: 0;
+  }
+
+  .acf-fc-layout-title {
+    order: 1;
+  }
+
+  .acf-fc-layout-actions-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+
+    // stylelint-disable selector-max-compound-selectors
+    .acf-layout-disabled {
+      margin: 0;
+      order: 2;
+    }
+  }
+
+  .acf-fc-layout-controls {
+    margin-inline-start: auto;
+  }
+
+
+  &.active-layout {
+    >.acf-fc-layout-actions-wrap {
+      .acf-fc-layout-handle .acf-fc-layout-order {
+        background: #f0f0f0;
+        border: 1px solid #e0e0e0;
+        color: #757575;
+      }
+
+      .acf-fc-layout-draggable-icon {
+        background: #2f2f2f;
+        border: 1px solid #2f2f2f;
+
+        &::before {
+          background: #fff;
+        }
+      }
+    }
   }
 }
