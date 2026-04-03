@@ -4,6 +4,7 @@ namespace Flynt\Utils;
 
 use Flynt\Api;
 use Flynt\ComponentManager;
+use Timber\Timber;
 use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 use Twig\Extension\CoreExtension;
@@ -37,23 +38,25 @@ class TwigExtensionRenderComponent extends AbstractExtension
      * @param array $context Twig context.
      * @param string|array $componentName The name of the component.
      * @param array|null $data The data of the component.
-     * @param boolean $withContext Whether to pass the context to the component.
-     * @param boolean $ignoreMissing Whether to ignore missing components.
-     * @param boolean $sandboxed Whether to sandbox the component.
+     * @param array $options Render options: includeContext, ignoreMissing, sandboxed.
      *
      * @return string The rendered component.
      */
-    public function renderComponent(Environment $twigEnvironment, array $context, $componentName, ?array $data = [], bool $withContext = true, bool $ignoreMissing = false, bool $sandboxed = false)
+    public function renderComponent(Environment $twigEnvironment, array $context, $componentName, ?array $data = [], array $options = [])
     {
 
         $data ??= [];
+
+        $includeContext = $options['includeContext'] ?? true;
+        $ignoreMissing = $options['ignoreMissing'] ?? false;
+        $sandboxed = $options['sandboxed'] ?? false;
 
         if (is_array($componentName)) {
             $data = array_merge($componentName, $data);
             $componentName = ucfirst($data['acf_fc_layout']);
         }
 
-        $fn = function ($output, $componentName, $data) use ($twigEnvironment, $context, $withContext, $ignoreMissing, $sandboxed) {
+        $fn = function ($output, $componentName, $data) use ($twigEnvironment, $context, $includeContext, $ignoreMissing, $sandboxed) {
             $componentManager = ComponentManager::getInstance();
             $filePath = $componentManager->getComponentFilePath($componentName, 'index.twig');
             $relativeFilePath = ltrim(str_replace(get_template_directory(), '', $filePath), '/');
@@ -68,7 +71,7 @@ class TwigExtensionRenderComponent extends AbstractExtension
 
             $loader->addPath(dirname($filePath));
 
-            $output = CoreExtension::include($twigEnvironment, $context, $relativeFilePath, $data, $withContext, $ignoreMissing, $sandboxed);
+            $output = CoreExtension::include($twigEnvironment, $context, $relativeFilePath, $data, $includeContext, $ignoreMissing, $sandboxed);
 
             $loader->setPaths($loaderPaths);
 
