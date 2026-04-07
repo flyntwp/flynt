@@ -22,6 +22,7 @@ add_action('wp_enqueue_scripts', function (): void {
 
     wp_enqueue_style('Flynt/assets/main', Asset::requireUrl('assets/main.scss'), [], null);
     wp_enqueue_style('Flynt/assets/print', Asset::requireUrl('assets/print.scss'), [], null, 'print');
+    wp_enqueue_style('Flynt/assets/theme', Asset::requireUrl('assets/style.css'), [], null);
 });
 
 add_action('admin_enqueue_scripts', function (): void {
