@@ -54,7 +54,36 @@ class TimberDynamicResize
     {
         add_action('init', [$this, 'addRewriteTag']);
         add_action('generate_rewrite_rules', [$this, 'registerRewriteRule']);
+        add_filter('option_rewrite_rules', [$this, 'forceRewriteRule'], PHP_INT_MAX);
         add_action('parse_request', [$this, 'parseRequest']);
+    }
+
+    /**
+     * Force route for dynamic resized images.
+     *
+     * @param mixed $rules The rewrite rules option value.
+     *
+     * @return mixed
+     */
+    public function forceRewriteRule(mixed $rules): mixed
+    {
+        if (!is_array($rules)) {
+            return $rules;
+        }
+
+        $routeName = self::IMAGE_QUERY_VAR;
+        $relativeUploadDir = $this->getRelativeUploadDir();
+        $relativeUploadDir = ltrim(untrailingslashit($relativeUploadDir), '/');
+        $relativeUploadDir = trailingslashit($relativeUploadDir) . self::RESIZED_DIR_NAME;
+        $rewriteRegex = "^{$relativeUploadDir}/?(.*?)/?$";
+
+        if (isset($rules[$rewriteRegex])) {
+            return $rules;
+        }
+
+        return [
+            $rewriteRegex => "index.php?{$routeName}=\$matches[1]",
+        ] + $rules;
     }
 
     /**
@@ -64,8 +93,14 @@ class TimberDynamicResize
      */
     public function parseRequest(WP $wp): void
     {
-        if (isset($wp->query_vars[self::IMAGE_QUERY_VAR]) && !empty($wp->query_vars[self::IMAGE_QUERY_VAR])) {
-            $this->checkAndServeImage($wp->query_vars[self::IMAGE_QUERY_VAR]);
+        $relativePath = $wp->query_vars[self::IMAGE_QUERY_VAR] ?? null;
+
+        if (empty($relativePath) && isset($_GET[self::IMAGE_QUERY_VAR])) {
+            $relativePath = wp_unslash($_GET[self::IMAGE_QUERY_VAR]);
+        }
+
+        if (is_scalar($relativePath) && !empty($relativePath)) {
+            $this->checkAndServeImage((string) $relativePath);
         }
     }
 
@@ -177,6 +212,10 @@ class TimberDynamicResize
                 $src = ImageHelper::sideload_image($src);
             }
 
+            if (empty($src)) {
+                return '';
+            }
+
             $resizedImageUrl = $this->getResizedImageUrl($src, $w, $h, $crop);
             $destination = ImageHelper::get_server_location($resizedImageUrl);
 
@@ -184,11 +223,82 @@ class TimberDynamicResize
                 return $resizedImageUrl;
             }
 
-            $token = $this->generateToken($resizedImageUrl);
-            return add_query_arg(self::TOKEN_QUERY_VAR, $token, $resizedImageUrl);
+            if ($this->isSwitchedMultisiteRequest() && $this->gotUrlRewrite()) {
+                // Sign the same public URL the browser will request after the blog switch ends.
+                $publicResizedImageUrl = $this->getCurrentBlogResizeRouteUrl($resizedImageUrl);
+                return add_query_arg(
+                    self::TOKEN_QUERY_VAR,
+                    $this->generateToken($publicResizedImageUrl),
+                    $publicResizedImageUrl
+                );
+            }
+
+            if (!$this->gotUrlRewrite()) {
+                return add_query_arg([
+                    self::IMAGE_QUERY_VAR => $this->getRelativeResizedImagePath($resizedImageUrl),
+                    self::TOKEN_QUERY_VAR => $this->generateToken($resizedImageUrl),
+                ], home_url('/'));
+            }
+
+            return add_query_arg(self::TOKEN_QUERY_VAR, $this->generateToken($resizedImageUrl), $resizedImageUrl);
         }
 
         return $this->generateImage($src, $w, $h, $crop, $force);
+    }
+
+    /**
+     * Build a lazy resize route URL below the currently active blog's home URL.
+     *
+     * @param string $resizedImageUrl The real resized image URL.
+     *
+     * @return string
+     */
+    private function getCurrentBlogResizeRouteUrl(string $resizedImageUrl): string
+    {
+        $path = parse_url($resizedImageUrl, PHP_URL_PATH);
+        if (empty($path)) {
+            return $resizedImageUrl;
+        }
+
+        return home_url($path);
+    }
+
+    /**
+     * Get the resized image path relative to the active blog's uploads/resized directory.
+     *
+     * @param string $resizedImageUrl The resized image URL.
+     *
+     * @return string
+     */
+    private function getRelativeResizedImagePath(string $resizedImageUrl): string
+    {
+        $resizedPath = parse_url($resizedImageUrl, PHP_URL_PATH);
+        $uploadsPath = parse_url(trailingslashit($this->getUploadsBaseurl()), PHP_URL_PATH);
+
+        if (is_string($resizedPath) && is_string($uploadsPath)) {
+            $resizedBasePath = trailingslashit($uploadsPath) . self::RESIZED_DIR_NAME . '/';
+            if (strpos($resizedPath, $resizedBasePath) === 0) {
+                return ltrim(substr($resizedPath, strlen($resizedBasePath)), '/');
+            }
+        }
+
+        $resizedBase = trailingslashit($this->getUploadsBaseurl())
+            . self::RESIZED_DIR_NAME . '/';
+
+        return ltrim(str_replace($resizedBase, '', $resizedImageUrl), '/');
+    }
+
+    /**
+     * Check whether WordPress is currently rendering in a switched multisite blog context.
+     *
+     * @return boolean
+     */
+    private function isSwitchedMultisiteRequest(): bool
+    {
+        return function_exists('is_multisite')
+            && is_multisite()
+            && function_exists('ms_is_switched')
+            && ms_is_switched();
     }
 
     /**
@@ -216,6 +326,29 @@ class TimberDynamicResize
     {
         $expectedToken = $this->generateToken($resizedImageUrl);
         return hash_equals($expectedToken, $token);
+    }
+
+    /**
+     * Check if the server supports URL rewriting.
+     *
+     * WordPress's got_url_rewrite() is only loaded in wp-admin by default.
+     *
+     * @return boolean
+     */
+    private function gotUrlRewrite(): bool
+    {
+        if (function_exists('got_url_rewrite')) {
+            return got_url_rewrite();
+        }
+
+        $gotModRewrite = function_exists('apache_mod_loaded')
+            ? apache_mod_loaded('mod_rewrite', true)
+            : false;
+
+        return $gotModRewrite
+            || !empty($GLOBALS['is_nginx'])
+            || !empty($GLOBALS['is_caddy'])
+            || (function_exists('iis7_supports_permalinks') && iis7_supports_permalinks());
     }
 
     /**
@@ -292,11 +425,26 @@ class TimberDynamicResize
         $resizedImageUrl = $this->getResizedImageUrl($originalImageUrl, $w, $h, $crop);
         $resizedImageLocation = ImageHelper::get_server_location($resizedImageUrl);
 
+        $resizedImageDir = dirname($resizedImageLocation);
+        if (!is_dir($resizedImageDir) && !wp_mkdir_p($resizedImageDir)) {
+            status_header(500);
+            nocache_headers();
+            error_log(sprintf('TimberDynamicResize: Could not create directory: %s', $resizedImageDir));
+            exit();
+        }
+
         // Check for lock file early to avoid unnecessary processing.
         $lockFile = $resizedImageLocation . '.lock';
         if (file_exists($lockFile)) {
             $lockTime = filemtime($lockFile);
             if ($lockTime && (time() - $lockTime) < self::LOCK_TIMEOUT) {
+                if (!$this->gotUrlRewrite()) {
+                    nocache_headers();
+                    status_header(503);
+                    header('Retry-After: 1');
+                    exit();
+                }
+
                 // Another process is already generating this image.
                 $token = $this->generateToken($resizedImageUrl);
                 $redirectUrl = add_query_arg(self::TOKEN_QUERY_VAR, $token, $resizedImageUrl);
@@ -321,29 +469,41 @@ class TimberDynamicResize
         }
 
         $originalImageLocation = ImageHelper::get_server_location($originalImageUrl);
+        if (!file_exists($originalImageLocation)) {
+            $this->serve404();
+        }
+
         $mime = mime_content_type($originalImageLocation);
         if (false === $mime) {
             $this->serve404();
         }
 
-        if (!in_array($mime, get_allowed_mime_types())) {
+        if (!in_array($mime, get_allowed_mime_types(), true)) {
             $this->serve403();
         }
 
         try {
             // Create lock file.
-            file_put_contents($lockFile, time());
+            if (@file_put_contents($lockFile, (string) time(), LOCK_EX) === false) {
+                error_log(sprintf('TimberDynamicResize: Could not create lock file: %s', $lockFile));
+            }
 
             $this->generateImage($originalImageUrl, $w, $h, $crop);
 
             // Remove lock file.
             @unlink($lockFile);
 
+            if (!file_exists($resizedImageLocation)) {
+                status_header(500);
+                error_log(sprintf('TimberDynamicResize: Failed generating image: %s', $resizedImageLocation));
+                exit();
+            }
+
             nocache_headers();
             status_header(301);
             header('Location: ' . $resizedImageUrl);
             exit();
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             // Clean up lock file on error.
             @unlink($lockFile);
             status_header(500);
@@ -468,10 +628,12 @@ class TimberDynamicResize
         if ($enable) {
             $this->addRewriteTag();
             add_action('generate_rewrite_rules', [$this, 'registerRewriteRule']);
+            add_filter('option_rewrite_rules', [$this, 'forceRewriteRule'], PHP_INT_MAX);
             add_action('parse_request', [$this, 'parseRequest']);
         } else {
             $this->removeRewriteTag();
             remove_action('generate_rewrite_rules', [$this, 'registerRewriteRule']);
+            remove_filter('option_rewrite_rules', [$this, 'forceRewriteRule'], PHP_INT_MAX);
             remove_action('parse_request', [$this, 'parseRequest']);
         }
 
