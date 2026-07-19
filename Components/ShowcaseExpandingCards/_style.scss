@@ -51,6 +51,7 @@ flynt-component[name='ShowcaseExpandingCards'] {
     background-color: var(--color-border);
     background-image: var(--optionBackground);
     background-position: center;
+    background-repeat: no-repeat;
     background-size: auto 120%;
     cursor: pointer;
     filter: saturate(1) brightness(1);
@@ -70,6 +71,20 @@ flynt-component[name='ShowcaseExpandingCards'] {
       opacity: 0.6;
       position: absolute;
       transition: var(--expanding-cards-transition), opacity 0.4s ease;
+    }
+
+    // Shimmer Reveal: a soft light sweep that travels across the card once
+    // it becomes active, layered on top of the color tint.
+    &::after {
+      background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.55) 48%, transparent 66%);
+      background-position: 150% 150%;
+      background-size: 250% 250%;
+      content: '';
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      transition: opacity 0.3s ease;
     }
 
     @for $i from 1 through length($expanding-cards-accents) {
@@ -100,6 +115,11 @@ flynt-component[name='ShowcaseExpandingCards'] {
         opacity: 0.3;
       }
 
+      &::after {
+        animation: expandingCardsShimmer 1.1s ease forwards;
+        opacity: 1;
+      }
+
       .expanding-cards-shadow {
         box-shadow: inset 0 -140px 120px -120px rgba(0, 0, 0, 0.85), inset 0 -140px 140px -100px rgba(0, 0, 0, 0.5);
       }
@@ -109,15 +129,41 @@ flynt-component[name='ShowcaseExpandingCards'] {
         flex-direction: row;
         inset-block: auto 20px;
         inset-inline: 20px;
+
+        // Glassmorphism: a frosted panel behind the label so the (now
+        // potentially multi-line) title/excerpt stay legible over any image.
+        &::before {
+          background: rgba(255, 255, 255, 0.12);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          border-radius: 16px;
+          content: '';
+          inset: -10px -14px;
+          opacity: 1;
+          position: absolute;
+          z-index: -1;
+        }
       }
 
       .expanding-cards-info {
         margin-inline-start: 12px;
+        overflow: visible;
+        white-space: normal;
         writing-mode: horizontal-tb;
       }
 
       .expanding-cards-main {
         white-space: nowrap;
+      }
+
+      .expanding-cards-sub {
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+        max-inline-size: 46ch;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
       }
 
       .expanding-cards-info > * {
@@ -178,6 +224,21 @@ flynt-component[name='ShowcaseExpandingCards'] {
       &::before {
         transition: none;
       }
+
+      &.active::after {
+        animation: none;
+        opacity: 0;
+      }
+    }
+  }
+
+  @keyframes expandingCardsShimmer {
+    from {
+      background-position: 150% 150%;
+    }
+
+    to {
+      background-position: -50% -50%;
     }
   }
 
