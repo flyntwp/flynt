@@ -1,5 +1,5 @@
 flynt-component[name='ShowcaseExpandingCards'] {
-  --expanding-cards-transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+  --expanding-cards-transition: 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 
   .expanding-cards-header {
     margin-block-end: 48px;
@@ -52,7 +52,7 @@ flynt-component[name='ShowcaseExpandingCards'] {
     background-image: var(--optionBackground);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: auto 120%;
+    background-size: cover;
     cursor: pointer;
     filter: saturate(1) brightness(1);
     flex-grow: 1;
@@ -106,7 +106,6 @@ flynt-component[name='ShowcaseExpandingCards'] {
     }
 
     &.active {
-      background-size: auto 100%;
       border-radius: 24px;
       flex-grow: 10000;
       margin-inline: 6px;
@@ -146,7 +145,6 @@ flynt-component[name='ShowcaseExpandingCards'] {
       }
 
       .expanding-cards-info {
-        margin-inline-start: 12px;
         overflow: visible;
         white-space: normal;
         writing-mode: horizontal-tb;
@@ -253,28 +251,8 @@ flynt-component[name='ShowcaseExpandingCards'] {
   .expanding-cards-label {
     block-size: auto;
     display: flex;
-    gap: 10px;
     position: absolute;
     transition: var(--expanding-cards-transition);
-  }
-
-  .expanding-cards-icon {
-    align-items: center;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.75));
-    block-size: 40px;
-    border-radius: 100%;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-    color: var(--color-accent);
-    display: flex;
-    flex-shrink: 0;
-    inline-size: 40px;
-    justify-content: center;
-
-    .dashicons {
-      block-size: 20px;
-      font-size: 20px;
-      inline-size: 20px;
-    }
   }
 
   .expanding-cards-info {
@@ -282,6 +260,7 @@ flynt-component[name='ShowcaseExpandingCards'] {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    min-inline-size: 0;
     overflow: hidden;
     transition: var(--expanding-cards-transition);
     white-space: nowrap;
@@ -295,6 +274,9 @@ flynt-component[name='ShowcaseExpandingCards'] {
   .expanding-cards-main {
     font-size: 1.15rem;
     font-weight: 700;
+    max-inline-size: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
     transition: var(--expanding-cards-transition);
 
     a {
