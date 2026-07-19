@@ -1,4 +1,9 @@
-<flynt-component name="ShowcaseExpandingCards" load:on="visible" class="componentSpacing" {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
+<flynt-component
+  name="ShowcaseExpandingCards"
+  load:on="visible"
+  class="componentSpacing"
+  {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}
+  {{ options.animationSpeed ? 'style="--expanding-cards-duration:' ~ options.animationSpeed ~ 'ms;"' }}>
   <div class="container">
     {% if subtitle or title %}
       <div class="expanding-cards-header" data-size="medium" data-align="center" data-text-align="center">
@@ -23,6 +28,7 @@
             aria-label="{{ card.title|e }}"
             style="--optionBackground:url('{{ imageSrc|e('esc_url') }}')">
             <div class="expanding-cards-shadow"></div>
+            <span class="expanding-cards-holo" aria-hidden="true"></span>
             <div class="expanding-cards-label">
               <div class="expanding-cards-info">
                 <div class="expanding-cards-main">

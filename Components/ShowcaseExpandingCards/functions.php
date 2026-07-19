@@ -201,6 +201,16 @@ function getACFLayout(): array
                         'default_value' => 0,
                         'ui' => 1,
                     ],
+                    [
+                        'label' => __('Animation Speed', 'flynt'),
+                        'instructions' => __('Duration of the expand/collapse transition, in milliseconds. Lower is faster.', 'flynt'),
+                        'name' => 'animationSpeed',
+                        'type' => 'number',
+                        'default_value' => 700,
+                        'min' => 100,
+                        'max' => 2000,
+                        'step' => 50,
+                    ],
                 ]
             ]
         ]

@@ -1,5 +1,7 @@
 flynt-component[name='ShowcaseExpandingCards'] {
-  --expanding-cards-transition: 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  --expanding-cards-duration: 700ms;
+  --expanding-cards-easing: cubic-bezier(0.22, 1, 0.36, 1);
+  --expanding-cards-transition: var(--expanding-cards-duration) var(--expanding-cards-easing);
 
   .expanding-cards-header {
     margin-block-end: 48px;
@@ -128,20 +130,13 @@ flynt-component[name='ShowcaseExpandingCards'] {
         flex-direction: row;
         inset-block: auto 20px;
         inset-inline: 20px;
+      }
 
-        // Glassmorphism: a frosted panel behind the label so the (now
-        // potentially multi-line) title/excerpt stay legible over any image.
-        &::before {
-          background: rgba(255, 255, 255, 0.12);
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.25);
-          border-radius: 16px;
-          content: '';
-          inset: -10px -14px;
-          opacity: 1;
-          position: absolute;
-          z-index: -1;
-        }
+      // Holo Card: only visible while hovering a card that's already
+      // expanded, tracking pointer position via script.js.
+      &:hover .expanding-cards-holo,
+      &:focus-within .expanding-cards-holo {
+        opacity: 0.85;
       }
 
       .expanding-cards-info {
@@ -227,6 +222,11 @@ flynt-component[name='ShowcaseExpandingCards'] {
         animation: none;
         opacity: 0;
       }
+
+      .expanding-cards-holo {
+        opacity: 0;
+        transition: none;
+      }
     }
   }
 
@@ -246,6 +246,18 @@ flynt-component[name='ShowcaseExpandingCards'] {
     inset-inline: 0;
     position: absolute;
     transition: var(--expanding-cards-transition);
+  }
+
+  .expanding-cards-holo {
+    background: linear-gradient(115deg, transparent 20%, rgba(255, 0, 231, 0.55) 36%, rgba(0, 224, 255, 0.55) 44%, rgba(255, 214, 0, 0.55) 52%, transparent 68%);
+    background-position: var(--expanding-cards-mx, 50%) var(--expanding-cards-my, 50%);
+    background-size: 220% 220%;
+    inset: 0;
+    mix-blend-mode: color-dodge;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    transition: opacity 0.3s ease;
   }
 
   .expanding-cards-label {

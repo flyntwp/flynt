@@ -3,6 +3,7 @@ export default function (el) {
   if (options.length === 0) return
 
   const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   const activate = (option) => {
     if (option.classList.contains('active')) return
@@ -26,11 +27,26 @@ export default function (el) {
     }
   }
 
+  // Holo Card: only visible (via CSS, gated on .active:hover) once a card is
+  // already expanded, so this just keeps the pointer position ready for it.
+  const onPointerMove = (e) => {
+    const option = e.currentTarget
+    const rect = option.getBoundingClientRect()
+    const x = (e.clientX - rect.left) / rect.width
+    const y = (e.clientY - rect.top) / rect.height
+
+    option.style.setProperty('--expanding-cards-mx', `${x * 100}%`)
+    option.style.setProperty('--expanding-cards-my', `${y * 100}%`)
+  }
+
   options.forEach(option => {
     option.addEventListener('click', onClick)
     option.addEventListener('keydown', onKeydown)
     if (supportsHover) {
       option.addEventListener('mouseenter', onMouseEnter)
+    }
+    if (supportsHover && !reducedMotion) {
+      option.addEventListener('pointermove', onPointerMove)
     }
   })
 
@@ -40,6 +56,9 @@ export default function (el) {
       option.removeEventListener('keydown', onKeydown)
       if (supportsHover) {
         option.removeEventListener('mouseenter', onMouseEnter)
+      }
+      if (supportsHover && !reducedMotion) {
+        option.removeEventListener('pointermove', onPointerMove)
       }
     })
   }
