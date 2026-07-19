@@ -1,13 +1,13 @@
 const POINTER_TRACKING_STYLES = ['tilt3d', 'holo', 'glassmorphism']
 
 export default function (el) {
-  const hoverStyle = el.dataset.hover
-  if (!POINTER_TRACKING_STYLES.includes(hoverStyle)) return
-
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   if (reducedMotion) return
 
+  // Each card can have its own hover style (falling back to the grid-wide
+  // default), so only the cards that actually need pointer tracking get it.
   const cards = Array.from(el.querySelectorAll('[data-ref="card"]'))
+    .filter(card => POINTER_TRACKING_STYLES.includes(card.dataset.hover))
   if (cards.length === 0) return
 
   const onPointerMove = (e) => {

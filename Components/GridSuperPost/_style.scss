@@ -12,6 +12,7 @@ flynt-component[name='GridSuperPost'] {
   }
 
   .card {
+    isolation: isolate;
     overflow: hidden;
     position: relative;
     transition: var(--grid-super-post-transition);
@@ -79,7 +80,7 @@ flynt-component[name='GridSuperPost'] {
   }
 
   // Hover Style: Lift + Shadow
-  &[data-hover='liftShadow'] .card {
+  .card[data-hover='liftShadow'] {
     &:hover,
     &:focus-within {
       box-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.35);
@@ -88,7 +89,7 @@ flynt-component[name='GridSuperPost'] {
   }
 
   // Hover Style: Zoom + Overlay
-  &[data-hover='zoomOverlay'] .card {
+  .card[data-hover='zoomOverlay'] {
     .figure::after {
       background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0) 60%);
       content: '';
@@ -111,7 +112,7 @@ flynt-component[name='GridSuperPost'] {
   }
 
   // Hover Style: Gradient Border Glow
-  &[data-hover='gradientBorder'] .card {
+  .card[data-hover='gradientBorder'] {
     border-radius: 18px;
     overflow: visible;
 
@@ -142,7 +143,7 @@ flynt-component[name='GridSuperPost'] {
   }
 
   // Hover Style: Tilt 3D
-  &[data-hover='tilt3d'] .card {
+  .card[data-hover='tilt3d'] {
     transform: perspective(900px) rotateX(var(--grid-super-post-ry, 0deg)) rotateY(var(--grid-super-post-rx, 0deg)) scale(var(--grid-super-post-scale, 1));
     transform-style: preserve-3d;
 
@@ -155,7 +156,7 @@ flynt-component[name='GridSuperPost'] {
   }
 
   // Hover Style: Holo Card
-  &[data-hover='holo'] .card {
+  .card[data-hover='holo'] {
     transform: perspective(900px) rotateX(var(--grid-super-post-ry, 0deg)) rotateY(var(--grid-super-post-rx, 0deg));
     transform-style: preserve-3d;
 
@@ -181,7 +182,7 @@ flynt-component[name='GridSuperPost'] {
   }
 
   // Hover Style: Glassmorphism + Shimmer Reveal
-  &[data-hover='glassmorphism'] .card {
+  .card[data-hover='glassmorphism'] {
     .card-glow {
       background: rgba(255, 255, 255, 0.08);
       display: block;
@@ -217,7 +218,7 @@ flynt-component[name='GridSuperPost'] {
       transition: none;
     }
 
-    &[data-hover='gradientBorder'] .card::before {
+    .card[data-hover='gradientBorder']::before {
       animation: none;
       opacity: 0.6;
     }

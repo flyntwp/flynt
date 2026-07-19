@@ -64,6 +64,7 @@ function buildCardFromPost($post, int $excerptWords): array
         'content' => $post->content(),
         'author' => $author ? $author->name() : null,
         'excerpt' => $excerptWords > 0 ? (string) $post->excerpt()->length($excerptWords)->read_more(false) : '',
+        'hoverStyle' => null,
     ];
 }
 
@@ -81,6 +82,7 @@ function getCardsFromManual(array $manualCards, int $excerptWords): array
             'content' => null,
             'author' => $card['author'] ?: null,
             'excerpt' => $excerptWords > 0 && $excerpt ? wp_trim_words($excerpt, $excerptWords) : '',
+            'hoverStyle' => $card['hoverStyle'] ?: null,
         ];
     }, $manualCards);
 }
@@ -94,6 +96,19 @@ function normalizeImage($image, string $fallbackAlt): ?array
     return [
         'src' => $image->src(),
         'alt' => $image->alt() ?: $fallbackAlt,
+    ];
+}
+
+function getHoverStyleChoices(): array
+{
+    return [
+        'none' => __('None', 'flynt'),
+        'liftShadow' => __('Lift + Shadow', 'flynt'),
+        'zoomOverlay' => __('Zoom + Overlay', 'flynt'),
+        'gradientBorder' => __('Gradient Border Glow', 'flynt'),
+        'tilt3d' => __('Tilt 3D', 'flynt'),
+        'holo' => __('Holo Card', 'flynt'),
+        'glassmorphism' => __('Glassmorphism + Shimmer Reveal', 'flynt'),
     ];
 }
 
@@ -200,6 +215,17 @@ function getACFLayout(): array
                         'type' => 'text',
                         'wrapper' => ['width' => 33],
                     ],
+                    [
+                        'label' => __('Hover Style', 'flynt'),
+                        'instructions' => __('Overrides the grid-wide Hover Style option for this card only.', 'flynt'),
+                        'name' => 'hoverStyle',
+                        'type' => 'select',
+                        'choices' => array_merge(['' => __('Use Default (Grid)', 'flynt')], getHoverStyleChoices()),
+                        'default_value' => '',
+                        'allow_null' => 0,
+                        'multiple' => 0,
+                        'ui' => 0,
+                    ],
                 ],
             ], $sourceIsField('manual')),
             array_merge([
@@ -260,17 +286,10 @@ function getACFLayout(): array
                     FieldVariables\getTheme(),
                     [
                         'label' => __('Hover Style', 'flynt'),
+                        'instructions' => __('Default hover style for all cards. Manual cards can override this individually.', 'flynt'),
                         'name' => 'hoverStyle',
                         'type' => 'select',
-                        'choices' => [
-                            'none' => __('None', 'flynt'),
-                            'liftShadow' => __('Lift + Shadow', 'flynt'),
-                            'zoomOverlay' => __('Zoom + Overlay', 'flynt'),
-                            'gradientBorder' => __('Gradient Border Glow', 'flynt'),
-                            'tilt3d' => __('Tilt 3D', 'flynt'),
-                            'holo' => __('Holo Card', 'flynt'),
-                            'glassmorphism' => __('Glassmorphism + Shimmer Reveal', 'flynt'),
-                        ],
+                        'choices' => getHoverStyleChoices(),
                         'default_value' => 'liftShadow',
                         'allow_null' => 0,
                         'multiple' => 0,

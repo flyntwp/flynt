@@ -3,13 +3,12 @@
     name="GridSuperPost"
     load:on="visible"
     class="componentSpacing"
-    data-hover="{{ options.hoverStyle ?: 'none' }}"
     {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
     <div class="container" data-flow="layout">
       <ul class="grid">
         {% for card in cards %}
           {% set aria_labelledby_id = uuid ~ '-' ~ loop.index %}
-          <li class="card boxBorder" id="{{ aria_labelledby_id }}" data-theme="reset" data-ref="card">
+          <li class="card boxBorder" id="{{ aria_labelledby_id }}" data-theme="reset" data-ref="card" data-hover="{{ card.hoverStyle ?: options.hoverStyle ?: 'none' }}">
             <a class="link" href="{{ card.link|e('esc_url') }}" aria-labelledby="{{ aria_labelledby_id }}">
               {% if options.showFeaturedImage and card.image %}
                 <figure class="figure">
