@@ -1,0 +1,62 @@
+{% if cards|length > 0 %}
+  <flynt-component
+    name="GridSuperPost"
+    load:on="visible"
+    class="componentSpacing"
+    data-hover="{{ options.hoverStyle ?: 'none' }}"
+    {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}>
+    <div class="container" data-flow="layout">
+      <ul class="grid">
+        {% for card in cards %}
+          {% set aria_labelledby_id = uuid ~ '-' ~ loop.index %}
+          <li class="card boxBorder" id="{{ aria_labelledby_id }}" data-theme="reset" data-ref="card">
+            <a class="link" href="{{ card.link|e('esc_url') }}" aria-labelledby="{{ aria_labelledby_id }}">
+              {% if options.showFeaturedImage and card.image %}
+                <figure class="figure">
+                  <img
+                    class="card-image figure-image lazyload"
+                    src="{{ card.image.src|resizeDynamic(768, (768 / 3 * 2)|round, 'center') }}"
+                    width="768"
+                    height="{{ (768 / 3 * 2)|round }}"
+                    srcset="{{ placeholderImage(768, (768 / 3 * 2)|round, 'rgba(125, 125, 125, 0.1)') }}"
+                    data-srcset="
+                      {{ card.image.src|resizeDynamic(1600, (1600 / 3 * 2)|round, 'center') }} 1600w,
+                      {{ card.image.src|resizeDynamic(1024, (1024 / 3 * 2)|round, 'center') }} 1024w,
+                      {{ card.image.src|resizeDynamic(768, (768 / 3 * 2)|round, 'center') }} 768w,
+                      {{ card.image.src|resizeDynamic(640, (640 / 3 * 2)|round, 'center') }} 640w"
+                    data-sizes="auto"
+                    alt="{{ card.image.alt|e }}">
+                  <span class="card-glow" aria-hidden="true"></span>
+                </figure>
+              {% endif %}
+              <div class="content boxPadding">
+                {% if options.showCategory and card.category %}
+                  <span class="category">{{ card.category|e }}</span>
+                {% endif %}
+                {% if options.showTitle and card.title %}
+                  <h2 class="h5 title">{{ card.title|e }}</h2>
+                {% endif %}
+                {% if card.excerpt %}
+                  <p class="excerpt">{{ card.excerpt|e('wp_kses_post') }}</p>
+                {% endif %}
+              </div>
+              {% if (options.showAuthor and card.author) or (options.showDate and card.date) or (options.showReadingTime and card.content) %}
+                <footer class="footer">
+                  {% if options.showAuthor and card.author %}
+                    <span class="author">{{ card.author|e }}</span>
+                  {% endif %}
+                  {% if options.showDate and card.date %}
+                    <span class="date">{{ card.date|e }}</span>
+                  {% endif %}
+                  {% if options.showReadingTime and card.content %}
+                    <span class="readingTime">{{ labels.readingTime|replace({'%d': card.content|readingtime}) }}</span>
+                  {% endif %}
+                </footer>
+              {% endif %}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </flynt-component>
+{% endif %}

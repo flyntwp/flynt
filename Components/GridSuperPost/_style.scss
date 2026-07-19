@@ -1,0 +1,237 @@
+flynt-component[name='GridSuperPost'] {
+  --grid-super-post-transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+  .grid {
+    --grid-item-width: calc((var(--content-max-width-full) - 2 * var(--flow-space)) / 3);
+    display: grid;
+    gap: var(--flow-space);
+    grid-template-columns: repeat(auto-fit, min(var(--grid-item-width), 100%));
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+  }
+
+  .card {
+    overflow: hidden;
+    position: relative;
+    transition: var(--grid-super-post-transition);
+
+    .link {
+      block-size: 100%;
+      color: currentColor;
+      display: flex;
+      flex-direction: column;
+      font-weight: initial;
+      text-decoration: none;
+    }
+
+    .figure {
+      margin: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-image {
+      display: block;
+      inline-size: 100%;
+      transition: transform 0.6s ease;
+    }
+
+    .card-glow {
+      display: none;
+    }
+
+    .content {
+      color: var(--color-text);
+      flex-grow: 1;
+      margin-block-start: 0;
+    }
+
+    .category {
+      color: var(--color-accent);
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-block-end: 8px;
+      text-transform: uppercase;
+    }
+
+    .title {
+      margin-block-start: 0;
+    }
+
+    .excerpt {
+      color: var(--color-text-muted);
+    }
+
+    .footer {
+      align-items: center;
+      color: var(--color-text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 12px;
+      inline-size: 100%;
+      padding-block: 0 var(--box-spacing);
+      padding-inline: var(--box-spacing);
+      position: relative;
+    }
+  }
+
+  // Hover Style: Lift + Shadow
+  &[data-hover='liftShadow'] .card {
+    &:hover,
+    &:focus-within {
+      box-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.35);
+      transform: translateY(-8px);
+    }
+  }
+
+  // Hover Style: Zoom + Overlay
+  &[data-hover='zoomOverlay'] .card {
+    .figure::after {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0) 60%);
+      content: '';
+      inset: 0;
+      opacity: 0;
+      position: absolute;
+      transition: opacity 0.4s ease;
+    }
+
+    &:hover,
+    &:focus-within {
+      .card-image {
+        transform: scale(1.08);
+      }
+
+      .figure::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  // Hover Style: Gradient Border Glow
+  &[data-hover='gradientBorder'] .card {
+    border-radius: 18px;
+    overflow: visible;
+
+    .figure {
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    &::before {
+      animation: gridSuperPostRotateGradient 4s linear infinite paused;
+      background: conic-gradient(from var(--grid-super-post-angle, 0deg), #ff5f6d, #7f00ff, #00c6ff, #38ef7d, #ffd200, #ff5f6d);
+      border-radius: inherit;
+      content: '';
+      inset: -2px;
+      opacity: 0;
+      position: absolute;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+    }
+
+    &:hover,
+    &:focus-within {
+      &::before {
+        animation-play-state: running;
+        opacity: 1;
+      }
+    }
+  }
+
+  // Hover Style: Tilt 3D
+  &[data-hover='tilt3d'] .card {
+    transform: perspective(900px) rotateX(var(--grid-super-post-ry, 0deg)) rotateY(var(--grid-super-post-rx, 0deg)) scale(var(--grid-super-post-scale, 1));
+    transform-style: preserve-3d;
+
+    &:hover,
+    &:focus-within {
+      --grid-super-post-scale: 1.03;
+
+      box-shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  // Hover Style: Holo Card
+  &[data-hover='holo'] .card {
+    transform: perspective(900px) rotateX(var(--grid-super-post-ry, 0deg)) rotateY(var(--grid-super-post-rx, 0deg));
+    transform-style: preserve-3d;
+
+    .card-glow {
+      background: linear-gradient(115deg, transparent 20%, rgba(255, 0, 231, 0.65) 36%, rgba(0, 224, 255, 0.65) 44%, rgba(255, 214, 0, 0.65) 52%, transparent 68%);
+      background-position: var(--grid-super-post-mx, 50%) var(--grid-super-post-my, 50%);
+      background-size: 220% 220%;
+      display: block;
+      inset: 0;
+      mix-blend-mode: color-dodge;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      transition: opacity 0.3s ease;
+    }
+
+    &:hover,
+    &:focus-within {
+      .card-glow {
+        opacity: 0.85;
+      }
+    }
+  }
+
+  // Hover Style: Glassmorphism + Shimmer Reveal
+  &[data-hover='glassmorphism'] .card {
+    .card-glow {
+      background: rgba(255, 255, 255, 0.08);
+      display: block;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      transition: opacity 0.4s ease, backdrop-filter 0.4s ease;
+
+      &::after {
+        background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.55) 50%, transparent 60%);
+        background-position: var(--grid-super-post-mx, -20%) var(--grid-super-post-my, -20%);
+        background-size: 220% 220%;
+        content: '';
+        inset: 0;
+        position: absolute;
+      }
+    }
+
+    &:hover,
+    &:focus-within {
+      .card-glow {
+        backdrop-filter: blur(3px);
+        opacity: 1;
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card,
+    .card-image,
+    .card-glow {
+      transition: none;
+    }
+
+    &[data-hover='gradientBorder'] .card::before {
+      animation: none;
+      opacity: 0.6;
+    }
+  }
+}
+
+@keyframes gridSuperPostRotateGradient {
+  to {
+    --grid-super-post-angle: 360deg;
+  }
+}
+
+@property --grid-super-post-angle {
+  inherits: false;
+  initial-value: 0deg;
+  syntax: '<angle>';
+}
