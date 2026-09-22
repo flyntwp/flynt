@@ -5,9 +5,15 @@ namespace Flynt\TimberDynamicResize;
 use Flynt\Utils\Options;
 use Flynt\Utils\TimberDynamicResize;
 
+const HTACCESS_MARKER = 'Flynt Dynamic Resize';
+const HTACCESS_STATE_OPTION = 'flynt_timber_dynamic_resize_htaccess_state';
+
 add_action('acf/init', function (): void {
     global $timberDynamicResize;
     $timberDynamicResize = new TimberDynamicResize();
+
+    $enabled = (bool) get_field('field_global_TimberDynamicResize_dynamicImageGeneration', 'option');
+    syncHtaccessRules($enabled);
 });
 
 Options::addGlobal('TimberDynamicResize', [
@@ -19,39 +25,53 @@ Options::addGlobal('TimberDynamicResize', [
         'default_value' => 0,
         'ui' => true,
     ],
-    [
-        'label' => __('Relative Upload Path', 'flynt'),
-        'instructions' => __('If Timber Dynamic Resize cannot resolve the path to images correctly, set the relative upload path manually.', 'flynt'),
-        'name' => 'relativeUploadPath',
-        'type' => 'text',
-        'conditional_logic' => [
-            [
-                [
-                    'fieldPath' => 'dynamicImageGeneration',
-                    'operator' => '==',
-                    'value' => '1'
-                ]
-            ]
-        ]
-    ],
 ]);
 
-add_filter('acf/load_field/key=field_global_TimberDynamicResize_relativeUploadPath', function (array $field) {
-    global $timberDynamicResize;
-    $field['placeholder'] = $timberDynamicResize->getRelativeUploadDir(true);
-    return $field;
-});
-
 add_action('update_option_options_global_TimberDynamicResize_dynamicImageGeneration', function ($oldValue, $value): void {
-    global $timberDynamicResize;
-    $timberDynamicResize->toggleDynamic($value === '1');
-    addHtaccessToResizedDir($value === '1');
+    syncHtaccessRules($value === '1', true);
 }, 10, 2);
 
-add_action('update_option_options_global_TimberDynamicResize_relativeUploadPath', function ($oldValue, $value): void {
-    global $timberDynamicResize;
-    $timberDynamicResize->changeRelativeUploadPath($value);
-}, 10, 2);
+/**
+ * Keep the Flynt dynamic resize rewrite marker in sync with the feature setting.
+ *
+ * @param boolean $enabled Whether dynamic image generation is enabled.
+ * @param boolean $force Whether to write the marker regardless of the stored state.
+ */
+function syncHtaccessRules(bool $enabled, bool $force = false): void
+{
+    $state = $enabled ? 'enabled' : 'disabled';
+    if (!$force && get_option(HTACCESS_STATE_OPTION) === $state) {
+        return;
+    }
+
+    require_once ABSPATH . 'wp-admin/includes/misc.php';
+
+    $uploads = wp_upload_dir();
+    $htaccessFile = trailingslashit($uploads['basedir']) . '.htaccess';
+    $restRoute = '/' . trim(TimberDynamicResize::REST_NAMESPACE . TimberDynamicResize::REST_ROUTE, '/');
+    $rules = [];
+
+    if ($enabled) {
+        $rules = [
+            '<IfModule mod_rewrite.c>',
+            '  RewriteEngine On',
+            '  RewriteCond %{REQUEST_FILENAME} !-f',
+            '  RewriteCond %{REQUEST_FILENAME} !-d',
+            '  RewriteCond %{QUERY_STRING} (^|&)' . TimberDynamicResize::TOKEN_QUERY_VAR . '=[a-f0-9]{16}(&|$) [NC]',
+            '  RewriteRule ^resized/(.+)$ /index.php?rest_route=' . $restRoute . '&path=$1 [B,QSA,L]',
+            '</IfModule>',
+        ];
+    }
+
+    if (!is_dir(dirname($htaccessFile)) && !wp_mkdir_p(dirname($htaccessFile))) {
+        error_log(sprintf('TimberDynamicResize: Could not create uploads directory: %s', dirname($htaccessFile)));
+        return;
+    }
+
+    if (insert_with_markers($htaccessFile, HTACCESS_MARKER, $rules)) {
+        update_option(HTACCESS_STATE_OPTION, $state, false);
+    }
+}
 
 // WPML rewrite fix.
 add_filter('mod_rewrite_rules', function (string $rules): string {
@@ -67,25 +87,3 @@ add_filter('mod_rewrite_rules', function (string $rules): string {
         $rules
     );
 });
-
-function addHtaccessToResizedDir($enable)
-{
-    $marker = 'Timber Dynamic Resize';
-    $rules = $enable ? [
-        '<IfModule mod_rewrite.c>',
-        '  RewriteOptions Inherit',
-        '  RewriteEngine On',
-        '  RewriteCond %{REQUEST_FILENAME} !-f',
-        '  RewriteCond %{REQUEST_FILENAME} !-d',
-        '  RewriteCond %{QUERY_STRING} (^|&)' . TimberDynamicResize::TOKEN_QUERY_VAR . '= [NC]',
-        '  RewriteRule ^(.*)$ /index.php [L]',
-        '</IfModule>'
-    ] : [];
-
-    $uploads = wp_upload_dir();
-    $resizedHtaccess = trailingslashit($uploads['basedir']) . '/.htaccess';
-    if (!is_dir(dirname($resizedHtaccess))) {
-        mkdir(dirname($resizedHtaccess), 0775, true);
-    }
-    insert_with_markers($resizedHtaccess, $marker, $rules);
-}
