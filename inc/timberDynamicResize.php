@@ -49,18 +49,27 @@ function syncHtaccessRules(bool $enabled, bool $force = false): void
     $uploads = wp_upload_dir();
     $htaccessFile = trailingslashit($uploads['basedir']) . '.htaccess';
     $restRoute = '/' . trim(TimberDynamicResize::REST_NAMESPACE . TimberDynamicResize::REST_ROUTE, '/');
+    $frontController = wp_parse_url(home_url('/index.php'), PHP_URL_PATH);
+    $frontController = is_string($frontController) ? $frontController : '/index.php';
     $rules = [];
 
     if ($enabled) {
         $rules = [
             '<IfModule mod_rewrite.c>',
+        ];
+
+        if (is_multisite() && get_current_blog_id() !== get_main_site_id()) {
+            $rules[] = '  RewriteOptions Inherit';
+        }
+
+        $rules = array_merge($rules, [
             '  RewriteEngine On',
             '  RewriteCond %{REQUEST_FILENAME} !-f',
             '  RewriteCond %{REQUEST_FILENAME} !-d',
             '  RewriteCond %{QUERY_STRING} (^|&)' . TimberDynamicResize::TOKEN_QUERY_VAR . '=[a-f0-9]{16}(&|$) [NC]',
-            '  RewriteRule ^resized/(.+)$ /index.php?rest_route=' . $restRoute . '&path=$1 [B,QSA,L]',
+            '  RewriteRule ^resized/(.+)$ ' . $frontController . '?rest_route=' . $restRoute . '&path=$1 [B,QSA,R=307,L]',
             '</IfModule>',
-        ];
+        ]);
     }
 
     if (!is_dir(dirname($htaccessFile)) && !wp_mkdir_p(dirname($htaccessFile))) {
