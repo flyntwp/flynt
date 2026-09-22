@@ -6,7 +6,6 @@ use Flynt\Utils\Options;
 use Flynt\Utils\TimberDynamicResize;
 
 const HTACCESS_MARKER = 'Flynt Dynamic Resize';
-const HTACCESS_STATE_OPTION = 'flynt_timber_dynamic_resize_htaccess_state';
 
 add_action('acf/init', function (): void {
     global $timberDynamicResize;
@@ -28,22 +27,16 @@ Options::addGlobal('TimberDynamicResize', [
 ]);
 
 add_action('update_option_options_global_TimberDynamicResize_dynamicImageGeneration', function ($oldValue, $value): void {
-    syncHtaccessRules($value === '1', true);
+    syncHtaccessRules($value === '1');
 }, 10, 2);
 
 /**
  * Keep the Flynt dynamic resize rewrite marker in sync with the feature setting.
  *
  * @param boolean $enabled Whether dynamic image generation is enabled.
- * @param boolean $force Whether to write the marker regardless of the stored state.
  */
-function syncHtaccessRules(bool $enabled, bool $force = false): void
+function syncHtaccessRules(bool $enabled): void
 {
-    $state = $enabled ? 'enabled' : 'disabled';
-    if (!$force && get_option(HTACCESS_STATE_OPTION) === $state) {
-        return;
-    }
-
     require_once ABSPATH . 'wp-admin/includes/misc.php';
 
     $uploads = wp_upload_dir();
@@ -72,14 +65,16 @@ function syncHtaccessRules(bool $enabled, bool $force = false): void
         ]);
     }
 
+    if (extract_from_markers($htaccessFile, HTACCESS_MARKER) === $rules) {
+        return;
+    }
+
     if (!is_dir(dirname($htaccessFile)) && !wp_mkdir_p(dirname($htaccessFile))) {
         error_log(sprintf('TimberDynamicResize: Could not create uploads directory: %s', dirname($htaccessFile)));
         return;
     }
 
-    if (insert_with_markers($htaccessFile, HTACCESS_MARKER, $rules)) {
-        update_option(HTACCESS_STATE_OPTION, $state, false);
-    }
+    insert_with_markers($htaccessFile, HTACCESS_MARKER, $rules);
 }
 
 // WPML rewrite fix.
