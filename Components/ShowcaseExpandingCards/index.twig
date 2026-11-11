@@ -1,0 +1,51 @@
+<flynt-component
+  name="ShowcaseExpandingCards"
+  load:on="visible"
+  class="componentSpacing"
+  {{ options.theme ? 'data-theme="' ~ options.theme ~ '"' }}
+  {{ options.animationSpeed ? 'style="--expanding-cards-duration:' ~ options.animationSpeed ~ 'ms;"' }}>
+  <div class="container">
+    {% if subtitle or title %}
+      <div class="expanding-cards-header" data-size="medium" data-align="center" data-text-align="center">
+        {% if subtitle %}
+          <span class="expanding-cards-eyebrow">{{ subtitle|e }}</span>
+        {% endif %}
+        {% if title %}
+          <h2 class="expanding-cards-title">{{ title|e }}</h2>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if cards %}
+      <div class="expanding-cards">
+        {% for card in cards %}
+          {% set imageSrc = card.image.src starts with 'data:' ? card.image.src : card.image.src|resizeDynamic(900, 1200, 'center') %}
+          <div
+            class="expanding-cards-option{{ loop.first ? ' active' : '' }}"
+            data-ref="option"
+            role="button"
+            tabindex="0"
+            aria-label="{{ card.title|e }}"
+            style="--optionBackground:url('{{ imageSrc|e('esc_url') }}')">
+            <div class="expanding-cards-shadow"></div>
+            <span class="expanding-cards-holo" aria-hidden="true"></span>
+            <div class="expanding-cards-label">
+              <div class="expanding-cards-info">
+                <div class="expanding-cards-main">
+                  {% if options.enableLinks and card.link %}
+                    <a href="{{ card.link|e('esc_url') }}">{{ card.title|e }}</a>
+                  {% else %}
+                    {{ card.title|e }}
+                  {% endif %}
+                </div>
+                {% if card.subtitle %}
+                  <div class="expanding-cards-sub">{{ card.subtitle|e }}</div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</flynt-component>
