@@ -13,23 +13,23 @@
       overflow-wrap: anywhere;
     }
 
-    &-button {
-      align-items: center;
-      display: inline-flex;
-      flex-shrink: 0;
-      gap: 0.25rem;
-
-      .dashicons {
-        line-height: 1;
-      }
-    }
-
     &-message {
       color: #008000;
       display: none;
       inset-block-start: -22px;
       inset-inline-end: 0;
       position: absolute;
+    }
+  }
+
+  .anchorLink-button {
+    align-items: center;
+    display: inline-flex;
+    flex-shrink: 0;
+    gap: 0.25rem;
+
+    .dashicons {
+      line-height: 1;
     }
   }
 }
