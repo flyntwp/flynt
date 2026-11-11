@@ -8,22 +8,19 @@
     position: relative;
 
     &-url {
-      margin-block: 0 -10px;
+      margin-block: 0 1rem;
       margin-inline: 0;
-      pointer-events: initial;
+      overflow-wrap: anywhere;
     }
 
     &-button {
       align-items: center;
-      display: flex;
-    }
+      display: inline-flex;
+      flex-shrink: 0;
+      gap: 0.25rem;
 
-    [data-copy-anchor-link] {
-      align-items: center;
-      display: flex;
-
-      svg {
-        inline-size: 100%;
+      .dashicons {
+        line-height: 1;
       }
     }
 

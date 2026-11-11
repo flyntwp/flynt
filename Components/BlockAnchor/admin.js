@@ -4,6 +4,9 @@
   const setUpInputVal = function () {
     return new acf.Model({
       wait: 'ready',
+      actions: {
+        append: 'initialize'
+      },
       initialize: function () {
         const $blockAnchor = $('[data-layout="blockAnchor"]:not(.acf-clone)')
         if ($blockAnchor.length > 0) {
@@ -26,7 +29,7 @@
   const changeText = function ($el, val) {
     const $blockAnchor = $el.closest('[data-layout="blockAnchor"]:not(.acf-clone)')
     const $anchorLinkInput = $blockAnchor.find('.anchorLink-url')
-    if ($anchorLinkInput) {
+    if ($anchorLinkInput.length > 0) {
       const href = $anchorLinkInput.data('href')
       val = sanitizeText(val)
       const link = `${href}#${val}`
@@ -47,7 +50,18 @@
       const $copyMessage = $anchorField.find('.anchorLink-message')
 
       if (!navigator.clipboard) {
-        document.execCommand('copy')
+        const selection = window.getSelection()
+        const range = document.createRange()
+        range.selectNodeContents($anchorLinkInput[0])
+        selection.removeAllRanges()
+        selection.addRange(range)
+        const copied = document.execCommand('copy')
+        selection.removeAllRanges()
+        if (copied) {
+          $copyMessage.show().delay(5000).hide('fast')
+        } else {
+          alert('Oops! Something went wrong...')
+        }
       } else {
         navigator.clipboard.writeText($anchorLinkInput.text()).then(
           function () {
@@ -64,7 +78,7 @@
   const initAcfEvents = function () {
     return new acf.Model({
       events: {
-        'keyup input[name*=blockAnchor_anchor]': 'onChangeText',
+        'input input[name*=blockAnchor_anchor]': 'onChangeText',
         'click [data-copy-anchor-link]': 'copyToClipboard'
       },
       onChangeText,

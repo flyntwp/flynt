@@ -1,5 +1,6 @@
+<p class="anchorLink-url" data-href="{{ permalink|e('esc_url') }}">{{ permalink|e('esc_html') }}#</p>
 <div class="anchorLink">
-    <p class="description"> {{ description }}</p>
-    <button data-copy-anchor-link class="button button-secondary anchorLink-button" aria-label="{{ buttonText }}" title="{{ buttonText }}"><span class="dashicons dashicons-admin-page"></span>{{ buttonText }}</button>
-    <span class="anchorLink-message" data-copy-message>{{ copiedMessage }}</span>
+  <p class="description">{{ description|e('esc_html') }}</p>
+  <button type="button" data-copy-anchor-link class="button button-secondary anchorLink-button" aria-label="{{ buttonText|e('html_attr') }}" title="{{ buttonText|e('html_attr') }}"><span class="dashicons dashicons-admin-page" aria-hidden="true"></span>{{ buttonText|e('esc_html') }}</button>
+  <span class="anchorLink-message" data-copy-message role="status">{{ copiedMessage|e('esc_html') }}</span>
 </div>
