@@ -8,23 +8,9 @@
     position: relative;
 
     &-url {
-      margin-block: 0 -10px;
+      margin-block: 0 1rem;
       margin-inline: 0;
-      pointer-events: initial;
-    }
-
-    &-button {
-      align-items: center;
-      display: flex;
-    }
-
-    [data-copy-anchor-link] {
-      align-items: center;
-      display: flex;
-
-      svg {
-        inline-size: 100%;
-      }
+      overflow-wrap: anywhere;
     }
 
     &-message {
@@ -33,6 +19,17 @@
       inset-block-start: -22px;
       inset-inline-end: 0;
       position: absolute;
+    }
+  }
+
+  [data-copy-anchor-link] {
+    align-items: center;
+    display: inline-flex;
+    flex-shrink: 0;
+    gap: 0.25rem;
+
+    .dashicons {
+      line-height: 1;
     }
   }
 }
