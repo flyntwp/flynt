@@ -1,12 +1,14 @@
-# language: php
+build:
+  image: default-jammy
+
+  environment:
+    php:
+      version: "8.1"
+    node: "20"
 
 filter:
     paths: [./*]
     excluded_paths: [./node_modules/*]
-
-# before_commands:
-#   - 'composer self-update'
-#   - 'composer update --prefer-stable --prefer-source --no-interaction --no-scripts --no-progress --no-suggest'
 
 tools:
   php_code_coverage: false
